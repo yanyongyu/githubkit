@@ -9,27 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union, Literal
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
 
-class Autolink(GitHubModel):
-    """Autolink reference
 
-    An autolink reference.
+class Activity(GitHubModel):
+    """Activity
+
+    Activity
     """
 
     id: int = Field()
-    key_prefix: str = Field(description="The prefix of a key that is linkified.")
-    url_template: str = Field(
-        description="A template for the target URL that is generated if a key was found."
+    node_id: str = Field()
+    before: str = Field(description="The SHA of the commit before the activity.")
+    after: str = Field(description="The SHA of the commit after the activity.")
+    ref: str = Field(
+        description="The full Git reference, formatted as `refs/heads/<branch name>`."
     )
-    is_alphanumeric: bool = Field(
-        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
-    )
+    timestamp: datetime = Field(description="The time when the activity occurred.")
+    activity_type: Literal[
+        "push",
+        "force_push",
+        "branch_deletion",
+        "branch_creation",
+        "pr_merge",
+        "merge_queue_merge",
+    ] = Field(description="The type of the activity that was performed.")
+    actor: Union[None, SimpleUser] = Field()
 
 
-model_rebuild(Autolink)
+model_rebuild(Activity)
 
-__all__ = ("Autolink",)
+__all__ = ("Activity",)

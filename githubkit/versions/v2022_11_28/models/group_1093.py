@@ -18,25 +18,24 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoStatusesShaPostBody(GitHubModel):
-    """ReposOwnerRepoStatusesShaPostBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody"""
 
-    state: Literal["error", "failure", "pending", "success"] = Field(
-        description="The state of the status."
+    state: Literal["open", "resolved"] = Field(
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
     )
-    target_url: Missing[Union[str, None]] = Field(
+    resolution: Missing[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ] = Field(
         default=UNSET,
-        description="The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.  \nFor example, if your continuous integration system is posting build status, you would want to provide the deep link for the build output for this specific SHA:  \n`http://ci.example.com/user/repo/build/sha`",
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A short description of the status."
-    )
-    context: Missing[str] = Field(
+    resolution_comment: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="A string label to differentiate this status from the status of other systems. This field is case-insensitive.",
+        description="An optional comment when closing an alert. Cannot be updated or deleted. Must be `null` when changing `state` to `open`.",
     )
 
 
-model_rebuild(ReposOwnerRepoStatusesShaPostBody)
+model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoStatusesShaPostBody",)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody",)

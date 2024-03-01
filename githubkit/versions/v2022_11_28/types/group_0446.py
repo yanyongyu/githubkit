@@ -13,91 +13,37 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0355 import EnterpriseWebhooksType
-from .group_0356 import SimpleInstallationType
-from .group_0358 import RepositoryWebhooksType
-from .group_0359 import SimpleUserWebhooksType
-from .group_0357 import OrganizationSimpleWebhooksType
+from .group_0015 import InstallationType
+from .group_0356 import EnterpriseWebhooksType
+from .group_0359 import RepositoryWebhooksType
+from .group_0360 import SimpleUserWebhooksType
+from .group_0358 import OrganizationSimpleWebhooksType
 
 
-class WebhookInstallationTargetRenamedType(TypedDict):
-    """WebhookInstallationTargetRenamed"""
+class WebhookInstallationSuspendType(TypedDict):
+    """installation suspend event"""
 
-    account: WebhookInstallationTargetRenamedPropAccountType
-    action: Literal["renamed"]
-    changes: WebhookInstallationTargetRenamedPropChangesType
+    action: Literal["suspend"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: SimpleInstallationType
+    installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    repositories: NotRequired[List[WebhookInstallationSuspendPropRepositoriesItemsType]]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserWebhooksType]
-    target_type: str
+    requester: NotRequired[None]
+    sender: SimpleUserWebhooksType
 
 
-class WebhookInstallationTargetRenamedPropAccountType(TypedDict):
-    """WebhookInstallationTargetRenamedPropAccount"""
+class WebhookInstallationSuspendPropRepositoriesItemsType(TypedDict):
+    """WebhookInstallationSuspendPropRepositoriesItems"""
 
-    archived_at: NotRequired[Union[str, None]]
-    avatar_url: str
-    created_at: NotRequired[str]
-    description: NotRequired[None]
-    events_url: NotRequired[str]
-    followers: NotRequired[int]
-    followers_url: NotRequired[str]
-    following: NotRequired[int]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    has_organization_projects: NotRequired[bool]
-    has_repository_projects: NotRequired[bool]
-    hooks_url: NotRequired[str]
-    html_url: str
+    full_name: str
     id: int
-    is_verified: NotRequired[bool]
-    issues_url: NotRequired[str]
-    login: NotRequired[str]
-    members_url: NotRequired[str]
-    name: NotRequired[str]
+    name: str
     node_id: str
-    organizations_url: NotRequired[str]
-    public_gists: NotRequired[int]
-    public_members_url: NotRequired[str]
-    public_repos: NotRequired[int]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    slug: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
-    website_url: NotRequired[None]
-
-
-class WebhookInstallationTargetRenamedPropChangesType(TypedDict):
-    """WebhookInstallationTargetRenamedPropChanges"""
-
-    login: NotRequired[WebhookInstallationTargetRenamedPropChangesPropLoginType]
-    slug: NotRequired[WebhookInstallationTargetRenamedPropChangesPropSlugType]
-
-
-class WebhookInstallationTargetRenamedPropChangesPropLoginType(TypedDict):
-    """WebhookInstallationTargetRenamedPropChangesPropLogin"""
-
-    from_: str
-
-
-class WebhookInstallationTargetRenamedPropChangesPropSlugType(TypedDict):
-    """WebhookInstallationTargetRenamedPropChangesPropSlug"""
-
-    from_: str
+    private: bool
 
 
 __all__ = (
-    "WebhookInstallationTargetRenamedType",
-    "WebhookInstallationTargetRenamedPropAccountType",
-    "WebhookInstallationTargetRenamedPropChangesType",
-    "WebhookInstallationTargetRenamedPropChangesPropLoginType",
-    "WebhookInstallationTargetRenamedPropChangesPropSlugType",
+    "WebhookInstallationSuspendType",
+    "WebhookInstallationSuspendPropRepositoriesItemsType",
 )

@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import Annotated
 
@@ -16,47 +17,52 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0731 import WebhookRepositoryRulesetEditedPropChangesPropRules
-from .group_0729 import WebhookRepositoryRulesetEditedPropChangesPropConditions
+from .group_0131 import RepositoryRuleset
+from .group_0356 import EnterpriseWebhooks
+from .group_0357 import SimpleInstallation
+from .group_0359 import RepositoryWebhooks
+from .group_0360 import SimpleUserWebhooks
+from .group_0358 import OrganizationSimpleWebhooks
+from .group_0729 import WebhookRepositoryRulesetEditedPropChanges
 
 
-class WebhookRepositoryRulesetEditedPropChanges(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChanges"""
+class WebhookRepositoryRulesetEdited(GitHubModel):
+    """repository ruleset edited event"""
 
-    name: Missing[WebhookRepositoryRulesetEditedPropChangesPropName] = Field(
-        default=UNSET
+    action: Literal["edited"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
     )
-    enforcement: Missing[WebhookRepositoryRulesetEditedPropChangesPropEnforcement] = (
-        Field(default=UNSET)
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    conditions: Missing[WebhookRepositoryRulesetEditedPropChangesPropConditions] = (
-        Field(default=UNSET)
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    rules: Missing[WebhookRepositoryRulesetEditedPropChangesPropRules] = Field(
-        default=UNSET
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    repository_ruleset: RepositoryRuleset = Field(
+        title="Repository ruleset",
+        description="A set of rules to apply when specified conditions are met.",
+    )
+    changes: Missing[WebhookRepositoryRulesetEditedPropChanges] = Field(default=UNSET)
+    sender: SimpleUserWebhooks = Field(
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropName(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+model_rebuild(WebhookRepositoryRulesetEdited)
 
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropEnforcement(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-model_rebuild(WebhookRepositoryRulesetEditedPropChanges)
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropName)
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropEnforcement)
-
-__all__ = (
-    "WebhookRepositoryRulesetEditedPropChanges",
-    "WebhookRepositoryRulesetEditedPropChangesPropName",
-    "WebhookRepositoryRulesetEditedPropChangesPropEnforcement",
-)
+__all__ = ("WebhookRepositoryRulesetEdited",)

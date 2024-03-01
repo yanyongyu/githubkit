@@ -13,14 +13,14 @@ from typing import Union, Literal
 from typing_extensions import TypedDict
 
 
-class ContentSubmoduleType(TypedDict):
-    """Submodule Content
+class ContentSymlinkType(TypedDict):
+    """Symlink Content
 
-    An object describing a submodule
+    An object describing a symlink
     """
 
-    type: Literal["submodule"]
-    submodule_git_url: str
+    type: Literal["symlink"]
+    target: str
     size: int
     name: str
     path: str
@@ -29,11 +29,11 @@ class ContentSubmoduleType(TypedDict):
     git_url: Union[str, None]
     html_url: Union[str, None]
     download_url: Union[str, None]
-    links: ContentSubmodulePropLinksType
+    links: ContentSymlinkPropLinksType
 
 
-class ContentSubmodulePropLinksType(TypedDict):
-    """ContentSubmodulePropLinks"""
+class ContentSymlinkPropLinksType(TypedDict):
+    """ContentSymlinkPropLinks"""
 
     git: Union[str, None]
     html: Union[str, None]
@@ -41,6 +41,6 @@ class ContentSubmodulePropLinksType(TypedDict):
 
 
 __all__ = (
-    "ContentSubmoduleType",
-    "ContentSubmodulePropLinksType",
+    "ContentSymlinkType",
+    "ContentSymlinkPropLinksType",
 )

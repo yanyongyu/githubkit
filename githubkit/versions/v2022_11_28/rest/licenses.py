@@ -163,6 +163,7 @@ class LicensesClient:
         self,
         owner: str,
         repo: str,
+        ref: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[LicenseContent]:
@@ -172,11 +173,16 @@ class LicensesClient:
 
         url = f"/repos/{owner}/{repo}/license"
 
+        params = {
+            "ref": ref,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
             url,
+            params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=LicenseContent,
             error_models={
@@ -188,6 +194,7 @@ class LicensesClient:
         self,
         owner: str,
         repo: str,
+        ref: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[LicenseContent]:
@@ -197,11 +204,16 @@ class LicensesClient:
 
         url = f"/repos/{owner}/{repo}/license"
 
+        params = {
+            "ref": ref,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
             url,
+            params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=LicenseContent,
             error_models={

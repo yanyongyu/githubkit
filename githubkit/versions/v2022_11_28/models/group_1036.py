@@ -9,17 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesIssueNumberCommentsPostBody(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberCommentsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody"""
 
-    body: str = Field(description="The contents of the comment.")
+    assignees: Missing[List[str]] = Field(
+        default=UNSET,
+        description="Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove assignees from an issue. Assignees are silently ignored otherwise._",
+    )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberCommentsPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberCommentsPostBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody",)

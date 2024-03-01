@@ -9,21 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0075 import TeamType
-from .group_0001 import SimpleUserType
+from typing_extensions import TypedDict
 
 
-class PullRequestReviewRequestType(TypedDict):
-    """Pull Request Review Request
+class PullRequestMergeResultType(TypedDict):
+    """Pull Request Merge Result
 
-    Pull Request Review Request
+    Pull Request Merge Result
     """
 
-    users: List[SimpleUserType]
-    teams: List[TeamType]
+    sha: str
+    merged: bool
+    message: str
 
 
-__all__ = ("PullRequestReviewRequestType",)
+__all__ = ("PullRequestMergeResultType",)

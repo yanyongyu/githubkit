@@ -18,16 +18,13 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0748 import (
+from .group_0749 import (
     WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0PropDismisser,
 )
 
 
-class WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0(GitHubModel):
-    """Repository Vulnerability Alert Alert
-
-    The security alert of the vulnerable dependency.
-    """
+class WebhookRepositoryVulnerabilityAlertReopenPropAlert(GitHubModel):
+    """WebhookRepositoryVulnerabilityAlertReopenPropAlert"""
 
     affected_package_name: str = Field()
     affected_range: str = Field()
@@ -40,7 +37,7 @@ class WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0(GitHubModel):
         ]
     ] = Field(default=UNSET, title="User")
     external_identifier: str = Field()
-    external_reference: Union[str, None] = Field()
+    external_reference: Union[Union[str, None], None] = Field()
     fix_reason: Missing[str] = Field(default=UNSET)
     fixed_at: Missing[datetime] = Field(default=UNSET)
     fixed_in: Missing[str] = Field(default=UNSET)
@@ -49,9 +46,9 @@ class WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0(GitHubModel):
     node_id: str = Field()
     number: int = Field()
     severity: str = Field()
-    state: Literal["open", "dismissed", "fixed"] = Field()
+    state: Literal["open"] = Field()
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0)
+model_rebuild(WebhookRepositoryVulnerabilityAlertReopenPropAlert)
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertReopenPropAlert",)

@@ -17,22 +17,34 @@ from .group_0001 import SimpleUserType
 from .group_0005 import IntegrationType
 
 
-class LockedIssueEventType(TypedDict):
-    """Locked Issue Event
+class ReviewDismissedIssueEventType(TypedDict):
+    """Review Dismissed Issue Event
 
-    Locked Issue Event
+    Review Dismissed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["locked"]
+    event: Literal["review_dismissed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType]
-    lock_reason: Union[str, None]
+    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewType
 
 
-__all__ = ("LockedIssueEventType",)
+class ReviewDismissedIssueEventPropDismissedReviewType(TypedDict):
+    """ReviewDismissedIssueEventPropDismissedReview"""
+
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[str]
+
+
+__all__ = (
+    "ReviewDismissedIssueEventType",
+    "ReviewDismissedIssueEventPropDismissedReviewType",
+)

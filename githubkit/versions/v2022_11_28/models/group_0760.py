@@ -18,18 +18,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0355 import EnterpriseWebhooks
-from .group_0356 import SimpleInstallation
-from .group_0358 import RepositoryWebhooks
-from .group_0359 import SimpleUserWebhooks
-from .group_0357 import OrganizationSimpleWebhooks
-from .group_0367 import SecretScanningAlertWebhook
+from .group_0356 import EnterpriseWebhooks
+from .group_0357 import SimpleInstallation
+from .group_0359 import RepositoryWebhooks
+from .group_0360 import SimpleUserWebhooks
+from .group_0358 import OrganizationSimpleWebhooks
+from .group_0368 import SecretScanningAlertWebhook
 
 
-class WebhookSecretScanningAlertRevoked(GitHubModel):
-    """secret_scanning_alert revoked event"""
+class WebhookSecretScanningAlertResolved(GitHubModel):
+    """secret_scanning_alert resolved event"""
 
-    action: Literal["revoked"] = Field()
+    action: Literal["resolved"] = Field()
     alert: SecretScanningAlertWebhook = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -57,6 +57,6 @@ class WebhookSecretScanningAlertRevoked(GitHubModel):
     )
 
 
-model_rebuild(WebhookSecretScanningAlertRevoked)
+model_rebuild(WebhookSecretScanningAlertResolved)
 
-__all__ = ("WebhookSecretScanningAlertRevoked",)
+__all__ = ("WebhookSecretScanningAlertResolved",)

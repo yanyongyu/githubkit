@@ -13,165 +13,88 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookIssuesDemilestonedPropIssueAllof1Type(TypedDict):
-    """WebhookIssuesDemilestonedPropIssueAllof1"""
-
-    active_lock_reason: NotRequired[Union[str, None]]
-    assignee: NotRequired[
-        Union[WebhookIssuesDemilestonedPropIssueAllof1PropAssigneeType, None]
-    ]
-    assignees: NotRequired[
-        List[
-            Union[WebhookIssuesDemilestonedPropIssueAllof1PropAssigneesItemsType, None]
-        ]
-    ]
-    author_association: NotRequired[str]
-    body: NotRequired[Union[str, None]]
-    closed_at: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
-    comments_url: NotRequired[str]
-    created_at: NotRequired[str]
-    events_url: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    labels: NotRequired[
-        List[Union[WebhookIssuesDemilestonedPropIssueAllof1PropLabelsItemsType, None]]
-    ]
-    labels_url: NotRequired[str]
-    locked: NotRequired[bool]
-    milestone: Union[WebhookIssuesDemilestonedPropIssueAllof1PropMilestoneType, None]
-    node_id: NotRequired[str]
-    number: NotRequired[int]
-    performed_via_github_app: NotRequired[
-        Union[
-            WebhookIssuesDemilestonedPropIssueAllof1PropPerformedViaGithubAppType, None
-        ]
-    ]
-    reactions: NotRequired[WebhookIssuesDemilestonedPropIssueAllof1PropReactionsType]
-    repository_url: NotRequired[str]
-    state: NotRequired[str]
-    timeline_url: NotRequired[str]
-    title: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
-    user: NotRequired[WebhookIssuesDemilestonedPropIssueAllof1PropUserType]
+from .group_0502 import (
+    WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+)
 
 
-class WebhookIssuesDemilestonedPropIssueAllof1PropAssigneeType(TypedDict):
-    """WebhookIssuesDemilestonedPropIssueAllof1PropAssignee"""
+class WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
+    """App
 
-
-class WebhookIssuesDemilestonedPropIssueAllof1PropAssigneesItemsType(TypedDict):
-    """WebhookIssuesDemilestonedPropIssueAllof1PropAssigneesItems"""
-
-
-class WebhookIssuesDemilestonedPropIssueAllof1PropLabelsItemsType(TypedDict):
-    """WebhookIssuesDemilestonedPropIssueAllof1PropLabelsItems"""
-
-
-class WebhookIssuesDemilestonedPropIssueAllof1PropMilestoneType(TypedDict):
-    """Milestone
-
-    A collection of related issues and pull requests.
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
     """
 
-    closed_at: Union[datetime, None]
-    closed_issues: int
-    created_at: datetime
-    creator: Union[
-        WebhookIssuesDemilestonedPropIssueAllof1PropMilestonePropCreatorType, None
-    ]
+    created_at: Union[datetime, None]
     description: Union[str, None]
-    due_on: Union[datetime, None]
+    events: NotRequired[
+        List[
+            Literal[
+                "branch_protection_rule",
+                "check_run",
+                "check_suite",
+                "code_scanning_alert",
+                "commit_comment",
+                "content_reference",
+                "create",
+                "delete",
+                "deployment",
+                "deployment_review",
+                "deployment_status",
+                "deploy_key",
+                "discussion",
+                "discussion_comment",
+                "fork",
+                "gollum",
+                "issues",
+                "issue_comment",
+                "label",
+                "member",
+                "membership",
+                "milestone",
+                "organization",
+                "org_block",
+                "page_build",
+                "project",
+                "project_card",
+                "project_column",
+                "public",
+                "pull_request",
+                "pull_request_review",
+                "pull_request_review_comment",
+                "push",
+                "registry_package",
+                "release",
+                "repository",
+                "repository_dispatch",
+                "secret_scanning_alert",
+                "star",
+                "status",
+                "team",
+                "team_add",
+                "watch",
+                "workflow_dispatch",
+                "workflow_run",
+            ]
+        ]
+    ]
+    external_url: Union[str, None]
     html_url: str
-    id: int
-    labels_url: str
+    id: Union[int, None]
+    name: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: datetime
-    url: str
+    owner: Union[
+        WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[datetime, None]
 
 
-class WebhookIssuesDemilestonedPropIssueAllof1PropMilestonePropCreatorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-
-
-class WebhookIssuesDemilestonedPropIssueAllof1PropPerformedViaGithubAppType(TypedDict):
-    """WebhookIssuesDemilestonedPropIssueAllof1PropPerformedViaGithubApp"""
-
-
-class WebhookIssuesDemilestonedPropIssueAllof1PropReactionsType(TypedDict):
-    """WebhookIssuesDemilestonedPropIssueAllof1PropReactions"""
-
-    plus_one: NotRequired[int]
-    minus_one: NotRequired[int]
-    confused: NotRequired[int]
-    eyes: NotRequired[int]
-    heart: NotRequired[int]
-    hooray: NotRequired[int]
-    laugh: NotRequired[int]
-    rocket: NotRequired[int]
-    total_count: NotRequired[int]
-    url: NotRequired[str]
-
-
-class WebhookIssuesDemilestonedPropIssueAllof1PropUserType(TypedDict):
-    """WebhookIssuesDemilestonedPropIssueAllof1PropUser"""
-
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-
-
-__all__ = (
-    "WebhookIssuesDemilestonedPropIssueAllof1Type",
-    "WebhookIssuesDemilestonedPropIssueAllof1PropAssigneeType",
-    "WebhookIssuesDemilestonedPropIssueAllof1PropAssigneesItemsType",
-    "WebhookIssuesDemilestonedPropIssueAllof1PropLabelsItemsType",
-    "WebhookIssuesDemilestonedPropIssueAllof1PropMilestoneType",
-    "WebhookIssuesDemilestonedPropIssueAllof1PropMilestonePropCreatorType",
-    "WebhookIssuesDemilestonedPropIssueAllof1PropPerformedViaGithubAppType",
-    "WebhookIssuesDemilestonedPropIssueAllof1PropReactionsType",
-    "WebhookIssuesDemilestonedPropIssueAllof1PropUserType",
-)
+__all__ = ("WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppType",)

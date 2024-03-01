@@ -9,33 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0017 import Repository
 
-class Hovercard(GitHubModel):
-    """Hovercard
 
-    Hovercard
+class StarredRepository(GitHubModel):
+    """Starred Repository
+
+    Starred Repository
     """
 
-    contexts: List[HovercardPropContextsItems] = Field()
+    starred_at: datetime = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
 
 
-class HovercardPropContextsItems(GitHubModel):
-    """HovercardPropContextsItems"""
+model_rebuild(StarredRepository)
 
-    message: str = Field()
-    octicon: str = Field()
-
-
-model_rebuild(Hovercard)
-model_rebuild(HovercardPropContextsItems)
-
-__all__ = (
-    "Hovercard",
-    "HovercardPropContextsItems",
-)
+__all__ = ("StarredRepository",)

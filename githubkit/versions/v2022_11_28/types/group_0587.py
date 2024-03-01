@@ -13,40 +13,26 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0355 import EnterpriseWebhooksType
-from .group_0356 import SimpleInstallationType
-from .group_0358 import RepositoryWebhooksType
-from .group_0359 import SimpleUserWebhooksType
-from .group_0357 import OrganizationSimpleWebhooksType
+from .group_0356 import EnterpriseWebhooksType
+from .group_0357 import SimpleInstallationType
+from .group_0359 import RepositoryWebhooksType
+from .group_0360 import SimpleUserWebhooksType
+from .group_0358 import OrganizationSimpleWebhooksType
 
 
-class WebhookOrganizationDeletedType(TypedDict):
-    """organization deleted event"""
+class WebhookOrgBlockUnblockedType(TypedDict):
+    """org_block unblocked event"""
 
-    action: Literal["deleted"]
+    action: Literal["unblocked"]
+    blocked_user: Union[WebhookOrgBlockUnblockedPropBlockedUserType, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    membership: NotRequired[WebhookOrganizationDeletedPropMembershipType]
     organization: OrganizationSimpleWebhooksType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
 
 
-class WebhookOrganizationDeletedPropMembershipType(TypedDict):
-    """Membership
-
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
-    """
-
-    organization_url: str
-    role: str
-    state: str
-    url: str
-    user: Union[WebhookOrganizationDeletedPropMembershipPropUserType, None]
-
-
-class WebhookOrganizationDeletedPropMembershipPropUserType(TypedDict):
+class WebhookOrgBlockUnblockedPropBlockedUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -73,7 +59,6 @@ class WebhookOrganizationDeletedPropMembershipPropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookOrganizationDeletedType",
-    "WebhookOrganizationDeletedPropMembershipType",
-    "WebhookOrganizationDeletedPropMembershipPropUserType",
+    "WebhookOrgBlockUnblockedType",
+    "WebhookOrgBlockUnblockedPropBlockedUserType",
 )

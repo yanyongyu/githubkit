@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union, Literal
 
 from pydantic import Field
@@ -17,35 +18,36 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0711 import (
+    WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploader,
+)
 
-class WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploader(
-    GitHubModel
-):
-    """User"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
+class WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItems(GitHubModel):
+    """Release Asset
+
+    Data related to a release.
+    """
+
+    browser_download_url: str = Field()
+    content_type: str = Field()
+    created_at: datetime = Field()
+    download_count: int = Field()
     id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    label: Union[str, None] = Field()
+    name: str = Field(description="The file name of the asset.")
+    node_id: str = Field()
+    size: int = Field()
+    state: Literal["uploaded"] = Field(description="State of the release asset.")
+    updated_at: datetime = Field()
+    uploader: Missing[
+        Union[
+            WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploader, None
+        ]
+    ] = Field(default=UNSET, title="User")
+    url: str = Field()
 
 
-model_rebuild(WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploader)
+model_rebuild(WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItems)
 
-__all__ = ("WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploader",)
+__all__ = ("WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItems",)

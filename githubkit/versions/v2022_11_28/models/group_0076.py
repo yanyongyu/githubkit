@@ -123,7 +123,7 @@ class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
 
     total_seats: Missing[int] = Field(
         default=UNSET,
-        description="Total number of Copilot For Business seats for the organization currently being billed.",
+        description="Total number of Copilot seats for the organization currently being billed.",
     )
     seats: Missing[List[CopilotSeatDetails]] = Field(default=UNSET)
 

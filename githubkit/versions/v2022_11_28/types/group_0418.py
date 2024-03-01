@@ -13,18 +13,21 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0355 import EnterpriseWebhooksType
-from .group_0356 import SimpleInstallationType
-from .group_0358 import RepositoryWebhooksType
-from .group_0359 import SimpleUserWebhooksType
-from .group_0357 import OrganizationSimpleWebhooksType
+from .group_0363 import DiscussionType
+from .group_0356 import EnterpriseWebhooksType
+from .group_0357 import SimpleInstallationType
+from .group_0359 import RepositoryWebhooksType
+from .group_0360 import SimpleUserWebhooksType
+from .group_0358 import OrganizationSimpleWebhooksType
 
 
-class WebhookDiscussionCreatedType(TypedDict):
-    """discussion created event"""
+class WebhookDiscussionCommentEditedType(TypedDict):
+    """discussion_comment edited event"""
 
-    action: Literal["created"]
-    discussion: WebhookDiscussionCreatedPropDiscussionType
+    action: Literal["edited"]
+    changes: WebhookDiscussionCommentEditedPropChangesType
+    comment: WebhookDiscussionCommentEditedPropCommentType
+    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -32,13 +35,21 @@ class WebhookDiscussionCreatedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-class WebhookDiscussionCreatedPropDiscussionType(TypedDict):
-    """WebhookDiscussionCreatedPropDiscussion"""
+class WebhookDiscussionCommentEditedPropChangesType(TypedDict):
+    """WebhookDiscussionCommentEditedPropChanges"""
 
-    active_lock_reason: Union[None, None]
-    answer_chosen_at: Union[None, None]
-    answer_chosen_by: Union[None, None]
-    answer_html_url: Union[Union[str, None], None]
+    body: WebhookDiscussionCommentEditedPropChangesPropBodyType
+
+
+class WebhookDiscussionCommentEditedPropChangesPropBodyType(TypedDict):
+    """WebhookDiscussionCommentEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookDiscussionCommentEditedPropCommentType(TypedDict):
+    """WebhookDiscussionCommentEditedPropComment"""
+
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -49,41 +60,22 @@ class WebhookDiscussionCreatedPropDiscussionType(TypedDict):
         "NONE",
         "OWNER",
     ]
-    body: Union[Union[str, None], None]
-    category: WebhookDiscussionCreatedPropDiscussionMergedCategoryType
-    comments: int
-    created_at: datetime
+    body: str
+    child_comment_count: int
+    created_at: str
+    discussion_id: int
     html_url: str
     id: int
-    locked: Literal[False]
     node_id: str
-    number: int
-    reactions: NotRequired[WebhookDiscussionCreatedPropDiscussionMergedReactionsType]
+    parent_id: Union[int, None]
+    reactions: WebhookDiscussionCommentEditedPropCommentPropReactionsType
     repository_url: str
-    state: Literal["open", "converting", "transferring"]
-    timeline_url: NotRequired[str]
-    title: str
-    updated_at: datetime
-    user: WebhookDiscussionCreatedPropDiscussionMergedUserType
-
-
-class WebhookDiscussionCreatedPropDiscussionMergedCategoryType(TypedDict):
-    """WebhookDiscussionCreatedPropDiscussionMergedCategory"""
-
-    created_at: datetime
-    description: str
-    emoji: str
-    id: int
-    is_answerable: bool
-    name: str
-    node_id: NotRequired[str]
-    repository_id: int
-    slug: str
     updated_at: str
+    user: Union[WebhookDiscussionCommentEditedPropCommentPropUserType, None]
 
 
-class WebhookDiscussionCreatedPropDiscussionMergedReactionsType(TypedDict):
-    """WebhookDiscussionCreatedPropDiscussionMergedReactions"""
+class WebhookDiscussionCommentEditedPropCommentPropReactionsType(TypedDict):
+    """Reactions"""
 
     plus_one: int
     minus_one: int
@@ -97,8 +89,8 @@ class WebhookDiscussionCreatedPropDiscussionMergedReactionsType(TypedDict):
     url: str
 
 
-class WebhookDiscussionCreatedPropDiscussionMergedUserType(TypedDict):
-    """WebhookDiscussionCreatedPropDiscussionMergedUser"""
+class WebhookDiscussionCommentEditedPropCommentPropUserType(TypedDict):
+    """User"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -124,9 +116,10 @@ class WebhookDiscussionCreatedPropDiscussionMergedUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionCreatedType",
-    "WebhookDiscussionCreatedPropDiscussionType",
-    "WebhookDiscussionCreatedPropDiscussionMergedCategoryType",
-    "WebhookDiscussionCreatedPropDiscussionMergedReactionsType",
-    "WebhookDiscussionCreatedPropDiscussionMergedUserType",
+    "WebhookDiscussionCommentEditedType",
+    "WebhookDiscussionCommentEditedPropChangesType",
+    "WebhookDiscussionCommentEditedPropChangesPropBodyType",
+    "WebhookDiscussionCommentEditedPropCommentType",
+    "WebhookDiscussionCommentEditedPropCommentPropReactionsType",
+    "WebhookDiscussionCommentEditedPropCommentPropUserType",
 )

@@ -9,17 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0117 import RepositoryRuleRequiredStatusChecksPropParametersType
 
-class RepositoryRuleDetailedOneof8Type(TypedDict):
-    """RepositoryRuleDetailedOneof8"""
 
-    type: Literal["non_fast_forward"]
+class RepositoryRuleDetailedOneof7Type(TypedDict):
+    """RepositoryRuleDetailedOneof7"""
+
+    type: Literal["required_status_checks"]
+    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-__all__ = ("RepositoryRuleDetailedOneof8Type",)
+__all__ = ("RepositoryRuleDetailedOneof7Type",)

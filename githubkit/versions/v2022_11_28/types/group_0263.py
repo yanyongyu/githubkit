@@ -17,36 +17,22 @@ from .group_0001 import SimpleUserType
 from .group_0005 import IntegrationType
 
 
-class AddedToProjectIssueEventType(TypedDict):
-    """Added to Project Issue Event
+class LockedIssueEventType(TypedDict):
+    """Locked Issue Event
 
-    Added to Project Issue Event
+    Locked Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["added_to_project"]
+    event: Literal["locked"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType]
-    project_card: NotRequired[AddedToProjectIssueEventPropProjectCardType]
+    lock_reason: Union[str, None]
 
 
-class AddedToProjectIssueEventPropProjectCardType(TypedDict):
-    """AddedToProjectIssueEventPropProjectCard"""
-
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
-
-
-__all__ = (
-    "AddedToProjectIssueEventType",
-    "AddedToProjectIssueEventPropProjectCardType",
-)
+__all__ = ("LockedIssueEventType",)

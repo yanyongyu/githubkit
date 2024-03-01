@@ -9,16 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
 
 
-class RateLimitType(TypedDict):
-    """Rate Limit"""
+class ProjectCollaboratorPermissionType(TypedDict):
+    """Project Collaborator Permission
 
-    limit: int
-    remaining: int
-    reset: int
-    used: int
+    Project Collaborator Permission
+    """
+
+    permission: str
+    user: Union[None, SimpleUserType]
 
 
-__all__ = ("RateLimitType",)
+__all__ = ("ProjectCollaboratorPermissionType",)

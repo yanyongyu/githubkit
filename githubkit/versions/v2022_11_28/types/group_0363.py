@@ -9,24 +9,136 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0160 import SimpleCommitType
 
+class DiscussionType(TypedDict):
+    """Discussion
 
-class MergeGroupType(TypedDict):
-    """Merge Group
-
-    A group of pull requests that the merge queue has grouped together to be merged.
+    A Discussion in a repository.
     """
 
-    head_sha: str
-    head_ref: str
-    base_sha: str
-    base_ref: str
-    head_commit: SimpleCommitType
+    active_lock_reason: Union[str, None]
+    answer_chosen_at: Union[str, None]
+    answer_chosen_by: Union[DiscussionPropAnswerChosenByType, None]
+    answer_html_url: Union[str, None]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    category: DiscussionPropCategoryType
+    comments: int
+    created_at: datetime
+    html_url: str
+    id: int
+    locked: bool
+    node_id: str
+    number: int
+    reactions: NotRequired[DiscussionPropReactionsType]
+    repository_url: str
+    state: Literal["open", "closed", "locked", "converting", "transferring"]
+    state_reason: Union[None, Literal["resolved", "outdated", "duplicate", "reopened"]]
+    timeline_url: NotRequired[str]
+    title: str
+    updated_at: datetime
+    user: Union[DiscussionPropUserType, None]
 
 
-__all__ = ("MergeGroupType",)
+class DiscussionPropAnswerChosenByType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class DiscussionPropCategoryType(TypedDict):
+    """DiscussionPropCategory"""
+
+    created_at: datetime
+    description: str
+    emoji: str
+    id: int
+    is_answerable: bool
+    name: str
+    node_id: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
+
+
+class DiscussionPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class DiscussionPropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "DiscussionType",
+    "DiscussionPropAnswerChosenByType",
+    "DiscussionPropCategoryType",
+    "DiscussionPropReactionsType",
+    "DiscussionPropUserType",
+)

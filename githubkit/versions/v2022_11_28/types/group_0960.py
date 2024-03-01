@@ -9,15 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class ReposOwnerRepoAutolinksPostBodyType(TypedDict):
-    """ReposOwnerRepoAutolinksPostBody"""
-
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: NotRequired[bool]
+from .group_0162 import WorkflowRunType
 
 
-__all__ = ("ReposOwnerRepoAutolinksPostBodyType",)
+class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
+
+    total_count: int
+    workflow_runs: List[WorkflowRunType]
+
+
+__all__ = ("ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type",)

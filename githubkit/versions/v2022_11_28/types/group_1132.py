@@ -9,11 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0017 import RepositoryType
 
 
-class UserInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
+
+    total_count: int
+    repository_selection: NotRequired[str]
+    repositories: List[RepositoryType]
 
 
-__all__ = ("UserInteractionLimitsGetResponse200Anyof1Type",)
+__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200Type",)

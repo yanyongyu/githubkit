@@ -13,35 +13,35 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0355 import EnterpriseWebhooksType
-from .group_0356 import SimpleInstallationType
-from .group_0358 import RepositoryWebhooksType
-from .group_0359 import SimpleUserWebhooksType
-from .group_0357 import OrganizationSimpleWebhooksType
+from .group_0356 import EnterpriseWebhooksType
+from .group_0357 import SimpleInstallationType
+from .group_0359 import RepositoryWebhooksType
+from .group_0360 import SimpleUserWebhooksType
+from .group_0358 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectCardDeletedType(TypedDict):
-    """project_card deleted event"""
+class WebhookProjectCardCreatedType(TypedDict):
+    """project_card created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhookProjectCardDeletedPropProjectCardType
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    project_card: WebhookProjectCardCreatedPropProjectCardType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
 
 
-class WebhookProjectCardDeletedPropProjectCardType(TypedDict):
+class WebhookProjectCardCreatedPropProjectCardType(TypedDict):
     """Project Card"""
 
     after_id: NotRequired[Union[int, None]]
     archived: bool
-    column_id: Union[int, None]
+    column_id: int
     column_url: str
     content_url: NotRequired[str]
     created_at: datetime
-    creator: Union[WebhookProjectCardDeletedPropProjectCardPropCreatorType, None]
+    creator: Union[WebhookProjectCardCreatedPropProjectCardPropCreatorType, None]
     id: int
     node_id: str
     note: Union[str, None]
@@ -50,7 +50,7 @@ class WebhookProjectCardDeletedPropProjectCardType(TypedDict):
     url: str
 
 
-class WebhookProjectCardDeletedPropProjectCardPropCreatorType(TypedDict):
+class WebhookProjectCardCreatedPropProjectCardPropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -72,12 +72,12 @@ class WebhookProjectCardDeletedPropProjectCardPropCreatorType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectCardDeletedType",
-    "WebhookProjectCardDeletedPropProjectCardType",
-    "WebhookProjectCardDeletedPropProjectCardPropCreatorType",
+    "WebhookProjectCardCreatedType",
+    "WebhookProjectCardCreatedPropProjectCardType",
+    "WebhookProjectCardCreatedPropProjectCardPropCreatorType",
 )

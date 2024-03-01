@@ -18,17 +18,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0366 import ProjectsV2Item
-from .group_0356 import SimpleInstallation
-from .group_0359 import SimpleUserWebhooks
-from .group_0357 import OrganizationSimpleWebhooks
+from .group_0366 import ProjectsV2
+from .group_0357 import SimpleInstallation
+from .group_0360 import SimpleUserWebhooks
+from .group_0358 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ItemArchived(GitHubModel):
-    """Projects v2 Item Archived Event"""
+class WebhookProjectsV2ProjectEdited(GitHubModel):
+    """Projects v2 Project Edited Event"""
 
-    action: Literal["archived"] = Field()
-    changes: WebhookProjectsV2ItemArchivedPropChanges = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookProjectsV2ProjectEditedPropChanges = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -38,8 +38,8 @@ class WebhookProjectsV2ItemArchived(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    projects_v2_item: ProjectsV2Item = Field(
-        title="Projects v2 Item", description="An item belonging to a project"
+    projects_v2: ProjectsV2 = Field(
+        title="Projects v2 Project", description="A projects v2 project"
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -47,27 +47,63 @@ class WebhookProjectsV2ItemArchived(GitHubModel):
     )
 
 
-class WebhookProjectsV2ItemArchivedPropChanges(GitHubModel):
-    """WebhookProjectsV2ItemArchivedPropChanges"""
+class WebhookProjectsV2ProjectEditedPropChanges(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChanges"""
 
-    archived_at: Missing[WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt] = (
+    description: Missing[WebhookProjectsV2ProjectEditedPropChangesPropDescription] = (
         Field(default=UNSET)
+    )
+    public: Missing[WebhookProjectsV2ProjectEditedPropChangesPropPublic] = Field(
+        default=UNSET
+    )
+    short_description: Missing[
+        WebhookProjectsV2ProjectEditedPropChangesPropShortDescription
+    ] = Field(default=UNSET)
+    title: Missing[WebhookProjectsV2ProjectEditedPropChangesPropTitle] = Field(
+        default=UNSET
     )
 
 
-class WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt(GitHubModel):
-    """WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt"""
+class WebhookProjectsV2ProjectEditedPropChangesPropDescription(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
 
-    from_: Missing[Union[datetime, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[datetime, None]] = Field(default=UNSET)
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-model_rebuild(WebhookProjectsV2ItemArchived)
-model_rebuild(WebhookProjectsV2ItemArchivedPropChanges)
-model_rebuild(WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt)
+class WebhookProjectsV2ProjectEditedPropChangesPropPublic(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
+
+    from_: Missing[bool] = Field(default=UNSET, alias="from")
+    to: Missing[bool] = Field(default=UNSET)
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropShortDescription(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
+
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropTitle(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+    to: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookProjectsV2ProjectEdited)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChanges)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropDescription)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropPublic)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropShortDescription)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropTitle)
 
 __all__ = (
-    "WebhookProjectsV2ItemArchived",
-    "WebhookProjectsV2ItemArchivedPropChanges",
-    "WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt",
+    "WebhookProjectsV2ProjectEdited",
+    "WebhookProjectsV2ProjectEditedPropChanges",
+    "WebhookProjectsV2ProjectEditedPropChangesPropDescription",
+    "WebhookProjectsV2ProjectEditedPropChangesPropPublic",
+    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescription",
+    "WebhookProjectsV2ProjectEditedPropChangesPropTitle",
 )

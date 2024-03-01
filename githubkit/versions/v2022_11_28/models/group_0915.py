@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,15 +16,15 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgSecurityProductEnablementPostBody(GitHubModel):
-    """OrgsOrgSecurityProductEnablementPostBody"""
+class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
 
-    query_suite: Missing[Literal["default", "extended"]] = Field(
+    permission: Missing[str] = Field(
         default=UNSET,
-        description="CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured.\nIf you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.",
+        description="The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
     )
 
 
-model_rebuild(OrgsOrgSecurityProductEnablementPostBody)
+model_rebuild(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody)
 
-__all__ = ("OrgsOrgSecurityProductEnablementPostBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",)

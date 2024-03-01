@@ -13,15 +13,14 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0017 import RepositoryType
+from .group_0015 import InstallationType
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
+class UserInstallationsGetResponse200Type(TypedDict):
+    """UserInstallationsGetResponse200"""
 
     total_count: int
-    repository_selection: NotRequired[str]
-    repositories: List[RepositoryType]
+    installations: List[InstallationType]
 
 
-__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200Type",)
+__all__ = ("UserInstallationsGetResponse200Type",)

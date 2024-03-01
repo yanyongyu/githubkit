@@ -13,7 +13,7 @@ from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0109 import RepositoryRuleUpdateType
-from .group_0128 import RepositoryRuleWorkflowsType
+from .group_0129 import RepositoryRuleWorkflowsType
 from .group_0114 import RepositoryRulePullRequestType
 from .group_0105 import OrgRulesetConditionsOneof0Type
 from .group_0106 import OrgRulesetConditionsOneof1Type
@@ -35,12 +35,12 @@ from .group_0108 import (
 )
 
 
-class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
-    """OrgsOrgRulesetsRulesetIdPutBody"""
+class OrgsOrgRulesetsPostBodyType(TypedDict):
+    """OrgsOrgRulesetsPostBody"""
 
-    name: NotRequired[str]
+    name: str
     target: NotRequired[Literal["branch", "tag"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
     bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
     conditions: NotRequired[
         Union[
@@ -72,4 +72,4 @@ class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
     ]
 
 
-__all__ = ("OrgsOrgRulesetsRulesetIdPutBodyType",)
+__all__ = ("OrgsOrgRulesetsPostBodyType",)

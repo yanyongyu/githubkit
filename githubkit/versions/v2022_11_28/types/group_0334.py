@@ -9,44 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0050 import MinimalRepositoryType
-from .group_0333 import SearchResultTextMatchesItemsType
+
+class SearchResultTextMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItems"""
+
+    object_url: NotRequired[str]
+    object_type: NotRequired[Union[str, None]]
+    property_: NotRequired[str]
+    fragment: NotRequired[str]
+    matches: NotRequired[List[SearchResultTextMatchesItemsPropMatchesItemsType]]
 
 
-class CodeSearchResultItemType(TypedDict):
-    """Code Search Result Item
+class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
 
-    Code Search Result Item
-    """
-
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryType
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[datetime]
-    line_numbers: NotRequired[List[str]]
-    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
-
-
-class SearchCodeGetResponse200Type(TypedDict):
-    """SearchCodeGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: List[CodeSearchResultItemType]
+    text: NotRequired[str]
+    indices: NotRequired[List[int]]
 
 
 __all__ = (
-    "CodeSearchResultItemType",
-    "SearchCodeGetResponse200Type",
+    "SearchResultTextMatchesItemsType",
+    "SearchResultTextMatchesItemsPropMatchesItemsType",
 )

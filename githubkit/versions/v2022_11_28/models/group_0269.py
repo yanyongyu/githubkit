@@ -19,24 +19,48 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 from .group_0001 import SimpleUser
-from .group_0270 import TimelineCrossReferencedEventPropSource
+from .group_0005 import Integration
+from .group_0033 import ReactionRollup
 
 
-class TimelineCrossReferencedEvent(GitHubModel):
-    """Timeline Cross Referenced Event
+class TimelineCommentEvent(GitHubModel):
+    """Timeline Comment Event
 
-    Timeline Cross Referenced Event
+    Timeline Comment Event
     """
 
-    event: Literal["cross-referenced"] = Field()
-    actor: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    event: Literal["commented"] = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    id: int = Field(description="Unique identifier of the issue comment")
+    node_id: str = Field()
+    url: str = Field(description="URL for the issue comment")
+    body: Missing[str] = Field(
+        default=UNSET, description="Contents of the issue comment"
     )
+    body_text: Missing[str] = Field(default=UNSET)
+    body_html: Missing[str] = Field(default=UNSET)
+    html_url: str = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
     created_at: datetime = Field()
     updated_at: datetime = Field()
-    source: TimelineCrossReferencedEventPropSource = Field()
+    issue_url: str = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    performed_via_github_app: Missing[Union[None, Integration]] = Field(default=UNSET)
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(TimelineCrossReferencedEvent)
+model_rebuild(TimelineCommentEvent)
 
-__all__ = ("TimelineCrossReferencedEvent",)
+__all__ = ("TimelineCommentEvent",)

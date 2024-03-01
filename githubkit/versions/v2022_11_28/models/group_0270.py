@@ -18,20 +18,25 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0034 import Issue
+from .group_0001 import SimpleUser
+from .group_0271 import TimelineCrossReferencedEventPropSource
 
 
-class TimelineCrossReferencedEventPropSource(GitHubModel):
-    """TimelineCrossReferencedEventPropSource"""
+class TimelineCrossReferencedEvent(GitHubModel):
+    """Timeline Cross Referenced Event
 
-    type: Missing[str] = Field(default=UNSET)
-    issue: Missing[Issue] = Field(
-        default=UNSET,
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    Timeline Cross Referenced Event
+    """
+
+    event: Literal["cross-referenced"] = Field()
+    actor: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    source: TimelineCrossReferencedEventPropSource = Field()
 
 
-model_rebuild(TimelineCrossReferencedEventPropSource)
+model_rebuild(TimelineCrossReferencedEvent)
 
-__all__ = ("TimelineCrossReferencedEventPropSource",)
+__all__ = ("TimelineCrossReferencedEvent",)

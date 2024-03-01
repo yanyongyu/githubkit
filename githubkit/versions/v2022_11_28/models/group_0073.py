@@ -34,9 +34,17 @@ class CopilotOrganizationDetails(ExtraGitHubModel):
             description="The organization policy for allowing or disallowing Copilot to make suggestions that match public code."
         )
     )
-    copilot_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+    ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,
         description="The organization policy for allowing or disallowing organization members to use Copilot Chat within their editor.",
+    )
+    platform_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing organization members to use Copilot features within github.com.",
+    )
+    cli: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
+        default=UNSET,
+        description="The organization policy for allowing or disallowing organization members to use Copilot within their CLI.",
     )
     seat_management_setting: Literal[
         "assign_all", "assign_selected", "disabled", "unconfigured"

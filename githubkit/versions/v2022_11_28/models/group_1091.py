@@ -19,7 +19,7 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0109 import RepositoryRuleUpdate
-from .group_0128 import RepositoryRuleWorkflows
+from .group_0129 import RepositoryRuleWorkflows
 from .group_0114 import RepositoryRulePullRequest
 from .group_0097 import RepositoryRulesetConditions
 from .group_0096 import RepositoryRulesetBypassActor
@@ -39,16 +39,15 @@ from .group_0108 import (
 )
 
 
-class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
-    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+class ReposOwnerRepoRulesetsPostBody(GitHubModel):
+    """ReposOwnerRepoRulesetsPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    name: str = Field(description="The name of the ruleset.")
     target: Missing[Literal["branch", "tag"]] = Field(
         default=UNSET, description="The target of the ruleset."
     )
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
-        default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
     )
     bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
@@ -82,6 +81,6 @@ class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
     ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
+model_rebuild(ReposOwnerRepoRulesetsPostBody)
 
-__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)
+__all__ = ("ReposOwnerRepoRulesetsPostBody",)

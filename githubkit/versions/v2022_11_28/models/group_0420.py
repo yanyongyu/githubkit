@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union, Literal
 
 from pydantic import Field
@@ -18,80 +19,65 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookDiscussionCreatedPropDiscussionAllof1(GitHubModel):
-    """WebhookDiscussionCreatedPropDiscussionAllof1"""
+class WebhookDiscussionCreatedPropDiscussionAllof0(GitHubModel):
+    """Discussion"""
 
-    active_lock_reason: Missing[None] = Field(default=UNSET)
-    answer_chosen_at: None = Field()
-    answer_chosen_by: None = Field()
+    active_lock_reason: Union[str, None] = Field()
+    answer_chosen_at: Union[str, None] = Field()
+    answer_chosen_by: Union[
+        WebhookDiscussionCreatedPropDiscussionAllof0PropAnswerChosenBy, None
+    ] = Field(title="User")
     answer_html_url: Union[str, None] = Field()
-    author_association: Missing[str] = Field(default=UNSET)
-    body: Missing[Union[str, None]] = Field(default=UNSET)
-    category: Missing[WebhookDiscussionCreatedPropDiscussionAllof1PropCategory] = Field(
-        default=UNSET
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
     )
-    comments: Missing[int] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    locked: Literal[False] = Field()
-    node_id: Missing[str] = Field(default=UNSET)
-    number: Missing[int] = Field(default=UNSET)
-    reactions: Missing[WebhookDiscussionCreatedPropDiscussionAllof1PropReactions] = (
-        Field(default=UNSET)
+    body: Union[str, None] = Field()
+    category: WebhookDiscussionCreatedPropDiscussionAllof0PropCategory = Field()
+    comments: int = Field()
+    created_at: datetime = Field()
+    html_url: str = Field()
+    id: int = Field()
+    locked: bool = Field()
+    node_id: str = Field()
+    number: int = Field()
+    reactions: Missing[WebhookDiscussionCreatedPropDiscussionAllof0PropReactions] = (
+        Field(default=UNSET, title="Reactions")
     )
-    repository_url: Missing[str] = Field(default=UNSET)
-    state: Literal["open", "converting", "transferring"] = Field()
+    repository_url: str = Field()
+    state: Literal["open", "locked", "converting", "transferring"] = Field()
     timeline_url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    user: Missing[WebhookDiscussionCreatedPropDiscussionAllof1PropUser] = Field(
-        default=UNSET
+    title: str = Field()
+    updated_at: datetime = Field()
+    user: Union[WebhookDiscussionCreatedPropDiscussionAllof0PropUser, None] = Field(
+        title="User"
     )
 
 
-class WebhookDiscussionCreatedPropDiscussionAllof1PropCategory(GitHubModel):
-    """WebhookDiscussionCreatedPropDiscussionAllof1PropCategory"""
-
-    created_at: Missing[str] = Field(default=UNSET)
-    description: Missing[str] = Field(default=UNSET)
-    emoji: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    is_answerable: Missing[bool] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    repository_id: Missing[int] = Field(default=UNSET)
-    slug: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-
-
-class WebhookDiscussionCreatedPropDiscussionAllof1PropReactions(GitHubModel):
-    """WebhookDiscussionCreatedPropDiscussionAllof1PropReactions"""
-
-    plus_one: Missing[int] = Field(default=UNSET, alias="+1")
-    minus_one: Missing[int] = Field(default=UNSET, alias="-1")
-    confused: Missing[int] = Field(default=UNSET)
-    eyes: Missing[int] = Field(default=UNSET)
-    heart: Missing[int] = Field(default=UNSET)
-    hooray: Missing[int] = Field(default=UNSET)
-    laugh: Missing[int] = Field(default=UNSET)
-    rocket: Missing[int] = Field(default=UNSET)
-    total_count: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookDiscussionCreatedPropDiscussionAllof1PropUser(GitHubModel):
-    """WebhookDiscussionCreatedPropDiscussionAllof1PropUser"""
+class WebhookDiscussionCreatedPropDiscussionAllof0PropAnswerChosenBy(GitHubModel):
+    """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
     events_url: Missing[str] = Field(default=UNSET)
     followers_url: Missing[str] = Field(default=UNSET)
     following_url: Missing[str] = Field(default=UNSET)
     gists_url: Missing[str] = Field(default=UNSET)
     gravatar_id: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
     organizations_url: Missing[str] = Field(default=UNSET)
     received_events_url: Missing[str] = Field(default=UNSET)
@@ -99,18 +85,76 @@ class WebhookDiscussionCreatedPropDiscussionAllof1PropUser(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookDiscussionCreatedPropDiscussionAllof1)
-model_rebuild(WebhookDiscussionCreatedPropDiscussionAllof1PropCategory)
-model_rebuild(WebhookDiscussionCreatedPropDiscussionAllof1PropReactions)
-model_rebuild(WebhookDiscussionCreatedPropDiscussionAllof1PropUser)
+class WebhookDiscussionCreatedPropDiscussionAllof0PropCategory(GitHubModel):
+    """WebhookDiscussionCreatedPropDiscussionAllof0PropCategory"""
+
+    created_at: datetime = Field()
+    description: str = Field()
+    emoji: str = Field()
+    id: int = Field()
+    is_answerable: bool = Field()
+    name: str = Field()
+    node_id: Missing[str] = Field(default=UNSET)
+    repository_id: int = Field()
+    slug: str = Field()
+    updated_at: str = Field()
+
+
+class WebhookDiscussionCreatedPropDiscussionAllof0PropReactions(GitHubModel):
+    """Reactions"""
+
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
+    url: str = Field()
+
+
+class WebhookDiscussionCreatedPropDiscussionAllof0PropUser(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookDiscussionCreatedPropDiscussionAllof0)
+model_rebuild(WebhookDiscussionCreatedPropDiscussionAllof0PropAnswerChosenBy)
+model_rebuild(WebhookDiscussionCreatedPropDiscussionAllof0PropCategory)
+model_rebuild(WebhookDiscussionCreatedPropDiscussionAllof0PropReactions)
+model_rebuild(WebhookDiscussionCreatedPropDiscussionAllof0PropUser)
 
 __all__ = (
-    "WebhookDiscussionCreatedPropDiscussionAllof1",
-    "WebhookDiscussionCreatedPropDiscussionAllof1PropCategory",
-    "WebhookDiscussionCreatedPropDiscussionAllof1PropReactions",
-    "WebhookDiscussionCreatedPropDiscussionAllof1PropUser",
+    "WebhookDiscussionCreatedPropDiscussionAllof0",
+    "WebhookDiscussionCreatedPropDiscussionAllof0PropAnswerChosenBy",
+    "WebhookDiscussionCreatedPropDiscussionAllof0PropCategory",
+    "WebhookDiscussionCreatedPropDiscussionAllof0PropReactions",
+    "WebhookDiscussionCreatedPropDiscussionAllof0PropUser",
 )

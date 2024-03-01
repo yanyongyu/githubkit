@@ -9,69 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict, NotRequired
+from typing import List, Union, Literal
+from typing_extensions import TypedDict
 
 
-class DependencyGraphSpdxSbomType(TypedDict):
-    """Dependency Graph SPDX SBOM
+class DependencyGraphDiffItemsType(TypedDict):
+    """DependencyGraphDiffItems"""
 
-    A schema for the SPDX JSON format returned by the Dependency Graph.
-    """
-
-    sbom: DependencyGraphSpdxSbomPropSbomType
-
-
-class DependencyGraphSpdxSbomPropSbomType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbom"""
-
-    spdxid: str
-    spdx_version: str
-    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoType
+    change_type: Literal["added", "removed"]
+    manifest: str
+    ecosystem: str
     name: str
-    data_license: str
-    document_describes: List[str]
-    document_namespace: str
-    packages: List[DependencyGraphSpdxSbomPropSbomPropPackagesItemsType]
+    version: str
+    package_url: Union[str, None]
+    license_: Union[str, None]
+    source_repository_url: Union[str, None]
+    vulnerabilities: List[DependencyGraphDiffItemsPropVulnerabilitiesItemsType]
+    scope: Literal["unknown", "runtime", "development"]
 
 
-class DependencyGraphSpdxSbomPropSbomPropCreationInfoType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
+class DependencyGraphDiffItemsPropVulnerabilitiesItemsType(TypedDict):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
 
-    created: str
-    creators: List[str]
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
-
-    spdxid: NotRequired[str]
-    name: NotRequired[str]
-    version_info: NotRequired[str]
-    download_location: NotRequired[str]
-    files_analyzed: NotRequired[bool]
-    license_concluded: NotRequired[str]
-    license_declared: NotRequired[str]
-    supplier: NotRequired[str]
-    external_refs: NotRequired[
-        List[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType]
-    ]
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType(
-    TypedDict
-):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
-
-    reference_category: str
-    reference_locator: str
-    reference_type: str
+    severity: str
+    advisory_ghsa_id: str
+    advisory_summary: str
+    advisory_url: str
 
 
 __all__ = (
-    "DependencyGraphSpdxSbomType",
-    "DependencyGraphSpdxSbomPropSbomType",
-    "DependencyGraphSpdxSbomPropSbomPropCreationInfoType",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsType",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType",
+    "DependencyGraphDiffItemsType",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
 )

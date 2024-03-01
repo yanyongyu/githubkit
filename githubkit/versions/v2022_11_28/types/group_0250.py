@@ -12,16 +12,19 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class PorterLargeFileType(TypedDict):
-    """Porter Large File
+class PorterAuthorType(TypedDict):
+    """Porter Author
 
-    Porter Large File
+    Porter Author
     """
 
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    id: int
+    remote_id: str
+    remote_name: str
+    email: str
+    name: str
+    url: str
+    import_url: str
 
 
-__all__ = ("PorterLargeFileType",)
+__all__ = ("PorterAuthorType",)

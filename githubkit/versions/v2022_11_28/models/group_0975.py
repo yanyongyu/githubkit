@@ -16,10 +16,10 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0(
     GitHubModel
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0
 
     Examples:
         {'users': ['mona']}
@@ -28,6 +28,6 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0(
     users: List[str] = Field(description="The username for users")
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0)
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0",)

@@ -17,32 +17,31 @@ from .group_0001 import SimpleUserType
 from .group_0005 import IntegrationType
 
 
-class RenamedIssueEventType(TypedDict):
-    """Renamed Issue Event
+class DemilestonedIssueEventType(TypedDict):
+    """Demilestoned Issue Event
 
-    Renamed Issue Event
+    Demilestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["renamed"]
+    event: Literal["demilestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType]
-    rename: RenamedIssueEventPropRenameType
+    milestone: DemilestonedIssueEventPropMilestoneType
 
 
-class RenamedIssueEventPropRenameType(TypedDict):
-    """RenamedIssueEventPropRename"""
+class DemilestonedIssueEventPropMilestoneType(TypedDict):
+    """DemilestonedIssueEventPropMilestone"""
 
-    from_: str
-    to: str
+    title: str
 
 
 __all__ = (
-    "RenamedIssueEventType",
-    "RenamedIssueEventPropRenameType",
+    "DemilestonedIssueEventType",
+    "DemilestonedIssueEventPropMilestoneType",
 )

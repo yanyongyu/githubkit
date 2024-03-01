@@ -10,7 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -18,17 +19,21 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0355 import EnterpriseWebhooks
-from .group_0356 import SimpleInstallation
-from .group_0359 import SimpleUserWebhooks
-from .group_0357 import OrganizationSimpleWebhooks
+from .group_0091 import OrgCustomProperty
+from .group_0356 import EnterpriseWebhooks
+from .group_0357 import SimpleInstallation
+from .group_0360 import SimpleUserWebhooks
+from .group_0358 import OrganizationSimpleWebhooks
 
 
-class WebhookCustomPropertyDeleted(GitHubModel):
-    """custom property deleted event"""
+class WebhookCustomPropertyCreated(GitHubModel):
+    """custom property created event"""
 
-    action: Literal["deleted"] = Field()
-    definition: WebhookCustomPropertyDeletedPropDefinition = Field()
+    action: Literal["created"] = Field()
+    definition: OrgCustomProperty = Field(
+        title="Organization Custom Property",
+        description="Custom property defined on an organization",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -50,16 +55,6 @@ class WebhookCustomPropertyDeleted(GitHubModel):
     )
 
 
-class WebhookCustomPropertyDeletedPropDefinition(GitHubModel):
-    """WebhookCustomPropertyDeletedPropDefinition"""
+model_rebuild(WebhookCustomPropertyCreated)
 
-    property_name: str = Field(description="The name of the property that was deleted.")
-
-
-model_rebuild(WebhookCustomPropertyDeleted)
-model_rebuild(WebhookCustomPropertyDeletedPropDefinition)
-
-__all__ = (
-    "WebhookCustomPropertyDeleted",
-    "WebhookCustomPropertyDeletedPropDefinition",
-)
+__all__ = ("WebhookCustomPropertyCreated",)

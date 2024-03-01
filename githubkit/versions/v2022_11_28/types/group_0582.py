@@ -13,26 +13,26 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0355 import EnterpriseWebhooksType
-from .group_0356 import SimpleInstallationType
-from .group_0358 import RepositoryWebhooksType
-from .group_0359 import SimpleUserWebhooksType
-from .group_0357 import OrganizationSimpleWebhooksType
+from .group_0356 import EnterpriseWebhooksType
+from .group_0357 import SimpleInstallationType
+from .group_0359 import RepositoryWebhooksType
+from .group_0360 import SimpleUserWebhooksType
+from .group_0358 import OrganizationSimpleWebhooksType
 
 
-class WebhookMilestoneDeletedType(TypedDict):
-    """milestone deleted event"""
+class WebhookMilestoneCreatedType(TypedDict):
+    """milestone created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    milestone: WebhookMilestoneDeletedPropMilestoneType
+    milestone: WebhookMilestoneCreatedPropMilestoneType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookMilestoneDeletedPropMilestoneType(TypedDict):
+class WebhookMilestoneCreatedPropMilestoneType(TypedDict):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -41,7 +41,7 @@ class WebhookMilestoneDeletedPropMilestoneType(TypedDict):
     closed_at: Union[datetime, None]
     closed_issues: int
     created_at: datetime
-    creator: Union[WebhookMilestoneDeletedPropMilestonePropCreatorType, None]
+    creator: Union[WebhookMilestoneCreatedPropMilestonePropCreatorType, None]
     description: Union[str, None]
     due_on: Union[datetime, None]
     html_url: str
@@ -56,7 +56,7 @@ class WebhookMilestoneDeletedPropMilestoneType(TypedDict):
     url: str
 
 
-class WebhookMilestoneDeletedPropMilestonePropCreatorType(TypedDict):
+class WebhookMilestoneCreatedPropMilestonePropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -78,12 +78,12 @@ class WebhookMilestoneDeletedPropMilestonePropCreatorType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookMilestoneDeletedType",
-    "WebhookMilestoneDeletedPropMilestoneType",
-    "WebhookMilestoneDeletedPropMilestonePropCreatorType",
+    "WebhookMilestoneCreatedType",
+    "WebhookMilestoneCreatedPropMilestoneType",
+    "WebhookMilestoneCreatedPropMilestonePropCreatorType",
 )

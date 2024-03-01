@@ -12,20 +12,20 @@ from __future__ import annotations
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0356 import SimpleInstallationType
-from .group_0359 import SimpleUserWebhooksType
-from .group_0357 import OrganizationSimpleWebhooksType
-from .group_0364 import PersonalAccessTokenRequestType
+from .group_0357 import SimpleInstallationType
+from .group_0360 import SimpleUserWebhooksType
+from .group_0358 import OrganizationSimpleWebhooksType
+from .group_0365 import PersonalAccessTokenRequestType
 
 
-class WebhookPersonalAccessTokenRequestCreatedType(TypedDict):
-    """personal_access_token_request created event"""
+class WebhookPersonalAccessTokenRequestCancelledType(TypedDict):
+    """personal_access_token_request cancelled event"""
 
-    action: Literal["created"]
+    action: Literal["cancelled"]
     personal_access_token_request: PersonalAccessTokenRequestType
     organization: OrganizationSimpleWebhooksType
     sender: SimpleUserWebhooksType
     installation: SimpleInstallationType
 
 
-__all__ = ("WebhookPersonalAccessTokenRequestCreatedType",)
+__all__ = ("WebhookPersonalAccessTokenRequestCancelledType",)

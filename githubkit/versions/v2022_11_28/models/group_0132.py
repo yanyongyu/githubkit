@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from datetime import datetime
-from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -19,19 +19,16 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RuleSuite(GitHubModel):
-    """Rule Suite
-
-    Response
-    """
+class RuleSuitesItems(GitHubModel):
+    """RuleSuitesItems"""
 
     id: Missing[int] = Field(
         default=UNSET, description="The unique identifier of the rule insight."
     )
-    actor_id: Missing[Union[int, None]] = Field(
+    actor_id: Missing[int] = Field(
         default=UNSET, description="The number that identifies the user."
     )
-    actor_name: Missing[Union[str, None]] = Field(
+    actor_name: Missing[str] = Field(
         default=UNSET, description="The handle for the GitHub user account."
     )
     before_sha: Missing[str] = Field(
@@ -60,48 +57,8 @@ class RuleSuite(GitHubModel):
         default=UNSET,
         description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.",
     )
-    rule_evaluations: Missing[List[RuleSuitePropRuleEvaluationsItems]] = Field(
-        default=UNSET, description="Details on the evaluated rules."
-    )
 
 
-class RuleSuitePropRuleEvaluationsItems(GitHubModel):
-    """RuleSuitePropRuleEvaluationsItems"""
+model_rebuild(RuleSuitesItems)
 
-    rule_source: Missing[RuleSuitePropRuleEvaluationsItemsPropRuleSource] = Field(
-        default=UNSET
-    )
-    enforcement: Missing[Literal["active", "evaluate", "deleted ruleset"]] = Field(
-        default=UNSET, description="The enforcement level of this rule source."
-    )
-    result: Missing[Literal["pass", "fail"]] = Field(
-        default=UNSET,
-        description="The result of the evaluation of the individual rule.",
-    )
-    rule_type: Missing[str] = Field(default=UNSET, description="The type of rule.")
-    details: Missing[str] = Field(
-        default=UNSET, description="Any associated details with the rule evaluation."
-    )
-
-
-class RuleSuitePropRuleEvaluationsItemsPropRuleSource(GitHubModel):
-    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
-
-    type: Missing[str] = Field(default=UNSET, description="The type of rule source.")
-    id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of the rule source."
-    )
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The name of the rule source."
-    )
-
-
-model_rebuild(RuleSuite)
-model_rebuild(RuleSuitePropRuleEvaluationsItems)
-model_rebuild(RuleSuitePropRuleEvaluationsItemsPropRuleSource)
-
-__all__ = (
-    "RuleSuite",
-    "RuleSuitePropRuleEvaluationsItems",
-    "RuleSuitePropRuleEvaluationsItemsPropRuleSource",
-)
+__all__ = ("RuleSuitesItems",)

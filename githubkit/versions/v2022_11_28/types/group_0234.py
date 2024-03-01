@@ -9,22 +9,68 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0235 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType
+from .group_0233 import DeploymentBranchPolicySettingsType
+from .group_0235 import EnvironmentPropProtectionRulesItemsAnyof1Type
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class EnvironmentType(TypedDict):
+    """Environment
+
+    Details of a deployment environment
+    """
 
     id: int
     node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        List[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
+    name: str
+    url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    protection_rules: NotRequired[
+        List[
+            Union[
+                EnvironmentPropProtectionRulesItemsAnyof0Type,
+                EnvironmentPropProtectionRulesItemsAnyof1Type,
+                EnvironmentPropProtectionRulesItemsAnyof2Type,
+            ]
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsType, None]
     ]
 
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1Type",)
+class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof0"""
+
+    id: int
+    node_id: str
+    type: str
+    wait_timer: NotRequired[int]
+
+
+class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof2"""
+
+    id: int
+    node_id: str
+    type: str
+
+
+class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsGetResponse200"""
+
+    total_count: NotRequired[int]
+    environments: NotRequired[List[EnvironmentType]]
+
+
+__all__ = (
+    "EnvironmentType",
+    "EnvironmentPropProtectionRulesItemsAnyof0Type",
+    "EnvironmentPropProtectionRulesItemsAnyof2Type",
+    "ReposOwnerRepoEnvironmentsGetResponse200Type",
+)

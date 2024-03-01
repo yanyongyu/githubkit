@@ -18,17 +18,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0355 import EnterpriseWebhooks
-from .group_0356 import SimpleInstallation
-from .group_0358 import RepositoryWebhooks
-from .group_0359 import SimpleUserWebhooks
-from .group_0357 import OrganizationSimpleWebhooks
+from .group_0356 import EnterpriseWebhooks
+from .group_0357 import SimpleInstallation
+from .group_0359 import RepositoryWebhooks
+from .group_0360 import SimpleUserWebhooks
+from .group_0358 import OrganizationSimpleWebhooks
 
 
-class WebhookSecurityAdvisoryUpdated(GitHubModel):
-    """security_advisory updated event"""
+class WebhookSecurityAdvisoryPublished(GitHubModel):
+    """security_advisory published event"""
 
-    action: Literal["updated"] = Field()
+    action: Literal["published"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,7 +49,7 @@ class WebhookSecurityAdvisoryUpdated(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    security_advisory: WebhookSecurityAdvisoryUpdatedPropSecurityAdvisory = Field(
+    security_advisory: WebhookSecurityAdvisoryPublishedPropSecurityAdvisory = Field(
         description="The details of the security advisory, including summary, description, and severity."
     )
     sender: Missing[SimpleUserWebhooks] = Field(
@@ -59,125 +59,125 @@ class WebhookSecurityAdvisoryUpdated(GitHubModel):
     )
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisory(GitHubModel):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisory
+class WebhookSecurityAdvisoryPublishedPropSecurityAdvisory(GitHubModel):
+    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisory
 
     The details of the security advisory, including summary, description, and
     severity.
     """
 
-    cvss: WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss = Field()
-    cwes: List[WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems] = (
+    cvss: WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCvss = Field()
+    cwes: List[WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCwesItems] = (
         Field()
     )
     description: str = Field()
     ghsa_id: str = Field()
     identifiers: List[
-        WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems
+        WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropIdentifiersItems
     ] = Field()
     published_at: str = Field()
     references: List[
-        WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems
+        WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropReferencesItems
     ] = Field()
     severity: str = Field()
     summary: str = Field()
     updated_at: str = Field()
     vulnerabilities: List[
-        WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems
+        WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItems
     ] = Field()
     withdrawn_at: Union[str, None] = Field()
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss(GitHubModel):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss"""
+class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCvss(GitHubModel):
+    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCvss"""
 
     score: float = Field()
     vector_string: Union[str, None] = Field()
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems(GitHubModel):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems"""
+class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCwesItems(GitHubModel):
+    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCwesItems"""
 
     cwe_id: str = Field()
     name: str = Field()
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems(
+class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropIdentifiersItems(
     GitHubModel
 ):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems"""
+    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropIdentifiersItems"""
 
     type: str = Field()
     value: str = Field()
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems(
+class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropReferencesItems(
     GitHubModel
 ):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems"""
+    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropReferencesItems"""
 
     url: str = Field()
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems(
+class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItems(
     GitHubModel
 ):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems"""
+    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItems"""
 
     first_patched_version: Union[
-        WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion,
+        WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion,
         None,
     ] = Field()
-    package: WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = (Field())
+    package: WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = (Field())
     severity: str = Field()
     vulnerable_version_range: str = Field()
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
+class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
     GitHubModel
 ):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFi
-    rstPatchedVersion
+    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    FirstPatchedVersion
     """
 
     identifier: str = Field()
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(
+class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(
     GitHubModel
 ):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPa
-    ckage
+    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    Package
     """
 
     ecosystem: str = Field()
     name: str = Field()
 
 
-model_rebuild(WebhookSecurityAdvisoryUpdated)
-model_rebuild(WebhookSecurityAdvisoryUpdatedPropSecurityAdvisory)
-model_rebuild(WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss)
-model_rebuild(WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems)
-model_rebuild(WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems)
-model_rebuild(WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems)
+model_rebuild(WebhookSecurityAdvisoryPublished)
+model_rebuild(WebhookSecurityAdvisoryPublishedPropSecurityAdvisory)
+model_rebuild(WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCvss)
+model_rebuild(WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCwesItems)
+model_rebuild(WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropIdentifiersItems)
+model_rebuild(WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropReferencesItems)
 model_rebuild(
-    WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems
+    WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItems
 )
 model_rebuild(
-    WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion
+    WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion
 )
 model_rebuild(
-    WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage
+    WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage
 )
 
 __all__ = (
-    "WebhookSecurityAdvisoryUpdated",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisory",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
+    "WebhookSecurityAdvisoryPublished",
+    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisory",
+    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCvss",
+    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCwesItems",
+    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropIdentifiersItems",
+    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropReferencesItems",
+    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItems",
+    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
+    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
 )

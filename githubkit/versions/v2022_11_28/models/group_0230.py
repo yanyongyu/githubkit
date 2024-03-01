@@ -9,89 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import Annotated
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0227 import Metadata
+from .group_0228 import Metadata
 
 
-class Snapshot(GitHubModel):
-    """snapshot
+class Manifest(GitHubModel):
+    """Manifest"""
 
-    Create a new snapshot of a repository's dependencies.
-    """
-
-    version: int = Field(
-        description="The version of the repository snapshot submission."
-    )
-    job: SnapshotPropJob = Field()
-    sha: str = Field(
-        min_length=40,
-        max_length=40,
-        description="The commit SHA associated with this dependency snapshot. Maximum length: 40 characters.",
-    )
-    ref: str = Field(
-        pattern="^refs/",
-        description="The repository branch that triggered this snapshot.",
-    )
-    detector: SnapshotPropDetector = Field(
-        description="A description of the detector used."
-    )
+    name: str = Field(description="The name of the manifest.")
+    file: Missing[ManifestPropFile] = Field(default=UNSET)
     metadata: Missing[Metadata] = Field(
         default=UNSET,
         title="metadata",
         description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
     )
-    manifests: Missing[SnapshotPropManifests] = Field(
+    resolved: Missing[ManifestPropResolved] = Field(
+        default=UNSET, description="A collection of resolved package dependencies."
+    )
+
+
+class ManifestPropFile(GitHubModel):
+    """ManifestPropFile"""
+
+    source_location: Missing[str] = Field(
         default=UNSET,
-        description="A collection of package manifests, which are a collection of related dependencies declared in a file or representing a logical group of dependencies.",
+        description="The path of the manifest file relative to the root of the Git repository.",
     )
-    scanned: datetime = Field(description="The time at which the snapshot was scanned.")
 
 
-class SnapshotPropJob(GitHubModel):
-    """SnapshotPropJob"""
+class ManifestPropResolved(ExtraGitHubModel):
+    """ManifestPropResolved
 
-    id: str = Field(description="The external ID of the job.")
-    correlator: str = Field(
-        description="Correlator provides a key that is used to group snapshots submitted over time. Only the \"latest\" submitted snapshot for a given combination of `job.correlator` and `detector.name` will be considered when calculating a repository's current dependencies. Correlator should be as unique as it takes to distinguish all detection runs for a given \"wave\" of CI workflow you run. If you're using GitHub Actions, a good default value for this could be the environment variables GITHUB_WORKFLOW and GITHUB_JOB concatenated together. If you're using a build matrix, then you'll also need to add additional key(s) to distinguish between each submission inside a matrix variation."
-    )
-    html_url: Missing[str] = Field(default=UNSET, description="The url for the job.")
-
-
-class SnapshotPropDetector(GitHubModel):
-    """SnapshotPropDetector
-
-    A description of the detector used.
-    """
-
-    name: str = Field(description="The name of the detector used.")
-    version: str = Field(description="The version of the detector used.")
-    url: str = Field(description="The url of the detector used.")
-
-
-class SnapshotPropManifests(ExtraGitHubModel):
-    """SnapshotPropManifests
-
-    A collection of package manifests, which are a collection of related
-    dependencies declared in a file or representing a logical group of dependencies.
+    A collection of resolved package dependencies.
     """
 
 
-model_rebuild(Snapshot)
-model_rebuild(SnapshotPropJob)
-model_rebuild(SnapshotPropDetector)
-model_rebuild(SnapshotPropManifests)
+model_rebuild(Manifest)
+model_rebuild(ManifestPropFile)
+model_rebuild(ManifestPropResolved)
 
 __all__ = (
-    "Snapshot",
-    "SnapshotPropJob",
-    "SnapshotPropDetector",
-    "SnapshotPropManifests",
+    "Manifest",
+    "ManifestPropFile",
+    "ManifestPropResolved",
 )

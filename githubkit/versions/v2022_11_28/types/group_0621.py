@@ -13,55 +13,32 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0355 import EnterpriseWebhooksType
-from .group_0356 import SimpleInstallationType
-from .group_0358 import RepositoryWebhooksType
-from .group_0359 import SimpleUserWebhooksType
-from .group_0357 import OrganizationSimpleWebhooksType
+from .group_0356 import EnterpriseWebhooksType
+from .group_0357 import SimpleInstallationType
+from .group_0359 import RepositoryWebhooksType
+from .group_0360 import SimpleUserWebhooksType
+from .group_0358 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectEditedType(TypedDict):
-    """project edited event"""
+class WebhookProjectDeletedType(TypedDict):
+    """project deleted event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookProjectEditedPropChangesType]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhookProjectEditedPropProjectType
-    repository: NotRequired[RepositoryWebhooksType]
+    project: WebhookProjectDeletedPropProjectType
+    repository: NotRequired[Union[None, RepositoryWebhooksType]]
     sender: NotRequired[SimpleUserWebhooksType]
 
 
-class WebhookProjectEditedPropChangesType(TypedDict):
-    """WebhookProjectEditedPropChanges
-
-    The changes to the project if the action was `edited`.
-    """
-
-    body: NotRequired[WebhookProjectEditedPropChangesPropBodyType]
-    name: NotRequired[WebhookProjectEditedPropChangesPropNameType]
-
-
-class WebhookProjectEditedPropChangesPropBodyType(TypedDict):
-    """WebhookProjectEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookProjectEditedPropChangesPropNameType(TypedDict):
-    """WebhookProjectEditedPropChangesPropName"""
-
-    from_: str
-
-
-class WebhookProjectEditedPropProjectType(TypedDict):
+class WebhookProjectDeletedPropProjectType(TypedDict):
     """Project"""
 
     body: Union[str, None]
     columns_url: str
     created_at: datetime
-    creator: Union[WebhookProjectEditedPropProjectPropCreatorType, None]
+    creator: Union[WebhookProjectDeletedPropProjectPropCreatorType, None]
     html_url: str
     id: int
     name: str
@@ -73,7 +50,7 @@ class WebhookProjectEditedPropProjectType(TypedDict):
     url: str
 
 
-class WebhookProjectEditedPropProjectPropCreatorType(TypedDict):
+class WebhookProjectDeletedPropProjectPropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -100,10 +77,7 @@ class WebhookProjectEditedPropProjectPropCreatorType(TypedDict):
 
 
 __all__ = (
-    "WebhookProjectEditedType",
-    "WebhookProjectEditedPropChangesType",
-    "WebhookProjectEditedPropChangesPropBodyType",
-    "WebhookProjectEditedPropChangesPropNameType",
-    "WebhookProjectEditedPropProjectType",
-    "WebhookProjectEditedPropProjectPropCreatorType",
+    "WebhookProjectDeletedType",
+    "WebhookProjectDeletedPropProjectType",
+    "WebhookProjectDeletedPropProjectPropCreatorType",
 )

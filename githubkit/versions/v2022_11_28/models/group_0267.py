@@ -9,31 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+
+from .group_0001 import SimpleUser
+from .group_0005 import Integration
 
 
-class Label(GitHubModel):
-    """Label
+class ConvertedNoteToIssueIssueEvent(GitHubModel):
+    """Converted Note to Issue Issue Event
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+    Converted Note to Issue Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
-    url: str = Field(description="URL for the label")
-    name: str = Field(description="The name of the label.")
-    description: Union[str, None] = Field()
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["converted_note_to_issue"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Integration = Field(
+        title="GitHub app",
+        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
     )
-    default: bool = Field()
+    project_card: Missing[ConvertedNoteToIssueIssueEventPropProjectCard] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(Label)
+class ConvertedNoteToIssueIssueEventPropProjectCard(GitHubModel):
+    """ConvertedNoteToIssueIssueEventPropProjectCard"""
 
-__all__ = ("Label",)
+    id: int = Field()
+    url: str = Field()
+    project_id: int = Field()
+    project_url: str = Field()
+    column_name: str = Field()
+    previous_column_name: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ConvertedNoteToIssueIssueEvent)
+model_rebuild(ConvertedNoteToIssueIssueEventPropProjectCard)
+
+__all__ = (
+    "ConvertedNoteToIssueIssueEvent",
+    "ConvertedNoteToIssueIssueEventPropProjectCard",
+)

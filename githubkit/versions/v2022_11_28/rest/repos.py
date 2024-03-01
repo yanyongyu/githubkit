@@ -1570,11 +1570,10 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        page: Missing[int] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Autolink]]:
-        """See also: https://docs.github.com/rest/repos/autolinks#list-all-autolinks-of-a-repository"""
+        """See also: https://docs.github.com/rest/repos/autolinks#get-all-autolinks-of-a-repository"""
 
         from typing import List
 
@@ -1582,16 +1581,11 @@ class ReposClient:
 
         url = f"/repos/{owner}/{repo}/autolinks"
 
-        params = {
-            "page": page,
-        }
-
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
             url,
-            params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=List[Autolink],
         )
@@ -1600,11 +1594,10 @@ class ReposClient:
         self,
         owner: str,
         repo: str,
-        page: Missing[int] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[Autolink]]:
-        """See also: https://docs.github.com/rest/repos/autolinks#list-all-autolinks-of-a-repository"""
+        """See also: https://docs.github.com/rest/repos/autolinks#get-all-autolinks-of-a-repository"""
 
         from typing import List
 
@@ -1612,16 +1605,11 @@ class ReposClient:
 
         url = f"/repos/{owner}/{repo}/autolinks"
 
-        params = {
-            "page": page,
-        }
-
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
             url,
-            params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=List[Autolink],
         )
@@ -12506,7 +12494,11 @@ class ReposClient:
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/custom-properties#create-or-update-custom-property-values-for-a-repository"""
 
-        from ..models import BasicError, ReposOwnerRepoPropertiesValuesPatchBody
+        from ..models import (
+            BasicError,
+            ValidationError,
+            ReposOwnerRepoPropertiesValuesPatchBody,
+        )
 
         url = f"/repos/{owner}/{repo}/properties/values"
 
@@ -12527,6 +12519,7 @@ class ReposClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "422": ValidationError,
             },
         )
 
@@ -12562,7 +12555,11 @@ class ReposClient:
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/custom-properties#create-or-update-custom-property-values-for-a-repository"""
 
-        from ..models import BasicError, ReposOwnerRepoPropertiesValuesPatchBody
+        from ..models import (
+            BasicError,
+            ValidationError,
+            ReposOwnerRepoPropertiesValuesPatchBody,
+        )
 
         url = f"/repos/{owner}/{repo}/properties/values"
 
@@ -12583,6 +12580,7 @@ class ReposClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "422": ValidationError,
             },
         )
 

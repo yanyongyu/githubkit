@@ -207,10 +207,10 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
   "string",
   "null",
 ] }
-"/components/schemas/repository/properties/template_repository/properties/temp_clone_token" = { type = [
-  "string",
-  "null",
-] }
+# "/components/schemas/full-repository/properties/template_repository/properties/temp_clone_token" = { type = [
+#   "string",
+#   "null",
+# ] }
 "/components/schemas/minimal-repository/properties/temp_clone_token" = { type = [
   "string",
   "null",
@@ -228,6 +228,14 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
   "null",
 ] }
 "/components/schemas/repo-search-result-item/properties/temp_clone_token" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/repository-webhooks/properties/temp_clone_token" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/repository-webhooks/properties/template_repository/properties/temp_clone_token" = { type = [
   "string",
   "null",
 ] }
@@ -362,43 +370,9 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
   "null",
 ] }
 
-# [tool.codegen.webhook]
-# schema_source = "https://unpkg.com/@octokit/webhooks-schemas/schema.json"
-# output = "githubkit/webhooks/models.py"
-# types_output = "githubkit/webhooks/types.py"
-#
-# [tool.codegen.webhook.schema_overrides]
-# # webhook installation created requester can be null
-# # https://github.com/yanyongyu/githubkit/issues/14
-# # https://docs.github.com/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#installation
-# "/definitions/installation$created/properties/requester" = { anyOf = [
-#   { type = "null" },
-#   { "$ref" = "#/definitions/user" },
-# ], "$ref" = {} }
-#
-# # https://github.com/github/rest-api-description/issues/2491
-# "/definitions/auto-merge/properties/commit_title" = { type = [
-#   "string",
-#   "null",
-# ] }
-# "/definitions/auto-merge/properties/commit_message" = { type = [
-#   "string",
-#   "null",
-# ] }
-#
-# # [FIXED] https://github.com/octokit/webhooks/issues/806
-# # "/definitions/secret_scanning_alert$resolved/properties/alert/allOf/1/properties/resolution" = { enum = ["false_positive", "wont_fix", "revoked", "used_in_tests"] }
-
-# # https://github.com/yanyongyu/githubkit/pull/69
-# "/definitions/projects_v2_item$edited/properties/changes/properties/field_value/properties/field_type" = { enum = [
-#   "single_select",
-#   "date",
-#   "number",
-#   "text",
-#   "iteration",
-#   "labels",
-# ] }
-
+# webhook repository dispatch action can be any string
+"/webhooks/repository-dispatch-sample.collected/post" = { operationId = "repository-dispatch" }
+"/components/schemas/webhook-repository-dispatch-sample/properties/action" = { enum = "<unset>" }
 
 [build-system]
 requires = ["poetry_core>=1.0.0"]

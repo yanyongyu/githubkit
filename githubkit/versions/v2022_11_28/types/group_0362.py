@@ -10,135 +10,66 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0005 import IntegrationType
+from .group_0187 import DeploymentSimpleType
+from .group_0361 import SimpleCheckSuiteType
+from .group_0160 import PullRequestMinimalType
 
-class DiscussionType(TypedDict):
-    """Discussion
 
-    A Discussion in a repository.
+class CheckRunWithSimpleCheckSuiteType(TypedDict):
+    """CheckRun
+
+    A check performed on the code of a given code change
     """
 
-    active_lock_reason: Union[str, None]
-    answer_chosen_at: Union[str, None]
-    answer_chosen_by: Union[DiscussionPropAnswerChosenByType, None]
-    answer_html_url: Union[str, None]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
+    app: Union[None, IntegrationType]
+    check_suite: SimpleCheckSuiteType
+    completed_at: Union[datetime, None]
+    conclusion: Union[
+        None,
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
     ]
-    body: str
-    category: DiscussionPropCategoryType
-    comments: int
-    created_at: datetime
+    deployment: NotRequired[DeploymentSimpleType]
+    details_url: str
+    external_id: str
+    head_sha: str
     html_url: str
     id: int
-    locked: bool
-    node_id: str
-    number: int
-    reactions: NotRequired[DiscussionPropReactionsType]
-    repository_url: str
-    state: Literal["open", "closed", "locked", "converting", "transferring"]
-    state_reason: Union[None, Literal["resolved", "outdated", "duplicate", "reopened"]]
-    timeline_url: NotRequired[str]
-    title: str
-    updated_at: datetime
-    user: Union[DiscussionPropUserType, None]
-
-
-class DiscussionPropAnswerChosenByType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class DiscussionPropCategoryType(TypedDict):
-    """DiscussionPropCategory"""
-
-    created_at: datetime
-    description: str
-    emoji: str
-    id: int
-    is_answerable: bool
     name: str
-    node_id: NotRequired[str]
-    repository_id: int
-    slug: str
-    updated_at: str
-
-
-class DiscussionPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
+    node_id: str
+    output: CheckRunWithSimpleCheckSuitePropOutputType
+    pull_requests: List[PullRequestMinimalType]
+    started_at: datetime
+    status: Literal["queued", "in_progress", "completed", "pending"]
     url: str
 
 
-class DiscussionPropUserType(TypedDict):
-    """User"""
+class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    annotations_count: int
+    annotations_url: str
+    summary: Union[str, None]
+    text: Union[str, None]
+    title: Union[str, None]
 
 
 __all__ = (
-    "DiscussionType",
-    "DiscussionPropAnswerChosenByType",
-    "DiscussionPropCategoryType",
-    "DiscussionPropReactionsType",
-    "DiscussionPropUserType",
+    "CheckRunWithSimpleCheckSuiteType",
+    "CheckRunWithSimpleCheckSuitePropOutputType",
 )

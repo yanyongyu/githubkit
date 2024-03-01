@@ -13,7 +13,7 @@ from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0109 import RepositoryRuleUpdateType
-from .group_0128 import RepositoryRuleWorkflowsType
+from .group_0129 import RepositoryRuleWorkflowsType
 from .group_0114 import RepositoryRulePullRequestType
 from .group_0097 import RepositoryRulesetConditionsType
 from .group_0096 import RepositoryRulesetBypassActorType
@@ -33,12 +33,12 @@ from .group_0108 import (
 )
 
 
-class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
-    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
+    """ReposOwnerRepoRulesetsPostBody"""
 
-    name: NotRequired[str]
+    name: str
     target: NotRequired[Literal["branch", "tag"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
     bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
     conditions: NotRequired[RepositoryRulesetConditionsType]
     rules: NotRequired[
@@ -64,4 +64,4 @@ class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
     ]
 
 
-__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBodyType",)
+__all__ = ("ReposOwnerRepoRulesetsPostBodyType",)

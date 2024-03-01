@@ -13,38 +13,42 @@ from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0366 import ProjectsV2ItemType
-from .group_0356 import SimpleInstallationType
-from .group_0359 import SimpleUserWebhooksType
-from .group_0357 import OrganizationSimpleWebhooksType
+from .group_0367 import ProjectsV2ItemType
+from .group_0357 import SimpleInstallationType
+from .group_0360 import SimpleUserWebhooksType
+from .group_0358 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ItemRestoredType(TypedDict):
-    """Projects v2 Item Restored Event"""
+class WebhookProjectsV2ItemReorderedType(TypedDict):
+    """Projects v2 Item Reordered Event"""
 
-    action: Literal["restored"]
-    changes: WebhookProjectsV2ItemRestoredPropChangesType
+    action: Literal["reordered"]
+    changes: WebhookProjectsV2ItemReorderedPropChangesType
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserWebhooksType
 
 
-class WebhookProjectsV2ItemRestoredPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemRestoredPropChanges"""
+class WebhookProjectsV2ItemReorderedPropChangesType(TypedDict):
+    """WebhookProjectsV2ItemReorderedPropChanges"""
 
-    archived_at: NotRequired[WebhookProjectsV2ItemRestoredPropChangesPropArchivedAtType]
+    previous_projects_v2_item_node_id: NotRequired[
+        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType
+    ]
 
 
-class WebhookProjectsV2ItemRestoredPropChangesPropArchivedAtType(TypedDict):
-    """WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt"""
+class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType(
+    TypedDict
+):
+    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
 
-    from_: NotRequired[Union[datetime, None]]
-    to: NotRequired[Union[datetime, None]]
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhookProjectsV2ItemRestoredType",
-    "WebhookProjectsV2ItemRestoredPropChangesType",
-    "WebhookProjectsV2ItemRestoredPropChangesPropArchivedAtType",
+    "WebhookProjectsV2ItemReorderedType",
+    "WebhookProjectsV2ItemReorderedPropChangesType",
+    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType",
 )

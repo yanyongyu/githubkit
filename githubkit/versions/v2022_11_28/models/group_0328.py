@@ -9,21 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import List
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Traffic(GitHubModel):
-    """Traffic"""
+class Topic(GitHubModel):
+    """Topic
 
-    timestamp: datetime = Field()
-    uniques: int = Field()
-    count: int = Field()
+    A topic aggregates entities that are related to a subject.
+    """
+
+    names: List[str] = Field()
 
 
-model_rebuild(Traffic)
+model_rebuild(Topic)
 
-__all__ = ("Traffic",)
+__all__ = ("Topic",)

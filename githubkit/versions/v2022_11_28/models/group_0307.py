@@ -10,7 +10,6 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -18,14 +17,11 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0115 import RepositoryRulePullRequestPropParameters
 
+class RepositoryRuleDetailedOneof5(GitHubModel):
+    """RepositoryRuleDetailedOneof5"""
 
-class RepositoryRuleDetailedOneof6(GitHubModel):
-    """RepositoryRuleDetailedOneof6"""
-
-    type: Literal["pull_request"] = Field()
-    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
+    type: Literal["required_signatures"] = Field()
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -39,6 +35,6 @@ class RepositoryRuleDetailedOneof6(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof6)
+model_rebuild(RepositoryRuleDetailedOneof5)
 
-__all__ = ("RepositoryRuleDetailedOneof6",)
+__all__ = ("RepositoryRuleDetailedOneof5",)

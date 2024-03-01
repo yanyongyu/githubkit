@@ -13,164 +13,24 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0550 import WebhookIssuesUnlockedPropIssueMergedMilestoneType
-from .group_0548 import WebhookIssuesUnlockedPropIssueAllof0PropPullRequestType
+from .group_0356 import EnterpriseWebhooksType
+from .group_0357 import SimpleInstallationType
+from .group_0359 import RepositoryWebhooksType
+from .group_0360 import SimpleUserWebhooksType
+from .group_0358 import OrganizationSimpleWebhooksType
+from .group_0545 import WebhookIssuesUnlockedPropIssueType
 
 
-class WebhookIssuesUnlockedPropIssueType(TypedDict):
-    """WebhookIssuesUnlockedPropIssue"""
+class WebhookIssuesUnlockedType(TypedDict):
+    """issues unlocked event"""
 
-    active_lock_reason: Union[None, None]
-    assignee: NotRequired[Union[WebhookIssuesUnlockedPropIssueMergedAssigneeType, None]]
-    assignees: List[WebhookIssuesUnlockedPropIssueMergedAssigneesType]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: Union[Union[str, None], None]
-    closed_at: Union[datetime, None]
-    comments: int
-    comments_url: str
-    created_at: datetime
-    draft: NotRequired[bool]
-    events_url: str
-    html_url: str
-    id: int
-    labels: NotRequired[List[WebhookIssuesUnlockedPropIssueMergedLabelsType]]
-    labels_url: str
-    locked: Literal[False]
-    milestone: Union[WebhookIssuesUnlockedPropIssueMergedMilestoneType, None]
-    node_id: str
-    number: int
-    performed_via_github_app: NotRequired[Union[None, None]]
-    pull_request: NotRequired[WebhookIssuesUnlockedPropIssueAllof0PropPullRequestType]
-    reactions: WebhookIssuesUnlockedPropIssueMergedReactionsType
-    repository_url: str
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
-    title: str
-    updated_at: datetime
-    url: str
-    user: WebhookIssuesUnlockedPropIssueMergedUserType
+    action: Literal["unlocked"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    issue: WebhookIssuesUnlockedPropIssueType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-class WebhookIssuesUnlockedPropIssueMergedAssigneeType(TypedDict):
-    """WebhookIssuesUnlockedPropIssueMergedAssignee"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookIssuesUnlockedPropIssueMergedAssigneesType(TypedDict):
-    """WebhookIssuesUnlockedPropIssueMergedAssignees"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookIssuesUnlockedPropIssueMergedLabelsType(TypedDict):
-    """WebhookIssuesUnlockedPropIssueMergedLabels"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhookIssuesUnlockedPropIssueMergedReactionsType(TypedDict):
-    """WebhookIssuesUnlockedPropIssueMergedReactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookIssuesUnlockedPropIssueMergedUserType(TypedDict):
-    """WebhookIssuesUnlockedPropIssueMergedUser"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-__all__ = (
-    "WebhookIssuesUnlockedPropIssueType",
-    "WebhookIssuesUnlockedPropIssueMergedAssigneeType",
-    "WebhookIssuesUnlockedPropIssueMergedAssigneesType",
-    "WebhookIssuesUnlockedPropIssueMergedLabelsType",
-    "WebhookIssuesUnlockedPropIssueMergedReactionsType",
-    "WebhookIssuesUnlockedPropIssueMergedUserType",
-)
+__all__ = ("WebhookIssuesUnlockedType",)
