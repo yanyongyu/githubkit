@@ -18,25 +18,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0547 import WebhookIssuesUnlockedPropIssueAllof0PropMilestone
-from .group_0548 import WebhookIssuesUnlockedPropIssueAllof0PropPullRequest
+from .group_0551 import WebhookIssuesUnlockedPropIssueMergedMilestone
+from .group_0549 import WebhookIssuesUnlockedPropIssueAllof0PropPullRequest
 
 
-class WebhookIssuesUnlockedPropIssueAllof0(GitHubModel):
-    """Issue
+class WebhookIssuesUnlockedPropIssue(GitHubModel):
+    """WebhookIssuesUnlockedPropIssue"""
 
-    The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
-    """
-
-    active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
-    ] = Field()
-    assignee: Missing[Union[WebhookIssuesUnlockedPropIssueAllof0PropAssignee, None]] = (
-        Field(default=UNSET, title="User")
+    active_lock_reason: Union[None, None] = Field()
+    assignee: Missing[Union[WebhookIssuesUnlockedPropIssueMergedAssignee, None]] = (
+        Field(default=UNSET)
     )
-    assignees: List[
-        Union[WebhookIssuesUnlockedPropIssueAllof0PropAssigneesItems, None]
-    ] = Field()
+    assignees: List[WebhookIssuesUnlockedPropIssueMergedAssignees] = Field()
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -50,7 +43,7 @@ class WebhookIssuesUnlockedPropIssueAllof0(GitHubModel):
         title="AuthorAssociation",
         description="How the author is associated with the repository.",
     )
-    body: Union[str, None] = Field(description="Contents of the issue")
+    body: Union[Union[str, None], None] = Field(description="Contents of the issue")
     closed_at: Union[datetime, None] = Field()
     comments: int = Field()
     comments_url: str = Field()
@@ -59,30 +52,19 @@ class WebhookIssuesUnlockedPropIssueAllof0(GitHubModel):
     events_url: str = Field()
     html_url: str = Field()
     id: int = Field()
-    labels: Missing[List[WebhookIssuesUnlockedPropIssueAllof0PropLabelsItems]] = Field(
+    labels: Missing[List[WebhookIssuesUnlockedPropIssueMergedLabels]] = Field(
         default=UNSET
     )
     labels_url: str = Field()
-    locked: Missing[bool] = Field(default=UNSET)
-    milestone: Union[WebhookIssuesUnlockedPropIssueAllof0PropMilestone, None] = Field(
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
-    )
+    locked: Literal[False] = Field()
+    milestone: Union[WebhookIssuesUnlockedPropIssueMergedMilestone, None] = Field()
     node_id: str = Field()
     number: int = Field()
-    performed_via_github_app: Missing[
-        Union[WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubApp, None]
-    ] = Field(
-        default=UNSET,
-        title="App",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
-    )
+    performed_via_github_app: Missing[Union[None, None]] = Field(default=UNSET)
     pull_request: Missing[WebhookIssuesUnlockedPropIssueAllof0PropPullRequest] = Field(
         default=UNSET
     )
-    reactions: WebhookIssuesUnlockedPropIssueAllof0PropReactions = Field(
-        title="Reactions"
-    )
+    reactions: WebhookIssuesUnlockedPropIssueMergedReactions = Field()
     repository_url: str = Field()
     state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET, description="State of the issue; either 'open' or 'closed'"
@@ -92,13 +74,11 @@ class WebhookIssuesUnlockedPropIssueAllof0(GitHubModel):
     title: str = Field(description="Title of the issue")
     updated_at: datetime = Field()
     url: str = Field(description="URL for the issue")
-    user: Union[WebhookIssuesUnlockedPropIssueAllof0PropUser, None] = Field(
-        title="User"
-    )
+    user: WebhookIssuesUnlockedPropIssueMergedUser = Field()
 
 
-class WebhookIssuesUnlockedPropIssueAllof0PropAssignee(GitHubModel):
-    """User"""
+class WebhookIssuesUnlockedPropIssueMergedAssignee(GitHubModel):
+    """WebhookIssuesUnlockedPropIssueMergedAssignee"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -123,8 +103,8 @@ class WebhookIssuesUnlockedPropIssueAllof0PropAssignee(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssuesUnlockedPropIssueAllof0PropAssigneesItems(GitHubModel):
-    """User"""
+class WebhookIssuesUnlockedPropIssueMergedAssignees(GitHubModel):
+    """WebhookIssuesUnlockedPropIssueMergedAssignees"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -149,8 +129,8 @@ class WebhookIssuesUnlockedPropIssueAllof0PropAssigneesItems(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssuesUnlockedPropIssueAllof0PropLabelsItems(GitHubModel):
-    """Label"""
+class WebhookIssuesUnlockedPropIssueMergedLabels(GitHubModel):
+    """WebhookIssuesUnlockedPropIssueMergedLabels"""
 
     color: str = Field(
         description="6-character hex code, without the leading #, identifying the color"
@@ -163,164 +143,8 @@ class WebhookIssuesUnlockedPropIssueAllof0PropLabelsItems(GitHubModel):
     url: str = Field(description="URL for the label")
 
 
-class WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubApp(GitHubModel):
-    """App
-
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
-    """
-
-    created_at: Union[datetime, None] = Field()
-    description: Union[str, None] = Field()
-    events: Missing[
-        List[
-            Literal[
-                "branch_protection_rule",
-                "check_run",
-                "check_suite",
-                "code_scanning_alert",
-                "commit_comment",
-                "content_reference",
-                "create",
-                "delete",
-                "deployment",
-                "deployment_review",
-                "deployment_status",
-                "deploy_key",
-                "discussion",
-                "discussion_comment",
-                "fork",
-                "gollum",
-                "issues",
-                "issue_comment",
-                "label",
-                "member",
-                "membership",
-                "milestone",
-                "organization",
-                "org_block",
-                "page_build",
-                "project",
-                "project_card",
-                "project_column",
-                "public",
-                "pull_request",
-                "pull_request_review",
-                "pull_request_review_comment",
-                "push",
-                "registry_package",
-                "release",
-                "repository",
-                "repository_dispatch",
-                "secret_scanning_alert",
-                "star",
-                "status",
-                "team",
-                "team_add",
-                "watch",
-                "workflow_dispatch",
-                "workflow_run",
-            ]
-        ]
-    ] = Field(default=UNSET, description="The list of events for the GitHub app")
-    external_url: Union[str, None] = Field()
-    html_url: str = Field()
-    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
-    name: str = Field(description="The name of the GitHub app")
-    node_id: str = Field()
-    owner: Union[
-        WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
-    ] = Field(title="User")
-    permissions: Missing[
-        WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
-    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
-    slug: Missing[str] = Field(
-        default=UNSET, description="The slug name of the GitHub app"
-    )
-    updated_at: Union[datetime, None] = Field()
-
-
-class WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubAppPropOwner(
-    GitHubModel
-):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubAppPropPermissions(
-    GitHubModel
-):
-    """WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
-
-    The set of permissions for the GitHub app
-    """
-
-    actions: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    administration: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    checks: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    content_references: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    contents: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    deployments: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    emails: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    environments: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    issues: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    keys: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    members: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    metadata: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_administration: Missing[Literal["read", "write"]] = Field(
-        default=UNSET
-    )
-    organization_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_plan: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    organization_self_hosted_runners: Missing[Literal["read", "write"]] = Field(
-        default=UNSET
-    )
-    organization_user_blocking: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    pages: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    pull_requests: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    repository_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    repository_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    secret_scanning_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    security_events: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    security_scanning_alert: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    single_file: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    statuses: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    team_discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    vulnerability_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
-    workflows: Missing[Literal["read", "write"]] = Field(default=UNSET)
-
-
-class WebhookIssuesUnlockedPropIssueAllof0PropReactions(GitHubModel):
-    """Reactions"""
+class WebhookIssuesUnlockedPropIssueMergedReactions(GitHubModel):
+    """WebhookIssuesUnlockedPropIssueMergedReactions"""
 
     plus_one: int = Field(alias="+1")
     minus_one: int = Field(alias="-1")
@@ -334,8 +158,8 @@ class WebhookIssuesUnlockedPropIssueAllof0PropReactions(GitHubModel):
     url: str = Field()
 
 
-class WebhookIssuesUnlockedPropIssueAllof0PropUser(GitHubModel):
-    """User"""
+class WebhookIssuesUnlockedPropIssueMergedUser(GitHubModel):
+    """WebhookIssuesUnlockedPropIssueMergedUser"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -360,26 +184,18 @@ class WebhookIssuesUnlockedPropIssueAllof0PropUser(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssuesUnlockedPropIssueAllof0)
-model_rebuild(WebhookIssuesUnlockedPropIssueAllof0PropAssignee)
-model_rebuild(WebhookIssuesUnlockedPropIssueAllof0PropAssigneesItems)
-model_rebuild(WebhookIssuesUnlockedPropIssueAllof0PropLabelsItems)
-model_rebuild(WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubApp)
-model_rebuild(WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubAppPropOwner)
-model_rebuild(
-    WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
-)
-model_rebuild(WebhookIssuesUnlockedPropIssueAllof0PropReactions)
-model_rebuild(WebhookIssuesUnlockedPropIssueAllof0PropUser)
+model_rebuild(WebhookIssuesUnlockedPropIssue)
+model_rebuild(WebhookIssuesUnlockedPropIssueMergedAssignee)
+model_rebuild(WebhookIssuesUnlockedPropIssueMergedAssignees)
+model_rebuild(WebhookIssuesUnlockedPropIssueMergedLabels)
+model_rebuild(WebhookIssuesUnlockedPropIssueMergedReactions)
+model_rebuild(WebhookIssuesUnlockedPropIssueMergedUser)
 
 __all__ = (
-    "WebhookIssuesUnlockedPropIssueAllof0",
-    "WebhookIssuesUnlockedPropIssueAllof0PropAssignee",
-    "WebhookIssuesUnlockedPropIssueAllof0PropAssigneesItems",
-    "WebhookIssuesUnlockedPropIssueAllof0PropLabelsItems",
-    "WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubApp",
-    "WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
-    "WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
-    "WebhookIssuesUnlockedPropIssueAllof0PropReactions",
-    "WebhookIssuesUnlockedPropIssueAllof0PropUser",
+    "WebhookIssuesUnlockedPropIssue",
+    "WebhookIssuesUnlockedPropIssueMergedAssignee",
+    "WebhookIssuesUnlockedPropIssueMergedAssignees",
+    "WebhookIssuesUnlockedPropIssueMergedLabels",
+    "WebhookIssuesUnlockedPropIssueMergedReactions",
+    "WebhookIssuesUnlockedPropIssueMergedUser",
 )

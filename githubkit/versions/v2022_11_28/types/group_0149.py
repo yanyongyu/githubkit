@@ -9,20 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0148 import RateLimitType
-from .group_0150 import RateLimitOverviewPropResourcesType
+from typing_extensions import TypedDict
 
 
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
+class RateLimitType(TypedDict):
+    """Rate Limit"""
 
-    Rate Limit Overview
-    """
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
-    resources: RateLimitOverviewPropResourcesType
-    rate: RateLimitType
 
-
-__all__ = ("RateLimitOverviewType",)
+__all__ = ("RateLimitType",)

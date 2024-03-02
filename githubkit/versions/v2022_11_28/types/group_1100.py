@@ -9,18 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+from datetime import datetime
 from typing_extensions import TypedDict
 
+from .group_0156 import ActionsSecretType
 
-class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType(
+
+class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200Type(
     TypedDict
 ):
-    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
+    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200"""
 
-    encrypted_value: str
-    key_id: str
+    total_count: int
+    secrets: List[ActionsSecretType]
 
 
 __all__ = (
-    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType",
+    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200Type",
 )

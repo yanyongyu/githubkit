@@ -9,29 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
 
-class ProjectColumn(GitHubModel):
-    """Project Column
 
-    Project columns contain cards of work.
+class ProjectCard(GitHubModel):
+    """Project Card
+
+    Project cards represent a scope of work.
     """
 
     url: str = Field()
-    project_url: str = Field()
-    cards_url: str = Field()
-    id: int = Field(description="The unique identifier of the project column")
+    id: int = Field(description="The project card's ID")
     node_id: str = Field()
-    name: str = Field(description="Name of the project column")
+    note: Union[str, None] = Field()
+    creator: Union[None, SimpleUser] = Field()
     created_at: datetime = Field()
     updated_at: datetime = Field()
+    archived: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the card is archived"
+    )
+    column_name: Missing[str] = Field(default=UNSET)
+    project_id: Missing[str] = Field(default=UNSET)
+    column_url: str = Field()
+    content_url: Missing[str] = Field(default=UNSET)
+    project_url: str = Field()
 
 
-model_rebuild(ProjectColumn)
+model_rebuild(ProjectCard)
 
-__all__ = ("ProjectColumn",)
+__all__ = ("ProjectCard",)

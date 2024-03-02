@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,36 +16,26 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoReleasesReleaseIdPatchBody(GitHubModel):
-    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
+class ReposOwnerRepoReleasesGenerateNotesPostBody(GitHubModel):
+    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
 
-    tag_name: Missing[str] = Field(default=UNSET, description="The name of the tag.")
+    tag_name: str = Field(
+        description="The tag name for the release. This can be an existing tag or a new one."
+    )
     target_commitish: Missing[str] = Field(
         default=UNSET,
-        description="Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.",
+        description="Specifies the commitish value that will be the target for the release's tag. Required if the supplied tag_name does not reference an existing tag. Ignored if the tag_name already exists.",
     )
-    name: Missing[str] = Field(default=UNSET, description="The name of the release.")
-    body: Missing[str] = Field(
-        default=UNSET, description="Text describing the contents of the tag."
-    )
-    draft: Missing[bool] = Field(
+    previous_tag_name: Missing[str] = Field(
         default=UNSET,
-        description="`true` makes the release a draft, and `false` publishes the release.",
+        description="The name of the previous tag to use as the starting point for the release notes. Use to manually specify the range for the set of changes considered as part this release.",
     )
-    prerelease: Missing[bool] = Field(
+    configuration_file_path: Missing[str] = Field(
         default=UNSET,
-        description="`true` to identify the release as a prerelease, `false` to identify the release as a full release.",
-    )
-    make_latest: Missing[Literal["true", "false", "legacy"]] = Field(
-        default=UNSET,
-        description="Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.",
-    )
-    discussion_category_name: Missing[str] = Field(
-        default=UNSET,
-        description='If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored. For more information, see "[Managing categories for discussions in your repository](https://docs.github.com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository)."',
+        description="Specifies a path to a file in the repository containing configuration settings used for generating the release notes. If unspecified, the configuration file located in the repository at '.github/release.yml' or '.github/release.yaml' will be used. If that is not present, the default configuration will be used.",
     )
 
 
-model_rebuild(ReposOwnerRepoReleasesReleaseIdPatchBody)
+model_rebuild(ReposOwnerRepoReleasesGenerateNotesPostBody)
 
-__all__ = ("ReposOwnerRepoReleasesReleaseIdPatchBody",)
+__all__ = ("ReposOwnerRepoReleasesGenerateNotesPostBody",)

@@ -9,20 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Union
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ParticipationStats(GitHubModel):
-    """Participation Stats"""
-
-    all_: List[int] = Field(alias="all")
-    owner: List[int] = Field()
+from .group_0001 import SimpleUser
 
 
-model_rebuild(ParticipationStats)
+class ContributorActivity(GitHubModel):
+    """Contributor Activity
 
-__all__ = ("ParticipationStats",)
+    Contributor Activity
+    """
+
+    author: Union[None, SimpleUser] = Field()
+    total: int = Field()
+    weeks: List[ContributorActivityPropWeeksItems] = Field()
+
+
+class ContributorActivityPropWeeksItems(GitHubModel):
+    """ContributorActivityPropWeeksItems"""
+
+    w: Missing[int] = Field(default=UNSET)
+    a: Missing[int] = Field(default=UNSET)
+    d: Missing[int] = Field(default=UNSET)
+    c: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(ContributorActivity)
+model_rebuild(ContributorActivityPropWeeksItems)
+
+__all__ = (
+    "ContributorActivity",
+    "ContributorActivityPropWeeksItems",
+)

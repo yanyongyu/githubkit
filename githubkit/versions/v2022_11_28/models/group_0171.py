@@ -14,20 +14,22 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CheckAutomatedSecurityFixes(GitHubModel):
-    """Check Automated Security Fixes
+class Autolink(GitHubModel):
+    """Autolink reference
 
-    Check Automated Security Fixes
+    An autolink reference.
     """
 
-    enabled: bool = Field(
-        description="Whether automated security fixes are enabled for the repository."
+    id: int = Field()
+    key_prefix: str = Field(description="The prefix of a key that is linkified.")
+    url_template: str = Field(
+        description="A template for the target URL that is generated if a key was found."
     )
-    paused: bool = Field(
-        description="Whether automated security fixes are paused for the repository."
+    is_alphanumeric: bool = Field(
+        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
     )
 
 
-model_rebuild(CheckAutomatedSecurityFixes)
+model_rebuild(Autolink)
 
-__all__ = ("CheckAutomatedSecurityFixes",)
+__all__ = ("Autolink",)

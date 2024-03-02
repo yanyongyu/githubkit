@@ -17,17 +17,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0049 import SecurityAndAnalysis
+from .group_0768 import WebhookSecurityAndAnalysisPropChangesPropFrom
 
 
-class WebhookSecurityAndAnalysisPropChangesPropFrom(GitHubModel):
-    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
+class WebhookSecurityAndAnalysisPropChanges(GitHubModel):
+    """WebhookSecurityAndAnalysisPropChanges"""
 
-    security_and_analysis: Missing[Union[SecurityAndAnalysis, None]] = Field(
-        default=UNSET
+    from_: Missing[WebhookSecurityAndAnalysisPropChangesPropFrom] = Field(
+        default=UNSET, alias="from"
     )
 
 
-model_rebuild(WebhookSecurityAndAnalysisPropChangesPropFrom)
+model_rebuild(WebhookSecurityAndAnalysisPropChanges)
 
-__all__ = ("WebhookSecurityAndAnalysisPropChangesPropFrom",)
+__all__ = ("WebhookSecurityAndAnalysisPropChanges",)

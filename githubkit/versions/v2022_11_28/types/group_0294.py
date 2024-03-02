@@ -9,65 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0075 import TeamType
 from .group_0001 import SimpleUserType
 
 
-class PullRequestReviewType(TypedDict):
-    """Pull Request Review
+class PullRequestReviewRequestType(TypedDict):
+    """Pull Request Review Request
 
-    Pull Request Reviews are reviews on pull requests.
+    Pull Request Review Request
     """
 
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserType]
-    body: str
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: PullRequestReviewPropLinksType
-    submitted_at: NotRequired[datetime]
-    commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    users: List[SimpleUserType]
+    teams: List[TeamType]
 
 
-class PullRequestReviewPropLinksType(TypedDict):
-    """PullRequestReviewPropLinks"""
-
-    html: PullRequestReviewPropLinksPropHtmlType
-    pull_request: PullRequestReviewPropLinksPropPullRequestType
-
-
-class PullRequestReviewPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
-
-    href: str
-
-
-__all__ = (
-    "PullRequestReviewType",
-    "PullRequestReviewPropLinksType",
-    "PullRequestReviewPropLinksPropHtmlType",
-    "PullRequestReviewPropLinksPropPullRequestType",
-)
+__all__ = ("PullRequestReviewRequestType",)

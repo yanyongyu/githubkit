@@ -18,60 +18,58 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1(GitHubModel):
-    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1"""
+class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0(GitHubModel):
+    """Marketplace Purchase"""
 
-    account: Missing[
-        WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropAccount
-    ] = Field(default=UNSET)
-    billing_cycle: Missing[str] = Field(default=UNSET)
-    free_trial_ends_on: Missing[Union[str, None]] = Field(default=UNSET)
-    next_billing_date: Union[str, None] = Field()
-    on_free_trial: Missing[bool] = Field(default=UNSET)
-    plan: Missing[
-        WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropPlan
-    ] = Field(default=UNSET)
-    unit_count: Missing[int] = Field(default=UNSET)
-
-
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropAccount(
-    GitHubModel
-):
-    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropAccount"""
-
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organization_billing_email: Missing[Union[str, None]] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-
-
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropPlan(
-    GitHubModel
-):
-    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropPlan"""
-
-    bullets: Missing[List[Union[str, None]]] = Field(default=UNSET)
-    description: Missing[str] = Field(default=UNSET)
-    has_free_trial: Missing[bool] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    monthly_price_in_cents: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    price_model: Missing[Literal["FREE", "FLAT_RATE", "PER_UNIT"]] = Field(
-        default=UNSET
+    account: (
+        WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccount
+    ) = Field()
+    billing_cycle: str = Field()
+    free_trial_ends_on: Union[str, None] = Field()
+    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
+    on_free_trial: bool = Field()
+    plan: WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlan = (
+        Field()
     )
-    unit_name: Missing[Union[str, None]] = Field(default=UNSET)
-    yearly_price_in_cents: Missing[int] = Field(default=UNSET)
+    unit_count: int = Field()
 
 
-model_rebuild(WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1)
+class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccount(
+    GitHubModel
+):
+    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccount"""
+
+    id: int = Field()
+    login: str = Field()
+    node_id: str = Field()
+    organization_billing_email: Union[str, None] = Field()
+    type: str = Field()
+
+
+class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlan(
+    GitHubModel
+):
+    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlan"""
+
+    bullets: List[str] = Field()
+    description: str = Field()
+    has_free_trial: bool = Field()
+    id: int = Field()
+    monthly_price_in_cents: int = Field()
+    name: str = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    unit_name: Union[str, None] = Field()
+    yearly_price_in_cents: int = Field()
+
+
+model_rebuild(WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0)
 model_rebuild(
-    WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropAccount
+    WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccount
 )
-model_rebuild(WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropPlan)
+model_rebuild(WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlan)
 
 __all__ = (
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1",
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropAccount",
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropPlan",
+    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0",
+    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccount",
+    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlan",
 )

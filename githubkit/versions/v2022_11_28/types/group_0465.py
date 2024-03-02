@@ -9,11 +9,12 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -39,4 +40,30 @@ class WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType(Type
     url: NotRequired[str]
 
 
-__all__ = ("WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType",)
+class WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsType(TypedDict):
+    """Label"""
+
+    color: str
+    default: bool
+    description: Union[str, None]
+    id: int
+    name: str
+    node_id: str
+    url: str
+
+
+class WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest"""
+
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[datetime, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "WebhookIssueCommentDeletedPropIssueAllof0PropAssigneeType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropLabelsItemsType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPullRequestType",
+)

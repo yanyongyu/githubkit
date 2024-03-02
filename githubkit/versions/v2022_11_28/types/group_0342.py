@@ -9,15 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0334 import SearchResultTextMatchesItemsType
 
-class PrivateUserType(TypedDict):
-    """Private User
 
-    Private User
+class UserSearchResultItemType(TypedDict):
+    """User Search Result Item
+
+    User Search Result Item
     """
 
     login: str
@@ -28,52 +30,43 @@ class PrivateUserType(TypedDict):
     url: str
     html_url: str
     followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
     subscriptions_url: str
     organizations_url: str
     repos_url: str
-    events_url: str
     received_events_url: str
     type: str
+    score: float
+    following_url: str
+    gists_url: str
+    starred_url: str
+    events_url: str
+    public_repos: NotRequired[int]
+    public_gists: NotRequired[int]
+    followers: NotRequired[int]
+    following: NotRequired[int]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
+    name: NotRequired[Union[str, None]]
+    bio: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    location: NotRequired[Union[str, None]]
     site_admin: bool
-    name: Union[str, None]
-    company: Union[str, None]
-    blog: Union[str, None]
-    location: Union[str, None]
-    email: Union[str, None]
-    hireable: Union[bool, None]
-    bio: Union[str, None]
-    twitter_username: NotRequired[Union[str, None]]
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    created_at: datetime
-    updated_at: datetime
-    private_gists: int
-    total_private_repos: int
-    owned_private_repos: int
-    disk_usage: int
-    collaborators: int
-    two_factor_authentication: bool
-    plan: NotRequired[PrivateUserPropPlanType]
+    hireable: NotRequired[Union[bool, None]]
+    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
+    blog: NotRequired[Union[str, None]]
+    company: NotRequired[Union[str, None]]
     suspended_at: NotRequired[Union[datetime, None]]
-    business_plus: NotRequired[bool]
-    ldap_dn: NotRequired[str]
 
 
-class PrivateUserPropPlanType(TypedDict):
-    """PrivateUserPropPlan"""
+class SearchUsersGetResponse200Type(TypedDict):
+    """SearchUsersGetResponse200"""
 
-    collaborators: int
-    name: str
-    space: int
-    private_repos: int
+    total_count: int
+    incomplete_results: bool
+    items: List[UserSearchResultItemType]
 
 
 __all__ = (
-    "PrivateUserType",
-    "PrivateUserPropPlanType",
+    "UserSearchResultItemType",
+    "SearchUsersGetResponse200Type",
 )

@@ -12,15 +12,13 @@ from __future__ import annotations
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType(TypedDict):
-    """OrgsOrgPropertiesSchemaCustomPropertyNamePutBody"""
-
-    value_type: Literal["string", "single_select"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[List[str], None]]
+from .group_0091 import OrgCustomPropertyType
 
 
-__all__ = ("OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType",)
+class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
+
+    properties: List[OrgCustomPropertyType]
+
+
+__all__ = ("OrgsOrgPropertiesSchemaPatchBodyType",)

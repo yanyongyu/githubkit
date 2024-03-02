@@ -9,38 +9,103 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0333 import SearchResultTextMatchesItemsType
+from .group_0032 import MilestoneType
+from .group_0001 import SimpleUserType
+from .group_0017 import RepositoryType
+from .group_0005 import IntegrationType
+from .group_0033 import ReactionRollupType
+from .group_0334 import SearchResultTextMatchesItemsType
 
 
-class LabelSearchResultItemType(TypedDict):
-    """Label Search Result Item
+class IssueSearchResultItemType(TypedDict):
+    """Issue Search Result Item
 
-    Label Search Result Item
+    Issue Search Result Item
     """
 
+    url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
     id: int
     node_id: str
-    url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    score: float
+    number: int
+    title: str
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignees: NotRequired[Union[List[SimpleUserType], None]]
+    user: Union[None, SimpleUserType]
+    labels: List[IssueSearchResultItemPropLabelsItemsType]
+    state: str
+    state_reason: NotRequired[Union[str, None]]
+    assignee: Union[None, SimpleUserType]
+    milestone: Union[None, MilestoneType]
+    comments: int
+    created_at: datetime
+    updated_at: datetime
+    closed_at: Union[datetime, None]
     text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
+    pull_request: NotRequired[IssueSearchResultItemPropPullRequestType]
+    body: NotRequired[str]
+    score: float
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    draft: NotRequired[bool]
+    repository: NotRequired[RepositoryType]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    timeline_url: NotRequired[str]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class SearchLabelsGetResponse200Type(TypedDict):
-    """SearchLabelsGetResponse200"""
+class IssueSearchResultItemPropLabelsItemsType(TypedDict):
+    """IssueSearchResultItemPropLabelsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    color: NotRequired[str]
+    default: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+
+
+class IssueSearchResultItemPropPullRequestType(TypedDict):
+    """IssueSearchResultItemPropPullRequest"""
+
+    merged_at: NotRequired[Union[datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
+
+
+class SearchIssuesGetResponse200Type(TypedDict):
+    """SearchIssuesGetResponse200"""
 
     total_count: int
     incomplete_results: bool
-    items: List[LabelSearchResultItemType]
+    items: List[IssueSearchResultItemType]
 
 
 __all__ = (
-    "LabelSearchResultItemType",
-    "SearchLabelsGetResponse200Type",
+    "IssueSearchResultItemType",
+    "IssueSearchResultItemPropLabelsItemsType",
+    "IssueSearchResultItemPropPullRequestType",
+    "SearchIssuesGetResponse200Type",
 )

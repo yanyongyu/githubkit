@@ -13,32 +13,55 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0355 import EnterpriseWebhooksType
-from .group_0356 import SimpleInstallationType
-from .group_0358 import RepositoryWebhooksType
-from .group_0359 import SimpleUserWebhooksType
-from .group_0357 import OrganizationSimpleWebhooksType
+from .group_0356 import EnterpriseWebhooksType
+from .group_0357 import SimpleInstallationType
+from .group_0359 import RepositoryWebhooksType
+from .group_0360 import SimpleUserWebhooksType
+from .group_0358 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectReopenedType(TypedDict):
-    """project reopened event"""
+class WebhookProjectEditedType(TypedDict):
+    """project edited event"""
 
-    action: Literal["reopened"]
+    action: Literal["edited"]
+    changes: NotRequired[WebhookProjectEditedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhookProjectReopenedPropProjectType
+    project: WebhookProjectEditedPropProjectType
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-class WebhookProjectReopenedPropProjectType(TypedDict):
+class WebhookProjectEditedPropChangesType(TypedDict):
+    """WebhookProjectEditedPropChanges
+
+    The changes to the project if the action was `edited`.
+    """
+
+    body: NotRequired[WebhookProjectEditedPropChangesPropBodyType]
+    name: NotRequired[WebhookProjectEditedPropChangesPropNameType]
+
+
+class WebhookProjectEditedPropChangesPropBodyType(TypedDict):
+    """WebhookProjectEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookProjectEditedPropChangesPropNameType(TypedDict):
+    """WebhookProjectEditedPropChangesPropName"""
+
+    from_: str
+
+
+class WebhookProjectEditedPropProjectType(TypedDict):
     """Project"""
 
     body: Union[str, None]
     columns_url: str
     created_at: datetime
-    creator: Union[WebhookProjectReopenedPropProjectPropCreatorType, None]
+    creator: Union[WebhookProjectEditedPropProjectPropCreatorType, None]
     html_url: str
     id: int
     name: str
@@ -50,7 +73,7 @@ class WebhookProjectReopenedPropProjectType(TypedDict):
     url: str
 
 
-class WebhookProjectReopenedPropProjectPropCreatorType(TypedDict):
+class WebhookProjectEditedPropProjectPropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -77,7 +100,10 @@ class WebhookProjectReopenedPropProjectPropCreatorType(TypedDict):
 
 
 __all__ = (
-    "WebhookProjectReopenedType",
-    "WebhookProjectReopenedPropProjectType",
-    "WebhookProjectReopenedPropProjectPropCreatorType",
+    "WebhookProjectEditedType",
+    "WebhookProjectEditedPropChangesType",
+    "WebhookProjectEditedPropChangesPropBodyType",
+    "WebhookProjectEditedPropChangesPropNameType",
+    "WebhookProjectEditedPropProjectType",
+    "WebhookProjectEditedPropProjectPropCreatorType",
 )

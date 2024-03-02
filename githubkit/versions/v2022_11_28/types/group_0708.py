@@ -13,41 +13,37 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0711 import WebhookReleaseUnpublishedPropReleaseAllof0PropReactionsType
-from .group_0709 import WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsType
+from .group_0714 import WebhookReleaseUnpublishedPropReleaseMergedAssetsType
+from .group_0712 import WebhookReleaseUnpublishedPropReleaseAllof0PropReactionsType
 
 
-class WebhookReleaseUnpublishedPropReleaseAllof0Type(TypedDict):
-    """Release
+class WebhookReleaseUnpublishedPropReleaseType(TypedDict):
+    """WebhookReleaseUnpublishedPropRelease"""
 
-    The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
-    object.
-    """
-
-    assets: List[WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsType]
+    assets: List[WebhookReleaseUnpublishedPropReleaseMergedAssetsType]
     assets_url: str
-    author: Union[WebhookReleaseUnpublishedPropReleaseAllof0PropAuthorType, None]
-    body: Union[str, None]
-    created_at: Union[datetime, None]
+    author: WebhookReleaseUnpublishedPropReleaseMergedAuthorType
+    body: Union[Union[str, None], None]
+    created_at: datetime
     discussion_url: NotRequired[str]
     draft: bool
     html_url: str
     id: int
-    name: Union[str, None]
+    name: Union[Union[str, None], None]
     node_id: str
     prerelease: bool
     published_at: Union[datetime, None]
     reactions: NotRequired[WebhookReleaseUnpublishedPropReleaseAllof0PropReactionsType]
     tag_name: str
-    tarball_url: Union[str, None]
+    tarball_url: Union[Union[str, None], None]
     target_commitish: str
     upload_url: str
     url: str
-    zipball_url: Union[str, None]
+    zipball_url: Union[Union[str, None], None]
 
 
-class WebhookReleaseUnpublishedPropReleaseAllof0PropAuthorType(TypedDict):
-    """User"""
+class WebhookReleaseUnpublishedPropReleaseMergedAuthorType(TypedDict):
+    """WebhookReleaseUnpublishedPropReleaseMergedAuthor"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -73,6 +69,6 @@ class WebhookReleaseUnpublishedPropReleaseAllof0PropAuthorType(TypedDict):
 
 
 __all__ = (
-    "WebhookReleaseUnpublishedPropReleaseAllof0Type",
-    "WebhookReleaseUnpublishedPropReleaseAllof0PropAuthorType",
+    "WebhookReleaseUnpublishedPropReleaseType",
+    "WebhookReleaseUnpublishedPropReleaseMergedAuthorType",
 )

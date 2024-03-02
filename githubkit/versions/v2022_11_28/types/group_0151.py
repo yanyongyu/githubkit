@@ -9,41 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-
-class ArtifactType(TypedDict):
-    """Artifact
-
-    An artifact
-    """
-
-    id: int
-    node_id: str
-    name: str
-    size_in_bytes: int
-    url: str
-    archive_download_url: str
-    expired: bool
-    created_at: Union[datetime, None]
-    expires_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
+from .group_0149 import RateLimitType
 
 
-class ArtifactPropWorkflowRunType(TypedDict):
-    """ArtifactPropWorkflowRun"""
+class RateLimitOverviewPropResourcesType(TypedDict):
+    """RateLimitOverviewPropResources"""
 
-    id: NotRequired[int]
-    repository_id: NotRequired[int]
-    head_repository_id: NotRequired[int]
-    head_branch: NotRequired[str]
-    head_sha: NotRequired[str]
+    core: RateLimitType
+    graphql: NotRequired[RateLimitType]
+    search: RateLimitType
+    code_search: NotRequired[RateLimitType]
+    source_import: NotRequired[RateLimitType]
+    integration_manifest: NotRequired[RateLimitType]
+    code_scanning_upload: NotRequired[RateLimitType]
+    actions_runner_registration: NotRequired[RateLimitType]
+    scim: NotRequired[RateLimitType]
+    dependency_snapshots: NotRequired[RateLimitType]
 
 
-__all__ = (
-    "ArtifactType",
-    "ArtifactPropWorkflowRunType",
-)
+__all__ = ("RateLimitOverviewPropResourcesType",)

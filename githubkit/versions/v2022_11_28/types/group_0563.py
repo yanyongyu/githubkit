@@ -13,54 +13,52 @@ from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1Type(
+class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0Type(
     TypedDict
 ):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1"""
+    """Marketplace Purchase"""
 
-    account: NotRequired[
-        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropAccountType
-    ]
-    billing_cycle: NotRequired[str]
-    free_trial_ends_on: NotRequired[Union[str, None]]
-    next_billing_date: Union[str, None]
-    on_free_trial: NotRequired[bool]
-    plan: NotRequired[
-        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropPlanType
-    ]
-    unit_count: NotRequired[int]
+    account: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccountType
+    billing_cycle: str
+    free_trial_ends_on: Union[str, None]
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: (
+        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlanType
+    )
+    unit_count: int
 
 
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropAccountType(
+class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccountType(
     TypedDict
 ):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropAccount"""
+    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount"""
 
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organization_billing_email: NotRequired[Union[str, None]]
-    type: NotRequired[str]
+    id: int
+    login: str
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
 
 
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropPlanType(
+class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlanType(
     TypedDict
 ):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropPlan"""
+    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan"""
 
-    bullets: NotRequired[List[Union[str, None]]]
-    description: NotRequired[str]
-    has_free_trial: NotRequired[bool]
-    id: NotRequired[int]
-    monthly_price_in_cents: NotRequired[int]
-    name: NotRequired[str]
-    price_model: NotRequired[Literal["FREE", "FLAT_RATE", "PER_UNIT"]]
-    unit_name: NotRequired[Union[str, None]]
-    yearly_price_in_cents: NotRequired[int]
+    bullets: List[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
 __all__ = (
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1Type",
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropAccountType",
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropPlanType",
+    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0Type",
+    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccountType",
+    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlanType",
 )

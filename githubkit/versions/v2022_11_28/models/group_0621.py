@@ -18,21 +18,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0355 import EnterpriseWebhooks
-from .group_0356 import SimpleInstallation
-from .group_0358 import RepositoryWebhooks
-from .group_0359 import SimpleUserWebhooks
-from .group_0357 import OrganizationSimpleWebhooks
+from .group_0356 import EnterpriseWebhooks
+from .group_0357 import SimpleInstallation
+from .group_0359 import RepositoryWebhooks
+from .group_0360 import SimpleUserWebhooks
+from .group_0358 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectEdited(GitHubModel):
-    """project edited event"""
+class WebhookProjectDeleted(GitHubModel):
+    """project deleted event"""
 
-    action: Literal["edited"] = Field()
-    changes: Missing[WebhookProjectEditedPropChanges] = Field(
-        default=UNSET,
-        description="The changes to the project if the action was `edited`.",
-    )
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -48,12 +44,8 @@ class WebhookProjectEdited(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project: WebhookProjectEditedPropProject = Field(title="Project")
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
+    project: WebhookProjectDeletedPropProject = Field(title="Project")
+    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
     sender: Missing[SimpleUserWebhooks] = Field(
         default=UNSET,
         title="Simple User",
@@ -61,41 +53,13 @@ class WebhookProjectEdited(GitHubModel):
     )
 
 
-class WebhookProjectEditedPropChanges(GitHubModel):
-    """WebhookProjectEditedPropChanges
-
-    The changes to the project if the action was `edited`.
-    """
-
-    body: Missing[WebhookProjectEditedPropChangesPropBody] = Field(default=UNSET)
-    name: Missing[WebhookProjectEditedPropChangesPropName] = Field(default=UNSET)
-
-
-class WebhookProjectEditedPropChangesPropBody(GitHubModel):
-    """WebhookProjectEditedPropChangesPropBody"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the body if the action was `edited`.",
-    )
-
-
-class WebhookProjectEditedPropChangesPropName(GitHubModel):
-    """WebhookProjectEditedPropChangesPropName"""
-
-    from_: str = Field(
-        alias="from",
-        description="The changes to the project if the action was `edited`.",
-    )
-
-
-class WebhookProjectEditedPropProject(GitHubModel):
+class WebhookProjectDeletedPropProject(GitHubModel):
     """Project"""
 
     body: Union[str, None] = Field(description="Body of the project")
     columns_url: str = Field()
     created_at: datetime = Field()
-    creator: Union[WebhookProjectEditedPropProjectPropCreator, None] = Field(
+    creator: Union[WebhookProjectDeletedPropProjectPropCreator, None] = Field(
         title="User"
     )
     html_url: str = Field()
@@ -111,7 +75,7 @@ class WebhookProjectEditedPropProject(GitHubModel):
     url: str = Field()
 
 
-class WebhookProjectEditedPropProjectPropCreator(GitHubModel):
+class WebhookProjectDeletedPropProjectPropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -137,18 +101,12 @@ class WebhookProjectEditedPropProjectPropCreator(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookProjectEdited)
-model_rebuild(WebhookProjectEditedPropChanges)
-model_rebuild(WebhookProjectEditedPropChangesPropBody)
-model_rebuild(WebhookProjectEditedPropChangesPropName)
-model_rebuild(WebhookProjectEditedPropProject)
-model_rebuild(WebhookProjectEditedPropProjectPropCreator)
+model_rebuild(WebhookProjectDeleted)
+model_rebuild(WebhookProjectDeletedPropProject)
+model_rebuild(WebhookProjectDeletedPropProjectPropCreator)
 
 __all__ = (
-    "WebhookProjectEdited",
-    "WebhookProjectEditedPropChanges",
-    "WebhookProjectEditedPropChangesPropBody",
-    "WebhookProjectEditedPropChangesPropName",
-    "WebhookProjectEditedPropProject",
-    "WebhookProjectEditedPropProjectPropCreator",
+    "WebhookProjectDeleted",
+    "WebhookProjectDeletedPropProject",
+    "WebhookProjectDeletedPropProjectPropCreator",
 )

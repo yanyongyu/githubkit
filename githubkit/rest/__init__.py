@@ -2128,9 +2128,6 @@ if TYPE_CHECKING:
         RepositoryCollaboratorPermission as RepositoryCollaboratorPermission,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryPropTemplateRepository as RepositoryPropTemplateRepository,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleRequiredSignatures as RepositoryRuleRequiredSignatures,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2836,6 +2833,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoPagesPostBodyPropSource as ReposOwnerRepoPagesPostBodyPropSource,
     )
     from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleParamsRestrictedCommits as RepositoryRuleParamsRestrictedCommits,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleWorkflowsPropParameters as RepositoryRuleWorkflowsPropParameters,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3413,9 +3413,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPullsPullNumberMergePutBody as ReposOwnerRepoPullsPullNumberMergePutBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryPropTemplateRepositoryPropOwner as RepositoryPropTemplateRepositoryPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleParamsWorkflowFileReference as RepositoryRuleParamsWorkflowFileReference,
@@ -4445,9 +4442,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPullsPullNumberCodespacesPostBody as ReposOwnerRepoPullsPullNumberCodespacesPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryPropTemplateRepositoryPropPermissions as RepositoryPropTemplateRepositoryPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleRequiredDeploymentsPropParameters as RepositoryRuleRequiredDeploymentsPropParameters,
@@ -10579,9 +10573,6 @@ else:
             "LicenseSimple",
             "Repository",
             "RepositoryPropPermissions",
-            "RepositoryPropTemplateRepository",
-            "RepositoryPropTemplateRepositoryPropOwner",
-            "RepositoryPropTemplateRepositoryPropPermissions",
             "InstallationToken",
             "ScopedInstallation",
             "Authorization",
@@ -10764,6 +10755,7 @@ else:
             "RepositoryRuleBranchNamePatternPropParameters",
             "RepositoryRuleTagNamePattern",
             "RepositoryRuleTagNamePatternPropParameters",
+            "RepositoryRuleParamsRestrictedCommits",
             "RepositoryRuleWorkflows",
             "RepositoryRuleWorkflowsPropParameters",
             "RepositoryRuleParamsWorkflowFileReference",

@@ -16,128 +16,113 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0032 import Milestone
-from .group_0208 import AutoMerge
-from .group_0001 import SimpleUser
-from .group_0074 import TeamSimple
-from .group_0289 import PullRequestPropBase
-from .group_0291 import PullRequestPropLinks
-from .group_0288 import PullRequestPropHead, PullRequestPropLabelsItems
+from .group_0356 import EnterpriseWebhooks
+from .group_0357 import SimpleInstallation
+from .group_0359 import RepositoryWebhooks
+from .group_0360 import SimpleUserWebhooks
+from .group_0358 import OrganizationSimpleWebhooks
+from .group_0649 import WebhookPullRequestEditedPropPullRequest
 
 
-class WebhookPullRequestEditedPropPullRequest(GitHubModel):
-    """WebhookPullRequestEditedPropPullRequest"""
+class WebhookPullRequestEdited(GitHubModel):
+    """pull_request edited event"""
 
-    url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    issue_url: str = Field()
-    commits_url: str = Field()
-    review_comments_url: str = Field()
-    review_comment_url: str = Field()
-    comments_url: str = Field()
-    statuses_url: str = Field()
-    number: int = Field(
-        description="Number uniquely identifying the pull request within its repository."
+    action: Literal["edited"] = Field()
+    changes: WebhookPullRequestEditedPropChanges = Field(
+        description="The changes to the comment if the action was `edited`."
     )
-    state: Literal["open", "closed"] = Field(
-        description="State of this Pull Request. Either `open` or `closed`."
-    )
-    locked: bool = Field()
-    title: str = Field(description="The title of the pull request.")
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    body: Union[str, None] = Field()
-    labels: List[PullRequestPropLabelsItems] = Field()
-    milestone: Union[None, Milestone] = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    closed_at: Union[datetime, None] = Field()
-    merged_at: Union[datetime, None] = Field()
-    merge_commit_sha: Union[str, None] = Field()
-    assignee: Union[None, SimpleUser] = Field()
-    assignees: Missing[Union[List[SimpleUser], None]] = Field(default=UNSET)
-    requested_reviewers: Missing[Union[List[SimpleUser], None]] = Field(default=UNSET)
-    requested_teams: Missing[Union[List[TeamSimple], None]] = Field(default=UNSET)
-    head: PullRequestPropHead = Field()
-    base: PullRequestPropBase = Field()
-    links: PullRequestPropLinks = Field(alias="_links")
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    auto_merge: Union[AutoMerge, None] = Field(
-        title="Auto merge", description="The status of auto merging a pull request."
-    )
-    draft: Missing[bool] = Field(
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="Indicates whether or not the pull request is a draft.",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
     )
-    merged: bool = Field()
-    mergeable: Union[bool, None] = Field()
-    rebaseable: Missing[Union[bool, None]] = Field(default=UNSET)
-    mergeable_state: str = Field()
-    merged_by: Union[None, SimpleUser] = Field()
-    comments: int = Field()
-    review_comments: int = Field()
-    maintainer_can_modify: bool = Field(
-        description="Indicates whether maintainers can modify the pull request."
-    )
-    commits: int = Field()
-    additions: int = Field()
-    deletions: int = Field()
-    changed_files: int = Field()
-    allow_auto_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow auto-merge for pull requests."
-    )
-    allow_update_branch: Missing[bool] = Field(
+    installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
-        description="Whether to allow updating the pull request's branch.",
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    delete_branch_on_merge: Missing[bool] = Field(
+    number: int = Field(description="The pull request number.")
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
-        description="Whether to delete head branches when pull requests are merged.",
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+    pull_request: WebhookPullRequestEditedPropPullRequest = Field()
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: Missing[SimpleUserWebhooks] = Field(
         default=UNSET,
-        description="The default value for a merge commit message.\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
-    )
-    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
-        default=UNSET,
-        description='The default value for a merge commit title.\n- `PR_TITLE` - default to the pull request\'s title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").',
-    )
-    squash_merge_commit_message: Missing[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit message:\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
-    )
-    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
-        Field(
-            default=UNSET,
-            description="The default value for a squash merge commit title:\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
-        )
-    )
-    use_squash_pr_title_as_default: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.",
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-model_rebuild(WebhookPullRequestEditedPropPullRequest)
+class WebhookPullRequestEditedPropChanges(GitHubModel):
+    """WebhookPullRequestEditedPropChanges
 
-__all__ = ("WebhookPullRequestEditedPropPullRequest",)
+    The changes to the comment if the action was `edited`.
+    """
+
+    base: Missing[WebhookPullRequestEditedPropChangesPropBase] = Field(default=UNSET)
+    body: Missing[WebhookPullRequestEditedPropChangesPropBody] = Field(default=UNSET)
+    title: Missing[WebhookPullRequestEditedPropChangesPropTitle] = Field(default=UNSET)
+
+
+class WebhookPullRequestEditedPropChangesPropBody(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropBody"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the body if the action was `edited`.",
+    )
+
+
+class WebhookPullRequestEditedPropChangesPropTitle(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropTitle"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the title if the action was `edited`.",
+    )
+
+
+class WebhookPullRequestEditedPropChangesPropBase(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropBase"""
+
+    ref: WebhookPullRequestEditedPropChangesPropBasePropRef = Field()
+    sha: WebhookPullRequestEditedPropChangesPropBasePropSha = Field()
+
+
+class WebhookPullRequestEditedPropChangesPropBasePropRef(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropBasePropRef"""
+
+    from_: str = Field(alias="from")
+
+
+class WebhookPullRequestEditedPropChangesPropBasePropSha(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropBasePropSha"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookPullRequestEdited)
+model_rebuild(WebhookPullRequestEditedPropChanges)
+model_rebuild(WebhookPullRequestEditedPropChangesPropBody)
+model_rebuild(WebhookPullRequestEditedPropChangesPropTitle)
+model_rebuild(WebhookPullRequestEditedPropChangesPropBase)
+model_rebuild(WebhookPullRequestEditedPropChangesPropBasePropRef)
+model_rebuild(WebhookPullRequestEditedPropChangesPropBasePropSha)
+
+__all__ = (
+    "WebhookPullRequestEdited",
+    "WebhookPullRequestEditedPropChanges",
+    "WebhookPullRequestEditedPropChangesPropBody",
+    "WebhookPullRequestEditedPropChangesPropTitle",
+    "WebhookPullRequestEditedPropChangesPropBase",
+    "WebhookPullRequestEditedPropChangesPropBasePropRef",
+    "WebhookPullRequestEditedPropChangesPropBasePropSha",
+)

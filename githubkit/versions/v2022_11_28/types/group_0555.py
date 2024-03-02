@@ -13,115 +13,72 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0355 import EnterpriseWebhooksType
-from .group_0356 import SimpleInstallationType
-from .group_0358 import RepositoryWebhooksType
-from .group_0359 import SimpleUserWebhooksType
-from .group_0357 import OrganizationSimpleWebhooksType
+from .group_0356 import EnterpriseWebhooksType
+from .group_0357 import SimpleInstallationType
+from .group_0359 import RepositoryWebhooksType
+from .group_0360 import SimpleUserWebhooksType
+from .group_0358 import OrganizationSimpleWebhooksType
 
 
-class WebhookMarketplacePurchaseCancelledType(TypedDict):
-    """marketplace_purchase cancelled event"""
+class WebhookLabelEditedType(TypedDict):
+    """label edited event"""
 
-    action: Literal["cancelled"]
-    effective_date: str
+    action: Literal["edited"]
+    changes: NotRequired[WebhookLabelEditedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseType
+    label: WebhookLabelEditedPropLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[
-        WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchaseType
-    ]
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseType(TypedDict):
-    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchase"""
+class WebhookLabelEditedPropLabelType(TypedDict):
+    """Label"""
 
-    account: WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedAccountType
-    billing_cycle: str
-    free_trial_ends_on: Union[Union[str, None], None]
-    next_billing_date: Union[Union[str, None], None]
-    on_free_trial: bool
-    plan: WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedPlanType
-    unit_count: int
-
-
-class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedAccount"""
-
+    color: str
+    default: bool
+    description: Union[str, None]
     id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[Union[str, None], None]
-    type: str
-
-
-class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedPlan"""
-
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
     name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[Union[str, None], None]
-    yearly_price_in_cents: int
-
-
-class WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase"""
-
-    account: WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropAccountType
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropPlanType
-    unit_count: int
-
-
-class WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropAccount"""
-
-    id: int
-    login: str
     node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
+    url: str
 
 
-class WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropPlan"""
+class WebhookLabelEditedPropChangesType(TypedDict):
+    """WebhookLabelEditedPropChanges
 
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    The changes to the label if the action was `edited`.
+    """
+
+    color: NotRequired[WebhookLabelEditedPropChangesPropColorType]
+    description: NotRequired[WebhookLabelEditedPropChangesPropDescriptionType]
+    name: NotRequired[WebhookLabelEditedPropChangesPropNameType]
+
+
+class WebhookLabelEditedPropChangesPropColorType(TypedDict):
+    """WebhookLabelEditedPropChangesPropColor"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookLabelEditedPropChangesPropDescription"""
+
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropNameType(TypedDict):
+    """WebhookLabelEditedPropChangesPropName"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookMarketplacePurchaseCancelledType",
-    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseType",
-    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedAccountType",
-    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedPlanType",
-    "WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchaseType",
-    "WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropAccountType",
-    "WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropPlanType",
+    "WebhookLabelEditedType",
+    "WebhookLabelEditedPropLabelType",
+    "WebhookLabelEditedPropChangesType",
+    "WebhookLabelEditedPropChangesPropColorType",
+    "WebhookLabelEditedPropChangesPropDescriptionType",
+    "WebhookLabelEditedPropChangesPropNameType",
 )

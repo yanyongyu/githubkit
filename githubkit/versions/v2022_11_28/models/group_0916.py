@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,14 +18,15 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsCardsCardIdDeleteResponse403(GitHubModel):
-    """ProjectsColumnsCardsCardIdDeleteResponse403"""
+class OrgsOrgSecurityProductEnablementPostBody(GitHubModel):
+    """OrgsOrgSecurityProductEnablementPostBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[List[str]] = Field(default=UNSET)
+    query_suite: Missing[Literal["default", "extended"]] = Field(
+        default=UNSET,
+        description="CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured.\nIf you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.",
+    )
 
 
-model_rebuild(ProjectsColumnsCardsCardIdDeleteResponse403)
+model_rebuild(OrgsOrgSecurityProductEnablementPostBody)
 
-__all__ = ("ProjectsColumnsCardsCardIdDeleteResponse403",)
+__all__ = ("OrgsOrgSecurityProductEnablementPostBody",)

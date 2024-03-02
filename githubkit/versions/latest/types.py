@@ -2262,9 +2262,6 @@ if TYPE_CHECKING:
         RepositoryCollaboratorPermissionType as RepositoryCollaboratorPermissionType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        RepositoryPropTemplateRepositoryType as RepositoryPropTemplateRepositoryType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleRequiredSignaturesType as RepositoryRuleRequiredSignaturesType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -2970,6 +2967,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoPagesPostBodyPropSourceType as ReposOwnerRepoPagesPostBodyPropSourceType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleParamsRestrictedCommitsType as RepositoryRuleParamsRestrictedCommitsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleWorkflowsPropParametersType as RepositoryRuleWorkflowsPropParametersType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3547,9 +3547,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoPullsPullNumberMergePutBodyType as ReposOwnerRepoPullsPullNumberMergePutBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        RepositoryPropTemplateRepositoryPropOwnerType as RepositoryPropTemplateRepositoryPropOwnerType,
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleParamsWorkflowFileReferenceType as RepositoryRuleParamsWorkflowFileReferenceType,
@@ -4579,9 +4576,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoPullsPullNumberCodespacesPostBodyType as ReposOwnerRepoPullsPullNumberCodespacesPostBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        RepositoryPropTemplateRepositoryPropPermissionsType as RepositoryPropTemplateRepositoryPropPermissionsType,
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleRequiredDeploymentsPropParametersType as RepositoryRuleRequiredDeploymentsPropParametersType,
@@ -10713,9 +10707,6 @@ else:
             "LicenseSimpleType",
             "RepositoryType",
             "RepositoryPropPermissionsType",
-            "RepositoryPropTemplateRepositoryType",
-            "RepositoryPropTemplateRepositoryPropOwnerType",
-            "RepositoryPropTemplateRepositoryPropPermissionsType",
             "InstallationTokenType",
             "ScopedInstallationType",
             "AuthorizationType",
@@ -10898,6 +10889,7 @@ else:
             "RepositoryRuleBranchNamePatternPropParametersType",
             "RepositoryRuleTagNamePatternType",
             "RepositoryRuleTagNamePatternPropParametersType",
+            "RepositoryRuleParamsRestrictedCommitsType",
             "RepositoryRuleWorkflowsType",
             "RepositoryRuleWorkflowsPropParametersType",
             "RepositoryRuleParamsWorkflowFileReferenceType",
