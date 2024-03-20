@@ -22,8 +22,6 @@ PyJWT = { version = "^2.4.0", extras = ["crypto"], optional = true }
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.2.0"
-isort = "^5.10.1"
-black = "^24.0.0"
 Jinja2 = "^3.1.2"
 nonemoji = "^0.1.2"
 jsonpointer = "^2.3"
@@ -67,13 +65,6 @@ exclude_lines = [
 pydantic-v2 = "package_version('pydantic') < (2,)"
 pydantic-v1 = "package_version('pydantic') >= (2,)"
 
-[tool.black]
-line-length = 88
-target-version = ["py38", "py39", "py310", "py311"]
-include = '\.pyi?$'
-extend-exclude = '''
-'''
-
 [tool.isort]
 profile = "black"
 line_length = 88
@@ -85,15 +76,50 @@ extra_standard_library = ["typing_extensions"]
 [tool.ruff]
 line-length = 88
 target-version = "py38"
-extend-exclude = ["githubkit/rest/", "githubkit/versions/"]
+
+[tool.ruff.format]
+line-ending = "lf"
 
 [tool.ruff.lint]
-select = ["E", "W", "F", "UP", "C", "T", "PYI", "PT", "Q", "TID", "RUF"]
-ignore = ["E402", "C901", "UP037"]
+select = [
+  "F", # Pyflakes
+  "W", # pycodestyle warnings
+  "E", # pycodestyle errors
+  # "I",     # isort
+  "UP",    # pyupgrade
+  "ASYNC", # flake8-async
+  "C4",    # flake8-comprehensions
+  "T10",   # flake8-debugger
+  "T20",   # flake8-print
+  "PYI",   # flake8-pyi
+  "PT",    # flake8-pytest-style
+  "Q",     # flake8-quotes
+  "TID",   # flake8-tidy-imports
+  "RUF",   # Ruff-specific rules
+]
+ignore = [
+  "E402",   # module-import-not-at-top-of-file
+  "UP037",  # quoted-annotation
+  "RUF001", # ambiguous-unicode-character-string
+  "RUF002", # ambiguous-unicode-character-docstring
+  "RUF003", # ambiguous-unicode-character-comment
+]
+
+[tool.ruff.lint.per-file-ignores]
+"githubkit/rest/**" = ["E501", "PYI016", "TID"]
+"githubkit/versions/**" = ["E501", "PYI016", "TID"]
+
+[tool.ruff.lint.isort]
+length-sort = true
+force-sort-within-sections = true
+extra-standard-library = ["typing_extensions"]
 
 [tool.ruff.lint.flake8-pytest-style]
 fixture-parentheses = false
 mark-parentheses = false
+
+[tool.ruff.lint.pyupgrade]
+keep-runtime-typing = true
 
 [tool.pyright]
 typeCheckingMode = "standard"
@@ -113,12 +139,20 @@ executionEnvironments = [
 [tool.codegen]
 output_dir = "githubkit/versions/"
 legacy_rest_models = "githubkit/rest/__init__.py"
-version_prefix = "v"
 
 [[tool.codegen.descriptions]]
 version = "2022-11-28"
+identifier = "2022-11-28"
+module = "v2022_11_28"
 is_latest = true
 source = "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions-next/api.github.com/api.github.com.2022-11-28.json"
+
+[[tool.codegen.descriptions]]
+version = "2022-11-28"
+identifier = "ghec-2022-11-28"
+module = "ghec_v2022_11_28"
+is_latest = false
+source = "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions-next/ghec/ghec.2022-11-28.json"
 
 
 [[tool.codegen.overrides]]
@@ -129,7 +163,7 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
 
 [[tool.codegen.overrides]]
 # override invalid schemas for 2022-11-28 (current globally)
-# target_versions = ["2022-11-28"]
+# target_descriptions = ["2022-11-28", "ghec-2022-11-28"]
 
 [tool.codegen.overrides.schema_overrides]
 # enhancement: issue timeline discriminator

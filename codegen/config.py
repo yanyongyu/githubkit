@@ -11,11 +11,16 @@ class Override(BaseModel):
 
 
 class VersionedOverride(Override):
-    target_versions: list[str] = Field(default_factory=list)
+    target_descriptions: list[str] = Field(default_factory=list)
 
 
 class DescriptionConfig(BaseModel):
     version: str
+    """The version name used in the rest api header."""
+    identifier: str
+    """The identifier used in githubkit api versioning."""
+    module: str
+    """The module name used in githubkit versions."""
     is_latest: bool = False
     """If true, the description will be used as the default description."""
     source: str
@@ -24,15 +29,15 @@ class DescriptionConfig(BaseModel):
 class Config(BaseModel):
     output_dir: Path
     legacy_rest_models: Path
-    version_prefix: str = "v"
     descriptions: list[DescriptionConfig]
     overrides: list[VersionedOverride] = Field(default_factory=list)
 
-    def get_override_config_for_version(self, version: str) -> Override:
+    def get_override_config_for_version(self, version_id: str) -> Override:
         selected_overrides = [
             override
             for override in self.overrides
-            if version in override.target_versions or not override.target_versions
+            if version_id in override.target_descriptions
+            or not override.target_descriptions
         ]
         return Override(
             class_overrides={

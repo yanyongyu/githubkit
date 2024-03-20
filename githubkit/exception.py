@@ -8,7 +8,8 @@ if TYPE_CHECKING:
     from .graphql import GraphQLResponse
 
 
-class GitHubException(Exception): ...
+class GitHubException(Exception):
+    ...
 
 
 class AuthCredentialError(GitHubException):

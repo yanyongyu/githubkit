@@ -31,7 +31,7 @@ class Source:
         return Source(uri=self.uri.copy_with(fragment=uri_ref.fragment), root=self.root)
 
     def __truediv__(self, other: str | int) -> "Source":
-        parts = self.pointer.get_parts() + [other]
+        parts = [*self.pointer.get_parts(), other]
         fragment = JsonPointer.from_parts(parts).path
         return self.resolve_ref(str(httpx.URL(fragment=fragment)))
 

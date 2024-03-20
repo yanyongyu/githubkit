@@ -58,13 +58,13 @@ def build_user_agent(user_agent: Optional[str] = None) -> str:
 
 
 def build_timeout(
-    timeout: Optional[Union[float, httpx.Timeout]] = None
+    timeout: Optional[Union[float, httpx.Timeout]] = None,
 ) -> httpx.Timeout:
     return timeout if isinstance(timeout, httpx.Timeout) else httpx.Timeout(timeout)
 
 
 def build_auto_retry(
-    auto_retry: Union[bool, RetryDecisionFunc] = True
+    auto_retry: Union[bool, RetryDecisionFunc] = True,
 ) -> Optional[RetryDecisionFunc]:
     if auto_retry is True:
         return RETRY_DEFAULT
