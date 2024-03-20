@@ -41,7 +41,7 @@ class AppAuth(httpx.Auth):
 
     JWT_CACHE_KEY = "githubkit:auth:app:{app_id}:jwt"
     INSTALLATION_CACHE_KEY = (
-        "githubkit:auth:app:installation:"
+        "githubkit:auth:app:{app_id}:installation:"
         "{installation_id}:{permissions}:{repositories}:{repository_ids}"
     )
 
@@ -156,6 +156,7 @@ class AppAuth(httpx.Auth):
             [] if isinstance(self.repository_ids, Unset) else self.repository_ids
         )
         return self.INSTALLATION_CACHE_KEY.format(
+            app_id=self.app_id,
             installation_id=self.installation_id,
             permissions=",".join(
                 name if value == "read" else f"{name}!"
