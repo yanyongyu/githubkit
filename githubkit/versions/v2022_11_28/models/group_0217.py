@@ -15,11 +15,11 @@ from typing import List, Literal
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0181 import DiffEntry
 from .group_0182 import Commit
+from .group_0181 import DiffEntry
 
 
 class CommitComparison(GitHubModel):

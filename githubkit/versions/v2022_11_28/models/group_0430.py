@@ -10,12 +10,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0360 import RepositoryWebhooks
 from .group_0364 import Discussion
+from .group_0360 import RepositoryWebhooks
 
 
 class WebhookDiscussionTransferredPropChanges(GitHubModel):

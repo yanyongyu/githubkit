@@ -15,11 +15,11 @@ from typing_extensions import TypedDict, NotRequired
 
 from .group_0390 import EnterpriseWebhooksType
 from .group_0391 import SimpleInstallationType
-from .group_0392 import OrganizationSimpleWebhooksType
 from .group_0393 import RepositoryWebhooksType
 from .group_0394 import SimpleUserWebhooksType
-from .group_0508 import WebhookIssueCommentEditedPropCommentType
+from .group_0392 import OrganizationSimpleWebhooksType
 from .group_0509 import WebhookIssueCommentEditedPropIssueType
+from .group_0508 import WebhookIssueCommentEditedPropCommentType
 
 
 class WebhookIssueCommentEditedType(TypedDict):

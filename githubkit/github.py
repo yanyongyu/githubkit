@@ -1,3 +1,5 @@
+from functools import cached_property
+from typing_extensions import ParamSpec
 from typing import (
     TYPE_CHECKING,
     Any,
@@ -10,22 +12,20 @@ from typing import (
     Awaitable,
     overload,
 )
-from functools import cached_property
-from typing_extensions import ParamSpec
 
-from .auth import BaseAuthStrategy
 from .core import GitHubCore
-from .typing import RetryDecisionFunc
-from .graphql import GraphQLResponse, build_graphql_request, parse_graphql_response
 from .response import Response
-from .versions import RestVersionSwitcher, WebhooksVersionSwitcher
 from .paginator import Paginator
+from .auth import BaseAuthStrategy
+from .typing import RetryDecisionFunc
+from .versions import RestVersionSwitcher, WebhooksVersionSwitcher
+from .graphql import GraphQLResponse, build_graphql_request, parse_graphql_response
 
 if TYPE_CHECKING:
     import httpx
 
-    from .auth import TokenAuthStrategy, UnauthAuthStrategy
     from .config import Config
+    from .auth import TokenAuthStrategy, UnauthAuthStrategy
 
 
 A = TypeVar("A", bound=BaseAuthStrategy)

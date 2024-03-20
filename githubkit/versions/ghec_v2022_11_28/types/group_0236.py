@@ -13,8 +13,8 @@ from __future__ import annotations
 from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0200 import DiffEntryType
 from .group_0201 import CommitType
+from .group_0200 import DiffEntryType
 
 
 class CommitComparisonType(TypedDict):

@@ -15,11 +15,11 @@ from typing import Union, Literal
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
 from .group_0090 import Team
+from .group_0001 import SimpleUser
 
 
 class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems(GitHubModel):

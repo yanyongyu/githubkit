@@ -15,16 +15,16 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0357 import EnterpriseWebhooks
 from .group_0358 import SimpleInstallation
-from .group_0359 import OrganizationSimpleWebhooks
 from .group_0360 import RepositoryWebhooks
 from .group_0361 import SimpleUserWebhooks
-from .group_0463 import WebhookIssueCommentDeletedPropComment
+from .group_0359 import OrganizationSimpleWebhooks
 from .group_0464 import WebhookIssueCommentDeletedPropIssue
+from .group_0463 import WebhookIssueCommentDeletedPropComment
 
 
 class WebhookIssueCommentDeleted(GitHubModel):

@@ -15,12 +15,12 @@ from typing import List, Union
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0179 import GitUser
 from .group_0001 import SimpleUser
 from .group_0050 import MinimalRepository
-from .group_0179 import GitUser
 from .group_0335 import SearchResultTextMatchesItems
 from .group_0338 import CommitSearchResultItemPropCommit
 

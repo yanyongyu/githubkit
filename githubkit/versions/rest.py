@@ -7,9 +7,9 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-from typing import TYPE_CHECKING, Any, Dict, Literal, overload
-from weakref import WeakKeyDictionary, ref
 import importlib
+from weakref import WeakKeyDictionary, ref
+from typing import TYPE_CHECKING, Any, Dict, Literal, overload
 
 from . import VERSIONS, VERSION_TYPE, LATEST_VERSION
 

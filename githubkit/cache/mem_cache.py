@@ -1,6 +1,6 @@
+from dataclasses import dataclass
 from typing import Dict, Optional
 from datetime import datetime, timezone, timedelta
-from dataclasses import dataclass
 
 from .base import BaseCache
 

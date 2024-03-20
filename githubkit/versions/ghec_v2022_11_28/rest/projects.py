@@ -10,14 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 from weakref import ref
+from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
+from githubkit.typing import Missing
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
-from githubkit.typing import Missing
 
 if TYPE_CHECKING:
     from typing import List, Union, Literal
@@ -27,6 +27,15 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
+    from ..models import (
+        Project,
+        SimpleUser,
+        ProjectCard,
+        ProjectColumn,
+        ProjectCollaboratorPermission,
+        ProjectsColumnsColumnIdMovesPostResponse201,
+        ProjectsColumnsCardsCardIdMovesPostResponse201,
+    )
     from ..types import (
         UserProjectsPostBodyType,
         OrgsOrgProjectsPostBodyType,
@@ -40,15 +49,6 @@ if TYPE_CHECKING:
         ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
         ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
         ProjectsProjectIdCollaboratorsUsernamePutBodyType,
-    )
-    from ..models import (
-        Project,
-        SimpleUser,
-        ProjectCard,
-        ProjectColumn,
-        ProjectCollaboratorPermission,
-        ProjectsColumnsColumnIdMovesPostResponse201,
-        ProjectsColumnsCardsCardIdMovesPostResponse201,
     )
 
 

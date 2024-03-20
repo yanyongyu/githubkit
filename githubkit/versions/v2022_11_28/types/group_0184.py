@@ -12,8 +12,8 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0177 import BranchProtectionType
 from .group_0182 import CommitType
+from .group_0177 import BranchProtectionType
 
 
 class BranchWithProtectionType(TypedDict):

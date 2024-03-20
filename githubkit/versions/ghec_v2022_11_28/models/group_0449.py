@@ -15,15 +15,15 @@ from typing import Literal
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0397 import Discussion
 from .group_0390 import EnterpriseWebhooks
 from .group_0391 import SimpleInstallation
-from .group_0392 import OrganizationSimpleWebhooks
 from .group_0393 import RepositoryWebhooks
 from .group_0394 import SimpleUserWebhooks
-from .group_0397 import Discussion
+from .group_0392 import OrganizationSimpleWebhooks
 
 
 class WebhookDiscussionClosed(GitHubModel):

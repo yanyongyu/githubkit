@@ -10,17 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
 from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
 from .group_0058 import MilestoneType
-from .group_0089 import TeamSimpleType
 from .group_0229 import AutoMergeType
-from .group_0309 import PullRequestPropHeadType, PullRequestPropLabelsItemsType
+from .group_0001 import SimpleUserType
+from .group_0089 import TeamSimpleType
 from .group_0310 import PullRequestPropBaseType
 from .group_0312 import PullRequestPropLinksType
+from .group_0309 import PullRequestPropHeadType, PullRequestPropLabelsItemsType
 
 
 class WebhookPullRequestConvertedToDraftPropPullRequestType(TypedDict):

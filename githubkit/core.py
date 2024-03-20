@@ -1,5 +1,8 @@
 import time
 from types import TracebackType
+from contextvars import ContextVar
+from datetime import datetime, timezone, timedelta
+from contextlib import contextmanager, asynccontextmanager
 from typing import (
     Any,
     Dict,
@@ -14,17 +17,15 @@ from typing import (
     cast,
     overload,
 )
-from datetime import datetime, timezone, timedelta
-from contextlib import contextmanager, asynccontextmanager
-from contextvars import ContextVar
 
 import anyio
 import httpx
 import hishel
 
-from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
+from .response import Response
 from .compat import to_jsonable_python
 from .config import Config, get_config
+from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
 from .typing import (
     URLTypes,
     CookieTypes,
@@ -34,7 +35,6 @@ from .typing import (
     QueryParamTypes,
     RetryDecisionFunc,
 )
-from .response import Response
 from .exception import (
     RequestError,
     RequestFailed,

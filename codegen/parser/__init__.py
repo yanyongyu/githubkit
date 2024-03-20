@@ -1,12 +1,12 @@
-from typing import TYPE_CHECKING, Optional
 from contextvars import ContextVar
+from typing import TYPE_CHECKING, Optional
 
 import httpx
 from openapi_pydantic import OpenAPI
 
 if TYPE_CHECKING:
-    from ..config import Override
     from ..source import Source
+    from ..config import Override
 
 # parser context
 _override_config: ContextVar["Override"] = ContextVar("override_config")
@@ -31,20 +31,20 @@ def add_schema(ref: httpx.URL, schema: "SchemaData"):
     _schemas.get()[ref] = schema
 
 
-from .data import ModelGroup as ModelGroup
-from .data import OpenAPIData as OpenAPIData
-from .data import WebhookData as WebhookData
-from .data import EndpointData as EndpointData
-from .utils import sanitize as sanitize
-from .utils import kebab_case as kebab_case
 from .utils import merge_dict
-from .utils import snake_case as snake_case
-from .utils import pascal_case as pascal_case
-from .utils import fix_reserved_words as fix_reserved_words
 from .models import parse_models
-from .schemas import SchemaData, ModelSchema, parse_schema
 from .webhooks import parse_webhook
 from .endpoints import parse_endpoint
+from .utils import sanitize as sanitize
+from .data import ModelGroup as ModelGroup
+from .utils import kebab_case as kebab_case
+from .utils import snake_case as snake_case
+from .data import OpenAPIData as OpenAPIData
+from .data import WebhookData as WebhookData
+from .utils import pascal_case as pascal_case
+from .data import EndpointData as EndpointData
+from .schemas import SchemaData, ModelSchema, parse_schema
+from .utils import fix_reserved_words as fix_reserved_words
 
 
 def parse_openapi_spec(source: "Source", override: "Override") -> OpenAPIData:

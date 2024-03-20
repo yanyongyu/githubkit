@@ -10,11 +10,12 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Dict, Literal, Optional
 from weakref import ref
+from typing import TYPE_CHECKING, Dict, Literal, Optional
 
-from githubkit.utils import UNSET, exclude_unset
+
 from githubkit.typing import Missing
+from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
     from typing import Literal

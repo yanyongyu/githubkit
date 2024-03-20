@@ -10,12 +10,12 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from datetime import datetime
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0007 import WebhookConfigType
 from .group_0267 import HookResponseType
+from .group_0007 import WebhookConfigType
 
 
 class HookType(TypedDict):

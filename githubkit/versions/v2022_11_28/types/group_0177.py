@@ -13,8 +13,8 @@ from __future__ import annotations
 from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0174 import ProtectedBranchPullRequestReviewType
 from .group_0176 import BranchRestrictionPolicyType
+from .group_0174 import ProtectedBranchPullRequestReviewType
 
 
 class BranchProtectionType(TypedDict):

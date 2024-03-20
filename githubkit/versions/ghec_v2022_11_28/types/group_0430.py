@@ -13,12 +13,12 @@ from __future__ import annotations
 from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0113 import CustomPropertyValueType
 from .group_0390 import EnterpriseWebhooksType
 from .group_0391 import SimpleInstallationType
-from .group_0392 import OrganizationSimpleWebhooksType
 from .group_0393 import RepositoryWebhooksType
 from .group_0394 import SimpleUserWebhooksType
+from .group_0113 import CustomPropertyValueType
+from .group_0392 import OrganizationSimpleWebhooksType
 
 
 class WebhookCustomPropertyValuesUpdatedType(TypedDict):

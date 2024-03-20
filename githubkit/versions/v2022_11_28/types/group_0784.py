@@ -10,14 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
 from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0357 import EnterpriseWebhooksType
 from .group_0358 import SimpleInstallationType
-from .group_0359 import OrganizationSimpleWebhooksType
 from .group_0361 import SimpleUserWebhooksType
+from .group_0359 import OrganizationSimpleWebhooksType
 
 
 class WebhookTeamAddedToRepositoryType(TypedDict):

@@ -10,14 +10,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0731 import WebhookRepositoryRulesetEditedPropChangesPropConditions
 from .group_0733 import WebhookRepositoryRulesetEditedPropChangesPropRules
+from .group_0731 import WebhookRepositoryRulesetEditedPropChangesPropConditions
 
 
 class WebhookRepositoryRulesetEditedPropChanges(GitHubModel):

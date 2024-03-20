@@ -17,8 +17,8 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0358 import SimpleInstallation
-from .group_0359 import OrganizationSimpleWebhooks
 from .group_0361 import SimpleUserWebhooks
+from .group_0359 import OrganizationSimpleWebhooks
 from .group_0366 import PersonalAccessTokenRequest
 
 

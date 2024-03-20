@@ -1,11 +1,11 @@
-from typing import TYPE_CHECKING
 from datetime import timedelta
+from typing import TYPE_CHECKING
 
 import httpx
 
 if TYPE_CHECKING:
-    from .graphql import GraphQLResponse
     from .response import Response
+    from .graphql import GraphQLResponse
 
 
 class GitHubException(Exception):

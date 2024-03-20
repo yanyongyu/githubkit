@@ -1,6 +1,6 @@
 from typing import Any, ClassVar
-from dataclasses import field, dataclass
 from typing_extensions import override
+from dataclasses import field, dataclass
 
 
 @dataclass(kw_only=True)

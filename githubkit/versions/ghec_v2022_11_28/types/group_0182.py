@@ -10,14 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
 from datetime import datetime
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
+from .group_0181 import SimpleCommitType
 from .group_0076 import MinimalRepositoryType
 from .group_0180 import PullRequestMinimalType
-from .group_0181 import SimpleCommitType
 
 
 class WorkflowRunType(TypedDict):

@@ -1,6 +1,6 @@
-from typing import Any, Dict, List, Union, Optional
-from dataclasses import asdict, dataclass
 from typing_extensions import Self
+from dataclasses import asdict, dataclass
+from typing import Any, Dict, List, Union, Optional
 
 import httpx
 

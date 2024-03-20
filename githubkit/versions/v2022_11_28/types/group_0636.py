@@ -13,10 +13,10 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0358 import SimpleInstallationType
-from .group_0359 import OrganizationSimpleWebhooksType
-from .group_0361 import SimpleUserWebhooksType
 from .group_0367 import ProjectsV2Type
+from .group_0358 import SimpleInstallationType
+from .group_0361 import SimpleUserWebhooksType
+from .group_0359 import OrganizationSimpleWebhooksType
 
 
 class WebhookProjectsV2ProjectReopenedType(TypedDict):

@@ -10,19 +10,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
 from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0814 import WebhookWorkflowRunInProgressPropWorkflowRunMergedPullRequests
 from .group_0812 import (
     WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropReferencedWorkflowsItems,
 )
-from .group_0814 import WebhookWorkflowRunInProgressPropWorkflowRunMergedPullRequests
 
 
 class WebhookWorkflowRunInProgressPropWorkflowRun(GitHubModel):

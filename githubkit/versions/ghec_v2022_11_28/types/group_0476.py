@@ -15,9 +15,9 @@ from typing_extensions import TypedDict, NotRequired
 
 from .group_0015 import InstallationType
 from .group_0390 import EnterpriseWebhooksType
-from .group_0392 import OrganizationSimpleWebhooksType
 from .group_0393 import RepositoryWebhooksType
 from .group_0394 import SimpleUserWebhooksType
+from .group_0392 import OrganizationSimpleWebhooksType
 
 
 class WebhookInstallationDeletedType(TypedDict):

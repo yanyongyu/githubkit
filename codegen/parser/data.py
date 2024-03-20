@@ -2,8 +2,8 @@ from typing import Literal
 from collections import defaultdict
 from dataclasses import field, dataclass
 
-from .utils import snake_case, concat_snake_name, fix_reserved_words
 from .schemas import Property, SchemaData, ModelSchema, UnionSchema
+from .utils import snake_case, concat_snake_name, fix_reserved_words
 
 
 @dataclass(eq=False)

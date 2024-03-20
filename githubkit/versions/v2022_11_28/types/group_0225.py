@@ -10,14 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
 from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
-from .group_0026 import DependabotAlertSecurityVulnerabilityType
-from .group_0027 import DependabotAlertSecurityAdvisoryType
 from .group_0226 import DependabotAlertPropDependencyType
+from .group_0027 import DependabotAlertSecurityAdvisoryType
+from .group_0026 import DependabotAlertSecurityVulnerabilityType
 
 
 class DependabotAlertType(TypedDict):

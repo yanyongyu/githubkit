@@ -10,14 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
 from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0075 import TeamType
+from .group_0034 import IssueType
 from .group_0001 import SimpleUserType
 from .group_0005 import IntegrationType
-from .group_0034 import IssueType
-from .group_0075 import TeamType
 
 
 class IssueEventType(TypedDict):

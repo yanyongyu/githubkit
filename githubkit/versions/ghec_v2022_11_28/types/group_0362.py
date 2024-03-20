@@ -13,8 +13,8 @@ from __future__ import annotations
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0360 import UserNameResponseType, UserEmailsResponseItemsType
 from .group_0361 import UserRoleItemsType
+from .group_0360 import UserNameResponseType, UserEmailsResponseItemsType
 
 
 class UserResponseType(TypedDict):

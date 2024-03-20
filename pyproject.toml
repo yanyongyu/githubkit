@@ -65,6 +65,14 @@ exclude_lines = [
 pydantic-v2 = "package_version('pydantic') < (2,)"
 pydantic-v1 = "package_version('pydantic') >= (2,)"
 
+[tool.isort]
+profile = "black"
+line_length = 88
+length_sort = true
+skip_gitignore = true
+force_sort_within_sections = true
+extra_standard_library = ["typing_extensions"]
+
 [tool.ruff]
 line-length = 88
 target-version = "py38"
@@ -73,12 +81,33 @@ target-version = "py38"
 line-ending = "lf"
 
 [tool.ruff.lint]
-select = ["F", "E", "W", "C", "I", "UP", "T", "PYI", "PT", "Q", "TID", "RUF"]
-ignore = ["E402", "C901", "UP037"]
+select = [
+  "F", # Pyflakes
+  "W", # pycodestyle warnings
+  "E", # pycodestyle errors
+  # "I",     # isort
+  "UP",    # pyupgrade
+  "ASYNC", # flake8-async
+  "C4",    # flake8-comprehensions
+  "T10",   # flake8-debugger
+  "T20",   # flake8-print
+  "PYI",   # flake8-pyi
+  "PT",    # flake8-pytest-style
+  "Q",     # flake8-quotes
+  "TID",   # flake8-tidy-imports
+  "RUF",   # Ruff-specific rules
+]
+ignore = [
+  "E402",   # module-import-not-at-top-of-file
+  "UP037",  # quoted-annotation
+  "RUF001", # ambiguous-unicode-character-string
+  "RUF002", # ambiguous-unicode-character-docstring
+  "RUF003", # ambiguous-unicode-character-comment
+]
 
 [tool.ruff.lint.per-file-ignores]
-"githubkit/rest/**" = ["E501", "PYI016", "TID", "RUF001"]
-"githubkit/versions/**" = ["E501", "PYI016", "TID", "RUF001"]
+"githubkit/rest/**" = ["E501", "PYI016", "TID"]
+"githubkit/versions/**" = ["E501", "PYI016", "TID"]
 
 [tool.ruff.lint.isort]
 length-sort = true

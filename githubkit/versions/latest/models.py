@@ -562,10 +562,10 @@ if TYPE_CHECKING:
         FileCommitPropCommit as FileCommitPropCommit,
     )
     from githubkit.versions.v2022_11_28.models import (
-        GistsGistIdPatchBody as GistsGistIdPatchBody,
+        GistSimplePropForkOf as GistSimplePropForkOf,
     )
     from githubkit.versions.v2022_11_28.models import (
-        GistSimplePropForkOf as GistSimplePropForkOf,
+        GistsGistIdPatchBody as GistsGistIdPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         GitTreePropTreeItems as GitTreePropTreeItems,
@@ -880,10 +880,10 @@ if TYPE_CHECKING:
         OrgsOrgRulesetsPostBody as OrgsOrgRulesetsPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleWorkflows as RepositoryRuleWorkflows,
+        ReposOwnerRepoPatchBody as ReposOwnerRepoPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoPatchBody as ReposOwnerRepoPatchBody,
+        RepositoryRuleWorkflows as RepositoryRuleWorkflows,
     )
     from githubkit.versions.v2022_11_28.models import (
         UserMarketplacePurchase as UserMarketplacePurchase,
@@ -1204,9 +1204,6 @@ if TYPE_CHECKING:
         LabeledIssueEventPropLabel as LabeledIssueEventPropLabel,
     )
     from githubkit.versions.v2022_11_28.models import (
-        OrganizationSimpleWebhooks as OrganizationSimpleWebhooks,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         OrgRulesetConditionsOneof0 as OrgRulesetConditionsOneof0,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -1214,6 +1211,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgRulesetConditionsOneof2 as OrgRulesetConditionsOneof2,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrganizationSimpleWebhooks as OrganizationSimpleWebhooks,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgInvitationsPostBody as OrgsOrgInvitationsPostBody,
@@ -1246,13 +1246,13 @@ if TYPE_CHECKING:
         PullRequestSimplePropLinks as PullRequestSimplePropLinks,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoKeysPostBody as ReposOwnerRepoKeysPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         RepositoryAdvisoryPropCvss as RepositoryAdvisoryPropCvss,
     )
     from githubkit.versions.v2022_11_28.models import (
         RepositoryRulesetPropLinks as RepositoryRulesetPropLinks,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoKeysPostBody as ReposOwnerRepoKeysPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         SearchIssuesGetResponse200 as SearchIssuesGetResponse200,
@@ -1381,10 +1381,10 @@ if TYPE_CHECKING:
         NotificationsPutResponse202 as NotificationsPutResponse202,
     )
     from githubkit.versions.v2022_11_28.models import (
-        OrganizationActionsVariable as OrganizationActionsVariable,
+        OrgRepoCustomPropertyValues as OrgRepoCustomPropertyValues,
     )
     from githubkit.versions.v2022_11_28.models import (
-        OrgRepoCustomPropertyValues as OrgRepoCustomPropertyValues,
+        OrganizationActionsVariable as OrganizationActionsVariable,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgHooksHookIdPatchBody as OrgsOrgHooksHookIdPatchBody,
@@ -1405,9 +1405,6 @@ if TYPE_CHECKING:
         RenamedIssueEventPropRename as RenamedIssueEventPropRename,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRulesetConditions as RepositoryRulesetConditions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoForksPostBody as ReposOwnerRepoForksPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -1421,6 +1418,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoTopicsPutBody as ReposOwnerRepoTopicsPutBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRulesetConditions as RepositoryRulesetConditions,
     )
     from githubkit.versions.v2022_11_28.models import (
         SearchCommitsGetResponse200 as SearchCommitsGetResponse200,
@@ -1510,16 +1510,25 @@ if TYPE_CHECKING:
         MinimalRepositoryPropLicense as MinimalRepositoryPropLicense,
     )
     from githubkit.versions.v2022_11_28.models import (
-        OrganizationDependabotSecret as OrganizationDependabotSecret,
+        OrgMembershipPropPermissions as OrgMembershipPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        OrgMembershipPropPermissions as OrgMembershipPropPermissions,
+        OrganizationDependabotSecret as OrganizationDependabotSecret,
     )
     from githubkit.versions.v2022_11_28.models import (
         ProtectedBranchAdminEnforced as ProtectedBranchAdminEnforced,
     )
     from githubkit.versions.v2022_11_28.models import (
         RemovedFromProjectIssueEvent as RemovedFromProjectIssueEvent,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoIssuesPostBody as ReposOwnerRepoIssuesPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoLabelsPostBody as ReposOwnerRepoLabelsPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoMergesPostBody as ReposOwnerRepoMergesPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleDetailedOneof0 as RepositoryRuleDetailedOneof0,
@@ -1555,19 +1564,10 @@ if TYPE_CHECKING:
         RepositoryRuleNonFastForward as RepositoryRuleNonFastForward,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRulesetBypassActor as RepositoryRulesetBypassActor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleTagNamePattern as RepositoryRuleTagNamePattern,
     )
     from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoIssuesPostBody as ReposOwnerRepoIssuesPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoLabelsPostBody as ReposOwnerRepoLabelsPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoMergesPostBody as ReposOwnerRepoMergesPostBody,
+        RepositoryRulesetBypassActor as RepositoryRulesetBypassActor,
     )
     from githubkit.versions.v2022_11_28.models import (
         SearchResultTextMatchesItems as SearchResultTextMatchesItems,
@@ -1693,13 +1693,13 @@ if TYPE_CHECKING:
         FullRepositoryPropPermissions as FullRepositoryPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        GistSimplePropForkOfPropFiles as GistSimplePropForkOfPropFiles,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         GistsGistIdPatchBodyPropFiles as GistsGistIdPatchBodyPropFiles,
     )
     from githubkit.versions.v2022_11_28.models import (
         GistsGistIdStarGetResponse404 as GistsGistIdStarGetResponse404,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        GistSimplePropForkOfPropFiles as GistSimplePropForkOfPropFiles,
     )
     from githubkit.versions.v2022_11_28.models import (
         ImportPropProjectChoicesItems as ImportPropProjectChoicesItems,
@@ -1717,6 +1717,15 @@ if TYPE_CHECKING:
         ProtectedBranchPropLockBranch as ProtectedBranchPropLockBranch,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoGitRefsPostBody as ReposOwnerRepoGitRefsPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoGitTagsPostBody as ReposOwnerRepoGitTagsPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoImportPatchBody as ReposOwnerRepoImportPatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleDetailedOneof10 as RepositoryRuleDetailedOneof10,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -1730,15 +1739,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleDetailedOneof14 as RepositoryRuleDetailedOneof14,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoGitRefsPostBody as ReposOwnerRepoGitRefsPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoGitTagsPostBody as ReposOwnerRepoGitTagsPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoImportPatchBody as ReposOwnerRepoImportPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         TeamRepositoryPropPermissions as TeamRepositoryPropPermissions,
@@ -1969,6 +1969,12 @@ if TYPE_CHECKING:
         OrgsOrgRulesetsRulesetIdPutBody as OrgsOrgRulesetsRulesetIdPutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoAutolinksPostBody as ReposOwnerRepoAutolinksPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoDeleteResponse403 as ReposOwnerRepoDeleteResponse403,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         RepositoryAdvisoryPropCwesItems as RepositoryAdvisoryPropCwesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -1976,12 +1982,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleBranchNamePattern as RepositoryRuleBranchNamePattern,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoAutolinksPostBody as ReposOwnerRepoAutolinksPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoDeleteResponse403 as ReposOwnerRepoDeleteResponse403,
     )
     from githubkit.versions.v2022_11_28.models import (
         SecretScanningLocationIssueBody as SecretScanningLocationIssueBody,
@@ -2092,15 +2092,6 @@ if TYPE_CHECKING:
         PullRequestSimplePropLabelsItems as PullRequestSimplePropLabelsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryAdvisoryPropSubmission as RepositoryAdvisoryPropSubmission,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryCollaboratorPermission as RepositoryCollaboratorPermission,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleRequiredSignatures as RepositoryRuleRequiredSignatures,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCodespacesPostBody as ReposOwnerRepoCodespacesPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2129,6 +2120,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPagesPutBodyAnyof4 as ReposOwnerRepoPagesPutBodyAnyof4,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryAdvisoryPropSubmission as RepositoryAdvisoryPropSubmission,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryCollaboratorPermission as RepositoryCollaboratorPermission,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleRequiredSignatures as RepositoryRuleRequiredSignatures,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReviewCustomGatesCommentRequired as ReviewCustomGatesCommentRequired,
@@ -2272,12 +2272,6 @@ if TYPE_CHECKING:
         PullRequestReviewCommentPropLinks as PullRequestReviewCommentPropLinks,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleRequiredDeployments as RepositoryRuleRequiredDeployments,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryWebhooksPropPermissions as RepositoryWebhooksPropPermissions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCheckSuitesPostBody as ReposOwnerRepoCheckSuitesPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2303,6 +2297,12 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoSubscriptionPutBody as ReposOwnerRepoSubscriptionPutBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleRequiredDeployments as RepositoryRuleRequiredDeployments,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryWebhooksPropPermissions as RepositoryWebhooksPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
         RuleSuitePropRuleEvaluationsItems as RuleSuitePropRuleEvaluationsItems,
@@ -2407,6 +2407,12 @@ if TYPE_CHECKING:
         PullRequestReviewPropLinksPropHtml as PullRequestReviewPropLinksPropHtml,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoHooksHookIdPatchBody as ReposOwnerRepoHooksHookIdPatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoNotificationsPutBody as ReposOwnerRepoNotificationsPutBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         RepositoryAdvisoryPropCreditsItems as RepositoryAdvisoryPropCreditsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2416,19 +2422,13 @@ if TYPE_CHECKING:
         RepositoryRuleRequiredStatusChecks as RepositoryRuleRequiredStatusChecks,
     )
     from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleUpdatePropParameters as RepositoryRuleUpdatePropParameters,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         RepositoryRulesetPropLinksPropHtml as RepositoryRulesetPropLinksPropHtml,
     )
     from githubkit.versions.v2022_11_28.models import (
         RepositoryRulesetPropLinksPropSelf as RepositoryRulesetPropLinksPropSelf,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleUpdatePropParameters as RepositoryRuleUpdatePropParameters,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoHooksHookIdPatchBody as ReposOwnerRepoHooksHookIdPatchBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoNotificationsPutBody as ReposOwnerRepoNotificationsPutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         SecretScanningLocationIssueComment as SecretScanningLocationIssueComment,
@@ -2560,13 +2560,13 @@ if TYPE_CHECKING:
         RepoSearchResultItemPropPermissions as RepoSearchResultItemPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoMergeUpstreamPostBody as ReposOwnerRepoMergeUpstreamPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleCommitterEmailPattern as RepositoryRuleCommitterEmailPattern,
     )
     from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleRequiredLinearHistory as RepositoryRuleRequiredLinearHistory,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoMergeUpstreamPostBody as ReposOwnerRepoMergeUpstreamPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         TeamsTeamIdProjectsProjectIdPutBody as TeamsTeamIdProjectsProjectIdPutBody,
@@ -2824,12 +2824,6 @@ if TYPE_CHECKING:
         ProtectedBranchPropRequiredSignatures as ProtectedBranchPropRequiredSignatures,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleParamsRestrictedCommits as RepositoryRuleParamsRestrictedCommits,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleWorkflowsPropParameters as RepositoryRuleWorkflowsPropParameters,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCheckRunsPostBodyOneof0 as ReposOwnerRepoCheckRunsPostBodyOneof0,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2840,6 +2834,12 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPagesPostBodyPropSource as ReposOwnerRepoPagesPostBodyPropSource,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleParamsRestrictedCommits as RepositoryRuleParamsRestrictedCommits,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleWorkflowsPropParameters as RepositoryRuleWorkflowsPropParameters,
     )
     from githubkit.versions.v2022_11_28.models import (
         SecretScanningLocationDiscussionTitle as SecretScanningLocationDiscussionTitle,
@@ -2878,10 +2878,10 @@ if TYPE_CHECKING:
         WebhookLabelEditedPropChangesPropName as WebhookLabelEditedPropChangesPropName,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookOrganizationRenamedPropChanges as WebhookOrganizationRenamedPropChanges,
+        WebhookOrgBlockBlockedPropBlockedUser as WebhookOrgBlockBlockedPropBlockedUser,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookOrgBlockBlockedPropBlockedUser as WebhookOrgBlockBlockedPropBlockedUser,
+        WebhookOrganizationRenamedPropChanges as WebhookOrganizationRenamedPropChanges,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookProjectColumnEditedPropChanges as WebhookProjectColumnEditedPropChanges,
@@ -2938,18 +2938,6 @@ if TYPE_CHECKING:
         PullRequestPropHeadPropRepoPropLicense as PullRequestPropHeadPropRepoPropLicense,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryAdvisoryPropIdentifiersItems as RepositoryAdvisoryPropIdentifiersItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleCommitAuthorEmailPattern as RepositoryRuleCommitAuthorEmailPattern,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRulesetConditionsPropRefName as RepositoryRulesetConditionsPropRefName,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryWebhooksPropCustomProperties as RepositoryWebhooksPropCustomProperties,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoActionsVariablesPostBody as ReposOwnerRepoActionsVariablesPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2963,6 +2951,18 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoRulesetsRulesetIdPutBody as ReposOwnerRepoRulesetsRulesetIdPutBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryAdvisoryPropIdentifiersItems as RepositoryAdvisoryPropIdentifiersItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleCommitAuthorEmailPattern as RepositoryRuleCommitAuthorEmailPattern,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRulesetConditionsPropRefName as RepositoryRulesetConditionsPropRefName,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryWebhooksPropCustomProperties as RepositoryWebhooksPropCustomProperties,
     )
     from githubkit.versions.v2022_11_28.models import (
         SecretScanningLocationPullRequestTitle as SecretScanningLocationPullRequestTitle,
@@ -3082,9 +3082,6 @@ if TYPE_CHECKING:
         ProjectsColumnsCardsCardIdMovesPostBody as ProjectsColumnsCardsCardIdMovesPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRulePullRequestPropParameters as RepositoryRulePullRequestPropParameters,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoActionsPermissionsPutBody as ReposOwnerRepoActionsPermissionsPutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3095,6 +3092,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPropertiesValuesPatchBody as ReposOwnerRepoPropertiesValuesPatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRulePullRequestPropParameters as RepositoryRulePullRequestPropParameters,
     )
     from githubkit.versions.v2022_11_28.models import (
         SecretScanningLocationDiscussionComment as SecretScanningLocationDiscussionComment,
@@ -3208,15 +3208,6 @@ if TYPE_CHECKING:
         ProtectedBranchPropRequiredLinearHistory as ProtectedBranchPropRequiredLinearHistory,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryAdvisoryCreatePropCreditsItems as RepositoryAdvisoryCreatePropCreditsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryAdvisoryUpdatePropCreditsItems as RepositoryAdvisoryUpdatePropCreditsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryWebhooksPropTemplateRepository as RepositoryWebhooksPropTemplateRepository,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCodeScanningSarifsPostBody as ReposOwnerRepoCodeScanningSarifsPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3236,6 +3227,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoReleasesReleaseIdPatchBody as ReposOwnerRepoReleasesReleaseIdPatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryAdvisoryCreatePropCreditsItems as RepositoryAdvisoryCreatePropCreditsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryAdvisoryUpdatePropCreditsItems as RepositoryAdvisoryUpdatePropCreditsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryWebhooksPropTemplateRepository as RepositoryWebhooksPropTemplateRepository,
     )
     from githubkit.versions.v2022_11_28.models import (
         SecretScanningLocationPullRequestComment as SecretScanningLocationPullRequestComment,
@@ -3406,12 +3406,6 @@ if TYPE_CHECKING:
         PullRequestReviewPropLinksPropPullRequest as PullRequestReviewPropLinksPropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleParamsCodeScanningThreshold as RepositoryRuleParamsCodeScanningThreshold,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleParamsWorkflowFileReference as RepositoryRuleParamsWorkflowFileReference,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCheckRunsPostBodyPropOutput as ReposOwnerRepoCheckRunsPostBodyPropOutput,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3422,6 +3416,12 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPullsPullNumberMergePutBody as ReposOwnerRepoPullsPullNumberMergePutBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleParamsCodeScanningThreshold as RepositoryRuleParamsCodeScanningThreshold,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleParamsWorkflowFileReference as RepositoryRuleParamsWorkflowFileReference,
     )
     from githubkit.versions.v2022_11_28.models import (
         UserInteractionLimitsGetResponse200Anyof1 as UserInteractionLimitsGetResponse200Anyof1,
@@ -3583,12 +3583,6 @@ if TYPE_CHECKING:
         PullRequestPropHeadPropRepoPropPermissions as PullRequestPropHeadPropRepoPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryAdvisoryVulnerabilityPropPackage as RepositoryAdvisoryVulnerabilityPropPackage,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleTagNamePatternPropParameters as RepositoryRuleTagNamePatternPropParameters,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoActionsRunnersGetResponse200 as ReposOwnerRepoActionsRunnersGetResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3608,6 +3602,12 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPagesPutBodyPropSourceAnyof1 as ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryAdvisoryVulnerabilityPropPackage as RepositoryAdvisoryVulnerabilityPropPackage,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleTagNamePatternPropParameters as RepositoryRuleTagNamePatternPropParameters,
     )
     from githubkit.versions.v2022_11_28.models import (
         TeamsTeamIdProjectsProjectIdPutResponse403 as TeamsTeamIdProjectsProjectIdPutResponse403,
@@ -3961,9 +3961,6 @@ if TYPE_CHECKING:
         OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody as OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleParamsStatusCheckConfiguration as RepositoryRuleParamsStatusCheckConfiguration,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoActionsArtifactsGetResponse200 as ReposOwnerRepoActionsArtifactsGetResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3980,6 +3977,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoReleasesAssetsAssetIdPatchBody as ReposOwnerRepoReleasesAssetsAssetIdPatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleParamsStatusCheckConfiguration as RepositoryRuleParamsStatusCheckConfiguration,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReviewDismissedIssueEventPropDismissedReview as ReviewDismissedIssueEventPropDismissedReview,
@@ -4129,12 +4129,6 @@ if TYPE_CHECKING:
         ProtectedBranchPropRequiredPullRequestReviews as ProtectedBranchPropRequiredPullRequestReviews,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleBranchNamePatternPropParameters as RepositoryRuleBranchNamePatternPropParameters,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRulesetConditionsRepositoryIdTarget as RepositoryRulesetConditionsRepositoryIdTarget,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoActionsSecretsSecretNamePutBody as ReposOwnerRepoActionsSecretsSecretNamePutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4157,6 +4151,12 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPullsPullNumberCommentsPostBody as ReposOwnerRepoPullsPullNumberCommentsPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleBranchNamePatternPropParameters as RepositoryRuleBranchNamePatternPropParameters,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRulesetConditionsRepositoryIdTarget as RepositoryRulesetConditionsRepositoryIdTarget,
     )
     from githubkit.versions.v2022_11_28.models import (
         TimelineReviewedEventPropLinksPropPullRequest as TimelineReviewedEventPropLinksPropPullRequest,
@@ -4441,12 +4441,6 @@ if TYPE_CHECKING:
         PersonalAccessTokenRequestPropRepositoriesItems as PersonalAccessTokenRequestPropRepositoriesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleRequiredDeploymentsPropParameters as RepositoryRuleRequiredDeploymentsPropParameters,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRulesetConditionsRepositoryNameTarget as RepositoryRulesetConditionsRepositoryNameTarget,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCheckRunsPostBodyPropActionsItems as ReposOwnerRepoCheckRunsPostBodyPropActionsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4457,6 +4451,12 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPullsPullNumberCodespacesPostBody as ReposOwnerRepoPullsPullNumberCodespacesPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleRequiredDeploymentsPropParameters as RepositoryRuleRequiredDeploymentsPropParameters,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRulesetConditionsRepositoryNameTarget as RepositoryRulesetConditionsRepositoryNameTarget,
     )
     from githubkit.versions.v2022_11_28.models import (
         RuleSuitePropRuleEvaluationsItemsPropRuleSource as RuleSuitePropRuleEvaluationsItemsPropRuleSource,
@@ -4594,18 +4594,6 @@ if TYPE_CHECKING:
         PullRequestReviewCommentPropLinksPropPullRequest as PullRequestReviewCommentPropLinksPropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryAdvisoryCreatePropVulnerabilitiesItems as RepositoryAdvisoryCreatePropVulnerabilitiesItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryAdvisoryUpdatePropVulnerabilitiesItems as RepositoryAdvisoryUpdatePropVulnerabilitiesItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleCommitMessagePatternPropParameters as RepositoryRuleCommitMessagePatternPropParameters,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleRequiredStatusChecksPropParameters as RepositoryRuleRequiredStatusChecksPropParameters,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoActionsOidcCustomizationSubPutBody as ReposOwnerRepoActionsOidcCustomizationSubPutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4649,6 +4637,18 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoReleasesReleaseIdReactionsPostBody as ReposOwnerRepoReleasesReleaseIdReactionsPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryAdvisoryCreatePropVulnerabilitiesItems as RepositoryAdvisoryCreatePropVulnerabilitiesItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryAdvisoryUpdatePropVulnerabilitiesItems as RepositoryAdvisoryUpdatePropVulnerabilitiesItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleCommitMessagePatternPropParameters as RepositoryRuleCommitMessagePatternPropParameters,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleRequiredStatusChecksPropParameters as RepositoryRuleRequiredStatusChecksPropParameters,
     )
     from githubkit.versions.v2022_11_28.models import (
         SecurityAndAnalysisPropDependabotSecurityUpdates as SecurityAndAnalysisPropDependabotSecurityUpdates,
@@ -4822,15 +4822,6 @@ if TYPE_CHECKING:
         ProtectedBranchRequiredStatusCheckPropChecksItems as ProtectedBranchRequiredStatusCheckPropChecksItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleCommitterEmailPatternPropParameters as RepositoryRuleCommitterEmailPatternPropParameters,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryRulesetConditionsRepositoryPropertySpec as RepositoryRulesetConditionsRepositoryPropertySpec,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoryWebhooksPropTemplateRepositoryPropOwner as RepositoryWebhooksPropTemplateRepositoryPropOwner,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody as ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4844,6 +4835,15 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1 as ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleCommitterEmailPatternPropParameters as RepositoryRuleCommitterEmailPatternPropParameters,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRulesetConditionsRepositoryPropertySpec as RepositoryRulesetConditionsRepositoryPropertySpec,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryWebhooksPropTemplateRepositoryPropOwner as RepositoryWebhooksPropTemplateRepositoryPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
         UserCodespacesCodespaceNameMachinesGetResponse200 as UserCodespacesCodespaceNameMachinesGetResponse200,
@@ -5242,9 +5242,6 @@ if TYPE_CHECKING:
         OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403 as OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRulesetConditionsRepositoryPropertyTarget as RepositoryRulesetConditionsRepositoryPropertyTarget,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCodespacesDevcontainersGetResponse200 as ReposOwnerRepoCodespacesDevcontainersGetResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5258,6 +5255,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody as ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRulesetConditionsRepositoryPropertyTarget as RepositoryRulesetConditionsRepositoryPropertyTarget,
     )
     from githubkit.versions.v2022_11_28.models import (
         SecurityAndAnalysisPropSecretScanningPushProtection as SecurityAndAnalysisPropSecretScanningPushProtection,
@@ -5383,13 +5383,13 @@ if TYPE_CHECKING:
         OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422 as OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleCommitAuthorEmailPatternPropParameters as RepositoryRuleCommitAuthorEmailPatternPropParameters,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody as ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleCommitAuthorEmailPatternPropParameters as RepositoryRuleCommitAuthorEmailPatternPropParameters,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookDiscussionCreatedPropDiscussionAllof0PropUser as WebhookDiscussionCreatedPropDiscussionAllof0PropUser,
@@ -5890,13 +5890,13 @@ if TYPE_CHECKING:
         PersonalAccessTokenRequestPropPermissionsAddedPropOther as PersonalAccessTokenRequestPropPermissionsAddedPropOther,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryWebhooksPropTemplateRepositoryPropPermissions as RepositoryWebhooksPropTemplateRepositoryPropPermissions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202 as ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryWebhooksPropTemplateRepositoryPropPermissions as RepositoryWebhooksPropTemplateRepositoryPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
         TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody as TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody,
@@ -6895,9 +6895,6 @@ if TYPE_CHECKING:
         ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems as ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId as RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -6920,6 +6917,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody as ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId as RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced as WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced,
@@ -7585,13 +7585,13 @@ if TYPE_CHECKING:
         PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization as PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName as RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName as RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookDeploymentReviewApprovedPropWorkflowRunPropTriggeringActor as WebhookDeploymentReviewApprovedPropWorkflowRunPropTriggeringActor,
@@ -8047,18 +8047,6 @@ if TYPE_CHECKING:
         WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequest as WebhookPullRequestReviewDismissedPropReviewPropLinksPropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAutoMerge as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAutoMerge,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropMilestone as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropMilestone,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMerge as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMerge,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMilestone as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMilestone,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBase as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBase,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -8075,6 +8063,18 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropUser as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropUser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAutoMerge as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAutoMerge,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropMilestone as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropMilestone,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMerge as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMerge,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMilestone as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropMilestone,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewSubmittedPropReviewPropLinksPropPullRequest as WebhookPullRequestReviewSubmittedPropReviewPropLinksPropPullRequest,
@@ -8728,18 +8728,6 @@ if TYPE_CHECKING:
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropReviewComment,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropHtml as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropHtml,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropSelf as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropSelf,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropHtml as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropHtml,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropSelf as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropSelf,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAssignee as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAssignee,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -8753,6 +8741,18 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent as WebhookPullRequestReviewRequestRemovedOneof1PropRequestedTeamPropParent,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropHtml as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropHtml,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropSelf as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropSelf,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropHtml as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropHtml,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropSelf as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropSelf,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedTeamsItems,
@@ -8911,18 +8911,6 @@ if TYPE_CHECKING:
         WebhookPullRequestReviewEditedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewEditedPropPullRequestPropLinksPropReviewComments,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAssigneesItems as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAssigneesItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropIssue as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropIssue,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAssigneesItems as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAssigneesItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropIssue as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropIssue,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAutoMerge as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAutoMerge,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -8933,6 +8921,18 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestone as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropMilestone,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAssigneesItems as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAssigneesItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropIssue as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropIssue,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAssigneesItems as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAssigneesItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropIssue as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropIssue,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewSubmittedPropPullRequestPropMilestonePropCreator,
@@ -8980,13 +8980,13 @@ if TYPE_CHECKING:
         OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization as OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty as RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody as ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems as ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty as RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage,
@@ -9205,16 +9205,16 @@ if TYPE_CHECKING:
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewComment,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropCommits as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropCommits,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropCommits as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropCommits,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLabelsItems as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLabelsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLabelsItems as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLabelsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropCommits as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropCommits,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropCommits as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropCommits,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewSubmittedPropPullRequestPropAutoMergePropEnabledBy,
@@ -9331,18 +9331,6 @@ if TYPE_CHECKING:
         WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewDismissedPropPullRequestPropLinksPropReviewComments,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropComments as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropComments,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropComments as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropComments,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropStatuses,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepo as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRepo,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -9365,6 +9353,18 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropUser as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropHeadPropUser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropComments as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropComments,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropStatuses,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropComments as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropComments,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropStatuses,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropLicense,
@@ -9601,12 +9601,6 @@ if TYPE_CHECKING:
         WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepoPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedTeamsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAssigneesItems as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAssigneesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -9617,6 +9611,12 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropIssue as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropIssue,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedTeamsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedTeamsItems as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropRequestedTeamsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestonePropCreator as WebhookPullRequestReviewThreadResolvedPropPullRequestPropMilestonePropCreator,
@@ -9787,6 +9787,12 @@ if TYPE_CHECKING:
         WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropCommits as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropCommits,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommits as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommits,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropOwner as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -9797,12 +9803,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropOwner as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropOwner,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropCommits as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropCommits,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommits as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropCommits,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoPropPermissions,
@@ -9871,18 +9871,6 @@ if TYPE_CHECKING:
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropReviewComments,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMergePropEnabledBy,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewComment,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropComments as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLinksPropComments,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -9893,6 +9881,18 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropStatuses as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropStatuses,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAutoMergePropEnabledBy,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLinksPropReviewComment,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropAutoMergePropEnabledBy,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewComment,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestReviewThreadResolvedPropPullRequestPropBasePropRepoPropLicense,
@@ -10177,18 +10177,6 @@ if TYPE_CHECKING:
         WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedTeamsItemsPropParent,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropPermissions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropPermissions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAutoMergePropEnabledBy,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -10199,6 +10187,18 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewComment as WebhookPullRequestReviewRequestRemovedOneof1PropPullRequestPropLinksPropReviewComment,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoPropPermissions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepoPropPermissions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropBasePropRepoPropPermissions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestReviewRequestedOneof1PropPullRequestPropHeadPropRepoPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestUnlabeledPropPullRequestPropRequestedReviewersItemsOneof1PropParent,

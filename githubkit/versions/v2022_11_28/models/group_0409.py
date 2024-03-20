@@ -15,15 +15,15 @@ from typing import List, Literal
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0168 import Deployment
 from .group_0289 import PullRequest
 from .group_0358 import SimpleInstallation
-from .group_0359 import OrganizationSimpleWebhooks
 from .group_0360 import RepositoryWebhooks
 from .group_0361 import SimpleUserWebhooks
+from .group_0359 import OrganizationSimpleWebhooks
 
 
 class WebhookDeploymentProtectionRuleRequested(GitHubModel):

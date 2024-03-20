@@ -10,11 +10,12 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0119 import RepositoryRulesetConditionsPropRefName
 from .group_0121 import (

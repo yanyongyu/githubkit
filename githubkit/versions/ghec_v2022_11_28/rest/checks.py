@@ -10,24 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 from weakref import ref
+from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
+from githubkit.typing import Missing
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
-from githubkit.typing import Missing
 
 if TYPE_CHECKING:
-    from typing import List, Union, Literal
     from datetime import datetime
+    from typing import List, Union, Literal
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
     from githubkit.typing import Missing
     from githubkit.response import Response
 
+    from ..models import (
+        CheckRun,
+        CheckSuite,
+        EmptyObject,
+        CheckAnnotation,
+        CheckSuitePreference,
+        ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
+        ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
+        ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
+    )
     from ..types import (
         ReposOwnerRepoCheckSuitesPostBodyType,
         ReposOwnerRepoCheckRunsPostBodyOneof0Type,
@@ -40,16 +50,6 @@ if TYPE_CHECKING:
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
         ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType,
-    )
-    from ..models import (
-        CheckRun,
-        CheckSuite,
-        EmptyObject,
-        CheckAnnotation,
-        CheckSuitePreference,
-        ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
-        ReposOwnerRepoCommitsRefCheckSuitesGetResponse200,
-        ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
     )
 
 

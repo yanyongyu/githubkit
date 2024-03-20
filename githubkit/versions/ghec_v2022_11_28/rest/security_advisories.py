@@ -10,14 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 from weakref import ref
+from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
+from githubkit.typing import Missing
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
-from githubkit.typing import Missing
 
 if TYPE_CHECKING:
     from typing import List, Union, Literal
@@ -27,6 +27,12 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
+    from ..models import (
+        FullRepository,
+        GlobalAdvisory,
+        RepositoryAdvisory,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+    )
     from ..types import (
         RepositoryAdvisoryCreateType,
         RepositoryAdvisoryUpdateType,
@@ -36,12 +42,6 @@ if TYPE_CHECKING:
         RepositoryAdvisoryCreatePropVulnerabilitiesItemsType,
         RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType,
         PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType,
-    )
-    from ..models import (
-        FullRepository,
-        GlobalAdvisory,
-        RepositoryAdvisory,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
     )
 
 

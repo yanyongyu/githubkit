@@ -13,8 +13,8 @@ from __future__ import annotations
 from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
 from .group_0200 import DiffEntryType
+from .group_0001 import SimpleUserType
 from .group_0202 import CommitPropCommitType
 
 

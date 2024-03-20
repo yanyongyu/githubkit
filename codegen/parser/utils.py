@@ -1,10 +1,10 @@
 import re
-from typing import TYPE_CHECKING, TypeVar
-from keyword import iskeyword
 import builtins
+from keyword import iskeyword
+from typing import TYPE_CHECKING, TypeVar
 
-from pydantic import TypeAdapter
 import openapi_pydantic as oas
+from pydantic import TypeAdapter
 
 from . import get_override_config
 

@@ -10,20 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
 from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0390 import EnterpriseWebhooks
 from .group_0391 import SimpleInstallation
-from .group_0392 import OrganizationSimpleWebhooks
 from .group_0393 import RepositoryWebhooks
 from .group_0394 import SimpleUserWebhooks
+from .group_0392 import OrganizationSimpleWebhooks
 
 
 class WebhookProjectClosed(GitHubModel):

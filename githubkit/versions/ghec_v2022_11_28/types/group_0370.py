@@ -13,9 +13,9 @@ from __future__ import annotations
 from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0198 import GitUserType
 from .group_0001 import SimpleUserType
 from .group_0076 import MinimalRepositoryType
-from .group_0198 import GitUserType
 from .group_0368 import SearchResultTextMatchesItemsType
 from .group_0371 import CommitSearchResultItemPropCommitType
 

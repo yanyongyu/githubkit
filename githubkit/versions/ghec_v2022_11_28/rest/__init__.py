@@ -7,8 +7,8 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-from typing import TYPE_CHECKING
 from weakref import ref
+from typing import TYPE_CHECKING
 from functools import cached_property
 
 if TYPE_CHECKING:
@@ -40,10 +40,10 @@ if TYPE_CHECKING:
     from .classroom import ClassroomClient
     from .gitignore import GitignoreClient
     from .reactions import ReactionsClient
+    from .rate_limit import RateLimitClient
     from .codespaces import CodespacesClient
     from .dependabot import DependabotClient
     from .migrations import MigrationsClient
-    from .rate_limit import RateLimitClient
     from .interactions import InteractionsClient
     from .code_scanning import CodeScanningClient
     from .secret_scanning import SecretScanningClient

@@ -10,12 +10,12 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
 from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0549 import WebhookIssuesLockedPropIssueAllof0PropPullRequestType
 from .group_0551 import WebhookIssuesLockedPropIssueMergedMilestoneType
+from .group_0549 import WebhookIssuesLockedPropIssueAllof0PropPullRequestType
 from .group_0552 import WebhookIssuesLockedPropIssueMergedPerformedViaGithubAppType
 
 

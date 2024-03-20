@@ -10,14 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
 from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0806 import WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequestsType
 from .group_0804 import (
     WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropReferencedWorkflowsItemsType,
 )
-from .group_0806 import WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequestsType
 
 
 class WebhookWorkflowRunCompletedPropWorkflowRunType(TypedDict):

@@ -10,48 +10,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 from weakref import ref
 from typing_extensions import Annotated
+from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import Field, BaseModel
 
+from githubkit.typing import Missing
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
-from githubkit.typing import Missing
 
 if TYPE_CHECKING:
-    from typing import List, Union, Literal
     from datetime import datetime
+    from typing import List, Union, Literal
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..types import (
-        ReposOwnerRepoIssuesPostBodyType,
-        ReposOwnerRepoLabelsPostBodyType,
-        ReposOwnerRepoMilestonesPostBodyType,
-        ReposOwnerRepoLabelsNamePatchBodyType,
-        ReposOwnerRepoIssuesIssueNumberPatchBodyType,
-        ReposOwnerRepoIssuesIssueNumberLockPutBodyType,
-        ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
-        ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
-        ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType,
-        ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType,
-        ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type,
-        ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType,
-        ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
-        ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
-        ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType,
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType,
-        ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type,
-        ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType,
-        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType,
-    )
     from ..models import (
         Issue,
         Label,
@@ -83,6 +60,29 @@ if TYPE_CHECKING:
         ConvertedNoteToIssueIssueEvent,
         MovedColumnInProjectIssueEvent,
         ReviewRequestRemovedIssueEvent,
+    )
+    from ..types import (
+        ReposOwnerRepoIssuesPostBodyType,
+        ReposOwnerRepoLabelsPostBodyType,
+        ReposOwnerRepoMilestonesPostBodyType,
+        ReposOwnerRepoLabelsNamePatchBodyType,
+        ReposOwnerRepoIssuesIssueNumberPatchBodyType,
+        ReposOwnerRepoIssuesIssueNumberLockPutBodyType,
+        ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
+        ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
+        ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType,
+        ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType,
+        ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type,
+        ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType,
+        ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
+        ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
+        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
+        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
+        ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType,
+        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType,
+        ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type,
+        ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType,
+        ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType,
     )
 
 

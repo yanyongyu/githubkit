@@ -15,11 +15,11 @@ from typing import List, Union
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0174 import ProtectedBranchPullRequestReview
 from .group_0176 import BranchRestrictionPolicy
+from .group_0174 import ProtectedBranchPullRequestReview
 
 
 class BranchProtection(GitHubModel):

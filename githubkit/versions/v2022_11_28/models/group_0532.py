@@ -10,17 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
 from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0538 import WebhookIssuesReopenedPropIssueAllof0PropPullRequest
 from .group_0540 import WebhookIssuesReopenedPropIssueMergedMilestone
+from .group_0538 import WebhookIssuesReopenedPropIssueAllof0PropPullRequest
 from .group_0541 import WebhookIssuesReopenedPropIssueMergedPerformedViaGithubApp
 
 

@@ -1,14 +1,14 @@
+import inspect
 from enum import Enum
 from typing import Any, Dict, Type, Generic, Literal, TypeVar, final
-import inspect
 
 from pydantic import BaseModel
 
 from .compat import PYDANTIC_V2, custom_validation, type_validate_python
 
 if PYDANTIC_V2:  # pragma: pydantic-v2
-    from pydantic import GetCoreSchemaHandler
     from pydantic_core import core_schema
+    from pydantic import GetCoreSchemaHandler
 
 T = TypeVar("T")
 

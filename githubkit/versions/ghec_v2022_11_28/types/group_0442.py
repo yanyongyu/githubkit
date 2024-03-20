@@ -16,9 +16,9 @@ from typing_extensions import TypedDict, NotRequired
 from .group_0187 import DeploymentType
 from .group_0308 import PullRequestType
 from .group_0391 import SimpleInstallationType
-from .group_0392 import OrganizationSimpleWebhooksType
 from .group_0393 import RepositoryWebhooksType
 from .group_0394 import SimpleUserWebhooksType
+from .group_0392 import OrganizationSimpleWebhooksType
 
 
 class WebhookDeploymentProtectionRuleRequestedType(TypedDict):

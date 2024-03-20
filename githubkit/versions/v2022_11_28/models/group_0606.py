@@ -10,16 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0359 import OrganizationSimpleWebhooks
 from .group_0360 import RepositoryWebhooks
 from .group_0361 import SimpleUserWebhooks
 from .group_0607 import WebhookPingPropHook
+from .group_0359 import OrganizationSimpleWebhooks
 
 
 class WebhookPing(GitHubModel):

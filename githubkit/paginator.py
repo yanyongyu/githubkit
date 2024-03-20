@@ -1,3 +1,4 @@
+from typing_extensions import Self, ParamSpec
 from typing import (
     List,
     Union,
@@ -9,7 +10,6 @@ from typing import (
     cast,
     overload,
 )
-from typing_extensions import Self, ParamSpec
 
 from .utils import is_async
 from .response import Response

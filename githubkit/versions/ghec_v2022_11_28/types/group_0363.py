@@ -14,8 +14,8 @@ from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0355 import MetaType
-from .group_0360 import UserNameResponseType, UserEmailsResponseItemsType
 from .group_0361 import UserRoleItemsType
+from .group_0360 import UserNameResponseType, UserEmailsResponseItemsType
 from .group_0365 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
 
 

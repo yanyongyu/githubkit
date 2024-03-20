@@ -15,8 +15,8 @@ from typing import List, Union, Literal
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
 
 class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1(GitHubModel):

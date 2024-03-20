@@ -10,23 +10,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
 from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0480 import WebhookIssueCommentEditedPropIssueAllof0PropMilestone
+from .group_0482 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp,
+)
 from .group_0478 import (
     WebhookIssueCommentEditedPropIssueAllof0PropAssignee,
     WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems,
     WebhookIssueCommentEditedPropIssueAllof0PropPullRequest,
-)
-from .group_0480 import WebhookIssueCommentEditedPropIssueAllof0PropMilestone
-from .group_0482 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubApp,
 )
 
 
