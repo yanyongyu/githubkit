@@ -14,30 +14,7 @@ from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1Type(TypedDict):
-    """WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1"""
-
-    affected_package_name: NotRequired[str]
-    affected_range: NotRequired[str]
-    created_at: NotRequired[str]
-    dismiss_comment: NotRequired[Union[str, None]]
-    dismiss_reason: str
-    dismissed_at: str
-    dismisser: Union[
-        WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1PropDismisserType, None
-    ]
-    external_identifier: NotRequired[str]
-    external_reference: NotRequired[Union[str, None]]
-    fixed_in: NotRequired[str]
-    ghsa_id: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    number: NotRequired[int]
-    severity: NotRequired[str]
-    state: Literal["dismissed"]
-
-
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1PropDismisserType(
+class WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisserType(
     TypedDict
 ):
     """User"""
@@ -66,6 +43,5 @@ class WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1PropDismisserType
 
 
 __all__ = (
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1Type",
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1PropDismisserType",
+    "WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisserType",
 )

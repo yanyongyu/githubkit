@@ -10,46 +10,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
-from pydantic import Field
-
-from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-
-from .group_0014 import AppPermissions
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
-    """ApplicationsClientIdTokenScopedPostBody"""
-
-    access_token: str = Field(
-        description="The access token used to authenticate to the GitHub API."
-    )
-    target: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
-    )
-    target_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
-    )
-    repositories: Missing[List[str]] = Field(
-        default=UNSET,
-        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
-    )
-    repository_ids: Missing[List[int]] = Field(
-        default=UNSET,
-        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
-    )
-    permissions: Missing[AppPermissions] = Field(
-        default=UNSET,
-        title="App Permissions",
-        description="The permissions granted to the user access token.",
-    )
+class EmojisGetResponse200(ExtraGitHubModel):
+    """EmojisGetResponse200"""
 
 
-model_rebuild(ApplicationsClientIdTokenScopedPostBody)
+model_rebuild(EmojisGetResponse200)
 
-__all__ = ("ApplicationsClientIdTokenScopedPostBody",)
+__all__ = ("EmojisGetResponse200",)

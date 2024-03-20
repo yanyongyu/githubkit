@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -18,17 +18,17 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0389 import EnterpriseWebhooks
-from .group_0390 import SimpleInstallation
-from .group_0391 import OrganizationSimpleWebhooks
-from .group_0392 import RepositoryWebhooks
-from .group_0393 import SimpleUserWebhooks
+from .group_0390 import EnterpriseWebhooks
+from .group_0391 import SimpleInstallation
+from .group_0392 import OrganizationSimpleWebhooks
+from .group_0393 import RepositoryWebhooks
+from .group_0394 import SimpleUserWebhooks
 
 
-class WebhookStarDeleted(GitHubModel):
-    """star deleted event"""
+class WebhookStarCreated(GitHubModel):
+    """star created event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -52,11 +52,11 @@ class WebhookStarDeleted(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    starred_at: None = Field(
+    starred_at: Union[str, None] = Field(
         description="The time the star was created. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the `deleted` action."
     )
 
 
-model_rebuild(WebhookStarDeleted)
+model_rebuild(WebhookStarCreated)
 
-__all__ = ("WebhookStarDeleted",)
+__all__ = ("WebhookStarCreated",)

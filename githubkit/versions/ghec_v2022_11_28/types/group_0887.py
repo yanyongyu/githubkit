@@ -10,16 +10,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
-class MarkdownPostBodyType(TypedDict):
-    """MarkdownPostBody"""
+class NotificationsPutBodyType(TypedDict):
+    """NotificationsPutBody"""
 
-    text: str
-    mode: NotRequired[Literal["markdown", "gfm"]]
-    context: NotRequired[str]
+    last_read_at: NotRequired[datetime]
+    read: NotRequired[bool]
 
 
-__all__ = ("MarkdownPostBodyType",)
+__all__ = ("NotificationsPutBodyType",)

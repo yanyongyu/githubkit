@@ -19,30 +19,28 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0777 import (
+from .group_0778 import (
     WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisser,
 )
 
 
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0(GitHubModel):
-    """Repository Vulnerability Alert Alert
-
-    The security alert of the vulnerable dependency.
-    """
+class WebhookRepositoryVulnerabilityAlertDismissPropAlert(GitHubModel):
+    """WebhookRepositoryVulnerabilityAlertDismissPropAlert"""
 
     affected_package_name: str = Field()
     affected_range: str = Field()
     created_at: str = Field()
-    dismiss_comment: Missing[Union[str, None]] = Field(default=UNSET)
-    dismiss_reason: Missing[str] = Field(default=UNSET)
-    dismissed_at: Missing[str] = Field(default=UNSET)
-    dismisser: Missing[
+    dismiss_comment: Missing[Union[Union[str, None], None]] = Field(default=UNSET)
+    dismiss_reason: str = Field()
+    dismissed_at: str = Field()
+    dismisser: Union[
         Union[
             WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisser, None
-        ]
-    ] = Field(default=UNSET, title="User")
+        ],
+        None,
+    ] = Field(title="User")
     external_identifier: str = Field()
-    external_reference: Union[str, None] = Field()
+    external_reference: Union[Union[str, None], None] = Field()
     fix_reason: Missing[str] = Field(default=UNSET)
     fixed_at: Missing[datetime] = Field(default=UNSET)
     fixed_in: Missing[str] = Field(default=UNSET)
@@ -51,9 +49,9 @@ class WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0(GitHubModel):
     node_id: str = Field()
     number: int = Field()
     severity: str = Field()
-    state: Literal["open", "dismissed", "fixed"] = Field()
+    state: Literal["dismissed"] = Field()
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0)
+model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlert)
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertDismissPropAlert",)

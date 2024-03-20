@@ -11,6 +11,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
@@ -19,7 +20,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreator(GitHubModel):
+class WebhookIssueCommentEditedPropIssueAllof0PropAssignee(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -47,6 +48,36 @@ class WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreator(GitHubMod
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreator)
+class WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems(GitHubModel):
+    """Label"""
 
-__all__ = ("WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreator",)
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    id: int = Field()
+    name: str = Field(description="The name of the label.")
+    node_id: str = Field()
+    url: str = Field(description="URL for the label")
+
+
+class WebhookIssueCommentEditedPropIssueAllof0PropPullRequest(GitHubModel):
+    """WebhookIssueCommentEditedPropIssueAllof0PropPullRequest"""
+
+    diff_url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    patch_url: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropAssignee)
+model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems)
+model_rebuild(WebhookIssueCommentEditedPropIssueAllof0PropPullRequest)
+
+__all__ = (
+    "WebhookIssueCommentEditedPropIssueAllof0PropAssignee",
+    "WebhookIssueCommentEditedPropIssueAllof0PropLabelsItems",
+    "WebhookIssueCommentEditedPropIssueAllof0PropPullRequest",
+)

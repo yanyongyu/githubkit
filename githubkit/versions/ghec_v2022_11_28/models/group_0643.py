@@ -19,17 +19,17 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0389 import EnterpriseWebhooks
-from .group_0390 import SimpleInstallation
-from .group_0391 import OrganizationSimpleWebhooks
-from .group_0392 import RepositoryWebhooks
-from .group_0393 import SimpleUserWebhooks
+from .group_0390 import EnterpriseWebhooks
+from .group_0391 import SimpleInstallation
+from .group_0392 import OrganizationSimpleWebhooks
+from .group_0393 import RepositoryWebhooks
+from .group_0394 import SimpleUserWebhooks
 
 
-class WebhookProjectCardDeleted(GitHubModel):
-    """project_card deleted event"""
+class WebhookProjectCardCreated(GitHubModel):
+    """project_card created event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,24 +45,28 @@ class WebhookProjectCardDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_card: WebhookProjectCardDeletedPropProjectCard = Field(title="Project Card")
-    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
+    project_card: WebhookProjectCardCreatedPropProjectCard = Field(title="Project Card")
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookProjectCardDeletedPropProjectCard(GitHubModel):
+class WebhookProjectCardCreatedPropProjectCard(GitHubModel):
     """Project Card"""
 
     after_id: Missing[Union[int, None]] = Field(default=UNSET)
     archived: bool = Field(description="Whether or not the card is archived")
-    column_id: Union[int, None] = Field()
+    column_id: int = Field()
     column_url: str = Field()
     content_url: Missing[str] = Field(default=UNSET)
     created_at: datetime = Field()
-    creator: Union[WebhookProjectCardDeletedPropProjectCardPropCreator, None] = Field(
+    creator: Union[WebhookProjectCardCreatedPropProjectCardPropCreator, None] = Field(
         title="User"
     )
     id: int = Field(description="The project card's ID")
@@ -73,7 +77,7 @@ class WebhookProjectCardDeletedPropProjectCard(GitHubModel):
     url: str = Field()
 
 
-class WebhookProjectCardDeletedPropProjectCardPropCreator(GitHubModel):
+class WebhookProjectCardCreatedPropProjectCardPropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -95,18 +99,16 @@ class WebhookProjectCardDeletedPropProjectCardPropCreator(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
-    )
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookProjectCardDeleted)
-model_rebuild(WebhookProjectCardDeletedPropProjectCard)
-model_rebuild(WebhookProjectCardDeletedPropProjectCardPropCreator)
+model_rebuild(WebhookProjectCardCreated)
+model_rebuild(WebhookProjectCardCreatedPropProjectCard)
+model_rebuild(WebhookProjectCardCreatedPropProjectCardPropCreator)
 
 __all__ = (
-    "WebhookProjectCardDeleted",
-    "WebhookProjectCardDeletedPropProjectCard",
-    "WebhookProjectCardDeletedPropProjectCardPropCreator",
+    "WebhookProjectCardCreated",
+    "WebhookProjectCardCreatedPropProjectCard",
+    "WebhookProjectCardCreatedPropProjectCardPropCreator",
 )

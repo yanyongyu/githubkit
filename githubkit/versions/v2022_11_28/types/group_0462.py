@@ -10,86 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from datetime import datetime
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0005 import IntegrationType
+from .group_0357 import EnterpriseWebhooksType
+from .group_0358 import SimpleInstallationType
+from .group_0359 import OrganizationSimpleWebhooksType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
+from .group_0463 import WebhookIssueCommentDeletedPropCommentType
+from .group_0464 import WebhookIssueCommentDeletedPropIssueType
 
 
-class WebhookIssueCommentDeletedPropCommentType(TypedDict):
-    """issue comment
+class WebhookIssueCommentDeletedType(TypedDict):
+    """issue_comment deleted event"""
 
-    The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment)
-    itself.
-    """
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    created_at: datetime
-    html_url: str
-    id: int
-    issue_url: str
-    node_id: str
-    performed_via_github_app: Union[None, IntegrationType]
-    reactions: WebhookIssueCommentDeletedPropCommentPropReactionsType
-    updated_at: datetime
-    url: str
-    user: Union[WebhookIssueCommentDeletedPropCommentPropUserType, None]
+    action: Literal["deleted"]
+    comment: WebhookIssueCommentDeletedPropCommentType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    issue: WebhookIssueCommentDeletedPropIssueType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-class WebhookIssueCommentDeletedPropCommentPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookIssueCommentDeletedPropCommentPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-
-
-__all__ = (
-    "WebhookIssueCommentDeletedPropCommentType",
-    "WebhookIssueCommentDeletedPropCommentPropReactionsType",
-    "WebhookIssueCommentDeletedPropCommentPropUserType",
-)
+__all__ = ("WebhookIssueCommentDeletedType",)

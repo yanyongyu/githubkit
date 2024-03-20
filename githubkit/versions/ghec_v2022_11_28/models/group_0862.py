@@ -16,16 +16,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0029 import OrganizationSimple
+
+class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody(GitHubModel):
+    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
+
+    selected_organization_ids: List[int] = Field(
+        description="List of organization IDs to enable for GitHub Actions."
+    )
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
+model_rebuild(EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody)
 
-    total_count: float = Field()
-    organizations: List[OrganizationSimple] = Field()
-
-
-model_rebuild(EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200)
-
-__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200",)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody",)

@@ -10,18 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody"""
+class ReposOwnerRepoCodeScanningSarifsPostBodyType(TypedDict):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
 
-    state: Literal["open", "dismissed"]
-    dismissed_reason: NotRequired[
-        Union[None, Literal["false positive", "won't fix", "used in tests"]]
-    ]
-    dismissed_comment: NotRequired[Union[str, None]]
+    commit_sha: str
+    ref: str
+    sarif: str
+    checkout_uri: NotRequired[str]
+    started_at: NotRequired[datetime]
+    tool_name: NotRequired[str]
+    validate_: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType",)
+__all__ = ("ReposOwnerRepoCodeScanningSarifsPostBodyType",)

@@ -14,18 +14,29 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
+class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody(GitHubModel):
+    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
 
+    name: str = Field(description="The name of the new runner.")
+    runner_group_id: int = Field(
+        description="The ID of the runner group to register the runner to."
+    )
     labels: List[str] = Field(
         max_length=100,
-        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+        min_length=1,
+        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
+    )
+    work_folder: Missing[str] = Field(
+        default=UNSET,
+        description="The working directory to be used for job execution, relative to the runner install directory.",
     )
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody)
+model_rebuild(ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody)
 
-__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",)
+__all__ = ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody",)

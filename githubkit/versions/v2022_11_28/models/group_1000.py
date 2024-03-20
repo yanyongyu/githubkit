@@ -10,22 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0188 import CheckRun
-
-
-class ReposOwnerRepoCommitsRefCheckRunsGetResponse200(GitHubModel):
-    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
-
-    total_count: int = Field()
-    check_runs: List[CheckRun] = Field()
+from githubkit.typing import Missing
 
 
-model_rebuild(ReposOwnerRepoCommitsRefCheckRunsGetResponse200)
+class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubModel):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
-__all__ = ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200",)
+    body: str = Field(description="The contents of the comment.")
+    path: Missing[str] = Field(
+        default=UNSET, description="Relative path of the file to comment on."
+    )
+    position: Missing[int] = Field(
+        default=UNSET, description="Line index in the diff to comment on."
+    )
+    line: Missing[int] = Field(
+        default=UNSET,
+        description="**Deprecated**. Use **position** parameter instead. Line number in the file to comment on.",
+    )
+
+
+model_rebuild(ReposOwnerRepoCommitsCommitShaCommentsPostBody)
+
+__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",)

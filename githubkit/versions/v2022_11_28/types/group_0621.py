@@ -14,32 +14,32 @@ from typing import Union, Literal
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0356 import EnterpriseWebhooksType
-from .group_0357 import SimpleInstallationType
-from .group_0358 import OrganizationSimpleWebhooksType
-from .group_0359 import RepositoryWebhooksType
-from .group_0360 import SimpleUserWebhooksType
+from .group_0357 import EnterpriseWebhooksType
+from .group_0358 import SimpleInstallationType
+from .group_0359 import OrganizationSimpleWebhooksType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
 
 
-class WebhookProjectDeletedType(TypedDict):
-    """project deleted event"""
+class WebhookProjectCreatedType(TypedDict):
+    """project created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhookProjectDeletedPropProjectType
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
-    sender: NotRequired[SimpleUserWebhooksType]
+    project: WebhookProjectCreatedPropProjectType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserWebhooksType
 
 
-class WebhookProjectDeletedPropProjectType(TypedDict):
+class WebhookProjectCreatedPropProjectType(TypedDict):
     """Project"""
 
     body: Union[str, None]
     columns_url: str
     created_at: datetime
-    creator: Union[WebhookProjectDeletedPropProjectPropCreatorType, None]
+    creator: Union[WebhookProjectCreatedPropProjectPropCreatorType, None]
     html_url: str
     id: int
     name: str
@@ -51,7 +51,7 @@ class WebhookProjectDeletedPropProjectType(TypedDict):
     url: str
 
 
-class WebhookProjectDeletedPropProjectPropCreatorType(TypedDict):
+class WebhookProjectCreatedPropProjectPropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -78,7 +78,7 @@ class WebhookProjectDeletedPropProjectPropCreatorType(TypedDict):
 
 
 __all__ = (
-    "WebhookProjectDeletedType",
-    "WebhookProjectDeletedPropProjectType",
-    "WebhookProjectDeletedPropProjectPropCreatorType",
+    "WebhookProjectCreatedType",
+    "WebhookProjectCreatedPropProjectType",
+    "WebhookProjectCreatedPropProjectPropCreatorType",
 )

@@ -14,29 +14,19 @@ from typing import List, Union, Literal
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0567 import WebhookIssuesReopenedPropIssueAllof0PropMilestoneType
-from .group_0569 import (
-    WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppType,
-)
-from .group_0570 import WebhookIssuesReopenedPropIssueAllof0PropPullRequestType
+from .group_0571 import WebhookIssuesReopenedPropIssueAllof0PropPullRequestType
+from .group_0573 import WebhookIssuesReopenedPropIssueMergedMilestoneType
+from .group_0574 import WebhookIssuesReopenedPropIssueMergedPerformedViaGithubAppType
 
 
-class WebhookIssuesReopenedPropIssueAllof0Type(TypedDict):
-    """Issue
-
-    The [issue](https://docs.github.com/enterprise-
-    cloud@latest//rest/issues/issues#get-an-issue) itself.
-    """
+class WebhookIssuesReopenedPropIssueType(TypedDict):
+    """WebhookIssuesReopenedPropIssue"""
 
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ]
-    assignee: NotRequired[
-        Union[WebhookIssuesReopenedPropIssueAllof0PropAssigneeType, None]
-    ]
-    assignees: List[
-        Union[WebhookIssuesReopenedPropIssueAllof0PropAssigneesItemsType, None]
-    ]
+    assignee: NotRequired[Union[WebhookIssuesReopenedPropIssueMergedAssigneeType, None]]
+    assignees: List[WebhookIssuesReopenedPropIssueMergedAssigneesType]
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -47,7 +37,7 @@ class WebhookIssuesReopenedPropIssueAllof0Type(TypedDict):
         "NONE",
         "OWNER",
     ]
-    body: Union[str, None]
+    body: Union[Union[str, None], None]
     closed_at: Union[datetime, None]
     comments: int
     comments_url: str
@@ -56,29 +46,29 @@ class WebhookIssuesReopenedPropIssueAllof0Type(TypedDict):
     events_url: str
     html_url: str
     id: int
-    labels: NotRequired[List[WebhookIssuesReopenedPropIssueAllof0PropLabelsItemsType]]
+    labels: NotRequired[List[WebhookIssuesReopenedPropIssueMergedLabelsType]]
     labels_url: str
     locked: NotRequired[bool]
-    milestone: Union[WebhookIssuesReopenedPropIssueAllof0PropMilestoneType, None]
+    milestone: Union[WebhookIssuesReopenedPropIssueMergedMilestoneType, None]
     node_id: str
     number: int
     performed_via_github_app: NotRequired[
-        Union[WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppType, None]
+        Union[WebhookIssuesReopenedPropIssueMergedPerformedViaGithubAppType, None]
     ]
     pull_request: NotRequired[WebhookIssuesReopenedPropIssueAllof0PropPullRequestType]
-    reactions: WebhookIssuesReopenedPropIssueAllof0PropReactionsType
+    reactions: WebhookIssuesReopenedPropIssueMergedReactionsType
     repository_url: str
-    state: NotRequired[Literal["open", "closed"]]
+    state: Literal["open", "closed"]
     state_reason: NotRequired[Union[str, None]]
     timeline_url: NotRequired[str]
     title: str
     updated_at: datetime
     url: str
-    user: Union[WebhookIssuesReopenedPropIssueAllof0PropUserType, None]
+    user: WebhookIssuesReopenedPropIssueMergedUserType
 
 
-class WebhookIssuesReopenedPropIssueAllof0PropAssigneeType(TypedDict):
-    """User"""
+class WebhookIssuesReopenedPropIssueMergedAssigneeType(TypedDict):
+    """WebhookIssuesReopenedPropIssueMergedAssignee"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -103,8 +93,8 @@ class WebhookIssuesReopenedPropIssueAllof0PropAssigneeType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookIssuesReopenedPropIssueAllof0PropAssigneesItemsType(TypedDict):
-    """User"""
+class WebhookIssuesReopenedPropIssueMergedAssigneesType(TypedDict):
+    """WebhookIssuesReopenedPropIssueMergedAssignees"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -129,8 +119,8 @@ class WebhookIssuesReopenedPropIssueAllof0PropAssigneesItemsType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookIssuesReopenedPropIssueAllof0PropLabelsItemsType(TypedDict):
-    """Label"""
+class WebhookIssuesReopenedPropIssueMergedLabelsType(TypedDict):
+    """WebhookIssuesReopenedPropIssueMergedLabels"""
 
     color: str
     default: bool
@@ -141,8 +131,8 @@ class WebhookIssuesReopenedPropIssueAllof0PropLabelsItemsType(TypedDict):
     url: str
 
 
-class WebhookIssuesReopenedPropIssueAllof0PropReactionsType(TypedDict):
-    """Reactions"""
+class WebhookIssuesReopenedPropIssueMergedReactionsType(TypedDict):
+    """WebhookIssuesReopenedPropIssueMergedReactions"""
 
     plus_one: int
     minus_one: int
@@ -156,8 +146,8 @@ class WebhookIssuesReopenedPropIssueAllof0PropReactionsType(TypedDict):
     url: str
 
 
-class WebhookIssuesReopenedPropIssueAllof0PropUserType(TypedDict):
-    """User"""
+class WebhookIssuesReopenedPropIssueMergedUserType(TypedDict):
+    """WebhookIssuesReopenedPropIssueMergedUser"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -183,10 +173,10 @@ class WebhookIssuesReopenedPropIssueAllof0PropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookIssuesReopenedPropIssueAllof0Type",
-    "WebhookIssuesReopenedPropIssueAllof0PropAssigneeType",
-    "WebhookIssuesReopenedPropIssueAllof0PropAssigneesItemsType",
-    "WebhookIssuesReopenedPropIssueAllof0PropLabelsItemsType",
-    "WebhookIssuesReopenedPropIssueAllof0PropReactionsType",
-    "WebhookIssuesReopenedPropIssueAllof0PropUserType",
+    "WebhookIssuesReopenedPropIssueType",
+    "WebhookIssuesReopenedPropIssueMergedAssigneeType",
+    "WebhookIssuesReopenedPropIssueMergedAssigneesType",
+    "WebhookIssuesReopenedPropIssueMergedLabelsType",
+    "WebhookIssuesReopenedPropIssueMergedReactionsType",
+    "WebhookIssuesReopenedPropIssueMergedUserType",
 )

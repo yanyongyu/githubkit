@@ -13,27 +13,27 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0389 import EnterpriseWebhooksType
-from .group_0390 import SimpleInstallationType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0392 import RepositoryWebhooksType
-from .group_0393 import SimpleUserWebhooksType
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
 
 
-class WebhookDeployKeyDeletedType(TypedDict):
-    """deploy_key deleted event"""
+class WebhookDeployKeyCreatedType(TypedDict):
+    """deploy_key created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    key: WebhookDeployKeyDeletedPropKeyType
+    key: WebhookDeployKeyCreatedPropKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookDeployKeyDeletedPropKeyType(TypedDict):
-    """WebhookDeployKeyDeletedPropKey
+class WebhookDeployKeyCreatedPropKeyType(TypedDict):
+    """WebhookDeployKeyCreatedPropKey
 
     The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/deploy-
     keys/deploy-keys#get-a-deploy-key) resource.
@@ -51,6 +51,6 @@ class WebhookDeployKeyDeletedPropKeyType(TypedDict):
 
 
 __all__ = (
-    "WebhookDeployKeyDeletedType",
-    "WebhookDeployKeyDeletedPropKeyType",
+    "WebhookDeployKeyCreatedType",
+    "WebhookDeployKeyCreatedPropKeyType",
 )

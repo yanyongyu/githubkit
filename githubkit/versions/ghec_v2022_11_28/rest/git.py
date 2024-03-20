@@ -216,6 +216,7 @@ class GitClient:
                 "404": BasicError,
                 "422": ValidationError,
                 "403": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -244,6 +245,7 @@ class GitClient:
                 "404": BasicError,
                 "422": ValidationError,
                 "403": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -313,6 +315,7 @@ class GitClient:
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -382,6 +385,7 @@ class GitClient:
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -408,6 +412,7 @@ class GitClient:
             response_model=GitCommit,
             error_models={
                 "404": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -434,6 +439,7 @@ class GitClient:
             response_model=GitCommit,
             error_models={
                 "404": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -449,7 +455,7 @@ class GitClient:
 
         from typing import List
 
-        from ..models import GitRef
+        from ..models import GitRef, BasicError
 
         url = f"/repos/{owner}/{repo}/git/matching-refs/{ref}"
 
@@ -460,6 +466,9 @@ class GitClient:
             url,
             headers=exclude_unset(headers),
             response_model=List[GitRef],
+            error_models={
+                "409": BasicError,
+            },
         )
 
     async def async_list_matching_refs(
@@ -474,7 +483,7 @@ class GitClient:
 
         from typing import List
 
-        from ..models import GitRef
+        from ..models import GitRef, BasicError
 
         url = f"/repos/{owner}/{repo}/git/matching-refs/{ref}"
 
@@ -485,6 +494,9 @@ class GitClient:
             url,
             headers=exclude_unset(headers),
             response_model=List[GitRef],
+            error_models={
+                "409": BasicError,
+            },
         )
 
     def get_ref(
@@ -510,6 +522,7 @@ class GitClient:
             response_model=GitRef,
             error_models={
                 "404": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -536,6 +549,7 @@ class GitClient:
             response_model=GitRef,
             error_models={
                 "404": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -574,7 +588,12 @@ class GitClient:
     ) -> Response[GitRef]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference"""
 
-        from ..models import GitRef, ValidationError, ReposOwnerRepoGitRefsPostBody
+        from ..models import (
+            GitRef,
+            BasicError,
+            ValidationError,
+            ReposOwnerRepoGitRefsPostBody,
+        )
 
         url = f"/repos/{owner}/{repo}/git/refs"
 
@@ -595,6 +614,7 @@ class GitClient:
             response_model=GitRef,
             error_models={
                 "422": ValidationError,
+                "409": BasicError,
             },
         )
 
@@ -633,7 +653,12 @@ class GitClient:
     ) -> Response[GitRef]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#create-a-reference"""
 
-        from ..models import GitRef, ValidationError, ReposOwnerRepoGitRefsPostBody
+        from ..models import (
+            GitRef,
+            BasicError,
+            ValidationError,
+            ReposOwnerRepoGitRefsPostBody,
+        )
 
         url = f"/repos/{owner}/{repo}/git/refs"
 
@@ -654,6 +679,7 @@ class GitClient:
             response_model=GitRef,
             error_models={
                 "422": ValidationError,
+                "409": BasicError,
             },
         )
 
@@ -667,7 +693,7 @@ class GitClient:
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#delete-a-reference"""
 
-        from ..models import ValidationError
+        from ..models import BasicError, ValidationError
 
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
 
@@ -679,6 +705,7 @@ class GitClient:
             headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
+                "409": BasicError,
             },
         )
 
@@ -692,7 +719,7 @@ class GitClient:
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#delete-a-reference"""
 
-        from ..models import ValidationError
+        from ..models import BasicError, ValidationError
 
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
 
@@ -704,6 +731,7 @@ class GitClient:
             headers=exclude_unset(headers),
             error_models={
                 "422": ValidationError,
+                "409": BasicError,
             },
         )
 
@@ -745,7 +773,12 @@ class GitClient:
     ) -> Response[GitRef]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#update-a-reference"""
 
-        from ..models import GitRef, ValidationError, ReposOwnerRepoGitRefsRefPatchBody
+        from ..models import (
+            GitRef,
+            BasicError,
+            ValidationError,
+            ReposOwnerRepoGitRefsRefPatchBody,
+        )
 
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
 
@@ -766,6 +799,7 @@ class GitClient:
             response_model=GitRef,
             error_models={
                 "422": ValidationError,
+                "409": BasicError,
             },
         )
 
@@ -807,7 +841,12 @@ class GitClient:
     ) -> Response[GitRef]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/refs#update-a-reference"""
 
-        from ..models import GitRef, ValidationError, ReposOwnerRepoGitRefsRefPatchBody
+        from ..models import (
+            GitRef,
+            BasicError,
+            ValidationError,
+            ReposOwnerRepoGitRefsRefPatchBody,
+        )
 
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
 
@@ -828,6 +867,7 @@ class GitClient:
             response_model=GitRef,
             error_models={
                 "422": ValidationError,
+                "409": BasicError,
             },
         )
 
@@ -869,7 +909,12 @@ class GitClient:
     ) -> Response[GitTag]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#create-a-tag-object"""
 
-        from ..models import GitTag, ValidationError, ReposOwnerRepoGitTagsPostBody
+        from ..models import (
+            GitTag,
+            BasicError,
+            ValidationError,
+            ReposOwnerRepoGitTagsPostBody,
+        )
 
         url = f"/repos/{owner}/{repo}/git/tags"
 
@@ -890,6 +935,7 @@ class GitClient:
             response_model=GitTag,
             error_models={
                 "422": ValidationError,
+                "409": BasicError,
             },
         )
 
@@ -931,7 +977,12 @@ class GitClient:
     ) -> Response[GitTag]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/tags#create-a-tag-object"""
 
-        from ..models import GitTag, ValidationError, ReposOwnerRepoGitTagsPostBody
+        from ..models import (
+            GitTag,
+            BasicError,
+            ValidationError,
+            ReposOwnerRepoGitTagsPostBody,
+        )
 
         url = f"/repos/{owner}/{repo}/git/tags"
 
@@ -952,6 +1003,7 @@ class GitClient:
             response_model=GitTag,
             error_models={
                 "422": ValidationError,
+                "409": BasicError,
             },
         )
 
@@ -978,6 +1030,7 @@ class GitClient:
             response_model=GitTag,
             error_models={
                 "404": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -1004,6 +1057,7 @@ class GitClient:
             response_model=GitTag,
             error_models={
                 "404": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -1070,6 +1124,7 @@ class GitClient:
                 "422": ValidationError,
                 "404": BasicError,
                 "403": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -1136,6 +1191,7 @@ class GitClient:
                 "422": ValidationError,
                 "404": BasicError,
                 "403": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -1169,6 +1225,7 @@ class GitClient:
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -1202,5 +1259,6 @@ class GitClient:
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
+                "409": BasicError,
             },
         )

@@ -10,28 +10,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
-from .group_0092 import CustomPropertyValue
 
+class OrgsOrgPropertiesSchemaCustomPropertyNamePutBody(GitHubModel):
+    """OrgsOrgPropertiesSchemaCustomPropertyNamePutBody"""
 
-class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: List[str] = Field(
-        max_length=30,
-        min_length=1,
-        description="The names of repositories that the custom property values will be applied to.",
+    value_type: Literal["string", "single_select"] = Field(
+        description="The type of the value for the property"
     )
-    properties: List[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values to apply to the repositories."
+    required: Missing[bool] = Field(
+        default=UNSET, description="Whether the property is required."
+    )
+    default_value: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Default value of the property"
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the property"
+    )
+    allowed_values: Missing[
+        Union[
+            Annotated[
+                List[Annotated[str, Field(max_length=75)]], Field(max_length=200)
+            ],
+            None,
+        ]
+    ] = Field(
+        default=UNSET,
+        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
     )
 
 
-model_rebuild(OrgsOrgPropertiesValuesPatchBody)
+model_rebuild(OrgsOrgPropertiesSchemaCustomPropertyNamePutBody)
 
-__all__ = ("OrgsOrgPropertiesValuesPatchBody",)
+__all__ = ("OrgsOrgPropertiesSchemaCustomPropertyNamePutBody",)

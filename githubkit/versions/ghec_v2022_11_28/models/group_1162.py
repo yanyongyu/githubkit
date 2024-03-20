@@ -15,22 +15,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody(
-    GitHubModel
-):
-    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
+class ReposOwnerRepoTagsProtectionPostBody(GitHubModel):
+    """ReposOwnerRepoTagsProtectionPostBody"""
 
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an environment public key](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-environment-public-key) endpoint.",
+    pattern: str = Field(
+        description="An optional glob pattern to match against when enforcing tag protection."
     )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
 
 
-model_rebuild(
-    RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody
-)
+model_rebuild(ReposOwnerRepoTagsProtectionPostBody)
 
-__all__ = (
-    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody",
-)
+__all__ = ("ReposOwnerRepoTagsProtectionPostBody",)

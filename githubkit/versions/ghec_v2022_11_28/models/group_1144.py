@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 
 from pydantic import Field
 
@@ -19,17 +19,17 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
 
-class ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
 
-    body: Missing[str] = Field(
-        default=UNSET, description="The body text of the pull request review"
+    reviewers: Missing[List[str]] = Field(
+        default=UNSET, description="An array of user `login`s that will be requested."
     )
-    event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"] = Field(
-        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. When you leave this blank, the API returns _HTTP 422 (Unrecognizable entity)_ and sets the review action state to `PENDING`, which means you will need to re-submit the pull request review using a review action."
+    team_reviewers: List[str] = Field(
+        description="An array of team `slug`s that will be requested."
     )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1",)

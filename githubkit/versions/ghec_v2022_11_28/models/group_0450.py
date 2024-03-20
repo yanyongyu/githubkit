@@ -18,19 +18,19 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0389 import EnterpriseWebhooks
-from .group_0390 import SimpleInstallation
-from .group_0391 import OrganizationSimpleWebhooks
-from .group_0392 import RepositoryWebhooks
-from .group_0393 import SimpleUserWebhooks
-from .group_0396 import Discussion
+from .group_0390 import EnterpriseWebhooks
+from .group_0391 import SimpleInstallation
+from .group_0392 import OrganizationSimpleWebhooks
+from .group_0393 import RepositoryWebhooks
+from .group_0394 import SimpleUserWebhooks
+from .group_0397 import Discussion
 
 
-class WebhookDiscussionCommentDeleted(GitHubModel):
-    """discussion_comment deleted event"""
+class WebhookDiscussionCommentCreated(GitHubModel):
+    """discussion_comment created event"""
 
-    action: Literal["deleted"] = Field()
-    comment: WebhookDiscussionCommentDeletedPropComment = Field()
+    action: Literal["created"] = Field()
+    comment: WebhookDiscussionCommentCreatedPropComment = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -59,8 +59,8 @@ class WebhookDiscussionCommentDeleted(GitHubModel):
     )
 
 
-class WebhookDiscussionCommentDeletedPropComment(GitHubModel):
-    """WebhookDiscussionCommentDeletedPropComment"""
+class WebhookDiscussionCommentCreatedPropComment(GitHubModel):
+    """WebhookDiscussionCommentCreatedPropComment"""
 
     author_association: Literal[
         "COLLABORATOR",
@@ -83,17 +83,17 @@ class WebhookDiscussionCommentDeletedPropComment(GitHubModel):
     id: int = Field()
     node_id: str = Field()
     parent_id: Union[int, None] = Field()
-    reactions: WebhookDiscussionCommentDeletedPropCommentPropReactions = Field(
+    reactions: WebhookDiscussionCommentCreatedPropCommentPropReactions = Field(
         title="Reactions"
     )
     repository_url: str = Field()
     updated_at: str = Field()
-    user: Union[WebhookDiscussionCommentDeletedPropCommentPropUser, None] = Field(
+    user: Union[WebhookDiscussionCommentCreatedPropCommentPropUser, None] = Field(
         title="User"
     )
 
 
-class WebhookDiscussionCommentDeletedPropCommentPropReactions(GitHubModel):
+class WebhookDiscussionCommentCreatedPropCommentPropReactions(GitHubModel):
     """Reactions"""
 
     plus_one: int = Field(alias="+1")
@@ -108,7 +108,7 @@ class WebhookDiscussionCommentDeletedPropCommentPropReactions(GitHubModel):
     url: str = Field()
 
 
-class WebhookDiscussionCommentDeletedPropCommentPropUser(GitHubModel):
+class WebhookDiscussionCommentCreatedPropCommentPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -134,14 +134,14 @@ class WebhookDiscussionCommentDeletedPropCommentPropUser(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookDiscussionCommentDeleted)
-model_rebuild(WebhookDiscussionCommentDeletedPropComment)
-model_rebuild(WebhookDiscussionCommentDeletedPropCommentPropReactions)
-model_rebuild(WebhookDiscussionCommentDeletedPropCommentPropUser)
+model_rebuild(WebhookDiscussionCommentCreated)
+model_rebuild(WebhookDiscussionCommentCreatedPropComment)
+model_rebuild(WebhookDiscussionCommentCreatedPropCommentPropReactions)
+model_rebuild(WebhookDiscussionCommentCreatedPropCommentPropUser)
 
 __all__ = (
-    "WebhookDiscussionCommentDeleted",
-    "WebhookDiscussionCommentDeletedPropComment",
-    "WebhookDiscussionCommentDeletedPropCommentPropReactions",
-    "WebhookDiscussionCommentDeletedPropCommentPropUser",
+    "WebhookDiscussionCommentCreated",
+    "WebhookDiscussionCommentCreatedPropComment",
+    "WebhookDiscussionCommentCreatedPropCommentPropReactions",
+    "WebhookDiscussionCommentCreatedPropCommentPropUser",
 )

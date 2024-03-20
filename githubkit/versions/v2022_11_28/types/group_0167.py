@@ -10,45 +10,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union, Literal
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
-from .group_0005 import IntegrationType
+from .group_0075 import TeamType
 
 
-class DeploymentType(TypedDict):
-    """Deployment
+class PendingDeploymentPropReviewersItemsType(TypedDict):
+    """PendingDeploymentPropReviewersItems"""
 
-    A request for a specific ref(branch,sha,tag) to be deployed
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
+
+
+class PendingDeploymentType(TypedDict):
+    """Pending Deployment
+
+    Details of a deployment that is waiting for protection rules to pass
     """
 
-    url: str
-    id: int
-    node_id: str
-    sha: str
-    ref: str
-    task: str
-    payload: Union[DeploymentPropPayloadOneof0Type, str]
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    creator: Union[None, SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType]]
+    environment: PendingDeploymentPropEnvironmentType
+    wait_timer: int
+    wait_timer_started_at: Union[datetime, None]
+    current_user_can_approve: bool
+    reviewers: List[PendingDeploymentPropReviewersItemsType]
 
 
-class DeploymentPropPayloadOneof0Type(TypedDict):
-    """DeploymentPropPayloadOneof0"""
+class PendingDeploymentPropEnvironmentType(TypedDict):
+    """PendingDeploymentPropEnvironment"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
 
 
 __all__ = (
-    "DeploymentType",
-    "DeploymentPropPayloadOneof0Type",
+    "PendingDeploymentPropReviewersItemsType",
+    "PendingDeploymentType",
+    "PendingDeploymentPropEnvironmentType",
 )

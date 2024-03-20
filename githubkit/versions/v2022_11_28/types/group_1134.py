@@ -10,14 +10,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-
-class UserKeysPostBodyType(TypedDict):
-    """UserKeysPostBody"""
-
-    title: NotRequired[str]
-    key: str
+from .group_0017 import RepositoryType
 
 
-__all__ = ("UserKeysPostBodyType",)
+class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
+
+    total_count: int
+    repository_selection: NotRequired[str]
+    repositories: List[RepositoryType]
+
+
+__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200Type",)

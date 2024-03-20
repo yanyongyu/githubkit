@@ -11,41 +11,71 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union, Literal
-from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0390 import SimpleInstallationType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0393 import SimpleUserWebhooksType
-from .group_0400 import ProjectsV2ItemType
+from .group_0391 import SimpleInstallationType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0400 import ProjectsV2Type
 
 
-class WebhookProjectsV2ItemArchivedType(TypedDict):
-    """Projects v2 Item Archived Event"""
+class WebhookProjectsV2ProjectEditedType(TypedDict):
+    """Projects v2 Project Edited Event"""
 
-    action: Literal["archived"]
-    changes: WebhookProjectsV2ItemArchivedPropChangesType
+    action: Literal["edited"]
+    changes: WebhookProjectsV2ProjectEditedPropChangesType
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    projects_v2: ProjectsV2Type
     sender: SimpleUserWebhooksType
 
 
-class WebhookProjectsV2ItemArchivedPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemArchivedPropChanges"""
+class WebhookProjectsV2ProjectEditedPropChangesType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChanges"""
 
-    archived_at: NotRequired[WebhookProjectsV2ItemArchivedPropChangesPropArchivedAtType]
+    description: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType
+    ]
+    public: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropPublicType]
+    short_description: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType
+    ]
+    title: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropTitleType]
 
 
-class WebhookProjectsV2ItemArchivedPropChangesPropArchivedAtType(TypedDict):
-    """WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt"""
+class WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
 
-    from_: NotRequired[Union[datetime, None]]
-    to: NotRequired[Union[datetime, None]]
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropPublicType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
+
+    from_: NotRequired[bool]
+    to: NotRequired[bool]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropTitleType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
+
+    from_: NotRequired[str]
+    to: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectsV2ItemArchivedType",
-    "WebhookProjectsV2ItemArchivedPropChangesType",
-    "WebhookProjectsV2ItemArchivedPropChangesPropArchivedAtType",
+    "WebhookProjectsV2ProjectEditedType",
+    "WebhookProjectsV2ProjectEditedPropChangesType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropPublicType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropTitleType",
 )

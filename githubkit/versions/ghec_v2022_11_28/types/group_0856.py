@@ -13,10 +13,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ApplicationsClientIdTokenPostBodyType(TypedDict):
-    """ApplicationsClientIdTokenPostBody"""
+class ApplicationsClientIdTokenDeleteBodyType(TypedDict):
+    """ApplicationsClientIdTokenDeleteBody"""
 
     access_token: str
 
 
-__all__ = ("ApplicationsClientIdTokenPostBodyType",)
+__all__ = ("ApplicationsClientIdTokenDeleteBodyType",)

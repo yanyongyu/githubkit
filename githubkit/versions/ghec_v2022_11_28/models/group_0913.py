@@ -19,13 +19,14 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
 
-class OrgsOrgActionsVariablesPostBody(GitHubModel):
-    """OrgsOrgActionsVariablesPostBody"""
+class OrgsOrgActionsVariablesNamePatchBody(GitHubModel):
+    """OrgsOrgActionsVariablesNamePatchBody"""
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable."
+    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
+    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
+    visibility: Missing[Literal["all", "private", "selected"]] = Field(
+        default=UNSET,
+        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.",
     )
     selected_repository_ids: Missing[List[int]] = Field(
         default=UNSET,
@@ -33,6 +34,6 @@ class OrgsOrgActionsVariablesPostBody(GitHubModel):
     )
 
 
-model_rebuild(OrgsOrgActionsVariablesPostBody)
+model_rebuild(OrgsOrgActionsVariablesNamePatchBody)
 
-__all__ = ("OrgsOrgActionsVariablesPostBody",)
+__all__ = ("OrgsOrgActionsVariablesNamePatchBody",)

@@ -2232,9 +2232,6 @@ if TYPE_CHECKING:
         RepositoryCollaboratorPermissionType as RepositoryCollaboratorPermissionType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        RepositoryPropTemplateRepositoryType as RepositoryPropTemplateRepositoryType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleRequiredSignaturesType as RepositoryRuleRequiredSignaturesType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -2275,6 +2272,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         SecretScanningLocationIssueTitleType as SecretScanningLocationIssueTitleType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        SecretScanningLocationWikiCommitType as SecretScanningLocationWikiCommitType,
     )
     from githubkit.versions.v2022_11_28.types import (
         StatusCheckPolicyPropChecksItemsType as StatusCheckPolicyPropChecksItemsType,
@@ -3540,7 +3540,7 @@ if TYPE_CHECKING:
         PullRequestReviewPropLinksPropPullRequestType as PullRequestReviewPropLinksPropPullRequestType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        RepositoryPropTemplateRepositoryPropOwnerType as RepositoryPropTemplateRepositoryPropOwnerType,
+        RepositoryRuleParamsCodeScanningThresholdType as RepositoryRuleParamsCodeScanningThresholdType,
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleParamsWorkflowFileReferenceType as RepositoryRuleParamsWorkflowFileReferenceType,
@@ -3616,6 +3616,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookIssuesTransferredPropIssuePropUserType as WebhookIssuesTransferredPropIssuePropUserType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookMemberAddedPropChangesPropRoleNameType as WebhookMemberAddedPropChangesPropRoleNameType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookPackageUpdatedPropPackagePropOwnerType as WebhookPackageUpdatedPropPackagePropOwnerType,
@@ -4570,9 +4573,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         PersonalAccessTokenRequestPropRepositoriesItemsType as PersonalAccessTokenRequestPropRepositoriesItemsType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        RepositoryPropTemplateRepositoryPropPermissionsType as RepositoryPropTemplateRepositoryPropPermissionsType,
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleRequiredDeploymentsPropParametersType as RepositoryRuleRequiredDeploymentsPropParametersType,
@@ -6381,6 +6381,9 @@ if TYPE_CHECKING:
         ProtectedBranchPullRequestReviewPropDismissalRestrictionsType as ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type as ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType as ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -6589,6 +6592,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType as ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
@@ -7230,6 +7236,9 @@ if TYPE_CHECKING:
         PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType as PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsType as WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -7431,6 +7440,9 @@ if TYPE_CHECKING:
         ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType as ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsType as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -7558,6 +7570,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType,
@@ -7705,6 +7720,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType as RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType,
@@ -8239,9 +8257,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadRepositoryType as WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadRepositoryType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType as RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType as ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType,
@@ -8931,9 +8946,6 @@ if TYPE_CHECKING:
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadType as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200Type as RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -9102,9 +9114,6 @@ if TYPE_CHECKING:
         OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType as OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType as RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType as RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -9217,9 +9226,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadCommitPropAuthorType as WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadCommitPropAuthorType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200Type as RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
@@ -9376,9 +9382,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsType as WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType as RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType,
@@ -10716,9 +10719,6 @@ else:
             "LicenseSimpleType",
             "RepositoryType",
             "RepositoryPropPermissionsType",
-            "RepositoryPropTemplateRepositoryType",
-            "RepositoryPropTemplateRepositoryPropOwnerType",
-            "RepositoryPropTemplateRepositoryPropPermissionsType",
             "InstallationTokenType",
             "ScopedInstallationType",
             "AuthorizationType",
@@ -10905,6 +10905,7 @@ else:
             "RepositoryRuleWorkflowsType",
             "RepositoryRuleWorkflowsPropParametersType",
             "RepositoryRuleParamsWorkflowFileReferenceType",
+            "RepositoryRuleParamsCodeScanningThresholdType",
             "RepositoryRulesetType",
             "RepositoryRulesetPropLinksType",
             "RepositoryRulesetPropLinksPropSelfType",
@@ -12232,6 +12233,7 @@ else:
             "WebhookMemberAddedPropMemberType",
             "WebhookMemberAddedPropChangesType",
             "WebhookMemberAddedPropChangesPropPermissionType",
+            "WebhookMemberAddedPropChangesPropRoleNameType",
             "WebhookMemberEditedType",
             "WebhookMemberEditedPropMemberType",
             "WebhookMemberEditedPropChangesType",
@@ -13638,6 +13640,7 @@ else:
             "WebhookSecretScanningAlertLocationCreatedType",
             "SecretScanningLocationType",
             "SecretScanningLocationCommitType",
+            "SecretScanningLocationWikiCommitType",
             "SecretScanningLocationIssueTitleType",
             "SecretScanningLocationIssueBodyType",
             "SecretScanningLocationIssueCommentType",
@@ -14168,6 +14171,11 @@ else:
             "DeploymentBranchPolicyType",
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType",
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type",
+            "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type",
+            "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType",
+            "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type",
+            "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType",
+            "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType",
             "ReposOwnerRepoForksPostBodyType",
             "ReposOwnerRepoGitBlobsPostBodyType",
             "ReposOwnerRepoGitCommitsPostBodyType",
@@ -14227,6 +14235,7 @@ else:
             "ReposOwnerRepoPagesPostBodyAnyof0Type",
             "ReposOwnerRepoPagesPostBodyAnyof1Type",
             "ReposOwnerRepoPagesDeploymentsPostBodyType",
+            "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",
             "ReposOwnerRepoProjectsPostBodyType",
             "ReposOwnerRepoPropertiesValuesPatchBodyType",
             "ReposOwnerRepoPullsPostBodyType",
@@ -14263,11 +14272,6 @@ else:
             "ReposOwnerRepoTopicsPutBodyType",
             "ReposOwnerRepoTransferPostBodyType",
             "ReposTemplateOwnerTemplateRepoGeneratePostBodyType",
-            "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200Type",
-            "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType",
-            "RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200Type",
-            "RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType",
-            "RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType",
             "TeamsTeamIdPatchBodyType",
             "TeamsTeamIdDiscussionsPostBodyType",
             "TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType",

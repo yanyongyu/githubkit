@@ -18,18 +18,18 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0389 import EnterpriseWebhooks
-from .group_0390 import SimpleInstallation
-from .group_0391 import OrganizationSimpleWebhooks
-from .group_0392 import RepositoryWebhooks
-from .group_0393 import SimpleUserWebhooks
+from .group_0390 import EnterpriseWebhooks
+from .group_0391 import SimpleInstallation
+from .group_0392 import OrganizationSimpleWebhooks
+from .group_0393 import RepositoryWebhooks
+from .group_0394 import SimpleUserWebhooks
 
 
-class WebhookOrgBlockUnblocked(GitHubModel):
-    """org_block unblocked event"""
+class WebhookOrgBlockBlocked(GitHubModel):
+    """org_block blocked event"""
 
-    action: Literal["unblocked"] = Field()
-    blocked_user: Union[WebhookOrgBlockUnblockedPropBlockedUser, None] = Field(
+    action: Literal["blocked"] = Field()
+    blocked_user: Union[WebhookOrgBlockBlockedPropBlockedUser, None] = Field(
         title="User"
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
@@ -57,7 +57,7 @@ class WebhookOrgBlockUnblocked(GitHubModel):
     )
 
 
-class WebhookOrgBlockUnblockedPropBlockedUser(GitHubModel):
+class WebhookOrgBlockBlockedPropBlockedUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -83,10 +83,10 @@ class WebhookOrgBlockUnblockedPropBlockedUser(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookOrgBlockUnblocked)
-model_rebuild(WebhookOrgBlockUnblockedPropBlockedUser)
+model_rebuild(WebhookOrgBlockBlocked)
+model_rebuild(WebhookOrgBlockBlockedPropBlockedUser)
 
 __all__ = (
-    "WebhookOrgBlockUnblocked",
-    "WebhookOrgBlockUnblockedPropBlockedUser",
+    "WebhookOrgBlockBlocked",
+    "WebhookOrgBlockBlockedPropBlockedUser",
 )

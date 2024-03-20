@@ -10,25 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
-class UserEmailsPostBodyOneof0(GitHubModel):
-    """UserEmailsPostBodyOneof0
+class UserCodespacesCodespaceNamePublishPostBody(GitHubModel):
+    """UserCodespacesCodespaceNamePublishPostBody"""
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: List[str] = Field(
-        description="Adds one or more email addresses to your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key."
+    name: Missing[str] = Field(
+        default=UNSET, description="A name for the new repository."
+    )
+    private: Missing[bool] = Field(
+        default=UNSET, description="Whether the new repository should be private."
     )
 
 
-model_rebuild(UserEmailsPostBodyOneof0)
+model_rebuild(UserCodespacesCodespaceNamePublishPostBody)
 
-__all__ = ("UserEmailsPostBodyOneof0",)
+__all__ = ("UserCodespacesCodespaceNamePublishPostBody",)

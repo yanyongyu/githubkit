@@ -10,153 +10,168 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
-from datetime import datetime
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0356 import EnterpriseWebhooksType
-from .group_0357 import SimpleInstallationType
-from .group_0358 import OrganizationSimpleWebhooksType
-from .group_0359 import RepositoryWebhooksType
-from .group_0360 import SimpleUserWebhooksType
+from .group_0594 import WebhookRubygemsMetadataType
 
 
-class WebhookReleaseCreatedType(TypedDict):
-    """release created event"""
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType(TypedDict):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhookReleaseCreatedPropReleaseType
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    author: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorType
+    body: str
+    body_html: str
+    created_at: str
+    description: str
+    docker_metadata: NotRequired[
+        List[
+            Union[
+                WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsType,
+                None,
+            ]
+        ]
+    ]
+    draft: NotRequired[bool]
+    html_url: str
+    id: int
+    installation_command: str
+    manifest: NotRequired[str]
+    metadata: List[
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType
+    ]
+    name: str
+    package_files: List[
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsType
+    ]
+    package_url: str
+    prerelease: NotRequired[bool]
+    release: NotRequired[
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseType
+    ]
+    rubygems_metadata: NotRequired[List[WebhookRubygemsMetadataType]]
+    summary: str
+    tag_name: NotRequired[str]
+    target_commitish: str
+    target_oid: str
+    updated_at: str
+    version: str
 
 
-class WebhookReleaseCreatedPropReleaseType(TypedDict):
-    """Release
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorType(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor"""
 
-    The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
-    object.
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: str
+    html_url: str
+    id: int
+    login: str
+    node_id: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
+
+
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsType(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMeta
+    dataItems
     """
 
-    assets: List[WebhookReleaseCreatedPropReleasePropAssetsItemsType]
-    assets_url: str
-    author: Union[WebhookReleaseCreatedPropReleasePropAuthorType, None]
-    body: Union[str, None]
-    created_at: Union[datetime, None]
-    discussion_url: NotRequired[str]
+    tags: NotRequired[List[str]]
+
+
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataIt
+    ems
+    """
+
+
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsType(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFil
+    esItems
+    """
+
+    content_type: NotRequired[str]
+    created_at: NotRequired[str]
+    download_url: NotRequired[str]
+    id: NotRequired[int]
+    md5: NotRequired[Union[str, None]]
+    name: NotRequired[str]
+    sha1: NotRequired[Union[str, None]]
+    sha256: NotRequired[str]
+    size: NotRequired[int]
+    state: NotRequired[str]
+    updated_at: NotRequired[str]
+
+
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseType(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease"""
+
+    author: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorType
+    created_at: str
     draft: bool
     html_url: str
     id: int
-    name: Union[str, None]
-    node_id: str
+    name: str
     prerelease: bool
-    published_at: Union[datetime, None]
-    reactions: NotRequired[WebhookReleaseCreatedPropReleasePropReactionsType]
+    published_at: str
     tag_name: str
-    tarball_url: Union[str, None]
     target_commitish: str
-    upload_url: str
-    url: str
-    zipball_url: Union[str, None]
-
-
-class WebhookReleaseCreatedPropReleasePropAuthorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookReleaseCreatedPropReleasePropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
     url: str
 
 
-class WebhookReleaseCreatedPropReleasePropAssetsItemsType(TypedDict):
-    """Release Asset
-
-    Data related to a release.
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorType(
+    TypedDict
+):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePro
+    pAuthor
     """
 
-    browser_download_url: str
-    content_type: str
-    created_at: datetime
-    download_count: int
-    id: int
-    label: Union[str, None]
-    name: str
-    node_id: str
-    size: int
-    state: Literal["uploaded"]
-    updated_at: datetime
-    uploader: NotRequired[
-        Union[WebhookReleaseCreatedPropReleasePropAssetsItemsPropUploaderType, None]
-    ]
-    url: str
-
-
-class WebhookReleaseCreatedPropReleasePropAssetsItemsPropUploaderType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: str
+    html_url: str
     id: int
     login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    node_id: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
 
 
 __all__ = (
-    "WebhookReleaseCreatedType",
-    "WebhookReleaseCreatedPropReleaseType",
-    "WebhookReleaseCreatedPropReleasePropAuthorType",
-    "WebhookReleaseCreatedPropReleasePropReactionsType",
-    "WebhookReleaseCreatedPropReleasePropAssetsItemsType",
-    "WebhookReleaseCreatedPropReleasePropAssetsItemsPropUploaderType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthorType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthorType",
 )

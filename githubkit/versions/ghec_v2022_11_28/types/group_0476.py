@@ -14,29 +14,27 @@ from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0015 import InstallationType
-from .group_0389 import EnterpriseWebhooksType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0392 import RepositoryWebhooksType
-from .group_0393 import SimpleUserWebhooksType
+from .group_0390 import EnterpriseWebhooksType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
 
 
-class WebhookInstallationNewPermissionsAcceptedType(TypedDict):
-    """installation new_permissions_accepted event"""
+class WebhookInstallationDeletedType(TypedDict):
+    """installation deleted event"""
 
-    action: Literal["new_permissions_accepted"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[
-        List[WebhookInstallationNewPermissionsAcceptedPropRepositoriesItemsType]
-    ]
+    repositories: NotRequired[List[WebhookInstallationDeletedPropRepositoriesItemsType]]
     repository: NotRequired[RepositoryWebhooksType]
     requester: NotRequired[None]
     sender: SimpleUserWebhooksType
 
 
-class WebhookInstallationNewPermissionsAcceptedPropRepositoriesItemsType(TypedDict):
-    """WebhookInstallationNewPermissionsAcceptedPropRepositoriesItems"""
+class WebhookInstallationDeletedPropRepositoriesItemsType(TypedDict):
+    """WebhookInstallationDeletedPropRepositoriesItems"""
 
     full_name: str
     id: int
@@ -46,6 +44,6 @@ class WebhookInstallationNewPermissionsAcceptedPropRepositoriesItemsType(TypedDi
 
 
 __all__ = (
-    "WebhookInstallationNewPermissionsAcceptedType",
-    "WebhookInstallationNewPermissionsAcceptedPropRepositoriesItemsType",
+    "WebhookInstallationDeletedType",
+    "WebhookInstallationDeletedPropRepositoriesItemsType",
 )

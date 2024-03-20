@@ -10,16 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import List
 from typing_extensions import TypedDict
 
 
-class TrafficType(TypedDict):
-    """Traffic"""
+class TopicType(TypedDict):
+    """Topic
 
-    timestamp: datetime
-    uniques: int
-    count: int
+    A topic aggregates entities that are related to a subject.
+    """
+
+    names: List[str]
 
 
-__all__ = ("TrafficType",)
+__all__ = ("TopicType",)

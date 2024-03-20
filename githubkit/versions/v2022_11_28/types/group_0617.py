@@ -14,26 +14,26 @@ from typing import Union, Literal
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0356 import EnterpriseWebhooksType
-from .group_0357 import SimpleInstallationType
-from .group_0358 import OrganizationSimpleWebhooksType
-from .group_0359 import RepositoryWebhooksType
-from .group_0360 import SimpleUserWebhooksType
+from .group_0357 import EnterpriseWebhooksType
+from .group_0358 import SimpleInstallationType
+from .group_0359 import OrganizationSimpleWebhooksType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
 
 
-class WebhookProjectColumnDeletedType(TypedDict):
-    """project_column deleted event"""
+class WebhookProjectColumnCreatedType(TypedDict):
+    """project_column created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhookProjectColumnDeletedPropProjectColumnType
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    project_column: WebhookProjectColumnCreatedPropProjectColumnType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: NotRequired[SimpleUserWebhooksType]
 
 
-class WebhookProjectColumnDeletedPropProjectColumnType(TypedDict):
+class WebhookProjectColumnCreatedPropProjectColumnType(TypedDict):
     """Project Column"""
 
     after_id: NotRequired[Union[int, None]]
@@ -48,6 +48,6 @@ class WebhookProjectColumnDeletedPropProjectColumnType(TypedDict):
 
 
 __all__ = (
-    "WebhookProjectColumnDeletedType",
-    "WebhookProjectColumnDeletedPropProjectColumnType",
+    "WebhookProjectColumnCreatedType",
+    "WebhookProjectColumnCreatedPropProjectColumnType",
 )

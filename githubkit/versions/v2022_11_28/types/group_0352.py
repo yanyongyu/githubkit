@@ -10,20 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class SshSigningKeyType(TypedDict):
-    """SSH Signing Key
+class SocialAccountType(TypedDict):
+    """Social account
 
-    A public SSH key used to sign Git commits
+    Social media account
     """
 
-    key: str
-    id: int
-    title: str
-    created_at: datetime
+    provider: str
+    url: str
 
 
-__all__ = ("SshSigningKeyType",)
+__all__ = ("SocialAccountType",)

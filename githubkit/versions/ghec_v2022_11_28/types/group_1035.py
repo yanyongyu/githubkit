@@ -14,10 +14,10 @@ from typing import List
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0
 
     Examples:
         {'users': ['mona']}
@@ -26,4 +26,4 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type(
     users: List[str]
 
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type",)

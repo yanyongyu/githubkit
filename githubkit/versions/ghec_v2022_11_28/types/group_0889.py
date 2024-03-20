@@ -13,10 +13,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class NotificationsPutResponse202Type(TypedDict):
-    """NotificationsPutResponse202"""
+class NotificationsThreadsThreadIdSubscriptionPutBodyType(TypedDict):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
 
-    message: NotRequired[str]
+    ignored: NotRequired[bool]
 
 
-__all__ = ("NotificationsPutResponse202Type",)
+__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBodyType",)

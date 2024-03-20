@@ -10,19 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
+
+from .group_0548 import WebhookIssuesUnlockedPropIssueAllof0PropMilestonePropCreatorType
 
 
-class WebhookIssuesUnlockedPropIssueAllof0PropPullRequestType(TypedDict):
-    """WebhookIssuesUnlockedPropIssueAllof0PropPullRequest"""
+class WebhookIssuesUnlockedPropIssueAllof0PropMilestoneType(TypedDict):
+    """Milestone
 
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[datetime, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[datetime, None]
+    closed_issues: int
+    created_at: datetime
+    creator: Union[
+        WebhookIssuesUnlockedPropIssueAllof0PropMilestonePropCreatorType, None
+    ]
+    description: Union[str, None]
+    due_on: Union[datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: datetime
+    url: str
 
 
-__all__ = ("WebhookIssuesUnlockedPropIssueAllof0PropPullRequestType",)
+__all__ = ("WebhookIssuesUnlockedPropIssueAllof0PropMilestoneType",)

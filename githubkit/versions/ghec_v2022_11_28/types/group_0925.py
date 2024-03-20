@@ -10,14 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedTeamsPostBodyType(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
+class OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
 
-    selected_teams: List[str]
+    The total number of seat assignments created.
+    """
+
+    seats_created: int
 
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostBodyType",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",)

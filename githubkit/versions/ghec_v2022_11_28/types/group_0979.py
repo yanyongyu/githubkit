@@ -10,15 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 
-class ProjectsColumnsCardsCardIdPatchBodyType(TypedDict):
-    """ProjectsColumnsCardsCardIdPatchBody"""
+class ProjectsColumnsCardsCardIdMovesPostBodyType(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostBody"""
 
-    note: NotRequired[Union[str, None]]
-    archived: NotRequired[bool]
+    position: str
+    column_id: NotRequired[int]
 
 
-__all__ = ("ProjectsColumnsCardsCardIdPatchBodyType",)
+__all__ = ("ProjectsColumnsCardsCardIdMovesPostBodyType",)

@@ -13,19 +13,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0389 import EnterpriseWebhooksType
-from .group_0390 import SimpleInstallationType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0392 import RepositoryWebhooksType
-from .group_0393 import SimpleUserWebhooksType
-from .group_0770 import WebhookRepositoryVulnerabilityAlertCreatePropAlertType
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
 
 
-class WebhookRepositoryVulnerabilityAlertCreateType(TypedDict):
-    """repository_vulnerability_alert create event"""
+class WebhookRepositoryUnarchivedType(TypedDict):
+    """repository unarchived event"""
 
-    action: Literal["create"]
-    alert: WebhookRepositoryVulnerabilityAlertCreatePropAlertType
+    action: Literal["unarchived"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -33,4 +31,4 @@ class WebhookRepositoryVulnerabilityAlertCreateType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertCreateType",)
+__all__ = ("WebhookRepositoryUnarchivedType",)

@@ -19,30 +19,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
 
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1(GitHubModel):
-    """WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1"""
-
-    affected_package_name: Missing[str] = Field(default=UNSET)
-    affected_range: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    dismiss_comment: Missing[Union[str, None]] = Field(default=UNSET)
-    dismiss_reason: str = Field()
-    dismissed_at: str = Field()
-    dismisser: Union[
-        WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1PropDismisser, None
-    ] = Field(title="User")
-    external_identifier: Missing[str] = Field(default=UNSET)
-    external_reference: Missing[Union[str, None]] = Field(default=UNSET)
-    fixed_in: Missing[str] = Field(default=UNSET)
-    ghsa_id: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    number: Missing[int] = Field(default=UNSET)
-    severity: Missing[str] = Field(default=UNSET)
-    state: Literal["dismissed"] = Field()
-
-
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1PropDismisser(
+class WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisser(
     GitHubModel
 ):
     """User"""
@@ -70,10 +47,6 @@ class WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1PropDismisser(
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1)
-model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1PropDismisser)
+model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisser)
 
-__all__ = (
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1",
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1PropDismisser",
-)
+__all__ = ("WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisser",)

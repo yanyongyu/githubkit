@@ -10,19 +10,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0354 import MetaType
-from .group_0364 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
+from .group_0355 import MetaType
+from .group_0360 import UserNameResponseType, UserEmailsResponseItemsType
+from .group_0361 import UserRoleItemsType
+from .group_0365 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
 
 
-class ScimEnterpriseUserResponseAllof1Type(TypedDict):
-    """ScimEnterpriseUserResponseAllof1"""
+class ScimEnterpriseUserResponseType(TypedDict):
+    """ScimEnterpriseUserResponse"""
 
+    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: NotRequired[Union[str, None]]
+    active: bool
+    user_name: NotRequired[str]
+    name: NotRequired[UserNameResponseType]
+    display_name: NotRequired[Union[str, None]]
+    emails: List[UserEmailsResponseItemsType]
+    roles: NotRequired[List[UserRoleItemsType]]
     id: str
     groups: NotRequired[List[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
     meta: MetaType
 
 
-__all__ = ("ScimEnterpriseUserResponseAllof1Type",)
+class ScimEnterpriseUserListType(TypedDict):
+    """ScimEnterpriseUserList"""
+
+    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: List[ScimEnterpriseUserResponseType]
+    start_index: int
+    items_per_page: int
+
+
+__all__ = (
+    "ScimEnterpriseUserResponseType",
+    "ScimEnterpriseUserListType",
+)

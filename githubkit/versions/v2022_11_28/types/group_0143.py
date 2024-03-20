@@ -10,19 +10,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict
 
+from .group_0001 import SimpleUserType
 
-class TeamMembershipType(TypedDict):
-    """Team Membership
 
-    Team Membership
+class ReactionType(TypedDict):
+    """Reaction
+
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    url: str
-    role: Literal["member", "maintainer"]
-    state: Literal["active", "pending"]
+    id: int
+    node_id: str
+    user: Union[None, SimpleUserType]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+    created_at: datetime
 
 
-__all__ = ("TeamMembershipType",)
+__all__ = ("ReactionType",)

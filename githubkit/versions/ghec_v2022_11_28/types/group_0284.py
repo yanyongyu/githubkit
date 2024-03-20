@@ -17,26 +17,26 @@ from .group_0001 import SimpleUserType
 from .group_0005 import IntegrationType
 
 
-class MovedColumnInProjectIssueEventType(TypedDict):
-    """Moved Column in Project Issue Event
+class AddedToProjectIssueEventType(TypedDict):
+    """Added to Project Issue Event
 
-    Moved Column in Project Issue Event
+    Added to Project Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["moved_columns_in_project"]
+    event: Literal["added_to_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType]
-    project_card: NotRequired[MovedColumnInProjectIssueEventPropProjectCardType]
+    project_card: NotRequired[AddedToProjectIssueEventPropProjectCardType]
 
 
-class MovedColumnInProjectIssueEventPropProjectCardType(TypedDict):
-    """MovedColumnInProjectIssueEventPropProjectCard"""
+class AddedToProjectIssueEventPropProjectCardType(TypedDict):
+    """AddedToProjectIssueEventPropProjectCard"""
 
     id: int
     url: str
@@ -47,6 +47,6 @@ class MovedColumnInProjectIssueEventPropProjectCardType(TypedDict):
 
 
 __all__ = (
-    "MovedColumnInProjectIssueEventType",
-    "MovedColumnInProjectIssueEventPropProjectCardType",
+    "AddedToProjectIssueEventType",
+    "AddedToProjectIssueEventPropProjectCardType",
 )

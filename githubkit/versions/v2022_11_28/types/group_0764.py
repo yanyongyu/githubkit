@@ -13,112 +13,112 @@ from __future__ import annotations
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0356 import EnterpriseWebhooksType
-from .group_0357 import SimpleInstallationType
-from .group_0358 import OrganizationSimpleWebhooksType
-from .group_0359 import RepositoryWebhooksType
-from .group_0360 import SimpleUserWebhooksType
+from .group_0357 import EnterpriseWebhooksType
+from .group_0358 import SimpleInstallationType
+from .group_0359 import OrganizationSimpleWebhooksType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
 
 
-class WebhookSecurityAdvisoryUpdatedType(TypedDict):
-    """security_advisory updated event"""
+class WebhookSecurityAdvisoryPublishedType(TypedDict):
+    """security_advisory published event"""
 
-    action: Literal["updated"]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    security_advisory: WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryType
+    security_advisory: WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryType
     sender: NotRequired[SimpleUserWebhooksType]
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryType(TypedDict):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisory
+class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryType(TypedDict):
+    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisory
 
     The details of the security advisory, including summary, description, and
     severity.
     """
 
-    cvss: WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvssType
-    cwes: List[WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItemsType]
+    cvss: WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCvssType
+    cwes: List[WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCwesItemsType]
     description: str
     ghsa_id: str
     identifiers: List[
-        WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItemsType
+        WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropIdentifiersItemsType
     ]
     published_at: str
     references: List[
-        WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItemsType
+        WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropReferencesItemsType
     ]
     severity: str
     summary: str
     updated_at: str
     vulnerabilities: List[
-        WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsType
+        WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsType
     ]
     withdrawn_at: Union[str, None]
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvssType(TypedDict):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss"""
+class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCvssType(TypedDict):
+    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCvss"""
 
     score: float
     vector_string: Union[str, None]
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItemsType(TypedDict):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems"""
+class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCwesItemsType(TypedDict):
+    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCwesItems"""
 
     cwe_id: str
     name: str
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItemsType(
+class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropIdentifiersItemsType(
     TypedDict
 ):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems"""
+    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropIdentifiersItems"""
 
     type: str
     value: str
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItemsType(
+class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropReferencesItemsType(
     TypedDict
 ):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems"""
+    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropReferencesItems"""
 
     url: str
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsType(
+class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsType(
     TypedDict
 ):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems"""
+    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItems"""
 
     first_patched_version: Union[
-        WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
+        WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
         None,
     ]
-    package: WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
+    package: WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
     severity: str
     vulnerable_version_range: str
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
+class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
     TypedDict
 ):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFi
-    rstPatchedVersion
+    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    FirstPatchedVersion
     """
 
     identifier: str
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(
+class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(
     TypedDict
 ):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPa
-    ckage
+    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsProp
+    Package
     """
 
     ecosystem: str
@@ -126,13 +126,13 @@ class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems
 
 
 __all__ = (
-    "WebhookSecurityAdvisoryUpdatedType",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryType",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvssType",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItemsType",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItemsType",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItemsType",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsType",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
+    "WebhookSecurityAdvisoryPublishedType",
+    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryType",
+    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCvssType",
+    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCwesItemsType",
+    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropIdentifiersItemsType",
+    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropReferencesItemsType",
+    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsType",
+    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
+    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
 )

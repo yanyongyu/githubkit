@@ -10,22 +10,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
+
+from .group_0112 import OrgCustomProperty
 
 
-class OrgsOrgProjectsPostBody(GitHubModel):
-    """OrgsOrgProjectsPostBody"""
+class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    name: str = Field(description="The name of the project.")
-    body: Missing[str] = Field(
-        default=UNSET, description="The description of the project."
+    properties: List[OrgCustomProperty] = Field(
+        max_length=100,
+        min_length=1,
+        description="The array of custom properties to create or update.",
     )
 
 
-model_rebuild(OrgsOrgProjectsPostBody)
+model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
 
-__all__ = ("OrgsOrgProjectsPostBody",)
+__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)

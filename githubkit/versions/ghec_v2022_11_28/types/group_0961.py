@@ -36,12 +36,12 @@ from .group_0147 import RepositoryRuleTagNamePatternType
 from .group_0150 import RepositoryRuleWorkflowsType
 
 
-class OrgsOrgRulesetsPostBodyType(TypedDict):
-    """OrgsOrgRulesetsPostBody"""
+class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
+    """OrgsOrgRulesetsRulesetIdPutBody"""
 
-    name: str
+    name: NotRequired[str]
     target: NotRequired[Literal["branch", "tag"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
     bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
     conditions: NotRequired[
         Union[
@@ -73,4 +73,4 @@ class OrgsOrgRulesetsPostBodyType(TypedDict):
     ]
 
 
-__all__ = ("OrgsOrgRulesetsPostBodyType",)
+__all__ = ("OrgsOrgRulesetsRulesetIdPutBodyType",)

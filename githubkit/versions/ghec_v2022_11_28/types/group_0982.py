@@ -14,26 +14,25 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse403Type(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse403"""
-
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    errors: NotRequired[
-        List[ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType]
-    ]
-
-
-class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"""
+class ProjectsColumnsCardsCardIdMovesPostResponse503Type(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
 
     code: NotRequired[str]
     message: NotRequired[str]
-    resource: NotRequired[str]
-    field: NotRequired[str]
+    documentation_url: NotRequired[str]
+    errors: NotRequired[
+        List[ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType]
+    ]
+
+
+class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
+
+    code: NotRequired[str]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsColumnsCardsCardIdMovesPostResponse403Type",
-    "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType",
+    "ProjectsColumnsCardsCardIdMovesPostResponse503Type",
+    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType",
 )

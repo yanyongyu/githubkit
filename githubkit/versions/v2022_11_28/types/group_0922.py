@@ -14,25 +14,26 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503Type(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
+class ProjectsColumnsCardsCardIdMovesPostResponse403Type(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403"""
 
-    code: NotRequired[str]
     message: NotRequired[str]
     documentation_url: NotRequired[str]
     errors: NotRequired[
-        List[ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType]
+        List[ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType]
     ]
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
+class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"""
 
     code: NotRequired[str]
     message: NotRequired[str]
+    resource: NotRequired[str]
+    field: NotRequired[str]
 
 
 __all__ = (
-    "ProjectsColumnsCardsCardIdMovesPostResponse503Type",
-    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType",
+    "ProjectsColumnsCardsCardIdMovesPostResponse403Type",
+    "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType",
 )

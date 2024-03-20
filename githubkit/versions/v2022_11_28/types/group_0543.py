@@ -14,39 +14,53 @@ from typing import List, Union, Literal
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0356 import EnterpriseWebhooksType
-from .group_0357 import SimpleInstallationType
-from .group_0358 import OrganizationSimpleWebhooksType
-from .group_0359 import RepositoryWebhooksType
-from .group_0360 import SimpleUserWebhooksType
+from .group_0357 import EnterpriseWebhooksType
+from .group_0358 import SimpleInstallationType
+from .group_0359 import OrganizationSimpleWebhooksType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
 
 
-class WebhookIssuesUnlabeledType(TypedDict):
-    """issues unlabeled event"""
+class WebhookIssuesUnassignedType(TypedDict):
+    """issues unassigned event"""
 
-    action: Literal["unlabeled"]
+    action: Literal["unassigned"]
+    assignee: NotRequired[Union[WebhookIssuesUnassignedPropAssigneeType, None]]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesUnlabeledPropIssueType
-    label: NotRequired[WebhookIssuesUnlabeledPropLabelType]
+    issue: WebhookIssuesUnassignedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookIssuesUnlabeledPropLabelType(TypedDict):
-    """Label"""
+class WebhookIssuesUnassignedPropAssigneeType(TypedDict):
+    """User"""
 
-    color: str
-    default: bool
-    description: Union[str, None]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
     id: int
-    name: str
-    node_id: str
-    url: str
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
 
 
-class WebhookIssuesUnlabeledPropIssueType(TypedDict):
+class WebhookIssuesUnassignedPropIssueType(TypedDict):
     """Issue
 
     The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
@@ -55,8 +69,8 @@ class WebhookIssuesUnlabeledPropIssueType(TypedDict):
     active_lock_reason: Union[
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ]
-    assignee: NotRequired[Union[WebhookIssuesUnlabeledPropIssuePropAssigneeType, None]]
-    assignees: List[Union[WebhookIssuesUnlabeledPropIssuePropAssigneesItemsType, None]]
+    assignee: NotRequired[Union[WebhookIssuesUnassignedPropIssuePropAssigneeType, None]]
+    assignees: List[Union[WebhookIssuesUnassignedPropIssuePropAssigneesItemsType, None]]
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -76,17 +90,17 @@ class WebhookIssuesUnlabeledPropIssueType(TypedDict):
     events_url: str
     html_url: str
     id: int
-    labels: NotRequired[List[WebhookIssuesUnlabeledPropIssuePropLabelsItemsType]]
+    labels: NotRequired[List[WebhookIssuesUnassignedPropIssuePropLabelsItemsType]]
     labels_url: str
     locked: NotRequired[bool]
-    milestone: Union[WebhookIssuesUnlabeledPropIssuePropMilestoneType, None]
+    milestone: Union[WebhookIssuesUnassignedPropIssuePropMilestoneType, None]
     node_id: str
     number: int
     performed_via_github_app: NotRequired[
-        Union[WebhookIssuesUnlabeledPropIssuePropPerformedViaGithubAppType, None]
+        Union[WebhookIssuesUnassignedPropIssuePropPerformedViaGithubAppType, None]
     ]
-    pull_request: NotRequired[WebhookIssuesUnlabeledPropIssuePropPullRequestType]
-    reactions: WebhookIssuesUnlabeledPropIssuePropReactionsType
+    pull_request: NotRequired[WebhookIssuesUnassignedPropIssuePropPullRequestType]
+    reactions: WebhookIssuesUnassignedPropIssuePropReactionsType
     repository_url: str
     state: NotRequired[Literal["open", "closed"]]
     state_reason: NotRequired[Union[str, None]]
@@ -94,10 +108,10 @@ class WebhookIssuesUnlabeledPropIssueType(TypedDict):
     title: str
     updated_at: datetime
     url: str
-    user: Union[WebhookIssuesUnlabeledPropIssuePropUserType, None]
+    user: Union[WebhookIssuesUnassignedPropIssuePropUserType, None]
 
 
-class WebhookIssuesUnlabeledPropIssuePropAssigneeType(TypedDict):
+class WebhookIssuesUnassignedPropIssuePropAssigneeType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -123,7 +137,7 @@ class WebhookIssuesUnlabeledPropIssuePropAssigneeType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookIssuesUnlabeledPropIssuePropAssigneesItemsType(TypedDict):
+class WebhookIssuesUnassignedPropIssuePropAssigneesItemsType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -149,7 +163,7 @@ class WebhookIssuesUnlabeledPropIssuePropAssigneesItemsType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookIssuesUnlabeledPropIssuePropLabelsItemsType(TypedDict):
+class WebhookIssuesUnassignedPropIssuePropLabelsItemsType(TypedDict):
     """Label"""
 
     color: str
@@ -161,7 +175,7 @@ class WebhookIssuesUnlabeledPropIssuePropLabelsItemsType(TypedDict):
     url: str
 
 
-class WebhookIssuesUnlabeledPropIssuePropMilestoneType(TypedDict):
+class WebhookIssuesUnassignedPropIssuePropMilestoneType(TypedDict):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -170,7 +184,7 @@ class WebhookIssuesUnlabeledPropIssuePropMilestoneType(TypedDict):
     closed_at: Union[datetime, None]
     closed_issues: int
     created_at: datetime
-    creator: Union[WebhookIssuesUnlabeledPropIssuePropMilestonePropCreatorType, None]
+    creator: Union[WebhookIssuesUnassignedPropIssuePropMilestonePropCreatorType, None]
     description: Union[str, None]
     due_on: Union[datetime, None]
     html_url: str
@@ -185,7 +199,7 @@ class WebhookIssuesUnlabeledPropIssuePropMilestoneType(TypedDict):
     url: str
 
 
-class WebhookIssuesUnlabeledPropIssuePropMilestonePropCreatorType(TypedDict):
+class WebhookIssuesUnassignedPropIssuePropMilestonePropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -211,7 +225,7 @@ class WebhookIssuesUnlabeledPropIssuePropMilestonePropCreatorType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookIssuesUnlabeledPropIssuePropPerformedViaGithubAppType(TypedDict):
+class WebhookIssuesUnassignedPropIssuePropPerformedViaGithubAppType(TypedDict):
     """App
 
     GitHub apps are a new way to extend GitHub. They can be installed directly on
@@ -281,16 +295,16 @@ class WebhookIssuesUnlabeledPropIssuePropPerformedViaGithubAppType(TypedDict):
     name: str
     node_id: str
     owner: Union[
-        WebhookIssuesUnlabeledPropIssuePropPerformedViaGithubAppPropOwnerType, None
+        WebhookIssuesUnassignedPropIssuePropPerformedViaGithubAppPropOwnerType, None
     ]
     permissions: NotRequired[
-        WebhookIssuesUnlabeledPropIssuePropPerformedViaGithubAppPropPermissionsType
+        WebhookIssuesUnassignedPropIssuePropPerformedViaGithubAppPropPermissionsType
     ]
     slug: NotRequired[str]
     updated_at: Union[datetime, None]
 
 
-class WebhookIssuesUnlabeledPropIssuePropPerformedViaGithubAppPropOwnerType(TypedDict):
+class WebhookIssuesUnassignedPropIssuePropPerformedViaGithubAppPropOwnerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -316,10 +330,10 @@ class WebhookIssuesUnlabeledPropIssuePropPerformedViaGithubAppPropOwnerType(Type
     url: NotRequired[str]
 
 
-class WebhookIssuesUnlabeledPropIssuePropPerformedViaGithubAppPropPermissionsType(
+class WebhookIssuesUnassignedPropIssuePropPerformedViaGithubAppPropPermissionsType(
     TypedDict
 ):
-    """WebhookIssuesUnlabeledPropIssuePropPerformedViaGithubAppPropPermissions
+    """WebhookIssuesUnassignedPropIssuePropPerformedViaGithubAppPropPermissions
 
     The set of permissions for the GitHub app
     """
@@ -361,8 +375,8 @@ class WebhookIssuesUnlabeledPropIssuePropPerformedViaGithubAppPropPermissionsTyp
     workflows: NotRequired[Literal["read", "write"]]
 
 
-class WebhookIssuesUnlabeledPropIssuePropPullRequestType(TypedDict):
-    """WebhookIssuesUnlabeledPropIssuePropPullRequest"""
+class WebhookIssuesUnassignedPropIssuePropPullRequestType(TypedDict):
+    """WebhookIssuesUnassignedPropIssuePropPullRequest"""
 
     diff_url: NotRequired[str]
     html_url: NotRequired[str]
@@ -371,7 +385,7 @@ class WebhookIssuesUnlabeledPropIssuePropPullRequestType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookIssuesUnlabeledPropIssuePropReactionsType(TypedDict):
+class WebhookIssuesUnassignedPropIssuePropReactionsType(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -386,7 +400,7 @@ class WebhookIssuesUnlabeledPropIssuePropReactionsType(TypedDict):
     url: str
 
 
-class WebhookIssuesUnlabeledPropIssuePropUserType(TypedDict):
+class WebhookIssuesUnassignedPropIssuePropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -413,18 +427,18 @@ class WebhookIssuesUnlabeledPropIssuePropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookIssuesUnlabeledType",
-    "WebhookIssuesUnlabeledPropLabelType",
-    "WebhookIssuesUnlabeledPropIssueType",
-    "WebhookIssuesUnlabeledPropIssuePropAssigneeType",
-    "WebhookIssuesUnlabeledPropIssuePropAssigneesItemsType",
-    "WebhookIssuesUnlabeledPropIssuePropLabelsItemsType",
-    "WebhookIssuesUnlabeledPropIssuePropMilestoneType",
-    "WebhookIssuesUnlabeledPropIssuePropMilestonePropCreatorType",
-    "WebhookIssuesUnlabeledPropIssuePropPerformedViaGithubAppType",
-    "WebhookIssuesUnlabeledPropIssuePropPerformedViaGithubAppPropOwnerType",
-    "WebhookIssuesUnlabeledPropIssuePropPerformedViaGithubAppPropPermissionsType",
-    "WebhookIssuesUnlabeledPropIssuePropPullRequestType",
-    "WebhookIssuesUnlabeledPropIssuePropReactionsType",
-    "WebhookIssuesUnlabeledPropIssuePropUserType",
+    "WebhookIssuesUnassignedType",
+    "WebhookIssuesUnassignedPropAssigneeType",
+    "WebhookIssuesUnassignedPropIssueType",
+    "WebhookIssuesUnassignedPropIssuePropAssigneeType",
+    "WebhookIssuesUnassignedPropIssuePropAssigneesItemsType",
+    "WebhookIssuesUnassignedPropIssuePropLabelsItemsType",
+    "WebhookIssuesUnassignedPropIssuePropMilestoneType",
+    "WebhookIssuesUnassignedPropIssuePropMilestonePropCreatorType",
+    "WebhookIssuesUnassignedPropIssuePropPerformedViaGithubAppType",
+    "WebhookIssuesUnassignedPropIssuePropPerformedViaGithubAppPropOwnerType",
+    "WebhookIssuesUnassignedPropIssuePropPerformedViaGithubAppPropPermissionsType",
+    "WebhookIssuesUnassignedPropIssuePropPullRequestType",
+    "WebhookIssuesUnassignedPropIssuePropReactionsType",
+    "WebhookIssuesUnassignedPropIssuePropUserType",
 )

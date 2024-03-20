@@ -10,17 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class TopicType(TypedDict):
-    """Topic
+class TagProtectionType(TypedDict):
+    """Tag protection
 
-    A topic aggregates entities that are related to a subject.
+    Tag protection
     """
 
-    names: List[str]
+    id: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    enabled: NotRequired[bool]
+    pattern: str
 
 
-__all__ = ("TopicType",)
+__all__ = ("TagProtectionType",)

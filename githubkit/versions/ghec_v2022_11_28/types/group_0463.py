@@ -10,98 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0392 import RepositoryWebhooksType
-from .group_0393 import SimpleUserWebhooksType
-from .group_0396 import DiscussionType
+from .group_0393 import RepositoryWebhooksType
+from .group_0397 import DiscussionType
 
 
-class WebhookDiscussionUnansweredType(TypedDict):
-    """discussion unanswered event"""
+class WebhookDiscussionTransferredPropChangesType(TypedDict):
+    """WebhookDiscussionTransferredPropChanges"""
 
-    action: Literal["unanswered"]
-    discussion: DiscussionType
-    old_answer: WebhookDiscussionUnansweredPropOldAnswerType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
+    new_discussion: DiscussionType
+    new_repository: RepositoryWebhooksType
 
 
-class WebhookDiscussionUnansweredPropOldAnswerType(TypedDict):
-    """WebhookDiscussionUnansweredPropOldAnswer"""
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    child_comment_count: int
-    created_at: datetime
-    discussion_id: int
-    html_url: str
-    id: int
-    node_id: str
-    parent_id: None
-    reactions: NotRequired[WebhookDiscussionUnansweredPropOldAnswerPropReactionsType]
-    repository_url: str
-    updated_at: datetime
-    user: Union[WebhookDiscussionUnansweredPropOldAnswerPropUserType, None]
-
-
-class WebhookDiscussionUnansweredPropOldAnswerPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookDiscussionUnansweredPropOldAnswerPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-__all__ = (
-    "WebhookDiscussionUnansweredType",
-    "WebhookDiscussionUnansweredPropOldAnswerType",
-    "WebhookDiscussionUnansweredPropOldAnswerPropReactionsType",
-    "WebhookDiscussionUnansweredPropOldAnswerPropUserType",
-)
+__all__ = ("WebhookDiscussionTransferredPropChangesType",)

@@ -14,43 +14,41 @@ from typing import Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
 
 from .group_0001 import SimpleUser
 from .group_0005 import Integration
-from .group_0075 import Team
 
 
-class ReviewRequestedIssueEvent(GitHubModel):
-    """Review Requested Issue Event
+class RenamedIssueEvent(GitHubModel):
+    """Renamed Issue Event
 
-    Review Requested Issue Event
+    Renamed Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["review_requested"] = Field()
+    event: Literal["renamed"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration] = Field()
-    review_requester: SimpleUser = Field(
-        title="Simple User", description="A GitHub user."
-    )
-    requested_team: Missing[Team] = Field(
-        default=UNSET,
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
-    )
-    requested_reviewer: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    rename: RenamedIssueEventPropRename = Field()
 
 
-model_rebuild(ReviewRequestedIssueEvent)
+class RenamedIssueEventPropRename(GitHubModel):
+    """RenamedIssueEventPropRename"""
 
-__all__ = ("ReviewRequestedIssueEvent",)
+    from_: str = Field(alias="from")
+    to: str = Field()
+
+
+model_rebuild(RenamedIssueEvent)
+model_rebuild(RenamedIssueEventPropRename)
+
+__all__ = (
+    "RenamedIssueEvent",
+    "RenamedIssueEventPropRename",
+)

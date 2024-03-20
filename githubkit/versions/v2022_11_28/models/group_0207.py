@@ -10,33 +10,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union, Literal
+from datetime import datetime
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
+
+from .group_0001 import SimpleUser
+from .group_0033 import ReactionRollup
 
 
-class BranchShort(GitHubModel):
-    """Branch Short
+class CommitComment(GitHubModel):
+    """Commit Comment
 
-    Branch Short
+    Commit Comment
     """
 
-    name: str = Field()
-    commit: BranchShortPropCommit = Field()
-    protected: bool = Field()
-
-
-class BranchShortPropCommit(GitHubModel):
-    """BranchShortPropCommit"""
-
-    sha: str = Field()
+    html_url: str = Field()
     url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    body: str = Field()
+    path: Union[str, None] = Field()
+    position: Union[int, None] = Field()
+    line: Union[int, None] = Field()
+    commit_id: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(BranchShort)
-model_rebuild(BranchShortPropCommit)
+class TimelineCommitCommentedEvent(GitHubModel):
+    """Timeline Commit Commented Event
+
+    Timeline Commit Commented Event
+    """
+
+    event: Missing[Literal["commit_commented"]] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    commit_id: Missing[str] = Field(default=UNSET)
+    comments: Missing[List[CommitComment]] = Field(default=UNSET)
+
+
+model_rebuild(CommitComment)
+model_rebuild(TimelineCommitCommentedEvent)
 
 __all__ = (
-    "BranchShort",
-    "BranchShortPropCommit",
+    "CommitComment",
+    "TimelineCommitCommentedEvent",
 )

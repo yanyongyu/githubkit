@@ -13,20 +13,20 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0390 import SimpleInstallationType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0393 import SimpleUserWebhooksType
-from .group_0398 import PersonalAccessTokenRequestType
+from .group_0391 import SimpleInstallationType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0399 import PersonalAccessTokenRequestType
 
 
-class WebhookPersonalAccessTokenRequestDeniedType(TypedDict):
-    """personal_access_token_request denied event"""
+class WebhookPersonalAccessTokenRequestCreatedType(TypedDict):
+    """personal_access_token_request created event"""
 
-    action: Literal["denied"]
+    action: Literal["created"]
     personal_access_token_request: PersonalAccessTokenRequestType
     organization: OrganizationSimpleWebhooksType
     sender: SimpleUserWebhooksType
     installation: SimpleInstallationType
 
 
-__all__ = ("WebhookPersonalAccessTokenRequestDeniedType",)
+__all__ = ("WebhookPersonalAccessTokenRequestCreatedType",)

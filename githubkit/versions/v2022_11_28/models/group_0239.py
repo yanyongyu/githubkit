@@ -15,26 +15,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CustomDeploymentRuleApp(GitHubModel):
-    """Custom deployment protection rule app
+class DeploymentBranchPolicyNamePattern(GitHubModel):
+    """Deployment branch policy name pattern"""
 
-    A GitHub App that is providing a custom deployment protection rule.
-    """
-
-    id: int = Field(
-        description="The unique identifier of the deployment protection rule integration."
-    )
-    slug: str = Field(
-        description="The slugified name of the deployment protection rule integration."
-    )
-    integration_url: str = Field(
-        description="The URL for the endpoint to get details about the app."
-    )
-    node_id: str = Field(
-        description="The node ID for the deployment protection rule integration."
+    name: str = Field(
+        description="The name pattern that branches must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch)."
     )
 
 
-model_rebuild(CustomDeploymentRuleApp)
+model_rebuild(DeploymentBranchPolicyNamePattern)
 
-__all__ = ("CustomDeploymentRuleApp",)
+__all__ = ("DeploymentBranchPolicyNamePattern",)

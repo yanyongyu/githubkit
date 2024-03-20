@@ -14,27 +14,26 @@ from typing import Union, Literal
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0389 import EnterpriseWebhooksType
-from .group_0390 import SimpleInstallationType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0392 import RepositoryWebhooksType
-from .group_0393 import SimpleUserWebhooksType
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
 
 
-class WebhookProjectColumnEditedType(TypedDict):
-    """project_column edited event"""
+class WebhookProjectColumnDeletedType(TypedDict):
+    """project_column deleted event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectColumnEditedPropChangesType
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhookProjectColumnEditedPropProjectColumnType
-    repository: NotRequired[RepositoryWebhooksType]
+    project_column: WebhookProjectColumnDeletedPropProjectColumnType
+    repository: NotRequired[Union[None, RepositoryWebhooksType]]
     sender: NotRequired[SimpleUserWebhooksType]
 
 
-class WebhookProjectColumnEditedPropProjectColumnType(TypedDict):
+class WebhookProjectColumnDeletedPropProjectColumnType(TypedDict):
     """Project Column"""
 
     after_id: NotRequired[Union[int, None]]
@@ -48,21 +47,7 @@ class WebhookProjectColumnEditedPropProjectColumnType(TypedDict):
     url: str
 
 
-class WebhookProjectColumnEditedPropChangesType(TypedDict):
-    """WebhookProjectColumnEditedPropChanges"""
-
-    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameType]
-
-
-class WebhookProjectColumnEditedPropChangesPropNameType(TypedDict):
-    """WebhookProjectColumnEditedPropChangesPropName"""
-
-    from_: str
-
-
 __all__ = (
-    "WebhookProjectColumnEditedType",
-    "WebhookProjectColumnEditedPropProjectColumnType",
-    "WebhookProjectColumnEditedPropChangesType",
-    "WebhookProjectColumnEditedPropChangesPropNameType",
+    "WebhookProjectColumnDeletedType",
+    "WebhookProjectColumnDeletedPropProjectColumnType",
 )

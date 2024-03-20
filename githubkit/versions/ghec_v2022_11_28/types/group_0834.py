@@ -14,60 +14,62 @@ from typing import List, Union, Literal
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0838 import (
+from .group_0835 import (
+    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsType,
+)
+from .group_0837 import (
     WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropReferencedWorkflowsItemsType,
 )
-from .group_0840 import WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequestsType
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunType(TypedDict):
-    """WebhookWorkflowRunCompletedPropWorkflowRun"""
+class WebhookWorkflowRunCompletedPropWorkflowRunAllof0Type(TypedDict):
+    """Workflow Run"""
 
-    actor: WebhookWorkflowRunCompletedPropWorkflowRunMergedActorType
+    actor: Union[WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropActorType, None]
     artifacts_url: str
     cancel_url: str
     check_suite_id: int
     check_suite_node_id: str
     check_suite_url: str
-    conclusion: Literal[
-        "success",
-        "failure",
-        "neutral",
-        "cancelled",
-        "timed_out",
-        "action_required",
-        "stale",
-        "skipped",
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+            "skipped",
+        ],
     ]
     created_at: datetime
     event: str
-    head_branch: Union[Union[str, None], None]
-    head_commit: WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitType
-    head_repository: WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepositoryType
+    head_branch: Union[str, None]
+    head_commit: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommitType
+    head_repository: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadRepositoryType
     head_sha: str
     html_url: str
     id: int
     jobs_url: str
     logs_url: str
-    name: Union[Union[str, None], None]
+    name: Union[str, None]
     node_id: str
     path: str
-    previous_attempt_url: Union[Union[str, None], None]
+    previous_attempt_url: Union[str, None]
     pull_requests: List[
-        WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequestsType
+        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsType
     ]
     referenced_workflows: NotRequired[
         Union[
-            Union[
-                List[
-                    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropReferencedWorkflowsItemsType
-                ],
-                None,
+            List[
+                WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropReferencedWorkflowsItemsType
             ],
             None,
         ]
     ]
-    repository: WebhookWorkflowRunCompletedPropWorkflowRunMergedRepositoryType
+    repository: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropRepositoryType
     rerun_url: str
     run_attempt: int
     run_number: int
@@ -76,7 +78,7 @@ class WebhookWorkflowRunCompletedPropWorkflowRunType(TypedDict):
         "requested", "in_progress", "completed", "queued", "pending", "waiting"
     ]
     triggering_actor: Union[
-        WebhookWorkflowRunCompletedPropWorkflowRunMergedTriggeringActorType, None
+        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropTriggeringActorType, None
     ]
     updated_at: datetime
     url: str
@@ -84,8 +86,8 @@ class WebhookWorkflowRunCompletedPropWorkflowRunType(TypedDict):
     workflow_url: str
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunMergedActorType(TypedDict):
-    """WebhookWorkflowRunCompletedPropWorkflowRunMergedActor"""
+class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropActorType(TypedDict):
+    """User"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -110,41 +112,75 @@ class WebhookWorkflowRunCompletedPropWorkflowRunMergedActorType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitType(TypedDict):
-    """WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommit"""
+class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropTriggeringActorType(
+    TypedDict
+):
+    """User"""
 
-    author: WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitPropAuthorType
-    committer: WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitPropCommitterType
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommitType(TypedDict):
+    """SimpleCommit"""
+
+    author: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommitPropAuthorType
+    committer: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommitPropCommitterType
     id: str
     message: str
     timestamp: str
     tree_id: str
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitPropAuthorType(
+class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommitPropAuthorType(
     TypedDict
 ):
-    """WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitPropAuthor"""
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
 
     date: NotRequired[datetime]
-    email: str
+    email: Union[str, None]
     name: str
     username: NotRequired[str]
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitPropCommitterType(
+class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommitPropCommitterType(
     TypedDict
 ):
-    """WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitPropCommitter"""
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
 
     date: NotRequired[datetime]
-    email: str
+    email: Union[str, None]
     name: str
     username: NotRequired[str]
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepositoryType(TypedDict):
-    """WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepository"""
+class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadRepositoryType(TypedDict):
+    """Repository Lite"""
 
     archive_url: str
     assignees_url: str
@@ -157,7 +193,7 @@ class WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepositoryType(TypedDi
     contents_url: str
     contributors_url: str
     deployments_url: str
-    description: Union[Union[str, None], None]
+    description: Union[str, None]
     downloads_url: str
     events_url: str
     fork: bool
@@ -180,7 +216,10 @@ class WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepositoryType(TypedDi
     name: str
     node_id: str
     notifications_url: str
-    owner: WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepositoryPropOwnerType
+    owner: Union[
+        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadRepositoryPropOwnerType,
+        None,
+    ]
     private: bool
     pulls_url: str
     releases_url: str
@@ -194,10 +233,10 @@ class WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepositoryType(TypedDi
     url: str
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepositoryPropOwnerType(
+class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadRepositoryPropOwnerType(
     TypedDict
 ):
-    """WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepositoryPropOwner"""
+    """User"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -222,8 +261,8 @@ class WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepositoryPropOwnerTyp
     url: NotRequired[str]
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunMergedRepositoryType(TypedDict):
-    """WebhookWorkflowRunCompletedPropWorkflowRunMergedRepository"""
+class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropRepositoryType(TypedDict):
+    """Repository Lite"""
 
     archive_url: str
     assignees_url: str
@@ -236,7 +275,7 @@ class WebhookWorkflowRunCompletedPropWorkflowRunMergedRepositoryType(TypedDict):
     contents_url: str
     contributors_url: str
     deployments_url: str
-    description: Union[Union[str, None], None]
+    description: Union[str, None]
     downloads_url: str
     events_url: str
     fork: bool
@@ -259,7 +298,10 @@ class WebhookWorkflowRunCompletedPropWorkflowRunMergedRepositoryType(TypedDict):
     name: str
     node_id: str
     notifications_url: str
-    owner: WebhookWorkflowRunCompletedPropWorkflowRunMergedRepositoryPropOwnerType
+    owner: Union[
+        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropRepositoryPropOwnerType,
+        None,
+    ]
     private: bool
     pulls_url: str
     releases_url: str
@@ -273,36 +315,10 @@ class WebhookWorkflowRunCompletedPropWorkflowRunMergedRepositoryType(TypedDict):
     url: str
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunMergedRepositoryPropOwnerType(
+class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropRepositoryPropOwnerType(
     TypedDict
 ):
-    """WebhookWorkflowRunCompletedPropWorkflowRunMergedRepositoryPropOwner"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunMergedTriggeringActorType(TypedDict):
-    """WebhookWorkflowRunCompletedPropWorkflowRunMergedTriggeringActor"""
+    """User"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -328,14 +344,14 @@ class WebhookWorkflowRunCompletedPropWorkflowRunMergedTriggeringActorType(TypedD
 
 
 __all__ = (
-    "WebhookWorkflowRunCompletedPropWorkflowRunType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunMergedActorType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitPropAuthorType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitPropCommitterType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepositoryType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepositoryPropOwnerType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunMergedRepositoryType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunMergedRepositoryPropOwnerType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunMergedTriggeringActorType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0Type",
+    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropActorType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropTriggeringActorType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommitType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommitPropAuthorType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommitPropCommitterType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadRepositoryType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadRepositoryPropOwnerType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropRepositoryType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropRepositoryPropOwnerType",
 )

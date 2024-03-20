@@ -18,22 +18,22 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_1116 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+from .group_1120 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
 
-class ReposOwnerRepoPagesPutBodyAnyof4(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof4"""
+class ReposOwnerRepoPagesPutBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoPagesPutBodyAnyof0"""
 
     cname: Missing[Union[str, None]] = Field(
         default=UNSET,
         description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/enterprise-cloud@latest//articles/using-a-custom-domain-with-github-pages/)."',
     )
-    https_enforced: bool = Field(
-        description="Specify whether HTTPS should be enforced for the repository."
-    )
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
+    https_enforced: Missing[bool] = Field(
         default=UNSET,
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
+        description="Specify whether HTTPS should be enforced for the repository.",
+    )
+    build_type: Literal["legacy", "workflow"] = Field(
+        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch."
     )
     source: Missing[
         Union[
@@ -47,6 +47,6 @@ class ReposOwnerRepoPagesPutBodyAnyof4(GitHubModel):
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof4)
+model_rebuild(ReposOwnerRepoPagesPutBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof4",)
+__all__ = ("ReposOwnerRepoPagesPutBodyAnyof0",)

@@ -10,44 +10,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 from githubkit.typing import Missing
 
 
-class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody(GitHubModel):
-    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
+class GistsPostBody(GitHubModel):
+    """GistsPostBody"""
 
-    advanced_security_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether GitHub Advanced Security is automatically enabled for new repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest//get-started/learning-about-github/about-github-advanced-security)."',
+    description: Missing[str] = Field(
+        default=UNSET, description="Description of the gist"
     )
-    dependabot_alerts_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether Dependabot alerts are automatically enabled for new repositories. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."',
+    files: GistsPostBodyPropFiles = Field(
+        description="Names and content for the files that make up the gist"
     )
-    secret_scanning_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether secret scanning is automatically enabled for new repositories. For more information, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/about-secret-scanning)."',
-    )
-    secret_scanning_push_protection_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether secret scanning push protection is automatically enabled for new repositories. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/protecting-pushes-with-secret-scanning)."',
-    )
-    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description='The URL that will be displayed to contributors who are blocked from pushing a secret. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/protecting-pushes-with-secret-scanning)."\nTo disable this functionality, set this field to `null`.',
-    )
-    secret_scanning_validity_checks_enabled: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether secret scanning automatic validity checks on supported partner tokens is enabled for all repositories under this enterprise.",
-    )
+    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody)
+class GistsPostBodyPropFiles(ExtraGitHubModel):
+    """GistsPostBodyPropFiles
 
-__all__ = ("EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody",)
+    Names and content for the files that make up the gist
+
+    Examples:
+        {'hello.rb': {'content': 'puts "Hello, World!"'}}
+    """
+
+
+model_rebuild(GistsPostBody)
+model_rebuild(GistsPostBodyPropFiles)
+
+__all__ = (
+    "GistsPostBody",
+    "GistsPostBodyPropFiles",
+)

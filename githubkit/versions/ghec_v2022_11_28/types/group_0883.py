@@ -13,10 +13,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class GistsGistIdCommentsPostBodyType(TypedDict):
-    """GistsGistIdCommentsPostBody"""
+class GistsGistIdCommentsCommentIdPatchBodyType(TypedDict):
+    """GistsGistIdCommentsCommentIdPatchBody"""
 
     body: str
 
 
-__all__ = ("GistsGistIdCommentsPostBodyType",)
+__all__ = ("GistsGistIdCommentsCommentIdPatchBodyType",)

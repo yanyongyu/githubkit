@@ -28,7 +28,6 @@ if TYPE_CHECKING:
     from .push import PushEvent
     from .star import StarEvent
     from .team import TeamEvent
-    from .user import UserEvent
     from .label import LabelEvent
     from .watch import WatchEvent
     from ._types import WebhookEvent
@@ -165,7 +164,6 @@ EventNameType: TypeAlias = Literal[
     "status",
     "team_add",
     "team",
-    "user",
     "watch",
     "workflow_dispatch",
     "workflow_job",
@@ -239,7 +237,6 @@ VALID_EVENT_NAMES: Set[EventNameType] = {
     "status",
     "team_add",
     "team",
-    "user",
     "watch",
     "workflow_dispatch",
     "workflow_job",
@@ -696,11 +693,6 @@ class WebhookNamespace:
     @overload
     @staticmethod
     def parse(name: Literal["team"], payload: Union[str, bytes]) -> "TeamEvent":
-        ...
-
-    @overload
-    @staticmethod
-    def parse(name: Literal["user"], payload: Union[str, bytes]) -> "UserEvent":
         ...
 
     @overload
@@ -1197,11 +1189,6 @@ class WebhookNamespace:
     @overload
     @staticmethod
     def parse_obj(name: Literal["team"], payload: Dict[str, Any]) -> "TeamEvent":
-        ...
-
-    @overload
-    @staticmethod
-    def parse_obj(name: Literal["user"], payload: Dict[str, Any]) -> "UserEvent":
         ...
 
     @overload

@@ -10,7 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
@@ -18,27 +19,37 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0357 import SimpleInstallation
-from .group_0358 import OrganizationSimpleWebhooks
-from .group_0360 import SimpleUserWebhooks
-from .group_0366 import ProjectsV2
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0359 import OrganizationSimpleWebhooks
+from .group_0360 import RepositoryWebhooks
+from .group_0361 import SimpleUserWebhooks
 
 
-class WebhookProjectsV2ProjectClosed(GitHubModel):
-    """Projects v2 Project Closed Event"""
+class WebhookProjectReopened(GitHubModel):
+    """project reopened event"""
 
-    action: Literal["closed"] = Field()
+    action: Literal["reopened"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+    )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: OrganizationSimpleWebhooks = Field(
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    projects_v2: ProjectsV2 = Field(
-        title="Projects v2 Project", description="A projects v2 project"
+    project: WebhookProjectReopenedPropProject = Field(title="Project")
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -46,6 +57,60 @@ class WebhookProjectsV2ProjectClosed(GitHubModel):
     )
 
 
-model_rebuild(WebhookProjectsV2ProjectClosed)
+class WebhookProjectReopenedPropProject(GitHubModel):
+    """Project"""
 
-__all__ = ("WebhookProjectsV2ProjectClosed",)
+    body: Union[str, None] = Field(description="Body of the project")
+    columns_url: str = Field()
+    created_at: datetime = Field()
+    creator: Union[WebhookProjectReopenedPropProjectPropCreator, None] = Field(
+        title="User"
+    )
+    html_url: str = Field()
+    id: int = Field()
+    name: str = Field(description="Name of the project")
+    node_id: str = Field()
+    number: int = Field()
+    owner_url: str = Field()
+    state: Literal["open", "closed"] = Field(
+        description="State of the project; either 'open' or 'closed'"
+    )
+    updated_at: datetime = Field()
+    url: str = Field()
+
+
+class WebhookProjectReopenedPropProjectPropCreator(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookProjectReopened)
+model_rebuild(WebhookProjectReopenedPropProject)
+model_rebuild(WebhookProjectReopenedPropProjectPropCreator)
+
+__all__ = (
+    "WebhookProjectReopened",
+    "WebhookProjectReopenedPropProject",
+    "WebhookProjectReopenedPropProjectPropCreator",
+)

@@ -13,12 +13,12 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class CombinedBillingUsageType(TypedDict):
-    """CombinedBillingUsage"""
+class PackagesBillingUsageType(TypedDict):
+    """PackagesBillingUsage"""
 
-    days_left_in_billing_cycle: int
-    estimated_paid_storage_for_month: int
-    estimated_storage_for_month: int
+    total_gigabytes_bandwidth_used: int
+    total_paid_gigabytes_bandwidth_used: int
+    included_gigabytes_bandwidth: int
 
 
-__all__ = ("CombinedBillingUsageType",)
+__all__ = ("PackagesBillingUsageType",)

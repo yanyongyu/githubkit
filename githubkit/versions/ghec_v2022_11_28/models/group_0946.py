@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 
 from pydantic import Field
 
@@ -19,46 +19,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
 
-class OrgsOrgMigrationsPostBody(GitHubModel):
-    """OrgsOrgMigrationsPostBody"""
+class OrgsOrgOrganizationRolesPostBody(GitHubModel):
+    """OrgsOrgOrganizationRolesPostBody"""
 
-    repositories: List[str] = Field(
-        description="A list of arrays indicating which repositories should be migrated."
-    )
-    lock_repositories: Missing[bool] = Field(
+    name: str = Field(description="The name of the custom role.")
+    description: Missing[str] = Field(
         default=UNSET,
-        description="Indicates whether repositories should be locked (to prevent manipulation) while migrating data.",
+        description="A short description about the intended usage of this role or what permissions it grants.",
     )
-    exclude_metadata: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
-    )
-    exclude_git_data: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether the repository git data should be excluded from the migration.",
-    )
-    exclude_attachments: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether attachments should be excluded from the migration (to reduce migration archive file size).",
-    )
-    exclude_releases: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether releases should be excluded from the migration (to reduce migration archive file size).",
-    )
-    exclude_owner_projects: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether projects owned by the organization or users should be excluded. from the migration.",
-    )
-    org_metadata_only: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
-    )
-    exclude: Missing[List[Literal["repositories"]]] = Field(
-        default=UNSET,
-        description="Exclude related items from being returned in the response in order to improve performance of the request.",
+    permissions: List[str] = Field(
+        description="A list of additional permissions included in this role."
     )
 
 
-model_rebuild(OrgsOrgMigrationsPostBody)
+model_rebuild(OrgsOrgOrganizationRolesPostBody)
 
-__all__ = ("OrgsOrgMigrationsPostBody",)
+__all__ = ("OrgsOrgOrganizationRolesPostBody",)

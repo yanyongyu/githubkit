@@ -13,27 +13,27 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0389 import EnterpriseWebhooksType
-from .group_0390 import SimpleInstallationType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0392 import RepositoryWebhooksType
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0393 import RepositoryWebhooksType
 
 
-class WebhookMembershipRemovedType(TypedDict):
-    """membership removed event"""
+class WebhookMembershipAddedType(TypedDict):
+    """membership added event"""
 
-    action: Literal["removed"]
+    action: Literal["added"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhookMembershipRemovedPropMemberType, None]
+    member: Union[WebhookMembershipAddedPropMemberType, None]
     organization: OrganizationSimpleWebhooksType
     repository: NotRequired[RepositoryWebhooksType]
-    scope: Literal["team", "organization"]
-    sender: Union[WebhookMembershipRemovedPropSenderType, None]
-    team: WebhookMembershipRemovedPropTeamType
+    scope: Literal["team"]
+    sender: Union[WebhookMembershipAddedPropSenderType, None]
+    team: WebhookMembershipAddedPropTeamType
 
 
-class WebhookMembershipRemovedPropMemberType(TypedDict):
+class WebhookMembershipAddedPropMemberType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -59,7 +59,7 @@ class WebhookMembershipRemovedPropMemberType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookMembershipRemovedPropSenderType(TypedDict):
+class WebhookMembershipAddedPropSenderType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -85,7 +85,7 @@ class WebhookMembershipRemovedPropSenderType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookMembershipRemovedPropTeamType(TypedDict):
+class WebhookMembershipAddedPropTeamType(TypedDict):
     """Team
 
     Groups of organization members that gives permissions on specified repositories.
@@ -98,7 +98,7 @@ class WebhookMembershipRemovedPropTeamType(TypedDict):
     members_url: NotRequired[str]
     name: str
     node_id: NotRequired[str]
-    parent: NotRequired[Union[WebhookMembershipRemovedPropTeamPropParentType, None]]
+    parent: NotRequired[Union[WebhookMembershipAddedPropTeamPropParentType, None]]
     permission: NotRequired[str]
     privacy: NotRequired[Literal["open", "closed", "secret"]]
     notification_setting: NotRequired[
@@ -109,8 +109,8 @@ class WebhookMembershipRemovedPropTeamType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookMembershipRemovedPropTeamPropParentType(TypedDict):
-    """WebhookMembershipRemovedPropTeamPropParent"""
+class WebhookMembershipAddedPropTeamPropParentType(TypedDict):
+    """WebhookMembershipAddedPropTeamPropParent"""
 
     description: Union[str, None]
     html_url: str
@@ -127,9 +127,9 @@ class WebhookMembershipRemovedPropTeamPropParentType(TypedDict):
 
 
 __all__ = (
-    "WebhookMembershipRemovedType",
-    "WebhookMembershipRemovedPropMemberType",
-    "WebhookMembershipRemovedPropSenderType",
-    "WebhookMembershipRemovedPropTeamType",
-    "WebhookMembershipRemovedPropTeamPropParentType",
+    "WebhookMembershipAddedType",
+    "WebhookMembershipAddedPropMemberType",
+    "WebhookMembershipAddedPropSenderType",
+    "WebhookMembershipAddedPropTeamType",
+    "WebhookMembershipAddedPropTeamPropParentType",
 )

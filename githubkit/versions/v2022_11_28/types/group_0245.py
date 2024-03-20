@@ -10,45 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0179 import VerificationType
+from typing_extensions import TypedDict
 
 
-class GitTagType(TypedDict):
-    """Git Tag
+class GitRefType(TypedDict):
+    """Git Reference
 
-    Metadata for a Git tag
+    Git references within a repository
     """
 
+    ref: str
     node_id: str
-    tag: str
-    sha: str
     url: str
-    message: str
-    tagger: GitTagPropTaggerType
-    object_: GitTagPropObjectType
-    verification: NotRequired[VerificationType]
+    object_: GitRefPropObjectType
 
 
-class GitTagPropTaggerType(TypedDict):
-    """GitTagPropTagger"""
+class GitRefPropObjectType(TypedDict):
+    """GitRefPropObject"""
 
-    date: str
-    email: str
-    name: str
-
-
-class GitTagPropObjectType(TypedDict):
-    """GitTagPropObject"""
-
-    sha: str
     type: str
+    sha: str
     url: str
 
 
 __all__ = (
-    "GitTagType",
-    "GitTagPropTaggerType",
-    "GitTagPropObjectType",
+    "GitRefType",
+    "GitRefPropObjectType",
 )

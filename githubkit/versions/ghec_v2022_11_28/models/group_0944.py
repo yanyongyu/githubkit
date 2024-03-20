@@ -10,22 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0086 import Codespace
-
-
-class OrgsOrgMembersUsernameCodespacesGetResponse200(GitHubModel):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
-
-    total_count: int = Field()
-    codespaces: List[Codespace] = Field()
+from githubkit.typing import Missing
 
 
-model_rebuild(OrgsOrgMembersUsernameCodespacesGetResponse200)
+class OrgsOrgMembershipsUsernamePutBody(GitHubModel):
+    """OrgsOrgMembershipsUsernamePutBody"""
 
-__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200",)
+    role: Missing[Literal["admin", "member"]] = Field(
+        default=UNSET,
+        description="The role to give the user in the organization. Can be one of:  \n * `admin` - The user will become an owner of the organization.  \n * `member` - The user will become a non-owner member of the organization.",
+    )
+
+
+model_rebuild(OrgsOrgMembershipsUsernamePutBody)
+
+__all__ = ("OrgsOrgMembershipsUsernamePutBody",)

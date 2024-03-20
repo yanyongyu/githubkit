@@ -10,27 +10,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union, Literal
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
-class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody(
-    GitHubModel
-):
-    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
+class ReposOwnerRepoStatusesShaPostBody(GitHubModel):
+    """ReposOwnerRepoStatusesShaPostBody"""
 
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an environment public key](https://docs.github.com/rest/actions/secrets#get-an-environment-public-key) endpoint.",
+    state: Literal["error", "failure", "pending", "success"] = Field(
+        description="The state of the status."
     )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+    target_url: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.  \nFor example, if your continuous integration system is posting build status, you would want to provide the deep link for the build output for this specific SHA:  \n`http://ci.example.com/user/repo/build/sha`",
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A short description of the status."
+    )
+    context: Missing[str] = Field(
+        default=UNSET,
+        description="A string label to differentiate this status from the status of other systems. This field is case-insensitive.",
+    )
 
 
-model_rebuild(
-    RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody
-)
+model_rebuild(ReposOwnerRepoStatusesShaPostBody)
 
-__all__ = (
-    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody",
-)
+__all__ = ("ReposOwnerRepoStatusesShaPostBody",)

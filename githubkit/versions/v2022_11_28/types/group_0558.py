@@ -14,52 +14,48 @@ from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1Type(TypedDict):
-    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1"""
+class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0Type(TypedDict):
+    """Marketplace Purchase"""
 
-    account: NotRequired[
-        WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccountType
-    ]
-    billing_cycle: NotRequired[str]
-    free_trial_ends_on: NotRequired[Union[str, None]]
-    next_billing_date: Union[str, None]
-    on_free_trial: NotRequired[bool]
-    plan: NotRequired[
-        WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlanType
-    ]
-    unit_count: NotRequired[int]
+    account: WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropAccountType
+    billing_cycle: str
+    free_trial_ends_on: Union[str, None]
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: bool
+    plan: WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropPlanType
+    unit_count: int
 
 
-class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccountType(
+class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropAccountType(
     TypedDict
 ):
-    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccount"""
+    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropAccount"""
 
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organization_billing_email: NotRequired[Union[str, None]]
-    type: NotRequired[str]
+    id: int
+    login: str
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
 
 
-class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlanType(
+class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropPlanType(
     TypedDict
 ):
-    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlan"""
+    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropPlan"""
 
-    bullets: NotRequired[List[Union[str, None]]]
-    description: NotRequired[str]
-    has_free_trial: NotRequired[bool]
-    id: NotRequired[int]
-    monthly_price_in_cents: NotRequired[int]
-    name: NotRequired[str]
-    price_model: NotRequired[Literal["FREE", "FLAT_RATE", "PER_UNIT"]]
-    unit_name: NotRequired[Union[str, None]]
-    yearly_price_in_cents: NotRequired[int]
+    bullets: List[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
 __all__ = (
-    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1Type",
-    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccountType",
-    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlanType",
+    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0Type",
+    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropAccountType",
+    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropPlanType",
 )

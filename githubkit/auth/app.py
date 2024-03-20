@@ -39,9 +39,9 @@ class AppAuth(httpx.Auth):
     permissions: Union[Unset, "AppPermissionsType"] = UNSET
     cache: "BaseCache" = DEFAULT_CACHE
 
-    JWT_CACHE_KEY = "githubkit:auth:app:jwt"
+    JWT_CACHE_KEY = "githubkit:auth:app:{app_id}:jwt"
     INSTALLATION_CACHE_KEY = (
-        "githubkit:auth:app:installation:"
+        "githubkit:auth:app:{app_id}:installation:"
         "{installation_id}:{permissions}:{repositories}:{repository_ids}"
     )
 
@@ -73,16 +73,21 @@ class AppAuth(httpx.Auth):
             algorithm="RS256",
         )
 
+    def _get_jwt_cache_key(self) -> str:
+        return self.JWT_CACHE_KEY.format(app_id=self.app_id)
+
     def get_jwt(self) -> str:
-        if not (token := self.cache.get(self.JWT_CACHE_KEY)):
+        cache_key = self._get_jwt_cache_key()
+        if not (token := self.cache.get(cache_key)):
             token = self._create_jwt()
-            self.cache.set(self.JWT_CACHE_KEY, token, timedelta(minutes=8))
+            self.cache.set(cache_key, token, timedelta(minutes=8))
         return token
 
     async def aget_jwt(self) -> str:
-        if not (token := await self.cache.aget(self.JWT_CACHE_KEY)):
+        cache_key = self._get_jwt_cache_key()
+        if not (token := await self.cache.aget(cache_key)):
             token = self._create_jwt()
-            await self.cache.aset(self.JWT_CACHE_KEY, token, timedelta(minutes=8))
+            await self.cache.aset(cache_key, token, timedelta(minutes=8))
         return token
 
     def _build_installation_auth_request(self) -> httpx.Request:
@@ -154,6 +159,7 @@ class AppAuth(httpx.Auth):
             [] if isinstance(self.repository_ids, Unset) else self.repository_ids
         )
         return self.INSTALLATION_CACHE_KEY.format(
+            app_id=self.app_id,
             installation_id=self.installation_id,
             permissions=",".join(
                 name if value == "read" else f"{name}!"

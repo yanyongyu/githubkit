@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 
 from pydantic import Field
 
@@ -18,33 +18,52 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0178 import GitUser
-from .group_0179 import Verification
+from .group_0001 import SimpleUser
+from .group_0181 import DiffEntry
+from .group_0183 import CommitPropCommit
 
 
-class CommitPropCommit(GitHubModel):
-    """CommitPropCommit"""
+class Commit(GitHubModel):
+    """Commit
+
+    Commit
+    """
 
     url: str = Field()
-    author: Union[None, GitUser] = Field()
-    committer: Union[None, GitUser] = Field()
-    message: str = Field()
-    comment_count: int = Field()
-    tree: CommitPropCommitPropTree = Field()
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+    sha: str = Field()
+    node_id: str = Field()
+    html_url: str = Field()
+    comments_url: str = Field()
+    commit: CommitPropCommit = Field()
+    author: Union[None, SimpleUser] = Field()
+    committer: Union[None, SimpleUser] = Field()
+    parents: List[CommitPropParentsItems] = Field()
+    stats: Missing[CommitPropStats] = Field(default=UNSET)
+    files: Missing[List[DiffEntry]] = Field(default=UNSET)
 
 
-class CommitPropCommitPropTree(GitHubModel):
-    """CommitPropCommitPropTree"""
+class CommitPropParentsItems(GitHubModel):
+    """CommitPropParentsItems"""
 
     sha: str = Field()
     url: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(CommitPropCommit)
-model_rebuild(CommitPropCommitPropTree)
+class CommitPropStats(GitHubModel):
+    """CommitPropStats"""
+
+    additions: Missing[int] = Field(default=UNSET)
+    deletions: Missing[int] = Field(default=UNSET)
+    total: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(Commit)
+model_rebuild(CommitPropParentsItems)
+model_rebuild(CommitPropStats)
 
 __all__ = (
-    "CommitPropCommit",
-    "CommitPropCommitPropTree",
+    "Commit",
+    "CommitPropParentsItems",
+    "CommitPropStats",
 )

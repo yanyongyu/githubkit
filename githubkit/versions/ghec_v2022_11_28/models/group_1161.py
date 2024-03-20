@@ -10,24 +10,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0175 import ActionsSecret
-
-
-class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200(
-    GitHubModel
-):
-    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200"""
-
-    total_count: int = Field()
-    secrets: List[ActionsSecret] = Field()
+from githubkit.typing import Missing
 
 
-model_rebuild(RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200)
+class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
+    """ReposOwnerRepoSubscriptionPutBody"""
 
-__all__ = ("RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200",)
+    subscribed: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications should be received from this repository.",
+    )
+    ignored: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if all notifications should be blocked from this repository.",
+    )
+
+
+model_rebuild(ReposOwnerRepoSubscriptionPutBody)
+
+__all__ = ("ReposOwnerRepoSubscriptionPutBody",)

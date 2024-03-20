@@ -10,29 +10,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0354 import MetaType
+from .group_0355 import MetaType
 
 
-class ScimEnterpriseGroupResponseAllof1Type(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1"""
+class ScimEnterpriseGroupResponseType(TypedDict):
+    """ScimEnterpriseGroupResponse"""
 
+    schemas: List[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ]
+    external_id: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    members: NotRequired[List[ScimEnterpriseGroupResponseMergedMembersType]]
     id: NotRequired[str]
-    members: NotRequired[List[ScimEnterpriseGroupResponseAllof1PropMembersItemsType]]
     meta: NotRequired[MetaType]
 
 
-class ScimEnterpriseGroupResponseAllof1PropMembersItemsType(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+class ScimEnterpriseGroupResponseMergedMembersType(TypedDict):
+    """ScimEnterpriseGroupResponseMergedMembers"""
 
-    value: NotRequired[str]
-    ref: NotRequired[str]
+    value: str
+    ref: str
     display: NotRequired[str]
 
 
+class ScimEnterpriseGroupListType(TypedDict):
+    """ScimEnterpriseGroupList"""
+
+    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: List[ScimEnterpriseGroupResponseType]
+    start_index: int
+    items_per_page: int
+
+
 __all__ = (
-    "ScimEnterpriseGroupResponseAllof1Type",
-    "ScimEnterpriseGroupResponseAllof1PropMembersItemsType",
+    "ScimEnterpriseGroupResponseType",
+    "ScimEnterpriseGroupResponseMergedMembersType",
+    "ScimEnterpriseGroupListType",
 )

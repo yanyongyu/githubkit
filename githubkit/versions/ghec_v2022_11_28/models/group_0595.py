@@ -18,154 +18,59 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0389 import EnterpriseWebhooks
-from .group_0390 import SimpleInstallation
-from .group_0391 import OrganizationSimpleWebhooks
-from .group_0392 import RepositoryWebhooks
-from .group_0393 import SimpleUserWebhooks
+
+class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1(GitHubModel):
+    """WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1"""
+
+    account: Missing[
+        WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropAccount
+    ] = Field(default=UNSET)
+    billing_cycle: Missing[str] = Field(default=UNSET)
+    free_trial_ends_on: Missing[Union[str, None]] = Field(default=UNSET)
+    next_billing_date: Union[str, None] = Field()
+    on_free_trial: Missing[bool] = Field(default=UNSET)
+    plan: Missing[
+        WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropPlan
+    ] = Field(default=UNSET)
+    unit_count: Missing[int] = Field(default=UNSET)
 
 
-class WebhookMarketplacePurchasePendingChange(GitHubModel):
-    """marketplace_purchase pending_change event"""
-
-    action: Literal["pending_change"] = Field()
-    effective_date: str = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    marketplace_purchase: WebhookMarketplacePurchasePendingChangePropMarketplacePurchase = Field()
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    previous_marketplace_purchase: Missing[
-        WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase
-    ] = Field(default=UNSET, title="Marketplace Purchase")
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
-
-
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchase(GitHubModel):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchase"""
-
-    account: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccount = Field()
-    billing_cycle: str = Field()
-    free_trial_ends_on: Union[Union[str, None], None] = Field()
-    next_billing_date: Union[Union[str, None], None] = Field()
-    on_free_trial: bool = Field()
-    plan: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedPlan = (
-        Field()
-    )
-    unit_count: int = Field()
-
-
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccount(
+class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropAccount(
     GitHubModel
 ):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccount"""
+    """WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropAccount"""
 
-    id: int = Field()
-    login: str = Field()
-    node_id: str = Field()
-    organization_billing_email: Union[Union[str, None], None] = Field()
-    type: str = Field()
+    id: Missing[int] = Field(default=UNSET)
+    login: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organization_billing_email: Missing[Union[str, None]] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedPlan(
+class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropPlan(
     GitHubModel
 ):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedPlan"""
+    """WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropPlan"""
 
-    bullets: List[str] = Field()
-    description: str = Field()
-    has_free_trial: bool = Field()
-    id: int = Field()
-    monthly_price_in_cents: int = Field()
-    name: str = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    unit_name: Union[Union[str, None], None] = Field()
-    yearly_price_in_cents: int = Field()
-
-
-class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase(
-    GitHubModel
-):
-    """Marketplace Purchase"""
-
-    account: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount = Field()
-    billing_cycle: str = Field()
-    free_trial_ends_on: Union[str, None] = Field()
-    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
-    on_free_trial: bool = Field()
-    plan: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan = Field()
-    unit_count: int = Field()
+    bullets: Missing[List[Union[str, None]]] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+    has_free_trial: Missing[bool] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    monthly_price_in_cents: Missing[int] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    price_model: Missing[Literal["FREE", "FLAT_RATE", "PER_UNIT"]] = Field(
+        default=UNSET
+    )
+    unit_name: Missing[Union[str, None]] = Field(default=UNSET)
+    yearly_price_in_cents: Missing[int] = Field(default=UNSET)
 
 
-class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount(
-    GitHubModel
-):
-    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccoun
-    t
-    """
-
-    id: int = Field()
-    login: str = Field()
-    node_id: str = Field()
-    organization_billing_email: Union[str, None] = Field()
-    type: str = Field()
-
-
-class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan(
-    GitHubModel
-):
-    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan"""
-
-    bullets: List[str] = Field()
-    description: str = Field()
-    has_free_trial: bool = Field()
-    id: int = Field()
-    monthly_price_in_cents: int = Field()
-    name: str = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    unit_name: Union[str, None] = Field()
-    yearly_price_in_cents: int = Field()
-
-
-model_rebuild(WebhookMarketplacePurchasePendingChange)
-model_rebuild(WebhookMarketplacePurchasePendingChangePropMarketplacePurchase)
-model_rebuild(
-    WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccount
-)
-model_rebuild(WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedPlan)
-model_rebuild(WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase)
-model_rebuild(
-    WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount
-)
-model_rebuild(
-    WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan
-)
+model_rebuild(WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1)
+model_rebuild(WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropAccount)
+model_rebuild(WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropPlan)
 
 __all__ = (
-    "WebhookMarketplacePurchasePendingChange",
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchase",
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccount",
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedPlan",
-    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase",
-    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount",
-    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan",
+    "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1",
+    "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropAccount",
+    "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropPlan",
 )

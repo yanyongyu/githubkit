@@ -19,17 +19,17 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0389 import EnterpriseWebhooks
-from .group_0390 import SimpleInstallation
-from .group_0391 import OrganizationSimpleWebhooks
-from .group_0392 import RepositoryWebhooks
-from .group_0393 import SimpleUserWebhooks
+from .group_0390 import EnterpriseWebhooks
+from .group_0391 import SimpleInstallation
+from .group_0392 import OrganizationSimpleWebhooks
+from .group_0393 import RepositoryWebhooks
+from .group_0394 import SimpleUserWebhooks
 
 
-class WebhookProjectDeleted(GitHubModel):
-    """project deleted event"""
+class WebhookProjectCreated(GitHubModel):
+    """project created event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,22 +45,25 @@ class WebhookProjectDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project: WebhookProjectDeletedPropProject = Field(title="Project")
-    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
-    sender: Missing[SimpleUserWebhooks] = Field(
+    project: WebhookProjectCreatedPropProject = Field(title="Project")
+    repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookProjectDeletedPropProject(GitHubModel):
+class WebhookProjectCreatedPropProject(GitHubModel):
     """Project"""
 
     body: Union[str, None] = Field(description="Body of the project")
     columns_url: str = Field()
     created_at: datetime = Field()
-    creator: Union[WebhookProjectDeletedPropProjectPropCreator, None] = Field(
+    creator: Union[WebhookProjectCreatedPropProjectPropCreator, None] = Field(
         title="User"
     )
     html_url: str = Field()
@@ -76,7 +79,7 @@ class WebhookProjectDeletedPropProject(GitHubModel):
     url: str = Field()
 
 
-class WebhookProjectDeletedPropProjectPropCreator(GitHubModel):
+class WebhookProjectCreatedPropProjectPropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -102,12 +105,12 @@ class WebhookProjectDeletedPropProjectPropCreator(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookProjectDeleted)
-model_rebuild(WebhookProjectDeletedPropProject)
-model_rebuild(WebhookProjectDeletedPropProjectPropCreator)
+model_rebuild(WebhookProjectCreated)
+model_rebuild(WebhookProjectCreatedPropProject)
+model_rebuild(WebhookProjectCreatedPropProjectPropCreator)
 
 __all__ = (
-    "WebhookProjectDeleted",
-    "WebhookProjectDeletedPropProject",
-    "WebhookProjectDeletedPropProjectPropCreator",
+    "WebhookProjectCreated",
+    "WebhookProjectCreatedPropProject",
+    "WebhookProjectCreatedPropProjectPropCreator",
 )

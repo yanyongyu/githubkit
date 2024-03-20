@@ -10,41 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
 
-class GistsPostBody(GitHubModel):
-    """GistsPostBody"""
+class GistsGistIdGetResponse403(GitHubModel):
+    """GistsGistIdGetResponse403"""
 
-    description: Missing[str] = Field(
-        default=UNSET, description="Description of the gist"
-    )
-    files: GistsPostBodyPropFiles = Field(
-        description="Names and content for the files that make up the gist"
-    )
-    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
+    block: Missing[GistsGistIdGetResponse403PropBlock] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-class GistsPostBodyPropFiles(ExtraGitHubModel):
-    """GistsPostBodyPropFiles
+class GistsGistIdGetResponse403PropBlock(GitHubModel):
+    """GistsGistIdGetResponse403PropBlock"""
 
-    Names and content for the files that make up the gist
-
-    Examples:
-        {'hello.rb': {'content': 'puts "Hello, World!"'}}
-    """
+    reason: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    html_url: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-model_rebuild(GistsPostBody)
-model_rebuild(GistsPostBodyPropFiles)
+model_rebuild(GistsGistIdGetResponse403)
+model_rebuild(GistsGistIdGetResponse403PropBlock)
 
 __all__ = (
-    "GistsPostBody",
-    "GistsPostBodyPropFiles",
+    "GistsGistIdGetResponse403",
+    "GistsGistIdGetResponse403PropBlock",
 )

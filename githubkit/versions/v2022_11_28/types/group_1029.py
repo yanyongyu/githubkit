@@ -10,11 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0007 import WebhookConfigType
 
 
-class ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """ReposOwnerRepoInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
+
+    config: NotRequired[WebhookConfigType]
+    events: NotRequired[List[str]]
+    add_events: NotRequired[List[str]]
+    remove_events: NotRequired[List[str]]
+    active: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type",)
+__all__ = ("ReposOwnerRepoHooksHookIdPatchBodyType",)

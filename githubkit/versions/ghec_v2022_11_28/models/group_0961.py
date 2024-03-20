@@ -41,15 +41,16 @@ from .group_0147 import RepositoryRuleTagNamePattern
 from .group_0150 import RepositoryRuleWorkflows
 
 
-class OrgsOrgRulesetsPostBody(GitHubModel):
-    """OrgsOrgRulesetsPostBody"""
+class OrgsOrgRulesetsRulesetIdPutBody(GitHubModel):
+    """OrgsOrgRulesetsRulesetIdPutBody"""
 
-    name: str = Field(description="The name of the ruleset.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
     target: Missing[Literal["branch", "tag"]] = Field(
         default=UNSET, description="The target of the ruleset."
     )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page."
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+        default=UNSET,
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page.",
     )
     bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
@@ -89,6 +90,6 @@ class OrgsOrgRulesetsPostBody(GitHubModel):
     ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(OrgsOrgRulesetsPostBody)
+model_rebuild(OrgsOrgRulesetsRulesetIdPutBody)
 
-__all__ = ("OrgsOrgRulesetsPostBody",)
+__all__ = ("OrgsOrgRulesetsRulesetIdPutBody",)

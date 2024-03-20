@@ -10,22 +10,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0207 import CheckRun
-
-
-class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200(GitHubModel):
-    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
-
-    total_count: int = Field()
-    check_runs: List[CheckRun] = Field()
+from githubkit.typing import Missing
 
 
-model_rebuild(ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200)
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody"""
 
-__all__ = ("ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200",)
+    state: Literal["open", "dismissed"] = Field(
+        description="Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`."
+    )
+    dismissed_reason: Missing[
+        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+    ] = Field(
+        default=UNSET,
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
+    )
+    dismissed_comment: Missing[
+        Union[Annotated[str, Field(max_length=280)], None]
+    ] = Field(
+        default=UNSET,
+        description="The dismissal comment associated with the dismissal of the alert.",
+    )
+
+
+model_rebuild(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody)
+
+__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody",)

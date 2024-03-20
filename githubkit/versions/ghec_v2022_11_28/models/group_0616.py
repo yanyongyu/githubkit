@@ -19,17 +19,17 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0389 import EnterpriseWebhooks
-from .group_0390 import SimpleInstallation
-from .group_0391 import OrganizationSimpleWebhooks
-from .group_0392 import RepositoryWebhooks
-from .group_0393 import SimpleUserWebhooks
+from .group_0390 import EnterpriseWebhooks
+from .group_0391 import SimpleInstallation
+from .group_0392 import OrganizationSimpleWebhooks
+from .group_0393 import RepositoryWebhooks
+from .group_0394 import SimpleUserWebhooks
 
 
-class WebhookMilestoneDeleted(GitHubModel):
-    """milestone deleted event"""
+class WebhookMilestoneCreated(GitHubModel):
+    """milestone created event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,7 +40,7 @@ class WebhookMilestoneDeleted(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    milestone: WebhookMilestoneDeletedPropMilestone = Field(
+    milestone: WebhookMilestoneCreatedPropMilestone = Field(
         title="Milestone",
         description="A collection of related issues and pull requests.",
     )
@@ -59,7 +59,7 @@ class WebhookMilestoneDeleted(GitHubModel):
     )
 
 
-class WebhookMilestoneDeletedPropMilestone(GitHubModel):
+class WebhookMilestoneCreatedPropMilestone(GitHubModel):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -68,7 +68,7 @@ class WebhookMilestoneDeletedPropMilestone(GitHubModel):
     closed_at: Union[datetime, None] = Field()
     closed_issues: int = Field()
     created_at: datetime = Field()
-    creator: Union[WebhookMilestoneDeletedPropMilestonePropCreator, None] = Field(
+    creator: Union[WebhookMilestoneCreatedPropMilestonePropCreator, None] = Field(
         title="User"
     )
     description: Union[str, None] = Field()
@@ -85,7 +85,7 @@ class WebhookMilestoneDeletedPropMilestone(GitHubModel):
     url: str = Field()
 
 
-class WebhookMilestoneDeletedPropMilestonePropCreator(GitHubModel):
+class WebhookMilestoneCreatedPropMilestonePropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -107,18 +107,16 @@ class WebhookMilestoneDeletedPropMilestonePropCreator(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
-    )
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookMilestoneDeleted)
-model_rebuild(WebhookMilestoneDeletedPropMilestone)
-model_rebuild(WebhookMilestoneDeletedPropMilestonePropCreator)
+model_rebuild(WebhookMilestoneCreated)
+model_rebuild(WebhookMilestoneCreatedPropMilestone)
+model_rebuild(WebhookMilestoneCreatedPropMilestonePropCreator)
 
 __all__ = (
-    "WebhookMilestoneDeleted",
-    "WebhookMilestoneDeletedPropMilestone",
-    "WebhookMilestoneDeletedPropMilestonePropCreator",
+    "WebhookMilestoneCreated",
+    "WebhookMilestoneCreatedPropMilestone",
+    "WebhookMilestoneCreatedPropMilestonePropCreator",
 )

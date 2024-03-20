@@ -10,39 +10,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List
+from datetime import datetime
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
-
-from .group_0001 import SimpleUser
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200(GitHubModel):
-    """ReposOwnerRepoCodespacesNewGetResponse200"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
-    billable_owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    defaults: Missing[ReposOwnerRepoCodespacesNewGetResponse200PropDefaults] = Field(
-        default=UNSET
-    )
+    total_count: int = Field()
+    secrets: List[RepoCodespacesSecret] = Field()
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200PropDefaults(GitHubModel):
-    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
+class RepoCodespacesSecret(GitHubModel):
+    """Codespaces Secret
 
-    location: str = Field()
-    devcontainer_path: Union[str, None] = Field()
+    Set repository secrets for GitHub Codespaces.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200)
-model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200PropDefaults)
+model_rebuild(ReposOwnerRepoCodespacesSecretsGetResponse200)
+model_rebuild(RepoCodespacesSecret)
 
 __all__ = (
-    "ReposOwnerRepoCodespacesNewGetResponse200",
-    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaults",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200",
+    "RepoCodespacesSecret",
 )

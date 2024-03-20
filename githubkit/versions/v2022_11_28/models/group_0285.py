@@ -12,26 +12,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
 
 
-class PageDeployment(GitHubModel):
-    """GitHub Pages
+class PageBuildStatus(GitHubModel):
+    """Page Build Status
 
-    The GitHub Pages deployment status.
+    Page Build Status
     """
 
-    status_url: str = Field(
-        description="The URI to monitor GitHub Pages deployment status."
-    )
-    page_url: str = Field(description="The URI to the deployed GitHub Pages.")
-    preview_url: Missing[str] = Field(
-        default=UNSET, description="The URI to the deployed GitHub Pages preview."
-    )
+    url: str = Field()
+    status: str = Field()
 
 
-model_rebuild(PageDeployment)
+model_rebuild(PageBuildStatus)
 
-__all__ = ("PageDeployment",)
+__all__ = ("PageBuildStatus",)

@@ -18,18 +18,17 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0356 import EnterpriseWebhooks
-from .group_0357 import SimpleInstallation
-from .group_0358 import OrganizationSimpleWebhooks
-from .group_0359 import RepositoryWebhooks
-from .group_0360 import SimpleUserWebhooks
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0359 import OrganizationSimpleWebhooks
+from .group_0360 import RepositoryWebhooks
+from .group_0361 import SimpleUserWebhooks
 
 
-class WebhookOrganizationRenamed(GitHubModel):
-    """organization renamed event"""
+class WebhookOrganizationMemberRemoved(GitHubModel):
+    """organization member_removed event"""
 
-    action: Literal["renamed"] = Field()
-    changes: Missing[WebhookOrganizationRenamedPropChanges] = Field(default=UNSET)
+    action: Literal["member_removed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,8 +39,7 @@ class WebhookOrganizationRenamed(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    membership: Missing[WebhookOrganizationRenamedPropMembership] = Field(
-        default=UNSET,
+    membership: WebhookOrganizationMemberRemovedPropMembership = Field(
         title="Membership",
         description="The membership between the user and the organization. Not present when the action is `member_invited`.",
     )
@@ -60,21 +58,7 @@ class WebhookOrganizationRenamed(GitHubModel):
     )
 
 
-class WebhookOrganizationRenamedPropChanges(GitHubModel):
-    """WebhookOrganizationRenamedPropChanges"""
-
-    login: Missing[WebhookOrganizationRenamedPropChangesPropLogin] = Field(
-        default=UNSET
-    )
-
-
-class WebhookOrganizationRenamedPropChangesPropLogin(GitHubModel):
-    """WebhookOrganizationRenamedPropChangesPropLogin"""
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-class WebhookOrganizationRenamedPropMembership(GitHubModel):
+class WebhookOrganizationMemberRemovedPropMembership(GitHubModel):
     """Membership
 
     The membership between the user and the organization. Not present when the
@@ -85,12 +69,12 @@ class WebhookOrganizationRenamedPropMembership(GitHubModel):
     role: str = Field()
     state: str = Field()
     url: str = Field()
-    user: Union[WebhookOrganizationRenamedPropMembershipPropUser, None] = Field(
+    user: Union[WebhookOrganizationMemberRemovedPropMembershipPropUser, None] = Field(
         title="User"
     )
 
 
-class WebhookOrganizationRenamedPropMembershipPropUser(GitHubModel):
+class WebhookOrganizationMemberRemovedPropMembershipPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -116,16 +100,12 @@ class WebhookOrganizationRenamedPropMembershipPropUser(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookOrganizationRenamed)
-model_rebuild(WebhookOrganizationRenamedPropChanges)
-model_rebuild(WebhookOrganizationRenamedPropChangesPropLogin)
-model_rebuild(WebhookOrganizationRenamedPropMembership)
-model_rebuild(WebhookOrganizationRenamedPropMembershipPropUser)
+model_rebuild(WebhookOrganizationMemberRemoved)
+model_rebuild(WebhookOrganizationMemberRemovedPropMembership)
+model_rebuild(WebhookOrganizationMemberRemovedPropMembershipPropUser)
 
 __all__ = (
-    "WebhookOrganizationRenamed",
-    "WebhookOrganizationRenamedPropChanges",
-    "WebhookOrganizationRenamedPropChangesPropLogin",
-    "WebhookOrganizationRenamedPropMembership",
-    "WebhookOrganizationRenamedPropMembershipPropUser",
+    "WebhookOrganizationMemberRemoved",
+    "WebhookOrganizationMemberRemovedPropMembership",
+    "WebhookOrganizationMemberRemovedPropMembershipPropUser",
 )

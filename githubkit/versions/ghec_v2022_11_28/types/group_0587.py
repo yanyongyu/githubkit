@@ -13,26 +13,26 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0389 import EnterpriseWebhooksType
-from .group_0390 import SimpleInstallationType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0392 import RepositoryWebhooksType
-from .group_0393 import SimpleUserWebhooksType
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
 
 
-class WebhookLabelDeletedType(TypedDict):
-    """label deleted event"""
+class WebhookLabelCreatedType(TypedDict):
+    """label created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    label: WebhookLabelDeletedPropLabelType
+    label: WebhookLabelCreatedPropLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-class WebhookLabelDeletedPropLabelType(TypedDict):
+class WebhookLabelCreatedPropLabelType(TypedDict):
     """Label"""
 
     color: str
@@ -45,6 +45,6 @@ class WebhookLabelDeletedPropLabelType(TypedDict):
 
 
 __all__ = (
-    "WebhookLabelDeletedType",
-    "WebhookLabelDeletedPropLabelType",
+    "WebhookLabelCreatedType",
+    "WebhookLabelCreatedPropLabelType",
 )

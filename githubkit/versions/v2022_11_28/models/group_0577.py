@@ -18,16 +18,16 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0356 import EnterpriseWebhooks
-from .group_0357 import SimpleInstallation
-from .group_0358 import OrganizationSimpleWebhooks
-from .group_0359 import RepositoryWebhooks
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0359 import OrganizationSimpleWebhooks
+from .group_0360 import RepositoryWebhooks
 
 
-class WebhookMembershipRemoved(GitHubModel):
-    """membership removed event"""
+class WebhookMembershipAdded(GitHubModel):
+    """membership added event"""
 
-    action: Literal["removed"] = Field()
+    action: Literal["added"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -38,7 +38,7 @@ class WebhookMembershipRemoved(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    member: Union[WebhookMembershipRemovedPropMember, None] = Field(title="User")
+    member: Union[WebhookMembershipAddedPropMember, None] = Field(title="User")
     organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
@@ -48,17 +48,17 @@ class WebhookMembershipRemoved(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    scope: Literal["team", "organization"] = Field(
+    scope: Literal["team"] = Field(
         description="The scope of the membership. Currently, can only be `team`."
     )
-    sender: Union[WebhookMembershipRemovedPropSender, None] = Field(title="User")
-    team: WebhookMembershipRemovedPropTeam = Field(
+    sender: Union[WebhookMembershipAddedPropSender, None] = Field(title="User")
+    team: WebhookMembershipAddedPropTeam = Field(
         title="Team",
         description="Groups of organization members that gives permissions on specified repositories.",
     )
 
 
-class WebhookMembershipRemovedPropMember(GitHubModel):
+class WebhookMembershipAddedPropMember(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -84,7 +84,7 @@ class WebhookMembershipRemovedPropMember(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookMembershipRemovedPropSender(GitHubModel):
+class WebhookMembershipAddedPropSender(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -110,7 +110,7 @@ class WebhookMembershipRemovedPropSender(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookMembershipRemovedPropTeam(GitHubModel):
+class WebhookMembershipAddedPropTeam(GitHubModel):
     """Team
 
     Groups of organization members that gives permissions on specified repositories.
@@ -125,7 +125,7 @@ class WebhookMembershipRemovedPropTeam(GitHubModel):
     members_url: Missing[str] = Field(default=UNSET)
     name: str = Field(description="Name of the team")
     node_id: Missing[str] = Field(default=UNSET)
-    parent: Missing[Union[WebhookMembershipRemovedPropTeamPropParent, None]] = Field(
+    parent: Missing[Union[WebhookMembershipAddedPropTeamPropParent, None]] = Field(
         default=UNSET
     )
     permission: Missing[str] = Field(
@@ -141,8 +141,8 @@ class WebhookMembershipRemovedPropTeam(GitHubModel):
     url: Missing[str] = Field(default=UNSET, description="URL for the team")
 
 
-class WebhookMembershipRemovedPropTeamPropParent(GitHubModel):
-    """WebhookMembershipRemovedPropTeamPropParent"""
+class WebhookMembershipAddedPropTeamPropParent(GitHubModel):
+    """WebhookMembershipAddedPropTeamPropParent"""
 
     description: Union[str, None] = Field(description="Description of the team")
     html_url: str = Field()
@@ -164,16 +164,16 @@ class WebhookMembershipRemovedPropTeamPropParent(GitHubModel):
     url: str = Field(description="URL for the team")
 
 
-model_rebuild(WebhookMembershipRemoved)
-model_rebuild(WebhookMembershipRemovedPropMember)
-model_rebuild(WebhookMembershipRemovedPropSender)
-model_rebuild(WebhookMembershipRemovedPropTeam)
-model_rebuild(WebhookMembershipRemovedPropTeamPropParent)
+model_rebuild(WebhookMembershipAdded)
+model_rebuild(WebhookMembershipAddedPropMember)
+model_rebuild(WebhookMembershipAddedPropSender)
+model_rebuild(WebhookMembershipAddedPropTeam)
+model_rebuild(WebhookMembershipAddedPropTeamPropParent)
 
 __all__ = (
-    "WebhookMembershipRemoved",
-    "WebhookMembershipRemovedPropMember",
-    "WebhookMembershipRemovedPropSender",
-    "WebhookMembershipRemovedPropTeam",
-    "WebhookMembershipRemovedPropTeamPropParent",
+    "WebhookMembershipAdded",
+    "WebhookMembershipAddedPropMember",
+    "WebhookMembershipAddedPropSender",
+    "WebhookMembershipAddedPropTeam",
+    "WebhookMembershipAddedPropTeamPropParent",
 )

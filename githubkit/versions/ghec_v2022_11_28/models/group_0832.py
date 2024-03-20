@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from datetime import datetime
 
 from pydantic import Field
@@ -19,18 +19,18 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0186 import Deployment
-from .group_0389 import EnterpriseWebhooks
-from .group_0390 import SimpleInstallation
-from .group_0391 import OrganizationSimpleWebhooks
-from .group_0392 import RepositoryWebhooks
-from .group_0393 import SimpleUserWebhooks
+from .group_0390 import EnterpriseWebhooks
+from .group_0391 import SimpleInstallation
+from .group_0392 import OrganizationSimpleWebhooks
+from .group_0393 import RepositoryWebhooks
+from .group_0394 import SimpleUserWebhooks
+from .group_0833 import WebhookWorkflowRunCompletedPropWorkflowRun
 
 
-class WebhookWorkflowJobWaiting(GitHubModel):
-    """workflow_job waiting event"""
+class WebhookWorkflowRunCompleted(GitHubModel):
+    """workflow_run completed event"""
 
-    action: Literal["waiting"] = Field()
+    action: Literal["completed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -54,63 +54,31 @@ class WebhookWorkflowJobWaiting(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJob = Field()
-    deployment: Missing[Deployment] = Field(
-        default=UNSET,
-        title="Deployment",
-        description="A request for a specific ref(branch,sha,tag) to be deployed",
+    workflow: Union[WebhookWorkflowRunCompletedPropWorkflow, None] = Field(
+        title="Workflow"
     )
+    workflow_run: WebhookWorkflowRunCompletedPropWorkflowRun = Field()
 
 
-class WebhookWorkflowJobWaitingPropWorkflowJob(GitHubModel):
-    """WebhookWorkflowJobWaitingPropWorkflowJob"""
+class WebhookWorkflowRunCompletedPropWorkflow(GitHubModel):
+    """Workflow"""
 
-    check_run_url: str = Field()
-    completed_at: Union[str, None] = Field()
-    conclusion: Union[str, None] = Field()
-    created_at: str = Field(description="The time that the job created.")
-    head_sha: str = Field()
+    badge_url: str = Field()
+    created_at: datetime = Field()
     html_url: str = Field()
     id: int = Field()
-    labels: List[str] = Field()
     name: str = Field()
     node_id: str = Field()
-    run_attempt: int = Field()
-    run_id: int = Field()
-    run_url: str = Field()
-    runner_group_id: Union[int, None] = Field()
-    runner_group_name: Union[str, None] = Field()
-    runner_id: Union[int, None] = Field()
-    runner_name: Union[str, None] = Field()
-    started_at: datetime = Field()
-    head_branch: Union[str, None] = Field(description="The name of the current branch.")
-    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
-    status: Literal["queued", "in_progress", "completed", "waiting"] = Field()
-    steps: List[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems] = Field()
+    path: str = Field()
+    state: str = Field()
+    updated_at: datetime = Field()
     url: str = Field()
 
 
-class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems(GitHubModel):
-    """Workflow Step"""
-
-    completed_at: Union[str, None] = Field()
-    conclusion: Union[
-        None, Literal["failure", "skipped", "success", "cancelled"]
-    ] = Field()
-    name: str = Field()
-    number: int = Field()
-    started_at: Union[str, None] = Field()
-    status: Literal[
-        "completed", "in_progress", "queued", "pending", "waiting"
-    ] = Field()
-
-
-model_rebuild(WebhookWorkflowJobWaiting)
-model_rebuild(WebhookWorkflowJobWaitingPropWorkflowJob)
-model_rebuild(WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems)
+model_rebuild(WebhookWorkflowRunCompleted)
+model_rebuild(WebhookWorkflowRunCompletedPropWorkflow)
 
 __all__ = (
-    "WebhookWorkflowJobWaiting",
-    "WebhookWorkflowJobWaitingPropWorkflowJob",
-    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems",
+    "WebhookWorkflowRunCompleted",
+    "WebhookWorkflowRunCompletedPropWorkflow",
 )

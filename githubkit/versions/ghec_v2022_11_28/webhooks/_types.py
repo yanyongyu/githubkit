@@ -21,8 +21,6 @@ from .star import Event as StarEvent
 from .star import action_types as star_action_types
 from .team import Event as TeamEvent
 from .team import action_types as team_action_types
-from .user import Event as UserEvent
-from .user import action_types as user_action_types
 from .label import Event as LabelEvent
 from .label import action_types as label_action_types
 from .watch import Event as WatchEvent
@@ -240,7 +238,6 @@ WebhookEvent = Union[
     StatusEvent,
     TeamAddEvent,
     TeamEvent,
-    UserEvent,
     WatchEvent,
     WorkflowDispatchEvent,
     WorkflowJobEvent,
@@ -315,7 +312,6 @@ webhook_action_types = {
     "status": status_action_types,
     "team_add": team_add_action_types,
     "team": team_action_types,
-    "user": user_action_types,
     "watch": watch_action_types,
     "workflow_dispatch": workflow_dispatch_action_types,
     "workflow_job": workflow_job_action_types,
@@ -390,7 +386,6 @@ webhook_event_types = {
     "status": StatusEvent,
     "team_add": TeamAddEvent,
     "team": TeamEvent,
-    "user": UserEvent,
     "watch": WatchEvent,
     "workflow_dispatch": WorkflowDispatchEvent,
     "workflow_job": WorkflowJobEvent,

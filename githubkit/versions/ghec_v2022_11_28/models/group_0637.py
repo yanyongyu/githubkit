@@ -16,16 +16,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0390 import SimpleInstallation
-from .group_0391 import OrganizationSimpleWebhooks
-from .group_0393 import SimpleUserWebhooks
-from .group_0398 import PersonalAccessTokenRequest
+from .group_0391 import SimpleInstallation
+from .group_0392 import OrganizationSimpleWebhooks
+from .group_0394 import SimpleUserWebhooks
+from .group_0399 import PersonalAccessTokenRequest
 
 
-class WebhookPersonalAccessTokenRequestDenied(GitHubModel):
-    """personal_access_token_request denied event"""
+class WebhookPersonalAccessTokenRequestCreated(GitHubModel):
+    """personal_access_token_request created event"""
 
-    action: Literal["denied"] = Field()
+    action: Literal["created"] = Field()
     personal_access_token_request: PersonalAccessTokenRequest = Field(
         title="Personal Access Token Request",
         description="Details of a Personal Access Token Request.",
@@ -44,6 +44,6 @@ class WebhookPersonalAccessTokenRequestDenied(GitHubModel):
     )
 
 
-model_rebuild(WebhookPersonalAccessTokenRequestDenied)
+model_rebuild(WebhookPersonalAccessTokenRequestCreated)
 
-__all__ = ("WebhookPersonalAccessTokenRequestDenied",)
+__all__ = ("WebhookPersonalAccessTokenRequestCreated",)

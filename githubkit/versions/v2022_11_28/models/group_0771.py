@@ -18,18 +18,17 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0356 import EnterpriseWebhooks
-from .group_0357 import SimpleInstallation
-from .group_0358 import OrganizationSimpleWebhooks
-from .group_0359 import RepositoryWebhooks
-from .group_0360 import SimpleUserWebhooks
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0359 import OrganizationSimpleWebhooks
+from .group_0360 import RepositoryWebhooks
+from .group_0361 import SimpleUserWebhooks
 
 
-class WebhookSponsorshipEdited(GitHubModel):
-    """sponsorship edited event"""
+class WebhookSponsorshipCreated(GitHubModel):
+    """sponsorship created event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookSponsorshipEditedPropChanges = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -54,49 +53,32 @@ class WebhookSponsorshipEdited(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    sponsorship: WebhookSponsorshipEditedPropSponsorship = Field()
+    sponsorship: WebhookSponsorshipCreatedPropSponsorship = Field()
 
 
-class WebhookSponsorshipEditedPropChanges(GitHubModel):
-    """WebhookSponsorshipEditedPropChanges"""
-
-    privacy_level: Missing[WebhookSponsorshipEditedPropChangesPropPrivacyLevel] = Field(
-        default=UNSET
-    )
-
-
-class WebhookSponsorshipEditedPropChangesPropPrivacyLevel(GitHubModel):
-    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
-
-    from_: str = Field(
-        alias="from",
-        description="The `edited` event types include the details about the change when someone edits a sponsorship to change the privacy.",
-    )
-
-
-class WebhookSponsorshipEditedPropSponsorship(GitHubModel):
-    """WebhookSponsorshipEditedPropSponsorship"""
+class WebhookSponsorshipCreatedPropSponsorship(GitHubModel):
+    """WebhookSponsorshipCreatedPropSponsorship"""
 
     created_at: str = Field()
-    maintainer: Missing[WebhookSponsorshipEditedPropSponsorshipPropMaintainer] = Field(
+    maintainer: Missing[WebhookSponsorshipCreatedPropSponsorshipPropMaintainer] = Field(
         default=UNSET
     )
     node_id: str = Field()
     privacy_level: str = Field()
-    sponsor: Union[WebhookSponsorshipEditedPropSponsorshipPropSponsor, None] = Field(
+    sponsor: Union[WebhookSponsorshipCreatedPropSponsorshipPropSponsor, None] = Field(
         title="User"
     )
     sponsorable: Union[
-        WebhookSponsorshipEditedPropSponsorshipPropSponsorable, None
+        WebhookSponsorshipCreatedPropSponsorshipPropSponsorable, None
     ] = Field(title="User")
-    tier: WebhookSponsorshipEditedPropSponsorshipPropTier = Field(
+    tier: WebhookSponsorshipCreatedPropSponsorshipPropTier = Field(
         title="Sponsorship Tier",
         description="The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.",
     )
 
 
-class WebhookSponsorshipEditedPropSponsorshipPropMaintainer(GitHubModel):
-    """WebhookSponsorshipEditedPropSponsorshipPropMaintainer"""
+class WebhookSponsorshipCreatedPropSponsorshipPropMaintainer(GitHubModel):
+    """WebhookSponsorshipCreatedPropSponsorshipPropMaintainer"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     events_url: Missing[str] = Field(default=UNSET)
@@ -118,7 +100,7 @@ class WebhookSponsorshipEditedPropSponsorshipPropMaintainer(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookSponsorshipEditedPropSponsorshipPropSponsor(GitHubModel):
+class WebhookSponsorshipCreatedPropSponsorshipPropSponsor(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -144,7 +126,7 @@ class WebhookSponsorshipEditedPropSponsorshipPropSponsor(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookSponsorshipEditedPropSponsorshipPropSponsorable(GitHubModel):
+class WebhookSponsorshipCreatedPropSponsorshipPropSponsorable(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -170,7 +152,7 @@ class WebhookSponsorshipEditedPropSponsorshipPropSponsorable(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookSponsorshipEditedPropSponsorshipPropTier(GitHubModel):
+class WebhookSponsorshipCreatedPropSponsorshipPropTier(GitHubModel):
     """Sponsorship Tier
 
     The `tier_changed` and `pending_tier_change` will include the original tier
@@ -189,22 +171,18 @@ class WebhookSponsorshipEditedPropSponsorshipPropTier(GitHubModel):
     node_id: str = Field()
 
 
-model_rebuild(WebhookSponsorshipEdited)
-model_rebuild(WebhookSponsorshipEditedPropChanges)
-model_rebuild(WebhookSponsorshipEditedPropChangesPropPrivacyLevel)
-model_rebuild(WebhookSponsorshipEditedPropSponsorship)
-model_rebuild(WebhookSponsorshipEditedPropSponsorshipPropMaintainer)
-model_rebuild(WebhookSponsorshipEditedPropSponsorshipPropSponsor)
-model_rebuild(WebhookSponsorshipEditedPropSponsorshipPropSponsorable)
-model_rebuild(WebhookSponsorshipEditedPropSponsorshipPropTier)
+model_rebuild(WebhookSponsorshipCreated)
+model_rebuild(WebhookSponsorshipCreatedPropSponsorship)
+model_rebuild(WebhookSponsorshipCreatedPropSponsorshipPropMaintainer)
+model_rebuild(WebhookSponsorshipCreatedPropSponsorshipPropSponsor)
+model_rebuild(WebhookSponsorshipCreatedPropSponsorshipPropSponsorable)
+model_rebuild(WebhookSponsorshipCreatedPropSponsorshipPropTier)
 
 __all__ = (
-    "WebhookSponsorshipEdited",
-    "WebhookSponsorshipEditedPropChanges",
-    "WebhookSponsorshipEditedPropChangesPropPrivacyLevel",
-    "WebhookSponsorshipEditedPropSponsorship",
-    "WebhookSponsorshipEditedPropSponsorshipPropMaintainer",
-    "WebhookSponsorshipEditedPropSponsorshipPropSponsor",
-    "WebhookSponsorshipEditedPropSponsorshipPropSponsorable",
-    "WebhookSponsorshipEditedPropSponsorshipPropTier",
+    "WebhookSponsorshipCreated",
+    "WebhookSponsorshipCreatedPropSponsorship",
+    "WebhookSponsorshipCreatedPropSponsorshipPropMaintainer",
+    "WebhookSponsorshipCreatedPropSponsorshipPropSponsor",
+    "WebhookSponsorshipCreatedPropSponsorshipPropSponsorable",
+    "WebhookSponsorshipCreatedPropSponsorshipPropTier",
 )

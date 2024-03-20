@@ -18,17 +18,17 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0356 import EnterpriseWebhooks
-from .group_0357 import SimpleInstallation
-from .group_0358 import OrganizationSimpleWebhooks
-from .group_0359 import RepositoryWebhooks
-from .group_0360 import SimpleUserWebhooks
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0359 import OrganizationSimpleWebhooks
+from .group_0360 import RepositoryWebhooks
+from .group_0361 import SimpleUserWebhooks
 
 
-class WebhookSponsorshipCreated(GitHubModel):
-    """sponsorship created event"""
+class WebhookSponsorshipCancelled(GitHubModel):
+    """sponsorship cancelled event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["cancelled"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,32 +53,32 @@ class WebhookSponsorshipCreated(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    sponsorship: WebhookSponsorshipCreatedPropSponsorship = Field()
+    sponsorship: WebhookSponsorshipCancelledPropSponsorship = Field()
 
 
-class WebhookSponsorshipCreatedPropSponsorship(GitHubModel):
-    """WebhookSponsorshipCreatedPropSponsorship"""
+class WebhookSponsorshipCancelledPropSponsorship(GitHubModel):
+    """WebhookSponsorshipCancelledPropSponsorship"""
 
     created_at: str = Field()
-    maintainer: Missing[WebhookSponsorshipCreatedPropSponsorshipPropMaintainer] = Field(
-        default=UNSET
-    )
+    maintainer: Missing[
+        WebhookSponsorshipCancelledPropSponsorshipPropMaintainer
+    ] = Field(default=UNSET)
     node_id: str = Field()
     privacy_level: str = Field()
-    sponsor: Union[WebhookSponsorshipCreatedPropSponsorshipPropSponsor, None] = Field(
+    sponsor: Union[WebhookSponsorshipCancelledPropSponsorshipPropSponsor, None] = Field(
         title="User"
     )
     sponsorable: Union[
-        WebhookSponsorshipCreatedPropSponsorshipPropSponsorable, None
+        WebhookSponsorshipCancelledPropSponsorshipPropSponsorable, None
     ] = Field(title="User")
-    tier: WebhookSponsorshipCreatedPropSponsorshipPropTier = Field(
+    tier: WebhookSponsorshipCancelledPropSponsorshipPropTier = Field(
         title="Sponsorship Tier",
         description="The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.",
     )
 
 
-class WebhookSponsorshipCreatedPropSponsorshipPropMaintainer(GitHubModel):
-    """WebhookSponsorshipCreatedPropSponsorshipPropMaintainer"""
+class WebhookSponsorshipCancelledPropSponsorshipPropMaintainer(GitHubModel):
+    """WebhookSponsorshipCancelledPropSponsorshipPropMaintainer"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     events_url: Missing[str] = Field(default=UNSET)
@@ -100,7 +100,7 @@ class WebhookSponsorshipCreatedPropSponsorshipPropMaintainer(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookSponsorshipCreatedPropSponsorshipPropSponsor(GitHubModel):
+class WebhookSponsorshipCancelledPropSponsorshipPropSponsor(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -126,7 +126,7 @@ class WebhookSponsorshipCreatedPropSponsorshipPropSponsor(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookSponsorshipCreatedPropSponsorshipPropSponsorable(GitHubModel):
+class WebhookSponsorshipCancelledPropSponsorshipPropSponsorable(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -152,7 +152,7 @@ class WebhookSponsorshipCreatedPropSponsorshipPropSponsorable(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookSponsorshipCreatedPropSponsorshipPropTier(GitHubModel):
+class WebhookSponsorshipCancelledPropSponsorshipPropTier(GitHubModel):
     """Sponsorship Tier
 
     The `tier_changed` and `pending_tier_change` will include the original tier
@@ -171,18 +171,18 @@ class WebhookSponsorshipCreatedPropSponsorshipPropTier(GitHubModel):
     node_id: str = Field()
 
 
-model_rebuild(WebhookSponsorshipCreated)
-model_rebuild(WebhookSponsorshipCreatedPropSponsorship)
-model_rebuild(WebhookSponsorshipCreatedPropSponsorshipPropMaintainer)
-model_rebuild(WebhookSponsorshipCreatedPropSponsorshipPropSponsor)
-model_rebuild(WebhookSponsorshipCreatedPropSponsorshipPropSponsorable)
-model_rebuild(WebhookSponsorshipCreatedPropSponsorshipPropTier)
+model_rebuild(WebhookSponsorshipCancelled)
+model_rebuild(WebhookSponsorshipCancelledPropSponsorship)
+model_rebuild(WebhookSponsorshipCancelledPropSponsorshipPropMaintainer)
+model_rebuild(WebhookSponsorshipCancelledPropSponsorshipPropSponsor)
+model_rebuild(WebhookSponsorshipCancelledPropSponsorshipPropSponsorable)
+model_rebuild(WebhookSponsorshipCancelledPropSponsorshipPropTier)
 
 __all__ = (
-    "WebhookSponsorshipCreated",
-    "WebhookSponsorshipCreatedPropSponsorship",
-    "WebhookSponsorshipCreatedPropSponsorshipPropMaintainer",
-    "WebhookSponsorshipCreatedPropSponsorshipPropSponsor",
-    "WebhookSponsorshipCreatedPropSponsorshipPropSponsorable",
-    "WebhookSponsorshipCreatedPropSponsorshipPropTier",
+    "WebhookSponsorshipCancelled",
+    "WebhookSponsorshipCancelledPropSponsorship",
+    "WebhookSponsorshipCancelledPropSponsorshipPropMaintainer",
+    "WebhookSponsorshipCancelledPropSponsorshipPropSponsor",
+    "WebhookSponsorshipCancelledPropSponsorshipPropSponsorable",
+    "WebhookSponsorshipCancelledPropSponsorshipPropTier",
 )

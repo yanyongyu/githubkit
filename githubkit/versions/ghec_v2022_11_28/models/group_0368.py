@@ -11,7 +11,6 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List, Union
-from datetime import datetime
 
 from pydantic import Field
 
@@ -19,47 +18,30 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0076 import MinimalRepository
-from .group_0367 import SearchResultTextMatchesItems
 
+class SearchResultTextMatchesItems(GitHubModel):
+    """SearchResultTextMatchesItems"""
 
-class CodeSearchResultItem(GitHubModel):
-    """Code Search Result Item
-
-    Code Search Result Item
-    """
-
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: str = Field()
-    html_url: str = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
-    score: float = Field()
-    file_size: Missing[int] = Field(default=UNSET)
-    language: Missing[Union[str, None]] = Field(default=UNSET)
-    last_modified_at: Missing[datetime] = Field(default=UNSET)
-    line_numbers: Missing[List[str]] = Field(default=UNSET)
-    text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    object_url: Missing[str] = Field(default=UNSET)
+    object_type: Missing[Union[str, None]] = Field(default=UNSET)
+    property_: Missing[str] = Field(default=UNSET, alias="property")
+    fragment: Missing[str] = Field(default=UNSET)
+    matches: Missing[List[SearchResultTextMatchesItemsPropMatchesItems]] = Field(
+        default=UNSET
     )
 
 
-class SearchCodeGetResponse200(GitHubModel):
-    """SearchCodeGetResponse200"""
+class SearchResultTextMatchesItemsPropMatchesItems(GitHubModel):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
 
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: List[CodeSearchResultItem] = Field()
+    text: Missing[str] = Field(default=UNSET)
+    indices: Missing[List[int]] = Field(default=UNSET)
 
 
-model_rebuild(CodeSearchResultItem)
-model_rebuild(SearchCodeGetResponse200)
+model_rebuild(SearchResultTextMatchesItems)
+model_rebuild(SearchResultTextMatchesItemsPropMatchesItems)
 
 __all__ = (
-    "CodeSearchResultItem",
-    "SearchCodeGetResponse200",
+    "SearchResultTextMatchesItems",
+    "SearchResultTextMatchesItemsPropMatchesItems",
 )

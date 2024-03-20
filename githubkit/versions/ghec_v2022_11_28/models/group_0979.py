@@ -10,8 +10,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -19,17 +17,19 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
 
-class ProjectsColumnsCardsCardIdPatchBody(GitHubModel):
-    """ProjectsColumnsCardsCardIdPatchBody"""
+class ProjectsColumnsCardsCardIdMovesPostBody(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostBody"""
 
-    note: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The project card's note"
+    position: str = Field(
+        pattern="^(?:top|bottom|after:\\d+)$",
+        description="The position of the card in a column. Can be one of: `top`, `bottom`, or `after:<card_id>` to place after the specified card.",
     )
-    archived: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the card is archived"
+    column_id: Missing[int] = Field(
+        default=UNSET,
+        description="The unique identifier of the column the card should be moved to",
     )
 
 
-model_rebuild(ProjectsColumnsCardsCardIdPatchBody)
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostBody)
 
-__all__ = ("ProjectsColumnsCardsCardIdPatchBody",)
+__all__ = ("ProjectsColumnsCardsCardIdMovesPostBody",)

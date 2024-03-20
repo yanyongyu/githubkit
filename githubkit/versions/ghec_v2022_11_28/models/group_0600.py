@@ -10,38 +10,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
-from githubkit.typing import Missing
 
-from .group_0601 import (
+from .group_0602 import (
     WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropPlan,
     WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropAccount,
 )
 
 
-class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0(
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase(
     GitHubModel
 ):
-    """Marketplace Purchase"""
+    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase"""
 
     account: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropAccount = Field()
     billing_cycle: str = Field()
     free_trial_ends_on: None = Field()
-    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
+    next_billing_date: str = Field()
     on_free_trial: bool = Field()
     plan: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropPlan = Field()
     unit_count: int = Field()
 
 
-model_rebuild(
-    WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0
-)
+model_rebuild(WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase)
 
-__all__ = (
-    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0",
-)
+__all__ = ("WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase",)

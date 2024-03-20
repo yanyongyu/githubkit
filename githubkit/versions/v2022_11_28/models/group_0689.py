@@ -19,18 +19,17 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0356 import EnterpriseWebhooks
-from .group_0357 import SimpleInstallation
-from .group_0358 import OrganizationSimpleWebhooks
-from .group_0359 import RepositoryWebhooks
-from .group_0360 import SimpleUserWebhooks
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0359 import OrganizationSimpleWebhooks
+from .group_0360 import RepositoryWebhooks
+from .group_0361 import SimpleUserWebhooks
 
 
-class WebhookReleaseEdited(GitHubModel):
-    """release edited event"""
+class WebhookReleaseDeleted(GitHubModel):
+    """release deleted event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookReleaseEditedPropChanges = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -46,7 +45,7 @@ class WebhookReleaseEdited(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    release: WebhookReleaseEditedPropRelease = Field(
+    release: WebhookReleaseDeletedPropRelease = Field(
         title="Release",
         description="The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.",
     )
@@ -54,59 +53,24 @@ class WebhookReleaseEdited(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUserWebhooks] = Field(
-        default=UNSET,
+    sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookReleaseEditedPropChanges(GitHubModel):
-    """WebhookReleaseEditedPropChanges"""
-
-    body: Missing[WebhookReleaseEditedPropChangesPropBody] = Field(default=UNSET)
-    name: Missing[WebhookReleaseEditedPropChangesPropName] = Field(default=UNSET)
-    make_latest: Missing[WebhookReleaseEditedPropChangesPropMakeLatest] = Field(
-        default=UNSET
-    )
-
-
-class WebhookReleaseEditedPropChangesPropBody(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropBody"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the body if the action was `edited`.",
-    )
-
-
-class WebhookReleaseEditedPropChangesPropName(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropName"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the name if the action was `edited`.",
-    )
-
-
-class WebhookReleaseEditedPropChangesPropMakeLatest(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropMakeLatest"""
-
-    to: bool = Field(
-        description="Whether this release was explicitly `edited` to be the latest."
-    )
-
-
-class WebhookReleaseEditedPropRelease(GitHubModel):
+class WebhookReleaseDeletedPropRelease(GitHubModel):
     """Release
 
     The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
     object.
     """
 
-    assets: List[WebhookReleaseEditedPropReleasePropAssetsItems] = Field()
+    assets: List[WebhookReleaseDeletedPropReleasePropAssetsItems] = Field()
     assets_url: str = Field()
-    author: Union[WebhookReleaseEditedPropReleasePropAuthor, None] = Field(title="User")
+    author: Union[WebhookReleaseDeletedPropReleasePropAuthor, None] = Field(
+        title="User"
+    )
     body: Union[str, None] = Field()
     created_at: Union[datetime, None] = Field()
     discussion_url: Missing[str] = Field(default=UNSET)
@@ -119,7 +83,7 @@ class WebhookReleaseEditedPropRelease(GitHubModel):
         description="Whether the release is identified as a prerelease or a full release."
     )
     published_at: Union[datetime, None] = Field()
-    reactions: Missing[WebhookReleaseEditedPropReleasePropReactions] = Field(
+    reactions: Missing[WebhookReleaseDeletedPropReleasePropReactions] = Field(
         default=UNSET, title="Reactions"
     )
     tag_name: str = Field(description="The name of the tag.")
@@ -132,7 +96,7 @@ class WebhookReleaseEditedPropRelease(GitHubModel):
     zipball_url: Union[str, None] = Field()
 
 
-class WebhookReleaseEditedPropReleasePropAuthor(GitHubModel):
+class WebhookReleaseDeletedPropReleasePropAuthor(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -158,7 +122,7 @@ class WebhookReleaseEditedPropReleasePropAuthor(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookReleaseEditedPropReleasePropReactions(GitHubModel):
+class WebhookReleaseDeletedPropReleasePropReactions(GitHubModel):
     """Reactions"""
 
     plus_one: int = Field(alias="+1")
@@ -173,7 +137,7 @@ class WebhookReleaseEditedPropReleasePropReactions(GitHubModel):
     url: str = Field()
 
 
-class WebhookReleaseEditedPropReleasePropAssetsItems(GitHubModel):
+class WebhookReleaseDeletedPropReleasePropAssetsItems(GitHubModel):
     """Release Asset
 
     Data related to a release.
@@ -191,12 +155,12 @@ class WebhookReleaseEditedPropReleasePropAssetsItems(GitHubModel):
     state: Literal["uploaded"] = Field(description="State of the release asset.")
     updated_at: datetime = Field()
     uploader: Missing[
-        Union[WebhookReleaseEditedPropReleasePropAssetsItemsPropUploader, None]
+        Union[WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploader, None]
     ] = Field(default=UNSET, title="User")
     url: str = Field()
 
 
-class WebhookReleaseEditedPropReleasePropAssetsItemsPropUploader(GitHubModel):
+class WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploader(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -222,26 +186,18 @@ class WebhookReleaseEditedPropReleasePropAssetsItemsPropUploader(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookReleaseEdited)
-model_rebuild(WebhookReleaseEditedPropChanges)
-model_rebuild(WebhookReleaseEditedPropChangesPropBody)
-model_rebuild(WebhookReleaseEditedPropChangesPropName)
-model_rebuild(WebhookReleaseEditedPropChangesPropMakeLatest)
-model_rebuild(WebhookReleaseEditedPropRelease)
-model_rebuild(WebhookReleaseEditedPropReleasePropAuthor)
-model_rebuild(WebhookReleaseEditedPropReleasePropReactions)
-model_rebuild(WebhookReleaseEditedPropReleasePropAssetsItems)
-model_rebuild(WebhookReleaseEditedPropReleasePropAssetsItemsPropUploader)
+model_rebuild(WebhookReleaseDeleted)
+model_rebuild(WebhookReleaseDeletedPropRelease)
+model_rebuild(WebhookReleaseDeletedPropReleasePropAuthor)
+model_rebuild(WebhookReleaseDeletedPropReleasePropReactions)
+model_rebuild(WebhookReleaseDeletedPropReleasePropAssetsItems)
+model_rebuild(WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploader)
 
 __all__ = (
-    "WebhookReleaseEdited",
-    "WebhookReleaseEditedPropChanges",
-    "WebhookReleaseEditedPropChangesPropBody",
-    "WebhookReleaseEditedPropChangesPropName",
-    "WebhookReleaseEditedPropChangesPropMakeLatest",
-    "WebhookReleaseEditedPropRelease",
-    "WebhookReleaseEditedPropReleasePropAuthor",
-    "WebhookReleaseEditedPropReleasePropReactions",
-    "WebhookReleaseEditedPropReleasePropAssetsItems",
-    "WebhookReleaseEditedPropReleasePropAssetsItemsPropUploader",
+    "WebhookReleaseDeleted",
+    "WebhookReleaseDeletedPropRelease",
+    "WebhookReleaseDeletedPropReleasePropAuthor",
+    "WebhookReleaseDeletedPropReleasePropReactions",
+    "WebhookReleaseDeletedPropReleasePropAssetsItems",
+    "WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploader",
 )

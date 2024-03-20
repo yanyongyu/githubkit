@@ -13,12 +13,14 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class TeamsTeamIdDiscussionsPostBodyType(TypedDict):
-    """TeamsTeamIdDiscussionsPostBody"""
+class ReposTemplateOwnerTemplateRepoGeneratePostBodyType(TypedDict):
+    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
-    title: str
-    body: str
+    owner: NotRequired[str]
+    name: str
+    description: NotRequired[str]
+    include_all_branches: NotRequired[bool]
     private: NotRequired[bool]
 
 
-__all__ = ("TeamsTeamIdDiscussionsPostBodyType",)
+__all__ = ("ReposTemplateOwnerTemplateRepoGeneratePostBodyType",)

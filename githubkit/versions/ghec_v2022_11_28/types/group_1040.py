@@ -14,34 +14,36 @@ from typing import List, Literal
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_1039 import (
+from .group_1038 import (
     ReposOwnerRepoCheckRunsPostBodyPropOutputType,
     ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
 )
 
 
-class ReposOwnerRepoCheckRunsPostBodyOneof0Type(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
+class ReposOwnerRepoCheckRunsPostBodyOneof1Type(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyOneof1"""
 
     name: str
     head_sha: str
     details_url: NotRequired[str]
     external_id: NotRequired[str]
-    status: Literal["completed"]
+    status: NotRequired[Literal["queued", "in_progress"]]
     started_at: NotRequired[datetime]
-    conclusion: Literal[
-        "action_required",
-        "cancelled",
-        "failure",
-        "neutral",
-        "success",
-        "skipped",
-        "stale",
-        "timed_out",
+    conclusion: NotRequired[
+        Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ]
     ]
     completed_at: NotRequired[datetime]
     output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
     actions: NotRequired[List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
 
 
-__all__ = ("ReposOwnerRepoCheckRunsPostBodyOneof0Type",)
+__all__ = ("ReposOwnerRepoCheckRunsPostBodyOneof1Type",)

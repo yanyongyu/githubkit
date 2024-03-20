@@ -16,16 +16,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0357 import SimpleInstallation
-from .group_0358 import OrganizationSimpleWebhooks
-from .group_0360 import SimpleUserWebhooks
-from .group_0365 import PersonalAccessTokenRequest
+from .group_0358 import SimpleInstallation
+from .group_0359 import OrganizationSimpleWebhooks
+from .group_0361 import SimpleUserWebhooks
+from .group_0366 import PersonalAccessTokenRequest
 
 
-class WebhookPersonalAccessTokenRequestCancelled(GitHubModel):
-    """personal_access_token_request cancelled event"""
+class WebhookPersonalAccessTokenRequestApproved(GitHubModel):
+    """personal_access_token_request approved event"""
 
-    action: Literal["cancelled"] = Field()
+    action: Literal["approved"] = Field()
     personal_access_token_request: PersonalAccessTokenRequest = Field(
         title="Personal Access Token Request",
         description="Details of a Personal Access Token Request.",
@@ -44,6 +44,6 @@ class WebhookPersonalAccessTokenRequestCancelled(GitHubModel):
     )
 
 
-model_rebuild(WebhookPersonalAccessTokenRequestCancelled)
+model_rebuild(WebhookPersonalAccessTokenRequestApproved)
 
-__all__ = ("WebhookPersonalAccessTokenRequestCancelled",)
+__all__ = ("WebhookPersonalAccessTokenRequestApproved",)

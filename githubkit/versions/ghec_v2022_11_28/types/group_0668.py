@@ -10,23 +10,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0390 import SimpleInstallationType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0393 import SimpleUserWebhooksType
-from .group_0399 import ProjectsV2Type
+from .group_0391 import SimpleInstallationType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0401 import ProjectsV2ItemType
 
 
-class WebhookProjectsV2ProjectReopenedType(TypedDict):
-    """Projects v2 Project Reopened Event"""
+class WebhookProjectsV2ItemRestoredType(TypedDict):
+    """Projects v2 Item Restored Event"""
 
-    action: Literal["reopened"]
+    action: Literal["restored"]
+    changes: WebhookProjectsV2ItemRestoredPropChangesType
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookProjectsV2ProjectReopenedType",)
+class WebhookProjectsV2ItemRestoredPropChangesType(TypedDict):
+    """WebhookProjectsV2ItemRestoredPropChanges"""
+
+    archived_at: NotRequired[WebhookProjectsV2ItemRestoredPropChangesPropArchivedAtType]
+
+
+class WebhookProjectsV2ItemRestoredPropChangesPropArchivedAtType(TypedDict):
+    """WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt"""
+
+    from_: NotRequired[Union[datetime, None]]
+    to: NotRequired[Union[datetime, None]]
+
+
+__all__ = (
+    "WebhookProjectsV2ItemRestoredType",
+    "WebhookProjectsV2ItemRestoredPropChangesType",
+    "WebhookProjectsV2ItemRestoredPropChangesPropArchivedAtType",
+)

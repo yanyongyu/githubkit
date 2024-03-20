@@ -10,7 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
@@ -18,47 +19,33 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0156 import RepositoryAdvisory
-from .group_0389 import EnterpriseWebhooks
-from .group_0390 import SimpleInstallation
-from .group_0391 import OrganizationSimpleWebhooks
-from .group_0392 import RepositoryWebhooks
-from .group_0393 import SimpleUserWebhooks
+from .group_0745 import (
+    WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploader,
+)
 
 
-class WebhookRepositoryAdvisoryPublished(GitHubModel):
-    """Repository advisory published event"""
+class WebhookReleaseUnpublishedPropReleaseMergedAssets(GitHubModel):
+    """WebhookReleaseUnpublishedPropReleaseMergedAssets"""
 
-    action: Literal["published"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    repository_advisory: RepositoryAdvisory = Field(
-        description="A repository security advisory."
-    )
-    sender: Missing[SimpleUserWebhooks] = Field(
-        default=UNSET,
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
+    browser_download_url: str = Field()
+    content_type: str = Field()
+    created_at: datetime = Field()
+    download_count: int = Field()
+    id: int = Field()
+    label: Union[str, None] = Field()
+    name: str = Field(description="The file name of the asset.")
+    node_id: str = Field()
+    size: int = Field()
+    state: Literal["uploaded"] = Field(description="State of the release asset.")
+    updated_at: datetime = Field()
+    uploader: Missing[
+        Union[
+            WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploader, None
+        ]
+    ] = Field(default=UNSET, title="User")
+    url: str = Field()
 
 
-model_rebuild(WebhookRepositoryAdvisoryPublished)
+model_rebuild(WebhookReleaseUnpublishedPropReleaseMergedAssets)
 
-__all__ = ("WebhookRepositoryAdvisoryPublished",)
+__all__ = ("WebhookReleaseUnpublishedPropReleaseMergedAssets",)

@@ -11,79 +11,64 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookDiscussionCreatedPropDiscussionAllof1Type(TypedDict):
-    """WebhookDiscussionCreatedPropDiscussionAllof1"""
+class WebhookDiscussionCreatedPropDiscussionAllof0Type(TypedDict):
+    """Discussion"""
 
-    active_lock_reason: NotRequired[None]
-    answer_chosen_at: None
-    answer_chosen_by: None
-    answer_html_url: Union[str, None]
-    author_association: NotRequired[str]
-    body: NotRequired[Union[str, None]]
-    category: NotRequired[WebhookDiscussionCreatedPropDiscussionAllof1PropCategoryType]
-    comments: NotRequired[int]
-    created_at: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    locked: Literal[False]
-    node_id: NotRequired[str]
-    number: NotRequired[int]
-    reactions: NotRequired[
-        WebhookDiscussionCreatedPropDiscussionAllof1PropReactionsType
+    active_lock_reason: Union[str, None]
+    answer_chosen_at: Union[str, None]
+    answer_chosen_by: Union[
+        WebhookDiscussionCreatedPropDiscussionAllof0PropAnswerChosenByType, None
     ]
-    repository_url: NotRequired[str]
-    state: Literal["open", "converting", "transferring"]
+    answer_html_url: Union[str, None]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[str, None]
+    category: WebhookDiscussionCreatedPropDiscussionAllof0PropCategoryType
+    comments: int
+    created_at: datetime
+    html_url: str
+    id: int
+    locked: bool
+    node_id: str
+    number: int
+    reactions: NotRequired[
+        WebhookDiscussionCreatedPropDiscussionAllof0PropReactionsType
+    ]
+    repository_url: str
+    state: Literal["open", "locked", "converting", "transferring"]
     timeline_url: NotRequired[str]
-    title: NotRequired[str]
-    updated_at: NotRequired[str]
-    user: NotRequired[WebhookDiscussionCreatedPropDiscussionAllof1PropUserType]
+    title: str
+    updated_at: datetime
+    user: Union[WebhookDiscussionCreatedPropDiscussionAllof0PropUserType, None]
 
 
-class WebhookDiscussionCreatedPropDiscussionAllof1PropCategoryType(TypedDict):
-    """WebhookDiscussionCreatedPropDiscussionAllof1PropCategory"""
-
-    created_at: NotRequired[str]
-    description: NotRequired[str]
-    emoji: NotRequired[str]
-    id: NotRequired[int]
-    is_answerable: NotRequired[bool]
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    repository_id: NotRequired[int]
-    slug: NotRequired[str]
-    updated_at: NotRequired[str]
-
-
-class WebhookDiscussionCreatedPropDiscussionAllof1PropReactionsType(TypedDict):
-    """WebhookDiscussionCreatedPropDiscussionAllof1PropReactions"""
-
-    plus_one: NotRequired[int]
-    minus_one: NotRequired[int]
-    confused: NotRequired[int]
-    eyes: NotRequired[int]
-    heart: NotRequired[int]
-    hooray: NotRequired[int]
-    laugh: NotRequired[int]
-    rocket: NotRequired[int]
-    total_count: NotRequired[int]
-    url: NotRequired[str]
-
-
-class WebhookDiscussionCreatedPropDiscussionAllof1PropUserType(TypedDict):
-    """WebhookDiscussionCreatedPropDiscussionAllof1PropUser"""
+class WebhookDiscussionCreatedPropDiscussionAllof0PropAnswerChosenByType(TypedDict):
+    """User"""
 
     avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
     events_url: NotRequired[str]
     followers_url: NotRequired[str]
     following_url: NotRequired[str]
     gists_url: NotRequired[str]
     gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
     node_id: NotRequired[str]
     organizations_url: NotRequired[str]
     received_events_url: NotRequired[str]
@@ -91,13 +76,70 @@ class WebhookDiscussionCreatedPropDiscussionAllof1PropUserType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookDiscussionCreatedPropDiscussionAllof0PropCategoryType(TypedDict):
+    """WebhookDiscussionCreatedPropDiscussionAllof0PropCategory"""
+
+    created_at: datetime
+    description: str
+    emoji: str
+    id: int
+    is_answerable: bool
+    name: str
+    node_id: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
+
+
+class WebhookDiscussionCreatedPropDiscussionAllof0PropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookDiscussionCreatedPropDiscussionAllof0PropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookDiscussionCreatedPropDiscussionAllof1Type",
-    "WebhookDiscussionCreatedPropDiscussionAllof1PropCategoryType",
-    "WebhookDiscussionCreatedPropDiscussionAllof1PropReactionsType",
-    "WebhookDiscussionCreatedPropDiscussionAllof1PropUserType",
+    "WebhookDiscussionCreatedPropDiscussionAllof0Type",
+    "WebhookDiscussionCreatedPropDiscussionAllof0PropAnswerChosenByType",
+    "WebhookDiscussionCreatedPropDiscussionAllof0PropCategoryType",
+    "WebhookDiscussionCreatedPropDiscussionAllof0PropReactionsType",
+    "WebhookDiscussionCreatedPropDiscussionAllof0PropUserType",
 )

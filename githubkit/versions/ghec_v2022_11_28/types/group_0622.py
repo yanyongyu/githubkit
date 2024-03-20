@@ -13,26 +13,26 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0389 import EnterpriseWebhooksType
-from .group_0390 import SimpleInstallationType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0392 import RepositoryWebhooksType
-from .group_0393 import SimpleUserWebhooksType
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
 
 
-class WebhookOrganizationMemberAddedType(TypedDict):
-    """organization member_added event"""
+class WebhookOrganizationDeletedType(TypedDict):
+    """organization deleted event"""
 
-    action: Literal["member_added"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    membership: WebhookOrganizationMemberAddedPropMembershipType
+    membership: NotRequired[WebhookOrganizationDeletedPropMembershipType]
     organization: OrganizationSimpleWebhooksType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
 
 
-class WebhookOrganizationMemberAddedPropMembershipType(TypedDict):
+class WebhookOrganizationDeletedPropMembershipType(TypedDict):
     """Membership
 
     The membership between the user and the organization. Not present when the
@@ -43,10 +43,10 @@ class WebhookOrganizationMemberAddedPropMembershipType(TypedDict):
     role: str
     state: str
     url: str
-    user: Union[WebhookOrganizationMemberAddedPropMembershipPropUserType, None]
+    user: Union[WebhookOrganizationDeletedPropMembershipPropUserType, None]
 
 
-class WebhookOrganizationMemberAddedPropMembershipPropUserType(TypedDict):
+class WebhookOrganizationDeletedPropMembershipPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -73,7 +73,7 @@ class WebhookOrganizationMemberAddedPropMembershipPropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookOrganizationMemberAddedType",
-    "WebhookOrganizationMemberAddedPropMembershipType",
-    "WebhookOrganizationMemberAddedPropMembershipPropUserType",
+    "WebhookOrganizationDeletedType",
+    "WebhookOrganizationDeletedPropMembershipType",
+    "WebhookOrganizationDeletedPropMembershipPropUserType",
 )

@@ -2646,6 +2646,7 @@ class EnterpriseAdminClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         advanced_security_enabled_for_new_repositories: Missing[bool] = UNSET,
+        advanced_security_enabled_new_user_namespace_repos: Missing[bool] = UNSET,
         dependabot_alerts_enabled_for_new_repositories: Missing[bool] = UNSET,
         secret_scanning_enabled_for_new_repositories: Missing[bool] = UNSET,
         secret_scanning_push_protection_enabled_for_new_repositories: Missing[
@@ -2716,6 +2717,7 @@ class EnterpriseAdminClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         advanced_security_enabled_for_new_repositories: Missing[bool] = UNSET,
+        advanced_security_enabled_new_user_namespace_repos: Missing[bool] = UNSET,
         dependabot_alerts_enabled_for_new_repositories: Missing[bool] = UNSET,
         secret_scanning_enabled_for_new_repositories: Missing[bool] = UNSET,
         secret_scanning_push_protection_enabled_for_new_repositories: Missing[
@@ -2871,6 +2873,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         security_product: Literal[
             "advanced_security",
+            "advanced_security_user_namespace",
             "dependabot_alerts",
             "secret_scanning",
             "secret_scanning_push_protection",
@@ -2901,6 +2904,7 @@ class EnterpriseAdminClient:
         enterprise: str,
         security_product: Literal[
             "advanced_security",
+            "advanced_security_user_namespace",
             "dependabot_alerts",
             "secret_scanning",
             "secret_scanning_push_protection",
@@ -2928,6 +2932,7 @@ class EnterpriseAdminClient:
 
     def list_provisioned_groups_enterprise(
         self,
+        enterprise: str,
         filter_: Missing[str] = UNSET,
         excluded_attributes: Missing[str] = UNSET,
         start_index: Missing[int] = UNSET,
@@ -2939,7 +2944,7 @@ class EnterpriseAdminClient:
 
         from ..models import ScimError, ScimEnterpriseGroupList
 
-        url = "/scim/v2/Groups"
+        url = f"/scim/v2/enterprises/{enterprise}/Groups"
 
         params = {
             "filter": filter_,
@@ -2965,6 +2970,7 @@ class EnterpriseAdminClient:
 
     async def async_list_provisioned_groups_enterprise(
         self,
+        enterprise: str,
         filter_: Missing[str] = UNSET,
         excluded_attributes: Missing[str] = UNSET,
         start_index: Missing[int] = UNSET,
@@ -2976,7 +2982,7 @@ class EnterpriseAdminClient:
 
         from ..models import ScimError, ScimEnterpriseGroupList
 
-        url = "/scim/v2/Groups"
+        url = f"/scim/v2/enterprises/{enterprise}/Groups"
 
         params = {
             "filter": filter_,
@@ -3002,13 +3008,18 @@ class EnterpriseAdminClient:
 
     @overload
     def provision_enterprise_group(
-        self, *, headers: Optional[Dict[str, str]] = None, data: GroupType
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: GroupType,
     ) -> Response[ScimEnterpriseGroupResponse]:
         ...
 
     @overload
     def provision_enterprise_group(
         self,
+        enterprise: str,
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
@@ -3021,6 +3032,7 @@ class EnterpriseAdminClient:
 
     def provision_enterprise_group(
         self,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[GroupType] = UNSET,
@@ -3030,7 +3042,7 @@ class EnterpriseAdminClient:
 
         from ..models import Group, ScimError, ScimEnterpriseGroupResponse
 
-        url = "/scim/v2/Groups"
+        url = f"/scim/v2/enterprises/{enterprise}/Groups"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -3056,13 +3068,18 @@ class EnterpriseAdminClient:
 
     @overload
     async def async_provision_enterprise_group(
-        self, *, headers: Optional[Dict[str, str]] = None, data: GroupType
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: GroupType,
     ) -> Response[ScimEnterpriseGroupResponse]:
         ...
 
     @overload
     async def async_provision_enterprise_group(
         self,
+        enterprise: str,
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
@@ -3075,6 +3092,7 @@ class EnterpriseAdminClient:
 
     async def async_provision_enterprise_group(
         self,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[GroupType] = UNSET,
@@ -3084,7 +3102,7 @@ class EnterpriseAdminClient:
 
         from ..models import Group, ScimError, ScimEnterpriseGroupResponse
 
-        url = "/scim/v2/Groups"
+        url = f"/scim/v2/enterprises/{enterprise}/Groups"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -3111,6 +3129,7 @@ class EnterpriseAdminClient:
     def get_provisioning_information_for_enterprise_group(
         self,
         scim_group_id: str,
+        enterprise: str,
         excluded_attributes: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
@@ -3119,7 +3138,7 @@ class EnterpriseAdminClient:
 
         from ..models import ScimError, BasicError, ScimEnterpriseGroupResponse
 
-        url = f"/scim/v2/Groups/{scim_group_id}"
+        url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
         params = {
             "excludedAttributes": excluded_attributes,
@@ -3144,6 +3163,7 @@ class EnterpriseAdminClient:
     async def async_get_provisioning_information_for_enterprise_group(
         self,
         scim_group_id: str,
+        enterprise: str,
         excluded_attributes: Missing[str] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
@@ -3152,7 +3172,7 @@ class EnterpriseAdminClient:
 
         from ..models import ScimError, BasicError, ScimEnterpriseGroupResponse
 
-        url = f"/scim/v2/Groups/{scim_group_id}"
+        url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
         params = {
             "excludedAttributes": excluded_attributes,
@@ -3178,6 +3198,7 @@ class EnterpriseAdminClient:
     def set_information_for_provisioned_enterprise_group(
         self,
         scim_group_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: GroupType,
@@ -3188,6 +3209,7 @@ class EnterpriseAdminClient:
     def set_information_for_provisioned_enterprise_group(
         self,
         scim_group_id: str,
+        enterprise: str,
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
@@ -3201,6 +3223,7 @@ class EnterpriseAdminClient:
     def set_information_for_provisioned_enterprise_group(
         self,
         scim_group_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[GroupType] = UNSET,
@@ -3210,7 +3233,7 @@ class EnterpriseAdminClient:
 
         from ..models import Group, ScimError, BasicError, ScimEnterpriseGroupResponse
 
-        url = f"/scim/v2/Groups/{scim_group_id}"
+        url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -3239,6 +3262,7 @@ class EnterpriseAdminClient:
     async def async_set_information_for_provisioned_enterprise_group(
         self,
         scim_group_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: GroupType,
@@ -3249,6 +3273,7 @@ class EnterpriseAdminClient:
     async def async_set_information_for_provisioned_enterprise_group(
         self,
         scim_group_id: str,
+        enterprise: str,
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
@@ -3262,6 +3287,7 @@ class EnterpriseAdminClient:
     async def async_set_information_for_provisioned_enterprise_group(
         self,
         scim_group_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[GroupType] = UNSET,
@@ -3271,7 +3297,7 @@ class EnterpriseAdminClient:
 
         from ..models import Group, ScimError, BasicError, ScimEnterpriseGroupResponse
 
-        url = f"/scim/v2/Groups/{scim_group_id}"
+        url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -3299,6 +3325,7 @@ class EnterpriseAdminClient:
     def delete_scim_group_from_enterprise(
         self,
         scim_group_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
@@ -3306,7 +3333,7 @@ class EnterpriseAdminClient:
 
         from ..models import ScimError, BasicError
 
-        url = f"/scim/v2/Groups/{scim_group_id}"
+        url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -3325,6 +3352,7 @@ class EnterpriseAdminClient:
     async def async_delete_scim_group_from_enterprise(
         self,
         scim_group_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
@@ -3332,7 +3360,7 @@ class EnterpriseAdminClient:
 
         from ..models import ScimError, BasicError
 
-        url = f"/scim/v2/Groups/{scim_group_id}"
+        url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -3352,6 +3380,7 @@ class EnterpriseAdminClient:
     def update_attribute_for_enterprise_group(
         self,
         scim_group_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: PatchSchemaType,
@@ -3362,6 +3391,7 @@ class EnterpriseAdminClient:
     def update_attribute_for_enterprise_group(
         self,
         scim_group_id: str,
+        enterprise: str,
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
@@ -3373,6 +3403,7 @@ class EnterpriseAdminClient:
     def update_attribute_for_enterprise_group(
         self,
         scim_group_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[PatchSchemaType] = UNSET,
@@ -3382,7 +3413,7 @@ class EnterpriseAdminClient:
 
         from ..models import ScimError, BasicError, PatchSchema
 
-        url = f"/scim/v2/Groups/{scim_group_id}"
+        url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -3410,6 +3441,7 @@ class EnterpriseAdminClient:
     async def async_update_attribute_for_enterprise_group(
         self,
         scim_group_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: PatchSchemaType,
@@ -3420,6 +3452,7 @@ class EnterpriseAdminClient:
     async def async_update_attribute_for_enterprise_group(
         self,
         scim_group_id: str,
+        enterprise: str,
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
@@ -3431,6 +3464,7 @@ class EnterpriseAdminClient:
     async def async_update_attribute_for_enterprise_group(
         self,
         scim_group_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[PatchSchemaType] = UNSET,
@@ -3440,7 +3474,7 @@ class EnterpriseAdminClient:
 
         from ..models import ScimError, BasicError, PatchSchema
 
-        url = f"/scim/v2/Groups/{scim_group_id}"
+        url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -3466,6 +3500,7 @@ class EnterpriseAdminClient:
 
     def list_provisioned_identities_enterprise(
         self,
+        enterprise: str,
         filter_: Missing[str] = UNSET,
         start_index: Missing[int] = UNSET,
         count: Missing[int] = UNSET,
@@ -3476,7 +3511,7 @@ class EnterpriseAdminClient:
 
         from ..models import ScimError, ScimEnterpriseUserList
 
-        url = "/scim/v2/Users"
+        url = f"/scim/v2/enterprises/{enterprise}/Users"
 
         params = {
             "filter": filter_,
@@ -3501,6 +3536,7 @@ class EnterpriseAdminClient:
 
     async def async_list_provisioned_identities_enterprise(
         self,
+        enterprise: str,
         filter_: Missing[str] = UNSET,
         start_index: Missing[int] = UNSET,
         count: Missing[int] = UNSET,
@@ -3511,7 +3547,7 @@ class EnterpriseAdminClient:
 
         from ..models import ScimError, ScimEnterpriseUserList
 
-        url = "/scim/v2/Users"
+        url = f"/scim/v2/enterprises/{enterprise}/Users"
 
         params = {
             "filter": filter_,
@@ -3536,13 +3572,18 @@ class EnterpriseAdminClient:
 
     @overload
     def provision_enterprise_user(
-        self, *, headers: Optional[Dict[str, str]] = None, data: UserType
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserType,
     ) -> Response[ScimEnterpriseUserResponse]:
         ...
 
     @overload
     def provision_enterprise_user(
         self,
+        enterprise: str,
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
@@ -3559,6 +3600,7 @@ class EnterpriseAdminClient:
 
     def provision_enterprise_user(
         self,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[UserType] = UNSET,
@@ -3568,7 +3610,7 @@ class EnterpriseAdminClient:
 
         from ..models import User, ScimError, ScimEnterpriseUserResponse
 
-        url = "/scim/v2/Users"
+        url = f"/scim/v2/enterprises/{enterprise}/Users"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -3594,13 +3636,18 @@ class EnterpriseAdminClient:
 
     @overload
     async def async_provision_enterprise_user(
-        self, *, headers: Optional[Dict[str, str]] = None, data: UserType
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: UserType,
     ) -> Response[ScimEnterpriseUserResponse]:
         ...
 
     @overload
     async def async_provision_enterprise_user(
         self,
+        enterprise: str,
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
@@ -3617,6 +3664,7 @@ class EnterpriseAdminClient:
 
     async def async_provision_enterprise_user(
         self,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[UserType] = UNSET,
@@ -3626,7 +3674,7 @@ class EnterpriseAdminClient:
 
         from ..models import User, ScimError, ScimEnterpriseUserResponse
 
-        url = "/scim/v2/Users"
+        url = f"/scim/v2/enterprises/{enterprise}/Users"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -3653,6 +3701,7 @@ class EnterpriseAdminClient:
     def get_provisioning_information_for_enterprise_user(
         self,
         scim_user_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ScimEnterpriseUserResponse]:
@@ -3660,7 +3709,7 @@ class EnterpriseAdminClient:
 
         from ..models import ScimError, BasicError, ScimEnterpriseUserResponse
 
-        url = f"/scim/v2/Users/{scim_user_id}"
+        url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -3680,6 +3729,7 @@ class EnterpriseAdminClient:
     async def async_get_provisioning_information_for_enterprise_user(
         self,
         scim_user_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ScimEnterpriseUserResponse]:
@@ -3687,7 +3737,7 @@ class EnterpriseAdminClient:
 
         from ..models import ScimError, BasicError, ScimEnterpriseUserResponse
 
-        url = f"/scim/v2/Users/{scim_user_id}"
+        url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -3708,6 +3758,7 @@ class EnterpriseAdminClient:
     def set_information_for_provisioned_enterprise_user(
         self,
         scim_user_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserType,
@@ -3718,6 +3769,7 @@ class EnterpriseAdminClient:
     def set_information_for_provisioned_enterprise_user(
         self,
         scim_user_id: str,
+        enterprise: str,
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
@@ -3735,6 +3787,7 @@ class EnterpriseAdminClient:
     def set_information_for_provisioned_enterprise_user(
         self,
         scim_user_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[UserType] = UNSET,
@@ -3744,7 +3797,7 @@ class EnterpriseAdminClient:
 
         from ..models import User, ScimError, BasicError, ScimEnterpriseUserResponse
 
-        url = f"/scim/v2/Users/{scim_user_id}"
+        url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -3773,6 +3826,7 @@ class EnterpriseAdminClient:
     async def async_set_information_for_provisioned_enterprise_user(
         self,
         scim_user_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserType,
@@ -3783,6 +3837,7 @@ class EnterpriseAdminClient:
     async def async_set_information_for_provisioned_enterprise_user(
         self,
         scim_user_id: str,
+        enterprise: str,
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
@@ -3800,6 +3855,7 @@ class EnterpriseAdminClient:
     async def async_set_information_for_provisioned_enterprise_user(
         self,
         scim_user_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[UserType] = UNSET,
@@ -3809,7 +3865,7 @@ class EnterpriseAdminClient:
 
         from ..models import User, ScimError, BasicError, ScimEnterpriseUserResponse
 
-        url = f"/scim/v2/Users/{scim_user_id}"
+        url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -3837,6 +3893,7 @@ class EnterpriseAdminClient:
     def delete_user_from_enterprise(
         self,
         scim_user_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
@@ -3844,7 +3901,7 @@ class EnterpriseAdminClient:
 
         from ..models import ScimError, BasicError
 
-        url = f"/scim/v2/Users/{scim_user_id}"
+        url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -3863,6 +3920,7 @@ class EnterpriseAdminClient:
     async def async_delete_user_from_enterprise(
         self,
         scim_user_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
@@ -3870,7 +3928,7 @@ class EnterpriseAdminClient:
 
         from ..models import ScimError, BasicError
 
-        url = f"/scim/v2/Users/{scim_user_id}"
+        url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -3890,6 +3948,7 @@ class EnterpriseAdminClient:
     def update_attribute_for_enterprise_user(
         self,
         scim_user_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: PatchSchemaType,
@@ -3900,6 +3959,7 @@ class EnterpriseAdminClient:
     def update_attribute_for_enterprise_user(
         self,
         scim_user_id: str,
+        enterprise: str,
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
@@ -3911,6 +3971,7 @@ class EnterpriseAdminClient:
     def update_attribute_for_enterprise_user(
         self,
         scim_user_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[PatchSchemaType] = UNSET,
@@ -3925,7 +3986,7 @@ class EnterpriseAdminClient:
             ScimEnterpriseUserResponse,
         )
 
-        url = f"/scim/v2/Users/{scim_user_id}"
+        url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -3954,6 +4015,7 @@ class EnterpriseAdminClient:
     async def async_update_attribute_for_enterprise_user(
         self,
         scim_user_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: PatchSchemaType,
@@ -3964,6 +4026,7 @@ class EnterpriseAdminClient:
     async def async_update_attribute_for_enterprise_user(
         self,
         scim_user_id: str,
+        enterprise: str,
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
@@ -3975,6 +4038,7 @@ class EnterpriseAdminClient:
     async def async_update_attribute_for_enterprise_user(
         self,
         scim_user_id: str,
+        enterprise: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[PatchSchemaType] = UNSET,
@@ -3989,7 +4053,7 @@ class EnterpriseAdminClient:
             ScimEnterpriseUserResponse,
         )
 
-        url = f"/scim/v2/Users/{scim_user_id}"
+        url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 

@@ -10,32 +10,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Union
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0199 import DiffEntryType
-from .group_0200 import CommitType
+from .group_0016 import LicenseSimpleType
+from .group_0115 import CodeOfConductSimpleType
 
 
-class CommitComparisonType(TypedDict):
-    """Commit Comparison
+class CommunityProfilePropFilesType(TypedDict):
+    """CommunityProfilePropFiles"""
 
-    Commit Comparison
-    """
+    code_of_conduct: Union[None, CodeOfConductSimpleType]
+    code_of_conduct_file: Union[None, CommunityHealthFileType]
+    license_: Union[None, LicenseSimpleType]
+    contributing: Union[None, CommunityHealthFileType]
+    readme: Union[None, CommunityHealthFileType]
+    issue_template: Union[None, CommunityHealthFileType]
+    pull_request_template: Union[None, CommunityHealthFileType]
+
+
+class CommunityHealthFileType(TypedDict):
+    """Community Health File"""
 
     url: str
     html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitType
-    merge_base_commit: CommitType
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: List[CommitType]
-    files: NotRequired[List[DiffEntryType]]
 
 
-__all__ = ("CommitComparisonType",)
+class CommunityProfileType(TypedDict):
+    """Community Profile
+
+    Community Profile
+    """
+
+    health_percentage: int
+    description: Union[str, None]
+    documentation: Union[str, None]
+    files: CommunityProfilePropFilesType
+    updated_at: Union[datetime, None]
+    content_reports_enabled: NotRequired[bool]
+
+
+__all__ = (
+    "CommunityProfilePropFilesType",
+    "CommunityHealthFileType",
+    "CommunityProfileType",
+)

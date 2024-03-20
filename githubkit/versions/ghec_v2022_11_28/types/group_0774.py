@@ -10,27 +10,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0389 import EnterpriseWebhooksType
-from .group_0390 import SimpleInstallationType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0392 import RepositoryWebhooksType
-from .group_0393 import SimpleUserWebhooksType
-from .group_0775 import WebhookRepositoryVulnerabilityAlertDismissPropAlertType
+
+class WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1Type(TypedDict):
+    """WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1"""
+
+    affected_package_name: NotRequired[str]
+    affected_range: NotRequired[str]
+    created_at: NotRequired[str]
+    external_identifier: NotRequired[str]
+    external_reference: NotRequired[Union[str, None]]
+    fixed_in: NotRequired[str]
+    ghsa_id: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    number: NotRequired[int]
+    severity: NotRequired[str]
+    state: Literal["open"]
 
 
-class WebhookRepositoryVulnerabilityAlertDismissType(TypedDict):
-    """repository_vulnerability_alert dismiss event"""
-
-    action: Literal["dismiss"]
-    alert: WebhookRepositoryVulnerabilityAlertDismissPropAlertType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-
-
-__all__ = ("WebhookRepositoryVulnerabilityAlertDismissType",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1Type",)

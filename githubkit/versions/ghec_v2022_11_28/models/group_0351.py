@@ -15,17 +15,18 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReferrerTraffic(GitHubModel):
-    """Referrer Traffic
+class ContentTraffic(GitHubModel):
+    """Content Traffic
 
-    Referrer Traffic
+    Content Traffic
     """
 
-    referrer: str = Field()
+    path: str = Field()
+    title: str = Field()
     count: int = Field()
     uniques: int = Field()
 
 
-model_rebuild(ReferrerTraffic)
+model_rebuild(ContentTraffic)
 
-__all__ = ("ReferrerTraffic",)
+__all__ = ("ContentTraffic",)

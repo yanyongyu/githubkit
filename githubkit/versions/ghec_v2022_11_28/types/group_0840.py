@@ -10,22 +10,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union, Literal
+from datetime import datetime
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0837 import (
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType,
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType,
-)
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0841 import WebhookWorkflowRunInProgressPropWorkflowRunType
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequestsType(TypedDict):
-    """WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequests"""
+class WebhookWorkflowRunInProgressType(TypedDict):
+    """workflow_run in_progress event"""
 
-    base: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType
-    head: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType
-    id: float
-    number: float
+    action: Literal["in_progress"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+    workflow: Union[WebhookWorkflowRunInProgressPropWorkflowType, None]
+    workflow_run: WebhookWorkflowRunInProgressPropWorkflowRunType
+
+
+class WebhookWorkflowRunInProgressPropWorkflowType(TypedDict):
+    """Workflow"""
+
+    badge_url: str
+    created_at: datetime
+    html_url: str
+    id: int
+    name: str
+    node_id: str
+    path: str
+    state: str
+    updated_at: datetime
     url: str
 
 
-__all__ = ("WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequestsType",)
+__all__ = (
+    "WebhookWorkflowRunInProgressType",
+    "WebhookWorkflowRunInProgressPropWorkflowType",
+)

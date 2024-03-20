@@ -17,16 +17,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
 
-class CodeScanningSarifsReceipt(GitHubModel):
-    """CodeScanningSarifsReceipt"""
+class CodeScanningDefaultSetupUpdateResponse(GitHubModel):
+    """CodeScanningDefaultSetupUpdateResponse
 
-    id: Missing[str] = Field(default=UNSET, description="An identifier for the upload.")
-    url: Missing[str] = Field(
-        default=UNSET,
-        description="The REST API URL for checking the status of the upload.",
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
+    """
+
+    run_id: Missing[int] = Field(
+        default=UNSET, description="ID of the corresponding run."
+    )
+    run_url: Missing[str] = Field(
+        default=UNSET, description="URL of the corresponding run."
     )
 
 
-model_rebuild(CodeScanningSarifsReceipt)
+model_rebuild(CodeScanningDefaultSetupUpdateResponse)
 
-__all__ = ("CodeScanningSarifsReceipt",)
+__all__ = ("CodeScanningDefaultSetupUpdateResponse",)

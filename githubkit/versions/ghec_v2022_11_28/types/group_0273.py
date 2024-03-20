@@ -17,32 +17,32 @@ from .group_0001 import SimpleUserType
 from .group_0005 import IntegrationType
 
 
-class UnlabeledIssueEventType(TypedDict):
-    """Unlabeled Issue Event
+class LabeledIssueEventType(TypedDict):
+    """Labeled Issue Event
 
-    Unlabeled Issue Event
+    Labeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["unlabeled"]
+    event: Literal["labeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType]
-    label: UnlabeledIssueEventPropLabelType
+    label: LabeledIssueEventPropLabelType
 
 
-class UnlabeledIssueEventPropLabelType(TypedDict):
-    """UnlabeledIssueEventPropLabel"""
+class LabeledIssueEventPropLabelType(TypedDict):
+    """LabeledIssueEventPropLabel"""
 
     name: str
     color: str
 
 
 __all__ = (
-    "UnlabeledIssueEventType",
-    "UnlabeledIssueEventPropLabelType",
+    "LabeledIssueEventType",
+    "LabeledIssueEventPropLabelType",
 )

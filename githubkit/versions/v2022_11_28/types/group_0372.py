@@ -14,26 +14,26 @@ from typing import List, Literal
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0356 import EnterpriseWebhooksType
-from .group_0357 import SimpleInstallationType
-from .group_0358 import OrganizationSimpleWebhooksType
-from .group_0359 import RepositoryWebhooksType
-from .group_0360 import SimpleUserWebhooksType
+from .group_0357 import EnterpriseWebhooksType
+from .group_0358 import SimpleInstallationType
+from .group_0359 import OrganizationSimpleWebhooksType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
 
 
-class WebhookBranchProtectionRuleDeletedType(TypedDict):
-    """branch protection rule deleted event"""
+class WebhookBranchProtectionRuleCreatedType(TypedDict):
+    """branch protection rule created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    rule: WebhookBranchProtectionRuleDeletedPropRuleType
+    rule: WebhookBranchProtectionRuleCreatedPropRuleType
     sender: SimpleUserWebhooksType
 
 
-class WebhookBranchProtectionRuleDeletedPropRuleType(TypedDict):
+class WebhookBranchProtectionRuleCreatedPropRuleType(TypedDict):
     """branch protection rule
 
     The branch protection rule. Includes a `name` and all the [branch protection
@@ -75,6 +75,6 @@ class WebhookBranchProtectionRuleDeletedPropRuleType(TypedDict):
 
 
 __all__ = (
-    "WebhookBranchProtectionRuleDeletedType",
-    "WebhookBranchProtectionRuleDeletedPropRuleType",
+    "WebhookBranchProtectionRuleCreatedType",
+    "WebhookBranchProtectionRuleCreatedPropRuleType",
 )

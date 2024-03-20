@@ -29,7 +29,6 @@ class RepositoryType(TypedDict):
     name: str
     full_name: str
     license_: Union[None, LicenseSimpleType]
-    organization: NotRequired[Union[None, SimpleUserType]]
     forks: int
     permissions: NotRequired[RepositoryPropPermissionsType]
     owner: SimpleUserType
@@ -102,7 +101,6 @@ class RepositoryType(TypedDict):
     created_at: Union[datetime, None]
     updated_at: Union[datetime, None]
     allow_rebase_merge: NotRequired[bool]
-    template_repository: NotRequired[Union[RepositoryPropTemplateRepositoryType, None]]
     temp_clone_token: NotRequired[Union[str, None]]
     allow_squash_merge: NotRequired[bool]
     allow_auto_merge: NotRequired[bool]
@@ -118,8 +116,6 @@ class RepositoryType(TypedDict):
     allow_merge_commit: NotRequired[bool]
     allow_forking: NotRequired[bool]
     web_commit_signoff_required: NotRequired[bool]
-    subscribers_count: NotRequired[int]
-    network_count: NotRequired[int]
     open_issues: int
     watchers: int
     master_branch: NotRequired[str]
@@ -137,137 +133,7 @@ class RepositoryPropPermissionsType(TypedDict):
     maintain: NotRequired[bool]
 
 
-class RepositoryPropTemplateRepositoryType(TypedDict):
-    """RepositoryPropTemplateRepository"""
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    full_name: NotRequired[str]
-    owner: NotRequired[RepositoryPropTemplateRepositoryPropOwnerType]
-    private: NotRequired[bool]
-    html_url: NotRequired[str]
-    description: NotRequired[str]
-    fork: NotRequired[bool]
-    url: NotRequired[str]
-    archive_url: NotRequired[str]
-    assignees_url: NotRequired[str]
-    blobs_url: NotRequired[str]
-    branches_url: NotRequired[str]
-    collaborators_url: NotRequired[str]
-    comments_url: NotRequired[str]
-    commits_url: NotRequired[str]
-    compare_url: NotRequired[str]
-    contents_url: NotRequired[str]
-    contributors_url: NotRequired[str]
-    deployments_url: NotRequired[str]
-    downloads_url: NotRequired[str]
-    events_url: NotRequired[str]
-    forks_url: NotRequired[str]
-    git_commits_url: NotRequired[str]
-    git_refs_url: NotRequired[str]
-    git_tags_url: NotRequired[str]
-    git_url: NotRequired[str]
-    issue_comment_url: NotRequired[str]
-    issue_events_url: NotRequired[str]
-    issues_url: NotRequired[str]
-    keys_url: NotRequired[str]
-    labels_url: NotRequired[str]
-    languages_url: NotRequired[str]
-    merges_url: NotRequired[str]
-    milestones_url: NotRequired[str]
-    notifications_url: NotRequired[str]
-    pulls_url: NotRequired[str]
-    releases_url: NotRequired[str]
-    ssh_url: NotRequired[str]
-    stargazers_url: NotRequired[str]
-    statuses_url: NotRequired[str]
-    subscribers_url: NotRequired[str]
-    subscription_url: NotRequired[str]
-    tags_url: NotRequired[str]
-    teams_url: NotRequired[str]
-    trees_url: NotRequired[str]
-    clone_url: NotRequired[str]
-    mirror_url: NotRequired[str]
-    hooks_url: NotRequired[str]
-    svn_url: NotRequired[str]
-    homepage: NotRequired[str]
-    language: NotRequired[str]
-    forks_count: NotRequired[int]
-    stargazers_count: NotRequired[int]
-    watchers_count: NotRequired[int]
-    size: NotRequired[int]
-    default_branch: NotRequired[str]
-    open_issues_count: NotRequired[int]
-    is_template: NotRequired[bool]
-    topics: NotRequired[List[str]]
-    has_issues: NotRequired[bool]
-    has_projects: NotRequired[bool]
-    has_wiki: NotRequired[bool]
-    has_pages: NotRequired[bool]
-    has_downloads: NotRequired[bool]
-    archived: NotRequired[bool]
-    disabled: NotRequired[bool]
-    visibility: NotRequired[str]
-    pushed_at: NotRequired[str]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    permissions: NotRequired[RepositoryPropTemplateRepositoryPropPermissionsType]
-    allow_rebase_merge: NotRequired[bool]
-    temp_clone_token: NotRequired[Union[str, None]]
-    allow_squash_merge: NotRequired[bool]
-    allow_auto_merge: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    use_squash_pr_title_as_default: NotRequired[bool]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    allow_merge_commit: NotRequired[bool]
-    subscribers_count: NotRequired[int]
-    network_count: NotRequired[int]
-
-
-class RepositoryPropTemplateRepositoryPropOwnerType(TypedDict):
-    """RepositoryPropTemplateRepositoryPropOwner"""
-
-    login: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    avatar_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: NotRequired[str]
-    site_admin: NotRequired[bool]
-
-
-class RepositoryPropTemplateRepositoryPropPermissionsType(TypedDict):
-    """RepositoryPropTemplateRepositoryPropPermissions"""
-
-    admin: NotRequired[bool]
-    maintain: NotRequired[bool]
-    push: NotRequired[bool]
-    triage: NotRequired[bool]
-    pull: NotRequired[bool]
-
-
 __all__ = (
     "RepositoryType",
     "RepositoryPropPermissionsType",
-    "RepositoryPropTemplateRepositoryType",
-    "RepositoryPropTemplateRepositoryPropOwnerType",
-    "RepositoryPropTemplateRepositoryPropPermissionsType",
 )

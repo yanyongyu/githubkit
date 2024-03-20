@@ -10,45 +10,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0001 import SimpleUserType
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class TeamProjectType(TypedDict):
-    """Team Project
+class TeamMembershipType(TypedDict):
+    """Team Membership
 
-    A team's access to a project.
+    Team Membership
     """
 
-    owner_url: str
     url: str
-    html_url: str
-    columns_url: str
-    id: int
-    node_id: str
-    name: str
-    body: Union[str, None]
-    number: int
-    state: str
-    creator: SimpleUserType
-    created_at: str
-    updated_at: str
-    organization_permission: NotRequired[str]
-    private: NotRequired[bool]
-    permissions: TeamProjectPropPermissionsType
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
-class TeamProjectPropPermissionsType(TypedDict):
-    """TeamProjectPropPermissions"""
-
-    read: bool
-    write: bool
-    admin: bool
-
-
-__all__ = (
-    "TeamProjectType",
-    "TeamProjectPropPermissionsType",
-)
+__all__ = ("TeamMembershipType",)

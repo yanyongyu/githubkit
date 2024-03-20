@@ -22,8 +22,6 @@ if TYPE_CHECKING:
     from .star import star_action_types as star_action_types
     from .team import TeamEvent as TeamEvent
     from .team import team_action_types as team_action_types
-    from .user import UserEvent as UserEvent
-    from .user import user_action_types as user_action_types
     from .label import LabelEvent as LabelEvent
     from .label import label_action_types as label_action_types
     from .watch import WatchEvent as WatchEvent
@@ -396,7 +394,6 @@ else:
         ".status": ("StatusEvent", "status_action_types"),
         ".team_add": ("TeamAddEvent", "team_add_action_types"),
         ".team": ("TeamEvent", "team_action_types"),
-        ".user": ("UserEvent", "user_action_types"),
         ".watch": ("WatchEvent", "watch_action_types"),
         ".workflow_dispatch": (
             "WorkflowDispatchEvent",

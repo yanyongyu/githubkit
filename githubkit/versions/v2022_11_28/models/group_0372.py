@@ -19,17 +19,17 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0356 import EnterpriseWebhooks
-from .group_0357 import SimpleInstallation
-from .group_0358 import OrganizationSimpleWebhooks
-from .group_0359 import RepositoryWebhooks
-from .group_0360 import SimpleUserWebhooks
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0359 import OrganizationSimpleWebhooks
+from .group_0360 import RepositoryWebhooks
+from .group_0361 import SimpleUserWebhooks
 
 
-class WebhookBranchProtectionRuleDeleted(GitHubModel):
-    """branch protection rule deleted event"""
+class WebhookBranchProtectionRuleCreated(GitHubModel):
+    """branch protection rule created event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,7 +49,7 @@ class WebhookBranchProtectionRuleDeleted(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    rule: WebhookBranchProtectionRuleDeletedPropRule = Field(
+    rule: WebhookBranchProtectionRuleCreatedPropRule = Field(
         title="branch protection rule",
         description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
     )
@@ -59,7 +59,7 @@ class WebhookBranchProtectionRuleDeleted(GitHubModel):
     )
 
 
-class WebhookBranchProtectionRuleDeletedPropRule(GitHubModel):
+class WebhookBranchProtectionRuleCreatedPropRule(GitHubModel):
     """branch protection rule
 
     The branch protection rule. Includes a `name` and all the [branch protection
@@ -117,10 +117,10 @@ class WebhookBranchProtectionRuleDeletedPropRule(GitHubModel):
     updated_at: datetime = Field()
 
 
-model_rebuild(WebhookBranchProtectionRuleDeleted)
-model_rebuild(WebhookBranchProtectionRuleDeletedPropRule)
+model_rebuild(WebhookBranchProtectionRuleCreated)
+model_rebuild(WebhookBranchProtectionRuleCreatedPropRule)
 
 __all__ = (
-    "WebhookBranchProtectionRuleDeleted",
-    "WebhookBranchProtectionRuleDeletedPropRule",
+    "WebhookBranchProtectionRuleCreated",
+    "WebhookBranchProtectionRuleCreatedPropRule",
 )

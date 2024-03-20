@@ -11,53 +11,43 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List, Union
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
 from .group_0050 import MinimalRepositoryType
-from .group_0178 import GitUserType
-from .group_0334 import SearchResultTextMatchesItemsType
-from .group_0337 import CommitSearchResultItemPropCommitType
+from .group_0335 import SearchResultTextMatchesItemsType
 
 
-class CommitSearchResultItemType(TypedDict):
-    """Commit Search Result Item
+class CodeSearchResultItemType(TypedDict):
+    """Code Search Result Item
 
-    Commit Search Result Item
+    Code Search Result Item
     """
 
-    url: str
+    name: str
+    path: str
     sha: str
+    url: str
+    git_url: str
     html_url: str
-    comments_url: str
-    commit: CommitSearchResultItemPropCommitType
-    author: Union[None, SimpleUserType]
-    committer: Union[None, GitUserType]
-    parents: List[CommitSearchResultItemPropParentsItemsType]
     repository: MinimalRepositoryType
     score: float
-    node_id: str
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[datetime]
+    line_numbers: NotRequired[List[str]]
     text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
 
 
-class CommitSearchResultItemPropParentsItemsType(TypedDict):
-    """CommitSearchResultItemPropParentsItems"""
-
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class SearchCommitsGetResponse200Type(TypedDict):
-    """SearchCommitsGetResponse200"""
+class SearchCodeGetResponse200Type(TypedDict):
+    """SearchCodeGetResponse200"""
 
     total_count: int
     incomplete_results: bool
-    items: List[CommitSearchResultItemType]
+    items: List[CodeSearchResultItemType]
 
 
 __all__ = (
-    "CommitSearchResultItemType",
-    "CommitSearchResultItemPropParentsItemsType",
-    "SearchCommitsGetResponse200Type",
+    "CodeSearchResultItemType",
+    "SearchCodeGetResponse200Type",
 )

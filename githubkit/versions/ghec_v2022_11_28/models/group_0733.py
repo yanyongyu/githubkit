@@ -19,49 +19,43 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0734 import WebhookReleasePublishedPropReleaseAllof0PropAssetsItems
-from .group_0736 import WebhookReleasePublishedPropReleaseAllof0PropReactions
+from .group_0737 import WebhookReleasePublishedPropReleaseAllof0PropReactions
+from .group_0739 import WebhookReleasePublishedPropReleaseMergedAssets
 
 
-class WebhookReleasePublishedPropReleaseAllof0(GitHubModel):
-    """Release
+class WebhookReleasePublishedPropRelease(GitHubModel):
+    """WebhookReleasePublishedPropRelease"""
 
-    The [release](https://docs.github.com/enterprise-
-    cloud@latest//rest/releases/releases/#get-a-release) object.
-    """
-
-    assets: List[WebhookReleasePublishedPropReleaseAllof0PropAssetsItems] = Field()
+    assets: List[WebhookReleasePublishedPropReleaseMergedAssets] = Field()
     assets_url: str = Field()
-    author: Union[WebhookReleasePublishedPropReleaseAllof0PropAuthor, None] = Field(
-        title="User"
-    )
-    body: Union[str, None] = Field()
-    created_at: Union[datetime, None] = Field()
+    author: WebhookReleasePublishedPropReleaseMergedAuthor = Field()
+    body: Union[Union[str, None], None] = Field()
+    created_at: datetime = Field()
     discussion_url: Missing[str] = Field(default=UNSET)
     draft: bool = Field(description="Whether the release is a draft or published")
     html_url: str = Field()
     id: int = Field()
-    name: Union[str, None] = Field()
+    name: Union[Union[str, None], None] = Field()
     node_id: str = Field()
     prerelease: bool = Field(
         description="Whether the release is identified as a prerelease or a full release."
     )
-    published_at: Union[datetime, None] = Field()
+    published_at: Union[Union[datetime, None], None] = Field()
     reactions: Missing[WebhookReleasePublishedPropReleaseAllof0PropReactions] = Field(
         default=UNSET, title="Reactions"
     )
     tag_name: str = Field(description="The name of the tag.")
-    tarball_url: Union[str, None] = Field()
+    tarball_url: Union[Union[str, None], None] = Field()
     target_commitish: str = Field(
         description="Specifies the commitish value that determines where the Git tag is created from."
     )
     upload_url: str = Field()
     url: str = Field()
-    zipball_url: Union[str, None] = Field()
+    zipball_url: Union[Union[str, None], None] = Field()
 
 
-class WebhookReleasePublishedPropReleaseAllof0PropAuthor(GitHubModel):
-    """User"""
+class WebhookReleasePublishedPropReleaseMergedAuthor(GitHubModel):
+    """WebhookReleasePublishedPropReleaseMergedAuthor"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -86,10 +80,10 @@ class WebhookReleasePublishedPropReleaseAllof0PropAuthor(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookReleasePublishedPropReleaseAllof0)
-model_rebuild(WebhookReleasePublishedPropReleaseAllof0PropAuthor)
+model_rebuild(WebhookReleasePublishedPropRelease)
+model_rebuild(WebhookReleasePublishedPropReleaseMergedAuthor)
 
 __all__ = (
-    "WebhookReleasePublishedPropReleaseAllof0",
-    "WebhookReleasePublishedPropReleaseAllof0PropAuthor",
+    "WebhookReleasePublishedPropRelease",
+    "WebhookReleasePublishedPropReleaseMergedAuthor",
 )

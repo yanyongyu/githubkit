@@ -10,33 +10,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0197 import GitUserType
-from .group_0198 import VerificationType
+from .group_0001 import SimpleUserType
+from .group_0200 import DiffEntryType
+from .group_0202 import CommitPropCommitType
 
 
-class CommitPropCommitType(TypedDict):
-    """CommitPropCommit"""
+class CommitType(TypedDict):
+    """Commit
+
+    Commit
+    """
 
     url: str
-    author: Union[None, GitUserType]
-    committer: Union[None, GitUserType]
-    message: str
-    comment_count: int
-    tree: CommitPropCommitPropTreeType
-    verification: NotRequired[VerificationType]
+    sha: str
+    node_id: str
+    html_url: str
+    comments_url: str
+    commit: CommitPropCommitType
+    author: Union[None, SimpleUserType]
+    committer: Union[None, SimpleUserType]
+    parents: List[CommitPropParentsItemsType]
+    stats: NotRequired[CommitPropStatsType]
+    files: NotRequired[List[DiffEntryType]]
 
 
-class CommitPropCommitPropTreeType(TypedDict):
-    """CommitPropCommitPropTree"""
+class CommitPropParentsItemsType(TypedDict):
+    """CommitPropParentsItems"""
 
     sha: str
     url: str
+    html_url: NotRequired[str]
+
+
+class CommitPropStatsType(TypedDict):
+    """CommitPropStats"""
+
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+    total: NotRequired[int]
 
 
 __all__ = (
-    "CommitPropCommitType",
-    "CommitPropCommitPropTreeType",
+    "CommitType",
+    "CommitPropParentsItemsType",
+    "CommitPropStatsType",
 )

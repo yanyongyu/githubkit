@@ -32,7 +32,7 @@ class Root(GitHubModel):
     followers_url: str = Field()
     following_url: str = Field()
     gists_url: str = Field()
-    hub_url: str = Field()
+    hub_url: Missing[str] = Field(default=UNSET)
     issue_search_url: str = Field()
     issues_url: str = Field()
     keys_url: str = Field()

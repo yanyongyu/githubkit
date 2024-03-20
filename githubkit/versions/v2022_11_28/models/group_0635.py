@@ -10,7 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
+from datetime import datetime
 
 from pydantic import Field
 
@@ -18,16 +19,17 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0357 import SimpleInstallation
-from .group_0358 import OrganizationSimpleWebhooks
-from .group_0360 import SimpleUserWebhooks
-from .group_0366 import ProjectsV2
+from .group_0358 import SimpleInstallation
+from .group_0359 import OrganizationSimpleWebhooks
+from .group_0361 import SimpleUserWebhooks
+from .group_0368 import ProjectsV2Item
 
 
-class WebhookProjectsV2ProjectReopened(GitHubModel):
-    """Projects v2 Project Reopened Event"""
+class WebhookProjectsV2ItemRestored(GitHubModel):
+    """Projects v2 Item Restored Event"""
 
-    action: Literal["reopened"] = Field()
+    action: Literal["restored"] = Field()
+    changes: WebhookProjectsV2ItemRestoredPropChanges = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -37,8 +39,8 @@ class WebhookProjectsV2ProjectReopened(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    projects_v2: ProjectsV2 = Field(
-        title="Projects v2 Project", description="A projects v2 project"
+    projects_v2_item: ProjectsV2Item = Field(
+        title="Projects v2 Item", description="An item belonging to a project"
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -46,6 +48,27 @@ class WebhookProjectsV2ProjectReopened(GitHubModel):
     )
 
 
-model_rebuild(WebhookProjectsV2ProjectReopened)
+class WebhookProjectsV2ItemRestoredPropChanges(GitHubModel):
+    """WebhookProjectsV2ItemRestoredPropChanges"""
 
-__all__ = ("WebhookProjectsV2ProjectReopened",)
+    archived_at: Missing[
+        WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt
+    ] = Field(default=UNSET)
+
+
+class WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt(GitHubModel):
+    """WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt"""
+
+    from_: Missing[Union[datetime, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[datetime, None]] = Field(default=UNSET)
+
+
+model_rebuild(WebhookProjectsV2ItemRestored)
+model_rebuild(WebhookProjectsV2ItemRestoredPropChanges)
+model_rebuild(WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt)
+
+__all__ = (
+    "WebhookProjectsV2ItemRestored",
+    "WebhookProjectsV2ItemRestoredPropChanges",
+    "WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt",
+)

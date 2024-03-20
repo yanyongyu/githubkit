@@ -13,52 +13,41 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0356 import EnterpriseWebhooksType
-from .group_0357 import SimpleInstallationType
-from .group_0358 import OrganizationSimpleWebhooksType
-from .group_0359 import RepositoryWebhooksType
-from .group_0360 import SimpleUserWebhooksType
+from .group_0357 import EnterpriseWebhooksType
+from .group_0358 import SimpleInstallationType
+from .group_0359 import OrganizationSimpleWebhooksType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
 
 
-class WebhookSponsorshipEditedType(TypedDict):
-    """sponsorship edited event"""
+class WebhookSponsorshipCreatedType(TypedDict):
+    """sponsorship created event"""
 
-    action: Literal["edited"]
-    changes: WebhookSponsorshipEditedPropChangesType
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
-    sponsorship: WebhookSponsorshipEditedPropSponsorshipType
+    sponsorship: WebhookSponsorshipCreatedPropSponsorshipType
 
 
-class WebhookSponsorshipEditedPropChangesType(TypedDict):
-    """WebhookSponsorshipEditedPropChanges"""
-
-    privacy_level: NotRequired[WebhookSponsorshipEditedPropChangesPropPrivacyLevelType]
-
-
-class WebhookSponsorshipEditedPropChangesPropPrivacyLevelType(TypedDict):
-    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
-
-    from_: str
-
-
-class WebhookSponsorshipEditedPropSponsorshipType(TypedDict):
-    """WebhookSponsorshipEditedPropSponsorship"""
+class WebhookSponsorshipCreatedPropSponsorshipType(TypedDict):
+    """WebhookSponsorshipCreatedPropSponsorship"""
 
     created_at: str
-    maintainer: NotRequired[WebhookSponsorshipEditedPropSponsorshipPropMaintainerType]
+    maintainer: NotRequired[WebhookSponsorshipCreatedPropSponsorshipPropMaintainerType]
     node_id: str
     privacy_level: str
-    sponsor: Union[WebhookSponsorshipEditedPropSponsorshipPropSponsorType, None]
-    sponsorable: Union[WebhookSponsorshipEditedPropSponsorshipPropSponsorableType, None]
-    tier: WebhookSponsorshipEditedPropSponsorshipPropTierType
+    sponsor: Union[WebhookSponsorshipCreatedPropSponsorshipPropSponsorType, None]
+    sponsorable: Union[
+        WebhookSponsorshipCreatedPropSponsorshipPropSponsorableType, None
+    ]
+    tier: WebhookSponsorshipCreatedPropSponsorshipPropTierType
 
 
-class WebhookSponsorshipEditedPropSponsorshipPropMaintainerType(TypedDict):
-    """WebhookSponsorshipEditedPropSponsorshipPropMaintainer"""
+class WebhookSponsorshipCreatedPropSponsorshipPropMaintainerType(TypedDict):
+    """WebhookSponsorshipCreatedPropSponsorshipPropMaintainer"""
 
     avatar_url: NotRequired[str]
     events_url: NotRequired[str]
@@ -80,7 +69,7 @@ class WebhookSponsorshipEditedPropSponsorshipPropMaintainerType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookSponsorshipEditedPropSponsorshipPropSponsorType(TypedDict):
+class WebhookSponsorshipCreatedPropSponsorshipPropSponsorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -106,7 +95,7 @@ class WebhookSponsorshipEditedPropSponsorshipPropSponsorType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookSponsorshipEditedPropSponsorshipPropSponsorableType(TypedDict):
+class WebhookSponsorshipCreatedPropSponsorshipPropSponsorableType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -132,7 +121,7 @@ class WebhookSponsorshipEditedPropSponsorshipPropSponsorableType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookSponsorshipEditedPropSponsorshipPropTierType(TypedDict):
+class WebhookSponsorshipCreatedPropSponsorshipPropTierType(TypedDict):
     """Sponsorship Tier
 
     The `tier_changed` and `pending_tier_change` will include the original tier
@@ -152,12 +141,10 @@ class WebhookSponsorshipEditedPropSponsorshipPropTierType(TypedDict):
 
 
 __all__ = (
-    "WebhookSponsorshipEditedType",
-    "WebhookSponsorshipEditedPropChangesType",
-    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelType",
-    "WebhookSponsorshipEditedPropSponsorshipType",
-    "WebhookSponsorshipEditedPropSponsorshipPropMaintainerType",
-    "WebhookSponsorshipEditedPropSponsorshipPropSponsorType",
-    "WebhookSponsorshipEditedPropSponsorshipPropSponsorableType",
-    "WebhookSponsorshipEditedPropSponsorshipPropTierType",
+    "WebhookSponsorshipCreatedType",
+    "WebhookSponsorshipCreatedPropSponsorshipType",
+    "WebhookSponsorshipCreatedPropSponsorshipPropMaintainerType",
+    "WebhookSponsorshipCreatedPropSponsorshipPropSponsorType",
+    "WebhookSponsorshipCreatedPropSponsorshipPropSponsorableType",
+    "WebhookSponsorshipCreatedPropSponsorshipPropTierType",
 )

@@ -10,38 +10,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
-from .group_0033 import ReactionRollupType
 
 
-class PullRequestReviewCommentType(TypedDict):
-    """Pull Request Review Comment
+class TimelineReviewedEventType(TypedDict):
+    """Timeline Reviewed Event
 
-    Pull Request Review Comments are comments on a portion of the Pull Request's
-    diff.
+    Timeline Reviewed Event
     """
 
-    url: str
-    pull_request_review_id: Union[int, None]
+    event: Literal["reviewed"]
     id: int
     node_id: str
-    diff_hunk: str
-    path: str
-    position: NotRequired[int]
-    original_position: NotRequired[int]
-    commit_id: str
-    original_commit_id: str
-    in_reply_to_id: NotRequired[int]
     user: SimpleUserType
-    body: str
-    created_at: datetime
-    updated_at: datetime
+    body: Union[str, None]
+    state: str
     html_url: str
     pull_request_url: str
+    links: TimelineReviewedEventPropLinksType
+    submitted_at: NotRequired[datetime]
+    commit_id: str
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -52,61 +46,30 @@ class PullRequestReviewCommentType(TypedDict):
         "NONE",
         "OWNER",
     ]
-    links: PullRequestReviewCommentPropLinksType
-    start_line: NotRequired[Union[int, None]]
-    original_start_line: NotRequired[Union[int, None]]
-    start_side: NotRequired[Union[None, Literal["LEFT", "RIGHT"]]]
-    line: NotRequired[int]
-    original_line: NotRequired[int]
-    side: NotRequired[Literal["LEFT", "RIGHT"]]
-    subject_type: NotRequired[Literal["line", "file"]]
-    reactions: NotRequired[ReactionRollupType]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
 
 
-class PullRequestReviewCommentPropLinksType(TypedDict):
-    """PullRequestReviewCommentPropLinks"""
+class TimelineReviewedEventPropLinksType(TypedDict):
+    """TimelineReviewedEventPropLinks"""
 
-    self_: PullRequestReviewCommentPropLinksPropSelfType
-    html: PullRequestReviewCommentPropLinksPropHtmlType
-    pull_request: PullRequestReviewCommentPropLinksPropPullRequestType
+    html: TimelineReviewedEventPropLinksPropHtmlType
+    pull_request: TimelineReviewedEventPropLinksPropPullRequestType
 
 
-class PullRequestReviewCommentPropLinksPropSelfType(TypedDict):
-    """PullRequestReviewCommentPropLinksPropSelf"""
+class TimelineReviewedEventPropLinksPropHtmlType(TypedDict):
+    """TimelineReviewedEventPropLinksPropHtml"""
 
     href: str
 
 
-class PullRequestReviewCommentPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewCommentPropLinksPropHtml"""
+class TimelineReviewedEventPropLinksPropPullRequestType(TypedDict):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
 
     href: str
-
-
-class PullRequestReviewCommentPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewCommentPropLinksPropPullRequest"""
-
-    href: str
-
-
-class TimelineLineCommentedEventType(TypedDict):
-    """Timeline Line Commented Event
-
-    Timeline Line Commented Event
-    """
-
-    event: NotRequired[Literal["line_commented"]]
-    node_id: NotRequired[str]
-    comments: NotRequired[List[PullRequestReviewCommentType]]
 
 
 __all__ = (
-    "PullRequestReviewCommentType",
-    "PullRequestReviewCommentPropLinksType",
-    "PullRequestReviewCommentPropLinksPropSelfType",
-    "PullRequestReviewCommentPropLinksPropHtmlType",
-    "PullRequestReviewCommentPropLinksPropPullRequestType",
-    "TimelineLineCommentedEventType",
+    "TimelineReviewedEventType",
+    "TimelineReviewedEventPropLinksType",
+    "TimelineReviewedEventPropLinksPropHtmlType",
+    "TimelineReviewedEventPropLinksPropPullRequestType",
 )

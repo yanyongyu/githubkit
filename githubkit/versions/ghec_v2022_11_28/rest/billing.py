@@ -97,7 +97,7 @@ class BillingClient:
     ) -> Response[AdvancedSecurityActiveCommitters]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-advanced-security-active-committers-for-an-enterprise"""
 
-        from ..models import BasicError, AdvancedSecurityActiveCommitters
+        from ..models import AdvancedSecurityActiveCommitters
 
         url = f"/enterprises/{enterprise}/settings/billing/advanced-security"
 
@@ -114,9 +114,6 @@ class BillingClient:
             params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=AdvancedSecurityActiveCommitters,
-            error_models={
-                "403": BasicError,
-            },
         )
 
     async def async_get_github_advanced_security_billing_ghe(
@@ -129,7 +126,7 @@ class BillingClient:
     ) -> Response[AdvancedSecurityActiveCommitters]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-github-advanced-security-active-committers-for-an-enterprise"""
 
-        from ..models import BasicError, AdvancedSecurityActiveCommitters
+        from ..models import AdvancedSecurityActiveCommitters
 
         url = f"/enterprises/{enterprise}/settings/billing/advanced-security"
 
@@ -146,9 +143,6 @@ class BillingClient:
             params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=AdvancedSecurityActiveCommitters,
-            error_models={
-                "403": BasicError,
-            },
         )
 
     def get_github_packages_billing_ghe(
@@ -287,7 +281,7 @@ class BillingClient:
     ) -> Response[AdvancedSecurityActiveCommitters]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-advanced-security-active-committers-for-an-organization"""
 
-        from ..models import BasicError, AdvancedSecurityActiveCommitters
+        from ..models import AdvancedSecurityActiveCommitters
 
         url = f"/orgs/{org}/settings/billing/advanced-security"
 
@@ -304,9 +298,6 @@ class BillingClient:
             params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=AdvancedSecurityActiveCommitters,
-            error_models={
-                "403": BasicError,
-            },
         )
 
     async def async_get_github_advanced_security_billing_org(
@@ -319,7 +310,7 @@ class BillingClient:
     ) -> Response[AdvancedSecurityActiveCommitters]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/billing/billing#get-github-advanced-security-active-committers-for-an-organization"""
 
-        from ..models import BasicError, AdvancedSecurityActiveCommitters
+        from ..models import AdvancedSecurityActiveCommitters
 
         url = f"/orgs/{org}/settings/billing/advanced-security"
 
@@ -336,9 +327,6 @@ class BillingClient:
             params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=AdvancedSecurityActiveCommitters,
-            error_models={
-                "403": BasicError,
-            },
         )
 
     def get_github_packages_billing_org(

@@ -10,8 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Any, List, Union, Literal
-from datetime import datetime
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -19,134 +18,65 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-
-class ScimUserList(GitHubModel):
-    """SCIM User List
-
-    SCIM User List
-    """
-
-    schemas: List[str] = Field(min_length=1, description="SCIM schema used.")
-    total_results: int = Field(alias="totalResults")
-    items_per_page: int = Field(alias="itemsPerPage")
-    start_index: int = Field(alias="startIndex")
-    resources: List[ScimUser] = Field(alias="Resources")
+from .group_0361 import UserRoleItems
 
 
-class ScimUser(GitHubModel):
-    """SCIM /Users
+class User(GitHubModel):
+    """User"""
 
-    SCIM /Users provisioning endpoints
-    """
-
-    schemas: List[str] = Field(min_length=1, description="SCIM schema used.")
-    id: str = Field(description="Unique identifier of an external identity")
-    external_id: Missing[Union[str, None]] = Field(
-        default=UNSET, alias="externalId", description="The ID of the User."
+    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
     )
-    user_name: Missing[Union[str, None]] = Field(
+    external_id: str = Field(
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
+    )
+    active: bool = Field(description="Whether the user active in the IdP.")
+    user_name: str = Field(alias="userName", description="The username for the user.")
+    name: Missing[UserName] = Field(default=UNSET)
+    display_name: str = Field(
+        alias="displayName", description="A human-readable name for the user."
+    )
+    emails: List[UserEmailsItems] = Field(description="The emails for the user.")
+    roles: Missing[List[UserRoleItems]] = Field(
+        default=UNSET, description="The roles assigned to the user."
+    )
+
+
+class UserName(GitHubModel):
+    """UserName"""
+
+    formatted: Missing[str] = Field(
         default=UNSET,
-        alias="userName",
-        description="Configured by the admin. Could be an email, login, or username",
+        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
     )
-    display_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        alias="displayName",
-        description="The name of the user, suitable for display to end-users",
+    family_name: str = Field(
+        alias="familyName", description="The family name of the user."
     )
-    name: Missing[ScimUserPropName] = Field(default=UNSET)
-    emails: List[ScimUserPropEmailsItems] = Field(description="user emails")
-    active: bool = Field(description="The active status of the User.")
-    meta: ScimUserPropMeta = Field()
-    organization_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the organization."
+    given_name: str = Field(
+        alias="givenName", description="The given name of the user."
     )
-    operations: Missing[List[ScimUserPropOperationsItems]] = Field(
-        min_length=1, default=UNSET, description="Set of operations to be performed"
+    middle_name: Missing[str] = Field(
+        default=UNSET, alias="middleName", description="The middle name(s) of the user."
     )
-    groups: Missing[List[ScimUserPropGroupsItems]] = Field(
-        default=UNSET, description="associated groups"
+
+
+class UserEmailsItems(GitHubModel):
+    """UserEmailsItems"""
+
+    value: str = Field(description="The email address.")
+    type: str = Field(description="The type of email address.")
+    primary: bool = Field(
+        description="Whether this email address is the primary address."
     )
-    roles: Missing[List[ScimUserPropRolesItems]] = Field(default=UNSET)
 
 
-class ScimUserPropName(GitHubModel):
-    """ScimUserPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: Missing[Union[str, None]] = Field(default=UNSET, alias="givenName")
-    family_name: Missing[Union[str, None]] = Field(default=UNSET, alias="familyName")
-    formatted: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class ScimUserPropEmailsItems(GitHubModel):
-    """ScimUserPropEmailsItems"""
-
-    value: str = Field()
-    primary: Missing[bool] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-
-
-class ScimUserPropMeta(GitHubModel):
-    """ScimUserPropMeta"""
-
-    resource_type: Missing[str] = Field(default=UNSET, alias="resourceType")
-    created: Missing[datetime] = Field(default=UNSET)
-    last_modified: Missing[datetime] = Field(default=UNSET, alias="lastModified")
-    location: Missing[str] = Field(default=UNSET)
-
-
-class ScimUserPropGroupsItems(GitHubModel):
-    """ScimUserPropGroupsItems"""
-
-    value: Missing[str] = Field(default=UNSET)
-    display: Missing[str] = Field(default=UNSET)
-
-
-class ScimUserPropRolesItems(GitHubModel):
-    """ScimUserPropRolesItems"""
-
-    value: Missing[str] = Field(default=UNSET)
-    primary: Missing[bool] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    display: Missing[str] = Field(default=UNSET)
-
-
-class ScimUserPropOperationsItems(GitHubModel):
-    """ScimUserPropOperationsItems"""
-
-    op: Literal["add", "remove", "replace"] = Field()
-    path: Missing[str] = Field(default=UNSET)
-    value: Missing[
-        Union[str, ScimUserPropOperationsItemsPropValueOneof1, List[Any]]
-    ] = Field(default=UNSET)
-
-
-class ScimUserPropOperationsItemsPropValueOneof1(GitHubModel):
-    """ScimUserPropOperationsItemsPropValueOneof1"""
-
-
-model_rebuild(ScimUserList)
-model_rebuild(ScimUser)
-model_rebuild(ScimUserPropName)
-model_rebuild(ScimUserPropEmailsItems)
-model_rebuild(ScimUserPropMeta)
-model_rebuild(ScimUserPropGroupsItems)
-model_rebuild(ScimUserPropRolesItems)
-model_rebuild(ScimUserPropOperationsItems)
-model_rebuild(ScimUserPropOperationsItemsPropValueOneof1)
+model_rebuild(User)
+model_rebuild(UserName)
+model_rebuild(UserEmailsItems)
 
 __all__ = (
-    "ScimUserList",
-    "ScimUser",
-    "ScimUserPropName",
-    "ScimUserPropEmailsItems",
-    "ScimUserPropMeta",
-    "ScimUserPropGroupsItems",
-    "ScimUserPropRolesItems",
-    "ScimUserPropOperationsItems",
-    "ScimUserPropOperationsItemsPropValueOneof1",
+    "User",
+    "UserName",
+    "UserEmailsItems",
 )

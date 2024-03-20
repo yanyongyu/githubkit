@@ -10,17 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union, Literal
 from typing_extensions import TypedDict
 
 
-class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof1Type(
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropAccountType(
     TypedDict
 ):
-    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof1"""
+    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0Pro
+    pAccount
+    """
 
-    next_billing_date: str
+    id: int
+    login: str
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
+
+
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropPlanType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0Pro
+    pPlan
+    """
+
+    bullets: List[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
 __all__ = (
-    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof1Type",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropAccountType",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropPlanType",
 )

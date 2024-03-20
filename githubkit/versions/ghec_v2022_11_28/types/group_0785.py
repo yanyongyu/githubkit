@@ -10,40 +10,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from datetime import datetime
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0787 import (
-    WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof0PropDismisserType,
-)
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0786 import WebhookRepositoryVulnerabilityAlertResolvePropAlertType
 
 
-class WebhookRepositoryVulnerabilityAlertResolvePropAlertType(TypedDict):
-    """WebhookRepositoryVulnerabilityAlertResolvePropAlert"""
+class WebhookRepositoryVulnerabilityAlertResolveType(TypedDict):
+    """repository_vulnerability_alert resolve event"""
 
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_reason: NotRequired[str]
-    dismissed_at: NotRequired[str]
-    dismisser: NotRequired[
-        Union[
-            WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof0PropDismisserType,
-            None,
-        ]
-    ]
-    external_identifier: str
-    external_reference: Union[Union[str, None], None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[datetime]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
-    id: int
-    node_id: str
-    number: int
-    severity: str
-    state: Literal["fixed", "open"]
+    action: Literal["resolve"]
+    alert: WebhookRepositoryVulnerabilityAlertResolvePropAlertType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertResolvePropAlertType",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertResolveType",)

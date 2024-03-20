@@ -10,25 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import datetime
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.typing import Missing
 
 
-class SimpleInstallation(GitHubModel):
-    """Simple Installation
+class EnterpriseWebhooks(GitHubModel):
+    """Enterprise
 
-    The GitHub App installation. Webhook payloads contain the `installation`
-    property when the event is configured
-    for and sent to a GitHub App. For more information,
-    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
-    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
+    enterprise-accounts)."
     """
 
-    id: int = Field(description="The ID of the installation.")
-    node_id: str = Field(description="The global node ID of the installation.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A short description of the enterprise."
+    )
+    html_url: str = Field()
+    website_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The enterprise's website URL."
+    )
+    id: int = Field(description="Unique identifier of the enterprise")
+    node_id: str = Field()
+    name: str = Field(description="The name of the enterprise.")
+    slug: str = Field(description="The slug url identifier for the enterprise.")
+    created_at: Union[datetime, None] = Field()
+    updated_at: Union[datetime, None] = Field()
+    avatar_url: str = Field()
 
 
-model_rebuild(SimpleInstallation)
+model_rebuild(EnterpriseWebhooks)
 
-__all__ = ("SimpleInstallation",)
+__all__ = ("EnterpriseWebhooks",)

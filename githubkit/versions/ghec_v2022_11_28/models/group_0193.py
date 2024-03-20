@@ -10,60 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0001 import SimpleUser
-from .group_0005 import Integration
-from .group_0090 import Team
+from .group_0194 import (
+    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
+)
 
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+class ProtectedBranchPullRequestReview(GitHubModel):
+    """Protected Branch Pull Request Review
 
-    users: Missing[List[SimpleUser]] = Field(
-        default=UNSET, description="The list of users with review dismissal access."
-    )
-    teams: Missing[List[Team]] = Field(
-        default=UNSET, description="The list of teams with review dismissal access."
-    )
-    apps: Missing[List[Integration]] = Field(
-        default=UNSET, description="The list of apps with review dismissal access."
-    )
-    url: Missing[str] = Field(default=UNSET)
-    users_url: Missing[str] = Field(default=UNSET)
-    teams_url: Missing[str] = Field(default=UNSET)
-
-
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubModel):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    Protected Branch Pull Request Review
     """
 
-    users: Missing[List[SimpleUser]] = Field(
+    url: Missing[str] = Field(default=UNSET)
+    dismissal_restrictions: Missing[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictions
+    ] = Field(default=UNSET)
+    bypass_pull_request_allowances: Missing[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+    ] = Field(
         default=UNSET,
-        description="The list of users allowed to bypass pull request requirements.",
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
     )
-    teams: Missing[List[Team]] = Field(
+    dismiss_stale_reviews: bool = Field()
+    require_code_owner_reviews: bool = Field()
+    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
+    require_last_push_approval: Missing[bool] = Field(
         default=UNSET,
-        description="The list of teams allowed to bypass pull request requirements.",
-    )
-    apps: Missing[List[Integration]] = Field(
-        default=UNSET,
-        description="The list of apps allowed to bypass pull request requirements.",
+        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
     )
 
 
-model_rebuild(ProtectedBranchPullRequestReviewPropDismissalRestrictions)
-model_rebuild(ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances)
+model_rebuild(ProtectedBranchPullRequestReview)
 
-__all__ = (
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictions",
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances",
-)
+__all__ = ("ProtectedBranchPullRequestReview",)

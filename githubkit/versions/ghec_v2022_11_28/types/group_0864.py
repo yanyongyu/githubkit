@@ -10,33 +10,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
+class EnterprisesEnterpriseActionsRunnerGroupsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
 
-    total_count: float
-    runner_groups: List[RunnerGroupsEnterpriseType]
-
-
-class RunnerGroupsEnterpriseType(TypedDict):
-    """RunnerGroupsEnterprise"""
-
-    id: float
     name: str
-    visibility: str
-    default: bool
-    selected_organizations_url: NotRequired[str]
-    runners_url: str
-    allows_public_repositories: bool
-    workflow_restrictions_read_only: NotRequired[bool]
+    visibility: NotRequired[Literal["selected", "all"]]
+    selected_organization_ids: NotRequired[List[int]]
+    runners: NotRequired[List[int]]
+    allows_public_repositories: NotRequired[bool]
     restricted_to_workflows: NotRequired[bool]
     selected_workflows: NotRequired[List[str]]
 
 
-__all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200Type",
-    "RunnerGroupsEnterpriseType",
-)
+__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsPostBodyType",)

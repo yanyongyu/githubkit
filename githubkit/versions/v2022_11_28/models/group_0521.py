@@ -19,25 +19,21 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0523 import WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubApp
-from .group_0524 import WebhookIssuesMilestonedPropIssueAllof0PropPullRequest
+from .group_0525 import WebhookIssuesMilestonedPropIssueAllof0PropPullRequest
+from .group_0527 import WebhookIssuesMilestonedPropIssueAllof1PropMilestone
+from .group_0528 import WebhookIssuesMilestonedPropIssueMergedPerformedViaGithubApp
 
 
-class WebhookIssuesMilestonedPropIssueAllof0(GitHubModel):
-    """Issue
-
-    The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
-    """
+class WebhookIssuesMilestonedPropIssue(GitHubModel):
+    """WebhookIssuesMilestonedPropIssue"""
 
     active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ] = Field()
     assignee: Missing[
-        Union[WebhookIssuesMilestonedPropIssueAllof0PropAssignee, None]
-    ] = Field(default=UNSET, title="User")
-    assignees: List[
-        Union[WebhookIssuesMilestonedPropIssueAllof0PropAssigneesItems, None]
-    ] = Field()
+        Union[WebhookIssuesMilestonedPropIssueMergedAssignee, None]
+    ] = Field(default=UNSET)
+    assignees: List[WebhookIssuesMilestonedPropIssueMergedAssignees] = Field()
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -51,7 +47,7 @@ class WebhookIssuesMilestonedPropIssueAllof0(GitHubModel):
         title="AuthorAssociation",
         description="How the author is associated with the repository.",
     )
-    body: Union[str, None] = Field(description="Contents of the issue")
+    body: Union[Union[str, None], None] = Field(description="Contents of the issue")
     closed_at: Union[datetime, None] = Field()
     comments: int = Field()
     comments_url: str = Field()
@@ -60,30 +56,24 @@ class WebhookIssuesMilestonedPropIssueAllof0(GitHubModel):
     events_url: str = Field()
     html_url: str = Field()
     id: int = Field()
-    labels: Missing[
-        List[WebhookIssuesMilestonedPropIssueAllof0PropLabelsItems]
-    ] = Field(default=UNSET)
+    labels: Missing[List[WebhookIssuesMilestonedPropIssueMergedLabels]] = Field(
+        default=UNSET
+    )
     labels_url: str = Field()
     locked: Missing[bool] = Field(default=UNSET)
-    milestone: Union[WebhookIssuesMilestonedPropIssueAllof0PropMilestone, None] = Field(
+    milestone: WebhookIssuesMilestonedPropIssueAllof1PropMilestone = Field(
         title="Milestone",
         description="A collection of related issues and pull requests.",
     )
     node_id: str = Field()
     number: int = Field()
     performed_via_github_app: Missing[
-        Union[WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubApp, None]
-    ] = Field(
-        default=UNSET,
-        title="App",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
-    )
+        Union[WebhookIssuesMilestonedPropIssueMergedPerformedViaGithubApp, None]
+    ] = Field(default=UNSET)
     pull_request: Missing[
         WebhookIssuesMilestonedPropIssueAllof0PropPullRequest
     ] = Field(default=UNSET)
-    reactions: WebhookIssuesMilestonedPropIssueAllof0PropReactions = Field(
-        title="Reactions"
-    )
+    reactions: WebhookIssuesMilestonedPropIssueMergedReactions = Field()
     repository_url: str = Field()
     state: Missing[Literal["open", "closed"]] = Field(
         default=UNSET, description="State of the issue; either 'open' or 'closed'"
@@ -93,13 +83,11 @@ class WebhookIssuesMilestonedPropIssueAllof0(GitHubModel):
     title: str = Field(description="Title of the issue")
     updated_at: datetime = Field()
     url: str = Field(description="URL for the issue")
-    user: Union[WebhookIssuesMilestonedPropIssueAllof0PropUser, None] = Field(
-        title="User"
-    )
+    user: WebhookIssuesMilestonedPropIssueMergedUser = Field()
 
 
-class WebhookIssuesMilestonedPropIssueAllof0PropAssignee(GitHubModel):
-    """User"""
+class WebhookIssuesMilestonedPropIssueMergedAssignee(GitHubModel):
+    """WebhookIssuesMilestonedPropIssueMergedAssignee"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -124,8 +112,8 @@ class WebhookIssuesMilestonedPropIssueAllof0PropAssignee(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssuesMilestonedPropIssueAllof0PropAssigneesItems(GitHubModel):
-    """User"""
+class WebhookIssuesMilestonedPropIssueMergedAssignees(GitHubModel):
+    """WebhookIssuesMilestonedPropIssueMergedAssignees"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -150,8 +138,8 @@ class WebhookIssuesMilestonedPropIssueAllof0PropAssigneesItems(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssuesMilestonedPropIssueAllof0PropLabelsItems(GitHubModel):
-    """Label"""
+class WebhookIssuesMilestonedPropIssueMergedLabels(GitHubModel):
+    """WebhookIssuesMilestonedPropIssueMergedLabels"""
 
     color: str = Field(
         description="6-character hex code, without the leading #, identifying the color"
@@ -164,62 +152,8 @@ class WebhookIssuesMilestonedPropIssueAllof0PropLabelsItems(GitHubModel):
     url: str = Field(description="URL for the label")
 
 
-class WebhookIssuesMilestonedPropIssueAllof0PropMilestone(GitHubModel):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[datetime, None] = Field()
-    closed_issues: int = Field()
-    created_at: datetime = Field()
-    creator: Union[
-        WebhookIssuesMilestonedPropIssueAllof0PropMilestonePropCreator, None
-    ] = Field(title="User")
-    description: Union[str, None] = Field()
-    due_on: Union[datetime, None] = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    open_issues: int = Field()
-    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
-    title: str = Field(description="The title of the milestone.")
-    updated_at: datetime = Field()
-    url: str = Field()
-
-
-class WebhookIssuesMilestonedPropIssueAllof0PropMilestonePropCreator(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
-    )
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookIssuesMilestonedPropIssueAllof0PropReactions(GitHubModel):
-    """Reactions"""
+class WebhookIssuesMilestonedPropIssueMergedReactions(GitHubModel):
+    """WebhookIssuesMilestonedPropIssueMergedReactions"""
 
     plus_one: int = Field(alias="+1")
     minus_one: int = Field(alias="-1")
@@ -233,8 +167,8 @@ class WebhookIssuesMilestonedPropIssueAllof0PropReactions(GitHubModel):
     url: str = Field()
 
 
-class WebhookIssuesMilestonedPropIssueAllof0PropUser(GitHubModel):
-    """User"""
+class WebhookIssuesMilestonedPropIssueMergedUser(GitHubModel):
+    """WebhookIssuesMilestonedPropIssueMergedUser"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -259,22 +193,18 @@ class WebhookIssuesMilestonedPropIssueAllof0PropUser(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssuesMilestonedPropIssueAllof0)
-model_rebuild(WebhookIssuesMilestonedPropIssueAllof0PropAssignee)
-model_rebuild(WebhookIssuesMilestonedPropIssueAllof0PropAssigneesItems)
-model_rebuild(WebhookIssuesMilestonedPropIssueAllof0PropLabelsItems)
-model_rebuild(WebhookIssuesMilestonedPropIssueAllof0PropMilestone)
-model_rebuild(WebhookIssuesMilestonedPropIssueAllof0PropMilestonePropCreator)
-model_rebuild(WebhookIssuesMilestonedPropIssueAllof0PropReactions)
-model_rebuild(WebhookIssuesMilestonedPropIssueAllof0PropUser)
+model_rebuild(WebhookIssuesMilestonedPropIssue)
+model_rebuild(WebhookIssuesMilestonedPropIssueMergedAssignee)
+model_rebuild(WebhookIssuesMilestonedPropIssueMergedAssignees)
+model_rebuild(WebhookIssuesMilestonedPropIssueMergedLabels)
+model_rebuild(WebhookIssuesMilestonedPropIssueMergedReactions)
+model_rebuild(WebhookIssuesMilestonedPropIssueMergedUser)
 
 __all__ = (
-    "WebhookIssuesMilestonedPropIssueAllof0",
-    "WebhookIssuesMilestonedPropIssueAllof0PropAssignee",
-    "WebhookIssuesMilestonedPropIssueAllof0PropAssigneesItems",
-    "WebhookIssuesMilestonedPropIssueAllof0PropLabelsItems",
-    "WebhookIssuesMilestonedPropIssueAllof0PropMilestone",
-    "WebhookIssuesMilestonedPropIssueAllof0PropMilestonePropCreator",
-    "WebhookIssuesMilestonedPropIssueAllof0PropReactions",
-    "WebhookIssuesMilestonedPropIssueAllof0PropUser",
+    "WebhookIssuesMilestonedPropIssue",
+    "WebhookIssuesMilestonedPropIssueMergedAssignee",
+    "WebhookIssuesMilestonedPropIssueMergedAssignees",
+    "WebhookIssuesMilestonedPropIssueMergedLabels",
+    "WebhookIssuesMilestonedPropIssueMergedReactions",
+    "WebhookIssuesMilestonedPropIssueMergedUser",
 )

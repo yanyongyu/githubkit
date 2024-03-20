@@ -10,27 +10,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0389 import EnterpriseWebhooksType
-from .group_0390 import SimpleInstallationType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0392 import RepositoryWebhooksType
-from .group_0393 import SimpleUserWebhooksType
-from .group_0732 import WebhookReleasePublishedPropReleaseType
+from .group_0728 import (
+    WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsPropUploaderType,
+)
 
 
-class WebhookReleasePublishedType(TypedDict):
-    """release published event"""
+class WebhookReleasePrereleasedPropReleaseMergedAssetsType(TypedDict):
+    """WebhookReleasePrereleasedPropReleaseMergedAssets"""
 
-    action: Literal["published"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhookReleasePublishedPropReleaseType
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
+    browser_download_url: str
+    content_type: str
+    created_at: datetime
+    download_count: int
+    id: int
+    label: Union[str, None]
+    name: str
+    node_id: str
+    size: int
+    state: Literal["uploaded"]
+    updated_at: datetime
+    uploader: NotRequired[
+        Union[
+            WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsPropUploaderType,
+            None,
+        ]
+    ]
+    url: str
 
 
-__all__ = ("WebhookReleasePublishedType",)
+__all__ = ("WebhookReleasePrereleasedPropReleaseMergedAssetsType",)

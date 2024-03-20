@@ -10,195 +10,85 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List, Union, Literal
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0001 import SimpleUserType
+from .group_0058 import MilestoneType
+from .group_0089 import TeamSimpleType
+from .group_0229 import AutoMergeType
+from .group_0309 import PullRequestPropHeadType, PullRequestPropLabelsItemsType
+from .group_0310 import PullRequestPropBaseType
+from .group_0312 import PullRequestPropLinksType
 
-class PullRequestPropLabelsItemsType(TypedDict):
-    """PullRequestPropLabelsItems"""
 
+class PullRequestType(TypedDict):
+    """Pull Request
+
+    Pull requests let you tell others about changes you've pushed to a repository on
+    GitHub. Once a pull request is sent, interested parties can review the set of
+    changes, discuss potential modifications, and even push follow-up commits if
+    necessary.
+    """
+
+    url: str
     id: int
     node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
-
-
-class PullRequestPropHeadType(TypedDict):
-    """PullRequestPropHead"""
-
-    label: Union[str, None]
-    ref: str
-    repo: Union[PullRequestPropHeadPropRepoType, None]
-    sha: str
-    user: Union[PullRequestPropHeadPropUserType, None]
-
-
-class PullRequestPropHeadPropRepoType(TypedDict):
-    """PullRequestPropHeadPropRepo"""
-
-    archive_url: str
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    deployments_url: str
-    description: Union[str, None]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    hooks_url: str
     html_url: str
-    id: int
-    node_id: str
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    languages_url: str
-    merges_url: str
-    milestones_url: str
-    name: str
-    notifications_url: str
-    owner: PullRequestPropHeadPropRepoPropOwnerType
-    private: bool
-    pulls_url: str
-    releases_url: str
-    stargazers_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
     statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    tags_url: str
-    teams_url: str
-    trees_url: str
-    url: str
-    clone_url: str
-    default_branch: str
-    forks: int
-    forks_count: int
-    git_url: str
-    has_downloads: bool
-    has_issues: bool
-    has_projects: bool
-    has_wiki: bool
-    has_pages: bool
-    has_discussions: bool
-    homepage: Union[str, None]
-    language: Union[str, None]
-    master_branch: NotRequired[str]
-    archived: bool
-    disabled: bool
-    visibility: NotRequired[str]
-    mirror_url: Union[str, None]
-    open_issues: int
-    open_issues_count: int
-    permissions: NotRequired[PullRequestPropHeadPropRepoPropPermissionsType]
-    temp_clone_token: NotRequired[Union[str, None]]
-    allow_merge_commit: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    license_: Union[PullRequestPropHeadPropRepoPropLicenseType, None]
-    pushed_at: datetime
-    size: int
-    ssh_url: str
-    stargazers_count: int
-    svn_url: str
-    topics: NotRequired[List[str]]
-    watchers: int
-    watchers_count: int
+    number: int
+    state: Literal["open", "closed"]
+    locked: bool
+    title: str
+    user: SimpleUserType
+    body: Union[str, None]
+    labels: List[PullRequestPropLabelsItemsType]
+    milestone: Union[None, MilestoneType]
+    active_lock_reason: NotRequired[Union[str, None]]
     created_at: datetime
     updated_at: datetime
-    allow_forking: NotRequired[bool]
-    is_template: NotRequired[bool]
-    web_commit_signoff_required: NotRequired[bool]
+    closed_at: Union[datetime, None]
+    merged_at: Union[datetime, None]
+    merge_commit_sha: Union[str, None]
+    assignee: Union[None, SimpleUserType]
+    assignees: NotRequired[Union[List[SimpleUserType], None]]
+    requested_reviewers: NotRequired[Union[List[SimpleUserType], None]]
+    requested_teams: NotRequired[Union[List[TeamSimpleType], None]]
+    head: PullRequestPropHeadType
+    base: PullRequestPropBaseType
+    links: PullRequestPropLinksType
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    auto_merge: Union[AutoMergeType, None]
+    draft: NotRequired[bool]
+    merged: bool
+    mergeable: Union[bool, None]
+    rebaseable: NotRequired[Union[bool, None]]
+    mergeable_state: str
+    merged_by: Union[None, SimpleUserType]
+    comments: int
+    review_comments: int
+    maintainer_can_modify: bool
+    commits: int
+    additions: int
+    deletions: int
+    changed_files: int
 
 
-class PullRequestPropHeadPropRepoPropOwnerType(TypedDict):
-    """PullRequestPropHeadPropRepoPropOwner"""
-
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: Union[str, None]
-    html_url: str
-    id: int
-    node_id: str
-    login: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
-
-
-class PullRequestPropHeadPropRepoPropPermissionsType(TypedDict):
-    """PullRequestPropHeadPropRepoPropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    push: bool
-    triage: NotRequired[bool]
-    pull: bool
-
-
-class PullRequestPropHeadPropRepoPropLicenseType(TypedDict):
-    """PullRequestPropHeadPropRepoPropLicense"""
-
-    key: str
-    name: str
-    url: Union[str, None]
-    spdx_id: Union[str, None]
-    node_id: str
-
-
-class PullRequestPropHeadPropUserType(TypedDict):
-    """PullRequestPropHeadPropUser"""
-
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: Union[str, None]
-    html_url: str
-    id: int
-    node_id: str
-    login: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
-
-
-__all__ = (
-    "PullRequestPropLabelsItemsType",
-    "PullRequestPropHeadType",
-    "PullRequestPropHeadPropRepoType",
-    "PullRequestPropHeadPropRepoPropOwnerType",
-    "PullRequestPropHeadPropRepoPropPermissionsType",
-    "PullRequestPropHeadPropRepoPropLicenseType",
-    "PullRequestPropHeadPropUserType",
-)
+__all__ = ("PullRequestType",)

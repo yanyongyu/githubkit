@@ -13,25 +13,89 @@ from __future__ import annotations
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0357 import EnterpriseWebhooksType
+from .group_0358 import SimpleInstallationType
+from .group_0359 import OrganizationSimpleWebhooksType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
 
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0Type(
+
+class WebhookMarketplacePurchasePendingChangeType(TypedDict):
+    """marketplace_purchase pending_change event"""
+
+    action: Literal["pending_change"]
+    effective_date: str
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    marketplace_purchase: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    previous_marketplace_purchase: NotRequired[
+        WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType
+    ]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserWebhooksType
+
+
+class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseType(TypedDict):
+    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchase"""
+
+    account: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccountType
+    billing_cycle: str
+    free_trial_ends_on: Union[Union[str, None], None]
+    next_billing_date: Union[Union[str, None], None]
+    on_free_trial: bool
+    plan: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedPlanType
+    unit_count: int
+
+
+class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccountType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccount"""
+
+    id: int
+    login: str
+    node_id: str
+    organization_billing_email: Union[Union[str, None], None]
+    type: str
+
+
+class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedPlanType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedPlan"""
+
+    bullets: List[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[Union[str, None], None]
+    yearly_price_in_cents: int
+
+
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType(
     TypedDict
 ):
     """Marketplace Purchase"""
 
-    account: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccountType
+    account: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType
     billing_cycle: str
     free_trial_ends_on: Union[str, None]
     next_billing_date: NotRequired[Union[str, None]]
     on_free_trial: bool
-    plan: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlanType
+    plan: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType
     unit_count: int
 
 
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccountType(
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType(
     TypedDict
 ):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount"""
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccoun
+    t
+    """
 
     id: int
     login: str
@@ -40,10 +104,10 @@ class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAc
     type: str
 
 
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlanType(
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType(
     TypedDict
 ):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan"""
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan"""
 
     bullets: List[str]
     description: str
@@ -57,7 +121,11 @@ class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPl
 
 
 __all__ = (
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0Type",
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccountType",
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlanType",
+    "WebhookMarketplacePurchasePendingChangeType",
+    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseType",
+    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccountType",
+    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedPlanType",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType",
 )

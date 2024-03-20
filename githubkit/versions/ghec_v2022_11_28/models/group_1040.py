@@ -19,14 +19,14 @@ from githubkit.utils import UNSET
 from githubkit.compat import ExtraGitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_1039 import (
+from .group_1038 import (
     ReposOwnerRepoCheckRunsPostBodyPropOutput,
     ReposOwnerRepoCheckRunsPostBodyPropActionsItems,
 )
 
 
-class ReposOwnerRepoCheckRunsPostBodyOneof0(ExtraGitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
+class ReposOwnerRepoCheckRunsPostBodyOneof1(ExtraGitHubModel):
+    """ReposOwnerRepoCheckRunsPostBodyOneof1"""
 
     name: str = Field(
         description='The name of the check. For example, "code-coverage".'
@@ -39,22 +39,25 @@ class ReposOwnerRepoCheckRunsPostBodyOneof0(ExtraGitHubModel):
     external_id: Missing[str] = Field(
         default=UNSET, description="A reference for the run on the integrator's system."
     )
-    status: Literal["completed"] = Field()
+    status: Missing[Literal["queued", "in_progress"]] = Field(default=UNSET)
     started_at: Missing[datetime] = Field(
         default=UNSET,
         description="The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    conclusion: Literal[
-        "action_required",
-        "cancelled",
-        "failure",
-        "neutral",
-        "success",
-        "skipped",
-        "stale",
-        "timed_out",
+    conclusion: Missing[
+        Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ]
     ] = Field(
-        description="**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. \n**Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this."
+        default=UNSET,
+        description="**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. \n**Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this.",
     )
     completed_at: Missing[datetime] = Field(
         default=UNSET,
@@ -71,6 +74,6 @@ class ReposOwnerRepoCheckRunsPostBodyOneof0(ExtraGitHubModel):
     )
 
 
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyOneof0)
+model_rebuild(ReposOwnerRepoCheckRunsPostBodyOneof1)
 
-__all__ = ("ReposOwnerRepoCheckRunsPostBodyOneof0",)
+__all__ = ("ReposOwnerRepoCheckRunsPostBodyOneof1",)

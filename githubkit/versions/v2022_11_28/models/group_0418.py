@@ -18,20 +18,19 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0356 import EnterpriseWebhooks
-from .group_0357 import SimpleInstallation
-from .group_0358 import OrganizationSimpleWebhooks
-from .group_0359 import RepositoryWebhooks
-from .group_0360 import SimpleUserWebhooks
-from .group_0363 import Discussion
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0359 import OrganizationSimpleWebhooks
+from .group_0360 import RepositoryWebhooks
+from .group_0361 import SimpleUserWebhooks
+from .group_0364 import Discussion
 
 
-class WebhookDiscussionCommentEdited(GitHubModel):
-    """discussion_comment edited event"""
+class WebhookDiscussionCommentDeleted(GitHubModel):
+    """discussion_comment deleted event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookDiscussionCommentEditedPropChanges = Field()
-    comment: WebhookDiscussionCommentEditedPropComment = Field()
+    action: Literal["deleted"] = Field()
+    comment: WebhookDiscussionCommentDeletedPropComment = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -60,20 +59,8 @@ class WebhookDiscussionCommentEdited(GitHubModel):
     )
 
 
-class WebhookDiscussionCommentEditedPropChanges(GitHubModel):
-    """WebhookDiscussionCommentEditedPropChanges"""
-
-    body: WebhookDiscussionCommentEditedPropChangesPropBody = Field()
-
-
-class WebhookDiscussionCommentEditedPropChangesPropBody(GitHubModel):
-    """WebhookDiscussionCommentEditedPropChangesPropBody"""
-
-    from_: str = Field(alias="from")
-
-
-class WebhookDiscussionCommentEditedPropComment(GitHubModel):
-    """WebhookDiscussionCommentEditedPropComment"""
+class WebhookDiscussionCommentDeletedPropComment(GitHubModel):
+    """WebhookDiscussionCommentDeletedPropComment"""
 
     author_association: Literal[
         "COLLABORATOR",
@@ -96,17 +83,17 @@ class WebhookDiscussionCommentEditedPropComment(GitHubModel):
     id: int = Field()
     node_id: str = Field()
     parent_id: Union[int, None] = Field()
-    reactions: WebhookDiscussionCommentEditedPropCommentPropReactions = Field(
+    reactions: WebhookDiscussionCommentDeletedPropCommentPropReactions = Field(
         title="Reactions"
     )
     repository_url: str = Field()
     updated_at: str = Field()
-    user: Union[WebhookDiscussionCommentEditedPropCommentPropUser, None] = Field(
+    user: Union[WebhookDiscussionCommentDeletedPropCommentPropUser, None] = Field(
         title="User"
     )
 
 
-class WebhookDiscussionCommentEditedPropCommentPropReactions(GitHubModel):
+class WebhookDiscussionCommentDeletedPropCommentPropReactions(GitHubModel):
     """Reactions"""
 
     plus_one: int = Field(alias="+1")
@@ -121,7 +108,7 @@ class WebhookDiscussionCommentEditedPropCommentPropReactions(GitHubModel):
     url: str = Field()
 
 
-class WebhookDiscussionCommentEditedPropCommentPropUser(GitHubModel):
+class WebhookDiscussionCommentDeletedPropCommentPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -147,18 +134,14 @@ class WebhookDiscussionCommentEditedPropCommentPropUser(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookDiscussionCommentEdited)
-model_rebuild(WebhookDiscussionCommentEditedPropChanges)
-model_rebuild(WebhookDiscussionCommentEditedPropChangesPropBody)
-model_rebuild(WebhookDiscussionCommentEditedPropComment)
-model_rebuild(WebhookDiscussionCommentEditedPropCommentPropReactions)
-model_rebuild(WebhookDiscussionCommentEditedPropCommentPropUser)
+model_rebuild(WebhookDiscussionCommentDeleted)
+model_rebuild(WebhookDiscussionCommentDeletedPropComment)
+model_rebuild(WebhookDiscussionCommentDeletedPropCommentPropReactions)
+model_rebuild(WebhookDiscussionCommentDeletedPropCommentPropUser)
 
 __all__ = (
-    "WebhookDiscussionCommentEdited",
-    "WebhookDiscussionCommentEditedPropChanges",
-    "WebhookDiscussionCommentEditedPropChangesPropBody",
-    "WebhookDiscussionCommentEditedPropComment",
-    "WebhookDiscussionCommentEditedPropCommentPropReactions",
-    "WebhookDiscussionCommentEditedPropCommentPropUser",
+    "WebhookDiscussionCommentDeleted",
+    "WebhookDiscussionCommentDeletedPropComment",
+    "WebhookDiscussionCommentDeletedPropCommentPropReactions",
+    "WebhookDiscussionCommentDeletedPropCommentPropUser",
 )

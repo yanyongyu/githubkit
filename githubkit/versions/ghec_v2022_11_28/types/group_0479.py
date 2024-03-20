@@ -10,31 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0015 import InstallationType
-from .group_0389 import EnterpriseWebhooksType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0392 import RepositoryWebhooksType
-from .group_0393 import SimpleUserWebhooksType
+from .group_0390 import EnterpriseWebhooksType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
 
 
-class WebhookInstallationSuspendType(TypedDict):
-    """installation suspend event"""
+class WebhookInstallationRepositoriesRemovedType(TypedDict):
+    """installation_repositories removed event"""
 
-    action: Literal["suspend"]
+    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[List[WebhookInstallationSuspendPropRepositoriesItemsType]]
+    repositories_added: List[
+        WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItemsType
+    ]
+    repositories_removed: List[
+        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType
+    ]
     repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
+    repository_selection: Literal["all", "selected"]
+    requester: Union[WebhookInstallationRepositoriesRemovedPropRequesterType, None]
     sender: SimpleUserWebhooksType
 
 
-class WebhookInstallationSuspendPropRepositoriesItemsType(TypedDict):
-    """WebhookInstallationSuspendPropRepositoriesItems"""
+class WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItemsType(TypedDict):
+    """WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItems"""
 
     full_name: str
     id: int
@@ -43,7 +49,45 @@ class WebhookInstallationSuspendPropRepositoriesItemsType(TypedDict):
     private: bool
 
 
+class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType(TypedDict):
+    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
+
+    full_name: str
+    id: int
+    name: str
+    node_id: str
+    private: bool
+
+
+class WebhookInstallationRepositoriesRemovedPropRequesterType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
 __all__ = (
-    "WebhookInstallationSuspendType",
-    "WebhookInstallationSuspendPropRepositoriesItemsType",
+    "WebhookInstallationRepositoriesRemovedType",
+    "WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItemsType",
+    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType",
+    "WebhookInstallationRepositoriesRemovedPropRequesterType",
 )

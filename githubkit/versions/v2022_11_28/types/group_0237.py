@@ -10,15 +10,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
-    """Deployment branch and tag policy name pattern"""
-
-    name: str
-    type: NotRequired[Literal["branch", "tag"]]
+from .group_0001 import SimpleUserType
+from .group_0075 import TeamType
 
 
-__all__ = ("DeploymentBranchPolicyNamePatternWithTypeType",)
+class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
+
+
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType",)

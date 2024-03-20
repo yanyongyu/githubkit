@@ -10,36 +10,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0694 import (
-    WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsPropUploaderType,
-)
 
+class WebhookReleasePrereleasedPropReleaseAllof1Type(TypedDict):
+    """WebhookReleasePrereleasedPropReleaseAllof1"""
 
-class WebhookReleasePrereleasedPropReleaseMergedAssetsType(TypedDict):
-    """WebhookReleasePrereleasedPropReleaseMergedAssets"""
-
-    browser_download_url: str
-    content_type: str
-    created_at: datetime
-    download_count: int
-    id: int
-    label: Union[str, None]
-    name: str
-    node_id: str
-    size: int
-    state: Literal["uploaded"]
-    updated_at: datetime
-    uploader: NotRequired[
-        Union[
-            WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsPropUploaderType,
-            None,
-        ]
+    assets: NotRequired[
+        List[Union[WebhookReleasePrereleasedPropReleaseAllof1PropAssetsItemsType, None]]
     ]
-    url: str
+    assets_url: NotRequired[str]
+    author: NotRequired[WebhookReleasePrereleasedPropReleaseAllof1PropAuthorType]
+    body: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
+    draft: NotRequired[bool]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    name: NotRequired[Union[str, None]]
+    node_id: NotRequired[str]
+    prerelease: Literal[True]
+    published_at: NotRequired[Union[str, None]]
+    tag_name: NotRequired[str]
+    tarball_url: NotRequired[Union[str, None]]
+    target_commitish: NotRequired[str]
+    upload_url: NotRequired[str]
+    url: NotRequired[str]
+    zipball_url: NotRequired[Union[str, None]]
 
 
-__all__ = ("WebhookReleasePrereleasedPropReleaseMergedAssetsType",)
+class WebhookReleasePrereleasedPropReleaseAllof1PropAssetsItemsType(TypedDict):
+    """WebhookReleasePrereleasedPropReleaseAllof1PropAssetsItems"""
+
+
+class WebhookReleasePrereleasedPropReleaseAllof1PropAuthorType(TypedDict):
+    """WebhookReleasePrereleasedPropReleaseAllof1PropAuthor"""
+
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "WebhookReleasePrereleasedPropReleaseAllof1Type",
+    "WebhookReleasePrereleasedPropReleaseAllof1PropAssetsItemsType",
+    "WebhookReleasePrereleasedPropReleaseAllof1PropAuthorType",
+)

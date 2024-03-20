@@ -10,6 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -17,38 +19,30 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
 
-class UserNameResponse(GitHubModel):
-    """UserNameResponse"""
+class PatchSchema(GitHubModel):
+    """PatchSchema"""
 
-    formatted: Missing[str] = Field(
+    operations: List[PatchSchemaPropOperationsItems] = Field(
+        alias="Operations", description="patch operations list"
+    )
+    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]] = Field()
+
+
+class PatchSchemaPropOperationsItems(GitHubModel):
+    """PatchSchemaPropOperationsItems"""
+
+    op: Literal["add", "replace", "remove"] = Field()
+    path: Missing[str] = Field(default=UNSET)
+    value: Missing[str] = Field(
         default=UNSET,
-        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
-    )
-    family_name: Missing[str] = Field(
-        default=UNSET, alias="familyName", description="The family name of the user."
-    )
-    given_name: Missing[str] = Field(
-        default=UNSET, alias="givenName", description="The given name of the user."
-    )
-    middle_name: Missing[str] = Field(
-        default=UNSET, alias="middleName", description="The middle name(s) of the user."
+        description="Corresponding 'value' of that field specified by 'path'",
     )
 
 
-class UserEmailsResponseItems(GitHubModel):
-    """UserEmailsResponseItems"""
-
-    value: str = Field(description="The email address.")
-    type: Missing[str] = Field(default=UNSET, description="The type of email address.")
-    primary: Missing[bool] = Field(
-        default=UNSET, description="Whether this email address is the primary address."
-    )
-
-
-model_rebuild(UserNameResponse)
-model_rebuild(UserEmailsResponseItems)
+model_rebuild(PatchSchema)
+model_rebuild(PatchSchemaPropOperationsItems)
 
 __all__ = (
-    "UserNameResponse",
-    "UserEmailsResponseItems",
+    "PatchSchema",
+    "PatchSchemaPropOperationsItems",
 )

@@ -19,19 +19,22 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
 
-class OrgsOrgOrganizationRolesPostBody(GitHubModel):
-    """OrgsOrgOrganizationRolesPostBody"""
+class OrgsOrgOrganizationRolesRoleIdPatchBody(GitHubModel):
+    """OrgsOrgOrganizationRolesRoleIdPatchBody"""
 
-    name: str = Field(description="The name of the custom role.")
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the custom role."
+    )
     description: Missing[str] = Field(
         default=UNSET,
         description="A short description about the intended usage of this role or what permissions it grants.",
     )
-    permissions: List[str] = Field(
-        description="A list of additional permissions included in this role."
+    permissions: Missing[List[str]] = Field(
+        default=UNSET,
+        description="A list of additional permissions included in this role.",
     )
 
 
-model_rebuild(OrgsOrgOrganizationRolesPostBody)
+model_rebuild(OrgsOrgOrganizationRolesRoleIdPatchBody)
 
-__all__ = ("OrgsOrgOrganizationRolesPostBody",)
+__all__ = ("OrgsOrgOrganizationRolesRoleIdPatchBody",)

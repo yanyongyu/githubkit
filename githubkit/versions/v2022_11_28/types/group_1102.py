@@ -10,21 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0157 import ActionsVariableType
+from typing_extensions import TypedDict, NotRequired
 
 
-class RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200Type(
-    TypedDict
-):
-    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200"""
+class ReposOwnerRepoSubscriptionPutBodyType(TypedDict):
+    """ReposOwnerRepoSubscriptionPutBody"""
 
-    total_count: int
-    variables: List[ActionsVariableType]
+    subscribed: NotRequired[bool]
+    ignored: NotRequired[bool]
 
 
-__all__ = (
-    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200Type",
-)
+__all__ = ("ReposOwnerRepoSubscriptionPutBodyType",)

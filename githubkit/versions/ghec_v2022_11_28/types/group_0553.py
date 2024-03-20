@@ -10,93 +10,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0557 import WebhookIssuesMilestonedPropIssueAllof0PropPullRequestType
-from .group_0559 import WebhookIssuesMilestonedPropIssueAllof1PropMilestoneType
-from .group_0560 import WebhookIssuesMilestonedPropIssueMergedPerformedViaGithubAppType
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0554 import WebhookIssuesMilestonedPropIssueType
 
 
-class WebhookIssuesMilestonedPropIssueType(TypedDict):
-    """WebhookIssuesMilestonedPropIssue"""
+class WebhookIssuesMilestonedType(TypedDict):
+    """issues milestoned event"""
 
-    active_lock_reason: Union[
-        Literal["resolved", "off-topic", "too heated", "spam"], None
-    ]
-    assignee: NotRequired[
-        Union[WebhookIssuesMilestonedPropIssueMergedAssigneeType, None]
-    ]
-    assignees: List[WebhookIssuesMilestonedPropIssueMergedAssigneesType]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: Union[Union[str, None], None]
+    action: Literal["milestoned"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    issue: WebhookIssuesMilestonedPropIssueType
+    milestone: WebhookIssuesMilestonedPropMilestoneType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+
+
+class WebhookIssuesMilestonedPropMilestoneType(TypedDict):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
+
     closed_at: Union[datetime, None]
-    comments: int
-    comments_url: str
+    closed_issues: int
     created_at: datetime
-    draft: NotRequired[bool]
-    events_url: str
+    creator: Union[WebhookIssuesMilestonedPropMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[datetime, None]
     html_url: str
     id: int
-    labels: NotRequired[List[WebhookIssuesMilestonedPropIssueMergedLabelsType]]
     labels_url: str
-    locked: NotRequired[bool]
-    milestone: WebhookIssuesMilestonedPropIssueAllof1PropMilestoneType
     node_id: str
     number: int
-    performed_via_github_app: NotRequired[
-        Union[WebhookIssuesMilestonedPropIssueMergedPerformedViaGithubAppType, None]
-    ]
-    pull_request: NotRequired[WebhookIssuesMilestonedPropIssueAllof0PropPullRequestType]
-    reactions: WebhookIssuesMilestonedPropIssueMergedReactionsType
-    repository_url: str
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
+    open_issues: int
+    state: Literal["open", "closed"]
     title: str
     updated_at: datetime
     url: str
-    user: WebhookIssuesMilestonedPropIssueMergedUserType
 
 
-class WebhookIssuesMilestonedPropIssueMergedAssigneeType(TypedDict):
-    """WebhookIssuesMilestonedPropIssueMergedAssignee"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookIssuesMilestonedPropIssueMergedAssigneesType(TypedDict):
-    """WebhookIssuesMilestonedPropIssueMergedAssignees"""
+class WebhookIssuesMilestonedPropMilestonePropCreatorType(TypedDict):
+    """User"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -117,68 +81,12 @@ class WebhookIssuesMilestonedPropIssueMergedAssigneesType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookIssuesMilestonedPropIssueMergedLabelsType(TypedDict):
-    """WebhookIssuesMilestonedPropIssueMergedLabels"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhookIssuesMilestonedPropIssueMergedReactionsType(TypedDict):
-    """WebhookIssuesMilestonedPropIssueMergedReactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookIssuesMilestonedPropIssueMergedUserType(TypedDict):
-    """WebhookIssuesMilestonedPropIssueMergedUser"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssuesMilestonedPropIssueType",
-    "WebhookIssuesMilestonedPropIssueMergedAssigneeType",
-    "WebhookIssuesMilestonedPropIssueMergedAssigneesType",
-    "WebhookIssuesMilestonedPropIssueMergedLabelsType",
-    "WebhookIssuesMilestonedPropIssueMergedReactionsType",
-    "WebhookIssuesMilestonedPropIssueMergedUserType",
+    "WebhookIssuesMilestonedType",
+    "WebhookIssuesMilestonedPropMilestoneType",
+    "WebhookIssuesMilestonedPropMilestonePropCreatorType",
 )

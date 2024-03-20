@@ -23,7 +23,9 @@ class CopilotOrganizationDetailsType(TypedDict):
 
     seat_breakdown: CopilotSeatBreakdownType
     public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"]
-    copilot_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
     seat_management_setting: Literal[
         "assign_all", "assign_selected", "disabled", "unconfigured"
     ]

@@ -14,13 +14,13 @@ from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgActionsVariablesNamePatchBodyType(TypedDict):
-    """OrgsOrgActionsVariablesNamePatchBody"""
+class OrgsOrgActionsVariablesPostBodyType(TypedDict):
+    """OrgsOrgActionsVariablesPostBody"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
+    name: str
+    value: str
+    visibility: Literal["all", "private", "selected"]
     selected_repository_ids: NotRequired[List[int]]
 
 
-__all__ = ("OrgsOrgActionsVariablesNamePatchBodyType",)
+__all__ = ("OrgsOrgActionsVariablesPostBodyType",)

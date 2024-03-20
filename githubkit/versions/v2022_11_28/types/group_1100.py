@@ -10,21 +10,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0156 import ActionsSecretType
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200Type(
-    TypedDict
-):
-    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody"""
 
-    total_count: int
-    secrets: List[ActionsSecretType]
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
 
 
-__all__ = (
-    "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200Type",
-)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType",)

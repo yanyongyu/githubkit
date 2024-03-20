@@ -10,27 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0389 import EnterpriseWebhooksType
-from .group_0390 import SimpleInstallationType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0392 import RepositoryWebhooksType
-from .group_0393 import SimpleUserWebhooksType
-from .group_0401 import SecretScanningAlertWebhookType
+
+class WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof1Type(TypedDict):
+    """WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof1"""
+
+    affected_package_name: NotRequired[str]
+    affected_range: NotRequired[str]
+    created_at: NotRequired[str]
+    external_identifier: NotRequired[str]
+    external_reference: NotRequired[Union[str, None]]
+    fix_reason: NotRequired[str]
+    fixed_at: NotRequired[datetime]
+    fixed_in: NotRequired[str]
+    ghsa_id: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    number: NotRequired[int]
+    severity: NotRequired[str]
+    state: Literal["fixed", "open"]
 
 
-class WebhookSecretScanningAlertCreatedType(TypedDict):
-    """secret_scanning_alert created event"""
-
-    action: Literal["created"]
-    alert: SecretScanningAlertWebhookType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
-
-
-__all__ = ("WebhookSecretScanningAlertCreatedType",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof1Type",)

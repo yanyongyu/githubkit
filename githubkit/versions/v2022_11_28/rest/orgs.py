@@ -4825,7 +4825,11 @@ class OrgsClient:
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-custom-property-values-for-organization-repositories"""
 
-        from ..models import BasicError, OrgsOrgPropertiesValuesPatchBody
+        from ..models import (
+            BasicError,
+            ValidationError,
+            OrgsOrgPropertiesValuesPatchBody,
+        )
 
         url = f"/orgs/{org}/properties/values"
 
@@ -4846,6 +4850,7 @@ class OrgsClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "422": ValidationError,
             },
         )
 
@@ -4881,7 +4886,11 @@ class OrgsClient:
     ) -> Response:
         """See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-custom-property-values-for-organization-repositories"""
 
-        from ..models import BasicError, OrgsOrgPropertiesValuesPatchBody
+        from ..models import (
+            BasicError,
+            ValidationError,
+            OrgsOrgPropertiesValuesPatchBody,
+        )
 
         url = f"/orgs/{org}/properties/values"
 
@@ -4902,6 +4911,7 @@ class OrgsClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+                "422": ValidationError,
             },
         )
 

@@ -19,18 +19,17 @@ from githubkit.utils import UNSET
 from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
-from .group_0356 import EnterpriseWebhooks
-from .group_0357 import SimpleInstallation
-from .group_0358 import OrganizationSimpleWebhooks
-from .group_0359 import RepositoryWebhooks
-from .group_0360 import SimpleUserWebhooks
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0359 import OrganizationSimpleWebhooks
+from .group_0360 import RepositoryWebhooks
+from .group_0361 import SimpleUserWebhooks
 
 
-class WebhookProjectColumnEdited(GitHubModel):
-    """project_column edited event"""
+class WebhookProjectColumnDeleted(GitHubModel):
+    """project_column deleted event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookProjectColumnEditedPropChanges = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -46,14 +45,10 @@ class WebhookProjectColumnEdited(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_column: WebhookProjectColumnEditedPropProjectColumn = Field(
+    project_column: WebhookProjectColumnDeletedPropProjectColumn = Field(
         title="Project Column"
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
+    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
     sender: Missing[SimpleUserWebhooks] = Field(
         default=UNSET,
         title="Simple User",
@@ -61,7 +56,7 @@ class WebhookProjectColumnEdited(GitHubModel):
     )
 
 
-class WebhookProjectColumnEditedPropProjectColumn(GitHubModel):
+class WebhookProjectColumnDeletedPropProjectColumn(GitHubModel):
     """Project Column"""
 
     after_id: Missing[Union[int, None]] = Field(default=UNSET)
@@ -75,26 +70,10 @@ class WebhookProjectColumnEditedPropProjectColumn(GitHubModel):
     url: str = Field()
 
 
-class WebhookProjectColumnEditedPropChanges(GitHubModel):
-    """WebhookProjectColumnEditedPropChanges"""
-
-    name: Missing[WebhookProjectColumnEditedPropChangesPropName] = Field(default=UNSET)
-
-
-class WebhookProjectColumnEditedPropChangesPropName(GitHubModel):
-    """WebhookProjectColumnEditedPropChangesPropName"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookProjectColumnEdited)
-model_rebuild(WebhookProjectColumnEditedPropProjectColumn)
-model_rebuild(WebhookProjectColumnEditedPropChanges)
-model_rebuild(WebhookProjectColumnEditedPropChangesPropName)
+model_rebuild(WebhookProjectColumnDeleted)
+model_rebuild(WebhookProjectColumnDeletedPropProjectColumn)
 
 __all__ = (
-    "WebhookProjectColumnEdited",
-    "WebhookProjectColumnEditedPropProjectColumn",
-    "WebhookProjectColumnEditedPropChanges",
-    "WebhookProjectColumnEditedPropChangesPropName",
+    "WebhookProjectColumnDeleted",
+    "WebhookProjectColumnDeletedPropProjectColumn",
 )

@@ -10,13 +10,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
-class NotificationsPutResponse202Type(TypedDict):
-    """NotificationsPutResponse202"""
+class NotificationsPutBodyType(TypedDict):
+    """NotificationsPutBody"""
 
-    message: NotRequired[str]
+    last_read_at: NotRequired[datetime]
+    read: NotRequired[bool]
 
 
-__all__ = ("NotificationsPutResponse202Type",)
+__all__ = ("NotificationsPutBodyType",)

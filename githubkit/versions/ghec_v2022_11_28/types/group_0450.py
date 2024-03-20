@@ -13,19 +13,19 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0389 import EnterpriseWebhooksType
-from .group_0390 import SimpleInstallationType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0392 import RepositoryWebhooksType
-from .group_0393 import SimpleUserWebhooksType
-from .group_0396 import DiscussionType
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0397 import DiscussionType
 
 
-class WebhookDiscussionCommentDeletedType(TypedDict):
-    """discussion_comment deleted event"""
+class WebhookDiscussionCommentCreatedType(TypedDict):
+    """discussion_comment created event"""
 
-    action: Literal["deleted"]
-    comment: WebhookDiscussionCommentDeletedPropCommentType
+    action: Literal["created"]
+    comment: WebhookDiscussionCommentCreatedPropCommentType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -34,8 +34,8 @@ class WebhookDiscussionCommentDeletedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-class WebhookDiscussionCommentDeletedPropCommentType(TypedDict):
-    """WebhookDiscussionCommentDeletedPropComment"""
+class WebhookDiscussionCommentCreatedPropCommentType(TypedDict):
+    """WebhookDiscussionCommentCreatedPropComment"""
 
     author_association: Literal[
         "COLLABORATOR",
@@ -55,13 +55,13 @@ class WebhookDiscussionCommentDeletedPropCommentType(TypedDict):
     id: int
     node_id: str
     parent_id: Union[int, None]
-    reactions: WebhookDiscussionCommentDeletedPropCommentPropReactionsType
+    reactions: WebhookDiscussionCommentCreatedPropCommentPropReactionsType
     repository_url: str
     updated_at: str
-    user: Union[WebhookDiscussionCommentDeletedPropCommentPropUserType, None]
+    user: Union[WebhookDiscussionCommentCreatedPropCommentPropUserType, None]
 
 
-class WebhookDiscussionCommentDeletedPropCommentPropReactionsType(TypedDict):
+class WebhookDiscussionCommentCreatedPropCommentPropReactionsType(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -76,7 +76,7 @@ class WebhookDiscussionCommentDeletedPropCommentPropReactionsType(TypedDict):
     url: str
 
 
-class WebhookDiscussionCommentDeletedPropCommentPropUserType(TypedDict):
+class WebhookDiscussionCommentCreatedPropCommentPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -103,8 +103,8 @@ class WebhookDiscussionCommentDeletedPropCommentPropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionCommentDeletedType",
-    "WebhookDiscussionCommentDeletedPropCommentType",
-    "WebhookDiscussionCommentDeletedPropCommentPropReactionsType",
-    "WebhookDiscussionCommentDeletedPropCommentPropUserType",
+    "WebhookDiscussionCommentCreatedType",
+    "WebhookDiscussionCommentCreatedPropCommentType",
+    "WebhookDiscussionCommentCreatedPropCommentPropReactionsType",
+    "WebhookDiscussionCommentCreatedPropCommentPropUserType",
 )

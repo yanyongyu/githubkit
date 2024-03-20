@@ -13,18 +13,18 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0389 import EnterpriseWebhooksType
-from .group_0390 import SimpleInstallationType
-from .group_0391 import OrganizationSimpleWebhooksType
-from .group_0392 import RepositoryWebhooksType
-from .group_0393 import SimpleUserWebhooksType
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
 
 
-class WebhookOrgBlockUnblockedType(TypedDict):
-    """org_block unblocked event"""
+class WebhookOrgBlockBlockedType(TypedDict):
+    """org_block blocked event"""
 
-    action: Literal["unblocked"]
-    blocked_user: Union[WebhookOrgBlockUnblockedPropBlockedUserType, None]
+    action: Literal["blocked"]
+    blocked_user: Union[WebhookOrgBlockBlockedPropBlockedUserType, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
@@ -32,7 +32,7 @@ class WebhookOrgBlockUnblockedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-class WebhookOrgBlockUnblockedPropBlockedUserType(TypedDict):
+class WebhookOrgBlockBlockedPropBlockedUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -59,6 +59,6 @@ class WebhookOrgBlockUnblockedPropBlockedUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookOrgBlockUnblockedType",
-    "WebhookOrgBlockUnblockedPropBlockedUserType",
+    "WebhookOrgBlockBlockedType",
+    "WebhookOrgBlockBlockedPropBlockedUserType",
 )

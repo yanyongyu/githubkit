@@ -10,20 +10,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0228 import MetadataType
+from typing_extensions import TypedDict
 
 
-class DependencyType(TypedDict):
-    """Dependency"""
+class MetadataType(TypedDict):
+    """metadata
 
-    package_url: NotRequired[str]
-    metadata: NotRequired[MetadataType]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[List[str]]
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
 
 
-__all__ = ("DependencyType",)
+__all__ = ("MetadataType",)

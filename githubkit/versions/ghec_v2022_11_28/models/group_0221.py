@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -19,38 +19,23 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
 
-class CodeownersErrors(GitHubModel):
-    """CODEOWNERS errors
+class CodeScanningSarifsStatus(GitHubModel):
+    """CodeScanningSarifsStatus"""
 
-    A list of errors found in a repo's CODEOWNERS file
-    """
-
-    errors: List[CodeownersErrorsPropErrorsItems] = Field()
-
-
-class CodeownersErrorsPropErrorsItems(GitHubModel):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int = Field(description="The line number where this errors occurs.")
-    column: int = Field(description="The column number where this errors occurs.")
-    source: Missing[str] = Field(
-        default=UNSET, description="The contents of the line where the error occurs."
-    )
-    kind: str = Field(description="The type of error.")
-    suggestion: Missing[Union[str, None]] = Field(
+    processing_status: Missing[Literal["pending", "complete", "failed"]] = Field(
         default=UNSET,
-        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
+        description="`pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.",
     )
-    message: str = Field(
-        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
+    analyses_url: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The REST API URL for getting the analyses associated with the upload.",
     )
-    path: str = Field(description="The path of the file where the error occured.")
+    errors: Missing[Union[List[str], None]] = Field(
+        default=UNSET,
+        description="Any errors that ocurred during processing of the delivery.",
+    )
 
 
-model_rebuild(CodeownersErrors)
-model_rebuild(CodeownersErrorsPropErrorsItems)
+model_rebuild(CodeScanningSarifsStatus)
 
-__all__ = (
-    "CodeownersErrors",
-    "CodeownersErrorsPropErrorsItems",
-)
+__all__ = ("CodeScanningSarifsStatus",)

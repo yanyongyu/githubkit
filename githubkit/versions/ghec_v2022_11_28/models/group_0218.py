@@ -10,6 +10,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -17,22 +19,34 @@ from githubkit.compat import GitHubModel, model_rebuild
 from githubkit.typing import Missing
 
 
-class CodeScanningDefaultSetupUpdateResponse(GitHubModel):
-    """CodeScanningDefaultSetupUpdateResponse
+class CodeScanningDefaultSetupUpdate(GitHubModel):
+    """CodeScanningDefaultSetupUpdate
 
-    You can use `run_url` to track the status of the run. This includes a property
-    status and conclusion.
-    You should not rely on this always being an actions workflow run object.
+    Configuration for code scanning default setup.
     """
 
-    run_id: Missing[int] = Field(
-        default=UNSET, description="ID of the corresponding run."
+    state: Missing[Literal["configured", "not-configured"]] = Field(
+        default=UNSET, description="The desired state of code scanning default setup."
     )
-    run_url: Missing[str] = Field(
-        default=UNSET, description="URL of the corresponding run."
+    query_suite: Missing[Literal["default", "extended"]] = Field(
+        default=UNSET, description="CodeQL query suite to be used."
     )
+    languages: Missing[
+        List[
+            Literal[
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ] = Field(default=UNSET, description="CodeQL languages to be analyzed.")
 
 
-model_rebuild(CodeScanningDefaultSetupUpdateResponse)
+model_rebuild(CodeScanningDefaultSetupUpdate)
 
-__all__ = ("CodeScanningDefaultSetupUpdateResponse",)
+__all__ = ("CodeScanningDefaultSetupUpdate",)
