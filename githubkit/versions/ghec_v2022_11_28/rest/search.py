@@ -13,7 +13,6 @@ from __future__ import annotations
 from weakref import ref
 from typing import TYPE_CHECKING, Dict, Literal, Optional
 
-
 from githubkit.typing import Missing
 from githubkit.utils import UNSET, exclude_unset
 

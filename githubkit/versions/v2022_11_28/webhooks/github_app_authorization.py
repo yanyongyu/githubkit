@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from typing_extensions import TypeAlias
 
-
 from ..models import WebhookGithubAppAuthorizationRevoked
 
 Event: TypeAlias = WebhookGithubAppAuthorizationRevoked
