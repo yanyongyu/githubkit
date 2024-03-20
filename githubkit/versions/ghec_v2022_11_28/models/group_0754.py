@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import Union
@@ -28,11 +27,15 @@ from .group_0392 import OrganizationSimpleWebhooks
 class WebhookRepositoryDispatchSample(GitHubModel):
     """repository_dispatch event"""
 
-    action: str = Field()
+    action: str = Field(
+        description="The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body."
+    )
     branch: str = Field()
-    client_payload: Union[
-        WebhookRepositoryDispatchSamplePropClientPayload, None
-    ] = Field()
+    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayload, None] = (
+        Field(
+            description="The `client_payload` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body."
+        )
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -58,7 +61,11 @@ class WebhookRepositoryDispatchSample(GitHubModel):
 
 
 class WebhookRepositoryDispatchSamplePropClientPayload(ExtraGitHubModel):
-    """WebhookRepositoryDispatchSamplePropClientPayload"""
+    """WebhookRepositoryDispatchSamplePropClientPayload
+
+    The `client_payload` that was specified in the `POST
+    /repos/{owner}/{repo}/dispatches` request body.
+    """
 
 
 model_rebuild(WebhookRepositoryDispatchSample)

@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import Union
@@ -34,7 +33,11 @@ class WebhookRepositoryDispatchSampleType(TypedDict):
 
 
 class WebhookRepositoryDispatchSamplePropClientPayloadType(TypedDict):
-    """WebhookRepositoryDispatchSamplePropClientPayload"""
+    """WebhookRepositoryDispatchSamplePropClientPayload
+
+    The `client_payload` that was specified in the `POST
+    /repos/{owner}/{repo}/dispatches` request body.
+    """
 
 
 __all__ = (

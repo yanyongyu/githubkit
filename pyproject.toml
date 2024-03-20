@@ -407,7 +407,7 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
 
 # webhook repository dispatch action can be any string
 "/webhooks/repository-dispatch-sample.collected/post" = { operationId = "repository-dispatch" }
-"/components/schemas/webhook-repository-dispatch-sample/properties/action" = { enum = "<unset>" }
+# "/components/schemas/webhook-repository-dispatch-sample/properties/action" = { enum = "<unset>" }
 
 [build-system]
 requires = ["poetry_core>=1.0.0"]
