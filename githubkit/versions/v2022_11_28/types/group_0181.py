@@ -9,51 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0180 import DiffEntryType
-from .group_0001 import SimpleUserType
-from .group_0182 import CommitPropCommitType
 
+class DiffEntryType(TypedDict):
+    """Diff Entry
 
-class CommitType(TypedDict):
-    """Commit
-
-    Commit
+    Diff Entry
     """
 
-    url: str
     sha: str
-    node_id: str
-    html_url: str
-    comments_url: str
-    commit: CommitPropCommitType
-    author: Union[None, SimpleUserType]
-    committer: Union[None, SimpleUserType]
-    parents: List[CommitPropParentsItemsType]
-    stats: NotRequired[CommitPropStatsType]
-    files: NotRequired[List[DiffEntryType]]
+    filename: str
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ]
+    additions: int
+    deletions: int
+    changes: int
+    blob_url: str
+    raw_url: str
+    contents_url: str
+    patch: NotRequired[str]
+    previous_filename: NotRequired[str]
 
 
-class CommitPropParentsItemsType(TypedDict):
-    """CommitPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: NotRequired[str]
-
-
-class CommitPropStatsType(TypedDict):
-    """CommitPropStats"""
-
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-    total: NotRequired[int]
-
-
-__all__ = (
-    "CommitType",
-    "CommitPropParentsItemsType",
-    "CommitPropStatsType",
-)
+__all__ = ("DiffEntryType",)

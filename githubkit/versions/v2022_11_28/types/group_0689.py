@@ -13,62 +13,35 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0356 import EnterpriseWebhooksType
-from .group_0357 import SimpleInstallationType
-from .group_0359 import RepositoryWebhooksType
-from .group_0360 import SimpleUserWebhooksType
-from .group_0358 import OrganizationSimpleWebhooksType
+from .group_0357 import EnterpriseWebhooksType
+from .group_0358 import SimpleInstallationType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
+from .group_0359 import OrganizationSimpleWebhooksType
 
 
-class WebhookReleaseEditedType(TypedDict):
-    """release edited event"""
+class WebhookReleaseDeletedType(TypedDict):
+    """release deleted event"""
 
-    action: Literal["edited"]
-    changes: WebhookReleaseEditedPropChangesType
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhookReleaseEditedPropReleaseType
+    release: WebhookReleaseDeletedPropReleaseType
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
+    sender: SimpleUserWebhooksType
 
 
-class WebhookReleaseEditedPropChangesType(TypedDict):
-    """WebhookReleaseEditedPropChanges"""
-
-    body: NotRequired[WebhookReleaseEditedPropChangesPropBodyType]
-    name: NotRequired[WebhookReleaseEditedPropChangesPropNameType]
-    make_latest: NotRequired[WebhookReleaseEditedPropChangesPropMakeLatestType]
-
-
-class WebhookReleaseEditedPropChangesPropBodyType(TypedDict):
-    """WebhookReleaseEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookReleaseEditedPropChangesPropNameType(TypedDict):
-    """WebhookReleaseEditedPropChangesPropName"""
-
-    from_: str
-
-
-class WebhookReleaseEditedPropChangesPropMakeLatestType(TypedDict):
-    """WebhookReleaseEditedPropChangesPropMakeLatest"""
-
-    to: bool
-
-
-class WebhookReleaseEditedPropReleaseType(TypedDict):
+class WebhookReleaseDeletedPropReleaseType(TypedDict):
     """Release
 
     The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
     object.
     """
 
-    assets: List[WebhookReleaseEditedPropReleasePropAssetsItemsType]
+    assets: List[WebhookReleaseDeletedPropReleasePropAssetsItemsType]
     assets_url: str
-    author: Union[WebhookReleaseEditedPropReleasePropAuthorType, None]
+    author: Union[WebhookReleaseDeletedPropReleasePropAuthorType, None]
     body: Union[str, None]
     created_at: Union[datetime, None]
     discussion_url: NotRequired[str]
@@ -79,7 +52,7 @@ class WebhookReleaseEditedPropReleaseType(TypedDict):
     node_id: str
     prerelease: bool
     published_at: Union[datetime, None]
-    reactions: NotRequired[WebhookReleaseEditedPropReleasePropReactionsType]
+    reactions: NotRequired[WebhookReleaseDeletedPropReleasePropReactionsType]
     tag_name: str
     tarball_url: Union[str, None]
     target_commitish: str
@@ -88,7 +61,7 @@ class WebhookReleaseEditedPropReleaseType(TypedDict):
     zipball_url: Union[str, None]
 
 
-class WebhookReleaseEditedPropReleasePropAuthorType(TypedDict):
+class WebhookReleaseDeletedPropReleasePropAuthorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -114,7 +87,7 @@ class WebhookReleaseEditedPropReleasePropAuthorType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookReleaseEditedPropReleasePropReactionsType(TypedDict):
+class WebhookReleaseDeletedPropReleasePropReactionsType(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -129,7 +102,7 @@ class WebhookReleaseEditedPropReleasePropReactionsType(TypedDict):
     url: str
 
 
-class WebhookReleaseEditedPropReleasePropAssetsItemsType(TypedDict):
+class WebhookReleaseDeletedPropReleasePropAssetsItemsType(TypedDict):
     """Release Asset
 
     Data related to a release.
@@ -147,12 +120,12 @@ class WebhookReleaseEditedPropReleasePropAssetsItemsType(TypedDict):
     state: Literal["uploaded"]
     updated_at: datetime
     uploader: NotRequired[
-        Union[WebhookReleaseEditedPropReleasePropAssetsItemsPropUploaderType, None]
+        Union[WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploaderType, None]
     ]
     url: str
 
 
-class WebhookReleaseEditedPropReleasePropAssetsItemsPropUploaderType(TypedDict):
+class WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploaderType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -179,14 +152,10 @@ class WebhookReleaseEditedPropReleasePropAssetsItemsPropUploaderType(TypedDict):
 
 
 __all__ = (
-    "WebhookReleaseEditedType",
-    "WebhookReleaseEditedPropChangesType",
-    "WebhookReleaseEditedPropChangesPropBodyType",
-    "WebhookReleaseEditedPropChangesPropNameType",
-    "WebhookReleaseEditedPropChangesPropMakeLatestType",
-    "WebhookReleaseEditedPropReleaseType",
-    "WebhookReleaseEditedPropReleasePropAuthorType",
-    "WebhookReleaseEditedPropReleasePropReactionsType",
-    "WebhookReleaseEditedPropReleasePropAssetsItemsType",
-    "WebhookReleaseEditedPropReleasePropAssetsItemsPropUploaderType",
+    "WebhookReleaseDeletedType",
+    "WebhookReleaseDeletedPropReleaseType",
+    "WebhookReleaseDeletedPropReleasePropAuthorType",
+    "WebhookReleaseDeletedPropReleasePropReactionsType",
+    "WebhookReleaseDeletedPropReleasePropAssetsItemsType",
+    "WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploaderType",
 )

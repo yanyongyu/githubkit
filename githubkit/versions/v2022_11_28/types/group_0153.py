@@ -9,34 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
-class ActionsCacheListType(TypedDict):
-    """Repository actions caches
+class ArtifactType(TypedDict):
+    """Artifact
 
-    Repository actions caches
+    An artifact
     """
 
-    total_count: int
-    actions_caches: List[ActionsCacheListPropActionsCachesItemsType]
+    id: int
+    node_id: str
+    name: str
+    size_in_bytes: int
+    url: str
+    archive_download_url: str
+    expired: bool
+    created_at: Union[datetime, None]
+    expires_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
 
 
-class ActionsCacheListPropActionsCachesItemsType(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
+class ArtifactPropWorkflowRunType(TypedDict):
+    """ArtifactPropWorkflowRun"""
 
     id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[datetime]
-    created_at: NotRequired[datetime]
-    size_in_bytes: NotRequired[int]
+    repository_id: NotRequired[int]
+    head_repository_id: NotRequired[int]
+    head_branch: NotRequired[str]
+    head_sha: NotRequired[str]
 
 
 __all__ = (
-    "ActionsCacheListType",
-    "ActionsCacheListPropActionsCachesItemsType",
+    "ArtifactType",
+    "ArtifactPropWorkflowRunType",
 )

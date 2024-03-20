@@ -96,7 +96,7 @@ fixture-parentheses = false
 mark-parentheses = false
 
 [tool.pyright]
-typeCheckingMode = "basic"
+typeCheckingMode = "standard"
 reportPrivateImportUsage = false
 reportShadowedImports = false
 disableBytesTypePromotions = true

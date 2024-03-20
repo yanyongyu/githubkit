@@ -13,62 +13,24 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0714 import WebhookReleaseUnpublishedPropReleaseMergedAssetsType
-from .group_0712 import WebhookReleaseUnpublishedPropReleaseAllof0PropReactionsType
+from .group_0357 import EnterpriseWebhooksType
+from .group_0358 import SimpleInstallationType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
+from .group_0359 import OrganizationSimpleWebhooksType
+from .group_0709 import WebhookReleaseUnpublishedPropReleaseType
 
 
-class WebhookReleaseUnpublishedPropReleaseType(TypedDict):
-    """WebhookReleaseUnpublishedPropRelease"""
+class WebhookReleaseUnpublishedType(TypedDict):
+    """release unpublished event"""
 
-    assets: List[WebhookReleaseUnpublishedPropReleaseMergedAssetsType]
-    assets_url: str
-    author: WebhookReleaseUnpublishedPropReleaseMergedAuthorType
-    body: Union[Union[str, None], None]
-    created_at: datetime
-    discussion_url: NotRequired[str]
-    draft: bool
-    html_url: str
-    id: int
-    name: Union[Union[str, None], None]
-    node_id: str
-    prerelease: bool
-    published_at: Union[datetime, None]
-    reactions: NotRequired[WebhookReleaseUnpublishedPropReleaseAllof0PropReactionsType]
-    tag_name: str
-    tarball_url: Union[Union[str, None], None]
-    target_commitish: str
-    upload_url: str
-    url: str
-    zipball_url: Union[Union[str, None], None]
+    action: Literal["unpublished"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhookReleaseUnpublishedPropReleaseType
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-class WebhookReleaseUnpublishedPropReleaseMergedAuthorType(TypedDict):
-    """WebhookReleaseUnpublishedPropReleaseMergedAuthor"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-__all__ = (
-    "WebhookReleaseUnpublishedPropReleaseType",
-    "WebhookReleaseUnpublishedPropReleaseMergedAuthorType",
-)
+__all__ = ("WebhookReleaseUnpublishedType",)

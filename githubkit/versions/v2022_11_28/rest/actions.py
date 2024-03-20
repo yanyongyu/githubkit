@@ -57,10 +57,10 @@ if TYPE_CHECKING:
         ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType,
         ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType,
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
+        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType,
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
     )
     from ..models import (
         Job,
@@ -111,9 +111,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
+        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200,
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200,
     )
 
 
@@ -7956,22 +7956,21 @@ class ActionsClient:
 
     def list_environment_secrets(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200
-    ]:
+    ) -> Response[ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200]:
         """See also: https://docs.github.com/rest/actions/secrets#list-environment-secrets"""
 
         from ..models import (
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200,
+            ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
         )
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/secrets"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/secrets"
 
         params = {
             "per_page": per_page,
@@ -7985,27 +7984,26 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200,
+            response_model=ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
         )
 
     async def async_list_environment_secrets(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200
-    ]:
+    ) -> Response[ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200]:
         """See also: https://docs.github.com/rest/actions/secrets#list-environment-secrets"""
 
         from ..models import (
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200,
+            ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
         )
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/secrets"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/secrets"
 
         params = {
             "per_page": per_page,
@@ -8019,12 +8017,13 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200,
+            response_model=ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
         )
 
     def get_environment_public_key(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
@@ -8033,7 +8032,9 @@ class ActionsClient:
 
         from ..models import ActionsPublicKey
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/public-key"
+        url = (
+            f"/repos/{owner}/{repo}/environments/{environment_name}/secrets/public-key"
+        )
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -8046,7 +8047,8 @@ class ActionsClient:
 
     async def async_get_environment_public_key(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
@@ -8055,7 +8057,9 @@ class ActionsClient:
 
         from ..models import ActionsPublicKey
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/public-key"
+        url = (
+            f"/repos/{owner}/{repo}/environments/{environment_name}/secrets/public-key"
+        )
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -8068,7 +8072,8 @@ class ActionsClient:
 
     def get_environment_secret(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         secret_name: str,
         *,
@@ -8078,7 +8083,7 @@ class ActionsClient:
 
         from ..models import ActionsSecret
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -8091,7 +8096,8 @@ class ActionsClient:
 
     async def async_get_environment_secret(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         secret_name: str,
         *,
@@ -8101,7 +8107,7 @@ class ActionsClient:
 
         from ..models import ActionsSecret
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -8115,18 +8121,20 @@ class ActionsClient:
     @overload
     def create_or_update_environment_secret(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         secret_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
+        data: ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject]: ...
 
     @overload
     def create_or_update_environment_secret(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         secret_name: str,
         *,
@@ -8138,13 +8146,14 @@ class ActionsClient:
 
     def create_or_update_environment_secret(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         secret_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType
+            ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
@@ -8152,10 +8161,10 @@ class ActionsClient:
 
         from ..models import (
             EmptyObject,
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
+            ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
         )
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -8164,8 +8173,7 @@ class ActionsClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
-            json,
+            ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -8180,18 +8188,20 @@ class ActionsClient:
     @overload
     async def async_create_or_update_environment_secret(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         secret_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
+        data: ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_create_or_update_environment_secret(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         secret_name: str,
         *,
@@ -8203,13 +8213,14 @@ class ActionsClient:
 
     async def async_create_or_update_environment_secret(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         secret_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType
+            ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
@@ -8217,10 +8228,10 @@ class ActionsClient:
 
         from ..models import (
             EmptyObject,
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
+            ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
         )
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -8229,8 +8240,7 @@ class ActionsClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
-            json,
+            ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -8244,7 +8254,8 @@ class ActionsClient:
 
     def delete_environment_secret(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         secret_name: str,
         *,
@@ -8252,7 +8263,7 @@ class ActionsClient:
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/secrets#delete-an-environment-secret"""
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -8264,7 +8275,8 @@ class ActionsClient:
 
     async def async_delete_environment_secret(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         secret_name: str,
         *,
@@ -8272,7 +8284,7 @@ class ActionsClient:
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/secrets#delete-an-environment-secret"""
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/secrets/{secret_name}"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -8284,22 +8296,21 @@ class ActionsClient:
 
     def list_environment_variables(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200
-    ]:
+    ) -> Response[ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200]:
         """See also: https://docs.github.com/rest/actions/variables#list-environment-variables"""
 
         from ..models import (
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200,
+            ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
         )
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/variables"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables"
 
         params = {
             "per_page": per_page,
@@ -8313,27 +8324,26 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200,
+            response_model=ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
         )
 
     async def async_list_environment_variables(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200
-    ]:
+    ) -> Response[ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200]:
         """See also: https://docs.github.com/rest/actions/variables#list-environment-variables"""
 
         from ..models import (
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200,
+            ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
         )
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/variables"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables"
 
         params = {
             "per_page": per_page,
@@ -8347,23 +8357,25 @@ class ActionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200,
+            response_model=ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
         )
 
     @overload
     def create_environment_variable(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType,
+        data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
     ) -> Response[EmptyObject]: ...
 
     @overload
     def create_environment_variable(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         *,
         data: Literal[UNSET] = UNSET,
@@ -8374,12 +8386,13 @@ class ActionsClient:
 
     def create_environment_variable(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType
+            ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
@@ -8387,10 +8400,10 @@ class ActionsClient:
 
         from ..models import (
             EmptyObject,
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody,
+            ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody,
         )
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/variables"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -8399,7 +8412,7 @@ class ActionsClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody, json
+            ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -8414,17 +8427,19 @@ class ActionsClient:
     @overload
     async def async_create_environment_variable(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType,
+        data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
     ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_create_environment_variable(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         *,
         data: Literal[UNSET] = UNSET,
@@ -8435,12 +8450,13 @@ class ActionsClient:
 
     async def async_create_environment_variable(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBodyType
+            ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
@@ -8448,10 +8464,10 @@ class ActionsClient:
 
         from ..models import (
             EmptyObject,
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody,
+            ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody,
         )
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/variables"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -8460,7 +8476,7 @@ class ActionsClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody, json
+            ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -8474,7 +8490,8 @@ class ActionsClient:
 
     def get_environment_variable(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         name: str,
         *,
@@ -8484,7 +8501,7 @@ class ActionsClient:
 
         from ..models import ActionsVariable
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables/{name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -8497,7 +8514,8 @@ class ActionsClient:
 
     async def async_get_environment_variable(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         environment_name: str,
         name: str,
         *,
@@ -8507,7 +8525,7 @@ class ActionsClient:
 
         from ..models import ActionsVariable
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables/{name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -8520,7 +8538,8 @@ class ActionsClient:
 
     def delete_environment_variable(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         name: str,
         environment_name: str,
         *,
@@ -8528,7 +8547,7 @@ class ActionsClient:
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/variables#delete-an-environment-variable"""
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables/{name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -8540,7 +8559,8 @@ class ActionsClient:
 
     async def async_delete_environment_variable(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         name: str,
         environment_name: str,
         *,
@@ -8548,7 +8568,7 @@ class ActionsClient:
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/variables#delete-an-environment-variable"""
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables/{name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -8561,18 +8581,20 @@ class ActionsClient:
     @overload
     def update_environment_variable(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         name: str,
         environment_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
+        data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
     ) -> Response: ...
 
     @overload
     def update_environment_variable(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         name: str,
         environment_name: str,
         *,
@@ -8583,23 +8605,24 @@ class ActionsClient:
 
     def update_environment_variable(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         name: str,
         environment_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType
+            ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/variables#update-an-environment-variable"""
 
         from ..models import (
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody,
+            ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody,
         )
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables/{name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -8608,8 +8631,7 @@ class ActionsClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody,
-            json,
+            ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -8623,18 +8645,20 @@ class ActionsClient:
     @overload
     async def async_update_environment_variable(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         name: str,
         environment_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
+        data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
     ) -> Response: ...
 
     @overload
     async def async_update_environment_variable(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         name: str,
         environment_name: str,
         *,
@@ -8645,23 +8669,24 @@ class ActionsClient:
 
     async def async_update_environment_variable(
         self,
-        repository_id: int,
+        owner: str,
+        repo: str,
         name: str,
         environment_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBodyType
+            ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response:
         """See also: https://docs.github.com/rest/actions/variables#update-an-environment-variable"""
 
         from ..models import (
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody,
+            ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody,
         )
 
-        url = f"/repositories/{repository_id}/environments/{environment_name}/variables/{name}"
+        url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables/{name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
@@ -8670,8 +8695,7 @@ class ActionsClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody,
-            json,
+            ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

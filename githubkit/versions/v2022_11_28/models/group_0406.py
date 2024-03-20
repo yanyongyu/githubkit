@@ -18,17 +18,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0356 import EnterpriseWebhooks
-from .group_0357 import SimpleInstallation
-from .group_0359 import RepositoryWebhooks
-from .group_0360 import SimpleUserWebhooks
-from .group_0358 import OrganizationSimpleWebhooks
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0360 import RepositoryWebhooks
+from .group_0361 import SimpleUserWebhooks
+from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookDeployKeyDeleted(GitHubModel):
-    """deploy_key deleted event"""
+class WebhookDeployKeyCreated(GitHubModel):
+    """deploy_key created event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +39,7 @@ class WebhookDeployKeyDeleted(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    key: WebhookDeployKeyDeletedPropKey = Field(
+    key: WebhookDeployKeyCreatedPropKey = Field(
         description="The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key) resource."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
@@ -57,8 +57,8 @@ class WebhookDeployKeyDeleted(GitHubModel):
     )
 
 
-class WebhookDeployKeyDeletedPropKey(GitHubModel):
-    """WebhookDeployKeyDeletedPropKey
+class WebhookDeployKeyCreatedPropKey(GitHubModel):
+    """WebhookDeployKeyCreatedPropKey
 
     The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
     deploy-key) resource.
@@ -75,10 +75,10 @@ class WebhookDeployKeyDeletedPropKey(GitHubModel):
     verified: bool = Field()
 
 
-model_rebuild(WebhookDeployKeyDeleted)
-model_rebuild(WebhookDeployKeyDeletedPropKey)
+model_rebuild(WebhookDeployKeyCreated)
+model_rebuild(WebhookDeployKeyCreatedPropKey)
 
 __all__ = (
-    "WebhookDeployKeyDeleted",
-    "WebhookDeployKeyDeletedPropKey",
+    "WebhookDeployKeyCreated",
+    "WebhookDeployKeyCreatedPropKey",
 )

@@ -13,35 +13,35 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0356 import EnterpriseWebhooksType
-from .group_0357 import SimpleInstallationType
-from .group_0359 import RepositoryWebhooksType
-from .group_0360 import SimpleUserWebhooksType
-from .group_0358 import OrganizationSimpleWebhooksType
+from .group_0357 import EnterpriseWebhooksType
+from .group_0358 import SimpleInstallationType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
+from .group_0359 import OrganizationSimpleWebhooksType
 
 
-class WebhookReleaseDeletedType(TypedDict):
-    """release deleted event"""
+class WebhookReleaseCreatedType(TypedDict):
+    """release created event"""
 
-    action: Literal["deleted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhookReleaseDeletedPropReleaseType
+    release: WebhookReleaseCreatedPropReleaseType
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookReleaseDeletedPropReleaseType(TypedDict):
+class WebhookReleaseCreatedPropReleaseType(TypedDict):
     """Release
 
     The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
     object.
     """
 
-    assets: List[WebhookReleaseDeletedPropReleasePropAssetsItemsType]
+    assets: List[WebhookReleaseCreatedPropReleasePropAssetsItemsType]
     assets_url: str
-    author: Union[WebhookReleaseDeletedPropReleasePropAuthorType, None]
+    author: Union[WebhookReleaseCreatedPropReleasePropAuthorType, None]
     body: Union[str, None]
     created_at: Union[datetime, None]
     discussion_url: NotRequired[str]
@@ -52,7 +52,7 @@ class WebhookReleaseDeletedPropReleaseType(TypedDict):
     node_id: str
     prerelease: bool
     published_at: Union[datetime, None]
-    reactions: NotRequired[WebhookReleaseDeletedPropReleasePropReactionsType]
+    reactions: NotRequired[WebhookReleaseCreatedPropReleasePropReactionsType]
     tag_name: str
     tarball_url: Union[str, None]
     target_commitish: str
@@ -61,7 +61,7 @@ class WebhookReleaseDeletedPropReleaseType(TypedDict):
     zipball_url: Union[str, None]
 
 
-class WebhookReleaseDeletedPropReleasePropAuthorType(TypedDict):
+class WebhookReleaseCreatedPropReleasePropAuthorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -87,7 +87,7 @@ class WebhookReleaseDeletedPropReleasePropAuthorType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookReleaseDeletedPropReleasePropReactionsType(TypedDict):
+class WebhookReleaseCreatedPropReleasePropReactionsType(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -102,7 +102,7 @@ class WebhookReleaseDeletedPropReleasePropReactionsType(TypedDict):
     url: str
 
 
-class WebhookReleaseDeletedPropReleasePropAssetsItemsType(TypedDict):
+class WebhookReleaseCreatedPropReleasePropAssetsItemsType(TypedDict):
     """Release Asset
 
     Data related to a release.
@@ -120,12 +120,12 @@ class WebhookReleaseDeletedPropReleasePropAssetsItemsType(TypedDict):
     state: Literal["uploaded"]
     updated_at: datetime
     uploader: NotRequired[
-        Union[WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploaderType, None]
+        Union[WebhookReleaseCreatedPropReleasePropAssetsItemsPropUploaderType, None]
     ]
     url: str
 
 
-class WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploaderType(TypedDict):
+class WebhookReleaseCreatedPropReleasePropAssetsItemsPropUploaderType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -152,10 +152,10 @@ class WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploaderType(TypedDict)
 
 
 __all__ = (
-    "WebhookReleaseDeletedType",
-    "WebhookReleaseDeletedPropReleaseType",
-    "WebhookReleaseDeletedPropReleasePropAuthorType",
-    "WebhookReleaseDeletedPropReleasePropReactionsType",
-    "WebhookReleaseDeletedPropReleasePropAssetsItemsType",
-    "WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploaderType",
+    "WebhookReleaseCreatedType",
+    "WebhookReleaseCreatedPropReleaseType",
+    "WebhookReleaseCreatedPropReleasePropAuthorType",
+    "WebhookReleaseCreatedPropReleasePropReactionsType",
+    "WebhookReleaseCreatedPropReleasePropAssetsItemsType",
+    "WebhookReleaseCreatedPropReleasePropAssetsItemsPropUploaderType",
 )

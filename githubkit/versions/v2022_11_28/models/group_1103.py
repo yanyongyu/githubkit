@@ -14,13 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody(GitHubModel):
-    """RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody"""
+class ReposOwnerRepoTagsProtectionPostBody(GitHubModel):
+    """ReposOwnerRepoTagsProtectionPostBody"""
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
+    pattern: str = Field(
+        description="An optional glob pattern to match against when enforcing tag protection."
+    )
 
 
-model_rebuild(RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody)
+model_rebuild(ReposOwnerRepoTagsProtectionPostBody)
 
-__all__ = ("RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody",)
+__all__ = ("ReposOwnerRepoTagsProtectionPostBody",)

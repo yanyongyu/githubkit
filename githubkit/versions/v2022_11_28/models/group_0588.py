@@ -18,17 +18,20 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0356 import EnterpriseWebhooks
-from .group_0357 import SimpleInstallation
-from .group_0359 import RepositoryWebhooks
-from .group_0360 import SimpleUserWebhooks
-from .group_0358 import OrganizationSimpleWebhooks
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0360 import RepositoryWebhooks
+from .group_0361 import SimpleUserWebhooks
+from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookOrganizationDeleted(GitHubModel):
-    """organization deleted event"""
+class WebhookOrgBlockUnblocked(GitHubModel):
+    """org_block unblocked event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["unblocked"] = Field()
+    blocked_user: Union[WebhookOrgBlockUnblockedPropBlockedUser, None] = Field(
+        title="User"
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -38,11 +41,6 @@ class WebhookOrganizationDeleted(GitHubModel):
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    membership: Missing[WebhookOrganizationDeletedPropMembership] = Field(
-        default=UNSET,
-        title="Membership",
-        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
     )
     organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
@@ -59,23 +57,7 @@ class WebhookOrganizationDeleted(GitHubModel):
     )
 
 
-class WebhookOrganizationDeletedPropMembership(GitHubModel):
-    """Membership
-
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
-    """
-
-    organization_url: str = Field()
-    role: str = Field()
-    state: str = Field()
-    url: str = Field()
-    user: Union[WebhookOrganizationDeletedPropMembershipPropUser, None] = Field(
-        title="User"
-    )
-
-
-class WebhookOrganizationDeletedPropMembershipPropUser(GitHubModel):
+class WebhookOrgBlockUnblockedPropBlockedUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -101,12 +83,10 @@ class WebhookOrganizationDeletedPropMembershipPropUser(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookOrganizationDeleted)
-model_rebuild(WebhookOrganizationDeletedPropMembership)
-model_rebuild(WebhookOrganizationDeletedPropMembershipPropUser)
+model_rebuild(WebhookOrgBlockUnblocked)
+model_rebuild(WebhookOrgBlockUnblockedPropBlockedUser)
 
 __all__ = (
-    "WebhookOrganizationDeleted",
-    "WebhookOrganizationDeletedPropMembership",
-    "WebhookOrganizationDeletedPropMembershipPropUser",
+    "WebhookOrgBlockUnblocked",
+    "WebhookOrgBlockUnblockedPropBlockedUser",
 )

@@ -2140,6 +2140,9 @@ if TYPE_CHECKING:
         SecretScanningLocationIssueTitle as SecretScanningLocationIssueTitle,
     )
     from githubkit.versions.v2022_11_28.models import (
+        SecretScanningLocationWikiCommit as SecretScanningLocationWikiCommit,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         StatusCheckPolicyPropChecksItems as StatusCheckPolicyPropChecksItems,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3415,6 +3418,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoPullsPullNumberMergePutBody as ReposOwnerRepoPullsPullNumberMergePutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleParamsCodeScanningThreshold as RepositoryRuleParamsCodeScanningThreshold,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleParamsWorkflowFileReference as RepositoryRuleParamsWorkflowFileReference,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3476,6 +3482,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropIssuePropUser as WebhookIssuesTransferredPropIssuePropUser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookMemberAddedPropChangesPropRoleName as WebhookMemberAddedPropChangesPropRoleName,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPackageUpdatedPropPackagePropOwner as WebhookPackageUpdatedPropPackagePropOwner,
@@ -6238,6 +6247,9 @@ if TYPE_CHECKING:
         ProtectedBranchPullRequestReviewPropDismissalRestrictions as ProtectedBranchPullRequestReviewPropDismissalRestrictions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200 as ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody as ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -6446,6 +6458,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody as ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody,
@@ -7087,6 +7102,9 @@ if TYPE_CHECKING:
         PersonalAccessTokenRequestPropPermissionsAddedPropOrganization as PersonalAccessTokenRequestPropPermissionsAddedPropOrganization,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissions as WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -7288,6 +7306,9 @@ if TYPE_CHECKING:
         ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances as ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItems as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -7415,6 +7436,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning,
@@ -7559,6 +7583,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization as PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems,
@@ -8108,9 +8135,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody as RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody as TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
@@ -8791,9 +8815,6 @@ if TYPE_CHECKING:
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200 as RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocation,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -8965,9 +8986,6 @@ if TYPE_CHECKING:
         ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems as ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody as RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty as RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -9077,9 +9095,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200 as RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation,
@@ -9236,9 +9251,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody as RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertReopenedPropAlertPropMostRecentInstancePropLocation,
@@ -10759,6 +10771,7 @@ else:
             "RepositoryRuleWorkflows",
             "RepositoryRuleWorkflowsPropParameters",
             "RepositoryRuleParamsWorkflowFileReference",
+            "RepositoryRuleParamsCodeScanningThreshold",
             "RepositoryRuleset",
             "RepositoryRulesetPropLinks",
             "RepositoryRulesetPropLinksPropSelf",
@@ -12086,6 +12099,7 @@ else:
             "WebhookMemberAddedPropMember",
             "WebhookMemberAddedPropChanges",
             "WebhookMemberAddedPropChangesPropPermission",
+            "WebhookMemberAddedPropChangesPropRoleName",
             "WebhookMemberEdited",
             "WebhookMemberEditedPropMember",
             "WebhookMemberEditedPropChanges",
@@ -13492,6 +13506,7 @@ else:
             "WebhookSecretScanningAlertLocationCreated",
             "SecretScanningLocation",
             "SecretScanningLocationCommit",
+            "SecretScanningLocationWikiCommit",
             "SecretScanningLocationIssueTitle",
             "SecretScanningLocationIssueBody",
             "SecretScanningLocationIssueComment",
@@ -14022,6 +14037,11 @@ else:
             "DeploymentBranchPolicy",
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody",
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200",
+            "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200",
+            "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody",
+            "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200",
+            "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody",
+            "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody",
             "ReposOwnerRepoForksPostBody",
             "ReposOwnerRepoGitBlobsPostBody",
             "ReposOwnerRepoGitCommitsPostBody",
@@ -14081,6 +14101,7 @@ else:
             "ReposOwnerRepoPagesPostBodyAnyof0",
             "ReposOwnerRepoPagesPostBodyAnyof1",
             "ReposOwnerRepoPagesDeploymentsPostBody",
+            "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",
             "ReposOwnerRepoProjectsPostBody",
             "ReposOwnerRepoPropertiesValuesPatchBody",
             "ReposOwnerRepoPullsPostBody",
@@ -14117,11 +14138,6 @@ else:
             "ReposOwnerRepoTopicsPutBody",
             "ReposOwnerRepoTransferPostBody",
             "ReposTemplateOwnerTemplateRepoGeneratePostBody",
-            "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsGetResponse200",
-            "RepositoriesRepositoryIdEnvironmentsEnvironmentNameSecretsSecretNamePutBody",
-            "RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesGetResponse200",
-            "RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesPostBody",
-            "RepositoriesRepositoryIdEnvironmentsEnvironmentNameVariablesNamePatchBody",
             "TeamsTeamIdPatchBody",
             "TeamsTeamIdDiscussionsPostBody",
             "TeamsTeamIdDiscussionsDiscussionNumberPatchBody",

@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -18,17 +18,35 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class WebhookIssuesUnlockedPropIssueAllof0PropPullRequest(GitHubModel):
-    """WebhookIssuesUnlockedPropIssueAllof0PropPullRequest"""
-
-    diff_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
-    patch_url: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+from .group_0548 import WebhookIssuesUnlockedPropIssueAllof0PropMilestonePropCreator
 
 
-model_rebuild(WebhookIssuesUnlockedPropIssueAllof0PropPullRequest)
+class WebhookIssuesUnlockedPropIssueAllof0PropMilestone(GitHubModel):
+    """Milestone
 
-__all__ = ("WebhookIssuesUnlockedPropIssueAllof0PropPullRequest",)
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[datetime, None] = Field()
+    closed_issues: int = Field()
+    created_at: datetime = Field()
+    creator: Union[
+        WebhookIssuesUnlockedPropIssueAllof0PropMilestonePropCreator, None
+    ] = Field(title="User")
+    description: Union[str, None] = Field()
+    due_on: Union[datetime, None] = Field()
+    html_url: str = Field()
+    id: int = Field()
+    labels_url: str = Field()
+    node_id: str = Field()
+    number: int = Field(description="The number of the milestone.")
+    open_issues: int = Field()
+    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
+    title: str = Field(description="The title of the milestone.")
+    updated_at: datetime = Field()
+    url: str = Field()
+
+
+model_rebuild(WebhookIssuesUnlockedPropIssueAllof0PropMilestone)
+
+__all__ = ("WebhookIssuesUnlockedPropIssueAllof0PropMilestone",)

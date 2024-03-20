@@ -27,7 +27,7 @@ class RootType(TypedDict):
     followers_url: str
     following_url: str
     gists_url: str
-    hub_url: str
+    hub_url: NotRequired[str]
     issue_search_url: str
     issues_url: str
     keys_url: str

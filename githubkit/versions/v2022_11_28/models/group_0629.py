@@ -18,17 +18,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0367 import ProjectsV2Item
-from .group_0357 import SimpleInstallation
-from .group_0360 import SimpleUserWebhooks
-from .group_0358 import OrganizationSimpleWebhooks
+from .group_0368 import ProjectsV2Item
+from .group_0358 import SimpleInstallation
+from .group_0361 import SimpleUserWebhooks
+from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ItemConverted(GitHubModel):
-    """Projects v2 Item Converted Event"""
+class WebhookProjectsV2ItemArchived(GitHubModel):
+    """Projects v2 Item Archived Event"""
 
-    action: Literal["converted"] = Field()
-    changes: WebhookProjectsV2ItemConvertedPropChanges = Field()
+    action: Literal["archived"] = Field()
+    changes: WebhookProjectsV2ItemArchivedPropChanges = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -47,27 +47,27 @@ class WebhookProjectsV2ItemConverted(GitHubModel):
     )
 
 
-class WebhookProjectsV2ItemConvertedPropChanges(GitHubModel):
-    """WebhookProjectsV2ItemConvertedPropChanges"""
+class WebhookProjectsV2ItemArchivedPropChanges(GitHubModel):
+    """WebhookProjectsV2ItemArchivedPropChanges"""
 
-    content_type: Missing[WebhookProjectsV2ItemConvertedPropChangesPropContentType] = (
+    archived_at: Missing[WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt] = (
         Field(default=UNSET)
     )
 
 
-class WebhookProjectsV2ItemConvertedPropChangesPropContentType(GitHubModel):
-    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
+class WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt(GitHubModel):
+    """WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt"""
 
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[str] = Field(default=UNSET)
+    from_: Missing[Union[datetime, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[datetime, None]] = Field(default=UNSET)
 
 
-model_rebuild(WebhookProjectsV2ItemConverted)
-model_rebuild(WebhookProjectsV2ItemConvertedPropChanges)
-model_rebuild(WebhookProjectsV2ItemConvertedPropChangesPropContentType)
+model_rebuild(WebhookProjectsV2ItemArchived)
+model_rebuild(WebhookProjectsV2ItemArchivedPropChanges)
+model_rebuild(WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt)
 
 __all__ = (
-    "WebhookProjectsV2ItemConverted",
-    "WebhookProjectsV2ItemConvertedPropChanges",
-    "WebhookProjectsV2ItemConvertedPropChangesPropContentType",
+    "WebhookProjectsV2ItemArchived",
+    "WebhookProjectsV2ItemArchivedPropChanges",
+    "WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt",
 )

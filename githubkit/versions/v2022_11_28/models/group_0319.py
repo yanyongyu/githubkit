@@ -19,8 +19,8 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PrivateVulnerabilityReportCreate(GitHubModel):
-    """PrivateVulnerabilityReportCreate"""
+class RepositoryAdvisoryCreate(GitHubModel):
+    """RepositoryAdvisoryCreate"""
 
     summary: str = Field(
         max_length=1024, description="A short summary of the advisory."
@@ -29,14 +29,21 @@ class PrivateVulnerabilityReportCreate(GitHubModel):
         max_length=65535,
         description="A detailed description of what the advisory impacts.",
     )
-    vulnerabilities: Missing[
-        Union[List[PrivateVulnerabilityReportCreatePropVulnerabilitiesItems], None]
-    ] = Field(
-        default=UNSET,
-        description="An array of products affected by the vulnerability detailed in a repository security advisory.",
+    cve_id: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The Common Vulnerabilities and Exposures (CVE) ID."
+    )
+    vulnerabilities: List[RepositoryAdvisoryCreatePropVulnerabilitiesItems] = Field(
+        description="A product affected by the vulnerability detailed in a repository security advisory."
     )
     cwe_ids: Missing[Union[List[str], None]] = Field(
         default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
+    )
+    credits_: Missing[Union[List[RepositoryAdvisoryCreatePropCreditsItems], None]] = (
+        Field(
+            default=UNSET,
+            alias="credits",
+            description="A list of users receiving credit for their participation in the security advisory.",
+        )
     )
     severity: Missing[Union[None, Literal["critical", "high", "medium", "low"]]] = (
         Field(
@@ -54,11 +61,29 @@ class PrivateVulnerabilityReportCreate(GitHubModel):
     )
 
 
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItems(GitHubModel):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
+class RepositoryAdvisoryCreatePropCreditsItems(GitHubModel):
+    """RepositoryAdvisoryCreatePropCreditsItems"""
 
-    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage = (
-        Field(description="The name of the package affected by the vulnerability.")
+    login: str = Field(description="The username of the user credited.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.")
+
+
+class RepositoryAdvisoryCreatePropVulnerabilitiesItems(GitHubModel):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage = Field(
+        description="The name of the package affected by the vulnerability."
     )
     vulnerable_version_range: Missing[Union[str, None]] = Field(
         default=UNSET,
@@ -73,8 +98,8 @@ class PrivateVulnerabilityReportCreatePropVulnerabilitiesItems(GitHubModel):
     )
 
 
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage(GitHubModel):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
+class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage(GitHubModel):
+    """RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage
 
     The name of the package affected by the vulnerability.
     """
@@ -99,12 +124,14 @@ class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage(GitHub
     )
 
 
-model_rebuild(PrivateVulnerabilityReportCreate)
-model_rebuild(PrivateVulnerabilityReportCreatePropVulnerabilitiesItems)
-model_rebuild(PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage)
+model_rebuild(RepositoryAdvisoryCreate)
+model_rebuild(RepositoryAdvisoryCreatePropCreditsItems)
+model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItems)
+model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage)
 
 __all__ = (
-    "PrivateVulnerabilityReportCreate",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItems",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage",
+    "RepositoryAdvisoryCreate",
+    "RepositoryAdvisoryCreatePropCreditsItems",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItems",
+    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage",
 )

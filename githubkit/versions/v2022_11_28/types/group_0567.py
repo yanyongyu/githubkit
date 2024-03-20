@@ -10,28 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
-from .group_0568 import (
+from .group_0569 import (
     WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropPlanType,
     WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropAccountType,
 )
 
 
-class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0Type(
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType(
     TypedDict
 ):
-    """Marketplace Purchase"""
+    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase"""
 
     account: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropAccountType
     billing_cycle: str
     free_trial_ends_on: None
-    next_billing_date: NotRequired[Union[str, None]]
+    next_billing_date: str
     on_free_trial: bool
     plan: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropPlanType
     unit_count: int
 
 
 __all__ = (
-    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0Type",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType",
 )

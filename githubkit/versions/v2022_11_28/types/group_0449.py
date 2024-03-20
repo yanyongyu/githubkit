@@ -13,26 +13,39 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0356 import EnterpriseWebhooksType
-from .group_0357 import SimpleInstallationType
-from .group_0359 import RepositoryWebhooksType
-from .group_0360 import SimpleUserWebhooksType
-from .group_0358 import OrganizationSimpleWebhooksType
-from .group_0451 import WebhookIssueCommentCreatedPropIssueType
-from .group_0450 import WebhookIssueCommentCreatedPropCommentType
+from .group_0015 import InstallationType
+from .group_0357 import EnterpriseWebhooksType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
+from .group_0359 import OrganizationSimpleWebhooksType
 
 
-class WebhookIssueCommentCreatedType(TypedDict):
-    """issue_comment created event"""
+class WebhookInstallationUnsuspendType(TypedDict):
+    """installation unsuspend event"""
 
-    action: Literal["created"]
-    comment: WebhookIssueCommentCreatedPropCommentType
+    action: Literal["unsuspend"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentCreatedPropIssueType
+    installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repositories: NotRequired[
+        List[WebhookInstallationUnsuspendPropRepositoriesItemsType]
+    ]
+    repository: NotRequired[RepositoryWebhooksType]
+    requester: NotRequired[None]
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookIssueCommentCreatedType",)
+class WebhookInstallationUnsuspendPropRepositoriesItemsType(TypedDict):
+    """WebhookInstallationUnsuspendPropRepositoriesItems"""
+
+    full_name: str
+    id: int
+    name: str
+    node_id: str
+    private: bool
+
+
+__all__ = (
+    "WebhookInstallationUnsuspendType",
+    "WebhookInstallationUnsuspendPropRepositoriesItemsType",
+)

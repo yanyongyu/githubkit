@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -22,24 +22,24 @@ from .group_0001 import SimpleUser
 from .group_0005 import Integration
 
 
-class StateChangeIssueEvent(GitHubModel):
-    """State Change Issue Event
+class TimelineUnassignedIssueEvent(GitHubModel):
+    """Timeline Unassigned Issue Event
 
-    State Change Issue Event
+    Timeline Unassigned Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
+    event: Literal["unassigned"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration] = Field()
-    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(StateChangeIssueEvent)
+model_rebuild(TimelineUnassignedIssueEvent)
 
-__all__ = ("StateChangeIssueEvent",)
+__all__ = ("TimelineUnassignedIssueEvent",)

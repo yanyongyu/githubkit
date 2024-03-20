@@ -9,84 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from datetime import datetime
+from typing_extensions import Annotated
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoGitCommitsPostBody(GitHubModel):
-    """ReposOwnerRepoGitCommitsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
 
-    message: str = Field(description="The commit message")
-    tree: str = Field(description="The SHA of the tree object this commit points to")
-    parents: Missing[List[str]] = Field(
-        default=UNSET,
-        description="The SHAs of the commits that were the parents of this commit. If omitted or empty, the commit will be written as a root commit. For a single parent, an array of one SHA should be provided; for a merge commit, an array of more than one should be provided.",
+    encrypted_value: str = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an environment public key](https://docs.github.com/rest/actions/secrets#get-an-environment-public-key) endpoint.",
     )
-    author: Missing[ReposOwnerRepoGitCommitsPostBodyPropAuthor] = Field(
-        default=UNSET,
-        description="Information about the author of the commit. By default, the `author` will be the authenticated user and the current date. See the `author` and `committer` object below for details.",
-    )
-    committer: Missing[ReposOwnerRepoGitCommitsPostBodyPropCommitter] = Field(
-        default=UNSET,
-        description="Information about the person who is making the commit. By default, `committer` will use the information set in `author`. See the `author` and `committer` object below for details.",
-    )
-    signature: Missing[str] = Field(
-        default=UNSET,
-        description="The [PGP signature](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) of the commit. GitHub adds the signature to the `gpgsig` header of the created commit. For a commit signature to be verifiable by Git or GitHub, it must be an ASCII-armored detached PGP signature over the string commit as it would be written to the object database. To pass a `signature` parameter, you need to first manually create a valid PGP signature, which can be complicated. You may find it easier to [use the command line](https://git-scm.com/book/id/v2/Git-Tools-Signing-Your-Work) to create signed commits.",
-    )
+    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
 
 
-class ReposOwnerRepoGitCommitsPostBodyPropAuthor(GitHubModel):
-    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody)
 
-    Information about the author of the commit. By default, the `author` will be the
-    authenticated user and the current date. See the `author` and `committer` object
-    below for details.
-    """
-
-    name: str = Field(description="The name of the author (or committer) of the commit")
-    email: str = Field(
-        description="The email of the author (or committer) of the commit"
-    )
-    date: Missing[datetime] = Field(
-        default=UNSET,
-        description="Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-
-
-class ReposOwnerRepoGitCommitsPostBodyPropCommitter(GitHubModel):
-    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
-
-    Information about the person who is making the commit. By default, `committer`
-    will use the information set in `author`. See the `author` and `committer`
-    object below for details.
-    """
-
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the author (or committer) of the commit"
-    )
-    email: Missing[str] = Field(
-        default=UNSET,
-        description="The email of the author (or committer) of the commit",
-    )
-    date: Missing[datetime] = Field(
-        default=UNSET,
-        description="Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-
-
-model_rebuild(ReposOwnerRepoGitCommitsPostBody)
-model_rebuild(ReposOwnerRepoGitCommitsPostBodyPropAuthor)
-model_rebuild(ReposOwnerRepoGitCommitsPostBodyPropCommitter)
-
-__all__ = (
-    "ReposOwnerRepoGitCommitsPostBody",
-    "ReposOwnerRepoGitCommitsPostBodyPropAuthor",
-    "ReposOwnerRepoGitCommitsPostBodyPropCommitter",
-)
+__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody",)

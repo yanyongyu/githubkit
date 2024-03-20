@@ -10,41 +10,27 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0744 import (
-    WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisserType,
-)
+from .group_0357 import EnterpriseWebhooksType
+from .group_0358 import SimpleInstallationType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
+from .group_0359 import OrganizationSimpleWebhooksType
+from .group_0743 import WebhookRepositoryVulnerabilityAlertDismissPropAlertType
 
 
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertType(TypedDict):
-    """WebhookRepositoryVulnerabilityAlertDismissPropAlert"""
+class WebhookRepositoryVulnerabilityAlertDismissType(TypedDict):
+    """repository_vulnerability_alert dismiss event"""
 
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_comment: NotRequired[Union[Union[str, None], None]]
-    dismiss_reason: str
-    dismissed_at: str
-    dismisser: Union[
-        Union[
-            WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisserType,
-            None,
-        ],
-        None,
-    ]
-    external_identifier: str
-    external_reference: Union[Union[str, None], None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[datetime]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
-    id: int
-    node_id: str
-    number: int
-    severity: str
-    state: Literal["dismissed"]
+    action: Literal["dismiss"]
+    alert: WebhookRepositoryVulnerabilityAlertDismissPropAlertType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertDismissPropAlertType",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertDismissType",)

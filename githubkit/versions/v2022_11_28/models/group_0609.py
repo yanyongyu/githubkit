@@ -18,17 +18,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0356 import EnterpriseWebhooks
-from .group_0357 import SimpleInstallation
-from .group_0359 import RepositoryWebhooks
-from .group_0360 import SimpleUserWebhooks
-from .group_0358 import OrganizationSimpleWebhooks
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0360 import RepositoryWebhooks
+from .group_0361 import SimpleUserWebhooks
+from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectCardCreated(GitHubModel):
-    """project_card created event"""
+class WebhookProjectCardConverted(GitHubModel):
+    """project_card converted event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["converted"] = Field()
+    changes: WebhookProjectCardConvertedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,7 +45,9 @@ class WebhookProjectCardCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_card: WebhookProjectCardCreatedPropProjectCard = Field(title="Project Card")
+    project_card: WebhookProjectCardConvertedPropProjectCard = Field(
+        title="Project Card"
+    )
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
@@ -56,7 +59,19 @@ class WebhookProjectCardCreated(GitHubModel):
     )
 
 
-class WebhookProjectCardCreatedPropProjectCard(GitHubModel):
+class WebhookProjectCardConvertedPropChanges(GitHubModel):
+    """WebhookProjectCardConvertedPropChanges"""
+
+    note: WebhookProjectCardConvertedPropChangesPropNote = Field()
+
+
+class WebhookProjectCardConvertedPropChangesPropNote(GitHubModel):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
+
+    from_: str = Field(alias="from")
+
+
+class WebhookProjectCardConvertedPropProjectCard(GitHubModel):
     """Project Card"""
 
     after_id: Missing[Union[int, None]] = Field(default=UNSET)
@@ -65,7 +80,7 @@ class WebhookProjectCardCreatedPropProjectCard(GitHubModel):
     column_url: str = Field()
     content_url: Missing[str] = Field(default=UNSET)
     created_at: datetime = Field()
-    creator: Union[WebhookProjectCardCreatedPropProjectCardPropCreator, None] = Field(
+    creator: Union[WebhookProjectCardConvertedPropProjectCardPropCreator, None] = Field(
         title="User"
     )
     id: int = Field(description="The project card's ID")
@@ -76,7 +91,7 @@ class WebhookProjectCardCreatedPropProjectCard(GitHubModel):
     url: str = Field()
 
 
-class WebhookProjectCardCreatedPropProjectCardPropCreator(GitHubModel):
+class WebhookProjectCardConvertedPropProjectCardPropCreator(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -102,12 +117,16 @@ class WebhookProjectCardCreatedPropProjectCardPropCreator(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookProjectCardCreated)
-model_rebuild(WebhookProjectCardCreatedPropProjectCard)
-model_rebuild(WebhookProjectCardCreatedPropProjectCardPropCreator)
+model_rebuild(WebhookProjectCardConverted)
+model_rebuild(WebhookProjectCardConvertedPropChanges)
+model_rebuild(WebhookProjectCardConvertedPropChangesPropNote)
+model_rebuild(WebhookProjectCardConvertedPropProjectCard)
+model_rebuild(WebhookProjectCardConvertedPropProjectCardPropCreator)
 
 __all__ = (
-    "WebhookProjectCardCreated",
-    "WebhookProjectCardCreatedPropProjectCard",
-    "WebhookProjectCardCreatedPropProjectCardPropCreator",
+    "WebhookProjectCardConverted",
+    "WebhookProjectCardConvertedPropChanges",
+    "WebhookProjectCardConvertedPropChangesPropNote",
+    "WebhookProjectCardConvertedPropProjectCard",
+    "WebhookProjectCardConvertedPropProjectCardPropCreator",
 )

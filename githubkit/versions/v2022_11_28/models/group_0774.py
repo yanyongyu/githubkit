@@ -18,18 +18,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0356 import EnterpriseWebhooks
-from .group_0357 import SimpleInstallation
-from .group_0359 import RepositoryWebhooks
-from .group_0360 import SimpleUserWebhooks
-from .group_0358 import OrganizationSimpleWebhooks
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0360 import RepositoryWebhooks
+from .group_0361 import SimpleUserWebhooks
+from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookSponsorshipTierChanged(GitHubModel):
-    """sponsorship tier_changed event"""
+class WebhookSponsorshipPendingTierChange(GitHubModel):
+    """sponsorship pending_tier_change event"""
 
-    action: Literal["tier_changed"] = Field()
-    changes: WebhookSponsorshipTierChangedPropChanges = Field()
+    action: Literal["pending_tier_change"] = Field()
+    changes: WebhookSponsorshipPendingTierChangePropChanges = Field()
+    effective_date: Missing[str] = Field(
+        default=UNSET,
+        description="The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -54,32 +58,32 @@ class WebhookSponsorshipTierChanged(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    sponsorship: WebhookSponsorshipTierChangedPropSponsorship = Field()
+    sponsorship: WebhookSponsorshipPendingTierChangePropSponsorship = Field()
 
 
-class WebhookSponsorshipTierChangedPropSponsorship(GitHubModel):
-    """WebhookSponsorshipTierChangedPropSponsorship"""
+class WebhookSponsorshipPendingTierChangePropSponsorship(GitHubModel):
+    """WebhookSponsorshipPendingTierChangePropSponsorship"""
 
     created_at: str = Field()
-    maintainer: Missing[WebhookSponsorshipTierChangedPropSponsorshipPropMaintainer] = (
-        Field(default=UNSET)
-    )
+    maintainer: Missing[
+        WebhookSponsorshipPendingTierChangePropSponsorshipPropMaintainer
+    ] = Field(default=UNSET)
     node_id: str = Field()
     privacy_level: str = Field()
-    sponsor: Union[WebhookSponsorshipTierChangedPropSponsorshipPropSponsor, None] = (
-        Field(title="User")
-    )
-    sponsorable: Union[
-        WebhookSponsorshipTierChangedPropSponsorshipPropSponsorable, None
+    sponsor: Union[
+        WebhookSponsorshipPendingTierChangePropSponsorshipPropSponsor, None
     ] = Field(title="User")
-    tier: WebhookSponsorshipTierChangedPropSponsorshipPropTier = Field(
+    sponsorable: Union[
+        WebhookSponsorshipPendingTierChangePropSponsorshipPropSponsorable, None
+    ] = Field(title="User")
+    tier: WebhookSponsorshipPendingTierChangePropSponsorshipPropTier = Field(
         title="Sponsorship Tier",
         description="The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.",
     )
 
 
-class WebhookSponsorshipTierChangedPropSponsorshipPropMaintainer(GitHubModel):
-    """WebhookSponsorshipTierChangedPropSponsorshipPropMaintainer"""
+class WebhookSponsorshipPendingTierChangePropSponsorshipPropMaintainer(GitHubModel):
+    """WebhookSponsorshipPendingTierChangePropSponsorshipPropMaintainer"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     events_url: Missing[str] = Field(default=UNSET)
@@ -101,7 +105,7 @@ class WebhookSponsorshipTierChangedPropSponsorshipPropMaintainer(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookSponsorshipTierChangedPropSponsorshipPropSponsor(GitHubModel):
+class WebhookSponsorshipPendingTierChangePropSponsorshipPropSponsor(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -127,7 +131,7 @@ class WebhookSponsorshipTierChangedPropSponsorshipPropSponsor(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookSponsorshipTierChangedPropSponsorshipPropSponsorable(GitHubModel):
+class WebhookSponsorshipPendingTierChangePropSponsorshipPropSponsorable(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -153,7 +157,7 @@ class WebhookSponsorshipTierChangedPropSponsorshipPropSponsorable(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookSponsorshipTierChangedPropSponsorshipPropTier(GitHubModel):
+class WebhookSponsorshipPendingTierChangePropSponsorshipPropTier(GitHubModel):
     """Sponsorship Tier
 
     The `tier_changed` and `pending_tier_change` will include the original tier
@@ -172,23 +176,23 @@ class WebhookSponsorshipTierChangedPropSponsorshipPropTier(GitHubModel):
     node_id: str = Field()
 
 
-class WebhookSponsorshipTierChangedPropChanges(GitHubModel):
-    """WebhookSponsorshipTierChangedPropChanges"""
+class WebhookSponsorshipPendingTierChangePropChanges(GitHubModel):
+    """WebhookSponsorshipPendingTierChangePropChanges"""
 
-    tier: WebhookSponsorshipTierChangedPropChangesPropTier = Field()
+    tier: WebhookSponsorshipPendingTierChangePropChangesPropTier = Field()
 
 
-class WebhookSponsorshipTierChangedPropChangesPropTier(GitHubModel):
-    """WebhookSponsorshipTierChangedPropChangesPropTier"""
+class WebhookSponsorshipPendingTierChangePropChangesPropTier(GitHubModel):
+    """WebhookSponsorshipPendingTierChangePropChangesPropTier"""
 
-    from_: WebhookSponsorshipTierChangedPropChangesPropTierPropFrom = Field(
+    from_: WebhookSponsorshipPendingTierChangePropChangesPropTierPropFrom = Field(
         alias="from",
         title="Sponsorship Tier",
         description="The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.",
     )
 
 
-class WebhookSponsorshipTierChangedPropChangesPropTierPropFrom(GitHubModel):
+class WebhookSponsorshipPendingTierChangePropChangesPropTierPropFrom(GitHubModel):
     """Sponsorship Tier
 
     The `tier_changed` and `pending_tier_change` will include the original tier
@@ -207,24 +211,24 @@ class WebhookSponsorshipTierChangedPropChangesPropTierPropFrom(GitHubModel):
     node_id: str = Field()
 
 
-model_rebuild(WebhookSponsorshipTierChanged)
-model_rebuild(WebhookSponsorshipTierChangedPropSponsorship)
-model_rebuild(WebhookSponsorshipTierChangedPropSponsorshipPropMaintainer)
-model_rebuild(WebhookSponsorshipTierChangedPropSponsorshipPropSponsor)
-model_rebuild(WebhookSponsorshipTierChangedPropSponsorshipPropSponsorable)
-model_rebuild(WebhookSponsorshipTierChangedPropSponsorshipPropTier)
-model_rebuild(WebhookSponsorshipTierChangedPropChanges)
-model_rebuild(WebhookSponsorshipTierChangedPropChangesPropTier)
-model_rebuild(WebhookSponsorshipTierChangedPropChangesPropTierPropFrom)
+model_rebuild(WebhookSponsorshipPendingTierChange)
+model_rebuild(WebhookSponsorshipPendingTierChangePropSponsorship)
+model_rebuild(WebhookSponsorshipPendingTierChangePropSponsorshipPropMaintainer)
+model_rebuild(WebhookSponsorshipPendingTierChangePropSponsorshipPropSponsor)
+model_rebuild(WebhookSponsorshipPendingTierChangePropSponsorshipPropSponsorable)
+model_rebuild(WebhookSponsorshipPendingTierChangePropSponsorshipPropTier)
+model_rebuild(WebhookSponsorshipPendingTierChangePropChanges)
+model_rebuild(WebhookSponsorshipPendingTierChangePropChangesPropTier)
+model_rebuild(WebhookSponsorshipPendingTierChangePropChangesPropTierPropFrom)
 
 __all__ = (
-    "WebhookSponsorshipTierChanged",
-    "WebhookSponsorshipTierChangedPropSponsorship",
-    "WebhookSponsorshipTierChangedPropSponsorshipPropMaintainer",
-    "WebhookSponsorshipTierChangedPropSponsorshipPropSponsor",
-    "WebhookSponsorshipTierChangedPropSponsorshipPropSponsorable",
-    "WebhookSponsorshipTierChangedPropSponsorshipPropTier",
-    "WebhookSponsorshipTierChangedPropChanges",
-    "WebhookSponsorshipTierChangedPropChangesPropTier",
-    "WebhookSponsorshipTierChangedPropChangesPropTierPropFrom",
+    "WebhookSponsorshipPendingTierChange",
+    "WebhookSponsorshipPendingTierChangePropSponsorship",
+    "WebhookSponsorshipPendingTierChangePropSponsorshipPropMaintainer",
+    "WebhookSponsorshipPendingTierChangePropSponsorshipPropSponsor",
+    "WebhookSponsorshipPendingTierChangePropSponsorshipPropSponsorable",
+    "WebhookSponsorshipPendingTierChangePropSponsorshipPropTier",
+    "WebhookSponsorshipPendingTierChangePropChanges",
+    "WebhookSponsorshipPendingTierChangePropChangesPropTier",
+    "WebhookSponsorshipPendingTierChangePropChangesPropTierPropFrom",
 )

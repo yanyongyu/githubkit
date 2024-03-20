@@ -10,19 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0357 import EnterpriseWebhooksType
+from .group_0358 import SimpleInstallationType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
+from .group_0359 import OrganizationSimpleWebhooksType
 
-class WebhookDiscussionCreatedPropDiscussionAllof0Type(TypedDict):
-    """Discussion"""
 
-    active_lock_reason: Union[str, None]
-    answer_chosen_at: Union[str, None]
-    answer_chosen_by: Union[
-        WebhookDiscussionCreatedPropDiscussionAllof0PropAnswerChosenByType, None
-    ]
-    answer_html_url: Union[str, None]
+class WebhookDiscussionCreatedType(TypedDict):
+    """discussion created event"""
+
+    action: Literal["created"]
+    discussion: WebhookDiscussionCreatedPropDiscussionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+
+
+class WebhookDiscussionCreatedPropDiscussionType(TypedDict):
+    """WebhookDiscussionCreatedPropDiscussion"""
+
+    active_lock_reason: Union[None, None]
+    answer_chosen_at: Union[None, None]
+    answer_chosen_by: Union[None, None]
+    answer_html_url: Union[Union[str, None], None]
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -33,54 +49,26 @@ class WebhookDiscussionCreatedPropDiscussionAllof0Type(TypedDict):
         "NONE",
         "OWNER",
     ]
-    body: Union[str, None]
-    category: WebhookDiscussionCreatedPropDiscussionAllof0PropCategoryType
+    body: Union[Union[str, None], None]
+    category: WebhookDiscussionCreatedPropDiscussionMergedCategoryType
     comments: int
     created_at: datetime
     html_url: str
     id: int
-    locked: bool
+    locked: Literal[False]
     node_id: str
     number: int
-    reactions: NotRequired[
-        WebhookDiscussionCreatedPropDiscussionAllof0PropReactionsType
-    ]
+    reactions: NotRequired[WebhookDiscussionCreatedPropDiscussionMergedReactionsType]
     repository_url: str
-    state: Literal["open", "locked", "converting", "transferring"]
+    state: Literal["open", "converting", "transferring"]
     timeline_url: NotRequired[str]
     title: str
     updated_at: datetime
-    user: Union[WebhookDiscussionCreatedPropDiscussionAllof0PropUserType, None]
+    user: WebhookDiscussionCreatedPropDiscussionMergedUserType
 
 
-class WebhookDiscussionCreatedPropDiscussionAllof0PropAnswerChosenByType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookDiscussionCreatedPropDiscussionAllof0PropCategoryType(TypedDict):
-    """WebhookDiscussionCreatedPropDiscussionAllof0PropCategory"""
+class WebhookDiscussionCreatedPropDiscussionMergedCategoryType(TypedDict):
+    """WebhookDiscussionCreatedPropDiscussionMergedCategory"""
 
     created_at: datetime
     description: str
@@ -94,8 +82,8 @@ class WebhookDiscussionCreatedPropDiscussionAllof0PropCategoryType(TypedDict):
     updated_at: str
 
 
-class WebhookDiscussionCreatedPropDiscussionAllof0PropReactionsType(TypedDict):
-    """Reactions"""
+class WebhookDiscussionCreatedPropDiscussionMergedReactionsType(TypedDict):
+    """WebhookDiscussionCreatedPropDiscussionMergedReactions"""
 
     plus_one: int
     minus_one: int
@@ -109,8 +97,8 @@ class WebhookDiscussionCreatedPropDiscussionAllof0PropReactionsType(TypedDict):
     url: str
 
 
-class WebhookDiscussionCreatedPropDiscussionAllof0PropUserType(TypedDict):
-    """User"""
+class WebhookDiscussionCreatedPropDiscussionMergedUserType(TypedDict):
+    """WebhookDiscussionCreatedPropDiscussionMergedUser"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -136,9 +124,9 @@ class WebhookDiscussionCreatedPropDiscussionAllof0PropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionCreatedPropDiscussionAllof0Type",
-    "WebhookDiscussionCreatedPropDiscussionAllof0PropAnswerChosenByType",
-    "WebhookDiscussionCreatedPropDiscussionAllof0PropCategoryType",
-    "WebhookDiscussionCreatedPropDiscussionAllof0PropReactionsType",
-    "WebhookDiscussionCreatedPropDiscussionAllof0PropUserType",
+    "WebhookDiscussionCreatedType",
+    "WebhookDiscussionCreatedPropDiscussionType",
+    "WebhookDiscussionCreatedPropDiscussionMergedCategoryType",
+    "WebhookDiscussionCreatedPropDiscussionMergedReactionsType",
+    "WebhookDiscussionCreatedPropDiscussionMergedUserType",
 )

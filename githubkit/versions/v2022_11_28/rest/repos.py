@@ -116,6 +116,7 @@ if TYPE_CHECKING:
         RepositoryCollaboratorPermission,
         ReposOwnerRepoEnvironmentsGetResponse200,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
@@ -6378,7 +6379,7 @@ class ReposClient:
 
         from typing import List
 
-        from ..models import BranchShort, ValidationError
+        from ..models import BasicError, BranchShort, ValidationError
 
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head"
 
@@ -6391,6 +6392,7 @@ class ReposClient:
             response_model=List[BranchShort],
             error_models={
                 "422": ValidationError,
+                "409": BasicError,
             },
         )
 
@@ -6406,7 +6408,7 @@ class ReposClient:
 
         from typing import List
 
-        from ..models import BranchShort, ValidationError
+        from ..models import BasicError, BranchShort, ValidationError
 
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head"
 
@@ -6419,6 +6421,7 @@ class ReposClient:
             response_model=List[BranchShort],
             error_models={
                 "422": ValidationError,
+                "409": BasicError,
             },
         )
 
@@ -6642,7 +6645,7 @@ class ReposClient:
 
         from typing import List
 
-        from ..models import PullRequestSimple
+        from ..models import BasicError, PullRequestSimple
 
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/pulls"
 
@@ -6659,6 +6662,9 @@ class ReposClient:
             params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=List[PullRequestSimple],
+            error_models={
+                "409": BasicError,
+            },
         )
 
     async def async_list_pull_requests_associated_with_commit(
@@ -6675,7 +6681,7 @@ class ReposClient:
 
         from typing import List
 
-        from ..models import PullRequestSimple
+        from ..models import BasicError, PullRequestSimple
 
         url = f"/repos/{owner}/{repo}/commits/{commit_sha}/pulls"
 
@@ -6692,6 +6698,9 @@ class ReposClient:
             params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=List[PullRequestSimple],
+            error_models={
+                "409": BasicError,
+            },
         )
 
     def get_commit(
@@ -6733,6 +6742,7 @@ class ReposClient:
                 "404": BasicError,
                 "500": BasicError,
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "409": BasicError,
             },
         )
 
@@ -6775,6 +6785,7 @@ class ReposClient:
                 "404": BasicError,
                 "500": BasicError,
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+                "409": BasicError,
             },
         )
 
@@ -8149,7 +8160,11 @@ class ReposClient:
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#create-a-repository-dispatch-event"""
 
-        from ..models import ValidationError, ReposOwnerRepoDispatchesPostBody
+        from ..models import (
+            BasicError,
+            ValidationError,
+            ReposOwnerRepoDispatchesPostBody,
+        )
 
         url = f"/repos/{owner}/{repo}/dispatches"
 
@@ -8168,6 +8183,7 @@ class ReposClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             error_models={
+                "404": BasicError,
                 "422": ValidationError,
             },
         )
@@ -8207,7 +8223,11 @@ class ReposClient:
     ) -> Response:
         """See also: https://docs.github.com/rest/repos/repos#create-a-repository-dispatch-event"""
 
-        from ..models import ValidationError, ReposOwnerRepoDispatchesPostBody
+        from ..models import (
+            BasicError,
+            ValidationError,
+            ReposOwnerRepoDispatchesPostBody,
+        )
 
         url = f"/repos/{owner}/{repo}/dispatches"
 
@@ -8226,6 +8246,7 @@ class ReposClient:
             json=exclude_unset(json),
             headers=exclude_unset(headers),
             error_models={
+                "404": BasicError,
                 "422": ValidationError,
             },
         )
@@ -12307,6 +12328,62 @@ class ReposClient:
             response_model=PagesHealthCheck,
             error_models={
                 "404": BasicError,
+            },
+        )
+
+    def check_private_vulnerability_reporting(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200]:
+        """See also: https://docs.github.com/rest/repos/repos#check-if-private-vulnerability-reporting-is-enabled-for-a-repository"""
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
+        )
+
+        url = f"/repos/{owner}/{repo}/private-vulnerability-reporting"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
+            error_models={
+                "422": BasicError,
+            },
+        )
+
+    async def async_check_private_vulnerability_reporting(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200]:
+        """See also: https://docs.github.com/rest/repos/repos#check-if-private-vulnerability-reporting-is-enabled-for-a-repository"""
+
+        from ..models import (
+            BasicError,
+            ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
+        )
+
+        url = f"/repos/{owner}/{repo}/private-vulnerability-reporting"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
+            error_models={
+                "422": BasicError,
             },
         )
 

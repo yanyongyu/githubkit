@@ -9,139 +9,125 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0175 import BranchRestrictionPolicyType
-from .group_0173 import ProtectedBranchPullRequestReviewType
 
+class BranchRestrictionPolicyType(TypedDict):
+    """Branch Restriction Policy
 
-class BranchProtectionType(TypedDict):
-    """Branch Protection
-
-    Branch Protection
+    Branch Restriction Policy
     """
 
+    url: str
+    users_url: str
+    teams_url: str
+    apps_url: str
+    users: List[BranchRestrictionPolicyPropUsersItemsType]
+    teams: List[BranchRestrictionPolicyPropTeamsItemsType]
+    apps: List[BranchRestrictionPolicyPropAppsItemsType]
+
+
+class BranchRestrictionPolicyPropUsersItemsType(TypedDict):
+    """BranchRestrictionPolicyPropUsersItems"""
+
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    avatar_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
     url: NotRequired[str]
-    enabled: NotRequired[bool]
-    required_status_checks: NotRequired[ProtectedBranchRequiredStatusCheckType]
-    enforce_admins: NotRequired[ProtectedBranchAdminEnforcedType]
-    required_pull_request_reviews: NotRequired[ProtectedBranchPullRequestReviewType]
-    restrictions: NotRequired[BranchRestrictionPolicyType]
-    required_linear_history: NotRequired[BranchProtectionPropRequiredLinearHistoryType]
-    allow_force_pushes: NotRequired[BranchProtectionPropAllowForcePushesType]
-    allow_deletions: NotRequired[BranchProtectionPropAllowDeletionsType]
-    block_creations: NotRequired[BranchProtectionPropBlockCreationsType]
-    required_conversation_resolution: NotRequired[
-        BranchProtectionPropRequiredConversationResolutionType
-    ]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: NotRequired[str]
+    site_admin: NotRequired[bool]
+
+
+class BranchRestrictionPolicyPropTeamsItemsType(TypedDict):
+    """BranchRestrictionPolicyPropTeamsItems"""
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
     name: NotRequired[str]
-    protection_url: NotRequired[str]
-    required_signatures: NotRequired[BranchProtectionPropRequiredSignaturesType]
-    lock_branch: NotRequired[BranchProtectionPropLockBranchType]
-    allow_fork_syncing: NotRequired[BranchProtectionPropAllowForkSyncingType]
+    slug: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: NotRequired[str]
+    members_url: NotRequired[str]
+    repositories_url: NotRequired[str]
+    parent: NotRequired[Union[str, None]]
 
 
-class ProtectedBranchAdminEnforcedType(TypedDict):
-    """Protected Branch Admin Enforced
+class BranchRestrictionPolicyPropAppsItemsType(TypedDict):
+    """BranchRestrictionPolicyPropAppsItems"""
 
-    Protected Branch Admin Enforced
-    """
-
-    url: str
-    enabled: bool
-
-
-class BranchProtectionPropRequiredLinearHistoryType(TypedDict):
-    """BranchProtectionPropRequiredLinearHistory"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropAllowForcePushesType(TypedDict):
-    """BranchProtectionPropAllowForcePushes"""
-
-    enabled: NotRequired[bool]
+    id: NotRequired[int]
+    slug: NotRequired[str]
+    node_id: NotRequired[str]
+    owner: NotRequired[BranchRestrictionPolicyPropAppsItemsPropOwnerType]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    external_url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    permissions: NotRequired[BranchRestrictionPolicyPropAppsItemsPropPermissionsType]
+    events: NotRequired[List[str]]
 
 
-class BranchProtectionPropAllowDeletionsType(TypedDict):
-    """BranchProtectionPropAllowDeletions"""
+class BranchRestrictionPolicyPropAppsItemsPropOwnerType(TypedDict):
+    """BranchRestrictionPolicyPropAppsItemsPropOwner"""
 
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropBlockCreationsType(TypedDict):
-    """BranchProtectionPropBlockCreations"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropRequiredConversationResolutionType(TypedDict):
-    """BranchProtectionPropRequiredConversationResolution"""
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropRequiredSignaturesType(TypedDict):
-    """BranchProtectionPropRequiredSignatures"""
-
-    url: str
-    enabled: bool
-
-
-class BranchProtectionPropLockBranchType(TypedDict):
-    """BranchProtectionPropLockBranch
-
-    Whether to set the branch as read-only. If this is true, users will not be able
-    to push to the branch.
-    """
-
-    enabled: NotRequired[bool]
-
-
-class BranchProtectionPropAllowForkSyncingType(TypedDict):
-    """BranchProtectionPropAllowForkSyncing
-
-    Whether users can pull changes from upstream when the branch is locked. Set to
-    `true` to allow fork syncing. Set to `false` to prevent fork syncing.
-    """
-
-    enabled: NotRequired[bool]
-
-
-class ProtectedBranchRequiredStatusCheckType(TypedDict):
-    """Protected Branch Required Status Check
-
-    Protected Branch Required Status Check
-    """
-
+    login: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
     url: NotRequired[str]
-    enforcement_level: NotRequired[str]
-    contexts: List[str]
-    checks: List[ProtectedBranchRequiredStatusCheckPropChecksItemsType]
-    contexts_url: NotRequired[str]
-    strict: NotRequired[bool]
+    repos_url: NotRequired[str]
+    events_url: NotRequired[str]
+    hooks_url: NotRequired[str]
+    issues_url: NotRequired[str]
+    members_url: NotRequired[str]
+    public_members_url: NotRequired[str]
+    avatar_url: NotRequired[str]
+    description: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    type: NotRequired[str]
+    site_admin: NotRequired[bool]
 
 
-class ProtectedBranchRequiredStatusCheckPropChecksItemsType(TypedDict):
-    """ProtectedBranchRequiredStatusCheckPropChecksItems"""
+class BranchRestrictionPolicyPropAppsItemsPropPermissionsType(TypedDict):
+    """BranchRestrictionPolicyPropAppsItemsPropPermissions"""
 
-    context: str
-    app_id: Union[int, None]
+    metadata: NotRequired[str]
+    contents: NotRequired[str]
+    issues: NotRequired[str]
+    single_file: NotRequired[str]
 
 
 __all__ = (
-    "BranchProtectionType",
-    "ProtectedBranchAdminEnforcedType",
-    "BranchProtectionPropRequiredLinearHistoryType",
-    "BranchProtectionPropAllowForcePushesType",
-    "BranchProtectionPropAllowDeletionsType",
-    "BranchProtectionPropBlockCreationsType",
-    "BranchProtectionPropRequiredConversationResolutionType",
-    "BranchProtectionPropRequiredSignaturesType",
-    "BranchProtectionPropLockBranchType",
-    "BranchProtectionPropAllowForkSyncingType",
-    "ProtectedBranchRequiredStatusCheckType",
-    "ProtectedBranchRequiredStatusCheckPropChecksItemsType",
+    "BranchRestrictionPolicyType",
+    "BranchRestrictionPolicyPropUsersItemsType",
+    "BranchRestrictionPolicyPropTeamsItemsType",
+    "BranchRestrictionPolicyPropAppsItemsType",
+    "BranchRestrictionPolicyPropAppsItemsPropOwnerType",
+    "BranchRestrictionPolicyPropAppsItemsPropPermissionsType",
 )

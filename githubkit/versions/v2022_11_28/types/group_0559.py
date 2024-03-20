@@ -9,119 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0356 import EnterpriseWebhooksType
-from .group_0357 import SimpleInstallationType
-from .group_0359 import RepositoryWebhooksType
-from .group_0360 import SimpleUserWebhooksType
-from .group_0358 import OrganizationSimpleWebhooksType
 
+class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1Type(TypedDict):
+    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1"""
 
-class WebhookMarketplacePurchaseChangedType(TypedDict):
-    """marketplace_purchase changed event"""
-
-    action: Literal["changed"]
-    effective_date: str
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhookMarketplacePurchaseChangedPropMarketplacePurchaseType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[
-        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType
+    account: NotRequired[
+        WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccountType
     ]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserWebhooksType
+    billing_cycle: NotRequired[str]
+    free_trial_ends_on: NotRequired[Union[str, None]]
+    next_billing_date: Union[str, None]
+    on_free_trial: NotRequired[bool]
+    plan: NotRequired[
+        WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlanType
+    ]
+    unit_count: NotRequired[int]
 
 
-class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseType(TypedDict):
-    """WebhookMarketplacePurchaseChangedPropMarketplacePurchase"""
-
-    account: WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedAccountType
-    billing_cycle: str
-    free_trial_ends_on: Union[Union[str, None], None]
-    next_billing_date: Union[Union[str, None], None]
-    on_free_trial: bool
-    plan: WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedPlanType
-    unit_count: int
-
-
-class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedAccountType(
+class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccountType(
     TypedDict
 ):
-    """WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedAccount"""
+    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccount"""
 
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[Union[str, None], None]
-    type: str
-
-
-class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedPlanType(TypedDict):
-    """WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedPlan"""
-
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[Union[str, None], None]
-    yearly_price_in_cents: int
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organization_billing_email: NotRequired[Union[str, None]]
+    type: NotRequired[str]
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase"""
-
-    account: (
-        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType
-    )
-    billing_cycle: str
-    free_trial_ends_on: Union[str, None]
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: Union[bool, None]
-    plan: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType
-    unit_count: int
-
-
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType(
+class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlanType(
     TypedDict
 ):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount"""
+    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlan"""
 
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan"""
-
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    bullets: NotRequired[List[Union[str, None]]]
+    description: NotRequired[str]
+    has_free_trial: NotRequired[bool]
+    id: NotRequired[int]
+    monthly_price_in_cents: NotRequired[int]
+    name: NotRequired[str]
+    price_model: NotRequired[Literal["FREE", "FLAT_RATE", "PER_UNIT"]]
+    unit_name: NotRequired[Union[str, None]]
+    yearly_price_in_cents: NotRequired[int]
 
 
 __all__ = (
-    "WebhookMarketplacePurchaseChangedType",
-    "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseType",
-    "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedAccountType",
-    "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedPlanType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType",
+    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1Type",
+    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccountType",
+    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlanType",
 )

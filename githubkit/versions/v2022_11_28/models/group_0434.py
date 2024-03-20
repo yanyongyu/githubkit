@@ -18,27 +18,25 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0356 import EnterpriseWebhooks
-from .group_0357 import SimpleInstallation
-from .group_0359 import RepositoryWebhooks
-from .group_0360 import SimpleUserWebhooks
-from .group_0435 import WebhookForkPropForkee
-from .group_0358 import OrganizationSimpleWebhooks
+from .group_0364 import Discussion
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0360 import RepositoryWebhooks
+from .group_0361 import SimpleUserWebhooks
+from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookFork(GitHubModel):
-    """fork event
+class WebhookDiscussionUnpinned(GitHubModel):
+    """discussion unpinned event"""
 
-    A user forks a repository.
-    """
-
+    action: Literal["unpinned"] = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
-    )
-    forkee: WebhookForkPropForkee = Field(
-        description="The created [`repository`](https://docs.github.com/rest/repos/repos#get-a-repository) resource."
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -60,6 +58,6 @@ class WebhookFork(GitHubModel):
     )
 
 
-model_rebuild(WebhookFork)
+model_rebuild(WebhookDiscussionUnpinned)
 
-__all__ = ("WebhookFork",)
+__all__ = ("WebhookDiscussionUnpinned",)
