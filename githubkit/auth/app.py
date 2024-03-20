@@ -73,15 +73,18 @@ class AppAuth(httpx.Auth):
             algorithm="RS256",
         )
 
+    def _get_jwt_cache_key(self) -> str:
+        return self.JWT_CACHE_KEY.format(app_id=self.app_id)
+
     def get_jwt(self) -> str:
-        cache_key = self.JWT_CACHE_KEY.format(app_id=self.app_id)
+        cache_key = self._get_jwt_cache_key()
         if not (token := self.cache.get(cache_key)):
             token = self._create_jwt()
             self.cache.set(cache_key, token, timedelta(minutes=8))
         return token
 
     async def aget_jwt(self) -> str:
-        cache_key = self.JWT_CACHE_KEY.format(app_id=self.app_id)
+        cache_key = self._get_jwt_cache_key()
         if not (token := await self.cache.aget(cache_key)):
             token = self._create_jwt()
             await self.cache.aset(cache_key, token, timedelta(minutes=8))
