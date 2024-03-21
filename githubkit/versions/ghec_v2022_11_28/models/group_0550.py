@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union, Literal
@@ -25,9 +24,9 @@ class WebhookIssuesLockedPropIssueAllof1(GitHubModel):
     active_lock_reason: Union[
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ] = Field()
-    assignee: Missing[
-        Union[WebhookIssuesLockedPropIssueAllof1PropAssignee, None]
-    ] = Field(default=UNSET)
+    assignee: Missing[Union[WebhookIssuesLockedPropIssueAllof1PropAssignee, None]] = (
+        Field(default=UNSET)
+    )
     assignees: Missing[
         List[Union[WebhookIssuesLockedPropIssueAllof1PropAssigneesItems, None]]
     ] = Field(default=UNSET)
@@ -45,9 +44,9 @@ class WebhookIssuesLockedPropIssueAllof1(GitHubModel):
     ] = Field(default=UNSET)
     labels_url: Missing[str] = Field(default=UNSET)
     locked: Literal[True] = Field()
-    milestone: Missing[
-        Union[WebhookIssuesLockedPropIssueAllof1PropMilestone, None]
-    ] = Field(default=UNSET)
+    milestone: Missing[Union[WebhookIssuesLockedPropIssueAllof1PropMilestone, None]] = (
+        Field(default=UNSET)
+    )
     node_id: Missing[str] = Field(default=UNSET)
     number: Missing[int] = Field(default=UNSET)
     performed_via_github_app: Missing[

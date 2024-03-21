@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import Union
@@ -25,11 +24,11 @@ class EnterpriseSecurityAnalysisSettings(GitHubModel):
     advanced_security_enabled_for_new_repositories: bool = Field(
         description="Whether GitHub advanced security is automatically enabled for new repositories and repositories transferred to\nthis enterprise."
     )
-    advanced_security_enabled_for_new_user_namespace_repositories: Missing[
-        bool
-    ] = Field(
-        default=UNSET,
-        description="Whether GitHub Advanced Security is automatically enabled for new user namespace repositories.",
+    advanced_security_enabled_for_new_user_namespace_repositories: Missing[bool] = (
+        Field(
+            default=UNSET,
+            description="Whether GitHub Advanced Security is automatically enabled for new user namespace repositories.",
+        )
     )
     dependabot_alerts_enabled_for_new_repositories: bool = Field(
         description="Whether Dependabot alerts are automatically enabled for new repositories and repositories transferred to this\nenterprise."

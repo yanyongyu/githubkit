@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -141,9 +140,9 @@ class WebhookPullRequestReviewThreadResolvedPropPullRequest(GitHubModel):
     title: str = Field()
     updated_at: str = Field()
     url: str = Field()
-    user: Union[
-        WebhookPullRequestReviewThreadResolvedPropPullRequestPropUser, None
-    ] = Field(title="User")
+    user: Union[WebhookPullRequestReviewThreadResolvedPropPullRequestPropUser, None] = (
+        Field(title="User")
+    )
 
 
 class WebhookPullRequestReviewThreadResolvedPropPullRequestPropAssignee(GitHubModel):

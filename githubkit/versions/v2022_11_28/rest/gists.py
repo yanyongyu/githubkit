@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -127,8 +126,7 @@ class GistsClient:
     @overload
     def create(
         self, *, headers: Optional[Dict[str, str]] = None, data: GistsPostBodyType
-    ) -> Response[GistSimple]:
-        ...
+    ) -> Response[GistSimple]: ...
 
     @overload
     def create(
@@ -139,8 +137,7 @@ class GistsClient:
         description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
         public: Missing[Union[bool, Literal["true", "false"]]] = UNSET,
-    ) -> Response[GistSimple]:
-        ...
+    ) -> Response[GistSimple]: ...
 
     def create(
         self,
@@ -180,8 +177,7 @@ class GistsClient:
     @overload
     async def async_create(
         self, *, headers: Optional[Dict[str, str]] = None, data: GistsPostBodyType
-    ) -> Response[GistSimple]:
-        ...
+    ) -> Response[GistSimple]: ...
 
     @overload
     async def async_create(
@@ -192,8 +188,7 @@ class GistsClient:
         description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
         public: Missing[Union[bool, Literal["true", "false"]]] = UNSET,
-    ) -> Response[GistSimple]:
-        ...
+    ) -> Response[GistSimple]: ...
 
     async def async_create(
         self,
@@ -479,8 +474,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Union[GistsGistIdPatchBodyType, None],
-    ) -> Response[GistSimple]:
-        ...
+    ) -> Response[GistSimple]: ...
 
     @overload
     def update(
@@ -491,8 +485,7 @@ class GistsClient:
         headers: Optional[Dict[str, str]] = None,
         description: Missing[str] = UNSET,
         files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
-    ) -> Response[GistSimple]:
-        ...
+    ) -> Response[GistSimple]: ...
 
     def update(
         self,
@@ -543,8 +536,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Union[GistsGistIdPatchBodyType, None],
-    ) -> Response[GistSimple]:
-        ...
+    ) -> Response[GistSimple]: ...
 
     @overload
     async def async_update(
@@ -555,8 +547,7 @@ class GistsClient:
         headers: Optional[Dict[str, str]] = None,
         description: Missing[str] = UNSET,
         files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
-    ) -> Response[GistSimple]:
-        ...
+    ) -> Response[GistSimple]: ...
 
     async def async_update(
         self,
@@ -677,8 +668,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: GistsGistIdCommentsPostBodyType,
-    ) -> Response[GistComment]:
-        ...
+    ) -> Response[GistComment]: ...
 
     @overload
     def create_comment(
@@ -688,8 +678,7 @@ class GistsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[GistComment]:
-        ...
+    ) -> Response[GistComment]: ...
 
     def create_comment(
         self,
@@ -733,8 +722,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: GistsGistIdCommentsPostBodyType,
-    ) -> Response[GistComment]:
-        ...
+    ) -> Response[GistComment]: ...
 
     @overload
     async def async_create_comment(
@@ -744,8 +732,7 @@ class GistsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[GistComment]:
-        ...
+    ) -> Response[GistComment]: ...
 
     async def async_create_comment(
         self,
@@ -892,8 +879,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: GistsGistIdCommentsCommentIdPatchBodyType,
-    ) -> Response[GistComment]:
-        ...
+    ) -> Response[GistComment]: ...
 
     @overload
     def update_comment(
@@ -904,8 +890,7 @@ class GistsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[GistComment]:
-        ...
+    ) -> Response[GistComment]: ...
 
     def update_comment(
         self,
@@ -954,8 +939,7 @@ class GistsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: GistsGistIdCommentsCommentIdPatchBodyType,
-    ) -> Response[GistComment]:
-        ...
+    ) -> Response[GistComment]: ...
 
     @overload
     async def async_update_comment(
@@ -966,8 +950,7 @@ class GistsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[GistComment]:
-        ...
+    ) -> Response[GistComment]: ...
 
     async def async_update_comment(
         self,

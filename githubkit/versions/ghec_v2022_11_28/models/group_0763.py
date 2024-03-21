@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from pydantic import Field
@@ -26,12 +25,12 @@ class WebhookRepositoryRulesetEditedPropChanges(GitHubModel):
     name: Missing[WebhookRepositoryRulesetEditedPropChangesPropName] = Field(
         default=UNSET
     )
-    enforcement: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropEnforcement
-    ] = Field(default=UNSET)
-    conditions: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditions
-    ] = Field(default=UNSET)
+    enforcement: Missing[WebhookRepositoryRulesetEditedPropChangesPropEnforcement] = (
+        Field(default=UNSET)
+    )
+    conditions: Missing[WebhookRepositoryRulesetEditedPropChangesPropConditions] = (
+        Field(default=UNSET)
+    )
     rules: Missing[WebhookRepositoryRulesetEditedPropChangesPropRules] = Field(
         default=UNSET
     )

@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -448,8 +447,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: RepositoryAdvisoryCreateType,
-    ) -> Response[RepositoryAdvisory]:
-        ...
+    ) -> Response[RepositoryAdvisory]: ...
 
     @overload
     def create_repository_advisory(
@@ -472,8 +470,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         start_private_fork: Missing[bool] = UNSET,
-    ) -> Response[RepositoryAdvisory]:
-        ...
+    ) -> Response[RepositoryAdvisory]: ...
 
     def create_repository_advisory(
         self,
@@ -525,8 +522,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: RepositoryAdvisoryCreateType,
-    ) -> Response[RepositoryAdvisory]:
-        ...
+    ) -> Response[RepositoryAdvisory]: ...
 
     @overload
     async def async_create_repository_advisory(
@@ -549,8 +545,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         start_private_fork: Missing[bool] = UNSET,
-    ) -> Response[RepositoryAdvisory]:
-        ...
+    ) -> Response[RepositoryAdvisory]: ...
 
     async def async_create_repository_advisory(
         self,
@@ -602,8 +597,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: PrivateVulnerabilityReportCreateType,
-    ) -> Response[RepositoryAdvisory]:
-        ...
+    ) -> Response[RepositoryAdvisory]: ...
 
     @overload
     def create_private_vulnerability_report(
@@ -626,8 +620,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         start_private_fork: Missing[bool] = UNSET,
-    ) -> Response[RepositoryAdvisory]:
-        ...
+    ) -> Response[RepositoryAdvisory]: ...
 
     def create_private_vulnerability_report(
         self,
@@ -679,8 +672,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: PrivateVulnerabilityReportCreateType,
-    ) -> Response[RepositoryAdvisory]:
-        ...
+    ) -> Response[RepositoryAdvisory]: ...
 
     @overload
     async def async_create_private_vulnerability_report(
@@ -703,8 +695,7 @@ class SecurityAdvisoriesClient:
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         start_private_fork: Missing[bool] = UNSET,
-    ) -> Response[RepositoryAdvisory]:
-        ...
+    ) -> Response[RepositoryAdvisory]: ...
 
     async def async_create_private_vulnerability_report(
         self,
@@ -811,8 +802,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: RepositoryAdvisoryUpdateType,
-    ) -> Response[RepositoryAdvisory]:
-        ...
+    ) -> Response[RepositoryAdvisory]: ...
 
     @overload
     def update_repository_advisory(
@@ -840,8 +830,7 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["published", "closed", "draft"]] = UNSET,
         collaborating_users: Missing[Union[List[str], None]] = UNSET,
         collaborating_teams: Missing[Union[List[str], None]] = UNSET,
-    ) -> Response[RepositoryAdvisory]:
-        ...
+    ) -> Response[RepositoryAdvisory]: ...
 
     def update_repository_advisory(
         self,
@@ -895,8 +884,7 @@ class SecurityAdvisoriesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: RepositoryAdvisoryUpdateType,
-    ) -> Response[RepositoryAdvisory]:
-        ...
+    ) -> Response[RepositoryAdvisory]: ...
 
     @overload
     async def async_update_repository_advisory(
@@ -924,8 +912,7 @@ class SecurityAdvisoriesClient:
         state: Missing[Literal["published", "closed", "draft"]] = UNSET,
         collaborating_users: Missing[Union[List[str], None]] = UNSET,
         collaborating_teams: Missing[Union[List[str], None]] = UNSET,
-    ) -> Response[RepositoryAdvisory]:
-        ...
+    ) -> Response[RepositoryAdvisory]: ...
 
     async def async_update_repository_advisory(
         self,

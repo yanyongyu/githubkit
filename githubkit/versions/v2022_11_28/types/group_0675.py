@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -330,14 +329,20 @@ class WebhookPullRequestReviewThreadResolvedPropPullRequestPropUserType(TypedDic
 class WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksType(TypedDict):
     """WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinks"""
 
-    comments: WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropCommentsType
-    commits: WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropCommitsType
+    comments: (
+        WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropCommentsType
+    )
+    commits: (
+        WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropCommitsType
+    )
     html: WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropHtmlType
     issue: WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropIssueType
     review_comment: WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropReviewCommentType
     review_comments: WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropReviewCommentsType
     self_: WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropSelfType
-    statuses: WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropStatusesType
+    statuses: (
+        WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropStatusesType
+    )
 
 
 class WebhookPullRequestReviewThreadResolvedPropPullRequestPropLinksPropCommentsType(
@@ -924,7 +929,9 @@ class WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsType(Type
     for-a-pull-request) itself.
     """
 
-    links: WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksType
+    links: (
+        WebhookPullRequestReviewThreadResolvedPropThreadPropCommentsItemsPropLinksType
+    )
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",

@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing_extensions import TypedDict, NotRequired
@@ -25,7 +24,9 @@ class OrgRulesetConditionsOneof0Type(TypedDict):
     """
 
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
 
 
 __all__ = ("OrgRulesetConditionsOneof0Type",)

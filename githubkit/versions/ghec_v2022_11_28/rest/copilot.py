@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -190,8 +189,7 @@ class CopilotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]:
-        ...
+    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]: ...
 
     @overload
     def add_copilot_seats_for_teams(
@@ -201,8 +199,7 @@ class CopilotClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_teams: List[str],
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]:
-        ...
+    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]: ...
 
     def add_copilot_seats_for_teams(
         self,
@@ -252,8 +249,7 @@ class CopilotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]:
-        ...
+    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]: ...
 
     @overload
     async def async_add_copilot_seats_for_teams(
@@ -263,8 +259,7 @@ class CopilotClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_teams: List[str],
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]:
-        ...
+    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]: ...
 
     async def async_add_copilot_seats_for_teams(
         self,
@@ -314,8 +309,7 @@ class CopilotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]:
-        ...
+    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]: ...
 
     @overload
     def cancel_copilot_seat_assignment_for_teams(
@@ -325,8 +319,7 @@ class CopilotClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_teams: List[str],
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]:
-        ...
+    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]: ...
 
     def cancel_copilot_seat_assignment_for_teams(
         self,
@@ -376,8 +369,7 @@ class CopilotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]:
-        ...
+    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]: ...
 
     @overload
     async def async_cancel_copilot_seat_assignment_for_teams(
@@ -387,8 +379,7 @@ class CopilotClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_teams: List[str],
-    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]:
-        ...
+    ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]: ...
 
     async def async_cancel_copilot_seat_assignment_for_teams(
         self,
@@ -438,8 +429,7 @@ class CopilotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedUsersPostBodyType,
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]:
-        ...
+    ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]: ...
 
     @overload
     def add_copilot_seats_for_users(
@@ -449,8 +439,7 @@ class CopilotClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]:
-        ...
+    ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]: ...
 
     def add_copilot_seats_for_users(
         self,
@@ -500,8 +489,7 @@ class CopilotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedUsersPostBodyType,
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]:
-        ...
+    ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]: ...
 
     @overload
     async def async_add_copilot_seats_for_users(
@@ -511,8 +499,7 @@ class CopilotClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]:
-        ...
+    ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]: ...
 
     async def async_add_copilot_seats_for_users(
         self,
@@ -562,8 +549,7 @@ class CopilotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]:
-        ...
+    ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]: ...
 
     @overload
     def cancel_copilot_seat_assignment_for_users(
@@ -573,8 +559,7 @@ class CopilotClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]:
-        ...
+    ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]: ...
 
     def cancel_copilot_seat_assignment_for_users(
         self,
@@ -624,8 +609,7 @@ class CopilotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]:
-        ...
+    ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]: ...
 
     @overload
     async def async_cancel_copilot_seat_assignment_for_users(
@@ -635,8 +619,7 @@ class CopilotClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
-    ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]:
-        ...
+    ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]: ...
 
     async def async_cancel_copilot_seat_assignment_for_users(
         self,

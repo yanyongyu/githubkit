@@ -10,6 +10,7 @@ from typing import (
     Type,
     Union,
     Generic,
+    Literal,
     TypeVar,
     Optional,
     Generator,
@@ -22,6 +23,7 @@ import anyio
 import httpx
 import hishel
 
+from .utils import UNSET
 from .response import Response
 from .compat import to_jsonable_python
 from .config import Config, get_config
@@ -56,8 +58,7 @@ class GitHubCore(Generic[A]):
         auth: None = None,
         *,
         config: Config,
-    ):
-        ...
+    ): ...
 
     # token auth with config
     @overload
@@ -66,8 +67,7 @@ class GitHubCore(Generic[A]):
         auth: str,
         *,
         config: Config,
-    ):
-        ...
+    ): ...
 
     # other auth strategies with config
     @overload
@@ -76,8 +76,7 @@ class GitHubCore(Generic[A]):
         auth: A,
         *,
         config: Config,
-    ):
-        ...
+    ): ...
 
     # none auth without config
     @overload
@@ -93,8 +92,7 @@ class GitHubCore(Generic[A]):
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
-    ):
-        ...
+    ): ...
 
     # token auth without config
     @overload
@@ -110,8 +108,7 @@ class GitHubCore(Generic[A]):
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
-    ):
-        ...
+    ): ...
 
     # other auth strategies without config
     @overload
@@ -127,8 +124,7 @@ class GitHubCore(Generic[A]):
         timeout: Optional[Union[float, httpx.Timeout]] = None,
         http_cache: bool = True,
         auto_retry: Union[bool, RetryDecisionFunc] = True,
-    ):
-        ...
+    ): ...
 
     def __init__(
         self,
@@ -323,12 +319,28 @@ class GitHubCore(Generic[A]):
                 raise RequestError(repr(e)) from e
 
     # check and parse response
+    @overload
     def _check(
         self,
         response: httpx.Response,
-        response_model: Type[T] = Any,
+        response_model: Type[T],
         error_models: Optional[Dict[str, type]] = None,
-    ) -> Response[T]:
+    ) -> Response[T]: ...
+
+    @overload
+    def _check(
+        self,
+        response: httpx.Response,
+        response_model: Literal[UNSET] = UNSET,
+        error_models: Optional[Dict[str, type]] = None,
+    ) -> Response[Any]: ...
+
+    def _check(
+        self,
+        response: httpx.Response,
+        response_model: Union[Type[T], Literal[UNSET]] = UNSET,
+        error_models: Optional[Dict[str, type]] = None,
+    ) -> Union[Response[T], Response[Any]]:
         if response.is_error:
             error_models = error_models or {}
             status_code = str(response.status_code)
@@ -336,12 +348,14 @@ class GitHubCore(Generic[A]):
             error_model = error_models.get(
                 status_code,
                 error_models.get(
-                    f"{status_code[:-2]}XX", error_models.get("default", Any)
+                    f"{status_code[:-2]}XX", error_models.get("default", UNSET)
                 ),
             )
-            resp = Response(response, error_model)
+            resp = Response(response, Any if error_model is UNSET else error_model)
         else:
-            resp = Response(response, response_model)
+            resp = Response(
+                response, Any if response_model is UNSET else response_model
+            )
 
         # only check rate limit when response is 403 or 429
         if response.status_code in (403, 429):
@@ -401,6 +415,7 @@ class GitHubCore(Generic[A]):
             return timedelta(seconds=60)
 
     # sync request and check
+    @overload
     def request(
         self,
         method: str,
@@ -413,9 +428,42 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
-        response_model: Type[T] = Any,
+        response_model: Type[T],
         error_models: Optional[Dict[str, type]] = None,
-    ) -> Response[T]:
+    ) -> Response[T]: ...
+
+    @overload
+    def request(
+        self,
+        method: str,
+        url: URLTypes,
+        *,
+        params: Optional[QueryParamTypes] = None,
+        content: Optional[ContentTypes] = None,
+        data: Optional[dict] = None,
+        files: Optional[RequestFiles] = None,
+        json: Optional[Any] = None,
+        headers: Optional[HeaderTypes] = None,
+        cookies: Optional[CookieTypes] = None,
+        response_model: Literal[UNSET] = UNSET,
+        error_models: Optional[Dict[str, type]] = None,
+    ) -> Response[Any]: ...
+
+    def request(
+        self,
+        method: str,
+        url: URLTypes,
+        *,
+        params: Optional[QueryParamTypes] = None,
+        content: Optional[ContentTypes] = None,
+        data: Optional[dict] = None,
+        files: Optional[RequestFiles] = None,
+        json: Optional[Any] = None,
+        headers: Optional[HeaderTypes] = None,
+        cookies: Optional[CookieTypes] = None,
+        response_model: Union[Type[T], Literal[UNSET]] = UNSET,
+        error_models: Optional[Dict[str, type]] = None,
+    ) -> Union[Response[T], Response[Any]]:
         retry_count: int = 0
         while True:
             try:
@@ -444,6 +492,7 @@ class GitHubCore(Generic[A]):
                 retry_count += 1
 
     # async request and check
+    @overload
     async def arequest(
         self,
         method: str,
@@ -456,9 +505,42 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
-        response_model: Type[T] = Any,
+        response_model: Type[T],
         error_models: Optional[Dict[str, type]] = None,
-    ) -> Response[T]:
+    ) -> Response[T]: ...
+
+    @overload
+    async def arequest(
+        self,
+        method: str,
+        url: URLTypes,
+        *,
+        params: Optional[QueryParamTypes] = None,
+        content: Optional[ContentTypes] = None,
+        data: Optional[dict] = None,
+        files: Optional[RequestFiles] = None,
+        json: Optional[Any] = None,
+        headers: Optional[HeaderTypes] = None,
+        cookies: Optional[CookieTypes] = None,
+        response_model: Literal[UNSET] = UNSET,
+        error_models: Optional[Dict[str, type]] = None,
+    ) -> Response[Any]: ...
+
+    async def arequest(
+        self,
+        method: str,
+        url: URLTypes,
+        *,
+        params: Optional[QueryParamTypes] = None,
+        content: Optional[ContentTypes] = None,
+        data: Optional[dict] = None,
+        files: Optional[RequestFiles] = None,
+        json: Optional[Any] = None,
+        headers: Optional[HeaderTypes] = None,
+        cookies: Optional[CookieTypes] = None,
+        response_model: Union[Type[T], Literal[UNSET]] = UNSET,
+        error_models: Optional[Dict[str, type]] = None,
+    ) -> Union[Response[T], Response[Any]]:
         retry_count: int = 0
         while True:
             try:

@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -125,7 +124,9 @@ class WebhookPullRequestReviewCommentCreatedPropCommentPropLinksType(TypedDict):
     """WebhookPullRequestReviewCommentCreatedPropCommentPropLinks"""
 
     html: WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropHtmlType
-    pull_request: WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequestType
+    pull_request: (
+        WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropPullRequestType
+    )
     self_: WebhookPullRequestReviewCommentCreatedPropCommentPropLinksPropSelfType
 
 
@@ -447,14 +448,20 @@ class WebhookPullRequestReviewCommentCreatedPropPullRequestPropUserType(TypedDic
 class WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksType(TypedDict):
     """WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinks"""
 
-    comments: WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropCommentsType
-    commits: WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropCommitsType
+    comments: (
+        WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropCommentsType
+    )
+    commits: (
+        WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropCommitsType
+    )
     html: WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropHtmlType
     issue: WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropIssueType
     review_comment: WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropReviewCommentType
     review_comments: WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropReviewCommentsType
     self_: WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropSelfType
-    statuses: WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropStatusesType
+    statuses: (
+        WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropStatusesType
+    )
 
 
 class WebhookPullRequestReviewCommentCreatedPropPullRequestPropLinksPropCommentsType(

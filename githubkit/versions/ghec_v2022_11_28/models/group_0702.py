@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -170,9 +169,9 @@ class WebhookPullRequestReviewEditedPropPullRequest(GitHubModel):
     active_lock_reason: Union[
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ] = Field()
-    assignee: Union[
-        WebhookPullRequestReviewEditedPropPullRequestPropAssignee, None
-    ] = Field(title="User")
+    assignee: Union[WebhookPullRequestReviewEditedPropPullRequestPropAssignee, None] = (
+        Field(title="User")
+    )
     assignees: List[
         Union[WebhookPullRequestReviewEditedPropPullRequestPropAssigneesItems, None]
     ] = Field()
@@ -564,9 +563,9 @@ class WebhookPullRequestReviewEditedPropPullRequestPropBase(GitHubModel):
         title="Repository", description="A git repository"
     )
     sha: str = Field()
-    user: Union[
-        WebhookPullRequestReviewEditedPropPullRequestPropBasePropUser, None
-    ] = Field(title="User")
+    user: Union[WebhookPullRequestReviewEditedPropPullRequestPropBasePropUser, None] = (
+        Field(title="User")
+    )
 
 
 class WebhookPullRequestReviewEditedPropPullRequestPropBasePropUser(GitHubModel):
@@ -776,13 +775,13 @@ class WebhookPullRequestReviewEditedPropPullRequestPropHead(GitHubModel):
 
     label: str = Field()
     ref: str = Field()
-    repo: Union[
-        WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepo, None
-    ] = Field(title="Repository", description="A git repository")
+    repo: Union[WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepo, None] = (
+        Field(title="Repository", description="A git repository")
+    )
     sha: str = Field()
-    user: Union[
-        WebhookPullRequestReviewEditedPropPullRequestPropHeadPropUser, None
-    ] = Field(title="User")
+    user: Union[WebhookPullRequestReviewEditedPropPullRequestPropHeadPropUser, None] = (
+        Field(title="User")
+    )
 
 
 class WebhookPullRequestReviewEditedPropPullRequestPropHeadPropRepo(GitHubModel):

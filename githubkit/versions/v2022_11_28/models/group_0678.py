@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -99,9 +98,9 @@ class WebhookPullRequestUnassignedPropPullRequest(GitHubModel):
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ] = Field()
     additions: Missing[int] = Field(default=UNSET)
-    assignee: Union[
-        WebhookPullRequestUnassignedPropPullRequestPropAssignee, None
-    ] = Field(title="User")
+    assignee: Union[WebhookPullRequestUnassignedPropPullRequestPropAssignee, None] = (
+        Field(title="User")
+    )
     assignees: List[
         Union[WebhookPullRequestUnassignedPropPullRequestPropAssigneesItems, None]
     ] = Field()
@@ -156,11 +155,11 @@ class WebhookPullRequestUnassignedPropPullRequest(GitHubModel):
     merged_by: Missing[
         Union[WebhookPullRequestUnassignedPropPullRequestPropMergedBy, None]
     ] = Field(default=UNSET, title="User")
-    milestone: Union[
-        WebhookPullRequestUnassignedPropPullRequestPropMilestone, None
-    ] = Field(
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
+    milestone: Union[WebhookPullRequestUnassignedPropPullRequestPropMilestone, None] = (
+        Field(
+            title="Milestone",
+            description="A collection of related issues and pull requests.",
+        )
     )
     node_id: str = Field()
     number: int = Field(
@@ -541,9 +540,9 @@ class WebhookPullRequestUnassignedPropPullRequestPropBase(GitHubModel):
         title="Repository", description="A git repository"
     )
     sha: str = Field()
-    user: Union[
-        WebhookPullRequestUnassignedPropPullRequestPropBasePropUser, None
-    ] = Field(title="User")
+    user: Union[WebhookPullRequestUnassignedPropPullRequestPropBasePropUser, None] = (
+        Field(title="User")
+    )
 
 
 class WebhookPullRequestUnassignedPropPullRequestPropBasePropUser(GitHubModel):
@@ -694,11 +693,11 @@ class WebhookPullRequestUnassignedPropPullRequestPropBasePropRepo(GitHubModel):
         default=UNSET,
         description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
     )
-    squash_merge_commit_title: Missing[
-        Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
     )
     ssh_url: str = Field()
     stargazers: Missing[int] = Field(default=UNSET)
@@ -782,13 +781,13 @@ class WebhookPullRequestUnassignedPropPullRequestPropHead(GitHubModel):
 
     label: Union[str, None] = Field()
     ref: str = Field()
-    repo: Union[
-        WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepo, None
-    ] = Field(title="Repository", description="A git repository")
+    repo: Union[WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepo, None] = (
+        Field(title="Repository", description="A git repository")
+    )
     sha: str = Field()
-    user: Union[
-        WebhookPullRequestUnassignedPropPullRequestPropHeadPropUser, None
-    ] = Field(title="User")
+    user: Union[WebhookPullRequestUnassignedPropPullRequestPropHeadPropUser, None] = (
+        Field(title="User")
+    )
 
 
 class WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepo(GitHubModel):
@@ -913,11 +912,11 @@ class WebhookPullRequestUnassignedPropPullRequestPropHeadPropRepo(GitHubModel):
         default=UNSET,
         description="The default value for a squash merge commit message:\n\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
     )
-    squash_merge_commit_title: Missing[
-        Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
+        Field(
+            default=UNSET,
+            description="The default value for a squash merge commit title:\n\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
+        )
     )
     ssh_url: str = Field()
     stargazers: Missing[int] = Field(default=UNSET)

@@ -78,10 +78,13 @@ class LazyModuleLoader(SourceFileLoader):
         module.__lazy_vars_mapping__ = {}
         return module
 
-    def exec_module(self, module: LazyModule) -> None:
+    def exec_module(self, module: ModuleType) -> None:
         super().exec_module(module)
 
-        if getattr(module, "__lazy_vars_validated__", None) is None:
+        if (
+            isinstance(module, LazyModule)
+            and getattr(module, "__lazy_vars_validated__", None) is None
+        ):
             structure = getattr(module, "__lazy_vars__", None)
             if isinstance(structure, dict) and all(
                 isinstance(key, str) and isinstance(value, (list, tuple, set))

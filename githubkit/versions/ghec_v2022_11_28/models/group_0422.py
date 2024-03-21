@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -76,9 +75,9 @@ class WebhookCodeScanningAlertFixedPropAlert(GitHubModel):
     dismissed_at: Union[datetime, None] = Field(
         description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    dismissed_by: Union[
-        WebhookCodeScanningAlertFixedPropAlertPropDismissedBy, None
-    ] = Field(title="User")
+    dismissed_by: Union[WebhookCodeScanningAlertFixedPropAlertPropDismissedBy, None] = (
+        Field(title="User")
+    )
     dismissed_reason: Union[
         None, Literal["false positive", "won't fix", "used in tests"]
     ] = Field(description="The reason for dismissing or closing the alert.")

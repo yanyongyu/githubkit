@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -60,9 +59,9 @@ class WebhookDeploymentReviewRejected(GitHubModel):
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
     since: str = Field()
-    workflow_job_run: Missing[
-        WebhookDeploymentReviewRejectedPropWorkflowJobRun
-    ] = Field(default=UNSET)
+    workflow_job_run: Missing[WebhookDeploymentReviewRejectedPropWorkflowJobRun] = (
+        Field(default=UNSET)
+    )
     workflow_job_runs: Missing[
         List[WebhookDeploymentReviewRejectedPropWorkflowJobRunsItems]
     ] = Field(default=UNSET)
@@ -214,9 +213,9 @@ class WebhookDeploymentReviewRejectedPropWorkflowRun(GitHubModel):
     run_attempt: int = Field()
     run_number: int = Field()
     run_started_at: datetime = Field()
-    status: Literal[
-        "requested", "in_progress", "completed", "queued", "waiting"
-    ] = Field()
+    status: Literal["requested", "in_progress", "completed", "queued", "waiting"] = (
+        Field()
+    )
     triggering_actor: Union[
         WebhookDeploymentReviewRejectedPropWorkflowRunPropTriggeringActor, None
     ] = Field(title="User")

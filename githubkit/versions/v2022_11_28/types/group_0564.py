@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union, Literal
@@ -24,7 +23,9 @@ class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0Type(
     free_trial_ends_on: Union[str, None]
     next_billing_date: NotRequired[Union[str, None]]
     on_free_trial: bool
-    plan: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlanType
+    plan: (
+        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlanType
+    )
     unit_count: int
 
 

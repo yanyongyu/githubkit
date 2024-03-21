@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -78,7 +77,9 @@ class WebhookWorkflowRunInProgressPropWorkflowRunType(TypedDict):
     run_number: int
     run_started_at: datetime
     status: Literal["requested", "in_progress", "completed", "queued", "pending"]
-    triggering_actor: WebhookWorkflowRunInProgressPropWorkflowRunMergedTriggeringActorType
+    triggering_actor: (
+        WebhookWorkflowRunInProgressPropWorkflowRunMergedTriggeringActorType
+    )
     updated_at: datetime
     url: str
     workflow_id: int
@@ -115,7 +116,9 @@ class WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommitType(TypedDict)
     """WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommit"""
 
     author: WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommitPropAuthorType
-    committer: WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommitPropCommitterType
+    committer: (
+        WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommitPropCommitterType
+    )
     id: str
     message: str
     timestamp: str

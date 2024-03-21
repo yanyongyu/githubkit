@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -92,7 +91,9 @@ class WebhookPullRequestReviewSubmittedPropReviewPropLinksType(TypedDict):
     """WebhookPullRequestReviewSubmittedPropReviewPropLinks"""
 
     html: WebhookPullRequestReviewSubmittedPropReviewPropLinksPropHtmlType
-    pull_request: WebhookPullRequestReviewSubmittedPropReviewPropLinksPropPullRequestType
+    pull_request: (
+        WebhookPullRequestReviewSubmittedPropReviewPropLinksPropPullRequestType
+    )
 
 
 class WebhookPullRequestReviewSubmittedPropReviewPropLinksPropHtmlType(TypedDict):
@@ -402,8 +403,12 @@ class WebhookPullRequestReviewSubmittedPropPullRequestPropLinksType(TypedDict):
     commits: WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropCommitsType
     html: WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropHtmlType
     issue: WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropIssueType
-    review_comment: WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropReviewCommentType
-    review_comments: WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropReviewCommentsType
+    review_comment: (
+        WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropReviewCommentType
+    )
+    review_comments: (
+        WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropReviewCommentsType
+    )
     self_: WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropSelfType
     statuses: WebhookPullRequestReviewSubmittedPropPullRequestPropLinksPropStatusesType
 

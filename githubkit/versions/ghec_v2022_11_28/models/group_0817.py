@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -142,9 +141,9 @@ class WebhookTeamAddedToRepositoryPropRepository(GitHubModel):
     labels_url: str = Field()
     language: Union[str, None] = Field()
     languages_url: str = Field()
-    license_: Union[
-        WebhookTeamAddedToRepositoryPropRepositoryPropLicense, None
-    ] = Field(alias="license", title="License")
+    license_: Union[WebhookTeamAddedToRepositoryPropRepositoryPropLicense, None] = (
+        Field(alias="license", title="License")
+    )
     master_branch: Missing[str] = Field(default=UNSET)
     merges_url: str = Field()
     milestones_url: str = Field()
@@ -158,9 +157,9 @@ class WebhookTeamAddedToRepositoryPropRepository(GitHubModel):
     owner: Union[WebhookTeamAddedToRepositoryPropRepositoryPropOwner, None] = Field(
         title="User"
     )
-    permissions: Missing[
-        WebhookTeamAddedToRepositoryPropRepositoryPropPermissions
-    ] = Field(default=UNSET)
+    permissions: Missing[WebhookTeamAddedToRepositoryPropRepositoryPropPermissions] = (
+        Field(default=UNSET)
+    )
     private: bool = Field(description="Whether the repository is private or public.")
     public: Missing[bool] = Field(default=UNSET)
     pulls_url: str = Field()
@@ -257,9 +256,9 @@ class WebhookTeamAddedToRepositoryPropTeam(GitHubModel):
     members_url: Missing[str] = Field(default=UNSET)
     name: str = Field(description="Name of the team")
     node_id: Missing[str] = Field(default=UNSET)
-    parent: Missing[
-        Union[WebhookTeamAddedToRepositoryPropTeamPropParent, None]
-    ] = Field(default=UNSET)
+    parent: Missing[Union[WebhookTeamAddedToRepositoryPropTeamPropParent, None]] = (
+        Field(default=UNSET)
+    )
     permission: Missing[str] = Field(
         default=UNSET,
         description="Permission that the team will have for its repositories",
@@ -289,10 +288,10 @@ class WebhookTeamAddedToRepositoryPropTeamPropParent(GitHubModel):
         description="Permission that the team will have for its repositories"
     )
     privacy: Literal["open", "closed", "secret"] = Field()
-    notification_setting: Literal[
-        "notifications_enabled", "notifications_disabled"
-    ] = Field(
-        description="Whether team members will receive notifications when their team is @mentioned"
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"] = (
+        Field(
+            description="Whether team members will receive notifications when their team is @mentioned"
+        )
     )
     repositories_url: str = Field()
     slug: str = Field()

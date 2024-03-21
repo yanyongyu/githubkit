@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -176,8 +175,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPostBodyType,
-    ) -> Response[PullRequest]:
-        ...
+    ) -> Response[PullRequest]: ...
 
     @overload
     def create(
@@ -195,8 +193,7 @@ class PullsClient:
         maintainer_can_modify: Missing[bool] = UNSET,
         draft: Missing[bool] = UNSET,
         issue: Missing[int] = UNSET,
-    ) -> Response[PullRequest]:
-        ...
+    ) -> Response[PullRequest]: ...
 
     def create(
         self,
@@ -247,8 +244,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPostBodyType,
-    ) -> Response[PullRequest]:
-        ...
+    ) -> Response[PullRequest]: ...
 
     @overload
     async def async_create(
@@ -266,8 +262,7 @@ class PullsClient:
         maintainer_can_modify: Missing[bool] = UNSET,
         draft: Missing[bool] = UNSET,
         issue: Missing[int] = UNSET,
-    ) -> Response[PullRequest]:
-        ...
+    ) -> Response[PullRequest]: ...
 
     async def async_create(
         self,
@@ -497,8 +492,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
-    ) -> Response[PullRequestReviewComment]:
-        ...
+    ) -> Response[PullRequestReviewComment]: ...
 
     @overload
     def update_review_comment(
@@ -510,8 +504,7 @@ class PullsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[PullRequestReviewComment]:
-        ...
+    ) -> Response[PullRequestReviewComment]: ...
 
     def update_review_comment(
         self,
@@ -558,8 +551,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
-    ) -> Response[PullRequestReviewComment]:
-        ...
+    ) -> Response[PullRequestReviewComment]: ...
 
     @overload
     async def async_update_review_comment(
@@ -571,8 +563,7 @@ class PullsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[PullRequestReviewComment]:
-        ...
+    ) -> Response[PullRequestReviewComment]: ...
 
     async def async_update_review_comment(
         self,
@@ -683,8 +674,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
-    ) -> Response[PullRequest]:
-        ...
+    ) -> Response[PullRequest]: ...
 
     @overload
     def update(
@@ -700,8 +690,7 @@ class PullsClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         base: Missing[str] = UNSET,
         maintainer_can_modify: Missing[bool] = UNSET,
-    ) -> Response[PullRequest]:
-        ...
+    ) -> Response[PullRequest]: ...
 
     def update(
         self,
@@ -754,8 +743,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
-    ) -> Response[PullRequest]:
-        ...
+    ) -> Response[PullRequest]: ...
 
     @overload
     async def async_update(
@@ -771,8 +759,7 @@ class PullsClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         base: Missing[str] = UNSET,
         maintainer_can_modify: Missing[bool] = UNSET,
-    ) -> Response[PullRequest]:
-        ...
+    ) -> Response[PullRequest]: ...
 
     async def async_update(
         self,
@@ -903,8 +890,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
-    ) -> Response[PullRequestReviewComment]:
-        ...
+    ) -> Response[PullRequestReviewComment]: ...
 
     @overload
     def create_review_comment(
@@ -925,8 +911,7 @@ class PullsClient:
         start_side: Missing[Literal["LEFT", "RIGHT", "side"]] = UNSET,
         in_reply_to: Missing[int] = UNSET,
         subject_type: Missing[Literal["line", "file"]] = UNSET,
-    ) -> Response[PullRequestReviewComment]:
-        ...
+    ) -> Response[PullRequestReviewComment]: ...
 
     def create_review_comment(
         self,
@@ -979,8 +964,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
-    ) -> Response[PullRequestReviewComment]:
-        ...
+    ) -> Response[PullRequestReviewComment]: ...
 
     @overload
     async def async_create_review_comment(
@@ -1001,8 +985,7 @@ class PullsClient:
         start_side: Missing[Literal["LEFT", "RIGHT", "side"]] = UNSET,
         in_reply_to: Missing[int] = UNSET,
         subject_type: Missing[Literal["line", "file"]] = UNSET,
-    ) -> Response[PullRequestReviewComment]:
-        ...
+    ) -> Response[PullRequestReviewComment]: ...
 
     async def async_create_review_comment(
         self,
@@ -1056,8 +1039,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
-    ) -> Response[PullRequestReviewComment]:
-        ...
+    ) -> Response[PullRequestReviewComment]: ...
 
     @overload
     def create_reply_for_review_comment(
@@ -1070,8 +1052,7 @@ class PullsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[PullRequestReviewComment]:
-        ...
+    ) -> Response[PullRequestReviewComment]: ...
 
     def create_reply_for_review_comment(
         self,
@@ -1128,8 +1109,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
-    ) -> Response[PullRequestReviewComment]:
-        ...
+    ) -> Response[PullRequestReviewComment]: ...
 
     @overload
     async def async_create_reply_for_review_comment(
@@ -1142,8 +1122,7 @@ class PullsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[PullRequestReviewComment]:
-        ...
+    ) -> Response[PullRequestReviewComment]: ...
 
     async def async_create_reply_for_review_comment(
         self,
@@ -1395,8 +1374,7 @@ class PullsClient:
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
-    ) -> Response[PullRequestMergeResult]:
-        ...
+    ) -> Response[PullRequestMergeResult]: ...
 
     @overload
     def merge(
@@ -1411,8 +1389,7 @@ class PullsClient:
         commit_message: Missing[str] = UNSET,
         sha: Missing[str] = UNSET,
         merge_method: Missing[Literal["merge", "squash", "rebase"]] = UNSET,
-    ) -> Response[PullRequestMergeResult]:
-        ...
+    ) -> Response[PullRequestMergeResult]: ...
 
     def merge(
         self,
@@ -1478,8 +1455,7 @@ class PullsClient:
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
-    ) -> Response[PullRequestMergeResult]:
-        ...
+    ) -> Response[PullRequestMergeResult]: ...
 
     @overload
     async def async_merge(
@@ -1494,8 +1470,7 @@ class PullsClient:
         commit_message: Missing[str] = UNSET,
         sha: Missing[str] = UNSET,
         merge_method: Missing[Literal["merge", "squash", "rebase"]] = UNSET,
-    ) -> Response[PullRequestMergeResult]:
-        ...
+    ) -> Response[PullRequestMergeResult]: ...
 
     async def async_merge(
         self,
@@ -1610,8 +1585,7 @@ class PullsClient:
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
             ]
         ] = UNSET,
-    ) -> Response[PullRequestSimple]:
-        ...
+    ) -> Response[PullRequestSimple]: ...
 
     @overload
     def request_reviewers(
@@ -1624,8 +1598,7 @@ class PullsClient:
         headers: Optional[Dict[str, str]] = None,
         reviewers: List[str],
         team_reviewers: Missing[List[str]] = UNSET,
-    ) -> Response[PullRequestSimple]:
-        ...
+    ) -> Response[PullRequestSimple]: ...
 
     @overload
     def request_reviewers(
@@ -1638,8 +1611,7 @@ class PullsClient:
         headers: Optional[Dict[str, str]] = None,
         reviewers: Missing[List[str]] = UNSET,
         team_reviewers: List[str],
-    ) -> Response[PullRequestSimple]:
-        ...
+    ) -> Response[PullRequestSimple]: ...
 
     def request_reviewers(
         self,
@@ -1709,8 +1681,7 @@ class PullsClient:
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
             ]
         ] = UNSET,
-    ) -> Response[PullRequestSimple]:
-        ...
+    ) -> Response[PullRequestSimple]: ...
 
     @overload
     async def async_request_reviewers(
@@ -1723,8 +1694,7 @@ class PullsClient:
         headers: Optional[Dict[str, str]] = None,
         reviewers: List[str],
         team_reviewers: Missing[List[str]] = UNSET,
-    ) -> Response[PullRequestSimple]:
-        ...
+    ) -> Response[PullRequestSimple]: ...
 
     @overload
     async def async_request_reviewers(
@@ -1737,8 +1707,7 @@ class PullsClient:
         headers: Optional[Dict[str, str]] = None,
         reviewers: Missing[List[str]] = UNSET,
         team_reviewers: List[str],
-    ) -> Response[PullRequestSimple]:
-        ...
+    ) -> Response[PullRequestSimple]: ...
 
     async def async_request_reviewers(
         self,
@@ -1803,8 +1772,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
-    ) -> Response[PullRequestSimple]:
-        ...
+    ) -> Response[PullRequestSimple]: ...
 
     @overload
     def remove_requested_reviewers(
@@ -1817,8 +1785,7 @@ class PullsClient:
         headers: Optional[Dict[str, str]] = None,
         reviewers: List[str],
         team_reviewers: Missing[List[str]] = UNSET,
-    ) -> Response[PullRequestSimple]:
-        ...
+    ) -> Response[PullRequestSimple]: ...
 
     def remove_requested_reviewers(
         self,
@@ -1873,8 +1840,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
-    ) -> Response[PullRequestSimple]:
-        ...
+    ) -> Response[PullRequestSimple]: ...
 
     @overload
     async def async_remove_requested_reviewers(
@@ -1887,8 +1853,7 @@ class PullsClient:
         headers: Optional[Dict[str, str]] = None,
         reviewers: List[str],
         team_reviewers: Missing[List[str]] = UNSET,
-    ) -> Response[PullRequestSimple]:
-        ...
+    ) -> Response[PullRequestSimple]: ...
 
     async def async_remove_requested_reviewers(
         self,
@@ -2009,8 +1974,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
-    ) -> Response[PullRequestReview]:
-        ...
+    ) -> Response[PullRequestReview]: ...
 
     @overload
     def create_review(
@@ -2027,8 +1991,7 @@ class PullsClient:
         comments: Missing[
             List[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
         ] = UNSET,
-    ) -> Response[PullRequestReview]:
-        ...
+    ) -> Response[PullRequestReview]: ...
 
     def create_review(
         self,
@@ -2081,8 +2044,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
-    ) -> Response[PullRequestReview]:
-        ...
+    ) -> Response[PullRequestReview]: ...
 
     @overload
     async def async_create_review(
@@ -2099,8 +2061,7 @@ class PullsClient:
         comments: Missing[
             List[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
         ] = UNSET,
-    ) -> Response[PullRequestReview]:
-        ...
+    ) -> Response[PullRequestReview]: ...
 
     async def async_create_review(
         self,
@@ -2208,8 +2169,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
-    ) -> Response[PullRequestReview]:
-        ...
+    ) -> Response[PullRequestReview]: ...
 
     @overload
     def update_review(
@@ -2222,8 +2182,7 @@ class PullsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[PullRequestReview]:
-        ...
+    ) -> Response[PullRequestReview]: ...
 
     def update_review(
         self,
@@ -2278,8 +2237,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
-    ) -> Response[PullRequestReview]:
-        ...
+    ) -> Response[PullRequestReview]: ...
 
     @overload
     async def async_update_review(
@@ -2292,8 +2250,7 @@ class PullsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[PullRequestReview]:
-        ...
+    ) -> Response[PullRequestReview]: ...
 
     async def async_update_review(
         self,
@@ -2478,8 +2435,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
-    ) -> Response[PullRequestReview]:
-        ...
+    ) -> Response[PullRequestReview]: ...
 
     @overload
     def dismiss_review(
@@ -2493,8 +2449,7 @@ class PullsClient:
         headers: Optional[Dict[str, str]] = None,
         message: str,
         event: Missing[Literal["DISMISS"]] = UNSET,
-    ) -> Response[PullRequestReview]:
-        ...
+    ) -> Response[PullRequestReview]: ...
 
     def dismiss_review(
         self,
@@ -2555,8 +2510,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
-    ) -> Response[PullRequestReview]:
-        ...
+    ) -> Response[PullRequestReview]: ...
 
     @overload
     async def async_dismiss_review(
@@ -2570,8 +2524,7 @@ class PullsClient:
         headers: Optional[Dict[str, str]] = None,
         message: str,
         event: Missing[Literal["DISMISS"]] = UNSET,
-    ) -> Response[PullRequestReview]:
-        ...
+    ) -> Response[PullRequestReview]: ...
 
     async def async_dismiss_review(
         self,
@@ -2632,8 +2585,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
-    ) -> Response[PullRequestReview]:
-        ...
+    ) -> Response[PullRequestReview]: ...
 
     @overload
     def submit_review(
@@ -2647,8 +2599,7 @@ class PullsClient:
         headers: Optional[Dict[str, str]] = None,
         body: Missing[str] = UNSET,
         event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"],
-    ) -> Response[PullRequestReview]:
-        ...
+    ) -> Response[PullRequestReview]: ...
 
     def submit_review(
         self,
@@ -2708,8 +2659,7 @@ class PullsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
-    ) -> Response[PullRequestReview]:
-        ...
+    ) -> Response[PullRequestReview]: ...
 
     @overload
     async def async_submit_review(
@@ -2723,8 +2673,7 @@ class PullsClient:
         headers: Optional[Dict[str, str]] = None,
         body: Missing[str] = UNSET,
         event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"],
-    ) -> Response[PullRequestReview]:
-        ...
+    ) -> Response[PullRequestReview]: ...
 
     async def async_submit_review(
         self,
@@ -2785,8 +2734,7 @@ class PullsClient:
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
-    ) -> Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]:
-        ...
+    ) -> Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]: ...
 
     @overload
     def update_branch(
@@ -2798,8 +2746,7 @@ class PullsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         expected_head_sha: Missing[str] = UNSET,
-    ) -> Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]:
-        ...
+    ) -> Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]: ...
 
     def update_branch(
         self,
@@ -2860,8 +2807,7 @@ class PullsClient:
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
-    ) -> Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]:
-        ...
+    ) -> Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]: ...
 
     @overload
     async def async_update_branch(
@@ -2873,8 +2819,7 @@ class PullsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         expected_head_sha: Missing[str] = UNSET,
-    ) -> Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]:
-        ...
+    ) -> Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]: ...
 
     async def async_update_branch(
         self,

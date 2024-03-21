@@ -20,8 +20,7 @@ if TYPE_CHECKING:
 
 if TYPE_CHECKING:
 
-    class _VersionProxy(V20221128WebhookNamespace):
-        ...
+    class _VersionProxy(V20221128WebhookNamespace): ...
 
 else:
     _VersionProxy = object
@@ -41,18 +40,17 @@ class WebhooksVersionSwitcher(_VersionProxy):
             return getattr(namespace, name)
 
     @overload
-    def __call__(self, version: Literal["2022-11-28"]) -> "V20221128WebhookNamespace":
-        ...
+    def __call__(
+        self, version: Literal["2022-11-28"]
+    ) -> "V20221128WebhookNamespace": ...
 
     @overload
     def __call__(
         self, version: Literal["ghec-2022-11-28"]
-    ) -> "GhecV20221128WebhookNamespace":
-        ...
+    ) -> "GhecV20221128WebhookNamespace": ...
 
     @overload
-    def __call__(self) -> "V20221128WebhookNamespace":
-        ...
+    def __call__(self) -> "V20221128WebhookNamespace": ...
 
     def __call__(self, version: VERSION_TYPE = LATEST_VERSION) -> Any:
         if version in self._cached_namespaces:

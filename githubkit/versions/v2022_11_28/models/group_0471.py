@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union, Literal
@@ -23,9 +22,9 @@ class WebhookIssueCommentDeletedPropIssueAllof1(GitHubModel):
     """WebhookIssueCommentDeletedPropIssueAllof1"""
 
     active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    assignee: Union[
-        WebhookIssueCommentDeletedPropIssueAllof1PropAssignee, None
-    ] = Field(title="User")
+    assignee: Union[WebhookIssueCommentDeletedPropIssueAllof1PropAssignee, None] = (
+        Field(title="User")
+    )
     assignees: Missing[
         List[Union[WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItems, None]]
     ] = Field(default=UNSET)

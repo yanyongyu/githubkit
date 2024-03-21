@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union, Literal
@@ -33,27 +32,27 @@ class RepositoryAdvisoryUpdate(GitHubModel):
     cve_id: Missing[Union[str, None]] = Field(
         default=UNSET, description="The Common Vulnerabilities and Exposures (CVE) ID."
     )
-    vulnerabilities: Missing[
-        List[RepositoryAdvisoryUpdatePropVulnerabilitiesItems]
-    ] = Field(
-        default=UNSET,
-        description="A product affected by the vulnerability detailed in a repository security advisory.",
+    vulnerabilities: Missing[List[RepositoryAdvisoryUpdatePropVulnerabilitiesItems]] = (
+        Field(
+            default=UNSET,
+            description="A product affected by the vulnerability detailed in a repository security advisory.",
+        )
     )
     cwe_ids: Missing[Union[List[str], None]] = Field(
         default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
     )
-    credits_: Missing[
-        Union[List[RepositoryAdvisoryUpdatePropCreditsItems], None]
-    ] = Field(
-        default=UNSET,
-        alias="credits",
-        description="A list of users receiving credit for their participation in the security advisory.",
+    credits_: Missing[Union[List[RepositoryAdvisoryUpdatePropCreditsItems], None]] = (
+        Field(
+            default=UNSET,
+            alias="credits",
+            description="A list of users receiving credit for their participation in the security advisory.",
+        )
     )
-    severity: Missing[
-        Union[None, Literal["critical", "high", "medium", "low"]]
-    ] = Field(
-        default=UNSET,
-        description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
+    severity: Missing[Union[None, Literal["critical", "high", "medium", "low"]]] = (
+        Field(
+            default=UNSET,
+            description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
+        )
     )
     cvss_vector_string: Missing[Union[str, None]] = Field(
         default=UNSET,

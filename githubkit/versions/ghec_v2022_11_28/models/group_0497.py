@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -73,9 +72,9 @@ class WebhookIssueCommentDeletedPropIssue(GitHubModel):
     performed_via_github_app: Missing[
         Union[WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp, None]
     ] = Field(default=UNSET)
-    pull_request: Missing[
-        WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest
-    ] = Field(default=UNSET)
+    pull_request: Missing[WebhookIssueCommentDeletedPropIssueAllof0PropPullRequest] = (
+        Field(default=UNSET)
+    )
     reactions: WebhookIssueCommentDeletedPropIssueMergedReactions = Field()
     repository_url: str = Field()
     state: Literal["open", "closed"] = Field(

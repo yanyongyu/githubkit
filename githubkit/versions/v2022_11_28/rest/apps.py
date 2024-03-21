@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -217,8 +216,7 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: AppHookConfigPatchBodyType,
-    ) -> Response[WebhookConfig]:
-        ...
+    ) -> Response[WebhookConfig]: ...
 
     @overload
     def update_webhook_config_for_app(
@@ -230,8 +228,7 @@ class AppsClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig]:
-        ...
+    ) -> Response[WebhookConfig]: ...
 
     def update_webhook_config_for_app(
         self,
@@ -269,8 +266,7 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: AppHookConfigPatchBodyType,
-    ) -> Response[WebhookConfig]:
-        ...
+    ) -> Response[WebhookConfig]: ...
 
     @overload
     async def async_update_webhook_config_for_app(
@@ -282,8 +278,7 @@ class AppsClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig]:
-        ...
+    ) -> Response[WebhookConfig]: ...
 
     async def async_update_webhook_config_for_app(
         self,
@@ -730,8 +725,7 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
-    ) -> Response[InstallationToken]:
-        ...
+    ) -> Response[InstallationToken]: ...
 
     @overload
     def create_installation_access_token(
@@ -743,8 +737,7 @@ class AppsClient:
         repositories: Missing[List[str]] = UNSET,
         repository_ids: Missing[List[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
-    ) -> Response[InstallationToken]:
-        ...
+    ) -> Response[InstallationToken]: ...
 
     def create_installation_access_token(
         self,
@@ -797,8 +790,7 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
-    ) -> Response[InstallationToken]:
-        ...
+    ) -> Response[InstallationToken]: ...
 
     @overload
     async def async_create_installation_access_token(
@@ -810,8 +802,7 @@ class AppsClient:
         repositories: Missing[List[str]] = UNSET,
         repository_ids: Missing[List[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
-    ) -> Response[InstallationToken]:
-        ...
+    ) -> Response[InstallationToken]: ...
 
     async def async_create_installation_access_token(
         self,
@@ -956,8 +947,7 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ApplicationsClientIdGrantDeleteBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def delete_authorization(
@@ -967,8 +957,7 @@ class AppsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def delete_authorization(
         self,
@@ -1010,8 +999,7 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ApplicationsClientIdGrantDeleteBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_delete_authorization(
@@ -1021,8 +1009,7 @@ class AppsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_delete_authorization(
         self,
@@ -1064,8 +1051,7 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ApplicationsClientIdTokenPostBodyType,
-    ) -> Response[Authorization]:
-        ...
+    ) -> Response[Authorization]: ...
 
     @overload
     def check_token(
@@ -1075,8 +1061,7 @@ class AppsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
-    ) -> Response[Authorization]:
-        ...
+    ) -> Response[Authorization]: ...
 
     def check_token(
         self,
@@ -1125,8 +1110,7 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ApplicationsClientIdTokenPostBodyType,
-    ) -> Response[Authorization]:
-        ...
+    ) -> Response[Authorization]: ...
 
     @overload
     async def async_check_token(
@@ -1136,8 +1120,7 @@ class AppsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
-    ) -> Response[Authorization]:
-        ...
+    ) -> Response[Authorization]: ...
 
     async def async_check_token(
         self,
@@ -1186,8 +1169,7 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ApplicationsClientIdTokenDeleteBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def delete_token(
@@ -1197,8 +1179,7 @@ class AppsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def delete_token(
         self,
@@ -1240,8 +1221,7 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ApplicationsClientIdTokenDeleteBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_delete_token(
@@ -1251,8 +1231,7 @@ class AppsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_delete_token(
         self,
@@ -1294,8 +1273,7 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ApplicationsClientIdTokenPatchBodyType,
-    ) -> Response[Authorization]:
-        ...
+    ) -> Response[Authorization]: ...
 
     @overload
     def reset_token(
@@ -1305,8 +1283,7 @@ class AppsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
-    ) -> Response[Authorization]:
-        ...
+    ) -> Response[Authorization]: ...
 
     def reset_token(
         self,
@@ -1353,8 +1330,7 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ApplicationsClientIdTokenPatchBodyType,
-    ) -> Response[Authorization]:
-        ...
+    ) -> Response[Authorization]: ...
 
     @overload
     async def async_reset_token(
@@ -1364,8 +1340,7 @@ class AppsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
-    ) -> Response[Authorization]:
-        ...
+    ) -> Response[Authorization]: ...
 
     async def async_reset_token(
         self,
@@ -1412,8 +1387,7 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ApplicationsClientIdTokenScopedPostBodyType,
-    ) -> Response[Authorization]:
-        ...
+    ) -> Response[Authorization]: ...
 
     @overload
     def scope_token(
@@ -1428,8 +1402,7 @@ class AppsClient:
         repositories: Missing[List[str]] = UNSET,
         repository_ids: Missing[List[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
-    ) -> Response[Authorization]:
-        ...
+    ) -> Response[Authorization]: ...
 
     def scope_token(
         self,
@@ -1480,8 +1453,7 @@ class AppsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ApplicationsClientIdTokenScopedPostBodyType,
-    ) -> Response[Authorization]:
-        ...
+    ) -> Response[Authorization]: ...
 
     @overload
     async def async_scope_token(
@@ -1496,8 +1468,7 @@ class AppsClient:
         repositories: Missing[List[str]] = UNSET,
         repository_ids: Missing[List[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
-    ) -> Response[Authorization]:
-        ...
+    ) -> Response[Authorization]: ...
 
     async def async_scope_token(
         self,

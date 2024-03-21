@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -164,8 +163,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCodespacesAccessPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_codespaces_access(
@@ -181,8 +179,7 @@ class CodespacesClient:
             "all_members_and_outside_collaborators",
         ],
         selected_usernames: Missing[List[str]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_codespaces_access(
         self,
@@ -226,8 +223,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCodespacesAccessPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_codespaces_access(
@@ -243,8 +239,7 @@ class CodespacesClient:
             "all_members_and_outside_collaborators",
         ],
         selected_usernames: Missing[List[str]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_codespaces_access(
         self,
@@ -288,8 +283,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCodespacesAccessSelectedUsersPostBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_codespaces_access_users(
@@ -299,8 +293,7 @@ class CodespacesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_codespaces_access_users(
         self,
@@ -348,8 +341,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCodespacesAccessSelectedUsersPostBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_codespaces_access_users(
@@ -359,8 +351,7 @@ class CodespacesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_codespaces_access_users(
         self,
@@ -408,8 +399,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def delete_codespaces_access_users(
@@ -419,8 +409,7 @@ class CodespacesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def delete_codespaces_access_users(
         self,
@@ -470,8 +459,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_delete_codespaces_access_users(
@@ -481,8 +469,7 @@ class CodespacesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_delete_codespaces_access_users(
         self,
@@ -677,8 +664,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     def create_or_update_org_secret(
@@ -692,8 +678,7 @@ class CodespacesClient:
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[List[int]] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     def create_or_update_org_secret(
         self,
@@ -744,8 +729,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_create_or_update_org_secret(
@@ -759,8 +743,7 @@ class CodespacesClient:
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[List[int]] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     async def async_create_or_update_org_secret(
         self,
@@ -931,8 +914,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_selected_repos_for_org_secret(
@@ -943,8 +925,7 @@ class CodespacesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_selected_repos_for_org_secret(
         self,
@@ -995,8 +976,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_selected_repos_for_org_secret(
@@ -1007,8 +987,7 @@ class CodespacesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_selected_repos_for_org_secret(
         self,
@@ -1437,8 +1416,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Union[ReposOwnerRepoCodespacesPostBodyType, None],
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     @overload
     def create_with_repo_for_authenticated_user(
@@ -1461,8 +1439,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     def create_with_repo_for_authenticated_user(
         self,
@@ -1518,8 +1495,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Union[ReposOwnerRepoCodespacesPostBodyType, None],
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     @overload
     async def async_create_with_repo_for_authenticated_user(
@@ -1542,8 +1518,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     async def async_create_with_repo_for_authenticated_user(
         self,
@@ -2060,8 +2035,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     def create_or_update_repo_secret(
@@ -2074,8 +2048,7 @@ class CodespacesClient:
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     def create_or_update_repo_secret(
         self,
@@ -2124,8 +2097,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_create_or_update_repo_secret(
@@ -2138,8 +2110,7 @@ class CodespacesClient:
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     async def async_create_or_update_repo_secret(
         self,
@@ -2228,8 +2199,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     @overload
     def create_with_pr_for_authenticated_user(
@@ -2252,8 +2222,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     def create_with_pr_for_authenticated_user(
         self,
@@ -2314,8 +2283,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Union[ReposOwnerRepoPullsPullNumberCodespacesPostBodyType, None],
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     @overload
     async def async_create_with_pr_for_authenticated_user(
@@ -2338,8 +2306,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     async def async_create_with_pr_for_authenticated_user(
         self,
@@ -2469,8 +2436,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     @overload
     def create_for_authenticated_user(
@@ -2492,8 +2458,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     @overload
     def create_for_authenticated_user(
@@ -2510,8 +2475,7 @@ class CodespacesClient:
         devcontainer_path: Missing[str] = UNSET,
         working_directory: Missing[str] = UNSET,
         idle_timeout_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     def create_for_authenticated_user(
         self,
@@ -2567,8 +2531,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Union[UserCodespacesPostBodyOneof0Type, UserCodespacesPostBodyOneof1Type],
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     @overload
     async def async_create_for_authenticated_user(
@@ -2590,8 +2553,7 @@ class CodespacesClient:
         idle_timeout_minutes: Missing[int] = UNSET,
         display_name: Missing[str] = UNSET,
         retention_period_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     @overload
     async def async_create_for_authenticated_user(
@@ -2608,8 +2570,7 @@ class CodespacesClient:
         devcontainer_path: Missing[str] = UNSET,
         working_directory: Missing[str] = UNSET,
         idle_timeout_minutes: Missing[int] = UNSET,
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     async def async_create_for_authenticated_user(
         self,
@@ -2804,8 +2765,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     def create_or_update_secret_for_authenticated_user(
@@ -2817,8 +2777,7 @@ class CodespacesClient:
         encrypted_value: Missing[str] = UNSET,
         key_id: str,
         selected_repository_ids: Missing[List[Union[int, str]]] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     def create_or_update_secret_for_authenticated_user(
         self,
@@ -2867,8 +2826,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserCodespacesSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_create_or_update_secret_for_authenticated_user(
@@ -2880,8 +2838,7 @@ class CodespacesClient:
         encrypted_value: Missing[str] = UNSET,
         key_id: str,
         selected_repository_ids: Missing[List[Union[int, str]]] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     async def async_create_or_update_secret_for_authenticated_user(
         self,
@@ -3026,8 +2983,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_repositories_for_secret_for_authenticated_user(
@@ -3037,8 +2993,7 @@ class CodespacesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_repositories_for_secret_for_authenticated_user(
         self,
@@ -3088,8 +3043,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_repositories_for_secret_for_authenticated_user(
@@ -3099,8 +3053,7 @@ class CodespacesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_repositories_for_secret_for_authenticated_user(
         self,
@@ -3372,8 +3325,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     @overload
     def update_for_authenticated_user(
@@ -3385,8 +3337,7 @@ class CodespacesClient:
         machine: Missing[str] = UNSET,
         display_name: Missing[str] = UNSET,
         recent_folders: Missing[List[str]] = UNSET,
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     def update_for_authenticated_user(
         self,
@@ -3431,8 +3382,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[UserCodespacesCodespaceNamePatchBodyType] = UNSET,
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     @overload
     async def async_update_for_authenticated_user(
@@ -3444,8 +3394,7 @@ class CodespacesClient:
         machine: Missing[str] = UNSET,
         display_name: Missing[str] = UNSET,
         recent_folders: Missing[List[str]] = UNSET,
-    ) -> Response[Codespace]:
-        ...
+    ) -> Response[Codespace]: ...
 
     async def async_update_for_authenticated_user(
         self,
@@ -3656,8 +3605,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserCodespacesCodespaceNamePublishPostBodyType,
-    ) -> Response[CodespaceWithFullRepository]:
-        ...
+    ) -> Response[CodespaceWithFullRepository]: ...
 
     @overload
     def publish_for_authenticated_user(
@@ -3668,8 +3616,7 @@ class CodespacesClient:
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         private: Missing[bool] = UNSET,
-    ) -> Response[CodespaceWithFullRepository]:
-        ...
+    ) -> Response[CodespaceWithFullRepository]: ...
 
     def publish_for_authenticated_user(
         self,
@@ -3720,8 +3667,7 @@ class CodespacesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserCodespacesCodespaceNamePublishPostBodyType,
-    ) -> Response[CodespaceWithFullRepository]:
-        ...
+    ) -> Response[CodespaceWithFullRepository]: ...
 
     @overload
     async def async_publish_for_authenticated_user(
@@ -3732,8 +3678,7 @@ class CodespacesClient:
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         private: Missing[bool] = UNSET,
-    ) -> Response[CodespaceWithFullRepository]:
-        ...
+    ) -> Response[CodespaceWithFullRepository]: ...
 
     async def async_publish_for_authenticated_user(
         self,

@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -191,8 +190,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ActionsOidcCustomIssuerPolicyForEnterpriseType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_actions_oidc_custom_issuer_policy_for_enterprise(
@@ -202,8 +200,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         include_enterprise_slug: Missing[bool] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_actions_oidc_custom_issuer_policy_for_enterprise(
         self,
@@ -242,8 +239,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ActionsOidcCustomIssuerPolicyForEnterpriseType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_actions_oidc_custom_issuer_policy_for_enterprise(
@@ -253,8 +249,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         include_enterprise_slug: Missing[bool] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_actions_oidc_custom_issuer_policy_for_enterprise(
         self,
@@ -335,8 +330,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ActionsSetDefaultWorkflowPermissionsType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_github_actions_default_workflow_permissions_enterprise(
@@ -347,8 +341,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_github_actions_default_workflow_permissions_enterprise(
         self,
@@ -387,8 +380,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ActionsSetDefaultWorkflowPermissionsType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_github_actions_default_workflow_permissions_enterprise(
@@ -399,8 +391,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_github_actions_default_workflow_permissions_enterprise(
         self,
@@ -439,8 +430,9 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
-        ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+    ]: ...
 
     @overload
     def generate_runner_jitconfig_for_enterprise(
@@ -453,8 +445,9 @@ class ActionsClient:
         runner_group_id: int,
         labels: List[str],
         work_folder: Missing[str] = UNSET,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
-        ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+    ]: ...
 
     def generate_runner_jitconfig_for_enterprise(
         self,
@@ -507,8 +500,9 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
-        ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+    ]: ...
 
     @overload
     async def async_generate_runner_jitconfig_for_enterprise(
@@ -521,8 +515,9 @@ class ActionsClient:
         runner_group_id: int,
         labels: List[str],
         work_folder: Missing[str] = UNSET,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
-        ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+    ]: ...
 
     async def async_generate_runner_jitconfig_for_enterprise(
         self,
@@ -717,8 +712,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsPermissionsPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_github_actions_permissions_organization(
@@ -729,8 +723,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         enabled_repositories: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_github_actions_permissions_organization(
         self,
@@ -769,8 +762,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsPermissionsPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_github_actions_permissions_organization(
@@ -781,8 +773,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         enabled_repositories: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_github_actions_permissions_organization(
         self,
@@ -879,8 +870,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsPermissionsRepositoriesPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_selected_repositories_enabled_github_actions_organization(
@@ -890,8 +880,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_selected_repositories_enabled_github_actions_organization(
         self,
@@ -930,8 +919,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsPermissionsRepositoriesPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_selected_repositories_enabled_github_actions_organization(
@@ -941,8 +929,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_selected_repositories_enabled_github_actions_organization(
         self,
@@ -1099,8 +1086,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_allowed_actions_organization(
@@ -1112,8 +1098,7 @@ class ActionsClient:
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
         patterns_allowed: Missing[List[str]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_allowed_actions_organization(
         self,
@@ -1152,8 +1137,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_allowed_actions_organization(
@@ -1165,8 +1149,7 @@ class ActionsClient:
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
         patterns_allowed: Missing[List[str]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_allowed_actions_organization(
         self,
@@ -1247,8 +1230,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_github_actions_default_workflow_permissions_organization(
@@ -1259,8 +1241,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_github_actions_default_workflow_permissions_organization(
         self,
@@ -1300,8 +1281,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_github_actions_default_workflow_permissions_organization(
@@ -1312,8 +1292,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_github_actions_default_workflow_permissions_organization(
         self,
@@ -1415,8 +1394,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsPostBodyType,
-    ) -> Response[RunnerGroupsOrg]:
-        ...
+    ) -> Response[RunnerGroupsOrg]: ...
 
     @overload
     def create_self_hosted_runner_group_for_org(
@@ -1432,8 +1410,7 @@ class ActionsClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[List[str]] = UNSET,
-    ) -> Response[RunnerGroupsOrg]:
-        ...
+    ) -> Response[RunnerGroupsOrg]: ...
 
     def create_self_hosted_runner_group_for_org(
         self,
@@ -1473,8 +1450,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsPostBodyType,
-    ) -> Response[RunnerGroupsOrg]:
-        ...
+    ) -> Response[RunnerGroupsOrg]: ...
 
     @overload
     async def async_create_self_hosted_runner_group_for_org(
@@ -1490,8 +1466,7 @@ class ActionsClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[List[str]] = UNSET,
-    ) -> Response[RunnerGroupsOrg]:
-        ...
+    ) -> Response[RunnerGroupsOrg]: ...
 
     async def async_create_self_hosted_runner_group_for_org(
         self,
@@ -1614,8 +1589,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
-    ) -> Response[RunnerGroupsOrg]:
-        ...
+    ) -> Response[RunnerGroupsOrg]: ...
 
     @overload
     def update_self_hosted_runner_group_for_org(
@@ -1630,8 +1604,7 @@ class ActionsClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[List[str]] = UNSET,
-    ) -> Response[RunnerGroupsOrg]:
-        ...
+    ) -> Response[RunnerGroupsOrg]: ...
 
     def update_self_hosted_runner_group_for_org(
         self,
@@ -1678,8 +1651,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
-    ) -> Response[RunnerGroupsOrg]:
-        ...
+    ) -> Response[RunnerGroupsOrg]: ...
 
     @overload
     async def async_update_self_hosted_runner_group_for_org(
@@ -1694,8 +1666,7 @@ class ActionsClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[List[str]] = UNSET,
-    ) -> Response[RunnerGroupsOrg]:
-        ...
+    ) -> Response[RunnerGroupsOrg]: ...
 
     async def async_update_self_hosted_runner_group_for_org(
         self,
@@ -1806,8 +1777,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_repo_access_to_self_hosted_runner_group_in_org(
@@ -1818,8 +1788,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_repo_access_to_self_hosted_runner_group_in_org(
         self,
@@ -1864,8 +1833,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_repo_access_to_self_hosted_runner_group_in_org(
@@ -1876,8 +1844,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_repo_access_to_self_hosted_runner_group_in_org(
         self,
@@ -2066,8 +2033,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_self_hosted_runners_in_group_for_org(
@@ -2078,8 +2044,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         runners: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_self_hosted_runners_in_group_for_org(
         self,
@@ -2124,8 +2089,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_self_hosted_runners_in_group_for_org(
@@ -2136,8 +2100,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         runners: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_self_hosted_runners_in_group_for_org(
         self,
@@ -2369,8 +2332,9 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
-        ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+    ]: ...
 
     @overload
     def generate_runner_jitconfig_for_org(
@@ -2383,8 +2347,9 @@ class ActionsClient:
         runner_group_id: int,
         labels: List[str],
         work_folder: Missing[str] = UNSET,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
-        ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+    ]: ...
 
     def generate_runner_jitconfig_for_org(
         self,
@@ -2435,8 +2400,9 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
-        ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+    ]: ...
 
     @overload
     async def async_generate_runner_jitconfig_for_org(
@@ -2449,8 +2415,9 @@ class ActionsClient:
         runner_group_id: int,
         labels: List[str],
         work_folder: Missing[str] = UNSET,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
-        ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+    ]: ...
 
     async def async_generate_runner_jitconfig_for_org(
         self,
@@ -2724,8 +2691,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     @overload
     def set_custom_labels_for_self_hosted_runner_for_org(
@@ -2736,8 +2702,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: List[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     def set_custom_labels_for_self_hosted_runner_for_org(
         self,
@@ -2788,8 +2753,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     @overload
     async def async_set_custom_labels_for_self_hosted_runner_for_org(
@@ -2800,8 +2764,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: List[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     async def async_set_custom_labels_for_self_hosted_runner_for_org(
         self,
@@ -2852,8 +2815,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     @overload
     def add_custom_labels_to_self_hosted_runner_for_org(
@@ -2864,8 +2826,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: List[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     def add_custom_labels_to_self_hosted_runner_for_org(
         self,
@@ -2916,8 +2877,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     @overload
     async def async_add_custom_labels_to_self_hosted_runner_for_org(
@@ -2928,8 +2888,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: List[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     async def async_add_custom_labels_to_self_hosted_runner_for_org(
         self,
@@ -3242,8 +3201,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     def create_or_update_org_secret(
@@ -3257,8 +3215,7 @@ class ActionsClient:
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[List[int]] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     def create_or_update_org_secret(
         self,
@@ -3300,8 +3257,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_create_or_update_org_secret(
@@ -3315,8 +3271,7 @@ class ActionsClient:
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[List[int]] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     async def async_create_or_update_org_secret(
         self,
@@ -3456,8 +3411,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_selected_repos_for_org_secret(
@@ -3468,8 +3422,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_selected_repos_for_org_secret(
         self,
@@ -3512,8 +3465,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_selected_repos_for_org_secret(
@@ -3524,8 +3476,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_selected_repos_for_org_secret(
         self,
@@ -3709,8 +3660,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsVariablesPostBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     def create_org_variable(
@@ -3723,8 +3673,7 @@ class ActionsClient:
         value: str,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[List[int]] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     def create_org_variable(
         self,
@@ -3764,8 +3713,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsVariablesPostBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_create_org_variable(
@@ -3778,8 +3726,7 @@ class ActionsClient:
         value: str,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[List[int]] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     async def async_create_org_variable(
         self,
@@ -3902,8 +3849,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsVariablesNamePatchBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def update_org_variable(
@@ -3916,8 +3862,7 @@ class ActionsClient:
         value: Missing[str] = UNSET,
         visibility: Missing[Literal["all", "private", "selected"]] = UNSET,
         selected_repository_ids: Missing[List[int]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def update_org_variable(
         self,
@@ -3958,8 +3903,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsVariablesNamePatchBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_update_org_variable(
@@ -3972,8 +3916,7 @@ class ActionsClient:
         value: Missing[str] = UNSET,
         visibility: Missing[Literal["all", "private", "selected"]] = UNSET,
         selected_repository_ids: Missing[List[int]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_update_org_variable(
         self,
@@ -4076,8 +4019,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsVariablesNameRepositoriesPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_selected_repos_for_org_variable(
@@ -4088,8 +4030,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_selected_repos_for_org_variable(
         self,
@@ -4133,8 +4074,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgActionsVariablesNameRepositoriesPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_selected_repos_for_org_variable(
@@ -4145,8 +4085,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_selected_repos_for_org_variable(
         self,
@@ -4789,8 +4728,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     def re_run_job_for_workflow_run(
@@ -4802,8 +4740,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     def re_run_job_for_workflow_run(
         self,
@@ -4862,8 +4799,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_re_run_job_for_workflow_run(
@@ -4875,8 +4811,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     async def async_re_run_job_for_workflow_run(
         self,
@@ -4984,8 +4919,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     def set_custom_oidc_sub_claim_for_repo(
@@ -4997,8 +4931,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         use_default: bool,
         include_claim_keys: Missing[List[str]] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     def set_custom_oidc_sub_claim_for_repo(
         self,
@@ -5052,8 +4985,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_set_custom_oidc_sub_claim_for_repo(
@@ -5065,8 +4997,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         use_default: bool,
         include_claim_keys: Missing[List[str]] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     async def async_set_custom_oidc_sub_claim_for_repo(
         self,
@@ -5284,8 +5215,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsPermissionsPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_github_actions_permissions_repository(
@@ -5297,8 +5227,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         enabled: bool,
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_github_actions_permissions_repository(
         self,
@@ -5339,8 +5268,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsPermissionsPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_github_actions_permissions_repository(
@@ -5352,8 +5280,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         enabled: bool,
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_github_actions_permissions_repository(
         self,
@@ -5438,8 +5365,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ActionsWorkflowAccessToRepositoryType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_workflow_access_to_repository(
@@ -5450,8 +5376,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_level: Literal["none", "user", "organization", "enterprise"],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_workflow_access_to_repository(
         self,
@@ -5492,8 +5417,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ActionsWorkflowAccessToRepositoryType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_workflow_access_to_repository(
@@ -5504,8 +5428,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_level: Literal["none", "user", "organization", "enterprise"],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_workflow_access_to_repository(
         self,
@@ -5590,8 +5513,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_allowed_actions_repository(
@@ -5604,8 +5526,7 @@ class ActionsClient:
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
         patterns_allowed: Missing[List[str]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_allowed_actions_repository(
         self,
@@ -5646,8 +5567,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_allowed_actions_repository(
@@ -5660,8 +5580,7 @@ class ActionsClient:
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
         patterns_allowed: Missing[List[str]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_allowed_actions_repository(
         self,
@@ -5746,8 +5665,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ActionsSetDefaultWorkflowPermissionsType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_github_actions_default_workflow_permissions_repository(
@@ -5759,8 +5677,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_github_actions_default_workflow_permissions_repository(
         self,
@@ -5802,8 +5719,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ActionsSetDefaultWorkflowPermissionsType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_github_actions_default_workflow_permissions_repository(
@@ -5815,8 +5731,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_github_actions_default_workflow_permissions_repository(
         self,
@@ -5970,8 +5885,9 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
-        ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+    ]: ...
 
     @overload
     def generate_runner_jitconfig_for_repo(
@@ -5985,8 +5901,9 @@ class ActionsClient:
         runner_group_id: int,
         labels: List[str],
         work_folder: Missing[str] = UNSET,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
-        ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+    ]: ...
 
     def generate_runner_jitconfig_for_repo(
         self,
@@ -6041,8 +5958,9 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
-        ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+    ]: ...
 
     @overload
     async def async_generate_runner_jitconfig_for_repo(
@@ -6056,8 +5974,9 @@ class ActionsClient:
         runner_group_id: int,
         labels: List[str],
         work_folder: Missing[str] = UNSET,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
-        ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+    ]: ...
 
     async def async_generate_runner_jitconfig_for_repo(
         self,
@@ -6345,8 +6264,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     @overload
     def set_custom_labels_for_self_hosted_runner_for_repo(
@@ -6358,8 +6276,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: List[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     def set_custom_labels_for_self_hosted_runner_for_repo(
         self,
@@ -6414,8 +6331,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     @overload
     async def async_set_custom_labels_for_self_hosted_runner_for_repo(
@@ -6427,8 +6343,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: List[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     async def async_set_custom_labels_for_self_hosted_runner_for_repo(
         self,
@@ -6483,8 +6398,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     @overload
     def add_custom_labels_to_self_hosted_runner_for_repo(
@@ -6496,8 +6410,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: List[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     def add_custom_labels_to_self_hosted_runner_for_repo(
         self,
@@ -6552,8 +6465,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     @overload
     async def async_add_custom_labels_to_self_hosted_runner_for_repo(
@@ -6565,8 +6477,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: List[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     async def async_add_custom_labels_to_self_hosted_runner_for_repo(
         self,
@@ -7373,8 +7284,7 @@ class ActionsClient:
         data: Union[
             ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
         ],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def review_custom_gates_for_run(
@@ -7387,8 +7297,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         environment_name: str,
         comment: str,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def review_custom_gates_for_run(
@@ -7402,8 +7311,7 @@ class ActionsClient:
         environment_name: str,
         state: Literal["approved", "rejected"],
         comment: Missing[str] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def review_custom_gates_for_run(
         self,
@@ -7460,8 +7368,7 @@ class ActionsClient:
         data: Union[
             ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
         ],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_review_custom_gates_for_run(
@@ -7474,8 +7381,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         environment_name: str,
         comment: str,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_review_custom_gates_for_run(
@@ -7489,8 +7395,7 @@ class ActionsClient:
         environment_name: str,
         state: Literal["approved", "rejected"],
         comment: Missing[str] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_review_custom_gates_for_run(
         self,
@@ -7805,8 +7710,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
-    ) -> Response[List[Deployment]]:
-        ...
+    ) -> Response[List[Deployment]]: ...
 
     @overload
     def review_pending_deployments_for_run(
@@ -7820,8 +7724,7 @@ class ActionsClient:
         environment_ids: List[int],
         state: Literal["approved", "rejected"],
         comment: str,
-    ) -> Response[List[Deployment]]:
-        ...
+    ) -> Response[List[Deployment]]: ...
 
     def review_pending_deployments_for_run(
         self,
@@ -7874,8 +7777,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
-    ) -> Response[List[Deployment]]:
-        ...
+    ) -> Response[List[Deployment]]: ...
 
     @overload
     async def async_review_pending_deployments_for_run(
@@ -7889,8 +7791,7 @@ class ActionsClient:
         environment_ids: List[int],
         state: Literal["approved", "rejected"],
         comment: str,
-    ) -> Response[List[Deployment]]:
-        ...
+    ) -> Response[List[Deployment]]: ...
 
     async def async_review_pending_deployments_for_run(
         self,
@@ -7945,8 +7846,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     def re_run_workflow(
@@ -7958,8 +7858,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     def re_run_workflow(
         self,
@@ -8011,8 +7910,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_re_run_workflow(
@@ -8024,8 +7922,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     async def async_re_run_workflow(
         self,
@@ -8077,8 +7974,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     def re_run_workflow_failed_jobs(
@@ -8090,8 +7986,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     def re_run_workflow_failed_jobs(
         self,
@@ -8146,8 +8041,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_re_run_workflow_failed_jobs(
@@ -8159,8 +8053,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     async def async_re_run_workflow_failed_jobs(
         self,
@@ -8409,8 +8302,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     def create_or_update_repo_secret(
@@ -8423,8 +8315,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     def create_or_update_repo_secret(
         self,
@@ -8468,8 +8359,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_create_or_update_repo_secret(
@@ -8482,8 +8372,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     async def async_create_or_update_repo_secret(
         self,
@@ -8626,8 +8515,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsVariablesPostBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     def create_repo_variable(
@@ -8639,8 +8527,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         name: str,
         value: str,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     def create_repo_variable(
         self,
@@ -8682,8 +8569,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsVariablesPostBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_create_repo_variable(
@@ -8695,8 +8581,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         name: str,
         value: str,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     async def async_create_repo_variable(
         self,
@@ -8825,8 +8710,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsVariablesNamePatchBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def update_repo_variable(
@@ -8838,8 +8722,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         value: Missing[str] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def update_repo_variable(
         self,
@@ -8882,8 +8765,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsVariablesNamePatchBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_update_repo_variable(
@@ -8895,8 +8777,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         value: Missing[str] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_update_repo_variable(
         self,
@@ -9085,8 +8966,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def create_workflow_dispatch(
@@ -9101,8 +8981,7 @@ class ActionsClient:
         inputs: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def create_workflow_dispatch(
         self,
@@ -9149,8 +9028,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_create_workflow_dispatch(
@@ -9165,8 +9043,7 @@ class ActionsClient:
         inputs: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_create_workflow_dispatch(
         self,
@@ -9592,8 +9469,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     def create_or_update_environment_secret(
@@ -9607,8 +9483,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: str,
         key_id: str,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     def create_or_update_environment_secret(
         self,
@@ -9661,8 +9536,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_create_or_update_environment_secret(
@@ -9676,8 +9550,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: str,
         key_id: str,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     async def async_create_or_update_environment_secret(
         self,
@@ -9837,8 +9710,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     def create_environment_variable(
@@ -9851,8 +9723,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         name: str,
         value: str,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     def create_environment_variable(
         self,
@@ -9903,8 +9774,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_create_environment_variable(
@@ -9917,8 +9787,7 @@ class ActionsClient:
         headers: Optional[Dict[str, str]] = None,
         name: str,
         value: str,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     async def async_create_environment_variable(
         self,
@@ -10060,8 +9929,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def update_environment_variable(
@@ -10074,8 +9942,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         value: Missing[str] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def update_environment_variable(
         self,
@@ -10126,8 +9993,7 @@ class ActionsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_update_environment_variable(
@@ -10140,8 +10006,7 @@ class ActionsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         value: Missing[str] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_update_environment_variable(
         self,

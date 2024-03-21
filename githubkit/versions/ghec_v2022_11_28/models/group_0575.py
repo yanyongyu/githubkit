@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -70,9 +69,9 @@ class WebhookIssuesTransferredPropIssue(GitHubModel):
     active_lock_reason: Union[
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ] = Field()
-    assignee: Missing[
-        Union[WebhookIssuesTransferredPropIssuePropAssignee, None]
-    ] = Field(default=UNSET, title="User")
+    assignee: Missing[Union[WebhookIssuesTransferredPropIssuePropAssignee, None]] = (
+        Field(default=UNSET, title="User")
+    )
     assignees: List[
         Union[WebhookIssuesTransferredPropIssuePropAssigneesItems, None]
     ] = Field()
@@ -207,9 +206,9 @@ class WebhookIssuesTransferredPropIssuePropMilestone(GitHubModel):
     closed_at: Union[datetime, None] = Field()
     closed_issues: int = Field()
     created_at: datetime = Field()
-    creator: Union[
-        WebhookIssuesTransferredPropIssuePropMilestonePropCreator, None
-    ] = Field(title="User")
+    creator: Union[WebhookIssuesTransferredPropIssuePropMilestonePropCreator, None] = (
+        Field(title="User")
+    )
     description: Union[str, None] = Field()
     due_on: Union[datetime, None] = Field()
     html_url: str = Field()

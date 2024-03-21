@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import Union, Literal
@@ -154,10 +153,10 @@ class WebhookMembershipAddedPropTeamPropParent(GitHubModel):
         description="Permission that the team will have for its repositories"
     )
     privacy: Literal["open", "closed", "secret"] = Field()
-    notification_setting: Literal[
-        "notifications_enabled", "notifications_disabled"
-    ] = Field(
-        description="Whether team members will receive notifications when their team is @mentioned"
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"] = (
+        Field(
+            description="Whether team members will receive notifications when their team is @mentioned"
+        )
     )
     repositories_url: str = Field()
     slug: str = Field()

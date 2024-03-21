@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -51,9 +50,9 @@ class WebhookProjectsV2ItemRestored(GitHubModel):
 class WebhookProjectsV2ItemRestoredPropChanges(GitHubModel):
     """WebhookProjectsV2ItemRestoredPropChanges"""
 
-    archived_at: Missing[
-        WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt
-    ] = Field(default=UNSET)
+    archived_at: Missing[WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt] = (
+        Field(default=UNSET)
+    )
 
 
 class WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt(GitHubModel):

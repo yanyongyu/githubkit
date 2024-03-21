@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -65,8 +64,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoGitBlobsPostBodyType,
-    ) -> Response[ShortBlob]:
-        ...
+    ) -> Response[ShortBlob]: ...
 
     @overload
     def create_blob(
@@ -78,8 +76,7 @@ class GitClient:
         headers: Optional[Dict[str, str]] = None,
         content: str,
         encoding: Missing[str] = UNSET,
-    ) -> Response[ShortBlob]:
-        ...
+    ) -> Response[ShortBlob]: ...
 
     def create_blob(
         self,
@@ -132,8 +129,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoGitBlobsPostBodyType,
-    ) -> Response[ShortBlob]:
-        ...
+    ) -> Response[ShortBlob]: ...
 
     @overload
     async def async_create_blob(
@@ -145,8 +141,7 @@ class GitClient:
         headers: Optional[Dict[str, str]] = None,
         content: str,
         encoding: Missing[str] = UNSET,
-    ) -> Response[ShortBlob]:
-        ...
+    ) -> Response[ShortBlob]: ...
 
     async def async_create_blob(
         self,
@@ -257,8 +252,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoGitCommitsPostBodyType,
-    ) -> Response[GitCommit]:
-        ...
+    ) -> Response[GitCommit]: ...
 
     @overload
     def create_commit(
@@ -274,8 +268,7 @@ class GitClient:
         author: Missing[ReposOwnerRepoGitCommitsPostBodyPropAuthorType] = UNSET,
         committer: Missing[ReposOwnerRepoGitCommitsPostBodyPropCommitterType] = UNSET,
         signature: Missing[str] = UNSET,
-    ) -> Response[GitCommit]:
-        ...
+    ) -> Response[GitCommit]: ...
 
     def create_commit(
         self,
@@ -327,8 +320,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoGitCommitsPostBodyType,
-    ) -> Response[GitCommit]:
-        ...
+    ) -> Response[GitCommit]: ...
 
     @overload
     async def async_create_commit(
@@ -344,8 +336,7 @@ class GitClient:
         author: Missing[ReposOwnerRepoGitCommitsPostBodyPropAuthorType] = UNSET,
         committer: Missing[ReposOwnerRepoGitCommitsPostBodyPropCommitterType] = UNSET,
         signature: Missing[str] = UNSET,
-    ) -> Response[GitCommit]:
-        ...
+    ) -> Response[GitCommit]: ...
 
     async def async_create_commit(
         self,
@@ -561,8 +552,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoGitRefsPostBodyType,
-    ) -> Response[GitRef]:
-        ...
+    ) -> Response[GitRef]: ...
 
     @overload
     def create_ref(
@@ -574,8 +564,7 @@ class GitClient:
         headers: Optional[Dict[str, str]] = None,
         ref: str,
         sha: str,
-    ) -> Response[GitRef]:
-        ...
+    ) -> Response[GitRef]: ...
 
     def create_ref(
         self,
@@ -626,8 +615,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoGitRefsPostBodyType,
-    ) -> Response[GitRef]:
-        ...
+    ) -> Response[GitRef]: ...
 
     @overload
     async def async_create_ref(
@@ -639,8 +627,7 @@ class GitClient:
         headers: Optional[Dict[str, str]] = None,
         ref: str,
         sha: str,
-    ) -> Response[GitRef]:
-        ...
+    ) -> Response[GitRef]: ...
 
     async def async_create_ref(
         self,
@@ -744,8 +731,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoGitRefsRefPatchBodyType,
-    ) -> Response[GitRef]:
-        ...
+    ) -> Response[GitRef]: ...
 
     @overload
     def update_ref(
@@ -758,8 +744,7 @@ class GitClient:
         headers: Optional[Dict[str, str]] = None,
         sha: str,
         force: Missing[bool] = UNSET,
-    ) -> Response[GitRef]:
-        ...
+    ) -> Response[GitRef]: ...
 
     def update_ref(
         self,
@@ -812,8 +797,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoGitRefsRefPatchBodyType,
-    ) -> Response[GitRef]:
-        ...
+    ) -> Response[GitRef]: ...
 
     @overload
     async def async_update_ref(
@@ -826,8 +810,7 @@ class GitClient:
         headers: Optional[Dict[str, str]] = None,
         sha: str,
         force: Missing[bool] = UNSET,
-    ) -> Response[GitRef]:
-        ...
+    ) -> Response[GitRef]: ...
 
     async def async_update_ref(
         self,
@@ -879,8 +862,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoGitTagsPostBodyType,
-    ) -> Response[GitTag]:
-        ...
+    ) -> Response[GitTag]: ...
 
     @overload
     def create_tag(
@@ -895,8 +877,7 @@ class GitClient:
         object_: str,
         type: Literal["commit", "tree", "blob"],
         tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTaggerType] = UNSET,
-    ) -> Response[GitTag]:
-        ...
+    ) -> Response[GitTag]: ...
 
     def create_tag(
         self,
@@ -947,8 +928,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoGitTagsPostBodyType,
-    ) -> Response[GitTag]:
-        ...
+    ) -> Response[GitTag]: ...
 
     @overload
     async def async_create_tag(
@@ -963,8 +943,7 @@ class GitClient:
         object_: str,
         type: Literal["commit", "tree", "blob"],
         tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTaggerType] = UNSET,
-    ) -> Response[GitTag]:
-        ...
+    ) -> Response[GitTag]: ...
 
     async def async_create_tag(
         self,
@@ -1069,8 +1048,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoGitTreesPostBodyType,
-    ) -> Response[GitTree]:
-        ...
+    ) -> Response[GitTree]: ...
 
     @overload
     def create_tree(
@@ -1082,8 +1060,7 @@ class GitClient:
         headers: Optional[Dict[str, str]] = None,
         tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Missing[str] = UNSET,
-    ) -> Response[GitTree]:
-        ...
+    ) -> Response[GitTree]: ...
 
     def create_tree(
         self,
@@ -1136,8 +1113,7 @@ class GitClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoGitTreesPostBodyType,
-    ) -> Response[GitTree]:
-        ...
+    ) -> Response[GitTree]: ...
 
     @overload
     async def async_create_tree(
@@ -1149,8 +1125,7 @@ class GitClient:
         headers: Optional[Dict[str, str]] = None,
         tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Missing[str] = UNSET,
-    ) -> Response[GitTree]:
-        ...
+    ) -> Response[GitTree]: ...
 
     async def async_create_tree(
         self,

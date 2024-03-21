@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -139,8 +138,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsPermissionsPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_github_actions_permissions_enterprise(
@@ -151,8 +149,7 @@ class EnterpriseAdminClient:
         headers: Optional[Dict[str, str]] = None,
         enabled_organizations: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_github_actions_permissions_enterprise(
         self,
@@ -193,8 +190,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsPermissionsPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_github_actions_permissions_enterprise(
@@ -205,8 +201,7 @@ class EnterpriseAdminClient:
         headers: Optional[Dict[str, str]] = None,
         enabled_organizations: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_github_actions_permissions_enterprise(
         self,
@@ -309,8 +304,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_selected_organizations_enabled_github_actions_enterprise(
@@ -320,8 +314,7 @@ class EnterpriseAdminClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_organization_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_selected_organizations_enabled_github_actions_enterprise(
         self,
@@ -364,8 +357,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_selected_organizations_enabled_github_actions_enterprise(
@@ -375,8 +367,7 @@ class EnterpriseAdminClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_organization_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_selected_organizations_enabled_github_actions_enterprise(
         self,
@@ -537,8 +528,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: SelectedActionsType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_allowed_actions_enterprise(
@@ -550,8 +540,7 @@ class EnterpriseAdminClient:
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
         patterns_allowed: Missing[List[str]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_allowed_actions_enterprise(
         self,
@@ -590,8 +579,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: SelectedActionsType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_allowed_actions_enterprise(
@@ -603,8 +591,7 @@ class EnterpriseAdminClient:
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
         patterns_allowed: Missing[List[str]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_allowed_actions_enterprise(
         self,
@@ -705,8 +692,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
-    ) -> Response[RunnerGroupsEnterprise]:
-        ...
+    ) -> Response[RunnerGroupsEnterprise]: ...
 
     @overload
     def create_self_hosted_runner_group_for_enterprise(
@@ -722,8 +708,7 @@ class EnterpriseAdminClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[List[str]] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise]:
-        ...
+    ) -> Response[RunnerGroupsEnterprise]: ...
 
     def create_self_hosted_runner_group_for_enterprise(
         self,
@@ -768,8 +753,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsRunnerGroupsPostBodyType,
-    ) -> Response[RunnerGroupsEnterprise]:
-        ...
+    ) -> Response[RunnerGroupsEnterprise]: ...
 
     @overload
     async def async_create_self_hosted_runner_group_for_enterprise(
@@ -785,8 +769,7 @@ class EnterpriseAdminClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[List[str]] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise]:
-        ...
+    ) -> Response[RunnerGroupsEnterprise]: ...
 
     async def async_create_self_hosted_runner_group_for_enterprise(
         self,
@@ -916,8 +899,7 @@ class EnterpriseAdminClient:
         data: Missing[
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
         ] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise]:
-        ...
+    ) -> Response[RunnerGroupsEnterprise]: ...
 
     @overload
     def update_self_hosted_runner_group_for_enterprise(
@@ -932,8 +914,7 @@ class EnterpriseAdminClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[List[str]] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise]:
-        ...
+    ) -> Response[RunnerGroupsEnterprise]: ...
 
     def update_self_hosted_runner_group_for_enterprise(
         self,
@@ -984,8 +965,7 @@ class EnterpriseAdminClient:
         data: Missing[
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType
         ] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise]:
-        ...
+    ) -> Response[RunnerGroupsEnterprise]: ...
 
     @overload
     async def async_update_self_hosted_runner_group_for_enterprise(
@@ -1000,8 +980,7 @@ class EnterpriseAdminClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[List[str]] = UNSET,
-    ) -> Response[RunnerGroupsEnterprise]:
-        ...
+    ) -> Response[RunnerGroupsEnterprise]: ...
 
     async def async_update_self_hosted_runner_group_for_enterprise(
         self,
@@ -1118,8 +1097,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_org_access_to_self_hosted_runner_group_in_enterprise(
@@ -1130,8 +1108,7 @@ class EnterpriseAdminClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_organization_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_org_access_to_self_hosted_runner_group_in_enterprise(
         self,
@@ -1179,8 +1156,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_org_access_to_self_hosted_runner_group_in_enterprise(
@@ -1191,8 +1167,7 @@ class EnterpriseAdminClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_organization_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_org_access_to_self_hosted_runner_group_in_enterprise(
         self,
@@ -1392,8 +1367,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_self_hosted_runners_in_group_for_enterprise(
@@ -1404,8 +1378,7 @@ class EnterpriseAdminClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         runners: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_self_hosted_runners_in_group_for_enterprise(
         self,
@@ -1454,8 +1427,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_self_hosted_runners_in_group_for_enterprise(
@@ -1466,8 +1438,7 @@ class EnterpriseAdminClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         runners: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_self_hosted_runners_in_group_for_enterprise(
         self,
@@ -1926,8 +1897,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     @overload
     def set_custom_labels_for_self_hosted_runner_for_enterprise(
@@ -1938,8 +1908,7 @@ class EnterpriseAdminClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: List[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     def set_custom_labels_for_self_hosted_runner_for_enterprise(
         self,
@@ -1994,8 +1963,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     @overload
     async def async_set_custom_labels_for_self_hosted_runner_for_enterprise(
@@ -2006,8 +1974,7 @@ class EnterpriseAdminClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: List[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     async def async_set_custom_labels_for_self_hosted_runner_for_enterprise(
         self,
@@ -2062,8 +2029,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     @overload
     def add_custom_labels_to_self_hosted_runner_for_enterprise(
@@ -2074,8 +2040,7 @@ class EnterpriseAdminClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: List[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     def add_custom_labels_to_self_hosted_runner_for_enterprise(
         self,
@@ -2130,8 +2095,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     @overload
     async def async_add_custom_labels_to_self_hosted_runner_for_enterprise(
@@ -2142,8 +2106,7 @@ class EnterpriseAdminClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: List[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
-        ...
+    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     async def async_add_custom_labels_to_self_hosted_runner_for_enterprise(
         self,
@@ -2397,8 +2360,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: AnnouncementType,
-    ) -> Response[AnnouncementBanner]:
-        ...
+    ) -> Response[AnnouncementBanner]: ...
 
     @overload
     def set_announcement_banner_for_enterprise(
@@ -2409,8 +2371,7 @@ class EnterpriseAdminClient:
         headers: Optional[Dict[str, str]] = None,
         announcement: Union[str, None],
         expires_at: Missing[Union[datetime, None]] = UNSET,
-    ) -> Response[AnnouncementBanner]:
-        ...
+    ) -> Response[AnnouncementBanner]: ...
 
     def set_announcement_banner_for_enterprise(
         self,
@@ -2450,8 +2411,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: AnnouncementType,
-    ) -> Response[AnnouncementBanner]:
-        ...
+    ) -> Response[AnnouncementBanner]: ...
 
     @overload
     async def async_set_announcement_banner_for_enterprise(
@@ -2462,8 +2422,7 @@ class EnterpriseAdminClient:
         headers: Optional[Dict[str, str]] = None,
         announcement: Union[str, None],
         expires_at: Missing[Union[datetime, None]] = UNSET,
-    ) -> Response[AnnouncementBanner]:
-        ...
+    ) -> Response[AnnouncementBanner]: ...
 
     async def async_set_announcement_banner_for_enterprise(
         self,
@@ -2635,8 +2594,7 @@ class EnterpriseAdminClient:
         data: Missing[
             EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def patch_security_analysis_settings_for_enterprise(
@@ -2654,8 +2612,7 @@ class EnterpriseAdminClient:
         ] = UNSET,
         secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = UNSET,
         secret_scanning_validity_checks_enabled: Missing[Union[bool, None]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def patch_security_analysis_settings_for_enterprise(
         self,
@@ -2706,8 +2663,7 @@ class EnterpriseAdminClient:
         data: Missing[
             EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_patch_security_analysis_settings_for_enterprise(
@@ -2725,8 +2681,7 @@ class EnterpriseAdminClient:
         ] = UNSET,
         secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = UNSET,
         secret_scanning_validity_checks_enabled: Missing[Union[bool, None]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_patch_security_analysis_settings_for_enterprise(
         self,
@@ -3013,8 +2968,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: GroupType,
-    ) -> Response[ScimEnterpriseGroupResponse]:
-        ...
+    ) -> Response[ScimEnterpriseGroupResponse]: ...
 
     @overload
     def provision_enterprise_group(
@@ -3027,8 +2981,7 @@ class EnterpriseAdminClient:
         external_id: str,
         display_name: str,
         members: List[GroupPropMembersItemsType],
-    ) -> Response[ScimEnterpriseGroupResponse]:
-        ...
+    ) -> Response[ScimEnterpriseGroupResponse]: ...
 
     def provision_enterprise_group(
         self,
@@ -3073,8 +3026,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: GroupType,
-    ) -> Response[ScimEnterpriseGroupResponse]:
-        ...
+    ) -> Response[ScimEnterpriseGroupResponse]: ...
 
     @overload
     async def async_provision_enterprise_group(
@@ -3087,8 +3039,7 @@ class EnterpriseAdminClient:
         external_id: str,
         display_name: str,
         members: List[GroupPropMembersItemsType],
-    ) -> Response[ScimEnterpriseGroupResponse]:
-        ...
+    ) -> Response[ScimEnterpriseGroupResponse]: ...
 
     async def async_provision_enterprise_group(
         self,
@@ -3202,8 +3153,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: GroupType,
-    ) -> Response[ScimEnterpriseGroupResponse]:
-        ...
+    ) -> Response[ScimEnterpriseGroupResponse]: ...
 
     @overload
     def set_information_for_provisioned_enterprise_group(
@@ -3217,8 +3167,7 @@ class EnterpriseAdminClient:
         external_id: str,
         display_name: str,
         members: List[GroupPropMembersItemsType],
-    ) -> Response[ScimEnterpriseGroupResponse]:
-        ...
+    ) -> Response[ScimEnterpriseGroupResponse]: ...
 
     def set_information_for_provisioned_enterprise_group(
         self,
@@ -3266,8 +3215,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: GroupType,
-    ) -> Response[ScimEnterpriseGroupResponse]:
-        ...
+    ) -> Response[ScimEnterpriseGroupResponse]: ...
 
     @overload
     async def async_set_information_for_provisioned_enterprise_group(
@@ -3281,8 +3229,7 @@ class EnterpriseAdminClient:
         external_id: str,
         display_name: str,
         members: List[GroupPropMembersItemsType],
-    ) -> Response[ScimEnterpriseGroupResponse]:
-        ...
+    ) -> Response[ScimEnterpriseGroupResponse]: ...
 
     async def async_set_information_for_provisioned_enterprise_group(
         self,
@@ -3384,8 +3331,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: PatchSchemaType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def update_attribute_for_enterprise_group(
@@ -3397,8 +3343,7 @@ class EnterpriseAdminClient:
         headers: Optional[Dict[str, str]] = None,
         operations: List[PatchSchemaPropOperationsItemsType],
         schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def update_attribute_for_enterprise_group(
         self,
@@ -3445,8 +3390,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: PatchSchemaType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_update_attribute_for_enterprise_group(
@@ -3458,8 +3402,7 @@ class EnterpriseAdminClient:
         headers: Optional[Dict[str, str]] = None,
         operations: List[PatchSchemaPropOperationsItemsType],
         schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_update_attribute_for_enterprise_group(
         self,
@@ -3577,8 +3520,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserType,
-    ) -> Response[ScimEnterpriseUserResponse]:
-        ...
+    ) -> Response[ScimEnterpriseUserResponse]: ...
 
     @overload
     def provision_enterprise_user(
@@ -3595,8 +3537,7 @@ class EnterpriseAdminClient:
         display_name: str,
         emails: List[UserEmailsItemsType],
         roles: Missing[List[UserRoleItemsType]] = UNSET,
-    ) -> Response[ScimEnterpriseUserResponse]:
-        ...
+    ) -> Response[ScimEnterpriseUserResponse]: ...
 
     def provision_enterprise_user(
         self,
@@ -3641,8 +3582,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserType,
-    ) -> Response[ScimEnterpriseUserResponse]:
-        ...
+    ) -> Response[ScimEnterpriseUserResponse]: ...
 
     @overload
     async def async_provision_enterprise_user(
@@ -3659,8 +3599,7 @@ class EnterpriseAdminClient:
         display_name: str,
         emails: List[UserEmailsItemsType],
         roles: Missing[List[UserRoleItemsType]] = UNSET,
-    ) -> Response[ScimEnterpriseUserResponse]:
-        ...
+    ) -> Response[ScimEnterpriseUserResponse]: ...
 
     async def async_provision_enterprise_user(
         self,
@@ -3762,8 +3701,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserType,
-    ) -> Response[ScimEnterpriseUserResponse]:
-        ...
+    ) -> Response[ScimEnterpriseUserResponse]: ...
 
     @overload
     def set_information_for_provisioned_enterprise_user(
@@ -3781,8 +3719,7 @@ class EnterpriseAdminClient:
         display_name: str,
         emails: List[UserEmailsItemsType],
         roles: Missing[List[UserRoleItemsType]] = UNSET,
-    ) -> Response[ScimEnterpriseUserResponse]:
-        ...
+    ) -> Response[ScimEnterpriseUserResponse]: ...
 
     def set_information_for_provisioned_enterprise_user(
         self,
@@ -3830,8 +3767,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserType,
-    ) -> Response[ScimEnterpriseUserResponse]:
-        ...
+    ) -> Response[ScimEnterpriseUserResponse]: ...
 
     @overload
     async def async_set_information_for_provisioned_enterprise_user(
@@ -3849,8 +3785,7 @@ class EnterpriseAdminClient:
         display_name: str,
         emails: List[UserEmailsItemsType],
         roles: Missing[List[UserRoleItemsType]] = UNSET,
-    ) -> Response[ScimEnterpriseUserResponse]:
-        ...
+    ) -> Response[ScimEnterpriseUserResponse]: ...
 
     async def async_set_information_for_provisioned_enterprise_user(
         self,
@@ -3952,8 +3887,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: PatchSchemaType,
-    ) -> Response[ScimEnterpriseUserResponse]:
-        ...
+    ) -> Response[ScimEnterpriseUserResponse]: ...
 
     @overload
     def update_attribute_for_enterprise_user(
@@ -3965,8 +3899,7 @@ class EnterpriseAdminClient:
         headers: Optional[Dict[str, str]] = None,
         operations: List[PatchSchemaPropOperationsItemsType],
         schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]],
-    ) -> Response[ScimEnterpriseUserResponse]:
-        ...
+    ) -> Response[ScimEnterpriseUserResponse]: ...
 
     def update_attribute_for_enterprise_user(
         self,
@@ -4019,8 +3952,7 @@ class EnterpriseAdminClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: PatchSchemaType,
-    ) -> Response[ScimEnterpriseUserResponse]:
-        ...
+    ) -> Response[ScimEnterpriseUserResponse]: ...
 
     @overload
     async def async_update_attribute_for_enterprise_user(
@@ -4032,8 +3964,7 @@ class EnterpriseAdminClient:
         headers: Optional[Dict[str, str]] = None,
         operations: List[PatchSchemaPropOperationsItemsType],
         schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]],
-    ) -> Response[ScimEnterpriseUserResponse]:
-        ...
+    ) -> Response[ScimEnterpriseUserResponse]: ...
 
     async def async_update_attribute_for_enterprise_user(
         self,

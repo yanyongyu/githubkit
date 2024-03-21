@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -420,8 +419,12 @@ class WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsType(
 ):
     """Check Run Pull Request"""
 
-    base: WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBaseType
-    head: WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadType
+    base: (
+        WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropBaseType
+    )
+    head: (
+        WebhookDeploymentReviewRejectedPropWorkflowRunPropPullRequestsItemsPropHeadType
+    )
     id: int
     number: int
     url: str

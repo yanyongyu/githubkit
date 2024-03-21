@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union, Literal
@@ -41,11 +40,11 @@ class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubModel):
         default=UNSET,
         description="The people or teams that may review jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
     )
-    deployment_branch_policy: Missing[
-        Union[DeploymentBranchPolicySettings, None]
-    ] = Field(
-        default=UNSET,
-        description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
+    deployment_branch_policy: Missing[Union[DeploymentBranchPolicySettings, None]] = (
+        Field(
+            default=UNSET,
+            description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
+        )
     )
 
 

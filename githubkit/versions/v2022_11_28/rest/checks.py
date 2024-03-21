@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -79,8 +78,7 @@ class ChecksClient:
             ReposOwnerRepoCheckRunsPostBodyOneof0Type,
             ReposOwnerRepoCheckRunsPostBodyOneof1Type,
         ],
-    ) -> Response[CheckRun]:
-        ...
+    ) -> Response[CheckRun]: ...
 
     @overload
     def create(
@@ -111,8 +109,7 @@ class ChecksClient:
         actions: Missing[
             List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun]:
-        ...
+    ) -> Response[CheckRun]: ...
 
     @overload
     def create(
@@ -145,8 +142,7 @@ class ChecksClient:
         actions: Missing[
             List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun]:
-        ...
+    ) -> Response[CheckRun]: ...
 
     def create(
         self,
@@ -208,8 +204,7 @@ class ChecksClient:
             ReposOwnerRepoCheckRunsPostBodyOneof0Type,
             ReposOwnerRepoCheckRunsPostBodyOneof1Type,
         ],
-    ) -> Response[CheckRun]:
-        ...
+    ) -> Response[CheckRun]: ...
 
     @overload
     async def async_create(
@@ -240,8 +235,7 @@ class ChecksClient:
         actions: Missing[
             List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun]:
-        ...
+    ) -> Response[CheckRun]: ...
 
     @overload
     async def async_create(
@@ -274,8 +268,7 @@ class ChecksClient:
         actions: Missing[
             List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun]:
-        ...
+    ) -> Response[CheckRun]: ...
 
     async def async_create(
         self,
@@ -384,8 +377,7 @@ class ChecksClient:
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
         ],
-    ) -> Response[CheckRun]:
-        ...
+    ) -> Response[CheckRun]: ...
 
     @overload
     def update(
@@ -418,8 +410,7 @@ class ChecksClient:
         actions: Missing[
             List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun]:
-        ...
+    ) -> Response[CheckRun]: ...
 
     @overload
     def update(
@@ -454,8 +445,7 @@ class ChecksClient:
         actions: Missing[
             List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun]:
-        ...
+    ) -> Response[CheckRun]: ...
 
     def update(
         self,
@@ -519,8 +509,7 @@ class ChecksClient:
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
         ],
-    ) -> Response[CheckRun]:
-        ...
+    ) -> Response[CheckRun]: ...
 
     @overload
     async def async_update(
@@ -553,8 +542,7 @@ class ChecksClient:
         actions: Missing[
             List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun]:
-        ...
+    ) -> Response[CheckRun]: ...
 
     @overload
     async def async_update(
@@ -589,8 +577,7 @@ class ChecksClient:
         actions: Missing[
             List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
         ] = UNSET,
-    ) -> Response[CheckRun]:
-        ...
+    ) -> Response[CheckRun]: ...
 
     async def async_update(
         self,
@@ -772,8 +759,7 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCheckSuitesPostBodyType,
-    ) -> Response[CheckSuite]:
-        ...
+    ) -> Response[CheckSuite]: ...
 
     @overload
     def create_suite(
@@ -784,8 +770,7 @@ class ChecksClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         head_sha: str,
-    ) -> Response[CheckSuite]:
-        ...
+    ) -> Response[CheckSuite]: ...
 
     def create_suite(
         self,
@@ -827,8 +812,7 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCheckSuitesPostBodyType,
-    ) -> Response[CheckSuite]:
-        ...
+    ) -> Response[CheckSuite]: ...
 
     @overload
     async def async_create_suite(
@@ -839,8 +823,7 @@ class ChecksClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         head_sha: str,
-    ) -> Response[CheckSuite]:
-        ...
+    ) -> Response[CheckSuite]: ...
 
     async def async_create_suite(
         self,
@@ -882,8 +865,7 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
-    ) -> Response[CheckSuitePreference]:
-        ...
+    ) -> Response[CheckSuitePreference]: ...
 
     @overload
     def set_suites_preferences(
@@ -898,8 +880,7 @@ class ChecksClient:
                 ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
             ]
         ] = UNSET,
-    ) -> Response[CheckSuitePreference]:
-        ...
+    ) -> Response[CheckSuitePreference]: ...
 
     def set_suites_preferences(
         self,
@@ -944,8 +925,7 @@ class ChecksClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
-    ) -> Response[CheckSuitePreference]:
-        ...
+    ) -> Response[CheckSuitePreference]: ...
 
     @overload
     async def async_set_suites_preferences(
@@ -960,8 +940,7 @@ class ChecksClient:
                 ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
             ]
         ] = UNSET,
-    ) -> Response[CheckSuitePreference]:
-        ...
+    ) -> Response[CheckSuitePreference]: ...
 
     async def async_set_suites_preferences(
         self,

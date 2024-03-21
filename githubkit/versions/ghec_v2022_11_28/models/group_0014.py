@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import Literal
@@ -161,11 +160,11 @@ class AppPermissions(GitHubModel):
         default=UNSET,
         description="The level of permission to grant the access token for viewing and managing fine-grained personal access token requests to an organization.",
     )
-    organization_personal_access_token_requests: Missing[
-        Literal["read", "write"]
-    ] = Field(
-        default=UNSET,
-        description="The level of permission to grant the access token for viewing and managing fine-grained personal access tokens that have been approved by an organization.",
+    organization_personal_access_token_requests: Missing[Literal["read", "write"]] = (
+        Field(
+            default=UNSET,
+            description="The level of permission to grant the access token for viewing and managing fine-grained personal access tokens that have been approved by an organization.",
+        )
     )
     organization_plan: Missing[Literal["read"]] = Field(
         default=UNSET,

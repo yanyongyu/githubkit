@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -61,9 +60,9 @@ class WebhookIssuesMilestonedPropIssueAllof0(GitHubModel):
     events_url: str = Field()
     html_url: str = Field()
     id: int = Field()
-    labels: Missing[
-        List[WebhookIssuesMilestonedPropIssueAllof0PropLabelsItems]
-    ] = Field(default=UNSET)
+    labels: Missing[List[WebhookIssuesMilestonedPropIssueAllof0PropLabelsItems]] = (
+        Field(default=UNSET)
+    )
     labels_url: str = Field()
     locked: Missing[bool] = Field(default=UNSET)
     milestone: Union[WebhookIssuesMilestonedPropIssueAllof0PropMilestone, None] = Field(
@@ -79,9 +78,9 @@ class WebhookIssuesMilestonedPropIssueAllof0(GitHubModel):
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
     )
-    pull_request: Missing[
-        WebhookIssuesMilestonedPropIssueAllof0PropPullRequest
-    ] = Field(default=UNSET)
+    pull_request: Missing[WebhookIssuesMilestonedPropIssueAllof0PropPullRequest] = (
+        Field(default=UNSET)
+    )
     reactions: WebhookIssuesMilestonedPropIssueAllof0PropReactions = Field(
         title="Reactions"
     )

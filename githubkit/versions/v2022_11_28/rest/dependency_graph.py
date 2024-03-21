@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -187,8 +186,7 @@ class DependencyGraphClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: SnapshotType,
-    ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]:
-        ...
+    ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]: ...
 
     @overload
     def create_repository_snapshot(
@@ -206,8 +204,7 @@ class DependencyGraphClient:
         metadata: Missing[MetadataType] = UNSET,
         manifests: Missing[SnapshotPropManifestsType] = UNSET,
         scanned: datetime,
-    ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]:
-        ...
+    ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]: ...
 
     def create_repository_snapshot(
         self,
@@ -252,8 +249,7 @@ class DependencyGraphClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: SnapshotType,
-    ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]:
-        ...
+    ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]: ...
 
     @overload
     async def async_create_repository_snapshot(
@@ -271,8 +267,7 @@ class DependencyGraphClient:
         metadata: Missing[MetadataType] = UNSET,
         manifests: Missing[SnapshotPropManifestsType] = UNSET,
         scanned: datetime,
-    ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]:
-        ...
+    ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]: ...
 
     async def async_create_repository_snapshot(
         self,

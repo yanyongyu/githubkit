@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -328,8 +327,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgReposPostBodyType,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     @overload
     def create_in_org(
@@ -369,8 +367,7 @@ class ReposClient:
         custom_properties: Missing[
             OrgsOrgReposPostBodyPropCustomPropertiesType
         ] = UNSET,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     def create_in_org(
         self,
@@ -419,8 +416,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgReposPostBodyType,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     @overload
     async def async_create_in_org(
@@ -460,8 +456,7 @@ class ReposClient:
         custom_properties: Missing[
             OrgsOrgReposPostBodyPropCustomPropertiesType
         ] = UNSET,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     async def async_create_in_org(
         self,
@@ -580,8 +575,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgRulesetsPostBodyType,
-    ) -> Response[RepositoryRuleset]:
-        ...
+    ) -> Response[RepositoryRuleset]: ...
 
     @overload
     def create_org_ruleset(
@@ -622,8 +616,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset]:
-        ...
+    ) -> Response[RepositoryRuleset]: ...
 
     def create_org_ruleset(
         self,
@@ -667,8 +660,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgRulesetsPostBodyType,
-    ) -> Response[RepositoryRuleset]:
-        ...
+    ) -> Response[RepositoryRuleset]: ...
 
     @overload
     async def async_create_org_ruleset(
@@ -709,8 +701,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset]:
-        ...
+    ) -> Response[RepositoryRuleset]: ...
 
     async def async_create_org_ruleset(
         self,
@@ -945,8 +936,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
-    ) -> Response[RepositoryRuleset]:
-        ...
+    ) -> Response[RepositoryRuleset]: ...
 
     @overload
     def update_org_ruleset(
@@ -988,8 +978,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset]:
-        ...
+    ) -> Response[RepositoryRuleset]: ...
 
     def update_org_ruleset(
         self,
@@ -1039,8 +1028,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
-    ) -> Response[RepositoryRuleset]:
-        ...
+    ) -> Response[RepositoryRuleset]: ...
 
     @overload
     async def async_update_org_ruleset(
@@ -1082,8 +1070,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset]:
-        ...
+    ) -> Response[RepositoryRuleset]: ...
 
     async def async_update_org_ruleset(
         self,
@@ -1285,8 +1272,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     @overload
     def update(
@@ -1327,8 +1313,7 @@ class ReposClient:
         archived: Missing[bool] = UNSET,
         allow_forking: Missing[bool] = UNSET,
         web_commit_signoff_required: Missing[bool] = UNSET,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     def update(
         self,
@@ -1380,8 +1365,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     @overload
     async def async_update(
@@ -1422,8 +1406,7 @@ class ReposClient:
         archived: Missing[bool] = UNSET,
         allow_forking: Missing[bool] = UNSET,
         web_commit_signoff_required: Missing[bool] = UNSET,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     async def async_update(
         self,
@@ -1639,8 +1622,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoAutolinksPostBodyType,
-    ) -> Response[Autolink]:
-        ...
+    ) -> Response[Autolink]: ...
 
     @overload
     def create_autolink(
@@ -1653,8 +1635,7 @@ class ReposClient:
         key_prefix: str,
         url_template: str,
         is_alphanumeric: Missing[bool] = UNSET,
-    ) -> Response[Autolink]:
-        ...
+    ) -> Response[Autolink]: ...
 
     def create_autolink(
         self,
@@ -1699,8 +1680,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoAutolinksPostBodyType,
-    ) -> Response[Autolink]:
-        ...
+    ) -> Response[Autolink]: ...
 
     @overload
     async def async_create_autolink(
@@ -1713,8 +1693,7 @@ class ReposClient:
         key_prefix: str,
         url_template: str,
         is_alphanumeric: Missing[bool] = UNSET,
-    ) -> Response[Autolink]:
-        ...
+    ) -> Response[Autolink]: ...
 
     async def async_create_autolink(
         self,
@@ -2162,8 +2141,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionPutBodyType,
-    ) -> Response[ProtectedBranch]:
-        ...
+    ) -> Response[ProtectedBranch]: ...
 
     @overload
     def update_branch_protection(
@@ -2193,8 +2171,7 @@ class ReposClient:
         required_conversation_resolution: Missing[bool] = UNSET,
         lock_branch: Missing[bool] = UNSET,
         allow_fork_syncing: Missing[bool] = UNSET,
-    ) -> Response[ProtectedBranch]:
-        ...
+    ) -> Response[ProtectedBranch]: ...
 
     def update_branch_protection(
         self,
@@ -2248,8 +2225,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionPutBodyType,
-    ) -> Response[ProtectedBranch]:
-        ...
+    ) -> Response[ProtectedBranch]: ...
 
     @overload
     async def async_update_branch_protection(
@@ -2279,8 +2255,7 @@ class ReposClient:
         required_conversation_resolution: Missing[bool] = UNSET,
         lock_branch: Missing[bool] = UNSET,
         allow_fork_syncing: Missing[bool] = UNSET,
-    ) -> Response[ProtectedBranch]:
-        ...
+    ) -> Response[ProtectedBranch]: ...
 
     async def async_update_branch_protection(
         self,
@@ -2624,8 +2599,7 @@ class ReposClient:
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
-    ) -> Response[ProtectedBranchPullRequestReview]:
-        ...
+    ) -> Response[ProtectedBranchPullRequestReview]: ...
 
     @overload
     def update_pull_request_review_protection(
@@ -2646,8 +2620,7 @@ class ReposClient:
         bypass_pull_request_allowances: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType
         ] = UNSET,
-    ) -> Response[ProtectedBranchPullRequestReview]:
-        ...
+    ) -> Response[ProtectedBranchPullRequestReview]: ...
 
     def update_pull_request_review_protection(
         self,
@@ -2705,8 +2678,7 @@ class ReposClient:
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
-    ) -> Response[ProtectedBranchPullRequestReview]:
-        ...
+    ) -> Response[ProtectedBranchPullRequestReview]: ...
 
     @overload
     async def async_update_pull_request_review_protection(
@@ -2727,8 +2699,7 @@ class ReposClient:
         bypass_pull_request_allowances: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType
         ] = UNSET,
-    ) -> Response[ProtectedBranchPullRequestReview]:
-        ...
+    ) -> Response[ProtectedBranchPullRequestReview]: ...
 
     async def async_update_pull_request_review_protection(
         self,
@@ -3040,8 +3011,7 @@ class ReposClient:
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
-    ) -> Response[StatusCheckPolicy]:
-        ...
+    ) -> Response[StatusCheckPolicy]: ...
 
     @overload
     def update_status_check_protection(
@@ -3059,8 +3029,7 @@ class ReposClient:
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
             ]
         ] = UNSET,
-    ) -> Response[StatusCheckPolicy]:
-        ...
+    ) -> Response[StatusCheckPolicy]: ...
 
     def update_status_check_protection(
         self,
@@ -3121,8 +3090,7 @@ class ReposClient:
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
-    ) -> Response[StatusCheckPolicy]:
-        ...
+    ) -> Response[StatusCheckPolicy]: ...
 
     @overload
     async def async_update_status_check_protection(
@@ -3140,8 +3108,7 @@ class ReposClient:
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
             ]
         ] = UNSET,
-    ) -> Response[StatusCheckPolicy]:
-        ...
+    ) -> Response[StatusCheckPolicy]: ...
 
     async def async_update_status_check_protection(
         self,
@@ -3261,8 +3228,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[str]]:
-        ...
+    ) -> Response[List[str]]: ...
 
     @overload
     def set_status_check_contexts(
@@ -3274,8 +3240,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         contexts: List[str],
-    ) -> Response[List[str]]:
-        ...
+    ) -> Response[List[str]]: ...
 
     def set_status_check_contexts(
         self,
@@ -3345,8 +3310,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[str]]:
-        ...
+    ) -> Response[List[str]]: ...
 
     @overload
     async def async_set_status_check_contexts(
@@ -3358,8 +3322,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         contexts: List[str],
-    ) -> Response[List[str]]:
-        ...
+    ) -> Response[List[str]]: ...
 
     async def async_set_status_check_contexts(
         self,
@@ -3429,8 +3392,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[str]]:
-        ...
+    ) -> Response[List[str]]: ...
 
     @overload
     def add_status_check_contexts(
@@ -3442,8 +3404,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         contexts: List[str],
-    ) -> Response[List[str]]:
-        ...
+    ) -> Response[List[str]]: ...
 
     def add_status_check_contexts(
         self,
@@ -3514,8 +3475,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[str]]:
-        ...
+    ) -> Response[List[str]]: ...
 
     @overload
     async def async_add_status_check_contexts(
@@ -3527,8 +3487,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         contexts: List[str],
-    ) -> Response[List[str]]:
-        ...
+    ) -> Response[List[str]]: ...
 
     async def async_add_status_check_contexts(
         self,
@@ -3599,8 +3558,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[str]]:
-        ...
+    ) -> Response[List[str]]: ...
 
     @overload
     def remove_status_check_contexts(
@@ -3612,8 +3570,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         contexts: List[str],
-    ) -> Response[List[str]]:
-        ...
+    ) -> Response[List[str]]: ...
 
     def remove_status_check_contexts(
         self,
@@ -3683,8 +3640,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[str]]:
-        ...
+    ) -> Response[List[str]]: ...
 
     @overload
     async def async_remove_status_check_contexts(
@@ -3696,8 +3652,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         contexts: List[str],
-    ) -> Response[List[str]]:
-        ...
+    ) -> Response[List[str]]: ...
 
     async def async_remove_status_check_contexts(
         self,
@@ -3915,8 +3870,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Integration]]:
-        ...
+    ) -> Response[List[Integration]]: ...
 
     @overload
     def set_app_access_restrictions(
@@ -3928,8 +3882,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         apps: List[str],
-    ) -> Response[List[Integration]]:
-        ...
+    ) -> Response[List[Integration]]: ...
 
     def set_app_access_restrictions(
         self,
@@ -3998,8 +3951,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Integration]]:
-        ...
+    ) -> Response[List[Integration]]: ...
 
     @overload
     async def async_set_app_access_restrictions(
@@ -4011,8 +3963,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         apps: List[str],
-    ) -> Response[List[Integration]]:
-        ...
+    ) -> Response[List[Integration]]: ...
 
     async def async_set_app_access_restrictions(
         self,
@@ -4081,8 +4032,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Integration]]:
-        ...
+    ) -> Response[List[Integration]]: ...
 
     @overload
     def add_app_access_restrictions(
@@ -4094,8 +4044,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         apps: List[str],
-    ) -> Response[List[Integration]]:
-        ...
+    ) -> Response[List[Integration]]: ...
 
     def add_app_access_restrictions(
         self,
@@ -4164,8 +4113,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Integration]]:
-        ...
+    ) -> Response[List[Integration]]: ...
 
     @overload
     async def async_add_app_access_restrictions(
@@ -4177,8 +4125,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         apps: List[str],
-    ) -> Response[List[Integration]]:
-        ...
+    ) -> Response[List[Integration]]: ...
 
     async def async_add_app_access_restrictions(
         self,
@@ -4247,8 +4194,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Integration]]:
-        ...
+    ) -> Response[List[Integration]]: ...
 
     @overload
     def remove_app_access_restrictions(
@@ -4260,8 +4206,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         apps: List[str],
-    ) -> Response[List[Integration]]:
-        ...
+    ) -> Response[List[Integration]]: ...
 
     def remove_app_access_restrictions(
         self,
@@ -4330,8 +4275,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Integration]]:
-        ...
+    ) -> Response[List[Integration]]: ...
 
     @overload
     async def async_remove_app_access_restrictions(
@@ -4343,8 +4287,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         apps: List[str],
-    ) -> Response[List[Integration]]:
-        ...
+    ) -> Response[List[Integration]]: ...
 
     async def async_remove_app_access_restrictions(
         self,
@@ -4469,8 +4412,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Team]]:
-        ...
+    ) -> Response[List[Team]]: ...
 
     @overload
     def set_team_access_restrictions(
@@ -4482,8 +4424,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         teams: List[str],
-    ) -> Response[List[Team]]:
-        ...
+    ) -> Response[List[Team]]: ...
 
     def set_team_access_restrictions(
         self,
@@ -4552,8 +4493,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Team]]:
-        ...
+    ) -> Response[List[Team]]: ...
 
     @overload
     async def async_set_team_access_restrictions(
@@ -4565,8 +4505,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         teams: List[str],
-    ) -> Response[List[Team]]:
-        ...
+    ) -> Response[List[Team]]: ...
 
     async def async_set_team_access_restrictions(
         self,
@@ -4635,8 +4574,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Team]]:
-        ...
+    ) -> Response[List[Team]]: ...
 
     @overload
     def add_team_access_restrictions(
@@ -4648,8 +4586,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         teams: List[str],
-    ) -> Response[List[Team]]:
-        ...
+    ) -> Response[List[Team]]: ...
 
     def add_team_access_restrictions(
         self,
@@ -4718,8 +4655,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Team]]:
-        ...
+    ) -> Response[List[Team]]: ...
 
     @overload
     async def async_add_team_access_restrictions(
@@ -4731,8 +4667,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         teams: List[str],
-    ) -> Response[List[Team]]:
-        ...
+    ) -> Response[List[Team]]: ...
 
     async def async_add_team_access_restrictions(
         self,
@@ -4801,8 +4736,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Team]]:
-        ...
+    ) -> Response[List[Team]]: ...
 
     @overload
     def remove_team_access_restrictions(
@@ -4814,8 +4748,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         teams: List[str],
-    ) -> Response[List[Team]]:
-        ...
+    ) -> Response[List[Team]]: ...
 
     def remove_team_access_restrictions(
         self,
@@ -4884,8 +4817,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Team]]:
-        ...
+    ) -> Response[List[Team]]: ...
 
     @overload
     async def async_remove_team_access_restrictions(
@@ -4897,8 +4829,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         teams: List[str],
-    ) -> Response[List[Team]]:
-        ...
+    ) -> Response[List[Team]]: ...
 
     async def async_remove_team_access_restrictions(
         self,
@@ -5023,8 +4954,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[SimpleUser]]:
-        ...
+    ) -> Response[List[SimpleUser]]: ...
 
     @overload
     def set_user_access_restrictions(
@@ -5036,8 +4966,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         users: List[str],
-    ) -> Response[List[SimpleUser]]:
-        ...
+    ) -> Response[List[SimpleUser]]: ...
 
     def set_user_access_restrictions(
         self,
@@ -5106,8 +5035,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[SimpleUser]]:
-        ...
+    ) -> Response[List[SimpleUser]]: ...
 
     @overload
     async def async_set_user_access_restrictions(
@@ -5119,8 +5047,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         users: List[str],
-    ) -> Response[List[SimpleUser]]:
-        ...
+    ) -> Response[List[SimpleUser]]: ...
 
     async def async_set_user_access_restrictions(
         self,
@@ -5189,8 +5116,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[SimpleUser]]:
-        ...
+    ) -> Response[List[SimpleUser]]: ...
 
     @overload
     def add_user_access_restrictions(
@@ -5202,8 +5128,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         users: List[str],
-    ) -> Response[List[SimpleUser]]:
-        ...
+    ) -> Response[List[SimpleUser]]: ...
 
     def add_user_access_restrictions(
         self,
@@ -5272,8 +5197,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[SimpleUser]]:
-        ...
+    ) -> Response[List[SimpleUser]]: ...
 
     @overload
     async def async_add_user_access_restrictions(
@@ -5285,8 +5209,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         users: List[str],
-    ) -> Response[List[SimpleUser]]:
-        ...
+    ) -> Response[List[SimpleUser]]: ...
 
     async def async_add_user_access_restrictions(
         self,
@@ -5355,8 +5278,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[SimpleUser]]:
-        ...
+    ) -> Response[List[SimpleUser]]: ...
 
     @overload
     def remove_user_access_restrictions(
@@ -5368,8 +5290,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         users: List[str],
-    ) -> Response[List[SimpleUser]]:
-        ...
+    ) -> Response[List[SimpleUser]]: ...
 
     def remove_user_access_restrictions(
         self,
@@ -5438,8 +5359,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[SimpleUser]]:
-        ...
+    ) -> Response[List[SimpleUser]]: ...
 
     @overload
     async def async_remove_user_access_restrictions(
@@ -5451,8 +5371,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         users: List[str],
-    ) -> Response[List[SimpleUser]]:
-        ...
+    ) -> Response[List[SimpleUser]]: ...
 
     async def async_remove_user_access_restrictions(
         self,
@@ -5516,8 +5435,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchRenamePostBodyType,
-    ) -> Response[BranchWithProtection]:
-        ...
+    ) -> Response[BranchWithProtection]: ...
 
     @overload
     def rename_branch(
@@ -5529,8 +5447,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         new_name: str,
-    ) -> Response[BranchWithProtection]:
-        ...
+    ) -> Response[BranchWithProtection]: ...
 
     def rename_branch(
         self,
@@ -5584,8 +5501,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchRenamePostBodyType,
-    ) -> Response[BranchWithProtection]:
-        ...
+    ) -> Response[BranchWithProtection]: ...
 
     @overload
     async def async_rename_branch(
@@ -5597,8 +5513,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         new_name: str,
-    ) -> Response[BranchWithProtection]:
-        ...
+    ) -> Response[BranchWithProtection]: ...
 
     async def async_rename_branch(
         self,
@@ -5834,8 +5749,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
-    ) -> Response[RepositoryInvitation]:
-        ...
+    ) -> Response[RepositoryInvitation]: ...
 
     @overload
     def add_collaborator(
@@ -5847,8 +5761,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[str] = UNSET,
-    ) -> Response[RepositoryInvitation]:
-        ...
+    ) -> Response[RepositoryInvitation]: ...
 
     def add_collaborator(
         self,
@@ -5901,8 +5814,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
-    ) -> Response[RepositoryInvitation]:
-        ...
+    ) -> Response[RepositoryInvitation]: ...
 
     @overload
     async def async_add_collaborator(
@@ -5914,8 +5826,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[str] = UNSET,
-    ) -> Response[RepositoryInvitation]:
-        ...
+    ) -> Response[RepositoryInvitation]: ...
 
     async def async_add_collaborator(
         self,
@@ -6238,8 +6149,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdPatchBodyType,
-    ) -> Response[CommitComment]:
-        ...
+    ) -> Response[CommitComment]: ...
 
     @overload
     def update_commit_comment(
@@ -6251,8 +6161,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[CommitComment]:
-        ...
+    ) -> Response[CommitComment]: ...
 
     def update_commit_comment(
         self,
@@ -6303,8 +6212,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdPatchBodyType,
-    ) -> Response[CommitComment]:
-        ...
+    ) -> Response[CommitComment]: ...
 
     @overload
     async def async_update_commit_comment(
@@ -6316,8 +6224,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[CommitComment]:
-        ...
+    ) -> Response[CommitComment]: ...
 
     async def async_update_commit_comment(
         self,
@@ -6592,8 +6499,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
-    ) -> Response[CommitComment]:
-        ...
+    ) -> Response[CommitComment]: ...
 
     @overload
     def create_commit_comment(
@@ -6608,8 +6514,7 @@ class ReposClient:
         path: Missing[str] = UNSET,
         position: Missing[int] = UNSET,
         line: Missing[int] = UNSET,
-    ) -> Response[CommitComment]:
-        ...
+    ) -> Response[CommitComment]: ...
 
     def create_commit_comment(
         self,
@@ -6664,8 +6569,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
-    ) -> Response[CommitComment]:
-        ...
+    ) -> Response[CommitComment]: ...
 
     @overload
     async def async_create_commit_comment(
@@ -6680,8 +6584,7 @@ class ReposClient:
         path: Missing[str] = UNSET,
         position: Missing[int] = UNSET,
         line: Missing[int] = UNSET,
-    ) -> Response[CommitComment]:
-        ...
+    ) -> Response[CommitComment]: ...
 
     async def async_create_commit_comment(
         self,
@@ -7252,8 +7155,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoContentsPathPutBodyType,
-    ) -> Response[FileCommit]:
-        ...
+    ) -> Response[FileCommit]: ...
 
     @overload
     def create_or_update_file_contents(
@@ -7270,8 +7172,7 @@ class ReposClient:
         branch: Missing[str] = UNSET,
         committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitterType] = UNSET,
         author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthorType] = UNSET,
-    ) -> Response[FileCommit]:
-        ...
+    ) -> Response[FileCommit]: ...
 
     def create_or_update_file_contents(
         self,
@@ -7325,8 +7226,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoContentsPathPutBodyType,
-    ) -> Response[FileCommit]:
-        ...
+    ) -> Response[FileCommit]: ...
 
     @overload
     async def async_create_or_update_file_contents(
@@ -7343,8 +7243,7 @@ class ReposClient:
         branch: Missing[str] = UNSET,
         committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitterType] = UNSET,
         author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthorType] = UNSET,
-    ) -> Response[FileCommit]:
-        ...
+    ) -> Response[FileCommit]: ...
 
     async def async_create_or_update_file_contents(
         self,
@@ -7398,8 +7297,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoContentsPathDeleteBodyType,
-    ) -> Response[FileCommit]:
-        ...
+    ) -> Response[FileCommit]: ...
 
     @overload
     def delete_file(
@@ -7417,8 +7315,7 @@ class ReposClient:
             ReposOwnerRepoContentsPathDeleteBodyPropCommitterType
         ] = UNSET,
         author: Missing[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType] = UNSET,
-    ) -> Response[FileCommit]:
-        ...
+    ) -> Response[FileCommit]: ...
 
     def delete_file(
         self,
@@ -7474,8 +7371,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoContentsPathDeleteBodyType,
-    ) -> Response[FileCommit]:
-        ...
+    ) -> Response[FileCommit]: ...
 
     @overload
     async def async_delete_file(
@@ -7493,8 +7389,7 @@ class ReposClient:
             ReposOwnerRepoContentsPathDeleteBodyPropCommitterType
         ] = UNSET,
         author: Missing[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType] = UNSET,
-    ) -> Response[FileCommit]:
-        ...
+    ) -> Response[FileCommit]: ...
 
     async def async_delete_file(
         self,
@@ -7705,8 +7600,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoDeploymentsPostBodyType,
-    ) -> Response[Deployment]:
-        ...
+    ) -> Response[Deployment]: ...
 
     @overload
     def create_deployment(
@@ -7727,8 +7621,7 @@ class ReposClient:
         description: Missing[Union[str, None]] = UNSET,
         transient_environment: Missing[bool] = UNSET,
         production_environment: Missing[bool] = UNSET,
-    ) -> Response[Deployment]:
-        ...
+    ) -> Response[Deployment]: ...
 
     def create_deployment(
         self,
@@ -7777,8 +7670,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoDeploymentsPostBodyType,
-    ) -> Response[Deployment]:
-        ...
+    ) -> Response[Deployment]: ...
 
     @overload
     async def async_create_deployment(
@@ -7799,8 +7691,7 @@ class ReposClient:
         description: Missing[Union[str, None]] = UNSET,
         transient_environment: Missing[bool] = UNSET,
         production_environment: Missing[bool] = UNSET,
-    ) -> Response[Deployment]:
-        ...
+    ) -> Response[Deployment]: ...
 
     async def async_create_deployment(
         self,
@@ -8026,8 +7917,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
-    ) -> Response[DeploymentStatus]:
-        ...
+    ) -> Response[DeploymentStatus]: ...
 
     @overload
     def create_deployment_status(
@@ -8053,8 +7943,7 @@ class ReposClient:
         environment: Missing[str] = UNSET,
         environment_url: Missing[str] = UNSET,
         auto_inactive: Missing[bool] = UNSET,
-    ) -> Response[DeploymentStatus]:
-        ...
+    ) -> Response[DeploymentStatus]: ...
 
     def create_deployment_status(
         self,
@@ -8109,8 +7998,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
-    ) -> Response[DeploymentStatus]:
-        ...
+    ) -> Response[DeploymentStatus]: ...
 
     @overload
     async def async_create_deployment_status(
@@ -8136,8 +8024,7 @@ class ReposClient:
         environment: Missing[str] = UNSET,
         environment_url: Missing[str] = UNSET,
         auto_inactive: Missing[bool] = UNSET,
-    ) -> Response[DeploymentStatus]:
-        ...
+    ) -> Response[DeploymentStatus]: ...
 
     async def async_create_deployment_status(
         self,
@@ -8245,8 +8132,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoDispatchesPostBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def create_dispatch_event(
@@ -8260,8 +8146,7 @@ class ReposClient:
         client_payload: Missing[
             ReposOwnerRepoDispatchesPostBodyPropClientPayloadType
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def create_dispatch_event(
         self,
@@ -8310,8 +8195,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoDispatchesPostBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_create_dispatch_event(
@@ -8325,8 +8209,7 @@ class ReposClient:
         client_payload: Missing[
             ReposOwnerRepoDispatchesPostBodyPropClientPayloadType
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_create_dispatch_event(
         self,
@@ -8484,8 +8367,7 @@ class ReposClient:
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
-    ) -> Response[Environment]:
-        ...
+    ) -> Response[Environment]: ...
 
     @overload
     def create_or_update_environment(
@@ -8509,8 +8391,7 @@ class ReposClient:
         deployment_branch_policy: Missing[
             Union[DeploymentBranchPolicySettingsType, None]
         ] = UNSET,
-    ) -> Response[Environment]:
-        ...
+    ) -> Response[Environment]: ...
 
     def create_or_update_environment(
         self,
@@ -8569,8 +8450,7 @@ class ReposClient:
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
-    ) -> Response[Environment]:
-        ...
+    ) -> Response[Environment]: ...
 
     @overload
     async def async_create_or_update_environment(
@@ -8594,8 +8474,7 @@ class ReposClient:
         deployment_branch_policy: Missing[
             Union[DeploymentBranchPolicySettingsType, None]
         ] = UNSET,
-    ) -> Response[Environment]:
-        ...
+    ) -> Response[Environment]: ...
 
     async def async_create_or_update_environment(
         self,
@@ -8762,8 +8641,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: DeploymentBranchPolicyNamePatternWithTypeType,
-    ) -> Response[DeploymentBranchPolicy]:
-        ...
+    ) -> Response[DeploymentBranchPolicy]: ...
 
     @overload
     def create_deployment_branch_policy(
@@ -8776,8 +8654,7 @@ class ReposClient:
         headers: Optional[Dict[str, str]] = None,
         name: str,
         type: Missing[Literal["branch", "tag"]] = UNSET,
-    ) -> Response[DeploymentBranchPolicy]:
-        ...
+    ) -> Response[DeploymentBranchPolicy]: ...
 
     def create_deployment_branch_policy(
         self,
@@ -8825,8 +8702,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: DeploymentBranchPolicyNamePatternWithTypeType,
-    ) -> Response[DeploymentBranchPolicy]:
-        ...
+    ) -> Response[DeploymentBranchPolicy]: ...
 
     @overload
     async def async_create_deployment_branch_policy(
@@ -8839,8 +8715,7 @@ class ReposClient:
         headers: Optional[Dict[str, str]] = None,
         name: str,
         type: Missing[Literal["branch", "tag"]] = UNSET,
-    ) -> Response[DeploymentBranchPolicy]:
-        ...
+    ) -> Response[DeploymentBranchPolicy]: ...
 
     async def async_create_deployment_branch_policy(
         self,
@@ -8937,8 +8812,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: DeploymentBranchPolicyNamePatternType,
-    ) -> Response[DeploymentBranchPolicy]:
-        ...
+    ) -> Response[DeploymentBranchPolicy]: ...
 
     @overload
     def update_deployment_branch_policy(
@@ -8951,8 +8825,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
-    ) -> Response[DeploymentBranchPolicy]:
-        ...
+    ) -> Response[DeploymentBranchPolicy]: ...
 
     def update_deployment_branch_policy(
         self,
@@ -8998,8 +8871,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: DeploymentBranchPolicyNamePatternType,
-    ) -> Response[DeploymentBranchPolicy]:
-        ...
+    ) -> Response[DeploymentBranchPolicy]: ...
 
     @overload
     async def async_update_deployment_branch_policy(
@@ -9012,8 +8884,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
-    ) -> Response[DeploymentBranchPolicy]:
-        ...
+    ) -> Response[DeploymentBranchPolicy]: ...
 
     async def async_update_deployment_branch_policy(
         self,
@@ -9154,8 +9025,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
-    ) -> Response[DeploymentProtectionRule]:
-        ...
+    ) -> Response[DeploymentProtectionRule]: ...
 
     @overload
     def create_deployment_protection_rule(
@@ -9167,8 +9037,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         integration_id: Missing[int] = UNSET,
-    ) -> Response[DeploymentProtectionRule]:
-        ...
+    ) -> Response[DeploymentProtectionRule]: ...
 
     def create_deployment_protection_rule(
         self,
@@ -9220,8 +9089,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
-    ) -> Response[DeploymentProtectionRule]:
-        ...
+    ) -> Response[DeploymentProtectionRule]: ...
 
     @overload
     async def async_create_deployment_protection_rule(
@@ -9233,8 +9101,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         integration_id: Missing[int] = UNSET,
-    ) -> Response[DeploymentProtectionRule]:
-        ...
+    ) -> Response[DeploymentProtectionRule]: ...
 
     async def async_create_deployment_protection_rule(
         self,
@@ -9519,8 +9386,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     @overload
     def create_fork(
@@ -9533,8 +9399,7 @@ class ReposClient:
         organization: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
         default_branch_only: Missing[bool] = UNSET,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     def create_fork(
         self,
@@ -9589,8 +9454,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     @overload
     async def async_create_fork(
@@ -9603,8 +9467,7 @@ class ReposClient:
         organization: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
         default_branch_only: Missing[bool] = UNSET,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     async def async_create_fork(
         self,
@@ -9729,8 +9592,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
-    ) -> Response[Hook]:
-        ...
+    ) -> Response[Hook]: ...
 
     @overload
     def create_webhook(
@@ -9744,8 +9606,7 @@ class ReposClient:
         config: Missing[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
         events: Missing[List[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[Hook]:
-        ...
+    ) -> Response[Hook]: ...
 
     def create_webhook(
         self,
@@ -9799,8 +9660,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
-    ) -> Response[Hook]:
-        ...
+    ) -> Response[Hook]: ...
 
     @overload
     async def async_create_webhook(
@@ -9814,8 +9674,7 @@ class ReposClient:
         config: Missing[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
         events: Missing[List[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[Hook]:
-        ...
+    ) -> Response[Hook]: ...
 
     async def async_create_webhook(
         self,
@@ -9972,8 +9831,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoHooksHookIdPatchBodyType,
-    ) -> Response[Hook]:
-        ...
+    ) -> Response[Hook]: ...
 
     @overload
     def update_webhook(
@@ -9989,8 +9847,7 @@ class ReposClient:
         add_events: Missing[List[str]] = UNSET,
         remove_events: Missing[List[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[Hook]:
-        ...
+    ) -> Response[Hook]: ...
 
     def update_webhook(
         self,
@@ -10043,8 +9900,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoHooksHookIdPatchBodyType,
-    ) -> Response[Hook]:
-        ...
+    ) -> Response[Hook]: ...
 
     @overload
     async def async_update_webhook(
@@ -10060,8 +9916,7 @@ class ReposClient:
         add_events: Missing[List[str]] = UNSET,
         remove_events: Missing[List[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[Hook]:
-        ...
+    ) -> Response[Hook]: ...
 
     async def async_update_webhook(
         self,
@@ -10160,8 +10015,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
-    ) -> Response[WebhookConfig]:
-        ...
+    ) -> Response[WebhookConfig]: ...
 
     @overload
     def update_webhook_config_for_repo(
@@ -10176,8 +10030,7 @@ class ReposClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig]:
-        ...
+    ) -> Response[WebhookConfig]: ...
 
     def update_webhook_config_for_repo(
         self,
@@ -10221,8 +10074,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
-    ) -> Response[WebhookConfig]:
-        ...
+    ) -> Response[WebhookConfig]: ...
 
     @overload
     async def async_update_webhook_config_for_repo(
@@ -10237,8 +10089,7 @@ class ReposClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig]:
-        ...
+    ) -> Response[WebhookConfig]: ...
 
     async def async_update_webhook_config_for_repo(
         self,
@@ -10684,8 +10535,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
-    ) -> Response[RepositoryInvitation]:
-        ...
+    ) -> Response[RepositoryInvitation]: ...
 
     @overload
     def update_invitation(
@@ -10699,8 +10549,7 @@ class ReposClient:
         permissions: Missing[
             Literal["read", "write", "maintain", "triage", "admin"]
         ] = UNSET,
-    ) -> Response[RepositoryInvitation]:
-        ...
+    ) -> Response[RepositoryInvitation]: ...
 
     def update_invitation(
         self,
@@ -10749,8 +10598,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
-    ) -> Response[RepositoryInvitation]:
-        ...
+    ) -> Response[RepositoryInvitation]: ...
 
     @overload
     async def async_update_invitation(
@@ -10764,8 +10612,7 @@ class ReposClient:
         permissions: Missing[
             Literal["read", "write", "maintain", "triage", "admin"]
         ] = UNSET,
-    ) -> Response[RepositoryInvitation]:
-        ...
+    ) -> Response[RepositoryInvitation]: ...
 
     async def async_update_invitation(
         self,
@@ -10877,8 +10724,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoKeysPostBodyType,
-    ) -> Response[DeployKey]:
-        ...
+    ) -> Response[DeployKey]: ...
 
     @overload
     def create_deploy_key(
@@ -10891,8 +10737,7 @@ class ReposClient:
         title: Missing[str] = UNSET,
         key: str,
         read_only: Missing[bool] = UNSET,
-    ) -> Response[DeployKey]:
-        ...
+    ) -> Response[DeployKey]: ...
 
     def create_deploy_key(
         self,
@@ -10937,8 +10782,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoKeysPostBodyType,
-    ) -> Response[DeployKey]:
-        ...
+    ) -> Response[DeployKey]: ...
 
     @overload
     async def async_create_deploy_key(
@@ -10951,8 +10795,7 @@ class ReposClient:
         title: Missing[str] = UNSET,
         key: str,
         read_only: Missing[bool] = UNSET,
-    ) -> Response[DeployKey]:
-        ...
+    ) -> Response[DeployKey]: ...
 
     async def async_create_deploy_key(
         self,
@@ -11133,8 +10976,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoMergeUpstreamPostBodyType,
-    ) -> Response[MergedUpstream]:
-        ...
+    ) -> Response[MergedUpstream]: ...
 
     @overload
     def merge_upstream(
@@ -11145,8 +10987,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         branch: str,
-    ) -> Response[MergedUpstream]:
-        ...
+    ) -> Response[MergedUpstream]: ...
 
     def merge_upstream(
         self,
@@ -11189,8 +11030,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoMergeUpstreamPostBodyType,
-    ) -> Response[MergedUpstream]:
-        ...
+    ) -> Response[MergedUpstream]: ...
 
     @overload
     async def async_merge_upstream(
@@ -11201,8 +11041,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         branch: str,
-    ) -> Response[MergedUpstream]:
-        ...
+    ) -> Response[MergedUpstream]: ...
 
     async def async_merge_upstream(
         self,
@@ -11245,8 +11084,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoMergesPostBodyType,
-    ) -> Response[Commit]:
-        ...
+    ) -> Response[Commit]: ...
 
     @overload
     def merge(
@@ -11259,8 +11097,7 @@ class ReposClient:
         base: str,
         head: str,
         commit_message: Missing[str] = UNSET,
-    ) -> Response[Commit]:
-        ...
+    ) -> Response[Commit]: ...
 
     def merge(
         self,
@@ -11311,8 +11148,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoMergesPostBodyType,
-    ) -> Response[Commit]:
-        ...
+    ) -> Response[Commit]: ...
 
     @overload
     async def async_merge(
@@ -11325,8 +11161,7 @@ class ReposClient:
         base: str,
         head: str,
         commit_message: Missing[str] = UNSET,
-    ) -> Response[Commit]:
-        ...
+    ) -> Response[Commit]: ...
 
     async def async_merge(
         self,
@@ -11433,8 +11268,7 @@ class ReposClient:
             ReposOwnerRepoPagesPutBodyAnyof3Type,
             ReposOwnerRepoPagesPutBodyAnyof4Type,
         ],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def update_information_about_pages_site(
@@ -11453,8 +11287,7 @@ class ReposClient:
                 ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
             ]
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def update_information_about_pages_site(
@@ -11471,8 +11304,7 @@ class ReposClient:
             Literal["gh-pages", "master", "master /docs"],
             ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
         ],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def update_information_about_pages_site(
@@ -11491,8 +11323,7 @@ class ReposClient:
                 ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
             ]
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def update_information_about_pages_site(
@@ -11511,8 +11342,7 @@ class ReposClient:
                 ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
             ]
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def update_information_about_pages_site(
@@ -11531,8 +11361,7 @@ class ReposClient:
                 ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
             ]
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def update_information_about_pages_site(
         self,
@@ -11611,8 +11440,7 @@ class ReposClient:
             ReposOwnerRepoPagesPutBodyAnyof3Type,
             ReposOwnerRepoPagesPutBodyAnyof4Type,
         ],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_update_information_about_pages_site(
@@ -11631,8 +11459,7 @@ class ReposClient:
                 ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
             ]
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_update_information_about_pages_site(
@@ -11649,8 +11476,7 @@ class ReposClient:
             Literal["gh-pages", "master", "master /docs"],
             ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
         ],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_update_information_about_pages_site(
@@ -11669,8 +11495,7 @@ class ReposClient:
                 ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
             ]
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_update_information_about_pages_site(
@@ -11689,8 +11514,7 @@ class ReposClient:
                 ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
             ]
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_update_information_about_pages_site(
@@ -11709,8 +11533,7 @@ class ReposClient:
                 ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
             ]
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_update_information_about_pages_site(
         self,
@@ -11788,8 +11611,7 @@ class ReposClient:
             ReposOwnerRepoPagesPostBodyAnyof1Type,
             None,
         ],
-    ) -> Response[Page]:
-        ...
+    ) -> Response[Page]: ...
 
     @overload
     def create_pages_site(
@@ -11801,8 +11623,7 @@ class ReposClient:
         headers: Optional[Dict[str, str]] = None,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: ReposOwnerRepoPagesPostBodyPropSourceType,
-    ) -> Response[Page]:
-        ...
+    ) -> Response[Page]: ...
 
     @overload
     def create_pages_site(
@@ -11814,8 +11635,7 @@ class ReposClient:
         headers: Optional[Dict[str, str]] = None,
         build_type: Literal["legacy", "workflow"],
         source: Missing[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
-    ) -> Response[Page]:
-        ...
+    ) -> Response[Page]: ...
 
     def create_pages_site(
         self,
@@ -11889,8 +11709,7 @@ class ReposClient:
             ReposOwnerRepoPagesPostBodyAnyof1Type,
             None,
         ],
-    ) -> Response[Page]:
-        ...
+    ) -> Response[Page]: ...
 
     @overload
     async def async_create_pages_site(
@@ -11902,8 +11721,7 @@ class ReposClient:
         headers: Optional[Dict[str, str]] = None,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: ReposOwnerRepoPagesPostBodyPropSourceType,
-    ) -> Response[Page]:
-        ...
+    ) -> Response[Page]: ...
 
     @overload
     async def async_create_pages_site(
@@ -11915,8 +11733,7 @@ class ReposClient:
         headers: Optional[Dict[str, str]] = None,
         build_type: Literal["legacy", "workflow"],
         source: Missing[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
-    ) -> Response[Page]:
-        ...
+    ) -> Response[Page]: ...
 
     async def async_create_pages_site(
         self,
@@ -12235,8 +12052,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPagesDeploymentsPostBodyType,
-    ) -> Response[PageDeployment]:
-        ...
+    ) -> Response[PageDeployment]: ...
 
     @overload
     def create_pages_deployment(
@@ -12251,8 +12067,7 @@ class ReposClient:
         environment: Missing[str] = UNSET,
         pages_build_version: str = "GITHUB_SHA",
         oidc_token: str,
-    ) -> Response[PageDeployment]:
-        ...
+    ) -> Response[PageDeployment]: ...
 
     def create_pages_deployment(
         self,
@@ -12304,8 +12119,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPagesDeploymentsPostBodyType,
-    ) -> Response[PageDeployment]:
-        ...
+    ) -> Response[PageDeployment]: ...
 
     @overload
     async def async_create_pages_deployment(
@@ -12320,8 +12134,7 @@ class ReposClient:
         environment: Missing[str] = UNSET,
         pages_build_version: str = "GITHUB_SHA",
         oidc_token: str,
-    ) -> Response[PageDeployment]:
-        ...
+    ) -> Response[PageDeployment]: ...
 
     async def async_create_pages_deployment(
         self,
@@ -12733,8 +12546,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPropertiesValuesPatchBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def create_or_update_custom_properties_values(
@@ -12745,8 +12557,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         properties: List[CustomPropertyValueType],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def create_or_update_custom_properties_values(
         self,
@@ -12796,8 +12607,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoPropertiesValuesPatchBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_create_or_update_custom_properties_values(
@@ -12808,8 +12618,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         properties: List[CustomPropertyValueType],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_create_or_update_custom_properties_values(
         self,
@@ -13059,8 +12868,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoReleasesPostBodyType,
-    ) -> Response[Release]:
-        ...
+    ) -> Response[Release]: ...
 
     @overload
     def create_release(
@@ -13079,8 +12887,7 @@ class ReposClient:
         discussion_category_name: Missing[str] = UNSET,
         generate_release_notes: Missing[bool] = UNSET,
         make_latest: Missing[Literal["true", "false", "legacy"]] = UNSET,
-    ) -> Response[Release]:
-        ...
+    ) -> Response[Release]: ...
 
     def create_release(
         self,
@@ -13131,8 +12938,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoReleasesPostBodyType,
-    ) -> Response[Release]:
-        ...
+    ) -> Response[Release]: ...
 
     @overload
     async def async_create_release(
@@ -13151,8 +12957,7 @@ class ReposClient:
         discussion_category_name: Missing[str] = UNSET,
         generate_release_notes: Missing[bool] = UNSET,
         make_latest: Missing[Literal["true", "false", "legacy"]] = UNSET,
-    ) -> Response[Release]:
-        ...
+    ) -> Response[Release]: ...
 
     async def async_create_release(
         self,
@@ -13296,8 +13101,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
-    ) -> Response[ReleaseAsset]:
-        ...
+    ) -> Response[ReleaseAsset]: ...
 
     @overload
     def update_release_asset(
@@ -13311,8 +13115,7 @@ class ReposClient:
         name: Missing[str] = UNSET,
         label: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
-    ) -> Response[ReleaseAsset]:
-        ...
+    ) -> Response[ReleaseAsset]: ...
 
     def update_release_asset(
         self,
@@ -13356,8 +13159,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
-    ) -> Response[ReleaseAsset]:
-        ...
+    ) -> Response[ReleaseAsset]: ...
 
     @overload
     async def async_update_release_asset(
@@ -13371,8 +13173,7 @@ class ReposClient:
         name: Missing[str] = UNSET,
         label: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
-    ) -> Response[ReleaseAsset]:
-        ...
+    ) -> Response[ReleaseAsset]: ...
 
     async def async_update_release_asset(
         self,
@@ -13415,8 +13216,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoReleasesGenerateNotesPostBodyType,
-    ) -> Response[ReleaseNotesContent]:
-        ...
+    ) -> Response[ReleaseNotesContent]: ...
 
     @overload
     def generate_release_notes(
@@ -13430,8 +13230,7 @@ class ReposClient:
         target_commitish: Missing[str] = UNSET,
         previous_tag_name: Missing[str] = UNSET,
         configuration_file_path: Missing[str] = UNSET,
-    ) -> Response[ReleaseNotesContent]:
-        ...
+    ) -> Response[ReleaseNotesContent]: ...
 
     def generate_release_notes(
         self,
@@ -13480,8 +13279,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoReleasesGenerateNotesPostBodyType,
-    ) -> Response[ReleaseNotesContent]:
-        ...
+    ) -> Response[ReleaseNotesContent]: ...
 
     @overload
     async def async_generate_release_notes(
@@ -13495,8 +13293,7 @@ class ReposClient:
         target_commitish: Missing[str] = UNSET,
         previous_tag_name: Missing[str] = UNSET,
         configuration_file_path: Missing[str] = UNSET,
-    ) -> Response[ReleaseNotesContent]:
-        ...
+    ) -> Response[ReleaseNotesContent]: ...
 
     async def async_generate_release_notes(
         self,
@@ -13730,8 +13527,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
-    ) -> Response[Release]:
-        ...
+    ) -> Response[Release]: ...
 
     @overload
     def update_release(
@@ -13750,8 +13546,7 @@ class ReposClient:
         prerelease: Missing[bool] = UNSET,
         make_latest: Missing[Literal["true", "false", "legacy"]] = UNSET,
         discussion_category_name: Missing[str] = UNSET,
-    ) -> Response[Release]:
-        ...
+    ) -> Response[Release]: ...
 
     def update_release(
         self,
@@ -13802,8 +13597,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
-    ) -> Response[Release]:
-        ...
+    ) -> Response[Release]: ...
 
     @overload
     async def async_update_release(
@@ -13822,8 +13616,7 @@ class ReposClient:
         prerelease: Missing[bool] = UNSET,
         make_latest: Missing[Literal["true", "false", "legacy"]] = UNSET,
         discussion_category_name: Missing[str] = UNSET,
-    ) -> Response[Release]:
-        ...
+    ) -> Response[Release]: ...
 
     async def async_update_release(
         self,
@@ -14277,8 +14070,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoRulesetsPostBodyType,
-    ) -> Response[RepositoryRuleset]:
-        ...
+    ) -> Response[RepositoryRuleset]: ...
 
     @overload
     def create_repo_ruleset(
@@ -14314,8 +14106,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset]:
-        ...
+    ) -> Response[RepositoryRuleset]: ...
 
     def create_repo_ruleset(
         self,
@@ -14365,8 +14156,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoRulesetsPostBodyType,
-    ) -> Response[RepositoryRuleset]:
-        ...
+    ) -> Response[RepositoryRuleset]: ...
 
     @overload
     async def async_create_repo_ruleset(
@@ -14402,8 +14192,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset]:
-        ...
+    ) -> Response[RepositoryRuleset]: ...
 
     async def async_create_repo_ruleset(
         self,
@@ -14662,8 +14451,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
-    ) -> Response[RepositoryRuleset]:
-        ...
+    ) -> Response[RepositoryRuleset]: ...
 
     @overload
     def update_repo_ruleset(
@@ -14700,8 +14488,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset]:
-        ...
+    ) -> Response[RepositoryRuleset]: ...
 
     def update_repo_ruleset(
         self,
@@ -14753,8 +14540,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
-    ) -> Response[RepositoryRuleset]:
-        ...
+    ) -> Response[RepositoryRuleset]: ...
 
     @overload
     async def async_update_repo_ruleset(
@@ -14791,8 +14577,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset]:
-        ...
+    ) -> Response[RepositoryRuleset]: ...
 
     async def async_update_repo_ruleset(
         self,
@@ -15132,8 +14917,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoStatusesShaPostBodyType,
-    ) -> Response[Status]:
-        ...
+    ) -> Response[Status]: ...
 
     @overload
     def create_commit_status(
@@ -15148,8 +14932,7 @@ class ReposClient:
         target_url: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         context: Missing[str] = UNSET,
-    ) -> Response[Status]:
-        ...
+    ) -> Response[Status]: ...
 
     def create_commit_status(
         self,
@@ -15193,8 +14976,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoStatusesShaPostBodyType,
-    ) -> Response[Status]:
-        ...
+    ) -> Response[Status]: ...
 
     @overload
     async def async_create_commit_status(
@@ -15209,8 +14991,7 @@ class ReposClient:
         target_url: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         context: Missing[str] = UNSET,
-    ) -> Response[Status]:
-        ...
+    ) -> Response[Status]: ...
 
     async def async_create_commit_status(
         self,
@@ -15373,8 +15154,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoTagsProtectionPostBodyType,
-    ) -> Response[TagProtection]:
-        ...
+    ) -> Response[TagProtection]: ...
 
     @overload
     def create_tag_protection(
@@ -15385,8 +15165,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         pattern: str,
-    ) -> Response[TagProtection]:
-        ...
+    ) -> Response[TagProtection]: ...
 
     def create_tag_protection(
         self,
@@ -15436,8 +15215,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoTagsProtectionPostBodyType,
-    ) -> Response[TagProtection]:
-        ...
+    ) -> Response[TagProtection]: ...
 
     @overload
     async def async_create_tag_protection(
@@ -15448,8 +15226,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         pattern: str,
-    ) -> Response[TagProtection]:
-        ...
+    ) -> Response[TagProtection]: ...
 
     async def async_create_tag_protection(
         self,
@@ -15727,8 +15504,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoTopicsPutBodyType,
-    ) -> Response[Topic]:
-        ...
+    ) -> Response[Topic]: ...
 
     @overload
     def replace_all_topics(
@@ -15739,8 +15515,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         names: List[str],
-    ) -> Response[Topic]:
-        ...
+    ) -> Response[Topic]: ...
 
     def replace_all_topics(
         self,
@@ -15791,8 +15566,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoTopicsPutBodyType,
-    ) -> Response[Topic]:
-        ...
+    ) -> Response[Topic]: ...
 
     @overload
     async def async_replace_all_topics(
@@ -15803,8 +15577,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         names: List[str],
-    ) -> Response[Topic]:
-        ...
+    ) -> Response[Topic]: ...
 
     async def async_replace_all_topics(
         self,
@@ -16087,8 +15860,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoTransferPostBodyType,
-    ) -> Response[MinimalRepository]:
-        ...
+    ) -> Response[MinimalRepository]: ...
 
     @overload
     def transfer(
@@ -16101,8 +15873,7 @@ class ReposClient:
         new_owner: str,
         new_name: Missing[str] = UNSET,
         team_ids: Missing[List[int]] = UNSET,
-    ) -> Response[MinimalRepository]:
-        ...
+    ) -> Response[MinimalRepository]: ...
 
     def transfer(
         self,
@@ -16144,8 +15915,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoTransferPostBodyType,
-    ) -> Response[MinimalRepository]:
-        ...
+    ) -> Response[MinimalRepository]: ...
 
     @overload
     async def async_transfer(
@@ -16158,8 +15928,7 @@ class ReposClient:
         new_owner: str,
         new_name: Missing[str] = UNSET,
         team_ids: Missing[List[int]] = UNSET,
-    ) -> Response[MinimalRepository]:
-        ...
+    ) -> Response[MinimalRepository]: ...
 
     async def async_transfer(
         self,
@@ -16357,8 +16126,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     @overload
     def create_using_template(
@@ -16373,8 +16141,7 @@ class ReposClient:
         description: Missing[str] = UNSET,
         include_all_branches: Missing[bool] = UNSET,
         private: Missing[bool] = UNSET,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     def create_using_template(
         self,
@@ -16421,8 +16188,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     @overload
     async def async_create_using_template(
@@ -16437,8 +16203,7 @@ class ReposClient:
         description: Missing[str] = UNSET,
         include_all_branches: Missing[bool] = UNSET,
         private: Missing[bool] = UNSET,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     async def async_create_using_template(
         self,
@@ -16640,8 +16405,7 @@ class ReposClient:
     @overload
     def create_for_authenticated_user(
         self, *, headers: Optional[Dict[str, str]] = None, data: UserReposPostBodyType
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     @overload
     def create_for_authenticated_user(
@@ -16676,8 +16440,7 @@ class ReposClient:
         merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
         has_downloads: Missing[bool] = UNSET,
         is_template: Missing[bool] = UNSET,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     def create_for_authenticated_user(
         self,
@@ -16724,8 +16487,7 @@ class ReposClient:
     @overload
     async def async_create_for_authenticated_user(
         self, *, headers: Optional[Dict[str, str]] = None, data: UserReposPostBodyType
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     @overload
     async def async_create_for_authenticated_user(
@@ -16760,8 +16522,7 @@ class ReposClient:
         merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
         has_downloads: Missing[bool] = UNSET,
         is_template: Missing[bool] = UNSET,
-    ) -> Response[FullRepository]:
-        ...
+    ) -> Response[FullRepository]: ...
 
     async def async_create_for_authenticated_user(
         self,

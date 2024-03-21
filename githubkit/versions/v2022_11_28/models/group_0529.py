@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -72,9 +71,9 @@ class WebhookIssuesOpenedPropIssue(GitHubModel):
     assignee: Missing[Union[WebhookIssuesOpenedPropIssuePropAssignee, None]] = Field(
         default=UNSET, title="User"
     )
-    assignees: List[
-        Union[WebhookIssuesOpenedPropIssuePropAssigneesItems, None]
-    ] = Field()
+    assignees: List[Union[WebhookIssuesOpenedPropIssuePropAssigneesItems, None]] = (
+        Field()
+    )
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -508,16 +507,16 @@ class WebhookIssuesOpenedPropChangesPropOldIssue(GitHubModel):
     events_url: str = Field()
     html_url: str = Field()
     id: int = Field()
-    labels: Missing[
-        List[WebhookIssuesOpenedPropChangesPropOldIssuePropLabelsItems]
-    ] = Field(default=UNSET)
+    labels: Missing[List[WebhookIssuesOpenedPropChangesPropOldIssuePropLabelsItems]] = (
+        Field(default=UNSET)
+    )
     labels_url: str = Field()
     locked: Missing[bool] = Field(default=UNSET)
-    milestone: Union[
-        WebhookIssuesOpenedPropChangesPropOldIssuePropMilestone, None
-    ] = Field(
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
+    milestone: Union[WebhookIssuesOpenedPropChangesPropOldIssuePropMilestone, None] = (
+        Field(
+            title="Milestone",
+            description="A collection of related issues and pull requests.",
+        )
     )
     node_id: str = Field()
     number: int = Field()
@@ -528,9 +527,9 @@ class WebhookIssuesOpenedPropChangesPropOldIssue(GitHubModel):
         title="App",
         description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
     )
-    pull_request: Missing[
-        WebhookIssuesOpenedPropChangesPropOldIssuePropPullRequest
-    ] = Field(default=UNSET)
+    pull_request: Missing[WebhookIssuesOpenedPropChangesPropOldIssuePropPullRequest] = (
+        Field(default=UNSET)
+    )
     reactions: WebhookIssuesOpenedPropChangesPropOldIssuePropReactions = Field(
         title="Reactions"
     )
@@ -976,9 +975,9 @@ class WebhookIssuesOpenedPropChangesPropOldRepository(GitHubModel):
     open_issues: int = Field()
     open_issues_count: int = Field()
     organization: Missing[str] = Field(default=UNSET)
-    owner: Union[
-        WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwner, None
-    ] = Field(title="User")
+    owner: Union[WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwner, None] = (
+        Field(title="User")
+    )
     permissions: Missing[
         WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions
     ] = Field(default=UNSET)

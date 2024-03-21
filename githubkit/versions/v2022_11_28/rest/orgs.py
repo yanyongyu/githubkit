@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -264,8 +263,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
-    ) -> Response[OrganizationFull]:
-        ...
+    ) -> Response[OrganizationFull]: ...
 
     @overload
     def update(
@@ -309,8 +307,7 @@ class OrgsClient:
         ] = UNSET,
         secret_scanning_push_protection_custom_link_enabled: Missing[bool] = UNSET,
         secret_scanning_push_protection_custom_link: Missing[str] = UNSET,
-    ) -> Response[OrganizationFull]:
-        ...
+    ) -> Response[OrganizationFull]: ...
 
     def update(
         self,
@@ -362,8 +359,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
-    ) -> Response[OrganizationFull]:
-        ...
+    ) -> Response[OrganizationFull]: ...
 
     @overload
     async def async_update(
@@ -407,8 +403,7 @@ class OrgsClient:
         ] = UNSET,
         secret_scanning_push_protection_custom_link_enabled: Missing[bool] = UNSET,
         secret_scanning_push_protection_custom_link: Missing[str] = UNSET,
-    ) -> Response[OrganizationFull]:
-        ...
+    ) -> Response[OrganizationFull]: ...
 
     async def async_update(
         self,
@@ -792,8 +787,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgHooksPostBodyType,
-    ) -> Response[OrgHook]:
-        ...
+    ) -> Response[OrgHook]: ...
 
     @overload
     def create_webhook(
@@ -806,8 +800,7 @@ class OrgsClient:
         config: OrgsOrgHooksPostBodyPropConfigType,
         events: Missing[List[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[OrgHook]:
-        ...
+    ) -> Response[OrgHook]: ...
 
     def create_webhook(
         self,
@@ -851,8 +844,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgHooksPostBodyType,
-    ) -> Response[OrgHook]:
-        ...
+    ) -> Response[OrgHook]: ...
 
     @overload
     async def async_create_webhook(
@@ -865,8 +857,7 @@ class OrgsClient:
         config: OrgsOrgHooksPostBodyPropConfigType,
         events: Missing[List[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[OrgHook]:
-        ...
+    ) -> Response[OrgHook]: ...
 
     async def async_create_webhook(
         self,
@@ -1009,8 +1000,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
-    ) -> Response[OrgHook]:
-        ...
+    ) -> Response[OrgHook]: ...
 
     @overload
     def update_webhook(
@@ -1024,8 +1014,7 @@ class OrgsClient:
         events: Missing[List[str]] = UNSET,
         active: Missing[bool] = UNSET,
         name: Missing[str] = UNSET,
-    ) -> Response[OrgHook]:
-        ...
+    ) -> Response[OrgHook]: ...
 
     def update_webhook(
         self,
@@ -1076,8 +1065,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
-    ) -> Response[OrgHook]:
-        ...
+    ) -> Response[OrgHook]: ...
 
     @overload
     async def async_update_webhook(
@@ -1091,8 +1079,7 @@ class OrgsClient:
         events: Missing[List[str]] = UNSET,
         active: Missing[bool] = UNSET,
         name: Missing[str] = UNSET,
-    ) -> Response[OrgHook]:
-        ...
+    ) -> Response[OrgHook]: ...
 
     async def async_update_webhook(
         self,
@@ -1187,8 +1174,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
-    ) -> Response[WebhookConfig]:
-        ...
+    ) -> Response[WebhookConfig]: ...
 
     @overload
     def update_webhook_config_for_org(
@@ -1202,8 +1188,7 @@ class OrgsClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig]:
-        ...
+    ) -> Response[WebhookConfig]: ...
 
     def update_webhook_config_for_org(
         self,
@@ -1245,8 +1230,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
-    ) -> Response[WebhookConfig]:
-        ...
+    ) -> Response[WebhookConfig]: ...
 
     @overload
     async def async_update_webhook_config_for_org(
@@ -1260,8 +1244,7 @@ class OrgsClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig]:
-        ...
+    ) -> Response[WebhookConfig]: ...
 
     async def async_update_webhook_config_for_org(
         self,
@@ -1684,8 +1667,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
-    ) -> Response[OrganizationInvitation]:
-        ...
+    ) -> Response[OrganizationInvitation]: ...
 
     @overload
     def create_invitation(
@@ -1700,8 +1682,7 @@ class OrgsClient:
             Literal["admin", "direct_member", "billing_manager", "reinstate"]
         ] = UNSET,
         team_ids: Missing[List[int]] = UNSET,
-    ) -> Response[OrganizationInvitation]:
-        ...
+    ) -> Response[OrganizationInvitation]: ...
 
     def create_invitation(
         self,
@@ -1750,8 +1731,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
-    ) -> Response[OrganizationInvitation]:
-        ...
+    ) -> Response[OrganizationInvitation]: ...
 
     @overload
     async def async_create_invitation(
@@ -1766,8 +1746,7 @@ class OrgsClient:
             Literal["admin", "direct_member", "billing_manager", "reinstate"]
         ] = UNSET,
         team_ids: Missing[List[int]] = UNSET,
-    ) -> Response[OrganizationInvitation]:
-        ...
+    ) -> Response[OrganizationInvitation]: ...
 
     async def async_create_invitation(
         self,
@@ -2153,8 +2132,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[OrgMembership]:
-        ...
+    ) -> Response[OrgMembership]: ...
 
     @overload
     def set_membership_for_user(
@@ -2165,8 +2143,7 @@ class OrgsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         role: Missing[Literal["admin", "member"]] = UNSET,
-    ) -> Response[OrgMembership]:
-        ...
+    ) -> Response[OrgMembership]: ...
 
     def set_membership_for_user(
         self,
@@ -2217,8 +2194,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[OrgMembership]:
-        ...
+    ) -> Response[OrgMembership]: ...
 
     @overload
     async def async_set_membership_for_user(
@@ -2229,8 +2205,7 @@ class OrgsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         role: Missing[Literal["admin", "member"]] = UNSET,
-    ) -> Response[OrgMembership]:
-        ...
+    ) -> Response[OrgMembership]: ...
 
     async def async_set_membership_for_user(
         self,
@@ -2450,8 +2425,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgOrganizationRolesPostBodyType,
-    ) -> Response[OrganizationRole]:
-        ...
+    ) -> Response[OrganizationRole]: ...
 
     @overload
     def create_custom_organization_role(
@@ -2463,8 +2437,7 @@ class OrgsClient:
         name: str,
         description: Missing[str] = UNSET,
         permissions: List[str],
-    ) -> Response[OrganizationRole]:
-        ...
+    ) -> Response[OrganizationRole]: ...
 
     def create_custom_organization_role(
         self,
@@ -2514,8 +2487,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgOrganizationRolesPostBodyType,
-    ) -> Response[OrganizationRole]:
-        ...
+    ) -> Response[OrganizationRole]: ...
 
     @overload
     async def async_create_custom_organization_role(
@@ -2527,8 +2499,7 @@ class OrgsClient:
         name: str,
         description: Missing[str] = UNSET,
         permissions: List[str],
-    ) -> Response[OrganizationRole]:
-        ...
+    ) -> Response[OrganizationRole]: ...
 
     async def async_create_custom_organization_role(
         self,
@@ -2909,8 +2880,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgOrganizationRolesRoleIdPatchBodyType,
-    ) -> Response[OrganizationRole]:
-        ...
+    ) -> Response[OrganizationRole]: ...
 
     @overload
     def patch_custom_organization_role(
@@ -2923,8 +2893,7 @@ class OrgsClient:
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         permissions: Missing[List[str]] = UNSET,
-    ) -> Response[OrganizationRole]:
-        ...
+    ) -> Response[OrganizationRole]: ...
 
     def patch_custom_organization_role(
         self,
@@ -2976,8 +2945,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgOrganizationRolesRoleIdPatchBodyType,
-    ) -> Response[OrganizationRole]:
-        ...
+    ) -> Response[OrganizationRole]: ...
 
     @overload
     async def async_patch_custom_organization_role(
@@ -2990,8 +2958,7 @@ class OrgsClient:
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         permissions: Missing[List[str]] = UNSET,
-    ) -> Response[OrganizationRole]:
-        ...
+    ) -> Response[OrganizationRole]: ...
 
     async def async_patch_custom_organization_role(
         self,
@@ -3241,8 +3208,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
-    ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]:
-        ...
+    ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]: ...
 
     @overload
     def convert_member_to_outside_collaborator(
@@ -3253,8 +3219,7 @@ class OrgsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         async_: Missing[bool] = UNSET,
-    ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]:
-        ...
+    ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]: ...
 
     def convert_member_to_outside_collaborator(
         self,
@@ -3303,8 +3268,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
-    ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]:
-        ...
+    ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]: ...
 
     @overload
     async def async_convert_member_to_outside_collaborator(
@@ -3315,8 +3279,7 @@ class OrgsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         async_: Missing[bool] = UNSET,
-    ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]:
-        ...
+    ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]: ...
 
     async def async_convert_member_to_outside_collaborator(
         self,
@@ -3522,8 +3485,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        ...
+    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
 
     @overload
     def review_pat_grant_requests_in_bulk(
@@ -3535,8 +3497,7 @@ class OrgsClient:
         pat_request_ids: Missing[List[int]] = UNSET,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        ...
+    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
 
     def review_pat_grant_requests_in_bulk(
         self,
@@ -3587,8 +3548,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        ...
+    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
 
     @overload
     async def async_review_pat_grant_requests_in_bulk(
@@ -3600,8 +3560,7 @@ class OrgsClient:
         pat_request_ids: Missing[List[int]] = UNSET,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        ...
+    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
 
     async def async_review_pat_grant_requests_in_bulk(
         self,
@@ -3653,8 +3612,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def review_pat_grant_request(
@@ -3666,8 +3624,7 @@ class OrgsClient:
         headers: Optional[Dict[str, str]] = None,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def review_pat_grant_request(
         self,
@@ -3722,8 +3679,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_review_pat_grant_request(
@@ -3735,8 +3691,7 @@ class OrgsClient:
         headers: Optional[Dict[str, str]] = None,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_review_pat_grant_request(
         self,
@@ -3978,8 +3933,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokensPostBodyType,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        ...
+    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
 
     @overload
     def update_pat_accesses(
@@ -3990,8 +3944,7 @@ class OrgsClient:
         headers: Optional[Dict[str, str]] = None,
         action: Literal["revoke"],
         pat_ids: List[int],
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        ...
+    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
 
     def update_pat_accesses(
         self,
@@ -4042,8 +3995,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokensPostBodyType,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        ...
+    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
 
     @overload
     async def async_update_pat_accesses(
@@ -4054,8 +4006,7 @@ class OrgsClient:
         headers: Optional[Dict[str, str]] = None,
         action: Literal["revoke"],
         pat_ids: List[int],
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
-        ...
+    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
 
     async def async_update_pat_accesses(
         self,
@@ -4107,8 +4058,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokensPatIdPostBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def update_pat_access(
@@ -4119,8 +4069,7 @@ class OrgsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         action: Literal["revoke"],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def update_pat_access(
         self,
@@ -4171,8 +4120,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokensPatIdPostBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_update_pat_access(
@@ -4183,8 +4131,7 @@ class OrgsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         action: Literal["revoke"],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_update_pat_access(
         self,
@@ -4362,8 +4309,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
-    ) -> Response[List[OrgCustomProperty]]:
-        ...
+    ) -> Response[List[OrgCustomProperty]]: ...
 
     @overload
     def create_or_update_custom_properties(
@@ -4373,8 +4319,7 @@ class OrgsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         properties: List[OrgCustomPropertyType],
-    ) -> Response[List[OrgCustomProperty]]:
-        ...
+    ) -> Response[List[OrgCustomProperty]]: ...
 
     def create_or_update_custom_properties(
         self,
@@ -4424,8 +4369,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
-    ) -> Response[List[OrgCustomProperty]]:
-        ...
+    ) -> Response[List[OrgCustomProperty]]: ...
 
     @overload
     async def async_create_or_update_custom_properties(
@@ -4435,8 +4379,7 @@ class OrgsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         properties: List[OrgCustomPropertyType],
-    ) -> Response[List[OrgCustomProperty]]:
-        ...
+    ) -> Response[List[OrgCustomProperty]]: ...
 
     async def async_create_or_update_custom_properties(
         self,
@@ -4539,8 +4482,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
-    ) -> Response[OrgCustomProperty]:
-        ...
+    ) -> Response[OrgCustomProperty]: ...
 
     @overload
     def create_or_update_custom_property(
@@ -4555,8 +4497,7 @@ class OrgsClient:
         default_value: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[List[str], None]] = UNSET,
-    ) -> Response[OrgCustomProperty]:
-        ...
+    ) -> Response[OrgCustomProperty]: ...
 
     def create_or_update_custom_property(
         self,
@@ -4608,8 +4549,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
-    ) -> Response[OrgCustomProperty]:
-        ...
+    ) -> Response[OrgCustomProperty]: ...
 
     @overload
     async def async_create_or_update_custom_property(
@@ -4624,8 +4564,7 @@ class OrgsClient:
         default_value: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[List[str], None]] = UNSET,
-    ) -> Response[OrgCustomProperty]:
-        ...
+    ) -> Response[OrgCustomProperty]: ...
 
     async def async_create_or_update_custom_property(
         self,
@@ -4800,8 +4739,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPropertiesValuesPatchBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def create_or_update_custom_properties_values_for_repos(
@@ -4812,8 +4750,7 @@ class OrgsClient:
         headers: Optional[Dict[str, str]] = None,
         repository_names: List[str],
         properties: List[CustomPropertyValueType],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def create_or_update_custom_properties_values_for_repos(
         self,
@@ -4861,8 +4798,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPropertiesValuesPatchBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_create_or_update_custom_properties_values_for_repos(
@@ -4873,8 +4809,7 @@ class OrgsClient:
         headers: Optional[Dict[str, str]] = None,
         repository_names: List[str],
         properties: List[CustomPropertyValueType],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_create_or_update_custom_properties_values_for_repos(
         self,
@@ -5244,8 +5179,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def enable_or_disable_security_product_on_all_org_repos(
@@ -5265,8 +5199,7 @@ class OrgsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def enable_or_disable_security_product_on_all_org_repos(
         self,
@@ -5326,8 +5259,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_enable_or_disable_security_product_on_all_org_repos(
@@ -5347,8 +5279,7 @@ class OrgsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_enable_or_disable_security_product_on_all_org_repos(
         self,
@@ -5522,8 +5453,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserMembershipsOrgsOrgPatchBodyType,
-    ) -> Response[OrgMembership]:
-        ...
+    ) -> Response[OrgMembership]: ...
 
     @overload
     def update_membership_for_authenticated_user(
@@ -5533,8 +5463,7 @@ class OrgsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         state: Literal["active"],
-    ) -> Response[OrgMembership]:
-        ...
+    ) -> Response[OrgMembership]: ...
 
     def update_membership_for_authenticated_user(
         self,
@@ -5584,8 +5513,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: UserMembershipsOrgsOrgPatchBodyType,
-    ) -> Response[OrgMembership]:
-        ...
+    ) -> Response[OrgMembership]: ...
 
     @overload
     async def async_update_membership_for_authenticated_user(
@@ -5595,8 +5523,7 @@ class OrgsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         state: Literal["active"],
-    ) -> Response[OrgMembership]:
-        ...
+    ) -> Response[OrgMembership]: ...
 
     async def async_update_membership_for_authenticated_user(
         self,

@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -124,7 +123,9 @@ class WebhookPullRequestReviewCommentDeletedPropCommentPropLinksType(TypedDict):
     """WebhookPullRequestReviewCommentDeletedPropCommentPropLinks"""
 
     html: WebhookPullRequestReviewCommentDeletedPropCommentPropLinksPropHtmlType
-    pull_request: WebhookPullRequestReviewCommentDeletedPropCommentPropLinksPropPullRequestType
+    pull_request: (
+        WebhookPullRequestReviewCommentDeletedPropCommentPropLinksPropPullRequestType
+    )
     self_: WebhookPullRequestReviewCommentDeletedPropCommentPropLinksPropSelfType
 
 
@@ -446,14 +447,20 @@ class WebhookPullRequestReviewCommentDeletedPropPullRequestPropUserType(TypedDic
 class WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksType(TypedDict):
     """WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinks"""
 
-    comments: WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropCommentsType
-    commits: WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropCommitsType
+    comments: (
+        WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropCommentsType
+    )
+    commits: (
+        WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropCommitsType
+    )
     html: WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropHtmlType
     issue: WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropIssueType
     review_comment: WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropReviewCommentType
     review_comments: WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropReviewCommentsType
     self_: WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropSelfType
-    statuses: WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropStatusesType
+    statuses: (
+        WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropStatusesType
+    )
 
 
 class WebhookPullRequestReviewCommentDeletedPropPullRequestPropLinksPropCommentsType(

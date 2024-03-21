@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -44,11 +43,11 @@ class WebhookIssuesDemilestonedPropIssueAllof1(GitHubModel):
     ] = Field(default=UNSET)
     labels_url: Missing[str] = Field(default=UNSET)
     locked: Missing[bool] = Field(default=UNSET)
-    milestone: Union[
-        WebhookIssuesDemilestonedPropIssueAllof1PropMilestone, None
-    ] = Field(
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
+    milestone: Union[WebhookIssuesDemilestonedPropIssueAllof1PropMilestone, None] = (
+        Field(
+            title="Milestone",
+            description="A collection of related issues and pull requests.",
+        )
     )
     node_id: Missing[str] = Field(default=UNSET)
     number: Missing[int] = Field(default=UNSET)

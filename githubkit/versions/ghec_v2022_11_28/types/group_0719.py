@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import Union
@@ -30,7 +29,9 @@ class WebhookRegistryPackageUpdatedPropRegistryPackageType(TypedDict):
     namespace: str
     owner: WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType
     package_type: str
-    package_version: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType
+    package_version: (
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType
+    )
     registry: Union[
         WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType, None
     ]

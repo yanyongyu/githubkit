@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -356,8 +355,12 @@ class WebhookPullRequestDequeuedPropPullRequestPropLinksType(TypedDict):
     commits: WebhookPullRequestDequeuedPropPullRequestPropLinksPropCommitsType
     html: WebhookPullRequestDequeuedPropPullRequestPropLinksPropHtmlType
     issue: WebhookPullRequestDequeuedPropPullRequestPropLinksPropIssueType
-    review_comment: WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentType
-    review_comments: WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentsType
+    review_comment: (
+        WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentType
+    )
+    review_comments: (
+        WebhookPullRequestDequeuedPropPullRequestPropLinksPropReviewCommentsType
+    )
     self_: WebhookPullRequestDequeuedPropPullRequestPropLinksPropSelfType
     statuses: WebhookPullRequestDequeuedPropPullRequestPropLinksPropStatusesType
 

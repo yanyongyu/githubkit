@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -326,8 +325,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsPostBodyType,
-    ) -> Response[TeamFull]:
-        ...
+    ) -> Response[TeamFull]: ...
 
     @overload
     def create(
@@ -346,8 +344,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push"]] = UNSET,
         parent_team_id: Missing[int] = UNSET,
-    ) -> Response[TeamFull]:
-        ...
+    ) -> Response[TeamFull]: ...
 
     def create(
         self,
@@ -391,8 +388,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsPostBodyType,
-    ) -> Response[TeamFull]:
-        ...
+    ) -> Response[TeamFull]: ...
 
     @overload
     async def async_create(
@@ -411,8 +407,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push"]] = UNSET,
         parent_team_id: Missing[int] = UNSET,
-    ) -> Response[TeamFull]:
-        ...
+    ) -> Response[TeamFull]: ...
 
     async def async_create(
         self,
@@ -545,8 +540,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
-    ) -> Response[TeamFull]:
-        ...
+    ) -> Response[TeamFull]: ...
 
     @overload
     def update_in_org(
@@ -564,8 +558,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
         parent_team_id: Missing[Union[int, None]] = UNSET,
-    ) -> Response[TeamFull]:
-        ...
+    ) -> Response[TeamFull]: ...
 
     def update_in_org(
         self,
@@ -617,8 +610,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
-    ) -> Response[TeamFull]:
-        ...
+    ) -> Response[TeamFull]: ...
 
     @overload
     async def async_update_in_org(
@@ -636,8 +628,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
         parent_team_id: Missing[Union[int, None]] = UNSET,
-    ) -> Response[TeamFull]:
-        ...
+    ) -> Response[TeamFull]: ...
 
     async def async_update_in_org(
         self,
@@ -761,8 +752,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
-    ) -> Response[TeamDiscussion]:
-        ...
+    ) -> Response[TeamDiscussion]: ...
 
     @overload
     def create_discussion_in_org(
@@ -775,8 +765,7 @@ class TeamsClient:
         title: str,
         body: str,
         private: Missing[bool] = UNSET,
-    ) -> Response[TeamDiscussion]:
-        ...
+    ) -> Response[TeamDiscussion]: ...
 
     def create_discussion_in_org(
         self,
@@ -818,8 +807,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
-    ) -> Response[TeamDiscussion]:
-        ...
+    ) -> Response[TeamDiscussion]: ...
 
     @overload
     async def async_create_discussion_in_org(
@@ -832,8 +820,7 @@ class TeamsClient:
         title: str,
         body: str,
         private: Missing[bool] = UNSET,
-    ) -> Response[TeamDiscussion]:
-        ...
+    ) -> Response[TeamDiscussion]: ...
 
     async def async_create_discussion_in_org(
         self,
@@ -964,8 +951,7 @@ class TeamsClient:
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
-    ) -> Response[TeamDiscussion]:
-        ...
+    ) -> Response[TeamDiscussion]: ...
 
     @overload
     def update_discussion_in_org(
@@ -978,8 +964,7 @@ class TeamsClient:
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
-    ) -> Response[TeamDiscussion]:
-        ...
+    ) -> Response[TeamDiscussion]: ...
 
     def update_discussion_in_org(
         self,
@@ -1032,8 +1017,7 @@ class TeamsClient:
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
-    ) -> Response[TeamDiscussion]:
-        ...
+    ) -> Response[TeamDiscussion]: ...
 
     @overload
     async def async_update_discussion_in_org(
@@ -1046,8 +1030,7 @@ class TeamsClient:
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
-    ) -> Response[TeamDiscussion]:
-        ...
+    ) -> Response[TeamDiscussion]: ...
 
     async def async_update_discussion_in_org(
         self,
@@ -1168,8 +1151,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
-    ) -> Response[TeamDiscussionComment]:
-        ...
+    ) -> Response[TeamDiscussionComment]: ...
 
     @overload
     def create_discussion_comment_in_org(
@@ -1181,8 +1163,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[TeamDiscussionComment]:
-        ...
+    ) -> Response[TeamDiscussionComment]: ...
 
     def create_discussion_comment_in_org(
         self,
@@ -1233,8 +1214,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
-    ) -> Response[TeamDiscussionComment]:
-        ...
+    ) -> Response[TeamDiscussionComment]: ...
 
     @overload
     async def async_create_discussion_comment_in_org(
@@ -1246,8 +1226,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[TeamDiscussionComment]:
-        ...
+    ) -> Response[TeamDiscussionComment]: ...
 
     async def async_create_discussion_comment_in_org(
         self,
@@ -1389,8 +1368,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
-    ) -> Response[TeamDiscussionComment]:
-        ...
+    ) -> Response[TeamDiscussionComment]: ...
 
     @overload
     def update_discussion_comment_in_org(
@@ -1403,8 +1381,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[TeamDiscussionComment]:
-        ...
+    ) -> Response[TeamDiscussionComment]: ...
 
     def update_discussion_comment_in_org(
         self,
@@ -1458,8 +1435,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
-    ) -> Response[TeamDiscussionComment]:
-        ...
+    ) -> Response[TeamDiscussionComment]: ...
 
     @overload
     async def async_update_discussion_comment_in_org(
@@ -1472,8 +1448,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[TeamDiscussionComment]:
-        ...
+    ) -> Response[TeamDiscussionComment]: ...
 
     async def async_update_discussion_comment_in_org(
         self,
@@ -1607,8 +1582,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType,
-    ) -> Response[ExternalGroup]:
-        ...
+    ) -> Response[ExternalGroup]: ...
 
     @overload
     def link_external_idp_group_to_team_for_org(
@@ -1619,8 +1593,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         group_id: int,
-    ) -> Response[ExternalGroup]:
-        ...
+    ) -> Response[ExternalGroup]: ...
 
     def link_external_idp_group_to_team_for_org(
         self,
@@ -1662,8 +1635,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType,
-    ) -> Response[ExternalGroup]:
-        ...
+    ) -> Response[ExternalGroup]: ...
 
     @overload
     async def async_link_external_idp_group_to_team_for_org(
@@ -1674,8 +1646,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         group_id: int,
-    ) -> Response[ExternalGroup]:
-        ...
+    ) -> Response[ExternalGroup]: ...
 
     async def async_link_external_idp_group_to_team_for_org(
         self,
@@ -1898,8 +1869,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[TeamMembership]:
-        ...
+    ) -> Response[TeamMembership]: ...
 
     @overload
     def add_or_update_membership_for_user_in_org(
@@ -1911,8 +1881,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
-    ) -> Response[TeamMembership]:
-        ...
+    ) -> Response[TeamMembership]: ...
 
     def add_or_update_membership_for_user_in_org(
         self,
@@ -1962,8 +1931,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[TeamMembership]:
-        ...
+    ) -> Response[TeamMembership]: ...
 
     @overload
     async def async_add_or_update_membership_for_user_in_org(
@@ -1975,8 +1943,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
-    ) -> Response[TeamMembership]:
-        ...
+    ) -> Response[TeamMembership]: ...
 
     async def async_add_or_update_membership_for_user_in_org(
         self,
@@ -2182,8 +2149,7 @@ class TeamsClient:
         data: Missing[
             Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def add_or_update_project_permissions_in_org(
@@ -2195,8 +2161,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def add_or_update_project_permissions_in_org(
         self,
@@ -2253,8 +2218,7 @@ class TeamsClient:
         data: Missing[
             Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_add_or_update_project_permissions_in_org(
@@ -2266,8 +2230,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_add_or_update_project_permissions_in_org(
         self,
@@ -2477,8 +2440,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def add_or_update_repo_permissions_in_org(
@@ -2491,8 +2453,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[str] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def add_or_update_repo_permissions_in_org(
         self,
@@ -2537,8 +2498,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_add_or_update_repo_permissions_in_org(
@@ -2551,8 +2511,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[str] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_add_or_update_repo_permissions_in_org(
         self,
@@ -2681,8 +2640,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType,
-    ) -> Response[GroupMapping]:
-        ...
+    ) -> Response[GroupMapping]: ...
 
     @overload
     def create_or_update_idp_group_connections_in_org(
@@ -2695,8 +2653,7 @@ class TeamsClient:
         groups: Missing[
             List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
         ] = UNSET,
-    ) -> Response[GroupMapping]:
-        ...
+    ) -> Response[GroupMapping]: ...
 
     def create_or_update_idp_group_connections_in_org(
         self,
@@ -2743,8 +2700,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType,
-    ) -> Response[GroupMapping]:
-        ...
+    ) -> Response[GroupMapping]: ...
 
     @overload
     async def async_create_or_update_idp_group_connections_in_org(
@@ -2757,8 +2713,7 @@ class TeamsClient:
         groups: Missing[
             List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
         ] = UNSET,
-    ) -> Response[GroupMapping]:
-        ...
+    ) -> Response[GroupMapping]: ...
 
     async def async_create_or_update_idp_group_connections_in_org(
         self,
@@ -2964,8 +2919,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdPatchBodyType,
-    ) -> Response[TeamFull]:
-        ...
+    ) -> Response[TeamFull]: ...
 
     @overload
     def update_legacy(
@@ -2982,8 +2936,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
         parent_team_id: Missing[Union[int, None]] = UNSET,
-    ) -> Response[TeamFull]:
-        ...
+    ) -> Response[TeamFull]: ...
 
     def update_legacy(
         self,
@@ -3028,8 +2981,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdPatchBodyType,
-    ) -> Response[TeamFull]:
-        ...
+    ) -> Response[TeamFull]: ...
 
     @overload
     async def async_update_legacy(
@@ -3046,8 +2998,7 @@ class TeamsClient:
         ] = UNSET,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
         parent_team_id: Missing[Union[int, None]] = UNSET,
-    ) -> Response[TeamFull]:
-        ...
+    ) -> Response[TeamFull]: ...
 
     async def async_update_legacy(
         self,
@@ -3158,8 +3109,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsPostBodyType,
-    ) -> Response[TeamDiscussion]:
-        ...
+    ) -> Response[TeamDiscussion]: ...
 
     @overload
     def create_discussion_legacy(
@@ -3171,8 +3121,7 @@ class TeamsClient:
         title: str,
         body: str,
         private: Missing[bool] = UNSET,
-    ) -> Response[TeamDiscussion]:
-        ...
+    ) -> Response[TeamDiscussion]: ...
 
     def create_discussion_legacy(
         self,
@@ -3212,8 +3161,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsPostBodyType,
-    ) -> Response[TeamDiscussion]:
-        ...
+    ) -> Response[TeamDiscussion]: ...
 
     @overload
     async def async_create_discussion_legacy(
@@ -3225,8 +3173,7 @@ class TeamsClient:
         title: str,
         body: str,
         private: Missing[bool] = UNSET,
-    ) -> Response[TeamDiscussion]:
-        ...
+    ) -> Response[TeamDiscussion]: ...
 
     async def async_create_discussion_legacy(
         self,
@@ -3349,8 +3296,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
-    ) -> Response[TeamDiscussion]:
-        ...
+    ) -> Response[TeamDiscussion]: ...
 
     @overload
     def update_discussion_legacy(
@@ -3362,8 +3308,7 @@ class TeamsClient:
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
-    ) -> Response[TeamDiscussion]:
-        ...
+    ) -> Response[TeamDiscussion]: ...
 
     def update_discussion_legacy(
         self,
@@ -3410,8 +3355,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
-    ) -> Response[TeamDiscussion]:
-        ...
+    ) -> Response[TeamDiscussion]: ...
 
     @overload
     async def async_update_discussion_legacy(
@@ -3423,8 +3367,7 @@ class TeamsClient:
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
-    ) -> Response[TeamDiscussion]:
-        ...
+    ) -> Response[TeamDiscussion]: ...
 
     async def async_update_discussion_legacy(
         self,
@@ -3539,8 +3482,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
-    ) -> Response[TeamDiscussionComment]:
-        ...
+    ) -> Response[TeamDiscussionComment]: ...
 
     @overload
     def create_discussion_comment_legacy(
@@ -3551,8 +3493,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[TeamDiscussionComment]:
-        ...
+    ) -> Response[TeamDiscussionComment]: ...
 
     def create_discussion_comment_legacy(
         self,
@@ -3601,8 +3542,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
-    ) -> Response[TeamDiscussionComment]:
-        ...
+    ) -> Response[TeamDiscussionComment]: ...
 
     @overload
     async def async_create_discussion_comment_legacy(
@@ -3613,8 +3553,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[TeamDiscussionComment]:
-        ...
+    ) -> Response[TeamDiscussionComment]: ...
 
     async def async_create_discussion_comment_legacy(
         self,
@@ -3750,8 +3689,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
-    ) -> Response[TeamDiscussionComment]:
-        ...
+    ) -> Response[TeamDiscussionComment]: ...
 
     @overload
     def update_discussion_comment_legacy(
@@ -3763,8 +3701,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[TeamDiscussionComment]:
-        ...
+    ) -> Response[TeamDiscussionComment]: ...
 
     def update_discussion_comment_legacy(
         self,
@@ -3815,8 +3752,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
-    ) -> Response[TeamDiscussionComment]:
-        ...
+    ) -> Response[TeamDiscussionComment]: ...
 
     @overload
     async def async_update_discussion_comment_legacy(
@@ -3828,8 +3764,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[TeamDiscussionComment]:
-        ...
+    ) -> Response[TeamDiscussionComment]: ...
 
     async def async_update_discussion_comment_legacy(
         self,
@@ -4191,8 +4126,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[TeamMembership]:
-        ...
+    ) -> Response[TeamMembership]: ...
 
     @overload
     def add_or_update_membership_for_user_legacy(
@@ -4203,8 +4137,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
-    ) -> Response[TeamMembership]:
-        ...
+    ) -> Response[TeamMembership]: ...
 
     def add_or_update_membership_for_user_legacy(
         self,
@@ -4253,8 +4186,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
-    ) -> Response[TeamMembership]:
-        ...
+    ) -> Response[TeamMembership]: ...
 
     @overload
     async def async_add_or_update_membership_for_user_legacy(
@@ -4265,8 +4197,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
-    ) -> Response[TeamMembership]:
-        ...
+    ) -> Response[TeamMembership]: ...
 
     async def async_add_or_update_membership_for_user_legacy(
         self,
@@ -4469,8 +4400,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def add_or_update_project_permissions_legacy(
@@ -4481,8 +4411,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def add_or_update_project_permissions_legacy(
         self,
@@ -4533,8 +4462,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_add_or_update_project_permissions_legacy(
@@ -4545,8 +4473,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_add_or_update_project_permissions_legacy(
         self,
@@ -4764,8 +4691,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def add_or_update_repo_permissions_legacy(
@@ -4777,8 +4703,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def add_or_update_repo_permissions_legacy(
         self,
@@ -4829,8 +4754,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_add_or_update_repo_permissions_legacy(
@@ -4842,8 +4766,7 @@ class TeamsClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_add_or_update_repo_permissions_legacy(
         self,
@@ -4982,8 +4905,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdTeamSyncGroupMappingsPatchBodyType,
-    ) -> Response[GroupMapping]:
-        ...
+    ) -> Response[GroupMapping]: ...
 
     @overload
     def create_or_update_idp_group_connections_legacy(
@@ -4994,8 +4916,7 @@ class TeamsClient:
         headers: Optional[Dict[str, str]] = None,
         groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
         synced_at: Missing[str] = UNSET,
-    ) -> Response[GroupMapping]:
-        ...
+    ) -> Response[GroupMapping]: ...
 
     def create_or_update_idp_group_connections_legacy(
         self,
@@ -5044,8 +4965,7 @@ class TeamsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: TeamsTeamIdTeamSyncGroupMappingsPatchBodyType,
-    ) -> Response[GroupMapping]:
-        ...
+    ) -> Response[GroupMapping]: ...
 
     @overload
     async def async_create_or_update_idp_group_connections_legacy(
@@ -5056,8 +4976,7 @@ class TeamsClient:
         headers: Optional[Dict[str, str]] = None,
         groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
         synced_at: Missing[str] = UNSET,
-    ) -> Response[GroupMapping]:
-        ...
+    ) -> Response[GroupMapping]: ...
 
     async def async_create_or_update_idp_group_connections_legacy(
         self,

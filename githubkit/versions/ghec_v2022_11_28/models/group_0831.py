@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -94,15 +93,15 @@ class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems(GitHubModel):
     """Workflow Step"""
 
     completed_at: Union[str, None] = Field()
-    conclusion: Union[
-        None, Literal["failure", "skipped", "success", "cancelled"]
-    ] = Field()
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
+        Field()
+    )
     name: str = Field()
     number: int = Field()
     started_at: Union[str, None] = Field()
-    status: Literal[
-        "completed", "in_progress", "queued", "pending", "waiting"
-    ] = Field()
+    status: Literal["completed", "in_progress", "queued", "pending", "waiting"] = (
+        Field()
+    )
 
 
 model_rebuild(WebhookWorkflowJobWaiting)

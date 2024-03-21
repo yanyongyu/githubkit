@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import Union, Literal
@@ -86,9 +85,9 @@ class WebhookSponsorshipEditedPropSponsorship(GitHubModel):
     sponsor: Union[WebhookSponsorshipEditedPropSponsorshipPropSponsor, None] = Field(
         title="User"
     )
-    sponsorable: Union[
-        WebhookSponsorshipEditedPropSponsorshipPropSponsorable, None
-    ] = Field(title="User")
+    sponsorable: Union[WebhookSponsorshipEditedPropSponsorshipPropSponsorable, None] = (
+        Field(title="User")
+    )
     tier: WebhookSponsorshipEditedPropSponsorshipPropTier = Field(
         title="Sponsorship Tier",
         description="The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.",

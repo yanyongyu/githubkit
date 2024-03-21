@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union, Literal
@@ -26,9 +25,9 @@ class WebhookWorkflowJobInProgressPropWorkflowJobAllof0(GitHubModel):
 
     check_run_url: str = Field()
     completed_at: Union[str, None] = Field()
-    conclusion: Union[
-        None, Literal["success", "failure", "cancelled", "neutral"]
-    ] = Field()
+    conclusion: Union[None, Literal["success", "failure", "cancelled", "neutral"]] = (
+        Field()
+    )
     created_at: str = Field(description="The time that the job created.")
     head_sha: str = Field()
     html_url: str = Field()
@@ -59,9 +58,9 @@ class WebhookWorkflowJobInProgressPropWorkflowJobAllof0(GitHubModel):
     )
     head_branch: Union[str, None] = Field(description="The name of the current branch.")
     workflow_name: Union[str, None] = Field(description="The name of the workflow.")
-    steps: List[
-        WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems
-    ] = Field()
+    steps: List[WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems] = (
+        Field()
+    )
     url: str = Field()
 
 
@@ -69,9 +68,9 @@ class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems(GitHubMode
     """Workflow Step"""
 
     completed_at: Union[str, None] = Field()
-    conclusion: Union[
-        None, Literal["failure", "skipped", "success", "cancelled"]
-    ] = Field()
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
+        Field()
+    )
     name: str = Field()
     number: int = Field()
     started_at: Union[str, None] = Field()

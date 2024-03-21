@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -420,14 +419,20 @@ class WebhookPullRequestReviewRequestedOneof1PropPullRequestPropUserType(TypedDi
 class WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksType(TypedDict):
     """WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinks"""
 
-    comments: WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropCommentsType
-    commits: WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropCommitsType
+    comments: (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropCommentsType
+    )
+    commits: (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropCommitsType
+    )
     html: WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropHtmlType
     issue: WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropIssueType
     review_comment: WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewCommentType
     review_comments: WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropReviewCommentsType
     self_: WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropSelfType
-    statuses: WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropStatusesType
+    statuses: (
+        WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropStatusesType
+    )
 
 
 class WebhookPullRequestReviewRequestedOneof1PropPullRequestPropLinksPropCommentsType(

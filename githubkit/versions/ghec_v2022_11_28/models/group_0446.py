@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -127,9 +126,9 @@ class WebhookDeploymentStatusCreatedPropDeployment(GitHubModel):
     """
 
     created_at: str = Field()
-    creator: Union[
-        WebhookDeploymentStatusCreatedPropDeploymentPropCreator, None
-    ] = Field(title="User")
+    creator: Union[WebhookDeploymentStatusCreatedPropDeploymentPropCreator, None] = (
+        Field(title="User")
+    )
     description: Union[str, None] = Field()
     environment: str = Field()
     id: int = Field()
@@ -635,9 +634,9 @@ class WebhookDeploymentStatusCreatedPropWorkflowRun(GitHubModel):
             None,
         ]
     ] = Field(default=UNSET)
-    repository: Missing[
-        WebhookDeploymentStatusCreatedPropWorkflowRunPropRepository
-    ] = Field(default=UNSET)
+    repository: Missing[WebhookDeploymentStatusCreatedPropWorkflowRunPropRepository] = (
+        Field(default=UNSET)
+    )
     rerun_url: Missing[str] = Field(default=UNSET)
     run_attempt: int = Field()
     run_number: int = Field()

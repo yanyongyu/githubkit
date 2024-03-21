@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import Literal
@@ -30,10 +29,10 @@ class CopilotOrganizationDetails(ExtraGitHubModel):
         title="Copilot Business Seat Breakdown",
         description="The breakdown of Copilot Business seats for the organization.",
     )
-    public_code_suggestions: Literal[
-        "allow", "block", "unconfigured", "unknown"
-    ] = Field(
-        description="The organization policy for allowing or disallowing Copilot to make suggestions that match public code."
+    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"] = (
+        Field(
+            description="The organization policy for allowing or disallowing Copilot to make suggestions that match public code."
+        )
     )
     ide_chat: Missing[Literal["enabled", "disabled", "unconfigured"]] = Field(
         default=UNSET,

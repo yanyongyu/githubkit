@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -59,11 +58,11 @@ class CodeScanningOrganizationAlertItems(GitHubModel):
     ] = Field(
         description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
     )
-    dismissed_comment: Missing[
-        Union[Annotated[str, Field(max_length=280)], None]
-    ] = Field(
-        default=UNSET,
-        description="The dismissal comment associated with the dismissal of the alert.",
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
     )
     rule: CodeScanningAlertRuleSummary = Field()
     tool: CodeScanningAnalysisTool = Field()

@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -545,8 +544,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesPostBodyType,
-    ) -> Response[Issue]:
-        ...
+    ) -> Response[Issue]: ...
 
     @overload
     def create(
@@ -564,8 +562,7 @@ class IssuesClient:
             List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
         ] = UNSET,
         assignees: Missing[List[str]] = UNSET,
-    ) -> Response[Issue]:
-        ...
+    ) -> Response[Issue]: ...
 
     def create(
         self,
@@ -621,8 +618,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesPostBodyType,
-    ) -> Response[Issue]:
-        ...
+    ) -> Response[Issue]: ...
 
     @overload
     async def async_create(
@@ -640,8 +636,7 @@ class IssuesClient:
             List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
         ] = UNSET,
         assignees: Missing[List[str]] = UNSET,
-    ) -> Response[Issue]:
-        ...
+    ) -> Response[Issue]: ...
 
     async def async_create(
         self,
@@ -874,8 +869,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
-    ) -> Response[IssueComment]:
-        ...
+    ) -> Response[IssueComment]: ...
 
     @overload
     def update_comment(
@@ -887,8 +881,7 @@ class IssuesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[IssueComment]:
-        ...
+    ) -> Response[IssueComment]: ...
 
     def update_comment(
         self,
@@ -941,8 +934,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
-    ) -> Response[IssueComment]:
-        ...
+    ) -> Response[IssueComment]: ...
 
     @overload
     async def async_update_comment(
@@ -954,8 +946,7 @@ class IssuesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[IssueComment]:
-        ...
+    ) -> Response[IssueComment]: ...
 
     async def async_update_comment(
         self,
@@ -1188,8 +1179,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
-    ) -> Response[Issue]:
-        ...
+    ) -> Response[Issue]: ...
 
     @overload
     def update(
@@ -1217,8 +1207,7 @@ class IssuesClient:
             ]
         ] = UNSET,
         assignees: Missing[List[str]] = UNSET,
-    ) -> Response[Issue]:
-        ...
+    ) -> Response[Issue]: ...
 
     def update(
         self,
@@ -1275,8 +1264,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
-    ) -> Response[Issue]:
-        ...
+    ) -> Response[Issue]: ...
 
     @overload
     async def async_update(
@@ -1304,8 +1292,7 @@ class IssuesClient:
             ]
         ] = UNSET,
         assignees: Missing[List[str]] = UNSET,
-    ) -> Response[Issue]:
-        ...
+    ) -> Response[Issue]: ...
 
     async def async_update(
         self,
@@ -1362,8 +1349,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
-    ) -> Response[Issue]:
-        ...
+    ) -> Response[Issue]: ...
 
     @overload
     def add_assignees(
@@ -1375,8 +1361,7 @@ class IssuesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         assignees: Missing[List[str]] = UNSET,
-    ) -> Response[Issue]:
-        ...
+    ) -> Response[Issue]: ...
 
     def add_assignees(
         self,
@@ -1422,8 +1407,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
-    ) -> Response[Issue]:
-        ...
+    ) -> Response[Issue]: ...
 
     @overload
     async def async_add_assignees(
@@ -1435,8 +1419,7 @@ class IssuesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         assignees: Missing[List[str]] = UNSET,
-    ) -> Response[Issue]:
-        ...
+    ) -> Response[Issue]: ...
 
     async def async_add_assignees(
         self,
@@ -1482,8 +1465,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
-    ) -> Response[Issue]:
-        ...
+    ) -> Response[Issue]: ...
 
     @overload
     def remove_assignees(
@@ -1495,8 +1477,7 @@ class IssuesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         assignees: Missing[List[str]] = UNSET,
-    ) -> Response[Issue]:
-        ...
+    ) -> Response[Issue]: ...
 
     def remove_assignees(
         self,
@@ -1542,8 +1523,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
-    ) -> Response[Issue]:
-        ...
+    ) -> Response[Issue]: ...
 
     @overload
     async def async_remove_assignees(
@@ -1555,8 +1535,7 @@ class IssuesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         assignees: Missing[List[str]] = UNSET,
-    ) -> Response[Issue]:
-        ...
+    ) -> Response[Issue]: ...
 
     async def async_remove_assignees(
         self,
@@ -1732,8 +1711,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
-    ) -> Response[IssueComment]:
-        ...
+    ) -> Response[IssueComment]: ...
 
     @overload
     def create_comment(
@@ -1745,8 +1723,7 @@ class IssuesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[IssueComment]:
-        ...
+    ) -> Response[IssueComment]: ...
 
     def create_comment(
         self,
@@ -1803,8 +1780,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
-    ) -> Response[IssueComment]:
-        ...
+    ) -> Response[IssueComment]: ...
 
     @overload
     async def async_create_comment(
@@ -1816,8 +1792,7 @@ class IssuesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
-    ) -> Response[IssueComment]:
-        ...
+    ) -> Response[IssueComment]: ...
 
     async def async_create_comment(
         self,
@@ -2138,8 +2113,7 @@ class IssuesClient:
                 str,
             ]
         ] = UNSET,
-    ) -> Response[List[Label]]:
-        ...
+    ) -> Response[List[Label]]: ...
 
     @overload
     def set_labels(
@@ -2151,8 +2125,7 @@ class IssuesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: Missing[List[str]] = UNSET,
-    ) -> Response[List[Label]]:
-        ...
+    ) -> Response[List[Label]]: ...
 
     @overload
     def set_labels(
@@ -2166,8 +2139,7 @@ class IssuesClient:
         labels: Missing[
             List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[List[Label]]:
-        ...
+    ) -> Response[List[Label]]: ...
 
     def set_labels(
         self,
@@ -2253,8 +2225,7 @@ class IssuesClient:
                 str,
             ]
         ] = UNSET,
-    ) -> Response[List[Label]]:
-        ...
+    ) -> Response[List[Label]]: ...
 
     @overload
     async def async_set_labels(
@@ -2266,8 +2237,7 @@ class IssuesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: Missing[List[str]] = UNSET,
-    ) -> Response[List[Label]]:
-        ...
+    ) -> Response[List[Label]]: ...
 
     @overload
     async def async_set_labels(
@@ -2281,8 +2251,7 @@ class IssuesClient:
         labels: Missing[
             List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[List[Label]]:
-        ...
+    ) -> Response[List[Label]]: ...
 
     async def async_set_labels(
         self,
@@ -2368,8 +2337,7 @@ class IssuesClient:
                 str,
             ]
         ] = UNSET,
-    ) -> Response[List[Label]]:
-        ...
+    ) -> Response[List[Label]]: ...
 
     @overload
     def add_labels(
@@ -2381,8 +2349,7 @@ class IssuesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: Missing[List[str]] = UNSET,
-    ) -> Response[List[Label]]:
-        ...
+    ) -> Response[List[Label]]: ...
 
     @overload
     def add_labels(
@@ -2396,8 +2363,7 @@ class IssuesClient:
         labels: Missing[
             List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[List[Label]]:
-        ...
+    ) -> Response[List[Label]]: ...
 
     def add_labels(
         self,
@@ -2483,8 +2449,7 @@ class IssuesClient:
                 str,
             ]
         ] = UNSET,
-    ) -> Response[List[Label]]:
-        ...
+    ) -> Response[List[Label]]: ...
 
     @overload
     async def async_add_labels(
@@ -2496,8 +2461,7 @@ class IssuesClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: Missing[List[str]] = UNSET,
-    ) -> Response[List[Label]]:
-        ...
+    ) -> Response[List[Label]]: ...
 
     @overload
     async def async_add_labels(
@@ -2511,8 +2475,7 @@ class IssuesClient:
         labels: Missing[
             List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[List[Label]]:
-        ...
+    ) -> Response[List[Label]]: ...
 
     async def async_add_labels(
         self,
@@ -2704,8 +2667,7 @@ class IssuesClient:
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def lock(
@@ -2719,8 +2681,7 @@ class IssuesClient:
         lock_reason: Missing[
             Literal["off-topic", "too heated", "resolved", "spam"]
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def lock(
         self,
@@ -2781,8 +2742,7 @@ class IssuesClient:
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_lock(
@@ -2796,8 +2756,7 @@ class IssuesClient:
         lock_reason: Missing[
             Literal["off-topic", "too heated", "resolved", "spam"]
         ] = UNSET,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_lock(
         self,
@@ -3203,8 +3162,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoLabelsPostBodyType,
-    ) -> Response[Label]:
-        ...
+    ) -> Response[Label]: ...
 
     @overload
     def create_label(
@@ -3217,8 +3175,7 @@ class IssuesClient:
         name: str,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-    ) -> Response[Label]:
-        ...
+    ) -> Response[Label]: ...
 
     def create_label(
         self,
@@ -3269,8 +3226,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoLabelsPostBodyType,
-    ) -> Response[Label]:
-        ...
+    ) -> Response[Label]: ...
 
     @overload
     async def async_create_label(
@@ -3283,8 +3239,7 @@ class IssuesClient:
         name: str,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-    ) -> Response[Label]:
-        ...
+    ) -> Response[Label]: ...
 
     async def async_create_label(
         self,
@@ -3428,8 +3383,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
-    ) -> Response[Label]:
-        ...
+    ) -> Response[Label]: ...
 
     @overload
     def update_label(
@@ -3443,8 +3397,7 @@ class IssuesClient:
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-    ) -> Response[Label]:
-        ...
+    ) -> Response[Label]: ...
 
     def update_label(
         self,
@@ -3488,8 +3441,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
-    ) -> Response[Label]:
-        ...
+    ) -> Response[Label]: ...
 
     @overload
     async def async_update_label(
@@ -3503,8 +3455,7 @@ class IssuesClient:
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-    ) -> Response[Label]:
-        ...
+    ) -> Response[Label]: ...
 
     async def async_update_label(
         self,
@@ -3629,8 +3580,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoMilestonesPostBodyType,
-    ) -> Response[Milestone]:
-        ...
+    ) -> Response[Milestone]: ...
 
     @overload
     def create_milestone(
@@ -3644,8 +3594,7 @@ class IssuesClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
         due_on: Missing[datetime] = UNSET,
-    ) -> Response[Milestone]:
-        ...
+    ) -> Response[Milestone]: ...
 
     def create_milestone(
         self,
@@ -3696,8 +3645,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoMilestonesPostBodyType,
-    ) -> Response[Milestone]:
-        ...
+    ) -> Response[Milestone]: ...
 
     @overload
     async def async_create_milestone(
@@ -3711,8 +3659,7 @@ class IssuesClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
         due_on: Missing[datetime] = UNSET,
-    ) -> Response[Milestone]:
-        ...
+    ) -> Response[Milestone]: ...
 
     async def async_create_milestone(
         self,
@@ -3866,8 +3813,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
-    ) -> Response[Milestone]:
-        ...
+    ) -> Response[Milestone]: ...
 
     @overload
     def update_milestone(
@@ -3882,8 +3828,7 @@ class IssuesClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
         due_on: Missing[datetime] = UNSET,
-    ) -> Response[Milestone]:
-        ...
+    ) -> Response[Milestone]: ...
 
     def update_milestone(
         self,
@@ -3929,8 +3874,7 @@ class IssuesClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
-    ) -> Response[Milestone]:
-        ...
+    ) -> Response[Milestone]: ...
 
     @overload
     async def async_update_milestone(
@@ -3945,8 +3889,7 @@ class IssuesClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
         due_on: Missing[datetime] = UNSET,
-    ) -> Response[Milestone]:
-        ...
+    ) -> Response[Milestone]: ...
 
     async def async_update_milestone(
         self,

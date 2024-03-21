@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import Literal
@@ -22,11 +21,11 @@ from githubkit.compat import GitHubModel, model_rebuild
 class ReposOwnerRepoInvitationsInvitationIdPatchBody(GitHubModel):
     """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
 
-    permissions: Missing[
-        Literal["read", "write", "maintain", "triage", "admin"]
-    ] = Field(
-        default=UNSET,
-        description="The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.",
+    permissions: Missing[Literal["read", "write", "maintain", "triage", "admin"]] = (
+        Field(
+            default=UNSET,
+            description="The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.",
+        )
     )
 
 

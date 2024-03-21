@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -52,11 +51,11 @@ class Environment(GitHubModel):
         default=UNSET,
         description="Built-in deployment protection rules for the environment.",
     )
-    deployment_branch_policy: Missing[
-        Union[DeploymentBranchPolicySettings, None]
-    ] = Field(
-        default=UNSET,
-        description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
+    deployment_branch_policy: Missing[Union[DeploymentBranchPolicySettings, None]] = (
+        Field(
+            default=UNSET,
+            description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
+        )
     )
 
 

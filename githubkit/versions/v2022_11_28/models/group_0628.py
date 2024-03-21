@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import Union, Literal
@@ -50,9 +49,9 @@ class WebhookProjectsV2ProjectEdited(GitHubModel):
 class WebhookProjectsV2ProjectEditedPropChanges(GitHubModel):
     """WebhookProjectsV2ProjectEditedPropChanges"""
 
-    description: Missing[
-        WebhookProjectsV2ProjectEditedPropChangesPropDescription
-    ] = Field(default=UNSET)
+    description: Missing[WebhookProjectsV2ProjectEditedPropChangesPropDescription] = (
+        Field(default=UNSET)
+    )
     public: Missing[WebhookProjectsV2ProjectEditedPropChangesPropPublic] = Field(
         default=UNSET
     )

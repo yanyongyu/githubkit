@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -455,8 +454,7 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     def create_or_update_org_secret(
@@ -470,8 +468,7 @@ class DependabotClient:
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[List[str]] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     def create_or_update_org_secret(
         self,
@@ -513,8 +510,7 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgDependabotSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_create_or_update_org_secret(
@@ -528,8 +524,7 @@ class DependabotClient:
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[List[str]] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     async def async_create_or_update_org_secret(
         self,
@@ -673,8 +668,7 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     def set_selected_repos_for_org_secret(
@@ -685,8 +679,7 @@ class DependabotClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     def set_selected_repos_for_org_secret(
         self,
@@ -731,8 +724,7 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     @overload
     async def async_set_selected_repos_for_org_secret(
@@ -743,8 +735,7 @@ class DependabotClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
-    ) -> Response:
-        ...
+    ) -> Response: ...
 
     async def async_set_selected_repos_for_org_secret(
         self,
@@ -1060,8 +1051,7 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
-    ) -> Response[DependabotAlert]:
-        ...
+    ) -> Response[DependabotAlert]: ...
 
     @overload
     def update_alert(
@@ -1083,8 +1073,7 @@ class DependabotClient:
             ]
         ] = UNSET,
         dismissed_comment: Missing[str] = UNSET,
-    ) -> Response[DependabotAlert]:
-        ...
+    ) -> Response[DependabotAlert]: ...
 
     def update_alert(
         self,
@@ -1142,8 +1131,7 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
-    ) -> Response[DependabotAlert]:
-        ...
+    ) -> Response[DependabotAlert]: ...
 
     @overload
     async def async_update_alert(
@@ -1165,8 +1153,7 @@ class DependabotClient:
             ]
         ] = UNSET,
         dismissed_comment: Missing[str] = UNSET,
-    ) -> Response[DependabotAlert]:
-        ...
+    ) -> Response[DependabotAlert]: ...
 
     async def async_update_alert(
         self,
@@ -1374,8 +1361,7 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     def create_or_update_repo_secret(
@@ -1388,8 +1374,7 @@ class DependabotClient:
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     def create_or_update_repo_secret(
         self,
@@ -1438,8 +1423,7 @@ class DependabotClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_create_or_update_repo_secret(
@@ -1452,8 +1436,7 @@ class DependabotClient:
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     async def async_create_or_update_repo_secret(
         self,

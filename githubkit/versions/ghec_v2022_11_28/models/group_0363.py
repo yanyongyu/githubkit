@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union, Literal
@@ -64,10 +63,10 @@ class ScimEnterpriseUserResponse(GitHubModel):
 class ScimEnterpriseUserList(GitHubModel):
     """ScimEnterpriseUserList"""
 
-    schemas: List[
-        Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]
-    ] = Field(
-        description="The URIs that are used to indicate the namespaces of the list SCIM schemas."
+    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]] = (
+        Field(
+            description="The URIs that are used to indicate the namespaces of the list SCIM schemas."
+        )
     )
     total_results: int = Field(
         alias="totalResults", description="Number of results found"

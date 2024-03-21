@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -29,9 +28,9 @@ class WebhookProjectCardMovedPropProjectCardAllof0(GitHubModel):
     column_url: str = Field()
     content_url: Missing[str] = Field(default=UNSET)
     created_at: datetime = Field()
-    creator: Union[
-        WebhookProjectCardMovedPropProjectCardAllof0PropCreator, None
-    ] = Field(title="User")
+    creator: Union[WebhookProjectCardMovedPropProjectCardAllof0PropCreator, None] = (
+        Field(title="User")
+    )
     id: int = Field(description="The project card's ID")
     node_id: str = Field()
     note: Union[str, None] = Field()

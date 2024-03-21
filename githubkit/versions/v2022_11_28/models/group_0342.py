@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -55,9 +54,9 @@ class TopicSearchResultItem(GitHubModel):
 class TopicSearchResultItemPropRelatedItems(GitHubModel):
     """TopicSearchResultItemPropRelatedItems"""
 
-    topic_relation: Missing[
-        TopicSearchResultItemPropRelatedItemsPropTopicRelation
-    ] = Field(default=UNSET)
+    topic_relation: Missing[TopicSearchResultItemPropRelatedItemsPropTopicRelation] = (
+        Field(default=UNSET)
+    )
 
 
 class TopicSearchResultItemPropRelatedItemsPropTopicRelation(GitHubModel):
@@ -72,9 +71,9 @@ class TopicSearchResultItemPropRelatedItemsPropTopicRelation(GitHubModel):
 class TopicSearchResultItemPropAliasesItems(GitHubModel):
     """TopicSearchResultItemPropAliasesItems"""
 
-    topic_relation: Missing[
-        TopicSearchResultItemPropAliasesItemsPropTopicRelation
-    ] = Field(default=UNSET)
+    topic_relation: Missing[TopicSearchResultItemPropAliasesItemsPropTopicRelation] = (
+        Field(default=UNSET)
+    )
 
 
 class TopicSearchResultItemPropAliasesItemsPropTopicRelation(GitHubModel):

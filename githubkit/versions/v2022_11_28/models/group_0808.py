@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -82,9 +81,9 @@ class WebhookWorkflowRunInProgressPropWorkflowRun(GitHubModel):
     run_attempt: int = Field()
     run_number: int = Field()
     run_started_at: datetime = Field()
-    status: Literal[
-        "requested", "in_progress", "completed", "queued", "pending"
-    ] = Field()
+    status: Literal["requested", "in_progress", "completed", "queued", "pending"] = (
+        Field()
+    )
     triggering_actor: WebhookWorkflowRunInProgressPropWorkflowRunMergedTriggeringActor = Field()
     updated_at: datetime = Field()
     url: str = Field()

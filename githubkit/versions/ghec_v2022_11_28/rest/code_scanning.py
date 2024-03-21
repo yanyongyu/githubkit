@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -470,8 +469,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
-    ) -> Response[CodeScanningAlert]:
-        ...
+    ) -> Response[CodeScanningAlert]: ...
 
     @overload
     def update_alert(
@@ -487,8 +485,7 @@ class CodeScanningClient:
             Union[None, Literal["false positive", "won't fix", "used in tests"]]
         ] = UNSET,
         dismissed_comment: Missing[Union[str, None]] = UNSET,
-    ) -> Response[CodeScanningAlert]:
-        ...
+    ) -> Response[CodeScanningAlert]: ...
 
     def update_alert(
         self,
@@ -544,8 +541,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
-    ) -> Response[CodeScanningAlert]:
-        ...
+    ) -> Response[CodeScanningAlert]: ...
 
     @overload
     async def async_update_alert(
@@ -561,8 +557,7 @@ class CodeScanningClient:
             Union[None, Literal["false positive", "won't fix", "used in tests"]]
         ] = UNSET,
         dismissed_comment: Missing[Union[str, None]] = UNSET,
-    ) -> Response[CodeScanningAlert]:
-        ...
+    ) -> Response[CodeScanningAlert]: ...
 
     async def async_update_alert(
         self,
@@ -1145,8 +1140,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: CodeScanningDefaultSetupUpdateType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     def update_default_setup(
@@ -1172,8 +1166,7 @@ class CodeScanningClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     def update_default_setup(
         self,
@@ -1226,8 +1219,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: CodeScanningDefaultSetupUpdateType,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     @overload
     async def async_update_default_setup(
@@ -1253,8 +1245,7 @@ class CodeScanningClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[EmptyObject]:
-        ...
+    ) -> Response[EmptyObject]: ...
 
     async def async_update_default_setup(
         self,
@@ -1307,8 +1298,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
-    ) -> Response[CodeScanningSarifsReceipt]:
-        ...
+    ) -> Response[CodeScanningSarifsReceipt]: ...
 
     @overload
     def upload_sarif(
@@ -1325,8 +1315,7 @@ class CodeScanningClient:
         started_at: Missing[datetime] = UNSET,
         tool_name: Missing[str] = UNSET,
         validate_: Missing[bool] = UNSET,
-    ) -> Response[CodeScanningSarifsReceipt]:
-        ...
+    ) -> Response[CodeScanningSarifsReceipt]: ...
 
     def upload_sarif(
         self,
@@ -1378,8 +1367,7 @@ class CodeScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
-    ) -> Response[CodeScanningSarifsReceipt]:
-        ...
+    ) -> Response[CodeScanningSarifsReceipt]: ...
 
     @overload
     async def async_upload_sarif(
@@ -1396,8 +1384,7 @@ class CodeScanningClient:
         started_at: Missing[datetime] = UNSET,
         tool_name: Missing[str] = UNSET,
         validate_: Missing[bool] = UNSET,
-    ) -> Response[CodeScanningSarifsReceipt]:
-        ...
+    ) -> Response[CodeScanningSarifsReceipt]: ...
 
     async def async_upload_sarif(
         self,

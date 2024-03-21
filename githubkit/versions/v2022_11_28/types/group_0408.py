@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -561,7 +560,9 @@ class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBaseType(
     """WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBase"""
 
     ref: str
-    repo: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType
+    repo: (
+        WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType
+    )
     sha: str
 
 
@@ -581,7 +582,9 @@ class WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadType(
     """WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHead"""
 
     ref: str
-    repo: WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType
+    repo: (
+        WebhookDeploymentCreatedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType
+    )
     sha: str
 
 

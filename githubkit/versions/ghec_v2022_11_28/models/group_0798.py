@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing import List, Union, Literal
@@ -67,9 +66,9 @@ class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisory(GitHubModel):
     """
 
     cvss: WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss = Field()
-    cwes: List[
-        WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems
-    ] = Field()
+    cwes: List[WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems] = (
+        Field()
+    )
     description: str = Field()
     ghsa_id: str = Field()
     identifiers: List[

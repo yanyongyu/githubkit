@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -107,10 +106,10 @@ class WebhookCheckSuiteRequestedPropCheckSuite(GitHubModel):
     )
     rerequestable: Missing[bool] = Field(default=UNSET)
     runs_rerequestable: Missing[bool] = Field(default=UNSET)
-    status: Union[
-        None, Literal["requested", "in_progress", "completed", "queued"]
-    ] = Field(
-        description="The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`."
+    status: Union[None, Literal["requested", "in_progress", "completed", "queued"]] = (
+        Field(
+            description="The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`."
+        )
     )
     updated_at: datetime = Field()
     url: str = Field(description="URL that points to the check suite API resource.")
@@ -191,9 +190,9 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropApp(GitHubModel):
     id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
     name: str = Field(description="The name of the GitHub app")
     node_id: str = Field()
-    owner: Union[
-        WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwner, None
-    ] = Field(title="User")
+    owner: Union[WebhookCheckSuiteRequestedPropCheckSuitePropAppPropOwner, None] = (
+        Field(title="User")
+    )
     permissions: Missing[
         WebhookCheckSuiteRequestedPropCheckSuitePropAppPropPermissions
     ] = Field(default=UNSET, description="The set of permissions for the GitHub app")

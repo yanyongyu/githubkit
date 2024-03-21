@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -101,9 +100,9 @@ class CodespaceWithFullRepository(GitHubModel):
         description="API URL for the Pull Request associated with this codespace, if any."
     )
     recent_folders: List[str] = Field()
-    runtime_constraints: Missing[
-        CodespaceWithFullRepositoryPropRuntimeConstraints
-    ] = Field(default=UNSET)
+    runtime_constraints: Missing[CodespaceWithFullRepositoryPropRuntimeConstraints] = (
+        Field(default=UNSET)
+    )
     pending_operation: Missing[Union[bool, None]] = Field(
         default=UNSET,
         description="Whether or not a codespace has a pending async operation. This would mean that the codespace is temporarily unavailable. The only thing that you can do with a codespace in this state is delete it.",

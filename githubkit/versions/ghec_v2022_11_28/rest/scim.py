@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -136,8 +135,7 @@ class ScimClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersPostBodyType,
-    ) -> Response[ScimUser]:
-        ...
+    ) -> Response[ScimUser]: ...
 
     @overload
     def provision_and_invite_user(
@@ -154,8 +152,7 @@ class ScimClient:
         external_id: Missing[str] = UNSET,
         groups: Missing[List[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[ScimUser]:
-        ...
+    ) -> Response[ScimUser]: ...
 
     def provision_and_invite_user(
         self,
@@ -202,8 +199,7 @@ class ScimClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersPostBodyType,
-    ) -> Response[ScimUser]:
-        ...
+    ) -> Response[ScimUser]: ...
 
     @overload
     async def async_provision_and_invite_user(
@@ -220,8 +216,7 @@ class ScimClient:
         external_id: Missing[str] = UNSET,
         groups: Missing[List[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[ScimUser]:
-        ...
+    ) -> Response[ScimUser]: ...
 
     async def async_provision_and_invite_user(
         self,
@@ -321,8 +316,7 @@ class ScimClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
-    ) -> Response[ScimUser]:
-        ...
+    ) -> Response[ScimUser]: ...
 
     @overload
     def set_information_for_provisioned_user(
@@ -340,8 +334,7 @@ class ScimClient:
         user_name: str,
         name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType,
         emails: List[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType],
-    ) -> Response[ScimUser]:
-        ...
+    ) -> Response[ScimUser]: ...
 
     def set_information_for_provisioned_user(
         self,
@@ -391,8 +384,7 @@ class ScimClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
-    ) -> Response[ScimUser]:
-        ...
+    ) -> Response[ScimUser]: ...
 
     @overload
     async def async_set_information_for_provisioned_user(
@@ -410,8 +402,7 @@ class ScimClient:
         user_name: str,
         name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType,
         emails: List[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType],
-    ) -> Response[ScimUser]:
-        ...
+    ) -> Response[ScimUser]: ...
 
     async def async_set_information_for_provisioned_user(
         self,
@@ -511,8 +502,7 @@ class ScimClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType,
-    ) -> Response[ScimUser]:
-        ...
+    ) -> Response[ScimUser]: ...
 
     @overload
     def update_attribute_for_user(
@@ -526,8 +516,7 @@ class ScimClient:
         operations: List[
             ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
         ],
-    ) -> Response[ScimUser]:
-        ...
+    ) -> Response[ScimUser]: ...
 
     def update_attribute_for_user(
         self,
@@ -582,8 +571,7 @@ class ScimClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType,
-    ) -> Response[ScimUser]:
-        ...
+    ) -> Response[ScimUser]: ...
 
     @overload
     async def async_update_attribute_for_user(
@@ -597,8 +585,7 @@ class ScimClient:
         operations: List[
             ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
         ],
-    ) -> Response[ScimUser]:
-        ...
+    ) -> Response[ScimUser]: ...
 
     async def async_update_attribute_for_user(
         self,

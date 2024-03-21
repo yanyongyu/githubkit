@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from datetime import datetime
@@ -93,11 +92,11 @@ class WebhookTeamCreatedPropRepository(GitHubModel):
     contents_url: str = Field()
     contributors_url: str = Field()
     created_at: Union[int, datetime] = Field()
-    custom_properties: Missing[
-        WebhookTeamCreatedPropRepositoryPropCustomProperties
-    ] = Field(
-        default=UNSET,
-        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
+    custom_properties: Missing[WebhookTeamCreatedPropRepositoryPropCustomProperties] = (
+        Field(
+            default=UNSET,
+            description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
+        )
     )
     default_branch: str = Field(description="The default branch of the repository.")
     delete_branch_on_merge: Missing[bool] = Field(
@@ -286,10 +285,10 @@ class WebhookTeamCreatedPropTeamPropParent(GitHubModel):
         description="Permission that the team will have for its repositories"
     )
     privacy: Literal["open", "closed", "secret"] = Field()
-    notification_setting: Literal[
-        "notifications_enabled", "notifications_disabled"
-    ] = Field(
-        description="Whether team members will receive notifications when their team is @mentioned"
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"] = (
+        Field(
+            description="Whether team members will receive notifications when their team is @mentioned"
+        )
     )
     repositories_url: str = Field()
     slug: str = Field()

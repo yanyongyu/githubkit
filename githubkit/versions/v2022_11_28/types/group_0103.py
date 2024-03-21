@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from typing_extensions import TypedDict
@@ -23,7 +22,9 @@ class RepositoryRulesetConditionsRepositoryPropertyTargetType(TypedDict):
     Parameters for a repository property condition
     """
 
-    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    repository_property: (
+        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
+    )
 
 
 __all__ = ("RepositoryRulesetConditionsRepositoryPropertyTargetType",)

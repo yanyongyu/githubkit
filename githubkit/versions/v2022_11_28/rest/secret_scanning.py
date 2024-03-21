@@ -7,7 +7,6 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-
 from __future__ import annotations
 
 from weakref import ref
@@ -441,8 +440,7 @@ class SecretScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
-    ) -> Response[SecretScanningAlert]:
-        ...
+    ) -> Response[SecretScanningAlert]: ...
 
     @overload
     def update_alert(
@@ -460,8 +458,7 @@ class SecretScanningClient:
             ]
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
-    ) -> Response[SecretScanningAlert]:
-        ...
+    ) -> Response[SecretScanningAlert]: ...
 
     def update_alert(
         self,
@@ -516,8 +513,7 @@ class SecretScanningClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
-    ) -> Response[SecretScanningAlert]:
-        ...
+    ) -> Response[SecretScanningAlert]: ...
 
     @overload
     async def async_update_alert(
@@ -535,8 +531,7 @@ class SecretScanningClient:
             ]
         ] = UNSET,
         resolution_comment: Missing[Union[str, None]] = UNSET,
-    ) -> Response[SecretScanningAlert]:
-        ...
+    ) -> Response[SecretScanningAlert]: ...
 
     async def async_update_alert(
         self,
