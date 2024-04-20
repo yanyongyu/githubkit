@@ -9,54 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0Type(TypedDict):
-    """Marketplace Purchase"""
-
-    account: (
-        WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccountType
-    )
-    billing_cycle: str
-    free_trial_ends_on: Union[str, None]
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlanType
-    unit_count: int
+from .group_0401 import ProjectsV2Type
+from .group_0391 import SimpleInstallationType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccount"""
+class WebhookProjectsV2ProjectClosedType(TypedDict):
+    """Projects v2 Project Closed Event"""
 
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
+    action: Literal["closed"]
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    projects_v2: ProjectsV2Type
+    sender: SimpleUserWebhooksType
 
 
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlan"""
-
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
-
-
-__all__ = (
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0Type",
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccountType",
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlanType",
-)
+__all__ = ("WebhookProjectsV2ProjectClosedType",)

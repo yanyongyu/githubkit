@@ -18,27 +18,15 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBody"""
+class TeamsTeamIdReposOwnerRepoPutBody(GitHubModel):
+    """TeamsTeamIdReposOwnerRepoPutBody"""
 
-    state: Literal["dismissed", "open"] = Field(
-        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`."
-    )
-    dismissed_reason: Missing[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ] = Field(
+    permission: Missing[Literal["pull", "push", "admin"]] = Field(
         default=UNSET,
-        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
-    )
-    dismissed_comment: Missing[str] = Field(
-        max_length=280,
-        default=UNSET,
-        description="An optional comment associated with dismissing the alert.",
+        description="The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
     )
 
 
-model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBody)
+model_rebuild(TeamsTeamIdReposOwnerRepoPutBody)
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBody",)
+__all__ = ("TeamsTeamIdReposOwnerRepoPutBody",)

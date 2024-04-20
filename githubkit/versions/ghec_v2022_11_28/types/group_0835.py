@@ -9,24 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0836 import (
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType,
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType,
-)
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsType(
-    TypedDict
-):
-    """WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItems"""
+class OrgsOrgPersonalAccessTokenRequestsPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    base: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType
-    head: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType
-    id: float
-    number: float
-    url: str
+    pat_request_ids: NotRequired[List[int]]
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
 
 
-__all__ = ("WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsType",)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPostBodyType",)

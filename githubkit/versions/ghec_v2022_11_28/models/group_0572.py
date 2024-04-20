@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,98 +17,77 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0390 import EnterpriseWebhooks
+from .group_0391 import SimpleInstallation
+from .group_0393 import RepositoryWebhooks
+from .group_0394 import SimpleUserWebhooks
+from .group_0392 import OrganizationSimpleWebhooks
 
-class WebhookIssuesReopenedPropIssueAllof1(GitHubModel):
-    """WebhookIssuesReopenedPropIssueAllof1"""
 
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    assignee: Missing[Union[WebhookIssuesReopenedPropIssueAllof1PropAssignee, None]] = (
-        Field(default=UNSET)
+class WebhookOrganizationMemberRemoved(GitHubModel):
+    """organization member_removed event"""
+
+    action: Literal["member_removed"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
     )
-    assignees: Missing[
-        List[Union[WebhookIssuesReopenedPropIssueAllof1PropAssigneesItems, None]]
-    ] = Field(default=UNSET)
-    author_association: Missing[str] = Field(default=UNSET)
-    body: Missing[Union[str, None]] = Field(default=UNSET)
-    closed_at: Missing[Union[str, None]] = Field(default=UNSET)
-    comments: Missing[int] = Field(default=UNSET)
-    comments_url: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    labels: Missing[
-        List[Union[WebhookIssuesReopenedPropIssueAllof1PropLabelsItems, None]]
-    ] = Field(default=UNSET)
-    labels_url: Missing[str] = Field(default=UNSET)
-    locked: Missing[bool] = Field(default=UNSET)
-    milestone: Missing[
-        Union[WebhookIssuesReopenedPropIssueAllof1PropMilestone, None]
-    ] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    number: Missing[int] = Field(default=UNSET)
-    performed_via_github_app: Missing[
-        Union[WebhookIssuesReopenedPropIssueAllof1PropPerformedViaGithubApp, None]
-    ] = Field(default=UNSET)
-    reactions: Missing[WebhookIssuesReopenedPropIssueAllof1PropReactions] = Field(
-        default=UNSET
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    repository_url: Missing[str] = Field(default=UNSET)
-    state: Literal["open", "closed"] = Field()
-    timeline_url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user: Missing[WebhookIssuesReopenedPropIssueAllof1PropUser] = Field(default=UNSET)
+    membership: WebhookOrganizationMemberRemovedPropMembership = Field(
+        title="Membership",
+        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
+    )
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUserWebhooks = Field(
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
 
 
-class WebhookIssuesReopenedPropIssueAllof1PropAssignee(GitHubModel):
-    """WebhookIssuesReopenedPropIssueAllof1PropAssignee"""
+class WebhookOrganizationMemberRemovedPropMembership(GitHubModel):
+    """Membership
+
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
+    """
+
+    organization_url: str = Field()
+    role: str = Field()
+    state: str = Field()
+    url: str = Field()
+    user: Union[WebhookOrganizationMemberRemovedPropMembershipPropUser, None] = Field(
+        title="User"
+    )
 
 
-class WebhookIssuesReopenedPropIssueAllof1PropAssigneesItems(GitHubModel):
-    """WebhookIssuesReopenedPropIssueAllof1PropAssigneesItems"""
-
-
-class WebhookIssuesReopenedPropIssueAllof1PropLabelsItems(GitHubModel):
-    """WebhookIssuesReopenedPropIssueAllof1PropLabelsItems"""
-
-
-class WebhookIssuesReopenedPropIssueAllof1PropMilestone(GitHubModel):
-    """WebhookIssuesReopenedPropIssueAllof1PropMilestone"""
-
-
-class WebhookIssuesReopenedPropIssueAllof1PropPerformedViaGithubApp(GitHubModel):
-    """WebhookIssuesReopenedPropIssueAllof1PropPerformedViaGithubApp"""
-
-
-class WebhookIssuesReopenedPropIssueAllof1PropReactions(GitHubModel):
-    """WebhookIssuesReopenedPropIssueAllof1PropReactions"""
-
-    plus_one: Missing[int] = Field(default=UNSET, alias="+1")
-    minus_one: Missing[int] = Field(default=UNSET, alias="-1")
-    confused: Missing[int] = Field(default=UNSET)
-    eyes: Missing[int] = Field(default=UNSET)
-    heart: Missing[int] = Field(default=UNSET)
-    hooray: Missing[int] = Field(default=UNSET)
-    laugh: Missing[int] = Field(default=UNSET)
-    rocket: Missing[int] = Field(default=UNSET)
-    total_count: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookIssuesReopenedPropIssueAllof1PropUser(GitHubModel):
-    """WebhookIssuesReopenedPropIssueAllof1PropUser"""
+class WebhookOrganizationMemberRemovedPropMembershipPropUser(GitHubModel):
+    """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
     events_url: Missing[str] = Field(default=UNSET)
     followers_url: Missing[str] = Field(default=UNSET)
     following_url: Missing[str] = Field(default=UNSET)
     gists_url: Missing[str] = Field(default=UNSET)
     gravatar_id: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
     organizations_url: Missing[str] = Field(default=UNSET)
     received_events_url: Missing[str] = Field(default=UNSET)
@@ -116,26 +95,16 @@ class WebhookIssuesReopenedPropIssueAllof1PropUser(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssuesReopenedPropIssueAllof1)
-model_rebuild(WebhookIssuesReopenedPropIssueAllof1PropAssignee)
-model_rebuild(WebhookIssuesReopenedPropIssueAllof1PropAssigneesItems)
-model_rebuild(WebhookIssuesReopenedPropIssueAllof1PropLabelsItems)
-model_rebuild(WebhookIssuesReopenedPropIssueAllof1PropMilestone)
-model_rebuild(WebhookIssuesReopenedPropIssueAllof1PropPerformedViaGithubApp)
-model_rebuild(WebhookIssuesReopenedPropIssueAllof1PropReactions)
-model_rebuild(WebhookIssuesReopenedPropIssueAllof1PropUser)
+model_rebuild(WebhookOrganizationMemberRemoved)
+model_rebuild(WebhookOrganizationMemberRemovedPropMembership)
+model_rebuild(WebhookOrganizationMemberRemovedPropMembershipPropUser)
 
 __all__ = (
-    "WebhookIssuesReopenedPropIssueAllof1",
-    "WebhookIssuesReopenedPropIssueAllof1PropAssignee",
-    "WebhookIssuesReopenedPropIssueAllof1PropAssigneesItems",
-    "WebhookIssuesReopenedPropIssueAllof1PropLabelsItems",
-    "WebhookIssuesReopenedPropIssueAllof1PropMilestone",
-    "WebhookIssuesReopenedPropIssueAllof1PropPerformedViaGithubApp",
-    "WebhookIssuesReopenedPropIssueAllof1PropReactions",
-    "WebhookIssuesReopenedPropIssueAllof1PropUser",
+    "WebhookOrganizationMemberRemoved",
+    "WebhookOrganizationMemberRemovedPropMembership",
+    "WebhookOrganizationMemberRemovedPropMembershipPropUser",
 )

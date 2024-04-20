@@ -11,22 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
+class ReposOwnerRepoGitRefsPostBody(GitHubModel):
+    """ReposOwnerRepoGitRefsPostBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The discussion post's title."
+    ref: str = Field(
+        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
     )
-    body: Missing[str] = Field(
-        default=UNSET, description="The discussion post's body text."
-    )
+    sha: str = Field(description="The SHA1 value for this reference.")
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody)
+model_rebuild(ReposOwnerRepoGitRefsPostBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody",)
+__all__ = ("ReposOwnerRepoGitRefsPostBody",)

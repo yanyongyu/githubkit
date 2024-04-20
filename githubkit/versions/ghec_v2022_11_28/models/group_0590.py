@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -24,11 +25,10 @@ from .group_0394 import SimpleUserWebhooks
 from .group_0392 import OrganizationSimpleWebhooks
 
 
-class WebhookMarketplacePurchaseCancelled(GitHubModel):
-    """marketplace_purchase cancelled event"""
+class WebhookProjectCardCreated(GitHubModel):
+    """project_card created event"""
 
-    action: Literal["cancelled"] = Field()
-    effective_date: str = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,17 +39,12 @@ class WebhookMarketplacePurchaseCancelled(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    marketplace_purchase: WebhookMarketplacePurchaseCancelledPropMarketplacePurchase = (
-        Field()
-    )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    previous_marketplace_purchase: Missing[
-        WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchase
-    ] = Field(default=UNSET, title="Marketplace Purchase")
+    project_card: WebhookProjectCardCreatedPropProjectCard = Field(title="Project Card")
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
@@ -61,106 +56,58 @@ class WebhookMarketplacePurchaseCancelled(GitHubModel):
     )
 
 
-class WebhookMarketplacePurchaseCancelledPropMarketplacePurchase(GitHubModel):
-    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchase"""
+class WebhookProjectCardCreatedPropProjectCard(GitHubModel):
+    """Project Card"""
 
-    account: WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedAccount = (
-        Field()
+    after_id: Missing[Union[int, None]] = Field(default=UNSET)
+    archived: bool = Field(description="Whether or not the card is archived")
+    column_id: int = Field()
+    column_url: str = Field()
+    content_url: Missing[str] = Field(default=UNSET)
+    created_at: datetime = Field()
+    creator: Union[WebhookProjectCardCreatedPropProjectCardPropCreator, None] = Field(
+        title="User"
     )
-    billing_cycle: str = Field()
-    free_trial_ends_on: Union[Union[str, None], None] = Field()
-    next_billing_date: Union[Union[str, None], None] = Field()
-    on_free_trial: bool = Field()
-    plan: WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedPlan = Field()
-    unit_count: int = Field()
+    id: int = Field(description="The project card's ID")
+    node_id: str = Field()
+    note: Union[str, None] = Field()
+    project_url: str = Field()
+    updated_at: datetime = Field()
+    url: str = Field()
 
 
-class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedAccount(
-    GitHubModel
-):
-    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedAccount"""
+class WebhookProjectCardCreatedPropProjectCardPropCreator(GitHubModel):
+    """User"""
 
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
     id: int = Field()
     login: str = Field()
-    node_id: str = Field()
-    organization_billing_email: Union[Union[str, None], None] = Field()
-    type: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedPlan(GitHubModel):
-    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedPlan"""
-
-    bullets: List[str] = Field()
-    description: str = Field()
-    has_free_trial: bool = Field()
-    id: int = Field()
-    monthly_price_in_cents: int = Field()
-    name: str = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    unit_name: Union[Union[str, None], None] = Field()
-    yearly_price_in_cents: int = Field()
-
-
-class WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchase(GitHubModel):
-    """Marketplace Purchase"""
-
-    account: WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropAccount = Field()
-    billing_cycle: str = Field()
-    free_trial_ends_on: None = Field()
-    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
-    on_free_trial: bool = Field()
-    plan: WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropPlan = (
-        Field()
-    )
-    unit_count: int = Field()
-
-
-class WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropAccount(
-    GitHubModel
-):
-    """WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropAccount"""
-
-    id: int = Field()
-    login: str = Field()
-    node_id: str = Field()
-    organization_billing_email: Union[str, None] = Field()
-    type: str = Field()
-
-
-class WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropPlan(
-    GitHubModel
-):
-    """WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropPlan"""
-
-    bullets: List[str] = Field()
-    description: str = Field()
-    has_free_trial: bool = Field()
-    id: int = Field()
-    monthly_price_in_cents: int = Field()
-    name: str = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    unit_name: Union[str, None] = Field()
-    yearly_price_in_cents: int = Field()
-
-
-model_rebuild(WebhookMarketplacePurchaseCancelled)
-model_rebuild(WebhookMarketplacePurchaseCancelledPropMarketplacePurchase)
-model_rebuild(WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedAccount)
-model_rebuild(WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedPlan)
-model_rebuild(WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchase)
-model_rebuild(
-    WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropAccount
-)
-model_rebuild(
-    WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropPlan
-)
+model_rebuild(WebhookProjectCardCreated)
+model_rebuild(WebhookProjectCardCreatedPropProjectCard)
+model_rebuild(WebhookProjectCardCreatedPropProjectCardPropCreator)
 
 __all__ = (
-    "WebhookMarketplacePurchaseCancelled",
-    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchase",
-    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedAccount",
-    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedPlan",
-    "WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchase",
-    "WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropAccount",
-    "WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropPlan",
+    "WebhookProjectCardCreated",
+    "WebhookProjectCardCreatedPropProjectCard",
+    "WebhookProjectCardCreatedPropProjectCardPropCreator",
 )

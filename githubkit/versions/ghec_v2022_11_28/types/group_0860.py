@@ -13,11 +13,10 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class EnterprisesEnterpriseActionsPermissionsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsPutBody"""
+class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
+    """OrgsOrgSecurityProductEnablementPostBody"""
 
-    enabled_organizations: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    query_suite: NotRequired[Literal["default", "extended"]]
 
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsPutBodyType",)
+__all__ = ("OrgsOrgSecurityProductEnablementPostBodyType",)

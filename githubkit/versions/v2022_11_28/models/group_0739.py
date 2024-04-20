@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -18,40 +18,38 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0740 import (
-    WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0PropDismisser,
-)
+
+class OrgsOrgActionsVariablesGetResponse200(GitHubModel):
+    """OrgsOrgActionsVariablesGetResponse200"""
+
+    total_count: int = Field()
+    variables: List[OrganizationActionsVariable] = Field()
 
 
-class WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0(GitHubModel):
-    """Repository Vulnerability Alert Alert
+class OrganizationActionsVariable(GitHubModel):
+    """Actions Variable for an Organization
 
-    The security alert of the vulnerable dependency.
+    Organization variable for GitHub Actions.
     """
 
-    affected_package_name: str = Field()
-    affected_range: str = Field()
-    created_at: str = Field()
-    dismiss_reason: Missing[str] = Field(default=UNSET)
-    dismissed_at: Missing[str] = Field(default=UNSET)
-    dismisser: Missing[
-        Union[
-            WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0PropDismisser, None
-        ]
-    ] = Field(default=UNSET, title="User")
-    external_identifier: str = Field()
-    external_reference: Union[str, None] = Field()
-    fix_reason: Missing[str] = Field(default=UNSET)
-    fixed_at: Missing[datetime] = Field(default=UNSET)
-    fixed_in: Missing[str] = Field(default=UNSET)
-    ghsa_id: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    number: int = Field()
-    severity: str = Field()
-    state: Literal["open", "dismissed", "fixed"] = Field()
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
+    created_at: datetime = Field(
+        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    updated_at: datetime = Field(
+        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a variable"
+    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0)
+model_rebuild(OrgsOrgActionsVariablesGetResponse200)
+model_rebuild(OrganizationActionsVariable)
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0",)
+__all__ = (
+    "OrgsOrgActionsVariablesGetResponse200",
+    "OrganizationActionsVariable",
+)

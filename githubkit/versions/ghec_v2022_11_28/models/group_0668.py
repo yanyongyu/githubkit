@@ -9,37 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0401 import ProjectsV2Item
+from .group_0390 import EnterpriseWebhooks
 from .group_0391 import SimpleInstallation
+from .group_0393 import RepositoryWebhooks
 from .group_0394 import SimpleUserWebhooks
 from .group_0392 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ItemRestored(GitHubModel):
-    """Projects v2 Item Restored Event"""
+class WebhookRepositoryDispatchSample(GitHubModel):
+    """repository_dispatch event"""
 
-    action: Literal["restored"] = Field()
-    changes: WebhookProjectsV2ItemRestoredPropChanges = Field()
-    installation: Missing[SimpleInstallation] = Field(
+    action: str = Field(
+        description="The `event_type` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body."
+    )
+    branch: str = Field()
+    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayload, None] = (
+        Field(
+            description="The `client_payload` that was specified in the `POST /repos/{owner}/{repo}/dispatches` request body."
+        )
+    )
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+    )
+    installation: SimpleInstallation = Field(
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: OrganizationSimpleWebhooks = Field(
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    projects_v2_item: ProjectsV2Item = Field(
-        title="Projects v2 Item", description="An item belonging to a project"
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -47,27 +60,18 @@ class WebhookProjectsV2ItemRestored(GitHubModel):
     )
 
 
-class WebhookProjectsV2ItemRestoredPropChanges(GitHubModel):
-    """WebhookProjectsV2ItemRestoredPropChanges"""
+class WebhookRepositoryDispatchSamplePropClientPayload(ExtraGitHubModel):
+    """WebhookRepositoryDispatchSamplePropClientPayload
 
-    archived_at: Missing[WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt] = (
-        Field(default=UNSET)
-    )
-
-
-class WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt(GitHubModel):
-    """WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt"""
-
-    from_: Missing[Union[datetime, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[datetime, None]] = Field(default=UNSET)
+    The `client_payload` that was specified in the `POST
+    /repos/{owner}/{repo}/dispatches` request body.
+    """
 
 
-model_rebuild(WebhookProjectsV2ItemRestored)
-model_rebuild(WebhookProjectsV2ItemRestoredPropChanges)
-model_rebuild(WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt)
+model_rebuild(WebhookRepositoryDispatchSample)
+model_rebuild(WebhookRepositoryDispatchSamplePropClientPayload)
 
 __all__ = (
-    "WebhookProjectsV2ItemRestored",
-    "WebhookProjectsV2ItemRestoredPropChanges",
-    "WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt",
+    "WebhookRepositoryDispatchSample",
+    "WebhookRepositoryDispatchSamplePropClientPayload",
 )

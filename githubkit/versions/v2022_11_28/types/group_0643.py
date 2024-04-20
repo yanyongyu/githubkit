@@ -12,20 +12,26 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookPullRequestClosedPropPullRequestAllof1Type(TypedDict):
-    """WebhookPullRequestClosedPropPullRequestAllof1"""
-
-    allow_auto_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    use_squash_pr_title_as_default: NotRequired[bool]
+from .group_0132 import RepositoryRulesetType
+from .group_0357 import EnterpriseWebhooksType
+from .group_0358 import SimpleInstallationType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
+from .group_0359 import OrganizationSimpleWebhooksType
+from .group_0644 import WebhookRepositoryRulesetEditedPropChangesType
 
 
-__all__ = ("WebhookPullRequestClosedPropPullRequestAllof1Type",)
+class WebhookRepositoryRulesetEditedType(TypedDict):
+    """repository ruleset edited event"""
+
+    action: Literal["edited"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_ruleset: RepositoryRulesetType
+    changes: NotRequired[WebhookRepositoryRulesetEditedPropChangesType]
+    sender: SimpleUserWebhooksType
+
+
+__all__ = ("WebhookRepositoryRulesetEditedType",)

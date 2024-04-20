@@ -9,22 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0014 import AppPermissionsType
 
 
-class WebhookReleasePublishedPropReleaseAllof0PropReactionsType(TypedDict):
-    """Reactions"""
+class AppInstallationsInstallationIdAccessTokensPostBodyType(TypedDict):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+    repositories: NotRequired[List[str]]
+    repository_ids: NotRequired[List[int]]
+    permissions: NotRequired[AppPermissionsType]
 
 
-__all__ = ("WebhookReleasePublishedPropReleaseAllof0PropReactionsType",)
+__all__ = ("AppInstallationsInstallationIdAccessTokensPostBodyType",)

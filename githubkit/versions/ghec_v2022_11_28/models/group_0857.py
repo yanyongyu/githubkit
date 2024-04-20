@@ -11,17 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ApplicationsClientIdTokenPatchBody(GitHubModel):
-    """ApplicationsClientIdTokenPatchBody"""
+class OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403(GitHubModel):
+    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403"""
 
-    access_token: str = Field(
-        description="The access_token of the OAuth or GitHub application."
-    )
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ApplicationsClientIdTokenPatchBody)
+model_rebuild(OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403)
 
-__all__ = ("ApplicationsClientIdTokenPatchBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403",)

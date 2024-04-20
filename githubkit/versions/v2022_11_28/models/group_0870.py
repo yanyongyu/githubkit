@@ -13,18 +13,38 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotBillingSelectedTeamsDeleteBody(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
+class ReposOwnerRepoCheckSuitesPreferencesPatchBody(GitHubModel):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
 
-    selected_teams: List[str] = Field(
-        min_length=1,
-        description="The names of teams from which to revoke access to GitHub Copilot.",
+    auto_trigger_checks: Missing[
+        List[ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems]
+    ] = Field(
+        default=UNSET,
+        description="Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default.",
     )
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedTeamsDeleteBody)
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems(
+    GitHubModel
+):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteBody",)
+    app_id: int = Field(description="The `id` of the GitHub App.")
+    setting: bool = Field(
+        default=True,
+        description="Set to `true` to enable automatic creation of CheckSuite events upon pushes to the repository, or `false` to disable them.",
+    )
+
+
+model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBody)
+model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems)
+
+__all__ = (
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBody",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems",
+)

@@ -12,14 +12,15 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0177 import ActionsVariableType
+
+class UserEmailsPostBodyOneof0Type(TypedDict):
+    """UserEmailsPostBodyOneof0
+
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: List[str]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
-
-    total_count: int
-    variables: List[ActionsVariableType]
-
-
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type",)
+__all__ = ("UserEmailsPostBodyOneof0Type",)

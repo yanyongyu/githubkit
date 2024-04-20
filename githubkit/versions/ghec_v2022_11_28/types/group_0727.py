@@ -9,39 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0728 import (
-    WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsPropUploaderType,
-)
+
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1Type(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJobAllof1"""
+
+    check_run_url: NotRequired[str]
+    completed_at: NotRequired[Union[str, None]]
+    conclusion: NotRequired[Union[str, None]]
+    created_at: NotRequired[str]
+    head_sha: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: NotRequired[List[str]]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    run_attempt: NotRequired[int]
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
+    runner_group_id: NotRequired[Union[int, None]]
+    runner_group_name: NotRequired[Union[str, None]]
+    runner_id: NotRequired[Union[int, None]]
+    runner_name: NotRequired[Union[str, None]]
+    started_at: NotRequired[str]
+    status: Literal["in_progress", "completed", "queued"]
+    head_branch: NotRequired[Union[str, None]]
+    workflow_name: NotRequired[Union[str, None]]
+    steps: List[WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType]
+    url: NotRequired[str]
 
 
-class WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsType(TypedDict):
-    """Release Asset
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType(TypedDict):
+    """Workflow Step"""
 
-    Data related to a release.
-    """
-
-    browser_download_url: str
-    content_type: str
-    created_at: datetime
-    download_count: int
-    id: int
-    label: Union[str, None]
+    completed_at: Union[str, None]
+    conclusion: Union[str, None]
     name: str
-    node_id: str
-    size: int
-    state: Literal["uploaded"]
-    updated_at: datetime
-    uploader: NotRequired[
-        Union[
-            WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsPropUploaderType,
-            None,
-        ]
-    ]
-    url: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["in_progress", "completed", "pending", "queued"]
 
 
-__all__ = ("WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsType",)
+__all__ = (
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1Type",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType",
+)

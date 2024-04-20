@@ -9,14 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDeleteResponse403Type(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
+class ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberReactionsPostBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
 
 
-__all__ = ("ReposOwnerRepoDeleteResponse403Type",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType",)

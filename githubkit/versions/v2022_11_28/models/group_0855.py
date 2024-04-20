@@ -9,47 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Literal
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsVariablesGetResponse200(GitHubModel):
-    """OrgsOrgActionsVariablesGetResponse200"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0
 
-    total_count: int = Field()
-    variables: List[OrganizationActionsVariable] = Field()
-
-
-class OrganizationActionsVariable(GitHubModel):
-    """Actions Variable for an Organization
-
-    Organization variable for GitHub Actions.
+    Examples:
+        {'apps': ['my-app']}
     """
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    created_at: datetime = Field(
-        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    apps: List[str] = Field(
+        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items."
     )
-    updated_at: datetime = Field(
-        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a variable"
-    )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgActionsVariablesGetResponse200)
-model_rebuild(OrganizationActionsVariable)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0)
 
-__all__ = (
-    "OrgsOrgActionsVariablesGetResponse200",
-    "OrganizationActionsVariable",
-)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0",)

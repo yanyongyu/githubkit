@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import List
 
 from pydantic import Field
 
@@ -18,18 +18,24 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class NotificationsPutBody(GitHubModel):
-    """NotificationsPutBody"""
+class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody(GitHubModel):
+    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
 
-    last_read_at: Missing[datetime] = Field(
+    name: str = Field(description="The name of the new runner.")
+    runner_group_id: int = Field(
+        description="The ID of the runner group to register the runner to."
+    )
+    labels: List[str] = Field(
+        max_length=100,
+        min_length=1,
+        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
+    )
+    work_folder: Missing[str] = Field(
         default=UNSET,
-        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
-    )
-    read: Missing[bool] = Field(
-        default=UNSET, description="Whether the notification has been read."
+        description="The working directory to be used for job execution, relative to the runner install directory.",
     )
 
 
-model_rebuild(NotificationsPutBody)
+model_rebuild(ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody)
 
-__all__ = ("NotificationsPutBody",)
+__all__ = ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody",)

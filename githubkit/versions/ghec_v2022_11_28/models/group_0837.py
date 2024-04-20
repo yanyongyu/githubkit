@@ -9,27 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Literal
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropReferencedWorkflowsItems(
-    GitHubModel
-):
-    """WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropReferencedWorkflowsItems"""
+class OrgsOrgPersonalAccessTokensPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokensPostBody"""
 
-    path: str = Field()
-    ref: Missing[str] = Field(default=UNSET)
-    sha: str = Field()
+    action: Literal["revoke"] = Field(
+        description="Action to apply to the fine-grained personal access token."
+    )
+    pat_ids: List[int] = Field(
+        max_length=100,
+        min_length=1,
+        description="The IDs of the fine-grained personal access tokens.",
+    )
 
 
-model_rebuild(
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropReferencedWorkflowsItems
-)
+model_rebuild(OrgsOrgPersonalAccessTokensPostBody)
 
-__all__ = (
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropReferencedWorkflowsItems",
-)
+__all__ = ("OrgsOrgPersonalAccessTokensPostBody",)

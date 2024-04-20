@@ -9,11 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
-
-class GistsGistIdStarGetResponse404Type(TypedDict):
-    """GistsGistIdStarGetResponse404"""
+from .group_0155 import JobType
 
 
-__all__ = ("GistsGistIdStarGetResponse404Type",)
+class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
+
+    total_count: int
+    jobs: List[JobType]
+
+
+__all__ = ("ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type",)

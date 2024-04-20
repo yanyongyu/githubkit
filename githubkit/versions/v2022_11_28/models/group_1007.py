@@ -9,24 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201(GitHubModel):
-    """ReposOwnerRepoDependencyGraphSnapshotsPostResponse201"""
+class UserCodespacesSecretsSecretNamePutBody(GitHubModel):
+    """UserCodespacesSecretsSecretNamePutBody"""
 
-    id: int = Field(description="ID of the created snapshot.")
-    created_at: str = Field(description="The time at which the snapshot was created.")
-    result: str = Field(
-        description='Either "SUCCESS", "ACCEPTED", or "INVALID". "SUCCESS" indicates that the snapshot was successfully created and the repository\'s dependencies were updated. "ACCEPTED" indicates that the snapshot was successfully created, but the repository\'s dependencies were not updated. "INVALID" indicates that the snapshot was malformed.'
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        default=UNSET,
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get the public key for the authenticated user](https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user) endpoint.",
     )
-    message: str = Field(
-        description="A message providing further details about the result, such as why the dependencies were not updated."
+    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
+    selected_repository_ids: Missing[List[Union[int, str]]] = Field(
+        default=UNSET,
+        description="An array of repository ids that can access the user secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Set selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints.",
     )
 
 
-model_rebuild(ReposOwnerRepoDependencyGraphSnapshotsPostResponse201)
+model_rebuild(UserCodespacesSecretsSecretNamePutBody)
 
-__all__ = ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201",)
+__all__ = ("UserCodespacesSecretsSecretNamePutBody",)

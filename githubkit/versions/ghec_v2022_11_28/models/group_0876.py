@@ -9,22 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0033 import RunnerLabel
+
+class ProjectsProjectIdCollaboratorsUsernamePutBody(GitHubModel):
+    """ProjectsProjectIdCollaboratorsUsernamePutBody"""
+
+    permission: Missing[Literal["read", "write", "admin"]] = Field(
+        default=UNSET, description="The permission to grant the collaborator."
+    )
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
+model_rebuild(ProjectsProjectIdCollaboratorsUsernamePutBody)
 
-    total_count: int = Field()
-    labels: List[RunnerLabel] = Field()
-
-
-model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200)
-
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200",)
+__all__ = ("ProjectsProjectIdCollaboratorsUsernamePutBody",)

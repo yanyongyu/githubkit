@@ -12,116 +12,115 @@ from __future__ import annotations
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0357 import EnterpriseWebhooksType
+from .group_0358 import SimpleInstallationType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
+from .group_0359 import OrganizationSimpleWebhooksType
 
-class WebhookIssuesLockedPropIssueAllof1Type(TypedDict):
-    """WebhookIssuesLockedPropIssueAllof1"""
 
-    active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
+class WebhookMarketplacePurchaseChangedType(TypedDict):
+    """marketplace_purchase changed event"""
+
+    action: Literal["changed"]
+    effective_date: str
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    marketplace_purchase: WebhookMarketplacePurchaseChangedPropMarketplacePurchaseType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    previous_marketplace_purchase: NotRequired[
+        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType
     ]
-    assignee: NotRequired[
-        Union[WebhookIssuesLockedPropIssueAllof1PropAssigneeType, None]
-    ]
-    assignees: NotRequired[
-        List[Union[WebhookIssuesLockedPropIssueAllof1PropAssigneesItemsType, None]]
-    ]
-    author_association: NotRequired[str]
-    body: NotRequired[Union[str, None]]
-    closed_at: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
-    comments_url: NotRequired[str]
-    created_at: NotRequired[str]
-    events_url: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    labels: NotRequired[
-        List[Union[WebhookIssuesLockedPropIssueAllof1PropLabelsItemsType, None]]
-    ]
-    labels_url: NotRequired[str]
-    locked: Literal[True]
-    milestone: NotRequired[
-        Union[WebhookIssuesLockedPropIssueAllof1PropMilestoneType, None]
-    ]
-    node_id: NotRequired[str]
-    number: NotRequired[int]
-    performed_via_github_app: NotRequired[
-        Union[WebhookIssuesLockedPropIssueAllof1PropPerformedViaGithubAppType, None]
-    ]
-    reactions: NotRequired[WebhookIssuesLockedPropIssueAllof1PropReactionsType]
-    repository_url: NotRequired[str]
-    state: NotRequired[str]
-    timeline_url: NotRequired[str]
-    title: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
-    user: NotRequired[WebhookIssuesLockedPropIssueAllof1PropUserType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserWebhooksType
 
 
-class WebhookIssuesLockedPropIssueAllof1PropAssigneeType(TypedDict):
-    """WebhookIssuesLockedPropIssueAllof1PropAssignee"""
+class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseType(TypedDict):
+    """Marketplace Purchase"""
+
+    account: WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropAccountType
+    billing_cycle: str
+    free_trial_ends_on: Union[str, None]
+    next_billing_date: Union[str, None]
+    on_free_trial: bool
+    plan: WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropPlanType
+    unit_count: int
 
 
-class WebhookIssuesLockedPropIssueAllof1PropAssigneesItemsType(TypedDict):
-    """WebhookIssuesLockedPropIssueAllof1PropAssigneesItems"""
+class WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropAccountType(
+    TypedDict
+):
+    """WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropAccount"""
+
+    id: int
+    login: str
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
 
 
-class WebhookIssuesLockedPropIssueAllof1PropLabelsItemsType(TypedDict):
-    """WebhookIssuesLockedPropIssueAllof1PropLabelsItems"""
+class WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropPlanType(TypedDict):
+    """WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropPlan"""
+
+    bullets: List[Union[str, None]]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
-class WebhookIssuesLockedPropIssueAllof1PropMilestoneType(TypedDict):
-    """WebhookIssuesLockedPropIssueAllof1PropMilestone"""
+class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType(TypedDict):
+    """Marketplace Purchase"""
+
+    account: (
+        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType
+    )
+    billing_cycle: str
+    free_trial_ends_on: Union[str, None]
+    next_billing_date: NotRequired[Union[str, None]]
+    on_free_trial: Union[bool, None]
+    plan: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType
+    unit_count: int
 
 
-class WebhookIssuesLockedPropIssueAllof1PropPerformedViaGithubAppType(TypedDict):
-    """WebhookIssuesLockedPropIssueAllof1PropPerformedViaGithubApp"""
+class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType(
+    TypedDict
+):
+    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount"""
+
+    id: int
+    login: str
+    node_id: str
+    organization_billing_email: Union[str, None]
+    type: str
 
 
-class WebhookIssuesLockedPropIssueAllof1PropReactionsType(TypedDict):
-    """WebhookIssuesLockedPropIssueAllof1PropReactions"""
+class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType(
+    TypedDict
+):
+    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan"""
 
-    plus_one: NotRequired[int]
-    minus_one: NotRequired[int]
-    confused: NotRequired[int]
-    eyes: NotRequired[int]
-    heart: NotRequired[int]
-    hooray: NotRequired[int]
-    laugh: NotRequired[int]
-    rocket: NotRequired[int]
-    total_count: NotRequired[int]
-    url: NotRequired[str]
-
-
-class WebhookIssuesLockedPropIssueAllof1PropUserType(TypedDict):
-    """WebhookIssuesLockedPropIssueAllof1PropUser"""
-
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
+    bullets: List[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
 __all__ = (
-    "WebhookIssuesLockedPropIssueAllof1Type",
-    "WebhookIssuesLockedPropIssueAllof1PropAssigneeType",
-    "WebhookIssuesLockedPropIssueAllof1PropAssigneesItemsType",
-    "WebhookIssuesLockedPropIssueAllof1PropLabelsItemsType",
-    "WebhookIssuesLockedPropIssueAllof1PropMilestoneType",
-    "WebhookIssuesLockedPropIssueAllof1PropPerformedViaGithubAppType",
-    "WebhookIssuesLockedPropIssueAllof1PropReactionsType",
-    "WebhookIssuesLockedPropIssueAllof1PropUserType",
+    "WebhookMarketplacePurchaseChangedType",
+    "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseType",
+    "WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropAccountType",
+    "WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropPlanType",
+    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType",
+    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType",
+    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType",
 )

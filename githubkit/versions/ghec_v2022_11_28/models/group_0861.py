@@ -13,18 +13,19 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0029 import OrganizationSimple
+
+class ProjectsColumnsCardsCardIdDeleteResponse403(GitHubModel):
+    """ProjectsColumnsCardsCardIdDeleteResponse403"""
+
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[List[str]] = Field(default=UNSET)
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
+model_rebuild(ProjectsColumnsCardsCardIdDeleteResponse403)
 
-    total_count: float = Field()
-    organizations: List[OrganizationSimple] = Field()
-
-
-model_rebuild(EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200)
-
-__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200",)
+__all__ = ("ProjectsColumnsCardsCardIdDeleteResponse403",)

@@ -9,27 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
 
-from .group_0390 import EnterpriseWebhooksType
-from .group_0391 import SimpleInstallationType
-from .group_0393 import RepositoryWebhooksType
-from .group_0394 import SimpleUserWebhooksType
-from .group_0392 import OrganizationSimpleWebhooksType
-from .group_0786 import WebhookRepositoryVulnerabilityAlertResolvePropAlertType
+from .group_0034 import RunnerType
 
 
-class WebhookRepositoryVulnerabilityAlertResolveType(TypedDict):
-    """repository_vulnerability_alert resolve event"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
 
-    action: Literal["resolve"]
-    alert: WebhookRepositoryVulnerabilityAlertResolvePropAlertType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    total_count: float
+    runners: List[RunnerType]
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertResolveType",)
+__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",)

@@ -9,15 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+class ReposOwnerRepoDispatchesPostBodyType(TypedDict):
+    """ReposOwnerRepoDispatchesPostBody"""
 
-    action: Literal["approve", "deny"]
-    reason: NotRequired[Union[str, None]]
+    event_type: str
+    client_payload: NotRequired[ReposOwnerRepoDispatchesPostBodyPropClientPayloadType]
 
 
-__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType",)
+class ReposOwnerRepoDispatchesPostBodyPropClientPayloadType(TypedDict):
+    """ReposOwnerRepoDispatchesPostBodyPropClientPayload
+
+    JSON payload with extra information about the webhook event that your action or
+    workflow may use. The maximum number of top-level properties is 10.
+    """
+
+
+__all__ = (
+    "ReposOwnerRepoDispatchesPostBodyType",
+    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadType",
+)

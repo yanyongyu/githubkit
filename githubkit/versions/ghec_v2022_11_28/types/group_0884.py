@@ -9,11 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
-
-class GistsGistIdStarGetResponse404Type(TypedDict):
-    """GistsGistIdStarGetResponse404"""
+from .group_0177 import ActionsVariableType
 
 
-__all__ = ("GistsGistIdStarGetResponse404Type",)
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
+
+    total_count: int
+    variables: List[ActionsVariableType]
+
+
+__all__ = ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",)

@@ -13,111 +13,18 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0097 import RepositoryRulesetConditions
 
+class OrgsOrgActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
+    """OrgsOrgActionsRunnersRunnerIdLabelsPutBody"""
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems"""
-
-    condition: Missing[RepositoryRulesetConditions] = Field(
-        default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
+    labels: List[str] = Field(
+        max_length=100,
+        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
     )
-    changes: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges
-    ] = Field(default=UNSET)
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    es
-    """
+model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPutBody)
 
-    condition_type: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType
-    ] = Field(default=UNSET)
-    target: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget
-    ] = Field(default=UNSET)
-    include: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude
-    ] = Field(default=UNSET)
-    exclude: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude
-    ] = Field(default=UNSET)
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropConditionType
-    """
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropTarget
-    """
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropInclude
-    """
-
-    from_: Missing[List[str]] = Field(default=UNSET, alias="from")
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropExclude
-    """
-
-    from_: Missing[List[str]] = Field(default=UNSET, alias="from")
-
-
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude
-)
-
-__all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude",
-)
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPutBody",)

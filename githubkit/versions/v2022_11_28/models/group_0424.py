@@ -17,7 +17,7 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0364 import Discussion
+from .group_0365 import Discussion
 from .group_0357 import EnterpriseWebhooks
 from .group_0358 import SimpleInstallation
 from .group_0360 import RepositoryWebhooks
@@ -25,11 +25,10 @@ from .group_0361 import SimpleUserWebhooks
 from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionEdited(GitHubModel):
-    """discussion edited event"""
+class WebhookDiscussionDeleted(GitHubModel):
+    """discussion deleted event"""
 
-    action: Literal["edited"] = Field()
-    changes: Missing[WebhookDiscussionEditedPropChanges] = Field(default=UNSET)
+    action: Literal["deleted"] = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -58,33 +57,6 @@ class WebhookDiscussionEdited(GitHubModel):
     )
 
 
-class WebhookDiscussionEditedPropChanges(GitHubModel):
-    """WebhookDiscussionEditedPropChanges"""
+model_rebuild(WebhookDiscussionDeleted)
 
-    body: Missing[WebhookDiscussionEditedPropChangesPropBody] = Field(default=UNSET)
-    title: Missing[WebhookDiscussionEditedPropChangesPropTitle] = Field(default=UNSET)
-
-
-class WebhookDiscussionEditedPropChangesPropBody(GitHubModel):
-    """WebhookDiscussionEditedPropChangesPropBody"""
-
-    from_: str = Field(alias="from")
-
-
-class WebhookDiscussionEditedPropChangesPropTitle(GitHubModel):
-    """WebhookDiscussionEditedPropChangesPropTitle"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookDiscussionEdited)
-model_rebuild(WebhookDiscussionEditedPropChanges)
-model_rebuild(WebhookDiscussionEditedPropChangesPropBody)
-model_rebuild(WebhookDiscussionEditedPropChangesPropTitle)
-
-__all__ = (
-    "WebhookDiscussionEdited",
-    "WebhookDiscussionEditedPropChanges",
-    "WebhookDiscussionEditedPropChangesPropBody",
-    "WebhookDiscussionEditedPropChangesPropTitle",
-)
+__all__ = ("WebhookDiscussionDeleted",)

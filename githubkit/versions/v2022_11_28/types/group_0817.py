@@ -9,17 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class AppManifestsCodeConversionsPostResponse201Allof1Type(TypedDict):
-    """AppManifestsCodeConversionsPostResponse201Allof1"""
+class ProjectsProjectIdCollaboratorsUsernamePutBodyType(TypedDict):
+    """ProjectsProjectIdCollaboratorsUsernamePutBody"""
 
-    client_id: str
-    client_secret: str
-    webhook_secret: Union[str, None]
-    pem: str
+    permission: NotRequired[Literal["read", "write", "admin"]]
 
 
-__all__ = ("AppManifestsCodeConversionsPostResponse201Allof1Type",)
+__all__ = ("ProjectsProjectIdCollaboratorsUsernamePutBodyType",)

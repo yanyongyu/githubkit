@@ -9,9 +9,10 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0244 import DependabotAlertType
 from .group_0390 import EnterpriseWebhooksType
 from .group_0391 import SimpleInstallationType
 from .group_0393 import RepositoryWebhooksType
@@ -19,37 +20,16 @@ from .group_0394 import SimpleUserWebhooksType
 from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookDeployKeyCreatedType(TypedDict):
-    """deploy_key created event"""
+class WebhookDependabotAlertFixedType(TypedDict):
+    """Dependabot alert fixed event"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["fixed"]
+    alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
-    key: WebhookDeployKeyCreatedPropKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookDeployKeyCreatedPropKeyType(TypedDict):
-    """WebhookDeployKeyCreatedPropKey
-
-    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/deploy-
-    keys/deploy-keys#get-a-deploy-key) resource.
-    """
-
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
-    id: int
-    key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
-    url: str
-    verified: bool
-
-
-__all__ = (
-    "WebhookDeployKeyCreatedType",
-    "WebhookDeployKeyCreatedPropKeyType",
-)
+__all__ = ("WebhookDependabotAlertFixedType",)

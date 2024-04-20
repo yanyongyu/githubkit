@@ -9,75 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0390 import EnterpriseWebhooks
-from .group_0391 import SimpleInstallation
-from .group_0393 import RepositoryWebhooks
-from .group_0394 import SimpleUserWebhooks
-from .group_0392 import OrganizationSimpleWebhooks
-from .group_0833 import WebhookWorkflowRunCompletedPropWorkflowRun
 
+class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubModel):
+    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
-class WebhookWorkflowRunCompleted(GitHubModel):
-    """workflow_run completed event"""
-
-    action: Literal["completed"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    async_: Missing[bool] = Field(
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+        alias="async",
+        description="When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued.",
     )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
-    workflow: Union[WebhookWorkflowRunCompletedPropWorkflow, None] = Field(
-        title="Workflow"
-    )
-    workflow_run: WebhookWorkflowRunCompletedPropWorkflowRun = Field()
 
 
-class WebhookWorkflowRunCompletedPropWorkflow(GitHubModel):
-    """Workflow"""
+model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutBody)
 
-    badge_url: str = Field()
-    created_at: datetime = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field()
-    node_id: str = Field()
-    path: str = Field()
-    state: str = Field()
-    updated_at: datetime = Field()
-    url: str = Field()
-
-
-model_rebuild(WebhookWorkflowRunCompleted)
-model_rebuild(WebhookWorkflowRunCompletedPropWorkflow)
-
-__all__ = (
-    "WebhookWorkflowRunCompleted",
-    "WebhookWorkflowRunCompletedPropWorkflow",
-)
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBody",)

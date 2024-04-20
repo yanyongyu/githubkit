@@ -9,52 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType(
-    TypedDict
-):
-    """WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase"""
-
-    ref: str
-    repo: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepoType
-    sha: str
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepoType(
-    TypedDict
-):
-    """Repo Ref"""
-
-    id: int
-    name: str
-    url: str
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType(
-    TypedDict
-):
-    """WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead"""
-
-    ref: str
-    repo: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepoType
-    sha: str
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepoType(
-    TypedDict
-):
-    """Repo Ref"""
-
-    id: int
-    name: str
-    url: str
-
-
-__all__ = (
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType",
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepoType",
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType",
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepoType",
+from .group_0130 import RepositoryRuleUpdateType
+from .group_0150 import RepositoryRuleWorkflowsType
+from .group_0135 import RepositoryRulePullRequestType
+from .group_0126 import OrgRulesetConditionsOneof0Type
+from .group_0127 import OrgRulesetConditionsOneof1Type
+from .group_0128 import OrgRulesetConditionsOneof2Type
+from .group_0117 import RepositoryRulesetBypassActorType
+from .group_0147 import RepositoryRuleTagNamePatternType
+from .group_0145 import RepositoryRuleBranchNamePatternType
+from .group_0133 import RepositoryRuleRequiredDeploymentsType
+from .group_0137 import RepositoryRuleRequiredStatusChecksType
+from .group_0139 import RepositoryRuleCommitMessagePatternType
+from .group_0132 import RepositoryRuleRequiredLinearHistoryType
+from .group_0143 import RepositoryRuleCommitterEmailPatternType
+from .group_0141 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0129 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
 )
+
+
+class OrgsOrgRulesetsPostBodyType(TypedDict):
+    """OrgsOrgRulesetsPostBody"""
+
+    name: str
+    target: NotRequired[Literal["branch", "tag"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[
+        Union[
+            OrgRulesetConditionsOneof0Type,
+            OrgRulesetConditionsOneof1Type,
+            OrgRulesetConditionsOneof2Type,
+        ]
+    ]
+    rules: NotRequired[
+        List[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleWorkflowsType,
+            ]
+        ]
+    ]
+
+
+__all__ = ("OrgsOrgRulesetsPostBodyType",)

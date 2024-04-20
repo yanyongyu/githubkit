@@ -9,99 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookIssuesReopenedPropIssueAllof1Type(TypedDict):
-    """WebhookIssuesReopenedPropIssueAllof1"""
-
-    active_lock_reason: NotRequired[Union[str, None]]
-    assignee: NotRequired[
-        Union[WebhookIssuesReopenedPropIssueAllof1PropAssigneeType, None]
-    ]
-    assignees: NotRequired[
-        List[Union[WebhookIssuesReopenedPropIssueAllof1PropAssigneesItemsType, None]]
-    ]
-    author_association: NotRequired[str]
-    body: NotRequired[Union[str, None]]
-    closed_at: NotRequired[Union[str, None]]
-    comments: NotRequired[int]
-    comments_url: NotRequired[str]
-    created_at: NotRequired[str]
-    events_url: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    labels: NotRequired[
-        List[Union[WebhookIssuesReopenedPropIssueAllof1PropLabelsItemsType, None]]
-    ]
-    labels_url: NotRequired[str]
-    locked: NotRequired[bool]
-    milestone: NotRequired[
-        Union[WebhookIssuesReopenedPropIssueAllof1PropMilestoneType, None]
-    ]
-    node_id: NotRequired[str]
-    number: NotRequired[int]
-    performed_via_github_app: NotRequired[
-        Union[WebhookIssuesReopenedPropIssueAllof1PropPerformedViaGithubAppType, None]
-    ]
-    reactions: NotRequired[WebhookIssuesReopenedPropIssueAllof1PropReactionsType]
-    repository_url: NotRequired[str]
-    state: Literal["open", "closed"]
-    timeline_url: NotRequired[str]
-    title: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
-    user: NotRequired[WebhookIssuesReopenedPropIssueAllof1PropUserType]
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookIssuesReopenedPropIssueAllof1PropAssigneeType(TypedDict):
-    """WebhookIssuesReopenedPropIssueAllof1PropAssignee"""
+class WebhookOrganizationMemberRemovedType(TypedDict):
+    """organization member_removed event"""
+
+    action: Literal["member_removed"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    membership: WebhookOrganizationMemberRemovedPropMembershipType
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserWebhooksType
 
 
-class WebhookIssuesReopenedPropIssueAllof1PropAssigneesItemsType(TypedDict):
-    """WebhookIssuesReopenedPropIssueAllof1PropAssigneesItems"""
+class WebhookOrganizationMemberRemovedPropMembershipType(TypedDict):
+    """Membership
+
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
+    """
+
+    organization_url: str
+    role: str
+    state: str
+    url: str
+    user: Union[WebhookOrganizationMemberRemovedPropMembershipPropUserType, None]
 
 
-class WebhookIssuesReopenedPropIssueAllof1PropLabelsItemsType(TypedDict):
-    """WebhookIssuesReopenedPropIssueAllof1PropLabelsItems"""
-
-
-class WebhookIssuesReopenedPropIssueAllof1PropMilestoneType(TypedDict):
-    """WebhookIssuesReopenedPropIssueAllof1PropMilestone"""
-
-
-class WebhookIssuesReopenedPropIssueAllof1PropPerformedViaGithubAppType(TypedDict):
-    """WebhookIssuesReopenedPropIssueAllof1PropPerformedViaGithubApp"""
-
-
-class WebhookIssuesReopenedPropIssueAllof1PropReactionsType(TypedDict):
-    """WebhookIssuesReopenedPropIssueAllof1PropReactions"""
-
-    plus_one: NotRequired[int]
-    minus_one: NotRequired[int]
-    confused: NotRequired[int]
-    eyes: NotRequired[int]
-    heart: NotRequired[int]
-    hooray: NotRequired[int]
-    laugh: NotRequired[int]
-    rocket: NotRequired[int]
-    total_count: NotRequired[int]
-    url: NotRequired[str]
-
-
-class WebhookIssuesReopenedPropIssueAllof1PropUserType(TypedDict):
-    """WebhookIssuesReopenedPropIssueAllof1PropUser"""
+class WebhookOrganizationMemberRemovedPropMembershipPropUserType(TypedDict):
+    """User"""
 
     avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
     events_url: NotRequired[str]
     followers_url: NotRequired[str]
     following_url: NotRequired[str]
     gists_url: NotRequired[str]
     gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
     node_id: NotRequired[str]
     organizations_url: NotRequired[str]
     received_events_url: NotRequired[str]
@@ -109,17 +67,12 @@ class WebhookIssuesReopenedPropIssueAllof1PropUserType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssuesReopenedPropIssueAllof1Type",
-    "WebhookIssuesReopenedPropIssueAllof1PropAssigneeType",
-    "WebhookIssuesReopenedPropIssueAllof1PropAssigneesItemsType",
-    "WebhookIssuesReopenedPropIssueAllof1PropLabelsItemsType",
-    "WebhookIssuesReopenedPropIssueAllof1PropMilestoneType",
-    "WebhookIssuesReopenedPropIssueAllof1PropPerformedViaGithubAppType",
-    "WebhookIssuesReopenedPropIssueAllof1PropReactionsType",
-    "WebhookIssuesReopenedPropIssueAllof1PropUserType",
+    "WebhookOrganizationMemberRemovedType",
+    "WebhookOrganizationMemberRemovedPropMembershipType",
+    "WebhookOrganizationMemberRemovedPropMembershipPropUserType",
 )

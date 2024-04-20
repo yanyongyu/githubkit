@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,33 +16,19 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBody(GitHubModel):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
+class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
+    """ReposOwnerRepoSubscriptionPutBody"""
 
-    auto_trigger_checks: Missing[
-        List[ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems]
-    ] = Field(
+    subscribed: Missing[bool] = Field(
         default=UNSET,
-        description="Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default.",
+        description="Determines if notifications should be received from this repository.",
+    )
+    ignored: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if all notifications should be blocked from this repository.",
     )
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems(
-    GitHubModel
-):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
+model_rebuild(ReposOwnerRepoSubscriptionPutBody)
 
-    app_id: int = Field(description="The `id` of the GitHub App.")
-    setting: bool = Field(
-        default=True,
-        description="Set to `true` to enable automatic creation of CheckSuite events upon pushes to the repository, or `false` to disable them.",
-    )
-
-
-model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBody)
-model_rebuild(ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems)
-
-__all__ = (
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBody",
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems",
-)
+__all__ = ("ReposOwnerRepoSubscriptionPutBody",)

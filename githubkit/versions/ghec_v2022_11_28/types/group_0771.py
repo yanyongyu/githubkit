@@ -10,39 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0773 import (
-    WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0PropDismisserType,
-)
+
+class NotificationsPutBodyType(TypedDict):
+    """NotificationsPutBody"""
+
+    last_read_at: NotRequired[datetime]
+    read: NotRequired[bool]
 
 
-class WebhookRepositoryVulnerabilityAlertCreatePropAlertType(TypedDict):
-    """WebhookRepositoryVulnerabilityAlertCreatePropAlert"""
-
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_reason: NotRequired[str]
-    dismissed_at: NotRequired[str]
-    dismisser: NotRequired[
-        Union[
-            WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0PropDismisserType,
-            None,
-        ]
-    ]
-    external_identifier: str
-    external_reference: Union[Union[str, None], None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[datetime]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
-    id: int
-    node_id: str
-    number: int
-    severity: str
-    state: Literal["open"]
-
-
-__all__ = ("WebhookRepositoryVulnerabilityAlertCreatePropAlertType",)
+__all__ = ("NotificationsPutBodyType",)

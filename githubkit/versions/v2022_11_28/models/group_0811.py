@@ -9,71 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase(
-    GitHubModel
-):
-    """WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase"""
+class ProjectsColumnsColumnIdCardsPostResponse503(GitHubModel):
+    """ProjectsColumnsColumnIdCardsPostResponse503"""
 
-    ref: str = Field()
-    repo: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo = Field(
-        title="Repo Ref"
-    )
-    sha: str = Field()
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo(
-    GitHubModel
-):
-    """Repo Ref"""
-
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[
+        List[ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems]
+    ] = Field(default=UNSET)
 
 
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead(
-    GitHubModel
-):
-    """WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead"""
+class ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems(GitHubModel):
+    """ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems"""
 
-    ref: str = Field()
-    repo: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo = Field(
-        title="Repo Ref"
-    )
-    sha: str = Field()
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
 
 
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo(
-    GitHubModel
-):
-    """Repo Ref"""
-
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-model_rebuild(
-    WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase
-)
-model_rebuild(
-    WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo
-)
-model_rebuild(
-    WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead
-)
-model_rebuild(
-    WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo
-)
+model_rebuild(ProjectsColumnsColumnIdCardsPostResponse503)
+model_rebuild(ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems)
 
 __all__ = (
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase",
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo",
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead",
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo",
+    "ProjectsColumnsColumnIdCardsPostResponse503",
+    "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems",
 )

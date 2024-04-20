@@ -9,32 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from datetime import datetime
+from typing_extensions import TypedDict
 
 
-class OrgsOrgHooksHookIdPatchBodyType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBody"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
-    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigType]
-    events: NotRequired[List[str]]
-    active: NotRequired[bool]
-    name: NotRequired[str]
+    total_count: int
+    secrets: List[RepoCodespacesSecretType]
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
+class RepoCodespacesSecretType(TypedDict):
+    """Codespaces Secret
 
-    Key/value pairs to provide settings for this webhook.
+    Set repository secrets for GitHub Codespaces.
     """
 
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    name: str
+    created_at: datetime
+    updated_at: datetime
 
 
 __all__ = (
-    "OrgsOrgHooksHookIdPatchBodyType",
-    "OrgsOrgHooksHookIdPatchBodyPropConfigType",
+    "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
+    "RepoCodespacesSecretType",
 )

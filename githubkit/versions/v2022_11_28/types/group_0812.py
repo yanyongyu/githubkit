@@ -9,19 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropReferencedWorkflowsItemsType(
-    TypedDict
-):
-    """WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropReferencedWorkflowsItems"""
+class ProjectsColumnsColumnIdMovesPostBodyType(TypedDict):
+    """ProjectsColumnsColumnIdMovesPostBody"""
 
-    path: str
-    ref: NotRequired[str]
-    sha: str
+    position: str
 
 
-__all__ = (
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropReferencedWorkflowsItemsType",
-)
+__all__ = ("ProjectsColumnsColumnIdMovesPostBodyType",)

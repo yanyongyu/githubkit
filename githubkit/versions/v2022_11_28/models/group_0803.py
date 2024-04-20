@@ -9,71 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase(
-    GitHubModel
-):
-    """WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase"""
+class ProjectsColumnsCardsCardIdPatchBody(GitHubModel):
+    """ProjectsColumnsCardsCardIdPatchBody"""
 
-    ref: str = Field()
-    repo: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo = Field(
-        title="Repo Ref"
+    note: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The project card's note"
     )
-    sha: str = Field()
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo(
-    GitHubModel
-):
-    """Repo Ref"""
-
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead(
-    GitHubModel
-):
-    """WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead"""
-
-    ref: str = Field()
-    repo: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo = Field(
-        title="Repo Ref"
+    archived: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the card is archived"
     )
-    sha: str = Field()
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo(
-    GitHubModel
-):
-    """Repo Ref"""
+model_rebuild(ProjectsColumnsCardsCardIdPatchBody)
 
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-model_rebuild(
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase
-)
-model_rebuild(
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo
-)
-model_rebuild(
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead
-)
-model_rebuild(
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo
-)
-
-__all__ = (
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase",
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo",
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead",
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo",
-)
+__all__ = ("ProjectsColumnsCardsCardIdPatchBody",)

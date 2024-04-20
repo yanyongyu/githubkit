@@ -17,39 +17,28 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0357 import EnterpriseWebhooks
+from .group_0368 import ProjectsV2
 from .group_0358 import SimpleInstallation
-from .group_0360 import RepositoryWebhooks
 from .group_0361 import SimpleUserWebhooks
 from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookMemberEdited(GitHubModel):
-    """member edited event"""
+class WebhookProjectsV2ProjectEdited(GitHubModel):
+    """Projects v2 Project Edited Event"""
 
     action: Literal["edited"] = Field()
-    changes: WebhookMemberEditedPropChanges = Field(
-        description="The changes to the collaborator permissions"
-    )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
-    )
+    changes: WebhookProjectsV2ProjectEditedPropChanges = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    member: Union[WebhookMemberEditedPropMember, None] = Field(title="User")
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    projects_v2: ProjectsV2 = Field(
+        title="Projects v2 Project", description="A projects v2 project"
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -57,72 +46,63 @@ class WebhookMemberEdited(GitHubModel):
     )
 
 
-class WebhookMemberEditedPropMember(GitHubModel):
-    """User"""
+class WebhookProjectsV2ProjectEditedPropChanges(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChanges"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookMemberEditedPropChanges(GitHubModel):
-    """WebhookMemberEditedPropChanges
-
-    The changes to the collaborator permissions
-    """
-
-    old_permission: Missing[WebhookMemberEditedPropChangesPropOldPermission] = Field(
+    description: Missing[WebhookProjectsV2ProjectEditedPropChangesPropDescription] = (
+        Field(default=UNSET)
+    )
+    public: Missing[WebhookProjectsV2ProjectEditedPropChangesPropPublic] = Field(
         default=UNSET
     )
-    permission: Missing[WebhookMemberEditedPropChangesPropPermission] = Field(
+    short_description: Missing[
+        WebhookProjectsV2ProjectEditedPropChangesPropShortDescription
+    ] = Field(default=UNSET)
+    title: Missing[WebhookProjectsV2ProjectEditedPropChangesPropTitle] = Field(
         default=UNSET
     )
 
 
-class WebhookMemberEditedPropChangesPropOldPermission(GitHubModel):
-    """WebhookMemberEditedPropChangesPropOldPermission"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous permissions of the collaborator if the action was edited.",
-    )
-
-
-class WebhookMemberEditedPropChangesPropPermission(GitHubModel):
-    """WebhookMemberEditedPropChangesPropPermission"""
+class WebhookProjectsV2ProjectEditedPropChangesPropDescription(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
 
     from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
     to: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-model_rebuild(WebhookMemberEdited)
-model_rebuild(WebhookMemberEditedPropMember)
-model_rebuild(WebhookMemberEditedPropChanges)
-model_rebuild(WebhookMemberEditedPropChangesPropOldPermission)
-model_rebuild(WebhookMemberEditedPropChangesPropPermission)
+class WebhookProjectsV2ProjectEditedPropChangesPropPublic(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
+
+    from_: Missing[bool] = Field(default=UNSET, alias="from")
+    to: Missing[bool] = Field(default=UNSET)
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropShortDescription(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
+
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropTitle(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+    to: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookProjectsV2ProjectEdited)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChanges)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropDescription)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropPublic)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropShortDescription)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropTitle)
 
 __all__ = (
-    "WebhookMemberEdited",
-    "WebhookMemberEditedPropMember",
-    "WebhookMemberEditedPropChanges",
-    "WebhookMemberEditedPropChangesPropOldPermission",
-    "WebhookMemberEditedPropChangesPropPermission",
+    "WebhookProjectsV2ProjectEdited",
+    "WebhookProjectsV2ProjectEditedPropChanges",
+    "WebhookProjectsV2ProjectEditedPropChangesPropDescription",
+    "WebhookProjectsV2ProjectEditedPropChangesPropPublic",
+    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescription",
+    "WebhookProjectsV2ProjectEditedPropChangesPropTitle",
 )

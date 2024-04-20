@@ -9,49 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import List, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody(GitHubModel):
-    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
+class UserCodespacesSecretsGetResponse200(GitHubModel):
+    """UserCodespacesSecretsGetResponse200"""
 
-    state: Literal[
-        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
-    ] = Field(
-        description="The state of the status. When you set a transient deployment to `inactive`, the deployment will be shown as `destroyed` in GitHub."
+    total_count: int = Field()
+    secrets: List[CodespacesSecret] = Field()
+
+
+class CodespacesSecret(GitHubModel):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str = Field(description="The name of the secret")
+    created_at: datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    target_url: Missing[str] = Field(
-        default=UNSET,
-        description="The target URL to associate with this status. This URL should contain output to keep the user updated while the task is running or serve as historical information for what happened in the deployment. **Note:** It's recommended to use the `log_url` parameter, which replaces `target_url`.",
+    updated_at: datetime = Field(
+        description="The date and time at which the secret was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    log_url: Missing[str] = Field(
-        default=UNSET,
-        description='The full URL of the deployment\'s output. This parameter replaces `target_url`. We will continue to accept `target_url` to support legacy uses, but we recommend replacing `target_url` with `log_url`. Setting `log_url` will automatically set `target_url` to the same value. Default: `""`',
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that the secret is visible to"
     )
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description of the status. The maximum description length is 140 characters.",
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="Name for the target deployment environment, which can be changed when setting a deploy status. For example, `production`, `staging`, or `qa`. If not defined, the environment of the previous status on the deployment will be used, if it exists. Otherwise, the environment of the deployment will be used.",
-    )
-    environment_url: Missing[str] = Field(
-        default=UNSET,
-        description='Sets the URL for accessing your environment. Default: `""`',
-    )
-    auto_inactive: Missing[bool] = Field(
-        default=UNSET,
-        description="Adds a new `inactive` status to all prior non-transient, non-production environment deployments with the same repository and `environment` name as the created status's deployment. An `inactive` status is only added to deployments that had a `success` state. Default: `true`",
+    selected_repositories_url: str = Field(
+        description="The API URL at which the list of repositories this secret is visible to can be retrieved"
     )
 
 
-model_rebuild(ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody)
+model_rebuild(UserCodespacesSecretsGetResponse200)
+model_rebuild(CodespacesSecret)
 
-__all__ = ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody",)
+__all__ = (
+    "UserCodespacesSecretsGetResponse200",
+    "CodespacesSecret",
+)

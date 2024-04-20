@@ -9,23 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody(
-    GitHubModel
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody"""
+class ProjectsColumnsColumnIdPatchBody(GitHubModel):
+    """ProjectsColumnsColumnIdPatchBody"""
 
-    selected_organization_ids: List[int] = Field(
-        description="List of organization IDs that can access the runner group."
-    )
+    name: str = Field(description="Name of the project column")
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody)
+model_rebuild(ProjectsColumnsColumnIdPatchBody)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody",)
+__all__ = ("ProjectsColumnsColumnIdPatchBody",)

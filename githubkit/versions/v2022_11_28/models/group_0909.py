@@ -11,15 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody"""
+class ReposOwnerRepoGitRefsRefPatchBody(GitHubModel):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
 
-    body: str = Field(description="The discussion comment's body text.")
+    sha: str = Field(description="The SHA1 value to set this reference to")
+    force: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether to force the update or to make sure the update is a fast-forward update. Leaving this out or setting it to `false` will make sure you're not overwriting work.",
+    )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody)
+model_rebuild(ReposOwnerRepoGitRefsRefPatchBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody",)
+__all__ = ("ReposOwnerRepoGitRefsRefPatchBody",)

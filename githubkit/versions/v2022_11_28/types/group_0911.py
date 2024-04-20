@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType(
-    TypedDict
-):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPos
-    tBody
-    """
+class ReposOwnerRepoGitTreesPostBodyType(TypedDict):
+    """ReposOwnerRepoGitTreesPostBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType]
+    base_tree: NotRequired[str]
+
+
+class ReposOwnerRepoGitTreesPostBodyPropTreeItemsType(TypedDict):
+    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
+
+    path: NotRequired[str]
+    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
+    type: NotRequired[Literal["blob", "tree", "commit"]]
+    sha: NotRequired[Union[str, None]]
+    content: NotRequired[str]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType",
+    "ReposOwnerRepoGitTreesPostBodyType",
+    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsType",
 )

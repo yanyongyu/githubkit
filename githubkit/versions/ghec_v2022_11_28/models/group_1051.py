@@ -18,29 +18,54 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200(GitHubModel):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
+class ScimV2OrganizationsOrgUsersScimUserIdPutBody(GitHubModel):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
 
-    total_count: int = Field()
-    devcontainers: List[
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems
-    ] = Field()
+    schemas: Missing[List[str]] = Field(default=UNSET)
+    display_name: Missing[str] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="The name of the user, suitable for display to end-users",
+    )
+    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
+    groups: Missing[List[str]] = Field(default=UNSET)
+    active: Missing[bool] = Field(default=UNSET)
+    user_name: str = Field(
+        alias="userName",
+        description="Configured by the admin. Could be an email, login, or username",
+    )
+    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName = Field()
+    emails: List[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems] = Field(
+        min_length=1, description="user emails"
+    )
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems(
-    GitHubModel
-):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName(GitHubModel):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
 
-    path: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    display_name: Missing[str] = Field(default=UNSET)
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str = Field(alias="givenName")
+    family_name: str = Field(alias="familyName")
+    formatted: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200)
-model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems)
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems(GitHubModel):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
+
+    type: Missing[str] = Field(default=UNSET)
+    value: str = Field()
+    primary: Missing[bool] = Field(default=UNSET)
+
+
+model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBody)
+model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName)
+model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems)
 
 __all__ = (
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200",
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBody",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems",
 )

@@ -9,11 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import TypedDict, NotRequired
 
 
-class ProjectsColumnsColumnIdMovesPostResponse201Type(TypedDict):
-    """ProjectsColumnsColumnIdMovesPostResponse201"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+
+    labels: NotRequired[
+        List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
+    ]
 
 
-__all__ = ("ProjectsColumnsColumnIdMovesPostResponse201Type",)
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
+
+    name: str
+
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType",
+)

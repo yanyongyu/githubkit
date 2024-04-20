@@ -9,20 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoCodeScanningSarifsPostBodyType(TypedDict):
-    """ReposOwnerRepoCodeScanningSarifsPostBody"""
+class ReposOwnerRepoTransferPostBodyType(TypedDict):
+    """ReposOwnerRepoTransferPostBody"""
 
-    commit_sha: str
-    ref: str
-    sarif: str
-    checkout_uri: NotRequired[str]
-    started_at: NotRequired[datetime]
-    tool_name: NotRequired[str]
-    validate_: NotRequired[bool]
+    new_owner: str
+    new_name: NotRequired[str]
+    team_ids: NotRequired[List[int]]
 
 
-__all__ = ("ReposOwnerRepoCodeScanningSarifsPostBodyType",)
+__all__ = ("ReposOwnerRepoTransferPostBodyType",)

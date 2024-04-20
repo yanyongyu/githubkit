@@ -9,24 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0803 import (
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType,
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType,
-)
+from typing import List
+from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsType(
-    TypedDict
-):
-    """WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItems"""
+class ProjectsColumnsCardsCardIdDeleteResponse403Type(TypedDict):
+    """ProjectsColumnsCardsCardIdDeleteResponse403"""
 
-    base: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType
-    head: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType
-    id: float
-    number: float
-    url: str
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    errors: NotRequired[List[str]]
 
 
-__all__ = ("WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsType",)
+__all__ = ("ProjectsColumnsCardsCardIdDeleteResponse403Type",)

@@ -9,51 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union, Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0766 import WebhookRepositoryRulesetEditedPropChangesPropRules
-from .group_0764 import WebhookRepositoryRulesetEditedPropChangesPropConditions
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 
-class WebhookRepositoryRulesetEditedPropChanges(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChanges"""
+class GistsPostBody(GitHubModel):
+    """GistsPostBody"""
 
-    name: Missing[WebhookRepositoryRulesetEditedPropChangesPropName] = Field(
-        default=UNSET
+    description: Missing[str] = Field(
+        default=UNSET, description="Description of the gist"
     )
-    enforcement: Missing[WebhookRepositoryRulesetEditedPropChangesPropEnforcement] = (
-        Field(default=UNSET)
+    files: GistsPostBodyPropFiles = Field(
+        description="Names and content for the files that make up the gist"
     )
-    conditions: Missing[WebhookRepositoryRulesetEditedPropChangesPropConditions] = (
-        Field(default=UNSET)
-    )
-    rules: Missing[WebhookRepositoryRulesetEditedPropChangesPropRules] = Field(
-        default=UNSET
-    )
+    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropName(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+class GistsPostBodyPropFiles(ExtraGitHubModel):
+    """GistsPostBodyPropFiles
 
-    from_: Missing[str] = Field(default=UNSET, alias="from")
+    Names and content for the files that make up the gist
 
-
-class WebhookRepositoryRulesetEditedPropChangesPropEnforcement(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
+    Examples:
+        {'hello.rb': {'content': 'puts "Hello, World!"'}}
+    """
 
 
-model_rebuild(WebhookRepositoryRulesetEditedPropChanges)
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropName)
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropEnforcement)
+model_rebuild(GistsPostBody)
+model_rebuild(GistsPostBodyPropFiles)
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChanges",
-    "WebhookRepositoryRulesetEditedPropChangesPropName",
-    "WebhookRepositoryRulesetEditedPropChangesPropEnforcement",
+    "GistsPostBody",
+    "GistsPostBodyPropFiles",
 )

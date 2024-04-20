@@ -18,18 +18,15 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseActionsPermissionsPutBody(GitHubModel):
-    """EnterprisesEnterpriseActionsPermissionsPutBody"""
+class OrgsOrgSecurityProductEnablementPostBody(GitHubModel):
+    """OrgsOrgSecurityProductEnablementPostBody"""
 
-    enabled_organizations: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the organizations in the enterprise that are allowed to run GitHub Actions."
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+    query_suite: Missing[Literal["default", "extended"]] = Field(
         default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+        description="CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured.\nIf you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.",
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsPermissionsPutBody)
+model_rebuild(OrgsOrgSecurityProductEnablementPostBody)
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsPutBody",)
+__all__ = ("OrgsOrgSecurityProductEnablementPostBody",)

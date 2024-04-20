@@ -9,13 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgInteractionLimitsGetResponse200Anyof1(GitHubModel):
-    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoCommentsCommentIdPatchBody(GitHubModel):
+    """ReposOwnerRepoCommentsCommentIdPatchBody"""
+
+    body: str = Field(description="The contents of the comment")
 
 
-model_rebuild(OrgsOrgInteractionLimitsGetResponse200Anyof1)
+model_rebuild(ReposOwnerRepoCommentsCommentIdPatchBody)
 
-__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1",)
+__all__ = ("ReposOwnerRepoCommentsCommentIdPatchBody",)

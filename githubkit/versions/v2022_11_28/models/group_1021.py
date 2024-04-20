@@ -9,30 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoForksPostBody(GitHubModel):
-    """ReposOwnerRepoForksPostBody"""
+class UserMembershipsOrgsOrgPatchBody(GitHubModel):
+    """UserMembershipsOrgsOrgPatchBody"""
 
-    organization: Missing[str] = Field(
-        default=UNSET,
-        description="Optional parameter to specify the organization name if forking into an organization.",
-    )
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="When forking from an existing repository, a new name for the fork.",
-    )
-    default_branch_only: Missing[bool] = Field(
-        default=UNSET,
-        description="When forking from an existing repository, fork with only the default branch.",
+    state: Literal["active"] = Field(
+        description='The state that the membership should be in. Only `"active"` will be accepted.'
     )
 
 
-model_rebuild(ReposOwnerRepoForksPostBody)
+model_rebuild(UserMembershipsOrgsOrgPatchBody)
 
-__all__ = ("ReposOwnerRepoForksPostBody",)
+__all__ = ("UserMembershipsOrgsOrgPatchBody",)

@@ -12,38 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoContentsPathDeleteBodyType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBody"""
+class TeamsTeamIdProjectsProjectIdPutResponse403Type(TypedDict):
+    """TeamsTeamIdProjectsProjectIdPutResponse403"""
 
-    message: str
-    sha: str
-    branch: NotRequired[str]
-    committer: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropCommitterType]
-    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class ReposOwnerRepoContentsPathDeleteBodyPropCommitterType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
-
-    object containing information about the committer.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-class ReposOwnerRepoContentsPathDeleteBodyPropAuthorType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
-
-    object containing information about the author.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-__all__ = (
-    "ReposOwnerRepoContentsPathDeleteBodyType",
-    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
-    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
-)
+__all__ = ("TeamsTeamIdProjectsProjectIdPutResponse403Type",)

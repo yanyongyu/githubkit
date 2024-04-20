@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,58 +18,52 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1(GitHubModel):
-    """WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1"""
+class WebhookProjectCardMovedPropProjectCardAllof1(GitHubModel):
+    """WebhookProjectCardMovedPropProjectCardAllof1"""
 
-    account: Missing[
-        WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropAccount
+    after_id: Union[int, None] = Field()
+    archived: Missing[bool] = Field(default=UNSET)
+    column_id: Missing[int] = Field(default=UNSET)
+    column_url: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    creator: Missing[
+        Union[WebhookProjectCardMovedPropProjectCardAllof1PropCreator, None]
     ] = Field(default=UNSET)
-    billing_cycle: Missing[str] = Field(default=UNSET)
-    free_trial_ends_on: Missing[Union[str, None]] = Field(default=UNSET)
-    next_billing_date: Union[str, None] = Field()
-    on_free_trial: Missing[bool] = Field(default=UNSET)
-    plan: Missing[
-        WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropPlan
-    ] = Field(default=UNSET)
-    unit_count: Missing[int] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    note: Missing[Union[str, None]] = Field(default=UNSET)
+    project_url: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropAccount(
-    GitHubModel
-):
-    """WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropAccount"""
+class WebhookProjectCardMovedPropProjectCardAllof1PropCreator(GitHubModel):
+    """WebhookProjectCardMovedPropProjectCardAllof1PropCreator"""
 
+    avatar_url: Missing[str] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
     id: Missing[int] = Field(default=UNSET)
     login: Missing[str] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
-    organization_billing_email: Missing[Union[str, None]] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
     type: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropPlan(
-    GitHubModel
-):
-    """WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropPlan"""
-
-    bullets: Missing[List[Union[str, None]]] = Field(default=UNSET)
-    description: Missing[str] = Field(default=UNSET)
-    has_free_trial: Missing[bool] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    monthly_price_in_cents: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    price_model: Missing[Literal["FREE", "FLAT_RATE", "PER_UNIT"]] = Field(
-        default=UNSET
-    )
-    unit_name: Missing[Union[str, None]] = Field(default=UNSET)
-    yearly_price_in_cents: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1)
-model_rebuild(WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropAccount)
-model_rebuild(WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropPlan)
+model_rebuild(WebhookProjectCardMovedPropProjectCardAllof1)
+model_rebuild(WebhookProjectCardMovedPropProjectCardAllof1PropCreator)
 
 __all__ = (
-    "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1",
-    "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropAccount",
-    "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropPlan",
+    "WebhookProjectCardMovedPropProjectCardAllof1",
+    "WebhookProjectCardMovedPropProjectCardAllof1PropCreator",
 )

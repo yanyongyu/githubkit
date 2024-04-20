@@ -13,26 +13,41 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
 
-    total_count: int
-    devcontainers: List[
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType
-    ]
-
-
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
-
-    path: str
-    name: NotRequired[str]
+    schemas: NotRequired[List[str]]
     display_name: NotRequired[str]
+    external_id: NotRequired[str]
+    groups: NotRequired[List[str]]
+    active: NotRequired[bool]
+    user_name: str
+    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType
+    emails: List[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType(TypedDict):
+    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
+
+    type: NotRequired[str]
+    value: str
+    primary: NotRequired[bool]
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200Type",
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType",
+    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType",
 )

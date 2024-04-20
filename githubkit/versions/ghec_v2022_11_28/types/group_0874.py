@@ -9,14 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
+class ProjectsProjectIdPatchBodyType(TypedDict):
+    """ProjectsProjectIdPatchBody"""
 
-    labels: List[str]
+    name: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+    state: NotRequired[str]
+    organization_permission: NotRequired[Literal["read", "write", "admin", "none"]]
+    private: NotRequired[bool]
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType",)
+__all__ = ("ProjectsProjectIdPatchBodyType",)

@@ -16,20 +16,21 @@ from .group_0390 import EnterpriseWebhooksType
 from .group_0391 import SimpleInstallationType
 from .group_0393 import RepositoryWebhooksType
 from .group_0394 import SimpleUserWebhooksType
+from .group_0403 import PullRequestWebhookType
 from .group_0392 import OrganizationSimpleWebhooksType
-from .group_0632 import WebhookPackageUpdatedPropPackageType
 
 
-class WebhookPackageUpdatedType(TypedDict):
-    """package updated event"""
+class WebhookPullRequestReadyForReviewType(TypedDict):
+    """pull_request ready_for_review event"""
 
-    action: Literal["updated"]
+    action: Literal["ready_for_review"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    package: WebhookPackageUpdatedPropPackageType
+    pull_request: PullRequestWebhookType
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookPackageUpdatedType",)
+__all__ = ("WebhookPullRequestReadyForReviewType",)

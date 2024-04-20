@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -17,45 +18,33 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0357 import EnterpriseWebhooks
-from .group_0358 import SimpleInstallation
-from .group_0360 import RepositoryWebhooks
-from .group_0361 import SimpleUserWebhooks
-from .group_0359 import OrganizationSimpleWebhooks
-from .group_0369 import SecretScanningAlertWebhook
+
+class OrgsOrgDependabotSecretsGetResponse200(GitHubModel):
+    """OrgsOrgDependabotSecretsGetResponse200"""
+
+    total_count: int = Field()
+    secrets: List[OrganizationDependabotSecret] = Field()
 
 
-class WebhookSecretScanningAlertReopened(GitHubModel):
-    """secret_scanning_alert reopened event"""
+class OrganizationDependabotSecret(GitHubModel):
+    """Dependabot Secret for an Organization
 
-    action: Literal["reopened"] = Field()
-    alert: SecretScanningAlertWebhook = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+    Secrets for GitHub Dependabot for an organization.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a secret"
     )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: Missing[SimpleUserWebhooks] = Field(
-        default=UNSET,
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookSecretScanningAlertReopened)
+model_rebuild(OrgsOrgDependabotSecretsGetResponse200)
+model_rebuild(OrganizationDependabotSecret)
 
-__all__ = ("WebhookSecretScanningAlertReopened",)
+__all__ = (
+    "OrgsOrgDependabotSecretsGetResponse200",
+    "OrganizationDependabotSecret",
+)

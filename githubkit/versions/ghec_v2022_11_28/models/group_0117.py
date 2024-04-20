@@ -26,7 +26,7 @@ class RepositoryRulesetBypassActor(GitHubModel):
         description="The ID of the actor that can bypass a ruleset. If `actor_type` is `OrganizationAdmin`, this should be `1`."
     )
     actor_type: Literal[
-        "RepositoryRole", "Team", "Integration", "OrganizationAdmin"
+        "Integration", "OrganizationAdmin", "RepositoryRole", "Team"
     ] = Field(description="The type of actor that can bypass a ruleset")
     bypass_mode: Literal["always", "pull_request"] = Field(
         description="When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests."

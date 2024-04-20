@@ -9,14 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import TypedDict, NotRequired
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
+class ProjectsColumnsCardsCardIdPatchBodyType(TypedDict):
+    """ProjectsColumnsCardsCardIdPatchBody"""
 
-    selected_organization_ids: List[int]
+    note: NotRequired[Union[str, None]]
+    archived: NotRequired[bool]
 
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType",)
+__all__ = ("ProjectsColumnsCardsCardIdPatchBodyType",)

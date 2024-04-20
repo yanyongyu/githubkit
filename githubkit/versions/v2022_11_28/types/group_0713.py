@@ -9,22 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookReleaseUnpublishedPropReleaseAllof0PropReactionsType(TypedDict):
-    """Reactions"""
+class GistsGistIdGetResponse403Type(TypedDict):
+    """GistsGistIdGetResponse403"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+    block: NotRequired[GistsGistIdGetResponse403PropBlockType]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-__all__ = ("WebhookReleaseUnpublishedPropReleaseAllof0PropReactionsType",)
+class GistsGistIdGetResponse403PropBlockType(TypedDict):
+    """GistsGistIdGetResponse403PropBlock"""
+
+    reason: NotRequired[str]
+    created_at: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "GistsGistIdGetResponse403Type",
+    "GistsGistIdGetResponse403PropBlockType",
+)

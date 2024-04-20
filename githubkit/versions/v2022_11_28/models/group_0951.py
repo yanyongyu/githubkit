@@ -9,25 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
+class ReposOwnerRepoPagesPostBodyPropSource(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyPropSource
 
-    environment_ids: List[int] = Field(
-        description="The list of environment ids to approve or reject"
+    The source branch and directory used to publish your Pages site.
+    """
+
+    branch: str = Field(
+        description="The repository branch used to publish your site's source files."
     )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether to approve or reject deployment to the specified environments."
+    path: Missing[Literal["/", "/docs"]] = Field(
+        default=UNSET,
+        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. Default: `/`",
     )
-    comment: str = Field(description="A comment to accompany the deployment review")
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody)
+model_rebuild(ReposOwnerRepoPagesPostBodyPropSource)
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",)
+__all__ = ("ReposOwnerRepoPagesPostBodyPropSource",)

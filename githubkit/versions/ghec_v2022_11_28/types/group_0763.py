@@ -9,37 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0766 import WebhookRepositoryRulesetEditedPropChangesPropRulesType
-from .group_0764 import WebhookRepositoryRulesetEditedPropChangesPropConditionsType
+
+class GistsPostBodyType(TypedDict):
+    """GistsPostBody"""
+
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesType
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
 
 
-class WebhookRepositoryRulesetEditedPropChangesType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChanges"""
+class GistsPostBodyPropFilesType(TypedDict):
+    """GistsPostBodyPropFiles
 
-    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameType]
-    enforcement: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropEnforcementType
-    ]
-    conditions: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropConditionsType]
-    rules: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropRulesType]
+    Names and content for the files that make up the gist
 
-
-class WebhookRepositoryRulesetEditedPropChangesPropNameType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropName"""
-
-    from_: NotRequired[str]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropEnforcementType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
-
-    from_: NotRequired[str]
+    Examples:
+        {'hello.rb': {'content': 'puts "Hello, World!"'}}
+    """
 
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesType",
-    "WebhookRepositoryRulesetEditedPropChangesPropNameType",
-    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementType",
+    "GistsPostBodyType",
+    "GistsPostBodyPropFilesType",
 )

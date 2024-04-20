@@ -9,13 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class GistsGistIdStarGetResponse404(GitHubModel):
-    """GistsGistIdStarGetResponse404"""
+from .group_0177 import ActionsVariable
 
 
-model_rebuild(GistsGistIdStarGetResponse404)
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
 
-__all__ = ("GistsGistIdStarGetResponse404",)
+    total_count: int = Field()
+    variables: List[ActionsVariable] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsOrganizationVariablesGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200",)

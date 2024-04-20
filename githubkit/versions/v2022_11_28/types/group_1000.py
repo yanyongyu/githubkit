@@ -12,13 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoCommitsCommitShaCommentsPostBodyType(TypedDict):
-    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
+class TeamsTeamIdProjectsProjectIdPutResponse403Type(TypedDict):
+    """TeamsTeamIdProjectsProjectIdPutResponse403"""
 
-    body: str
-    path: NotRequired[str]
-    position: NotRequired[int]
-    line: NotRequired[int]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBodyType",)
+__all__ = ("TeamsTeamIdProjectsProjectIdPutResponse403Type",)

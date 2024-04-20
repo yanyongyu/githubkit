@@ -9,22 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgMigrationsPostBodyType(TypedDict):
-    """OrgsOrgMigrationsPostBody"""
+class ReposOwnerRepoContentsPathPutBodyType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBody"""
 
-    repositories: List[str]
-    lock_repositories: NotRequired[bool]
-    exclude_metadata: NotRequired[bool]
-    exclude_git_data: NotRequired[bool]
-    exclude_attachments: NotRequired[bool]
-    exclude_releases: NotRequired[bool]
-    exclude_owner_projects: NotRequired[bool]
-    org_metadata_only: NotRequired[bool]
-    exclude: NotRequired[List[Literal["repositories"]]]
+    message: str
+    content: str
+    sha: NotRequired[str]
+    branch: NotRequired[str]
+    committer: NotRequired[ReposOwnerRepoContentsPathPutBodyPropCommitterType]
+    author: NotRequired[ReposOwnerRepoContentsPathPutBodyPropAuthorType]
 
 
-__all__ = ("OrgsOrgMigrationsPostBodyType",)
+class ReposOwnerRepoContentsPathPutBodyPropCommitterType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropCommitter
+
+    The person that committed the file. Default: the authenticated user.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathPutBodyPropAuthorType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropAuthor
+
+    The author of the file. Default: The `committer` or the authenticated user if
+    you omit `committer`.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoContentsPathPutBodyType",
+    "ReposOwnerRepoContentsPathPutBodyPropCommitterType",
+    "ReposOwnerRepoContentsPathPutBodyPropAuthorType",
+)

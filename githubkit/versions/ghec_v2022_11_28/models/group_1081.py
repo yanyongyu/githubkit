@@ -9,23 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoGitBlobsPostBody(GitHubModel):
-    """ReposOwnerRepoGitBlobsPostBody"""
-
-    content: str = Field(description="The new blob's content.")
-    encoding: Missing[str] = Field(
-        default=UNSET,
-        description='The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported.',
-    )
+from .group_0017 import Repository
 
 
-model_rebuild(ReposOwnerRepoGitBlobsPostBody)
+class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
 
-__all__ = ("ReposOwnerRepoGitBlobsPostBody",)
+    total_count: int = Field()
+    repository_selection: Missing[str] = Field(default=UNSET)
+    repositories: List[Repository] = Field()
+
+
+model_rebuild(UserInstallationsInstallationIdRepositoriesGetResponse200)
+
+__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200",)

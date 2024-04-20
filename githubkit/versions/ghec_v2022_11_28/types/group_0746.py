@@ -9,22 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
 
-class WebhookReleaseUnpublishedPropReleaseAllof0PropReactionsType(TypedDict):
-    """Reactions"""
+class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+    selected_organization_ids: List[int]
 
 
-__all__ = ("WebhookReleaseUnpublishedPropReleaseAllof0PropReactionsType",)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType",)

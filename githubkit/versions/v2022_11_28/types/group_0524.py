@@ -9,93 +9,126 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0523 import (
-    WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-    WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
-)
+from .group_0357 import EnterpriseWebhooksType
+from .group_0358 import SimpleInstallationType
+from .group_0360 import RepositoryWebhooksType
+from .group_0359 import OrganizationSimpleWebhooksType
 
 
-class WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
-    """App
+class WebhookMembershipAddedType(TypedDict):
+    """membership added event"""
 
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
+    action: Literal["added"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    member: Union[WebhookMembershipAddedPropMemberType, None]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    scope: Literal["team"]
+    sender: Union[WebhookMembershipAddedPropSenderType, None]
+    team: WebhookMembershipAddedPropTeamType
+
+
+class WebhookMembershipAddedPropMemberType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookMembershipAddedPropSenderType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookMembershipAddedPropTeamType(TypedDict):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    created_at: Union[datetime, None]
-    description: Union[str, None]
-    events: NotRequired[
-        List[
-            Literal[
-                "branch_protection_rule",
-                "check_run",
-                "check_suite",
-                "code_scanning_alert",
-                "commit_comment",
-                "content_reference",
-                "create",
-                "delete",
-                "deployment",
-                "deployment_review",
-                "deployment_status",
-                "deploy_key",
-                "discussion",
-                "discussion_comment",
-                "fork",
-                "gollum",
-                "issues",
-                "issue_comment",
-                "label",
-                "member",
-                "membership",
-                "milestone",
-                "organization",
-                "org_block",
-                "page_build",
-                "project",
-                "project_card",
-                "project_column",
-                "public",
-                "pull_request",
-                "pull_request_review",
-                "pull_request_review_comment",
-                "push",
-                "registry_package",
-                "release",
-                "repository",
-                "repository_dispatch",
-                "secret_scanning_alert",
-                "star",
-                "status",
-                "team",
-                "team_add",
-                "watch",
-                "workflow_dispatch",
-                "workflow_run",
-                "reminder",
-            ]
-        ]
+    deleted: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
+    html_url: NotRequired[str]
+    id: int
+    members_url: NotRequired[str]
+    name: str
+    node_id: NotRequired[str]
+    parent: NotRequired[Union[WebhookMembershipAddedPropTeamPropParentType, None]]
+    permission: NotRequired[str]
+    privacy: NotRequired[Literal["open", "closed", "secret"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
-    external_url: Union[str, None]
+    repositories_url: NotRequired[str]
+    slug: NotRequired[str]
+    url: NotRequired[str]
+
+
+class WebhookMembershipAddedPropTeamPropParentType(TypedDict):
+    """WebhookMembershipAddedPropTeamPropParent"""
+
+    description: Union[str, None]
     html_url: str
-    id: Union[int, None]
+    id: int
+    members_url: str
     name: str
     node_id: str
-    owner: Union[
-        WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-        None,
-    ]
-    permissions: NotRequired[
-        WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[datetime, None]
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
+    repositories_url: str
+    slug: str
+    url: str
 
 
-__all__ = ("WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubAppType",)
+__all__ = (
+    "WebhookMembershipAddedType",
+    "WebhookMembershipAddedPropMemberType",
+    "WebhookMembershipAddedPropSenderType",
+    "WebhookMembershipAddedPropTeamType",
+    "WebhookMembershipAddedPropTeamPropParentType",
+)

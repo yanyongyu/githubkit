@@ -9,36 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
+class ReposOwnerRepoPullsPullNumberMergePutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutBody"""
 
-    strict: NotRequired[bool]
-    contexts: NotRequired[List[str]]
-    checks: NotRequired[
-        List[
-            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
-        ]
-    ]
+    commit_title: NotRequired[str]
+    commit_message: NotRequired[str]
+    sha: NotRequired[str]
+    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
-    ms
-    """
-
-    context: str
-    app_id: NotRequired[int]
-
-
-__all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberMergePutBodyType",)

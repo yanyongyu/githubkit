@@ -13,18 +13,21 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0158 import ActionsVariable
+from .group_0017 import Repository
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
 
     total_count: int = Field()
-    variables: List[ActionsVariable] = Field()
+    repository_selection: Missing[str] = Field(default=UNSET)
+    repositories: List[Repository] = Field()
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200)
+model_rebuild(UserInstallationsInstallationIdRepositoriesGetResponse200)
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200",)
+__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200",)

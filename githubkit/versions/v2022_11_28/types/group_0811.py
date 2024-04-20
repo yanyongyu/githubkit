@@ -9,52 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType(
-    TypedDict
-):
-    """WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase"""
+class ProjectsColumnsColumnIdCardsPostResponse503Type(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostResponse503"""
 
-    ref: str
-    repo: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepoType
-    sha: str
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepoType(
-    TypedDict
-):
-    """Repo Ref"""
-
-    id: int
-    name: str
-    url: str
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    errors: NotRequired[
+        List[ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType]
+    ]
 
 
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType(
-    TypedDict
-):
-    """WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead"""
+class ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems"""
 
-    ref: str
-    repo: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepoType
-    sha: str
-
-
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepoType(
-    TypedDict
-):
-    """Repo Ref"""
-
-    id: int
-    name: str
-    url: str
+    code: NotRequired[str]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType",
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepoType",
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType",
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepoType",
+    "ProjectsColumnsColumnIdCardsPostResponse503Type",
+    "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType",
 )

@@ -12,11 +12,14 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgProjectsPostBodyType(TypedDict):
-    """OrgsOrgProjectsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
 
-    name: str
-    body: NotRequired[str]
+    integration_id: NotRequired[int]
 
 
-__all__ = ("OrgsOrgProjectsPostBodyType",)
+__all__ = (
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType",
+)

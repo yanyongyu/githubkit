@@ -17,19 +17,19 @@ from .group_0358 import SimpleInstallationType
 from .group_0360 import RepositoryWebhooksType
 from .group_0361 import SimpleUserWebhooksType
 from .group_0359 import OrganizationSimpleWebhooksType
-from .group_0546 import WebhookIssuesUnlockedPropIssueType
+from .group_0546 import WebhookPackageUpdatedPropPackageType
 
 
-class WebhookIssuesUnlockedType(TypedDict):
-    """issues unlocked event"""
+class WebhookPackageUpdatedType(TypedDict):
+    """package updated event"""
 
-    action: Literal["unlocked"]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesUnlockedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    package: WebhookPackageUpdatedPropPackageType
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookIssuesUnlockedType",)
+__all__ = ("WebhookPackageUpdatedType",)

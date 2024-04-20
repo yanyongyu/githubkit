@@ -9,16 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0112 import OrgCustomPropertyType
+from typing import List, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesSchemaPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
 
-    properties: List[OrgCustomPropertyType]
+    total_count: int
+    branch_policies: List[DeploymentBranchPolicyType]
 
 
-__all__ = ("OrgsOrgPropertiesSchemaPatchBodyType",)
+class DeploymentBranchPolicyType(TypedDict):
+    """Deployment branch policy
+
+    Details of a deployment branch or tag policy.
+    """
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[Literal["branch", "tag"]]
+
+
+__all__ = (
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
+    "DeploymentBranchPolicyType",
+)

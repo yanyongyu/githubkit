@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List
 
 from pydantic import Field
 
@@ -18,71 +17,38 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0748 import WebhookReleaseUnpublishedPropReleaseMergedAssets
-from .group_0746 import WebhookReleaseUnpublishedPropReleaseAllof0PropReactions
+from .group_0014 import AppPermissions
 
 
-class WebhookReleaseUnpublishedPropRelease(GitHubModel):
-    """WebhookReleaseUnpublishedPropRelease"""
+class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
+    """ApplicationsClientIdTokenScopedPostBody"""
 
-    assets: List[WebhookReleaseUnpublishedPropReleaseMergedAssets] = Field()
-    assets_url: str = Field()
-    author: WebhookReleaseUnpublishedPropReleaseMergedAuthor = Field()
-    body: Union[Union[str, None], None] = Field()
-    created_at: datetime = Field()
-    discussion_url: Missing[str] = Field(default=UNSET)
-    draft: bool = Field(description="Whether the release is a draft or published")
-    html_url: str = Field()
-    id: int = Field()
-    name: Union[Union[str, None], None] = Field()
-    node_id: str = Field()
-    prerelease: bool = Field(
-        description="Whether the release is identified as a prerelease or a full release."
+    access_token: str = Field(
+        description="The access token used to authenticate to the GitHub API."
     )
-    published_at: Union[datetime, None] = Field()
-    reactions: Missing[WebhookReleaseUnpublishedPropReleaseAllof0PropReactions] = Field(
-        default=UNSET, title="Reactions"
+    target: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
     )
-    tag_name: str = Field(description="The name of the tag.")
-    tarball_url: Union[Union[str, None], None] = Field()
-    target_commitish: str = Field(
-        description="Specifies the commitish value that determines where the Git tag is created from."
+    target_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
     )
-    upload_url: str = Field()
-    url: str = Field()
-    zipball_url: Union[Union[str, None], None] = Field()
+    repositories: Missing[List[str]] = Field(
+        default=UNSET,
+        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
+    )
+    repository_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
+    )
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
+    )
 
 
-class WebhookReleaseUnpublishedPropReleaseMergedAuthor(GitHubModel):
-    """WebhookReleaseUnpublishedPropReleaseMergedAuthor"""
+model_rebuild(ApplicationsClientIdTokenScopedPostBody)
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookReleaseUnpublishedPropRelease)
-model_rebuild(WebhookReleaseUnpublishedPropReleaseMergedAuthor)
-
-__all__ = (
-    "WebhookReleaseUnpublishedPropRelease",
-    "WebhookReleaseUnpublishedPropReleaseMergedAuthor",
-)
+__all__ = ("ApplicationsClientIdTokenScopedPostBody",)

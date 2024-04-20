@@ -9,22 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0034 import Runner
-
-
-class OrgsOrgActionsRunnersGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnersGetResponse200"""
-
-    total_count: int = Field()
-    runners: List[Runner] = Field()
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 
-model_rebuild(OrgsOrgActionsRunnersGetResponse200)
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(GitHubModel):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
 
-__all__ = ("OrgsOrgActionsRunnersGetResponse200",)
+    ref: str = Field(
+        description="The git reference for the workflow. The reference can be a branch or tag name."
+    )
+    inputs: Missing[
+        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+    ] = Field(
+        default=UNSET,
+        description="Input keys and values configured in the workflow file. The maximum number of properties is 10. Any default properties configured in the workflow file will be used when `inputs` are omitted.",
+    )
+
+
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs(
+    ExtraGitHubModel
+):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+
+    Input keys and values configured in the workflow file. The maximum number of
+    properties is 10. Any default properties configured in the workflow file will be
+    used when `inputs` are omitted.
+    """
+
+
+model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody)
+model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs)
+
+__all__ = (
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
+)

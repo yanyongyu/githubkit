@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union, Literal
 
 from pydantic import Field
@@ -18,126 +17,166 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0032 import Milestone
-from .group_0210 import AutoMerge
-from .group_0001 import SimpleUser
-from .group_0074 import TeamSimple
-from .group_0291 import PullRequestPropBase
-from .group_0293 import PullRequestPropLinks
-from .group_0290 import PullRequestPropHead, PullRequestPropLabelsItems
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0360 import RepositoryWebhooks
+from .group_0361 import SimpleUserWebhooks
+from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookPullRequestReopenedPropPullRequest(GitHubModel):
-    """WebhookPullRequestReopenedPropPullRequest"""
+class WebhookSecurityAdvisoryUpdated(GitHubModel):
+    """security_advisory updated event"""
+
+    action: Literal["updated"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    security_advisory: WebhookSecurityAdvisoryUpdatedPropSecurityAdvisory = Field(
+        description="The details of the security advisory, including summary, description, and severity."
+    )
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
+
+
+class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisory(GitHubModel):
+    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisory
+
+    The details of the security advisory, including summary, description, and
+    severity.
+    """
+
+    cvss: WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss = Field()
+    cwes: List[WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems] = (
+        Field()
+    )
+    description: str = Field()
+    ghsa_id: str = Field()
+    identifiers: List[
+        WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems
+    ] = Field()
+    published_at: str = Field()
+    references: List[
+        WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems
+    ] = Field()
+    severity: str = Field()
+    summary: str = Field()
+    updated_at: str = Field()
+    vulnerabilities: List[
+        WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems
+    ] = Field()
+    withdrawn_at: Union[str, None] = Field()
+
+
+class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss(GitHubModel):
+    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss"""
+
+    score: float = Field()
+    vector_string: Union[str, None] = Field()
+
+
+class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems(GitHubModel):
+    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str = Field()
+    name: str = Field()
+
+
+class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems(
+    GitHubModel
+):
+    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str = Field()
+    value: str = Field()
+
+
+class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems(
+    GitHubModel
+):
+    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems"""
 
     url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    issue_url: str = Field()
-    commits_url: str = Field()
-    review_comments_url: str = Field()
-    review_comment_url: str = Field()
-    comments_url: str = Field()
-    statuses_url: str = Field()
-    number: int = Field(
-        description="Number uniquely identifying the pull request within its repository."
-    )
-    state: Literal["open", "closed"] = Field(
-        description="State of this Pull Request. Either `open` or `closed`."
-    )
-    locked: bool = Field()
-    title: str = Field(description="The title of the pull request.")
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    body: Union[str, None] = Field()
-    labels: List[PullRequestPropLabelsItems] = Field()
-    milestone: Union[None, Milestone] = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    closed_at: Union[datetime, None] = Field()
-    merged_at: Union[datetime, None] = Field()
-    merge_commit_sha: Union[str, None] = Field()
-    assignee: Union[None, SimpleUser] = Field()
-    assignees: Missing[Union[List[SimpleUser], None]] = Field(default=UNSET)
-    requested_reviewers: Missing[Union[List[SimpleUser], None]] = Field(default=UNSET)
-    requested_teams: Missing[Union[List[TeamSimple], None]] = Field(default=UNSET)
-    head: PullRequestPropHead = Field()
-    base: PullRequestPropBase = Field()
-    links: PullRequestPropLinks = Field(alias="_links")
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    auto_merge: Union[AutoMerge, None] = Field(
-        title="Auto merge", description="The status of auto merging a pull request."
-    )
-    draft: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether or not the pull request is a draft.",
-    )
-    merged: bool = Field()
-    mergeable: Union[bool, None] = Field()
-    rebaseable: Missing[Union[bool, None]] = Field(default=UNSET)
-    mergeable_state: str = Field()
-    merged_by: Union[None, SimpleUser] = Field()
-    comments: int = Field()
-    review_comments: int = Field()
-    maintainer_can_modify: bool = Field(
-        description="Indicates whether maintainers can modify the pull request."
-    )
-    commits: int = Field()
-    additions: int = Field()
-    deletions: int = Field()
-    changed_files: int = Field()
-    allow_auto_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow auto-merge for pull requests."
-    )
-    allow_update_branch: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to allow updating the pull request's branch.",
-    )
-    delete_branch_on_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to delete head branches when pull requests are merged.",
-    )
-    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
-        default=UNSET,
-        description="The default value for a merge commit message.\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
-    )
-    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
-        default=UNSET,
-        description='The default value for a merge commit title.\n- `PR_TITLE` - default to the pull request\'s title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").',
-    )
-    squash_merge_commit_message: Missing[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit message:\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
-    )
-    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
-        Field(
-            default=UNSET,
-            description="The default value for a squash merge commit title:\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
-        )
-    )
-    use_squash_pr_title_as_default: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.**",
-    )
 
 
-model_rebuild(WebhookPullRequestReopenedPropPullRequest)
+class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems(
+    GitHubModel
+):
+    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems"""
 
-__all__ = ("WebhookPullRequestReopenedPropPullRequest",)
+    first_patched_version: Union[
+        WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion,
+        None,
+    ] = Field()
+    package: WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = Field()
+    severity: str = Field()
+    vulnerable_version_range: str = Field()
+
+
+class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
+    GitHubModel
+):
+    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFi
+    rstPatchedVersion
+    """
+
+    identifier: str = Field()
+
+
+class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(
+    GitHubModel
+):
+    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPa
+    ckage
+    """
+
+    ecosystem: str = Field()
+    name: str = Field()
+
+
+model_rebuild(WebhookSecurityAdvisoryUpdated)
+model_rebuild(WebhookSecurityAdvisoryUpdatedPropSecurityAdvisory)
+model_rebuild(WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss)
+model_rebuild(WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems)
+model_rebuild(WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems)
+model_rebuild(WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems)
+model_rebuild(
+    WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems
+)
+model_rebuild(
+    WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion
+)
+model_rebuild(
+    WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage
+)
+
+__all__ = (
+    "WebhookSecurityAdvisoryUpdated",
+    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisory",
+    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss",
+    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems",
+    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems",
+    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems",
+    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems",
+    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
+    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
+)

@@ -9,27 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsPermissionsPutBody(GitHubModel):
-    """OrgsOrgActionsPermissionsPutBody"""
+class ReposOwnerRepoActionsVariablesPostBody(GitHubModel):
+    """ReposOwnerRepoActionsVariablesPostBody"""
 
-    enabled_repositories: Literal["all", "none", "selected"] = Field(
-        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
-    )
-    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
-        default=UNSET,
-        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
-    )
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
 
 
-model_rebuild(OrgsOrgActionsPermissionsPutBody)
+model_rebuild(ReposOwnerRepoActionsVariablesPostBody)
 
-__all__ = ("OrgsOrgActionsPermissionsPutBody",)
+__all__ = ("ReposOwnerRepoActionsVariablesPostBody",)

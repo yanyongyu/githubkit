@@ -43,7 +43,6 @@ class WebhooksVersionSwitcher(_VersionProxy):
     def __call__(
         self, version: Literal["2022-11-28"]
     ) -> "V20221128WebhookNamespace": ...
-
     @overload
     def __call__(
         self, version: Literal["ghec-2022-11-28"]

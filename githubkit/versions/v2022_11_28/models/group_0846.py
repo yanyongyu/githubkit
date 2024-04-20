@@ -11,22 +11,26 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0062 import Runner
 
+class ReposOwnerRepoAutolinksPostBody(GitHubModel):
+    """ReposOwnerRepoAutolinksPostBody"""
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201(GitHubModel):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
-
-    runner: Runner = Field(
-        title="Self hosted runners", description="A self hosted runner"
+    key_prefix: str = Field(
+        description="This prefix appended by certain characters will generate a link any time it is found in an issue, pull request, or commit."
     )
-    encoded_jit_config: str = Field(
-        description="The base64 encoded runner configuration."
+    url_template: str = Field(
+        description="The URL must contain `<num>` for the reference number. `<num>` matches different characters depending on the value of `is_alphanumeric`."
+    )
+    is_alphanumeric: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether this autolink reference matches alphanumeric characters. If true, the `<num>` parameter of the `url_template` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`. If false, this autolink reference only matches numeric characters.",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnersGenerateJitconfigPostResponse201)
+model_rebuild(ReposOwnerRepoAutolinksPostBody)
 
-__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostResponse201",)
+__all__ = ("ReposOwnerRepoAutolinksPostBody",)

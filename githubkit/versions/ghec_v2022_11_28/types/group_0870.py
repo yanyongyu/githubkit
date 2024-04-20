@@ -12,14 +12,26 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0034 import RunnerType
+
+class ProjectsColumnsColumnIdCardsPostResponse503Type(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostResponse503"""
+
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    errors: NotRequired[
+        List[ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType]
+    ]
 
 
-class EnterprisesEnterpriseActionsRunnersGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
+class ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems"""
 
-    total_count: NotRequired[float]
-    runners: NotRequired[List[RunnerType]]
+    code: NotRequired[str]
+    message: NotRequired[str]
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200Type",)
+__all__ = (
+    "ProjectsColumnsColumnIdCardsPostResponse503Type",
+    "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType",
+)

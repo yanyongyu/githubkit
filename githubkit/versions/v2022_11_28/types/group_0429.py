@@ -12,20 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0364 import DiscussionType
+from .group_0365 import DiscussionType
 from .group_0357 import EnterpriseWebhooksType
 from .group_0358 import SimpleInstallationType
 from .group_0360 import RepositoryWebhooksType
 from .group_0361 import SimpleUserWebhooksType
 from .group_0359 import OrganizationSimpleWebhooksType
-from .group_0430 import WebhookDiscussionTransferredPropChangesType
 
 
-class WebhookDiscussionTransferredType(TypedDict):
-    """discussion transferred event"""
+class WebhookDiscussionReopenedType(TypedDict):
+    """discussion reopened event"""
 
-    action: Literal["transferred"]
-    changes: WebhookDiscussionTransferredPropChangesType
+    action: Literal["reopened"]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -34,4 +32,4 @@ class WebhookDiscussionTransferredType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookDiscussionTransferredType",)
+__all__ = ("WebhookDiscussionReopenedType",)

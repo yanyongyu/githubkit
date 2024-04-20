@@ -9,30 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class UserCodespacesPostBodyOneof1Type(TypedDict):
+    """UserCodespacesPostBodyOneof1"""
 
-    total_count: int
-    secrets: List[DependabotSecretType]
+    pull_request: UserCodespacesPostBodyOneof1PropPullRequestType
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
 
 
-class DependabotSecretType(TypedDict):
-    """Dependabot Secret
+class UserCodespacesPostBodyOneof1PropPullRequestType(TypedDict):
+    """UserCodespacesPostBodyOneof1PropPullRequest
 
-    Set secrets for Dependabot.
+    Pull request number for this codespace
     """
 
-    name: str
-    created_at: datetime
-    updated_at: datetime
+    pull_request_number: int
+    repository_id: int
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
-    "DependabotSecretType",
+    "UserCodespacesPostBodyOneof1Type",
+    "UserCodespacesPostBodyOneof1PropPullRequestType",
 )

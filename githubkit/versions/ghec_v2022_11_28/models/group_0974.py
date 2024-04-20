@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,15 +18,28 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
+class ReposOwnerRepoImportPutBody(GitHubModel):
+    """ReposOwnerRepoImportPutBody"""
 
-    permission: Missing[str] = Field(
+    vcs_url: str = Field(description="The URL of the originating repository.")
+    vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = Field(
         default=UNSET,
-        description="The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
+        description="The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.",
+    )
+    vcs_username: Missing[str] = Field(
+        default=UNSET,
+        description="If authentication is required, the username to provide to `vcs_url`.",
+    )
+    vcs_password: Missing[str] = Field(
+        default=UNSET,
+        description="If authentication is required, the password to provide to `vcs_url`.",
+    )
+    tfvc_project: Missing[str] = Field(
+        default=UNSET,
+        description="For a tfvc import, the name of the project that is being imported.",
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody)
+model_rebuild(ReposOwnerRepoImportPutBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",)
+__all__ = ("ReposOwnerRepoImportPutBody",)

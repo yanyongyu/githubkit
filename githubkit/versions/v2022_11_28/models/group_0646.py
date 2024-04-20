@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 
 from pydantic import Field
 
@@ -17,47 +17,107 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class WebhookPullRequestConvertedToDraftPropPullRequestAllof1(GitHubModel):
-    """WebhookPullRequestConvertedToDraftPropPullRequestAllof1"""
-
-    allow_auto_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow auto-merge for pull requests."
-    )
-    allow_update_branch: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to allow updating the pull request's branch.",
-    )
-    delete_branch_on_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to delete head branches when pull requests are merged.",
-    )
-    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
-        default=UNSET,
-        description="The default value for a merge commit message.\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
-    )
-    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
-        default=UNSET,
-        description='The default value for a merge commit title.\n- `PR_TITLE` - default to the pull request\'s title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").',
-    )
-    squash_merge_commit_message: Missing[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit message:\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
-    )
-    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
-        Field(
-            default=UNSET,
-            description="The default value for a squash merge commit title:\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
-        )
-    )
-    use_squash_pr_title_as_default: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.**",
-    )
+from .group_0097 import RepositoryRulesetConditions
 
 
-model_rebuild(WebhookPullRequestConvertedToDraftPropPullRequestAllof1)
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems"""
 
-__all__ = ("WebhookPullRequestConvertedToDraftPropPullRequestAllof1",)
+    condition: Missing[RepositoryRulesetConditions] = Field(
+        default=UNSET,
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
+    )
+    changes: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges
+    ] = Field(default=UNSET)
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    es
+    """
+
+    condition_type: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType
+    ] = Field(default=UNSET)
+    target: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget
+    ] = Field(default=UNSET)
+    include: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude
+    ] = Field(default=UNSET)
+    exclude: Missing[
+        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude
+    ] = Field(default=UNSET)
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    esPropConditionType
+    """
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    esPropTarget
+    """
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    esPropInclude
+    """
+
+    from_: Missing[List[str]] = Field(default=UNSET, alias="from")
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude(
+    GitHubModel
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
+    esPropExclude
+    """
+
+    from_: Missing[List[str]] = Field(default=UNSET, alias="from")
+
+
+model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges
+)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType
+)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget
+)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude
+)
+model_rebuild(
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude
+)
+
+__all__ = (
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude",
+    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude",
+)

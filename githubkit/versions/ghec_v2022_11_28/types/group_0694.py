@@ -12,20 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookPullRequestReadyForReviewPropPullRequestAllof1Type(TypedDict):
-    """WebhookPullRequestReadyForReviewPropPullRequestAllof1"""
-
-    allow_auto_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    use_squash_pr_title_as_default: NotRequired[bool]
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0405 import SecretScanningAlertWebhookType
 
 
-__all__ = ("WebhookPullRequestReadyForReviewPropPullRequestAllof1Type",)
+class WebhookSecretScanningAlertValidatedType(TypedDict):
+    """secret_scanning_alert validated event"""
+
+    action: Literal["validated"]
+    alert: SecretScanningAlertWebhookType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
+
+
+__all__ = ("WebhookSecretScanningAlertValidatedType",)

@@ -9,20 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
 
-    Examples:
-        {'teams': ['justice-league']}
-    """
-
-    teams: List[str]
+    body: str
 
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType",)

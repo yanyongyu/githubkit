@@ -9,25 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0357 import EnterpriseWebhooksType
-from .group_0358 import SimpleInstallationType
-from .group_0360 import RepositoryWebhooksType
-from .group_0361 import SimpleUserWebhooksType
-from .group_0359 import OrganizationSimpleWebhooksType
+
+class OrgsOrgTeamsPostBodyType(TypedDict):
+    """OrgsOrgTeamsPostBody"""
+
+    name: str
+    description: NotRequired[str]
+    maintainers: NotRequired[List[str]]
+    repo_names: NotRequired[List[str]]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: NotRequired[Literal["pull", "push"]]
+    parent_team_id: NotRequired[int]
 
 
-class WebhookWatchStartedType(TypedDict):
-    """watch started event"""
-
-    action: Literal["started"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-
-
-__all__ = ("WebhookWatchStartedType",)
+__all__ = ("OrgsOrgTeamsPostBodyType",)

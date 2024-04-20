@@ -628,6 +628,7 @@ class PullsClient:
             response_model=PullRequest,
             error_models={
                 "404": BasicError,
+                "406": BasicError,
                 "500": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
@@ -660,6 +661,7 @@ class PullsClient:
             response_model=PullRequest,
             error_models={
                 "404": BasicError,
+                "406": BasicError,
                 "500": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },

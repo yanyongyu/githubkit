@@ -17,7 +17,7 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0364 import Discussion
+from .group_0365 import Discussion
 from .group_0357 import EnterpriseWebhooks
 from .group_0358 import SimpleInstallation
 from .group_0360 import RepositoryWebhooks
@@ -25,10 +25,10 @@ from .group_0361 import SimpleUserWebhooks
 from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionPinned(GitHubModel):
-    """discussion pinned event"""
+class WebhookDiscussionLocked(GitHubModel):
+    """discussion locked event"""
 
-    action: Literal["pinned"] = Field()
+    action: Literal["locked"] = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -57,6 +57,6 @@ class WebhookDiscussionPinned(GitHubModel):
     )
 
 
-model_rebuild(WebhookDiscussionPinned)
+model_rebuild(WebhookDiscussionLocked)
 
-__all__ = ("WebhookDiscussionPinned",)
+__all__ = ("WebhookDiscussionLocked",)

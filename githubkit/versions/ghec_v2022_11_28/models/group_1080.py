@@ -9,30 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoForksPostBody(GitHubModel):
-    """ReposOwnerRepoForksPostBody"""
-
-    organization: Missing[str] = Field(
-        default=UNSET,
-        description="Optional parameter to specify the organization name if forking into an organization.",
-    )
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="When forking from an existing repository, a new name for the fork.",
-    )
-    default_branch_only: Missing[bool] = Field(
-        default=UNSET,
-        description="When forking from an existing repository, fork with only the default branch.",
-    )
+from .group_0015 import Installation
 
 
-model_rebuild(ReposOwnerRepoForksPostBody)
+class UserInstallationsGetResponse200(GitHubModel):
+    """UserInstallationsGetResponse200"""
 
-__all__ = ("ReposOwnerRepoForksPostBody",)
+    total_count: int = Field()
+    installations: List[Installation] = Field()
+
+
+model_rebuild(UserInstallationsGetResponse200)
+
+__all__ = ("UserInstallationsGetResponse200",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,15 +18,23 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody"""
+class ReposOwnerRepoHooksHookIdConfigPatchBody(GitHubModel):
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
-    permission: Missing[Literal["read", "write", "admin"]] = Field(
-        default=UNSET,
-        description="The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see \"[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method).\"",
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to which the payloads will be delivered."
     )
+    content_type: Missing[str] = Field(
+        default=UNSET,
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+    )
+    secret: Missing[str] = Field(
+        default=UNSET,
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
+    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody)
+model_rebuild(ReposOwnerRepoHooksHookIdConfigPatchBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody",)
+__all__ = ("ReposOwnerRepoHooksHookIdConfigPatchBody",)

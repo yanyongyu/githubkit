@@ -9,25 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1Type(TypedDict):
-    """WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1"""
-
-    affected_package_name: NotRequired[str]
-    affected_range: NotRequired[str]
-    created_at: NotRequired[str]
-    external_identifier: NotRequired[str]
-    external_reference: NotRequired[Union[str, None]]
-    fixed_in: NotRequired[str]
-    ghsa_id: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    number: NotRequired[int]
-    severity: NotRequired[str]
-    state: Literal["open"]
+from .group_0079 import OrganizationCustomRepositoryRoleType
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1Type",)
+class OrganizationsOrganizationIdCustomRolesGetResponse200Type(TypedDict):
+    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[List[OrganizationCustomRepositoryRoleType]]
+
+
+__all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200Type",)

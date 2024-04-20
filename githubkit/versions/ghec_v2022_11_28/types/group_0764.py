@@ -9,25 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0118 import RepositoryRulesetConditionsType
-from .group_0765 import (
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType,
+
+class GistsGistIdGetResponse403Type(TypedDict):
+    """GistsGistIdGetResponse403"""
+
+    block: NotRequired[GistsGistIdGetResponse403PropBlockType]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+
+
+class GistsGistIdGetResponse403PropBlockType(TypedDict):
+    """GistsGistIdGetResponse403PropBlock"""
+
+    reason: NotRequired[str]
+    created_at: NotRequired[str]
+    html_url: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "GistsGistIdGetResponse403Type",
+    "GistsGistIdGetResponse403PropBlockType",
 )
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
-
-    added: NotRequired[List[RepositoryRulesetConditionsType]]
-    deleted: NotRequired[List[RepositoryRulesetConditionsType]]
-    updated: NotRequired[
-        List[
-            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType
-        ]
-    ]
-
-
-__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropConditionsType",)

@@ -9,14 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type(TypedDict):
-    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403"""
+class ReposOwnerRepoHooksHookIdConfigPatchBodyType(TypedDict):
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type",)
+__all__ = ("ReposOwnerRepoHooksHookIdConfigPatchBodyType",)

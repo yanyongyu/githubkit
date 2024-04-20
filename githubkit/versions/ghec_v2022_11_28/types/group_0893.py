@@ -9,15 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
+
+from .group_0174 import JobType
 
 
-class OrgsOrgActionsPermissionsPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsPutBody"""
+class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    total_count: int
+    jobs: List[JobType]
 
 
-__all__ = ("OrgsOrgActionsPermissionsPutBodyType",)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",)

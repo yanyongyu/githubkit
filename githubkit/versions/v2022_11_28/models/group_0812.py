@@ -11,25 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropReferencedWorkflowsItems(
-    GitHubModel
-):
-    """WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropReferencedWorkflowsItems"""
+class ProjectsColumnsColumnIdMovesPostBody(GitHubModel):
+    """ProjectsColumnsColumnIdMovesPostBody"""
 
-    path: str = Field()
-    ref: Missing[str] = Field(default=UNSET)
-    sha: str = Field()
+    position: str = Field(
+        pattern="^(?:first|last|after:\\d+)$",
+        description="The position of the column in a project. Can be one of: `first`, `last`, or `after:<column_id>` to place after the specified column.",
+    )
 
 
-model_rebuild(
-    WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropReferencedWorkflowsItems
-)
+model_rebuild(ProjectsColumnsColumnIdMovesPostBody)
 
-__all__ = (
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropReferencedWorkflowsItems",
-)
+__all__ = ("ProjectsColumnsColumnIdMovesPostBody",)

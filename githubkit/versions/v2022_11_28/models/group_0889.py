@@ -10,27 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
+from datetime import datetime
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgOrganizationRolesPostBody(GitHubModel):
-    """OrgsOrgOrganizationRolesPostBody"""
+class ReposOwnerRepoDependabotSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description about the intended usage of this role or what permissions it grants.",
-    )
-    permissions: List[str] = Field(
-        description="A list of additional permissions included in this role."
-    )
+    total_count: int = Field()
+    secrets: List[DependabotSecret] = Field()
 
 
-model_rebuild(OrgsOrgOrganizationRolesPostBody)
+class DependabotSecret(GitHubModel):
+    """Dependabot Secret
 
-__all__ = ("OrgsOrgOrganizationRolesPostBody",)
+    Set secrets for Dependabot.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+
+
+model_rebuild(ReposOwnerRepoDependabotSecretsGetResponse200)
+model_rebuild(DependabotSecret)
+
+__all__ = (
+    "ReposOwnerRepoDependabotSecretsGetResponse200",
+    "DependabotSecret",
+)

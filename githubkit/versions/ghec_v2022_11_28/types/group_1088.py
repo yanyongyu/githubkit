@@ -10,19 +10,18 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0007 import WebhookConfigType
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
+class UserSocialAccountsPostBodyType(TypedDict):
+    """UserSocialAccountsPostBody
 
-    config: NotRequired[WebhookConfigType]
-    events: NotRequired[List[str]]
-    add_events: NotRequired[List[str]]
-    remove_events: NotRequired[List[str]]
-    active: NotRequired[bool]
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: List[str]
 
 
-__all__ = ("ReposOwnerRepoHooksHookIdPatchBodyType",)
+__all__ = ("UserSocialAccountsPostBodyType",)

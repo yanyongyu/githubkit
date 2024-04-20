@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,46 +18,27 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgMigrationsPostBody(GitHubModel):
-    """OrgsOrgMigrationsPostBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBody"""
 
-    repositories: List[str] = Field(
-        description="A list of arrays indicating which repositories should be migrated."
+    state: Literal["dismissed", "open"] = Field(
+        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`."
     )
-    lock_repositories: Missing[bool] = Field(
+    dismissed_reason: Missing[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ] = Field(
         default=UNSET,
-        description="Indicates whether repositories should be locked (to prevent manipulation) while migrating data.",
+        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
     )
-    exclude_metadata: Missing[bool] = Field(
+    dismissed_comment: Missing[str] = Field(
+        max_length=280,
         default=UNSET,
-        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
-    )
-    exclude_git_data: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether the repository git data should be excluded from the migration.",
-    )
-    exclude_attachments: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether attachments should be excluded from the migration (to reduce migration archive file size).",
-    )
-    exclude_releases: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether releases should be excluded from the migration (to reduce migration archive file size).",
-    )
-    exclude_owner_projects: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether projects owned by the organization or users should be excluded. from the migration.",
-    )
-    org_metadata_only: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
-    )
-    exclude: Missing[List[Literal["repositories"]]] = Field(
-        default=UNSET,
-        description="Exclude related items from being returned in the response in order to improve performance of the request.",
+        description="An optional comment associated with dismissing the alert.",
     )
 
 
-model_rebuild(OrgsOrgMigrationsPostBody)
+model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBody)
 
-__all__ = ("OrgsOrgMigrationsPostBody",)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBody",)

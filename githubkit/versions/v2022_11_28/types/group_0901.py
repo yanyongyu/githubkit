@@ -9,17 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
-from .group_0092 import CustomPropertyValueType
+
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
+
+    encrypted_value: str
+    key_id: str
 
 
-class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: List[str]
-    properties: List[CustomPropertyValueType]
-
-
-__all__ = ("OrgsOrgPropertiesValuesPatchBodyType",)
+__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType",)

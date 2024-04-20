@@ -9,21 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0034 import RunnerType
+
+class ProjectsColumnsColumnIdCardsPostBodyOneof0Type(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof0"""
+
+    note: Union[str, None]
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
-
-    total_count: float
-    runners: List[RunnerType]
-
-
-__all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",
-)
+__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof0Type",)

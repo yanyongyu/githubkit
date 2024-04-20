@@ -12,22 +12,20 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0390 import EnterpriseWebhooksType
-from .group_0391 import SimpleInstallationType
-from .group_0393 import RepositoryWebhooksType
-from .group_0394 import SimpleUserWebhooksType
-from .group_0392 import OrganizationSimpleWebhooksType
+
+class PullRequestWebhookAllof1Type(TypedDict):
+    """PullRequestWebhookAllof1"""
+
+    allow_auto_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    use_squash_pr_title_as_default: NotRequired[bool]
 
 
-class WebhookBranchProtectionConfigurationEnabledType(TypedDict):
-    """branch protection configuration enabled event"""
-
-    action: Literal["enabled"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-
-
-__all__ = ("WebhookBranchProtectionConfigurationEnabledType",)
+__all__ = ("PullRequestWebhookAllof1Type",)

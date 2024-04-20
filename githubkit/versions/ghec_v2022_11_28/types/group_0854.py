@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ApplicationsClientIdGrantDeleteBodyType(TypedDict):
-    """ApplicationsClientIdGrantDeleteBody"""
+class OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
 
-    access_token: str
+    group_id: int
 
 
-__all__ = ("ApplicationsClientIdGrantDeleteBodyType",)
+__all__ = ("OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType",)

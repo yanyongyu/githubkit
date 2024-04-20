@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -18,34 +18,24 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisser(
-    GitHubModel
-):
-    """User"""
+class OrgsOrgCodespacesAccessPutBody(GitHubModel):
+    """OrgsOrgCodespacesAccessPutBody"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    visibility: Literal[
+        "disabled",
+        "selected_members",
+        "all_members",
+        "all_members_and_outside_collaborators",
+    ] = Field(
+        description="Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization."
+    )
+    selected_usernames: Missing[List[str]] = Field(
+        max_length=100,
+        default=UNSET,
+        description="The usernames of the organization members who should have access to codespaces in the organization. Required when `visibility` is `selected_members`. The provided list of usernames will replace any existing value.",
+    )
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisser)
+model_rebuild(OrgsOrgCodespacesAccessPutBody)
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisser",)
+__all__ = ("OrgsOrgCodespacesAccessPutBody",)

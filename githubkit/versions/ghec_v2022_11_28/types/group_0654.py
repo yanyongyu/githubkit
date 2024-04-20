@@ -9,75 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import Union
+from typing_extensions import TypedDict
 
-from .group_0390 import EnterpriseWebhooksType
-from .group_0391 import SimpleInstallationType
-from .group_0393 import RepositoryWebhooksType
-from .group_0394 import SimpleUserWebhooksType
-from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0655 import (
+    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType,
+)
 
 
-class WebhookProjectCreatedType(TypedDict):
-    """project created event"""
+class WebhookRegistryPackageUpdatedPropRegistryPackageType(TypedDict):
+    """WebhookRegistryPackageUpdatedPropRegistryPackage"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhookProjectCreatedPropProjectType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserWebhooksType
-
-
-class WebhookProjectCreatedPropProjectType(TypedDict):
-    """Project"""
-
-    body: Union[str, None]
-    columns_url: str
-    created_at: datetime
-    creator: Union[WebhookProjectCreatedPropProjectPropCreatorType, None]
+    created_at: str
+    description: None
+    ecosystem: str
     html_url: str
     id: int
     name: str
+    namespace: str
+    owner: WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType
+    package_type: str
+    package_version: (
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType
+    )
+    registry: Union[
+        WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType, None
+    ]
+    updated_at: str
+
+
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType(TypedDict):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner"""
+
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: str
+    html_url: str
+    id: int
+    login: str
     node_id: str
-    number: int
-    owner_url: str
-    state: Literal["open", "closed"]
-    updated_at: datetime
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
     url: str
 
 
-class WebhookProjectCreatedPropProjectPropCreatorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+class WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType(TypedDict):
+    """WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry"""
 
 
 __all__ = (
-    "WebhookProjectCreatedType",
-    "WebhookProjectCreatedPropProjectType",
-    "WebhookProjectCreatedPropProjectPropCreatorType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackageType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType",
+    "WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType",
 )

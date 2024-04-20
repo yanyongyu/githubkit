@@ -17,16 +17,29 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0034 import Runner
+
+class ProjectsColumnsColumnIdCardsPostResponse503(GitHubModel):
+    """ProjectsColumnsColumnIdCardsPostResponse503"""
+
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[
+        List[ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems]
+    ] = Field(default=UNSET)
 
 
-class EnterprisesEnterpriseActionsRunnersGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
+class ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems(GitHubModel):
+    """ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems"""
 
-    total_count: Missing[float] = Field(default=UNSET)
-    runners: Missing[List[Runner]] = Field(default=UNSET)
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersGetResponse200)
+model_rebuild(ProjectsColumnsColumnIdCardsPostResponse503)
+model_rebuild(ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200",)
+__all__ = (
+    "ProjectsColumnsColumnIdCardsPostResponse503",
+    "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems",
+)

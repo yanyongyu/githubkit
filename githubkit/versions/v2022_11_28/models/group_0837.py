@@ -16,12 +16,14 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class NotificationsPutResponse202(GitHubModel):
-    """NotificationsPutResponse202"""
+class ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody(GitHubModel):
+    """ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody"""
 
-    message: Missing[str] = Field(default=UNSET)
+    enable_debug_logging: Missing[bool] = Field(
+        default=UNSET, description="Whether to enable debug logging for the re-run."
+    )
 
 
-model_rebuild(NotificationsPutResponse202)
+model_rebuild(ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody)
 
-__all__ = ("NotificationsPutResponse202",)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody",)

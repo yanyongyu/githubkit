@@ -11,16 +11,9 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0034 import RunnerType
+
+class ProjectsColumnsColumnIdMovesPostResponse201Type(TypedDict):
+    """ProjectsColumnsColumnIdMovesPostResponse201"""
 
 
-class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
-
-    runner: RunnerType
-    encoded_jit_config: str
-
-
-__all__ = ("EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type",)
+__all__ = ("ProjectsColumnsColumnIdMovesPostResponse201Type",)

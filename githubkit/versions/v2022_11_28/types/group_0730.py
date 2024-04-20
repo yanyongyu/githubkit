@@ -9,37 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
-from .group_0733 import WebhookRepositoryRulesetEditedPropChangesPropRulesType
-from .group_0731 import WebhookRepositoryRulesetEditedPropChangesPropConditionsType
-
-
-class WebhookRepositoryRulesetEditedPropChangesType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChanges"""
-
-    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameType]
-    enforcement: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropEnforcementType
-    ]
-    conditions: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropConditionsType]
-    rules: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropRulesType]
+from .group_0062 import RunnerType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropNameType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
 
-    from_: NotRequired[str]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropEnforcementType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
-
-    from_: NotRequired[str]
+    runner: RunnerType
+    encoded_jit_config: str
 
 
-__all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesType",
-    "WebhookRepositoryRulesetEditedPropChangesPropNameType",
-    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementType",
-)
+__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type",)

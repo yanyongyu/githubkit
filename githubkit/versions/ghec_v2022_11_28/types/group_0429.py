@@ -9,25 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0112 import OrgCustomPropertyType
 from .group_0390 import EnterpriseWebhooksType
 from .group_0391 import SimpleInstallationType
+from .group_0393 import RepositoryWebhooksType
 from .group_0394 import SimpleUserWebhooksType
 from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookCustomPropertyUpdatedType(TypedDict):
-    """custom property updated event"""
+class WebhookCreateType(TypedDict):
+    """create event"""
 
-    action: Literal["updated"]
-    definition: OrgCustomPropertyType
+    description: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
+    master_branch: str
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    pusher_type: str
+    ref: str
+    ref_type: Literal["tag", "branch"]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookCustomPropertyUpdatedType",)
+__all__ = ("WebhookCreateType",)

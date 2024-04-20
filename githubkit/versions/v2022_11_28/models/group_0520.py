@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -23,13 +22,13 @@ from .group_0358 import SimpleInstallation
 from .group_0360 import RepositoryWebhooks
 from .group_0361 import SimpleUserWebhooks
 from .group_0359 import OrganizationSimpleWebhooks
-from .group_0521 import WebhookIssuesMilestonedPropIssue
 
 
-class WebhookIssuesMilestoned(GitHubModel):
-    """issues milestoned event"""
+class WebhookMarketplacePurchasePurchased(GitHubModel):
+    """marketplace_purchase purchased event"""
 
-    action: Literal["milestoned"] = Field()
+    action: Literal["purchased"] = Field()
+    effective_date: str = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,17 +39,19 @@ class WebhookIssuesMilestoned(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssuesMilestonedPropIssue = Field()
-    milestone: WebhookIssuesMilestonedPropMilestone = Field(
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
+    marketplace_purchase: WebhookMarketplacePurchasePurchasedPropMarketplacePurchase = (
+        Field(title="Marketplace Purchase")
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    previous_marketplace_purchase: Missing[
+        WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchase
+    ] = Field(default=UNSET, title="Marketplace Purchase")
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
@@ -60,66 +61,106 @@ class WebhookIssuesMilestoned(GitHubModel):
     )
 
 
-class WebhookIssuesMilestonedPropMilestone(GitHubModel):
-    """Milestone
+class WebhookMarketplacePurchasePurchasedPropMarketplacePurchase(GitHubModel):
+    """Marketplace Purchase"""
 
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[datetime, None] = Field()
-    closed_issues: int = Field()
-    created_at: datetime = Field()
-    creator: Union[WebhookIssuesMilestonedPropMilestonePropCreator, None] = Field(
-        title="User"
+    account: WebhookMarketplacePurchasePurchasedPropMarketplacePurchasePropAccount = (
+        Field()
     )
-    description: Union[str, None] = Field()
-    due_on: Union[datetime, None] = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    open_issues: int = Field()
-    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
-    title: str = Field(description="The title of the milestone.")
-    updated_at: datetime = Field()
-    url: str = Field()
+    billing_cycle: str = Field()
+    free_trial_ends_on: Union[str, None] = Field()
+    next_billing_date: Union[str, None] = Field()
+    on_free_trial: bool = Field()
+    plan: WebhookMarketplacePurchasePurchasedPropMarketplacePurchasePropPlan = Field()
+    unit_count: int = Field()
 
 
-class WebhookIssuesMilestonedPropMilestonePropCreator(GitHubModel):
-    """User"""
+class WebhookMarketplacePurchasePurchasedPropMarketplacePurchasePropAccount(
+    GitHubModel
+):
+    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchasePropAccount"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
     id: int = Field()
     login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
+    node_id: str = Field()
+    organization_billing_email: Union[str, None] = Field()
+    type: str = Field()
+
+
+class WebhookMarketplacePurchasePurchasedPropMarketplacePurchasePropPlan(GitHubModel):
+    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchasePropPlan"""
+
+    bullets: List[Union[str, None]] = Field()
+    description: str = Field()
+    has_free_trial: bool = Field()
+    id: int = Field()
+    monthly_price_in_cents: int = Field()
+    name: str = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    unit_name: Union[str, None] = Field()
+    yearly_price_in_cents: int = Field()
+
+
+class WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchase(GitHubModel):
+    """Marketplace Purchase"""
+
+    account: WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropAccount = Field()
+    billing_cycle: str = Field()
+    free_trial_ends_on: None = Field()
+    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
+    on_free_trial: bool = Field()
+    plan: WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropPlan = (
+        Field()
     )
-    url: Missing[str] = Field(default=UNSET)
+    unit_count: int = Field()
 
 
-model_rebuild(WebhookIssuesMilestoned)
-model_rebuild(WebhookIssuesMilestonedPropMilestone)
-model_rebuild(WebhookIssuesMilestonedPropMilestonePropCreator)
+class WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropAccount(
+    GitHubModel
+):
+    """WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropAccount"""
+
+    id: int = Field()
+    login: str = Field()
+    node_id: str = Field()
+    organization_billing_email: Union[str, None] = Field()
+    type: str = Field()
+
+
+class WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropPlan(
+    GitHubModel
+):
+    """WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropPlan"""
+
+    bullets: List[str] = Field()
+    description: str = Field()
+    has_free_trial: bool = Field()
+    id: int = Field()
+    monthly_price_in_cents: int = Field()
+    name: str = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    unit_name: Union[str, None] = Field()
+    yearly_price_in_cents: int = Field()
+
+
+model_rebuild(WebhookMarketplacePurchasePurchased)
+model_rebuild(WebhookMarketplacePurchasePurchasedPropMarketplacePurchase)
+model_rebuild(WebhookMarketplacePurchasePurchasedPropMarketplacePurchasePropAccount)
+model_rebuild(WebhookMarketplacePurchasePurchasedPropMarketplacePurchasePropPlan)
+model_rebuild(WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchase)
+model_rebuild(
+    WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropAccount
+)
+model_rebuild(
+    WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropPlan
+)
 
 __all__ = (
-    "WebhookIssuesMilestoned",
-    "WebhookIssuesMilestonedPropMilestone",
-    "WebhookIssuesMilestonedPropMilestonePropCreator",
+    "WebhookMarketplacePurchasePurchased",
+    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchase",
+    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchasePropAccount",
+    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchasePropPlan",
+    "WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchase",
+    "WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropAccount",
+    "WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropPlan",
 )

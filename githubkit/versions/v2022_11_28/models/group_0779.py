@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -19,18 +19,18 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookStatusPropCommitPropCommitPropAuthorAllof0(GitHubModel):
-    """Committer
+class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
 
-    Metaproperties for Git author/committer information.
-    """
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the request."
+    )
+    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
+        default=UNSET,
+        description="Reason for approving or denying the request. Max 1024 characters.",
+    )
 
-    date: Missing[datetime] = Field(default=UNSET)
-    email: Union[str, None] = Field()
-    name: str = Field(description="The git author's name.")
-    username: Missing[str] = Field(default=UNSET)
 
+model_rebuild(OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody)
 
-model_rebuild(WebhookStatusPropCommitPropCommitPropAuthorAllof0)
-
-__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof0",)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",)

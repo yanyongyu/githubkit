@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -18,23 +18,21 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1(GitHubModel):
-    """WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1"""
+class OrgsOrgActionsVariablesNamePatchBody(GitHubModel):
+    """OrgsOrgActionsVariablesNamePatchBody"""
 
-    affected_package_name: Missing[str] = Field(default=UNSET)
-    affected_range: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    external_identifier: Missing[str] = Field(default=UNSET)
-    external_reference: Missing[Union[str, None]] = Field(default=UNSET)
-    fixed_in: Missing[str] = Field(default=UNSET)
-    ghsa_id: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    number: Missing[int] = Field(default=UNSET)
-    severity: Missing[str] = Field(default=UNSET)
-    state: Literal["open"] = Field()
+    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
+    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
+    visibility: Missing[Literal["all", "private", "selected"]] = Field(
+        default=UNSET,
+        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.",
+    )
+    selected_repository_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
+    )
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1)
+model_rebuild(OrgsOrgActionsVariablesNamePatchBody)
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1",)
+__all__ = ("OrgsOrgActionsVariablesNamePatchBody",)

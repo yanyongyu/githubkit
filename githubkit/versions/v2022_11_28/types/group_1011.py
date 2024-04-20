@@ -9,25 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
+
+from .group_0070 import CodespaceMachineType
 
 
-class ReposOwnerRepoDispatchesPostBodyType(TypedDict):
-    """ReposOwnerRepoDispatchesPostBody"""
+class UserCodespacesCodespaceNameMachinesGetResponse200Type(TypedDict):
+    """UserCodespacesCodespaceNameMachinesGetResponse200"""
 
-    event_type: str
-    client_payload: NotRequired[ReposOwnerRepoDispatchesPostBodyPropClientPayloadType]
-
-
-class ReposOwnerRepoDispatchesPostBodyPropClientPayloadType(TypedDict):
-    """ReposOwnerRepoDispatchesPostBodyPropClientPayload
-
-    JSON payload with extra information about the webhook event that your action or
-    workflow may use. The maximum number of top-level properties is 10.
-    """
+    total_count: int
+    machines: List[CodespaceMachineType]
 
 
-__all__ = (
-    "ReposOwnerRepoDispatchesPostBodyType",
-    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadType",
-)
+__all__ = ("UserCodespacesCodespaceNameMachinesGetResponse200Type",)

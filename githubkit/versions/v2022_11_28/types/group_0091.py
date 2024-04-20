@@ -22,7 +22,7 @@ class OrgCustomPropertyType(TypedDict):
     property_name: str
     value_type: Literal["string", "single_select"]
     required: NotRequired[bool]
-    default_value: NotRequired[Union[str, None]]
+    default_value: NotRequired[Union[str, List[str], None]]
     description: NotRequired[Union[str, None]]
     allowed_values: NotRequired[Union[List[str], None]]
     values_editable_by: NotRequired[

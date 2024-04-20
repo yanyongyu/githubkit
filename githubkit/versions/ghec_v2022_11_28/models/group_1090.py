@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,28 +16,18 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoImportPutBody(GitHubModel):
-    """ReposOwnerRepoImportPutBody"""
+class UserSshSigningKeysPostBody(GitHubModel):
+    """UserSshSigningKeysPostBody"""
 
-    vcs_url: str = Field(description="The URL of the originating repository.")
-    vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = Field(
-        default=UNSET,
-        description="The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.",
+    title: Missing[str] = Field(
+        default=UNSET, description="A descriptive name for the new key."
     )
-    vcs_username: Missing[str] = Field(
-        default=UNSET,
-        description="If authentication is required, the username to provide to `vcs_url`.",
-    )
-    vcs_password: Missing[str] = Field(
-        default=UNSET,
-        description="If authentication is required, the password to provide to `vcs_url`.",
-    )
-    tfvc_project: Missing[str] = Field(
-        default=UNSET,
-        description="For a tfvc import, the name of the project that is being imported.",
+    key: str = Field(
+        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) |^(sk-ssh-ed25519|sk-ecdsa-sha2-nistp256)@openssh.com ",
+        description='The public SSH key to add to your GitHub account. For more information, see "[Checking for existing SSH keys](https://docs.github.com/enterprise-cloud@latest//authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)."',
     )
 
 
-model_rebuild(ReposOwnerRepoImportPutBody)
+model_rebuild(UserSshSigningKeysPostBody)
 
-__all__ = ("ReposOwnerRepoImportPutBody",)
+__all__ = ("UserSshSigningKeysPostBody",)

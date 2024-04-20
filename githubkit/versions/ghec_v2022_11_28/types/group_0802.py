@@ -9,16 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0075 import SecurityAndAnalysisType
+from typing import List
+from typing_extensions import TypedDict
 
 
-class WebhookSecurityAndAnalysisPropChangesPropFromType(TypedDict):
-    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
+class OrgsOrgCodespacesAccessSelectedUsersPostBodyType(TypedDict):
+    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
 
-    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
+    selected_usernames: List[str]
 
 
-__all__ = ("WebhookSecurityAndAnalysisPropChangesPropFromType",)
+__all__ = ("OrgsOrgCodespacesAccessSelectedUsersPostBodyType",)

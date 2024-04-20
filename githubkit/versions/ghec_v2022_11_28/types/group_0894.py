@@ -9,17 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Literal
 from typing_extensions import TypedDict
 
-from .group_0017 import RepositoryType
+
+class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
+
+    environment_ids: List[int]
+    state: Literal["approved", "rejected"]
+    comment: str
 
 
-class OrgsOrgActionsPermissionsRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
-
-    total_count: float
-    repositories: List[RepositoryType]
-
-
-__all__ = ("OrgsOrgActionsPermissionsRepositoriesGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType",)

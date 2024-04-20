@@ -11,17 +11,19 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ApplicationsClientIdTokenPostBody(GitHubModel):
-    """ApplicationsClientIdTokenPostBody"""
+class ReposOwnerRepoActionsJobsJobIdRerunPostBody(GitHubModel):
+    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
 
-    access_token: str = Field(
-        description="The access_token of the OAuth or GitHub application."
+    enable_debug_logging: Missing[bool] = Field(
+        default=UNSET, description="Whether to enable debug logging for the re-run."
     )
 
 
-model_rebuild(ApplicationsClientIdTokenPostBody)
+model_rebuild(ReposOwnerRepoActionsJobsJobIdRerunPostBody)
 
-__all__ = ("ApplicationsClientIdTokenPostBody",)
+__all__ = ("ReposOwnerRepoActionsJobsJobIdRerunPostBody",)

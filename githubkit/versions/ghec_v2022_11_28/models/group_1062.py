@@ -16,59 +16,13 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoContentsPathDeleteBody(GitHubModel):
-    """ReposOwnerRepoContentsPathDeleteBody"""
+class TeamsTeamIdProjectsProjectIdPutResponse403(GitHubModel):
+    """TeamsTeamIdProjectsProjectIdPutResponse403"""
 
-    message: str = Field(description="The commit message.")
-    sha: str = Field(description="The blob SHA of the file being deleted.")
-    branch: Missing[str] = Field(
-        default=UNSET,
-        description="The branch name. Default: the repository’s default branch",
-    )
-    committer: Missing[ReposOwnerRepoContentsPathDeleteBodyPropCommitter] = Field(
-        default=UNSET, description="object containing information about the committer."
-    )
-    author: Missing[ReposOwnerRepoContentsPathDeleteBodyPropAuthor] = Field(
-        default=UNSET, description="object containing information about the author."
-    )
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoContentsPathDeleteBodyPropCommitter(GitHubModel):
-    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
+model_rebuild(TeamsTeamIdProjectsProjectIdPutResponse403)
 
-    object containing information about the committer.
-    """
-
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the author (or committer) of the commit"
-    )
-    email: Missing[str] = Field(
-        default=UNSET,
-        description="The email of the author (or committer) of the commit",
-    )
-
-
-class ReposOwnerRepoContentsPathDeleteBodyPropAuthor(GitHubModel):
-    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
-
-    object containing information about the author.
-    """
-
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the author (or committer) of the commit"
-    )
-    email: Missing[str] = Field(
-        default=UNSET,
-        description="The email of the author (or committer) of the commit",
-    )
-
-
-model_rebuild(ReposOwnerRepoContentsPathDeleteBody)
-model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropCommitter)
-model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropAuthor)
-
-__all__ = (
-    "ReposOwnerRepoContentsPathDeleteBody",
-    "ReposOwnerRepoContentsPathDeleteBodyPropCommitter",
-    "ReposOwnerRepoContentsPathDeleteBodyPropAuthor",
-)
+__all__ = ("TeamsTeamIdProjectsProjectIdPutResponse403",)

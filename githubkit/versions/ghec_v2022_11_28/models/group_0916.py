@@ -15,16 +15,19 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0086 import Codespace
+
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
+
+    Examples:
+        {'teams': ['my-team']}
+    """
+
+    teams: List[str] = Field(description="The slug values for teams")
 
 
-class OrgsOrgCodespacesGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesGetResponse200"""
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0)
 
-    total_count: int = Field()
-    codespaces: List[Codespace] = Field()
-
-
-model_rebuild(OrgsOrgCodespacesGetResponse200)
-
-__all__ = ("OrgsOrgCodespacesGetResponse200",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0",)

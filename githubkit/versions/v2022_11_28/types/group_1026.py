@@ -9,33 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoGitTagsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitTagsPostBody"""
+class UserSocialAccountsDeleteBodyType(TypedDict):
+    """UserSocialAccountsDeleteBody
 
-    tag: str
-    message: str
-    object_: str
-    type: Literal["commit", "tree", "blob"]
-    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerType]
-
-
-class ReposOwnerRepoGitTagsPostBodyPropTaggerType(TypedDict):
-    """ReposOwnerRepoGitTagsPostBodyPropTagger
-
-    An object with information about the individual creating the tag.
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
     """
 
-    name: str
-    email: str
-    date: NotRequired[datetime]
+    account_urls: List[str]
 
 
-__all__ = (
-    "ReposOwnerRepoGitTagsPostBodyType",
-    "ReposOwnerRepoGitTagsPostBodyPropTaggerType",
-)
+__all__ = ("UserSocialAccountsDeleteBodyType",)

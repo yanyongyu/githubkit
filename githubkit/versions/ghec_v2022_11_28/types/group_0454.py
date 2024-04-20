@@ -9,20 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0398 import DiscussionType
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0392 import OrganizationSimpleWebhooksType
 
-class WebhookDiscussionCreatedPropDiscussionAllof0Type(TypedDict):
-    """Discussion"""
 
-    active_lock_reason: Union[str, None]
-    answer_chosen_at: Union[str, None]
-    answer_chosen_by: Union[
-        WebhookDiscussionCreatedPropDiscussionAllof0PropAnswerChosenByType, None
-    ]
-    answer_html_url: Union[str, None]
+class WebhookDiscussionCommentDeletedType(TypedDict):
+    """discussion_comment deleted event"""
+
+    action: Literal["deleted"]
+    comment: WebhookDiscussionCommentDeletedPropCommentType
+    discussion: DiscussionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+
+
+class WebhookDiscussionCommentDeletedPropCommentType(TypedDict):
+    """WebhookDiscussionCommentDeletedPropComment"""
+
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -33,68 +46,21 @@ class WebhookDiscussionCreatedPropDiscussionAllof0Type(TypedDict):
         "NONE",
         "OWNER",
     ]
-    body: Union[str, None]
-    category: WebhookDiscussionCreatedPropDiscussionAllof0PropCategoryType
-    comments: int
-    created_at: datetime
+    body: str
+    child_comment_count: int
+    created_at: str
+    discussion_id: int
     html_url: str
     id: int
-    locked: bool
     node_id: str
-    number: int
-    reactions: NotRequired[
-        WebhookDiscussionCreatedPropDiscussionAllof0PropReactionsType
-    ]
+    parent_id: Union[int, None]
+    reactions: WebhookDiscussionCommentDeletedPropCommentPropReactionsType
     repository_url: str
-    state: Literal["open", "locked", "converting", "transferring"]
-    timeline_url: NotRequired[str]
-    title: str
-    updated_at: datetime
-    user: Union[WebhookDiscussionCreatedPropDiscussionAllof0PropUserType, None]
-
-
-class WebhookDiscussionCreatedPropDiscussionAllof0PropAnswerChosenByType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookDiscussionCreatedPropDiscussionAllof0PropCategoryType(TypedDict):
-    """WebhookDiscussionCreatedPropDiscussionAllof0PropCategory"""
-
-    created_at: datetime
-    description: str
-    emoji: str
-    id: int
-    is_answerable: bool
-    name: str
-    node_id: NotRequired[str]
-    repository_id: int
-    slug: str
     updated_at: str
+    user: Union[WebhookDiscussionCommentDeletedPropCommentPropUserType, None]
 
 
-class WebhookDiscussionCreatedPropDiscussionAllof0PropReactionsType(TypedDict):
+class WebhookDiscussionCommentDeletedPropCommentPropReactionsType(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -109,7 +75,7 @@ class WebhookDiscussionCreatedPropDiscussionAllof0PropReactionsType(TypedDict):
     url: str
 
 
-class WebhookDiscussionCreatedPropDiscussionAllof0PropUserType(TypedDict):
+class WebhookDiscussionCommentDeletedPropCommentPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -136,9 +102,8 @@ class WebhookDiscussionCreatedPropDiscussionAllof0PropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionCreatedPropDiscussionAllof0Type",
-    "WebhookDiscussionCreatedPropDiscussionAllof0PropAnswerChosenByType",
-    "WebhookDiscussionCreatedPropDiscussionAllof0PropCategoryType",
-    "WebhookDiscussionCreatedPropDiscussionAllof0PropReactionsType",
-    "WebhookDiscussionCreatedPropDiscussionAllof0PropUserType",
+    "WebhookDiscussionCommentDeletedType",
+    "WebhookDiscussionCommentDeletedPropCommentType",
+    "WebhookDiscussionCommentDeletedPropCommentPropReactionsType",
+    "WebhookDiscussionCommentDeletedPropCommentPropUserType",
 )

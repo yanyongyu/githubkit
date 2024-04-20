@@ -16,13 +16,15 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
+class UserGpgKeysPostBody(GitHubModel):
+    """UserGpgKeysPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
-    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
+    name: Missing[str] = Field(
+        default=UNSET, description="A descriptive name for the new key."
+    )
+    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody)
+model_rebuild(UserGpgKeysPostBody)
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody",)
+__all__ = ("UserGpgKeysPostBody",)

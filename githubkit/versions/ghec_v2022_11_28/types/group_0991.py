@@ -13,12 +13,21 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ProjectsProjectIdPatchResponse403Type(TypedDict):
-    """ProjectsProjectIdPatchResponse403"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    errors: NotRequired[List[str]]
+    labels: NotRequired[
+        List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
+    ]
 
 
-__all__ = ("ProjectsProjectIdPatchResponse403Type",)
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems"""
+
+    name: str
+
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType",
+)

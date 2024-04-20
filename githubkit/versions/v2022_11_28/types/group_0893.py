@@ -12,11 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
+class ReposOwnerRepoDeploymentsPostResponse202Type(TypedDict):
+    """ReposOwnerRepoDeploymentsPostResponse202"""
 
     message: NotRequired[str]
-    documentation_url: NotRequired[str]
 
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",)
+__all__ = ("ReposOwnerRepoDeploymentsPostResponse202Type",)

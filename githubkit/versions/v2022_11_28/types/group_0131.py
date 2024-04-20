@@ -13,17 +13,17 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class RepositoryRuleParamsCodeScanningThresholdType(TypedDict):
-    """CodeScanningThreshold
+class RepositoryRuleParamsCodeScanningToolType(TypedDict):
+    """CodeScanningTool
 
-    A tool and its thresholds.
+    A tool that must provide code scanning results for this rule to pass.
     """
 
-    alerts: Literal["none", "errors", "errors_and_warnings", "all"]
-    security_alerts: Literal[
+    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
+    security_alerts_threshold: Literal[
         "none", "critical", "high_or_higher", "medium_or_higher", "all"
     ]
     tool: str
 
 
-__all__ = ("RepositoryRuleParamsCodeScanningThresholdType",)
+__all__ = ("RepositoryRuleParamsCodeScanningToolType",)

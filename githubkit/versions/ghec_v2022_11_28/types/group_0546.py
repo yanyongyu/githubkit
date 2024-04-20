@@ -9,35 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0545 import WebhookIssuesLockedPropIssueAllof0PropMilestonePropCreatorType
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookIssuesLockedPropIssueAllof0PropMilestoneType(TypedDict):
-    """Milestone
+class WebhookLabelCreatedType(TypedDict):
+    """label created event"""
 
-    A collection of related issues and pull requests.
-    """
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    label: WebhookLabelCreatedPropLabelType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
 
-    closed_at: Union[datetime, None]
-    closed_issues: int
-    created_at: datetime
-    creator: Union[WebhookIssuesLockedPropIssueAllof0PropMilestonePropCreatorType, None]
+
+class WebhookLabelCreatedPropLabelType(TypedDict):
+    """Label"""
+
+    color: str
+    default: bool
     description: Union[str, None]
-    due_on: Union[datetime, None]
-    html_url: str
     id: int
-    labels_url: str
+    name: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: datetime
     url: str
 
 
-__all__ = ("WebhookIssuesLockedPropIssueAllof0PropMilestoneType",)
+__all__ = (
+    "WebhookLabelCreatedType",
+    "WebhookLabelCreatedPropLabelType",
+)

@@ -9,40 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0979 import (
-    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
-    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
-)
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoCheckRunsPostBodyOneof1Type(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyOneof1"""
+class ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdReactionsPostBody"""
 
-    name: str
-    head_sha: str
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    status: NotRequired[Literal["queued", "in_progress"]]
-    started_at: NotRequired[datetime]
-    conclusion: NotRequired[
-        Literal[
-            "action_required",
-            "cancelled",
-            "failure",
-            "neutral",
-            "success",
-            "skipped",
-            "stale",
-            "timed_out",
-        ]
-    ]
-    completed_at: NotRequired[datetime]
-    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
-    actions: NotRequired[List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
+    content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"]
 
 
-__all__ = ("ReposOwnerRepoCheckRunsPostBodyOneof1Type",)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType",)

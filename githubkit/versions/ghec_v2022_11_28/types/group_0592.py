@@ -9,56 +9,90 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1Type(TypedDict):
-    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1"""
-
-    account: NotRequired[
-        WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccountType
-    ]
-    billing_cycle: NotRequired[str]
-    free_trial_ends_on: NotRequired[Union[str, None]]
-    next_billing_date: Union[str, None]
-    on_free_trial: NotRequired[bool]
-    plan: NotRequired[
-        WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlanType
-    ]
-    unit_count: NotRequired[int]
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccount"""
+class WebhookProjectCardEditedType(TypedDict):
+    """project_card edited event"""
 
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organization_billing_email: NotRequired[Union[str, None]]
-    type: NotRequired[str]
+    action: Literal["edited"]
+    changes: WebhookProjectCardEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_card: WebhookProjectCardEditedPropProjectCardType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserWebhooksType
 
 
-class WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlan"""
+class WebhookProjectCardEditedPropChangesType(TypedDict):
+    """WebhookProjectCardEditedPropChanges"""
 
-    bullets: NotRequired[List[Union[str, None]]]
-    description: NotRequired[str]
-    has_free_trial: NotRequired[bool]
-    id: NotRequired[int]
-    monthly_price_in_cents: NotRequired[int]
+    note: WebhookProjectCardEditedPropChangesPropNoteType
+
+
+class WebhookProjectCardEditedPropChangesPropNoteType(TypedDict):
+    """WebhookProjectCardEditedPropChangesPropNote"""
+
+    from_: Union[str, None]
+
+
+class WebhookProjectCardEditedPropProjectCardType(TypedDict):
+    """Project Card"""
+
+    after_id: NotRequired[Union[int, None]]
+    archived: bool
+    column_id: int
+    column_url: str
+    content_url: NotRequired[str]
+    created_at: datetime
+    creator: Union[WebhookProjectCardEditedPropProjectCardPropCreatorType, None]
+    id: int
+    node_id: str
+    note: Union[str, None]
+    project_url: str
+    updated_at: datetime
+    url: str
+
+
+class WebhookProjectCardEditedPropProjectCardPropCreatorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
     name: NotRequired[str]
-    price_model: NotRequired[Literal["FREE", "FLAT_RATE", "PER_UNIT"]]
-    unit_name: NotRequired[Union[str, None]]
-    yearly_price_in_cents: NotRequired[int]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1Type",
-    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccountType",
-    "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlanType",
+    "WebhookProjectCardEditedType",
+    "WebhookProjectCardEditedPropChangesType",
+    "WebhookProjectCardEditedPropChangesPropNoteType",
+    "WebhookProjectCardEditedPropProjectCardType",
+    "WebhookProjectCardEditedPropProjectCardPropCreatorType",
 )

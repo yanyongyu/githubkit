@@ -13,24 +13,18 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0811 import (
-    WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase,
-    WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead,
-)
+
+class ProjectsColumnsColumnIdCardsPostBodyOneof1(GitHubModel):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof1"""
+
+    content_id: int = Field(
+        description="The unique identifier of the content associated with the card"
+    )
+    content_type: str = Field(
+        description="The piece of content associated with the card"
+    )
 
 
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItems(
-    GitHubModel
-):
-    """WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItems"""
+model_rebuild(ProjectsColumnsColumnIdCardsPostBodyOneof1)
 
-    base: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase = Field()
-    head: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead = Field()
-    id: float = Field()
-    number: float = Field()
-    url: str = Field()
-
-
-model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItems)
-
-__all__ = ("WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItems",)
+__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof1",)

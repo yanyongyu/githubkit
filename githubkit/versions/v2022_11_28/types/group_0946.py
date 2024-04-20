@@ -9,14 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0945 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
+class ReposOwnerRepoPagesPutBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof0"""
 
-    labels: List[str]
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
 
 
-__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType",)
+__all__ = ("ReposOwnerRepoPagesPutBodyAnyof0Type",)

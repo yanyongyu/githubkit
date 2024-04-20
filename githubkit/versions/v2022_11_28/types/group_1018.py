@@ -10,16 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0158 import ActionsVariableType
+from .group_0017 import RepositoryType
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
+class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
 
     total_count: int
-    variables: List[ActionsVariableType]
+    repository_selection: NotRequired[str]
+    repositories: List[RepositoryType]
 
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type",)
+__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200Type",)

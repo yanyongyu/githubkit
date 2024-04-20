@@ -9,19 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ApplicationsClientIdTokenPatchBody(GitHubModel):
-    """ApplicationsClientIdTokenPatchBody"""
-
-    access_token: str = Field(
-        description="The access_token of the OAuth or GitHub application."
-    )
+from .group_0157 import ActionsSecret
 
 
-model_rebuild(ApplicationsClientIdTokenPatchBody)
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
 
-__all__ = ("ApplicationsClientIdTokenPatchBody",)
+    total_count: int = Field()
+    secrets: List[ActionsSecret] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsOrganizationSecretsGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200",)

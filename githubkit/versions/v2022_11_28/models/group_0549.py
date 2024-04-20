@@ -9,42 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0548 import WebhookIssuesUnlockedPropIssueAllof0PropMilestonePropCreator
+from .group_0358 import SimpleInstallation
+from .group_0361 import SimpleUserWebhooks
+from .group_0359 import OrganizationSimpleWebhooks
+from .group_0367 import PersonalAccessTokenRequest
 
 
-class WebhookIssuesUnlockedPropIssueAllof0PropMilestone(GitHubModel):
-    """Milestone
+class WebhookPersonalAccessTokenRequestApproved(GitHubModel):
+    """personal_access_token_request approved event"""
 
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[datetime, None] = Field()
-    closed_issues: int = Field()
-    created_at: datetime = Field()
-    creator: Union[
-        WebhookIssuesUnlockedPropIssueAllof0PropMilestonePropCreator, None
-    ] = Field(title="User")
-    description: Union[str, None] = Field()
-    due_on: Union[datetime, None] = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    open_issues: int = Field()
-    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
-    title: str = Field(description="The title of the milestone.")
-    updated_at: datetime = Field()
-    url: str = Field()
+    action: Literal["approved"] = Field()
+    personal_access_token_request: PersonalAccessTokenRequest = Field(
+        title="Personal Access Token Request",
+        description="Details of a Personal Access Token Request.",
+    )
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    sender: SimpleUserWebhooks = Field(
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
+    installation: SimpleInstallation = Field(
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
 
 
-model_rebuild(WebhookIssuesUnlockedPropIssueAllof0PropMilestone)
+model_rebuild(WebhookPersonalAccessTokenRequestApproved)
 
-__all__ = ("WebhookIssuesUnlockedPropIssueAllof0PropMilestone",)
+__all__ = ("WebhookPersonalAccessTokenRequestApproved",)

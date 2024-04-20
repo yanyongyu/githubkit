@@ -9,68 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0130 import RepositoryRuleUpdateType
+from .group_0150 import RepositoryRuleWorkflowsType
+from .group_0135 import RepositoryRulePullRequestType
+from .group_0118 import RepositoryRulesetConditionsType
+from .group_0117 import RepositoryRulesetBypassActorType
+from .group_0147 import RepositoryRuleTagNamePatternType
+from .group_0145 import RepositoryRuleBranchNamePatternType
+from .group_0133 import RepositoryRuleRequiredDeploymentsType
+from .group_0137 import RepositoryRuleRequiredStatusChecksType
+from .group_0139 import RepositoryRuleCommitMessagePatternType
+from .group_0132 import RepositoryRuleRequiredLinearHistoryType
+from .group_0143 import RepositoryRuleCommitterEmailPatternType
+from .group_0141 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0129 import (
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
+)
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput
 
-    Check runs can accept a variety of data in the `output` object, including a
-    `title` and `summary` and can optionally provide descriptive details about the
-    run.
-    """
+class ReposOwnerRepoRulesetsPostBodyType(TypedDict):
+    """ReposOwnerRepoRulesetsPostBody"""
 
-    title: NotRequired[str]
-    summary: str
-    text: NotRequired[str]
-    annotations: NotRequired[
+    name: str
+    target: NotRequired[Literal["branch", "tag"]]
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
+    conditions: NotRequired[RepositoryRulesetConditionsType]
+    rules: NotRequired[
         List[
-            ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleWorkflowsType,
+            ]
         ]
     ]
-    images: NotRequired[
-        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType]
-    ]
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems"""
-
-    path: str
-    start_line: int
-    end_line: int
-    start_column: NotRequired[int]
-    end_column: NotRequired[int]
-    annotation_level: Literal["notice", "warning", "failure"]
-    message: str
-    title: NotRequired[str]
-    raw_details: NotRequired[str]
-
-
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems"""
-
-    alt: str
-    image_url: str
-    caption: NotRequired[str]
-
-
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems"""
-
-    label: str
-    description: str
-    identifier: str
-
-
-__all__ = (
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType",
-)
+__all__ = ("ReposOwnerRepoRulesetsPostBodyType",)

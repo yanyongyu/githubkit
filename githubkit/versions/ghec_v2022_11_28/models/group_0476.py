@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -24,10 +24,10 @@ from .group_0394 import SimpleUserWebhooks
 from .group_0392 import OrganizationSimpleWebhooks
 
 
-class WebhookInstallationDeleted(GitHubModel):
-    """installation deleted event"""
+class WebhookInstallationCreated(GitHubModel):
+    """installation created event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +39,7 @@ class WebhookInstallationDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repositories: Missing[List[WebhookInstallationDeletedPropRepositoriesItems]] = (
+    repositories: Missing[List[WebhookInstallationCreatedPropRepositoriesItems]] = (
         Field(
             default=UNSET,
             description="An array of repository objects that the installation can access.",
@@ -50,15 +50,17 @@ class WebhookInstallationDeleted(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    requester: Missing[None] = Field(default=UNSET)
+    requester: Missing[Union[WebhookInstallationCreatedPropRequester, None]] = Field(
+        default=UNSET, title="User"
+    )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookInstallationDeletedPropRepositoriesItems(GitHubModel):
-    """WebhookInstallationDeletedPropRepositoriesItems"""
+class WebhookInstallationCreatedPropRepositoriesItems(GitHubModel):
+    """WebhookInstallationCreatedPropRepositoriesItems"""
 
     full_name: str = Field()
     id: int = Field(description="Unique identifier of the repository")
@@ -67,10 +69,38 @@ class WebhookInstallationDeletedPropRepositoriesItems(GitHubModel):
     private: bool = Field(description="Whether the repository is private or public.")
 
 
-model_rebuild(WebhookInstallationDeleted)
-model_rebuild(WebhookInstallationDeletedPropRepositoriesItems)
+class WebhookInstallationCreatedPropRequester(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookInstallationCreated)
+model_rebuild(WebhookInstallationCreatedPropRepositoriesItems)
+model_rebuild(WebhookInstallationCreatedPropRequester)
 
 __all__ = (
-    "WebhookInstallationDeleted",
-    "WebhookInstallationDeletedPropRepositoriesItems",
+    "WebhookInstallationCreated",
+    "WebhookInstallationCreatedPropRepositoriesItems",
+    "WebhookInstallationCreatedPropRequester",
 )

@@ -9,26 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class WebhookReleasePublishedPropReleaseAllof0PropReactions(GitHubModel):
-    """Reactions"""
-
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
-    url: str = Field()
+from .group_0014 import AppPermissions
 
 
-model_rebuild(WebhookReleasePublishedPropReleaseAllof0PropReactions)
+class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-__all__ = ("WebhookReleasePublishedPropReleaseAllof0PropReactions",)
+    repositories: Missing[List[str]] = Field(
+        default=UNSET,
+        description="List of repository names that the token should have access to",
+    )
+    repository_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="List of repository IDs that the token should have access to",
+    )
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
+    )
+
+
+model_rebuild(AppInstallationsInstallationIdAccessTokensPostBody)
+
+__all__ = ("AppInstallationsInstallationIdAccessTokensPostBody",)

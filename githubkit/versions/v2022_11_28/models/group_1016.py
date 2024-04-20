@@ -9,22 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0157 import ActionsSecret
+
+class UserGpgKeysPostBody(GitHubModel):
+    """UserGpgKeysPostBody"""
+
+    name: Missing[str] = Field(
+        default=UNSET, description="A descriptive name for the new key."
+    )
+    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
+model_rebuild(UserGpgKeysPostBody)
 
-    total_count: int = Field()
-    secrets: List[ActionsSecret] = Field()
-
-
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200)
-
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200",)
+__all__ = ("UserGpgKeysPostBody",)

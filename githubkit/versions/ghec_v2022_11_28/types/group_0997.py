@@ -12,10 +12,12 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoActionsJobsJobIdRerunPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
+class ReposOwnerRepoLabelsNamePatchBodyType(TypedDict):
+    """ReposOwnerRepoLabelsNamePatchBody"""
 
-    enable_debug_logging: NotRequired[bool]
+    new_name: NotRequired[str]
+    color: NotRequired[str]
+    description: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",)
+__all__ = ("ReposOwnerRepoLabelsNamePatchBodyType",)

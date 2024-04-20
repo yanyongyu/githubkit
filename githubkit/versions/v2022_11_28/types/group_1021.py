@@ -9,15 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoForksPostBodyType(TypedDict):
-    """ReposOwnerRepoForksPostBody"""
+class UserMembershipsOrgsOrgPatchBodyType(TypedDict):
+    """UserMembershipsOrgsOrgPatchBody"""
 
-    organization: NotRequired[str]
-    name: NotRequired[str]
-    default_branch_only: NotRequired[bool]
+    state: Literal["active"]
 
 
-__all__ = ("ReposOwnerRepoForksPostBodyType",)
+__all__ = ("UserMembershipsOrgsOrgPatchBodyType",)

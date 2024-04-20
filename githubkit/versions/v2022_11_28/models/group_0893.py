@@ -16,13 +16,12 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
+class ReposOwnerRepoDeploymentsPostResponse202(GitHubModel):
+    """ReposOwnerRepoDeploymentsPostResponse202"""
 
     message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422)
+model_rebuild(ReposOwnerRepoDeploymentsPostResponse202)
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",)
+__all__ = ("ReposOwnerRepoDeploymentsPostResponse202",)

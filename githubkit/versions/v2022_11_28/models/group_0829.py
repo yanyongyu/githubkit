@@ -9,35 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GistsGistIdGetResponse403(GitHubModel):
-    """GistsGistIdGetResponse403"""
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
 
-    block: Missing[GistsGistIdGetResponse403PropBlock] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-
-
-class GistsGistIdGetResponse403PropBlock(GitHubModel):
-    """GistsGistIdGetResponse403PropBlock"""
-
-    reason: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    html_url: Missing[Union[str, None]] = Field(default=UNSET)
+    labels: List[str] = Field(
+        max_length=100,
+        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+    )
 
 
-model_rebuild(GistsGistIdGetResponse403)
-model_rebuild(GistsGistIdGetResponse403PropBlock)
+model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody)
 
-__all__ = (
-    "GistsGistIdGetResponse403",
-    "GistsGistIdGetResponse403PropBlock",
-)
+__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",)

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -22,16 +23,13 @@ from .group_0358 import SimpleInstallation
 from .group_0360 import RepositoryWebhooks
 from .group_0361 import SimpleUserWebhooks
 from .group_0359 import OrganizationSimpleWebhooks
-from .group_0567 import (
-    WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase,
-)
 
 
-class WebhookMarketplacePurchasePendingChangeCancelled(GitHubModel):
-    """marketplace_purchase pending_change_cancelled event"""
+class WebhookProjectColumnEdited(GitHubModel):
+    """project_column edited event"""
 
-    action: Literal["pending_change_cancelled"] = Field()
-    effective_date: str = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookProjectColumnEditedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -42,86 +40,60 @@ class WebhookMarketplacePurchasePendingChangeCancelled(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    marketplace_purchase: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase = Field()
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    previous_marketplace_purchase: Missing[
-        WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchase
-    ] = Field(default=UNSET, title="Marketplace Purchase")
+    project_column: WebhookProjectColumnEditedPropProjectColumn = Field(
+        title="Project Column"
+    )
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchase(
-    GitHubModel
-):
-    """Marketplace Purchase"""
+class WebhookProjectColumnEditedPropProjectColumn(GitHubModel):
+    """Project Column"""
 
-    account: WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropAccount = Field()
-    billing_cycle: str = Field()
-    free_trial_ends_on: None = Field()
-    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
-    on_free_trial: bool = Field()
-    plan: WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropPlan = Field()
-    unit_count: int = Field()
-
-
-class WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropAccount(
-    GitHubModel
-):
-    """WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchaseP
-    ropAccount
-    """
-
-    id: int = Field()
-    login: str = Field()
+    after_id: Missing[Union[int, None]] = Field(default=UNSET)
+    cards_url: str = Field()
+    created_at: datetime = Field()
+    id: int = Field(description="The unique identifier of the project column")
+    name: str = Field(description="Name of the project column")
     node_id: str = Field()
-    organization_billing_email: Union[str, None] = Field()
-    type: str = Field()
+    project_url: str = Field()
+    updated_at: datetime = Field()
+    url: str = Field()
 
 
-class WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropPlan(
-    GitHubModel
-):
-    """WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchaseP
-    ropPlan
-    """
+class WebhookProjectColumnEditedPropChanges(GitHubModel):
+    """WebhookProjectColumnEditedPropChanges"""
 
-    bullets: List[str] = Field()
-    description: str = Field()
-    has_free_trial: bool = Field()
-    id: int = Field()
-    monthly_price_in_cents: int = Field()
-    name: str = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    unit_name: Union[str, None] = Field()
-    yearly_price_in_cents: int = Field()
+    name: Missing[WebhookProjectColumnEditedPropChangesPropName] = Field(default=UNSET)
 
 
-model_rebuild(WebhookMarketplacePurchasePendingChangeCancelled)
-model_rebuild(
-    WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchase
-)
-model_rebuild(
-    WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropAccount
-)
-model_rebuild(
-    WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropPlan
-)
+class WebhookProjectColumnEditedPropChangesPropName(GitHubModel):
+    """WebhookProjectColumnEditedPropChangesPropName"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookProjectColumnEdited)
+model_rebuild(WebhookProjectColumnEditedPropProjectColumn)
+model_rebuild(WebhookProjectColumnEditedPropChanges)
+model_rebuild(WebhookProjectColumnEditedPropChangesPropName)
 
 __all__ = (
-    "WebhookMarketplacePurchasePendingChangeCancelled",
-    "WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchase",
-    "WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropAccount",
-    "WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropPlan",
+    "WebhookProjectColumnEdited",
+    "WebhookProjectColumnEditedPropProjectColumn",
+    "WebhookProjectColumnEditedPropChanges",
+    "WebhookProjectColumnEditedPropChangesPropName",
 )

@@ -12,26 +12,16 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
+from .group_0174 import JobType
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+
+class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
 
     total_count: int
-    repository_cache_usages: List[ActionsCacheUsageByRepositoryType]
+    jobs: List[JobType]
 
 
-class ActionsCacheUsageByRepositoryType(TypedDict):
-    """Actions Cache Usage by repository
-
-    GitHub Actions Cache Usage by repository.
-    """
-
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
-
-
-__all__ = (
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
-    "ActionsCacheUsageByRepositoryType",
-)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type",)

@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -22,8 +24,8 @@ from .group_0394 import SimpleUserWebhooks
 from .group_0392 import OrganizationSimpleWebhooks
 
 
-class WebhookPublic(GitHubModel):
-    """public event"""
+class WebhookRepositoryImport(GitHubModel):
+    """repository_import event"""
 
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -48,8 +50,9 @@ class WebhookPublic(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
+    status: Literal["success", "cancelled", "failure"] = Field()
 
 
-model_rebuild(WebhookPublic)
+model_rebuild(WebhookRepositoryImport)
 
-__all__ = ("WebhookPublic",)
+__all__ = ("WebhookRepositoryImport",)

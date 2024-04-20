@@ -9,23 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+from datetime import datetime
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
+class ReposOwnerRepoDependabotSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
-    async_: Missing[bool] = Field(
-        default=UNSET,
-        alias="async",
-        description="When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued.",
-    )
+    total_count: int = Field()
+    secrets: List[DependabotSecret] = Field()
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutBody)
+class DependabotSecret(GitHubModel):
+    """Dependabot Secret
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBody",)
+    Set secrets for Dependabot.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+
+
+model_rebuild(ReposOwnerRepoDependabotSecretsGetResponse200)
+model_rebuild(DependabotSecret)
+
+__all__ = (
+    "ReposOwnerRepoDependabotSecretsGetResponse200",
+    "DependabotSecret",
+)

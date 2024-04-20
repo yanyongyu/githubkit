@@ -9,32 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof1(GitHubModel):
-    """WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof1"""
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    affected_package_name: Missing[str] = Field(default=UNSET)
-    affected_range: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    external_identifier: Missing[str] = Field(default=UNSET)
-    external_reference: Missing[Union[str, None]] = Field(default=UNSET)
-    fixed_in: Missing[str] = Field(default=UNSET)
-    ghsa_id: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    number: Missing[int] = Field(default=UNSET)
-    severity: Missing[str] = Field(default=UNSET)
-    state: Literal["open"] = Field()
+    selected_repository_ids: List[int] = Field(
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints."
+    )
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof1)
+model_rebuild(OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody)
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof1",)
+__all__ = ("OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",)

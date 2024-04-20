@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0357 import EnterpriseWebhooksType
@@ -18,14 +19,15 @@ from .group_0361 import SimpleUserWebhooksType
 from .group_0359 import OrganizationSimpleWebhooksType
 
 
-class WebhookPublicType(TypedDict):
-    """public event"""
+class WebhookRepositoryImportType(TypedDict):
+    """repository_import event"""
 
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
+    status: Literal["success", "cancelled", "failure"]
 
 
-__all__ = ("WebhookPublicType",)
+__all__ = ("WebhookRepositoryImportType",)

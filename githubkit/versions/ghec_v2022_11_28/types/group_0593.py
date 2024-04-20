@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0390 import EnterpriseWebhooksType
@@ -19,108 +20,79 @@ from .group_0394 import SimpleUserWebhooksType
 from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookMarketplacePurchaseChangedType(TypedDict):
-    """marketplace_purchase changed event"""
+class WebhookProjectCardMovedType(TypedDict):
+    """project_card moved event"""
 
-    action: Literal["changed"]
-    effective_date: str
+    action: Literal["moved"]
+    changes: NotRequired[WebhookProjectCardMovedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhookMarketplacePurchaseChangedPropMarketplacePurchaseType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[
-        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType
-    ]
+    project_card: WebhookProjectCardMovedPropProjectCardType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
 
 
-class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseType(TypedDict):
-    """WebhookMarketplacePurchaseChangedPropMarketplacePurchase"""
+class WebhookProjectCardMovedPropChangesType(TypedDict):
+    """WebhookProjectCardMovedPropChanges"""
 
-    account: WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedAccountType
-    billing_cycle: str
-    free_trial_ends_on: Union[Union[str, None], None]
-    next_billing_date: Union[Union[str, None], None]
-    on_free_trial: bool
-    plan: WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedPlanType
-    unit_count: int
+    column_id: WebhookProjectCardMovedPropChangesPropColumnIdType
 
 
-class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedAccount"""
+class WebhookProjectCardMovedPropChangesPropColumnIdType(TypedDict):
+    """WebhookProjectCardMovedPropChangesPropColumnId"""
 
+    from_: int
+
+
+class WebhookProjectCardMovedPropProjectCardType(TypedDict):
+    """WebhookProjectCardMovedPropProjectCard"""
+
+    after_id: Union[Union[int, None], None]
+    archived: bool
+    column_id: int
+    column_url: str
+    content_url: NotRequired[str]
+    created_at: datetime
+    creator: Union[WebhookProjectCardMovedPropProjectCardMergedCreatorType, None]
+    id: int
+    node_id: str
+    note: Union[Union[str, None], None]
+    project_url: str
+    updated_at: datetime
+    url: str
+
+
+class WebhookProjectCardMovedPropProjectCardMergedCreatorType(TypedDict):
+    """WebhookProjectCardMovedPropProjectCardMergedCreator"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
     id: int
     login: str
-    node_id: str
-    organization_billing_email: Union[Union[str, None], None]
-    type: str
-
-
-class WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedPlanType(TypedDict):
-    """WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedPlan"""
-
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[Union[str, None], None]
-    yearly_price_in_cents: int
-
-
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase"""
-
-    account: (
-        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType
-    )
-    billing_cycle: str
-    free_trial_ends_on: Union[str, None]
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: Union[bool, None]
-    plan: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType
-    unit_count: int
-
-
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount"""
-
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan"""
-
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookMarketplacePurchaseChangedType",
-    "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseType",
-    "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedAccountType",
-    "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedPlanType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType",
+    "WebhookProjectCardMovedType",
+    "WebhookProjectCardMovedPropChangesType",
+    "WebhookProjectCardMovedPropChangesPropColumnIdType",
+    "WebhookProjectCardMovedPropProjectCardType",
+    "WebhookProjectCardMovedPropProjectCardMergedCreatorType",
 )

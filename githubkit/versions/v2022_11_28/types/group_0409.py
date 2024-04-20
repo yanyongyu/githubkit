@@ -9,30 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0168 import DeploymentType
-from .group_0289 import PullRequestType
+from .group_0357 import EnterpriseWebhooksType
 from .group_0358 import SimpleInstallationType
 from .group_0360 import RepositoryWebhooksType
 from .group_0361 import SimpleUserWebhooksType
 from .group_0359 import OrganizationSimpleWebhooksType
 
 
-class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
-    """deployment protection rule requested event"""
+class WebhookDeployKeyCreatedType(TypedDict):
+    """deploy_key created event"""
 
-    action: Literal["requested"]
-    environment: NotRequired[str]
-    event: NotRequired[str]
-    deployment_callback_url: NotRequired[str]
-    deployment: NotRequired[DeploymentType]
-    pull_requests: NotRequired[List[PullRequestType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    sender: NotRequired[SimpleUserWebhooksType]
+    key: WebhookDeployKeyCreatedPropKeyType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookDeploymentProtectionRuleRequestedType",)
+class WebhookDeployKeyCreatedPropKeyType(TypedDict):
+    """WebhookDeployKeyCreatedPropKey
+
+    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
+    deploy-key) resource.
+    """
+
+    added_by: NotRequired[Union[str, None]]
+    created_at: str
+    id: int
+    key: str
+    last_used: NotRequired[Union[str, None]]
+    read_only: bool
+    title: str
+    url: str
+    verified: bool
+
+
+__all__ = (
+    "WebhookDeployKeyCreatedType",
+    "WebhookDeployKeyCreatedPropKeyType",
+)

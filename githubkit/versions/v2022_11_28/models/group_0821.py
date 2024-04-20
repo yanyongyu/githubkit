@@ -9,19 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ApplicationsClientIdGrantDeleteBody(GitHubModel):
-    """ApplicationsClientIdGrantDeleteBody"""
-
-    access_token: str = Field(
-        description="The OAuth access token used to authenticate to the GitHub API."
-    )
+from .group_0153 import Artifact
 
 
-model_rebuild(ApplicationsClientIdGrantDeleteBody)
+class ReposOwnerRepoActionsArtifactsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsArtifactsGetResponse200"""
 
-__all__ = ("ApplicationsClientIdGrantDeleteBody",)
+    total_count: int = Field()
+    artifacts: List[Artifact] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsArtifactsGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsArtifactsGetResponse200",)

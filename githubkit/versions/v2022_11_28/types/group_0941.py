@@ -9,17 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0158 import ActionsVariableType
-
-
-class ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
-
-    total_count: int
-    variables: List[ActionsVariableType]
+from typing import Literal
+from datetime import datetime
+from typing_extensions import TypedDict, NotRequired
 
 
-__all__ = ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",)
+class ReposOwnerRepoMilestonesPostBodyType(TypedDict):
+    """ReposOwnerRepoMilestonesPostBody"""
+
+    title: str
+    state: NotRequired[Literal["open", "closed"]]
+    description: NotRequired[str]
+    due_on: NotRequired[datetime]
+
+
+__all__ = ("ReposOwnerRepoMilestonesPostBodyType",)

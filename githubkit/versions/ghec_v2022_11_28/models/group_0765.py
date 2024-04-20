@@ -9,115 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0118 import RepositoryRulesetConditions
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems"""
+class GistsGistIdPatchBody(GitHubModel):
+    """GistsGistIdPatchBody"""
 
-    condition: Missing[RepositoryRulesetConditions] = Field(
-        default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the gist."
     )
-    changes: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges
-    ] = Field(default=UNSET)
+    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
+        default=UNSET,
+        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be\ndeleted if the specified object does not contain at least one of `content` or `filename`.",
+    )
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    es
+class GistsGistIdPatchBodyPropFiles(ExtraGitHubModel):
+    """GistsGistIdPatchBodyPropFiles
+
+    The gist files to be updated, renamed, or deleted. Each `key` must match the
+    current filename
+    (including extension) of the targeted gist file. For example: `hello.py`.
+
+    To delete a file, set the whole file to null. For example: `hello.py : null`.
+    The file will also be
+    deleted if the specified object does not contain at least one of `content` or
+    `filename`.
+
+    Examples:
+        {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
     """
 
-    condition_type: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType
-    ] = Field(default=UNSET)
-    target: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget
-    ] = Field(default=UNSET)
-    include: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude
-    ] = Field(default=UNSET)
-    exclude: Missing[
-        WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude
-    ] = Field(default=UNSET)
 
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropConditionType
-    """
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropTarget
-    """
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropInclude
-    """
-
-    from_: Missing[List[str]] = Field(default=UNSET, alias="from")
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude(
-    GitHubModel
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChang
-    esPropExclude
-    """
-
-    from_: Missing[List[str]] = Field(default=UNSET, alias="from")
-
-
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude
-)
-model_rebuild(
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude
-)
+model_rebuild(GistsGistIdPatchBody)
+model_rebuild(GistsGistIdPatchBodyPropFiles)
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropInclude",
-    "WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude",
+    "GistsGistIdPatchBody",
+    "GistsGistIdPatchBodyPropFiles",
 )

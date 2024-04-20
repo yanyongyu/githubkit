@@ -9,32 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgHooksHookIdPatchBodyType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBody"""
+class ReposOwnerRepoCollaboratorsUsernamePutBodyType(TypedDict):
+    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
 
-    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigType]
-    events: NotRequired[List[str]]
-    active: NotRequired[bool]
-    name: NotRequired[str]
+    permission: NotRequired[str]
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
-
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-
-
-__all__ = (
-    "OrgsOrgHooksHookIdPatchBodyType",
-    "OrgsOrgHooksHookIdPatchBodyPropConfigType",
-)
+__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBodyType",)

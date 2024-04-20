@@ -9,11 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoCommitsCommitShaCommentsPostBodyType(TypedDict):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
+
+    body: str
+    path: NotRequired[str]
+    position: NotRequired[int]
+    line: NotRequired[int]
 
 
-__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1Type",)
+__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBodyType",)

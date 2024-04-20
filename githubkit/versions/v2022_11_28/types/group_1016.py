@@ -9,17 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0157 import ActionsSecretType
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
+class UserGpgKeysPostBodyType(TypedDict):
+    """UserGpgKeysPostBody"""
 
-    total_count: int
-    secrets: List[ActionsSecretType]
+    name: NotRequired[str]
+    armored_public_key: str
 
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type",)
+__all__ = ("UserGpgKeysPostBodyType",)

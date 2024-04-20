@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -23,12 +22,13 @@ from .group_0391 import SimpleInstallation
 from .group_0393 import RepositoryWebhooks
 from .group_0394 import SimpleUserWebhooks
 from .group_0392 import OrganizationSimpleWebhooks
+from .group_0654 import WebhookRegistryPackageUpdatedPropRegistryPackage
 
 
-class WebhookProjectColumnMoved(GitHubModel):
-    """project_column moved event"""
+class WebhookRegistryPackageUpdated(GitHubModel):
+    """WebhookRegistryPackageUpdated"""
 
-    action: Literal["moved"] = Field()
+    action: Literal["updated"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,9 +44,7 @@ class WebhookProjectColumnMoved(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_column: WebhookProjectColumnMovedPropProjectColumn = Field(
-        title="Project Column"
-    )
+    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackage = Field()
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
@@ -58,24 +56,6 @@ class WebhookProjectColumnMoved(GitHubModel):
     )
 
 
-class WebhookProjectColumnMovedPropProjectColumn(GitHubModel):
-    """Project Column"""
+model_rebuild(WebhookRegistryPackageUpdated)
 
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    cards_url: str = Field()
-    created_at: datetime = Field()
-    id: int = Field(description="The unique identifier of the project column")
-    name: str = Field(description="Name of the project column")
-    node_id: str = Field()
-    project_url: str = Field()
-    updated_at: datetime = Field()
-    url: str = Field()
-
-
-model_rebuild(WebhookProjectColumnMoved)
-model_rebuild(WebhookProjectColumnMovedPropProjectColumn)
-
-__all__ = (
-    "WebhookProjectColumnMoved",
-    "WebhookProjectColumnMovedPropProjectColumn",
-)
+__all__ = ("WebhookRegistryPackageUpdated",)

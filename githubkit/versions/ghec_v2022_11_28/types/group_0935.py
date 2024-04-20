@@ -10,16 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict
-
-from .group_0076 import MinimalRepositoryType
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
 
     total_count: int
-    repositories: List[MinimalRepositoryType]
+    devcontainers: List[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType
+    ]
 
 
-__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",)
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
+
+    path: str
+    name: NotRequired[str]
+    display_name: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200Type",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType",
+)

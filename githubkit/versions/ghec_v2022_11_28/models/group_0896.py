@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,46 +16,14 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsRunnerGroupsGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsGetResponse200"""
+class ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody(GitHubModel):
+    """ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody"""
 
-    total_count: float = Field()
-    runner_groups: List[RunnerGroupsOrg] = Field()
-
-
-class RunnerGroupsOrg(GitHubModel):
-    """RunnerGroupsOrg"""
-
-    id: float = Field()
-    name: str = Field()
-    visibility: str = Field()
-    default: bool = Field()
-    selected_repositories_url: Missing[str] = Field(
-        default=UNSET,
-        description="Link to the selected repositories resource for this runner group. Not present unless visibility was set to `selected`",
-    )
-    runners_url: str = Field()
-    inherited: bool = Field()
-    inherited_allows_public_repositories: Missing[bool] = Field(default=UNSET)
-    allows_public_repositories: bool = Field()
-    workflow_restrictions_read_only: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
-    )
-    restricted_to_workflows: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-    )
-    selected_workflows: Missing[List[str]] = Field(
-        default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+    enable_debug_logging: Missing[bool] = Field(
+        default=UNSET, description="Whether to enable debug logging for the re-run."
     )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsGetResponse200)
-model_rebuild(RunnerGroupsOrg)
+model_rebuild(ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody)
 
-__all__ = (
-    "OrgsOrgActionsRunnerGroupsGetResponse200",
-    "RunnerGroupsOrg",
-)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody",)

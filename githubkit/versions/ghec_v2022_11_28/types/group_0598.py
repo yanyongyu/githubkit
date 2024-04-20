@@ -9,58 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1Type(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1"""
-
-    account: NotRequired[
-        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropAccountType
-    ]
-    billing_cycle: NotRequired[str]
-    free_trial_ends_on: NotRequired[Union[str, None]]
-    next_billing_date: Union[str, None]
-    on_free_trial: NotRequired[bool]
-    plan: NotRequired[
-        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropPlanType
-    ]
-    unit_count: NotRequired[int]
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropAccount"""
+class WebhookProjectColumnDeletedType(TypedDict):
+    """project_column deleted event"""
 
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organization_billing_email: NotRequired[Union[str, None]]
-    type: NotRequired[str]
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_column: WebhookProjectColumnDeletedPropProjectColumnType
+    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropPlan"""
+class WebhookProjectColumnDeletedPropProjectColumnType(TypedDict):
+    """Project Column"""
 
-    bullets: NotRequired[List[Union[str, None]]]
-    description: NotRequired[str]
-    has_free_trial: NotRequired[bool]
-    id: NotRequired[int]
-    monthly_price_in_cents: NotRequired[int]
-    name: NotRequired[str]
-    price_model: NotRequired[Literal["FREE", "FLAT_RATE", "PER_UNIT"]]
-    unit_name: NotRequired[Union[str, None]]
-    yearly_price_in_cents: NotRequired[int]
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
+    created_at: datetime
+    id: int
+    name: str
+    node_id: str
+    project_url: str
+    updated_at: datetime
+    url: str
 
 
 __all__ = (
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1Type",
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropAccountType",
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropPlanType",
+    "WebhookProjectColumnDeletedType",
+    "WebhookProjectColumnDeletedPropProjectColumnType",
 )

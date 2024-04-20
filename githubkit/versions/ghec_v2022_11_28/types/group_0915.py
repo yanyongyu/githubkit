@@ -13,10 +13,16 @@ from typing import List
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsVariablesNameRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
 
-    selected_repository_ids: List[int]
+    Examples:
+        {'teams': ['justice-league']}
+    """
+
+    teams: List[str]
 
 
-__all__ = ("OrgsOrgActionsVariablesNameRepositoriesPutBodyType",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type",)

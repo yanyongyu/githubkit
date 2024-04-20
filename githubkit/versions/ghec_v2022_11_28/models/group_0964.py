@@ -16,17 +16,23 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsPostBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
+class ReposOwnerRepoForksPostBody(GitHubModel):
+    """ReposOwnerRepoForksPostBody"""
 
-    title: str = Field(description="The discussion post's title.")
-    body: str = Field(description="The discussion post's body text.")
-    private: Missing[bool] = Field(
+    organization: Missing[str] = Field(
         default=UNSET,
-        description="Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to `true` to create a private post.",
+        description="Optional parameter to specify the organization name if forking into an organization.",
+    )
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="When forking from an existing repository, a new name for the fork.",
+    )
+    default_branch_only: Missing[bool] = Field(
+        default=UNSET,
+        description="When forking from an existing repository, fork with only the default branch.",
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsPostBody)
+model_rebuild(ReposOwnerRepoForksPostBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsPostBody",)
+__all__ = ("ReposOwnerRepoForksPostBody",)

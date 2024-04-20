@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -18,57 +18,46 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof1(GitHubModel):
-    """WebhookWorkflowJobInProgressPropWorkflowJobAllof1"""
+class OrgsOrgMigrationsPostBody(GitHubModel):
+    """OrgsOrgMigrationsPostBody"""
 
-    check_run_url: Missing[str] = Field(default=UNSET)
-    completed_at: Missing[Union[str, None]] = Field(default=UNSET)
-    conclusion: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: Missing[str] = Field(
-        default=UNSET, description="The time that the job created."
+    repositories: List[str] = Field(
+        description="A list of arrays indicating which repositories should be migrated."
     )
-    head_sha: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    labels: Missing[List[str]] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    run_attempt: Missing[int] = Field(default=UNSET)
-    run_id: Missing[int] = Field(default=UNSET)
-    run_url: Missing[str] = Field(default=UNSET)
-    runner_group_id: Missing[Union[int, None]] = Field(default=UNSET)
-    runner_group_name: Missing[Union[str, None]] = Field(default=UNSET)
-    runner_id: Missing[Union[int, None]] = Field(default=UNSET)
-    runner_name: Missing[Union[str, None]] = Field(default=UNSET)
-    started_at: Missing[str] = Field(default=UNSET)
-    status: Literal["in_progress", "completed", "queued"] = Field()
-    head_branch: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The name of the current branch."
+    lock_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether repositories should be locked (to prevent manipulation) while migrating data.",
     )
-    workflow_name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The name of the workflow."
+    exclude_metadata: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
     )
-    steps: List[WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems] = (
-        Field()
+    exclude_git_data: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether the repository git data should be excluded from the migration.",
     )
-    url: Missing[str] = Field(default=UNSET)
+    exclude_attachments: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether attachments should be excluded from the migration (to reduce migration archive file size).",
+    )
+    exclude_releases: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether releases should be excluded from the migration (to reduce migration archive file size).",
+    )
+    exclude_owner_projects: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether projects owned by the organization or users should be excluded. from the migration.",
+    )
+    org_metadata_only: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
+    )
+    exclude: Missing[List[Literal["repositories"]]] = Field(
+        default=UNSET,
+        description="Exclude related items from being returned in the response in order to improve performance of the request.",
+    )
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems(GitHubModel):
-    """Workflow Step"""
+model_rebuild(OrgsOrgMigrationsPostBody)
 
-    completed_at: Union[str, None] = Field()
-    conclusion: Union[str, None] = Field()
-    name: str = Field()
-    number: int = Field()
-    started_at: Union[str, None] = Field()
-    status: Literal["in_progress", "completed", "pending", "queued"] = Field()
-
-
-model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof1)
-model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems)
-
-__all__ = (
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1",
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems",
-)
+__all__ = ("OrgsOrgMigrationsPostBody",)

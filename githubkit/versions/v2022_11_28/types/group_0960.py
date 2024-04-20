@@ -9,30 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
+class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
 
-    ref: str
-    inputs: NotRequired[
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ]
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType(
-    TypedDict
-):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
-
-    Input keys and values configured in the workflow file. The maximum number of
-    properties is 10. Any default properties configured in the workflow file will be
-    used when `inputs` are omitted.
-    """
-
-
-__all__ = (
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType",
-)
+__all__ = ("ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType",)

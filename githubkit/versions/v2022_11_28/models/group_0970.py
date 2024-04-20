@@ -13,21 +13,22 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: List[str] = Field(
-        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items."
+    reviewers: List[str] = Field(
+        description="An array of user `login`s that will be removed."
+    )
+    team_reviewers: Missing[List[str]] = Field(
+        default=UNSET, description="An array of team `slug`s that will be removed."
     )
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0)
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody)
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",)

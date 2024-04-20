@@ -9,28 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import Annotated
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 
-class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+class ReposOwnerRepoDispatchesPostBody(GitHubModel):
+    """ReposOwnerRepoDispatchesPostBody"""
 
-    action: Literal["approve", "deny"] = Field(
-        description="Action to apply to the request."
+    event_type: str = Field(
+        min_length=1,
+        max_length=100,
+        description="A custom webhook event name. Must be 100 characters or fewer.",
     )
-    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
+    client_payload: Missing[ReposOwnerRepoDispatchesPostBodyPropClientPayload] = Field(
         default=UNSET,
-        description="Reason for approving or denying the request. Max 1024 characters.",
+        description="JSON payload with extra information about the webhook event that your action or workflow may use. The maximum number of top-level properties is 10.",
     )
 
 
-model_rebuild(OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody)
+class ReposOwnerRepoDispatchesPostBodyPropClientPayload(ExtraGitHubModel):
+    """ReposOwnerRepoDispatchesPostBodyPropClientPayload
 
-__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",)
+    JSON payload with extra information about the webhook event that your action or
+    workflow may use. The maximum number of top-level properties is 10.
+    """
+
+
+model_rebuild(ReposOwnerRepoDispatchesPostBody)
+model_rebuild(ReposOwnerRepoDispatchesPostBodyPropClientPayload)
+
+__all__ = (
+    "ReposOwnerRepoDispatchesPostBody",
+    "ReposOwnerRepoDispatchesPostBodyPropClientPayload",
+)

@@ -17,43 +17,34 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0365 import MergeGroup
+from .group_0369 import ProjectsV2Item
 from .group_0358 import SimpleInstallation
-from .group_0360 import RepositoryWebhooks
 from .group_0361 import SimpleUserWebhooks
 from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookMergeGroupChecksRequested(GitHubModel):
-    """WebhookMergeGroupChecksRequested"""
+class WebhookProjectsV2ItemDeleted(GitHubModel):
+    """Projects v2 Item Deleted Event"""
 
-    action: Literal["checks_requested"] = Field()
+    action: Literal["deleted"] = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    merge_group: MergeGroup = Field(
-        title="Merge Group",
-        description="A group of pull requests that the merge queue has grouped together to be merged.\n",
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    projects_v2_item: ProjectsV2Item = Field(
+        title="Projects v2 Item", description="An item belonging to a project"
     )
-    sender: Missing[SimpleUserWebhooks] = Field(
-        default=UNSET,
+    sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-model_rebuild(WebhookMergeGroupChecksRequested)
+model_rebuild(WebhookProjectsV2ItemDeleted)
 
-__all__ = ("WebhookMergeGroupChecksRequested",)
+__all__ = ("WebhookProjectsV2ItemDeleted",)

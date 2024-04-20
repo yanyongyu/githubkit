@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,57 +18,65 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0(GitHubModel):
-    """Marketplace Purchase"""
-
-    account: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount = Field()
-    billing_cycle: str = Field()
-    free_trial_ends_on: Union[str, None] = Field()
-    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
-    on_free_trial: bool = Field()
-    plan: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan = Field()
-    unit_count: int = Field()
+from .group_0390 import EnterpriseWebhooks
+from .group_0391 import SimpleInstallation
+from .group_0393 import RepositoryWebhooks
+from .group_0394 import SimpleUserWebhooks
+from .group_0392 import OrganizationSimpleWebhooks
 
 
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount(
-    GitHubModel
-):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount"""
+class WebhookProjectColumnCreated(GitHubModel):
+    """project_column created event"""
 
-    id: int = Field()
-    login: str = Field()
+    action: Literal["created"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    project_column: WebhookProjectColumnCreatedPropProjectColumn = Field(
+        title="Project Column"
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
+
+
+class WebhookProjectColumnCreatedPropProjectColumn(GitHubModel):
+    """Project Column"""
+
+    after_id: Missing[Union[int, None]] = Field(default=UNSET)
+    cards_url: str = Field()
+    created_at: datetime = Field()
+    id: int = Field(description="The unique identifier of the project column")
+    name: str = Field(description="Name of the project column")
     node_id: str = Field()
-    organization_billing_email: Union[str, None] = Field()
-    type: str = Field()
+    project_url: str = Field()
+    updated_at: datetime = Field()
+    url: str = Field()
 
 
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan(
-    GitHubModel
-):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan"""
-
-    bullets: List[str] = Field()
-    description: str = Field()
-    has_free_trial: bool = Field()
-    id: int = Field()
-    monthly_price_in_cents: int = Field()
-    name: str = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    unit_name: Union[str, None] = Field()
-    yearly_price_in_cents: int = Field()
-
-
-model_rebuild(WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0)
-model_rebuild(
-    WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount
-)
-model_rebuild(
-    WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan
-)
+model_rebuild(WebhookProjectColumnCreated)
+model_rebuild(WebhookProjectColumnCreatedPropProjectColumn)
 
 __all__ = (
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0",
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount",
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan",
+    "WebhookProjectColumnCreated",
+    "WebhookProjectColumnCreatedPropProjectColumn",
 )

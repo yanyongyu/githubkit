@@ -9,18 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody"""
+class ProjectsColumnsColumnIdPatchBodyType(TypedDict):
+    """ProjectsColumnsColumnIdPatchBody"""
 
-    selected_organization_ids: List[int]
+    name: str
 
 
-__all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBodyType",
-)
+__all__ = ("ProjectsColumnsColumnIdPatchBodyType",)

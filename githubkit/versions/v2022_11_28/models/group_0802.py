@@ -9,28 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0803 import (
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase,
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead,
-)
+
+class ProjectsColumnsCardsCardIdDeleteResponse403(GitHubModel):
+    """ProjectsColumnsCardsCardIdDeleteResponse403"""
+
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[List[str]] = Field(default=UNSET)
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItems(
-    GitHubModel
-):
-    """WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItems"""
+model_rebuild(ProjectsColumnsCardsCardIdDeleteResponse403)
 
-    base: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase = Field()
-    head: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead = Field()
-    id: float = Field()
-    number: float = Field()
-    url: str = Field()
-
-
-model_rebuild(WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItems)
-
-__all__ = ("WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItems",)
+__all__ = ("ProjectsColumnsCardsCardIdDeleteResponse403",)

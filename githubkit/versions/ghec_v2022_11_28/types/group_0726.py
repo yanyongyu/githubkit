@@ -9,70 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0729 import WebhookReleasePrereleasedPropReleaseAllof0PropReactionsType
-from .group_0727 import WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsType
+from typing_extensions import TypedDict
 
 
-class WebhookReleasePrereleasedPropReleaseAllof0Type(TypedDict):
-    """Release
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof0Type(TypedDict):
+    """Workflow Job
 
-    The [release](https://docs.github.com/enterprise-
-    cloud@latest//rest/releases/releases/#get-a-release) object.
+    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
+    and `started_at` are the same as those in a [`check_run`](#check_run) object.
     """
 
-    assets: List[WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsType]
-    assets_url: str
-    author: Union[WebhookReleasePrereleasedPropReleaseAllof0PropAuthorType, None]
-    body: Union[str, None]
-    created_at: Union[datetime, None]
-    discussion_url: NotRequired[str]
-    draft: bool
+    check_run_url: str
+    completed_at: Union[str, None]
+    conclusion: Union[None, Literal["success", "failure", "cancelled", "neutral"]]
+    created_at: str
+    head_sha: str
     html_url: str
     id: int
-    name: Union[str, None]
+    labels: List[str]
+    name: str
     node_id: str
-    prerelease: bool
-    published_at: Union[datetime, None]
-    reactions: NotRequired[WebhookReleasePrereleasedPropReleaseAllof0PropReactionsType]
-    tag_name: str
-    tarball_url: Union[str, None]
-    target_commitish: str
-    upload_url: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed"]
+    head_branch: Union[str, None]
+    workflow_name: Union[str, None]
+    steps: List[WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType]
     url: str
-    zipball_url: Union[str, None]
 
 
-class WebhookReleasePrereleasedPropReleaseAllof0PropAuthorType(TypedDict):
-    """User"""
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType(TypedDict):
+    """Workflow Step"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    completed_at: Union[str, None]
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    name: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["in_progress", "completed", "queued", "pending"]
 
 
 __all__ = (
-    "WebhookReleasePrereleasedPropReleaseAllof0Type",
-    "WebhookReleasePrereleasedPropReleaseAllof0PropAuthorType",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0Type",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItemsType",
 )

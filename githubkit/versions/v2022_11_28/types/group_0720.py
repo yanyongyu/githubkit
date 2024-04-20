@@ -9,25 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0357 import EnterpriseWebhooksType
-from .group_0358 import SimpleInstallationType
-from .group_0360 import RepositoryWebhooksType
-from .group_0361 import SimpleUserWebhooksType
-from .group_0359 import OrganizationSimpleWebhooksType
+
+class NotificationsPutBodyType(TypedDict):
+    """NotificationsPutBody"""
+
+    last_read_at: NotRequired[datetime]
+    read: NotRequired[bool]
 
 
-class WebhookRepositoryDeletedType(TypedDict):
-    """repository deleted event"""
-
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-
-
-__all__ = ("WebhookRepositoryDeletedType",)
+__all__ = ("NotificationsPutBodyType",)

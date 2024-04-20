@@ -9,56 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0Type(
-    TypedDict
-):
-    """Marketplace Purchase"""
-
-    account: WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccountType
-    billing_cycle: str
-    free_trial_ends_on: Union[str, None]
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: (
-        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlanType
-    )
-    unit_count: int
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount"""
+class WebhookProjectColumnCreatedType(TypedDict):
+    """project_column created event"""
 
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_column: WebhookProjectColumnCreatedPropProjectColumnType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserWebhooksType]
+
+
+class WebhookProjectColumnCreatedPropProjectColumnType(TypedDict):
+    """Project Column"""
+
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
+    created_at: datetime
     id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan"""
-
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
     name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    node_id: str
+    project_url: str
+    updated_at: datetime
+    url: str
 
 
 __all__ = (
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0Type",
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccountType",
-    "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlanType",
+    "WebhookProjectColumnCreatedType",
+    "WebhookProjectColumnCreatedPropProjectColumnType",
 )

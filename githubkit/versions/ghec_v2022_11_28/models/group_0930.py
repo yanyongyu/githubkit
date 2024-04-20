@@ -15,16 +15,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgCopilotBillingSelectedUsersDeleteBody(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
-
-    selected_usernames: List[str] = Field(
-        min_length=1,
-        description="The usernames of the organization members for which to revoke access to GitHub Copilot.",
-    )
+from .group_0208 import CheckRun
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteBody)
+class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200(GitHubModel):
+    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
 
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",)
+    total_count: int = Field()
+    check_runs: List[CheckRun] = Field()
+
+
+model_rebuild(ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200)
+
+__all__ = ("ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200",)

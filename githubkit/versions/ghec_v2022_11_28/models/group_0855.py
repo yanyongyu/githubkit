@@ -9,19 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ApplicationsClientIdTokenPostBody(GitHubModel):
-    """ApplicationsClientIdTokenPostBody"""
+class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
 
-    access_token: str = Field(
-        description="The access_token of the OAuth or GitHub application."
+    role: Missing[Literal["member", "maintainer"]] = Field(
+        default=UNSET, description="The role that this user should have in the team."
     )
 
 
-model_rebuild(ApplicationsClientIdTokenPostBody)
+model_rebuild(OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody)
 
-__all__ = ("ApplicationsClientIdTokenPostBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody",)

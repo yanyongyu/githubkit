@@ -9,129 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0357 import EnterpriseWebhooksType
-from .group_0358 import SimpleInstallationType
-from .group_0360 import RepositoryWebhooksType
-from .group_0361 import SimpleUserWebhooksType
-from .group_0359 import OrganizationSimpleWebhooksType
 
+class OrgsOrgHooksPostBodyType(TypedDict):
+    """OrgsOrgHooksPostBody"""
 
-class WebhookSecurityAdvisoryPublishedType(TypedDict):
-    """security_advisory published event"""
-
-    action: Literal["published"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    security_advisory: WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryType
-    sender: NotRequired[SimpleUserWebhooksType]
-
-
-class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryType(TypedDict):
-    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisory
-
-    The details of the security advisory, including summary, description, and
-    severity.
-    """
-
-    cvss: WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCvssType
-    cwes: List[WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCwesItemsType]
-    description: str
-    ghsa_id: str
-    identifiers: List[
-        WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropIdentifiersItemsType
-    ]
-    published_at: str
-    references: List[
-        WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropReferencesItemsType
-    ]
-    severity: str
-    summary: str
-    updated_at: str
-    vulnerabilities: List[
-        WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsType
-    ]
-    withdrawn_at: Union[str, None]
-
-
-class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCvssType(TypedDict):
-    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCvss"""
-
-    score: float
-    vector_string: Union[str, None]
-
-
-class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCwesItemsType(TypedDict):
-    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str
     name: str
+    config: OrgsOrgHooksPostBodyPropConfigType
+    events: NotRequired[List[str]]
+    active: NotRequired[bool]
 
 
-class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropIdentifiersItemsType(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropIdentifiersItems"""
+class OrgsOrgHooksPostBodyPropConfigType(TypedDict):
+    """OrgsOrgHooksPostBodyPropConfig
 
-    type: str
-    value: str
-
-
-class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropReferencesItemsType(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropReferencesItems"""
+    Key/value pairs to provide settings for this webhook.
+    """
 
     url: str
-
-
-class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsType(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItems"""
-
-    first_patched_version: Union[
-        WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
-        None,
-    ]
-    package: WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
-    severity: str
-    vulnerable_version_range: str
-
-
-class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsProp
-    FirstPatchedVersion
-    """
-
-    identifier: str
-
-
-class WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(
-    TypedDict
-):
-    """WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsProp
-    Package
-    """
-
-    ecosystem: str
-    name: str
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    username: NotRequired[str]
+    password: NotRequired[str]
 
 
 __all__ = (
-    "WebhookSecurityAdvisoryPublishedType",
-    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryType",
-    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCvssType",
-    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropCwesItemsType",
-    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropIdentifiersItemsType",
-    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropReferencesItemsType",
-    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsType",
-    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
-    "WebhookSecurityAdvisoryPublishedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
+    "OrgsOrgHooksPostBodyType",
+    "OrgsOrgHooksPostBodyPropConfigType",
 )

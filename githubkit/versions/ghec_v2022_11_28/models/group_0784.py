@@ -9,32 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof1(GitHubModel):
-    """WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof1"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody"""
 
-    affected_package_name: Missing[str] = Field(default=UNSET)
-    affected_range: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    external_identifier: Missing[str] = Field(default=UNSET)
-    external_reference: Missing[Union[str, None]] = Field(default=UNSET)
-    fixed_in: Missing[str] = Field(default=UNSET)
-    ghsa_id: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    number: Missing[int] = Field(default=UNSET)
-    severity: Missing[str] = Field(default=UNSET)
-    state: Literal["open"] = Field()
+    selected_repository_ids: List[int] = Field(
+        description="List of repository IDs that can access the runner group."
+    )
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof1)
+model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody)
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof1",)
+__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody",)

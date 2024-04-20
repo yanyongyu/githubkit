@@ -11,24 +11,12 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0811 import (
-    WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType,
-    WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType,
-)
+
+class ProjectsColumnsColumnIdCardsPostBodyOneof1Type(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof1"""
+
+    content_id: int
+    content_type: str
 
 
-class WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsType(
-    TypedDict
-):
-    """WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItems"""
-
-    base: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType
-    head: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType
-    id: float
-    number: float
-    url: str
-
-
-__all__ = (
-    "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsType",
-)
+__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof1Type",)

@@ -9,21 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
-    """NotificationsThreadsThreadIdSubscriptionPutBody"""
-
-    ignored: Missing[bool] = Field(
-        default=UNSET, description="Whether to block all notifications from a thread."
-    )
+from .group_0157 import ActionsSecret
 
 
-model_rebuild(NotificationsThreadsThreadIdSubscriptionPutBody)
+class ReposOwnerRepoActionsSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsSecretsGetResponse200"""
 
-__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBody",)
+    total_count: int = Field()
+    secrets: List[ActionsSecret] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsSecretsGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsSecretsGetResponse200",)

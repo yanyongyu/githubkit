@@ -9,21 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsPermissionsRepositoriesPutBody(GitHubModel):
-    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
+class ReposOwnerRepoActionsRunsRunIdRerunPostBody(GitHubModel):
+    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
 
-    selected_repository_ids: List[int] = Field(
-        description="List of repository IDs to enable for GitHub Actions."
+    enable_debug_logging: Missing[bool] = Field(
+        default=UNSET, description="Whether to enable debug logging for the re-run."
     )
 
 
-model_rebuild(OrgsOrgActionsPermissionsRepositoriesPutBody)
+model_rebuild(ReposOwnerRepoActionsRunsRunIdRerunPostBody)
 
-__all__ = ("OrgsOrgActionsPermissionsRepositoriesPutBody",)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunPostBody",)

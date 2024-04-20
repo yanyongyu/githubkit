@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union, Literal
 
 from pydantic import Field
@@ -18,86 +17,131 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0556 import (
-    WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
-)
+from .group_0390 import EnterpriseWebhooks
+from .group_0391 import SimpleInstallation
+from .group_0393 import RepositoryWebhooks
+from .group_0394 import SimpleUserWebhooks
+from .group_0392 import OrganizationSimpleWebhooks
 
 
-class WebhookIssuesMilestonedPropIssueMergedPerformedViaGithubApp(GitHubModel):
-    """WebhookIssuesMilestonedPropIssueMergedPerformedViaGithubApp"""
+class WebhookMetaDeleted(GitHubModel):
+    """meta deleted event"""
 
-    created_at: Union[datetime, None] = Field()
-    description: Union[str, None] = Field()
-    events: Missing[
-        List[
-            Literal[
-                "branch_protection_rule",
-                "check_run",
-                "check_suite",
-                "code_scanning_alert",
-                "commit_comment",
-                "content_reference",
-                "create",
-                "delete",
-                "deployment",
-                "deployment_review",
-                "deployment_status",
-                "deploy_key",
-                "discussion",
-                "discussion_comment",
-                "fork",
-                "gollum",
-                "issues",
-                "issue_comment",
-                "label",
-                "member",
-                "membership",
-                "milestone",
-                "organization",
-                "org_block",
-                "page_build",
-                "project",
-                "project_card",
-                "project_column",
-                "public",
-                "pull_request",
-                "pull_request_review",
-                "pull_request_review_comment",
-                "push",
-                "registry_package",
-                "release",
-                "repository",
-                "repository_dispatch",
-                "secret_scanning_alert",
-                "star",
-                "status",
-                "team",
-                "team_add",
-                "watch",
-                "workflow_dispatch",
-                "workflow_run",
-                "reminder",
-            ]
-        ]
-    ] = Field(default=UNSET, description="The list of events for the GitHub app")
-    external_url: Union[str, None] = Field()
-    html_url: str = Field()
-    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
-    name: str = Field(description="The name of the GitHub app")
-    node_id: str = Field()
-    owner: Union[
-        WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
-    ] = Field(title="User")
-    permissions: Missing[
-        WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
-    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
-    slug: Missing[str] = Field(
-        default=UNSET, description="The slug name of the GitHub app"
+    action: Literal["deleted"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
     )
-    updated_at: Union[datetime, None] = Field()
+    hook: WebhookMetaDeletedPropHook = Field(
+        description="The modified webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace."
+    )
+    hook_id: int = Field(description="The id of the modified webhook.")
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
 
 
-model_rebuild(WebhookIssuesMilestonedPropIssueMergedPerformedViaGithubApp)
+class WebhookMetaDeletedPropHook(GitHubModel):
+    """WebhookMetaDeletedPropHook
 
-__all__ = ("WebhookIssuesMilestonedPropIssueMergedPerformedViaGithubApp",)
+    The modified webhook. This will contain different keys based on the type of
+    webhook it is: repository, organization, business, app, or GitHub Marketplace.
+    """
+
+    active: bool = Field()
+    config: WebhookMetaDeletedPropHookPropConfig = Field()
+    created_at: str = Field()
+    events: List[
+        Literal[
+            "*",
+            "branch_protection_rule",
+            "check_run",
+            "check_suite",
+            "code_scanning_alert",
+            "commit_comment",
+            "create",
+            "delete",
+            "deployment",
+            "deployment_status",
+            "deploy_key",
+            "discussion",
+            "discussion_comment",
+            "fork",
+            "gollum",
+            "issues",
+            "issue_comment",
+            "label",
+            "member",
+            "membership",
+            "meta",
+            "milestone",
+            "organization",
+            "org_block",
+            "package",
+            "page_build",
+            "project",
+            "project_card",
+            "project_column",
+            "public",
+            "pull_request",
+            "pull_request_review",
+            "pull_request_review_comment",
+            "pull_request_review_thread",
+            "push",
+            "registry_package",
+            "release",
+            "repository",
+            "repository_import",
+            "repository_vulnerability_alert",
+            "secret_scanning_alert",
+            "secret_scanning_alert_location",
+            "security_and_analysis",
+            "star",
+            "status",
+            "team",
+            "team_add",
+            "watch",
+            "workflow_job",
+            "workflow_run",
+            "repository_dispatch",
+            "projects_v2_item",
+        ]
+    ] = Field()
+    id: int = Field()
+    name: str = Field()
+    type: str = Field()
+    updated_at: str = Field()
+
+
+class WebhookMetaDeletedPropHookPropConfig(GitHubModel):
+    """WebhookMetaDeletedPropHookPropConfig"""
+
+    content_type: Literal["json", "form"] = Field()
+    insecure_ssl: str = Field()
+    secret: Missing[str] = Field(default=UNSET)
+    url: str = Field()
+
+
+model_rebuild(WebhookMetaDeleted)
+model_rebuild(WebhookMetaDeletedPropHook)
+model_rebuild(WebhookMetaDeletedPropHookPropConfig)
+
+__all__ = (
+    "WebhookMetaDeleted",
+    "WebhookMetaDeletedPropHook",
+    "WebhookMetaDeletedPropHookPropConfig",
+)

@@ -9,49 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
 
-from .group_0357 import EnterpriseWebhooksType
-from .group_0358 import SimpleInstallationType
-from .group_0360 import RepositoryWebhooksType
-from .group_0361 import SimpleUserWebhooksType
-from .group_0359 import OrganizationSimpleWebhooksType
+from .group_0017 import RepositoryType
 
 
-class WebhookRepositoryRenamedType(TypedDict):
-    """repository renamed event"""
+class OrgsOrgActionsPermissionsRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
 
-    action: Literal["renamed"]
-    changes: WebhookRepositoryRenamedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    total_count: float
+    repositories: List[RepositoryType]
 
 
-class WebhookRepositoryRenamedPropChangesType(TypedDict):
-    """WebhookRepositoryRenamedPropChanges"""
-
-    repository: WebhookRepositoryRenamedPropChangesPropRepositoryType
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryType(TypedDict):
-    """WebhookRepositoryRenamedPropChangesPropRepository"""
-
-    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType(TypedDict):
-    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookRepositoryRenamedType",
-    "WebhookRepositoryRenamedPropChangesType",
-    "WebhookRepositoryRenamedPropChangesPropRepositoryType",
-    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType",
-)
+__all__ = ("OrgsOrgActionsPermissionsRepositoriesGetResponse200Type",)

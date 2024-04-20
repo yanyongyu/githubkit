@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,22 +18,27 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgOrganizationRolesRoleIdPatchBody(GitHubModel):
-    """OrgsOrgOrganizationRolesRoleIdPatchBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the custom role."
+    state: Literal["dismissed", "open"] = Field(
+        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`."
     )
-    description: Missing[str] = Field(
+    dismissed_reason: Missing[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ] = Field(
         default=UNSET,
-        description="A short description about the intended usage of this role or what permissions it grants.",
+        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
     )
-    permissions: Missing[List[str]] = Field(
+    dismissed_comment: Missing[str] = Field(
+        max_length=280,
         default=UNSET,
-        description="A list of additional permissions included in this role.",
+        description="An optional comment associated with dismissing the alert.",
     )
 
 
-model_rebuild(OrgsOrgOrganizationRolesRoleIdPatchBody)
+model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBody)
 
-__all__ = ("OrgsOrgOrganizationRolesRoleIdPatchBody",)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBody",)

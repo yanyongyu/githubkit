@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0076 import MinimalRepositoryType
+from .group_0177 import ActionsVariableType
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
+class ReposOwnerRepoActionsVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsVariablesGetResponse200"""
 
-    total_count: float
-    repositories: List[MinimalRepositoryType]
+    total_count: int
+    variables: List[ActionsVariableType]
 
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsVariablesGetResponse200Type",)

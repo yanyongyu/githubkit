@@ -9,19 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal
+from typing_extensions import TypedDict
+
+from .group_0391 import SimpleInstallationType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0400 import PersonalAccessTokenRequestType
 
 
-class WebhookIssuesUnlockedPropIssueAllof0PropPullRequestType(TypedDict):
-    """WebhookIssuesUnlockedPropIssueAllof0PropPullRequest"""
+class WebhookPersonalAccessTokenRequestCancelledType(TypedDict):
+    """personal_access_token_request cancelled event"""
 
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[datetime, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
+    action: Literal["cancelled"]
+    personal_access_token_request: PersonalAccessTokenRequestType
+    organization: OrganizationSimpleWebhooksType
+    sender: SimpleUserWebhooksType
+    installation: SimpleInstallationType
 
 
-__all__ = ("WebhookIssuesUnlockedPropIssueAllof0PropPullRequestType",)
+__all__ = ("WebhookPersonalAccessTokenRequestCancelledType",)

@@ -9,28 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof0(GitHubModel):
-    """Committer
+class OrgsOrgCopilotBillingSelectedUsersDeleteBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    Metaproperties for Git author/committer information.
-    """
-
-    date: Missing[datetime] = Field(default=UNSET)
-    email: Union[str, None] = Field()
-    name: str = Field(description="The git author's name.")
-    username: Missing[str] = Field(default=UNSET)
+    selected_usernames: List[str] = Field(
+        min_length=1,
+        description="The usernames of the organization members for which to revoke access to GitHub Copilot.",
+    )
 
 
-model_rebuild(WebhookStatusPropCommitPropCommitPropCommitterAllof0)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteBody)
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof0",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",)

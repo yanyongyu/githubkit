@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
+class ReposOwnerRepoGitRefsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitRefsPostBody"""
 
-    title: NotRequired[str]
-    body: NotRequired[str]
+    ref: str
+    sha: str
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType",)
+__all__ = ("ReposOwnerRepoGitRefsPostBodyType",)

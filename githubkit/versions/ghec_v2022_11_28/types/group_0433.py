@@ -9,27 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0244 import DependabotAlertType
 from .group_0390 import EnterpriseWebhooksType
 from .group_0391 import SimpleInstallationType
 from .group_0393 import RepositoryWebhooksType
 from .group_0394 import SimpleUserWebhooksType
+from .group_0113 import CustomPropertyValueType
 from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookDependabotAlertAutoReopenedType(TypedDict):
-    """Dependabot alert auto-reopened event"""
+class WebhookCustomPropertyValuesUpdatedType(TypedDict):
+    """Custom property values updated event"""
 
-    action: Literal["auto_reopened"]
-    alert: DependabotAlertType
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
+    new_property_values: List[CustomPropertyValueType]
+    old_property_values: List[CustomPropertyValueType]
 
 
-__all__ = ("WebhookDependabotAlertAutoReopenedType",)
+__all__ = ("WebhookCustomPropertyValuesUpdatedType",)

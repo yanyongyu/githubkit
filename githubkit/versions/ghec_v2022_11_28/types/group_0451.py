@@ -9,10 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0397 import DiscussionType
+from .group_0398 import DiscussionType
 from .group_0390 import EnterpriseWebhooksType
 from .group_0391 import SimpleInstallationType
 from .group_0393 import RepositoryWebhooksType
@@ -20,11 +21,11 @@ from .group_0394 import SimpleUserWebhooksType
 from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookDiscussionCommentDeletedType(TypedDict):
-    """discussion_comment deleted event"""
+class WebhookDiscussionCategoryChangedType(TypedDict):
+    """discussion category changed event"""
 
-    action: Literal["deleted"]
-    comment: WebhookDiscussionCommentDeletedPropCommentType
+    action: Literal["category_changed"]
+    changes: WebhookDiscussionCategoryChangedPropChangesType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -33,77 +34,36 @@ class WebhookDiscussionCommentDeletedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-class WebhookDiscussionCommentDeletedPropCommentType(TypedDict):
-    """WebhookDiscussionCommentDeletedPropComment"""
+class WebhookDiscussionCategoryChangedPropChangesType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChanges"""
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    child_comment_count: int
-    created_at: str
-    discussion_id: int
-    html_url: str
+    category: WebhookDiscussionCategoryChangedPropChangesPropCategoryType
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
+
+    from_: WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType(TypedDict):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
+
+    created_at: datetime
+    description: str
+    emoji: str
     id: int
-    node_id: str
-    parent_id: Union[int, None]
-    reactions: WebhookDiscussionCommentDeletedPropCommentPropReactionsType
-    repository_url: str
-    updated_at: str
-    user: Union[WebhookDiscussionCommentDeletedPropCommentPropUserType, None]
-
-
-class WebhookDiscussionCommentDeletedPropCommentPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookDiscussionCommentDeletedPropCommentPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
+    is_answerable: bool
+    name: str
     node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    repository_id: int
+    slug: str
+    updated_at: str
 
 
 __all__ = (
-    "WebhookDiscussionCommentDeletedType",
-    "WebhookDiscussionCommentDeletedPropCommentType",
-    "WebhookDiscussionCommentDeletedPropCommentPropReactionsType",
-    "WebhookDiscussionCommentDeletedPropCommentPropUserType",
+    "WebhookDiscussionCategoryChangedType",
+    "WebhookDiscussionCategoryChangedPropChangesType",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryType",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFromType",
 )

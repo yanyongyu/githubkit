@@ -10,39 +10,31 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0750 import (
-    WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0PropDismisserType,
+
+class OrgsOrgCodespacesSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
+
+    total_count: int
+    secrets: List[CodespacesOrgSecretType]
+
+
+class CodespacesOrgSecretType(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str
+    created_at: datetime
+    updated_at: datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
+
+
+__all__ = (
+    "OrgsOrgCodespacesSecretsGetResponse200Type",
+    "CodespacesOrgSecretType",
 )
-
-
-class WebhookRepositoryVulnerabilityAlertReopenPropAlertType(TypedDict):
-    """WebhookRepositoryVulnerabilityAlertReopenPropAlert"""
-
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_reason: NotRequired[str]
-    dismissed_at: NotRequired[str]
-    dismisser: NotRequired[
-        Union[
-            WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0PropDismisserType,
-            None,
-        ]
-    ]
-    external_identifier: str
-    external_reference: Union[Union[str, None], None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[datetime]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
-    id: int
-    node_id: str
-    number: int
-    severity: str
-    state: Literal["open"]
-
-
-__all__ = ("WebhookRepositoryVulnerabilityAlertReopenPropAlertType",)

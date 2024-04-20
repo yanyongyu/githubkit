@@ -9,37 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0548 import WebhookIssuesUnlockedPropIssueAllof0PropMilestonePropCreatorType
+from .group_0358 import SimpleInstallationType
+from .group_0361 import SimpleUserWebhooksType
+from .group_0359 import OrganizationSimpleWebhooksType
+from .group_0367 import PersonalAccessTokenRequestType
 
 
-class WebhookIssuesUnlockedPropIssueAllof0PropMilestoneType(TypedDict):
-    """Milestone
+class WebhookPersonalAccessTokenRequestApprovedType(TypedDict):
+    """personal_access_token_request approved event"""
 
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[datetime, None]
-    closed_issues: int
-    created_at: datetime
-    creator: Union[
-        WebhookIssuesUnlockedPropIssueAllof0PropMilestonePropCreatorType, None
-    ]
-    description: Union[str, None]
-    due_on: Union[datetime, None]
-    html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: datetime
-    url: str
+    action: Literal["approved"]
+    personal_access_token_request: PersonalAccessTokenRequestType
+    organization: OrganizationSimpleWebhooksType
+    sender: SimpleUserWebhooksType
+    installation: SimpleInstallationType
 
 
-__all__ = ("WebhookIssuesUnlockedPropIssueAllof0PropMilestoneType",)
+__all__ = ("WebhookPersonalAccessTokenRequestApprovedType",)

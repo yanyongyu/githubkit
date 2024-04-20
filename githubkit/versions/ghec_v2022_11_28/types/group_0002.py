@@ -57,7 +57,7 @@ class GlobalAdvisoryType(TypedDict):
     github_reviewed_at: Union[datetime, None]
     nvd_published_at: Union[datetime, None]
     withdrawn_at: Union[datetime, None]
-    vulnerabilities: Union[List[GlobalAdvisoryPropVulnerabilitiesItemsType], None]
+    vulnerabilities: Union[List[VulnerabilityType], None]
     cvss: Union[GlobalAdvisoryPropCvssType, None]
     cwes: Union[List[GlobalAdvisoryPropCwesItemsType], None]
     credits_: Union[List[GlobalAdvisoryPropCreditsItemsType], None]
@@ -84,17 +84,21 @@ class GlobalAdvisoryPropCwesItemsType(TypedDict):
     name: str
 
 
-class GlobalAdvisoryPropVulnerabilitiesItemsType(TypedDict):
-    """GlobalAdvisoryPropVulnerabilitiesItems"""
+class VulnerabilityType(TypedDict):
+    """Vulnerability
 
-    package: Union[GlobalAdvisoryPropVulnerabilitiesItemsPropPackageType, None]
+    A vulnerability describing the product and its affected versions within a GitHub
+    Security Advisory.
+    """
+
+    package: Union[VulnerabilityPropPackageType, None]
     vulnerable_version_range: Union[str, None]
     first_patched_version: Union[str, None]
     vulnerable_functions: Union[List[str], None]
 
 
-class GlobalAdvisoryPropVulnerabilitiesItemsPropPackageType(TypedDict):
-    """GlobalAdvisoryPropVulnerabilitiesItemsPropPackage
+class VulnerabilityPropPackageType(TypedDict):
+    """VulnerabilityPropPackage
 
     The name of the package affected by the vulnerability.
     """
@@ -123,6 +127,6 @@ __all__ = (
     "GlobalAdvisoryPropIdentifiersItemsType",
     "GlobalAdvisoryPropCvssType",
     "GlobalAdvisoryPropCwesItemsType",
-    "GlobalAdvisoryPropVulnerabilitiesItemsType",
-    "GlobalAdvisoryPropVulnerabilitiesItemsPropPackageType",
+    "VulnerabilityType",
+    "VulnerabilityPropPackageType",
 )

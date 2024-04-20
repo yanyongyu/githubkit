@@ -16,14 +16,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsVariablesNameRepositoriesPutBody(GitHubModel):
-    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
 
-    selected_repository_ids: List[int] = Field(
-        description="The IDs of the repositories that can access the organization variable."
-    )
+    Examples:
+        {'teams': ['justice-league']}
+    """
+
+    teams: List[str] = Field(description="The slug values for teams")
 
 
-model_rebuild(OrgsOrgActionsVariablesNameRepositoriesPutBody)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0)
 
-__all__ = ("OrgsOrgActionsVariablesNameRepositoriesPutBody",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0",)

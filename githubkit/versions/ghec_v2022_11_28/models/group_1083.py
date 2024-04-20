@@ -11,18 +11,23 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoGitRefsPostBody(GitHubModel):
-    """ReposOwnerRepoGitRefsPostBody"""
+class UserKeysPostBody(GitHubModel):
+    """UserKeysPostBody"""
 
-    ref: str = Field(
-        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
+    title: Missing[str] = Field(
+        default=UNSET, description="A descriptive name for the new key."
     )
-    sha: str = Field(description="The SHA1 value for this reference.")
+    key: str = Field(
+        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ",
+        description="The public SSH key to add to your GitHub account.",
+    )
 
 
-model_rebuild(ReposOwnerRepoGitRefsPostBody)
+model_rebuild(UserKeysPostBody)
 
-__all__ = ("ReposOwnerRepoGitRefsPostBody",)
+__all__ = ("UserKeysPostBody",)

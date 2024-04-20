@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,61 +17,37 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1(GitHubModel):
-    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1"""
-
-    account: Missing[
-        WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropAccount
-    ] = Field(default=UNSET)
-    billing_cycle: Missing[str] = Field(default=UNSET)
-    free_trial_ends_on: Missing[Union[str, None]] = Field(default=UNSET)
-    next_billing_date: Union[str, None] = Field()
-    on_free_trial: Missing[bool] = Field(default=UNSET)
-    plan: Missing[
-        WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropPlan
-    ] = Field(default=UNSET)
-    unit_count: Missing[int] = Field(default=UNSET)
+from .group_0368 import ProjectsV2
+from .group_0358 import SimpleInstallation
+from .group_0361 import SimpleUserWebhooks
+from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropAccount(
-    GitHubModel
-):
-    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropAccount"""
+class WebhookProjectsV2ProjectCreated(GitHubModel):
+    """WebhookProjectsV2ProjectCreated
 
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organization_billing_email: Missing[Union[str, None]] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
+    A project was created
+    """
 
-
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropPlan(
-    GitHubModel
-):
-    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropPlan"""
-
-    bullets: Missing[List[Union[str, None]]] = Field(default=UNSET)
-    description: Missing[str] = Field(default=UNSET)
-    has_free_trial: Missing[bool] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    monthly_price_in_cents: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    price_model: Missing[Literal["FREE", "FLAT_RATE", "PER_UNIT"]] = Field(
-        default=UNSET
+    action: Literal["created"] = Field()
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    unit_name: Missing[Union[str, None]] = Field(default=UNSET)
-    yearly_price_in_cents: Missing[int] = Field(default=UNSET)
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    projects_v2: ProjectsV2 = Field(
+        title="Projects v2 Project", description="A projects v2 project"
+    )
+    sender: SimpleUserWebhooks = Field(
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
 
 
-model_rebuild(WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1)
-model_rebuild(
-    WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropAccount
-)
-model_rebuild(WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropPlan)
+model_rebuild(WebhookProjectsV2ProjectCreated)
 
-__all__ = (
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1",
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropAccount",
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropPlan",
-)
+__all__ = ("WebhookProjectsV2ProjectCreated",)

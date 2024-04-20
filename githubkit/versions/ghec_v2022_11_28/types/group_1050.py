@@ -9,24 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoCodespacesPostBodyType(TypedDict):
-    """ReposOwnerRepoCodespacesPostBody"""
+class ScimV2OrganizationsOrgUsersPostBodyType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBody"""
 
-    ref: NotRequired[str]
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    client_ip: NotRequired[str]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    multi_repo_permissions_opt_out: NotRequired[bool]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
+    user_name: str
     display_name: NotRequired[str]
-    retention_period_minutes: NotRequired[int]
+    name: ScimV2OrganizationsOrgUsersPostBodyPropNameType
+    emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType]
+    schemas: NotRequired[List[str]]
+    external_id: NotRequired[str]
+    groups: NotRequired[List[str]]
+    active: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoCodespacesPostBodyType",)
+class ScimV2OrganizationsOrgUsersPostBodyPropNameType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+
+
+__all__ = (
+    "ScimV2OrganizationsOrgUsersPostBodyType",
+    "ScimV2OrganizationsOrgUsersPostBodyPropNameType",
+    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType",
+)

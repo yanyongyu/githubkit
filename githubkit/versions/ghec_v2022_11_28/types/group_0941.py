@@ -12,8 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
+class ReposOwnerRepoCommentsCommentIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoCommentsCommentIdPatchBody"""
+
+    body: str
 
 
-__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1Type",)
+__all__ = ("ReposOwnerRepoCommentsCommentIdPatchBodyType",)

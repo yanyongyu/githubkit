@@ -9,32 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+class UserCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    total_count: int
-    branch_policies: List[DeploymentBranchPolicyType]
+    selected_repository_ids: List[int]
 
 
-class DeploymentBranchPolicyType(TypedDict):
-    """Deployment branch policy
-
-    Details of a deployment branch or tag policy.
-    """
-
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[Literal["branch", "tag"]]
-
-
-__all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
-    "DeploymentBranchPolicyType",
-)
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBodyType",)

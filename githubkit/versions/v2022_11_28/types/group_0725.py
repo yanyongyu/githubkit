@@ -12,22 +12,12 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0357 import EnterpriseWebhooksType
-from .group_0358 import SimpleInstallationType
-from .group_0360 import RepositoryWebhooksType
-from .group_0361 import SimpleUserWebhooksType
-from .group_0359 import OrganizationSimpleWebhooksType
+
+class OrgsOrgActionsPermissionsPutBodyType(TypedDict):
+    """OrgsOrgActionsPermissionsPutBody"""
+
+    enabled_repositories: Literal["all", "none", "selected"]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
 
 
-class WebhookRepositoryPublicizedType(TypedDict):
-    """repository publicized event"""
-
-    action: Literal["publicized"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-
-
-__all__ = ("WebhookRepositoryPublicizedType",)
+__all__ = ("OrgsOrgActionsPermissionsPutBodyType",)

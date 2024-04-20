@@ -9,33 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from datetime import datetime
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoGitTagsPostBodyType(TypedDict):
-    """ReposOwnerRepoGitTagsPostBody"""
+class UserMigrationsPostBodyType(TypedDict):
+    """UserMigrationsPostBody"""
 
-    tag: str
-    message: str
-    object_: str
-    type: Literal["commit", "tree", "blob"]
-    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerType]
-
-
-class ReposOwnerRepoGitTagsPostBodyPropTaggerType(TypedDict):
-    """ReposOwnerRepoGitTagsPostBodyPropTagger
-
-    An object with information about the individual creating the tag.
-    """
-
-    name: str
-    email: str
-    date: NotRequired[datetime]
+    lock_repositories: NotRequired[bool]
+    exclude_metadata: NotRequired[bool]
+    exclude_git_data: NotRequired[bool]
+    exclude_attachments: NotRequired[bool]
+    exclude_releases: NotRequired[bool]
+    exclude_owner_projects: NotRequired[bool]
+    org_metadata_only: NotRequired[bool]
+    exclude: NotRequired[List[Literal["repositories"]]]
+    repositories: List[str]
 
 
-__all__ = (
-    "ReposOwnerRepoGitTagsPostBodyType",
-    "ReposOwnerRepoGitTagsPostBodyPropTaggerType",
-)
+__all__ = ("UserMigrationsPostBodyType",)

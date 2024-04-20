@@ -9,22 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgMigrationsPostBodyType(TypedDict):
-    """OrgsOrgMigrationsPostBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBody"""
 
-    repositories: List[str]
-    lock_repositories: NotRequired[bool]
-    exclude_metadata: NotRequired[bool]
-    exclude_git_data: NotRequired[bool]
-    exclude_attachments: NotRequired[bool]
-    exclude_releases: NotRequired[bool]
-    exclude_owner_projects: NotRequired[bool]
-    org_metadata_only: NotRequired[bool]
-    exclude: NotRequired[List[Literal["repositories"]]]
+    state: Literal["dismissed", "open"]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
+    dismissed_comment: NotRequired[str]
 
 
-__all__ = ("OrgsOrgMigrationsPostBodyType",)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType",)

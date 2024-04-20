@@ -9,61 +9,62 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoDeploymentsPostBody"""
+class UserCodespacesPostBodyOneof0(GitHubModel):
+    """UserCodespacesPostBodyOneof0"""
 
-    ref: str = Field(
-        description="The ref to deploy. This can be a branch, tag, or SHA."
-    )
-    task: Missing[str] = Field(
+    repository_id: int = Field(description="Repository id for this codespace")
+    ref: Missing[str] = Field(
         default=UNSET,
-        description="Specifies a task to execute (e.g., `deploy` or `deploy:migrations`).",
+        description="Git ref (typically a branch name) for this codespace",
     )
-    auto_merge: Missing[bool] = Field(
+    location: Missing[str] = Field(
         default=UNSET,
-        description="Attempts to automatically merge the default branch into the requested ref, if it's behind the default branch.",
+        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
     )
-    required_contexts: Missing[List[str]] = Field(
+    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
         default=UNSET,
-        description="The [status](https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.",
+        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.",
     )
-    payload: Missing[Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0, str]] = (
-        Field(default=UNSET)
-    )
-    environment: Missing[str] = Field(
+    client_ip: Missing[str] = Field(
         default=UNSET,
-        description="Name for the target deployment environment (e.g., `production`, `staging`, `qa`).",
+        description="IP for location auto-detection when proxying a request",
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the deployment."
+    machine: Missing[str] = Field(
+        default=UNSET, description="Machine type to use for this codespace"
     )
-    transient_environment: Missing[bool] = Field(
+    devcontainer_path: Missing[str] = Field(
         default=UNSET,
-        description="Specifies if the given environment is specific to the deployment and will no longer exist at some point in the future. Default: `false`",
+        description="Path to devcontainer.json config to use for this codespace",
     )
-    production_environment: Missing[bool] = Field(
+    multi_repo_permissions_opt_out: Missing[bool] = Field(
         default=UNSET,
-        description="Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise.",
+        description="Whether to authorize requested permissions from devcontainer.json",
+    )
+    working_directory: Missing[str] = Field(
+        default=UNSET, description="Working directory for this codespace"
+    )
+    idle_timeout_minutes: Missing[int] = Field(
+        default=UNSET,
+        description="Time in minutes before codespace stops from inactivity",
+    )
+    display_name: Missing[str] = Field(
+        default=UNSET, description="Display name for this codespace"
+    )
+    retention_period_minutes: Missing[int] = Field(
+        default=UNSET,
+        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
     )
 
 
-class ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0(ExtraGitHubModel):
-    """ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0"""
+model_rebuild(UserCodespacesPostBodyOneof0)
 
-
-model_rebuild(ReposOwnerRepoDeploymentsPostBody)
-model_rebuild(ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0)
-
-__all__ = (
-    "ReposOwnerRepoDeploymentsPostBody",
-    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0",
-)
+__all__ = ("UserCodespacesPostBodyOneof0",)

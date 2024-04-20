@@ -9,29 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0153 import RepositoryRulesetType
-from .group_0390 import EnterpriseWebhooksType
-from .group_0391 import SimpleInstallationType
-from .group_0393 import RepositoryWebhooksType
-from .group_0394 import SimpleUserWebhooksType
-from .group_0392 import OrganizationSimpleWebhooksType
-from .group_0763 import WebhookRepositoryRulesetEditedPropChangesType
+
+class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
+
+    advanced_security_enabled_for_new_repositories: NotRequired[bool]
+    advanced_security_enabled_new_user_namespace_repos: NotRequired[bool]
+    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
+    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    secret_scanning_validity_checks_enabled: NotRequired[Union[bool, None]]
 
 
-class WebhookRepositoryRulesetEditedType(TypedDict):
-    """repository ruleset edited event"""
-
-    action: Literal["edited"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_ruleset: RepositoryRulesetType
-    changes: NotRequired[WebhookRepositoryRulesetEditedPropChangesType]
-    sender: SimpleUserWebhooksType
-
-
-__all__ = ("WebhookRepositoryRulesetEditedType",)
+__all__ = ("EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType",)

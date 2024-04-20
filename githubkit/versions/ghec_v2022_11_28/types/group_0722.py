@@ -9,10 +9,10 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0187 import DeploymentType
 from .group_0390 import EnterpriseWebhooksType
 from .group_0391 import SimpleInstallationType
 from .group_0393 import RepositoryWebhooksType
@@ -20,142 +20,68 @@ from .group_0394 import SimpleUserWebhooksType
 from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookReleaseDeletedType(TypedDict):
-    """release deleted event"""
+class WebhookWorkflowJobCompletedType(TypedDict):
+    """workflow_job completed event"""
 
-    action: Literal["deleted"]
+    action: Literal["completed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhookReleaseDeletedPropReleaseType
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
+    workflow_job: WebhookWorkflowJobCompletedPropWorkflowJobType
+    deployment: NotRequired[DeploymentType]
 
 
-class WebhookReleaseDeletedPropReleaseType(TypedDict):
-    """Release
+class WebhookWorkflowJobCompletedPropWorkflowJobType(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJob"""
 
-    The [release](https://docs.github.com/enterprise-
-    cloud@latest//rest/releases/releases/#get-a-release) object.
-    """
-
-    assets: List[WebhookReleaseDeletedPropReleasePropAssetsItemsType]
-    assets_url: str
-    author: Union[WebhookReleaseDeletedPropReleasePropAuthorType, None]
-    body: Union[str, None]
-    created_at: Union[datetime, None]
-    discussion_url: NotRequired[str]
-    draft: bool
+    check_run_url: str
+    completed_at: str
+    conclusion: Literal[
+        "success",
+        "failure",
+        "skipped",
+        "cancelled",
+        "action_required",
+        "neutral",
+        "timed_out",
+    ]
+    created_at: str
+    head_sha: str
     html_url: str
     id: int
-    name: Union[str, None]
-    node_id: str
-    prerelease: bool
-    published_at: Union[datetime, None]
-    reactions: NotRequired[WebhookReleaseDeletedPropReleasePropReactionsType]
-    tag_name: str
-    tarball_url: Union[str, None]
-    target_commitish: str
-    upload_url: str
-    url: str
-    zipball_url: Union[str, None]
-
-
-class WebhookReleaseDeletedPropReleasePropAuthorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookReleaseDeletedPropReleasePropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookReleaseDeletedPropReleasePropAssetsItemsType(TypedDict):
-    """Release Asset
-
-    Data related to a release.
-    """
-
-    browser_download_url: str
-    content_type: str
-    created_at: datetime
-    download_count: int
-    id: int
-    label: Union[str, None]
+    labels: List[str]
     name: str
     node_id: str
-    size: int
-    state: Literal["uploaded"]
-    updated_at: datetime
-    uploader: NotRequired[
-        Union[WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploaderType, None]
-    ]
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[Union[int, None], None]
+    runner_group_name: Union[Union[str, None], None]
+    runner_id: Union[Union[int, None], None]
+    runner_name: Union[Union[str, None], None]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed", "waiting"]
+    head_branch: Union[Union[str, None], None]
+    workflow_name: Union[Union[str, None], None]
+    steps: List[WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType]
     url: str
 
 
-class WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploaderType(TypedDict):
-    """User"""
+class WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType(TypedDict):
+    """WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    completed_at: Union[str, None]
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    name: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["in_progress", "completed", "queued"]
 
 
 __all__ = (
-    "WebhookReleaseDeletedType",
-    "WebhookReleaseDeletedPropReleaseType",
-    "WebhookReleaseDeletedPropReleasePropAuthorType",
-    "WebhookReleaseDeletedPropReleasePropReactionsType",
-    "WebhookReleaseDeletedPropReleasePropAssetsItemsType",
-    "WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploaderType",
+    "WebhookWorkflowJobCompletedType",
+    "WebhookWorkflowJobCompletedPropWorkflowJobType",
+    "WebhookWorkflowJobCompletedPropWorkflowJobMergedStepsType",
 )

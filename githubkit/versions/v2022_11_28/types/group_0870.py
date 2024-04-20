@@ -10,13 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyType(TypedDict):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
 
-    selected_teams: List[str]
+    auto_trigger_checks: NotRequired[
+        List[
+            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
+        ]
+    ]
 
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType",)
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
+
+    app_id: int
+    setting: bool
+
+
+__all__ = (
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyType",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType",
+)

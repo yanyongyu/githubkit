@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -18,40 +17,27 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0750 import (
-    WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0PropDismisser,
-)
+
+class OrgsOrgCodespacesSecretsSecretNamePutBody(GitHubModel):
+    """OrgsOrgCodespacesSecretsSecretNamePutBody"""
+
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        default=UNSET,
+        description="The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key) endpoint.",
+    )
+    key_id: Missing[str] = Field(
+        default=UNSET, description="The ID of the key you used to encrypt the secret."
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret."
+    )
+    selected_repository_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="An array of repository IDs that can access the organization secret. You can only provide a list of repository IDs when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
+    )
 
 
-class WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0(GitHubModel):
-    """Repository Vulnerability Alert Alert
+model_rebuild(OrgsOrgCodespacesSecretsSecretNamePutBody)
 
-    The security alert of the vulnerable dependency.
-    """
-
-    affected_package_name: str = Field()
-    affected_range: str = Field()
-    created_at: str = Field()
-    dismiss_reason: Missing[str] = Field(default=UNSET)
-    dismissed_at: Missing[str] = Field(default=UNSET)
-    dismisser: Missing[
-        Union[
-            WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0PropDismisser, None
-        ]
-    ] = Field(default=UNSET, title="User")
-    external_identifier: str = Field()
-    external_reference: Union[str, None] = Field()
-    fix_reason: Missing[str] = Field(default=UNSET)
-    fixed_at: Missing[datetime] = Field(default=UNSET)
-    fixed_in: Missing[str] = Field(default=UNSET)
-    ghsa_id: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    number: int = Field()
-    severity: str = Field()
-    state: Literal["open", "dismissed", "fixed"] = Field()
-
-
-model_rebuild(WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0)
-
-__all__ = ("WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0",)
+__all__ = ("OrgsOrgCodespacesSecretsSecretNamePutBody",)

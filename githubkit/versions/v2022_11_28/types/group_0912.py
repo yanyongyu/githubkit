@@ -9,16 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody"""
+class ReposOwnerRepoHooksPostBodyType(TypedDict):
+    """ReposOwnerRepoHooksPostBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
+    name: NotRequired[str]
+    config: NotRequired[ReposOwnerRepoHooksPostBodyPropConfigType]
+    events: NotRequired[List[str]]
+    active: NotRequired[bool]
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType",)
+class ReposOwnerRepoHooksPostBodyPropConfigType(TypedDict):
+    """ReposOwnerRepoHooksPostBodyPropConfig
+
+    Key/value pairs to provide settings for this webhook.
+    """
+
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+
+
+__all__ = (
+    "ReposOwnerRepoHooksPostBodyType",
+    "ReposOwnerRepoHooksPostBodyPropConfigType",
+)

@@ -18,14 +18,24 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsProjectIdPatchResponse403(GitHubModel):
-    """ProjectsProjectIdPatchResponse403"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[List[str]] = Field(default=UNSET)
+    labels: Missing[
+        List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems]
+    ] = Field(min_length=1, default=UNSET)
 
 
-model_rebuild(ProjectsProjectIdPatchResponse403)
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems"""
 
-__all__ = ("ProjectsProjectIdPatchResponse403",)
+    name: str = Field()
+
+
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems)
+
+__all__ = (
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2",
+    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems",
+)

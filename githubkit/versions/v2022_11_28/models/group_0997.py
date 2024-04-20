@@ -9,22 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubModel):
-    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
+class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody(GitHubModel):
+    """TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody"""
 
-    permission: Missing[str] = Field(
-        default=UNSET,
-        description="The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any.",
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion."
     )
 
 
-model_rebuild(ReposOwnerRepoCollaboratorsUsernamePutBody)
+model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody)
 
-__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBody",)
+__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody",)

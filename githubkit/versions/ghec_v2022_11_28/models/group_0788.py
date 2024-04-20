@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List
 
 from pydantic import Field
 
@@ -18,34 +18,24 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof0PropDismisser(
-    GitHubModel
-):
-    """User"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostBody(GitHubModel):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    name: str = Field(description="The name of the new runner.")
+    runner_group_id: int = Field(
+        description="The ID of the runner group to register the runner to."
+    )
+    labels: List[str] = Field(
+        max_length=100,
+        min_length=1,
+        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
+    )
+    work_folder: Missing[str] = Field(
+        default=UNSET,
+        description="The working directory to be used for job execution, relative to the runner install directory.",
+    )
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof0PropDismisser)
+model_rebuild(OrgsOrgActionsRunnersGenerateJitconfigPostBody)
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof0PropDismisser",)
+__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostBody",)

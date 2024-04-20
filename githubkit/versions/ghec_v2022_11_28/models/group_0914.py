@@ -15,16 +15,21 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0076 import MinimalRepository
+
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0
+
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: List[str] = Field(
+        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items."
+    )
 
 
-class OrgsOrgActionsVariablesNameRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0)
 
-    total_count: int = Field()
-    repositories: List[MinimalRepository] = Field()
-
-
-model_rebuild(OrgsOrgActionsVariablesNameRepositoriesGetResponse200)
-
-__all__ = ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0",)

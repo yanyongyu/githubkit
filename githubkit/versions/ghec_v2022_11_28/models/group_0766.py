@@ -9,86 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0130 import RepositoryRuleUpdate
-from .group_0150 import RepositoryRuleWorkflows
-from .group_0135 import RepositoryRulePullRequest
-from .group_0147 import RepositoryRuleTagNamePattern
-from .group_0145 import RepositoryRuleBranchNamePattern
-from .group_0133 import RepositoryRuleRequiredDeployments
-from .group_0137 import RepositoryRuleRequiredStatusChecks
-from .group_0139 import RepositoryRuleCommitMessagePattern
-from .group_0132 import RepositoryRuleRequiredLinearHistory
-from .group_0143 import RepositoryRuleCommitterEmailPattern
-from .group_0141 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0767 import (
-    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems,
-)
-from .group_0129 import (
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
+
+class GistsGistIdCommentsPostBody(GitHubModel):
+    """GistsGistIdCommentsPostBody"""
+
+    body: str = Field(max_length=65535, description="The comment text.")
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRules(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
+model_rebuild(GistsGistIdCommentsPostBody)
 
-    added: Missing[
-        List[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleWorkflows,
-            ]
-        ]
-    ] = Field(default=UNSET)
-    deleted: Missing[
-        List[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleWorkflows,
-            ]
-        ]
-    ] = Field(default=UNSET)
-    updated: Missing[
-        List[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems]
-    ] = Field(default=UNSET)
-
-
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropRules)
-
-__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropRules",)
+__all__ = ("GistsGistIdCommentsPostBody",)

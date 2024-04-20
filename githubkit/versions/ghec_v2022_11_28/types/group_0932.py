@@ -9,17 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0079 import OrganizationCustomRepositoryRoleType
+
+class ReposOwnerRepoCodeScanningSarifsPostBodyType(TypedDict):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
+
+    commit_sha: str
+    ref: str
+    sarif: str
+    checkout_uri: NotRequired[str]
+    started_at: NotRequired[datetime]
+    tool_name: NotRequired[str]
+    validate_: NotRequired[bool]
 
 
-class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[List[OrganizationCustomRepositoryRoleType]]
-
-
-__all__ = ("OrgsOrgCustomRepositoryRolesGetResponse200Type",)
+__all__ = ("ReposOwnerRepoCodeScanningSarifsPostBodyType",)

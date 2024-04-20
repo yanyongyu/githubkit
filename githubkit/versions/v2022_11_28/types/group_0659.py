@@ -17,20 +17,19 @@ from .group_0358 import SimpleInstallationType
 from .group_0360 import RepositoryWebhooksType
 from .group_0361 import SimpleUserWebhooksType
 from .group_0359 import OrganizationSimpleWebhooksType
-from .group_0660 import WebhookPullRequestReadyForReviewPropPullRequestType
+from .group_0372 import SecretScanningAlertWebhookType
 
 
-class WebhookPullRequestReadyForReviewType(TypedDict):
-    """pull_request ready_for_review event"""
+class WebhookSecretScanningAlertResolvedType(TypedDict):
+    """secret_scanning_alert resolved event"""
 
-    action: Literal["ready_for_review"]
+    action: Literal["resolved"]
+    alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhookPullRequestReadyForReviewPropPullRequestType
     repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookPullRequestReadyForReviewType",)
+__all__ = ("WebhookSecretScanningAlertResolvedType",)

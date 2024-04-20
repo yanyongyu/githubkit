@@ -9,30 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
+class TeamsTeamIdDiscussionsPostBodyType(TypedDict):
+    """TeamsTeamIdDiscussionsPostBody"""
 
-    total_count: int
-    devcontainers: List[
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType
-    ]
-
-
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
-
-    path: str
-    name: NotRequired[str]
-    display_name: NotRequired[str]
+    title: str
+    body: str
+    private: NotRequired[bool]
 
 
-__all__ = (
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200Type",
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType",
-)
+__all__ = ("TeamsTeamIdDiscussionsPostBodyType",)

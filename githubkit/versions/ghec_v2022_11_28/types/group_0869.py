@@ -9,16 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
+class ProjectsColumnsColumnIdCardsPostBodyOneof1Type(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof1"""
 
-    runners: List[int]
+    content_id: int
+    content_type: str
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType",)
+__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof1Type",)

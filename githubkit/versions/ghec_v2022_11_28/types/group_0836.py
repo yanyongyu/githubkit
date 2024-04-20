@@ -9,52 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType(
-    TypedDict
-):
-    """WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase"""
+class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
 
-    ref: str
-    repo: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepoType
-    sha: str
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepoType(
-    TypedDict
-):
-    """Repo Ref"""
-
-    id: int
-    name: str
-    url: str
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType(
-    TypedDict
-):
-    """WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead"""
-
-    ref: str
-    repo: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepoType
-    sha: str
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepoType(
-    TypedDict
-):
-    """Repo Ref"""
-
-    id: int
-    name: str
-    url: str
-
-
-__all__ = (
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepoType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType",
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepoType",
-)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType",)

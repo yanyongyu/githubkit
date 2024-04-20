@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -18,60 +18,29 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookWorkflowJobCompletedPropWorkflowJobAllof1(GitHubModel):
-    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1"""
+class OrgsOrgInvitationsPostBody(GitHubModel):
+    """OrgsOrgInvitationsPostBody"""
 
-    check_run_url: Missing[str] = Field(default=UNSET)
-    completed_at: Missing[str] = Field(default=UNSET)
-    conclusion: Literal[
-        "success",
-        "failure",
-        "skipped",
-        "cancelled",
-        "action_required",
-        "neutral",
-        "timed_out",
-    ] = Field()
-    created_at: Missing[str] = Field(
-        default=UNSET, description="The time that the job created."
+    invitee_id: Missing[int] = Field(
+        default=UNSET,
+        description="**Required unless you provide `email`**. GitHub user ID for the person you are inviting.",
     )
-    head_sha: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    labels: Missing[List[Union[str, None]]] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    run_attempt: Missing[int] = Field(default=UNSET)
-    run_id: Missing[int] = Field(default=UNSET)
-    run_url: Missing[str] = Field(default=UNSET)
-    runner_group_id: Missing[Union[int, None]] = Field(default=UNSET)
-    runner_group_name: Missing[Union[str, None]] = Field(default=UNSET)
-    runner_id: Missing[Union[int, None]] = Field(default=UNSET)
-    runner_name: Missing[Union[str, None]] = Field(default=UNSET)
-    started_at: Missing[str] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    head_branch: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The name of the current branch."
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="**Required unless you provide `invitee_id`**. Email address of the person you are inviting, which can be an existing GitHub user.",
     )
-    workflow_name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The name of the workflow."
+    role: Missing[Literal["admin", "direct_member", "billing_manager", "reinstate"]] = (
+        Field(
+            default=UNSET,
+            description="The role for the new member. \n * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  \n * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  \n * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization. \n * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization.",
+        )
     )
-    steps: Missing[
-        List[
-            Union[WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems, None]
-        ]
-    ] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    team_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="Specify IDs for the teams you want to invite new members to.",
+    )
 
 
-class WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems(GitHubModel):
-    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems"""
+model_rebuild(OrgsOrgInvitationsPostBody)
 
-
-model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobAllof1)
-model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems)
-
-__all__ = (
-    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1",
-    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems",
-)
+__all__ = ("OrgsOrgInvitationsPostBody",)

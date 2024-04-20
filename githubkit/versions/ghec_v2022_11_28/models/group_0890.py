@@ -13,22 +13,18 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0079 import OrganizationCustomRepositoryRole
+from .group_0182 import WorkflowRun
 
 
-class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubModel):
-    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
+class ReposOwnerRepoActionsRunsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsRunsGetResponse200"""
 
-    total_count: Missing[int] = Field(
-        default=UNSET, description="The number of custom roles in this organization"
-    )
-    custom_roles: Missing[List[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
+    total_count: int = Field()
+    workflow_runs: List[WorkflowRun] = Field()
 
 
-model_rebuild(OrganizationsOrganizationIdCustomRolesGetResponse200)
+model_rebuild(ReposOwnerRepoActionsRunsGetResponse200)
 
-__all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200",)
+__all__ = ("ReposOwnerRepoActionsRunsGetResponse200",)

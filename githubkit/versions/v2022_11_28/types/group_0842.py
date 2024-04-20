@@ -9,17 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0017 import RepositoryType
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgActionsPermissionsRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
+class ReposOwnerRepoActionsVariablesNamePatchBodyType(TypedDict):
+    """ReposOwnerRepoActionsVariablesNamePatchBody"""
 
-    total_count: float
-    repositories: List[RepositoryType]
+    name: NotRequired[str]
+    value: NotRequired[str]
 
 
-__all__ = ("OrgsOrgActionsPermissionsRepositoriesGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsVariablesNamePatchBodyType",)

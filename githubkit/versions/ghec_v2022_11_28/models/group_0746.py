@@ -9,26 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookReleaseUnpublishedPropReleaseAllof0PropReactions(GitHubModel):
-    """Reactions"""
+class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody(GitHubModel):
+    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
 
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
-    url: str = Field()
+    selected_organization_ids: List[int] = Field(
+        description="List of organization IDs to enable for GitHub Actions."
+    )
 
 
-model_rebuild(WebhookReleaseUnpublishedPropReleaseAllof0PropReactions)
+model_rebuild(EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody)
 
-__all__ = ("WebhookReleaseUnpublishedPropReleaseAllof0PropReactions",)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody",)

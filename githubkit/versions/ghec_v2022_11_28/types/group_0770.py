@@ -12,24 +12,13 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0390 import EnterpriseWebhooksType
-from .group_0391 import SimpleInstallationType
-from .group_0393 import RepositoryWebhooksType
-from .group_0394 import SimpleUserWebhooksType
-from .group_0392 import OrganizationSimpleWebhooksType
-from .group_0771 import WebhookRepositoryVulnerabilityAlertCreatePropAlertType
+
+class MarkdownPostBodyType(TypedDict):
+    """MarkdownPostBody"""
+
+    text: str
+    mode: NotRequired[Literal["markdown", "gfm"]]
+    context: NotRequired[str]
 
 
-class WebhookRepositoryVulnerabilityAlertCreateType(TypedDict):
-    """repository_vulnerability_alert create event"""
-
-    action: Literal["create"]
-    alert: WebhookRepositoryVulnerabilityAlertCreatePropAlertType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-
-
-__all__ = ("WebhookRepositoryVulnerabilityAlertCreateType",)
+__all__ = ("MarkdownPostBodyType",)

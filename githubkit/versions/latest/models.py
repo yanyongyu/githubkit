@@ -119,6 +119,7 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.models import ReleaseAsset as ReleaseAsset
     from githubkit.versions.v2022_11_28.models import SimpleCommit as SimpleCommit
     from githubkit.versions.v2022_11_28.models import Verification as Verification
+    from githubkit.versions.v2022_11_28.models import WebhooksRule as WebhooksRule
     from githubkit.versions.v2022_11_28.models import ActionsSecret as ActionsSecret
     from githubkit.versions.v2022_11_28.models import Authorization as Authorization
     from githubkit.versions.v2022_11_28.models import CodeOfConduct as CodeOfConduct
@@ -136,6 +137,7 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.models import TagPropCommit as TagPropCommit
     from githubkit.versions.v2022_11_28.models import TagProtection as TagProtection
     from githubkit.versions.v2022_11_28.models import UserPatchBody as UserPatchBody
+    from githubkit.versions.v2022_11_28.models import Vulnerability as Vulnerability
     from githubkit.versions.v2022_11_28.models import WebhookConfig as WebhookConfig
     from githubkit.versions.v2022_11_28.models import WebhookCreate as WebhookCreate
     from githubkit.versions.v2022_11_28.models import WebhookDelete as WebhookDelete
@@ -374,6 +376,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         PullRequestMinimal as PullRequestMinimal,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        PullRequestWebhook as PullRequestWebhook,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReferencedWorkflow as ReferencedWorkflow,
@@ -985,6 +990,9 @@ if TYPE_CHECKING:
         PullRequestReviewRequest as PullRequestReviewRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
+        PullRequestWebhookAllof1 as PullRequestWebhookAllof1,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         RepositoryAdvisoryCreate as RepositoryAdvisoryCreate,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -1001,6 +1009,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         UserEmailsPostBodyOneof0 as UserEmailsPostBodyOneof0,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        VulnerabilityPropPackage as VulnerabilityPropPackage,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookCheckRunCompleted as WebhookCheckRunCompleted,
@@ -2467,12 +2478,6 @@ if TYPE_CHECKING:
         WebhookIssuesDemilestonedPropIssue as WebhookIssuesDemilestonedPropIssue,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof0 as WebhookIssuesLockedPropIssueAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof1 as WebhookIssuesLockedPropIssueAllof1,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookMembershipRemovedPropMember as WebhookMembershipRemovedPropMember,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2710,6 +2715,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoTagsProtectionPostBody as ReposOwnerRepoTagsProtectionPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleParamsCodeScanningTool as RepositoryRuleParamsCodeScanningTool,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         SecretScanningLocationDiscussionBody as SecretScanningLocationDiscussionBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2743,6 +2751,9 @@ if TYPE_CHECKING:
         WebhookIssuesEditedPropIssuePropUser as WebhookIssuesEditedPropIssuePropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesLockedPropIssuePropUser as WebhookIssuesLockedPropIssuePropUser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesMilestonedPropMilestone as WebhookIssuesMilestonedPropMilestone,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2750,18 +2761,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesPinnedPropIssuePropUser as WebhookIssuesPinnedPropIssuePropUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof0 as WebhookIssuesReopenedPropIssueAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof1 as WebhookIssuesReopenedPropIssueAllof1,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof0 as WebhookIssuesUnlockedPropIssueAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof1 as WebhookIssuesUnlockedPropIssueAllof1,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookMetaDeletedPropHookPropConfig as WebhookMetaDeletedPropHookPropConfig,
@@ -2917,9 +2916,6 @@ if TYPE_CHECKING:
         CommitSearchResultItemPropParentsItems as CommitSearchResultItemPropParentsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        GlobalAdvisoryPropVulnerabilitiesItems as GlobalAdvisoryPropVulnerabilitiesItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         InstallationRepositoriesGetResponse200 as InstallationRepositoriesGetResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2995,9 +2991,6 @@ if TYPE_CHECKING:
         WebhookDeploymentCreatedPropDeployment as WebhookDeploymentCreatedPropDeployment,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookDiscussionCreatedPropDiscussion as WebhookDiscussionCreatedPropDiscussion,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookForkPropForkeeAllof0PropLicense as WebhookForkPropForkeeAllof0PropLicense,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3019,13 +3012,10 @@ if TYPE_CHECKING:
         WebhookIssuesEditedPropChangesPropBody as WebhookIssuesEditedPropChangesPropBody,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueMergedUser as WebhookIssuesLockedPropIssueMergedUser,
+        WebhookIssuesReopenedPropIssuePropUser as WebhookIssuesReopenedPropIssuePropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof0 as WebhookIssuesMilestonedPropIssueAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof1 as WebhookIssuesMilestonedPropIssueAllof1,
+        WebhookIssuesUnlockedPropIssuePropUser as WebhookIssuesUnlockedPropIssuePropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnpinnedPropIssuePropUser as WebhookIssuesUnpinnedPropIssuePropUser,
@@ -3139,16 +3129,7 @@ if TYPE_CHECKING:
         WebhookProjectEditedPropChangesPropName as WebhookProjectEditedPropChangesPropName,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestClosedPropPullRequest as WebhookPullRequestClosedPropPullRequest,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestEditedPropPullRequest as WebhookPullRequestEditedPropPullRequest,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestLockedPropPullRequest as WebhookPullRequestLockedPropPullRequest,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestOpenedPropPullRequest as WebhookPullRequestOpenedPropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewRequestedOneof0 as WebhookPullRequestReviewRequestedOneof0,
@@ -3268,16 +3249,13 @@ if TYPE_CHECKING:
         WebhookIssuesClosedPropIssueMergedLabels as WebhookIssuesClosedPropIssueMergedLabels,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof0 as WebhookIssuesDemilestonedPropIssueAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof1 as WebhookIssuesDemilestonedPropIssueAllof1,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesEditedPropIssuePropAssignee as WebhookIssuesEditedPropIssuePropAssignee,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueMergedLabels as WebhookIssuesLockedPropIssueMergedLabels,
+        WebhookIssuesLockedPropIssuePropAssignee as WebhookIssuesLockedPropIssuePropAssignee,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesMilestonedPropIssuePropUser as WebhookIssuesMilestonedPropIssuePropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropIssuePropAssignee as WebhookIssuesOpenedPropIssuePropAssignee,
@@ -3286,13 +3264,7 @@ if TYPE_CHECKING:
         WebhookIssuesPinnedPropIssuePropAssignee as WebhookIssuesPinnedPropIssuePropAssignee,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueMergedUser as WebhookIssuesReopenedPropIssueMergedUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnassignedPropIssuePropUser as WebhookIssuesUnassignedPropIssuePropUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueMergedUser as WebhookIssuesUnlockedPropIssueMergedUser,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookMembershipAddedPropTeamPropParent as WebhookMembershipAddedPropTeamPropParent,
@@ -3338,12 +3310,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPushPropRepositoryPropPermissions as WebhookPushPropRepositoryPropPermissions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePublishedPropReleaseAllof0 as WebhookReleasePublishedPropReleaseAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePublishedPropReleaseAllof1 as WebhookReleasePublishedPropReleaseAllof1,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookSponsorshipCreatedPropSponsorship as WebhookSponsorshipCreatedPropSponsorship,
@@ -3418,16 +3384,10 @@ if TYPE_CHECKING:
         ReposOwnerRepoPullsPullNumberMergePutBody as ReposOwnerRepoPullsPullNumberMergePutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
-        RepositoryRuleParamsCodeScanningThreshold as RepositoryRuleParamsCodeScanningThreshold,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleParamsWorkflowFileReference as RepositoryRuleParamsWorkflowFileReference,
     )
     from githubkit.versions.v2022_11_28.models import (
         UserInteractionLimitsGetResponse200Anyof1 as UserInteractionLimitsGetResponse200Anyof1,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookBranchProtectionRuleEditedPropRule as WebhookBranchProtectionRuleEditedPropRule,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookCheckRunRequestedActionFormEncoded as WebhookCheckRunRequestedActionFormEncoded,
@@ -3467,6 +3427,12 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesLabeledPropIssuePropAssignee as WebhookIssuesLabeledPropIssuePropAssignee,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesLockedPropIssuePropMilestone as WebhookIssuesLockedPropIssuePropMilestone,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesLockedPropIssuePropReactions as WebhookIssuesLockedPropIssuePropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropIssuePropMilestone as WebhookIssuesOpenedPropIssuePropMilestone,
@@ -3509,9 +3475,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestEnqueuedPropPullRequest as WebhookPullRequestEnqueuedPropPullRequest,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReopenedPropPullRequest as WebhookPullRequestReopenedPropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewEditedPropChanges as WebhookPullRequestReviewEditedPropChanges,
@@ -3616,12 +3579,6 @@ if TYPE_CHECKING:
         UserCodespacesCodespaceNamePublishPostBody as UserCodespacesCodespaceNamePublishPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookBranchProtectionRuleCreatedPropRule as WebhookBranchProtectionRuleCreatedPropRule,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookBranchProtectionRuleDeletedPropRule as WebhookBranchProtectionRuleDeletedPropRule,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookCheckSuiteRerequestedPropCheckSuite as WebhookCheckSuiteRerequestedPropCheckSuite,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3664,31 +3621,22 @@ if TYPE_CHECKING:
         WebhookIssuesDeletedPropIssuePropReactions as WebhookIssuesDeletedPropIssuePropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesDemilestonedPropIssuePropUser as WebhookIssuesDemilestonedPropIssuePropUser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesLabeledPropIssuePropMilestone as WebhookIssuesLabeledPropIssuePropMilestone,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesLabeledPropIssuePropReactions as WebhookIssuesLabeledPropIssuePropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof0PropUser as WebhookIssuesLockedPropIssueAllof0PropUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof1PropUser as WebhookIssuesLockedPropIssueAllof1PropUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueMergedAssignee as WebhookIssuesLockedPropIssueMergedAssignee,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueMergedUser as WebhookIssuesMilestonedPropIssueMergedUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropChangesPropOldIssue as WebhookIssuesOpenedPropChangesPropOldIssue,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueMergedLabels as WebhookIssuesReopenedPropIssueMergedLabels,
+        WebhookIssuesReopenedPropIssuePropAssignee as WebhookIssuesReopenedPropIssuePropAssignee,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueMergedLabels as WebhookIssuesUnlockedPropIssueMergedLabels,
+        WebhookIssuesUnlockedPropIssuePropAssignee as WebhookIssuesUnlockedPropIssuePropAssignee,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnpinnedPropIssuePropAssignee as WebhookIssuesUnpinnedPropIssuePropAssignee,
@@ -3725,18 +3673,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookReleaseDeletedPropReleasePropAuthor as WebhookReleaseDeletedPropReleasePropAuthor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePrereleasedPropReleaseAllof0 as WebhookReleasePrereleasedPropReleaseAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePrereleasedPropReleaseAllof1 as WebhookReleasePrereleasedPropReleaseAllof1,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleaseUnpublishedPropReleaseAllof0 as WebhookReleaseUnpublishedPropReleaseAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleaseUnpublishedPropReleaseAllof1 as WebhookReleaseUnpublishedPropReleaseAllof1,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookRepositoryVulnerabilityAlertDismiss as WebhookRepositoryVulnerabilityAlertDismiss,
@@ -3853,13 +3789,10 @@ if TYPE_CHECKING:
         WebhookIssuesEditedPropIssuePropPullRequest as WebhookIssuesEditedPropIssuePropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueMergedAssignees as WebhookIssuesLockedPropIssueMergedAssignees,
+        WebhookIssuesLockedPropIssuePropLabelsItems as WebhookIssuesLockedPropIssuePropLabelsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueMergedMilestone as WebhookIssuesLockedPropIssueMergedMilestone,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueMergedReactions as WebhookIssuesLockedPropIssueMergedReactions,
+        WebhookIssuesLockedPropIssuePropPullRequest as WebhookIssuesLockedPropIssuePropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropIssuePropLabelsItems as WebhookIssuesOpenedPropIssuePropLabelsItems,
@@ -3874,7 +3807,19 @@ if TYPE_CHECKING:
         WebhookIssuesPinnedPropIssuePropPullRequest as WebhookIssuesPinnedPropIssuePropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesReopenedPropIssuePropMilestone as WebhookIssuesReopenedPropIssuePropMilestone,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesReopenedPropIssuePropReactions as WebhookIssuesReopenedPropIssuePropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnlabeledPropIssuePropAssignee as WebhookIssuesUnlabeledPropIssuePropAssignee,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesUnlockedPropIssuePropMilestone as WebhookIssuesUnlockedPropIssuePropMilestone,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesUnlockedPropIssuePropReactions as WebhookIssuesUnlockedPropIssuePropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnpinnedPropIssuePropMilestone as WebhookIssuesUnpinnedPropIssuePropMilestone,
@@ -3997,12 +3942,6 @@ if TYPE_CHECKING:
         WebhookDeploymentStatusCreatedPropDeployment as WebhookDeploymentStatusCreatedPropDeployment,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookDiscussionCreatedPropDiscussionAllof0 as WebhookDiscussionCreatedPropDiscussionAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookDiscussionCreatedPropDiscussionAllof1 as WebhookDiscussionCreatedPropDiscussionAllof1,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookIssueCommentEditedPropChangesPropBody as WebhookIssueCommentEditedPropChangesPropBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4018,25 +3957,13 @@ if TYPE_CHECKING:
         WebhookIssuesDeletedPropIssuePropPullRequest as WebhookIssuesDeletedPropIssuePropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueMergedUser as WebhookIssuesDemilestonedPropIssueMergedUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesLabeledPropIssuePropLabelsItems as WebhookIssuesLabeledPropIssuePropLabelsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesLabeledPropIssuePropPullRequest as WebhookIssuesLabeledPropIssuePropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueMergedLabels as WebhookIssuesMilestonedPropIssueMergedLabels,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof0PropUser as WebhookIssuesReopenedPropIssueAllof0PropUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof1PropUser as WebhookIssuesReopenedPropIssueAllof1PropUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueMergedAssignee as WebhookIssuesReopenedPropIssueMergedAssignee,
+        WebhookIssuesMilestonedPropIssuePropAssignee as WebhookIssuesMilestonedPropIssuePropAssignee,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnassignedPropIssuePropAssignee as WebhookIssuesUnassignedPropIssuePropAssignee,
@@ -4046,15 +3973,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnlabeledPropIssuePropReactions as WebhookIssuesUnlabeledPropIssuePropReactions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof0PropUser as WebhookIssuesUnlockedPropIssueAllof0PropUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof1PropUser as WebhookIssuesUnlockedPropIssueAllof1PropUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueMergedAssignee as WebhookIssuesUnlockedPropIssueMergedAssignee,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookLabelEditedPropChangesPropDescription as WebhookLabelEditedPropChangesPropDescription,
@@ -4103,6 +4021,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookReleaseEditedPropReleasePropReactions as WebhookReleaseEditedPropReleasePropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookReleasePublishedPropReleasePropAuthor as WebhookReleasePublishedPropReleasePropAuthor,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookRepositoryEditedPropChangesPropTopics as WebhookRepositoryEditedPropChangesPropTopics,
@@ -4189,13 +4110,16 @@ if TYPE_CHECKING:
         WebhookIssuesAssignedPropIssuePropPullRequest as WebhookIssuesAssignedPropIssuePropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueMergedAssignees as WebhookIssuesReopenedPropIssueMergedAssignees,
+        WebhookIssuesMilestonedPropIssuePropMilestone as WebhookIssuesMilestonedPropIssuePropMilestone,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueMergedMilestone as WebhookIssuesReopenedPropIssueMergedMilestone,
+        WebhookIssuesMilestonedPropIssuePropReactions as WebhookIssuesMilestonedPropIssuePropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueMergedReactions as WebhookIssuesReopenedPropIssueMergedReactions,
+        WebhookIssuesReopenedPropIssuePropLabelsItems as WebhookIssuesReopenedPropIssuePropLabelsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesReopenedPropIssuePropPullRequest as WebhookIssuesReopenedPropIssuePropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropIssuePropAssignee as WebhookIssuesTransferredPropIssuePropAssignee,
@@ -4207,13 +4131,10 @@ if TYPE_CHECKING:
         WebhookIssuesUnassignedPropIssuePropReactions as WebhookIssuesUnassignedPropIssuePropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueMergedAssignees as WebhookIssuesUnlockedPropIssueMergedAssignees,
+        WebhookIssuesUnlockedPropIssuePropLabelsItems as WebhookIssuesUnlockedPropIssuePropLabelsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueMergedMilestone as WebhookIssuesUnlockedPropIssueMergedMilestone,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueMergedReactions as WebhookIssuesUnlockedPropIssueMergedReactions,
+        WebhookIssuesUnlockedPropIssuePropPullRequest as WebhookIssuesUnlockedPropIssuePropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnpinnedPropIssuePropLabelsItems as WebhookIssuesUnpinnedPropIssuePropLabelsItems,
@@ -4225,16 +4146,7 @@ if TYPE_CHECKING:
         WebhookProjectColumnEditedPropChangesPropName as WebhookProjectColumnEditedPropChangesPropName,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestClosedPropPullRequestAllof1 as WebhookPullRequestClosedPropPullRequestAllof1,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestDemilestonedPropPullRequest as WebhookPullRequestDemilestonedPropPullRequest,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestEditedPropPullRequestAllof1 as WebhookPullRequestEditedPropPullRequestAllof1,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestOpenedPropPullRequestAllof1 as WebhookPullRequestOpenedPropPullRequestAllof1,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewEditedPropPullRequest as WebhookPullRequestReviewEditedPropPullRequest,
@@ -4330,25 +4242,13 @@ if TYPE_CHECKING:
         WebhookIssuesClosedPropIssueAllof1PropAssignee as WebhookIssuesClosedPropIssueAllof1PropAssignee,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueMergedLabels as WebhookIssuesDemilestonedPropIssueMergedLabels,
+        WebhookIssuesDemilestonedPropIssuePropAssignee as WebhookIssuesDemilestonedPropIssuePropAssignee,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesEditedPropIssuePropAssigneesItems as WebhookIssuesEditedPropIssuePropAssigneesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof0PropAssignee as WebhookIssuesLockedPropIssueAllof0PropAssignee,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof1PropAssignee as WebhookIssuesLockedPropIssueAllof1PropAssignee,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof0PropUser as WebhookIssuesMilestonedPropIssueAllof0PropUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof1PropUser as WebhookIssuesMilestonedPropIssueAllof1PropUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueMergedAssignee as WebhookIssuesMilestonedPropIssueMergedAssignee,
+        WebhookIssuesLockedPropIssuePropAssigneesItems as WebhookIssuesLockedPropIssuePropAssigneesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropIssuePropAssigneesItems as WebhookIssuesOpenedPropIssuePropAssigneesItems,
@@ -4399,13 +4299,13 @@ if TYPE_CHECKING:
         WebhookReleaseEditedPropReleasePropAssetsItems as WebhookReleaseEditedPropReleasePropAssetsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePublishedPropReleaseMergedAssets as WebhookReleasePublishedPropReleaseMergedAssets,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePublishedPropReleaseMergedAuthor as WebhookReleasePublishedPropReleaseMergedAuthor,
+        WebhookReleasePrereleasedPropReleasePropAuthor as WebhookReleasePrereleasedPropReleasePropAuthor,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookReleaseReleasedPropReleasePropReactions as WebhookReleaseReleasedPropReleasePropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookReleaseUnpublishedPropReleasePropAuthor as WebhookReleaseUnpublishedPropReleasePropAuthor,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookRepositoryEditedPropChangesPropHomepage as WebhookRepositoryEditedPropChangesPropHomepage,
@@ -4504,25 +4404,19 @@ if TYPE_CHECKING:
         WebhookIssuesDeletedPropIssuePropAssigneesItems as WebhookIssuesDeletedPropIssuePropAssigneesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesDemilestonedPropIssuePropMilestone as WebhookIssuesDemilestonedPropIssuePropMilestone,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesDemilestonedPropIssuePropReactions as WebhookIssuesDemilestonedPropIssuePropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesLabeledPropIssuePropAssigneesItems as WebhookIssuesLabeledPropIssuePropAssigneesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof0PropMilestone as WebhookIssuesLockedPropIssueAllof0PropMilestone,
+        WebhookIssuesMilestonedPropIssuePropLabelsItems as WebhookIssuesMilestonedPropIssuePropLabelsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof0PropReactions as WebhookIssuesLockedPropIssueAllof0PropReactions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof1PropMilestone as WebhookIssuesLockedPropIssueAllof1PropMilestone,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof1PropReactions as WebhookIssuesLockedPropIssueAllof1PropReactions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueMergedAssignees as WebhookIssuesMilestonedPropIssueMergedAssignees,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueMergedReactions as WebhookIssuesMilestonedPropIssueMergedReactions,
+        WebhookIssuesMilestonedPropIssuePropPullRequest as WebhookIssuesMilestonedPropIssuePropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesMilestonedPropMilestonePropCreator as WebhookIssuesMilestonedPropMilestonePropCreator,
@@ -4558,16 +4452,13 @@ if TYPE_CHECKING:
         WebhookPullRequestLockedPropPullRequestPropUser as WebhookPullRequestLockedPropPullRequestPropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReadyForReviewPropPullRequest as WebhookPullRequestReadyForReviewPropPullRequest,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReopenedPropPullRequestAllof1 as WebhookPullRequestReopenedPropPullRequestAllof1,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookReleaseCreatedPropReleasePropAssetsItems as WebhookReleaseCreatedPropReleasePropAssetsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookReleaseDeletedPropReleasePropAssetsItems as WebhookReleaseDeletedPropReleasePropAssetsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookReleasePublishedPropReleasePropReactions as WebhookReleasePublishedPropReleasePropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookSponsorshipEditedPropSponsorshipPropTier as WebhookSponsorshipEditedPropSponsorshipPropTier,
@@ -4666,9 +4557,6 @@ if TYPE_CHECKING:
         WebhookDiscussionAnsweredPropAnswerPropReactions as WebhookDiscussionAnsweredPropAnswerPropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookDiscussionCreatedPropDiscussionMergedUser as WebhookDiscussionCreatedPropDiscussionMergedUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookDiscussionUnansweredPropOldAnswerPropUser as WebhookDiscussionUnansweredPropOldAnswerPropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4681,19 +4569,7 @@ if TYPE_CHECKING:
         WebhookIssuesAssignedPropIssuePropAssigneesItems as WebhookIssuesAssignedPropIssuePropAssigneesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof0PropUser as WebhookIssuesDemilestonedPropIssueAllof0PropUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof1PropUser as WebhookIssuesDemilestonedPropIssueAllof1PropUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueMergedAssignee as WebhookIssuesDemilestonedPropIssueMergedAssignee,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof0PropAssignee as WebhookIssuesReopenedPropIssueAllof0PropAssignee,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof1PropAssignee as WebhookIssuesReopenedPropIssueAllof1PropAssignee,
+        WebhookIssuesReopenedPropIssuePropAssigneesItems as WebhookIssuesReopenedPropIssuePropAssigneesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropIssuePropLabelsItems as WebhookIssuesTransferredPropIssuePropLabelsItems,
@@ -4702,10 +4578,7 @@ if TYPE_CHECKING:
         WebhookIssuesTransferredPropIssuePropPullRequest as WebhookIssuesTransferredPropIssuePropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof0PropAssignee as WebhookIssuesUnlockedPropIssueAllof0PropAssignee,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof1PropAssignee as WebhookIssuesUnlockedPropIssueAllof1PropAssignee,
+        WebhookIssuesUnlockedPropIssuePropAssigneesItems as WebhookIssuesUnlockedPropIssuePropAssigneesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnpinnedPropIssuePropAssigneesItems as WebhookIssuesUnpinnedPropIssuePropAssigneesItems,
@@ -4756,19 +4629,7 @@ if TYPE_CHECKING:
         WebhookRegistryPackageUpdatedPropRegistryPackage as WebhookRegistryPackageUpdatedPropRegistryPackage,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePrereleasedPropReleaseMergedAssets as WebhookReleasePrereleasedPropReleaseMergedAssets,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePrereleasedPropReleaseMergedAuthor as WebhookReleasePrereleasedPropReleaseMergedAuthor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookReleaseReleasedPropReleasePropAssetsItems as WebhookReleaseReleasedPropReleasePropAssetsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleaseUnpublishedPropReleaseMergedAssets as WebhookReleaseUnpublishedPropReleaseMergedAssets,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleaseUnpublishedPropReleaseMergedAuthor as WebhookReleaseUnpublishedPropReleaseMergedAuthor,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookRepositoryDispatchSamplePropClientPayload as WebhookRepositoryDispatchSamplePropClientPayload,
@@ -4789,16 +4650,7 @@ if TYPE_CHECKING:
         WebhookWorkflowJobCompletedPropWorkflowJobAllof1 as WebhookWorkflowJobCompletedPropWorkflowJobAllof1,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof0 as WebhookWorkflowRunCompletedPropWorkflowRunAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof1 as WebhookWorkflowRunCompletedPropWorkflowRunAllof1,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         CodespaceWithFullRepositoryPropRuntimeConstraints as CodespaceWithFullRepositoryPropRuntimeConstraints,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        GlobalAdvisoryPropVulnerabilitiesItemsPropPackage as GlobalAdvisoryPropVulnerabilitiesItemsPropPackage,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200 as OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
@@ -4924,49 +4776,16 @@ if TYPE_CHECKING:
         WebhookIssuesClosedPropIssueAllof1PropLabelsItems as WebhookIssuesClosedPropIssueAllof1PropLabelsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueMergedAssignees as WebhookIssuesDemilestonedPropIssueMergedAssignees,
+        WebhookIssuesDemilestonedPropIssuePropLabelsItems as WebhookIssuesDemilestonedPropIssuePropLabelsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueMergedReactions as WebhookIssuesDemilestonedPropIssueMergedReactions,
+        WebhookIssuesDemilestonedPropIssuePropPullRequest as WebhookIssuesDemilestonedPropIssuePropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesDemilestonedPropMilestonePropCreator as WebhookIssuesDemilestonedPropMilestonePropCreator,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof0PropLabelsItems as WebhookIssuesLockedPropIssueAllof0PropLabelsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof0PropPullRequest as WebhookIssuesLockedPropIssueAllof0PropPullRequest,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof1PropLabelsItems as WebhookIssuesLockedPropIssueAllof1PropLabelsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof0PropMilestone as WebhookIssuesReopenedPropIssueAllof0PropMilestone,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof0PropReactions as WebhookIssuesReopenedPropIssueAllof0PropReactions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof1PropMilestone as WebhookIssuesReopenedPropIssueAllof1PropMilestone,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof1PropReactions as WebhookIssuesReopenedPropIssueAllof1PropReactions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnlabeledPropIssuePropAssigneesItems as WebhookIssuesUnlabeledPropIssuePropAssigneesItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof0PropMilestone as WebhookIssuesUnlockedPropIssueAllof0PropMilestone,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof0PropReactions as WebhookIssuesUnlockedPropIssueAllof0PropReactions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof1PropMilestone as WebhookIssuesUnlockedPropIssueAllof1PropMilestone,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof1PropReactions as WebhookIssuesUnlockedPropIssueAllof1PropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestAssignedPropPullRequestPropBase as WebhookPullRequestAssignedPropPullRequestPropBase,
@@ -4979,9 +4798,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestAutoMergeEnabledPropPullRequest as WebhookPullRequestAutoMergeEnabledPropPullRequest,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestConvertedToDraftPropPullRequest as WebhookPullRequestConvertedToDraftPropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestDequeuedPropPullRequestPropBase as WebhookPullRequestDequeuedPropPullRequestPropBase,
@@ -5026,6 +4842,15 @@ if TYPE_CHECKING:
         WebhookPullRequestUnlockedPropPullRequestPropUser as WebhookPullRequestUnlockedPropPullRequestPropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookReleasePrereleasedPropReleasePropReactions as WebhookReleasePrereleasedPropReleasePropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookReleasePublishedPropReleasePropAssetsItems as WebhookReleasePublishedPropReleasePropAssetsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookReleaseUnpublishedPropReleasePropReactions as WebhookReleaseUnpublishedPropReleasePropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookRepositoryEditedPropChangesPropDescription as WebhookRepositoryEditedPropChangesPropDescription,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5048,12 +4873,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookWorkflowJobInProgressPropWorkflowJobAllof1 as WebhookWorkflowJobInProgressPropWorkflowJobAllof1,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof0 as WebhookWorkflowRunInProgressPropWorkflowRunAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof1 as WebhookWorkflowRunInProgressPropWorkflowRunAllof1,
     )
     from githubkit.versions.v2022_11_28.models import (
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202 as AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
@@ -5137,10 +4956,7 @@ if TYPE_CHECKING:
         WebhookIssueCommentDeletedPropIssueMergedReactions as WebhookIssueCommentDeletedPropIssueMergedReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof0PropAssignee as WebhookIssuesMilestonedPropIssueAllof0PropAssignee,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof1PropAssignee as WebhookIssuesMilestonedPropIssueAllof1PropAssignee,
+        WebhookIssuesMilestonedPropIssuePropAssigneesItems as WebhookIssuesMilestonedPropIssuePropAssigneesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropUser as WebhookIssuesOpenedPropChangesPropOldIssuePropUser,
@@ -5192,12 +5008,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookRegistryPackagePublishedPropRegistryPackage as WebhookRegistryPackagePublishedPropRegistryPackage,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePublishedPropReleaseAllof0PropAuthor as WebhookReleasePublishedPropReleaseAllof0PropAuthor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePublishedPropReleaseAllof1PropAuthor as WebhookReleasePublishedPropReleaseAllof1PropAuthor,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookRepositoryRulesetEditedPropChangesPropRules as WebhookRepositoryRulesetEditedPropChangesPropRules,
@@ -5272,37 +5082,7 @@ if TYPE_CHECKING:
         WebhookInstallationTargetRenamedPropChangesPropSlug as WebhookInstallationTargetRenamedPropChangesPropSlug,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof0PropMilestone as WebhookIssuesMilestonedPropIssueAllof0PropMilestone,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof0PropReactions as WebhookIssuesMilestonedPropIssueAllof0PropReactions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof1PropMilestone as WebhookIssuesMilestonedPropIssueAllof1PropMilestone,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof1PropReactions as WebhookIssuesMilestonedPropIssueAllof1PropReactions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof0PropLabelsItems as WebhookIssuesReopenedPropIssueAllof0PropLabelsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof0PropPullRequest as WebhookIssuesReopenedPropIssueAllof0PropPullRequest,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof1PropLabelsItems as WebhookIssuesReopenedPropIssueAllof1PropLabelsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropIssuePropAssigneesItems as WebhookIssuesTransferredPropIssuePropAssigneesItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof0PropLabelsItems as WebhookIssuesUnlockedPropIssueAllof0PropLabelsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof0PropPullRequest as WebhookIssuesUnlockedPropIssueAllof0PropPullRequest,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof1PropLabelsItems as WebhookIssuesUnlockedPropIssueAllof1PropLabelsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookProjectCardCreatedPropProjectCardPropCreator as WebhookProjectCardCreatedPropProjectCardPropCreator,
@@ -5350,6 +5130,12 @@ if TYPE_CHECKING:
         WebhookPullRequestUnlabeledPropPullRequestPropLinks as WebhookPullRequestUnlabeledPropPullRequestPropLinks,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookReleasePrereleasedPropReleasePropAssetsItems as WebhookReleasePrereleasedPropReleasePropAssetsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookReleaseUnpublishedPropReleasePropAssetsItems as WebhookReleaseUnpublishedPropReleasePropAssetsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookRepositoryEditedPropChangesPropDefaultBranch as WebhookRepositoryEditedPropChangesPropDefaultBranch,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5374,6 +5160,9 @@ if TYPE_CHECKING:
         WebhookTeamEditedPropRepositoryPropCustomProperties as WebhookTeamEditedPropRepositoryPropCustomProperties,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookWorkflowRunCompletedPropWorkflowRunPropActor as WebhookWorkflowRunCompletedPropWorkflowRunPropActor,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropActor as WebhookWorkflowRunRequestedPropWorkflowRunPropActor,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5392,15 +5181,6 @@ if TYPE_CHECKING:
         RepositoryRuleCommitAuthorEmailPatternPropParameters as RepositoryRuleCommitAuthorEmailPatternPropParameters,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookDiscussionCreatedPropDiscussionAllof0PropUser as WebhookDiscussionCreatedPropDiscussionAllof0PropUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookDiscussionCreatedPropDiscussionAllof1PropUser as WebhookDiscussionCreatedPropDiscussionAllof1PropUser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookDiscussionCreatedPropDiscussionMergedCategory as WebhookDiscussionCreatedPropDiscussionMergedCategory,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookInstallationTargetRenamedPropChangesPropLogin as WebhookInstallationTargetRenamedPropChangesPropLogin,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5416,19 +5196,13 @@ if TYPE_CHECKING:
         WebhookIssuesClosedPropIssueAllof1PropAssigneesItems as WebhookIssuesClosedPropIssueAllof1PropAssigneesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof0PropAssignee as WebhookIssuesDemilestonedPropIssueAllof0PropAssignee,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof1PropAssignee as WebhookIssuesDemilestonedPropIssueAllof1PropAssignee,
+        WebhookIssuesDemilestonedPropIssuePropAssigneesItems as WebhookIssuesDemilestonedPropIssuePropAssigneesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesEditedPropIssuePropMilestonePropCreator as WebhookIssuesEditedPropIssuePropMilestonePropCreator,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof0PropAssigneesItems as WebhookIssuesLockedPropIssueAllof0PropAssigneesItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof1PropAssigneesItems as WebhookIssuesLockedPropIssueAllof1PropAssigneesItems,
+        WebhookIssuesLockedPropIssuePropMilestonePropCreator as WebhookIssuesLockedPropIssuePropMilestonePropCreator,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropIssuePropMilestonePropCreator as WebhookIssuesOpenedPropIssuePropMilestonePropCreator,
@@ -5485,18 +5259,6 @@ if TYPE_CHECKING:
         WebhookPullRequestUnassignedPropPullRequestPropLinks as WebhookPullRequestUnassignedPropPullRequestPropLinks,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePrereleasedPropReleaseAllof0PropAuthor as WebhookReleasePrereleasedPropReleaseAllof0PropAuthor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePrereleasedPropReleaseAllof1PropAuthor as WebhookReleasePrereleasedPropReleaseAllof1PropAuthor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleaseUnpublishedPropReleaseAllof0PropAuthor as WebhookReleaseUnpublishedPropReleaseAllof0PropAuthor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleaseUnpublishedPropReleaseAllof1PropAuthor as WebhookReleaseUnpublishedPropReleaseAllof1PropAuthor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookSecretScanningAlertLocationCreatedFormEncoded as WebhookSecretScanningAlertLocationCreatedFormEncoded,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5522,6 +5284,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookTeamDeletedPropRepositoryPropCustomProperties as WebhookTeamDeletedPropRepositoryPropCustomProperties,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookWorkflowRunInProgressPropWorkflowRunPropActor as WebhookWorkflowRunInProgressPropWorkflowRunPropActor,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201 as OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
@@ -5569,9 +5334,6 @@ if TYPE_CHECKING:
         WebhookDeploymentCreatedPropWorkflowRunPropRepository as WebhookDeploymentCreatedPropWorkflowRunPropRepository,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookDiscussionCreatedPropDiscussionMergedReactions as WebhookDiscussionCreatedPropDiscussionMergedReactions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookDiscussionUnansweredPropOldAnswerPropReactions as WebhookDiscussionUnansweredPropOldAnswerPropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5602,31 +5364,13 @@ if TYPE_CHECKING:
         WebhookIssuesDeletedPropIssuePropMilestonePropCreator as WebhookIssuesDeletedPropIssuePropMilestonePropCreator,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof0PropMilestone as WebhookIssuesDemilestonedPropIssueAllof0PropMilestone,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof0PropReactions as WebhookIssuesDemilestonedPropIssueAllof0PropReactions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof1PropMilestone as WebhookIssuesDemilestonedPropIssueAllof1PropMilestone,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof1PropReactions as WebhookIssuesDemilestonedPropIssueAllof1PropReactions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesEditedPropIssuePropPerformedViaGithubApp as WebhookIssuesEditedPropIssuePropPerformedViaGithubApp,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesLabeledPropIssuePropMilestonePropCreator as WebhookIssuesLabeledPropIssuePropMilestonePropCreator,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof0PropLabelsItems as WebhookIssuesMilestonedPropIssueAllof0PropLabelsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof0PropPullRequest as WebhookIssuesMilestonedPropIssueAllof0PropPullRequest,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof1PropLabelsItems as WebhookIssuesMilestonedPropIssueAllof1PropLabelsItems,
+        WebhookIssuesLockedPropIssuePropPerformedViaGithubApp as WebhookIssuesLockedPropIssuePropPerformedViaGithubApp,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropIssuePropPerformedViaGithubApp as WebhookIssuesOpenedPropIssuePropPerformedViaGithubApp,
@@ -5671,9 +5415,6 @@ if TYPE_CHECKING:
         WebhookPullRequestLabeledPropPullRequestPropMilestone as WebhookPullRequestLabeledPropPullRequestPropMilestone,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestReadyForReviewPropPullRequestAllof1 as WebhookPullRequestReadyForReviewPropPullRequestAllof1,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequest as WebhookPullRequestReviewCommentCreatedPropPullRequest,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5701,9 +5442,6 @@ if TYPE_CHECKING:
         WebhookPullRequestUnlockedPropPullRequestPropMergedBy as WebhookPullRequestUnlockedPropPullRequestPropMergedBy,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePublishedPropReleaseAllof0PropReactions as WebhookReleasePublishedPropReleaseAllof0PropReactions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookSponsorshipCancelledPropSponsorshipPropSponsor as WebhookSponsorshipCancelledPropSponsorshipPropSponsor,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5717,9 +5455,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems as WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunMergedActor as WebhookWorkflowRunCompletedPropWorkflowRunMergedActor,
     )
     from githubkit.versions.v2022_11_28.models import (
         WorkflowRunUsagePropBillablePropMacosPropJobRunsItems as WorkflowRunUsagePropBillablePropMacosPropJobRunsItems,
@@ -5794,16 +5529,10 @@ if TYPE_CHECKING:
         WebhookIssuesOpenedPropChangesPropOldIssuePropAssignee as WebhookIssuesOpenedPropChangesPropOldIssuePropAssignee,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof0PropAssigneesItems as WebhookIssuesReopenedPropIssueAllof0PropAssigneesItems,
+        WebhookIssuesReopenedPropIssuePropMilestonePropCreator as WebhookIssuesReopenedPropIssuePropMilestonePropCreator,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof1PropAssigneesItems as WebhookIssuesReopenedPropIssueAllof1PropAssigneesItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof0PropAssigneesItems as WebhookIssuesUnlockedPropIssueAllof0PropAssigneesItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof1PropAssigneesItems as WebhookIssuesUnlockedPropIssueAllof1PropAssigneesItems,
+        WebhookIssuesUnlockedPropIssuePropMilestonePropCreator as WebhookIssuesUnlockedPropIssuePropMilestonePropCreator,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnpinnedPropIssuePropMilestonePropCreator as WebhookIssuesUnpinnedPropIssuePropMilestonePropCreator,
@@ -5878,9 +5607,6 @@ if TYPE_CHECKING:
         WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems as WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunMergedActor as WebhookWorkflowRunInProgressPropWorkflowRunMergedActor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems as WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5950,28 +5676,22 @@ if TYPE_CHECKING:
         WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp as WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof0PropLabelsItems as WebhookIssuesDemilestonedPropIssueAllof0PropLabelsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof0PropPullRequest as WebhookIssuesDemilestonedPropIssueAllof0PropPullRequest,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof1PropLabelsItems as WebhookIssuesDemilestonedPropIssueAllof1PropLabelsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueMergedPerformedViaGithubApp as WebhookIssuesLockedPropIssueMergedPerformedViaGithubApp,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropMilestone as WebhookIssuesOpenedPropChangesPropOldIssuePropMilestone,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropReactions as WebhookIssuesOpenedPropChangesPropOldIssuePropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesReopenedPropIssuePropPerformedViaGithubApp as WebhookIssuesReopenedPropIssuePropPerformedViaGithubApp,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropUser as WebhookIssuesTransferredPropChangesPropNewIssuePropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnlabeledPropIssuePropMilestonePropCreator as WebhookIssuesUnlabeledPropIssuePropMilestonePropCreator,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesUnlockedPropIssuePropPerformedViaGithubApp as WebhookIssuesUnlockedPropIssuePropPerformedViaGithubApp,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnpinnedPropIssuePropPerformedViaGithubApp as WebhookIssuesUnpinnedPropIssuePropPerformedViaGithubApp,
@@ -5981,9 +5701,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookProjectCardMovedPropProjectCardAllof1PropCreator as WebhookProjectCardMovedPropProjectCardAllof1PropCreator,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookPullRequestConvertedToDraftPropPullRequestAllof1 as WebhookPullRequestConvertedToDraftPropPullRequestAllof1,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestLabeledPropPullRequestPropLabelsItems as WebhookPullRequestLabeledPropPullRequestPropLabelsItems,
@@ -6020,18 +5737,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestUnlabeledPropPullRequestPropMilestone as WebhookPullRequestUnlabeledPropPullRequestPropMilestone,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePrereleasedPropReleaseAllof0PropReactions as WebhookReleasePrereleasedPropReleaseAllof0PropReactions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePublishedPropReleaseAllof0PropAssetsItems as WebhookReleasePublishedPropReleaseAllof0PropAssetsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePublishedPropReleaseAllof1PropAssetsItems as WebhookReleasePublishedPropReleaseAllof1PropAssetsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleaseUnpublishedPropReleaseAllof0PropReactions as WebhookReleaseUnpublishedPropReleaseAllof0PropReactions,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookRepositoryRulesetEditedPropChangesPropConditions as WebhookRepositoryRulesetEditedPropChangesPropConditions,
@@ -6085,12 +5790,6 @@ if TYPE_CHECKING:
         WebhookDeploymentReviewRequestedPropWorkflowRunPropActor as WebhookDeploymentReviewRequestedPropWorkflowRunPropActor,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookDiscussionCreatedPropDiscussionAllof0PropCategory as WebhookDiscussionCreatedPropDiscussionAllof0PropCategory,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookDiscussionCreatedPropDiscussionAllof1PropCategory as WebhookDiscussionCreatedPropDiscussionAllof1PropCategory,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems as WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -6109,10 +5808,7 @@ if TYPE_CHECKING:
         WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItems as WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof0PropAssigneesItems as WebhookIssuesMilestonedPropIssueAllof0PropAssigneesItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof1PropAssigneesItems as WebhookIssuesMilestonedPropIssueAllof1PropAssigneesItems,
+        WebhookIssuesMilestonedPropIssuePropMilestonePropCreator as WebhookIssuesMilestonedPropIssuePropMilestonePropCreator,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwner as WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwner,
@@ -6214,22 +5910,16 @@ if TYPE_CHECKING:
         WebhookRepositoryTransferredPropChangesPropOwnerPropFrom as WebhookRepositoryTransferredPropChangesPropOwnerPropFrom,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0 as WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1 as WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0 as WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof1 as WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof1,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookSponsorshipCancelledPropSponsorshipPropMaintainer as WebhookSponsorshipCancelledPropSponsorshipPropMaintainer,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookSponsorshipTierChangedPropChangesPropTierPropFrom as WebhookSponsorshipTierChangedPropChangesPropTierPropFrom,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommit as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommit,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookWorkflowRunCompletedPropWorkflowRunPropRepository as WebhookWorkflowRunCompletedPropWorkflowRunPropRepository,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit,
@@ -6268,19 +5958,13 @@ if TYPE_CHECKING:
         WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository as WebhookDeploymentCreatedPropWorkflowRunPropHeadRepository,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookDiscussionCreatedPropDiscussionAllof0PropReactions as WebhookDiscussionCreatedPropDiscussionAllof0PropReactions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookDiscussionCreatedPropDiscussionAllof1PropReactions as WebhookDiscussionCreatedPropDiscussionAllof1PropReactions,
+        WebhookIssuesMilestonedPropIssuePropPerformedViaGithubApp as WebhookIssuesMilestonedPropIssuePropPerformedViaGithubApp,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropLabelsItems as WebhookIssuesOpenedPropChangesPropOldIssuePropLabelsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropPullRequest as WebhookIssuesOpenedPropChangesPropOldIssuePropPullRequest,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueMergedPerformedViaGithubApp as WebhookIssuesReopenedPropIssueMergedPerformedViaGithubApp,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropIssuePropMilestonePropCreator as WebhookIssuesTransferredPropIssuePropMilestonePropCreator,
@@ -6400,31 +6084,7 @@ if TYPE_CHECKING:
         WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner as WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItems as WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePrereleasedPropReleaseAllof1PropAssetsItems as WebhookReleasePrereleasedPropReleaseAllof1PropAssetsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItems as WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleaseUnpublishedPropReleaseAllof1PropAssetsItems as WebhookReleaseUnpublishedPropReleaseAllof1PropAssetsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookRepositoryRenamedPropChangesPropRepositoryPropName as WebhookRepositoryRenamedPropChangesPropRepositoryPropName,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0 as WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1 as WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof0 as WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof1 as WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof1,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookSponsorshipCancelledPropSponsorshipPropSponsorable as WebhookSponsorshipCancelledPropSponsorshipPropSponsorable,
@@ -6439,10 +6099,10 @@ if TYPE_CHECKING:
         WebhookTeamRemovedFromRepositoryPropRepositoryPropLicense as WebhookTeamRemovedFromRepositoryPropRepositoryPropLicense,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropActor as WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropActor,
+        WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommit as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommit,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropActor as WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropActor,
+        WebhookWorkflowRunInProgressPropWorkflowRunPropRepository as WebhookWorkflowRunInProgressPropWorkflowRunPropRepository,
     )
     from githubkit.versions.v2022_11_28.models import (
         PersonalAccessTokenRequestPropPermissionsUpgradedPropOther as PersonalAccessTokenRequestPropPermissionsUpgradedPropOther,
@@ -6481,13 +6141,7 @@ if TYPE_CHECKING:
         WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreator as WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreator,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof0PropAssigneesItems as WebhookIssuesDemilestonedPropIssueAllof0PropAssigneesItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof1PropAssigneesItems as WebhookIssuesDemilestonedPropIssueAllof1PropAssigneesItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof0PropMilestonePropCreator as WebhookIssuesLockedPropIssueAllof0PropMilestonePropCreator,
+        WebhookIssuesDemilestonedPropIssuePropMilestonePropCreator as WebhookIssuesDemilestonedPropIssuePropMilestonePropCreator,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicense as WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicense,
@@ -6595,18 +6249,6 @@ if TYPE_CHECKING:
         WebhookSponsorshipTierChangedPropSponsorshipPropMaintainer as WebhookSponsorshipTierChangedPropSponsorshipPropMaintainer,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommit as WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommit,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunMergedRepository as WebhookWorkflowRunCompletedPropWorkflowRunMergedRepository,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropActor as WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropActor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropActor as WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropActor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion as DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -6643,13 +6285,7 @@ if TYPE_CHECKING:
         WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssuesClosedPropIssueAllof1PropPerformedViaGithubApp,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof0PropPerformedViaGithubApp as WebhookIssuesLockedPropIssueAllof0PropPerformedViaGithubApp,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssuesLockedPropIssueAllof1PropPerformedViaGithubApp,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueMergedPerformedViaGithubApp as WebhookIssuesMilestonedPropIssueMergedPerformedViaGithubApp,
+        WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubApp as WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubApp,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropAssignee as WebhookIssuesTransferredPropChangesPropNewIssuePropAssignee,
@@ -6736,12 +6372,6 @@ if TYPE_CHECKING:
         WebhookSponsorshipTierChangedPropSponsorshipPropSponsorable as WebhookSponsorshipTierChangedPropSponsorshipPropSponsorable,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommit as WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommit,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunMergedRepository as WebhookWorkflowRunInProgressPropWorkflowRunMergedRepository,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200 as OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -6778,16 +6408,10 @@ if TYPE_CHECKING:
         WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneesItems as WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof0PropMilestonePropCreator as WebhookIssuesReopenedPropIssueAllof0PropMilestonePropCreator,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropMilestone as WebhookIssuesTransferredPropChangesPropNewIssuePropMilestone,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropReactions as WebhookIssuesTransferredPropChangesPropNewIssuePropReactions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof0PropMilestonePropCreator as WebhookIssuesUnlockedPropIssueAllof0PropMilestonePropCreator,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor as WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor,
@@ -6877,7 +6501,7 @@ if TYPE_CHECKING:
         WebhookSponsorshipPendingCancellationPropSponsorshipPropTier as WebhookSponsorshipPendingCancellationPropSponsorshipPropTier,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequests as WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequests,
+        WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepository as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepository,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository,
@@ -6952,19 +6576,7 @@ if TYPE_CHECKING:
         WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp as WebhookIssueCommentEditedPropIssueMergedPerformedViaGithubApp,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueMergedPerformedViaGithubApp as WebhookIssuesDemilestonedPropIssueMergedPerformedViaGithubApp,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubApp as WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubApp,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssuesReopenedPropIssueAllof1PropPerformedViaGithubApp,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwner as WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwner,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubApp as WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubApp,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease as WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease,
@@ -7087,13 +6699,19 @@ if TYPE_CHECKING:
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropCommits as WebhookPullRequestUnlockedPropPullRequestPropLinksPropCommits,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookReleasePublishedPropReleasePropAssetsItemsPropUploader as WebhookReleasePublishedPropReleasePropAssetsItemsPropUploader,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookSponsorshipPendingTierChangePropSponsorshipPropSponsor as WebhookSponsorshipPendingTierChangePropSponsorshipPropSponsor,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions as WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunMergedPullRequests as WebhookWorkflowRunInProgressPropWorkflowRunMergedPullRequests,
+        WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActor as WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActor,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepository as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepository,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor as WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor,
@@ -7120,9 +6738,6 @@ if TYPE_CHECKING:
         WebhookDeploymentReviewRequestedPropReviewersItemsPropReviewer as WebhookDeploymentReviewRequestedPropReviewersItemsPropReviewer,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookDiscussionCreatedPropDiscussionAllof0PropAnswerChosenBy as WebhookDiscussionCreatedPropDiscussionAllof0PropAnswerChosenBy,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookInstallationNewPermissionsAcceptedPropRepositoriesItems as WebhookInstallationNewPermissionsAcceptedPropRepositoriesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -7138,10 +6753,7 @@ if TYPE_CHECKING:
         WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof0PropMilestonePropCreator as WebhookIssuesMilestonedPropIssueAllof0PropMilestonePropCreator,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof1PropMilestonePropCreator as WebhookIssuesMilestonedPropIssueAllof1PropMilestonePropCreator,
+        WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions as WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions,
@@ -7157,12 +6769,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequest as WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequest,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof0 as WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1 as WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookMarketplacePurchasePendingChangePropMarketplacePurchase as WebhookMarketplacePurchasePendingChangePropMarketplacePurchase,
@@ -7279,19 +6885,7 @@ if TYPE_CHECKING:
         WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems as WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommit as WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommit,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropRepository as WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropRepository,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropHeadCommit as WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropHeadCommit,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropRepository as WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropRepository,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepository as WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepository,
+        WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor as WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody,
@@ -7328,12 +6922,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesLabeledPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesLabeledPropIssuePropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubApp as WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubApp,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssuesMilestonedPropIssueAllof1PropPerformedViaGithubApp,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicense as WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicense,
@@ -7399,6 +6987,18 @@ if TYPE_CHECKING:
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropStatuses as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropStatuses,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploader as WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploader,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookReleaseUnpublishedPropReleasePropAssetsItemsPropUploader as WebhookReleaseUnpublishedPropReleasePropAssetsItemsPropUploader,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookRepositoryVulnerabilityAlertCreatePropAlertPropDismisser as WebhookRepositoryVulnerabilityAlertCreatePropAlertPropDismisser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookRepositoryVulnerabilityAlertReopenPropAlertPropDismisser as WebhookRepositoryVulnerabilityAlertReopenPropAlertPropDismisser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems as WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -7411,22 +7011,7 @@ if TYPE_CHECKING:
         WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems as WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunMergedTriggeringActor as WebhookWorkflowRunCompletedPropWorkflowRunMergedTriggeringActor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommit as WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommit,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropRepository as WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropRepository,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadCommit as WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadCommit,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropRepository as WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropRepository,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadRepository as WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadRepository,
+        WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems,
@@ -7477,28 +7062,19 @@ if TYPE_CHECKING:
         WebhookIssuesAssignedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesAssignedPropIssuePropPerformedViaGithubAppPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof0PropMilestonePropCreator as WebhookIssuesDemilestonedPropIssueAllof0PropMilestonePropCreator,
+        WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof1PropMilestonePropCreator as WebhookIssuesDemilestonedPropIssueAllof1PropMilestonePropCreator,
+        WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnpinnedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesUnpinnedPropIssuePropPerformedViaGithubAppPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0 as WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1 as WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1,
+        WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropPlan as WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropPlan,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase as WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0 as WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1 as WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestAssignedPropPullRequestPropRequestedTeamsItems as WebhookPullRequestAssignedPropPullRequestPropRequestedTeamsItems,
@@ -7576,10 +7152,16 @@ if TYPE_CHECKING:
         WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser as WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser as WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser as WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookSponsorshipPendingTierChangePropSponsorshipPropMaintainer as WebhookSponsorshipPendingTierChangePropSponsorshipPropMaintainer,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunMergedTriggeringActor as WebhookWorkflowRunInProgressPropWorkflowRunMergedTriggeringActor,
+        WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization as PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization,
@@ -7613,12 +7195,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssueCommentEditedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssueCommentEditedPropIssueAllof1PropPerformedViaGithubApp,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubApp as WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubApp,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssuesDemilestonedPropIssueAllof1PropPerformedViaGithubApp,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItems as WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItems,
@@ -7732,6 +7308,9 @@ if TYPE_CHECKING:
         WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom as WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwner as WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwner,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner as WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -7777,16 +7356,22 @@ if TYPE_CHECKING:
         WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubApp as WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubApp,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropOwner,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropMilestonePropCreator as WebhookIssuesOpenedPropChangesPropOldIssuePropMilestonePropCreator,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnassignedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesUnassignedPropIssuePropPerformedViaGithubAppPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookMarketplacePurchaseCancelledPropMarketplacePurchasePropPlan as WebhookMarketplacePurchaseCancelledPropMarketplacePurchasePropPlan,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchase as WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchase,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedPlan as WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedPlan,
+        WebhookMarketplacePurchasePurchasedPropMarketplacePurchasePropPlan as WebhookMarketplacePurchasePurchasedPropMarketplacePurchasePropPlan,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchase as WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchase,
@@ -7942,10 +7527,10 @@ if TYPE_CHECKING:
         WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties as WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadRepository as WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadRepository,
+        WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthor as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthor,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropHeadRepository as WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropHeadRepository,
+        WebhookWorkflowRunInProgressPropWorkflowRunPropRepositoryPropOwner as WebhookWorkflowRunInProgressPropWorkflowRunPropRepositoryPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor,
@@ -7991,6 +7576,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesTransferredPropIssuePropPerformedViaGithubAppPropOwner,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropAccount as WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropAccount,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadata as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadata,
@@ -8104,25 +7692,10 @@ if TYPE_CHECKING:
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestUnlockedPropPullRequestPropLinksPropReviewComment,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePublishedPropReleaseAllof0PropAssetsItemsPropUploader as WebhookReleasePublishedPropReleaseAllof0PropAssetsItemsPropUploader,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookSponsorshipPendingCancellationPropSponsorshipPropSponsorable as WebhookSponsorshipPendingCancellationPropSponsorshipPropSponsorable,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropTriggeringActor as WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropTriggeringActor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropTriggeringActor as WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropTriggeringActor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunMergedRepositoryPropOwner as WebhookWorkflowRunCompletedPropWorkflowRunMergedRepositoryPropOwner,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadRepository as WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadRepository,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadRepository as WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadRepository,
+        WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthor as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthor,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs as ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs,
@@ -8164,28 +7737,19 @@ if TYPE_CHECKING:
         WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubAppPropOwner,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssuesLockedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+        WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesPinnedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesPinnedPropIssuePropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedPlan as WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedPlan,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0 as WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1 as WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedPlan as WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedPlan,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestAssignedPropPullRequestPropBasePropRepoPropLicense as WebhookPullRequestAssignedPropPullRequestPropBasePropRepoPropLicense,
@@ -8299,18 +7863,6 @@ if TYPE_CHECKING:
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitPropAuthor as WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitPropAuthor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropTriggeringActor as WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropTriggeringActor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropTriggeringActor as WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropTriggeringActor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunMergedRepositoryPropOwner as WebhookWorkflowRunInProgressPropWorkflowRunMergedRepositoryPropOwner,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems as DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -8359,7 +7911,10 @@ if TYPE_CHECKING:
         WebhookIssuesLabeledPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesLabeledPropIssuePropPerformedViaGithubAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedAccount as WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedAccount,
+        WebhookMarketplacePurchaseCancelledPropMarketplacePurchasePropAccount as WebhookMarketplacePurchaseCancelledPropMarketplacePurchasePropAccount,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookMarketplacePurchasePurchasedPropMarketplacePurchasePropAccount as WebhookMarketplacePurchasePurchasedPropMarketplacePurchasePropAccount,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItems as WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItems,
@@ -8461,28 +8016,13 @@ if TYPE_CHECKING:
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropReviewComments as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropReviewComments,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsPropUploader as WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsPropUploader,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploader as WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploader,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0PropDismisser as WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0PropDismisser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0PropDismisser as WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0PropDismisser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems as WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItems as WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItems,
+        WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitter as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitter,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropPullRequestsItems as WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropPullRequestsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommitPropAuthor as WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommitPropAuthor,
+        WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter,
@@ -8503,19 +8043,16 @@ if TYPE_CHECKING:
         WebhookIssuesAssignedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesAssignedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+        WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+        WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnpinnedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesUnpinnedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof0PropPlan as WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof0PropPlan,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropPlan as WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropPlan,
+        WebhookMarketplacePurchasePendingChangePropMarketplacePurchasePropPlan as WebhookMarketplacePurchasePendingChangePropMarketplacePurchasePropPlan,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase as WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase,
@@ -8623,22 +8160,16 @@ if TYPE_CHECKING:
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComments,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisser as WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1PropDismisser as WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1PropDismisser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof0PropDismisser as WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof0PropDismisser,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems as WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItems as WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItems,
+        WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItems as WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropPullRequestsItems as WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropPullRequestsItems,
+        WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitter as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitter,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepositoryPropOwner as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepositoryPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems as WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems,
@@ -8674,13 +8205,7 @@ if TYPE_CHECKING:
         WebhookIssuesUnlabeledPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesUnlabeledPropIssuePropPerformedViaGithubAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedAccount as WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedAccount,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase as WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedAccount as WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedAccount,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems as WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems,
@@ -8794,16 +8319,13 @@ if TYPE_CHECKING:
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropRepositoryPropOwner as WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropRepositoryPropOwner,
+        WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBase,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropRepositoryPropOwner as WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropRepositoryPropOwner,
+        WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitPropCommitter as WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitPropCommitter,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepositoryPropOwner as WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepositoryPropOwner,
+        WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems as WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase,
@@ -8824,7 +8346,7 @@ if TYPE_CHECKING:
         WebhookDeploymentStatusCreatedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookDeploymentStatusCreatedPropWorkflowRunPropHeadRepositoryPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+        WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubApp as WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubApp,
@@ -8836,22 +8358,7 @@ if TYPE_CHECKING:
         WebhookIssuesUnassignedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesUnassignedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropPlan as WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropPlan,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlan as WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlan,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan as WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedPlan as WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedPlan,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlan as WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlan,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropPlan as WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropPlan,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestAssignedPropPullRequestPropBasePropRepoPropPermissions as WebhookPullRequestAssignedPropPullRequestPropBasePropRepoPropPermissions,
@@ -8959,22 +8466,10 @@ if TYPE_CHECKING:
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommitPropAuthor as WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommitPropAuthor,
+        WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropHeadCommitPropAuthor as WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropHeadCommitPropAuthor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropRepositoryPropOwner as WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropRepositoryPropOwner,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropRepositoryPropOwner as WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropRepositoryPropOwner,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommitPropCommitter as WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommitPropCommitter,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadRepositoryPropOwner as WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadRepositoryPropOwner,
+        WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization as OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization,
@@ -9004,10 +8499,7 @@ if TYPE_CHECKING:
         WebhookIssuesTransferredPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesTransferredPropIssuePropPerformedViaGithubAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof0PropAccount as WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof0PropAccount,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropAccount as WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropAccount,
+        WebhookMarketplacePurchasePendingChangePropMarketplacePurchasePropAccount as WebhookMarketplacePurchasePendingChangePropMarketplacePurchasePropAccount,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadata as WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadata,
@@ -9088,12 +8580,6 @@ if TYPE_CHECKING:
         WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommitPropAuthor as WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommitPropAuthor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadCommitPropAuthor as WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadCommitPropAuthor,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -9124,10 +8610,7 @@ if TYPE_CHECKING:
         WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesLockedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssuesLockedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
+        WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropPlan as WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropPlan,
@@ -9280,22 +8763,7 @@ if TYPE_CHECKING:
         WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner as WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropAccount as WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropAccount,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccount as WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccount,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount as WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccount as WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccount,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccount as WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccount,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropAccount as WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropAccount,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItems as WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItems,
@@ -9397,18 +8865,6 @@ if TYPE_CHECKING:
         WebhookPullRequestUnlabeledPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestUnlabeledPropPullRequestPropRequestedTeamsItemsPropParent,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommitPropCommitter as WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommitPropCommitter,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadRepositoryPropOwner as WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadRepositoryPropOwner,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropHeadCommitPropCommitter as WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropHeadCommitPropCommitter,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropHeadRepositoryPropOwner as WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropHeadRepositoryPropOwner,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances as ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -9428,18 +8884,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropOwner as WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan as WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropPlan as WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropPlan,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestAutoMergeDisabledPropPullRequestPropAutoMergePropEnabledBy,
@@ -9529,24 +8973,6 @@ if TYPE_CHECKING:
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropReferencedWorkflowsItems as WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropReferencedWorkflowsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropReferencedWorkflowsItems as WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropReferencedWorkflowsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommitPropCommitter as WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommitPropCommitter,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadRepositoryPropOwner as WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadRepositoryPropOwner,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadCommitPropCommitter as WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadCommitPropCommitter,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadRepositoryPropOwner as WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadRepositoryPropOwner,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -9566,12 +8992,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropAccount as WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropAccount,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0 as WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof1 as WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof1,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropAccount as WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropAccount,
@@ -9637,18 +9057,6 @@ if TYPE_CHECKING:
         WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges as WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase as WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead as WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropReferencedWorkflowsItems as WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropReferencedWorkflowsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropReferencedWorkflowsItems as WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropReferencedWorkflowsItems,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -9659,9 +9067,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubAppPropOwner as WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubAppPropOwner,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan as WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan,
@@ -9730,12 +9135,6 @@ if TYPE_CHECKING:
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropAuthor as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropAuthor,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase as WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead as WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -9751,13 +9150,10 @@ if TYPE_CHECKING:
         WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstancePropLocation,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan as WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchase as WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchase,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount as WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropAccount as WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropAccount,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewCommentCreatedPropPullRequestPropAutoMergePropEnabledBy as WebhookPullRequestReviewCommentCreatedPropPullRequestPropAutoMergePropEnabledBy,
@@ -9823,6 +9219,12 @@ if TYPE_CHECKING:
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropRelease as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropRelease,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -9839,9 +9241,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissions as WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTag as WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTag,
@@ -9911,6 +9310,12 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions as WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertReopenedByUserPropAlertPropMostRecentInstancePropLocation,
@@ -9995,6 +9400,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropPermissions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccount as WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccount,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectories as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectories,
@@ -10162,9 +9570,6 @@ if TYPE_CHECKING:
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropPlan as WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropPlan,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifest as WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifest,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -10208,12 +9613,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage as WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo as WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo as WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependencies as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependencies,
@@ -10276,12 +9675,6 @@ if TYPE_CHECKING:
         WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestUnassignedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
     from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo as WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo as WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPermissions as WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -10328,9 +9721,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel as WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropAccount as WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropAccount,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItems as WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItems,
@@ -10561,8 +9951,8 @@ else:
             "GlobalAdvisoryPropIdentifiersItems",
             "GlobalAdvisoryPropCvss",
             "GlobalAdvisoryPropCwesItems",
-            "GlobalAdvisoryPropVulnerabilitiesItems",
-            "GlobalAdvisoryPropVulnerabilitiesItemsPropPackage",
+            "Vulnerability",
+            "VulnerabilityPropPackage",
             "BasicError",
             "ValidationErrorSimple",
             "Integration",
@@ -10771,7 +10161,7 @@ else:
             "RepositoryRuleWorkflows",
             "RepositoryRuleWorkflowsPropParameters",
             "RepositoryRuleParamsWorkflowFileReference",
-            "RepositoryRuleParamsCodeScanningThreshold",
+            "RepositoryRuleParamsCodeScanningTool",
             "RepositoryRuleset",
             "RepositoryRulesetPropLinks",
             "RepositoryRulesetPropLinksPropSelf",
@@ -11220,6 +10610,7 @@ else:
             "RepositoryWebhooksPropTemplateRepositoryPropOwner",
             "RepositoryWebhooksPropTemplateRepositoryPropPermissions",
             "SimpleUserWebhooks",
+            "WebhooksRule",
             "SimpleCheckSuite",
             "CheckRunWithSimpleCheckSuite",
             "CheckRunWithSimpleCheckSuitePropOutput",
@@ -11245,15 +10636,14 @@ else:
             "PersonalAccessTokenRequestPropPermissionsResultPropOther",
             "ProjectsV2",
             "ProjectsV2Item",
+            "PullRequestWebhook",
+            "PullRequestWebhookAllof1",
             "SecretScanningAlertWebhook",
             "WebhookBranchProtectionConfigurationDisabled",
             "WebhookBranchProtectionConfigurationEnabled",
             "WebhookBranchProtectionRuleCreated",
-            "WebhookBranchProtectionRuleCreatedPropRule",
             "WebhookBranchProtectionRuleDeleted",
-            "WebhookBranchProtectionRuleDeletedPropRule",
             "WebhookBranchProtectionRuleEdited",
-            "WebhookBranchProtectionRuleEditedPropRule",
             "WebhookBranchProtectionRuleEditedPropChanges",
             "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced",
             "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames",
@@ -11510,19 +10900,6 @@ else:
             "WebhookDiscussionCommentEditedPropCommentPropReactions",
             "WebhookDiscussionCommentEditedPropCommentPropUser",
             "WebhookDiscussionCreated",
-            "WebhookDiscussionCreatedPropDiscussion",
-            "WebhookDiscussionCreatedPropDiscussionMergedCategory",
-            "WebhookDiscussionCreatedPropDiscussionMergedReactions",
-            "WebhookDiscussionCreatedPropDiscussionMergedUser",
-            "WebhookDiscussionCreatedPropDiscussionAllof0",
-            "WebhookDiscussionCreatedPropDiscussionAllof0PropAnswerChosenBy",
-            "WebhookDiscussionCreatedPropDiscussionAllof0PropCategory",
-            "WebhookDiscussionCreatedPropDiscussionAllof0PropReactions",
-            "WebhookDiscussionCreatedPropDiscussionAllof0PropUser",
-            "WebhookDiscussionCreatedPropDiscussionAllof1",
-            "WebhookDiscussionCreatedPropDiscussionAllof1PropCategory",
-            "WebhookDiscussionCreatedPropDiscussionAllof1PropReactions",
-            "WebhookDiscussionCreatedPropDiscussionAllof1PropUser",
             "WebhookDiscussionDeleted",
             "WebhookDiscussionEdited",
             "WebhookDiscussionEditedPropChanges",
@@ -11731,36 +11108,20 @@ else:
             "WebhookIssuesDeletedPropIssuePropReactions",
             "WebhookIssuesDeletedPropIssuePropUser",
             "WebhookIssuesDemilestoned",
+            "WebhookIssuesDemilestonedPropIssue",
+            "WebhookIssuesDemilestonedPropIssuePropAssignee",
+            "WebhookIssuesDemilestonedPropIssuePropAssigneesItems",
+            "WebhookIssuesDemilestonedPropIssuePropLabelsItems",
+            "WebhookIssuesDemilestonedPropIssuePropMilestone",
+            "WebhookIssuesDemilestonedPropIssuePropMilestonePropCreator",
+            "WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubApp",
+            "WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubAppPropOwner",
+            "WebhookIssuesDemilestonedPropIssuePropPerformedViaGithubAppPropPermissions",
+            "WebhookIssuesDemilestonedPropIssuePropPullRequest",
+            "WebhookIssuesDemilestonedPropIssuePropReactions",
+            "WebhookIssuesDemilestonedPropIssuePropUser",
             "WebhookIssuesDemilestonedPropMilestone",
             "WebhookIssuesDemilestonedPropMilestonePropCreator",
-            "WebhookIssuesDemilestonedPropIssue",
-            "WebhookIssuesDemilestonedPropIssueMergedAssignee",
-            "WebhookIssuesDemilestonedPropIssueMergedAssignees",
-            "WebhookIssuesDemilestonedPropIssueMergedLabels",
-            "WebhookIssuesDemilestonedPropIssueMergedReactions",
-            "WebhookIssuesDemilestonedPropIssueMergedUser",
-            "WebhookIssuesDemilestonedPropIssueAllof0",
-            "WebhookIssuesDemilestonedPropIssueAllof0PropAssignee",
-            "WebhookIssuesDemilestonedPropIssueAllof0PropAssigneesItems",
-            "WebhookIssuesDemilestonedPropIssueAllof0PropLabelsItems",
-            "WebhookIssuesDemilestonedPropIssueAllof0PropReactions",
-            "WebhookIssuesDemilestonedPropIssueAllof0PropUser",
-            "WebhookIssuesDemilestonedPropIssueAllof0PropMilestone",
-            "WebhookIssuesDemilestonedPropIssueAllof0PropMilestonePropCreator",
-            "WebhookIssuesDemilestonedPropIssueAllof0PropPullRequest",
-            "WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
-            "WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
-            "WebhookIssuesDemilestonedPropIssueAllof0PropPerformedViaGithubApp",
-            "WebhookIssuesDemilestonedPropIssueAllof1",
-            "WebhookIssuesDemilestonedPropIssueAllof1PropAssignee",
-            "WebhookIssuesDemilestonedPropIssueAllof1PropAssigneesItems",
-            "WebhookIssuesDemilestonedPropIssueAllof1PropLabelsItems",
-            "WebhookIssuesDemilestonedPropIssueAllof1PropMilestone",
-            "WebhookIssuesDemilestonedPropIssueAllof1PropMilestonePropCreator",
-            "WebhookIssuesDemilestonedPropIssueAllof1PropPerformedViaGithubApp",
-            "WebhookIssuesDemilestonedPropIssueAllof1PropReactions",
-            "WebhookIssuesDemilestonedPropIssueAllof1PropUser",
-            "WebhookIssuesDemilestonedPropIssueMergedPerformedViaGithubApp",
             "WebhookIssuesEdited",
             "WebhookIssuesEditedPropLabel",
             "WebhookIssuesEditedPropChanges",
@@ -11794,64 +11155,32 @@ else:
             "WebhookIssuesLabeledPropIssuePropUser",
             "WebhookIssuesLocked",
             "WebhookIssuesLockedPropIssue",
-            "WebhookIssuesLockedPropIssueMergedAssignee",
-            "WebhookIssuesLockedPropIssueMergedAssignees",
-            "WebhookIssuesLockedPropIssueMergedLabels",
-            "WebhookIssuesLockedPropIssueMergedReactions",
-            "WebhookIssuesLockedPropIssueMergedUser",
-            "WebhookIssuesLockedPropIssueAllof0",
-            "WebhookIssuesLockedPropIssueAllof0PropAssignee",
-            "WebhookIssuesLockedPropIssueAllof0PropAssigneesItems",
-            "WebhookIssuesLockedPropIssueAllof0PropLabelsItems",
-            "WebhookIssuesLockedPropIssueAllof0PropReactions",
-            "WebhookIssuesLockedPropIssueAllof0PropUser",
-            "WebhookIssuesLockedPropIssueAllof0PropMilestonePropCreator",
-            "WebhookIssuesLockedPropIssueAllof0PropMilestone",
-            "WebhookIssuesLockedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
-            "WebhookIssuesLockedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
-            "WebhookIssuesLockedPropIssueAllof0PropPerformedViaGithubApp",
-            "WebhookIssuesLockedPropIssueAllof0PropPullRequest",
-            "WebhookIssuesLockedPropIssueAllof1",
-            "WebhookIssuesLockedPropIssueAllof1PropAssignee",
-            "WebhookIssuesLockedPropIssueAllof1PropAssigneesItems",
-            "WebhookIssuesLockedPropIssueAllof1PropLabelsItems",
-            "WebhookIssuesLockedPropIssueAllof1PropMilestone",
-            "WebhookIssuesLockedPropIssueAllof1PropPerformedViaGithubApp",
-            "WebhookIssuesLockedPropIssueAllof1PropReactions",
-            "WebhookIssuesLockedPropIssueAllof1PropUser",
-            "WebhookIssuesLockedPropIssueMergedMilestone",
-            "WebhookIssuesLockedPropIssueMergedPerformedViaGithubApp",
+            "WebhookIssuesLockedPropIssuePropAssignee",
+            "WebhookIssuesLockedPropIssuePropAssigneesItems",
+            "WebhookIssuesLockedPropIssuePropLabelsItems",
+            "WebhookIssuesLockedPropIssuePropMilestone",
+            "WebhookIssuesLockedPropIssuePropMilestonePropCreator",
+            "WebhookIssuesLockedPropIssuePropPerformedViaGithubApp",
+            "WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropOwner",
+            "WebhookIssuesLockedPropIssuePropPerformedViaGithubAppPropPermissions",
+            "WebhookIssuesLockedPropIssuePropPullRequest",
+            "WebhookIssuesLockedPropIssuePropReactions",
+            "WebhookIssuesLockedPropIssuePropUser",
             "WebhookIssuesMilestoned",
+            "WebhookIssuesMilestonedPropIssue",
+            "WebhookIssuesMilestonedPropIssuePropAssignee",
+            "WebhookIssuesMilestonedPropIssuePropAssigneesItems",
+            "WebhookIssuesMilestonedPropIssuePropLabelsItems",
+            "WebhookIssuesMilestonedPropIssuePropMilestone",
+            "WebhookIssuesMilestonedPropIssuePropMilestonePropCreator",
+            "WebhookIssuesMilestonedPropIssuePropPerformedViaGithubApp",
+            "WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropOwner",
+            "WebhookIssuesMilestonedPropIssuePropPerformedViaGithubAppPropPermissions",
+            "WebhookIssuesMilestonedPropIssuePropPullRequest",
+            "WebhookIssuesMilestonedPropIssuePropReactions",
+            "WebhookIssuesMilestonedPropIssuePropUser",
             "WebhookIssuesMilestonedPropMilestone",
             "WebhookIssuesMilestonedPropMilestonePropCreator",
-            "WebhookIssuesMilestonedPropIssue",
-            "WebhookIssuesMilestonedPropIssueMergedAssignee",
-            "WebhookIssuesMilestonedPropIssueMergedAssignees",
-            "WebhookIssuesMilestonedPropIssueMergedLabels",
-            "WebhookIssuesMilestonedPropIssueMergedReactions",
-            "WebhookIssuesMilestonedPropIssueMergedUser",
-            "WebhookIssuesMilestonedPropIssueAllof0",
-            "WebhookIssuesMilestonedPropIssueAllof0PropAssignee",
-            "WebhookIssuesMilestonedPropIssueAllof0PropAssigneesItems",
-            "WebhookIssuesMilestonedPropIssueAllof0PropLabelsItems",
-            "WebhookIssuesMilestonedPropIssueAllof0PropMilestone",
-            "WebhookIssuesMilestonedPropIssueAllof0PropMilestonePropCreator",
-            "WebhookIssuesMilestonedPropIssueAllof0PropReactions",
-            "WebhookIssuesMilestonedPropIssueAllof0PropUser",
-            "WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
-            "WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
-            "WebhookIssuesMilestonedPropIssueAllof0PropPerformedViaGithubApp",
-            "WebhookIssuesMilestonedPropIssueAllof0PropPullRequest",
-            "WebhookIssuesMilestonedPropIssueAllof1",
-            "WebhookIssuesMilestonedPropIssueAllof1PropAssignee",
-            "WebhookIssuesMilestonedPropIssueAllof1PropAssigneesItems",
-            "WebhookIssuesMilestonedPropIssueAllof1PropLabelsItems",
-            "WebhookIssuesMilestonedPropIssueAllof1PropPerformedViaGithubApp",
-            "WebhookIssuesMilestonedPropIssueAllof1PropReactions",
-            "WebhookIssuesMilestonedPropIssueAllof1PropUser",
-            "WebhookIssuesMilestonedPropIssueAllof1PropMilestone",
-            "WebhookIssuesMilestonedPropIssueAllof1PropMilestonePropCreator",
-            "WebhookIssuesMilestonedPropIssueMergedPerformedViaGithubApp",
             "WebhookIssuesOpened",
             "WebhookIssuesOpenedPropIssue",
             "WebhookIssuesOpenedPropIssuePropAssignee",
@@ -11898,33 +11227,17 @@ else:
             "WebhookIssuesPinnedPropIssuePropUser",
             "WebhookIssuesReopened",
             "WebhookIssuesReopenedPropIssue",
-            "WebhookIssuesReopenedPropIssueMergedAssignee",
-            "WebhookIssuesReopenedPropIssueMergedAssignees",
-            "WebhookIssuesReopenedPropIssueMergedLabels",
-            "WebhookIssuesReopenedPropIssueMergedReactions",
-            "WebhookIssuesReopenedPropIssueMergedUser",
-            "WebhookIssuesReopenedPropIssueAllof0",
-            "WebhookIssuesReopenedPropIssueAllof0PropAssignee",
-            "WebhookIssuesReopenedPropIssueAllof0PropAssigneesItems",
-            "WebhookIssuesReopenedPropIssueAllof0PropLabelsItems",
-            "WebhookIssuesReopenedPropIssueAllof0PropReactions",
-            "WebhookIssuesReopenedPropIssueAllof0PropUser",
-            "WebhookIssuesReopenedPropIssueAllof0PropMilestonePropCreator",
-            "WebhookIssuesReopenedPropIssueAllof0PropMilestone",
-            "WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
-            "WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
-            "WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubApp",
-            "WebhookIssuesReopenedPropIssueAllof0PropPullRequest",
-            "WebhookIssuesReopenedPropIssueAllof1",
-            "WebhookIssuesReopenedPropIssueAllof1PropAssignee",
-            "WebhookIssuesReopenedPropIssueAllof1PropAssigneesItems",
-            "WebhookIssuesReopenedPropIssueAllof1PropLabelsItems",
-            "WebhookIssuesReopenedPropIssueAllof1PropMilestone",
-            "WebhookIssuesReopenedPropIssueAllof1PropPerformedViaGithubApp",
-            "WebhookIssuesReopenedPropIssueAllof1PropReactions",
-            "WebhookIssuesReopenedPropIssueAllof1PropUser",
-            "WebhookIssuesReopenedPropIssueMergedMilestone",
-            "WebhookIssuesReopenedPropIssueMergedPerformedViaGithubApp",
+            "WebhookIssuesReopenedPropIssuePropAssignee",
+            "WebhookIssuesReopenedPropIssuePropAssigneesItems",
+            "WebhookIssuesReopenedPropIssuePropLabelsItems",
+            "WebhookIssuesReopenedPropIssuePropMilestone",
+            "WebhookIssuesReopenedPropIssuePropMilestonePropCreator",
+            "WebhookIssuesReopenedPropIssuePropPerformedViaGithubApp",
+            "WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppPropOwner",
+            "WebhookIssuesReopenedPropIssuePropPerformedViaGithubAppPropPermissions",
+            "WebhookIssuesReopenedPropIssuePropPullRequest",
+            "WebhookIssuesReopenedPropIssuePropReactions",
+            "WebhookIssuesReopenedPropIssuePropUser",
             "WebhookIssuesTransferred",
             "WebhookIssuesTransferredPropIssue",
             "WebhookIssuesTransferredPropIssuePropAssignee",
@@ -11986,31 +11299,17 @@ else:
             "WebhookIssuesUnlabeledPropIssuePropUser",
             "WebhookIssuesUnlocked",
             "WebhookIssuesUnlockedPropIssue",
-            "WebhookIssuesUnlockedPropIssueMergedAssignee",
-            "WebhookIssuesUnlockedPropIssueMergedAssignees",
-            "WebhookIssuesUnlockedPropIssueMergedLabels",
-            "WebhookIssuesUnlockedPropIssueMergedReactions",
-            "WebhookIssuesUnlockedPropIssueMergedUser",
-            "WebhookIssuesUnlockedPropIssueAllof0",
-            "WebhookIssuesUnlockedPropIssueAllof0PropAssignee",
-            "WebhookIssuesUnlockedPropIssueAllof0PropAssigneesItems",
-            "WebhookIssuesUnlockedPropIssueAllof0PropLabelsItems",
-            "WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubApp",
-            "WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
-            "WebhookIssuesUnlockedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
-            "WebhookIssuesUnlockedPropIssueAllof0PropReactions",
-            "WebhookIssuesUnlockedPropIssueAllof0PropUser",
-            "WebhookIssuesUnlockedPropIssueAllof0PropMilestonePropCreator",
-            "WebhookIssuesUnlockedPropIssueAllof0PropMilestone",
-            "WebhookIssuesUnlockedPropIssueAllof0PropPullRequest",
-            "WebhookIssuesUnlockedPropIssueAllof1",
-            "WebhookIssuesUnlockedPropIssueAllof1PropAssignee",
-            "WebhookIssuesUnlockedPropIssueAllof1PropAssigneesItems",
-            "WebhookIssuesUnlockedPropIssueAllof1PropLabelsItems",
-            "WebhookIssuesUnlockedPropIssueAllof1PropMilestone",
-            "WebhookIssuesUnlockedPropIssueAllof1PropReactions",
-            "WebhookIssuesUnlockedPropIssueAllof1PropUser",
-            "WebhookIssuesUnlockedPropIssueMergedMilestone",
+            "WebhookIssuesUnlockedPropIssuePropAssignee",
+            "WebhookIssuesUnlockedPropIssuePropAssigneesItems",
+            "WebhookIssuesUnlockedPropIssuePropLabelsItems",
+            "WebhookIssuesUnlockedPropIssuePropMilestone",
+            "WebhookIssuesUnlockedPropIssuePropMilestonePropCreator",
+            "WebhookIssuesUnlockedPropIssuePropPerformedViaGithubApp",
+            "WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppPropOwner",
+            "WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppPropPermissions",
+            "WebhookIssuesUnlockedPropIssuePropPullRequest",
+            "WebhookIssuesUnlockedPropIssuePropReactions",
+            "WebhookIssuesUnlockedPropIssuePropUser",
             "WebhookIssuesUnpinned",
             "WebhookIssuesUnpinnedPropIssue",
             "WebhookIssuesUnpinnedPropIssuePropAssignee",
@@ -12036,65 +11335,39 @@ else:
             "WebhookLabelEditedPropChangesPropName",
             "WebhookMarketplacePurchaseCancelled",
             "WebhookMarketplacePurchaseCancelledPropMarketplacePurchase",
-            "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedAccount",
-            "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseMergedPlan",
+            "WebhookMarketplacePurchaseCancelledPropMarketplacePurchasePropAccount",
+            "WebhookMarketplacePurchaseCancelledPropMarketplacePurchasePropPlan",
             "WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchase",
             "WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropAccount",
             "WebhookMarketplacePurchaseCancelledPropPreviousMarketplacePurchasePropPlan",
-            "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0",
-            "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropAccount",
-            "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof0PropPlan",
-            "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1",
-            "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropAccount",
-            "WebhookMarketplacePurchaseCancelledPropMarketplacePurchaseAllof1PropPlan",
             "WebhookMarketplacePurchaseChanged",
             "WebhookMarketplacePurchaseChangedPropMarketplacePurchase",
-            "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedAccount",
-            "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseMergedPlan",
+            "WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropAccount",
+            "WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropPlan",
             "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase",
             "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount",
             "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan",
-            "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof0",
-            "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof0PropAccount",
-            "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof0PropPlan",
-            "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1",
-            "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropAccount",
-            "WebhookMarketplacePurchaseChangedPropMarketplacePurchaseAllof1PropPlan",
             "WebhookMarketplacePurchasePendingChange",
             "WebhookMarketplacePurchasePendingChangePropMarketplacePurchase",
-            "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedAccount",
-            "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseMergedPlan",
+            "WebhookMarketplacePurchasePendingChangePropMarketplacePurchasePropAccount",
+            "WebhookMarketplacePurchasePendingChangePropMarketplacePurchasePropPlan",
             "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase",
             "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount",
             "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan",
-            "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0",
-            "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropAccount",
-            "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof0PropPlan",
-            "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1",
-            "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropAccount",
-            "WebhookMarketplacePurchasePendingChangePropMarketplacePurchaseAllof1PropPlan",
             "WebhookMarketplacePurchasePendingChangeCancelled",
+            "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase",
+            "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccount",
+            "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan",
             "WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchase",
             "WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropAccount",
             "WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropPlan",
-            "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase",
-            "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0",
-            "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropAccount",
-            "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropPlan",
-            "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof1",
             "WebhookMarketplacePurchasePurchased",
             "WebhookMarketplacePurchasePurchasedPropMarketplacePurchase",
-            "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedAccount",
-            "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedPlan",
+            "WebhookMarketplacePurchasePurchasedPropMarketplacePurchasePropAccount",
+            "WebhookMarketplacePurchasePurchasedPropMarketplacePurchasePropPlan",
             "WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchase",
             "WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropAccount",
             "WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropPlan",
-            "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0",
-            "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccount",
-            "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlan",
-            "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1",
-            "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropAccount",
-            "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof1PropPlan",
             "WebhookMemberAdded",
             "WebhookMemberAddedPropMember",
             "WebhookMemberAddedPropChanges",
@@ -12420,11 +11693,7 @@ else:
             "WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestAutoMergeEnabledPropPullRequestPropRequestedTeamsItemsPropParent",
             "WebhookPullRequestClosed",
-            "WebhookPullRequestClosedPropPullRequest",
-            "WebhookPullRequestClosedPropPullRequestAllof1",
             "WebhookPullRequestConvertedToDraft",
-            "WebhookPullRequestConvertedToDraftPropPullRequest",
-            "WebhookPullRequestConvertedToDraftPropPullRequestAllof1",
             "WebhookPullRequestDemilestoned",
             "WebhookPullRequestDemilestonedPropPullRequest",
             "WebhookPullRequestDemilestonedPropPullRequestPropAssignee",
@@ -12506,8 +11775,6 @@ else:
             "WebhookPullRequestEditedPropChangesPropBase",
             "WebhookPullRequestEditedPropChangesPropBasePropRef",
             "WebhookPullRequestEditedPropChangesPropBasePropSha",
-            "WebhookPullRequestEditedPropPullRequest",
-            "WebhookPullRequestEditedPropPullRequestAllof1",
             "WebhookPullRequestEnqueued",
             "WebhookPullRequestEnqueuedPropPullRequest",
             "WebhookPullRequestEnqueuedPropPullRequestPropAssignee",
@@ -12658,14 +11925,8 @@ else:
             "WebhookPullRequestMilestonedPropPullRequestPropRequestedTeamsItems",
             "WebhookPullRequestMilestonedPropPullRequestPropRequestedTeamsItemsPropParent",
             "WebhookPullRequestOpened",
-            "WebhookPullRequestOpenedPropPullRequest",
-            "WebhookPullRequestOpenedPropPullRequestAllof1",
             "WebhookPullRequestReadyForReview",
-            "WebhookPullRequestReadyForReviewPropPullRequest",
-            "WebhookPullRequestReadyForReviewPropPullRequestAllof1",
             "WebhookPullRequestReopened",
-            "WebhookPullRequestReopenedPropPullRequest",
-            "WebhookPullRequestReopenedPropPullRequestAllof1",
             "WebhookPullRequestReviewCommentCreated",
             "WebhookPullRequestReviewCommentCreatedPropComment",
             "WebhookPullRequestReviewCommentCreatedPropCommentPropReactions",
@@ -13395,28 +12656,16 @@ else:
             "WebhookReleaseEditedPropReleasePropAssetsItemsPropUploader",
             "WebhookReleasePrereleased",
             "WebhookReleasePrereleasedPropRelease",
-            "WebhookReleasePrereleasedPropReleaseMergedAuthor",
-            "WebhookReleasePrereleasedPropReleaseAllof0",
-            "WebhookReleasePrereleasedPropReleaseAllof0PropAuthor",
-            "WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItems",
-            "WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsPropUploader",
-            "WebhookReleasePrereleasedPropReleaseAllof0PropReactions",
-            "WebhookReleasePrereleasedPropReleaseAllof1",
-            "WebhookReleasePrereleasedPropReleaseAllof1PropAssetsItems",
-            "WebhookReleasePrereleasedPropReleaseAllof1PropAuthor",
-            "WebhookReleasePrereleasedPropReleaseMergedAssets",
+            "WebhookReleasePrereleasedPropReleasePropAssetsItems",
+            "WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploader",
+            "WebhookReleasePrereleasedPropReleasePropAuthor",
+            "WebhookReleasePrereleasedPropReleasePropReactions",
             "WebhookReleasePublished",
             "WebhookReleasePublishedPropRelease",
-            "WebhookReleasePublishedPropReleaseMergedAuthor",
-            "WebhookReleasePublishedPropReleaseAllof0",
-            "WebhookReleasePublishedPropReleaseAllof0PropAuthor",
-            "WebhookReleasePublishedPropReleaseAllof0PropAssetsItems",
-            "WebhookReleasePublishedPropReleaseAllof0PropAssetsItemsPropUploader",
-            "WebhookReleasePublishedPropReleaseAllof0PropReactions",
-            "WebhookReleasePublishedPropReleaseAllof1",
-            "WebhookReleasePublishedPropReleaseAllof1PropAssetsItems",
-            "WebhookReleasePublishedPropReleaseAllof1PropAuthor",
-            "WebhookReleasePublishedPropReleaseMergedAssets",
+            "WebhookReleasePublishedPropReleasePropAssetsItems",
+            "WebhookReleasePublishedPropReleasePropAssetsItemsPropUploader",
+            "WebhookReleasePublishedPropReleasePropAuthor",
+            "WebhookReleasePublishedPropReleasePropReactions",
             "WebhookReleaseReleased",
             "WebhookReleaseReleasedPropRelease",
             "WebhookReleaseReleasedPropReleasePropAuthor",
@@ -13425,16 +12674,10 @@ else:
             "WebhookReleaseReleasedPropReleasePropAssetsItemsPropUploader",
             "WebhookReleaseUnpublished",
             "WebhookReleaseUnpublishedPropRelease",
-            "WebhookReleaseUnpublishedPropReleaseMergedAuthor",
-            "WebhookReleaseUnpublishedPropReleaseAllof0",
-            "WebhookReleaseUnpublishedPropReleaseAllof0PropAuthor",
-            "WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItems",
-            "WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploader",
-            "WebhookReleaseUnpublishedPropReleaseAllof0PropReactions",
-            "WebhookReleaseUnpublishedPropReleaseAllof1",
-            "WebhookReleaseUnpublishedPropReleaseAllof1PropAssetsItems",
-            "WebhookReleaseUnpublishedPropReleaseAllof1PropAuthor",
-            "WebhookReleaseUnpublishedPropReleaseMergedAssets",
+            "WebhookReleaseUnpublishedPropReleasePropAssetsItems",
+            "WebhookReleaseUnpublishedPropReleasePropAssetsItemsPropUploader",
+            "WebhookReleaseUnpublishedPropReleasePropAuthor",
+            "WebhookReleaseUnpublishedPropReleasePropReactions",
             "WebhookRepositoryAdvisoryPublished",
             "WebhookRepositoryAdvisoryReported",
             "WebhookRepositoryArchived",
@@ -13483,25 +12726,16 @@ else:
             "WebhookRepositoryUnarchived",
             "WebhookRepositoryVulnerabilityAlertCreate",
             "WebhookRepositoryVulnerabilityAlertCreatePropAlert",
-            "WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0",
-            "WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0PropDismisser",
-            "WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1",
+            "WebhookRepositoryVulnerabilityAlertCreatePropAlertPropDismisser",
             "WebhookRepositoryVulnerabilityAlertDismiss",
             "WebhookRepositoryVulnerabilityAlertDismissPropAlert",
-            "WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0",
-            "WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisser",
-            "WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1",
-            "WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof1PropDismisser",
+            "WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser",
             "WebhookRepositoryVulnerabilityAlertReopen",
             "WebhookRepositoryVulnerabilityAlertReopenPropAlert",
-            "WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0",
-            "WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof0PropDismisser",
-            "WebhookRepositoryVulnerabilityAlertReopenPropAlertAllof1",
+            "WebhookRepositoryVulnerabilityAlertReopenPropAlertPropDismisser",
             "WebhookRepositoryVulnerabilityAlertResolve",
             "WebhookRepositoryVulnerabilityAlertResolvePropAlert",
-            "WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof0",
-            "WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof0PropDismisser",
-            "WebhookRepositoryVulnerabilityAlertResolvePropAlertAllof1",
+            "WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser",
             "WebhookSecretScanningAlertCreated",
             "WebhookSecretScanningAlertLocationCreated",
             "SecretScanningLocation",
@@ -13692,85 +12926,39 @@ else:
             "WebhookWorkflowRunCompleted",
             "WebhookWorkflowRunCompletedPropWorkflow",
             "WebhookWorkflowRunCompletedPropWorkflowRun",
-            "WebhookWorkflowRunCompletedPropWorkflowRunMergedActor",
-            "WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommit",
-            "WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitPropAuthor",
-            "WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadCommitPropCommitter",
-            "WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepository",
-            "WebhookWorkflowRunCompletedPropWorkflowRunMergedHeadRepositoryPropOwner",
-            "WebhookWorkflowRunCompletedPropWorkflowRunMergedRepository",
-            "WebhookWorkflowRunCompletedPropWorkflowRunMergedRepositoryPropOwner",
-            "WebhookWorkflowRunCompletedPropWorkflowRunMergedTriggeringActor",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof0",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropActor",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropTriggeringActor",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommit",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommitPropAuthor",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadCommitPropCommitter",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadRepository",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropHeadRepositoryPropOwner",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropRepository",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropRepositoryPropOwner",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItems",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropReferencedWorkflowsItems",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof1",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropActor",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropPullRequestsItems",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropReferencedWorkflowsItems",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropTriggeringActor",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropHeadCommit",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropHeadCommitPropAuthor",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropHeadCommitPropCommitter",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropHeadRepository",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropHeadRepositoryPropOwner",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropRepository",
-            "WebhookWorkflowRunCompletedPropWorkflowRunAllof1PropRepositoryPropOwner",
-            "WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequests",
+            "WebhookWorkflowRunCompletedPropWorkflowRunPropActor",
+            "WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItems",
+            "WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActor",
+            "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommit",
+            "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthor",
+            "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitter",
+            "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepository",
+            "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwner",
+            "WebhookWorkflowRunCompletedPropWorkflowRunPropRepository",
+            "WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwner",
+            "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems",
+            "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBase",
+            "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo",
+            "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead",
+            "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
             "WebhookWorkflowRunInProgress",
             "WebhookWorkflowRunInProgressPropWorkflow",
             "WebhookWorkflowRunInProgressPropWorkflowRun",
-            "WebhookWorkflowRunInProgressPropWorkflowRunMergedActor",
-            "WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommit",
-            "WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommitPropAuthor",
-            "WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadCommitPropCommitter",
-            "WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadRepository",
-            "WebhookWorkflowRunInProgressPropWorkflowRunMergedHeadRepositoryPropOwner",
-            "WebhookWorkflowRunInProgressPropWorkflowRunMergedRepository",
-            "WebhookWorkflowRunInProgressPropWorkflowRunMergedRepositoryPropOwner",
-            "WebhookWorkflowRunInProgressPropWorkflowRunMergedTriggeringActor",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof0",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropActor",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropTriggeringActor",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommit",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommitPropAuthor",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadCommitPropCommitter",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadRepository",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropHeadRepositoryPropOwner",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropRepository",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropRepositoryPropOwner",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItems",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropReferencedWorkflowsItems",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof1",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropActor",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropPullRequestsItems",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropReferencedWorkflowsItems",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropTriggeringActor",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadCommit",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadCommitPropAuthor",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadCommitPropCommitter",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadRepository",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropHeadRepositoryPropOwner",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropRepository",
-            "WebhookWorkflowRunInProgressPropWorkflowRunAllof1PropRepositoryPropOwner",
-            "WebhookWorkflowRunInProgressPropWorkflowRunMergedPullRequests",
+            "WebhookWorkflowRunInProgressPropWorkflowRunPropActor",
+            "WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems",
+            "WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor",
+            "WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommit",
+            "WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthor",
+            "WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitter",
+            "WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepository",
+            "WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepositoryPropOwner",
+            "WebhookWorkflowRunInProgressPropWorkflowRunPropRepository",
+            "WebhookWorkflowRunInProgressPropWorkflowRunPropRepositoryPropOwner",
+            "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems",
+            "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase",
+            "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBasePropRepo",
+            "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead",
+            "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
             "WebhookWorkflowRunRequested",
             "WebhookWorkflowRunRequestedPropWorkflow",
             "WebhookWorkflowRunRequestedPropWorkflowRun",

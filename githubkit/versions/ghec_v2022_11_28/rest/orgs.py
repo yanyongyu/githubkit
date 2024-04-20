@@ -5692,7 +5692,7 @@ class OrgsClient:
         headers: Optional[Dict[str, str]] = None,
         value_type: Literal["string", "single_select"],
         required: Missing[bool] = UNSET,
-        default_value: Missing[Union[str, None]] = UNSET,
+        default_value: Missing[Union[str, List[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[List[str], None]] = UNSET,
     ) -> Response[OrgCustomProperty]: ...
@@ -5759,7 +5759,7 @@ class OrgsClient:
         headers: Optional[Dict[str, str]] = None,
         value_type: Literal["string", "single_select"],
         required: Missing[bool] = UNSET,
-        default_value: Missing[Union[str, None]] = UNSET,
+        default_value: Missing[Union[str, List[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[List[str], None]] = UNSET,
     ) -> Response[OrgCustomProperty]: ...

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List
 
 from pydantic import Field
 
@@ -18,26 +18,16 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsProjectIdPatchBody(GitHubModel):
-    """ProjectsProjectIdPatchBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
 
-    name: Missing[str] = Field(default=UNSET, description="Name of the project")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Body of the project"
-    )
-    state: Missing[str] = Field(
-        default=UNSET, description="State of the project; either 'open' or 'closed'"
-    )
-    organization_permission: Missing[Literal["read", "write", "admin", "none"]] = Field(
+    labels: Missing[List[str]] = Field(
+        min_length=1,
         default=UNSET,
-        description="The baseline permission that all organization members have on this project",
-    )
-    private: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether or not this project can be seen by everyone.",
+        description='The names of the labels to add to the issue\'s existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also replace all of the labels for an issue. For more information, see "[Set labels for an issue](https://docs.github.com/rest/issues/labels#set-labels-for-an-issue)."',
     )
 
 
-model_rebuild(ProjectsProjectIdPatchBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0)
 
-__all__ = ("ProjectsProjectIdPatchBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0",)

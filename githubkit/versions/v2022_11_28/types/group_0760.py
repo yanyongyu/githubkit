@@ -9,27 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0357 import EnterpriseWebhooksType
-from .group_0358 import SimpleInstallationType
-from .group_0360 import RepositoryWebhooksType
-from .group_0361 import SimpleUserWebhooksType
-from .group_0359 import OrganizationSimpleWebhooksType
-from .group_0369 import SecretScanningAlertWebhookType
+
+class OrgsOrgDependabotSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgDependabotSecretsGetResponse200"""
+
+    total_count: int
+    secrets: List[OrganizationDependabotSecretType]
 
 
-class WebhookSecretScanningAlertReopenedType(TypedDict):
-    """secret_scanning_alert reopened event"""
+class OrganizationDependabotSecretType(TypedDict):
+    """Dependabot Secret for an Organization
 
-    action: Literal["reopened"]
-    alert: SecretScanningAlertWebhookType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
+    Secrets for GitHub Dependabot for an organization.
+    """
+
+    name: str
+    created_at: datetime
+    updated_at: datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
 
 
-__all__ = ("WebhookSecretScanningAlertReopenedType",)
+__all__ = (
+    "OrgsOrgDependabotSecretsGetResponse200Type",
+    "OrganizationDependabotSecretType",
+)

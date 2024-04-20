@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List, Union
 
 from pydantic import Field
 
@@ -17,166 +17,47 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0357 import EnterpriseWebhooks
-from .group_0358 import SimpleInstallation
-from .group_0360 import RepositoryWebhooks
-from .group_0361 import SimpleUserWebhooks
-from .group_0359 import OrganizationSimpleWebhooks
 
+class OrgsOrgHooksHookIdPatchBody(GitHubModel):
+    """OrgsOrgHooksHookIdPatchBody"""
 
-class WebhookSecurityAdvisoryUpdated(GitHubModel):
-    """security_advisory updated event"""
-
-    action: Literal["updated"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfig] = Field(
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+        description="Key/value pairs to provide settings for this webhook.",
     )
-    installation: Missing[SimpleInstallation] = Field(
+    events: Missing[List[str]] = Field(
         default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for.",
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
+    active: Missing[bool] = Field(
         default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    security_advisory: WebhookSecurityAdvisoryUpdatedPropSecurityAdvisory = Field(
-        description="The details of the security advisory, including summary, description, and severity."
-    )
-    sender: Missing[SimpleUserWebhooks] = Field(
-        default=UNSET,
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
+    name: Missing[str] = Field(default=UNSET)
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisory(GitHubModel):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisory
+class OrgsOrgHooksHookIdPatchBodyPropConfig(GitHubModel):
+    """OrgsOrgHooksHookIdPatchBodyPropConfig
 
-    The details of the security advisory, including summary, description, and
-    severity.
+    Key/value pairs to provide settings for this webhook.
     """
 
-    cvss: WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss = Field()
-    cwes: List[WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems] = (
-        Field()
+    url: str = Field(description="The URL to which the payloads will be delivered.")
+    content_type: Missing[str] = Field(
+        default=UNSET,
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
     )
-    description: str = Field()
-    ghsa_id: str = Field()
-    identifiers: List[
-        WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems
-    ] = Field()
-    published_at: str = Field()
-    references: List[
-        WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems
-    ] = Field()
-    severity: str = Field()
-    summary: str = Field()
-    updated_at: str = Field()
-    vulnerabilities: List[
-        WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems
-    ] = Field()
-    withdrawn_at: Union[str, None] = Field()
+    secret: Missing[str] = Field(
+        default=UNSET,
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
+    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss(GitHubModel):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss"""
-
-    score: float = Field()
-    vector_string: Union[str, None] = Field()
-
-
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems(GitHubModel):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems"""
-
-    cwe_id: str = Field()
-    name: str = Field()
-
-
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems(
-    GitHubModel
-):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str = Field()
-    value: str = Field()
-
-
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems(
-    GitHubModel
-):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems"""
-
-    url: str = Field()
-
-
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems(
-    GitHubModel
-):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems"""
-
-    first_patched_version: Union[
-        WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion,
-        None,
-    ] = Field()
-    package: WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = Field()
-    severity: str = Field()
-    vulnerable_version_range: str = Field()
-
-
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
-    GitHubModel
-):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFi
-    rstPatchedVersion
-    """
-
-    identifier: str = Field()
-
-
-class WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(
-    GitHubModel
-):
-    """WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPa
-    ckage
-    """
-
-    ecosystem: str = Field()
-    name: str = Field()
-
-
-model_rebuild(WebhookSecurityAdvisoryUpdated)
-model_rebuild(WebhookSecurityAdvisoryUpdatedPropSecurityAdvisory)
-model_rebuild(WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss)
-model_rebuild(WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems)
-model_rebuild(WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems)
-model_rebuild(WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems)
-model_rebuild(
-    WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems
-)
-model_rebuild(
-    WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion
-)
-model_rebuild(
-    WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage
-)
+model_rebuild(OrgsOrgHooksHookIdPatchBody)
+model_rebuild(OrgsOrgHooksHookIdPatchBodyPropConfig)
 
 __all__ = (
-    "WebhookSecurityAdvisoryUpdated",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisory",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCvss",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropCwesItems",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropIdentifiersItems",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropReferencesItems",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItems",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
-    "WebhookSecurityAdvisoryUpdatedPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
+    "OrgsOrgHooksHookIdPatchBody",
+    "OrgsOrgHooksHookIdPatchBodyPropConfig",
 )

@@ -9,11 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class EmojisGetResponse200Type(TypedDict):
-    """EmojisGetResponse200"""
+class ReposOwnerRepoActionsPermissionsPutBodyType(TypedDict):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
+
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
 
 
-__all__ = ("EmojisGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsPermissionsPutBodyType",)

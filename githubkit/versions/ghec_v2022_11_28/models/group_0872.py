@@ -9,24 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0034 import Runner
+
+class ProjectsColumnsColumnIdMovesPostResponse201(GitHubModel):
+    """ProjectsColumnsColumnIdMovesPostResponse201"""
 
 
-class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
+model_rebuild(ProjectsColumnsColumnIdMovesPostResponse201)
 
-    runner: Runner = Field(
-        title="Self hosted runners", description="A self hosted runner"
-    )
-    encoded_jit_config: str = Field(
-        description="The base64 encoded runner configuration."
-    )
-
-
-model_rebuild(EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201)
-
-__all__ = ("EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201",)
+__all__ = ("ProjectsColumnsColumnIdMovesPostResponse201",)

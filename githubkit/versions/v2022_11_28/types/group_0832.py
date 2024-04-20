@@ -9,13 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
-
-class GistsGistIdCommentsCommentIdPatchBodyType(TypedDict):
-    """GistsGistIdCommentsCommentIdPatchBody"""
-
-    body: str
+from .group_0153 import ArtifactType
 
 
-__all__ = ("GistsGistIdCommentsCommentIdPatchBodyType",)
+class ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200"""
+
+    total_count: int
+    artifacts: List[ArtifactType]
+
+
+__all__ = ("ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type",)

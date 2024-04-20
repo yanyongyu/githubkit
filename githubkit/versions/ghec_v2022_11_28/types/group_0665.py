@@ -12,20 +12,22 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0401 import ProjectsV2ItemType
+from .group_0390 import EnterpriseWebhooksType
 from .group_0391 import SimpleInstallationType
+from .group_0393 import RepositoryWebhooksType
 from .group_0394 import SimpleUserWebhooksType
 from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ItemDeletedType(TypedDict):
-    """Projects v2 Item Deleted Event"""
+class WebhookRepositoryArchivedType(TypedDict):
+    """repository archived event"""
 
-    action: Literal["deleted"]
+    action: Literal["archived"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookProjectsV2ItemDeletedType",)
+__all__ = ("WebhookRepositoryArchivedType",)

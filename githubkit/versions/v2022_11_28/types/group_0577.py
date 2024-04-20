@@ -12,123 +12,40 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0357 import EnterpriseWebhooksType
+from .group_0369 import ProjectsV2ItemType
 from .group_0358 import SimpleInstallationType
-from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
 from .group_0359 import OrganizationSimpleWebhooksType
 
 
-class WebhookMembershipAddedType(TypedDict):
-    """membership added event"""
+class WebhookProjectsV2ItemConvertedType(TypedDict):
+    """Projects v2 Item Converted Event"""
 
-    action: Literal["added"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["converted"]
+    changes: WebhookProjectsV2ItemConvertedPropChangesType
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhookMembershipAddedPropMemberType, None]
     organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    scope: Literal["team"]
-    sender: Union[WebhookMembershipAddedPropSenderType, None]
-    team: WebhookMembershipAddedPropTeamType
+    projects_v2_item: ProjectsV2ItemType
+    sender: SimpleUserWebhooksType
 
 
-class WebhookMembershipAddedPropMemberType(TypedDict):
-    """User"""
+class WebhookProjectsV2ItemConvertedPropChangesType(TypedDict):
+    """WebhookProjectsV2ItemConvertedPropChanges"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookMembershipAddedPropSenderType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookMembershipAddedPropTeamType(TypedDict):
-    """Team
-
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
-    id: int
-    members_url: NotRequired[str]
-    name: str
-    node_id: NotRequired[str]
-    parent: NotRequired[Union[WebhookMembershipAddedPropTeamPropParentType, None]]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    content_type: NotRequired[
+        WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType
     ]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
 
 
-class WebhookMembershipAddedPropTeamPropParentType(TypedDict):
-    """WebhookMembershipAddedPropTeamPropParent"""
+class WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType(TypedDict):
+    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
 
-    description: Union[str, None]
-    html_url: str
-    id: int
-    members_url: str
-    name: str
-    node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
-    repositories_url: str
-    slug: str
-    url: str
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[str]
 
 
 __all__ = (
-    "WebhookMembershipAddedType",
-    "WebhookMembershipAddedPropMemberType",
-    "WebhookMembershipAddedPropSenderType",
-    "WebhookMembershipAddedPropTeamType",
-    "WebhookMembershipAddedPropTeamPropParentType",
+    "WebhookProjectsV2ItemConvertedType",
+    "WebhookProjectsV2ItemConvertedPropChangesType",
+    "WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType",
 )

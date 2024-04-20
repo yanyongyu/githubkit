@@ -10,72 +10,53 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0535 import WebhookIssuesReopenedPropIssueAllof0PropMilestoneType
-from .group_0538 import WebhookIssuesReopenedPropIssueAllof0PropPullRequestType
-from .group_0537 import (
-    WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppType,
-)
+from .group_0357 import EnterpriseWebhooksType
+from .group_0358 import SimpleInstallationType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
+from .group_0359 import OrganizationSimpleWebhooksType
 
 
-class WebhookIssuesReopenedPropIssueAllof0Type(TypedDict):
-    """Issue
+class WebhookMilestoneOpenedType(TypedDict):
+    """milestone opened event"""
 
-    The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
+    action: Literal["opened"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    milestone: WebhookMilestoneOpenedPropMilestoneType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+
+
+class WebhookMilestoneOpenedPropMilestoneType(TypedDict):
+    """Milestone
+
+    A collection of related issues and pull requests.
     """
 
-    active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
-    ]
-    assignee: NotRequired[
-        Union[WebhookIssuesReopenedPropIssueAllof0PropAssigneeType, None]
-    ]
-    assignees: List[
-        Union[WebhookIssuesReopenedPropIssueAllof0PropAssigneesItemsType, None]
-    ]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: Union[str, None]
     closed_at: Union[datetime, None]
-    comments: int
-    comments_url: str
+    closed_issues: int
     created_at: datetime
-    draft: NotRequired[bool]
-    events_url: str
+    creator: Union[WebhookMilestoneOpenedPropMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[datetime, None]
     html_url: str
     id: int
-    labels: NotRequired[List[WebhookIssuesReopenedPropIssueAllof0PropLabelsItemsType]]
     labels_url: str
-    locked: NotRequired[bool]
-    milestone: Union[WebhookIssuesReopenedPropIssueAllof0PropMilestoneType, None]
     node_id: str
     number: int
-    performed_via_github_app: NotRequired[
-        Union[WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppType, None]
-    ]
-    pull_request: NotRequired[WebhookIssuesReopenedPropIssueAllof0PropPullRequestType]
-    reactions: WebhookIssuesReopenedPropIssueAllof0PropReactionsType
-    repository_url: str
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[Union[str, None]]
-    timeline_url: NotRequired[str]
+    open_issues: int
+    state: Literal["open", "closed"]
     title: str
     updated_at: datetime
     url: str
-    user: Union[WebhookIssuesReopenedPropIssueAllof0PropUserType, None]
 
 
-class WebhookIssuesReopenedPropIssueAllof0PropAssigneeType(TypedDict):
+class WebhookMilestoneOpenedPropMilestonePropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -101,90 +82,8 @@ class WebhookIssuesReopenedPropIssueAllof0PropAssigneeType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookIssuesReopenedPropIssueAllof0PropAssigneesItemsType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-
-
-class WebhookIssuesReopenedPropIssueAllof0PropLabelsItemsType(TypedDict):
-    """Label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
-    id: int
-    name: str
-    node_id: str
-    url: str
-
-
-class WebhookIssuesReopenedPropIssueAllof0PropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookIssuesReopenedPropIssueAllof0PropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
-
-
 __all__ = (
-    "WebhookIssuesReopenedPropIssueAllof0Type",
-    "WebhookIssuesReopenedPropIssueAllof0PropAssigneeType",
-    "WebhookIssuesReopenedPropIssueAllof0PropAssigneesItemsType",
-    "WebhookIssuesReopenedPropIssueAllof0PropLabelsItemsType",
-    "WebhookIssuesReopenedPropIssueAllof0PropReactionsType",
-    "WebhookIssuesReopenedPropIssueAllof0PropUserType",
+    "WebhookMilestoneOpenedType",
+    "WebhookMilestoneOpenedPropMilestoneType",
+    "WebhookMilestoneOpenedPropMilestonePropCreatorType",
 )

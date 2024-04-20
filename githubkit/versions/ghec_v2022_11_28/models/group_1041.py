@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -17,106 +17,69 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput(GitHubModel):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput
-
-    Check runs can accept a variety of data in the `output` object, including a
-    `title` and `summary` and can optionally provide descriptive details about the
-    run.
-    """
-
-    title: Missing[str] = Field(default=UNSET, description="**Required**.")
-    summary: str = Field(max_length=65535, description="Can contain Markdown.")
-    text: Missing[str] = Field(
-        max_length=65535, default=UNSET, description="Can contain Markdown."
-    )
-    annotations: Missing[
-        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems]
-    ] = Field(
-        max_length=50,
-        default=UNSET,
-        description="Adds information from your analysis to specific lines of code. Annotations are visible in GitHub's pull request UI. Annotations are visible in GitHub's pull request UI. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. GitHub Actions are limited to 10 warning annotations and 10 error annotations per step. For details about annotations in the UI, see \"[About status checks](https://docs.github.com/enterprise-cloud@latest//articles/about-status-checks#checks)\".",
-    )
-    images: Missing[
-        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems]
-    ] = Field(
-        default=UNSET,
-        description="Adds images to the output displayed in the GitHub pull request UI.",
-    )
-
-
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems(
-    GitHubModel
-):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems"""
-
-    path: str = Field(
-        description="The path of the file to add an annotation to. For example, `assets/css/main.css`."
-    )
-    start_line: int = Field(
-        description="The start line of the annotation. Line numbers start at 1."
-    )
-    end_line: int = Field(description="The end line of the annotation.")
-    start_column: Missing[int] = Field(
-        default=UNSET,
-        description="The start column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values. Column numbers start at 1.",
-    )
-    end_column: Missing[int] = Field(
-        default=UNSET,
-        description="The end column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values.",
-    )
-    annotation_level: Literal["notice", "warning", "failure"] = Field(
-        description="The level of the annotation."
-    )
-    message: str = Field(
-        description="A short description of the feedback for these lines of code. The maximum size is 64 KB."
-    )
-    title: Missing[str] = Field(
-        default=UNSET,
-        description="The title that represents the annotation. The maximum size is 255 characters.",
-    )
-    raw_details: Missing[str] = Field(
-        default=UNSET,
-        description="Details about this annotation. The maximum size is 64 KB.",
-    )
-
-
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems(GitHubModel):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems"""
-
-    alt: str = Field(description="The alternative text for the image.")
-    image_url: str = Field(description="The full URL of the image.")
-    caption: Missing[str] = Field(
-        default=UNSET, description="A short image description."
-    )
-
-
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems(GitHubModel):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems"""
-
-    label: str = Field(
-        max_length=20,
-        description="The text to be displayed on a button in the web UI. The maximum size is 20 characters.",
-    )
-    description: str = Field(
-        max_length=40,
-        description="A short explanation of what this action would do. The maximum size is 40 characters.",
-    )
-    identifier: str = Field(
-        max_length=20,
-        description="A reference for the action on the integrator's system. The maximum size is 20 characters.",
-    )
-
-
-model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput)
-model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems)
-model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems)
-model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems)
-
-__all__ = (
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems",
-    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems",
+from .group_0130 import RepositoryRuleUpdate
+from .group_0150 import RepositoryRuleWorkflows
+from .group_0135 import RepositoryRulePullRequest
+from .group_0118 import RepositoryRulesetConditions
+from .group_0117 import RepositoryRulesetBypassActor
+from .group_0147 import RepositoryRuleTagNamePattern
+from .group_0145 import RepositoryRuleBranchNamePattern
+from .group_0133 import RepositoryRuleRequiredDeployments
+from .group_0137 import RepositoryRuleRequiredStatusChecks
+from .group_0139 import RepositoryRuleCommitMessagePattern
+from .group_0132 import RepositoryRuleRequiredLinearHistory
+from .group_0143 import RepositoryRuleCommitterEmailPattern
+from .group_0141 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0129 import (
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
 )
+
+
+class ReposOwnerRepoRulesetsPostBody(GitHubModel):
+    """ReposOwnerRepoRulesetsPostBody"""
+
+    name: str = Field(description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag"]] = Field(
+        default=UNSET, description="The target of the ruleset."
+    )
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page."
+    )
+    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[RepositoryRulesetConditions] = Field(
+        default=UNSET,
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
+    )
+    rules: Missing[
+        List[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleWorkflows,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+
+
+model_rebuild(ReposOwnerRepoRulesetsPostBody)
+
+__all__ = ("ReposOwnerRepoRulesetsPostBody",)

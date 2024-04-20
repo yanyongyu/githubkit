@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,61 +17,71 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0390 import EnterpriseWebhooks
-from .group_0391 import SimpleInstallation
-from .group_0393 import RepositoryWebhooks
-from .group_0394 import SimpleUserWebhooks
-from .group_0392 import OrganizationSimpleWebhooks
+from .group_0652 import (
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion,
+)
 
 
-class WebhookProjectColumnDeleted(GitHubModel):
-    """project_column deleted event"""
+class WebhookRegistryPackagePublishedPropRegistryPackage(GitHubModel):
+    """WebhookRegistryPackagePublishedPropRegistryPackage"""
 
-    action: Literal["deleted"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
-    )
-    installation: Missing[SimpleInstallation] = Field(
-        default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    project_column: WebhookProjectColumnDeletedPropProjectColumn = Field(
-        title="Project Column"
-    )
-    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
-    sender: Missing[SimpleUserWebhooks] = Field(
-        default=UNSET,
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
+    created_at: Union[str, None] = Field()
+    description: Union[str, None] = Field()
+    ecosystem: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    name: str = Field()
+    namespace: str = Field()
+    owner: WebhookRegistryPackagePublishedPropRegistryPackagePropOwner = Field()
+    package_type: str = Field()
+    package_version: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion, None
+    ] = Field()
+    registry: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry, None
+    ] = Field()
+    updated_at: Union[str, None] = Field()
 
 
-class WebhookProjectColumnDeletedPropProjectColumn(GitHubModel):
-    """Project Column"""
+class WebhookRegistryPackagePublishedPropRegistryPackagePropOwner(GitHubModel):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropOwner"""
 
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    cards_url: str = Field()
-    created_at: datetime = Field()
-    id: int = Field(description="The unique identifier of the project column")
-    name: str = Field(description="Name of the project column")
+    avatar_url: str = Field()
+    events_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    gravatar_id: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    login: str = Field()
     node_id: str = Field()
-    project_url: str = Field()
-    updated_at: datetime = Field()
+    organizations_url: str = Field()
+    received_events_url: str = Field()
+    repos_url: str = Field()
+    site_admin: bool = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    type: str = Field()
     url: str = Field()
 
 
-model_rebuild(WebhookProjectColumnDeleted)
-model_rebuild(WebhookProjectColumnDeletedPropProjectColumn)
+class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry(GitHubModel):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry"""
+
+    about_url: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    vendor: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookRegistryPackagePublishedPropRegistryPackage)
+model_rebuild(WebhookRegistryPackagePublishedPropRegistryPackagePropOwner)
+model_rebuild(WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry)
 
 __all__ = (
-    "WebhookProjectColumnDeleted",
-    "WebhookProjectColumnDeletedPropProjectColumn",
+    "WebhookRegistryPackagePublishedPropRegistryPackage",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropOwner",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry",
 )

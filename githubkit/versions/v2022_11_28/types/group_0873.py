@@ -9,16 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
+class ReposOwnerRepoCodeScanningSarifsPostBodyType(TypedDict):
+    """ReposOwnerRepoCodeScanningSarifsPostBody"""
 
-    The total number of seat assignments created.
-    """
+    commit_sha: str
+    ref: str
+    sarif: str
+    checkout_uri: NotRequired[str]
+    started_at: NotRequired[datetime]
+    tool_name: NotRequired[str]
+    validate_: NotRequired[bool]
 
-    seats_created: int
 
-
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostResponse201Type",)
+__all__ = ("ReposOwnerRepoCodeScanningSarifsPostBodyType",)

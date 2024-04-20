@@ -9,67 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import ExtraGitHubModel, model_rebuild
-
-from .group_1038 import (
-    ReposOwnerRepoCheckRunsPostBodyPropOutput,
-    ReposOwnerRepoCheckRunsPostBodyPropActionsItems,
-)
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoCheckRunsPostBodyOneof0(ExtraGitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
+class ReposOwnerRepoReleasesReleaseIdPatchBody(GitHubModel):
+    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
 
-    name: str = Field(
-        description='The name of the check. For example, "code-coverage".'
-    )
-    head_sha: str = Field(description="The SHA of the commit.")
-    details_url: Missing[str] = Field(
+    tag_name: Missing[str] = Field(default=UNSET, description="The name of the tag.")
+    target_commitish: Missing[str] = Field(
         default=UNSET,
-        description="The URL of the integrator's site that has the full details of the check. If the integrator does not provide this, then the homepage of the GitHub app is used.",
+        description="Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.",
     )
-    external_id: Missing[str] = Field(
-        default=UNSET, description="A reference for the run on the integrator's system."
+    name: Missing[str] = Field(default=UNSET, description="The name of the release.")
+    body: Missing[str] = Field(
+        default=UNSET, description="Text describing the contents of the tag."
     )
-    status: Literal["completed"] = Field()
-    started_at: Missing[datetime] = Field(
+    draft: Missing[bool] = Field(
         default=UNSET,
-        description="The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="`true` makes the release a draft, and `false` publishes the release.",
     )
-    conclusion: Literal[
-        "action_required",
-        "cancelled",
-        "failure",
-        "neutral",
-        "success",
-        "skipped",
-        "stale",
-        "timed_out",
-    ] = Field(
-        description="**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. \n**Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this."
-    )
-    completed_at: Missing[datetime] = Field(
+    prerelease: Missing[bool] = Field(
         default=UNSET,
-        description="The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="`true` to identify the release as a prerelease, `false` to identify the release as a full release.",
     )
-    output: Missing[ReposOwnerRepoCheckRunsPostBodyPropOutput] = Field(
+    make_latest: Missing[Literal["true", "false", "legacy"]] = Field(
         default=UNSET,
-        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run.",
+        description="Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.",
     )
-    actions: Missing[List[ReposOwnerRepoCheckRunsPostBodyPropActionsItems]] = Field(
-        max_length=3,
+    discussion_category_name: Missing[str] = Field(
         default=UNSET,
-        description='Displays a button on GitHub that can be clicked to alert your app to do additional tasks. For example, a code linting app can display a button that automatically fixes detected errors. The button created in this object is displayed after the check run completes. When a user clicks the button, GitHub sends the [`check_run.requested_action` webhook](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#check_run) to your app. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/enterprise-cloud@latest//rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)."',
+        description='If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored. For more information, see "[Managing categories for discussions in your repository](https://docs.github.com/enterprise-cloud@latest//discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository)."',
     )
 
 
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyOneof0)
+model_rebuild(ReposOwnerRepoReleasesReleaseIdPatchBody)
 
-__all__ = ("ReposOwnerRepoCheckRunsPostBodyOneof0",)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdPatchBody",)

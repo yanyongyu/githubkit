@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,50 +17,40 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0153 import RepositoryRuleset
-from .group_0390 import EnterpriseWebhooks
-from .group_0391 import SimpleInstallation
-from .group_0393 import RepositoryWebhooks
-from .group_0394 import SimpleUserWebhooks
-from .group_0392 import OrganizationSimpleWebhooks
-from .group_0763 import WebhookRepositoryRulesetEditedPropChanges
 
+class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody(GitHubModel):
+    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
 
-class WebhookRepositoryRulesetEdited(GitHubModel):
-    """repository ruleset edited event"""
-
-    action: Literal["edited"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    advanced_security_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+        description='Whether GitHub Advanced Security is automatically enabled for new repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest//get-started/learning-about-github/about-github-advanced-security)."',
     )
-    installation: Missing[SimpleInstallation] = Field(
+    advanced_security_enabled_new_user_namespace_repos: Missing[bool] = Field(
         default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+        description='Whether GitHub Advanced Security is automatically enabled for new user namespace repositories. For more information, see "[About GitHub Advanced Security](https://docs.github.com/enterprise-cloud@latest//get-started/learning-about-github/about-github-advanced-security)."',
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
+    dependabot_alerts_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+        description='Whether Dependabot alerts are automatically enabled for new repositories. For more information, see "[About Dependabot alerts](https://docs.github.com/enterprise-cloud@latest//code-security/dependabot/dependabot-alerts/about-dependabot-alerts)."',
     )
-    repository: Missing[RepositoryWebhooks] = Field(
+    secret_scanning_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+        description='Whether secret scanning is automatically enabled for new repositories. For more information, see "[About secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/about-secret-scanning)."',
     )
-    repository_ruleset: RepositoryRuleset = Field(
-        title="Repository ruleset",
-        description="A set of rules to apply when specified conditions are met.",
+    secret_scanning_push_protection_enabled_for_new_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description='Whether secret scanning push protection is automatically enabled for new repositories. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/protecting-pushes-with-secret-scanning)."',
     )
-    changes: Missing[WebhookRepositoryRulesetEditedPropChanges] = Field(default=UNSET)
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description='The URL that will be displayed to contributors who are blocked from pushing a secret. For more information, see "[Protecting pushes with secret scanning](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/protecting-pushes-with-secret-scanning)."\nTo disable this functionality, set this field to `null`.',
+    )
+    secret_scanning_validity_checks_enabled: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether secret scanning automatic validity checks on supported partner tokens is enabled for all repositories under this enterprise.",
     )
 
 
-model_rebuild(WebhookRepositoryRulesetEdited)
+model_rebuild(EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody)
 
-__all__ = ("WebhookRepositoryRulesetEdited",)
+__all__ = ("EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody",)

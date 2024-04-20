@@ -9,16 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgPersonalAccessTokenRequestsPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
+class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType(TypedDict):
+    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
 
-    pat_request_ids: NotRequired[List[int]]
-    action: Literal["approve", "deny"]
-    reason: NotRequired[Union[str, None]]
+    state: Literal[
+        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
+    ]
+    target_url: NotRequired[str]
+    log_url: NotRequired[str]
+    description: NotRequired[str]
+    environment: NotRequired[str]
+    environment_url: NotRequired[str]
+    auto_inactive: NotRequired[bool]
 
 
-__all__ = ("OrgsOrgPersonalAccessTokenRequestsPostBodyType",)
+__all__ = ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType",)

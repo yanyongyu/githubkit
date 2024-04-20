@@ -9,46 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0740 import (
-    WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0PropDismisser,
-)
+
+class OrgsOrgActionsSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
+
+    selected_repository_ids: List[int] = Field(
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints."
+    )
 
 
-class WebhookRepositoryVulnerabilityAlertCreatePropAlert(GitHubModel):
-    """WebhookRepositoryVulnerabilityAlertCreatePropAlert"""
+model_rebuild(OrgsOrgActionsSecretsSecretNameRepositoriesPutBody)
 
-    affected_package_name: str = Field()
-    affected_range: str = Field()
-    created_at: str = Field()
-    dismiss_reason: Missing[str] = Field(default=UNSET)
-    dismissed_at: Missing[str] = Field(default=UNSET)
-    dismisser: Missing[
-        Union[
-            WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0PropDismisser, None
-        ]
-    ] = Field(default=UNSET, title="User")
-    external_identifier: str = Field()
-    external_reference: Union[Union[str, None], None] = Field()
-    fix_reason: Missing[str] = Field(default=UNSET)
-    fixed_at: Missing[datetime] = Field(default=UNSET)
-    fixed_in: Missing[str] = Field(default=UNSET)
-    ghsa_id: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    number: int = Field()
-    severity: str = Field()
-    state: Literal["open"] = Field()
-
-
-model_rebuild(WebhookRepositoryVulnerabilityAlertCreatePropAlert)
-
-__all__ = ("WebhookRepositoryVulnerabilityAlertCreatePropAlert",)
+__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesPutBody",)

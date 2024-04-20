@@ -9,22 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0836 import (
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType,
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType,
-)
+from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequestsType(TypedDict):
-    """WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequests"""
+class OrgsOrgProjectsPostBodyType(TypedDict):
+    """OrgsOrgProjectsPostBody"""
 
-    base: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType
-    head: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType
-    id: float
-    number: float
-    url: str
+    name: str
+    body: NotRequired[str]
 
 
-__all__ = ("WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequestsType",)
+__all__ = ("OrgsOrgProjectsPostBodyType",)

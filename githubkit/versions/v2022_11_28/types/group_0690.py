@@ -9,184 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0357 import EnterpriseWebhooksType
-from .group_0358 import SimpleInstallationType
-from .group_0360 import RepositoryWebhooksType
-from .group_0361 import SimpleUserWebhooksType
-from .group_0359 import OrganizationSimpleWebhooksType
+from typing_extensions import TypedDict
 
 
-class WebhookReleaseEditedType(TypedDict):
-    """release edited event"""
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof0Type(TypedDict):
+    """Workflow Job
 
-    action: Literal["edited"]
-    changes: WebhookReleaseEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhookReleaseEditedPropReleaseType
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
-
-
-class WebhookReleaseEditedPropChangesType(TypedDict):
-    """WebhookReleaseEditedPropChanges"""
-
-    body: NotRequired[WebhookReleaseEditedPropChangesPropBodyType]
-    name: NotRequired[WebhookReleaseEditedPropChangesPropNameType]
-    make_latest: NotRequired[WebhookReleaseEditedPropChangesPropMakeLatestType]
-
-
-class WebhookReleaseEditedPropChangesPropBodyType(TypedDict):
-    """WebhookReleaseEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookReleaseEditedPropChangesPropNameType(TypedDict):
-    """WebhookReleaseEditedPropChangesPropName"""
-
-    from_: str
-
-
-class WebhookReleaseEditedPropChangesPropMakeLatestType(TypedDict):
-    """WebhookReleaseEditedPropChangesPropMakeLatest"""
-
-    to: bool
-
-
-class WebhookReleaseEditedPropReleaseType(TypedDict):
-    """Release
-
-    The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
-    object.
+    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
+    and `started_at` are the same as those in a [`check_run`](#check_run) object.
     """
 
-    assets: List[WebhookReleaseEditedPropReleasePropAssetsItemsType]
-    assets_url: str
-    author: Union[WebhookReleaseEditedPropReleasePropAuthorType, None]
-    body: Union[str, None]
-    created_at: Union[datetime, None]
-    discussion_url: NotRequired[str]
-    draft: bool
+    check_run_url: str
+    completed_at: Union[str, None]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "skipped",
+            "cancelled",
+            "action_required",
+            "neutral",
+            "timed_out",
+        ],
+    ]
+    created_at: str
+    head_sha: str
     html_url: str
     id: int
-    name: Union[str, None]
-    node_id: str
-    prerelease: bool
-    published_at: Union[datetime, None]
-    reactions: NotRequired[WebhookReleaseEditedPropReleasePropReactionsType]
-    tag_name: str
-    tarball_url: Union[str, None]
-    target_commitish: str
-    upload_url: str
-    url: str
-    zipball_url: Union[str, None]
-
-
-class WebhookReleaseEditedPropReleasePropAuthorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookReleaseEditedPropReleasePropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhookReleaseEditedPropReleasePropAssetsItemsType(TypedDict):
-    """Release Asset
-
-    Data related to a release.
-    """
-
-    browser_download_url: str
-    content_type: str
-    created_at: datetime
-    download_count: int
-    id: int
-    label: Union[str, None]
+    labels: List[str]
     name: str
     node_id: str
-    size: int
-    state: Literal["uploaded"]
-    updated_at: datetime
-    uploader: NotRequired[
-        Union[WebhookReleaseEditedPropReleasePropAssetsItemsPropUploaderType, None]
-    ]
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[int, None]
+    runner_group_name: Union[str, None]
+    runner_id: Union[int, None]
+    runner_name: Union[str, None]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed", "waiting"]
+    head_branch: Union[str, None]
+    workflow_name: Union[str, None]
+    steps: List[WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType]
     url: str
 
 
-class WebhookReleaseEditedPropReleasePropAssetsItemsPropUploaderType(TypedDict):
-    """User"""
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType(TypedDict):
+    """Workflow Step"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    completed_at: Union[str, None]
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]]
+    name: str
+    number: int
+    started_at: Union[str, None]
+    status: Literal["in_progress", "completed", "queued"]
 
 
 __all__ = (
-    "WebhookReleaseEditedType",
-    "WebhookReleaseEditedPropChangesType",
-    "WebhookReleaseEditedPropChangesPropBodyType",
-    "WebhookReleaseEditedPropChangesPropNameType",
-    "WebhookReleaseEditedPropChangesPropMakeLatestType",
-    "WebhookReleaseEditedPropReleaseType",
-    "WebhookReleaseEditedPropReleasePropAuthorType",
-    "WebhookReleaseEditedPropReleasePropReactionsType",
-    "WebhookReleaseEditedPropReleasePropAssetsItemsType",
-    "WebhookReleaseEditedPropReleasePropAssetsItemsPropUploaderType",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0Type",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType",
 )

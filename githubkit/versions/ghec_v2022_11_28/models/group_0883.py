@@ -9,17 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class GistsGistIdCommentsCommentIdPatchBody(GitHubModel):
-    """GistsGistIdCommentsCommentIdPatchBody"""
-
-    body: str = Field(max_length=65535, description="The comment text.")
+from .group_0176 import ActionsSecret
 
 
-model_rebuild(GistsGistIdCommentsCommentIdPatchBody)
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
 
-__all__ = ("GistsGistIdCommentsCommentIdPatchBody",)
+    total_count: int = Field()
+    secrets: List[ActionsSecret] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsOrganizationSecretsGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200",)

@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from datetime import datetime
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -19,43 +18,42 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoGitTagsPostBody(GitHubModel):
-    """ReposOwnerRepoGitTagsPostBody"""
+class UserMigrationsPostBody(GitHubModel):
+    """UserMigrationsPostBody"""
 
-    tag: str = Field(
-        description='The tag\'s name. This is typically a version (e.g., "v0.0.1").'
-    )
-    message: str = Field(description="The tag message.")
-    object_: str = Field(
-        alias="object", description="The SHA of the git object this is tagging."
-    )
-    type: Literal["commit", "tree", "blob"] = Field(
-        description="The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`."
-    )
-    tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTagger] = Field(
+    lock_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="An object with information about the individual creating the tag.",
+        description="Lock the repositories being migrated at the start of the migration",
     )
-
-
-class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubModel):
-    """ReposOwnerRepoGitTagsPostBodyPropTagger
-
-    An object with information about the individual creating the tag.
-    """
-
-    name: str = Field(description="The name of the author of the tag")
-    email: str = Field(description="The email of the author of the tag")
-    date: Missing[datetime] = Field(
+    exclude_metadata: Missing[bool] = Field(
         default=UNSET,
-        description="When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
     )
+    exclude_git_data: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether the repository git data should be excluded from the migration.",
+    )
+    exclude_attachments: Missing[bool] = Field(
+        default=UNSET, description="Do not include attachments in the migration"
+    )
+    exclude_releases: Missing[bool] = Field(
+        default=UNSET, description="Do not include releases in the migration"
+    )
+    exclude_owner_projects: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether projects owned by the organization or users should be excluded.",
+    )
+    org_metadata_only: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
+    )
+    exclude: Missing[List[Literal["repositories"]]] = Field(
+        default=UNSET,
+        description="Exclude attributes from the API response to improve performance",
+    )
+    repositories: List[str] = Field()
 
 
-model_rebuild(ReposOwnerRepoGitTagsPostBody)
-model_rebuild(ReposOwnerRepoGitTagsPostBodyPropTagger)
+model_rebuild(UserMigrationsPostBody)
 
-__all__ = (
-    "ReposOwnerRepoGitTagsPostBody",
-    "ReposOwnerRepoGitTagsPostBodyPropTagger",
-)
+__all__ = ("UserMigrationsPostBody",)

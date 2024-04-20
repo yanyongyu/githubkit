@@ -10,22 +10,52 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
+from datetime import datetime
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody"""
+class ReposOwnerRepoGitTagsPostBody(GitHubModel):
+    """ReposOwnerRepoGitTagsPostBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(
-        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#about-reactions) to add to the team discussion."
+    tag: str = Field(
+        description='The tag\'s name. This is typically a version (e.g., "v0.0.1").'
+    )
+    message: str = Field(description="The tag message.")
+    object_: str = Field(
+        alias="object", description="The SHA of the git object this is tagging."
+    )
+    type: Literal["commit", "tree", "blob"] = Field(
+        description="The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`."
+    )
+    tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTagger] = Field(
+        default=UNSET,
+        description="An object with information about the individual creating the tag.",
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody)
+class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubModel):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody",)
+    An object with information about the individual creating the tag.
+    """
+
+    name: str = Field(description="The name of the author of the tag")
+    email: str = Field(description="The email of the author of the tag")
+    date: Missing[datetime] = Field(
+        default=UNSET,
+        description="When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+
+
+model_rebuild(ReposOwnerRepoGitTagsPostBody)
+model_rebuild(ReposOwnerRepoGitTagsPostBodyPropTagger)
+
+__all__ = (
+    "ReposOwnerRepoGitTagsPostBody",
+    "ReposOwnerRepoGitTagsPostBodyPropTagger",
+)

@@ -12,11 +12,8 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody"""
-
-    name: str
-    value: str
+class UserInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """UserInteractionLimitsGetResponse200Anyof1"""
 
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType",)
+__all__ = ("UserInteractionLimitsGetResponse200Anyof1Type",)

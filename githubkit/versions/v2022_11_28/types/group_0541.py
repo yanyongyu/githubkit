@@ -9,87 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0536 import (
-    WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-    WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+
+class WebhookRubygemsMetadataType(TypedDict):
+    """Ruby Gems metadata"""
+
+    name: NotRequired[str]
+    description: NotRequired[str]
+    readme: NotRequired[str]
+    homepage: NotRequired[str]
+    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoType]
+    platform: NotRequired[str]
+    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataType]
+    repo: NotRequired[str]
+    dependencies: NotRequired[List[WebhookRubygemsMetadataPropDependenciesItemsType]]
+    commit_oid: NotRequired[str]
+
+
+class WebhookRubygemsMetadataPropVersionInfoType(TypedDict):
+    """WebhookRubygemsMetadataPropVersionInfo"""
+
+    version: NotRequired[str]
+
+
+class WebhookRubygemsMetadataPropMetadataType(TypedDict):
+    """WebhookRubygemsMetadataPropMetadata"""
+
+
+class WebhookRubygemsMetadataPropDependenciesItemsType(TypedDict):
+    """WebhookRubygemsMetadataPropDependenciesItems"""
+
+
+__all__ = (
+    "WebhookRubygemsMetadataType",
+    "WebhookRubygemsMetadataPropVersionInfoType",
+    "WebhookRubygemsMetadataPropMetadataType",
+    "WebhookRubygemsMetadataPropDependenciesItemsType",
 )
-
-
-class WebhookIssuesReopenedPropIssueMergedPerformedViaGithubAppType(TypedDict):
-    """WebhookIssuesReopenedPropIssueMergedPerformedViaGithubApp"""
-
-    created_at: Union[datetime, None]
-    description: Union[str, None]
-    events: NotRequired[
-        List[
-            Literal[
-                "branch_protection_rule",
-                "check_run",
-                "check_suite",
-                "code_scanning_alert",
-                "commit_comment",
-                "content_reference",
-                "create",
-                "delete",
-                "deployment",
-                "deployment_review",
-                "deployment_status",
-                "deploy_key",
-                "discussion",
-                "discussion_comment",
-                "fork",
-                "gollum",
-                "issues",
-                "issue_comment",
-                "label",
-                "member",
-                "membership",
-                "milestone",
-                "organization",
-                "org_block",
-                "page_build",
-                "project",
-                "project_card",
-                "project_column",
-                "public",
-                "pull_request",
-                "pull_request_review",
-                "pull_request_review_comment",
-                "push",
-                "registry_package",
-                "release",
-                "repository",
-                "repository_dispatch",
-                "secret_scanning_alert",
-                "star",
-                "status",
-                "team",
-                "team_add",
-                "watch",
-                "workflow_dispatch",
-                "workflow_run",
-                "pull_request_review_thread",
-                "reminder",
-            ]
-        ]
-    ]
-    external_url: Union[str, None]
-    html_url: str
-    id: Union[int, None]
-    name: str
-    node_id: str
-    owner: Union[
-        WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType, None
-    ]
-    permissions: NotRequired[
-        WebhookIssuesReopenedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[datetime, None]
-
-
-__all__ = ("WebhookIssuesReopenedPropIssueMergedPerformedViaGithubAppType",)

@@ -9,21 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Literal
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookStatusPropCommitPropCommitPropAuthorAllof1(GitHubModel):
-    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
+class OrgsOrgPersonalAccessTokensPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokensPostBody"""
 
-    date: str = Field()
-    email: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
+    action: Literal["revoke"] = Field(
+        description="Action to apply to the fine-grained personal access token."
+    )
+    pat_ids: List[int] = Field(
+        max_length=100,
+        min_length=1,
+        description="The IDs of the fine-grained personal access tokens.",
+    )
 
 
-model_rebuild(WebhookStatusPropCommitPropCommitPropAuthorAllof1)
+model_rebuild(OrgsOrgPersonalAccessTokensPostBody)
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof1",)
+__all__ = ("OrgsOrgPersonalAccessTokensPostBody",)

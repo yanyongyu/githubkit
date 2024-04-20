@@ -22,13 +22,13 @@ from .group_0391 import SimpleInstallation
 from .group_0393 import RepositoryWebhooks
 from .group_0394 import SimpleUserWebhooks
 from .group_0392 import OrganizationSimpleWebhooks
-from .group_0579 import WebhookIssuesUnlockedPropIssue
+from .group_0579 import WebhookPackageUpdatedPropPackage
 
 
-class WebhookIssuesUnlocked(GitHubModel):
-    """issues unlocked event"""
+class WebhookPackageUpdated(GitHubModel):
+    """package updated event"""
 
-    action: Literal["unlocked"] = Field()
+    action: Literal["updated"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,11 +39,13 @@ class WebhookIssuesUnlocked(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    issue: WebhookIssuesUnlockedPropIssue = Field()
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    package: WebhookPackageUpdatedPropPackage = Field(
+        description="Information about the package."
     )
     repository: RepositoryWebhooks = Field(
         title="Repository",
@@ -55,6 +57,6 @@ class WebhookIssuesUnlocked(GitHubModel):
     )
 
 
-model_rebuild(WebhookIssuesUnlocked)
+model_rebuild(WebhookPackageUpdated)
 
-__all__ = ("WebhookIssuesUnlocked",)
+__all__ = ("WebhookPackageUpdated",)

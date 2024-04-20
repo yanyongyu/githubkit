@@ -9,25 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0390 import EnterpriseWebhooksType
-from .group_0391 import SimpleInstallationType
-from .group_0393 import RepositoryWebhooksType
-from .group_0394 import SimpleUserWebhooksType
-from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0017 import RepositoryType
 
 
-class WebhookRepositoryUnarchivedType(TypedDict):
-    """repository unarchived event"""
+class InstallationRepositoriesGetResponse200Type(TypedDict):
+    """InstallationRepositoriesGetResponse200"""
 
-    action: Literal["unarchived"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    total_count: int
+    repositories: List[RepositoryType]
+    repository_selection: NotRequired[str]
 
 
-__all__ = ("WebhookRepositoryUnarchivedType",)
+__all__ = ("InstallationRepositoriesGetResponse200Type",)

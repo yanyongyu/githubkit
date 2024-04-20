@@ -17,7 +17,7 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0397 import Discussion
+from .group_0398 import Discussion
 from .group_0390 import EnterpriseWebhooks
 from .group_0391 import SimpleInstallation
 from .group_0393 import RepositoryWebhooks
@@ -25,10 +25,10 @@ from .group_0394 import SimpleUserWebhooks
 from .group_0392 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionDeleted(GitHubModel):
-    """discussion deleted event"""
+class WebhookDiscussionCreated(GitHubModel):
+    """discussion created event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["created"] = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -57,6 +57,6 @@ class WebhookDiscussionDeleted(GitHubModel):
     )
 
 
-model_rebuild(WebhookDiscussionDeleted)
+model_rebuild(WebhookDiscussionCreated)
 
-__all__ = ("WebhookDiscussionDeleted",)
+__all__ = ("WebhookDiscussionCreated",)

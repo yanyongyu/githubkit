@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union, Literal
 
 from pydantic import Field
@@ -24,14 +25,11 @@ from .group_0361 import SimpleUserWebhooks
 from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookLabelEdited(GitHubModel):
-    """label edited event"""
+class WebhookProjectCardConverted(GitHubModel):
+    """project_card converted event"""
 
-    action: Literal["edited"] = Field()
-    changes: Missing[WebhookLabelEditedPropChanges] = Field(
-        default=UNSET,
-        description="The changes to the label if the action was `edited`.",
-    )
+    action: Literal["converted"] = Field()
+    changes: WebhookProjectCardConvertedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -42,13 +40,16 @@ class WebhookLabelEdited(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: WebhookLabelEditedPropLabel = Field(title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    project_card: WebhookProjectCardConvertedPropProjectCard = Field(
+        title="Project Card"
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
@@ -58,72 +59,74 @@ class WebhookLabelEdited(GitHubModel):
     )
 
 
-class WebhookLabelEditedPropLabel(GitHubModel):
-    """Label"""
+class WebhookProjectCardConvertedPropChanges(GitHubModel):
+    """WebhookProjectCardConvertedPropChanges"""
 
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
+    note: WebhookProjectCardConvertedPropChangesPropNote = Field()
+
+
+class WebhookProjectCardConvertedPropChangesPropNote(GitHubModel):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
+
+    from_: str = Field(alias="from")
+
+
+class WebhookProjectCardConvertedPropProjectCard(GitHubModel):
+    """Project Card"""
+
+    after_id: Missing[Union[int, None]] = Field(default=UNSET)
+    archived: bool = Field(description="Whether or not the card is archived")
+    column_id: int = Field()
+    column_url: str = Field()
+    content_url: Missing[str] = Field(default=UNSET)
+    created_at: datetime = Field()
+    creator: Union[WebhookProjectCardConvertedPropProjectCardPropCreator, None] = Field(
+        title="User"
     )
-    default: bool = Field()
-    description: Union[str, None] = Field()
-    id: int = Field()
-    name: str = Field(description="The name of the label.")
+    id: int = Field(description="The project card's ID")
     node_id: str = Field()
-    url: str = Field(description="URL for the label")
+    note: Union[str, None] = Field()
+    project_url: str = Field()
+    updated_at: datetime = Field()
+    url: str = Field()
 
 
-class WebhookLabelEditedPropChanges(GitHubModel):
-    """WebhookLabelEditedPropChanges
+class WebhookProjectCardConvertedPropProjectCardPropCreator(GitHubModel):
+    """User"""
 
-    The changes to the label if the action was `edited`.
-    """
-
-    color: Missing[WebhookLabelEditedPropChangesPropColor] = Field(default=UNSET)
-    description: Missing[WebhookLabelEditedPropChangesPropDescription] = Field(
-        default=UNSET
-    )
-    name: Missing[WebhookLabelEditedPropChangesPropName] = Field(default=UNSET)
-
-
-class WebhookLabelEditedPropChangesPropColor(GitHubModel):
-    """WebhookLabelEditedPropChangesPropColor"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the color if the action was `edited`.",
-    )
-
-
-class WebhookLabelEditedPropChangesPropDescription(GitHubModel):
-    """WebhookLabelEditedPropChangesPropDescription"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the description if the action was `edited`.",
-    )
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookLabelEditedPropChangesPropName(GitHubModel):
-    """WebhookLabelEditedPropChangesPropName"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the name if the action was `edited`.",
-    )
-
-
-model_rebuild(WebhookLabelEdited)
-model_rebuild(WebhookLabelEditedPropLabel)
-model_rebuild(WebhookLabelEditedPropChanges)
-model_rebuild(WebhookLabelEditedPropChangesPropColor)
-model_rebuild(WebhookLabelEditedPropChangesPropDescription)
-model_rebuild(WebhookLabelEditedPropChangesPropName)
+model_rebuild(WebhookProjectCardConverted)
+model_rebuild(WebhookProjectCardConvertedPropChanges)
+model_rebuild(WebhookProjectCardConvertedPropChangesPropNote)
+model_rebuild(WebhookProjectCardConvertedPropProjectCard)
+model_rebuild(WebhookProjectCardConvertedPropProjectCardPropCreator)
 
 __all__ = (
-    "WebhookLabelEdited",
-    "WebhookLabelEditedPropLabel",
-    "WebhookLabelEditedPropChanges",
-    "WebhookLabelEditedPropChangesPropColor",
-    "WebhookLabelEditedPropChangesPropDescription",
-    "WebhookLabelEditedPropChangesPropName",
+    "WebhookProjectCardConverted",
+    "WebhookProjectCardConvertedPropChanges",
+    "WebhookProjectCardConvertedPropChangesPropNote",
+    "WebhookProjectCardConvertedPropProjectCard",
+    "WebhookProjectCardConvertedPropProjectCardPropCreator",
 )

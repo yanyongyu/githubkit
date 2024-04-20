@@ -9,39 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0703 import (
-    WebhookReleasePublishedPropReleaseAllof0PropAssetsItemsPropUploaderType,
-)
+
+class AppHookConfigPatchBodyType(TypedDict):
+    """AppHookConfigPatchBody"""
+
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class WebhookReleasePublishedPropReleaseAllof0PropAssetsItemsType(TypedDict):
-    """Release Asset
-
-    Data related to a release.
-    """
-
-    browser_download_url: str
-    content_type: str
-    created_at: datetime
-    download_count: int
-    id: int
-    label: Union[str, None]
-    name: str
-    node_id: str
-    size: int
-    state: Literal["uploaded"]
-    updated_at: datetime
-    uploader: NotRequired[
-        Union[
-            WebhookReleasePublishedPropReleaseAllof0PropAssetsItemsPropUploaderType,
-            None,
-        ]
-    ]
-    url: str
-
-
-__all__ = ("WebhookReleasePublishedPropReleaseAllof0PropAssetsItemsType",)
+__all__ = ("AppHookConfigPatchBodyType",)

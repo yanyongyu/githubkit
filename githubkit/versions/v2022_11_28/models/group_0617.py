@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -23,12 +22,13 @@ from .group_0358 import SimpleInstallation
 from .group_0360 import RepositoryWebhooks
 from .group_0361 import SimpleUserWebhooks
 from .group_0359 import OrganizationSimpleWebhooks
+from .group_0618 import WebhookRegistryPackagePublishedPropRegistryPackage
 
 
-class WebhookProjectColumnCreated(GitHubModel):
-    """project_column created event"""
+class WebhookRegistryPackagePublished(GitHubModel):
+    """WebhookRegistryPackagePublished"""
 
-    action: Literal["created"] = Field()
+    action: Literal["published"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,39 +44,18 @@ class WebhookProjectColumnCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_column: WebhookProjectColumnCreatedPropProjectColumn = Field(
-        title="Project Column"
-    )
+    registry_package: WebhookRegistryPackagePublishedPropRegistryPackage = Field()
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUserWebhooks] = Field(
-        default=UNSET,
+    sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookProjectColumnCreatedPropProjectColumn(GitHubModel):
-    """Project Column"""
+model_rebuild(WebhookRegistryPackagePublished)
 
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    cards_url: str = Field()
-    created_at: datetime = Field()
-    id: int = Field(description="The unique identifier of the project column")
-    name: str = Field(description="Name of the project column")
-    node_id: str = Field()
-    project_url: str = Field()
-    updated_at: datetime = Field()
-    url: str = Field()
-
-
-model_rebuild(WebhookProjectColumnCreated)
-model_rebuild(WebhookProjectColumnCreatedPropProjectColumn)
-
-__all__ = (
-    "WebhookProjectColumnCreated",
-    "WebhookProjectColumnCreatedPropProjectColumn",
-)
+__all__ = ("WebhookRegistryPackagePublished",)

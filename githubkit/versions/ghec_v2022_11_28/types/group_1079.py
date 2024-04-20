@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
+class UserGpgKeysPostBodyType(TypedDict):
+    """UserGpgKeysPostBody"""
 
     name: NotRequired[str]
-    value: NotRequired[str]
+    armored_public_key: str
 
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType",)
+__all__ = ("UserGpgKeysPostBodyType",)

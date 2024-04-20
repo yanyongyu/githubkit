@@ -9,42 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0712 import (
-    WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploader,
-)
+
+class GistsGistIdCommentsPostBody(GitHubModel):
+    """GistsGistIdCommentsPostBody"""
+
+    body: str = Field(max_length=65535, description="The comment text.")
 
 
-class WebhookReleaseUnpublishedPropReleaseMergedAssets(GitHubModel):
-    """WebhookReleaseUnpublishedPropReleaseMergedAssets"""
+model_rebuild(GistsGistIdCommentsPostBody)
 
-    browser_download_url: str = Field()
-    content_type: str = Field()
-    created_at: datetime = Field()
-    download_count: int = Field()
-    id: int = Field()
-    label: Union[str, None] = Field()
-    name: str = Field(description="The file name of the asset.")
-    node_id: str = Field()
-    size: int = Field()
-    state: Literal["uploaded"] = Field(description="State of the release asset.")
-    updated_at: datetime = Field()
-    uploader: Missing[
-        Union[
-            WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploader, None
-        ]
-    ] = Field(default=UNSET, title="User")
-    url: str = Field()
-
-
-model_rebuild(WebhookReleaseUnpublishedPropReleaseMergedAssets)
-
-__all__ = ("WebhookReleaseUnpublishedPropReleaseMergedAssets",)
+__all__ = ("GistsGistIdCommentsPostBody",)

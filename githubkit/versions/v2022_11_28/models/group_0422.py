@@ -17,81 +17,124 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0365 import Discussion
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0360 import RepositoryWebhooks
+from .group_0361 import SimpleUserWebhooks
+from .group_0359 import OrganizationSimpleWebhooks
 
-class WebhookDiscussionCreatedPropDiscussionAllof1(GitHubModel):
-    """WebhookDiscussionCreatedPropDiscussionAllof1"""
 
-    active_lock_reason: Missing[None] = Field(default=UNSET)
-    answer_chosen_at: None = Field()
-    answer_chosen_by: None = Field()
-    answer_html_url: Union[str, None] = Field()
-    author_association: Missing[str] = Field(default=UNSET)
-    body: Missing[Union[str, None]] = Field(default=UNSET)
-    category: Missing[WebhookDiscussionCreatedPropDiscussionAllof1PropCategory] = Field(
-        default=UNSET
+class WebhookDiscussionCommentEdited(GitHubModel):
+    """discussion_comment edited event"""
+
+    action: Literal["edited"] = Field()
+    changes: WebhookDiscussionCommentEditedPropChanges = Field()
+    comment: WebhookDiscussionCommentEditedPropComment = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
     )
-    comments: Missing[int] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    locked: Literal[False] = Field()
-    node_id: Missing[str] = Field(default=UNSET)
-    number: Missing[int] = Field(default=UNSET)
-    reactions: Missing[WebhookDiscussionCreatedPropDiscussionAllof1PropReactions] = (
-        Field(default=UNSET)
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
     )
-    repository_url: Missing[str] = Field(default=UNSET)
-    state: Literal["open", "converting", "transferring"] = Field()
-    timeline_url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    user: Missing[WebhookDiscussionCreatedPropDiscussionAllof1PropUser] = Field(
-        default=UNSET
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUserWebhooks = Field(
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookDiscussionCreatedPropDiscussionAllof1PropCategory(GitHubModel):
-    """WebhookDiscussionCreatedPropDiscussionAllof1PropCategory"""
+class WebhookDiscussionCommentEditedPropChanges(GitHubModel):
+    """WebhookDiscussionCommentEditedPropChanges"""
 
-    created_at: Missing[str] = Field(default=UNSET)
-    description: Missing[str] = Field(default=UNSET)
-    emoji: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    is_answerable: Missing[bool] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    repository_id: Missing[int] = Field(default=UNSET)
-    slug: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
+    body: WebhookDiscussionCommentEditedPropChangesPropBody = Field()
 
 
-class WebhookDiscussionCreatedPropDiscussionAllof1PropReactions(GitHubModel):
-    """WebhookDiscussionCreatedPropDiscussionAllof1PropReactions"""
+class WebhookDiscussionCommentEditedPropChangesPropBody(GitHubModel):
+    """WebhookDiscussionCommentEditedPropChangesPropBody"""
 
-    plus_one: Missing[int] = Field(default=UNSET, alias="+1")
-    minus_one: Missing[int] = Field(default=UNSET, alias="-1")
-    confused: Missing[int] = Field(default=UNSET)
-    eyes: Missing[int] = Field(default=UNSET)
-    heart: Missing[int] = Field(default=UNSET)
-    hooray: Missing[int] = Field(default=UNSET)
-    laugh: Missing[int] = Field(default=UNSET)
-    rocket: Missing[int] = Field(default=UNSET)
-    total_count: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    from_: str = Field(alias="from")
 
 
-class WebhookDiscussionCreatedPropDiscussionAllof1PropUser(GitHubModel):
-    """WebhookDiscussionCreatedPropDiscussionAllof1PropUser"""
+class WebhookDiscussionCommentEditedPropComment(GitHubModel):
+    """WebhookDiscussionCommentEditedPropComment"""
+
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
+    )
+    body: str = Field()
+    child_comment_count: int = Field()
+    created_at: str = Field()
+    discussion_id: int = Field()
+    html_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    parent_id: Union[int, None] = Field()
+    reactions: WebhookDiscussionCommentEditedPropCommentPropReactions = Field(
+        title="Reactions"
+    )
+    repository_url: str = Field()
+    updated_at: str = Field()
+    user: Union[WebhookDiscussionCommentEditedPropCommentPropUser, None] = Field(
+        title="User"
+    )
+
+
+class WebhookDiscussionCommentEditedPropCommentPropReactions(GitHubModel):
+    """Reactions"""
+
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
+    url: str = Field()
+
+
+class WebhookDiscussionCommentEditedPropCommentPropUser(GitHubModel):
+    """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
     events_url: Missing[str] = Field(default=UNSET)
     followers_url: Missing[str] = Field(default=UNSET)
     following_url: Missing[str] = Field(default=UNSET)
     gists_url: Missing[str] = Field(default=UNSET)
     gravatar_id: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
     organizations_url: Missing[str] = Field(default=UNSET)
     received_events_url: Missing[str] = Field(default=UNSET)
@@ -99,18 +142,22 @@ class WebhookDiscussionCreatedPropDiscussionAllof1PropUser(GitHubModel):
     site_admin: Missing[bool] = Field(default=UNSET)
     starred_url: Missing[str] = Field(default=UNSET)
     subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookDiscussionCreatedPropDiscussionAllof1)
-model_rebuild(WebhookDiscussionCreatedPropDiscussionAllof1PropCategory)
-model_rebuild(WebhookDiscussionCreatedPropDiscussionAllof1PropReactions)
-model_rebuild(WebhookDiscussionCreatedPropDiscussionAllof1PropUser)
+model_rebuild(WebhookDiscussionCommentEdited)
+model_rebuild(WebhookDiscussionCommentEditedPropChanges)
+model_rebuild(WebhookDiscussionCommentEditedPropChangesPropBody)
+model_rebuild(WebhookDiscussionCommentEditedPropComment)
+model_rebuild(WebhookDiscussionCommentEditedPropCommentPropReactions)
+model_rebuild(WebhookDiscussionCommentEditedPropCommentPropUser)
 
 __all__ = (
-    "WebhookDiscussionCreatedPropDiscussionAllof1",
-    "WebhookDiscussionCreatedPropDiscussionAllof1PropCategory",
-    "WebhookDiscussionCreatedPropDiscussionAllof1PropReactions",
-    "WebhookDiscussionCreatedPropDiscussionAllof1PropUser",
+    "WebhookDiscussionCommentEdited",
+    "WebhookDiscussionCommentEditedPropChanges",
+    "WebhookDiscussionCommentEditedPropChangesPropBody",
+    "WebhookDiscussionCommentEditedPropComment",
+    "WebhookDiscussionCommentEditedPropCommentPropReactions",
+    "WebhookDiscussionCommentEditedPropCommentPropUser",
 )

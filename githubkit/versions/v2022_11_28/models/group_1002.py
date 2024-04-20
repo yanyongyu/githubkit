@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,66 +18,33 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoContentsPathPutBody(GitHubModel):
-    """ReposOwnerRepoContentsPathPutBody"""
+class UserPatchBody(GitHubModel):
+    """UserPatchBody"""
 
-    message: str = Field(description="The commit message.")
-    content: str = Field(description="The new file content, using Base64 encoding.")
-    sha: Missing[str] = Field(
-        default=UNSET,
-        description="**Required if you are updating a file**. The blob SHA of the file being replaced.",
+    name: Missing[str] = Field(default=UNSET, description="The new name of the user.")
+    email: Missing[str] = Field(
+        default=UNSET, description="The publicly visible email address of the user."
     )
-    branch: Missing[str] = Field(
-        default=UNSET,
-        description="The branch name. Default: the repository’s default branch.",
+    blog: Missing[str] = Field(
+        default=UNSET, description="The new blog URL of the user."
     )
-    committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitter] = Field(
-        default=UNSET,
-        description="The person that committed the file. Default: the authenticated user.",
+    twitter_username: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The new Twitter username of the user."
     )
-    author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthor] = Field(
-        default=UNSET,
-        description="The author of the file. Default: The `committer` or the authenticated user if you omit `committer`.",
+    company: Missing[str] = Field(
+        default=UNSET, description="The new company of the user."
+    )
+    location: Missing[str] = Field(
+        default=UNSET, description="The new location of the user."
+    )
+    hireable: Missing[bool] = Field(
+        default=UNSET, description="The new hiring availability of the user."
+    )
+    bio: Missing[str] = Field(
+        default=UNSET, description="The new short biography of the user."
     )
 
 
-class ReposOwnerRepoContentsPathPutBodyPropCommitter(GitHubModel):
-    """ReposOwnerRepoContentsPathPutBodyPropCommitter
+model_rebuild(UserPatchBody)
 
-    The person that committed the file. Default: the authenticated user.
-    """
-
-    name: str = Field(
-        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
-    )
-    email: str = Field(
-        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
-    )
-    date: Missing[str] = Field(default=UNSET)
-
-
-class ReposOwnerRepoContentsPathPutBodyPropAuthor(GitHubModel):
-    """ReposOwnerRepoContentsPathPutBodyPropAuthor
-
-    The author of the file. Default: The `committer` or the authenticated user if
-    you omit `committer`.
-    """
-
-    name: str = Field(
-        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
-    )
-    email: str = Field(
-        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
-    )
-    date: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ReposOwnerRepoContentsPathPutBody)
-model_rebuild(ReposOwnerRepoContentsPathPutBodyPropCommitter)
-model_rebuild(ReposOwnerRepoContentsPathPutBodyPropAuthor)
-
-__all__ = (
-    "ReposOwnerRepoContentsPathPutBody",
-    "ReposOwnerRepoContentsPathPutBodyPropCommitter",
-    "ReposOwnerRepoContentsPathPutBodyPropAuthor",
-)
+__all__ = ("UserPatchBody",)

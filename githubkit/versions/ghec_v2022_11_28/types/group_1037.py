@@ -9,13 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoBranchesBranchRenamePostBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchRenamePostBody"""
+class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
 
-    new_name: str
+    name: NotRequired[str]
+    label: NotRequired[str]
+    state: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoBranchesBranchRenamePostBodyType",)
+__all__ = ("ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType",)

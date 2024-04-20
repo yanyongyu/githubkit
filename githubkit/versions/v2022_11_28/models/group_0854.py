@@ -16,14 +16,18 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsSecretsSecretNameRepositoriesPutBody(GitHubModel):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0
 
-    selected_repository_ids: List[int] = Field(
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints."
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: List[str] = Field(
+        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items."
     )
 
 
-model_rebuild(OrgsOrgActionsSecretsSecretNameRepositoriesPutBody)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0)
 
-__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesPutBody",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0",)

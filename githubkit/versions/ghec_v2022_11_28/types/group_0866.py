@@ -10,20 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict
-
-from .group_0029 import OrganizationSimpleType
+from typing_extensions import TypedDict, NotRequired
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
+class ProjectsColumnsCardsCardIdMovesPostResponse503Type(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
 
-    total_count: float
-    organizations: List[OrganizationSimpleType]
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    errors: NotRequired[
+        List[ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType]
+    ]
+
+
+class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
+
+    code: NotRequired[str]
+    message: NotRequired[str]
 
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type",
+    "ProjectsColumnsCardsCardIdMovesPostResponse503Type",
+    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType",
 )

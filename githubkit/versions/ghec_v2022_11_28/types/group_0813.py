@@ -9,15 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class WebhookStatusPropCommitPropCommitPropAuthorAllof1Type(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
 
-    date: str
-    email: NotRequired[str]
-    name: NotRequired[str]
+    The total number of seat assignments created.
+    """
+
+    seats_created: int
 
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof1Type",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostResponse201Type",)

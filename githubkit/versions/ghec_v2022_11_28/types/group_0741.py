@@ -9,27 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0390 import EnterpriseWebhooksType
-from .group_0391 import SimpleInstallationType
-from .group_0393 import RepositoryWebhooksType
-from .group_0394 import SimpleUserWebhooksType
-from .group_0392 import OrganizationSimpleWebhooksType
-from .group_0742 import WebhookReleaseUnpublishedPropReleaseType
+from typing_extensions import TypedDict
 
 
-class WebhookReleaseUnpublishedType(TypedDict):
-    """release unpublished event"""
+class ApplicationsClientIdTokenPatchBodyType(TypedDict):
+    """ApplicationsClientIdTokenPatchBody"""
 
-    action: Literal["unpublished"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhookReleaseUnpublishedPropReleaseType
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
+    access_token: str
 
 
-__all__ = ("WebhookReleaseUnpublishedType",)
+__all__ = ("ApplicationsClientIdTokenPatchBodyType",)

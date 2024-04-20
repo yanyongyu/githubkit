@@ -9,15 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0769 import WebhookSecurityAndAnalysisPropChangesPropFromType
+from typing_extensions import TypedDict
 
 
-class WebhookSecurityAndAnalysisPropChangesType(TypedDict):
-    """WebhookSecurityAndAnalysisPropChanges"""
-
-    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromType]
+class OrgsOrgInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
-__all__ = ("WebhookSecurityAndAnalysisPropChangesType",)
+__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1Type",)

@@ -9,22 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
+class ReposOwnerRepoPullsPullNumberMergePutResponse405Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: List[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-__all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse405Type",)

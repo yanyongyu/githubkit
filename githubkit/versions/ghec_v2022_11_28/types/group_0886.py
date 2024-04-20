@@ -9,16 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
+
+from .group_0034 import RunnerType
 
 
-class MarkdownPostBodyType(TypedDict):
-    """MarkdownPostBody"""
+class ReposOwnerRepoActionsRunnersGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunnersGetResponse200"""
 
-    text: str
-    mode: NotRequired[Literal["markdown", "gfm"]]
-    context: NotRequired[str]
+    total_count: int
+    runners: List[RunnerType]
 
 
-__all__ = ("MarkdownPostBodyType",)
+__all__ = ("ReposOwnerRepoActionsRunnersGetResponse200Type",)

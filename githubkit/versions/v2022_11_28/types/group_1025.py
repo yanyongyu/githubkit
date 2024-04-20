@@ -9,14 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoGitRefsRefPatchBodyType(TypedDict):
-    """ReposOwnerRepoGitRefsRefPatchBody"""
+class UserSocialAccountsPostBodyType(TypedDict):
+    """UserSocialAccountsPostBody
 
-    sha: str
-    force: NotRequired[bool]
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: List[str]
 
 
-__all__ = ("ReposOwnerRepoGitRefsRefPatchBodyType",)
+__all__ = ("UserSocialAccountsPostBodyType",)

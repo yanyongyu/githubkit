@@ -12,10 +12,13 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class WebhookSecretScanningAlertLocationCreatedFormEncodedType(TypedDict):
-    """Secret Scanning Alert Location Created Event"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
 
-    payload: str
+    The total number of seat assignments cancelled.
+    """
+
+    seats_cancelled: int
 
 
-__all__ = ("WebhookSecretScanningAlertLocationCreatedFormEncodedType",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",)

@@ -9,22 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotBillingSelectedUsersPostBody(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody"""
 
-    selected_usernames: List[str] = Field(
-        min_length=1,
-        description="The usernames of the organization members to be granted access to GitHub Copilot.",
+    state: Literal["open", "dismissed"] = Field(
+        description="Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`."
+    )
+    dismissed_reason: Missing[
+        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+    ] = Field(
+        default=UNSET,
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
+    )
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
     )
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersPostBody)
+model_rebuild(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody)
 
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostBody",)
+__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody",)

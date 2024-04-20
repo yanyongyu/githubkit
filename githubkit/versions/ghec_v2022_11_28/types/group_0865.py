@@ -9,18 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class ProjectsColumnsCardsCardIdMovesPostResponse403Type(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403"""
 
-    name: NotRequired[str]
-    visibility: NotRequired[Literal["selected", "all"]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[List[str]]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    errors: NotRequired[
+        List[ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType]
+    ]
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType",)
+class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"""
+
+    code: NotRequired[str]
+    message: NotRequired[str]
+    resource: NotRequired[str]
+    field: NotRequired[str]
+
+
+__all__ = (
+    "ProjectsColumnsCardsCardIdMovesPostResponse403Type",
+    "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType",
+)

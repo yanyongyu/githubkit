@@ -15,16 +15,19 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0177 import ActionsVariable
+
+class UserEmailsPostBodyOneof0(GitHubModel):
+    """UserEmailsPostBodyOneof0
+
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: List[str] = Field(
+        description="Adds one or more email addresses to your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key."
+    )
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
+model_rebuild(UserEmailsPostBodyOneof0)
 
-    total_count: int = Field()
-    variables: List[ActionsVariable] = Field()
-
-
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200)
-
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200",)
+__all__ = ("UserEmailsPostBodyOneof0",)

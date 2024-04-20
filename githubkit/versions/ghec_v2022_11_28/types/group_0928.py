@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedUsersPostBodyType(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
+class ReposOwnerRepoCheckSuitesPostBodyType(TypedDict):
+    """ReposOwnerRepoCheckSuitesPostBody"""
 
-    selected_usernames: List[str]
+    head_sha: str
 
 
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostBodyType",)
+__all__ = ("ReposOwnerRepoCheckSuitesPostBodyType",)

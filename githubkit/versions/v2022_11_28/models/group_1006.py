@@ -9,26 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import List, Literal
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoDependabotSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
+class UserCodespacesSecretsGetResponse200(GitHubModel):
+    """UserCodespacesSecretsGetResponse200"""
 
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        default=UNSET,
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key) endpoint.",
+    total_count: int = Field()
+    secrets: List[CodespacesSecret] = Field()
+
+
+class CodespacesSecret(GitHubModel):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str = Field(description="The name of the secret")
+    created_at: datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    key_id: Missing[str] = Field(
-        default=UNSET, description="ID of the key you used to encrypt the secret."
+    updated_at: datetime = Field(
+        description="The date and time at which the secret was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that the secret is visible to"
+    )
+    selected_repositories_url: str = Field(
+        description="The API URL at which the list of repositories this secret is visible to can be retrieved"
     )
 
 
-model_rebuild(ReposOwnerRepoDependabotSecretsSecretNamePutBody)
+model_rebuild(UserCodespacesSecretsGetResponse200)
+model_rebuild(CodespacesSecret)
 
-__all__ = ("ReposOwnerRepoDependabotSecretsSecretNamePutBody",)
+__all__ = (
+    "UserCodespacesSecretsGetResponse200",
+    "CodespacesSecret",
+)

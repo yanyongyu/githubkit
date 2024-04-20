@@ -9,27 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
 
-from .group_0357 import EnterpriseWebhooksType
-from .group_0358 import SimpleInstallationType
-from .group_0360 import RepositoryWebhooksType
-from .group_0361 import SimpleUserWebhooksType
-from .group_0359 import OrganizationSimpleWebhooksType
-from .group_0743 import WebhookRepositoryVulnerabilityAlertDismissPropAlertType
+from .group_0050 import MinimalRepositoryType
 
 
-class WebhookRepositoryVulnerabilityAlertDismissType(TypedDict):
-    """repository_vulnerability_alert dismiss event"""
+class OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
 
-    action: Literal["dismiss"]
-    alert: WebhookRepositoryVulnerabilityAlertDismissPropAlertType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    total_count: int
+    repositories: List[MinimalRepositoryType]
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertDismissType",)
+__all__ = ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type",)

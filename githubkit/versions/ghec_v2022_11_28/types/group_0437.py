@@ -20,10 +20,10 @@ from .group_0394 import SimpleUserWebhooksType
 from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookDependabotAlertReintroducedType(TypedDict):
-    """Dependabot alert reintroduced event"""
+class WebhookDependabotAlertCreatedType(TypedDict):
+    """Dependabot alert created event"""
 
-    action: Literal["reintroduced"]
+    action: Literal["created"]
     alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -32,4 +32,4 @@ class WebhookDependabotAlertReintroducedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookDependabotAlertReintroducedType",)
+__all__ = ("WebhookDependabotAlertCreatedType",)

@@ -16,17 +16,16 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
+class ReposOwnerRepoGitBlobsPostBody(GitHubModel):
+    """ReposOwnerRepoGitBlobsPostBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The discussion post's title."
+    content: str = Field(description="The new blob's content.")
+    encoding: Missing[str] = Field(
+        default=UNSET,
+        description='The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported.',
     )
-    body: Missing[str] = Field(
-        default=UNSET, description="The discussion post's body text."
-    )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody)
+model_rebuild(ReposOwnerRepoGitBlobsPostBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody",)
+__all__ = ("ReposOwnerRepoGitBlobsPostBody",)

@@ -9,17 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class OrgsOrgCodespacesSecretsSecretNamePutBodyType(TypedDict):
-    """OrgsOrgCodespacesSecretsSecretNamePutBody"""
-
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[List[int]]
+from .group_0863 import (
+    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
+    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
+)
 
 
-__all__ = ("OrgsOrgCodespacesSecretsSecretNamePutBodyType",)
+class ReposOwnerRepoCheckRunsPostBodyOneof1Type(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyOneof1"""
+
+    name: str
+    head_sha: str
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    status: NotRequired[Literal["queued", "in_progress"]]
+    started_at: NotRequired[datetime]
+    conclusion: NotRequired[
+        Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ]
+    ]
+    completed_at: NotRequired[datetime]
+    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
+    actions: NotRequired[List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
+
+
+__all__ = ("ReposOwnerRepoCheckRunsPostBodyOneof1Type",)

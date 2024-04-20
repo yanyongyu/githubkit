@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -25,10 +25,10 @@ from .group_0394 import SimpleUserWebhooks
 from .group_0392 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectReopened(GitHubModel):
-    """project reopened event"""
+class WebhookReleaseDeleted(GitHubModel):
+    """release deleted event"""
 
-    action: Literal["reopened"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,9 +44,11 @@ class WebhookProjectReopened(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project: WebhookProjectReopenedPropProject = Field(title="Project")
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    release: WebhookReleaseDeletedPropRelease = Field(
+        title="Release",
+        description="The [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases/#get-a-release) object.",
+    )
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
@@ -56,29 +58,44 @@ class WebhookProjectReopened(GitHubModel):
     )
 
 
-class WebhookProjectReopenedPropProject(GitHubModel):
-    """Project"""
+class WebhookReleaseDeletedPropRelease(GitHubModel):
+    """Release
 
-    body: Union[str, None] = Field(description="Body of the project")
-    columns_url: str = Field()
-    created_at: datetime = Field()
-    creator: Union[WebhookProjectReopenedPropProjectPropCreator, None] = Field(
+    The [release](https://docs.github.com/enterprise-
+    cloud@latest//rest/releases/releases/#get-a-release) object.
+    """
+
+    assets: List[WebhookReleaseDeletedPropReleasePropAssetsItems] = Field()
+    assets_url: str = Field()
+    author: Union[WebhookReleaseDeletedPropReleasePropAuthor, None] = Field(
         title="User"
     )
+    body: Union[str, None] = Field()
+    created_at: Union[datetime, None] = Field()
+    discussion_url: Missing[str] = Field(default=UNSET)
+    draft: bool = Field(description="Whether the release is a draft or published")
     html_url: str = Field()
     id: int = Field()
-    name: str = Field(description="Name of the project")
+    name: Union[str, None] = Field()
     node_id: str = Field()
-    number: int = Field()
-    owner_url: str = Field()
-    state: Literal["open", "closed"] = Field(
-        description="State of the project; either 'open' or 'closed'"
+    prerelease: bool = Field(
+        description="Whether the release is identified as a prerelease or a full release."
     )
-    updated_at: datetime = Field()
+    published_at: Union[datetime, None] = Field()
+    reactions: Missing[WebhookReleaseDeletedPropReleasePropReactions] = Field(
+        default=UNSET, title="Reactions"
+    )
+    tag_name: str = Field(description="The name of the tag.")
+    tarball_url: Union[str, None] = Field()
+    target_commitish: str = Field(
+        description="Specifies the commitish value that determines where the Git tag is created from."
+    )
+    upload_url: str = Field()
     url: str = Field()
+    zipball_url: Union[str, None] = Field()
 
 
-class WebhookProjectReopenedPropProjectPropCreator(GitHubModel):
+class WebhookReleaseDeletedPropReleasePropAuthor(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -104,12 +121,82 @@ class WebhookProjectReopenedPropProjectPropCreator(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookProjectReopened)
-model_rebuild(WebhookProjectReopenedPropProject)
-model_rebuild(WebhookProjectReopenedPropProjectPropCreator)
+class WebhookReleaseDeletedPropReleasePropReactions(GitHubModel):
+    """Reactions"""
+
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
+    url: str = Field()
+
+
+class WebhookReleaseDeletedPropReleasePropAssetsItems(GitHubModel):
+    """Release Asset
+
+    Data related to a release.
+    """
+
+    browser_download_url: str = Field()
+    content_type: str = Field()
+    created_at: datetime = Field()
+    download_count: int = Field()
+    id: int = Field()
+    label: Union[str, None] = Field()
+    name: str = Field(description="The file name of the asset.")
+    node_id: str = Field()
+    size: int = Field()
+    state: Literal["uploaded"] = Field(description="State of the release asset.")
+    updated_at: datetime = Field()
+    uploader: Missing[
+        Union[WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploader, None]
+    ] = Field(default=UNSET, title="User")
+    url: str = Field()
+
+
+class WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploader(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookReleaseDeleted)
+model_rebuild(WebhookReleaseDeletedPropRelease)
+model_rebuild(WebhookReleaseDeletedPropReleasePropAuthor)
+model_rebuild(WebhookReleaseDeletedPropReleasePropReactions)
+model_rebuild(WebhookReleaseDeletedPropReleasePropAssetsItems)
+model_rebuild(WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploader)
 
 __all__ = (
-    "WebhookProjectReopened",
-    "WebhookProjectReopenedPropProject",
-    "WebhookProjectReopenedPropProjectPropCreator",
+    "WebhookReleaseDeleted",
+    "WebhookReleaseDeletedPropRelease",
+    "WebhookReleaseDeletedPropReleasePropAuthor",
+    "WebhookReleaseDeletedPropReleasePropReactions",
+    "WebhookReleaseDeletedPropReleasePropAssetsItems",
+    "WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploader",
 )

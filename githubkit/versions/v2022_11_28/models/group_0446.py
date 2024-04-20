@@ -24,10 +24,10 @@ from .group_0361 import SimpleUserWebhooks
 from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookInstallationRepositoriesRemoved(GitHubModel):
-    """installation_repositories removed event"""
+class WebhookInstallationRepositoriesAdded(GitHubModel):
+    """installation_repositories added event"""
 
-    action: Literal["removed"] = Field()
+    action: Literal["added"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,12 +40,12 @@ class WebhookInstallationRepositoriesRemoved(GitHubModel):
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
     repositories_added: List[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItems
+        WebhookInstallationRepositoriesAddedPropRepositoriesAddedItems
     ] = Field(
         description="An array of repository objects, which were added to the installation."
     )
     repositories_removed: List[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems
+        WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems
     ] = Field(
         description="An array of repository objects, which were removed from the installation."
     )
@@ -57,7 +57,7 @@ class WebhookInstallationRepositoriesRemoved(GitHubModel):
     repository_selection: Literal["all", "selected"] = Field(
         description="Describe whether all repositories have been selected or there's a selection involved"
     )
-    requester: Union[WebhookInstallationRepositoriesRemovedPropRequester, None] = Field(
+    requester: Union[WebhookInstallationRepositoriesAddedPropRequester, None] = Field(
         title="User"
     )
     sender: SimpleUserWebhooks = Field(
@@ -66,8 +66,8 @@ class WebhookInstallationRepositoriesRemoved(GitHubModel):
     )
 
 
-class WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItems(GitHubModel):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItems"""
+class WebhookInstallationRepositoriesAddedPropRepositoriesAddedItems(GitHubModel):
+    """WebhookInstallationRepositoriesAddedPropRepositoriesAddedItems"""
 
     full_name: str = Field()
     id: int = Field(description="Unique identifier of the repository")
@@ -76,17 +76,21 @@ class WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItems(GitHubMod
     private: bool = Field(description="Whether the repository is private or public.")
 
 
-class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems(GitHubModel):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
+class WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems(GitHubModel):
+    """WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems"""
 
-    full_name: str = Field()
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="The name of the repository.")
-    node_id: str = Field()
-    private: bool = Field(description="Whether the repository is private or public.")
+    full_name: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(
+        default=UNSET, description="Unique identifier of the repository"
+    )
+    name: Missing[str] = Field(default=UNSET, description="The name of the repository.")
+    node_id: Missing[str] = Field(default=UNSET)
+    private: Missing[bool] = Field(
+        default=UNSET, description="Whether the repository is private or public."
+    )
 
 
-class WebhookInstallationRepositoriesRemovedPropRequester(GitHubModel):
+class WebhookInstallationRepositoriesAddedPropRequester(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -112,14 +116,14 @@ class WebhookInstallationRepositoriesRemovedPropRequester(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookInstallationRepositoriesRemoved)
-model_rebuild(WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItems)
-model_rebuild(WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems)
-model_rebuild(WebhookInstallationRepositoriesRemovedPropRequester)
+model_rebuild(WebhookInstallationRepositoriesAdded)
+model_rebuild(WebhookInstallationRepositoriesAddedPropRepositoriesAddedItems)
+model_rebuild(WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems)
+model_rebuild(WebhookInstallationRepositoriesAddedPropRequester)
 
 __all__ = (
-    "WebhookInstallationRepositoriesRemoved",
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesAddedItems",
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems",
-    "WebhookInstallationRepositoriesRemovedPropRequester",
+    "WebhookInstallationRepositoriesAdded",
+    "WebhookInstallationRepositoriesAddedPropRepositoriesAddedItems",
+    "WebhookInstallationRepositoriesAddedPropRepositoriesRemovedItems",
+    "WebhookInstallationRepositoriesAddedPropRequester",
 )

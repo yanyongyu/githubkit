@@ -9,27 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0157 import RepositoryAdvisoryType
-from .group_0390 import EnterpriseWebhooksType
-from .group_0391 import SimpleInstallationType
-from .group_0393 import RepositoryWebhooksType
-from .group_0394 import SimpleUserWebhooksType
-from .group_0392 import OrganizationSimpleWebhooksType
+
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
+
+    name: NotRequired[str]
+    visibility: NotRequired[Literal["selected", "all"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[List[str]]
 
 
-class WebhookRepositoryAdvisoryPublishedType(TypedDict):
-    """Repository advisory published event"""
-
-    action: Literal["published"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    repository_advisory: RepositoryAdvisoryType
-    sender: NotRequired[SimpleUserWebhooksType]
-
-
-__all__ = ("WebhookRepositoryAdvisoryPublishedType",)
+__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType",)

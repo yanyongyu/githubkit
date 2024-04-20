@@ -15,16 +15,19 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0071 import Codespace
+
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0
+
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: List[str] = Field(description="The username for users")
 
 
-class OrgsOrgCodespacesGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesGetResponse200"""
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0)
 
-    total_count: int = Field()
-    codespaces: List[Codespace] = Field()
-
-
-model_rebuild(OrgsOrgCodespacesGetResponse200)
-
-__all__ = ("OrgsOrgCodespacesGetResponse200",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0",)

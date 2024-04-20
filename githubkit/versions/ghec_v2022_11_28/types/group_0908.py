@@ -9,17 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgActionsSecretsSecretNamePutBodyType(TypedDict):
-    """OrgsOrgActionsSecretsSecretNamePutBody"""
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
-    visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[List[int]]
+    strict: NotRequired[bool]
+    contexts: NotRequired[List[str]]
+    checks: NotRequired[
+        List[
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
+        ]
+    ]
 
 
-__all__ = ("OrgsOrgActionsSecretsSecretNamePutBodyType",)
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
+    ms
+    """
+
+    context: str
+    app_id: NotRequired[int]
+
+
+__all__ = (
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType",
+)

@@ -9,27 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0390 import EnterpriseWebhooksType
-from .group_0391 import SimpleInstallationType
-from .group_0393 import RepositoryWebhooksType
-from .group_0394 import SimpleUserWebhooksType
-from .group_0392 import OrganizationSimpleWebhooksType
-from .group_0781 import WebhookRepositoryVulnerabilityAlertReopenPropAlertType
+
+class OrgsOrgActionsRunnerGroupsGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnerGroupsGetResponse200"""
+
+    total_count: float
+    runner_groups: List[RunnerGroupsOrgType]
 
 
-class WebhookRepositoryVulnerabilityAlertReopenType(TypedDict):
-    """repository_vulnerability_alert reopen event"""
+class RunnerGroupsOrgType(TypedDict):
+    """RunnerGroupsOrg"""
 
-    action: Literal["reopen"]
-    alert: WebhookRepositoryVulnerabilityAlertReopenPropAlertType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    id: float
+    name: str
+    visibility: str
+    default: bool
+    selected_repositories_url: NotRequired[str]
+    runners_url: str
+    inherited: bool
+    inherited_allows_public_repositories: NotRequired[bool]
+    allows_public_repositories: bool
+    workflow_restrictions_read_only: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[List[str]]
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertReopenType",)
+__all__ = (
+    "OrgsOrgActionsRunnerGroupsGetResponse200Type",
+    "RunnerGroupsOrgType",
+)

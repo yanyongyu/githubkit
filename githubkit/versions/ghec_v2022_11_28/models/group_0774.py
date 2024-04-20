@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List
 
 from pydantic import Field
 
@@ -17,24 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1(GitHubModel):
-    """WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1"""
-
-    affected_package_name: Missing[str] = Field(default=UNSET)
-    affected_range: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    external_identifier: Missing[str] = Field(default=UNSET)
-    external_reference: Missing[Union[str, None]] = Field(default=UNSET)
-    fixed_in: Missing[str] = Field(default=UNSET)
-    ghsa_id: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    number: Missing[int] = Field(default=UNSET)
-    severity: Missing[str] = Field(default=UNSET)
-    state: Literal["open"] = Field()
+from .group_0079 import OrganizationCustomRepositoryRole
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1)
+class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubModel):
+    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1",)
+    total_count: Missing[int] = Field(
+        default=UNSET, description="The number of custom roles in this organization"
+    )
+    custom_roles: Missing[List[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
+
+
+model_rebuild(OrganizationsOrganizationIdCustomRolesGetResponse200)
+
+__all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200",)

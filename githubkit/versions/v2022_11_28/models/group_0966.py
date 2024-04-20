@@ -9,29 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
+class ReposOwnerRepoPullsPullNumberMergePutResponse405(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
 
-    Examples:
-        {'contexts': ['contexts']}
-    """
-
-    contexts: List[str] = Field(description="The name of the status checks")
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
-)
+model_rebuild(ReposOwnerRepoPullsPullNumberMergePutResponse405)
 
-__all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse405",)

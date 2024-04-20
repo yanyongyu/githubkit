@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,57 +17,34 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0368 import ProjectsV2
+from .group_0358 import SimpleInstallation
+from .group_0361 import SimpleUserWebhooks
+from .group_0359 import OrganizationSimpleWebhooks
 
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0(GitHubModel):
-    """Marketplace Purchase"""
 
-    account: WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccount = Field()
-    billing_cycle: str = Field()
-    free_trial_ends_on: Union[str, None] = Field()
-    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
-    on_free_trial: bool = Field()
-    plan: WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlan = (
-        Field()
+class WebhookProjectsV2ProjectClosed(GitHubModel):
+    """Projects v2 Project Closed Event"""
+
+    action: Literal["closed"] = Field()
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    unit_count: int = Field()
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    projects_v2: ProjectsV2 = Field(
+        title="Projects v2 Project", description="A projects v2 project"
+    )
+    sender: SimpleUserWebhooks = Field(
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
 
 
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccount(
-    GitHubModel
-):
-    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccount"""
+model_rebuild(WebhookProjectsV2ProjectClosed)
 
-    id: int = Field()
-    login: str = Field()
-    node_id: str = Field()
-    organization_billing_email: Union[str, None] = Field()
-    type: str = Field()
-
-
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlan(
-    GitHubModel
-):
-    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlan"""
-
-    bullets: List[str] = Field()
-    description: str = Field()
-    has_free_trial: bool = Field()
-    id: int = Field()
-    monthly_price_in_cents: int = Field()
-    name: str = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    unit_name: Union[str, None] = Field()
-    yearly_price_in_cents: int = Field()
-
-
-model_rebuild(WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0)
-model_rebuild(
-    WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccount
-)
-model_rebuild(WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlan)
-
-__all__ = (
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0",
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropAccount",
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseAllof0PropPlan",
-)
+__all__ = ("WebhookProjectsV2ProjectClosed",)

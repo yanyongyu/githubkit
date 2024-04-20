@@ -9,22 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
-
-from .group_0844 import (
-    WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType,
-    WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType,
-)
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookWorkflowRunInProgressPropWorkflowRunMergedPullRequestsType(TypedDict):
-    """WebhookWorkflowRunInProgressPropWorkflowRunMergedPullRequests"""
+class OrgsOrgTeamsTeamSlugPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugPatchBody"""
 
-    base: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBaseType
-    head: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHeadType
-    id: float
-    number: float
-    url: str
+    name: NotRequired[str]
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
 
 
-__all__ = ("WebhookWorkflowRunInProgressPropWorkflowRunMergedPullRequestsType",)
+__all__ = ("OrgsOrgTeamsTeamSlugPatchBodyType",)

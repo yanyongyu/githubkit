@@ -11,19 +11,15 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCodeScanningAlertsGetResponse503(GitHubModel):
-    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
+class ProjectsProjectIdColumnsPostBody(GitHubModel):
+    """ProjectsProjectIdColumnsPostBody"""
 
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    name: str = Field(description="Name of the project column")
 
 
-model_rebuild(EnterprisesEnterpriseCodeScanningAlertsGetResponse503)
+model_rebuild(ProjectsProjectIdColumnsPostBody)
 
-__all__ = ("EnterprisesEnterpriseCodeScanningAlertsGetResponse503",)
+__all__ = ("ProjectsProjectIdColumnsPostBody",)

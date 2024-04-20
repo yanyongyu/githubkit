@@ -9,20 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
-
-    The total number of seat assignments cancelled.
-    """
-
-    seats_cancelled: int = Field()
+from .group_0189 import CheckRun
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200)
+class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200(GitHubModel):
+    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200",)
+    total_count: int = Field()
+    check_runs: List[CheckRun] = Field()
+
+
+model_rebuild(ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200)
+
+__all__ = ("ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200",)

@@ -9,71 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union, Literal
+from typing_extensions import Annotated
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase(
-    GitHubModel
-):
-    """WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase"""
+class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
 
-    ref: str = Field()
-    repo: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo = Field(
-        title="Repo Ref"
+    action: Literal["approve", "deny"] = Field(
+        description="Action to apply to the request."
     )
-    sha: str = Field()
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo(
-    GitHubModel
-):
-    """Repo Ref"""
-
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead(
-    GitHubModel
-):
-    """WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead"""
-
-    ref: str = Field()
-    repo: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo = Field(
-        title="Repo Ref"
+    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
+        default=UNSET,
+        description="Reason for approving or denying the request. Max 1024 characters.",
     )
-    sha: str = Field()
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo(
-    GitHubModel
-):
-    """Repo Ref"""
+model_rebuild(OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody)
 
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-model_rebuild(
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase
-)
-model_rebuild(
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo
-)
-model_rebuild(
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead
-)
-model_rebuild(
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo
-)
-
-__all__ = (
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase",
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBasePropRepo",
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead",
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHeadPropRepo",
-)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",)

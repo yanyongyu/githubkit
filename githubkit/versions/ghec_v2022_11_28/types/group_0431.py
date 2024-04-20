@@ -14,22 +14,28 @@ from typing_extensions import TypedDict, NotRequired
 
 from .group_0390 import EnterpriseWebhooksType
 from .group_0391 import SimpleInstallationType
-from .group_0393 import RepositoryWebhooksType
 from .group_0394 import SimpleUserWebhooksType
 from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookDeleteType(TypedDict):
-    """delete event"""
+class WebhookCustomPropertyDeletedType(TypedDict):
+    """custom property deleted event"""
 
+    action: Literal["deleted"]
+    definition: WebhookCustomPropertyDeletedPropDefinitionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    pusher_type: str
-    ref: str
-    ref_type: Literal["tag", "branch"]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookDeleteType",)
+class WebhookCustomPropertyDeletedPropDefinitionType(TypedDict):
+    """WebhookCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
+
+
+__all__ = (
+    "WebhookCustomPropertyDeletedType",
+    "WebhookCustomPropertyDeletedPropDefinitionType",
+)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -22,16 +22,13 @@ from .group_0358 import SimpleInstallation
 from .group_0360 import RepositoryWebhooks
 from .group_0361 import SimpleUserWebhooks
 from .group_0359 import OrganizationSimpleWebhooks
-from .group_0650 import WebhookPullRequestEditedPropPullRequest
 
 
-class WebhookPullRequestEdited(GitHubModel):
-    """pull_request edited event"""
+class WebhookRepositoryTransferred(GitHubModel):
+    """repository transferred event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookPullRequestEditedPropChanges = Field(
-        description="The changes to the comment if the action was `edited`."
-    )
+    action: Literal["transferred"] = Field()
+    changes: WebhookRepositoryTransferredPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -42,86 +39,104 @@ class WebhookPullRequestEdited(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    number: int = Field(description="The pull request number.")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pull_request: WebhookPullRequestEditedPropPullRequest = Field()
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUserWebhooks] = Field(
-        default=UNSET,
+    sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookPullRequestEditedPropChanges(GitHubModel):
-    """WebhookPullRequestEditedPropChanges
+class WebhookRepositoryTransferredPropChanges(GitHubModel):
+    """WebhookRepositoryTransferredPropChanges"""
 
-    The changes to the comment if the action was `edited`.
-    """
-
-    base: Missing[WebhookPullRequestEditedPropChangesPropBase] = Field(default=UNSET)
-    body: Missing[WebhookPullRequestEditedPropChangesPropBody] = Field(default=UNSET)
-    title: Missing[WebhookPullRequestEditedPropChangesPropTitle] = Field(default=UNSET)
+    owner: WebhookRepositoryTransferredPropChangesPropOwner = Field()
 
 
-class WebhookPullRequestEditedPropChangesPropBody(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropBody"""
+class WebhookRepositoryTransferredPropChangesPropOwner(GitHubModel):
+    """WebhookRepositoryTransferredPropChangesPropOwner"""
 
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the body if the action was `edited`.",
+    from_: WebhookRepositoryTransferredPropChangesPropOwnerPropFrom = Field(
+        alias="from"
     )
 
 
-class WebhookPullRequestEditedPropChangesPropTitle(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropTitle"""
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFrom(GitHubModel):
+    """WebhookRepositoryTransferredPropChangesPropOwnerPropFrom"""
 
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the title if the action was `edited`.",
-    )
-
-
-class WebhookPullRequestEditedPropChangesPropBase(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropBase"""
-
-    ref: WebhookPullRequestEditedPropChangesPropBasePropRef = Field()
-    sha: WebhookPullRequestEditedPropChangesPropBasePropSha = Field()
+    organization: Missing[
+        WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization
+    ] = Field(default=UNSET, title="Organization")
+    user: Missing[
+        Union[WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser, None]
+    ] = Field(default=UNSET, title="User")
 
 
-class WebhookPullRequestEditedPropChangesPropBasePropRef(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropBasePropRef"""
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization(
+    GitHubModel
+):
+    """Organization"""
 
-    from_: str = Field(alias="from")
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
+    events_url: str = Field()
+    hooks_url: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    issues_url: str = Field()
+    login: str = Field()
+    members_url: str = Field()
+    node_id: str = Field()
+    public_members_url: str = Field()
+    repos_url: str = Field()
+    url: str = Field()
 
 
-class WebhookPullRequestEditedPropChangesPropBasePropSha(GitHubModel):
-    """WebhookPullRequestEditedPropChangesPropBasePropSha"""
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser(GitHubModel):
+    """User"""
 
-    from_: str = Field(alias="from")
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookPullRequestEdited)
-model_rebuild(WebhookPullRequestEditedPropChanges)
-model_rebuild(WebhookPullRequestEditedPropChangesPropBody)
-model_rebuild(WebhookPullRequestEditedPropChangesPropTitle)
-model_rebuild(WebhookPullRequestEditedPropChangesPropBase)
-model_rebuild(WebhookPullRequestEditedPropChangesPropBasePropRef)
-model_rebuild(WebhookPullRequestEditedPropChangesPropBasePropSha)
+model_rebuild(WebhookRepositoryTransferred)
+model_rebuild(WebhookRepositoryTransferredPropChanges)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwner)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFrom)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser)
 
 __all__ = (
-    "WebhookPullRequestEdited",
-    "WebhookPullRequestEditedPropChanges",
-    "WebhookPullRequestEditedPropChangesPropBody",
-    "WebhookPullRequestEditedPropChangesPropTitle",
-    "WebhookPullRequestEditedPropChangesPropBase",
-    "WebhookPullRequestEditedPropChangesPropBasePropRef",
-    "WebhookPullRequestEditedPropChangesPropBasePropSha",
+    "WebhookRepositoryTransferred",
+    "WebhookRepositoryTransferredPropChanges",
+    "WebhookRepositoryTransferredPropChangesPropOwner",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFrom",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser",
 )

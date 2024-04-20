@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -17,42 +17,27 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0357 import EnterpriseWebhooks
-from .group_0358 import SimpleInstallation
-from .group_0360 import RepositoryWebhooks
-from .group_0361 import SimpleUserWebhooks
-from .group_0359 import OrganizationSimpleWebhooks
 
+class OrgsOrgActionsSecretsSecretNamePutBody(GitHubModel):
+    """OrgsOrgActionsSecretsSecretNamePutBody"""
 
-class WebhookRepositoryUnarchived(GitHubModel):
-    """repository unarchived event"""
-
-    action: Literal["unarchived"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/actions/secrets#get-an-organization-public-key) endpoint.",
     )
-    installation: Missing[SimpleInstallation] = Field(
+    key_id: Missing[str] = Field(
+        default=UNSET, description="ID of the key you used to encrypt the secret."
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret."
+    )
+    selected_repository_ids: Missing[List[int]] = Field(
         default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/actions/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/actions/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
     )
 
 
-model_rebuild(WebhookRepositoryUnarchived)
+model_rebuild(OrgsOrgActionsSecretsSecretNamePutBody)
 
-__all__ = ("WebhookRepositoryUnarchived",)
+__all__ = ("OrgsOrgActionsSecretsSecretNamePutBody",)

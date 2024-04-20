@@ -9,41 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0357 import EnterpriseWebhooksType
-from .group_0358 import SimpleInstallationType
-from .group_0360 import RepositoryWebhooksType
-from .group_0361 import SimpleUserWebhooksType
-from .group_0359 import OrganizationSimpleWebhooksType
+from .group_0248 import HookResponseType
 
 
-class WebhookLabelCreatedType(TypedDict):
-    """label created event"""
+class WebhookPingPropHookType(TypedDict):
+    """Webhook
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    label: WebhookLabelCreatedPropLabelType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
+    The webhook that is being pinged
+    """
 
-
-class WebhookLabelCreatedPropLabelType(TypedDict):
-    """Label"""
-
-    color: str
-    default: bool
-    description: Union[str, None]
+    active: bool
+    app_id: NotRequired[int]
+    config: WebhookPingPropHookPropConfigType
+    created_at: datetime
+    deliveries_url: NotRequired[str]
+    events: List[str]
     id: int
-    name: str
-    node_id: str
-    url: str
+    last_response: NotRequired[HookResponseType]
+    name: Literal["web"]
+    ping_url: NotRequired[str]
+    test_url: NotRequired[str]
+    type: str
+    updated_at: datetime
+    url: NotRequired[str]
+
+
+class WebhookPingPropHookPropConfigType(TypedDict):
+    """WebhookPingPropHookPropConfig"""
+
+    content_type: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
+    secret: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookLabelCreatedType",
-    "WebhookLabelCreatedPropLabelType",
+    "WebhookPingPropHookType",
+    "WebhookPingPropHookPropConfigType",
 )

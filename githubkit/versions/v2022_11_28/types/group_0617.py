@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0357 import EnterpriseWebhooksType
@@ -18,35 +17,19 @@ from .group_0358 import SimpleInstallationType
 from .group_0360 import RepositoryWebhooksType
 from .group_0361 import SimpleUserWebhooksType
 from .group_0359 import OrganizationSimpleWebhooksType
+from .group_0618 import WebhookRegistryPackagePublishedPropRegistryPackageType
 
 
-class WebhookProjectColumnCreatedType(TypedDict):
-    """project_column created event"""
+class WebhookRegistryPackagePublishedType(TypedDict):
+    """WebhookRegistryPackagePublished"""
 
-    action: Literal["created"]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhookProjectColumnCreatedPropProjectColumnType
+    registry_package: WebhookRegistryPackagePublishedPropRegistryPackageType
     repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserWebhooksType]
+    sender: SimpleUserWebhooksType
 
 
-class WebhookProjectColumnCreatedPropProjectColumnType(TypedDict):
-    """Project Column"""
-
-    after_id: NotRequired[Union[int, None]]
-    cards_url: str
-    created_at: datetime
-    id: int
-    name: str
-    node_id: str
-    project_url: str
-    updated_at: datetime
-    url: str
-
-
-__all__ = (
-    "WebhookProjectColumnCreatedType",
-    "WebhookProjectColumnCreatedPropProjectColumnType",
-)
+__all__ = ("WebhookRegistryPackagePublishedType",)

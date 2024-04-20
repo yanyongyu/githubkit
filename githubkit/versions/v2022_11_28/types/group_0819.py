@@ -9,11 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type(TypedDict):
-    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
+class ReposOwnerRepoDeleteResponse403Type(TypedDict):
+    """ReposOwnerRepoDeleteResponse403"""
+
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-__all__ = ("AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type",)
+__all__ = ("ReposOwnerRepoDeleteResponse403Type",)

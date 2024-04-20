@@ -9,42 +9,70 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0512 import WebhookIssuesLockedPropIssueAllof0PropMilestonePropCreator
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0360 import RepositoryWebhooks
+from .group_0361 import SimpleUserWebhooks
+from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookIssuesLockedPropIssueAllof0PropMilestone(GitHubModel):
-    """Milestone
+class WebhookLabelCreated(GitHubModel):
+    """label created event"""
 
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[datetime, None] = Field()
-    closed_issues: int = Field()
-    created_at: datetime = Field()
-    creator: Union[WebhookIssuesLockedPropIssueAllof0PropMilestonePropCreator, None] = (
-        Field(title="User")
+    action: Literal["created"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
     )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    label: WebhookLabelCreatedPropLabel = Field(title="Label")
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
+
+
+class WebhookLabelCreatedPropLabel(GitHubModel):
+    """Label"""
+
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field()
     description: Union[str, None] = Field()
-    due_on: Union[datetime, None] = Field()
-    html_url: str = Field()
     id: int = Field()
-    labels_url: str = Field()
+    name: str = Field(description="The name of the label.")
     node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    open_issues: int = Field()
-    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
-    title: str = Field(description="The title of the milestone.")
-    updated_at: datetime = Field()
-    url: str = Field()
+    url: str = Field(description="URL for the label")
 
 
-model_rebuild(WebhookIssuesLockedPropIssueAllof0PropMilestone)
+model_rebuild(WebhookLabelCreated)
+model_rebuild(WebhookLabelCreatedPropLabel)
 
-__all__ = ("WebhookIssuesLockedPropIssueAllof0PropMilestone",)
+__all__ = (
+    "WebhookLabelCreated",
+    "WebhookLabelCreatedPropLabel",
+)

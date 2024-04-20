@@ -9,16 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgOrganizationRolesRoleIdPatchBodyType(TypedDict):
-    """OrgsOrgOrganizationRolesRoleIdPatchBody"""
+class ReposOwnerRepoDependabotSecretsSecretNamePutBodyType(TypedDict):
+    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    permissions: NotRequired[List[str]]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
 
 
-__all__ = ("OrgsOrgOrganizationRolesRoleIdPatchBodyType",)
+__all__ = ("ReposOwnerRepoDependabotSecretsSecretNamePutBodyType",)

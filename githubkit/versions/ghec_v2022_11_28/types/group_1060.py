@@ -9,17 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0208 import CheckRunType
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
+class TeamsTeamIdMembershipsUsernamePutBodyType(TypedDict):
+    """TeamsTeamIdMembershipsUsernamePutBody"""
 
-    total_count: int
-    check_runs: List[CheckRunType]
+    role: NotRequired[Literal["member", "maintainer"]]
 
 
-__all__ = ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",)
+__all__ = ("TeamsTeamIdMembershipsUsernamePutBodyType",)

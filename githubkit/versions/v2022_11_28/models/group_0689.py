@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union, Literal
 
 from pydantic import Field
@@ -18,6 +17,7 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0168 import Deployment
 from .group_0357 import EnterpriseWebhooks
 from .group_0358 import SimpleInstallation
 from .group_0360 import RepositoryWebhooks
@@ -25,10 +25,10 @@ from .group_0361 import SimpleUserWebhooks
 from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookReleaseDeleted(GitHubModel):
-    """release deleted event"""
+class WebhookWorkflowJobCompleted(GitHubModel):
+    """workflow_job completed event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["completed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,10 +44,6 @@ class WebhookReleaseDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    release: WebhookReleaseDeletedPropRelease = Field(
-        title="Release",
-        description="The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.",
-    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -56,147 +52,85 @@ class WebhookReleaseDeleted(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-
-
-class WebhookReleaseDeletedPropRelease(GitHubModel):
-    """Release
-
-    The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
-    object.
-    """
-
-    assets: List[WebhookReleaseDeletedPropReleasePropAssetsItems] = Field()
-    assets_url: str = Field()
-    author: Union[WebhookReleaseDeletedPropReleasePropAuthor, None] = Field(
-        title="User"
+    workflow_job: WebhookWorkflowJobCompletedPropWorkflowJob = Field()
+    deployment: Missing[Deployment] = Field(
+        default=UNSET,
+        title="Deployment",
+        description="A request for a specific ref(branch,sha,tag) to be deployed",
     )
-    body: Union[str, None] = Field()
-    created_at: Union[datetime, None] = Field()
-    discussion_url: Missing[str] = Field(default=UNSET)
-    draft: bool = Field(description="Whether the release is a draft or published")
+
+
+class WebhookWorkflowJobCompletedPropWorkflowJob(GitHubModel):
+    """WebhookWorkflowJobCompletedPropWorkflowJob"""
+
+    check_run_url: str = Field()
+    completed_at: str = Field()
+    conclusion: Literal[
+        "success",
+        "failure",
+        "skipped",
+        "cancelled",
+        "action_required",
+        "neutral",
+        "timed_out",
+    ] = Field()
+    created_at: str = Field(description="The time that the job created.")
+    head_sha: str = Field()
     html_url: str = Field()
     id: int = Field()
-    name: Union[str, None] = Field()
+    labels: List[str] = Field(
+        description='Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML.'
+    )
+    name: str = Field()
     node_id: str = Field()
-    prerelease: bool = Field(
-        description="Whether the release is identified as a prerelease or a full release."
+    run_attempt: int = Field()
+    run_id: int = Field()
+    run_url: str = Field()
+    runner_group_id: Union[Union[int, None], None] = Field(
+        description="The ID of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-    published_at: Union[datetime, None] = Field()
-    reactions: Missing[WebhookReleaseDeletedPropReleasePropReactions] = Field(
-        default=UNSET, title="Reactions"
+    runner_group_name: Union[Union[str, None], None] = Field(
+        description="The name of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-    tag_name: str = Field(description="The name of the tag.")
-    tarball_url: Union[str, None] = Field()
-    target_commitish: str = Field(
-        description="Specifies the commitish value that determines where the Git tag is created from."
+    runner_id: Union[Union[int, None], None] = Field(
+        description="The ID of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-    upload_url: str = Field()
-    url: str = Field()
-    zipball_url: Union[str, None] = Field()
-
-
-class WebhookReleaseDeletedPropReleasePropAuthor(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookReleaseDeletedPropReleasePropReactions(GitHubModel):
-    """Reactions"""
-
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
+    runner_name: Union[Union[str, None], None] = Field(
+        description="The name of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
+    )
+    started_at: str = Field()
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field(
+        description="The current status of the job. Can be `queued`, `in_progress`, `waiting`, or `completed`."
+    )
+    head_branch: Union[Union[str, None], None] = Field(
+        description="The name of the current branch."
+    )
+    workflow_name: Union[Union[str, None], None] = Field(
+        description="The name of the workflow."
+    )
+    steps: List[WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps] = Field()
     url: str = Field()
 
 
-class WebhookReleaseDeletedPropReleasePropAssetsItems(GitHubModel):
-    """Release Asset
+class WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps(GitHubModel):
+    """WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps"""
 
-    Data related to a release.
-    """
-
-    browser_download_url: str = Field()
-    content_type: str = Field()
-    created_at: datetime = Field()
-    download_count: int = Field()
-    id: int = Field()
-    label: Union[str, None] = Field()
-    name: str = Field(description="The file name of the asset.")
-    node_id: str = Field()
-    size: int = Field()
-    state: Literal["uploaded"] = Field(description="State of the release asset.")
-    updated_at: datetime = Field()
-    uploader: Missing[
-        Union[WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploader, None]
-    ] = Field(default=UNSET, title="User")
-    url: str = Field()
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
+        Field()
+    )
+    name: str = Field()
+    number: int = Field()
+    started_at: Union[str, None] = Field()
+    status: Literal["in_progress", "completed", "queued"] = Field()
 
 
-class WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploader(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookReleaseDeleted)
-model_rebuild(WebhookReleaseDeletedPropRelease)
-model_rebuild(WebhookReleaseDeletedPropReleasePropAuthor)
-model_rebuild(WebhookReleaseDeletedPropReleasePropReactions)
-model_rebuild(WebhookReleaseDeletedPropReleasePropAssetsItems)
-model_rebuild(WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploader)
+model_rebuild(WebhookWorkflowJobCompleted)
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJob)
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps)
 
 __all__ = (
-    "WebhookReleaseDeleted",
-    "WebhookReleaseDeletedPropRelease",
-    "WebhookReleaseDeletedPropReleasePropAuthor",
-    "WebhookReleaseDeletedPropReleasePropReactions",
-    "WebhookReleaseDeletedPropReleasePropAssetsItems",
-    "WebhookReleaseDeletedPropReleasePropAssetsItemsPropUploader",
+    "WebhookWorkflowJobCompleted",
+    "WebhookWorkflowJobCompletedPropWorkflowJob",
+    "WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps",
 )

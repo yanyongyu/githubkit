@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union, Literal
 
 from pydantic import Field
@@ -17,7 +18,7 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0397 import Discussion
+from .group_0398 import Discussion
 from .group_0390 import EnterpriseWebhooks
 from .group_0391 import SimpleInstallation
 from .group_0393 import RepositoryWebhooks
@@ -25,11 +26,11 @@ from .group_0394 import SimpleUserWebhooks
 from .group_0392 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionCommentCreated(GitHubModel):
-    """discussion_comment created event"""
+class WebhookDiscussionAnswered(GitHubModel):
+    """discussion answered event"""
 
-    action: Literal["created"] = Field()
-    comment: WebhookDiscussionCommentCreatedPropComment = Field()
+    action: Literal["answered"] = Field()
+    answer: WebhookDiscussionAnsweredPropAnswer = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -58,8 +59,8 @@ class WebhookDiscussionCommentCreated(GitHubModel):
     )
 
 
-class WebhookDiscussionCommentCreatedPropComment(GitHubModel):
-    """WebhookDiscussionCommentCreatedPropComment"""
+class WebhookDiscussionAnsweredPropAnswer(GitHubModel):
+    """WebhookDiscussionAnsweredPropAnswer"""
 
     author_association: Literal[
         "COLLABORATOR",
@@ -76,23 +77,21 @@ class WebhookDiscussionCommentCreatedPropComment(GitHubModel):
     )
     body: str = Field()
     child_comment_count: int = Field()
-    created_at: str = Field()
+    created_at: datetime = Field()
     discussion_id: int = Field()
     html_url: str = Field()
     id: int = Field()
     node_id: str = Field()
-    parent_id: Union[int, None] = Field()
-    reactions: WebhookDiscussionCommentCreatedPropCommentPropReactions = Field(
-        title="Reactions"
+    parent_id: None = Field()
+    reactions: Missing[WebhookDiscussionAnsweredPropAnswerPropReactions] = Field(
+        default=UNSET, title="Reactions"
     )
     repository_url: str = Field()
-    updated_at: str = Field()
-    user: Union[WebhookDiscussionCommentCreatedPropCommentPropUser, None] = Field(
-        title="User"
-    )
+    updated_at: datetime = Field()
+    user: Union[WebhookDiscussionAnsweredPropAnswerPropUser, None] = Field(title="User")
 
 
-class WebhookDiscussionCommentCreatedPropCommentPropReactions(GitHubModel):
+class WebhookDiscussionAnsweredPropAnswerPropReactions(GitHubModel):
     """Reactions"""
 
     plus_one: int = Field(alias="+1")
@@ -107,7 +106,7 @@ class WebhookDiscussionCommentCreatedPropCommentPropReactions(GitHubModel):
     url: str = Field()
 
 
-class WebhookDiscussionCommentCreatedPropCommentPropUser(GitHubModel):
+class WebhookDiscussionAnsweredPropAnswerPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -133,14 +132,14 @@ class WebhookDiscussionCommentCreatedPropCommentPropUser(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookDiscussionCommentCreated)
-model_rebuild(WebhookDiscussionCommentCreatedPropComment)
-model_rebuild(WebhookDiscussionCommentCreatedPropCommentPropReactions)
-model_rebuild(WebhookDiscussionCommentCreatedPropCommentPropUser)
+model_rebuild(WebhookDiscussionAnswered)
+model_rebuild(WebhookDiscussionAnsweredPropAnswer)
+model_rebuild(WebhookDiscussionAnsweredPropAnswerPropReactions)
+model_rebuild(WebhookDiscussionAnsweredPropAnswerPropUser)
 
 __all__ = (
-    "WebhookDiscussionCommentCreated",
-    "WebhookDiscussionCommentCreatedPropComment",
-    "WebhookDiscussionCommentCreatedPropCommentPropReactions",
-    "WebhookDiscussionCommentCreatedPropCommentPropUser",
+    "WebhookDiscussionAnswered",
+    "WebhookDiscussionAnsweredPropAnswer",
+    "WebhookDiscussionAnsweredPropAnswerPropReactions",
+    "WebhookDiscussionAnsweredPropAnswerPropUser",
 )

@@ -24,10 +24,10 @@ from .group_0361 import SimpleUserWebhooks
 from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookInstallationNewPermissionsAccepted(GitHubModel):
-    """installation new_permissions_accepted event"""
+class WebhookInstallationDeleted(GitHubModel):
+    """installation deleted event"""
 
-    action: Literal["new_permissions_accepted"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,11 +39,11 @@ class WebhookInstallationNewPermissionsAccepted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repositories: Missing[
-        List[WebhookInstallationNewPermissionsAcceptedPropRepositoriesItems]
-    ] = Field(
-        default=UNSET,
-        description="An array of repository objects that the installation can access.",
+    repositories: Missing[List[WebhookInstallationDeletedPropRepositoriesItems]] = (
+        Field(
+            default=UNSET,
+            description="An array of repository objects that the installation can access.",
+        )
     )
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
@@ -57,8 +57,8 @@ class WebhookInstallationNewPermissionsAccepted(GitHubModel):
     )
 
 
-class WebhookInstallationNewPermissionsAcceptedPropRepositoriesItems(GitHubModel):
-    """WebhookInstallationNewPermissionsAcceptedPropRepositoriesItems"""
+class WebhookInstallationDeletedPropRepositoriesItems(GitHubModel):
+    """WebhookInstallationDeletedPropRepositoriesItems"""
 
     full_name: str = Field()
     id: int = Field(description="Unique identifier of the repository")
@@ -67,10 +67,10 @@ class WebhookInstallationNewPermissionsAcceptedPropRepositoriesItems(GitHubModel
     private: bool = Field(description="Whether the repository is private or public.")
 
 
-model_rebuild(WebhookInstallationNewPermissionsAccepted)
-model_rebuild(WebhookInstallationNewPermissionsAcceptedPropRepositoriesItems)
+model_rebuild(WebhookInstallationDeleted)
+model_rebuild(WebhookInstallationDeletedPropRepositoriesItems)
 
 __all__ = (
-    "WebhookInstallationNewPermissionsAccepted",
-    "WebhookInstallationNewPermissionsAcceptedPropRepositoriesItems",
+    "WebhookInstallationDeleted",
+    "WebhookInstallationDeletedPropRepositoriesItems",
 )

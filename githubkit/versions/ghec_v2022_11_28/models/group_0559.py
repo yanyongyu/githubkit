@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,122 +17,43 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0560 import WebhookIssuesMilestonedPropIssueAllof1PropMilestone
+from .group_0399 import MergeGroup
+from .group_0391 import SimpleInstallation
+from .group_0393 import RepositoryWebhooks
+from .group_0394 import SimpleUserWebhooks
+from .group_0392 import OrganizationSimpleWebhooks
 
 
-class WebhookIssuesMilestonedPropIssueAllof1(GitHubModel):
-    """WebhookIssuesMilestonedPropIssueAllof1"""
+class WebhookMergeGroupChecksRequested(GitHubModel):
+    """WebhookMergeGroupChecksRequested"""
 
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    assignee: Missing[
-        Union[WebhookIssuesMilestonedPropIssueAllof1PropAssignee, None]
-    ] = Field(default=UNSET)
-    assignees: Missing[
-        List[Union[WebhookIssuesMilestonedPropIssueAllof1PropAssigneesItems, None]]
-    ] = Field(default=UNSET)
-    author_association: Missing[str] = Field(default=UNSET)
-    body: Missing[Union[str, None]] = Field(default=UNSET)
-    closed_at: Missing[Union[str, None]] = Field(default=UNSET)
-    comments: Missing[int] = Field(default=UNSET)
-    comments_url: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    labels: Missing[
-        List[Union[WebhookIssuesMilestonedPropIssueAllof1PropLabelsItems, None]]
-    ] = Field(default=UNSET)
-    labels_url: Missing[str] = Field(default=UNSET)
-    locked: Missing[bool] = Field(default=UNSET)
-    milestone: WebhookIssuesMilestonedPropIssueAllof1PropMilestone = Field(
-        title="Milestone",
-        description="A collection of related issues and pull requests.",
+    action: Literal["checks_requested"] = Field()
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    node_id: Missing[str] = Field(default=UNSET)
-    number: Missing[int] = Field(default=UNSET)
-    performed_via_github_app: Missing[
-        Union[WebhookIssuesMilestonedPropIssueAllof1PropPerformedViaGithubApp, None]
-    ] = Field(default=UNSET)
-    reactions: Missing[WebhookIssuesMilestonedPropIssueAllof1PropReactions] = Field(
-        default=UNSET
+    merge_group: MergeGroup = Field(
+        title="Merge Group",
+        description="A group of pull requests that the merge queue has grouped together to be merged.\n",
     )
-    repository_url: Missing[str] = Field(default=UNSET)
-    state: Missing[str] = Field(default=UNSET)
-    timeline_url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user: Missing[WebhookIssuesMilestonedPropIssueAllof1PropUser] = Field(default=UNSET)
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
 
 
-class WebhookIssuesMilestonedPropIssueAllof1PropAssignee(GitHubModel):
-    """WebhookIssuesMilestonedPropIssueAllof1PropAssignee"""
+model_rebuild(WebhookMergeGroupChecksRequested)
 
-
-class WebhookIssuesMilestonedPropIssueAllof1PropAssigneesItems(GitHubModel):
-    """WebhookIssuesMilestonedPropIssueAllof1PropAssigneesItems"""
-
-
-class WebhookIssuesMilestonedPropIssueAllof1PropLabelsItems(GitHubModel):
-    """WebhookIssuesMilestonedPropIssueAllof1PropLabelsItems"""
-
-
-class WebhookIssuesMilestonedPropIssueAllof1PropPerformedViaGithubApp(GitHubModel):
-    """WebhookIssuesMilestonedPropIssueAllof1PropPerformedViaGithubApp"""
-
-
-class WebhookIssuesMilestonedPropIssueAllof1PropReactions(GitHubModel):
-    """WebhookIssuesMilestonedPropIssueAllof1PropReactions"""
-
-    plus_one: Missing[int] = Field(default=UNSET, alias="+1")
-    minus_one: Missing[int] = Field(default=UNSET, alias="-1")
-    confused: Missing[int] = Field(default=UNSET)
-    eyes: Missing[int] = Field(default=UNSET)
-    heart: Missing[int] = Field(default=UNSET)
-    hooray: Missing[int] = Field(default=UNSET)
-    laugh: Missing[int] = Field(default=UNSET)
-    rocket: Missing[int] = Field(default=UNSET)
-    total_count: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookIssuesMilestonedPropIssueAllof1PropUser(GitHubModel):
-    """WebhookIssuesMilestonedPropIssueAllof1PropUser"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookIssuesMilestonedPropIssueAllof1)
-model_rebuild(WebhookIssuesMilestonedPropIssueAllof1PropAssignee)
-model_rebuild(WebhookIssuesMilestonedPropIssueAllof1PropAssigneesItems)
-model_rebuild(WebhookIssuesMilestonedPropIssueAllof1PropLabelsItems)
-model_rebuild(WebhookIssuesMilestonedPropIssueAllof1PropPerformedViaGithubApp)
-model_rebuild(WebhookIssuesMilestonedPropIssueAllof1PropReactions)
-model_rebuild(WebhookIssuesMilestonedPropIssueAllof1PropUser)
-
-__all__ = (
-    "WebhookIssuesMilestonedPropIssueAllof1",
-    "WebhookIssuesMilestonedPropIssueAllof1PropAssignee",
-    "WebhookIssuesMilestonedPropIssueAllof1PropAssigneesItems",
-    "WebhookIssuesMilestonedPropIssueAllof1PropLabelsItems",
-    "WebhookIssuesMilestonedPropIssueAllof1PropPerformedViaGithubApp",
-    "WebhookIssuesMilestonedPropIssueAllof1PropReactions",
-    "WebhookIssuesMilestonedPropIssueAllof1PropUser",
-)
+__all__ = ("WebhookMergeGroupChecksRequested",)

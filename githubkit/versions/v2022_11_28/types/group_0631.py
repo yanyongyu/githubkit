@@ -12,20 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0368 import ProjectsV2ItemType
+from .group_0136 import RepositoryAdvisoryType
+from .group_0357 import EnterpriseWebhooksType
 from .group_0358 import SimpleInstallationType
+from .group_0360 import RepositoryWebhooksType
 from .group_0361 import SimpleUserWebhooksType
 from .group_0359 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ItemCreatedType(TypedDict):
-    """Projects v2 Item Created Event"""
+class WebhookRepositoryAdvisoryReportedType(TypedDict):
+    """Repository advisory reported event"""
 
-    action: Literal["created"]
+    action: Literal["reported"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
-    sender: SimpleUserWebhooksType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    repository_advisory: RepositoryAdvisoryType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookProjectsV2ItemCreatedType",)
+__all__ = ("WebhookRepositoryAdvisoryReportedType",)

@@ -9,34 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-
-class OrgsOrgHooksPostBodyType(TypedDict):
-    """OrgsOrgHooksPostBody"""
-
-    name: str
-    config: OrgsOrgHooksPostBodyPropConfigType
-    events: NotRequired[List[str]]
-    active: NotRequired[bool]
+from .group_0001 import SimpleUserType
 
 
-class OrgsOrgHooksPostBodyPropConfigType(TypedDict):
-    """OrgsOrgHooksPostBodyPropConfig
+class ReposOwnerRepoCodespacesNewGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200"""
 
-    Key/value pairs to provide settings for this webhook.
-    """
+    billable_owner: NotRequired[SimpleUserType]
+    defaults: NotRequired[ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType]
 
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    username: NotRequired[str]
-    password: NotRequired[str]
+
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
+
+    location: str
+    devcontainer_path: Union[str, None]
 
 
 __all__ = (
-    "OrgsOrgHooksPostBodyType",
-    "OrgsOrgHooksPostBodyPropConfigType",
+    "ReposOwnerRepoCodespacesNewGetResponse200Type",
+    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType",
 )

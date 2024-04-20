@@ -20,7 +20,7 @@ class RepositoryRulesetBypassActorType(TypedDict):
     """
 
     actor_id: int
-    actor_type: Literal["RepositoryRole", "Team", "Integration", "OrganizationAdmin"]
+    actor_type: Literal["Integration", "OrganizationAdmin", "RepositoryRole", "Team"]
     bypass_mode: Literal["always", "pull_request"]
 
 

@@ -9,13 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
-
-class GistsGistIdCommentsCommentIdPatchBodyType(TypedDict):
-    """GistsGistIdCommentsCommentIdPatchBody"""
-
-    body: str
+from .group_0176 import ActionsSecretType
 
 
-__all__ = ("GistsGistIdCommentsCommentIdPatchBodyType",)
+class ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
+
+    total_count: int
+    secrets: List[ActionsSecretType]
+
+
+__all__ = ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type",)

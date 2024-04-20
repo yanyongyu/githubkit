@@ -85,7 +85,7 @@ class GlobalAdvisory(GitHubModel):
     withdrawn_at: Union[datetime, None] = Field(
         description="The date and time of when the advisory was withdrawn, in ISO 8601 format."
     )
-    vulnerabilities: Union[List[GlobalAdvisoryPropVulnerabilitiesItems], None] = Field(
+    vulnerabilities: Union[List[Vulnerability], None] = Field(
         description="The products and respective version ranges affected by the advisory."
     )
     cvss: Union[GlobalAdvisoryPropCvss, None] = Field()
@@ -118,25 +118,29 @@ class GlobalAdvisoryPropCwesItems(GitHubModel):
     name: str = Field(description="The name of the CWE.")
 
 
-class GlobalAdvisoryPropVulnerabilitiesItems(GitHubModel):
-    """GlobalAdvisoryPropVulnerabilitiesItems"""
+class Vulnerability(GitHubModel):
+    """Vulnerability
 
-    package: Union[GlobalAdvisoryPropVulnerabilitiesItemsPropPackage, None] = Field(
+    A vulnerability describing the product and its affected versions within a GitHub
+    Security Advisory.
+    """
+
+    package: Union[VulnerabilityPropPackage, None] = Field(
         description="The name of the package affected by the vulnerability."
     )
     vulnerable_version_range: Union[str, None] = Field(
         description="The range of the package versions affected by the vulnerability."
     )
     first_patched_version: Union[str, None] = Field(
-        description="The package version that resolve the vulnerability."
+        description="The package version that resolves the vulnerability."
     )
     vulnerable_functions: Union[List[str], None] = Field(
         description="The functions in the package that are affected by the vulnerability."
     )
 
 
-class GlobalAdvisoryPropVulnerabilitiesItemsPropPackage(GitHubModel):
-    """GlobalAdvisoryPropVulnerabilitiesItemsPropPackage
+class VulnerabilityPropPackage(GitHubModel):
+    """VulnerabilityPropPackage
 
     The name of the package affected by the vulnerability.
     """
@@ -166,8 +170,8 @@ model_rebuild(GlobalAdvisory)
 model_rebuild(GlobalAdvisoryPropIdentifiersItems)
 model_rebuild(GlobalAdvisoryPropCvss)
 model_rebuild(GlobalAdvisoryPropCwesItems)
-model_rebuild(GlobalAdvisoryPropVulnerabilitiesItems)
-model_rebuild(GlobalAdvisoryPropVulnerabilitiesItemsPropPackage)
+model_rebuild(Vulnerability)
+model_rebuild(VulnerabilityPropPackage)
 
 __all__ = (
     "GlobalAdvisoryPropCreditsItems",
@@ -175,6 +179,6 @@ __all__ = (
     "GlobalAdvisoryPropIdentifiersItems",
     "GlobalAdvisoryPropCvss",
     "GlobalAdvisoryPropCwesItems",
-    "GlobalAdvisoryPropVulnerabilitiesItems",
-    "GlobalAdvisoryPropVulnerabilitiesItemsPropPackage",
+    "Vulnerability",
+    "VulnerabilityPropPackage",
 )

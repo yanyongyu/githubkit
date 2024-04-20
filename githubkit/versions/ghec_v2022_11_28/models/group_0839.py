@@ -11,24 +11,20 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0836 import (
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase,
-    WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead,
-)
+
+class OrgsOrgProjectsPostBody(GitHubModel):
+    """OrgsOrgProjectsPostBody"""
+
+    name: str = Field(description="The name of the project.")
+    body: Missing[str] = Field(
+        default=UNSET, description="The description of the project."
+    )
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequests(GitHubModel):
-    """WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequests"""
+model_rebuild(OrgsOrgProjectsPostBody)
 
-    base: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropBase = Field()
-    head: WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropPullRequestsItemsPropHead = Field()
-    id: float = Field()
-    number: float = Field()
-    url: str = Field()
-
-
-model_rebuild(WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequests)
-
-__all__ = ("WebhookWorkflowRunCompletedPropWorkflowRunMergedPullRequests",)
+__all__ = ("OrgsOrgProjectsPostBody",)

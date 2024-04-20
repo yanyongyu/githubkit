@@ -17,47 +17,45 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0390 import EnterpriseWebhooks
+from .group_0391 import SimpleInstallation
+from .group_0393 import RepositoryWebhooks
+from .group_0394 import SimpleUserWebhooks
+from .group_0392 import OrganizationSimpleWebhooks
+from .group_0405 import SecretScanningAlertWebhook
 
-class WebhookPullRequestOpenedPropPullRequestAllof1(GitHubModel):
-    """WebhookPullRequestOpenedPropPullRequestAllof1"""
 
-    allow_auto_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow auto-merge for pull requests."
-    )
-    allow_update_branch: Missing[bool] = Field(
+class WebhookSecretScanningAlertReopened(GitHubModel):
+    """secret_scanning_alert reopened event"""
+
+    action: Literal["reopened"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="Whether to allow updating the pull request's branch.",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
     )
-    delete_branch_on_merge: Missing[bool] = Field(
+    installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
-        description="Whether to delete head branches when pull requests are merged.",
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = Field(
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
-        description="The default value for a merge commit message.\n- `PR_TITLE` - default to the pull request's title.\n- `PR_BODY` - default to the pull request's body.\n- `BLANK` - default to a blank commit message.",
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    merge_commit_title: Missing[Literal["PR_TITLE", "MERGE_MESSAGE"]] = Field(
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: Missing[SimpleUserWebhooks] = Field(
         default=UNSET,
-        description="The default value for a merge commit title.\n- `PR_TITLE` - default to the pull request's title.\n- `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).",
-    )
-    squash_merge_commit_message: Missing[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ] = Field(
-        default=UNSET,
-        description="The default value for a squash merge commit message:\n- `PR_BODY` - default to the pull request's body.\n- `COMMIT_MESSAGES` - default to the branch's commit messages.\n- `BLANK` - default to a blank commit message.",
-    )
-    squash_merge_commit_title: Missing[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]] = (
-        Field(
-            default=UNSET,
-            description="The default value for a squash merge commit title:\n- `PR_TITLE` - default to the pull request's title.\n- `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).",
-        )
-    )
-    use_squash_pr_title_as_default: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.**",
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-model_rebuild(WebhookPullRequestOpenedPropPullRequestAllof1)
+model_rebuild(WebhookSecretScanningAlertReopened)
 
-__all__ = ("WebhookPullRequestOpenedPropPullRequestAllof1",)
+__all__ = ("WebhookSecretScanningAlertReopened",)

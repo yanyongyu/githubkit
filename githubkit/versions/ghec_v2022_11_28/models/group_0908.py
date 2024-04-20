@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 
 from pydantic import Field
 
@@ -18,26 +18,46 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsSecretsSecretNamePutBody(GitHubModel):
-    """OrgsOrgActionsSecretsSecretNamePutBody"""
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
 
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+    strict: Missing[bool] = Field(
+        default=UNSET, description="Require branches to be up to date before merging."
+    )
+    contexts: Missing[List[str]] = Field(
         default=UNSET,
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-organization-public-key) endpoint.",
+        description="**Deprecated**: The list of status checks to require in order to merge into this branch. If any of these checks have recently been set by a particular GitHub App, they will be required to come from that app in future for the branch to merge. Use `checks` instead of `contexts` for more fine-grained control.\n",
     )
-    key_id: Missing[str] = Field(
-        default=UNSET, description="ID of the key you used to encrypt the secret."
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret."
-    )
-    selected_repository_ids: Missing[List[int]] = Field(
+    checks: Missing[
+        List[
+            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems
+        ]
+    ] = Field(
         default=UNSET,
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
+        description="The list of status checks to require in order to merge into this branch.",
     )
 
 
-model_rebuild(OrgsOrgActionsSecretsSecretNamePutBody)
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksIte
+    ms
+    """
 
-__all__ = ("OrgsOrgActionsSecretsSecretNamePutBody",)
+    context: str = Field(description="The name of the required check")
+    app_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the GitHub App that must provide this check. Omit this field to automatically select the GitHub App that has recently provided this check, or any app if it was not set by a GitHub App. Pass -1 to explicitly allow any app to set the status.",
+    )
+
+
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems
+)
+
+__all__ = (
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems",
+)

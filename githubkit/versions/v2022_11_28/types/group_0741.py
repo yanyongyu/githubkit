@@ -9,25 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1Type(TypedDict):
-    """WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1"""
+class OrgsOrgActionsVariablesNamePatchBodyType(TypedDict):
+    """OrgsOrgActionsVariablesNamePatchBody"""
 
-    affected_package_name: NotRequired[str]
-    affected_range: NotRequired[str]
-    created_at: NotRequired[str]
-    external_identifier: NotRequired[str]
-    external_reference: NotRequired[Union[str, None]]
-    fixed_in: NotRequired[str]
-    ghsa_id: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    number: NotRequired[int]
-    severity: NotRequired[str]
-    state: Literal["open"]
+    name: NotRequired[str]
+    value: NotRequired[str]
+    visibility: NotRequired[Literal["all", "private", "selected"]]
+    selected_repository_ids: NotRequired[List[int]]
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof1Type",)
+__all__ = ("OrgsOrgActionsVariablesNamePatchBodyType",)

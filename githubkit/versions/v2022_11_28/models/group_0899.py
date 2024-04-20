@@ -13,21 +13,33 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0091 import OrgCustomProperty
+from .group_0240 import CustomDeploymentRuleApp
 
 
-class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
-    """OrgsOrgPropertiesSchemaPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
+    """
 
-    properties: List[OrgCustomProperty] = Field(
-        max_length=100,
-        min_length=1,
-        description="The array of custom properties to create or update.",
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of custom deployment protection rule integrations available for this environment.",
     )
+    available_custom_deployment_protection_rule_integrations: Missing[
+        List[CustomDeploymentRuleApp]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200
+)
 
-__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)
+__all__ = (
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200",
+)

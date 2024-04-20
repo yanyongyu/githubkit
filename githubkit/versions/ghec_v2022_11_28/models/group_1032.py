@@ -9,25 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody"""
 
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: List[str] = Field(description="The slug values for teams")
+    message: str = Field(
+        description="The message for the pull request review dismissal"
+    )
+    event: Missing[Literal["DISMISS"]] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0)
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody)
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody",)

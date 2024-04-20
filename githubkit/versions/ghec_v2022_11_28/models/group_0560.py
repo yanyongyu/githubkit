@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,65 +17,47 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class WebhookIssuesMilestonedPropIssueAllof1PropMilestone(GitHubModel):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[datetime, None] = Field()
-    closed_issues: int = Field()
-    created_at: datetime = Field()
-    creator: Union[
-        WebhookIssuesMilestonedPropIssueAllof1PropMilestonePropCreator, None
-    ] = Field(title="User")
-    description: Union[str, None] = Field()
-    due_on: Union[datetime, None] = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    open_issues: int = Field()
-    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
-    title: str = Field(description="The title of the milestone.")
-    updated_at: datetime = Field()
-    url: str = Field()
+from .group_0399 import MergeGroup
+from .group_0391 import SimpleInstallation
+from .group_0393 import RepositoryWebhooks
+from .group_0394 import SimpleUserWebhooks
+from .group_0392 import OrganizationSimpleWebhooks
 
 
-class WebhookIssuesMilestonedPropIssueAllof1PropMilestonePropCreator(GitHubModel):
-    """User"""
+class WebhookMergeGroupDestroyed(GitHubModel):
+    """WebhookMergeGroupDestroyed"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
+    action: Literal["destroyed"] = Field()
+    reason: Missing[Literal["merged", "invalidated", "dequeued"]] = Field(
+        default=UNSET,
+        description="Explains why the merge group is being destroyed. The group could have been merged, removed from the queue (dequeued), or invalidated by an earlier queue entry being dequeued (invalidated).",
     )
-    url: Missing[str] = Field(default=UNSET)
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    merge_group: MergeGroup = Field(
+        title="Merge Group",
+        description="A group of pull requests that the merge queue has grouped together to be merged.\n",
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
 
 
-model_rebuild(WebhookIssuesMilestonedPropIssueAllof1PropMilestone)
-model_rebuild(WebhookIssuesMilestonedPropIssueAllof1PropMilestonePropCreator)
+model_rebuild(WebhookMergeGroupDestroyed)
 
-__all__ = (
-    "WebhookIssuesMilestonedPropIssueAllof1PropMilestone",
-    "WebhookIssuesMilestonedPropIssueAllof1PropMilestonePropCreator",
-)
+__all__ = ("WebhookMergeGroupDestroyed",)

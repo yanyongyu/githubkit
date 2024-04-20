@@ -9,26 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0811 import (
-    WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase,
-    WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead,
-)
+
+class ProjectsProjectIdDeleteResponse403(GitHubModel):
+    """ProjectsProjectIdDeleteResponse403"""
+
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[List[str]] = Field(default=UNSET)
 
 
-class WebhookWorkflowRunInProgressPropWorkflowRunMergedPullRequests(GitHubModel):
-    """WebhookWorkflowRunInProgressPropWorkflowRunMergedPullRequests"""
+model_rebuild(ProjectsProjectIdDeleteResponse403)
 
-    base: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropBase = Field()
-    head: WebhookWorkflowRunInProgressPropWorkflowRunAllof0PropPullRequestsItemsPropHead = Field()
-    id: float = Field()
-    number: float = Field()
-    url: str = Field()
-
-
-model_rebuild(WebhookWorkflowRunInProgressPropWorkflowRunMergedPullRequests)
-
-__all__ = ("WebhookWorkflowRunInProgressPropWorkflowRunMergedPullRequests",)
+__all__ = ("ProjectsProjectIdDeleteResponse403",)

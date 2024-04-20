@@ -13,32 +13,25 @@ from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploaderType(
-    TypedDict
-):
-    """User"""
+class GistsPostBodyType(TypedDict):
+    """GistsPostBody"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesType
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
 
 
-__all__ = ("WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploaderType",)
+class GistsPostBodyPropFilesType(TypedDict):
+    """GistsPostBodyPropFiles
+
+    Names and content for the files that make up the gist
+
+    Examples:
+        {'hello.rb': {'content': 'puts "Hello, World!"'}}
+    """
+
+
+__all__ = (
+    "GistsPostBodyType",
+    "GistsPostBodyPropFilesType",
+)

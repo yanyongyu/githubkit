@@ -13,16 +13,10 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBody"""
+class TeamsTeamIdReposOwnerRepoPutBodyType(TypedDict):
+    """TeamsTeamIdReposOwnerRepoPutBody"""
 
-    state: Literal["dismissed", "open"]
-    dismissed_reason: NotRequired[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ]
-    dismissed_comment: NotRequired[str]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
 
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType",)
+__all__ = ("TeamsTeamIdReposOwnerRepoPutBodyType",)

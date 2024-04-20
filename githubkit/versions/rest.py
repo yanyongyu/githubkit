@@ -56,7 +56,6 @@ class RestVersionSwitcher(_VersionProxy):
 
     @overload
     def __call__(self, version: Literal["2022-11-28"]) -> "V20221128RestNamespace": ...
-
     @overload
     def __call__(
         self, version: Literal["ghec-2022-11-28"]

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0390 import EnterpriseWebhooksType
@@ -19,108 +20,64 @@ from .group_0394 import SimpleUserWebhooksType
 from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookMarketplacePurchasePurchasedType(TypedDict):
-    """marketplace_purchase purchased event"""
+class WebhookProjectReopenedType(TypedDict):
+    """project reopened event"""
 
-    action: Literal["purchased"]
-    effective_date: str
+    action: Literal["reopened"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[
-        WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchaseType
-    ]
+    project: WebhookProjectReopenedPropProjectType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
 
 
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseType(TypedDict):
-    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchase"""
+class WebhookProjectReopenedPropProjectType(TypedDict):
+    """Project"""
 
-    account: WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedAccountType
-    billing_cycle: str
-    free_trial_ends_on: Union[Union[str, None], None]
-    next_billing_date: Union[Union[str, None], None]
-    on_free_trial: bool
-    plan: WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedPlanType
-    unit_count: int
+    body: Union[str, None]
+    columns_url: str
+    created_at: datetime
+    creator: Union[WebhookProjectReopenedPropProjectPropCreatorType, None]
+    html_url: str
+    id: int
+    name: str
+    node_id: str
+    number: int
+    owner_url: str
+    state: Literal["open", "closed"]
+    updated_at: datetime
+    url: str
 
 
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedAccount"""
+class WebhookProjectReopenedPropProjectPropCreatorType(TypedDict):
+    """User"""
 
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
     id: int
     login: str
-    node_id: str
-    organization_billing_email: Union[Union[str, None], None]
-    type: str
-
-
-class WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedPlan"""
-
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[Union[str, None], None]
-    yearly_price_in_cents: int
-
-
-class WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase"""
-
-    account: WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropAccountType
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropPlanType
-    unit_count: int
-
-
-class WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropAccount"""
-
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropPlan"""
-
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookMarketplacePurchasePurchasedType",
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseType",
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedAccountType",
-    "WebhookMarketplacePurchasePurchasedPropMarketplacePurchaseMergedPlanType",
-    "WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchaseType",
-    "WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropAccountType",
-    "WebhookMarketplacePurchasePurchasedPropPreviousMarketplacePurchasePropPlanType",
+    "WebhookProjectReopenedType",
+    "WebhookProjectReopenedPropProjectType",
+    "WebhookProjectReopenedPropProjectPropCreatorType",
 )

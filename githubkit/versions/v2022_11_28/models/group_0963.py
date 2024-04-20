@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,218 +18,45 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionPutBody(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionPutBody"""
+class ReposOwnerRepoPullsPullNumberCommentsPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
 
-    required_status_checks: Union[
-        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks, None
-    ] = Field(
-        description="Require status checks to pass before merging. Set to `null` to disable."
+    body: str = Field(description="The text of the review comment.")
+    commit_id: str = Field(
+        description="The SHA of the commit needing a comment. Not using the latest commit SHA may render your comment outdated if a subsequent commit modifies the line you specify as the `position`."
     )
-    enforce_admins: Union[bool, None] = Field(
-        description="Enforce all configured restrictions for administrators. Set to `true` to enforce required status checks for repository administrators. Set to `null` to disable."
+    path: str = Field(
+        description="The relative path to the file that necessitates a comment."
     )
-    required_pull_request_reviews: Union[
-        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews,
-        None,
-    ] = Field(
-        description="Require at least one approving review on a pull request, before merging. Set to `null` to disable."
-    )
-    restrictions: Union[
-        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions, None
-    ] = Field(
-        description="Restrict who can push to the protected branch. User, app, and team `restrictions` are only available for organization-owned repositories. Set to `null` to disable."
-    )
-    required_linear_history: Missing[bool] = Field(
+    position: Missing[int] = Field(
         default=UNSET,
-        description='Enforces a linear commit Git history, which prevents anyone from pushing merge commits to a branch. Set to `true` to enforce a linear commit history. Set to `false` to disable a linear commit Git history. Your repository must allow squash merging or rebase merging before you can enable a linear commit history. Default: `false`. For more information, see "[Requiring a linear commit history](https://docs.github.com/github/administering-a-repository/requiring-a-linear-commit-history)" in the GitHub Help documentation.',
+        description='**This parameter is deprecated. Use `line` instead**. The position in the diff where you want to add a review comment. Note this value is not the same as the line number in the file. The position value equals the number of lines down from the first "@@" hunk header in the file you want to add a comment. The line just below the "@@" line is position 1, the next line is position 2, and so on. The position in the diff continues to increase through lines of whitespace and additional hunks until the beginning of a new file.',
     )
-    allow_force_pushes: Missing[Union[bool, None]] = Field(
+    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
         default=UNSET,
-        description='Permits force pushes to the protected branch by anyone with write access to the repository. Set to `true` to allow force pushes. Set to `false` or `null` to block force pushes. Default: `false`. For more information, see "[Enabling force pushes to a protected branch](https://docs.github.com/github/administering-a-repository/enabling-force-pushes-to-a-protected-branch)" in the GitHub Help documentation."',
+        description='In a split diff view, the side of the diff that the pull request\'s changes appear on. Can be `LEFT` or `RIGHT`. Use `LEFT` for deletions that appear in red. Use `RIGHT` for additions that appear in green or unchanged lines that appear in white and are shown for context. For a multi-line comment, side represents whether the last line of the comment range is a deletion or addition. For more information, see "[Diff view options](https://docs.github.com/articles/about-comparing-branches-in-pull-requests#diff-view-options)" in the GitHub Help documentation.',
     )
-    allow_deletions: Missing[bool] = Field(
+    line: Missing[int] = Field(
         default=UNSET,
-        description='Allows deletion of the protected branch by anyone with write access to the repository. Set to `false` to prevent deletion of the protected branch. Default: `false`. For more information, see "[Enabling force pushes to a protected branch](https://docs.github.com/github/administering-a-repository/enabling-force-pushes-to-a-protected-branch)" in the GitHub Help documentation.',
+        description="**Required unless using `subject_type:file`**. The line of the blob in the pull request diff that the comment applies to. For a multi-line comment, the last line of the range that your comment applies to.",
     )
-    block_creations: Missing[bool] = Field(
+    start_line: Missing[int] = Field(
         default=UNSET,
-        description="If set to `true`, the `restrictions` branch protection settings which limits who can push will also block pushes which create new branches, unless the push is initiated by a user, team, or app which has the ability to push. Set to `true` to restrict new branch creation. Default: `false`.",
+        description='**Required when using multi-line comments unless using `in_reply_to`**. The `start_line` is the first line in the pull request diff that your multi-line comment applies to. To learn more about multi-line comments, see "[Commenting on a pull request](https://docs.github.com/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the GitHub Help documentation.',
     )
-    required_conversation_resolution: Missing[bool] = Field(
+    start_side: Missing[Literal["LEFT", "RIGHT", "side"]] = Field(
         default=UNSET,
-        description="Requires all conversations on code to be resolved before a pull request can be merged into a branch that matches this rule. Set to `false` to disable. Default: `false`.",
+        description='**Required when using multi-line comments unless using `in_reply_to`**. The `start_side` is the starting side of the diff that the comment applies to. Can be `LEFT` or `RIGHT`. To learn more about multi-line comments, see "[Commenting on a pull request](https://docs.github.com/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the GitHub Help documentation. See `side` in this table for additional context.',
     )
-    lock_branch: Missing[bool] = Field(
+    in_reply_to: Missing[int] = Field(
         default=UNSET,
-        description="Whether to set the branch as read-only. If this is true, users will not be able to push to the branch. Default: `false`.",
+        description='The ID of the review comment to reply to. To find the ID of a review comment with ["List review comments on a pull request"](#list-review-comments-on-a-pull-request). When specified, all parameters other than `body` in the request body are ignored.',
     )
-    allow_fork_syncing: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing. Default: `false`.",
-    )
-
-
-class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks
-
-    Require status checks to pass before merging. Set to `null` to disable.
-    """
-
-    strict: bool = Field(
-        description="Require branches to be up to date before merging."
-    )
-    contexts: List[str] = Field(
-        description="**Deprecated**: The list of status checks to require in order to merge into this branch. If any of these checks have recently been set by a particular GitHub App, they will be required to come from that app in future for the branch to merge. Use `checks` instead of `contexts` for more fine-grained control.\n"
-    )
-    checks: Missing[
-        List[
-            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The list of status checks to require in order to merge into this branch.",
+    subject_type: Missing[Literal["line", "file"]] = Field(
+        default=UNSET, description="The level at which the comment is targeted."
     )
 
 
-class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksI
-    tems
-    """
+model_rebuild(ReposOwnerRepoPullsPullNumberCommentsPostBody)
 
-    context: str = Field(description="The name of the required check")
-    app_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the GitHub App that must provide this check. Omit this field to automatically select the GitHub App that has recently provided this check, or any app if it was not set by a GitHub App. Pass -1 to explicitly allow any app to set the status.",
-    )
-
-
-class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews
-
-    Require at least one approving review on a pull request, before merging. Set to
-    `null` to disable.
-    """
-
-    dismissal_restrictions: Missing[
-        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions
-    ] = Field(
-        default=UNSET,
-        description="Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.",
-    )
-    dismiss_stale_reviews: Missing[bool] = Field(
-        default=UNSET,
-        description="Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new commit.",
-    )
-    require_code_owner_reviews: Missing[bool] = Field(
-        default=UNSET,
-        description="Blocks merging pull requests until [code owners](https://docs.github.com/articles/about-code-owners/) review them.",
-    )
-    required_approving_review_count: Missing[int] = Field(
-        default=UNSET,
-        description="Specify the number of reviewers required to approve pull requests. Use a number between 1 and 6 or 0 to not require reviewers.",
-    )
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it. Default: `false`.",
-    )
-    bypass_pull_request_allowances: Missing[
-        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
-    ] = Field(
-        default=UNSET,
-        description="Allow specific users, teams, or apps to bypass pull request requirements.",
-    )
-
-
-class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropD
-    ismissalRestrictions
-
-    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
-    empty `dismissal_restrictions` object to disable. User and team
-    `dismissal_restrictions` are only available for organization-owned repositories.
-    Omit this parameter for personal repositories.
-    """
-
-    users: Missing[List[str]] = Field(
-        default=UNSET, description="The list of user `login`s with dismissal access"
-    )
-    teams: Missing[List[str]] = Field(
-        default=UNSET, description="The list of team `slug`s with dismissal access"
-    )
-    apps: Missing[List[str]] = Field(
-        default=UNSET, description="The list of app `slug`s with dismissal access"
-    )
-
-
-class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropB
-    ypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
-    """
-
-    users: Missing[List[str]] = Field(
-        default=UNSET,
-        description="The list of user `login`s allowed to bypass pull request requirements.",
-    )
-    teams: Missing[List[str]] = Field(
-        default=UNSET,
-        description="The list of team `slug`s allowed to bypass pull request requirements.",
-    )
-    apps: Missing[List[str]] = Field(
-        default=UNSET,
-        description="The list of app `slug`s allowed to bypass pull request requirements.",
-    )
-
-
-class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions
-
-    Restrict who can push to the protected branch. User, app, and team
-    `restrictions` are only available for organization-owned repositories. Set to
-    `null` to disable.
-    """
-
-    users: List[str] = Field(description="The list of user `login`s with push access")
-    teams: List[str] = Field(description="The list of team `slug`s with push access")
-    apps: Missing[List[str]] = Field(
-        default=UNSET, description="The list of app `slug`s with push access"
-    )
-
-
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionPutBody)
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks)
-model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems
-)
-model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews
-)
-model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions
-)
-model_rebuild(
-    ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
-)
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions)
-
-__all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionPutBody",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions",
-)
+__all__ = ("ReposOwnerRepoPullsPullNumberCommentsPostBody",)

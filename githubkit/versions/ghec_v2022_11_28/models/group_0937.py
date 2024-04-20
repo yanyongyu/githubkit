@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -17,48 +17,31 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
 
-class OrgsOrgHooksPostBody(GitHubModel):
-    """OrgsOrgHooksPostBody"""
 
-    name: str = Field(description='Must be passed as "web".')
-    config: OrgsOrgHooksPostBodyPropConfig = Field(
-        description="Key/value pairs to provide settings for this webhook."
+class ReposOwnerRepoCodespacesNewGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesNewGetResponse200"""
+
+    billable_owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
-    events: Missing[List[str]] = Field(
-        default=UNSET,
-        description='Determines what [events](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads) the hook is triggered for. Set to `["*"]` to receive all possible events.',
-    )
-    active: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+    defaults: Missing[ReposOwnerRepoCodespacesNewGetResponse200PropDefaults] = Field(
+        default=UNSET
     )
 
 
-class OrgsOrgHooksPostBodyPropConfig(GitHubModel):
-    """OrgsOrgHooksPostBodyPropConfig
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaults(GitHubModel):
+    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
 
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: str = Field(description="The URL to which the payloads will be delivered.")
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
-    )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
-    username: Missing[str] = Field(default=UNSET)
-    password: Missing[str] = Field(default=UNSET)
+    location: str = Field()
+    devcontainer_path: Union[str, None] = Field()
 
 
-model_rebuild(OrgsOrgHooksPostBody)
-model_rebuild(OrgsOrgHooksPostBodyPropConfig)
+model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200)
+model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200PropDefaults)
 
 __all__ = (
-    "OrgsOrgHooksPostBody",
-    "OrgsOrgHooksPostBodyPropConfig",
+    "ReposOwnerRepoCodespacesNewGetResponse200",
+    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaults",
 )

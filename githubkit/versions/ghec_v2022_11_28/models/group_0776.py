@@ -9,48 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0778 import (
-    WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisser,
+
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200(GitHubModel):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+
+    total_count: int = Field()
+    repository_cache_usages: List[ActionsCacheUsageByRepository] = Field()
+
+
+class ActionsCacheUsageByRepository(GitHubModel):
+    """Actions Cache Usage by repository
+
+    GitHub Actions Cache Usage by repository.
+    """
+
+    full_name: str = Field(
+        description="The repository owner and name for the cache usage being shown."
+    )
+    active_caches_size_in_bytes: int = Field(
+        description="The sum of the size in bytes of all the active cache items in the repository."
+    )
+    active_caches_count: int = Field(
+        description="The number of active caches in the repository."
+    )
+
+
+model_rebuild(OrgsOrgActionsCacheUsageByRepositoryGetResponse200)
+model_rebuild(ActionsCacheUsageByRepository)
+
+__all__ = (
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
+    "ActionsCacheUsageByRepository",
 )
-
-
-class WebhookRepositoryVulnerabilityAlertDismissPropAlert(GitHubModel):
-    """WebhookRepositoryVulnerabilityAlertDismissPropAlert"""
-
-    affected_package_name: str = Field()
-    affected_range: str = Field()
-    created_at: str = Field()
-    dismiss_comment: Missing[Union[Union[str, None], None]] = Field(default=UNSET)
-    dismiss_reason: str = Field()
-    dismissed_at: str = Field()
-    dismisser: Union[
-        Union[
-            WebhookRepositoryVulnerabilityAlertDismissPropAlertAllof0PropDismisser, None
-        ],
-        None,
-    ] = Field(title="User")
-    external_identifier: str = Field()
-    external_reference: Union[Union[str, None], None] = Field()
-    fix_reason: Missing[str] = Field(default=UNSET)
-    fixed_at: Missing[datetime] = Field(default=UNSET)
-    fixed_in: Missing[str] = Field(default=UNSET)
-    ghsa_id: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    number: int = Field()
-    severity: str = Field()
-    state: Literal["dismissed"] = Field()
-
-
-model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlert)
-
-__all__ = ("WebhookRepositoryVulnerabilityAlertDismissPropAlert",)

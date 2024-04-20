@@ -13,19 +13,19 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
+class ProjectsProjectIdPatchResponse403(GitHubModel):
+    """ProjectsProjectIdPatchResponse403"""
 
-    labels: List[str] = Field(
-        max_length=100,
-        min_length=1,
-        description="The names of the custom labels to add to the runner.",
-    )
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[List[str]] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody)
+model_rebuild(ProjectsProjectIdPatchResponse403)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody",)
+__all__ = ("ProjectsProjectIdPatchResponse403",)

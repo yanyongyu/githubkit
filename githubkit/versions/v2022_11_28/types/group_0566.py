@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0357 import EnterpriseWebhooksType
@@ -17,78 +18,50 @@ from .group_0358 import SimpleInstallationType
 from .group_0360 import RepositoryWebhooksType
 from .group_0361 import SimpleUserWebhooksType
 from .group_0359 import OrganizationSimpleWebhooksType
-from .group_0567 import (
-    WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType,
-)
 
 
-class WebhookMarketplacePurchasePendingChangeCancelledType(TypedDict):
-    """marketplace_purchase pending_change_cancelled event"""
+class WebhookProjectColumnEditedType(TypedDict):
+    """project_column edited event"""
 
-    action: Literal["pending_change_cancelled"]
-    effective_date: str
+    action: Literal["edited"]
+    changes: WebhookProjectColumnEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: (
-        WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType
-    )
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[
-        WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchaseType
-    ]
+    project_column: WebhookProjectColumnEditedPropProjectColumnType
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-class WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchaseType(
-    TypedDict
-):
-    """Marketplace Purchase"""
+class WebhookProjectColumnEditedPropProjectColumnType(TypedDict):
+    """Project Column"""
 
-    account: WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropAccountType
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropPlanType
-    unit_count: int
-
-
-class WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchaseP
-    ropAccount
-    """
-
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
+    created_at: datetime
     id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchaseP
-    ropPlan
-    """
-
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
     name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    node_id: str
+    project_url: str
+    updated_at: datetime
+    url: str
+
+
+class WebhookProjectColumnEditedPropChangesType(TypedDict):
+    """WebhookProjectColumnEditedPropChanges"""
+
+    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameType]
+
+
+class WebhookProjectColumnEditedPropChangesPropNameType(TypedDict):
+    """WebhookProjectColumnEditedPropChangesPropName"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookMarketplacePurchasePendingChangeCancelledType",
-    "WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchaseType",
-    "WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropAccountType",
-    "WebhookMarketplacePurchasePendingChangeCancelledPropPreviousMarketplacePurchasePropPlanType",
+    "WebhookProjectColumnEditedType",
+    "WebhookProjectColumnEditedPropProjectColumnType",
+    "WebhookProjectColumnEditedPropChangesType",
+    "WebhookProjectColumnEditedPropChangesPropNameType",
 )

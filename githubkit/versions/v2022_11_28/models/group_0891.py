@@ -11,21 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
+class ReposOwnerRepoDependencyGraphSnapshotsPostResponse201(GitHubModel):
+    """ReposOwnerRepoDependencyGraphSnapshotsPostResponse201"""
 
-    async_: Missing[bool] = Field(
-        default=UNSET,
-        alias="async",
-        description="When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued.",
+    id: int = Field(description="ID of the created snapshot.")
+    created_at: str = Field(description="The time at which the snapshot was created.")
+    result: str = Field(
+        description='Either "SUCCESS", "ACCEPTED", or "INVALID". "SUCCESS" indicates that the snapshot was successfully created and the repository\'s dependencies were updated. "ACCEPTED" indicates that the snapshot was successfully created, but the repository\'s dependencies were not updated. "INVALID" indicates that the snapshot was malformed.'
+    )
+    message: str = Field(
+        description="A message providing further details about the result, such as why the dependencies were not updated."
     )
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutBody)
+model_rebuild(ReposOwnerRepoDependencyGraphSnapshotsPostResponse201)
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBody",)
+__all__ = ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201",)

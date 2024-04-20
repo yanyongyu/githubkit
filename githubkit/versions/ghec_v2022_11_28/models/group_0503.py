@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -18,92 +17,93 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0502 import (
-    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
-)
+
+class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner(
+    GitHubModel
+):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp(GitHubModel):
-    """App
+class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions(
+    GitHubModel
+):
+    """WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermission
+    s
 
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
+    The set of permissions for the GitHub app
     """
 
-    created_at: Union[datetime, None] = Field()
-    description: Union[str, None] = Field()
-    events: Missing[
-        List[
-            Literal[
-                "branch_protection_rule",
-                "check_run",
-                "check_suite",
-                "code_scanning_alert",
-                "commit_comment",
-                "content_reference",
-                "create",
-                "delete",
-                "deployment",
-                "deployment_review",
-                "deployment_status",
-                "deploy_key",
-                "discussion",
-                "discussion_comment",
-                "fork",
-                "gollum",
-                "issues",
-                "issue_comment",
-                "label",
-                "member",
-                "membership",
-                "milestone",
-                "organization",
-                "org_block",
-                "page_build",
-                "project",
-                "project_card",
-                "project_column",
-                "public",
-                "pull_request",
-                "pull_request_review",
-                "pull_request_review_comment",
-                "push",
-                "registry_package",
-                "release",
-                "repository",
-                "repository_dispatch",
-                "secret_scanning_alert",
-                "star",
-                "status",
-                "team",
-                "team_add",
-                "watch",
-                "workflow_dispatch",
-                "workflow_run",
-            ]
-        ]
-    ] = Field(default=UNSET, description="The list of events for the GitHub app")
-    external_url: Union[str, None] = Field()
-    html_url: str = Field()
-    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
-    name: str = Field(description="The name of the GitHub app")
-    node_id: str = Field()
-    owner: Union[
-        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-        None,
-    ] = Field(title="User")
-    permissions: Missing[
-        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
-    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
-    slug: Missing[str] = Field(
-        default=UNSET, description="The slug name of the GitHub app"
+    actions: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    administration: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    checks: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    content_references: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    contents: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    deployments: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    emails: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    environments: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    issues: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    keys: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    members: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    metadata: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_administration: Missing[Literal["read", "write"]] = Field(
+        default=UNSET
     )
-    updated_at: Union[datetime, None] = Field()
+    organization_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_plan: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    organization_self_hosted_runners: Missing[Literal["read", "write"]] = Field(
+        default=UNSET
+    )
+    organization_user_blocking: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    packages: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    pages: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    pull_requests: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    repository_hooks: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    repository_projects: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    secret_scanning_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    secrets: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    security_events: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    security_scanning_alert: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    single_file: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    statuses: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    team_discussions: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    vulnerability_alerts: Missing[Literal["read", "write"]] = Field(default=UNSET)
+    workflows: Missing[Literal["read", "write"]] = Field(default=UNSET)
 
 
-model_rebuild(WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp)
+model_rebuild(
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner
+)
+model_rebuild(
+    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+)
 
-__all__ = ("WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubApp",)
+__all__ = (
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwner",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissions",
+)

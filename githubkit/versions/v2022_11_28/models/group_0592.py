@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -21,13 +21,17 @@ from .group_0357 import EnterpriseWebhooks
 from .group_0358 import SimpleInstallation
 from .group_0360 import RepositoryWebhooks
 from .group_0361 import SimpleUserWebhooks
+from .group_0370 import PullRequestWebhook
 from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookOrganizationMemberRemoved(GitHubModel):
-    """organization member_removed event"""
+class WebhookPullRequestEdited(GitHubModel):
+    """pull_request edited event"""
 
-    action: Literal["member_removed"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookPullRequestEditedPropChanges = Field(
+        description="The changes to the comment if the action was `edited`."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -38,73 +42,86 @@ class WebhookOrganizationMemberRemoved(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    membership: WebhookOrganizationMemberRemovedPropMembership = Field(
-        title="Membership",
-        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
-    )
-    organization: OrganizationSimpleWebhooks = Field(
+    number: int = Field(description="The pull request number.")
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    pull_request: PullRequestWebhook = Field()
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookOrganizationMemberRemovedPropMembership(GitHubModel):
-    """Membership
+class WebhookPullRequestEditedPropChanges(GitHubModel):
+    """WebhookPullRequestEditedPropChanges
 
-    The membership between the user and the organization. Not present when the
-    action is `member_invited`.
+    The changes to the comment if the action was `edited`.
     """
 
-    organization_url: str = Field()
-    role: str = Field()
-    state: str = Field()
-    url: str = Field()
-    user: Union[WebhookOrganizationMemberRemovedPropMembershipPropUser, None] = Field(
-        title="User"
+    base: Missing[WebhookPullRequestEditedPropChangesPropBase] = Field(default=UNSET)
+    body: Missing[WebhookPullRequestEditedPropChangesPropBody] = Field(default=UNSET)
+    title: Missing[WebhookPullRequestEditedPropChangesPropTitle] = Field(default=UNSET)
+
+
+class WebhookPullRequestEditedPropChangesPropBody(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropBody"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the body if the action was `edited`.",
     )
 
 
-class WebhookOrganizationMemberRemovedPropMembershipPropUser(GitHubModel):
-    """User"""
+class WebhookPullRequestEditedPropChangesPropTitle(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropTitle"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the title if the action was `edited`.",
+    )
 
 
-model_rebuild(WebhookOrganizationMemberRemoved)
-model_rebuild(WebhookOrganizationMemberRemovedPropMembership)
-model_rebuild(WebhookOrganizationMemberRemovedPropMembershipPropUser)
+class WebhookPullRequestEditedPropChangesPropBase(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropBase"""
+
+    ref: WebhookPullRequestEditedPropChangesPropBasePropRef = Field()
+    sha: WebhookPullRequestEditedPropChangesPropBasePropSha = Field()
+
+
+class WebhookPullRequestEditedPropChangesPropBasePropRef(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropBasePropRef"""
+
+    from_: str = Field(alias="from")
+
+
+class WebhookPullRequestEditedPropChangesPropBasePropSha(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropBasePropSha"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookPullRequestEdited)
+model_rebuild(WebhookPullRequestEditedPropChanges)
+model_rebuild(WebhookPullRequestEditedPropChangesPropBody)
+model_rebuild(WebhookPullRequestEditedPropChangesPropTitle)
+model_rebuild(WebhookPullRequestEditedPropChangesPropBase)
+model_rebuild(WebhookPullRequestEditedPropChangesPropBasePropRef)
+model_rebuild(WebhookPullRequestEditedPropChangesPropBasePropSha)
 
 __all__ = (
-    "WebhookOrganizationMemberRemoved",
-    "WebhookOrganizationMemberRemovedPropMembership",
-    "WebhookOrganizationMemberRemovedPropMembershipPropUser",
+    "WebhookPullRequestEdited",
+    "WebhookPullRequestEditedPropChanges",
+    "WebhookPullRequestEditedPropChangesPropBody",
+    "WebhookPullRequestEditedPropChangesPropTitle",
+    "WebhookPullRequestEditedPropChangesPropBase",
+    "WebhookPullRequestEditedPropChangesPropBasePropRef",
+    "WebhookPullRequestEditedPropChangesPropBasePropSha",
 )

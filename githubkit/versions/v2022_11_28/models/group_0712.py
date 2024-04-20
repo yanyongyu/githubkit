@@ -15,37 +15,35 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 
-class WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploader(
-    GitHubModel
-):
-    """User"""
+class GistsPostBody(GitHubModel):
+    """GistsPostBody"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    description: Missing[str] = Field(
+        default=UNSET, description="Description of the gist"
+    )
+    files: GistsPostBodyPropFiles = Field(
+        description="Names and content for the files that make up the gist"
+    )
+    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
 
 
-model_rebuild(WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploader)
+class GistsPostBodyPropFiles(ExtraGitHubModel):
+    """GistsPostBodyPropFiles
 
-__all__ = ("WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploader",)
+    Names and content for the files that make up the gist
+
+    Examples:
+        {'hello.rb': {'content': 'puts "Hello, World!"'}}
+    """
+
+
+model_rebuild(GistsPostBody)
+model_rebuild(GistsPostBodyPropFiles)
+
+__all__ = (
+    "GistsPostBody",
+    "GistsPostBodyPropFiles",
+)

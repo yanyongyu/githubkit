@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -18,36 +17,58 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0695 import (
-    WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsPropUploader,
+
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1(GitHubModel):
+    """WebhookWorkflowJobInProgressPropWorkflowJobAllof1"""
+
+    check_run_url: Missing[str] = Field(default=UNSET)
+    completed_at: Missing[Union[str, None]] = Field(default=UNSET)
+    conclusion: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: Missing[str] = Field(
+        default=UNSET, description="The time that the job created."
+    )
+    head_sha: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    labels: Missing[List[str]] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    run_attempt: Missing[int] = Field(default=UNSET)
+    run_id: Missing[int] = Field(default=UNSET)
+    run_url: Missing[str] = Field(default=UNSET)
+    runner_group_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_group_name: Missing[Union[str, None]] = Field(default=UNSET)
+    runner_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_name: Missing[Union[str, None]] = Field(default=UNSET)
+    started_at: Missing[str] = Field(default=UNSET)
+    status: Literal["in_progress", "completed", "queued"] = Field()
+    head_branch: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the current branch."
+    )
+    workflow_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the workflow."
+    )
+    steps: List[WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems] = (
+        Field()
+    )
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems(GitHubModel):
+    """Workflow Step"""
+
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[str, None] = Field()
+    name: str = Field()
+    number: int = Field()
+    started_at: Union[str, None] = Field()
+    status: Literal["in_progress", "completed", "pending", "queued"] = Field()
+
+
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof1)
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems)
+
+__all__ = (
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems",
 )
-
-
-class WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItems(GitHubModel):
-    """Release Asset
-
-    Data related to a release.
-    """
-
-    browser_download_url: str = Field()
-    content_type: str = Field()
-    created_at: datetime = Field()
-    download_count: int = Field()
-    id: int = Field()
-    label: Union[str, None] = Field()
-    name: str = Field(description="The file name of the asset.")
-    node_id: str = Field()
-    size: int = Field()
-    state: Literal["uploaded"] = Field(description="State of the release asset.")
-    updated_at: datetime = Field()
-    uploader: Missing[
-        Union[
-            WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItemsPropUploader, None
-        ]
-    ] = Field(default=UNSET, title="User")
-    url: str = Field()
-
-
-model_rebuild(WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItems)
-
-__all__ = ("WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItems",)

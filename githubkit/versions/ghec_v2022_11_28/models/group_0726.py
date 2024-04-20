@@ -9,86 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0729 import WebhookReleasePrereleasedPropReleaseAllof0PropReactions
-from .group_0727 import WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItems
 
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof0(GitHubModel):
+    """Workflow Job
 
-class WebhookReleasePrereleasedPropReleaseAllof0(GitHubModel):
-    """Release
-
-    The [release](https://docs.github.com/enterprise-
-    cloud@latest//rest/releases/releases/#get-a-release) object.
+    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
+    and `started_at` are the same as those in a [`check_run`](#check_run) object.
     """
 
-    assets: List[WebhookReleasePrereleasedPropReleaseAllof0PropAssetsItems] = Field()
-    assets_url: str = Field()
-    author: Union[WebhookReleasePrereleasedPropReleaseAllof0PropAuthor, None] = Field(
-        title="User"
+    check_run_url: str = Field()
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[None, Literal["success", "failure", "cancelled", "neutral"]] = (
+        Field()
     )
-    body: Union[str, None] = Field()
-    created_at: Union[datetime, None] = Field()
-    discussion_url: Missing[str] = Field(default=UNSET)
-    draft: bool = Field(description="Whether the release is a draft or published")
+    created_at: str = Field(description="The time that the job created.")
+    head_sha: str = Field()
     html_url: str = Field()
     id: int = Field()
-    name: Union[str, None] = Field()
+    labels: List[str] = Field(
+        description='Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/enterprise-cloud@latest//actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML.'
+    )
+    name: str = Field()
     node_id: str = Field()
-    prerelease: bool = Field(
-        description="Whether the release is identified as a prerelease or a full release."
+    run_attempt: int = Field()
+    run_id: int = Field()
+    run_url: str = Field()
+    runner_group_id: Union[int, None] = Field(
+        description="The ID of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-    published_at: Union[datetime, None] = Field()
-    reactions: Missing[WebhookReleasePrereleasedPropReleaseAllof0PropReactions] = Field(
-        default=UNSET, title="Reactions"
+    runner_group_name: Union[str, None] = Field(
+        description="The name of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-    tag_name: str = Field(description="The name of the tag.")
-    tarball_url: Union[str, None] = Field()
-    target_commitish: str = Field(
-        description="Specifies the commitish value that determines where the Git tag is created from."
+    runner_id: Union[int, None] = Field(
+        description="The ID of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-    upload_url: str = Field()
+    runner_name: Union[str, None] = Field(
+        description="The name of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
+    )
+    started_at: str = Field()
+    status: Literal["queued", "in_progress", "completed"] = Field(
+        description="The current status of the job. Can be `queued`, `in_progress`, or `completed`."
+    )
+    head_branch: Union[str, None] = Field(description="The name of the current branch.")
+    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
+    steps: List[WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems] = (
+        Field()
+    )
     url: str = Field()
-    zipball_url: Union[str, None] = Field()
 
 
-class WebhookReleasePrereleasedPropReleaseAllof0PropAuthor(GitHubModel):
-    """User"""
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems(GitHubModel):
+    """Workflow Step"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
+        Field()
+    )
+    name: str = Field()
+    number: int = Field()
+    started_at: Union[str, None] = Field()
+    status: Literal["in_progress", "completed", "queued", "pending"] = Field()
 
 
-model_rebuild(WebhookReleasePrereleasedPropReleaseAllof0)
-model_rebuild(WebhookReleasePrereleasedPropReleaseAllof0PropAuthor)
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof0)
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems)
 
 __all__ = (
-    "WebhookReleasePrereleasedPropReleaseAllof0",
-    "WebhookReleasePrereleasedPropReleaseAllof0PropAuthor",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems",
 )

@@ -10,19 +10,14 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: List[str]
+    reviewers: List[str]
+    team_reviewers: NotRequired[List[str]]
 
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType",)

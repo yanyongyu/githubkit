@@ -12,26 +12,14 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
+from .group_0158 import ActionsVariableType
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+
+class ReposOwnerRepoActionsVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsVariablesGetResponse200"""
 
     total_count: int
-    repository_cache_usages: List[ActionsCacheUsageByRepositoryType]
+    variables: List[ActionsVariableType]
 
 
-class ActionsCacheUsageByRepositoryType(TypedDict):
-    """Actions Cache Usage by repository
-
-    GitHub Actions Cache Usage by repository.
-    """
-
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
-
-
-__all__ = (
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
-    "ActionsCacheUsageByRepositoryType",
-)
+__all__ = ("ReposOwnerRepoActionsVariablesGetResponse200Type",)

@@ -9,22 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0163 import WorkflowRun
+
+class ReposOwnerRepoPullsPullNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberPatchBody"""
+
+    title: Missing[str] = Field(
+        default=UNSET, description="The title of the pull request."
+    )
+    body: Missing[str] = Field(
+        default=UNSET, description="The contents of the pull request."
+    )
+    state: Missing[Literal["open", "closed"]] = Field(
+        default=UNSET,
+        description="State of this Pull Request. Either `open` or `closed`.",
+    )
+    base: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the branch you want your changes pulled into. This should be an existing branch on the current repository. You cannot update the base branch on a pull request to point to another repository.",
+    )
+    maintainer_can_modify: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether [maintainers can modify](https://docs.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
+    )
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
+model_rebuild(ReposOwnerRepoPullsPullNumberPatchBody)
 
-    total_count: int = Field()
-    workflow_runs: List[WorkflowRun] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200",)
+__all__ = ("ReposOwnerRepoPullsPullNumberPatchBody",)

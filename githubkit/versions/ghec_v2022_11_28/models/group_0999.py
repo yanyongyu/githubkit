@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0176 import ActionsSecret
+
+class ReposOwnerRepoMergesPostBody(GitHubModel):
+    """ReposOwnerRepoMergesPostBody"""
+
+    base: str = Field(
+        description="The name of the base branch that the head will be merged into."
+    )
+    head: str = Field(
+        description="The head to merge. This can be a branch name or a commit SHA1."
+    )
+    commit_message: Missing[str] = Field(
+        default=UNSET,
+        description="Commit message to use for the merge commit. If omitted, a default message will be used.",
+    )
 
 
-class ReposOwnerRepoActionsOrganizationSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
+model_rebuild(ReposOwnerRepoMergesPostBody)
 
-    total_count: int = Field()
-    secrets: List[ActionsSecret] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsOrganizationSecretsGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200",)
+__all__ = ("ReposOwnerRepoMergesPostBody",)

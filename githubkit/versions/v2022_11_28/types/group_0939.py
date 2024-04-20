@@ -9,18 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class ReposOwnerRepoMergeUpstreamPostBodyType(TypedDict):
+    """ReposOwnerRepoMergeUpstreamPostBody"""
 
-    Actions OIDC subject customization for a repository
-    """
-
-    use_default: bool
-    include_claim_keys: NotRequired[List[str]]
+    branch: str
 
 
-__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",)
+__all__ = ("ReposOwnerRepoMergeUpstreamPostBodyType",)

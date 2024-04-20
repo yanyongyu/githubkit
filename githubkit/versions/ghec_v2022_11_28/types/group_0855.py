@@ -9,13 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class ApplicationsClientIdTokenPostBodyType(TypedDict):
-    """ApplicationsClientIdTokenPostBody"""
+class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
 
-    access_token: str
+    role: NotRequired[Literal["member", "maintainer"]]
 
 
-__all__ = ("ApplicationsClientIdTokenPostBodyType",)
+__all__ = ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType",)

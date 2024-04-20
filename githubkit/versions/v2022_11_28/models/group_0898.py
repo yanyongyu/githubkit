@@ -16,15 +16,21 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgProjectsPostBody(GitHubModel):
-    """OrgsOrgProjectsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody(
+    GitHubModel
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
 
-    name: str = Field(description="The name of the project.")
-    body: Missing[str] = Field(
-        default=UNSET, description="The description of the project."
+    integration_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the custom app that will be enabled on the environment.",
     )
 
 
-model_rebuild(OrgsOrgProjectsPostBody)
+model_rebuild(
+    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody
+)
 
-__all__ = ("OrgsOrgProjectsPostBody",)
+__all__ = (
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody",
+)

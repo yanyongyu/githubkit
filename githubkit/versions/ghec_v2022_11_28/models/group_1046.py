@@ -9,22 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0208 import CheckRun
+
+class ReposOwnerRepoTagsProtectionPostBody(GitHubModel):
+    """ReposOwnerRepoTagsProtectionPostBody"""
+
+    pattern: str = Field(
+        description="An optional glob pattern to match against when enforcing tag protection."
+    )
 
 
-class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200(GitHubModel):
-    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
+model_rebuild(ReposOwnerRepoTagsProtectionPostBody)
 
-    total_count: int = Field()
-    check_runs: List[CheckRun] = Field()
-
-
-model_rebuild(ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200)
-
-__all__ = ("ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200",)
+__all__ = ("ReposOwnerRepoTagsProtectionPostBody",)

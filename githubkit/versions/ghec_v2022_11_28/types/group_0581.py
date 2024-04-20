@@ -12,8 +12,49 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0392 import OrganizationSimpleWebhooksType
 
-class WebhookIssuesUnlockedPropIssueAllof0PropMilestonePropCreatorType(TypedDict):
+
+class WebhookPageBuildType(TypedDict):
+    """page_build event"""
+
+    build: WebhookPageBuildPropBuildType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    id: int
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+
+
+class WebhookPageBuildPropBuildType(TypedDict):
+    """WebhookPageBuildPropBuild
+
+    The [List GitHub Pages builds](https://docs.github.com/enterprise-
+    cloud@latest//rest/pages/pages#list-github-pages-builds) itself.
+    """
+
+    commit: Union[str, None]
+    created_at: str
+    duration: int
+    error: WebhookPageBuildPropBuildPropErrorType
+    pusher: Union[WebhookPageBuildPropBuildPropPusherType, None]
+    status: str
+    updated_at: str
+    url: str
+
+
+class WebhookPageBuildPropBuildPropErrorType(TypedDict):
+    """WebhookPageBuildPropBuildPropError"""
+
+    message: Union[str, None]
+
+
+class WebhookPageBuildPropBuildPropPusherType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -39,4 +80,9 @@ class WebhookIssuesUnlockedPropIssueAllof0PropMilestonePropCreatorType(TypedDict
     url: NotRequired[str]
 
 
-__all__ = ("WebhookIssuesUnlockedPropIssueAllof0PropMilestonePropCreatorType",)
+__all__ = (
+    "WebhookPageBuildType",
+    "WebhookPageBuildPropBuildType",
+    "WebhookPageBuildPropBuildPropErrorType",
+    "WebhookPageBuildPropBuildPropPusherType",
+)

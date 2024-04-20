@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
+class UserKeysPostBodyType(TypedDict):
+    """UserKeysPostBody"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
+    title: NotRequired[str]
+    key: str
 
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType",)
+__all__ = ("UserKeysPostBodyType",)

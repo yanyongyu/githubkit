@@ -10,17 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
-from .group_0017 import RepositoryType
+from .group_0155 import JobType
 
 
-class InstallationRepositoriesGetResponse200Type(TypedDict):
-    """InstallationRepositoriesGetResponse200"""
+class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
 
     total_count: int
-    repositories: List[RepositoryType]
-    repository_selection: NotRequired[str]
+    jobs: List[JobType]
 
 
-__all__ = ("InstallationRepositoriesGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",)

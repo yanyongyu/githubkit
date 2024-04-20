@@ -13,28 +13,34 @@ from datetime import datetime
 from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class OrgsOrgCodespacesSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
-
-    total_count: int
-    secrets: List[CodespacesOrgSecretType]
+from .group_0863 import (
+    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
+    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
+)
 
 
-class CodespacesOrgSecretType(TypedDict):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
+class ReposOwnerRepoCheckRunsPostBodyOneof0Type(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
 
     name: str
-    created_at: datetime
-    updated_at: datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    head_sha: str
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    status: Literal["completed"]
+    started_at: NotRequired[datetime]
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
+    ]
+    completed_at: NotRequired[datetime]
+    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
+    actions: NotRequired[List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
 
 
-__all__ = (
-    "OrgsOrgCodespacesSecretsGetResponse200Type",
-    "CodespacesOrgSecretType",
-)
+__all__ = ("ReposOwnerRepoCheckRunsPostBodyOneof0Type",)

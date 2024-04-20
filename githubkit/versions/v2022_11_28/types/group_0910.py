@@ -9,17 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from datetime import datetime
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType(
-    TypedDict
-):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody"""
+class ReposOwnerRepoGitTagsPostBodyType(TypedDict):
+    """ReposOwnerRepoGitTagsPostBody"""
 
-    body: str
+    tag: str
+    message: str
+    object_: str
+    type: Literal["commit", "tree", "blob"]
+    tagger: NotRequired[ReposOwnerRepoGitTagsPostBodyPropTaggerType]
+
+
+class ReposOwnerRepoGitTagsPostBodyPropTaggerType(TypedDict):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
+
+    An object with information about the individual creating the tag.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[datetime]
 
 
 __all__ = (
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType",
+    "ReposOwnerRepoGitTagsPostBodyType",
+    "ReposOwnerRepoGitTagsPostBodyPropTaggerType",
 )

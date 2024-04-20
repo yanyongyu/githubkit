@@ -9,72 +9,153 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0367 import ProjectsV2Type
+from .group_0357 import EnterpriseWebhooksType
 from .group_0358 import SimpleInstallationType
+from .group_0360 import RepositoryWebhooksType
 from .group_0361 import SimpleUserWebhooksType
 from .group_0359 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ProjectEditedType(TypedDict):
-    """Projects v2 Project Edited Event"""
+class WebhookReleaseReleasedType(TypedDict):
+    """release released event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectsV2ProjectEditedPropChangesType
+    action: Literal["released"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
-    sender: SimpleUserWebhooksType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhookReleaseReleasedPropReleaseType
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-class WebhookProjectsV2ProjectEditedPropChangesType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChanges"""
+class WebhookReleaseReleasedPropReleaseType(TypedDict):
+    """Release
 
-    description: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType
+    The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
+    object.
+    """
+
+    assets: List[WebhookReleaseReleasedPropReleasePropAssetsItemsType]
+    assets_url: str
+    author: Union[WebhookReleaseReleasedPropReleasePropAuthorType, None]
+    body: Union[str, None]
+    created_at: Union[datetime, None]
+    discussion_url: NotRequired[str]
+    draft: bool
+    html_url: str
+    id: int
+    name: Union[str, None]
+    node_id: str
+    prerelease: bool
+    published_at: Union[datetime, None]
+    reactions: NotRequired[WebhookReleaseReleasedPropReleasePropReactionsType]
+    tag_name: str
+    tarball_url: Union[str, None]
+    target_commitish: str
+    upload_url: str
+    url: str
+    zipball_url: Union[str, None]
+
+
+class WebhookReleaseReleasedPropReleasePropAuthorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookReleaseReleasedPropReleasePropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookReleaseReleasedPropReleasePropAssetsItemsType(TypedDict):
+    """Release Asset
+
+    Data related to a release.
+    """
+
+    browser_download_url: str
+    content_type: str
+    created_at: datetime
+    download_count: int
+    id: int
+    label: Union[str, None]
+    name: str
+    node_id: str
+    size: int
+    state: Literal["uploaded"]
+    updated_at: datetime
+    uploader: NotRequired[
+        Union[WebhookReleaseReleasedPropReleasePropAssetsItemsPropUploaderType, None]
     ]
-    public: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropPublicType]
-    short_description: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType
-    ]
-    title: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropTitleType]
+    url: str
 
 
-class WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
+class WebhookReleaseReleasedPropReleasePropAssetsItemsPropUploaderType(TypedDict):
+    """User"""
 
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropPublicType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
-
-    from_: NotRequired[bool]
-    to: NotRequired[bool]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropTitleType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
-
-    from_: NotRequired[str]
-    to: NotRequired[str]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookProjectsV2ProjectEditedType",
-    "WebhookProjectsV2ProjectEditedPropChangesType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropPublicType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropTitleType",
+    "WebhookReleaseReleasedType",
+    "WebhookReleaseReleasedPropReleaseType",
+    "WebhookReleaseReleasedPropReleasePropAuthorType",
+    "WebhookReleaseReleasedPropReleasePropReactionsType",
+    "WebhookReleaseReleasedPropReleasePropAssetsItemsType",
+    "WebhookReleaseReleasedPropReleasePropAssetsItemsPropUploaderType",
 )

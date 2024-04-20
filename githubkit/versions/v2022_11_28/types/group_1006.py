@@ -9,14 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from datetime import datetime
+from typing import List, Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDependabotSecretsSecretNamePutBodyType(TypedDict):
-    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
+class UserCodespacesSecretsGetResponse200Type(TypedDict):
+    """UserCodespacesSecretsGetResponse200"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+    total_count: int
+    secrets: List[CodespacesSecretType]
 
 
-__all__ = ("ReposOwnerRepoDependabotSecretsSecretNamePutBodyType",)
+class CodespacesSecretType(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str
+    created_at: datetime
+    updated_at: datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: str
+
+
+__all__ = (
+    "UserCodespacesSecretsGetResponse200Type",
+    "CodespacesSecretType",
+)

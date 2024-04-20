@@ -10,65 +10,33 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0706 import WebhookReleasePublishedPropReleaseMergedAssetsType
-from .group_0704 import WebhookReleasePublishedPropReleaseAllof0PropReactionsType
+from .group_0001 import SimpleUserType
+from .group_0006 import IntegrationPropPermissionsType
 
 
-class WebhookReleasePublishedPropReleaseType(TypedDict):
-    """WebhookReleasePublishedPropRelease"""
+class AppManifestsCodeConversionsPostResponse201Type(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201"""
 
-    assets: List[WebhookReleasePublishedPropReleaseMergedAssetsType]
-    assets_url: str
-    author: WebhookReleasePublishedPropReleaseMergedAuthorType
-    body: Union[Union[str, None], None]
-    created_at: datetime
-    discussion_url: NotRequired[str]
-    draft: bool
-    html_url: str
     id: int
-    name: Union[Union[str, None], None]
+    slug: NotRequired[str]
     node_id: str
-    prerelease: bool
-    published_at: Union[Union[datetime, None], None]
-    reactions: NotRequired[WebhookReleasePublishedPropReleaseAllof0PropReactionsType]
-    tag_name: str
-    tarball_url: Union[Union[str, None], None]
-    target_commitish: str
-    upload_url: str
-    url: str
-    zipball_url: Union[Union[str, None], None]
+    owner: Union[None, SimpleUserType]
+    name: str
+    description: Union[str, None]
+    external_url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    permissions: IntegrationPropPermissionsType
+    events: List[str]
+    installations_count: NotRequired[int]
+    client_id: str
+    client_secret: str
+    webhook_secret: Union[Union[str, None], None]
+    pem: str
 
 
-class WebhookReleasePublishedPropReleaseMergedAuthorType(TypedDict):
-    """WebhookReleasePublishedPropReleaseMergedAuthor"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-__all__ = (
-    "WebhookReleasePublishedPropReleaseType",
-    "WebhookReleasePublishedPropReleaseMergedAuthorType",
-)
+__all__ = ("AppManifestsCodeConversionsPostResponse201Type",)

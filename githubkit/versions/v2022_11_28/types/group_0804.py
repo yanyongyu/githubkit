@@ -12,16 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropReferencedWorkflowsItemsType(
-    TypedDict
-):
-    """WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropReferencedWorkflowsItems"""
+class ProjectsColumnsCardsCardIdMovesPostBodyType(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostBody"""
 
-    path: str
-    ref: NotRequired[str]
-    sha: str
+    position: str
+    column_id: NotRequired[int]
 
 
-__all__ = (
-    "WebhookWorkflowRunCompletedPropWorkflowRunAllof0PropReferencedWorkflowsItemsType",
-)
+__all__ = ("ProjectsColumnsCardsCardIdMovesPostBodyType",)

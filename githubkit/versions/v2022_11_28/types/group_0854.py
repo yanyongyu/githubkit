@@ -13,10 +13,16 @@ from typing import List
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0
 
-    selected_repository_ids: List[int]
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: List[str]
 
 
-__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type",)

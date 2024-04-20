@@ -17,127 +17,146 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0357 import EnterpriseWebhooks
+from .group_0358 import SimpleInstallation
+from .group_0360 import RepositoryWebhooks
+from .group_0361 import SimpleUserWebhooks
+from .group_0359 import OrganizationSimpleWebhooks
 
-class WebhookIssuesLockedPropIssueAllof1(GitHubModel):
-    """WebhookIssuesLockedPropIssueAllof1"""
 
-    active_lock_reason: Union[
-        None, Literal["resolved", "off-topic", "too heated", "spam"]
-    ] = Field()
-    assignee: Missing[Union[WebhookIssuesLockedPropIssueAllof1PropAssignee, None]] = (
-        Field(default=UNSET)
+class WebhookMarketplacePurchaseChanged(GitHubModel):
+    """marketplace_purchase changed event"""
+
+    action: Literal["changed"] = Field()
+    effective_date: str = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
     )
-    assignees: Missing[
-        List[Union[WebhookIssuesLockedPropIssueAllof1PropAssigneesItems, None]]
-    ] = Field(default=UNSET)
-    author_association: Missing[str] = Field(default=UNSET)
-    body: Missing[Union[str, None]] = Field(default=UNSET)
-    closed_at: Missing[Union[str, None]] = Field(default=UNSET)
-    comments: Missing[int] = Field(default=UNSET)
-    comments_url: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    labels: Missing[
-        List[Union[WebhookIssuesLockedPropIssueAllof1PropLabelsItems, None]]
-    ] = Field(default=UNSET)
-    labels_url: Missing[str] = Field(default=UNSET)
-    locked: Literal[True] = Field()
-    milestone: Missing[Union[WebhookIssuesLockedPropIssueAllof1PropMilestone, None]] = (
-        Field(default=UNSET)
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    node_id: Missing[str] = Field(default=UNSET)
-    number: Missing[int] = Field(default=UNSET)
-    performed_via_github_app: Missing[
-        Union[WebhookIssuesLockedPropIssueAllof1PropPerformedViaGithubApp, None]
-    ] = Field(default=UNSET)
-    reactions: Missing[WebhookIssuesLockedPropIssueAllof1PropReactions] = Field(
-        default=UNSET
+    marketplace_purchase: WebhookMarketplacePurchaseChangedPropMarketplacePurchase = (
+        Field(title="Marketplace Purchase")
     )
-    repository_url: Missing[str] = Field(default=UNSET)
-    state: Missing[str] = Field(default=UNSET)
-    timeline_url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user: Missing[WebhookIssuesLockedPropIssueAllof1PropUser] = Field(default=UNSET)
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    previous_marketplace_purchase: Missing[
+        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase
+    ] = Field(default=UNSET, title="Marketplace Purchase")
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUserWebhooks = Field(
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
 
 
-class WebhookIssuesLockedPropIssueAllof1PropAssignee(GitHubModel):
-    """WebhookIssuesLockedPropIssueAllof1PropAssignee"""
+class WebhookMarketplacePurchaseChangedPropMarketplacePurchase(GitHubModel):
+    """Marketplace Purchase"""
+
+    account: WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropAccount = (
+        Field()
+    )
+    billing_cycle: str = Field()
+    free_trial_ends_on: Union[str, None] = Field()
+    next_billing_date: Union[str, None] = Field()
+    on_free_trial: bool = Field()
+    plan: WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropPlan = Field()
+    unit_count: int = Field()
 
 
-class WebhookIssuesLockedPropIssueAllof1PropAssigneesItems(GitHubModel):
-    """WebhookIssuesLockedPropIssueAllof1PropAssigneesItems"""
+class WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropAccount(GitHubModel):
+    """WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropAccount"""
+
+    id: int = Field()
+    login: str = Field()
+    node_id: str = Field()
+    organization_billing_email: Union[str, None] = Field()
+    type: str = Field()
 
 
-class WebhookIssuesLockedPropIssueAllof1PropLabelsItems(GitHubModel):
-    """WebhookIssuesLockedPropIssueAllof1PropLabelsItems"""
+class WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropPlan(GitHubModel):
+    """WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropPlan"""
+
+    bullets: List[Union[str, None]] = Field()
+    description: str = Field()
+    has_free_trial: bool = Field()
+    id: int = Field()
+    monthly_price_in_cents: int = Field()
+    name: str = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    unit_name: Union[str, None] = Field()
+    yearly_price_in_cents: int = Field()
 
 
-class WebhookIssuesLockedPropIssueAllof1PropMilestone(GitHubModel):
-    """WebhookIssuesLockedPropIssueAllof1PropMilestone"""
+class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase(GitHubModel):
+    """Marketplace Purchase"""
+
+    account: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount = Field()
+    billing_cycle: str = Field()
+    free_trial_ends_on: Union[str, None] = Field()
+    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
+    on_free_trial: Union[bool, None] = Field()
+    plan: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan = (
+        Field()
+    )
+    unit_count: int = Field()
 
 
-class WebhookIssuesLockedPropIssueAllof1PropPerformedViaGithubApp(GitHubModel):
-    """WebhookIssuesLockedPropIssueAllof1PropPerformedViaGithubApp"""
+class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount(
+    GitHubModel
+):
+    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount"""
+
+    id: int = Field()
+    login: str = Field()
+    node_id: str = Field()
+    organization_billing_email: Union[str, None] = Field()
+    type: str = Field()
 
 
-class WebhookIssuesLockedPropIssueAllof1PropReactions(GitHubModel):
-    """WebhookIssuesLockedPropIssueAllof1PropReactions"""
+class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan(
+    GitHubModel
+):
+    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan"""
 
-    plus_one: Missing[int] = Field(default=UNSET, alias="+1")
-    minus_one: Missing[int] = Field(default=UNSET, alias="-1")
-    confused: Missing[int] = Field(default=UNSET)
-    eyes: Missing[int] = Field(default=UNSET)
-    heart: Missing[int] = Field(default=UNSET)
-    hooray: Missing[int] = Field(default=UNSET)
-    laugh: Missing[int] = Field(default=UNSET)
-    rocket: Missing[int] = Field(default=UNSET)
-    total_count: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookIssuesLockedPropIssueAllof1PropUser(GitHubModel):
-    """WebhookIssuesLockedPropIssueAllof1PropUser"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    bullets: List[str] = Field()
+    description: str = Field()
+    has_free_trial: bool = Field()
+    id: int = Field()
+    monthly_price_in_cents: int = Field()
+    name: str = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    unit_name: Union[str, None] = Field()
+    yearly_price_in_cents: int = Field()
 
 
-model_rebuild(WebhookIssuesLockedPropIssueAllof1)
-model_rebuild(WebhookIssuesLockedPropIssueAllof1PropAssignee)
-model_rebuild(WebhookIssuesLockedPropIssueAllof1PropAssigneesItems)
-model_rebuild(WebhookIssuesLockedPropIssueAllof1PropLabelsItems)
-model_rebuild(WebhookIssuesLockedPropIssueAllof1PropMilestone)
-model_rebuild(WebhookIssuesLockedPropIssueAllof1PropPerformedViaGithubApp)
-model_rebuild(WebhookIssuesLockedPropIssueAllof1PropReactions)
-model_rebuild(WebhookIssuesLockedPropIssueAllof1PropUser)
+model_rebuild(WebhookMarketplacePurchaseChanged)
+model_rebuild(WebhookMarketplacePurchaseChangedPropMarketplacePurchase)
+model_rebuild(WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropAccount)
+model_rebuild(WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropPlan)
+model_rebuild(WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase)
+model_rebuild(
+    WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount
+)
+model_rebuild(WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan)
 
 __all__ = (
-    "WebhookIssuesLockedPropIssueAllof1",
-    "WebhookIssuesLockedPropIssueAllof1PropAssignee",
-    "WebhookIssuesLockedPropIssueAllof1PropAssigneesItems",
-    "WebhookIssuesLockedPropIssueAllof1PropLabelsItems",
-    "WebhookIssuesLockedPropIssueAllof1PropMilestone",
-    "WebhookIssuesLockedPropIssueAllof1PropPerformedViaGithubApp",
-    "WebhookIssuesLockedPropIssueAllof1PropReactions",
-    "WebhookIssuesLockedPropIssueAllof1PropUser",
+    "WebhookMarketplacePurchaseChanged",
+    "WebhookMarketplacePurchaseChangedPropMarketplacePurchase",
+    "WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropAccount",
+    "WebhookMarketplacePurchaseChangedPropMarketplacePurchasePropPlan",
+    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase",
+    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount",
+    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan",
 )

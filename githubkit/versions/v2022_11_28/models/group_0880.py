@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,47 +16,19 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgHooksPostBody(GitHubModel):
-    """OrgsOrgHooksPostBody"""
+class ReposOwnerRepoCodespacesSecretsSecretNamePutBody(GitHubModel):
+    """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
 
-    name: str = Field(description='Must be passed as "web".')
-    config: OrgsOrgHooksPostBodyPropConfig = Field(
-        description="Key/value pairs to provide settings for this webhook."
-    )
-    events: Missing[List[str]] = Field(
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
-        description='Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. Set to `["*"]` to receive all possible events.',
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-public-key) endpoint.",
     )
-    active: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+    key_id: Missing[str] = Field(
+        default=UNSET, description="ID of the key you used to encrypt the secret."
     )
 
 
-class OrgsOrgHooksPostBodyPropConfig(GitHubModel):
-    """OrgsOrgHooksPostBodyPropConfig
+model_rebuild(ReposOwnerRepoCodespacesSecretsSecretNamePutBody)
 
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: str = Field(description="The URL to which the payloads will be delivered.")
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
-    )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
-    username: Missing[str] = Field(default=UNSET)
-    password: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(OrgsOrgHooksPostBody)
-model_rebuild(OrgsOrgHooksPostBodyPropConfig)
-
-__all__ = (
-    "OrgsOrgHooksPostBody",
-    "OrgsOrgHooksPostBodyPropConfig",
-)
+__all__ = ("ReposOwnerRepoCodespacesSecretsSecretNamePutBody",)

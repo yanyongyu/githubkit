@@ -9,27 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0136 import RepositoryAdvisoryType
-from .group_0357 import EnterpriseWebhooksType
-from .group_0358 import SimpleInstallationType
-from .group_0360 import RepositoryWebhooksType
-from .group_0361 import SimpleUserWebhooksType
-from .group_0359 import OrganizationSimpleWebhooksType
+from typing_extensions import TypedDict
 
 
-class WebhookRepositoryAdvisoryPublishedType(TypedDict):
-    """Repository advisory published event"""
+class GistsGistIdCommentsCommentIdPatchBodyType(TypedDict):
+    """GistsGistIdCommentsCommentIdPatchBody"""
 
-    action: Literal["published"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    repository_advisory: RepositoryAdvisoryType
-    sender: NotRequired[SimpleUserWebhooksType]
+    body: str
 
 
-__all__ = ("WebhookRepositoryAdvisoryPublishedType",)
+__all__ = ("GistsGistIdCommentsCommentIdPatchBodyType",)

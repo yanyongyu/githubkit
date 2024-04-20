@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -18,33 +17,36 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0745 import (
-    WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploader,
-)
+
+class EnterprisesEnterpriseActionsRunnerGroupsPostBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
+
+    name: str = Field(description="Name of the runner group.")
+    visibility: Missing[Literal["selected", "all"]] = Field(
+        default=UNSET,
+        description="Visibility of a runner group. You can select all organizations or select individual organization.",
+    )
+    selected_organization_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="List of organization IDs that can access the runner group.",
+    )
+    runners: Missing[List[int]] = Field(
+        default=UNSET, description="List of runner IDs to add to the runner group."
+    )
+    allows_public_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the runner group can be used by `public` repositories.",
+    )
+    restricted_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    )
+    selected_workflows: Missing[List[str]] = Field(
+        default=UNSET,
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
+    )
 
 
-class WebhookReleaseUnpublishedPropReleaseMergedAssets(GitHubModel):
-    """WebhookReleaseUnpublishedPropReleaseMergedAssets"""
+model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsPostBody)
 
-    browser_download_url: str = Field()
-    content_type: str = Field()
-    created_at: datetime = Field()
-    download_count: int = Field()
-    id: int = Field()
-    label: Union[str, None] = Field()
-    name: str = Field(description="The file name of the asset.")
-    node_id: str = Field()
-    size: int = Field()
-    state: Literal["uploaded"] = Field(description="State of the release asset.")
-    updated_at: datetime = Field()
-    uploader: Missing[
-        Union[
-            WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploader, None
-        ]
-    ] = Field(default=UNSET, title="User")
-    url: str = Field()
-
-
-model_rebuild(WebhookReleaseUnpublishedPropReleaseMergedAssets)
-
-__all__ = ("WebhookReleaseUnpublishedPropReleaseMergedAssets",)
+__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsPostBody",)

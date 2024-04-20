@@ -9,27 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0357 import EnterpriseWebhooksType
-from .group_0358 import SimpleInstallationType
-from .group_0360 import RepositoryWebhooksType
-from .group_0361 import SimpleUserWebhooksType
-from .group_0359 import OrganizationSimpleWebhooksType
-from .group_0369 import SecretScanningAlertWebhookType
+from typing import List
+from typing_extensions import TypedDict
 
 
-class WebhookSecretScanningAlertValidatedType(TypedDict):
-    """secret_scanning_alert validated event"""
+class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
 
-    action: Literal["validated"]
-    alert: SecretScanningAlertWebhookType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
+    selected_repository_ids: List[int]
 
 
-__all__ = ("WebhookSecretScanningAlertValidatedType",)
+__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType",)

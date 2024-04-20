@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 
 from pydantic import Field
 
@@ -17,44 +17,47 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0390 import EnterpriseWebhooks
-from .group_0391 import SimpleInstallation
-from .group_0393 import RepositoryWebhooks
-from .group_0394 import SimpleUserWebhooks
-from .group_0392 import OrganizationSimpleWebhooks
-from .group_0781 import WebhookRepositoryVulnerabilityAlertReopenPropAlert
+
+class OrgsOrgActionsRunnerGroupsGetResponse200(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsGetResponse200"""
+
+    total_count: float = Field()
+    runner_groups: List[RunnerGroupsOrg] = Field()
 
 
-class WebhookRepositoryVulnerabilityAlertReopen(GitHubModel):
-    """repository_vulnerability_alert reopen event"""
+class RunnerGroupsOrg(GitHubModel):
+    """RunnerGroupsOrg"""
 
-    action: Literal["reopen"] = Field()
-    alert: WebhookRepositoryVulnerabilityAlertReopenPropAlert = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    id: float = Field()
+    name: str = Field()
+    visibility: str = Field()
+    default: bool = Field()
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+        description="Link to the selected repositories resource for this runner group. Not present unless visibility was set to `selected`",
     )
-    installation: Missing[SimpleInstallation] = Field(
+    runners_url: str = Field()
+    inherited: bool = Field()
+    inherited_allows_public_repositories: Missing[bool] = Field(default=UNSET)
+    allows_public_repositories: bool = Field()
+    workflow_restrictions_read_only: Missing[bool] = Field(
         default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
+    restricted_to_workflows: Missing[bool] = Field(
         default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    selected_workflows: Missing[List[str]] = Field(
+        default=UNSET,
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
     )
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertReopen)
+model_rebuild(OrgsOrgActionsRunnerGroupsGetResponse200)
+model_rebuild(RunnerGroupsOrg)
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertReopen",)
+__all__ = (
+    "OrgsOrgActionsRunnerGroupsGetResponse200",
+    "RunnerGroupsOrg",
+)

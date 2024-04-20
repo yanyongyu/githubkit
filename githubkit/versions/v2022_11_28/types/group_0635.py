@@ -9,42 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0368 import ProjectsV2ItemType
+from .group_0357 import EnterpriseWebhooksType
 from .group_0358 import SimpleInstallationType
+from .group_0360 import RepositoryWebhooksType
 from .group_0361 import SimpleUserWebhooksType
 from .group_0359 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ItemRestoredType(TypedDict):
-    """Projects v2 Item Restored Event"""
+class WebhookRepositoryDispatchSampleType(TypedDict):
+    """repository_dispatch event"""
 
-    action: Literal["restored"]
-    changes: WebhookProjectsV2ItemRestoredPropChangesType
-    installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    action: str
+    branch: str
+    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayloadType, None]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: SimpleInstallationType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookProjectsV2ItemRestoredPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemRestoredPropChanges"""
+class WebhookRepositoryDispatchSamplePropClientPayloadType(TypedDict):
+    """WebhookRepositoryDispatchSamplePropClientPayload
 
-    archived_at: NotRequired[WebhookProjectsV2ItemRestoredPropChangesPropArchivedAtType]
-
-
-class WebhookProjectsV2ItemRestoredPropChangesPropArchivedAtType(TypedDict):
-    """WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt"""
-
-    from_: NotRequired[Union[datetime, None]]
-    to: NotRequired[Union[datetime, None]]
+    The `client_payload` that was specified in the `POST
+    /repos/{owner}/{repo}/dispatches` request body.
+    """
 
 
 __all__ = (
-    "WebhookProjectsV2ItemRestoredType",
-    "WebhookProjectsV2ItemRestoredPropChangesType",
-    "WebhookProjectsV2ItemRestoredPropChangesPropArchivedAtType",
+    "WebhookRepositoryDispatchSampleType",
+    "WebhookRepositoryDispatchSamplePropClientPayloadType",
 )

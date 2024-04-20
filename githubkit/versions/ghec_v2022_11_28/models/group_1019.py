@@ -9,42 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody(GitHubModel):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
+class ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody(GitHubModel):
+    """ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody"""
 
-    ref: str = Field(
-        description="The git reference for the workflow. The reference can be a branch or tag name."
-    )
-    inputs: Missing[
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
     ] = Field(
-        default=UNSET,
-        description="Input keys and values configured in the workflow file. The maximum number of properties is 10. Any default properties configured in the workflow file will be used when `inputs` are omitted.",
+        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#about-reactions) to add to the pull request review comment."
     )
 
 
-class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs(
-    ExtraGitHubModel
-):
-    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
+model_rebuild(ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody)
 
-    Input keys and values configured in the workflow file. The maximum number of
-    properties is 10. Any default properties configured in the workflow file will be
-    used when `inputs` are omitted.
-    """
-
-
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody)
-model_rebuild(ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs)
-
-__all__ = (
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
-    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
-)
+__all__ = ("ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody",)

@@ -25,10 +25,10 @@ from .group_0361 import SimpleUserWebhooks
 from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookDependabotAlertDismissed(GitHubModel):
-    """Dependabot alert dismissed event"""
+class WebhookDependabotAlertAutoDismissed(GitHubModel):
+    """Dependabot alert auto-dismissed event"""
 
-    action: Literal["dismissed"] = Field()
+    action: Literal["auto_dismissed"] = Field()
     alert: DependabotAlert = Field(description="A Dependabot alert.")
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -55,6 +55,6 @@ class WebhookDependabotAlertDismissed(GitHubModel):
     )
 
 
-model_rebuild(WebhookDependabotAlertDismissed)
+model_rebuild(WebhookDependabotAlertAutoDismissed)
 
-__all__ = ("WebhookDependabotAlertDismissed",)
+__all__ = ("WebhookDependabotAlertAutoDismissed",)

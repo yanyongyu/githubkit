@@ -9,25 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
-from .group_0390 import EnterpriseWebhooksType
-from .group_0391 import SimpleInstallationType
-from .group_0393 import RepositoryWebhooksType
-from .group_0394 import SimpleUserWebhooksType
-from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0034 import RunnerType
 
 
-class WebhookRepositoryImportType(TypedDict):
-    """repository_import event"""
+class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201"""
 
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-    status: Literal["success", "cancelled", "failure"]
+    runner: RunnerType
+    encoded_jit_config: str
 
 
-__all__ = ("WebhookRepositoryImportType",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type",)

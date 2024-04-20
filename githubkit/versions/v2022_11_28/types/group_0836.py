@@ -9,15 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
-class NotificationsPutBodyType(TypedDict):
-    """NotificationsPutBody"""
+class ReposOwnerRepoActionsRunsRunIdRerunPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdRerunPostBody"""
 
-    last_read_at: NotRequired[datetime]
-    read: NotRequired[bool]
+    enable_debug_logging: NotRequired[bool]
 
 
-__all__ = ("NotificationsPutBodyType",)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunPostBodyType",)

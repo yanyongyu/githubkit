@@ -9,64 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookIssuesMilestonedPropIssueAllof1PropMilestoneType(TypedDict):
-    """Milestone
-
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[datetime, None]
-    closed_issues: int
-    created_at: datetime
-    creator: Union[
-        WebhookIssuesMilestonedPropIssueAllof1PropMilestonePropCreatorType, None
-    ]
-    description: Union[str, None]
-    due_on: Union[datetime, None]
-    html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: datetime
-    url: str
+from .group_0366 import MergeGroupType
+from .group_0358 import SimpleInstallationType
+from .group_0360 import RepositoryWebhooksType
+from .group_0361 import SimpleUserWebhooksType
+from .group_0359 import OrganizationSimpleWebhooksType
 
 
-class WebhookIssuesMilestonedPropIssueAllof1PropMilestonePropCreatorType(TypedDict):
-    """User"""
+class WebhookMergeGroupDestroyedType(TypedDict):
+    """WebhookMergeGroupDestroyed"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
+    action: Literal["destroyed"]
+    reason: NotRequired[Literal["merged", "invalidated", "dequeued"]]
+    installation: NotRequired[SimpleInstallationType]
+    merge_group: MergeGroupType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = (
-    "WebhookIssuesMilestonedPropIssueAllof1PropMilestoneType",
-    "WebhookIssuesMilestonedPropIssueAllof1PropMilestonePropCreatorType",
-)
+__all__ = ("WebhookMergeGroupDestroyedType",)

@@ -9,75 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 
-class WebhookReleaseUnpublishedPropReleaseAllof1(GitHubModel):
-    """WebhookReleaseUnpublishedPropReleaseAllof1"""
+class GistsGistIdPatchBody(GitHubModel):
+    """GistsGistIdPatchBody"""
 
-    assets: Missing[
-        List[Union[WebhookReleaseUnpublishedPropReleaseAllof1PropAssetsItems, None]]
-    ] = Field(default=UNSET)
-    assets_url: Missing[str] = Field(default=UNSET)
-    author: Missing[WebhookReleaseUnpublishedPropReleaseAllof1PropAuthor] = Field(
-        default=UNSET
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the gist."
     )
-    body: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    draft: Missing[bool] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    prerelease: Missing[bool] = Field(default=UNSET)
-    published_at: Union[str, None] = Field()
-    tag_name: Missing[str] = Field(default=UNSET)
-    tarball_url: Missing[Union[str, None]] = Field(default=UNSET)
-    target_commitish: Missing[str] = Field(default=UNSET)
-    upload_url: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    zipball_url: Missing[Union[str, None]] = Field(default=UNSET)
+    files: Missing[GistsGistIdPatchBodyPropFiles] = Field(
+        default=UNSET,
+        description="The gist files to be updated, renamed, or deleted. Each `key` must match the current filename\n(including extension) of the targeted gist file. For example: `hello.py`.\n\nTo delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be\ndeleted if the specified object does not contain at least one of `content` or `filename`.",
+    )
 
 
-class WebhookReleaseUnpublishedPropReleaseAllof1PropAssetsItems(GitHubModel):
-    """WebhookReleaseUnpublishedPropReleaseAllof1PropAssetsItems"""
+class GistsGistIdPatchBodyPropFiles(ExtraGitHubModel):
+    """GistsGistIdPatchBodyPropFiles
+
+    The gist files to be updated, renamed, or deleted. Each `key` must match the
+    current filename
+    (including extension) of the targeted gist file. For example: `hello.py`.
+
+    To delete a file, set the whole file to null. For example: `hello.py : null`.
+    The file will also be
+    deleted if the specified object does not contain at least one of `content` or
+    `filename`.
+
+    Examples:
+        {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+    """
 
 
-class WebhookReleaseUnpublishedPropReleaseAllof1PropAuthor(GitHubModel):
-    """WebhookReleaseUnpublishedPropReleaseAllof1PropAuthor"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: Missing[int] = Field(default=UNSET)
-    login: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookReleaseUnpublishedPropReleaseAllof1)
-model_rebuild(WebhookReleaseUnpublishedPropReleaseAllof1PropAssetsItems)
-model_rebuild(WebhookReleaseUnpublishedPropReleaseAllof1PropAuthor)
+model_rebuild(GistsGistIdPatchBody)
+model_rebuild(GistsGistIdPatchBodyPropFiles)
 
 __all__ = (
-    "WebhookReleaseUnpublishedPropReleaseAllof1",
-    "WebhookReleaseUnpublishedPropReleaseAllof1PropAssetsItems",
-    "WebhookReleaseUnpublishedPropReleaseAllof1PropAuthor",
+    "GistsGistIdPatchBody",
+    "GistsGistIdPatchBodyPropFiles",
 )

@@ -9,21 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
+class ProjectsColumnsColumnIdCardsPostBodyOneof1(GitHubModel):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof1"""
 
-    runners: List[int] = Field(
-        description="List of runner IDs to add to the runner group."
+    content_id: int = Field(
+        description="The unique identifier of the content associated with the card"
+    )
+    content_type: str = Field(
+        description="The piece of content associated with the card"
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody)
+model_rebuild(ProjectsColumnsColumnIdCardsPostBodyOneof1)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody",)
+__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof1",)

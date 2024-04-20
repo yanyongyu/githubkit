@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,57 +17,67 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0187 import Deployment
-from .group_0308 import PullRequest
+from .group_0390 import EnterpriseWebhooks
 from .group_0391 import SimpleInstallation
 from .group_0393 import RepositoryWebhooks
 from .group_0394 import SimpleUserWebhooks
 from .group_0392 import OrganizationSimpleWebhooks
 
 
-class WebhookDeploymentProtectionRuleRequested(GitHubModel):
-    """deployment protection rule requested event"""
+class WebhookDeployKeyCreated(GitHubModel):
+    """deploy_key created event"""
 
-    action: Literal["requested"] = Field()
-    environment: Missing[str] = Field(
+    action: Literal["created"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="The name of the environment that has the deployment protection rule.",
-    )
-    event: Missing[str] = Field(
-        default=UNSET,
-        description="The event that triggered the deployment protection rule.",
-    )
-    deployment_callback_url: Missing[str] = Field(
-        default=UNSET, description="The URL to review the deployment protection rule."
-    )
-    deployment: Missing[Deployment] = Field(
-        default=UNSET,
-        title="Deployment",
-        description="A request for a specific ref(branch,sha,tag) to be deployed",
-    )
-    pull_requests: Missing[List[PullRequest]] = Field(default=UNSET)
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    sender: Missing[SimpleUserWebhooks] = Field(
+    key: WebhookDeployKeyCreatedPropKey = Field(
+        description="The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#get-a-deploy-key) resource."
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-model_rebuild(WebhookDeploymentProtectionRuleRequested)
+class WebhookDeployKeyCreatedPropKey(GitHubModel):
+    """WebhookDeployKeyCreatedPropKey
 
-__all__ = ("WebhookDeploymentProtectionRuleRequested",)
+    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/deploy-
+    keys/deploy-keys#get-a-deploy-key) resource.
+    """
+
+    added_by: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: str = Field()
+    id: int = Field()
+    key: str = Field()
+    last_used: Missing[Union[str, None]] = Field(default=UNSET)
+    read_only: bool = Field()
+    title: str = Field()
+    url: str = Field()
+    verified: bool = Field()
+
+
+model_rebuild(WebhookDeployKeyCreated)
+model_rebuild(WebhookDeployKeyCreatedPropKey)
+
+__all__ = (
+    "WebhookDeployKeyCreated",
+    "WebhookDeployKeyCreatedPropKey",
+)

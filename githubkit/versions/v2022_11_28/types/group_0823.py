@@ -9,13 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import TypedDict, NotRequired
 
 
-class ApplicationsClientIdTokenDeleteBodyType(TypedDict):
-    """ApplicationsClientIdTokenDeleteBody"""
+class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    access_token: str
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool
+    include_claim_keys: NotRequired[List[str]]
 
 
-__all__ = ("ApplicationsClientIdTokenDeleteBodyType",)
+__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",)

@@ -14,15 +14,12 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotBillingSelectedTeamsPostResponse201(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedTeamsPostResponse201
+class ReposOwnerRepoCheckSuitesPostBody(GitHubModel):
+    """ReposOwnerRepoCheckSuitesPostBody"""
 
-    The total number of seat assignments created.
-    """
-
-    seats_created: int = Field()
+    head_sha: str = Field(description="The sha of the head commit.")
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostResponse201)
+model_rebuild(ReposOwnerRepoCheckSuitesPostBody)
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201",)
+__all__ = ("ReposOwnerRepoCheckSuitesPostBody",)

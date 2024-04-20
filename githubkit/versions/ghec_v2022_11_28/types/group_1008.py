@@ -9,19 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0174 import JobType
-
-
-class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
-
-    total_count: int
-    jobs: List[JobType]
+from .group_1004 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type
 
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type",)
+class ReposOwnerRepoPagesPutBodyAnyof3Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof3"""
+
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
+    public: bool
+
+
+__all__ = ("ReposOwnerRepoPagesPutBodyAnyof3Type",)

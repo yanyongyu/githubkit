@@ -9,25 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
 
-from .group_0116 import FullRepositoryType
-from .group_0390 import EnterpriseWebhooksType
-from .group_0391 import SimpleInstallationType
-from .group_0394 import SimpleUserWebhooksType
-from .group_0392 import OrganizationSimpleWebhooksType
-from .group_0801 import WebhookSecurityAndAnalysisPropChangesType
+from .group_0086 import CodespaceType
 
 
-class WebhookSecurityAndAnalysisType(TypedDict):
-    """security_and_analysis event"""
+class OrgsOrgCodespacesGetResponse200Type(TypedDict):
+    """OrgsOrgCodespacesGetResponse200"""
 
-    changes: WebhookSecurityAndAnalysisPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: FullRepositoryType
-    sender: NotRequired[SimpleUserWebhooksType]
+    total_count: int
+    codespaces: List[CodespaceType]
 
 
-__all__ = ("WebhookSecurityAndAnalysisType",)
+__all__ = ("OrgsOrgCodespacesGetResponse200Type",)

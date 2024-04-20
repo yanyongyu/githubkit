@@ -9,21 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgTeamsTeamSlugPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody"""
 
     name: NotRequired[str]
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
+    value: NotRequired[str]
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugPatchBodyType",)
+__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType",)

@@ -9,66 +9,71 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0731 import WebhookReleasePrereleasedPropReleaseMergedAssetsType
-from .group_0729 import WebhookReleasePrereleasedPropReleaseAllof0PropReactionsType
+from .group_0187 import DeploymentType
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookReleasePrereleasedPropReleaseType(TypedDict):
-    """WebhookReleasePrereleasedPropRelease"""
+class WebhookWorkflowJobInProgressType(TypedDict):
+    """workflow_job in_progress event"""
 
-    assets: List[WebhookReleasePrereleasedPropReleaseMergedAssetsType]
-    assets_url: str
-    author: WebhookReleasePrereleasedPropReleaseMergedAuthorType
-    body: Union[Union[str, None], None]
-    created_at: datetime
-    discussion_url: NotRequired[str]
-    draft: bool
+    action: Literal["in_progress"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+    workflow_job: WebhookWorkflowJobInProgressPropWorkflowJobType
+    deployment: NotRequired[DeploymentType]
+
+
+class WebhookWorkflowJobInProgressPropWorkflowJobType(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJob"""
+
+    check_run_url: str
+    completed_at: Union[Union[str, None], None]
+    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None]
+    created_at: str
+    head_sha: str
     html_url: str
     id: int
-    name: Union[Union[str, None], None]
+    labels: List[str]
+    name: str
     node_id: str
-    prerelease: Literal[True]
-    published_at: Union[datetime, None]
-    reactions: NotRequired[WebhookReleasePrereleasedPropReleaseAllof0PropReactionsType]
-    tag_name: str
-    tarball_url: Union[Union[str, None], None]
-    target_commitish: str
-    upload_url: str
+    run_attempt: int
+    run_id: int
+    run_url: str
+    runner_group_id: Union[Union[int, None], None]
+    runner_group_name: Union[Union[str, None], None]
+    runner_id: Union[Union[int, None], None]
+    runner_name: Union[Union[str, None], None]
+    started_at: str
+    status: Literal["queued", "in_progress", "completed"]
+    head_branch: Union[Union[str, None], None]
+    workflow_name: Union[Union[str, None], None]
+    steps: List[WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType]
     url: str
-    zipball_url: Union[Union[str, None], None]
 
 
-class WebhookReleasePrereleasedPropReleaseMergedAuthorType(TypedDict):
-    """WebhookReleasePrereleasedPropReleaseMergedAuthor"""
+class WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType(TypedDict):
+    """WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    completed_at: Union[Union[str, None], None]
+    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None]
+    name: str
+    number: int
+    started_at: Union[Union[str, None], None]
+    status: Literal["in_progress", "completed", "queued", "pending"]
 
 
 __all__ = (
-    "WebhookReleasePrereleasedPropReleaseType",
-    "WebhookReleasePrereleasedPropReleaseMergedAuthorType",
+    "WebhookWorkflowJobInProgressType",
+    "WebhookWorkflowJobInProgressPropWorkflowJobType",
+    "WebhookWorkflowJobInProgressPropWorkflowJobMergedStepsType",
 )

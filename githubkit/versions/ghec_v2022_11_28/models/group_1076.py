@@ -9,21 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
+class UserEmailVisibilityPatchBody(GitHubModel):
+    """UserEmailVisibilityPatchBody"""
 
-    encrypted_value: str = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an environment public key](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-environment-public-key) endpoint.",
+    visibility: Literal["public", "private"] = Field(
+        description="Denotes whether an email is publicly visible."
     )
-    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody)
+model_rebuild(UserEmailVisibilityPatchBody)
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody",)
+__all__ = ("UserEmailVisibilityPatchBody",)

@@ -9,36 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0745 import (
-    WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploaderType,
-)
 
+class EnterprisesEnterpriseActionsRunnerGroupsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
 
-class WebhookReleaseUnpublishedPropReleaseMergedAssetsType(TypedDict):
-    """WebhookReleaseUnpublishedPropReleaseMergedAssets"""
-
-    browser_download_url: str
-    content_type: str
-    created_at: datetime
-    download_count: int
-    id: int
-    label: Union[str, None]
     name: str
-    node_id: str
-    size: int
-    state: Literal["uploaded"]
-    updated_at: datetime
-    uploader: NotRequired[
-        Union[
-            WebhookReleaseUnpublishedPropReleaseAllof0PropAssetsItemsPropUploaderType,
-            None,
-        ]
-    ]
-    url: str
+    visibility: NotRequired[Literal["selected", "all"]]
+    selected_organization_ids: NotRequired[List[int]]
+    runners: NotRequired[List[int]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[List[str]]
 
 
-__all__ = ("WebhookReleaseUnpublishedPropReleaseMergedAssetsType",)
+__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsPostBodyType",)

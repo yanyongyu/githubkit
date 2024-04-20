@@ -10,29 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyType(TypedDict):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
 
-    total_count: int
-    secrets: List[DependabotSecretType]
+    groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
+    synced_at: NotRequired[str]
 
 
-class DependabotSecretType(TypedDict):
-    """Dependabot Secret
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
 
-    Set secrets for Dependabot.
-    """
-
-    name: str
-    created_at: datetime
-    updated_at: datetime
+    group_id: str
+    group_name: str
+    group_description: str
+    id: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
-    "DependabotSecretType",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyType",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
 )

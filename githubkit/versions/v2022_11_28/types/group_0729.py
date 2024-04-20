@@ -9,29 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0132 import RepositoryRulesetType
-from .group_0357 import EnterpriseWebhooksType
-from .group_0358 import SimpleInstallationType
-from .group_0360 import RepositoryWebhooksType
-from .group_0361 import SimpleUserWebhooksType
-from .group_0359 import OrganizationSimpleWebhooksType
-from .group_0730 import WebhookRepositoryRulesetEditedPropChangesType
+
+class OrgsOrgActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
+
+    name: str
+    runner_group_id: int
+    labels: List[str]
+    work_folder: NotRequired[str]
 
 
-class WebhookRepositoryRulesetEditedType(TypedDict):
-    """repository ruleset edited event"""
-
-    action: Literal["edited"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_ruleset: RepositoryRulesetType
-    changes: NotRequired[WebhookRepositoryRulesetEditedPropChangesType]
-    sender: SimpleUserWebhooksType
-
-
-__all__ = ("WebhookRepositoryRulesetEditedType",)
+__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",)

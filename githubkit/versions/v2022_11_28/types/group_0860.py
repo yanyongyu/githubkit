@@ -12,14 +12,17 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0071 import CodespaceType
+
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0
+
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: List[str]
 
 
-class OrgsOrgCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: List[CodespaceType]
-
-
-__all__ = ("OrgsOrgCodespacesGetResponse200Type",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type",)

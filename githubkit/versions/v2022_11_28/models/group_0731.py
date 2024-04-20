@@ -13,26 +13,18 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0097 import RepositoryRulesetConditions
-from .group_0732 import (
-    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems,
-)
+from .group_0061 import RunnerLabel
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropConditions(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
+class OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200(GitHubModel):
+    """OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200"""
 
-    added: Missing[List[RepositoryRulesetConditions]] = Field(default=UNSET)
-    deleted: Missing[List[RepositoryRulesetConditions]] = Field(default=UNSET)
-    updated: Missing[
-        List[WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems]
-    ] = Field(default=UNSET)
+    total_count: int = Field()
+    labels: List[RunnerLabel] = Field()
 
 
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropConditions)
+model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200)
 
-__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropConditions",)
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200",)

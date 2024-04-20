@@ -12,14 +12,19 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0061 import RunnerLabelType
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0
+
+    Examples:
+        {'contexts': ['contexts']}
+    """
+
+    contexts: List[str]
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
-
-    total_count: int
-    labels: List[RunnerLabelType]
-
-
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type",)
+__all__ = (
+    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type",
+)

@@ -9,17 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
+
+from .group_0189 import CheckRunType
 
 
-class OrgsOrgInvitationsPostBodyType(TypedDict):
-    """OrgsOrgInvitationsPostBody"""
+class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
 
-    invitee_id: NotRequired[int]
-    email: NotRequired[str]
-    role: NotRequired[Literal["admin", "direct_member", "billing_manager", "reinstate"]]
-    team_ids: NotRequired[List[int]]
+    total_count: int
+    check_runs: List[CheckRunType]
 
 
-__all__ = ("OrgsOrgInvitationsPostBodyType",)
+__all__ = ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",)

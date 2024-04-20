@@ -11,19 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof1(GitHubModel):
-    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
 
-    date: str = Field()
-    email: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
+    The total number of seat assignments cancelled.
+    """
+
+    seats_cancelled: int = Field()
 
 
-model_rebuild(WebhookStatusPropCommitPropCommitPropCommitterAllof1)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteResponse200)
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof1",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",)

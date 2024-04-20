@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class NotificationsPutResponse202Type(TypedDict):
-    """NotificationsPutResponse202"""
+class ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody"""
 
-    message: NotRequired[str]
+    enable_debug_logging: NotRequired[bool]
 
 
-__all__ = ("NotificationsPutResponse202Type",)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType",)

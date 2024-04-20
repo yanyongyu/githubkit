@@ -11,49 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0733 import WebhookRepositoryRulesetEditedPropChangesPropRules
-from .group_0731 import WebhookRepositoryRulesetEditedPropChangesPropConditions
+from .group_0062 import Runner
 
 
-class WebhookRepositoryRulesetEditedPropChanges(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChanges"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201(GitHubModel):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
 
-    name: Missing[WebhookRepositoryRulesetEditedPropChangesPropName] = Field(
-        default=UNSET
+    runner: Runner = Field(
+        title="Self hosted runners", description="A self hosted runner"
     )
-    enforcement: Missing[WebhookRepositoryRulesetEditedPropChangesPropEnforcement] = (
-        Field(default=UNSET)
-    )
-    conditions: Missing[WebhookRepositoryRulesetEditedPropChangesPropConditions] = (
-        Field(default=UNSET)
-    )
-    rules: Missing[WebhookRepositoryRulesetEditedPropChangesPropRules] = Field(
-        default=UNSET
+    encoded_jit_config: str = Field(
+        description="The base64 encoded runner configuration."
     )
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropName(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+model_rebuild(OrgsOrgActionsRunnersGenerateJitconfigPostResponse201)
 
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropEnforcement(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-
-
-model_rebuild(WebhookRepositoryRulesetEditedPropChanges)
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropName)
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropEnforcement)
-
-__all__ = (
-    "WebhookRepositoryRulesetEditedPropChanges",
-    "WebhookRepositoryRulesetEditedPropChangesPropName",
-    "WebhookRepositoryRulesetEditedPropChangesPropEnforcement",
-)
+__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostResponse201",)

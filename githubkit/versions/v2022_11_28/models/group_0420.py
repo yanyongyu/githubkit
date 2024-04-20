@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
 
 from pydantic import Field
@@ -18,6 +17,7 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0365 import Discussion
 from .group_0357 import EnterpriseWebhooks
 from .group_0358 import SimpleInstallation
 from .group_0360 import RepositoryWebhooks
@@ -25,11 +25,14 @@ from .group_0361 import SimpleUserWebhooks
 from .group_0359 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionCreated(GitHubModel):
-    """discussion created event"""
+class WebhookDiscussionCommentCreated(GitHubModel):
+    """discussion_comment created event"""
 
     action: Literal["created"] = Field()
-    discussion: WebhookDiscussionCreatedPropDiscussion = Field()
+    comment: WebhookDiscussionCommentCreatedPropComment = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -55,13 +58,9 @@ class WebhookDiscussionCreated(GitHubModel):
     )
 
 
-class WebhookDiscussionCreatedPropDiscussion(GitHubModel):
-    """WebhookDiscussionCreatedPropDiscussion"""
+class WebhookDiscussionCommentCreatedPropComment(GitHubModel):
+    """WebhookDiscussionCommentCreatedPropComment"""
 
-    active_lock_reason: Union[None, None] = Field()
-    answer_chosen_at: Union[None, None] = Field()
-    answer_chosen_by: Union[None, None] = Field()
-    answer_html_url: Union[Union[str, None], None] = Field()
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -75,43 +74,26 @@ class WebhookDiscussionCreatedPropDiscussion(GitHubModel):
         title="AuthorAssociation",
         description="How the author is associated with the repository.",
     )
-    body: Union[Union[str, None], None] = Field()
-    category: WebhookDiscussionCreatedPropDiscussionMergedCategory = Field()
-    comments: int = Field()
-    created_at: datetime = Field()
+    body: str = Field()
+    child_comment_count: int = Field()
+    created_at: str = Field()
+    discussion_id: int = Field()
     html_url: str = Field()
     id: int = Field()
-    locked: Literal[False] = Field()
     node_id: str = Field()
-    number: int = Field()
-    reactions: Missing[WebhookDiscussionCreatedPropDiscussionMergedReactions] = Field(
-        default=UNSET
+    parent_id: Union[int, None] = Field()
+    reactions: WebhookDiscussionCommentCreatedPropCommentPropReactions = Field(
+        title="Reactions"
     )
     repository_url: str = Field()
-    state: Literal["open", "converting", "transferring"] = Field()
-    timeline_url: Missing[str] = Field(default=UNSET)
-    title: str = Field()
-    updated_at: datetime = Field()
-    user: WebhookDiscussionCreatedPropDiscussionMergedUser = Field()
-
-
-class WebhookDiscussionCreatedPropDiscussionMergedCategory(GitHubModel):
-    """WebhookDiscussionCreatedPropDiscussionMergedCategory"""
-
-    created_at: datetime = Field()
-    description: str = Field()
-    emoji: str = Field()
-    id: int = Field()
-    is_answerable: bool = Field()
-    name: str = Field()
-    node_id: Missing[str] = Field(default=UNSET)
-    repository_id: int = Field()
-    slug: str = Field()
     updated_at: str = Field()
+    user: Union[WebhookDiscussionCommentCreatedPropCommentPropUser, None] = Field(
+        title="User"
+    )
 
 
-class WebhookDiscussionCreatedPropDiscussionMergedReactions(GitHubModel):
-    """WebhookDiscussionCreatedPropDiscussionMergedReactions"""
+class WebhookDiscussionCommentCreatedPropCommentPropReactions(GitHubModel):
+    """Reactions"""
 
     plus_one: int = Field(alias="+1")
     minus_one: int = Field(alias="-1")
@@ -125,8 +107,8 @@ class WebhookDiscussionCreatedPropDiscussionMergedReactions(GitHubModel):
     url: str = Field()
 
 
-class WebhookDiscussionCreatedPropDiscussionMergedUser(GitHubModel):
-    """WebhookDiscussionCreatedPropDiscussionMergedUser"""
+class WebhookDiscussionCommentCreatedPropCommentPropUser(GitHubModel):
+    """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -151,16 +133,14 @@ class WebhookDiscussionCreatedPropDiscussionMergedUser(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookDiscussionCreated)
-model_rebuild(WebhookDiscussionCreatedPropDiscussion)
-model_rebuild(WebhookDiscussionCreatedPropDiscussionMergedCategory)
-model_rebuild(WebhookDiscussionCreatedPropDiscussionMergedReactions)
-model_rebuild(WebhookDiscussionCreatedPropDiscussionMergedUser)
+model_rebuild(WebhookDiscussionCommentCreated)
+model_rebuild(WebhookDiscussionCommentCreatedPropComment)
+model_rebuild(WebhookDiscussionCommentCreatedPropCommentPropReactions)
+model_rebuild(WebhookDiscussionCommentCreatedPropCommentPropUser)
 
 __all__ = (
-    "WebhookDiscussionCreated",
-    "WebhookDiscussionCreatedPropDiscussion",
-    "WebhookDiscussionCreatedPropDiscussionMergedCategory",
-    "WebhookDiscussionCreatedPropDiscussionMergedReactions",
-    "WebhookDiscussionCreatedPropDiscussionMergedUser",
+    "WebhookDiscussionCommentCreated",
+    "WebhookDiscussionCommentCreatedPropComment",
+    "WebhookDiscussionCommentCreatedPropCommentPropReactions",
+    "WebhookDiscussionCommentCreatedPropCommentPropUser",
 )

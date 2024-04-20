@@ -9,13 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
 
 
-class NotificationsThreadsThreadIdSubscriptionPutBodyType(TypedDict):
-    """NotificationsThreadsThreadIdSubscriptionPutBody"""
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
 
-    ignored: NotRequired[bool]
+    labels: List[str]
 
 
-__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBodyType",)
+__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType",)

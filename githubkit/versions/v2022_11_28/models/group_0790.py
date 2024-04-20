@@ -9,60 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
-
-from .group_0357 import EnterpriseWebhooks
-from .group_0358 import SimpleInstallation
-from .group_0360 import RepositoryWebhooks
-from .group_0361 import SimpleUserWebhooks
-from .group_0359 import OrganizationSimpleWebhooks
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookWorkflowDispatch(GitHubModel):
-    """workflow_dispatch event"""
+class OrgsOrgTeamsTeamSlugPatchBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugPatchBody"""
 
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    name: Missing[str] = Field(default=UNSET, description="The name of the team.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the team."
+    )
+    privacy: Missing[Literal["secret", "closed"]] = Field(
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
     )
-    inputs: Union[WebhookWorkflowDispatchPropInputs, None] = Field()
-    installation: Missing[SimpleInstallation] = Field(
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
         default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
+    permission: Missing[Literal["pull", "push", "admin"]] = Field(
         default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+        description="**Deprecated**. The permission that new repositories will be added to the team with when none is specified.",
     )
-    ref: str = Field()
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    parent_team_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of a team to set as the parent team."
     )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
-    workflow: str = Field()
 
 
-class WebhookWorkflowDispatchPropInputs(ExtraGitHubModel):
-    """WebhookWorkflowDispatchPropInputs"""
+model_rebuild(OrgsOrgTeamsTeamSlugPatchBody)
 
-
-model_rebuild(WebhookWorkflowDispatch)
-model_rebuild(WebhookWorkflowDispatchPropInputs)
-
-__all__ = (
-    "WebhookWorkflowDispatch",
-    "WebhookWorkflowDispatchPropInputs",
-)
+__all__ = ("OrgsOrgTeamsTeamSlugPatchBody",)

@@ -9,10 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0397 import DiscussionType
+from .group_0398 import DiscussionType
 from .group_0390 import EnterpriseWebhooksType
 from .group_0391 import SimpleInstallationType
 from .group_0393 import RepositoryWebhooksType
@@ -20,11 +21,11 @@ from .group_0394 import SimpleUserWebhooksType
 from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookDiscussionCommentCreatedType(TypedDict):
-    """discussion_comment created event"""
+class WebhookDiscussionAnsweredType(TypedDict):
+    """discussion answered event"""
 
-    action: Literal["created"]
-    comment: WebhookDiscussionCommentCreatedPropCommentType
+    action: Literal["answered"]
+    answer: WebhookDiscussionAnsweredPropAnswerType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -33,8 +34,8 @@ class WebhookDiscussionCommentCreatedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-class WebhookDiscussionCommentCreatedPropCommentType(TypedDict):
-    """WebhookDiscussionCommentCreatedPropComment"""
+class WebhookDiscussionAnsweredPropAnswerType(TypedDict):
+    """WebhookDiscussionAnsweredPropAnswer"""
 
     author_association: Literal[
         "COLLABORATOR",
@@ -48,19 +49,19 @@ class WebhookDiscussionCommentCreatedPropCommentType(TypedDict):
     ]
     body: str
     child_comment_count: int
-    created_at: str
+    created_at: datetime
     discussion_id: int
     html_url: str
     id: int
     node_id: str
-    parent_id: Union[int, None]
-    reactions: WebhookDiscussionCommentCreatedPropCommentPropReactionsType
+    parent_id: None
+    reactions: NotRequired[WebhookDiscussionAnsweredPropAnswerPropReactionsType]
     repository_url: str
-    updated_at: str
-    user: Union[WebhookDiscussionCommentCreatedPropCommentPropUserType, None]
+    updated_at: datetime
+    user: Union[WebhookDiscussionAnsweredPropAnswerPropUserType, None]
 
 
-class WebhookDiscussionCommentCreatedPropCommentPropReactionsType(TypedDict):
+class WebhookDiscussionAnsweredPropAnswerPropReactionsType(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -75,7 +76,7 @@ class WebhookDiscussionCommentCreatedPropCommentPropReactionsType(TypedDict):
     url: str
 
 
-class WebhookDiscussionCommentCreatedPropCommentPropUserType(TypedDict):
+class WebhookDiscussionAnsweredPropAnswerPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -102,8 +103,8 @@ class WebhookDiscussionCommentCreatedPropCommentPropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhookDiscussionCommentCreatedType",
-    "WebhookDiscussionCommentCreatedPropCommentType",
-    "WebhookDiscussionCommentCreatedPropCommentPropReactionsType",
-    "WebhookDiscussionCommentCreatedPropCommentPropUserType",
+    "WebhookDiscussionAnsweredType",
+    "WebhookDiscussionAnsweredPropAnswerType",
+    "WebhookDiscussionAnsweredPropAnswerPropReactionsType",
+    "WebhookDiscussionAnsweredPropAnswerPropUserType",
 )

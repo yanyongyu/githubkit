@@ -32,7 +32,7 @@ class OrgCustomProperty(GitHubModel):
     required: Missing[bool] = Field(
         default=UNSET, description="Whether the property is required."
     )
-    default_value: Missing[Union[str, None]] = Field(
+    default_value: Missing[Union[str, List[str], None]] = Field(
         default=UNSET, description="Default value of the property"
     )
     description: Missing[Union[str, None]] = Field(

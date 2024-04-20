@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import List, Union
 
 from pydantic import Field
 
@@ -18,71 +18,39 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0706 import WebhookReleasePublishedPropReleaseMergedAssets
-from .group_0704 import WebhookReleasePublishedPropReleaseAllof0PropReactions
+from .group_0001 import SimpleUser
+from .group_0006 import IntegrationPropPermissions
 
 
-class WebhookReleasePublishedPropRelease(GitHubModel):
-    """WebhookReleasePublishedPropRelease"""
+class AppManifestsCodeConversionsPostResponse201(GitHubModel):
+    """AppManifestsCodeConversionsPostResponse201"""
 
-    assets: List[WebhookReleasePublishedPropReleaseMergedAssets] = Field()
-    assets_url: str = Field()
-    author: WebhookReleasePublishedPropReleaseMergedAuthor = Field()
-    body: Union[Union[str, None], None] = Field()
-    created_at: datetime = Field()
-    discussion_url: Missing[str] = Field(default=UNSET)
-    draft: bool = Field(description="Whether the release is a draft or published")
-    html_url: str = Field()
-    id: int = Field()
-    name: Union[Union[str, None], None] = Field()
+    id: int = Field(description="Unique identifier of the GitHub app")
+    slug: Missing[str] = Field(
+        default=UNSET, description="The slug name of the GitHub app"
+    )
     node_id: str = Field()
-    prerelease: bool = Field(
-        description="Whether the release is identified as a prerelease or a full release."
+    owner: Union[None, SimpleUser] = Field()
+    name: str = Field(description="The name of the GitHub app")
+    description: Union[str, None] = Field()
+    external_url: str = Field()
+    html_url: str = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    permissions: IntegrationPropPermissions = Field(
+        description="The set of permissions for the GitHub app"
     )
-    published_at: Union[Union[datetime, None], None] = Field()
-    reactions: Missing[WebhookReleasePublishedPropReleaseAllof0PropReactions] = Field(
-        default=UNSET, title="Reactions"
+    events: List[str] = Field(description="The list of events for the GitHub app")
+    installations_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of installations associated with the GitHub app",
     )
-    tag_name: str = Field(description="The name of the tag.")
-    tarball_url: Union[Union[str, None], None] = Field()
-    target_commitish: str = Field(
-        description="Specifies the commitish value that determines where the Git tag is created from."
-    )
-    upload_url: str = Field()
-    url: str = Field()
-    zipball_url: Union[Union[str, None], None] = Field()
+    client_id: str = Field()
+    client_secret: str = Field()
+    webhook_secret: Union[Union[str, None], None] = Field()
+    pem: str = Field()
 
 
-class WebhookReleasePublishedPropReleaseMergedAuthor(GitHubModel):
-    """WebhookReleasePublishedPropReleaseMergedAuthor"""
+model_rebuild(AppManifestsCodeConversionsPostResponse201)
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookReleasePublishedPropRelease)
-model_rebuild(WebhookReleasePublishedPropReleaseMergedAuthor)
-
-__all__ = (
-    "WebhookReleasePublishedPropRelease",
-    "WebhookReleasePublishedPropReleaseMergedAuthor",
-)
+__all__ = ("AppManifestsCodeConversionsPostResponse201",)

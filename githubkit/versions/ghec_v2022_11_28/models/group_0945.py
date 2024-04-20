@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,46 +16,66 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgMigrationsPostBody(GitHubModel):
-    """OrgsOrgMigrationsPostBody"""
+class ReposOwnerRepoContentsPathPutBody(GitHubModel):
+    """ReposOwnerRepoContentsPathPutBody"""
 
-    repositories: List[str] = Field(
-        description="A list of arrays indicating which repositories should be migrated."
-    )
-    lock_repositories: Missing[bool] = Field(
+    message: str = Field(description="The commit message.")
+    content: str = Field(description="The new file content, using Base64 encoding.")
+    sha: Missing[str] = Field(
         default=UNSET,
-        description="Indicates whether repositories should be locked (to prevent manipulation) while migrating data.",
+        description="**Required if you are updating a file**. The blob SHA of the file being replaced.",
     )
-    exclude_metadata: Missing[bool] = Field(
+    branch: Missing[str] = Field(
         default=UNSET,
-        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
+        description="The branch name. Default: the repository’s default branch.",
     )
-    exclude_git_data: Missing[bool] = Field(
+    committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitter] = Field(
         default=UNSET,
-        description="Indicates whether the repository git data should be excluded from the migration.",
+        description="The person that committed the file. Default: the authenticated user.",
     )
-    exclude_attachments: Missing[bool] = Field(
+    author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthor] = Field(
         default=UNSET,
-        description="Indicates whether attachments should be excluded from the migration (to reduce migration archive file size).",
-    )
-    exclude_releases: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether releases should be excluded from the migration (to reduce migration archive file size).",
-    )
-    exclude_owner_projects: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether projects owned by the organization or users should be excluded. from the migration.",
-    )
-    org_metadata_only: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
-    )
-    exclude: Missing[List[Literal["repositories"]]] = Field(
-        default=UNSET,
-        description="Exclude related items from being returned in the response in order to improve performance of the request.",
+        description="The author of the file. Default: The `committer` or the authenticated user if you omit `committer`.",
     )
 
 
-model_rebuild(OrgsOrgMigrationsPostBody)
+class ReposOwnerRepoContentsPathPutBodyPropCommitter(GitHubModel):
+    """ReposOwnerRepoContentsPathPutBodyPropCommitter
 
-__all__ = ("OrgsOrgMigrationsPostBody",)
+    The person that committed the file. Default: the authenticated user.
+    """
+
+    name: str = Field(
+        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
+    )
+    email: str = Field(
+        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
+    )
+    date: Missing[str] = Field(default=UNSET)
+
+
+class ReposOwnerRepoContentsPathPutBodyPropAuthor(GitHubModel):
+    """ReposOwnerRepoContentsPathPutBodyPropAuthor
+
+    The author of the file. Default: The `committer` or the authenticated user if
+    you omit `committer`.
+    """
+
+    name: str = Field(
+        description="The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted."
+    )
+    email: str = Field(
+        description="The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted."
+    )
+    date: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ReposOwnerRepoContentsPathPutBody)
+model_rebuild(ReposOwnerRepoContentsPathPutBodyPropCommitter)
+model_rebuild(ReposOwnerRepoContentsPathPutBodyPropAuthor)
+
+__all__ = (
+    "ReposOwnerRepoContentsPathPutBody",
+    "ReposOwnerRepoContentsPathPutBodyPropCommitter",
+    "ReposOwnerRepoContentsPathPutBodyPropAuthor",
+)

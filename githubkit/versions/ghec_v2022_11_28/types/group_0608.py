@@ -12,79 +12,69 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0390 import EnterpriseWebhooksType
+from .group_0401 import ProjectsV2Type
 from .group_0391 import SimpleInstallationType
-from .group_0393 import RepositoryWebhooksType
 from .group_0394 import SimpleUserWebhooksType
 from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookMemberEditedType(TypedDict):
-    """member edited event"""
+class WebhookProjectsV2ProjectEditedType(TypedDict):
+    """Projects v2 Project Edited Event"""
 
     action: Literal["edited"]
-    changes: WebhookMemberEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    changes: WebhookProjectsV2ProjectEditedPropChangesType
     installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhookMemberEditedPropMemberType, None]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2: ProjectsV2Type
     sender: SimpleUserWebhooksType
 
 
-class WebhookMemberEditedPropMemberType(TypedDict):
-    """User"""
+class WebhookProjectsV2ProjectEditedPropChangesType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChanges"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    description: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType
+    ]
+    public: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropPublicType]
+    short_description: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType
+    ]
+    title: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropTitleType]
 
 
-class WebhookMemberEditedPropChangesType(TypedDict):
-    """WebhookMemberEditedPropChanges
-
-    The changes to the collaborator permissions
-    """
-
-    old_permission: NotRequired[WebhookMemberEditedPropChangesPropOldPermissionType]
-    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionType]
-
-
-class WebhookMemberEditedPropChangesPropOldPermissionType(TypedDict):
-    """WebhookMemberEditedPropChangesPropOldPermission"""
-
-    from_: str
-
-
-class WebhookMemberEditedPropChangesPropPermissionType(TypedDict):
-    """WebhookMemberEditedPropChangesPropPermission"""
+class WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
 
     from_: NotRequired[Union[str, None]]
     to: NotRequired[Union[str, None]]
 
 
+class WebhookProjectsV2ProjectEditedPropChangesPropPublicType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
+
+    from_: NotRequired[bool]
+    to: NotRequired[bool]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropTitleType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
+
+    from_: NotRequired[str]
+    to: NotRequired[str]
+
+
 __all__ = (
-    "WebhookMemberEditedType",
-    "WebhookMemberEditedPropMemberType",
-    "WebhookMemberEditedPropChangesType",
-    "WebhookMemberEditedPropChangesPropOldPermissionType",
-    "WebhookMemberEditedPropChangesPropPermissionType",
+    "WebhookProjectsV2ProjectEditedType",
+    "WebhookProjectsV2ProjectEditedPropChangesType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropPublicType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropTitleType",
 )

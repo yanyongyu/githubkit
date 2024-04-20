@@ -13,10 +13,16 @@ from typing import List
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCodespacesAccessSelectedUsersPostBodyType(TypedDict):
-    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0
 
-    selected_usernames: List[str]
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: List[str]
 
 
-__all__ = ("OrgsOrgCodespacesAccessSelectedUsersPostBodyType",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type",)

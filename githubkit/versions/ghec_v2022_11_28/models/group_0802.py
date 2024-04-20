@@ -9,25 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0075 import SecurityAndAnalysis
 
+class OrgsOrgCodespacesAccessSelectedUsersPostBody(GitHubModel):
+    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
 
-class WebhookSecurityAndAnalysisPropChangesPropFrom(GitHubModel):
-    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
-
-    security_and_analysis: Missing[Union[SecurityAndAnalysis, None]] = Field(
-        default=UNSET
+    selected_usernames: List[str] = Field(
+        max_length=100,
+        description="The usernames of the organization members whose codespaces be billed to the organization.",
     )
 
 
-model_rebuild(WebhookSecurityAndAnalysisPropChangesPropFrom)
+model_rebuild(OrgsOrgCodespacesAccessSelectedUsersPostBody)
 
-__all__ = ("WebhookSecurityAndAnalysisPropChangesPropFrom",)
+__all__ = ("OrgsOrgCodespacesAccessSelectedUsersPostBody",)

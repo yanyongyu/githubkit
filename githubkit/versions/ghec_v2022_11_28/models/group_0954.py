@@ -9,21 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 
-class OrgsOrgPersonalAccessTokensPatIdPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
+class ReposOwnerRepoDispatchesPostBody(GitHubModel):
+    """ReposOwnerRepoDispatchesPostBody"""
 
-    action: Literal["revoke"] = Field(
-        description="Action to apply to the fine-grained personal access token."
+    event_type: str = Field(
+        min_length=1,
+        max_length=100,
+        description="A custom webhook event name. Must be 100 characters or fewer.",
+    )
+    client_payload: Missing[ReposOwnerRepoDispatchesPostBodyPropClientPayload] = Field(
+        default=UNSET,
+        description="JSON payload with extra information about the webhook event that your action or workflow may use. The maximum number of top-level properties is 10.",
     )
 
 
-model_rebuild(OrgsOrgPersonalAccessTokensPatIdPostBody)
+class ReposOwnerRepoDispatchesPostBodyPropClientPayload(ExtraGitHubModel):
+    """ReposOwnerRepoDispatchesPostBodyPropClientPayload
 
-__all__ = ("OrgsOrgPersonalAccessTokensPatIdPostBody",)
+    JSON payload with extra information about the webhook event that your action or
+    workflow may use. The maximum number of top-level properties is 10.
+    """
+
+
+model_rebuild(ReposOwnerRepoDispatchesPostBody)
+model_rebuild(ReposOwnerRepoDispatchesPostBodyPropClientPayload)
+
+__all__ = (
+    "ReposOwnerRepoDispatchesPostBody",
+    "ReposOwnerRepoDispatchesPostBodyPropClientPayload",
+)

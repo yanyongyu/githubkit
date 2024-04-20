@@ -13,33 +13,26 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0240 import CustomDeploymentRuleApp
 
+class UserEmailsDeleteBodyOneof0(GitHubModel):
+    """UserEmailsDeleteBodyOneof0
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
+    Deletes one or more email addresses from your GitHub account. Must contain at
+    least one email address. **Note:** Alternatively, you can pass a single email
+    address or an `array` of emails addresses directly, but we recommend that you
+    pass an object using the `emails` key.
+
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
     """
 
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of custom deployment protection rule integrations available for this environment.",
+    emails: List[str] = Field(
+        description="Email addresses associated with the GitHub user account."
     )
-    available_custom_deployment_protection_rule_integrations: Missing[
-        List[CustomDeploymentRuleApp]
-    ] = Field(default=UNSET)
 
 
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200
-)
+model_rebuild(UserEmailsDeleteBodyOneof0)
 
-__all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200",
-)
+__all__ = ("UserEmailsDeleteBodyOneof0",)

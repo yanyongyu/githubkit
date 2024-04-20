@@ -12,14 +12,19 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0076 import MinimalRepositoryType
+
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0
+
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: List[str]
 
 
-class OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: List[MinimalRepositoryType]
-
-
-__all__ = ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type",)
+__all__ = (
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type",
+)

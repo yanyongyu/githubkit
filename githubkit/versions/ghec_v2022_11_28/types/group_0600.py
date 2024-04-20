@@ -9,28 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0602 import (
-    WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropPlanType,
-    WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropAccountType,
-)
+from .group_0390 import EnterpriseWebhooksType
+from .group_0391 import SimpleInstallationType
+from .group_0393 import RepositoryWebhooksType
+from .group_0394 import SimpleUserWebhooksType
+from .group_0392 import OrganizationSimpleWebhooksType
 
 
-class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchase"""
+class WebhookProjectColumnMovedType(TypedDict):
+    """project_column moved event"""
 
-    account: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropAccountType
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: str
-    on_free_trial: bool
-    plan: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseAllof0PropPlanType
-    unit_count: int
+    action: Literal["moved"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_column: WebhookProjectColumnMovedPropProjectColumnType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserWebhooksType
+
+
+class WebhookProjectColumnMovedPropProjectColumnType(TypedDict):
+    """Project Column"""
+
+    after_id: NotRequired[Union[int, None]]
+    cards_url: str
+    created_at: datetime
+    id: int
+    name: str
+    node_id: str
+    project_url: str
+    updated_at: datetime
+    url: str
 
 
 __all__ = (
-    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType",
+    "WebhookProjectColumnMovedType",
+    "WebhookProjectColumnMovedPropProjectColumnType",
 )

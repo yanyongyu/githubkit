@@ -13,24 +13,33 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0029 import OrganizationSimple
+
+class ProjectsColumnsCardsCardIdMovesPostResponse503(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
+
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[
+        List[ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems]
+    ] = Field(default=UNSET)
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200(
-    GitHubModel
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
+class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
 
-    total_count: float = Field()
-    organizations: List[OrganizationSimple] = Field()
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(
-    EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200
-)
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse503)
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems)
 
 __all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200",
+    "ProjectsColumnsCardsCardIdMovesPostResponse503",
+    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems",
 )

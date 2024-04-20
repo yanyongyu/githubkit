@@ -9,105 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0130 import RepositoryRuleUpdateType
-from .group_0150 import RepositoryRuleWorkflowsType
-from .group_0135 import RepositoryRulePullRequestType
-from .group_0147 import RepositoryRuleTagNamePatternType
-from .group_0145 import RepositoryRuleBranchNamePatternType
-from .group_0133 import RepositoryRuleRequiredDeploymentsType
-from .group_0137 import RepositoryRuleRequiredStatusChecksType
-from .group_0139 import RepositoryRuleCommitMessagePatternType
-from .group_0132 import RepositoryRuleRequiredLinearHistoryType
-from .group_0143 import RepositoryRuleCommitterEmailPatternType
-from .group_0141 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0129 import (
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
+from typing_extensions import TypedDict
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems"""
+class GistsGistIdCommentsCommentIdPatchBodyType(TypedDict):
+    """GistsGistIdCommentsCommentIdPatchBody"""
 
-    rule: NotRequired[
-        Union[
-            RepositoryRuleCreationType,
-            RepositoryRuleUpdateType,
-            RepositoryRuleDeletionType,
-            RepositoryRuleRequiredLinearHistoryType,
-            RepositoryRuleRequiredDeploymentsType,
-            RepositoryRuleRequiredSignaturesType,
-            RepositoryRulePullRequestType,
-            RepositoryRuleRequiredStatusChecksType,
-            RepositoryRuleNonFastForwardType,
-            RepositoryRuleCommitMessagePatternType,
-            RepositoryRuleCommitAuthorEmailPatternType,
-            RepositoryRuleCommitterEmailPatternType,
-            RepositoryRuleBranchNamePatternType,
-            RepositoryRuleTagNamePatternType,
-            RepositoryRuleWorkflowsType,
-        ]
-    ]
-    changes: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType
-    ]
+    body: str
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges"""
-
-    configuration: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType
-    ]
-    rule_type: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType
-    ]
-    pattern: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType
-    ]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pConfiguration
-    """
-
-    from_: NotRequired[str]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pRuleType
-    """
-
-    from_: NotRequired[str]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pPattern
-    """
-
-    from_: NotRequired[str]
-
-
-__all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType",
-)
+__all__ = ("GistsGistIdCommentsCommentIdPatchBodyType",)

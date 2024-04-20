@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -18,34 +18,20 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0PropDismisser(
-    GitHubModel
-):
-    """User"""
+class OrgsOrgActionsVariablesPostBody(GitHubModel):
+    """OrgsOrgActionsVariablesPostBody"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable."
+    )
+    selected_repository_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
+    )
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0PropDismisser)
+model_rebuild(OrgsOrgActionsVariablesPostBody)
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertCreatePropAlertAllof0PropDismisser",)
+__all__ = ("OrgsOrgActionsVariablesPostBody",)
