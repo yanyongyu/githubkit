@@ -21,7 +21,10 @@ class TokenAuth(httpx.Auth):
     def auth_flow(
         self, request: httpx.Request
     ) -> Generator[httpx.Request, httpx.Response, None]:
-        request.headers["Authorization"] = f"token {self.token}"
+        if self.token.lower().startswith(("token", "bearer):
+            request.headers["Authorization"] = self.token
+        else:
+            request.headers["Authorization"] = f"token {self.token}"
         yield request
 
 
