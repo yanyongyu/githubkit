@@ -21,7 +21,7 @@ class TokenAuth(httpx.Auth):
     def auth_flow(
         self, request: httpx.Request
     ) -> Generator[httpx.Request, httpx.Response, None]:
-        if self.token.lower().startswith(("token", "bearer):
+        if self.token.lower().startswith(("token", "bearer"):
             request.headers["Authorization"] = self.token
         else:
             request.headers["Authorization"] = f"token {self.token}"
