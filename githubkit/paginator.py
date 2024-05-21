@@ -1,5 +1,6 @@
 from typing_extensions import Self, ParamSpec
 from typing import (
+    Any,
     List,
     Union,
     Generic,
@@ -17,6 +18,7 @@ from .response import Response
 CP = ParamSpec("CP")
 CT = TypeVar("CT")
 RT = TypeVar("RT")
+RTI = TypeVar("RTI")
 
 R = Union[
     Callable[CP, Response[RT]],
@@ -27,8 +29,8 @@ R = Union[
 class Paginator(Generic[RT]):
     @overload
     def __init__(
-        self: "Paginator[RT]",
-        request: R[CP, List[RT]],
+        self: "Paginator[RTI]",
+        request: R[CP, List[RTI]],
         page: int = 1,
         per_page: int = 100,
         map_func: None = None,
@@ -38,11 +40,11 @@ class Paginator(Generic[RT]):
 
     @overload
     def __init__(
-        self: "Paginator[RT]",
+        self: "Paginator[RTI]",
         request: R[CP, CT],
         page: int = 1,
         per_page: int = 100,
-        map_func: Callable[[Response[CT]], List[RT]] = ...,
+        map_func: Callable[[Response[CT]], List[RTI]] = ...,
         *args: CP.args,
         **kwargs: CP.kwargs,
     ): ...
@@ -99,11 +101,14 @@ class Paginator(Generic[RT]):
         return self
 
     def _get_next_page(self) -> List[RT]:
-        response = self.request(
-            *self.args,
-            **self.kwargs,
-            page=self._current_page,  # type: ignore
-            per_page=self._per_page,  # type: ignore
+        response = cast(
+            Response[Any],
+            self.request(
+                *self.args,
+                **self.kwargs,
+                page=self._current_page,  # type: ignore
+                per_page=self._per_page,  # type: ignore
+            ),
         )
         self._cached_data = (
             cast(Response[List[RT]], response).parsed_data
@@ -115,11 +120,14 @@ class Paginator(Generic[RT]):
         return self._cached_data
 
     async def _aget_next_page(self) -> List[RT]:
-        response = await self.request(
-            *self.args,
-            **self.kwargs,
-            page=self._current_page,  # type: ignore
-            per_page=self._per_page,  # type: ignore
+        response = cast(
+            Response[Any],
+            await self.request(
+                *self.args,
+                **self.kwargs,
+                page=self._current_page,  # type: ignore
+                per_page=self._per_page,  # type: ignore
+            ),
         )
         self._cached_data = (
             cast(Response[List[RT]], response).parsed_data
