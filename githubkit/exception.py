@@ -46,7 +46,7 @@ class RequestFailed(GitHubException):
     def __repr__(self) -> str:
         return (
             f"{self.__class__.__name__}(method={self.request.method}, "
-            f"url={self.request.url}, status_code={self.response.status_code})"
+            f"url={self.request.url}, status_code={self.response._status_reason})"
         )
 
 
@@ -60,7 +60,7 @@ class RateLimitExceeded(RequestFailed):
     def __repr__(self) -> str:
         return (
             f"{self.__class__.__name__}(method={self.request.method}, "
-            f"url={self.request.url}, status_code={self.response.status_code}, "
+            f"url={self.request.url}, status_code={self.response._status_reason}, "
             f"retry_after={self.retry_after})"
         )
 

@@ -13,7 +13,7 @@ class Response(Generic[RT]):
         self._data_model = data_model
 
     def __repr__(self) -> str:
-        return f"Response({self.status_code}, data_model={self._data_model})"
+        return f"Response({self._status_reason}, data_model={self._data_model})"
 
     @property
     def raw_request(self) -> httpx.Request:
@@ -26,6 +26,18 @@ class Response(Generic[RT]):
     @property
     def status_code(self) -> int:
         return self._response.status_code
+
+    @property
+    def reason_phrase(self) -> str:
+        return self._response.reason_phrase
+
+    @property
+    def _status_reason(self) -> str:
+        return (
+            f"{self.status_code} {reason}"
+            if (reason := self.reason_phrase)
+            else str(self.status_code)
+        )
 
     @property
     def headers(self) -> httpx.Headers:
