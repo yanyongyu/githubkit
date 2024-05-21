@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,16 +17,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0390 import EnterpriseWebhooks
-from .group_0391 import SimpleInstallation
-from .group_0393 import RepositoryWebhooks
-from .group_0394 import SimpleUserWebhooks
-from .group_0392 import OrganizationSimpleWebhooks
+from .group_0400 import EnterpriseWebhooks
+from .group_0401 import SimpleInstallation
+from .group_0403 import RepositoryWebhooks
+from .group_0404 import SimpleUserWebhooks
+from .group_0402 import OrganizationSimpleWebhooks
 
 
-class WebhookTeamAdd(GitHubModel):
-    """team_add event"""
+class WebhookRepositoryPrivatized(GitHubModel):
+    """repository privatized event"""
 
+    action: Literal["privatized"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -50,75 +51,8 @@ class WebhookTeamAdd(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    team: WebhookTeamAddPropTeam = Field(
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
-    )
 
 
-class WebhookTeamAddPropTeam(GitHubModel):
-    """Team
+model_rebuild(WebhookRepositoryPrivatized)
 
-    Groups of organization members that gives permissions on specified repositories.
-    """
-
-    deleted: Missing[bool] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the team"
-    )
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field(description="Unique identifier of the team")
-    members_url: Missing[str] = Field(default=UNSET)
-    name: str = Field(description="Name of the team")
-    node_id: Missing[str] = Field(default=UNSET)
-    parent: Missing[Union[WebhookTeamAddPropTeamPropParent, None]] = Field(
-        default=UNSET
-    )
-    permission: Missing[str] = Field(
-        default=UNSET,
-        description="Permission that the team will have for its repositories",
-    )
-    privacy: Missing[Literal["open", "closed", "secret"]] = Field(default=UNSET)
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
-        default=UNSET,
-        description="Whether team members will receive notifications when their team is @mentioned",
-    )
-    repositories_url: Missing[str] = Field(default=UNSET)
-    slug: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET, description="URL for the team")
-
-
-class WebhookTeamAddPropTeamPropParent(GitHubModel):
-    """WebhookTeamAddPropTeamPropParent"""
-
-    description: Union[str, None] = Field(description="Description of the team")
-    html_url: str = Field()
-    id: int = Field(description="Unique identifier of the team")
-    members_url: str = Field()
-    name: str = Field(description="Name of the team")
-    node_id: str = Field()
-    permission: str = Field(
-        description="Permission that the team will have for its repositories"
-    )
-    privacy: Literal["open", "closed", "secret"] = Field()
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"] = (
-        Field(
-            description="Whether team members will receive notifications when their team is @mentioned"
-        )
-    )
-    repositories_url: str = Field()
-    slug: str = Field()
-    url: str = Field(description="URL for the team")
-
-
-model_rebuild(WebhookTeamAdd)
-model_rebuild(WebhookTeamAddPropTeam)
-model_rebuild(WebhookTeamAddPropTeamPropParent)
-
-__all__ = (
-    "WebhookTeamAdd",
-    "WebhookTeamAddPropTeam",
-    "WebhookTeamAddPropTeamPropParent",
-)
+__all__ = ("WebhookRepositoryPrivatized",)

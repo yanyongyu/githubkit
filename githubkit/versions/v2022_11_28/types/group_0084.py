@@ -9,38 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
-from .group_0017 import RepositoryType
 
 
-class MigrationType(TypedDict):
-    """Migration
+class OrgMembershipType(TypedDict):
+    """Org Membership
 
-    A migration.
+    Org Membership
     """
 
-    id: int
-    owner: Union[None, SimpleUserType]
-    guid: str
-    state: str
-    lock_repositories: bool
-    exclude_metadata: bool
-    exclude_git_data: bool
-    exclude_attachments: bool
-    exclude_releases: bool
-    exclude_owner_projects: bool
-    org_metadata_only: bool
-    repositories: List[RepositoryType]
     url: str
-    created_at: datetime
-    updated_at: datetime
+    state: Literal["active", "pending"]
+    role: Literal["admin", "member", "billing_manager"]
+    organization_url: str
+    organization: OrganizationSimpleType
+    user: Union[None, SimpleUserType]
+    permissions: NotRequired[OrgMembershipPropPermissionsType]
+
+
+class OrganizationSimpleType(TypedDict):
+    """Organization Simple
+
+    A GitHub organization.
+    """
+
+    login: str
+    id: int
     node_id: str
-    archive_url: NotRequired[str]
-    exclude: NotRequired[List[str]]
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
 
 
-__all__ = ("MigrationType",)
+class OrgMembershipPropPermissionsType(TypedDict):
+    """OrgMembershipPropPermissions"""
+
+    can_create_repository: bool
+
+
+__all__ = (
+    "OrgMembershipType",
+    "OrganizationSimpleType",
+    "OrgMembershipPropPermissionsType",
+)

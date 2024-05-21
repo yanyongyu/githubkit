@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -17,19 +17,101 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0131 import RepositoryRuleUpdatePropParameters
 
+class RepositoryRuleCreation(GitHubModel):
+    """creation
 
-class RepositoryRuleUpdate(GitHubModel):
-    """update
-
-    Only allow users with bypass permission to update matching refs.
+    Only allow users with bypass permission to create matching refs.
     """
 
-    type: Literal["update"] = Field()
-    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
+    type: Literal["creation"] = Field()
 
 
-model_rebuild(RepositoryRuleUpdate)
+class RepositoryRuleDeletion(GitHubModel):
+    """deletion
 
-__all__ = ("RepositoryRuleUpdate",)
+    Only allow users with bypass permissions to delete matching refs.
+    """
+
+    type: Literal["deletion"] = Field()
+
+
+class RepositoryRuleRequiredSignatures(GitHubModel):
+    """required_signatures
+
+    Commits pushed to matching refs must have verified signatures.
+    """
+
+    type: Literal["required_signatures"] = Field()
+
+
+class RepositoryRuleNonFastForward(GitHubModel):
+    """non_fast_forward
+
+    Prevent users with push access from force pushing to refs.
+    """
+
+    type: Literal["non_fast_forward"] = Field()
+
+
+class RepositoryRuleOneof14(GitHubModel):
+    """file_path_restriction
+
+    Note: file_path_restriction is in beta and subject to change.
+
+    Prevent commits that include changes in specified file paths from being pushed
+    to the commit graph.
+    """
+
+    type: Literal["file_path_restriction"] = Field()
+    parameters: Missing[RepositoryRuleOneof14PropParameters] = Field(default=UNSET)
+
+
+class RepositoryRuleOneof14PropParameters(GitHubModel):
+    """RepositoryRuleOneof14PropParameters"""
+
+    restricted_file_paths: List[str] = Field(
+        description="The file paths that are restricted from being pushed to the commit graph."
+    )
+
+
+class RepositoryRuleOneof16(GitHubModel):
+    """file_extension_restriction
+
+    Note: file_extension_restriction is in beta and subject to change.
+
+    Prevent commits that include files with specified file extensions from being
+    pushed to the commit graph.
+    """
+
+    type: Literal["file_extension_restriction"] = Field()
+    parameters: Missing[RepositoryRuleOneof16PropParameters] = Field(default=UNSET)
+
+
+class RepositoryRuleOneof16PropParameters(GitHubModel):
+    """RepositoryRuleOneof16PropParameters"""
+
+    restricted_file_extensions: List[str] = Field(
+        description="The file extensions that are restricted from being pushed to the commit graph."
+    )
+
+
+model_rebuild(RepositoryRuleCreation)
+model_rebuild(RepositoryRuleDeletion)
+model_rebuild(RepositoryRuleRequiredSignatures)
+model_rebuild(RepositoryRuleNonFastForward)
+model_rebuild(RepositoryRuleOneof14)
+model_rebuild(RepositoryRuleOneof14PropParameters)
+model_rebuild(RepositoryRuleOneof16)
+model_rebuild(RepositoryRuleOneof16PropParameters)
+
+__all__ = (
+    "RepositoryRuleCreation",
+    "RepositoryRuleDeletion",
+    "RepositoryRuleRequiredSignatures",
+    "RepositoryRuleNonFastForward",
+    "RepositoryRuleOneof14",
+    "RepositoryRuleOneof14PropParameters",
+    "RepositoryRuleOneof16",
+    "RepositoryRuleOneof16PropParameters",
+)

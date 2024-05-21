@@ -9,44 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0456 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreator,
-)
+from .group_0171 import Deployment
+from .group_0298 import PullRequest
+from .group_0368 import SimpleInstallation
+from .group_0370 import RepositoryWebhooks
+from .group_0371 import SimpleUserWebhooks
+from .group_0369 import OrganizationSimpleWebhooks
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropMilestone(GitHubModel):
-    """Milestone
+class WebhookDeploymentProtectionRuleRequested(GitHubModel):
+    """deployment protection rule requested event"""
 
-    A collection of related issues and pull requests.
-    """
+    action: Literal["requested"] = Field()
+    environment: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the environment that has the deployment protection rule.",
+    )
+    event: Missing[str] = Field(
+        default=UNSET,
+        description="The event that triggered the deployment protection rule.",
+    )
+    deployment_callback_url: Missing[str] = Field(
+        default=UNSET, description="The URL to review the deployment protection rule."
+    )
+    deployment: Missing[Deployment] = Field(
+        default=UNSET,
+        title="Deployment",
+        description="A request for a specific ref(branch,sha,tag) to be deployed",
+    )
+    pull_requests: Missing[List[PullRequest]] = Field(default=UNSET)
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
 
-    closed_at: Union[datetime, None] = Field()
-    closed_issues: int = Field()
-    created_at: datetime = Field()
-    creator: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreator, None
-    ] = Field(title="User")
-    description: Union[str, None] = Field()
-    due_on: Union[datetime, None] = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    open_issues: int = Field()
-    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
-    title: str = Field(description="The title of the milestone.")
-    updated_at: datetime = Field()
-    url: str = Field()
 
+model_rebuild(WebhookDeploymentProtectionRuleRequested)
 
-model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0PropMilestone)
-
-__all__ = ("WebhookIssueCommentCreatedPropIssueAllof0PropMilestone",)
+__all__ = ("WebhookDeploymentProtectionRuleRequested",)

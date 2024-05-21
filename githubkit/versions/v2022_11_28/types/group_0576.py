@@ -9,42 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0369 import ProjectsV2ItemType
-from .group_0358 import SimpleInstallationType
-from .group_0361 import SimpleUserWebhooksType
-from .group_0359 import OrganizationSimpleWebhooksType
+from .group_0367 import EnterpriseWebhooksType
+from .group_0368 import SimpleInstallationType
+from .group_0370 import RepositoryWebhooksType
+from .group_0371 import SimpleUserWebhooksType
+from .group_0396 import WebhooksMilestone3Type
+from .group_0369 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ItemArchivedType(TypedDict):
-    """Projects v2 Item Archived Event"""
+class WebhookMilestoneOpenedType(TypedDict):
+    """milestone opened event"""
 
-    action: Literal["archived"]
-    changes: WebhookProjectsV2ItemArchivedPropChangesType
+    action: Literal["opened"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    milestone: WebhooksMilestone3Type
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookProjectsV2ItemArchivedPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemArchivedPropChanges"""
-
-    archived_at: NotRequired[WebhookProjectsV2ItemArchivedPropChangesPropArchivedAtType]
-
-
-class WebhookProjectsV2ItemArchivedPropChangesPropArchivedAtType(TypedDict):
-    """WebhookProjectsV2ItemArchivedPropChangesPropArchivedAt"""
-
-    from_: NotRequired[Union[datetime, None]]
-    to: NotRequired[Union[datetime, None]]
-
-
-__all__ = (
-    "WebhookProjectsV2ItemArchivedType",
-    "WebhookProjectsV2ItemArchivedPropChangesType",
-    "WebhookProjectsV2ItemArchivedPropChangesPropArchivedAtType",
-)
+__all__ = ("WebhookMilestoneOpenedType",)

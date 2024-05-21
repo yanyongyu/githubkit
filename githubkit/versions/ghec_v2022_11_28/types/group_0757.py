@@ -9,17 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0033 import RunnerLabelType
-
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
-
-    total_count: int
-    labels: List[RunnerLabelType]
+from .group_0450 import WebhooksTeam1Type
+from .group_0400 import EnterpriseWebhooksType
+from .group_0401 import SimpleInstallationType
+from .group_0403 import RepositoryWebhooksType
+from .group_0404 import SimpleUserWebhooksType
+from .group_0402 import OrganizationSimpleWebhooksType
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type",)
+class WebhookTeamAddType(TypedDict):
+    """team_add event"""
+
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+    team: WebhooksTeam1Type
+
+
+__all__ = ("WebhookTeamAddType",)

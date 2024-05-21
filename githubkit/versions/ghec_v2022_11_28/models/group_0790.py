@@ -13,19 +13,46 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPostBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
 
-    labels: List[str] = Field(
-        max_length=100,
-        min_length=1,
-        description="The names of the custom labels to add to the runner.",
+    total_count: float = Field()
+    runner_groups: List[RunnerGroupsEnterprise] = Field()
+
+
+class RunnerGroupsEnterprise(GitHubModel):
+    """RunnerGroupsEnterprise"""
+
+    id: float = Field()
+    name: str = Field()
+    visibility: str = Field()
+    default: bool = Field()
+    selected_organizations_url: Missing[str] = Field(default=UNSET)
+    runners_url: str = Field()
+    allows_public_repositories: bool = Field()
+    workflow_restrictions_read_only: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
+    )
+    restricted_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    )
+    selected_workflows: Missing[List[str]] = Field(
+        default=UNSET,
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
     )
 
 
-model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPostBody)
+model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsGetResponse200)
+model_rebuild(RunnerGroupsEnterprise)
 
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPostBody",)
+__all__ = (
+    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200",
+    "RunnerGroupsEnterprise",
+)

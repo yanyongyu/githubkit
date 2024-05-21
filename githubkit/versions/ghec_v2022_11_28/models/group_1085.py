@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,42 +18,36 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserMigrationsPostBody(GitHubModel):
-    """UserMigrationsPostBody"""
+class ReposOwnerRepoReleasesReleaseIdPatchBody(GitHubModel):
+    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
 
-    lock_repositories: Missing[bool] = Field(
+    tag_name: Missing[str] = Field(default=UNSET, description="The name of the tag.")
+    target_commitish: Missing[str] = Field(
         default=UNSET,
-        description="Lock the repositories being migrated at the start of the migration",
+        description="Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.",
     )
-    exclude_metadata: Missing[bool] = Field(
+    name: Missing[str] = Field(default=UNSET, description="The name of the release.")
+    body: Missing[str] = Field(
+        default=UNSET, description="Text describing the contents of the tag."
+    )
+    draft: Missing[bool] = Field(
         default=UNSET,
-        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
+        description="`true` makes the release a draft, and `false` publishes the release.",
     )
-    exclude_git_data: Missing[bool] = Field(
+    prerelease: Missing[bool] = Field(
         default=UNSET,
-        description="Indicates whether the repository git data should be excluded from the migration.",
+        description="`true` to identify the release as a prerelease, `false` to identify the release as a full release.",
     )
-    exclude_attachments: Missing[bool] = Field(
-        default=UNSET, description="Do not include attachments in the migration"
-    )
-    exclude_releases: Missing[bool] = Field(
-        default=UNSET, description="Do not include releases in the migration"
-    )
-    exclude_owner_projects: Missing[bool] = Field(
+    make_latest: Missing[Literal["true", "false", "legacy"]] = Field(
         default=UNSET,
-        description="Indicates whether projects owned by the organization or users should be excluded.",
+        description="Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.",
     )
-    org_metadata_only: Missing[bool] = Field(
+    discussion_category_name: Missing[str] = Field(
         default=UNSET,
-        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
+        description='If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored. For more information, see "[Managing categories for discussions in your repository](https://docs.github.com/enterprise-cloud@latest//discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository)."',
     )
-    exclude: Missing[List[Literal["repositories"]]] = Field(
-        default=UNSET,
-        description="Exclude attributes from the API response to improve performance",
-    )
-    repositories: List[str] = Field()
 
 
-model_rebuild(UserMigrationsPostBody)
+model_rebuild(ReposOwnerRepoReleasesReleaseIdPatchBody)
 
-__all__ = ("UserMigrationsPostBody",)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdPatchBody",)

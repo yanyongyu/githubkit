@@ -9,21 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union, Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
+from .group_0006 import Integration
 
-class PageBuildStatus(GitHubModel):
-    """Page Build Status
 
-    Page Build Status
+class TimelineAssignedIssueEvent(GitHubModel):
+    """Timeline Assigned Issue Event
+
+    Timeline Assigned Issue Event
     """
 
+    id: int = Field()
+    node_id: str = Field()
     url: str = Field()
-    status: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["assigned"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(PageBuildStatus)
+model_rebuild(TimelineAssignedIssueEvent)
 
-__all__ = ("PageBuildStatus",)
+__all__ = ("TimelineAssignedIssueEvent",)

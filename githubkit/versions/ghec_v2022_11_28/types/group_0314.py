@@ -9,21 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0090 import TeamType
-from .group_0001 import SimpleUserType
+from typing import Union
+from typing_extensions import TypedDict, NotRequired
 
 
-class PullRequestReviewRequestType(TypedDict):
-    """Pull Request Review Request
+class PageDeploymentType(TypedDict):
+    """GitHub Pages
 
-    Pull Request Review Request
+    The GitHub Pages deployment status.
     """
 
-    users: List[SimpleUserType]
-    teams: List[TeamType]
+    id: Union[int, str]
+    status_url: str
+    page_url: str
+    preview_url: NotRequired[str]
 
 
-__all__ = ("PullRequestReviewRequestType",)
+__all__ = ("PageDeploymentType",)

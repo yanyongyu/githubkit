@@ -9,145 +9,114 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
+from .group_0027 import DependabotAlertSecurityVulnerability
 
 
-class SimpleRepository(GitHubModel):
-    """Simple Repository
+class DependabotAlertSecurityAdvisory(GitHubModel):
+    """DependabotAlertSecurityAdvisory
 
-    A GitHub repository.
+    Details for the GitHub Security Advisory.
     """
 
-    id: int = Field(description="A unique identifier of the repository.")
-    node_id: str = Field(description="The GraphQL identifier of the repository.")
-    name: str = Field(description="The name of the repository.")
-    full_name: str = Field(
-        description="The full, globally unique, name of the repository."
+    ghsa_id: str = Field(
+        description="The unique GitHub Security Advisory ID assigned to the advisory."
     )
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    private: bool = Field(description="Whether the repository is private.")
-    html_url: str = Field(description="The URL to view the repository on GitHub.com.")
-    description: Union[str, None] = Field(description="The repository description.")
-    fork: bool = Field(description="Whether the repository is a fork.")
-    url: str = Field(
-        description="The URL to get more information about the repository from the GitHub API."
+    cve_id: Union[str, None] = Field(
+        description="The unique CVE ID assigned to the advisory."
     )
-    archive_url: str = Field(
-        description="A template for the API URL to download the repository as an archive."
+    summary: str = Field(
+        max_length=1024, description="A short, plain text summary of the advisory."
     )
-    assignees_url: str = Field(
-        description="A template for the API URL to list the available assignees for issues in the repository."
+    description: str = Field(
+        description="A long-form Markdown-supported description of the advisory."
     )
-    blobs_url: str = Field(
-        description="A template for the API URL to create or retrieve a raw Git blob in the repository."
+    vulnerabilities: List[DependabotAlertSecurityVulnerability] = Field(
+        description="Vulnerable version range information for the advisory."
     )
-    branches_url: str = Field(
-        description="A template for the API URL to get information about branches in the repository."
+    severity: Literal["low", "medium", "high", "critical"] = Field(
+        description="The severity of the advisory."
     )
-    collaborators_url: str = Field(
-        description="A template for the API URL to get information about collaborators of the repository."
+    cvss: DependabotAlertSecurityAdvisoryPropCvss = Field(
+        description="Details for the advisory pertaining to the Common Vulnerability Scoring System."
     )
-    comments_url: str = Field(
-        description="A template for the API URL to get information about comments on the repository."
+    cwes: List[DependabotAlertSecurityAdvisoryPropCwesItems] = Field(
+        description="Details for the advisory pertaining to Common Weakness Enumeration."
     )
-    commits_url: str = Field(
-        description="A template for the API URL to get information about commits on the repository."
+    identifiers: List[DependabotAlertSecurityAdvisoryPropIdentifiersItems] = Field(
+        description="Values that identify this advisory among security information sources."
     )
-    compare_url: str = Field(
-        description="A template for the API URL to compare two commits or refs."
+    references: List[DependabotAlertSecurityAdvisoryPropReferencesItems] = Field(
+        description="Links to additional advisory information."
     )
-    contents_url: str = Field(
-        description="A template for the API URL to get the contents of the repository."
+    published_at: datetime = Field(
+        description="The time that the advisory was published in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    contributors_url: str = Field(
-        description="A template for the API URL to list the contributors to the repository."
+    updated_at: datetime = Field(
+        description="The time that the advisory was last modified in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    deployments_url: str = Field(
-        description="The API URL to list the deployments of the repository."
-    )
-    downloads_url: str = Field(
-        description="The API URL to list the downloads on the repository."
-    )
-    events_url: str = Field(
-        description="The API URL to list the events of the repository."
-    )
-    forks_url: str = Field(
-        description="The API URL to list the forks of the repository."
-    )
-    git_commits_url: str = Field(
-        description="A template for the API URL to get information about Git commits of the repository."
-    )
-    git_refs_url: str = Field(
-        description="A template for the API URL to get information about Git refs of the repository."
-    )
-    git_tags_url: str = Field(
-        description="A template for the API URL to get information about Git tags of the repository."
-    )
-    issue_comment_url: str = Field(
-        description="A template for the API URL to get information about issue comments on the repository."
-    )
-    issue_events_url: str = Field(
-        description="A template for the API URL to get information about issue events on the repository."
-    )
-    issues_url: str = Field(
-        description="A template for the API URL to get information about issues on the repository."
-    )
-    keys_url: str = Field(
-        description="A template for the API URL to get information about deploy keys on the repository."
-    )
-    labels_url: str = Field(
-        description="A template for the API URL to get information about labels of the repository."
-    )
-    languages_url: str = Field(
-        description="The API URL to get information about the languages of the repository."
-    )
-    merges_url: str = Field(
-        description="The API URL to merge branches in the repository."
-    )
-    milestones_url: str = Field(
-        description="A template for the API URL to get information about milestones of the repository."
-    )
-    notifications_url: str = Field(
-        description="A template for the API URL to get information about notifications on the repository."
-    )
-    pulls_url: str = Field(
-        description="A template for the API URL to get information about pull requests on the repository."
-    )
-    releases_url: str = Field(
-        description="A template for the API URL to get information about releases on the repository."
-    )
-    stargazers_url: str = Field(
-        description="The API URL to list the stargazers on the repository."
-    )
-    statuses_url: str = Field(
-        description="A template for the API URL to get information about statuses of a commit."
-    )
-    subscribers_url: str = Field(
-        description="The API URL to list the subscribers on the repository."
-    )
-    subscription_url: str = Field(
-        description="The API URL to subscribe to notifications for this repository."
-    )
-    tags_url: str = Field(
-        description="The API URL to get information about tags on the repository."
-    )
-    teams_url: str = Field(
-        description="The API URL to list the teams on the repository."
-    )
-    trees_url: str = Field(
-        description="A template for the API URL to create or retrieve a raw Git tree of the repository."
-    )
-    hooks_url: str = Field(
-        description="The API URL to list the hooks on the repository."
+    withdrawn_at: Union[datetime, None] = Field(
+        description="The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
 
 
-model_rebuild(SimpleRepository)
+class DependabotAlertSecurityAdvisoryPropCvss(GitHubModel):
+    """DependabotAlertSecurityAdvisoryPropCvss
 
-__all__ = ("SimpleRepository",)
+    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    """
+
+    score: float = Field(le=10.0, description="The overall CVSS score of the advisory.")
+    vector_string: Union[str, None] = Field(
+        description="The full CVSS vector string for the advisory."
+    )
+
+
+class DependabotAlertSecurityAdvisoryPropCwesItems(GitHubModel):
+    """DependabotAlertSecurityAdvisoryPropCwesItems
+
+    A CWE weakness assigned to the advisory.
+    """
+
+    cwe_id: str = Field(description="The unique CWE ID.")
+    name: str = Field(description="The short, plain text name of the CWE.")
+
+
+class DependabotAlertSecurityAdvisoryPropIdentifiersItems(GitHubModel):
+    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
+
+    An advisory identifier.
+    """
+
+    type: Literal["CVE", "GHSA"] = Field(description="The type of advisory identifier.")
+    value: str = Field(description="The value of the advisory identifer.")
+
+
+class DependabotAlertSecurityAdvisoryPropReferencesItems(GitHubModel):
+    """DependabotAlertSecurityAdvisoryPropReferencesItems
+
+    A link to additional advisory information.
+    """
+
+    url: str = Field(description="The URL of the reference.")
+
+
+model_rebuild(DependabotAlertSecurityAdvisory)
+model_rebuild(DependabotAlertSecurityAdvisoryPropCvss)
+model_rebuild(DependabotAlertSecurityAdvisoryPropCwesItems)
+model_rebuild(DependabotAlertSecurityAdvisoryPropIdentifiersItems)
+model_rebuild(DependabotAlertSecurityAdvisoryPropReferencesItems)
+
+__all__ = (
+    "DependabotAlertSecurityAdvisory",
+    "DependabotAlertSecurityAdvisoryPropCvss",
+    "DependabotAlertSecurityAdvisoryPropCwesItems",
+    "DependabotAlertSecurityAdvisoryPropIdentifiersItems",
+    "DependabotAlertSecurityAdvisoryPropReferencesItems",
+)

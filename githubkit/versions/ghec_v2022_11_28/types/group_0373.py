@@ -9,38 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0368 import SearchResultTextMatchesItemsType
+from .group_0365 import MetaType
+from .group_0371 import UserRoleItemsType
+from .group_0370 import UserNameResponseType, UserEmailsResponseItemsType
+from .group_0375 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
 
 
-class LabelSearchResultItemType(TypedDict):
-    """Label Search Result Item
+class ScimEnterpriseUserResponseType(TypedDict):
+    """ScimEnterpriseUserResponse"""
 
-    Label Search Result Item
-    """
+    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: NotRequired[Union[str, None]]
+    active: bool
+    user_name: NotRequired[str]
+    name: NotRequired[UserNameResponseType]
+    display_name: NotRequired[Union[str, None]]
+    emails: List[UserEmailsResponseItemsType]
+    roles: NotRequired[List[UserRoleItemsType]]
+    id: str
+    groups: NotRequired[List[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    score: float
-    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
 
+class ScimEnterpriseUserListType(TypedDict):
+    """ScimEnterpriseUserList"""
 
-class SearchLabelsGetResponse200Type(TypedDict):
-    """SearchLabelsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: List[LabelSearchResultItemType]
+    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: List[ScimEnterpriseUserResponseType]
+    start_index: int
+    items_per_page: int
 
 
 __all__ = (
-    "LabelSearchResultItemType",
-    "SearchLabelsGetResponse200Type",
+    "ScimEnterpriseUserResponseType",
+    "ScimEnterpriseUserListType",
 )

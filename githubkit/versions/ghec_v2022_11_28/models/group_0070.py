@@ -9,34 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class License(GitHubModel):
-    """License
+class GitignoreTemplate(GitHubModel):
+    """Gitignore Template
 
-    License
+    Gitignore Template
     """
 
-    key: str = Field()
     name: str = Field()
-    spdx_id: Union[str, None] = Field()
-    url: Union[str, None] = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    description: str = Field()
-    implementation: str = Field()
-    permissions: List[str] = Field()
-    conditions: List[str] = Field()
-    limitations: List[str] = Field()
-    body: str = Field()
-    featured: bool = Field()
+    source: str = Field()
 
 
-model_rebuild(License)
+model_rebuild(GitignoreTemplate)
 
-__all__ = ("License",)
+__all__ = ("GitignoreTemplate",)

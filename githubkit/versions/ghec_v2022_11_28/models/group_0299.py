@@ -9,16 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from typing import Literal
+from datetime import datetime
+
+from pydantic import Field
+
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0001 import SimpleUser
+from .group_0300 import TimelineCrossReferencedEventPropSource
 
 
-class Language(ExtraGitHubModel):
-    """Language
+class TimelineCrossReferencedEvent(GitHubModel):
+    """Timeline Cross Referenced Event
 
-    Language
+    Timeline Cross Referenced Event
     """
 
+    event: Literal["cross-referenced"] = Field()
+    actor: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    source: TimelineCrossReferencedEventPropSource = Field()
 
-model_rebuild(Language)
 
-__all__ = ("Language",)
+model_rebuild(TimelineCrossReferencedEvent)
+
+__all__ = ("TimelineCrossReferencedEvent",)

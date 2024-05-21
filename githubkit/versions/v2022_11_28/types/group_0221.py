@@ -9,38 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0001 import SimpleUserType
+from .group_0017 import RepositoryType
 
-class ContentSymlinkType(TypedDict):
-    """Symlink Content
 
-    An object describing a symlink
-    """
+class PullRequestSimplePropHeadType(TypedDict):
+    """PullRequestSimplePropHead"""
 
-    type: Literal["symlink"]
-    target: str
-    size: int
-    name: str
-    path: str
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
     sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentSymlinkPropLinksType
+    user: Union[None, SimpleUserType]
 
 
-class ContentSymlinkPropLinksType(TypedDict):
-    """ContentSymlinkPropLinks"""
+class PullRequestSimplePropBaseType(TypedDict):
+    """PullRequestSimplePropBase"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: Union[None, SimpleUserType]
 
 
 __all__ = (
-    "ContentSymlinkType",
-    "ContentSymlinkPropLinksType",
+    "PullRequestSimplePropHeadType",
+    "PullRequestSimplePropBaseType",
 )

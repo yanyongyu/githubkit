@@ -17,17 +17,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0357 import EnterpriseWebhooks
-from .group_0358 import SimpleInstallation
-from .group_0360 import RepositoryWebhooks
-from .group_0361 import SimpleUserWebhooks
-from .group_0359 import OrganizationSimpleWebhooks
+from .group_0367 import EnterpriseWebhooks
+from .group_0368 import SimpleInstallation
+from .group_0370 import RepositoryWebhooks
+from .group_0371 import SimpleUserWebhooks
+from .group_0369 import OrganizationSimpleWebhooks
 
 
-class WebhookStarDeleted(GitHubModel):
-    """star deleted event"""
+class WebhookRepositoryArchived(GitHubModel):
+    """repository archived event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["archived"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -51,11 +51,8 @@ class WebhookStarDeleted(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    starred_at: None = Field(
-        description="The time the star was created. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the `deleted` action."
-    )
 
 
-model_rebuild(WebhookStarDeleted)
+model_rebuild(WebhookRepositoryArchived)
 
-__all__ = ("WebhookStarDeleted",)
+__all__ = ("WebhookRepositoryArchived",)

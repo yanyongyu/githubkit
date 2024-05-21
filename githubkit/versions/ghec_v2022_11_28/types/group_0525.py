@@ -9,35 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
-from typing_extensions import TypedDict
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0524 import WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType
+from .group_0015 import InstallationType
+from .group_0412 import WebhooksUserType
+from .group_0400 import EnterpriseWebhooksType
+from .group_0403 import RepositoryWebhooksType
+from .group_0404 import SimpleUserWebhooksType
+from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0418 import WebhooksRepositoriesAddedItemsType
 
 
-class WebhookIssuesClosedPropIssueAllof0PropMilestoneType(TypedDict):
-    """Milestone
+class WebhookInstallationRepositoriesRemovedType(TypedDict):
+    """installation_repositories removed event"""
 
-    A collection of related issues and pull requests.
-    """
+    action: Literal["removed"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: InstallationType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repositories_added: List[WebhooksRepositoriesAddedItemsType]
+    repositories_removed: List[
+        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType
+    ]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_selection: Literal["all", "selected"]
+    requester: Union[WebhooksUserType, None]
+    sender: SimpleUserWebhooksType
 
-    closed_at: Union[datetime, None]
-    closed_issues: int
-    created_at: datetime
-    creator: Union[WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType, None]
-    description: Union[str, None]
-    due_on: Union[datetime, None]
-    html_url: str
+
+class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType(TypedDict):
+    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
+
+    full_name: str
     id: int
-    labels_url: str
+    name: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: datetime
-    url: str
+    private: bool
 
 
-__all__ = ("WebhookIssuesClosedPropIssueAllof0PropMilestoneType",)
+__all__ = (
+    "WebhookInstallationRepositoriesRemovedType",
+    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType",
+)

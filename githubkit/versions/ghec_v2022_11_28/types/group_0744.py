@@ -12,12 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0400 import EnterpriseWebhooksType
+from .group_0401 import SimpleInstallationType
+from .group_0403 import RepositoryWebhooksType
+from .group_0404 import SimpleUserWebhooksType
+from .group_0448 import WebhooksSponsorshipType
+from .group_0402 import OrganizationSimpleWebhooksType
 
-class EnterprisesEnterpriseActionsPermissionsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsPutBody"""
 
-    enabled_organizations: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+class WebhookSponsorshipCancelledType(TypedDict):
+    """sponsorship cancelled event"""
+
+    action: Literal["cancelled"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserWebhooksType
+    sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsPutBodyType",)
+__all__ = ("WebhookSponsorshipCancelledType",)

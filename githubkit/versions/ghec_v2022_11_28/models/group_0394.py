@@ -10,6 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
+from datetime import datetime
 
 from pydantic import Field
 
@@ -17,37 +18,43 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0072 import MarketplaceListingPlan
 
-class SimpleUserWebhooks(GitHubModel):
-    """Simple User
 
-    The GitHub user that triggered the event. This property is included in every
-    webhook payload.
+class UserMarketplacePurchase(GitHubModel):
+    """User Marketplace Purchase
+
+    User Marketplace Purchase
     """
 
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
+    billing_cycle: str = Field()
+    next_billing_date: Union[datetime, None] = Field()
+    unit_count: Union[int, None] = Field()
+    on_free_trial: bool = Field()
+    free_trial_ends_on: Union[datetime, None] = Field()
+    updated_at: Union[datetime, None] = Field()
+    account: MarketplaceAccount = Field(title="Marketplace Account")
+    plan: MarketplaceListingPlan = Field(
+        title="Marketplace Listing Plan", description="Marketplace Listing Plan"
+    )
+
+
+class MarketplaceAccount(GitHubModel):
+    """Marketplace Account"""
+
     url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
+    id: int = Field()
     type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    login: str = Field()
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    organization_billing_email: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-model_rebuild(SimpleUserWebhooks)
+model_rebuild(UserMarketplacePurchase)
+model_rebuild(MarketplaceAccount)
 
-__all__ = ("SimpleUserWebhooks",)
+__all__ = (
+    "UserMarketplacePurchase",
+    "MarketplaceAccount",
+)

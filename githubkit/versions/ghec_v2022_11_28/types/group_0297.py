@@ -10,28 +10,23 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0001 import SimpleUserType
-from .group_0005 import IntegrationType
+from typing_extensions import TypedDict
 
 
-class StateChangeIssueEventType(TypedDict):
-    """State Change Issue Event
+class LabelType(TypedDict):
+    """Label
 
-    State Change Issue Event
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
     id: int
     node_id: str
     url: str
-    actor: SimpleUserType
-    event: str
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType]
-    state_reason: NotRequired[Union[str, None]]
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
 
 
-__all__ = ("StateChangeIssueEventType",)
+__all__ = ("LabelType",)

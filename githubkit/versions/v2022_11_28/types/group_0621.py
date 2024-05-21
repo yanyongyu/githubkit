@@ -9,64 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0622 import (
-    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType,
-)
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackageType(TypedDict):
-    """WebhookRegistryPackageUpdatedPropRegistryPackage"""
-
-    created_at: str
-    description: None
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType
-    package_type: str
-    package_version: (
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType
-    )
-    registry: Union[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType, None
-    ]
-    updated_at: str
+from .group_0404 import ProjectsV2ItemType
+from .group_0368 import SimpleInstallationType
+from .group_0371 import SimpleUserWebhooksType
+from .group_0369 import OrganizationSimpleWebhooksType
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType(TypedDict):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner"""
+class WebhookProjectsV2ItemCreatedType(TypedDict):
+    """Projects v2 Item Created Event"""
 
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: str
-    html_url: str
-    id: int
-    login: str
-    node_id: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
+    action: Literal["created"]
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_item: ProjectsV2ItemType
+    sender: SimpleUserWebhooksType
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType(TypedDict):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry"""
-
-
-__all__ = (
-    "WebhookRegistryPackageUpdatedPropRegistryPackageType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType",
-)
+__all__ = ("WebhookProjectsV2ItemCreatedType",)

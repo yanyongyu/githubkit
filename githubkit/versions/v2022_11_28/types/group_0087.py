@@ -10,52 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Literal
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0001 import SimpleUserType
 
-class PackageVersionType(TypedDict):
-    """Package Version
 
-    A version of a software package
+class OrganizationRoleType(TypedDict):
+    """Organization Role
+
+    Organization roles
     """
 
     id: int
     name: str
-    url: str
-    package_html_url: str
-    html_url: NotRequired[str]
-    license_: NotRequired[str]
-    description: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    permissions: List[str]
+    organization: Union[None, SimpleUserType]
     created_at: datetime
     updated_at: datetime
-    deleted_at: NotRequired[datetime]
-    metadata: NotRequired[PackageVersionPropMetadataType]
 
 
-class PackageVersionPropMetadataType(TypedDict):
-    """Package Version Metadata"""
+class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
 
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    container: NotRequired[PackageVersionPropMetadataPropContainerType]
-    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
-
-
-class PackageVersionPropMetadataPropContainerType(TypedDict):
-    """Container Metadata"""
-
-    tags: List[str]
-
-
-class PackageVersionPropMetadataPropDockerType(TypedDict):
-    """Docker Metadata"""
-
-    tag: NotRequired[List[str]]
+    total_count: NotRequired[int]
+    roles: NotRequired[List[OrganizationRoleType]]
 
 
 __all__ = (
-    "PackageVersionType",
-    "PackageVersionPropMetadataType",
-    "PackageVersionPropMetadataPropContainerType",
-    "PackageVersionPropMetadataPropDockerType",
+    "OrganizationRoleType",
+    "OrgsOrgOrganizationRolesGetResponse200Type",
 )

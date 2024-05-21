@@ -9,35 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class Tag(GitHubModel):
-    """Tag
-
-    Tag
-    """
-
-    name: str = Field()
-    commit: TagPropCommit = Field()
-    zipball_url: str = Field()
-    tarball_url: str = Field()
-    node_id: str = Field()
+from .group_0154 import RepositoryRuleCodeScanningPropParameters
 
 
-class TagPropCommit(GitHubModel):
-    """TagPropCommit"""
+class RepositoryRuleDetailedOneof15(GitHubModel):
+    """RepositoryRuleDetailedOneof15"""
 
-    sha: str = Field()
-    url: str = Field()
+    type: Literal["code_scanning"] = Field()
+    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        default=UNSET,
+        description="The type of source for the ruleset that includes this rule.",
+    )
+    ruleset_source: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the source of the ruleset that includes this rule.",
+    )
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
+    )
 
 
-model_rebuild(Tag)
-model_rebuild(TagPropCommit)
+model_rebuild(RepositoryRuleDetailedOneof15)
 
-__all__ = (
-    "Tag",
-    "TagPropCommit",
-)
+__all__ = ("RepositoryRuleDetailedOneof15",)

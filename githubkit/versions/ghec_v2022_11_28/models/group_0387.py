@@ -9,25 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0017 import Repository
 
+class PrivateUser(GitHubModel):
+    """Private User
 
-class StarredRepository(GitHubModel):
-    """Starred Repository
-
-    Starred Repository
+    Private User
     """
 
-    starred_at: datetime = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    name: Union[str, None] = Field()
+    company: Union[str, None] = Field()
+    blog: Union[str, None] = Field()
+    location: Union[str, None] = Field()
+    email: Union[str, None] = Field()
+    notification_email: Missing[Union[str, None]] = Field(default=UNSET)
+    hireable: Union[bool, None] = Field()
+    bio: Union[str, None] = Field()
+    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
+    public_repos: int = Field()
+    public_gists: int = Field()
+    followers: int = Field()
+    following: int = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    private_gists: int = Field()
+    total_private_repos: int = Field()
+    owned_private_repos: int = Field()
+    disk_usage: int = Field()
+    collaborators: int = Field()
+    two_factor_authentication: bool = Field()
+    plan: Missing[PrivateUserPropPlan] = Field(default=UNSET)
+    suspended_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    business_plus: Missing[bool] = Field(default=UNSET)
+    ldap_dn: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(StarredRepository)
+class PrivateUserPropPlan(GitHubModel):
+    """PrivateUserPropPlan"""
 
-__all__ = ("StarredRepository",)
+    collaborators: int = Field()
+    name: str = Field()
+    space: int = Field()
+    private_repos: int = Field()
+
+
+model_rebuild(PrivateUser)
+model_rebuild(PrivateUserPropPlan)
+
+__all__ = (
+    "PrivateUser",
+    "PrivateUserPropPlan",
+)

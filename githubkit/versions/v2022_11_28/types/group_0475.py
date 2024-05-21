@@ -12,46 +12,26 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0357 import EnterpriseWebhooksType
-from .group_0358 import SimpleInstallationType
-from .group_0360 import RepositoryWebhooksType
-from .group_0361 import SimpleUserWebhooksType
-from .group_0359 import OrganizationSimpleWebhooksType
-from .group_0477 import WebhookIssueCommentEditedPropIssueType
-from .group_0476 import WebhookIssueCommentEditedPropCommentType
+from .group_0381 import DiscussionType
+from .group_0367 import EnterpriseWebhooksType
+from .group_0368 import SimpleInstallationType
+from .group_0370 import RepositoryWebhooksType
+from .group_0371 import SimpleUserWebhooksType
+from .group_0369 import OrganizationSimpleWebhooksType
+from .group_0476 import WebhookDiscussionTransferredPropChangesType
 
 
-class WebhookIssueCommentEditedType(TypedDict):
-    """issue_comment edited event"""
+class WebhookDiscussionTransferredType(TypedDict):
+    """discussion transferred event"""
 
-    action: Literal["edited"]
-    changes: WebhookIssueCommentEditedPropChangesType
-    comment: WebhookIssueCommentEditedPropCommentType
+    action: Literal["transferred"]
+    changes: WebhookDiscussionTransferredPropChangesType
+    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentEditedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookIssueCommentEditedPropChangesType(TypedDict):
-    """WebhookIssueCommentEditedPropChanges
-
-    The changes to the comment.
-    """
-
-    body: NotRequired[WebhookIssueCommentEditedPropChangesPropBodyType]
-
-
-class WebhookIssueCommentEditedPropChangesPropBodyType(TypedDict):
-    """WebhookIssueCommentEditedPropChangesPropBody"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookIssueCommentEditedType",
-    "WebhookIssueCommentEditedPropChangesType",
-    "WebhookIssueCommentEditedPropChangesPropBodyType",
-)
+__all__ = ("WebhookDiscussionTransferredType",)

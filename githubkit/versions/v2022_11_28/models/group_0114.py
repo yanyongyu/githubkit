@@ -9,28 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0115 import RepositoryRulePullRequestPropParameters
+
+class RepositoryRuleRequiredDeploymentsPropParameters(GitHubModel):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
+
+    required_deployment_environments: List[str] = Field(
+        description="The environments that must be successfully deployed to before branches can be merged."
+    )
 
 
-class RepositoryRulePullRequest(GitHubModel):
-    """pull_request
+model_rebuild(RepositoryRuleRequiredDeploymentsPropParameters)
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
-    """
-
-    type: Literal["pull_request"] = Field()
-    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
-
-
-model_rebuild(RepositoryRulePullRequest)
-
-__all__ = ("RepositoryRulePullRequest",)
+__all__ = ("RepositoryRuleRequiredDeploymentsPropParameters",)

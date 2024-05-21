@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -19,40 +18,61 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0001 import SimpleUser
-from .group_0017 import Repository
 
 
-class Migration(GitHubModel):
-    """Migration
+class OrgMembership(GitHubModel):
+    """Org Membership
 
-    A migration.
+    Org Membership
     """
 
-    id: int = Field()
-    owner: Union[None, SimpleUser] = Field()
-    guid: str = Field()
-    state: str = Field()
-    lock_repositories: bool = Field()
-    exclude_metadata: bool = Field()
-    exclude_git_data: bool = Field()
-    exclude_attachments: bool = Field()
-    exclude_releases: bool = Field()
-    exclude_owner_projects: bool = Field()
-    org_metadata_only: bool = Field()
-    repositories: List[Repository] = Field(
-        description="The repositories included in the migration. Only returned for export migrations."
-    )
     url: str = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    node_id: str = Field()
-    archive_url: Missing[str] = Field(default=UNSET)
-    exclude: Missing[List[str]] = Field(
-        default=UNSET,
-        description='Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`.',
+    state: Literal["active", "pending"] = Field(
+        description="The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation."
     )
+    role: Literal["admin", "member", "billing_manager"] = Field(
+        description="The user's membership type in the organization."
+    )
+    organization_url: str = Field()
+    organization: OrganizationSimple = Field(
+        title="Organization Simple", description="A GitHub organization."
+    )
+    user: Union[None, SimpleUser] = Field()
+    permissions: Missing[OrgMembershipPropPermissions] = Field(default=UNSET)
 
 
-model_rebuild(Migration)
+class OrganizationSimple(GitHubModel):
+    """Organization Simple
 
-__all__ = ("Migration",)
+    A GitHub organization.
+    """
+
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    hooks_url: str = Field()
+    issues_url: str = Field()
+    members_url: str = Field()
+    public_members_url: str = Field()
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
+
+
+class OrgMembershipPropPermissions(GitHubModel):
+    """OrgMembershipPropPermissions"""
+
+    can_create_repository: bool = Field()
+
+
+model_rebuild(OrgMembership)
+model_rebuild(OrganizationSimple)
+model_rebuild(OrgMembershipPropPermissions)
+
+__all__ = (
+    "OrgMembership",
+    "OrganizationSimple",
+    "OrgMembershipPropPermissions",
+)

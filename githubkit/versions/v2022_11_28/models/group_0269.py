@@ -9,31 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
+from .group_0006 import Integration
 
-class Label(GitHubModel):
-    """Label
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+class RenamedIssueEvent(GitHubModel):
+    """Renamed Issue Event
+
+    Renamed Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
-    url: str = Field(description="URL for the label")
-    name: str = Field(description="The name of the label.")
-    description: Union[str, None] = Field()
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
-    )
-    default: bool = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["renamed"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    rename: RenamedIssueEventPropRename = Field()
 
 
-model_rebuild(Label)
+class RenamedIssueEventPropRename(GitHubModel):
+    """RenamedIssueEventPropRename"""
 
-__all__ = ("Label",)
+    from_: str = Field(alias="from")
+    to: str = Field()
+
+
+model_rebuild(RenamedIssueEvent)
+model_rebuild(RenamedIssueEventPropRename)
+
+__all__ = (
+    "RenamedIssueEvent",
+    "RenamedIssueEventPropRename",
+)

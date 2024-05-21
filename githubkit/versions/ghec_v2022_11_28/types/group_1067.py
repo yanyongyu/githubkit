@@ -13,11 +13,9 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class UserCodespacesPostBodyOneof0Type(TypedDict):
-    """UserCodespacesPostBodyOneof0"""
+class ReposOwnerRepoPullsPullNumberCodespacesPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
 
-    repository_id: int
-    ref: NotRequired[str]
     location: NotRequired[str]
     geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
     client_ip: NotRequired[str]
@@ -30,4 +28,4 @@ class UserCodespacesPostBodyOneof0Type(TypedDict):
     retention_period_minutes: NotRequired[int]
 
 
-__all__ = ("UserCodespacesPostBodyOneof0Type",)
+__all__ = ("ReposOwnerRepoPullsPullNumberCodespacesPostBodyType",)

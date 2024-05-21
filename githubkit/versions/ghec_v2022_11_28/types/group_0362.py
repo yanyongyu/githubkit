@@ -9,24 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0361 import UserRoleItemsType
-from .group_0360 import UserNameResponseType, UserEmailsResponseItemsType
+from typing_extensions import TypedDict
 
 
-class UserResponseType(TypedDict):
-    """UserResponse"""
+class ReferrerTrafficType(TypedDict):
+    """Referrer Traffic
 
-    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseType]
-    display_name: NotRequired[Union[str, None]]
-    emails: List[UserEmailsResponseItemsType]
-    roles: NotRequired[List[UserRoleItemsType]]
+    Referrer Traffic
+    """
+
+    referrer: str
+    count: int
+    uniques: int
 
 
-__all__ = ("UserResponseType",)
+__all__ = ("ReferrerTrafficType",)

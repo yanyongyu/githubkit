@@ -9,21 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0114 import RepositoryRuleRequiredDeploymentsPropParameters
 
-class RepositoryRuleRequiredDeploymentsPropParameters(GitHubModel):
-    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    required_deployment_environments: List[str] = Field(
-        description="The environments that must be successfully deployed to before branches can be merged."
+class RepositoryRuleRequiredDeployments(GitHubModel):
+    """required_deployments
+
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
+    """
+
+    type: Literal["required_deployments"] = Field()
+    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleRequiredDeploymentsPropParameters)
+model_rebuild(RepositoryRuleRequiredDeployments)
 
-__all__ = ("RepositoryRuleRequiredDeploymentsPropParameters",)
+__all__ = ("RepositoryRuleRequiredDeployments",)

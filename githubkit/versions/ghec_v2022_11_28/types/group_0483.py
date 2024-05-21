@@ -9,42 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0015 import InstallationType
-from .group_0390 import EnterpriseWebhooksType
-from .group_0393 import RepositoryWebhooksType
-from .group_0394 import SimpleUserWebhooksType
-from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0253 import DependabotAlertType
+from .group_0400 import EnterpriseWebhooksType
+from .group_0401 import SimpleInstallationType
+from .group_0403 import RepositoryWebhooksType
+from .group_0404 import SimpleUserWebhooksType
+from .group_0402 import OrganizationSimpleWebhooksType
 
 
-class WebhookInstallationUnsuspendType(TypedDict):
-    """installation unsuspend event"""
+class WebhookDependabotAlertDismissedType(TypedDict):
+    """Dependabot alert dismissed event"""
 
-    action: Literal["unsuspend"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
+    action: Literal["dismissed"]
+    alert: DependabotAlertType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[
-        List[WebhookInstallationUnsuspendPropRepositoriesItemsType]
-    ]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookInstallationUnsuspendPropRepositoriesItemsType(TypedDict):
-    """WebhookInstallationUnsuspendPropRepositoriesItems"""
-
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
-
-
-__all__ = (
-    "WebhookInstallationUnsuspendType",
-    "WebhookInstallationUnsuspendPropRepositoriesItemsType",
-)
+__all__ = ("WebhookDependabotAlertDismissedType",)

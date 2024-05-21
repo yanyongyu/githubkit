@@ -12,13 +12,14 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class WebhookCheckRunRerequestedFormEncodedType(TypedDict):
-    """Check Run Re-Requested Event
+class WebhooksRepositoriesAddedItemsType(TypedDict):
+    """WebhooksRepositoriesAddedItems"""
 
-    The check_run.rerequested webhook encoded with URL encoding
-    """
+    full_name: str
+    id: int
+    name: str
+    node_id: str
+    private: bool
 
-    payload: str
 
-
-__all__ = ("WebhookCheckRunRerequestedFormEncodedType",)
+__all__ = ("WebhooksRepositoriesAddedItemsType",)

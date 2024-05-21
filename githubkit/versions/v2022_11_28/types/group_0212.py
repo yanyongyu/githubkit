@@ -9,34 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0001 import SimpleUserType
-from .group_0017 import RepositoryType
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
 
 
-class PullRequestSimplePropHeadType(TypedDict):
-    """PullRequestSimplePropHead"""
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryType]
-    sha: str
-    user: Union[None, SimpleUserType]
+    A list of errors found in a repo's CODEOWNERS file
+    """
+
+    errors: List[CodeownersErrorsPropErrorsItemsType]
 
 
-class PullRequestSimplePropBaseType(TypedDict):
-    """PullRequestSimplePropBase"""
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
 
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: Union[None, SimpleUserType]
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
 
 
 __all__ = (
-    "PullRequestSimplePropHeadType",
-    "PullRequestSimplePropBaseType",
+    "CodeownersErrorsType",
+    "CodeownersErrorsPropErrorsItemsType",
 )

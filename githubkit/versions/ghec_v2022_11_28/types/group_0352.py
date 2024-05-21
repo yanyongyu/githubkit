@@ -9,18 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
 
-class ReferrerTrafficType(TypedDict):
-    """Referrer Traffic
+class CommitActivityType(TypedDict):
+    """Commit Activity
 
-    Referrer Traffic
+    Commit Activity
     """
 
-    referrer: str
-    count: int
-    uniques: int
+    days: List[int]
+    total: int
+    week: int
 
 
-__all__ = ("ReferrerTrafficType",)
+__all__ = ("CommitActivityType",)

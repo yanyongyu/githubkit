@@ -9,33 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
+from .group_0147 import RepositoryRuleBranchNamePatternPropParametersType
 
 
-class ContributorActivityType(TypedDict):
-    """Contributor Activity
+class RepositoryRuleDetailedOneof12Type(TypedDict):
+    """RepositoryRuleDetailedOneof12"""
 
-    Contributor Activity
-    """
-
-    author: Union[None, SimpleUserType]
-    total: int
-    weeks: List[ContributorActivityPropWeeksItemsType]
-
-
-class ContributorActivityPropWeeksItemsType(TypedDict):
-    """ContributorActivityPropWeeksItems"""
-
-    w: NotRequired[int]
-    a: NotRequired[int]
-    d: NotRequired[int]
-    c: NotRequired[int]
+    type: Literal["branch_name_pattern"]
+    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-__all__ = (
-    "ContributorActivityType",
-    "ContributorActivityPropWeeksItemsType",
-)
+__all__ = ("RepositoryRuleDetailedOneof12Type",)

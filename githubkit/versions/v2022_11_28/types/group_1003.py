@@ -12,14 +12,13 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0071 import CodespaceType
+from .group_0093 import CustomPropertyValueType
 
 
-class UserCodespacesGetResponse200Type(TypedDict):
-    """UserCodespacesGetResponse200"""
+class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
 
-    total_count: int
-    codespaces: List[CodespaceType]
+    properties: List[CustomPropertyValueType]
 
 
-__all__ = ("UserCodespacesGetResponse200Type",)
+__all__ = ("ReposOwnerRepoPropertiesValuesPatchBodyType",)

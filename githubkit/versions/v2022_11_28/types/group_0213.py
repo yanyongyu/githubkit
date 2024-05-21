@@ -11,20 +11,14 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0209 import LinkType
+
+class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
+    """Codespaces Permissions Check
+
+    Permission check result for a given devcontainer config.
+    """
+
+    accepted: bool
 
 
-class PullRequestSimplePropLinksType(TypedDict):
-    """PullRequestSimplePropLinks"""
-
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
-
-
-__all__ = ("PullRequestSimplePropLinksType",)
+__all__ = ("CodespacesPermissionsCheckForDevcontainerType",)

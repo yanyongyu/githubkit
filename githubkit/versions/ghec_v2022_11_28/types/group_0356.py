@@ -9,48 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0355 import MetaType
+from typing_extensions import TypedDict
 
 
-class ScimEnterpriseGroupResponseType(TypedDict):
-    """ScimEnterpriseGroupResponse"""
+class TagType(TypedDict):
+    """Tag
 
-    schemas: List[
-        Literal[
-            "urn:ietf:params:scim:schemas:core:2.0:Group",
-            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
-        ]
-    ]
-    external_id: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    members: NotRequired[List[ScimEnterpriseGroupResponseMergedMembersType]]
-    id: NotRequired[str]
-    meta: NotRequired[MetaType]
+    Tag
+    """
+
+    name: str
+    commit: TagPropCommitType
+    zipball_url: str
+    tarball_url: str
+    node_id: str
 
 
-class ScimEnterpriseGroupResponseMergedMembersType(TypedDict):
-    """ScimEnterpriseGroupResponseMergedMembers"""
+class TagPropCommitType(TypedDict):
+    """TagPropCommit"""
 
-    value: str
-    ref: str
-    display: NotRequired[str]
-
-
-class ScimEnterpriseGroupListType(TypedDict):
-    """ScimEnterpriseGroupList"""
-
-    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
-    total_results: int
-    resources: List[ScimEnterpriseGroupResponseType]
-    start_index: int
-    items_per_page: int
+    sha: str
+    url: str
 
 
 __all__ = (
-    "ScimEnterpriseGroupResponseType",
-    "ScimEnterpriseGroupResponseMergedMembersType",
-    "ScimEnterpriseGroupListType",
+    "TagType",
+    "TagPropCommitType",
 )

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -17,124 +18,484 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0409 import WebhooksWorkflow
+from .group_0400 import EnterpriseWebhooks
+from .group_0401 import SimpleInstallation
+from .group_0403 import RepositoryWebhooks
+from .group_0404 import SimpleUserWebhooks
+from .group_0402 import OrganizationSimpleWebhooks
 
-class OrgsOrgPatchBody(GitHubModel):
-    """OrgsOrgPatchBody"""
 
-    billing_email: Missing[str] = Field(
+class WebhookWorkflowRunRequested(GitHubModel):
+    """workflow_run requested event"""
+
+    action: Literal["requested"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
-        description="Billing email address. This address is not publicized.",
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
     )
-    company: Missing[str] = Field(default=UNSET, description="The company name.")
-    email: Missing[str] = Field(
-        default=UNSET, description="The publicly visible email address."
-    )
-    twitter_username: Missing[str] = Field(
-        default=UNSET, description="The Twitter username of the company."
-    )
-    location: Missing[str] = Field(default=UNSET, description="The location.")
-    name: Missing[str] = Field(
-        default=UNSET, description="The shorthand name of the company."
-    )
-    description: Missing[str] = Field(
+    installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
-        description="The description of the company. The maximum size is 160 characters.",
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    has_organization_projects: Missing[bool] = Field(
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
-        description="Whether an organization can use organization projects.",
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    has_repository_projects: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether repositories that belong to the organization can use repository projects.",
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    default_repository_permission: Missing[
-        Literal["read", "write", "admin", "none"]
-    ] = Field(
-        default=UNSET,
-        description="Default permission level members have for organization repositories.",
+    sender: SimpleUserWebhooks = Field(
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    members_can_create_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether of non-admin organization members can create repositories. **Note:** A parameter can override this parameter. See `members_allowed_repository_creation_type` in this table for details.",
-    )
-    members_can_create_internal_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether organization members can create internal repositories, which are visible to all enterprise members. You can only allow members to create internal repositories if your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+. For more information, see "[Restricting repository creation in your organization](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-organizations-and-teams/restricting-repository-creation-in-your-organization)" in the GitHub Help documentation.',
-    )
-    members_can_create_private_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether organization members can create private repositories, which are visible to organization members with permission. For more information, see "[Restricting repository creation in your organization](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-organizations-and-teams/restricting-repository-creation-in-your-organization)" in the GitHub Help documentation.',
-    )
-    members_can_create_public_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether organization members can create public repositories, which are visible to anyone. For more information, see "[Restricting repository creation in your organization](https://docs.github.com/enterprise-cloud@latest//github/setting-up-and-managing-organizations-and-teams/restricting-repository-creation-in-your-organization)" in the GitHub Help documentation.',
-    )
-    members_allowed_repository_creation_type: Missing[
-        Literal["all", "private", "none"]
-    ] = Field(
-        default=UNSET,
-        description="Specifies which types of repositories non-admin organization members can create. `private` is only available to repositories that are part of an organization on GitHub Enterprise Cloud. \n**Note:** This parameter is deprecated and will be removed in the future. Its return value ignores internal repositories. Using this parameter overrides values set in `members_can_create_repositories`. See the parameter deprecation notice in the operation description for details.",
-    )
-    members_can_create_pages: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether organization members can create GitHub Pages sites. Existing published sites will not be impacted.",
-    )
-    members_can_create_public_pages: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether organization members can create public GitHub Pages sites. Existing published sites will not be impacted.",
-    )
-    members_can_create_private_pages: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether organization members can create private GitHub Pages sites. Existing published sites will not be impacted.",
-    )
-    members_can_fork_private_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether organization members can fork private organization repositories.",
-    )
-    web_commit_signoff_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether contributors to organization repositories are required to sign off on commits they make through GitHub's web interface.",
-    )
-    blog: Missing[str] = Field(default=UNSET)
-    advanced_security_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether GitHub Advanced Security is automatically enabled for new repositories.\n\nTo use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."\n\nYou can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.',
-    )
-    dependabot_alerts_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether Dependabot alerts is automatically enabled for new repositories.\n\nTo use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."\n\nYou can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.',
-    )
-    dependabot_security_updates_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether Dependabot security updates is automatically enabled for new repositories.\n\nTo use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."\n\nYou can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.',
-    )
-    dependency_graph_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether dependency graph is automatically enabled for new repositories.\n\nTo use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."\n\nYou can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.',
-    )
-    secret_scanning_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether secret scanning is automatically enabled for new repositories.\n\nTo use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."\n\nYou can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.',
-    )
-    secret_scanning_push_protection_enabled_for_new_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description='Whether secret scanning push protection is automatically enabled for new repositories.\n\nTo use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."\n\nYou can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.',
-    )
-    secret_scanning_push_protection_custom_link_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether a custom link is shown to contributors who are blocked from pushing a secret by push protection.",
-    )
-    secret_scanning_push_protection_custom_link: Missing[str] = Field(
-        default=UNSET,
-        description="If `secret_scanning_push_protection_custom_link_enabled` is true, the URL that will be displayed to contributors who are blocked from pushing a secret.",
-    )
-    secret_scanning_validity_checks_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether secret scanning automatic validity checks on supported partner tokens is enabled for all repositories under this organization.",
+    workflow: Union[WebhooksWorkflow, None] = Field(title="Workflow")
+    workflow_run: WebhookWorkflowRunRequestedPropWorkflowRun = Field(
+        title="Workflow Run"
     )
 
 
-model_rebuild(OrgsOrgPatchBody)
+class WebhookWorkflowRunRequestedPropWorkflowRun(GitHubModel):
+    """Workflow Run"""
 
-__all__ = ("OrgsOrgPatchBody",)
+    actor: Union[WebhookWorkflowRunRequestedPropWorkflowRunPropActor, None] = Field(
+        title="User"
+    )
+    artifacts_url: str = Field()
+    cancel_url: str = Field()
+    check_suite_id: int = Field()
+    check_suite_node_id: str = Field()
+    check_suite_url: str = Field()
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "timed_out",
+            "action_required",
+            "stale",
+            "skipped",
+            "startup_failure",
+        ],
+    ] = Field()
+    created_at: datetime = Field()
+    event: str = Field()
+    head_branch: Union[str, None] = Field()
+    head_commit: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit = Field(
+        title="SimpleCommit"
+    )
+    head_repository: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository = (
+        Field(title="Repository Lite")
+    )
+    head_sha: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    jobs_url: str = Field()
+    logs_url: str = Field()
+    name: Union[str, None] = Field()
+    node_id: str = Field()
+    path: str = Field()
+    previous_attempt_url: Union[str, None] = Field()
+    pull_requests: List[
+        WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems
+    ] = Field()
+    referenced_workflows: Missing[
+        Union[
+            List[
+                WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems
+            ],
+            None,
+        ]
+    ] = Field(default=UNSET)
+    repository: WebhookWorkflowRunRequestedPropWorkflowRunPropRepository = Field(
+        title="Repository Lite"
+    )
+    rerun_url: str = Field()
+    run_attempt: int = Field()
+    run_number: int = Field()
+    run_started_at: datetime = Field()
+    status: Literal[
+        "requested", "in_progress", "completed", "queued", "pending", "waiting"
+    ] = Field()
+    triggering_actor: Union[
+        WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor, None
+    ] = Field(title="User")
+    updated_at: datetime = Field()
+    url: str = Field()
+    workflow_id: int = Field()
+    workflow_url: str = Field()
+    display_title: str = Field()
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropActor(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems(
+    GitHubModel
+):
+    """WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems"""
+
+    path: str = Field()
+    ref: Missing[str] = Field(default=UNSET)
+    sha: str = Field()
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit(GitHubModel):
+    """SimpleCommit"""
+
+    author: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor = Field(
+        title="Committer",
+        description="Metaproperties for Git author/committer information.",
+    )
+    committer: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter = (
+        Field(
+            title="Committer",
+            description="Metaproperties for Git author/committer information.",
+        )
+    )
+    id: str = Field()
+    message: str = Field()
+    timestamp: str = Field()
+    tree_id: str = Field()
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor(GitHubModel):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: Missing[datetime] = Field(default=UNSET)
+    email: Union[str, None] = Field()
+    name: str = Field(description="The git author's name.")
+    username: Missing[str] = Field(default=UNSET)
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter(
+    GitHubModel
+):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: Missing[datetime] = Field(default=UNSET)
+    email: Union[str, None] = Field()
+    name: str = Field(description="The git author's name.")
+    username: Missing[str] = Field(default=UNSET)
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository(GitHubModel):
+    """Repository Lite"""
+
+    archive_url: str = Field()
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    deployments_url: str = Field()
+    description: Union[str, None] = Field()
+    downloads_url: str = Field()
+    events_url: str = Field()
+    fork: bool = Field()
+    forks_url: str = Field()
+    full_name: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    hooks_url: str = Field()
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the repository")
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    languages_url: str = Field()
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    name: str = Field(description="The name of the repository.")
+    node_id: str = Field()
+    notifications_url: str = Field()
+    owner: Union[
+        WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner, None
+    ] = Field(title="User")
+    private: bool = Field(description="Whether the repository is private or public.")
+    pulls_url: str = Field()
+    releases_url: str = Field()
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    trees_url: str = Field()
+    url: str = Field()
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner(
+    GitHubModel
+):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropRepository(GitHubModel):
+    """Repository Lite"""
+
+    archive_url: str = Field()
+    assignees_url: str = Field()
+    blobs_url: str = Field()
+    branches_url: str = Field()
+    collaborators_url: str = Field()
+    comments_url: str = Field()
+    commits_url: str = Field()
+    compare_url: str = Field()
+    contents_url: str = Field()
+    contributors_url: str = Field()
+    deployments_url: str = Field()
+    description: Union[str, None] = Field()
+    downloads_url: str = Field()
+    events_url: str = Field()
+    fork: bool = Field()
+    forks_url: str = Field()
+    full_name: str = Field()
+    git_commits_url: str = Field()
+    git_refs_url: str = Field()
+    git_tags_url: str = Field()
+    hooks_url: str = Field()
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the repository")
+    issue_comment_url: str = Field()
+    issue_events_url: str = Field()
+    issues_url: str = Field()
+    keys_url: str = Field()
+    labels_url: str = Field()
+    languages_url: str = Field()
+    merges_url: str = Field()
+    milestones_url: str = Field()
+    name: str = Field(description="The name of the repository.")
+    node_id: str = Field()
+    notifications_url: str = Field()
+    owner: Union[
+        WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner, None
+    ] = Field(title="User")
+    private: bool = Field(description="Whether the repository is private or public.")
+    pulls_url: str = Field()
+    releases_url: str = Field()
+    stargazers_url: str = Field()
+    statuses_url: str = Field()
+    subscribers_url: str = Field()
+    subscription_url: str = Field()
+    tags_url: str = Field()
+    teams_url: str = Field()
+    trees_url: str = Field()
+    url: str = Field()
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems(GitHubModel):
+    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems"""
+
+    base: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase = (
+        Field()
+    )
+    head: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead = (
+        Field()
+    )
+    id: float = Field()
+    number: float = Field()
+    url: str = Field()
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase(
+    GitHubModel
+):
+    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase"""
+
+    ref: str = Field()
+    repo: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo = Field(
+        title="Repo Ref"
+    )
+    sha: str = Field()
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo(
+    GitHubModel
+):
+    """Repo Ref"""
+
+    id: int = Field()
+    name: str = Field()
+    url: str = Field()
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead(
+    GitHubModel
+):
+    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead"""
+
+    ref: str = Field()
+    repo: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo = Field(
+        title="Repo Ref"
+    )
+    sha: str = Field()
+
+
+class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo(
+    GitHubModel
+):
+    """Repo Ref"""
+
+    id: int = Field()
+    name: str = Field()
+    url: str = Field()
+
+
+model_rebuild(WebhookWorkflowRunRequested)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRun)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropActor)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropRepository)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase)
+model_rebuild(
+    WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo
+)
+model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead)
+model_rebuild(
+    WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo
+)
+
+__all__ = (
+    "WebhookWorkflowRunRequested",
+    "WebhookWorkflowRunRequestedPropWorkflowRun",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropActor",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropRepository",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead",
+    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
+)

@@ -9,44 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0050 import MinimalRepositoryType
-from .group_0335 import SearchResultTextMatchesItemsType
+from typing_extensions import TypedDict
 
 
-class CodeSearchResultItemType(TypedDict):
-    """Code Search Result Item
+class RepositorySubscriptionType(TypedDict):
+    """Repository Invitation
 
-    Code Search Result Item
+    Repository invitations let you manage who you collaborate with.
     """
 
-    name: str
-    path: str
-    sha: str
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: datetime
     url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryType
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[datetime]
-    line_numbers: NotRequired[List[str]]
-    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
+    repository_url: str
 
 
-class SearchCodeGetResponse200Type(TypedDict):
-    """SearchCodeGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: List[CodeSearchResultItemType]
-
-
-__all__ = (
-    "CodeSearchResultItemType",
-    "SearchCodeGetResponse200Type",
-)
+__all__ = ("RepositorySubscriptionType",)

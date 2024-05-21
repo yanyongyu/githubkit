@@ -9,24 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0034 import Runner
+
+class WebhookStatusPropCommitPropCommitPropAuthorAllof1(GitHubModel):
+    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
+
+    date: str = Field()
+    email: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
 
 
-class EnterprisesEnterpriseActionsRunnersGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
+model_rebuild(WebhookStatusPropCommitPropCommitPropAuthorAllof1)
 
-    total_count: Missing[float] = Field(default=UNSET)
-    runners: Missing[List[Runner]] = Field(default=UNSET)
-
-
-model_rebuild(EnterprisesEnterpriseActionsRunnersGetResponse200)
-
-__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200",)
+__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof1",)

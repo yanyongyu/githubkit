@@ -9,20 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0229 import MetadataType
+from typing import Union, Literal
+from typing_extensions import TypedDict
 
 
-class DependencyType(TypedDict):
-    """Dependency"""
+class ContentSymlinkType(TypedDict):
+    """Symlink Content
 
-    package_url: NotRequired[str]
-    metadata: NotRequired[MetadataType]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[List[str]]
+    An object describing a symlink
+    """
+
+    type: Literal["symlink"]
+    target: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSymlinkPropLinksType
 
 
-__all__ = ("DependencyType",)
+class ContentSymlinkPropLinksType(TypedDict):
+    """ContentSymlinkPropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+__all__ = (
+    "ContentSymlinkType",
+    "ContentSymlinkPropLinksType",
+)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -17,22 +17,21 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0365 import Discussion
-from .group_0357 import EnterpriseWebhooks
-from .group_0358 import SimpleInstallation
-from .group_0360 import RepositoryWebhooks
-from .group_0361 import SimpleUserWebhooks
-from .group_0359 import OrganizationSimpleWebhooks
+from .group_0372 import WebhooksRule
+from .group_0367 import EnterpriseWebhooks
+from .group_0368 import SimpleInstallation
+from .group_0370 import RepositoryWebhooks
+from .group_0371 import SimpleUserWebhooks
+from .group_0369 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionCommentEdited(GitHubModel):
-    """discussion_comment edited event"""
+class WebhookBranchProtectionRuleEdited(GitHubModel):
+    """branch protection rule edited event"""
 
     action: Literal["edited"] = Field()
-    changes: WebhookDiscussionCommentEditedPropChanges = Field()
-    comment: WebhookDiscussionCommentEditedPropComment = Field()
-    discussion: Discussion = Field(
-        title="Discussion", description="A Discussion in a repository."
+    changes: Missing[WebhookBranchProtectionRuleEditedPropChanges] = Field(
+        default=UNSET,
+        description="If the action was `edited`, the changes to the rule.",
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -53,111 +52,121 @@ class WebhookDiscussionCommentEdited(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    rule: WebhooksRule = Field(
+        title="branch protection rule",
+        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
+    )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookDiscussionCommentEditedPropChanges(GitHubModel):
-    """WebhookDiscussionCommentEditedPropChanges"""
+class WebhookBranchProtectionRuleEditedPropChanges(GitHubModel):
+    """WebhookBranchProtectionRuleEditedPropChanges
 
-    body: WebhookDiscussionCommentEditedPropChangesPropBody = Field()
+    If the action was `edited`, the changes to the rule.
+    """
 
-
-class WebhookDiscussionCommentEditedPropChangesPropBody(GitHubModel):
-    """WebhookDiscussionCommentEditedPropChangesPropBody"""
-
-    from_: str = Field(alias="from")
-
-
-class WebhookDiscussionCommentEditedPropComment(GitHubModel):
-    """WebhookDiscussionCommentEditedPropComment"""
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
-    )
-    body: str = Field()
-    child_comment_count: int = Field()
-    created_at: str = Field()
-    discussion_id: int = Field()
-    html_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    parent_id: Union[int, None] = Field()
-    reactions: WebhookDiscussionCommentEditedPropCommentPropReactions = Field(
-        title="Reactions"
-    )
-    repository_url: str = Field()
-    updated_at: str = Field()
-    user: Union[WebhookDiscussionCommentEditedPropCommentPropUser, None] = Field(
-        title="User"
-    )
+    admin_enforced: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced
+    ] = Field(default=UNSET)
+    authorized_actor_names: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames
+    ] = Field(default=UNSET)
+    authorized_actors_only: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly
+    ] = Field(default=UNSET)
+    authorized_dismissal_actors_only: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly
+    ] = Field(default=UNSET)
+    linear_history_requirement_enforcement_level: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel
+    ] = Field(default=UNSET)
+    required_status_checks: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks
+    ] = Field(default=UNSET)
+    required_status_checks_enforcement_level: Missing[
+        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel
+    ] = Field(default=UNSET)
 
 
-class WebhookDiscussionCommentEditedPropCommentPropReactions(GitHubModel):
-    """Reactions"""
+class WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced(GitHubModel):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced"""
 
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
-    url: str = Field()
+    from_: Union[bool, None] = Field(alias="from")
 
 
-class WebhookDiscussionCommentEditedPropCommentPropUser(GitHubModel):
-    """User"""
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames(GitHubModel):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    from_: List[str] = Field(alias="from")
 
 
-model_rebuild(WebhookDiscussionCommentEdited)
-model_rebuild(WebhookDiscussionCommentEditedPropChanges)
-model_rebuild(WebhookDiscussionCommentEditedPropChangesPropBody)
-model_rebuild(WebhookDiscussionCommentEditedPropComment)
-model_rebuild(WebhookDiscussionCommentEditedPropCommentPropReactions)
-model_rebuild(WebhookDiscussionCommentEditedPropCommentPropUser)
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly(GitHubModel):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly"""
+
+    from_: Union[bool, None] = Field(alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly(
+    GitHubModel
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly"""
+
+    from_: Union[bool, None] = Field(alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel(
+    GitHubModel
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcem
+    entLevel
+    """
+
+    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks(GitHubModel):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
+
+    from_: List[str] = Field(alias="from")
+
+
+class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel(
+    GitHubModel
+):
+    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementL
+    evel
+    """
+
+    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
+
+
+model_rebuild(WebhookBranchProtectionRuleEdited)
+model_rebuild(WebhookBranchProtectionRuleEditedPropChanges)
+model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced)
+model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames)
+model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly)
+model_rebuild(
+    WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly
+)
+model_rebuild(
+    WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel
+)
+model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks)
+model_rebuild(
+    WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel
+)
 
 __all__ = (
-    "WebhookDiscussionCommentEdited",
-    "WebhookDiscussionCommentEditedPropChanges",
-    "WebhookDiscussionCommentEditedPropChangesPropBody",
-    "WebhookDiscussionCommentEditedPropComment",
-    "WebhookDiscussionCommentEditedPropCommentPropReactions",
-    "WebhookDiscussionCommentEditedPropCommentPropUser",
+    "WebhookBranchProtectionRuleEdited",
+    "WebhookBranchProtectionRuleEditedPropChanges",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly",
+    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly",
+    "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks",
+    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel",
 )

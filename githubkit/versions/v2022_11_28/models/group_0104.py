@@ -9,46 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty(
-    GitHubModel
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
-
-    include: Missing[List[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
-        default=UNSET,
-        description="The repository properties and values to include. All of these properties must match for the condition to pass.",
-    )
-    exclude: Missing[List[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
-        default=UNSET,
-        description="The repository properties and values to exclude. The condition will not pass if any of these properties match.",
-    )
+from .group_0105 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
+)
 
 
-class RepositoryRulesetConditionsRepositoryPropertySpec(GitHubModel):
-    """Repository ruleset property targeting definition
+class RepositoryRulesetConditionsRepositoryPropertyTarget(GitHubModel):
+    """Repository ruleset conditions for repository properties
 
-    Parameters for a targeting a repository property
+    Parameters for a repository property condition
     """
 
-    name: str = Field(description="The name of the repository property to target")
-    property_values: List[str] = Field(
-        description="The values to match for the repository property"
-    )
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty)
-model_rebuild(RepositoryRulesetConditionsRepositoryPropertySpec)
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTarget)
 
-__all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
-    "RepositoryRulesetConditionsRepositoryPropertySpec",
-)
+__all__ = ("RepositoryRulesetConditionsRepositoryPropertyTarget",)

@@ -17,22 +17,45 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0113 import RepositoryRuleRequiredDeploymentsPropParameters
 
+class RepositoryRuleRequiredLinearHistory(GitHubModel):
+    """required_linear_history
 
-class RepositoryRuleRequiredDeployments(GitHubModel):
-    """required_deployments
-
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    type: Literal["required_deployments"] = Field()
-    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
-        default=UNSET
+    type: Literal["required_linear_history"] = Field()
+
+
+class RepositoryRuleOneof15(GitHubModel):
+    """max_file_path_length
+
+    Note: max_file_path_length is in beta and subject to change.
+
+    Prevent commits that include file paths that exceed a specified character limit
+    from being pushed to the commit graph.
+    """
+
+    type: Literal["max_file_path_length"] = Field()
+    parameters: Missing[RepositoryRuleOneof15PropParameters] = Field(default=UNSET)
+
+
+class RepositoryRuleOneof15PropParameters(GitHubModel):
+    """RepositoryRuleOneof15PropParameters"""
+
+    max_file_path_length: int = Field(
+        le=256.0,
+        ge=1.0,
+        description="The maximum amount of characters allowed in file paths",
     )
 
 
-model_rebuild(RepositoryRuleRequiredDeployments)
+model_rebuild(RepositoryRuleRequiredLinearHistory)
+model_rebuild(RepositoryRuleOneof15)
+model_rebuild(RepositoryRuleOneof15PropParameters)
 
-__all__ = ("RepositoryRuleRequiredDeployments",)
+__all__ = (
+    "RepositoryRuleRequiredLinearHistory",
+    "RepositoryRuleOneof15",
+    "RepositoryRuleOneof15PropParameters",
+)

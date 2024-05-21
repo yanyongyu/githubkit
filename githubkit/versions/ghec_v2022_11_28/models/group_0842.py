@@ -15,22 +15,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0113 import CustomPropertyValue
 
+class OrgsOrgActionsVariablesNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
 
-class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: List[str] = Field(
-        max_length=30,
-        min_length=1,
-        description="The names of repositories that the custom property values will be applied to.",
-    )
-    properties: List[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values to apply to the repositories."
+    selected_repository_ids: List[int] = Field(
+        description="The IDs of the repositories that can access the organization variable."
     )
 
 
-model_rebuild(OrgsOrgPropertiesValuesPatchBody)
+model_rebuild(OrgsOrgActionsVariablesNameRepositoriesPutBody)
 
-__all__ = ("OrgsOrgPropertiesValuesPatchBody",)
+__all__ = ("OrgsOrgActionsVariablesNameRepositoriesPutBody",)

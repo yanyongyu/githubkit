@@ -9,61 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_1050 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
 
-    schemas: NotRequired[List[str]]
-    operations: List[
-        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
+class ReposOwnerRepoPagesPutBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof1"""
+
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: Union[
+        Literal["gh-pages", "master", "master /docs"],
+        ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
     ]
+    public: NotRequired[bool]
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
-
-    op: Literal["add", "remove", "replace"]
-    path: NotRequired[str]
-    value: NotRequired[
-        Union[
-            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type,
-            List[
-                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType
-            ],
-            str,
-        ]
-    ]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type(
-    TypedDict
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
-
-    active: NotRequired[Union[bool, None]]
-    user_name: NotRequired[Union[str, None]]
-    external_id: NotRequired[Union[str, None]]
-    given_name: NotRequired[Union[str, None]]
-    family_name: NotRequired[Union[str, None]]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType(
-    TypedDict
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
-    Items
-    """
-
-    value: NotRequired[str]
-    primary: NotRequired[bool]
-
-
-__all__ = (
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType",
-)
+__all__ = ("ReposOwnerRepoPagesPutBodyAnyof1Type",)

@@ -9,42 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0016 import LicenseSimpleType
-
-
-class LicenseContentType(TypedDict):
-    """License Content
-
-    License Content
-    """
-
-    name: str
-    path: str
-    sha: str
-    size: int
-    url: str
-    html_url: Union[str, None]
-    git_url: Union[str, None]
-    download_url: Union[str, None]
-    type: str
-    content: str
-    encoding: str
-    links: LicenseContentPropLinksType
-    license_: Union[None, LicenseSimpleType]
+from .group_0061 import IssueType
 
 
-class LicenseContentPropLinksType(TypedDict):
-    """LicenseContentPropLinks"""
+class TimelineCrossReferencedEventPropSourceType(TypedDict):
+    """TimelineCrossReferencedEventPropSource"""
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    type: NotRequired[str]
+    issue: NotRequired[IssueType]
 
 
-__all__ = (
-    "LicenseContentType",
-    "LicenseContentPropLinksType",
-)
+__all__ = ("TimelineCrossReferencedEventPropSourceType",)

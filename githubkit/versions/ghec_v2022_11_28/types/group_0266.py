@@ -9,34 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class GitTreeType(TypedDict):
-    """Git Tree
+class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
+    """Deployment branch and tag policy name pattern"""
 
-    The hierarchy between files in a Git repository.
-    """
-
-    sha: str
-    url: str
-    truncated: bool
-    tree: List[GitTreePropTreeItemsType]
+    name: str
+    type: NotRequired[Literal["branch", "tag"]]
 
 
-class GitTreePropTreeItemsType(TypedDict):
-    """GitTreePropTreeItems"""
-
-    path: NotRequired[str]
-    mode: NotRequired[str]
-    type: NotRequired[str]
-    sha: NotRequired[str]
-    size: NotRequired[int]
-    url: NotRequired[str]
-
-
-__all__ = (
-    "GitTreeType",
-    "GitTreePropTreeItemsType",
-)
+__all__ = ("DeploymentBranchPolicyNamePatternWithTypeType",)

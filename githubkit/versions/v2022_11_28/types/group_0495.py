@@ -9,19 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookIssuesClosedPropIssueAllof0PropPullRequestType(TypedDict):
-    """WebhookIssuesClosedPropIssueAllof0PropPullRequest"""
-
-    diff_url: NotRequired[str]
-    html_url: NotRequired[str]
-    merged_at: NotRequired[Union[datetime, None]]
-    patch_url: NotRequired[str]
-    url: NotRequired[str]
+from .group_0015 import InstallationType
+from .group_0367 import EnterpriseWebhooksType
+from .group_0370 import RepositoryWebhooksType
+from .group_0371 import SimpleUserWebhooksType
+from .group_0384 import WebhooksRepositoriesItemsType
+from .group_0369 import OrganizationSimpleWebhooksType
 
 
-__all__ = ("WebhookIssuesClosedPropIssueAllof0PropPullRequestType",)
+class WebhookInstallationUnsuspendType(TypedDict):
+    """installation unsuspend event"""
+
+    action: Literal["unsuspend"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: InstallationType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repositories: NotRequired[List[WebhooksRepositoriesItemsType]]
+    repository: NotRequired[RepositoryWebhooksType]
+    requester: NotRequired[None]
+    sender: SimpleUserWebhooksType
+
+
+__all__ = ("WebhookInstallationUnsuspendType",)

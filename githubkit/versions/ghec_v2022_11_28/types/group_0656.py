@@ -9,153 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0390 import EnterpriseWebhooksType
-from .group_0391 import SimpleInstallationType
-from .group_0393 import RepositoryWebhooksType
-from .group_0394 import SimpleUserWebhooksType
-from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0437 import ProjectsV2ItemType
+from .group_0401 import SimpleInstallationType
+from .group_0404 import SimpleUserWebhooksType
+from .group_0402 import OrganizationSimpleWebhooksType
 
 
-class WebhookReleaseCreatedType(TypedDict):
-    """release created event"""
+class WebhookProjectsV2ItemEditedType(TypedDict):
+    """Projects v2 Item Edited Event"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["edited"]
+    changes: NotRequired[
+        Union[
+            WebhookProjectsV2ItemEditedPropChangesOneof0Type,
+            WebhookProjectsV2ItemEditedPropChangesOneof1Type,
+        ]
+    ]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhookReleaseCreatedPropReleaseType
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserWebhooksType
 
 
-class WebhookReleaseCreatedPropReleaseType(TypedDict):
-    """Release
+class WebhookProjectsV2ItemEditedPropChangesOneof0Type(TypedDict):
+    """WebhookProjectsV2ItemEditedPropChangesOneof0"""
 
-    The [release](https://docs.github.com/enterprise-
-    cloud@latest//rest/releases/releases/#get-a-release) object.
-    """
-
-    assets: List[WebhookReleaseCreatedPropReleasePropAssetsItemsType]
-    assets_url: str
-    author: Union[WebhookReleaseCreatedPropReleasePropAuthorType, None]
-    body: Union[str, None]
-    created_at: Union[datetime, None]
-    discussion_url: NotRequired[str]
-    draft: bool
-    html_url: str
-    id: int
-    name: Union[str, None]
-    node_id: str
-    prerelease: bool
-    published_at: Union[datetime, None]
-    reactions: NotRequired[WebhookReleaseCreatedPropReleasePropReactionsType]
-    tag_name: str
-    tarball_url: Union[str, None]
-    target_commitish: str
-    upload_url: str
-    url: str
-    zipball_url: Union[str, None]
+    field_value: WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType
 
 
-class WebhookReleaseCreatedPropReleasePropAuthorType(TypedDict):
-    """User"""
+class WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType(TypedDict):
+    """WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    field_node_id: NotRequired[str]
+    field_type: NotRequired[str]
 
 
-class WebhookReleaseCreatedPropReleasePropReactionsType(TypedDict):
-    """Reactions"""
+class WebhookProjectsV2ItemEditedPropChangesOneof1Type(TypedDict):
+    """WebhookProjectsV2ItemEditedPropChangesOneof1"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+    body: WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType
 
 
-class WebhookReleaseCreatedPropReleasePropAssetsItemsType(TypedDict):
-    """Release Asset
+class WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType(TypedDict):
+    """WebhookProjectsV2ItemEditedPropChangesOneof1PropBody"""
 
-    Data related to a release.
-    """
-
-    browser_download_url: str
-    content_type: str
-    created_at: datetime
-    download_count: int
-    id: int
-    label: Union[str, None]
-    name: str
-    node_id: str
-    size: int
-    state: Literal["uploaded"]
-    updated_at: datetime
-    uploader: NotRequired[
-        Union[WebhookReleaseCreatedPropReleasePropAssetsItemsPropUploaderType, None]
-    ]
-    url: str
-
-
-class WebhookReleaseCreatedPropReleasePropAssetsItemsPropUploaderType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "WebhookReleaseCreatedType",
-    "WebhookReleaseCreatedPropReleaseType",
-    "WebhookReleaseCreatedPropReleasePropAuthorType",
-    "WebhookReleaseCreatedPropReleasePropReactionsType",
-    "WebhookReleaseCreatedPropReleasePropAssetsItemsType",
-    "WebhookReleaseCreatedPropReleasePropAssetsItemsPropUploaderType",
+    "WebhookProjectsV2ItemEditedType",
+    "WebhookProjectsV2ItemEditedPropChangesOneof0Type",
+    "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType",
+    "WebhookProjectsV2ItemEditedPropChangesOneof1Type",
+    "WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType",
 )

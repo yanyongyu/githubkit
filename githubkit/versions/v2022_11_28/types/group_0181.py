@@ -9,29 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0180 import BranchProtectionType
 
-class DiffEntryType(TypedDict):
-    """Diff Entry
 
-    Diff Entry
+class ShortBranchType(TypedDict):
+    """Short Branch
+
+    Short Branch
     """
 
+    name: str
+    commit: ShortBranchPropCommitType
+    protected: bool
+    protection: NotRequired[BranchProtectionType]
+    protection_url: NotRequired[str]
+
+
+class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
+
     sha: str
-    filename: str
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
-    ]
-    additions: int
-    deletions: int
-    changes: int
-    blob_url: str
-    raw_url: str
-    contents_url: str
-    patch: NotRequired[str]
-    previous_filename: NotRequired[str]
+    url: str
 
 
-__all__ = ("DiffEntryType",)
+__all__ = (
+    "ShortBranchType",
+    "ShortBranchPropCommitType",
+)

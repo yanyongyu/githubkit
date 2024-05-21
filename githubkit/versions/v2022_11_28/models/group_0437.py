@@ -18,153 +18,83 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0439 import (
-    WebhookForkPropForkeeAllof0PropPermissions,
-    WebhookForkPropForkeeAllof0PropCustomProperties,
-)
+from .group_0367 import EnterpriseWebhooks
+from .group_0368 import SimpleInstallation
+from .group_0370 import RepositoryWebhooks
+from .group_0371 import SimpleUserWebhooks
+from .group_0369 import OrganizationSimpleWebhooks
 
 
-class WebhookForkPropForkee(GitHubModel):
-    """WebhookForkPropForkee
+class WebhookCodeScanningAlertFixed(GitHubModel):
+    """code_scanning_alert fixed event"""
 
-    The created [`repository`](https://docs.github.com/rest/repos/repos#get-a-
-    repository) resource.
+    action: Literal["fixed"] = Field()
+    alert: WebhookCodeScanningAlertFixedPropAlert = Field(
+        description="The code scanning alert involved in the event."
+    )
+    commit_oid: str = Field(
+        description="The commit SHA of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
+    )
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    ref: str = Field(
+        description="The Git reference of the code scanning alert. When the action is `reopened_by_user` or `closed_by_user`, the event was triggered by the `sender` and this value will be empty."
+    )
+    repository: RepositoryWebhooks = Field(
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUserWebhooks = Field(
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
+
+
+class WebhookCodeScanningAlertFixedPropAlert(GitHubModel):
+    """WebhookCodeScanningAlertFixedPropAlert
+
+    The code scanning alert involved in the event.
     """
 
-    allow_auto_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow auto-merge for pull requests."
+    created_at: datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ.`"
     )
-    allow_forking: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow private forks"
+    dismissed_at: Union[datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    allow_merge_commit: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow merge commits for pull requests."
+    dismissed_by: Union[WebhookCodeScanningAlertFixedPropAlertPropDismissedBy, None] = (
+        Field(title="User")
     )
-    allow_rebase_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow rebase merges for pull requests."
-    )
-    allow_squash_merge: Missing[bool] = Field(
-        default=UNSET, description="Whether to allow squash merges for pull requests."
-    )
-    allow_update_branch: Missing[bool] = Field(default=UNSET)
-    archive_url: str = Field()
-    archived: bool = Field(
-        default=False, description="Whether the repository is archived."
-    )
-    assignees_url: str = Field()
-    blobs_url: str = Field()
-    branches_url: str = Field()
-    clone_url: str = Field()
-    collaborators_url: str = Field()
-    comments_url: str = Field()
-    commits_url: str = Field()
-    compare_url: str = Field()
-    contents_url: str = Field()
-    contributors_url: str = Field()
-    created_at: datetime = Field()
-    custom_properties: Missing[WebhookForkPropForkeeAllof0PropCustomProperties] = Field(
-        default=UNSET,
-        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
-    )
-    default_branch: str = Field(description="The default branch of the repository.")
-    delete_branch_on_merge: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to delete head branches when pull requests are merged",
-    )
-    deployments_url: str = Field()
-    description: Union[Union[str, None], None] = Field()
-    disabled: Missing[bool] = Field(
-        default=UNSET, description="Returns whether or not this repository is disabled."
-    )
-    downloads_url: str = Field()
-    events_url: str = Field()
-    fork: Literal[True] = Field()
-    forks: int = Field()
-    forks_count: int = Field()
-    forks_url: str = Field()
-    full_name: str = Field()
-    git_commits_url: str = Field()
-    git_refs_url: str = Field()
-    git_tags_url: str = Field()
-    git_url: str = Field()
-    has_downloads: bool = Field(
-        default=True, description="Whether downloads are enabled."
-    )
-    has_issues: bool = Field(default=True, description="Whether issues are enabled.")
-    has_pages: bool = Field()
-    has_projects: bool = Field(
-        default=True, description="Whether projects are enabled."
-    )
-    has_wiki: bool = Field(default=True, description="Whether the wiki is enabled.")
-    homepage: Union[Union[str, None], None] = Field()
-    hooks_url: str = Field()
-    html_url: str = Field()
-    id: int = Field(description="Unique identifier of the repository")
-    is_template: Missing[bool] = Field(default=UNSET)
-    issue_comment_url: str = Field()
-    issue_events_url: str = Field()
-    issues_url: str = Field()
-    keys_url: str = Field()
-    labels_url: str = Field()
-    language: Union[None, None] = Field()
-    languages_url: str = Field()
-    license_: Union[WebhookForkPropForkeeMergedLicense, None] = Field(alias="license")
-    master_branch: Missing[str] = Field(default=UNSET)
-    merges_url: str = Field()
-    milestones_url: str = Field()
-    mirror_url: Union[None, None] = Field()
-    name: str = Field(description="The name of the repository.")
-    node_id: str = Field()
-    notifications_url: str = Field()
-    open_issues: int = Field()
-    open_issues_count: int = Field()
-    organization: Missing[str] = Field(default=UNSET)
-    owner: WebhookForkPropForkeeMergedOwner = Field()
-    permissions: Missing[WebhookForkPropForkeeAllof0PropPermissions] = Field(
-        default=UNSET
-    )
-    private: bool = Field(description="Whether the repository is private or public.")
-    public: Missing[bool] = Field(default=UNSET)
-    pulls_url: str = Field()
-    pushed_at: datetime = Field()
-    releases_url: str = Field()
-    role_name: Missing[Union[str, None]] = Field(default=UNSET)
-    size: int = Field()
-    ssh_url: str = Field()
-    stargazers: Missing[int] = Field(default=UNSET)
-    stargazers_count: int = Field()
-    stargazers_url: str = Field()
-    statuses_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    svn_url: str = Field()
-    tags_url: str = Field()
-    teams_url: str = Field()
-    topics: List[str] = Field()
-    trees_url: str = Field()
-    updated_at: datetime = Field()
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ] = Field(description="The reason for dismissing or closing the alert.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    instances_url: Missing[str] = Field(default=UNSET)
+    most_recent_instance: Missing[
+        Union[WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstance, None]
+    ] = Field(default=UNSET, title="Alert Instance")
+    number: int = Field(description="The code scanning alert number.")
+    rule: WebhookCodeScanningAlertFixedPropAlertPropRule = Field()
+    state: Literal["fixed"] = Field(description="State of a code scanning alert.")
+    tool: WebhookCodeScanningAlertFixedPropAlertPropTool = Field()
     url: str = Field()
-    visibility: Literal["public", "private", "internal"] = Field()
-    watchers: int = Field()
-    watchers_count: int = Field()
-    web_commit_signoff_required: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to require contributors to sign off on web-based commits",
-    )
 
 
-class WebhookForkPropForkeeMergedLicense(GitHubModel):
-    """WebhookForkPropForkeeMergedLicense"""
-
-    key: str = Field()
-    name: str = Field()
-    node_id: str = Field()
-    spdx_id: str = Field()
-    url: Union[str, None] = Field()
-
-
-class WebhookForkPropForkeeMergedOwner(GitHubModel):
-    """WebhookForkPropForkeeMergedOwner"""
+class WebhookCodeScanningAlertFixedPropAlertPropDismissedBy(GitHubModel):
+    """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
     deleted: Missing[bool] = Field(default=UNSET)
@@ -189,12 +119,105 @@ class WebhookForkPropForkeeMergedOwner(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookForkPropForkee)
-model_rebuild(WebhookForkPropForkeeMergedLicense)
-model_rebuild(WebhookForkPropForkeeMergedOwner)
+class WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstance(GitHubModel):
+    """Alert Instance"""
+
+    analysis_key: str = Field(
+        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name."
+    )
+    category: Missing[str] = Field(
+        default=UNSET,
+        description="Identifies the configuration under which the analysis was executed.",
+    )
+    classifications: Missing[List[str]] = Field(default=UNSET)
+    commit_sha: Missing[str] = Field(default=UNSET)
+    environment: str = Field(
+        description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed."
+    )
+    location: Missing[
+        WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocation
+    ] = Field(default=UNSET)
+    message: Missing[
+        WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessage
+    ] = Field(default=UNSET)
+    ref: str = Field(
+        description="The full Git reference, formatted as `refs/heads/<branch name>`."
+    )
+    state: Literal["open", "dismissed", "fixed"] = Field(
+        description="State of a code scanning alert."
+    )
+
+
+class WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocation(
+    GitHubModel
+):
+    """WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocation"""
+
+    end_column: Missing[int] = Field(default=UNSET)
+    end_line: Missing[int] = Field(default=UNSET)
+    path: Missing[str] = Field(default=UNSET)
+    start_column: Missing[int] = Field(default=UNSET)
+    start_line: Missing[int] = Field(default=UNSET)
+
+
+class WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessage(
+    GitHubModel
+):
+    """WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessage"""
+
+    text: Missing[str] = Field(default=UNSET)
+
+
+class WebhookCodeScanningAlertFixedPropAlertPropRule(GitHubModel):
+    """WebhookCodeScanningAlertFixedPropAlertPropRule"""
+
+    description: str = Field(
+        description="A short description of the rule used to detect the alert."
+    )
+    full_description: Missing[str] = Field(default=UNSET)
+    help_: Missing[Union[str, None]] = Field(default=UNSET, alias="help")
+    help_uri: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A link to the documentation for the rule used to detect the alert.",
+    )
+    id: str = Field(
+        description="A unique identifier for the rule used to detect the alert."
+    )
+    name: Missing[str] = Field(default=UNSET)
+    severity: Union[None, Literal["none", "note", "warning", "error"]] = Field(
+        description="The severity of the alert."
+    )
+    tags: Missing[Union[List[str], None]] = Field(default=UNSET)
+
+
+class WebhookCodeScanningAlertFixedPropAlertPropTool(GitHubModel):
+    """WebhookCodeScanningAlertFixedPropAlertPropTool"""
+
+    guid: Missing[Union[str, None]] = Field(default=UNSET)
+    name: str = Field(
+        description="The name of the tool used to generate the code scanning analysis alert."
+    )
+    version: Union[str, None] = Field(
+        description="The version of the tool used to detect the alert."
+    )
+
+
+model_rebuild(WebhookCodeScanningAlertFixed)
+model_rebuild(WebhookCodeScanningAlertFixedPropAlert)
+model_rebuild(WebhookCodeScanningAlertFixedPropAlertPropDismissedBy)
+model_rebuild(WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstance)
+model_rebuild(WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocation)
+model_rebuild(WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessage)
+model_rebuild(WebhookCodeScanningAlertFixedPropAlertPropRule)
+model_rebuild(WebhookCodeScanningAlertFixedPropAlertPropTool)
 
 __all__ = (
-    "WebhookForkPropForkee",
-    "WebhookForkPropForkeeMergedLicense",
-    "WebhookForkPropForkeeMergedOwner",
+    "WebhookCodeScanningAlertFixed",
+    "WebhookCodeScanningAlertFixedPropAlert",
+    "WebhookCodeScanningAlertFixedPropAlertPropDismissedBy",
+    "WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstance",
+    "WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropLocation",
+    "WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstancePropMessage",
+    "WebhookCodeScanningAlertFixedPropAlertPropRule",
+    "WebhookCodeScanningAlertFixedPropAlertPropTool",
 )

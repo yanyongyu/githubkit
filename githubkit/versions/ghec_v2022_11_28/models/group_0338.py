@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,120 +17,29 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0139 import RepositoryRuleRequiredStatusChecksPropParameters
 
-class RepositoryAdvisoryCreate(GitHubModel):
-    """RepositoryAdvisoryCreate"""
 
-    summary: str = Field(
-        max_length=1024, description="A short summary of the advisory."
+class RepositoryRuleDetailedOneof7(GitHubModel):
+    """RepositoryRuleDetailedOneof7"""
+
+    type: Literal["required_status_checks"] = Field()
+    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
+        default=UNSET
     )
-    description: str = Field(
-        max_length=65535,
-        description="A detailed description of what the advisory impacts.",
-    )
-    cve_id: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The Common Vulnerabilities and Exposures (CVE) ID."
-    )
-    vulnerabilities: List[RepositoryAdvisoryCreatePropVulnerabilitiesItems] = Field(
-        description="A product affected by the vulnerability detailed in a repository security advisory."
-    )
-    cwe_ids: Missing[Union[List[str], None]] = Field(
-        default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
-    )
-    credits_: Missing[Union[List[RepositoryAdvisoryCreatePropCreditsItems], None]] = (
-        Field(
-            default=UNSET,
-            alias="credits",
-            description="A list of users receiving credit for their participation in the security advisory.",
-        )
-    )
-    severity: Missing[Union[None, Literal["critical", "high", "medium", "low"]]] = (
-        Field(
-            default=UNSET,
-            description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
-        )
-    )
-    cvss_vector_string: Missing[Union[str, None]] = Field(
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
-        description="The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
+        description="The type of source for the ruleset that includes this rule.",
     )
-    start_private_fork: Missing[bool] = Field(
+    ruleset_source: Missing[str] = Field(
         default=UNSET,
-        description="Whether to create a temporary private fork of the repository to collaborate on a fix.",
+        description="The name of the source of the ruleset that includes this rule.",
+    )
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
     )
 
 
-class RepositoryAdvisoryCreatePropCreditsItems(GitHubModel):
-    """RepositoryAdvisoryCreatePropCreditsItems"""
+model_rebuild(RepositoryRuleDetailedOneof7)
 
-    login: str = Field(description="The username of the user credited.")
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ] = Field(description="The type of credit the user is receiving.")
-
-
-class RepositoryAdvisoryCreatePropVulnerabilitiesItems(GitHubModel):
-    """RepositoryAdvisoryCreatePropVulnerabilitiesItems"""
-
-    package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage = Field(
-        description="The name of the package affected by the vulnerability."
-    )
-    vulnerable_version_range: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The range of the package versions affected by the vulnerability.",
-    )
-    patched_versions: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The package version(s) that resolve the vulnerability.",
-    )
-    vulnerable_functions: Missing[Union[List[str], None]] = Field(
-        default=UNSET, description="The functions in the package that are affected."
-    )
-
-
-class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage(GitHubModel):
-    """RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ] = Field(description="The package's language or package management ecosystem.")
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The unique package name within its ecosystem."
-    )
-
-
-model_rebuild(RepositoryAdvisoryCreate)
-model_rebuild(RepositoryAdvisoryCreatePropCreditsItems)
-model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItems)
-model_rebuild(RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage)
-
-__all__ = (
-    "RepositoryAdvisoryCreate",
-    "RepositoryAdvisoryCreatePropCreditsItems",
-    "RepositoryAdvisoryCreatePropVulnerabilitiesItems",
-    "RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackage",
-)
+__all__ = ("RepositoryRuleDetailedOneof7",)

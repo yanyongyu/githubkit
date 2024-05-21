@@ -9,21 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0062 import RunnerLabelType
 
-class RunnerApplicationType(TypedDict):
-    """Runner Application
 
-    Runner Application
+class RunnerType(TypedDict):
+    """Self hosted runners
+
+    A self hosted runner
     """
 
+    id: int
+    runner_group_id: NotRequired[int]
+    name: str
     os: str
-    architecture: str
-    download_url: str
-    filename: str
-    temp_download_token: NotRequired[str]
-    sha256_checksum: NotRequired[str]
+    status: str
+    busy: bool
+    labels: List[RunnerLabelType]
 
 
-__all__ = ("RunnerApplicationType",)
+__all__ = ("RunnerType",)

@@ -9,39 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0182 import Commit
-from .group_0181 import DiffEntry
 
+class BranchShort(GitHubModel):
+    """Branch Short
 
-class CommitComparison(GitHubModel):
-    """Commit Comparison
-
-    Commit Comparison
+    Branch Short
     """
 
+    name: str = Field()
+    commit: BranchShortPropCommit = Field()
+    protected: bool = Field()
+
+
+class BranchShortPropCommit(GitHubModel):
+    """BranchShortPropCommit"""
+
+    sha: str = Field()
     url: str = Field()
-    html_url: str = Field()
-    permalink_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    base_commit: Commit = Field(title="Commit", description="Commit")
-    merge_base_commit: Commit = Field(title="Commit", description="Commit")
-    status: Literal["diverged", "ahead", "behind", "identical"] = Field()
-    ahead_by: int = Field()
-    behind_by: int = Field()
-    total_commits: int = Field()
-    commits: List[Commit] = Field()
-    files: Missing[List[DiffEntry]] = Field(default=UNSET)
 
 
-model_rebuild(CommitComparison)
+model_rebuild(BranchShort)
+model_rebuild(BranchShortPropCommit)
 
-__all__ = ("CommitComparison",)
+__all__ = (
+    "BranchShort",
+    "BranchShortPropCommit",
+)

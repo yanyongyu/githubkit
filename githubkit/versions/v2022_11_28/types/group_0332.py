@@ -9,19 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import datetime
 from typing_extensions import TypedDict
 
+from .group_0001 import SimpleUserType
 
-class ContentTrafficType(TypedDict):
-    """Content Traffic
 
-    Content Traffic
+class StargazerType(TypedDict):
+    """Stargazer
+
+    Stargazer
     """
 
-    path: str
-    title: str
-    count: int
-    uniques: int
+    starred_at: datetime
+    user: Union[None, SimpleUserType]
 
 
-__all__ = ("ContentTrafficType",)
+__all__ = ("StargazerType",)

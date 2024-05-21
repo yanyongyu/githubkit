@@ -13,32 +13,27 @@ from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0005 import Integration
 
+class Label(GitHubModel):
+    """Label
 
-class StateChangeIssueEvent(GitHubModel):
-    """State Change Issue Event
-
-    State Change Issue Event
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
     id: int = Field()
     node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration] = Field()
-    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    url: str = Field(description="URL for the label")
+    name: str = Field(description="The name of the label.")
+    description: Union[str, None] = Field()
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
+    )
+    default: bool = Field()
 
 
-model_rebuild(StateChangeIssueEvent)
+model_rebuild(Label)
 
-__all__ = ("StateChangeIssueEvent",)
+__all__ = ("Label",)

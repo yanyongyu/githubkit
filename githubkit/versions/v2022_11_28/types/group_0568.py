@@ -9,48 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0357 import EnterpriseWebhooksType
-from .group_0358 import SimpleInstallationType
-from .group_0360 import RepositoryWebhooksType
-from .group_0361 import SimpleUserWebhooksType
-from .group_0359 import OrganizationSimpleWebhooksType
+from .group_0379 import WebhooksUserType
+from .group_0394 import WebhooksTeamType
+from .group_0367 import EnterpriseWebhooksType
+from .group_0368 import SimpleInstallationType
+from .group_0370 import RepositoryWebhooksType
+from .group_0369 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectCreatedType(TypedDict):
-    """project created event"""
+class WebhookMembershipRemovedType(TypedDict):
+    """membership removed event"""
 
-    action: Literal["created"]
+    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhookProjectCreatedPropProjectType
+    member: Union[WebhooksUserType, None]
+    organization: OrganizationSimpleWebhooksType
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserWebhooksType
+    scope: Literal["team", "organization"]
+    sender: Union[WebhookMembershipRemovedPropSenderType, None]
+    team: WebhooksTeamType
 
 
-class WebhookProjectCreatedPropProjectType(TypedDict):
-    """Project"""
-
-    body: Union[str, None]
-    columns_url: str
-    created_at: datetime
-    creator: Union[WebhookProjectCreatedPropProjectPropCreatorType, None]
-    html_url: str
-    id: int
-    name: str
-    node_id: str
-    number: int
-    owner_url: str
-    state: Literal["open", "closed"]
-    updated_at: datetime
-    url: str
-
-
-class WebhookProjectCreatedPropProjectPropCreatorType(TypedDict):
+class WebhookMembershipRemovedPropSenderType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -77,7 +61,6 @@ class WebhookProjectCreatedPropProjectPropCreatorType(TypedDict):
 
 
 __all__ = (
-    "WebhookProjectCreatedType",
-    "WebhookProjectCreatedPropProjectType",
-    "WebhookProjectCreatedPropProjectPropCreatorType",
+    "WebhookMembershipRemovedType",
+    "WebhookMembershipRemovedPropSenderType",
 )

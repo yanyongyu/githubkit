@@ -9,32 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0196 import BranchProtectionType
+from .group_0091 import TeamType
+from .group_0001 import SimpleUserType
+from .group_0006 import IntegrationType
 
 
-class ShortBranchType(TypedDict):
-    """Short Branch
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
 
-    Short Branch
+    users: NotRequired[List[SimpleUserType]]
+    teams: NotRequired[List[TeamType]]
+    apps: NotRequired[List[Union[IntegrationType, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    name: str
-    commit: ShortBranchPropCommitType
-    protected: bool
-    protection: NotRequired[BranchProtectionType]
-    protection_url: NotRequired[str]
-
-
-class ShortBranchPropCommitType(TypedDict):
-    """ShortBranchPropCommit"""
-
-    sha: str
-    url: str
+    users: NotRequired[List[SimpleUserType]]
+    teams: NotRequired[List[TeamType]]
+    apps: NotRequired[List[Union[IntegrationType, None]]]
 
 
 __all__ = (
-    "ShortBranchType",
-    "ShortBranchPropCommitType",
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
 )

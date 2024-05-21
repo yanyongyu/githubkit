@@ -9,22 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReferrerTraffic(GitHubModel):
-    """Referrer Traffic
+class CommitActivity(GitHubModel):
+    """Commit Activity
 
-    Referrer Traffic
+    Commit Activity
     """
 
-    referrer: str = Field()
-    count: int = Field()
-    uniques: int = Field()
+    days: List[int] = Field()
+    total: int = Field()
+    week: int = Field()
 
 
-model_rebuild(ReferrerTraffic)
+model_rebuild(CommitActivity)
 
-__all__ = ("ReferrerTraffic",)
+__all__ = ("CommitActivity",)

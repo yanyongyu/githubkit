@@ -9,17 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ProjectsColumnsColumnIdPatchBody(GitHubModel):
-    """ProjectsColumnsColumnIdPatchBody"""
-
-    name: str = Field(description="Name of the project column")
+from .group_0015 import Installation
 
 
-model_rebuild(ProjectsColumnsColumnIdPatchBody)
+class OrgsOrgInstallationsGetResponse200(GitHubModel):
+    """OrgsOrgInstallationsGetResponse200"""
 
-__all__ = ("ProjectsColumnsColumnIdPatchBody",)
+    total_count: int = Field()
+    installations: List[Installation] = Field()
+
+
+model_rebuild(OrgsOrgInstallationsGetResponse200)
+
+__all__ = ("OrgsOrgInstallationsGetResponse200",)

@@ -9,42 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0402 import ProjectsV2ItemType
-from .group_0391 import SimpleInstallationType
-from .group_0394 import SimpleUserWebhooksType
-from .group_0392 import OrganizationSimpleWebhooksType
+from .group_0400 import EnterpriseWebhooksType
+from .group_0401 import SimpleInstallationType
+from .group_0403 import RepositoryWebhooksType
+from .group_0404 import SimpleUserWebhooksType
+from .group_0430 import WebhooksMembershipType
+from .group_0402 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ItemRestoredType(TypedDict):
-    """Projects v2 Item Restored Event"""
+class WebhookOrganizationMemberRemovedType(TypedDict):
+    """organization member_removed event"""
 
-    action: Literal["restored"]
-    changes: WebhookProjectsV2ItemRestoredPropChangesType
+    action: Literal["member_removed"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    membership: WebhooksMembershipType
     organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
 
 
-class WebhookProjectsV2ItemRestoredPropChangesType(TypedDict):
-    """WebhookProjectsV2ItemRestoredPropChanges"""
-
-    archived_at: NotRequired[WebhookProjectsV2ItemRestoredPropChangesPropArchivedAtType]
-
-
-class WebhookProjectsV2ItemRestoredPropChangesPropArchivedAtType(TypedDict):
-    """WebhookProjectsV2ItemRestoredPropChangesPropArchivedAt"""
-
-    from_: NotRequired[Union[datetime, None]]
-    to: NotRequired[Union[datetime, None]]
-
-
-__all__ = (
-    "WebhookProjectsV2ItemRestoredType",
-    "WebhookProjectsV2ItemRestoredPropChangesType",
-    "WebhookProjectsV2ItemRestoredPropChangesPropArchivedAtType",
-)
+__all__ = ("WebhookOrganizationMemberRemovedType",)

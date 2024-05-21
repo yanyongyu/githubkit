@@ -9,41 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import Union, Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 from .group_0001 import SimpleUser
+from .group_0006 import Integration
 
 
-class Activity(GitHubModel):
-    """Activity
+class Deployment(GitHubModel):
+    """Deployment
 
-    Activity
+    A request for a specific ref(branch,sha,tag) to be deployed
     """
 
-    id: int = Field()
+    url: str = Field()
+    id: int = Field(description="Unique identifier of the deployment")
     node_id: str = Field()
-    before: str = Field(description="The SHA of the commit before the activity.")
-    after: str = Field(description="The SHA of the commit after the activity.")
+    sha: str = Field()
     ref: str = Field(
-        description="The full Git reference, formatted as `refs/heads/<branch name>`."
+        description="The ref to deploy. This can be a branch, tag, or sha."
     )
-    timestamp: datetime = Field(description="The time when the activity occurred.")
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ] = Field(description="The type of the activity that was performed.")
-    actor: Union[None, SimpleUser] = Field()
+    task: str = Field(description="Parameter to specify a task to execute")
+    payload: Union[DeploymentPropPayloadOneof0, str] = Field()
+    original_environment: Missing[str] = Field(default=UNSET)
+    environment: str = Field(description="Name for the target deployment environment.")
+    description: Union[str, None] = Field()
+    creator: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    statuses_url: str = Field()
+    repository_url: str = Field()
+    transient_environment: Missing[bool] = Field(
+        default=UNSET,
+        description="Specifies if the given environment is will no longer exist at some point in the future. Default: false.",
+    )
+    production_environment: Missing[bool] = Field(
+        default=UNSET,
+        description="Specifies if the given environment is one that end-users directly interact with. Default: false.",
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(Activity)
+class DeploymentPropPayloadOneof0(ExtraGitHubModel):
+    """DeploymentPropPayloadOneof0"""
 
-__all__ = ("Activity",)
+
+model_rebuild(Deployment)
+model_rebuild(DeploymentPropPayloadOneof0)
+
+__all__ = (
+    "Deployment",
+    "DeploymentPropPayloadOneof0",
+)

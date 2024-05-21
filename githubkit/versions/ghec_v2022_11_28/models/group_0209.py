@@ -9,31 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class CheckAnnotation(GitHubModel):
-    """Check Annotation
-
-    Check Annotation
-    """
-
-    path: str = Field()
-    start_line: int = Field()
-    end_line: int = Field()
-    start_column: Union[int, None] = Field()
-    end_column: Union[int, None] = Field()
-    annotation_level: Union[str, None] = Field()
-    title: Union[str, None] = Field()
-    message: Union[str, None] = Field()
-    raw_details: Union[str, None] = Field()
-    blob_href: str = Field()
+from .group_0091 import Team
+from .group_0001 import SimpleUser
+from .group_0006 import Integration
 
 
-model_rebuild(CheckAnnotation)
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(
+    GitHubModel
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
 
-__all__ = ("CheckAnnotation",)
+    url: str = Field()
+    users_url: str = Field()
+    teams_url: str = Field()
+    users: List[SimpleUser] = Field()
+    teams: List[Team] = Field()
+    apps: Missing[List[Union[Integration, None]]] = Field(default=UNSET)
+
+
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
+    GitHubModel
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+
+    users: List[SimpleUser] = Field()
+    teams: List[Team] = Field()
+    apps: Missing[List[Union[Integration, None]]] = Field(default=UNSET)
+
+
+model_rebuild(ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions)
+model_rebuild(
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
+)
+
+__all__ = (
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
+)

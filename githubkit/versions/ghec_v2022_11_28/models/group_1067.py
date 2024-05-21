@@ -18,14 +18,9 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserCodespacesPostBodyOneof0(GitHubModel):
-    """UserCodespacesPostBodyOneof0"""
+class ReposOwnerRepoPullsPullNumberCodespacesPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
 
-    repository_id: int = Field(description="Repository id for this codespace")
-    ref: Missing[str] = Field(
-        default=UNSET,
-        description="Git ref (typically a branch name) for this codespace",
-    )
     location: Missing[str] = Field(
         default=UNSET,
         description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
@@ -65,6 +60,6 @@ class UserCodespacesPostBodyOneof0(GitHubModel):
     )
 
 
-model_rebuild(UserCodespacesPostBodyOneof0)
+model_rebuild(ReposOwnerRepoPullsPullNumberCodespacesPostBody)
 
-__all__ = ("UserCodespacesPostBodyOneof0",)
+__all__ = ("ReposOwnerRepoPullsPullNumberCodespacesPostBody",)

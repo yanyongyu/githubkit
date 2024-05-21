@@ -9,44 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
-from typing_extensions import TypedDict, NotRequired
+from typing import Union
+from typing_extensions import TypedDict
 
-from .group_0001 import SimpleUserType
-from .group_0299 import ReleaseAssetType
-from .group_0033 import ReactionRollupType
+from .group_0301 import PullRequestPropBasePropRepoType
 
 
-class ReleaseType(TypedDict):
-    """Release
+class PullRequestPropBaseType(TypedDict):
+    """PullRequestPropBase"""
 
-    A release.
-    """
+    label: str
+    ref: str
+    repo: PullRequestPropBasePropRepoType
+    sha: str
+    user: PullRequestPropBasePropUserType
 
-    url: str
+
+class PullRequestPropBasePropUserType(TypedDict):
+    """PullRequestPropBasePropUser"""
+
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: Union[str, None]
     html_url: str
-    assets_url: str
-    upload_url: str
-    tarball_url: Union[str, None]
-    zipball_url: Union[str, None]
     id: int
     node_id: str
-    tag_name: str
-    target_commitish: str
-    name: Union[str, None]
-    body: NotRequired[Union[str, None]]
-    draft: bool
-    prerelease: bool
-    created_at: datetime
-    published_at: Union[datetime, None]
-    author: SimpleUserType
-    assets: List[ReleaseAssetType]
-    body_html: NotRequired[Union[str, None]]
-    body_text: NotRequired[Union[str, None]]
-    mentions_count: NotRequired[int]
-    discussion_url: NotRequired[str]
-    reactions: NotRequired[ReactionRollupType]
+    login: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
 
 
-__all__ = ("ReleaseType",)
+__all__ = (
+    "PullRequestPropBaseType",
+    "PullRequestPropBasePropUserType",
+)

@@ -9,21 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
-
-
-class StargazerType(TypedDict):
-    """Stargazer
-
-    Stargazer
-    """
-
-    starred_at: datetime
-    user: Union[None, SimpleUserType]
+from .group_0122 import RepositoryRuleCommitAuthorEmailPatternPropParametersType
 
 
-__all__ = ("StargazerType",)
+class RepositoryRuleDetailedOneof10Type(TypedDict):
+    """RepositoryRuleDetailedOneof10"""
+
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
+
+
+__all__ = ("RepositoryRuleDetailedOneof10Type",)

@@ -9,38 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict
+from typing import List
+from datetime import datetime
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
-from .group_0005 import IntegrationType
+from .group_0257 import HookResponseType
+from .group_0007 import WebhookConfigType
 
 
-class MilestonedIssueEventType(TypedDict):
-    """Milestoned Issue Event
+class HookType(TypedDict):
+    """Webhook
 
-    Milestoned Issue Event
+    Webhooks for repositories.
     """
 
+    type: str
     id: int
-    node_id: str
+    name: str
+    active: bool
+    events: List[str]
+    config: WebhookConfigType
+    updated_at: datetime
+    created_at: datetime
     url: str
-    actor: SimpleUserType
-    event: Literal["milestoned"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType]
-    milestone: MilestonedIssueEventPropMilestoneType
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseType
 
 
-class MilestonedIssueEventPropMilestoneType(TypedDict):
-    """MilestonedIssueEventPropMilestone"""
-
-    title: str
-
-
-__all__ = (
-    "MilestonedIssueEventType",
-    "MilestonedIssueEventPropMilestoneType",
-)
+__all__ = ("HookType",)

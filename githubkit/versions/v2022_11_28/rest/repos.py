@@ -111,6 +111,7 @@ if TYPE_CHECKING:
         RepositoryRuleDetailedOneof12,
         RepositoryRuleDetailedOneof13,
         RepositoryRuleDetailedOneof14,
+        RepositoryRuleDetailedOneof15,
         ProtectedBranchPullRequestReview,
         RepositoryCollaboratorPermission,
         ReposOwnerRepoEnvironmentsGetResponse200,
@@ -126,6 +127,10 @@ if TYPE_CHECKING:
         CustomPropertyValueType,
         OrgsOrgReposPostBodyType,
         RepositoryRuleUpdateType,
+        RepositoryRuleOneof14Type,
+        RepositoryRuleOneof15Type,
+        RepositoryRuleOneof16Type,
+        RepositoryRuleOneof17Type,
         RepositoryRuleCreationType,
         RepositoryRuleDeletionType,
         OrgsOrgRulesetsPostBodyType,
@@ -135,6 +140,7 @@ if TYPE_CHECKING:
         OrgRulesetConditionsOneof0Type,
         OrgRulesetConditionsOneof1Type,
         OrgRulesetConditionsOneof2Type,
+        RepositoryRuleCodeScanningType,
         ReposOwnerRepoKeysPostBodyType,
         RepositoryRulesetConditionsType,
         ReposOwnerRepoForksPostBodyType,
@@ -585,7 +591,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
-        target: Missing[Literal["branch", "tag"]] = UNSET,
+        target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
@@ -612,7 +618,12 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleOneof14Type,
+                    RepositoryRuleOneof15Type,
+                    RepositoryRuleOneof16Type,
+                    RepositoryRuleOneof17Type,
                     RepositoryRuleWorkflowsType,
+                    RepositoryRuleCodeScanningType,
                 ]
             ]
         ] = UNSET,
@@ -670,7 +681,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
-        target: Missing[Literal["branch", "tag"]] = UNSET,
+        target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
@@ -697,7 +708,12 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleOneof14Type,
+                    RepositoryRuleOneof15Type,
+                    RepositoryRuleOneof16Type,
+                    RepositoryRuleOneof17Type,
                     RepositoryRuleWorkflowsType,
+                    RepositoryRuleCodeScanningType,
                 ]
             ]
         ] = UNSET,
@@ -947,7 +963,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
-        target: Missing[Literal["branch", "tag"]] = UNSET,
+        target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
@@ -974,7 +990,12 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleOneof14Type,
+                    RepositoryRuleOneof15Type,
+                    RepositoryRuleOneof16Type,
+                    RepositoryRuleOneof17Type,
                     RepositoryRuleWorkflowsType,
+                    RepositoryRuleCodeScanningType,
                 ]
             ]
         ] = UNSET,
@@ -1039,7 +1060,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
-        target: Missing[Literal["branch", "tag"]] = UNSET,
+        target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
@@ -1066,7 +1087,12 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleOneof14Type,
+                    RepositoryRuleOneof15Type,
+                    RepositoryRuleOneof16Type,
+                    RepositoryRuleOneof17Type,
                     RepositoryRuleWorkflowsType,
+                    RepositoryRuleCodeScanningType,
                 ]
             ]
         ] = UNSET,
@@ -3807,10 +3833,10 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Integration]]:
+    ) -> Response[List[Union[Integration, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch"""
 
-        from typing import List
+        from typing import List, Union
 
         from ..models import BasicError, Integration
 
@@ -3822,7 +3848,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[Integration],
+            response_model=List[Union[Integration, None]],
             error_models={
                 "404": BasicError,
             },
@@ -3835,10 +3861,10 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Integration]]:
+    ) -> Response[List[Union[Integration, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch"""
 
-        from typing import List
+        from typing import List, Union
 
         from ..models import BasicError, Integration
 
@@ -3850,7 +3876,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[Integration],
+            response_model=List[Union[Integration, None]],
             error_models={
                 "404": BasicError,
             },
@@ -3870,7 +3896,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Integration]]: ...
+    ) -> Response[List[Union[Integration, None]]]: ...
 
     @overload
     def set_app_access_restrictions(
@@ -3882,7 +3908,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         apps: List[str],
-    ) -> Response[List[Integration]]: ...
+    ) -> Response[List[Union[Integration, None]]]: ...
 
     def set_app_access_restrictions(
         self,
@@ -3898,7 +3924,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Integration]]:
+    ) -> Response[List[Union[Integration, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-app-access-restrictions"""
 
         from typing import List, Union
@@ -3931,7 +3957,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Integration],
+            response_model=List[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
             },
@@ -3951,7 +3977,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Integration]]: ...
+    ) -> Response[List[Union[Integration, None]]]: ...
 
     @overload
     async def async_set_app_access_restrictions(
@@ -3963,7 +3989,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         apps: List[str],
-    ) -> Response[List[Integration]]: ...
+    ) -> Response[List[Union[Integration, None]]]: ...
 
     async def async_set_app_access_restrictions(
         self,
@@ -3979,7 +4005,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Integration]]:
+    ) -> Response[List[Union[Integration, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-app-access-restrictions"""
 
         from typing import List, Union
@@ -4012,7 +4038,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Integration],
+            response_model=List[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
             },
@@ -4032,7 +4058,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Integration]]: ...
+    ) -> Response[List[Union[Integration, None]]]: ...
 
     @overload
     def add_app_access_restrictions(
@@ -4044,7 +4070,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         apps: List[str],
-    ) -> Response[List[Integration]]: ...
+    ) -> Response[List[Union[Integration, None]]]: ...
 
     def add_app_access_restrictions(
         self,
@@ -4060,7 +4086,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Integration]]:
+    ) -> Response[List[Union[Integration, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#add-app-access-restrictions"""
 
         from typing import List, Union
@@ -4093,7 +4119,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Integration],
+            response_model=List[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
             },
@@ -4113,7 +4139,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Integration]]: ...
+    ) -> Response[List[Union[Integration, None]]]: ...
 
     @overload
     async def async_add_app_access_restrictions(
@@ -4125,7 +4151,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         apps: List[str],
-    ) -> Response[List[Integration]]: ...
+    ) -> Response[List[Union[Integration, None]]]: ...
 
     async def async_add_app_access_restrictions(
         self,
@@ -4141,7 +4167,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Integration]]:
+    ) -> Response[List[Union[Integration, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#add-app-access-restrictions"""
 
         from typing import List, Union
@@ -4174,7 +4200,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Integration],
+            response_model=List[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
             },
@@ -4194,7 +4220,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Integration]]: ...
+    ) -> Response[List[Union[Integration, None]]]: ...
 
     @overload
     def remove_app_access_restrictions(
@@ -4206,7 +4232,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         apps: List[str],
-    ) -> Response[List[Integration]]: ...
+    ) -> Response[List[Union[Integration, None]]]: ...
 
     def remove_app_access_restrictions(
         self,
@@ -4222,7 +4248,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Integration]]:
+    ) -> Response[List[Union[Integration, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#remove-app-access-restrictions"""
 
         from typing import List, Union
@@ -4255,7 +4281,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Integration],
+            response_model=List[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
             },
@@ -4275,7 +4301,7 @@ class ReposClient:
                 List[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Integration]]: ...
+    ) -> Response[List[Union[Integration, None]]]: ...
 
     @overload
     async def async_remove_app_access_restrictions(
@@ -4287,7 +4313,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         apps: List[str],
-    ) -> Response[List[Integration]]: ...
+    ) -> Response[List[Union[Integration, None]]]: ...
 
     async def async_remove_app_access_restrictions(
         self,
@@ -4303,7 +4329,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Integration]]:
+    ) -> Response[List[Union[Integration, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#remove-app-access-restrictions"""
 
         from typing import List, Union
@@ -4336,7 +4362,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Integration],
+            response_model=List[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
             },
@@ -13839,6 +13865,7 @@ class ReposClient:
                 RepositoryRuleDetailedOneof12,
                 RepositoryRuleDetailedOneof13,
                 RepositoryRuleDetailedOneof14,
+                RepositoryRuleDetailedOneof15,
             ]
         ]
     ]:
@@ -13862,6 +13889,7 @@ class ReposClient:
             RepositoryRuleDetailedOneof12,
             RepositoryRuleDetailedOneof13,
             RepositoryRuleDetailedOneof14,
+            RepositoryRuleDetailedOneof15,
         )
 
         url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
@@ -13895,6 +13923,7 @@ class ReposClient:
                     RepositoryRuleDetailedOneof12,
                     RepositoryRuleDetailedOneof13,
                     RepositoryRuleDetailedOneof14,
+                    RepositoryRuleDetailedOneof15,
                 ]
             ],
         )
@@ -13926,6 +13955,7 @@ class ReposClient:
                 RepositoryRuleDetailedOneof12,
                 RepositoryRuleDetailedOneof13,
                 RepositoryRuleDetailedOneof14,
+                RepositoryRuleDetailedOneof15,
             ]
         ]
     ]:
@@ -13949,6 +13979,7 @@ class ReposClient:
             RepositoryRuleDetailedOneof12,
             RepositoryRuleDetailedOneof13,
             RepositoryRuleDetailedOneof14,
+            RepositoryRuleDetailedOneof15,
         )
 
         url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
@@ -13982,6 +14013,7 @@ class ReposClient:
                     RepositoryRuleDetailedOneof12,
                     RepositoryRuleDetailedOneof13,
                     RepositoryRuleDetailedOneof14,
+                    RepositoryRuleDetailedOneof15,
                 ]
             ],
         )
@@ -14081,7 +14113,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
-        target: Missing[Literal["branch", "tag"]] = UNSET,
+        target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[RepositoryRulesetConditionsType] = UNSET,
@@ -14102,7 +14134,12 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleOneof14Type,
+                    RepositoryRuleOneof15Type,
+                    RepositoryRuleOneof16Type,
+                    RepositoryRuleOneof17Type,
                     RepositoryRuleWorkflowsType,
+                    RepositoryRuleCodeScanningType,
                 ]
             ]
         ] = UNSET,
@@ -14167,7 +14204,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
-        target: Missing[Literal["branch", "tag"]] = UNSET,
+        target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[RepositoryRulesetConditionsType] = UNSET,
@@ -14188,7 +14225,12 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleOneof14Type,
+                    RepositoryRuleOneof15Type,
+                    RepositoryRuleOneof16Type,
+                    RepositoryRuleOneof17Type,
                     RepositoryRuleWorkflowsType,
+                    RepositoryRuleCodeScanningType,
                 ]
             ]
         ] = UNSET,
@@ -14463,7 +14505,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
-        target: Missing[Literal["branch", "tag"]] = UNSET,
+        target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[RepositoryRulesetConditionsType] = UNSET,
@@ -14484,7 +14526,12 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleOneof14Type,
+                    RepositoryRuleOneof15Type,
+                    RepositoryRuleOneof16Type,
+                    RepositoryRuleOneof17Type,
                     RepositoryRuleWorkflowsType,
+                    RepositoryRuleCodeScanningType,
                 ]
             ]
         ] = UNSET,
@@ -14552,7 +14599,7 @@ class ReposClient:
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
-        target: Missing[Literal["branch", "tag"]] = UNSET,
+        target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
         bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[RepositoryRulesetConditionsType] = UNSET,
@@ -14573,7 +14620,12 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
+                    RepositoryRuleOneof14Type,
+                    RepositoryRuleOneof15Type,
+                    RepositoryRuleOneof16Type,
+                    RepositoryRuleOneof17Type,
                     RepositoryRuleWorkflowsType,
+                    RepositoryRuleCodeScanningType,
                 ]
             ]
         ] = UNSET,

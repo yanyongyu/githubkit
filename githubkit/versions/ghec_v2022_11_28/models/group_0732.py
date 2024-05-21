@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -18,27 +17,24 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0390 import EnterpriseWebhooks
-from .group_0391 import SimpleInstallation
-from .group_0393 import RepositoryWebhooks
-from .group_0394 import SimpleUserWebhooks
-from .group_0392 import OrganizationSimpleWebhooks
+from .group_0401 import SimpleInstallation
+from .group_0403 import RepositoryWebhooks
+from .group_0404 import SimpleUserWebhooks
+from .group_0402 import OrganizationSimpleWebhooks
+from .group_0446 import SecretScanningAlertWebhook
 
 
-class WebhookWorkflowRunRequested(GitHubModel):
-    """workflow_run requested event"""
+class WebhookSecretScanningAlertLocationCreated(GitHubModel):
+    """Secret Scanning Alert Location Created Event"""
 
-    action: Literal["requested"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
-    )
+    action: Literal["created"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    location: SecretScanningLocation = Field()
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -52,468 +48,269 @@ class WebhookWorkflowRunRequested(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    workflow: Union[WebhookWorkflowRunRequestedPropWorkflow, None] = Field(
-        title="Workflow"
-    )
-    workflow_run: WebhookWorkflowRunRequestedPropWorkflowRun = Field(
-        title="Workflow Run"
-    )
 
 
-class WebhookWorkflowRunRequestedPropWorkflow(GitHubModel):
-    """Workflow"""
+class SecretScanningLocation(GitHubModel):
+    """SecretScanningLocation"""
 
-    badge_url: str = Field()
-    created_at: datetime = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field()
-    node_id: str = Field()
-    path: str = Field()
-    state: str = Field()
-    updated_at: datetime = Field()
-    url: str = Field()
-
-
-class WebhookWorkflowRunRequestedPropWorkflowRun(GitHubModel):
-    """Workflow Run"""
-
-    actor: Union[WebhookWorkflowRunRequestedPropWorkflowRunPropActor, None] = Field(
-        title="User"
-    )
-    artifacts_url: str = Field()
-    cancel_url: str = Field()
-    check_suite_id: int = Field()
-    check_suite_node_id: str = Field()
-    check_suite_url: str = Field()
-    conclusion: Union[
-        None,
+    type: Missing[
         Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "timed_out",
-            "action_required",
-            "stale",
-            "skipped",
-            "startup_failure",
-        ],
-    ] = Field()
-    created_at: datetime = Field()
-    event: str = Field()
-    head_branch: Union[str, None] = Field()
-    head_commit: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit = Field(
-        title="SimpleCommit"
+            "commit",
+            "wiki_commit",
+            "issue_title",
+            "issue_body",
+            "issue_comment",
+            "discussion_title",
+            "discussion_body",
+            "discussion_comment",
+            "pull_request_title",
+            "pull_request_body",
+            "pull_request_comment",
+            "pull_request_review",
+            "pull_request_review_comment",
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.",
     )
-    head_repository: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository = (
-        Field(title="Repository Lite")
-    )
-    head_sha: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    jobs_url: str = Field()
-    logs_url: str = Field()
-    name: Union[str, None] = Field()
-    node_id: str = Field()
-    path: str = Field()
-    previous_attempt_url: Union[str, None] = Field()
-    pull_requests: List[
-        WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems
-    ] = Field()
-    referenced_workflows: Missing[
+    details: Missing[
         Union[
-            List[
-                WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems
-            ],
-            None,
+            SecretScanningLocationCommit,
+            SecretScanningLocationWikiCommit,
+            SecretScanningLocationIssueTitle,
+            SecretScanningLocationIssueBody,
+            SecretScanningLocationIssueComment,
+            SecretScanningLocationDiscussionTitle,
+            SecretScanningLocationDiscussionBody,
+            SecretScanningLocationDiscussionComment,
+            SecretScanningLocationPullRequestTitle,
+            SecretScanningLocationPullRequestBody,
+            SecretScanningLocationPullRequestComment,
+            SecretScanningLocationPullRequestReview,
+            SecretScanningLocationPullRequestReviewComment,
         ]
     ] = Field(default=UNSET)
-    repository: WebhookWorkflowRunRequestedPropWorkflowRunPropRepository = Field(
-        title="Repository Lite"
-    )
-    rerun_url: str = Field()
-    run_attempt: int = Field()
-    run_number: int = Field()
-    run_started_at: datetime = Field()
-    status: Literal[
-        "requested", "in_progress", "completed", "queued", "pending", "waiting"
-    ] = Field()
-    triggering_actor: Union[
-        WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor, None
-    ] = Field(title="User")
-    updated_at: datetime = Field()
-    url: str = Field()
-    workflow_id: int = Field()
-    workflow_url: str = Field()
-    display_title: str = Field()
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropActor(GitHubModel):
-    """User"""
+class SecretScanningLocationCommit(GitHubModel):
+    """SecretScanningLocationCommit
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems(
-    GitHubModel
-):
-    """WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems"""
-
-    path: str = Field()
-    ref: Missing[str] = Field(default=UNSET)
-    sha: str = Field()
-
-
-class WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit(GitHubModel):
-    """SimpleCommit"""
-
-    author: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor = Field(
-        title="Committer",
-        description="Metaproperties for Git author/committer information.",
-    )
-    committer: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter = (
-        Field(
-            title="Committer",
-            description="Metaproperties for Git author/committer information.",
-        )
-    )
-    id: str = Field()
-    message: str = Field()
-    timestamp: str = Field()
-    tree_id: str = Field()
-
-
-class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor(GitHubModel):
-    """Committer
-
-    Metaproperties for Git author/committer information.
+    Represents a 'commit' secret scanning location type. This location type shows
+    that a secret was detected inside a commit to a repository.
     """
 
-    date: Missing[datetime] = Field(default=UNSET)
-    email: Union[str, None] = Field()
-    name: str = Field(description="The git author's name.")
-    username: Missing[str] = Field(default=UNSET)
+    path: str = Field(description="The file path in the repository")
+    start_line: float = Field(
+        description="Line number at which the secret starts in the file"
+    )
+    end_line: float = Field(
+        description="Line number at which the secret ends in the file"
+    )
+    start_column: float = Field(
+        description="The column at which the secret starts within the start line when the file is interpreted as 8BIT ASCII"
+    )
+    end_column: float = Field(
+        description="The column at which the secret ends within the end line when the file is interpreted as 8BIT ASCII"
+    )
+    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
+    blob_url: str = Field(description="The API URL to get the associated blob resource")
+    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
+    commit_url: str = Field(
+        description="The API URL to get the associated commit resource"
+    )
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter(
-    GitHubModel
-):
-    """Committer
+class SecretScanningLocationWikiCommit(GitHubModel):
+    """SecretScanningLocationWikiCommit
 
-    Metaproperties for Git author/committer information.
+    Represents a 'wiki_commit' secret scanning location type. This location type
+    shows that a secret was detected inside a commit to a repository wiki.
     """
 
-    date: Missing[datetime] = Field(default=UNSET)
-    email: Union[str, None] = Field()
-    name: str = Field(description="The git author's name.")
-    username: Missing[str] = Field(default=UNSET)
-
-
-class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository(GitHubModel):
-    """Repository Lite"""
-
-    archive_url: str = Field()
-    assignees_url: str = Field()
-    blobs_url: str = Field()
-    branches_url: str = Field()
-    collaborators_url: str = Field()
-    comments_url: str = Field()
-    commits_url: str = Field()
-    compare_url: str = Field()
-    contents_url: str = Field()
-    contributors_url: str = Field()
-    deployments_url: str = Field()
-    description: Union[str, None] = Field()
-    downloads_url: str = Field()
-    events_url: str = Field()
-    fork: bool = Field()
-    forks_url: str = Field()
-    full_name: str = Field()
-    git_commits_url: str = Field()
-    git_refs_url: str = Field()
-    git_tags_url: str = Field()
-    hooks_url: str = Field()
-    html_url: str = Field()
-    id: int = Field(description="Unique identifier of the repository")
-    issue_comment_url: str = Field()
-    issue_events_url: str = Field()
-    issues_url: str = Field()
-    keys_url: str = Field()
-    labels_url: str = Field()
-    languages_url: str = Field()
-    merges_url: str = Field()
-    milestones_url: str = Field()
-    name: str = Field(description="The name of the repository.")
-    node_id: str = Field()
-    notifications_url: str = Field()
-    owner: Union[
-        WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner, None
-    ] = Field(title="User")
-    private: bool = Field(description="Whether the repository is private or public.")
-    pulls_url: str = Field()
-    releases_url: str = Field()
-    stargazers_url: str = Field()
-    statuses_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    tags_url: str = Field()
-    teams_url: str = Field()
-    trees_url: str = Field()
-    url: str = Field()
-
-
-class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner(
-    GitHubModel
-):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookWorkflowRunRequestedPropWorkflowRunPropRepository(GitHubModel):
-    """Repository Lite"""
-
-    archive_url: str = Field()
-    assignees_url: str = Field()
-    blobs_url: str = Field()
-    branches_url: str = Field()
-    collaborators_url: str = Field()
-    comments_url: str = Field()
-    commits_url: str = Field()
-    compare_url: str = Field()
-    contents_url: str = Field()
-    contributors_url: str = Field()
-    deployments_url: str = Field()
-    description: Union[str, None] = Field()
-    downloads_url: str = Field()
-    events_url: str = Field()
-    fork: bool = Field()
-    forks_url: str = Field()
-    full_name: str = Field()
-    git_commits_url: str = Field()
-    git_refs_url: str = Field()
-    git_tags_url: str = Field()
-    hooks_url: str = Field()
-    html_url: str = Field()
-    id: int = Field(description="Unique identifier of the repository")
-    issue_comment_url: str = Field()
-    issue_events_url: str = Field()
-    issues_url: str = Field()
-    keys_url: str = Field()
-    labels_url: str = Field()
-    languages_url: str = Field()
-    merges_url: str = Field()
-    milestones_url: str = Field()
-    name: str = Field(description="The name of the repository.")
-    node_id: str = Field()
-    notifications_url: str = Field()
-    owner: Union[
-        WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner, None
-    ] = Field(title="User")
-    private: bool = Field(description="Whether the repository is private or public.")
-    pulls_url: str = Field()
-    releases_url: str = Field()
-    stargazers_url: str = Field()
-    statuses_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    tags_url: str = Field()
-    teams_url: str = Field()
-    trees_url: str = Field()
-    url: str = Field()
-
-
-class WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems(GitHubModel):
-    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems"""
-
-    base: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase = (
-        Field()
+    path: str = Field(description="The file path of the wiki page")
+    start_line: float = Field(
+        description="Line number at which the secret starts in the file"
     )
-    head: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead = (
-        Field()
+    end_line: float = Field(
+        description="Line number at which the secret ends in the file"
     )
-    id: float = Field()
-    number: float = Field()
-    url: str = Field()
-
-
-class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase(
-    GitHubModel
-):
-    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase"""
-
-    ref: str = Field()
-    repo: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo = Field(
-        title="Repo Ref"
+    start_column: float = Field(
+        description="The column at which the secret starts within the start line when the file is interpreted as 8-bit ASCII."
     )
-    sha: str = Field()
-
-
-class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo(
-    GitHubModel
-):
-    """Repo Ref"""
-
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead(
-    GitHubModel
-):
-    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead"""
-
-    ref: str = Field()
-    repo: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo = Field(
-        title="Repo Ref"
+    end_column: float = Field(
+        description="The column at which the secret ends within the end line when the file is interpreted as 8-bit ASCII."
     )
-    sha: str = Field()
+    blob_sha: str = Field(description="SHA-1 hash ID of the associated blob")
+    page_url: str = Field(description="The GitHub URL to get the associated wiki page")
+    commit_sha: str = Field(description="SHA-1 hash ID of the associated commit")
+    commit_url: str = Field(
+        description="The GitHub URL to get the associated wiki commit"
+    )
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo(
-    GitHubModel
-):
-    """Repo Ref"""
+class SecretScanningLocationIssueTitle(GitHubModel):
+    """SecretScanningLocationIssueTitle
 
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
+    Represents an 'issue_title' secret scanning location type. This location type
+    shows that a secret was detected in the title of an issue.
+    """
+
+    issue_title_url: str = Field(
+        description="The API URL to get the issue where the secret was detected."
+    )
 
 
-model_rebuild(WebhookWorkflowRunRequested)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflow)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRun)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropActor)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropRepository)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase)
-model_rebuild(
-    WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo
-)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead)
-model_rebuild(
-    WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo
-)
+class SecretScanningLocationIssueBody(GitHubModel):
+    """SecretScanningLocationIssueBody
+
+    Represents an 'issue_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of an issue.
+    """
+
+    issue_body_url: str = Field(
+        description="The API URL to get the issue where the secret was detected."
+    )
+
+
+class SecretScanningLocationIssueComment(GitHubModel):
+    """SecretScanningLocationIssueComment
+
+    Represents an 'issue_comment' secret scanning location type. This location type
+    shows that a secret was detected in a comment on an issue.
+    """
+
+    issue_comment_url: str = Field(
+        description="The API URL to get the issue comment where the secret was detected."
+    )
+
+
+class SecretScanningLocationDiscussionTitle(GitHubModel):
+    """SecretScanningLocationDiscussionTitle
+
+    Represents a 'discussion_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a discussion.
+    """
+
+    discussion_title_url: str = Field(
+        description="The URL to the discussion where the secret was detected."
+    )
+
+
+class SecretScanningLocationDiscussionBody(GitHubModel):
+    """SecretScanningLocationDiscussionBody
+
+    Represents a 'discussion_body' secret scanning location type. This location type
+    shows that a secret was detected in the body of a discussion.
+    """
+
+    discussion_body_url: str = Field(
+        description="The URL to the discussion where the secret was detected."
+    )
+
+
+class SecretScanningLocationDiscussionComment(GitHubModel):
+    """SecretScanningLocationDiscussionComment
+
+    Represents a 'discussion_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a discussion.
+    """
+
+    discussion_comment_url: str = Field(
+        description="The API URL to get the discussion comment where the secret was detected."
+    )
+
+
+class SecretScanningLocationPullRequestTitle(GitHubModel):
+    """SecretScanningLocationPullRequestTitle
+
+    Represents a 'pull_request_title' secret scanning location type. This location
+    type shows that a secret was detected in the title of a pull request.
+    """
+
+    pull_request_title_url: str = Field(
+        description="The API URL to get the pull request where the secret was detected."
+    )
+
+
+class SecretScanningLocationPullRequestBody(GitHubModel):
+    """SecretScanningLocationPullRequestBody
+
+    Represents a 'pull_request_body' secret scanning location type. This location
+    type shows that a secret was detected in the body of a pull request.
+    """
+
+    pull_request_body_url: str = Field(
+        description="The API URL to get the pull request where the secret was detected."
+    )
+
+
+class SecretScanningLocationPullRequestComment(GitHubModel):
+    """SecretScanningLocationPullRequestComment
+
+    Represents a 'pull_request_comment' secret scanning location type. This location
+    type shows that a secret was detected in a comment on a pull request.
+    """
+
+    pull_request_comment_url: str = Field(
+        description="The API URL to get the pull request comment where the secret was detected."
+    )
+
+
+class SecretScanningLocationPullRequestReview(GitHubModel):
+    """SecretScanningLocationPullRequestReview
+
+    Represents a 'pull_request_review' secret scanning location type. This location
+    type shows that a secret was detected in a review on a pull request.
+    """
+
+    pull_request_review_url: str = Field(
+        description="The API URL to get the pull request review where the secret was detected."
+    )
+
+
+class SecretScanningLocationPullRequestReviewComment(GitHubModel):
+    """SecretScanningLocationPullRequestReviewComment
+
+    Represents a 'pull_request_review_comment' secret scanning location type. This
+    location type shows that a secret was detected in a review comment on a pull
+    request.
+    """
+
+    pull_request_review_comment_url: str = Field(
+        description="The API URL to get the pull request review comment where the secret was detected."
+    )
+
+
+model_rebuild(WebhookSecretScanningAlertLocationCreated)
+model_rebuild(SecretScanningLocation)
+model_rebuild(SecretScanningLocationCommit)
+model_rebuild(SecretScanningLocationWikiCommit)
+model_rebuild(SecretScanningLocationIssueTitle)
+model_rebuild(SecretScanningLocationIssueBody)
+model_rebuild(SecretScanningLocationIssueComment)
+model_rebuild(SecretScanningLocationDiscussionTitle)
+model_rebuild(SecretScanningLocationDiscussionBody)
+model_rebuild(SecretScanningLocationDiscussionComment)
+model_rebuild(SecretScanningLocationPullRequestTitle)
+model_rebuild(SecretScanningLocationPullRequestBody)
+model_rebuild(SecretScanningLocationPullRequestComment)
+model_rebuild(SecretScanningLocationPullRequestReview)
+model_rebuild(SecretScanningLocationPullRequestReviewComment)
 
 __all__ = (
-    "WebhookWorkflowRunRequested",
-    "WebhookWorkflowRunRequestedPropWorkflow",
-    "WebhookWorkflowRunRequestedPropWorkflowRun",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropActor",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropRepository",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
+    "WebhookSecretScanningAlertLocationCreated",
+    "SecretScanningLocation",
+    "SecretScanningLocationCommit",
+    "SecretScanningLocationWikiCommit",
+    "SecretScanningLocationIssueTitle",
+    "SecretScanningLocationIssueBody",
+    "SecretScanningLocationIssueComment",
+    "SecretScanningLocationDiscussionTitle",
+    "SecretScanningLocationDiscussionBody",
+    "SecretScanningLocationDiscussionComment",
+    "SecretScanningLocationPullRequestTitle",
+    "SecretScanningLocationPullRequestBody",
+    "SecretScanningLocationPullRequestComment",
+    "SecretScanningLocationPullRequestReview",
+    "SecretScanningLocationPullRequestReviewComment",
 )

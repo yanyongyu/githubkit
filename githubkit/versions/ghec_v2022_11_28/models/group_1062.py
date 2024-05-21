@@ -9,20 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class TeamsTeamIdProjectsProjectIdPutResponse403(GitHubModel):
-    """TeamsTeamIdProjectsProjectIdPutResponse403"""
-
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+from .group_0114 import CustomPropertyValue
 
 
-model_rebuild(TeamsTeamIdProjectsProjectIdPutResponse403)
+class ReposOwnerRepoPropertiesValuesPatchBody(GitHubModel):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
 
-__all__ = ("TeamsTeamIdProjectsProjectIdPutResponse403",)
+    properties: List[CustomPropertyValue] = Field(
+        description="A list of custom property names and associated values to apply to the repositories."
+    )
+
+
+model_rebuild(ReposOwnerRepoPropertiesValuesPatchBody)
+
+__all__ = ("ReposOwnerRepoPropertiesValuesPatchBody",)

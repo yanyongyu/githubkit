@@ -11,18 +11,17 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+class NotificationsPutResponse202(GitHubModel):
+    """NotificationsPutResponse202"""
 
-    The total number of seat assignments cancelled.
-    """
-
-    seats_cancelled: int = Field()
+    message: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteResponse200)
+model_rebuild(NotificationsPutResponse202)
 
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",)
+__all__ = ("NotificationsPutResponse202",)

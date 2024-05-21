@@ -9,25 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List, Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CustomPropertyValue(GitHubModel):
-    """Custom Property Value
+class OrgCustomProperty(GitHubModel):
+    """Organization Custom Property
 
-    Custom property name and associated value
+    Custom property defined on an organization
     """
 
     property_name: str = Field(description="The name of the property")
-    value: Union[str, List[str], None] = Field(
-        description="The value assigned to the property"
+    value_type: Literal["string", "single_select"] = Field(
+        description="The type of the value for the property"
     )
+    required: Missing[bool] = Field(
+        default=UNSET, description="Whether the property is required."
+    )
+    default_value: Missing[Union[str, List[str], None]] = Field(
+        default=UNSET, description="Default value of the property"
+    )
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the property"
+    )
+    allowed_values: Missing[
+        Union[
+            Annotated[
+                List[Annotated[str, Field(max_length=75)]], Field(max_length=200)
+            ],
+            None,
+        ]
+    ] = Field(
+        default=UNSET,
+        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+    )
+    values_editable_by: Missing[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ] = Field(default=UNSET, description="Who can edit the values of the property")
 
 
-model_rebuild(CustomPropertyValue)
+model_rebuild(OrgCustomProperty)
 
-__all__ = ("CustomPropertyValue",)
+__all__ = ("OrgCustomProperty",)

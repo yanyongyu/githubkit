@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -18,39 +17,33 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0390 import EnterpriseWebhooks
-from .group_0391 import SimpleInstallation
-from .group_0393 import RepositoryWebhooks
-from .group_0394 import SimpleUserWebhooks
-from .group_0392 import OrganizationSimpleWebhooks
+from .group_0437 import ProjectsV2Item
+from .group_0401 import SimpleInstallation
+from .group_0404 import SimpleUserWebhooks
+from .group_0402 import OrganizationSimpleWebhooks
 
 
-class WebhookReleaseCreated(GitHubModel):
-    """release created event"""
+class WebhookProjectsV2ItemEdited(GitHubModel):
+    """Projects v2 Item Edited Event"""
 
-    action: Literal["created"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
-    )
+    action: Literal["edited"] = Field()
+    changes: Missing[
+        Union[
+            WebhookProjectsV2ItemEditedPropChangesOneof0,
+            WebhookProjectsV2ItemEditedPropChangesOneof1,
+        ]
+    ] = Field(default=UNSET)
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    release: WebhookReleaseCreatedPropRelease = Field(
-        title="Release",
-        description="The [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases/#get-a-release) object.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    projects_v2_item: ProjectsV2Item = Field(
+        title="Projects v2 Item", description="An item belonging to a project"
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -58,145 +51,42 @@ class WebhookReleaseCreated(GitHubModel):
     )
 
 
-class WebhookReleaseCreatedPropRelease(GitHubModel):
-    """Release
+class WebhookProjectsV2ItemEditedPropChangesOneof0(GitHubModel):
+    """WebhookProjectsV2ItemEditedPropChangesOneof0"""
 
-    The [release](https://docs.github.com/enterprise-
-    cloud@latest//rest/releases/releases/#get-a-release) object.
-    """
-
-    assets: List[WebhookReleaseCreatedPropReleasePropAssetsItems] = Field()
-    assets_url: str = Field()
-    author: Union[WebhookReleaseCreatedPropReleasePropAuthor, None] = Field(
-        title="User"
-    )
-    body: Union[str, None] = Field()
-    created_at: Union[datetime, None] = Field()
-    discussion_url: Missing[str] = Field(default=UNSET)
-    draft: bool = Field(description="Whether the release is a draft or published")
-    html_url: str = Field()
-    id: int = Field()
-    name: Union[str, None] = Field()
-    node_id: str = Field()
-    prerelease: bool = Field(
-        description="Whether the release is identified as a prerelease or a full release."
-    )
-    published_at: Union[datetime, None] = Field()
-    reactions: Missing[WebhookReleaseCreatedPropReleasePropReactions] = Field(
-        default=UNSET, title="Reactions"
-    )
-    tag_name: str = Field(description="The name of the tag.")
-    tarball_url: Union[str, None] = Field()
-    target_commitish: str = Field(
-        description="Specifies the commitish value that determines where the Git tag is created from."
-    )
-    upload_url: str = Field()
-    url: str = Field()
-    zipball_url: Union[str, None] = Field()
+    field_value: WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue = Field()
 
 
-class WebhookReleaseCreatedPropReleasePropAuthor(GitHubModel):
-    """User"""
+class WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue(GitHubModel):
+    """WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    field_node_id: Missing[str] = Field(default=UNSET)
+    field_type: Missing[str] = Field(default=UNSET)
 
 
-class WebhookReleaseCreatedPropReleasePropReactions(GitHubModel):
-    """Reactions"""
+class WebhookProjectsV2ItemEditedPropChangesOneof1(GitHubModel):
+    """WebhookProjectsV2ItemEditedPropChangesOneof1"""
 
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
-    url: str = Field()
+    body: WebhookProjectsV2ItemEditedPropChangesOneof1PropBody = Field()
 
 
-class WebhookReleaseCreatedPropReleasePropAssetsItems(GitHubModel):
-    """Release Asset
+class WebhookProjectsV2ItemEditedPropChangesOneof1PropBody(GitHubModel):
+    """WebhookProjectsV2ItemEditedPropChangesOneof1PropBody"""
 
-    Data related to a release.
-    """
-
-    browser_download_url: str = Field()
-    content_type: str = Field()
-    created_at: datetime = Field()
-    download_count: int = Field()
-    id: int = Field()
-    label: Union[str, None] = Field()
-    name: str = Field(description="The file name of the asset.")
-    node_id: str = Field()
-    size: int = Field()
-    state: Literal["uploaded"] = Field(description="State of the release asset.")
-    updated_at: datetime = Field()
-    uploader: Missing[
-        Union[WebhookReleaseCreatedPropReleasePropAssetsItemsPropUploader, None]
-    ] = Field(default=UNSET, title="User")
-    url: str = Field()
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class WebhookReleaseCreatedPropReleasePropAssetsItemsPropUploader(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookReleaseCreated)
-model_rebuild(WebhookReleaseCreatedPropRelease)
-model_rebuild(WebhookReleaseCreatedPropReleasePropAuthor)
-model_rebuild(WebhookReleaseCreatedPropReleasePropReactions)
-model_rebuild(WebhookReleaseCreatedPropReleasePropAssetsItems)
-model_rebuild(WebhookReleaseCreatedPropReleasePropAssetsItemsPropUploader)
+model_rebuild(WebhookProjectsV2ItemEdited)
+model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof0)
+model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue)
+model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof1)
+model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof1PropBody)
 
 __all__ = (
-    "WebhookReleaseCreated",
-    "WebhookReleaseCreatedPropRelease",
-    "WebhookReleaseCreatedPropReleasePropAuthor",
-    "WebhookReleaseCreatedPropReleasePropReactions",
-    "WebhookReleaseCreatedPropReleasePropAssetsItems",
-    "WebhookReleaseCreatedPropReleasePropAssetsItemsPropUploader",
+    "WebhookProjectsV2ItemEdited",
+    "WebhookProjectsV2ItemEditedPropChangesOneof0",
+    "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue",
+    "WebhookProjectsV2ItemEditedPropChangesOneof1",
+    "WebhookProjectsV2ItemEditedPropChangesOneof1PropBody",
 )

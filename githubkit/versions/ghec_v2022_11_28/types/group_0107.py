@@ -9,36 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0001 import SimpleUserType
+from typing_extensions import TypedDict
 
 
-class OrganizationRoleType(TypedDict):
-    """Organization Role
+class OrganizationFineGrainedPermissionType(TypedDict):
+    """Organization Fine-Grained Permission
 
-    Organization roles
+    A fine-grained permission that protects organization resources.
     """
 
-    id: int
     name: str
-    description: NotRequired[Union[str, None]]
-    permissions: List[str]
-    organization: Union[None, SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
+    description: str
 
 
-class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
-    """OrgsOrgOrganizationRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    roles: NotRequired[List[OrganizationRoleType]]
-
-
-__all__ = (
-    "OrganizationRoleType",
-    "OrgsOrgOrganizationRolesGetResponse200Type",
-)
+__all__ = ("OrganizationFineGrainedPermissionType",)

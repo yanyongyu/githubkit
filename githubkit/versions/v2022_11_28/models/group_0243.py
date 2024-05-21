@@ -9,30 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Blob(GitHubModel):
-    """Blob
+class DeploymentBranchPolicySettings(GitHubModel):
+    """DeploymentBranchPolicySettings
 
-    Blob
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
     """
 
-    content: str = Field()
-    encoding: str = Field()
-    url: str = Field()
-    sha: str = Field()
-    size: Union[int, None] = Field()
-    node_id: str = Field()
-    highlighted_content: Missing[str] = Field(default=UNSET)
+    protected_branches: bool = Field(
+        description="Whether only branches with branch protection rules can deploy to this environment. If `protected_branches` is `true`, `custom_branch_policies` must be `false`; if `protected_branches` is `false`, `custom_branch_policies` must be `true`."
+    )
+    custom_branch_policies: bool = Field(
+        description="Whether only branches that match the specified name patterns can deploy to this environment.  If `custom_branch_policies` is `true`, `protected_branches` must be `false`; if `custom_branch_policies` is `false`, `protected_branches` must be `true`."
+    )
 
 
-model_rebuild(Blob)
+model_rebuild(DeploymentBranchPolicySettings)
 
-__all__ = ("Blob",)
+__all__ = ("DeploymentBranchPolicySettings",)

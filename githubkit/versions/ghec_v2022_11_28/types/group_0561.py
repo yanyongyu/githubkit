@@ -9,112 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from datetime import datetime
+from typing import Union, Literal
+from typing_extensions import TypedDict
 
-from .group_0390 import EnterpriseWebhooksType
-from .group_0391 import SimpleInstallationType
-from .group_0393 import RepositoryWebhooksType
-from .group_0394 import SimpleUserWebhooksType
-from .group_0392 import OrganizationSimpleWebhooksType
-
-
-class WebhookMetaDeletedType(TypedDict):
-    """meta deleted event"""
-
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    hook: WebhookMetaDeletedPropHookType
-    hook_id: int
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
-    sender: NotRequired[SimpleUserWebhooksType]
+from .group_0556 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType,
+)
 
 
-class WebhookMetaDeletedPropHookType(TypedDict):
-    """WebhookMetaDeletedPropHook
+class WebhookIssueCommentEditedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssueCommentEditedPropIssueMergedMilestone"""
 
-    The modified webhook. This will contain different keys based on the type of
-    webhook it is: repository, organization, business, app, or GitHub Marketplace.
-    """
-
-    active: bool
-    config: WebhookMetaDeletedPropHookPropConfigType
-    created_at: str
-    events: List[
-        Literal[
-            "*",
-            "branch_protection_rule",
-            "check_run",
-            "check_suite",
-            "code_scanning_alert",
-            "commit_comment",
-            "create",
-            "delete",
-            "deployment",
-            "deployment_status",
-            "deploy_key",
-            "discussion",
-            "discussion_comment",
-            "fork",
-            "gollum",
-            "issues",
-            "issue_comment",
-            "label",
-            "member",
-            "membership",
-            "meta",
-            "milestone",
-            "organization",
-            "org_block",
-            "package",
-            "page_build",
-            "project",
-            "project_card",
-            "project_column",
-            "public",
-            "pull_request",
-            "pull_request_review",
-            "pull_request_review_comment",
-            "pull_request_review_thread",
-            "push",
-            "registry_package",
-            "release",
-            "repository",
-            "repository_import",
-            "repository_vulnerability_alert",
-            "secret_scanning_alert",
-            "secret_scanning_alert_location",
-            "security_and_analysis",
-            "star",
-            "status",
-            "team",
-            "team_add",
-            "watch",
-            "workflow_job",
-            "workflow_run",
-            "repository_dispatch",
-            "projects_v2_item",
-        ]
+    closed_at: Union[datetime, None]
+    closed_issues: int
+    created_at: datetime
+    creator: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType, None
     ]
+    description: Union[str, None]
+    due_on: Union[datetime, None]
+    html_url: str
     id: int
-    name: str
-    type: str
-    updated_at: str
-
-
-class WebhookMetaDeletedPropHookPropConfigType(TypedDict):
-    """WebhookMetaDeletedPropHookPropConfig"""
-
-    content_type: Literal["json", "form"]
-    insecure_ssl: str
-    secret: NotRequired[str]
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: datetime
     url: str
 
 
-__all__ = (
-    "WebhookMetaDeletedType",
-    "WebhookMetaDeletedPropHookType",
-    "WebhookMetaDeletedPropHookPropConfigType",
-)
+__all__ = ("WebhookIssueCommentEditedPropIssueMergedMilestoneType",)

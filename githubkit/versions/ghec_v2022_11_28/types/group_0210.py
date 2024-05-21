@@ -9,69 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0005 import IntegrationType
-from .group_0181 import SimpleCommitType
-from .group_0076 import MinimalRepositoryType
-from .group_0180 import PullRequestMinimalType
+from .group_0006 import IntegrationType
 
 
-class CheckSuiteType(TypedDict):
-    """CheckSuite
+class DeploymentSimpleType(TypedDict):
+    """Deployment
 
-    A suite of checks performed on the code of a given code change
+    A deployment created as the result of an Actions check run from a workflow that
+    references an environment
     """
 
+    url: str
     id: int
     node_id: str
-    head_branch: Union[str, None]
-    head_sha: str
-    status: Union[
-        None,
-        Literal[
-            "queued", "in_progress", "completed", "waiting", "requested", "pending"
-        ],
-    ]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-            "startup_failure",
-            "stale",
-        ],
-    ]
-    url: Union[str, None]
-    before: Union[str, None]
-    after: Union[str, None]
-    pull_requests: Union[List[PullRequestMinimalType], None]
-    app: Union[None, IntegrationType]
-    repository: MinimalRepositoryType
-    created_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    head_commit: SimpleCommitType
-    latest_check_runs_count: int
-    check_runs_url: str
-    rerequestable: NotRequired[bool]
-    runs_rerequestable: NotRequired[bool]
+    task: str
+    original_environment: NotRequired[str]
+    environment: str
+    description: Union[str, None]
+    created_at: datetime
+    updated_at: datetime
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
-
-    total_count: int
-    check_suites: List[CheckSuiteType]
-
-
-__all__ = (
-    "CheckSuiteType",
-    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type",
-)
+__all__ = ("DeploymentSimpleType",)

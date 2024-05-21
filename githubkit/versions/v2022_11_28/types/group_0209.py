@@ -9,16 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class LinkType(TypedDict):
-    """Link
+class CodeScanningDefaultSetupUpdateResponseType(TypedDict):
+    """CodeScanningDefaultSetupUpdateResponse
 
-    Hypermedia Link
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    href: str
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
-__all__ = ("LinkType",)
+__all__ = ("CodeScanningDefaultSetupUpdateResponseType",)

@@ -9,16 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 
-class WebhookCheckRunRequestedActionFormEncodedType(TypedDict):
-    """Check Run Requested Action Event
+class WebhooksLabelType(TypedDict):
+    """Label"""
 
-    The check_run.requested_action webhook encoded with URL encoding
-    """
+    color: str
+    default: bool
+    description: Union[str, None]
+    id: int
+    name: str
+    node_id: str
+    url: str
 
-    payload: str
 
-
-__all__ = ("WebhookCheckRunRequestedActionFormEncodedType",)
+__all__ = ("WebhooksLabelType",)

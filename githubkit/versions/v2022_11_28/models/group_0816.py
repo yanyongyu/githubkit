@@ -18,14 +18,19 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsProjectIdPatchResponse403(GitHubModel):
-    """ProjectsProjectIdPatchResponse403"""
+class OrgsOrgOrganizationRolesPostBody(GitHubModel):
+    """OrgsOrgOrganizationRolesPostBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[List[str]] = Field(default=UNSET)
+    name: str = Field(description="The name of the custom role.")
+    description: Missing[str] = Field(
+        default=UNSET,
+        description="A short description about the intended usage of this role or what permissions it grants.",
+    )
+    permissions: List[str] = Field(
+        description="A list of additional permissions included in this role."
+    )
 
 
-model_rebuild(ProjectsProjectIdPatchResponse403)
+model_rebuild(OrgsOrgOrganizationRolesPostBody)
 
-__all__ = ("ProjectsProjectIdPatchResponse403",)
+__all__ = ("OrgsOrgOrganizationRolesPostBody",)

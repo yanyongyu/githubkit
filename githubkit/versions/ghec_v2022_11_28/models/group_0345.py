@@ -9,32 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0152 import RepositoryRuleWorkflowsPropParameters
 
-class RepositorySubscription(GitHubModel):
-    """Repository Invitation
 
-    Repository invitations let you manage who you collaborate with.
-    """
+class RepositoryRuleDetailedOneof14(GitHubModel):
+    """RepositoryRuleDetailedOneof14"""
 
-    subscribed: bool = Field(
-        description="Determines if notifications should be received from this repository."
+    type: Literal["workflows"] = Field()
+    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        default=UNSET,
+        description="The type of source for the ruleset that includes this rule.",
     )
-    ignored: bool = Field(
-        description="Determines if all notifications should be blocked from this repository."
+    ruleset_source: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the source of the ruleset that includes this rule.",
     )
-    reason: Union[str, None] = Field()
-    created_at: datetime = Field()
-    url: str = Field()
-    repository_url: str = Field()
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
+    )
 
 
-model_rebuild(RepositorySubscription)
+model_rebuild(RepositoryRuleDetailedOneof14)
 
-__all__ = ("RepositorySubscription",)
+__all__ = ("RepositoryRuleDetailedOneof14",)

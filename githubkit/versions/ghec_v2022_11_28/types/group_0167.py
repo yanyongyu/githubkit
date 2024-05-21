@@ -9,24 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
 
 
-class ProjectColumnType(TypedDict):
-    """Project Column
+class TeamProjectType(TypedDict):
+    """Team Project
 
-    Project columns contain cards of work.
+    A team's access to a project.
     """
 
+    owner_url: str
     url: str
-    project_url: str
-    cards_url: str
+    html_url: str
+    columns_url: str
     id: int
     node_id: str
     name: str
-    created_at: datetime
-    updated_at: datetime
+    body: Union[str, None]
+    number: int
+    state: str
+    creator: SimpleUserType
+    created_at: str
+    updated_at: str
+    organization_permission: NotRequired[str]
+    private: NotRequired[bool]
+    permissions: TeamProjectPropPermissionsType
 
 
-__all__ = ("ProjectColumnType",)
+class TeamProjectPropPermissionsType(TypedDict):
+    """TeamProjectPropPermissions"""
+
+    read: bool
+    write: bool
+    admin: bool
+
+
+__all__ = (
+    "TeamProjectType",
+    "TeamProjectPropPermissionsType",
+)

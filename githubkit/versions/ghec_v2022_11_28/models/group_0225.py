@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,64 +17,46 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class RepositoryCollaboratorPermission(GitHubModel):
-    """Repository Collaborator Permission
-
-    Repository Collaborator Permission
-    """
-
-    permission: str = Field()
-    role_name: str = Field()
-    user: Union[None, Collaborator] = Field()
+from .group_0043 import SimpleRepository
 
 
-class Collaborator(GitHubModel):
-    """Collaborator
+class CodeScanningVariantAnalysisRepoTask(GitHubModel):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    Collaborator
-    """
-
-    login: str = Field()
-    id: int = Field()
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    permissions: Missing[CollaboratorPropPermissions] = Field(default=UNSET)
-    role_name: str = Field()
-
-
-class CollaboratorPropPermissions(GitHubModel):
-    """CollaboratorPropPermissions"""
-
-    pull: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-    push: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
-    admin: bool = Field()
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
+    )
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
+    ] = Field(
+        description="The new status of the CodeQL variant analysis repository task."
+    )
+    artifact_size_in_bytes: Missing[int] = Field(
+        default=UNSET,
+        description="The size of the artifact. This is only available for successful analyses.",
+    )
+    result_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
+    )
+    failure_message: Missing[str] = Field(
+        default=UNSET,
+        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
+    )
+    database_commit_sha: Missing[str] = Field(
+        default=UNSET,
+        description="The SHA of the commit the CodeQL database was built against. This is only available for successful analyses.",
+    )
+    source_location_prefix: Missing[str] = Field(
+        default=UNSET,
+        description="The source location prefix to use. This is only available for successful analyses.",
+    )
+    artifact_url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL of the artifact. This is only available for successful analyses.",
+    )
 
 
-model_rebuild(RepositoryCollaboratorPermission)
-model_rebuild(Collaborator)
-model_rebuild(CollaboratorPropPermissions)
+model_rebuild(CodeScanningVariantAnalysisRepoTask)
 
-__all__ = (
-    "RepositoryCollaboratorPermission",
-    "Collaborator",
-    "CollaboratorPropPermissions",
-)
+__all__ = ("CodeScanningVariantAnalysisRepoTask",)

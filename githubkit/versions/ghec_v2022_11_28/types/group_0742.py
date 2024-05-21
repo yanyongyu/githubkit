@@ -9,21 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0014 import AppPermissionsType
+from .group_0743 import WebhookSecurityAndAnalysisPropChangesPropFromType
 
 
-class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
-    """ApplicationsClientIdTokenScopedPostBody"""
+class WebhookSecurityAndAnalysisPropChangesType(TypedDict):
+    """WebhookSecurityAndAnalysisPropChanges"""
 
-    access_token: str
-    target: NotRequired[str]
-    target_id: NotRequired[int]
-    repositories: NotRequired[List[str]]
-    repository_ids: NotRequired[List[int]]
-    permissions: NotRequired[AppPermissionsType]
+    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromType]
 
 
-__all__ = ("ApplicationsClientIdTokenScopedPostBodyType",)
+__all__ = ("WebhookSecurityAndAnalysisPropChangesType",)

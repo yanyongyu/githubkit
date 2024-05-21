@@ -9,23 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class BlobType(TypedDict):
-    """Blob
+class DeploymentBranchPolicySettingsType(TypedDict):
+    """DeploymentBranchPolicySettings
 
-    Blob
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
     """
 
-    content: str
-    encoding: str
-    url: str
-    sha: str
-    size: Union[int, None]
-    node_id: str
-    highlighted_content: NotRequired[str]
+    protected_branches: bool
+    custom_branch_policies: bool
 
 
-__all__ = ("BlobType",)
+__all__ = ("DeploymentBranchPolicySettingsType",)

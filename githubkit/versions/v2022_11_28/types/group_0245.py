@@ -9,30 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0246 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType
 
 
-class GitRefType(TypedDict):
-    """Git Reference
+class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
-    Git references within a repository
-    """
-
-    ref: str
+    id: int
     node_id: str
-    url: str
-    object_: GitRefPropObjectType
-
-
-class GitRefPropObjectType(TypedDict):
-    """GitRefPropObject"""
-
+    prevent_self_review: NotRequired[bool]
     type: str
-    sha: str
-    url: str
+    reviewers: NotRequired[
+        List[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
+    ]
 
 
-__all__ = (
-    "GitRefType",
-    "GitRefPropObjectType",
-)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1Type",)

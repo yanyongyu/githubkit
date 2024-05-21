@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,46 +16,92 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class AdvancedSecurityActiveCommitters(GitHubModel):
-    """AdvancedSecurityActiveCommitters"""
+class ActionsBillingUsage(GitHubModel):
+    """ActionsBillingUsage"""
 
-    total_advanced_security_committers: Missing[int] = Field(default=UNSET)
-    total_count: Missing[int] = Field(default=UNSET)
-    maximum_advanced_security_committers: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of GitHub Advanced Security licences required if all repositories were to enable GitHub Advanced Security",
+    total_minutes_used: int = Field(
+        description="The sum of the free and paid GitHub Actions minutes used."
     )
-    purchased_advanced_security_committers: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of GitHub Advanced Security licences purchased",
+    total_paid_minutes_used: int = Field(
+        description="The total paid GitHub Actions minutes used."
     )
-    repositories: List[AdvancedSecurityActiveCommittersRepository] = Field()
+    included_minutes: int = Field(
+        description="The amount of free GitHub Actions minutes available."
+    )
+    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdown = Field()
 
 
-class AdvancedSecurityActiveCommittersRepository(GitHubModel):
-    """AdvancedSecurityActiveCommittersRepository"""
+class ActionsBillingUsagePropMinutesUsedBreakdown(GitHubModel):
+    """ActionsBillingUsagePropMinutesUsedBreakdown"""
 
-    name: str = Field()
-    advanced_security_committers: int = Field()
-    advanced_security_committers_breakdown: List[
-        AdvancedSecurityActiveCommittersUser
-    ] = Field()
+    ubuntu: Missing[int] = Field(
+        default=UNSET,
+        alias="UBUNTU",
+        description="Total minutes used on Ubuntu runner machines.",
+    )
+    macos: Missing[int] = Field(
+        default=UNSET,
+        alias="MACOS",
+        description="Total minutes used on macOS runner machines.",
+    )
+    windows: Missing[int] = Field(
+        default=UNSET,
+        alias="WINDOWS",
+        description="Total minutes used on Windows runner machines.",
+    )
+    ubuntu_4_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 4 core runner machines.",
+    )
+    ubuntu_8_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 8 core runner machines.",
+    )
+    ubuntu_16_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 16 core runner machines.",
+    )
+    ubuntu_32_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 32 core runner machines.",
+    )
+    ubuntu_64_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Ubuntu 64 core runner machines.",
+    )
+    windows_4_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 4 core runner machines.",
+    )
+    windows_8_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 8 core runner machines.",
+    )
+    windows_16_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 16 core runner machines.",
+    )
+    windows_32_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 32 core runner machines.",
+    )
+    windows_64_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on Windows 64 core runner machines.",
+    )
+    macos_12_core: Missing[int] = Field(
+        default=UNSET,
+        description="Total minutes used on macOS 12 core runner machines.",
+    )
+    total: Missing[int] = Field(
+        default=UNSET, description="Total minutes used on all runner machines."
+    )
 
 
-class AdvancedSecurityActiveCommittersUser(GitHubModel):
-    """AdvancedSecurityActiveCommittersUser"""
-
-    user_login: str = Field()
-    last_pushed_date: str = Field()
-    last_pushed_email: str = Field()
-
-
-model_rebuild(AdvancedSecurityActiveCommitters)
-model_rebuild(AdvancedSecurityActiveCommittersRepository)
-model_rebuild(AdvancedSecurityActiveCommittersUser)
+model_rebuild(ActionsBillingUsage)
+model_rebuild(ActionsBillingUsagePropMinutesUsedBreakdown)
 
 __all__ = (
-    "AdvancedSecurityActiveCommitters",
-    "AdvancedSecurityActiveCommittersRepository",
-    "AdvancedSecurityActiveCommittersUser",
+    "ActionsBillingUsage",
+    "ActionsBillingUsagePropMinutesUsedBreakdown",
 )

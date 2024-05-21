@@ -9,21 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0330 import TrafficType
+from .group_0001 import SimpleUserType
 
 
-class ViewTrafficType(TypedDict):
-    """View Traffic
+class ContributorActivityType(TypedDict):
+    """Contributor Activity
 
-    View Traffic
+    Contributor Activity
     """
 
-    count: int
-    uniques: int
-    views: List[TrafficType]
+    author: Union[None, SimpleUserType]
+    total: int
+    weeks: List[ContributorActivityPropWeeksItemsType]
 
 
-__all__ = ("ViewTrafficType",)
+class ContributorActivityPropWeeksItemsType(TypedDict):
+    """ContributorActivityPropWeeksItems"""
+
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
+
+
+__all__ = (
+    "ContributorActivityType",
+    "ContributorActivityPropWeeksItemsType",
+)

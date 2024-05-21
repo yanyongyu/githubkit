@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -18,84 +17,27 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0234 import DeploymentBranchPolicySettings
-from .group_0236 import EnvironmentPropProtectionRulesItemsAnyof1
+from .group_0026 import DependabotAlertPackage
 
 
-class Environment(GitHubModel):
-    """Environment
+class DependabotAlertPropDependency(GitHubModel):
+    """DependabotAlertPropDependency
 
-    Details of a deployment environment
+    Details for the vulnerable dependency.
     """
 
-    id: int = Field(description="The id of the environment.")
-    node_id: str = Field()
-    name: str = Field(description="The name of the environment.")
-    url: str = Field()
-    html_url: str = Field()
-    created_at: datetime = Field(
-        description="The time that the environment was created, in ISO 8601 format."
+    package: Missing[DependabotAlertPackage] = Field(
+        default=UNSET, description="Details for the vulnerable package."
     )
-    updated_at: datetime = Field(
-        description="The time that the environment was last updated, in ISO 8601 format."
-    )
-    protection_rules: Missing[
-        List[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0,
-                EnvironmentPropProtectionRulesItemsAnyof1,
-                EnvironmentPropProtectionRulesItemsAnyof2,
-            ]
-        ]
-    ] = Field(
+    manifest_path: Missing[str] = Field(
         default=UNSET,
-        description="Built-in deployment protection rules for the environment.",
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
     )
-    deployment_branch_policy: Missing[Union[DeploymentBranchPolicySettings, None]] = (
-        Field(
-            default=UNSET,
-            description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
-        )
+    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
+        default=UNSET, description="The execution scope of the vulnerable dependency."
     )
 
 
-class EnvironmentPropProtectionRulesItemsAnyof0(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
+model_rebuild(DependabotAlertPropDependency)
 
-    id: int = Field()
-    node_id: str = Field()
-    type: str = Field()
-    wait_timer: Missing[int] = Field(
-        default=UNSET,
-        description="The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
-    )
-
-
-class EnvironmentPropProtectionRulesItemsAnyof2(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
-
-    id: int = Field()
-    node_id: str = Field()
-    type: str = Field()
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: Missing[int] = Field(
-        default=UNSET, description="The number of environments in this repository"
-    )
-    environments: Missing[List[Environment]] = Field(default=UNSET)
-
-
-model_rebuild(Environment)
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof0)
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof2)
-model_rebuild(ReposOwnerRepoEnvironmentsGetResponse200)
-
-__all__ = (
-    "Environment",
-    "EnvironmentPropProtectionRulesItemsAnyof0",
-    "EnvironmentPropProtectionRulesItemsAnyof2",
-    "ReposOwnerRepoEnvironmentsGetResponse200",
-)
+__all__ = ("DependabotAlertPropDependency",)

@@ -9,45 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0005 import Integration
+from .group_0183 import Verification
 
 
-class UnlabeledIssueEvent(GitHubModel):
-    """Unlabeled Issue Event
+class GitTag(GitHubModel):
+    """Git Tag
 
-    Unlabeled Issue Event
+    Metadata for a Git tag
     """
 
-    id: int = Field()
     node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["unlabeled"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration] = Field()
-    label: UnlabeledIssueEventPropLabel = Field()
+    tag: str = Field(description="Name of the tag")
+    sha: str = Field()
+    url: str = Field(description="URL for the tag")
+    message: str = Field(description="Message describing the purpose of the tag")
+    tagger: GitTagPropTagger = Field()
+    object_: GitTagPropObject = Field(alias="object")
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
 
 
-class UnlabeledIssueEventPropLabel(GitHubModel):
-    """UnlabeledIssueEventPropLabel"""
+class GitTagPropTagger(GitHubModel):
+    """GitTagPropTagger"""
 
+    date: str = Field()
+    email: str = Field()
     name: str = Field()
-    color: str = Field()
 
 
-model_rebuild(UnlabeledIssueEvent)
-model_rebuild(UnlabeledIssueEventPropLabel)
+class GitTagPropObject(GitHubModel):
+    """GitTagPropObject"""
+
+    sha: str = Field()
+    type: str = Field()
+    url: str = Field()
+
+
+model_rebuild(GitTag)
+model_rebuild(GitTagPropTagger)
+model_rebuild(GitTagPropObject)
 
 __all__ = (
-    "UnlabeledIssueEvent",
-    "UnlabeledIssueEventPropLabel",
+    "GitTag",
+    "GitTagPropTagger",
+    "GitTagPropObject",
 )

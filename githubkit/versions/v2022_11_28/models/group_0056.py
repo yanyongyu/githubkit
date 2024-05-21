@@ -9,16 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EmptyObject(GitHubModel):
-    """Empty Object
+class OidcCustomSub(GitHubModel):
+    """Actions OIDC Subject customization
 
-    An object without any properties.
+    Actions OIDC Subject customization
     """
 
+    include_claim_keys: List[str] = Field(
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
+    )
 
-model_rebuild(EmptyObject)
 
-__all__ = ("EmptyObject",)
+model_rebuild(OidcCustomSub)
+
+__all__ = ("OidcCustomSub",)

@@ -9,69 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0622 import (
-    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion,
-)
+from .group_0404 import ProjectsV2Item
+from .group_0368 import SimpleInstallation
+from .group_0371 import SimpleUserWebhooks
+from .group_0369 import OrganizationSimpleWebhooks
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackage(GitHubModel):
-    """WebhookRegistryPackageUpdatedPropRegistryPackage"""
+class WebhookProjectsV2ItemCreated(GitHubModel):
+    """Projects v2 Item Created Event"""
 
-    created_at: str = Field()
-    description: None = Field()
-    ecosystem: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field()
-    namespace: str = Field()
-    owner: WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner = Field()
-    package_type: str = Field()
-    package_version: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion = Field()
-    registry: Union[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry, None
-    ] = Field()
-    updated_at: str = Field()
-
-
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner(GitHubModel):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner"""
-
-    avatar_url: str = Field()
-    events_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    gravatar_id: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    login: str = Field()
-    node_id: str = Field()
-    organizations_url: str = Field()
-    received_events_url: str = Field()
-    repos_url: str = Field()
-    site_admin: bool = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    type: str = Field()
-    url: str = Field()
+    action: Literal["created"] = Field()
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    projects_v2_item: ProjectsV2Item = Field(
+        title="Projects v2 Item", description="An item belonging to a project"
+    )
+    sender: SimpleUserWebhooks = Field(
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry(GitHubModel):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry"""
+model_rebuild(WebhookProjectsV2ItemCreated)
 
-
-model_rebuild(WebhookRegistryPackageUpdatedPropRegistryPackage)
-model_rebuild(WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner)
-model_rebuild(WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry)
-
-__all__ = (
-    "WebhookRegistryPackageUpdatedPropRegistryPackage",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry",
-)
+__all__ = ("WebhookProjectsV2ItemCreated",)

@@ -9,48 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0016 import LicenseSimple
+from .group_0035 import Issue
 
 
-class LicenseContent(GitHubModel):
-    """License Content
+class TimelineCrossReferencedEventPropSource(GitHubModel):
+    """TimelineCrossReferencedEventPropSource"""
 
-    License Content
-    """
-
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    size: int = Field()
-    url: str = Field()
-    html_url: Union[str, None] = Field()
-    git_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    type: str = Field()
-    content: str = Field()
-    encoding: str = Field()
-    links: LicenseContentPropLinks = Field(alias="_links")
-    license_: Union[None, LicenseSimple] = Field(alias="license")
+    type: Missing[str] = Field(default=UNSET)
+    issue: Missing[Issue] = Field(
+        default=UNSET,
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
 
 
-class LicenseContentPropLinks(GitHubModel):
-    """LicenseContentPropLinks"""
+model_rebuild(TimelineCrossReferencedEventPropSource)
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(LicenseContent)
-model_rebuild(LicenseContentPropLinks)
-
-__all__ = (
-    "LicenseContent",
-    "LicenseContentPropLinks",
-)
+__all__ = ("TimelineCrossReferencedEventPropSource",)

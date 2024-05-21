@@ -9,37 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0090 import TeamType
-from .group_0001 import SimpleUserType
-from .group_0005 import IntegrationType
+from typing_extensions import TypedDict
 
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+class AutolinkType(TypedDict):
+    """Autolink reference
 
-    users: NotRequired[List[SimpleUserType]]
-    teams: NotRequired[List[TeamType]]
-    apps: NotRequired[List[IntegrationType]]
-    url: NotRequired[str]
-    users_url: NotRequired[str]
-    teams_url: NotRequired[str]
-
-
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    An autolink reference.
     """
 
-    users: NotRequired[List[SimpleUserType]]
-    teams: NotRequired[List[TeamType]]
-    apps: NotRequired[List[IntegrationType]]
+    id: int
+    key_prefix: str
+    url_template: str
+    is_alphanumeric: bool
 
 
-__all__ = (
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
-)
+__all__ = ("AutolinkType",)

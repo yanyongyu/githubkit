@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -18,86 +18,49 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0060 import Issue
-from .group_0061 import IssueComment
+from .group_0001 import SimpleUser
+from .group_0006 import Integration
+from .group_0060 import ReactionRollup
 
 
-class EventPropPayload(GitHubModel):
-    """EventPropPayload"""
+class IssueComment(GitHubModel):
+    """Issue Comment
 
-    action: Missing[str] = Field(default=UNSET)
-    issue: Missing[Issue] = Field(
-        default=UNSET,
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    comment: Missing[IssueComment] = Field(
-        default=UNSET,
-        title="Issue Comment",
-        description="Comments provide a way for people to collaborate on an issue.",
-    )
-    pages: Missing[List[EventPropPayloadPropPagesItems]] = Field(default=UNSET)
-
-
-class EventPropPayloadPropPagesItems(GitHubModel):
-    """EventPropPayloadPropPagesItems"""
-
-    page_name: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    summary: Missing[Union[str, None]] = Field(default=UNSET)
-    action: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-
-
-class Event(GitHubModel):
-    """Event
-
-    Event
+    Comments provide a way for people to collaborate on an issue.
     """
 
-    id: str = Field()
-    type: Union[str, None] = Field()
-    actor: Actor = Field(title="Actor", description="Actor")
-    repo: EventPropRepo = Field()
-    org: Missing[Actor] = Field(default=UNSET, title="Actor", description="Actor")
-    payload: EventPropPayload = Field()
-    public: bool = Field()
-    created_at: Union[datetime, None] = Field()
+    id: int = Field(description="Unique identifier of the issue comment")
+    node_id: str = Field()
+    url: str = Field(description="URL for the issue comment")
+    body: Missing[str] = Field(
+        default=UNSET, description="Contents of the issue comment"
+    )
+    body_text: Missing[str] = Field(default=UNSET)
+    body_html: Missing[str] = Field(default=UNSET)
+    html_url: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    issue_url: str = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-class Actor(GitHubModel):
-    """Actor
+model_rebuild(IssueComment)
 
-    Actor
-    """
-
-    id: int = Field()
-    login: str = Field()
-    display_login: Missing[str] = Field(default=UNSET)
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    avatar_url: str = Field()
-
-
-class EventPropRepo(GitHubModel):
-    """EventPropRepo"""
-
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-model_rebuild(EventPropPayload)
-model_rebuild(EventPropPayloadPropPagesItems)
-model_rebuild(Event)
-model_rebuild(Actor)
-model_rebuild(EventPropRepo)
-
-__all__ = (
-    "EventPropPayload",
-    "EventPropPayloadPropPagesItems",
-    "Event",
-    "Actor",
-    "EventPropRepo",
-)
+__all__ = ("IssueComment",)

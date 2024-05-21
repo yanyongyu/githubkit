@@ -9,29 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
+from .group_0005 import IntegrationPropPermissionsType
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class AppManifestsCodeConversionsPostResponse201Type(TypedDict):
+    """AppManifestsCodeConversionsPostResponse201"""
 
-    total_count: int
-    repository_cache_usages: List[ActionsCacheUsageByRepositoryType]
+    id: int
+    slug: NotRequired[str]
+    node_id: str
+    owner: Union[None, SimpleUserType]
+    name: str
+    description: Union[str, None]
+    external_url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    permissions: IntegrationPropPermissionsType
+    events: List[str]
+    installations_count: NotRequired[int]
+    client_id: str
+    client_secret: str
+    webhook_secret: Union[Union[str, None], None]
+    pem: str
 
 
-class ActionsCacheUsageByRepositoryType(TypedDict):
-    """Actions Cache Usage by repository
-
-    GitHub Actions Cache Usage by repository.
-    """
-
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
-
-
-__all__ = (
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
-    "ActionsCacheUsageByRepositoryType",
-)
+__all__ = ("AppManifestsCodeConversionsPostResponse201Type",)

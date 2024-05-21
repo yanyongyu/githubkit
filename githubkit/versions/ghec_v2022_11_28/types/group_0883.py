@@ -12,14 +12,13 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0176 import ActionsSecretType
+from .group_0113 import OrgCustomPropertyType
 
 
-class ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
+class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    total_count: int
-    secrets: List[ActionsSecretType]
+    properties: List[OrgCustomPropertyType]
 
 
-__all__ = ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type",)
+__all__ = ("OrgsOrgPropertiesSchemaPatchBodyType",)

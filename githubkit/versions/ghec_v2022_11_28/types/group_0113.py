@@ -9,18 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-from typing_extensions import TypedDict
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class CustomPropertyValueType(TypedDict):
-    """Custom Property Value
+class OrgCustomPropertyType(TypedDict):
+    """Organization Custom Property
 
-    Custom property name and associated value
+    Custom property defined on an organization
     """
 
     property_name: str
-    value: Union[str, List[str], None]
+    value_type: Literal["string", "single_select"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, List[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[List[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ]
 
 
-__all__ = ("CustomPropertyValueType",)
+__all__ = ("OrgCustomPropertyType",)

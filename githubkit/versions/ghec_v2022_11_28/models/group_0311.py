@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from datetime import date, datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -18,143 +18,83 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0016 import LicenseSimple
 
+class Page(GitHubModel):
+    """GitHub Pages
 
-class PullRequestPropBasePropRepo(GitHubModel):
-    """PullRequestPropBasePropRepo"""
+    The configuration for GitHub Pages for a repository.
+    """
 
-    archive_url: str = Field()
-    assignees_url: str = Field()
-    blobs_url: str = Field()
-    branches_url: str = Field()
-    collaborators_url: str = Field()
-    comments_url: str = Field()
-    commits_url: str = Field()
-    compare_url: str = Field()
-    contents_url: str = Field()
-    contributors_url: str = Field()
-    deployments_url: str = Field()
-    description: Union[str, None] = Field()
-    downloads_url: str = Field()
-    events_url: str = Field()
-    fork: bool = Field()
-    forks_url: str = Field()
-    full_name: str = Field()
-    git_commits_url: str = Field()
-    git_refs_url: str = Field()
-    git_tags_url: str = Field()
-    hooks_url: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    is_template: Missing[bool] = Field(default=UNSET)
-    node_id: str = Field()
-    issue_comment_url: str = Field()
-    issue_events_url: str = Field()
-    issues_url: str = Field()
-    keys_url: str = Field()
-    labels_url: str = Field()
-    languages_url: str = Field()
-    merges_url: str = Field()
-    milestones_url: str = Field()
-    name: str = Field()
-    notifications_url: str = Field()
-    owner: PullRequestPropBasePropRepoPropOwner = Field()
-    private: bool = Field()
-    pulls_url: str = Field()
-    releases_url: str = Field()
-    stargazers_url: str = Field()
-    statuses_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    tags_url: str = Field()
-    teams_url: str = Field()
-    trees_url: str = Field()
-    url: str = Field()
-    clone_url: str = Field()
-    default_branch: str = Field()
-    forks: int = Field()
-    forks_count: int = Field()
-    git_url: str = Field()
-    has_downloads: bool = Field()
-    has_issues: bool = Field()
-    has_projects: bool = Field()
-    has_wiki: bool = Field()
-    has_pages: bool = Field()
-    has_discussions: bool = Field()
-    homepage: Union[str, None] = Field()
-    language: Union[str, None] = Field()
-    master_branch: Missing[str] = Field(default=UNSET)
-    archived: bool = Field()
-    disabled: bool = Field()
-    visibility: Missing[str] = Field(
+    url: str = Field(description="The API address for accessing this Page resource.")
+    status: Union[None, Literal["built", "building", "errored"]] = Field(
+        description="The status of the most recent build of the Page."
+    )
+    cname: Union[str, None] = Field(description="The Pages site's custom domain")
+    protected_domain_state: Missing[
+        Union[None, Literal["pending", "verified", "unverified"]]
+    ] = Field(default=UNSET, description="The state if the domain is verified")
+    pending_domain_unverified_at: Missing[Union[datetime, None]] = Field(
         default=UNSET,
-        description="The repository visibility: public, private, or internal.",
+        description="The timestamp when a pending domain becomes unverified.",
     )
-    mirror_url: Union[str, None] = Field()
-    open_issues: int = Field()
-    open_issues_count: int = Field()
-    permissions: Missing[PullRequestPropBasePropRepoPropPermissions] = Field(
-        default=UNSET
+    custom_404: bool = Field(
+        default=False, description="Whether the Page has a custom 404 page."
     )
-    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
-    allow_merge_commit: Missing[bool] = Field(default=UNSET)
-    allow_squash_merge: Missing[bool] = Field(default=UNSET)
-    allow_rebase_merge: Missing[bool] = Field(default=UNSET)
-    license_: Union[None, LicenseSimple] = Field(alias="license")
-    pushed_at: datetime = Field()
-    size: int = Field()
-    ssh_url: str = Field()
-    stargazers_count: int = Field()
-    svn_url: str = Field()
-    topics: Missing[List[str]] = Field(default=UNSET)
-    watchers: int = Field()
-    watchers_count: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    allow_forking: Missing[bool] = Field(default=UNSET)
-    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The web address the Page can be accessed from."
+    )
+    build_type: Missing[Union[None, Literal["legacy", "workflow"]]] = Field(
+        default=UNSET, description="The process in which the Page will be built."
+    )
+    source: Missing[PagesSourceHash] = Field(default=UNSET, title="Pages Source Hash")
+    public: bool = Field(
+        description="Whether the GitHub Pages site is publicly visible. If set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site."
+    )
+    https_certificate: Missing[PagesHttpsCertificate] = Field(
+        default=UNSET, title="Pages Https Certificate"
+    )
+    https_enforced: Missing[bool] = Field(
+        default=UNSET, description="Whether https is enabled on the domain"
+    )
 
 
-class PullRequestPropBasePropRepoPropOwner(GitHubModel):
-    """PullRequestPropBasePropRepoPropOwner"""
+class PagesSourceHash(GitHubModel):
+    """Pages Source Hash"""
 
-    avatar_url: str = Field()
-    events_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    html_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    login: str = Field()
-    organizations_url: str = Field()
-    received_events_url: str = Field()
-    repos_url: str = Field()
-    site_admin: bool = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    type: str = Field()
-    url: str = Field()
+    branch: str = Field()
+    path: str = Field()
 
 
-class PullRequestPropBasePropRepoPropPermissions(GitHubModel):
-    """PullRequestPropBasePropRepoPropPermissions"""
+class PagesHttpsCertificate(GitHubModel):
+    """Pages Https Certificate"""
 
-    admin: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
-    push: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-    pull: bool = Field()
+    state: Literal[
+        "new",
+        "authorization_created",
+        "authorization_pending",
+        "authorized",
+        "authorization_revoked",
+        "issued",
+        "uploaded",
+        "approved",
+        "errored",
+        "bad_authz",
+        "destroy_pending",
+        "dns_changed",
+    ] = Field()
+    description: str = Field()
+    domains: List[str] = Field(
+        description="Array of the domain set and its alternate name (if it is configured)"
+    )
+    expires_at: Missing[date] = Field(default=UNSET)
 
 
-model_rebuild(PullRequestPropBasePropRepo)
-model_rebuild(PullRequestPropBasePropRepoPropOwner)
-model_rebuild(PullRequestPropBasePropRepoPropPermissions)
+model_rebuild(Page)
+model_rebuild(PagesSourceHash)
+model_rebuild(PagesHttpsCertificate)
 
 __all__ = (
-    "PullRequestPropBasePropRepo",
-    "PullRequestPropBasePropRepoPropOwner",
-    "PullRequestPropBasePropRepoPropPermissions",
+    "Page",
+    "PagesSourceHash",
+    "PagesHttpsCertificate",
 )

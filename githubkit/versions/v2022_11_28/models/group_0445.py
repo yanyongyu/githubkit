@@ -17,60 +17,49 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0015 import Installation
-from .group_0357 import EnterpriseWebhooks
-from .group_0360 import RepositoryWebhooks
-from .group_0361 import SimpleUserWebhooks
-from .group_0359 import OrganizationSimpleWebhooks
+from .group_0367 import EnterpriseWebhooks
+from .group_0368 import SimpleInstallation
+from .group_0370 import RepositoryWebhooks
+from .group_0371 import SimpleUserWebhooks
+from .group_0093 import CustomPropertyValue
+from .group_0369 import OrganizationSimpleWebhooks
 
 
-class WebhookInstallationNewPermissionsAccepted(GitHubModel):
-    """installation new_permissions_accepted event"""
+class WebhookCustomPropertyValuesUpdated(GitHubModel):
+    """Custom property values updated event"""
 
-    action: Literal["new_permissions_accepted"] = Field()
+    action: Literal["updated"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
     )
-    installation: Installation = Field(title="Installation", description="Installation")
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
+    installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    repositories: Missing[
-        List[WebhookInstallationNewPermissionsAcceptedPropRepositoriesItems]
-    ] = Field(
-        default=UNSET,
-        description="An array of repository objects that the installation can access.",
-    )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    requester: Missing[None] = Field(default=UNSET)
-    sender: SimpleUserWebhooks = Field(
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
+    new_property_values: List[CustomPropertyValue] = Field(
+        description="The new custom property values for the repository."
+    )
+    old_property_values: List[CustomPropertyValue] = Field(
+        description="The old custom property values for the repository."
+    )
 
 
-class WebhookInstallationNewPermissionsAcceptedPropRepositoriesItems(GitHubModel):
-    """WebhookInstallationNewPermissionsAcceptedPropRepositoriesItems"""
+model_rebuild(WebhookCustomPropertyValuesUpdated)
 
-    full_name: str = Field()
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="The name of the repository.")
-    node_id: str = Field()
-    private: bool = Field(description="Whether the repository is private or public.")
-
-
-model_rebuild(WebhookInstallationNewPermissionsAccepted)
-model_rebuild(WebhookInstallationNewPermissionsAcceptedPropRepositoriesItems)
-
-__all__ = (
-    "WebhookInstallationNewPermissionsAccepted",
-    "WebhookInstallationNewPermissionsAcceptedPropRepositoriesItems",
-)
+__all__ = ("WebhookCustomPropertyValuesUpdated",)

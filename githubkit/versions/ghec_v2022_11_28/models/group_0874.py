@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List
 
 from pydantic import Field
 
@@ -18,26 +18,22 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsProjectIdPatchBody(GitHubModel):
-    """ProjectsProjectIdPatchBody"""
+class OrgsOrgOrganizationRolesRoleIdPatchBody(GitHubModel):
+    """OrgsOrgOrganizationRolesRoleIdPatchBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="Name of the project")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Body of the project"
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the custom role."
     )
-    state: Missing[str] = Field(
-        default=UNSET, description="State of the project; either 'open' or 'closed'"
-    )
-    organization_permission: Missing[Literal["read", "write", "admin", "none"]] = Field(
+    description: Missing[str] = Field(
         default=UNSET,
-        description="The baseline permission that all organization members have on this project",
+        description="A short description about the intended usage of this role or what permissions it grants.",
     )
-    private: Missing[bool] = Field(
+    permissions: Missing[List[str]] = Field(
         default=UNSET,
-        description="Whether or not this project can be seen by everyone.",
+        description="A list of additional permissions included in this role.",
     )
 
 
-model_rebuild(ProjectsProjectIdPatchBody)
+model_rebuild(OrgsOrgOrganizationRolesRoleIdPatchBody)
 
-__all__ = ("ProjectsProjectIdPatchBody",)
+__all__ = ("OrgsOrgOrganizationRolesRoleIdPatchBody",)

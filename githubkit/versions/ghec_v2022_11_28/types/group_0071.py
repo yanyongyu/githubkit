@@ -9,29 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List, Union
 from typing_extensions import TypedDict
 
 
-class MarketplaceListingPlanType(TypedDict):
-    """Marketplace Listing Plan
+class LicenseType(TypedDict):
+    """License
 
-    Marketplace Listing Plan
+    License
     """
 
-    url: str
-    accounts_url: str
-    id: int
-    number: int
+    key: str
     name: str
+    spdx_id: Union[str, None]
+    url: Union[str, None]
+    node_id: str
+    html_url: str
     description: str
-    monthly_price_in_cents: int
-    yearly_price_in_cents: int
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    has_free_trial: bool
-    unit_name: Union[str, None]
-    state: str
-    bullets: List[str]
+    implementation: str
+    permissions: List[str]
+    conditions: List[str]
+    limitations: List[str]
+    body: str
+    featured: bool
 
 
-__all__ = ("MarketplaceListingPlanType",)
+__all__ = ("LicenseType",)

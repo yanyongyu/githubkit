@@ -9,32 +9,95 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0001 import SimpleUserType
+from .group_0096 import FullRepositoryType
+from .group_0071 import CodespaceMachineType
 
-class EnterpriseWebhooksType(TypedDict):
-    """Enterprise
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
-    enterprise-accounts)."
+class CodespaceWithFullRepositoryType(TypedDict):
+    """Codespace
+
+    A codespace.
     """
 
-    description: NotRequired[Union[str, None]]
-    html_url: str
-    website_url: NotRequired[Union[str, None]]
     id: int
-    node_id: str
     name: str
-    slug: str
-    created_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    avatar_url: str
+    display_name: NotRequired[Union[str, None]]
+    environment_id: Union[str, None]
+    owner: SimpleUserType
+    billable_owner: SimpleUserType
+    repository: FullRepositoryType
+    machine: Union[None, CodespaceMachineType]
+    devcontainer_path: NotRequired[Union[str, None]]
+    prebuild: Union[bool, None]
+    created_at: datetime
+    updated_at: datetime
+    last_used_at: datetime
+    state: Literal[
+        "Unknown",
+        "Created",
+        "Queued",
+        "Provisioning",
+        "Available",
+        "Awaiting",
+        "Unavailable",
+        "Deleted",
+        "Moved",
+        "Shutdown",
+        "Archived",
+        "Starting",
+        "ShuttingDown",
+        "Failed",
+        "Exporting",
+        "Updating",
+        "Rebuilding",
+    ]
+    url: str
+    git_status: CodespaceWithFullRepositoryPropGitStatusType
+    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
+    idle_timeout_minutes: Union[int, None]
+    web_url: str
+    machines_url: str
+    start_url: str
+    stop_url: str
+    publish_url: NotRequired[Union[str, None]]
+    pulls_url: Union[str, None]
+    recent_folders: List[str]
+    runtime_constraints: NotRequired[
+        CodespaceWithFullRepositoryPropRuntimeConstraintsType
+    ]
+    pending_operation: NotRequired[Union[bool, None]]
+    pending_operation_disabled_reason: NotRequired[Union[str, None]]
+    idle_timeout_notice: NotRequired[Union[str, None]]
+    retention_period_minutes: NotRequired[Union[int, None]]
+    retention_expires_at: NotRequired[Union[datetime, None]]
 
 
-__all__ = ("EnterpriseWebhooksType",)
+class CodespaceWithFullRepositoryPropGitStatusType(TypedDict):
+    """CodespaceWithFullRepositoryPropGitStatus
+
+    Details about the codespace's git repository.
+    """
+
+    ahead: NotRequired[int]
+    behind: NotRequired[int]
+    has_unpushed_changes: NotRequired[bool]
+    has_uncommitted_changes: NotRequired[bool]
+    ref: NotRequired[str]
+
+
+class CodespaceWithFullRepositoryPropRuntimeConstraintsType(TypedDict):
+    """CodespaceWithFullRepositoryPropRuntimeConstraints"""
+
+    allowed_port_privacy_settings: NotRequired[Union[List[str], None]]
+
+
+__all__ = (
+    "CodespaceWithFullRepositoryType",
+    "CodespaceWithFullRepositoryPropGitStatusType",
+    "CodespaceWithFullRepositoryPropRuntimeConstraintsType",
+)

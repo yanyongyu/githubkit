@@ -12,26 +12,8 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0390 import EnterpriseWebhooksType
-from .group_0391 import SimpleInstallationType
-from .group_0393 import RepositoryWebhooksType
-from .group_0394 import SimpleUserWebhooksType
-from .group_0392 import OrganizationSimpleWebhooksType
 
-
-class WebhookMemberRemovedType(TypedDict):
-    """member removed event"""
-
-    action: Literal["removed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    member: Union[WebhookMemberRemovedPropMemberType, None]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-
-
-class WebhookMemberRemovedPropMemberType(TypedDict):
+class WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -53,11 +35,8 @@ class WebhookMemberRemovedPropMemberType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
 
 
-__all__ = (
-    "WebhookMemberRemovedType",
-    "WebhookMemberRemovedPropMemberType",
-)
+__all__ = ("WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType",)

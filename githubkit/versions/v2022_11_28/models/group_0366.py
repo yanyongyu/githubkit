@@ -13,24 +13,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0162 import SimpleCommit
 
+class KeySimple(GitHubModel):
+    """Key Simple
 
-class MergeGroup(GitHubModel):
-    """Merge Group
-
-    A group of pull requests that the merge queue has grouped together to be merged.
+    Key Simple
     """
 
-    head_sha: str = Field(description="The SHA of the merge group.")
-    head_ref: str = Field(description="The full ref of the merge group.")
-    base_sha: str = Field(description="The SHA of the merge group's parent commit.")
-    base_ref: str = Field(
-        description="The full ref of the branch the merge group will be merged into."
-    )
-    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
+    id: int = Field()
+    key: str = Field()
 
 
-model_rebuild(MergeGroup)
+model_rebuild(KeySimple)
 
-__all__ = ("MergeGroup",)
+__all__ = ("KeySimple",)

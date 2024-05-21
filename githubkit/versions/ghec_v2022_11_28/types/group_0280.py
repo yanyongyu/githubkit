@@ -9,32 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0090 import TeamType
-from .group_0001 import SimpleUserType
-from .group_0005 import IntegrationType
+from typing_extensions import TypedDict
 
 
-class ReviewRequestedIssueEventType(TypedDict):
-    """Review Requested Issue Event
+class PorterLargeFileType(TypedDict):
+    """Porter Large File
 
-    Review Requested Issue Event
+    Porter Large File
     """
 
-    id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["review_requested"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType]
-    review_requester: SimpleUserType
-    requested_team: NotRequired[TeamType]
-    requested_reviewer: NotRequired[SimpleUserType]
+    ref_name: str
+    path: str
+    oid: str
+    size: int
 
 
-__all__ = ("ReviewRequestedIssueEventType",)
+__all__ = ("PorterLargeFileType",)

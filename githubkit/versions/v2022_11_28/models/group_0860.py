@@ -9,25 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0(
-    GitHubModel
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0
+class ProjectsProjectIdCollaboratorsUsernamePutBody(GitHubModel):
+    """ProjectsProjectIdCollaboratorsUsernamePutBody"""
 
-    Examples:
-        {'users': ['mona']}
-    """
-
-    users: List[str] = Field(description="The username for users")
+    permission: Missing[Literal["read", "write", "admin"]] = Field(
+        default=UNSET, description="The permission to grant the collaborator."
+    )
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0)
+model_rebuild(ProjectsProjectIdCollaboratorsUsernamePutBody)
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0",)
+__all__ = ("ProjectsProjectIdCollaboratorsUsernamePutBody",)

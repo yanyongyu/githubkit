@@ -9,53 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union, Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0180 import Verification
+from .group_0076 import Team
+from .group_0001 import SimpleUser
 
 
-class GitTag(GitHubModel):
-    """Git Tag
+class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems(GitHubModel):
+    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
 
-    Metadata for a Git tag
-    """
-
-    node_id: str = Field()
-    tag: str = Field(description="Name of the tag")
-    sha: str = Field()
-    url: str = Field(description="URL for the tag")
-    message: str = Field(description="Message describing the purpose of the tag")
-    tagger: GitTagPropTagger = Field()
-    object_: GitTagPropObject = Field(alias="object")
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
+    type: Missing[Literal["User", "Team"]] = Field(
+        default=UNSET, description="The type of reviewer."
+    )
+    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
 
 
-class GitTagPropTagger(GitHubModel):
-    """GitTagPropTagger"""
+model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems)
 
-    date: str = Field()
-    email: str = Field()
-    name: str = Field()
-
-
-class GitTagPropObject(GitHubModel):
-    """GitTagPropObject"""
-
-    sha: str = Field()
-    type: str = Field()
-    url: str = Field()
-
-
-model_rebuild(GitTag)
-model_rebuild(GitTagPropTagger)
-model_rebuild(GitTagPropObject)
-
-__all__ = (
-    "GitTag",
-    "GitTagPropTagger",
-    "GitTagPropObject",
-)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems",)

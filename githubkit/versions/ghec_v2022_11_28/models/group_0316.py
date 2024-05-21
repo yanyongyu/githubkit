@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,77 +17,95 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0059 import ReactionRollup
-from .group_0317 import ReviewCommentPropLinks
 
+class PagesHealthCheck(GitHubModel):
+    """Pages Health Check Status
 
-class ReviewComment(GitHubModel):
-    """Legacy Review Comment
-
-    Legacy Review Comment
+    Pages Health Check Status
     """
 
-    url: str = Field()
-    pull_request_review_id: Union[int, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    diff_hunk: str = Field()
-    path: str = Field()
-    position: Union[int, None] = Field()
-    original_position: int = Field()
-    commit_id: str = Field()
-    original_commit_id: str = Field()
-    in_reply_to_id: Missing[int] = Field(default=UNSET)
-    user: Union[None, SimpleUser] = Field()
-    body: str = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    html_url: str = Field()
-    pull_request_url: str = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    links: ReviewCommentPropLinks = Field(alias="_links")
-    body_text: Missing[str] = Field(default=UNSET)
-    body_html: Missing[str] = Field(default=UNSET)
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
-        default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
-    )
-    start_side: Missing[Union[None, Literal["LEFT", "RIGHT"]]] = Field(
-        default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
-    )
-    line: Missing[int] = Field(
-        default=UNSET,
-        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    original_line: Missing[int] = Field(
-        default=UNSET,
-        description="The original line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The first line of the range for a multi-line comment.",
-    )
-    original_start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The original first line of the range for a multi-line comment.",
+    domain: Missing[PagesHealthCheckPropDomain] = Field(default=UNSET)
+    alt_domain: Missing[Union[PagesHealthCheckPropAltDomain, None]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(ReviewComment)
+class PagesHealthCheckPropDomain(GitHubModel):
+    """PagesHealthCheckPropDomain"""
 
-__all__ = ("ReviewComment",)
+    host: Missing[str] = Field(default=UNSET)
+    uri: Missing[str] = Field(default=UNSET)
+    nameservers: Missing[str] = Field(default=UNSET)
+    dns_resolves: Missing[bool] = Field(default=UNSET)
+    is_proxied: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cloudflare_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_fastly_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_old_ip_address: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    has_cname_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    has_mx_records_present: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_valid_domain: Missing[bool] = Field(default=UNSET)
+    is_apex_domain: Missing[bool] = Field(default=UNSET)
+    should_be_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cname_to_github_user_domain: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cname_to_pages_dot_github_dot_com: Missing[Union[bool, None]] = Field(
+        default=UNSET
+    )
+    is_cname_to_fastly: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_pointed_to_github_pages_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_non_github_pages_ip_present: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_pages_domain: Missing[bool] = Field(default=UNSET)
+    is_served_by_pages: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_valid: Missing[bool] = Field(default=UNSET)
+    reason: Missing[Union[str, None]] = Field(default=UNSET)
+    responds_to_https: Missing[bool] = Field(default=UNSET)
+    enforces_https: Missing[bool] = Field(default=UNSET)
+    https_error: Missing[Union[str, None]] = Field(default=UNSET)
+    is_https_eligible: Missing[Union[bool, None]] = Field(default=UNSET)
+    caa_error: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class PagesHealthCheckPropAltDomain(GitHubModel):
+    """PagesHealthCheckPropAltDomain"""
+
+    host: Missing[str] = Field(default=UNSET)
+    uri: Missing[str] = Field(default=UNSET)
+    nameservers: Missing[str] = Field(default=UNSET)
+    dns_resolves: Missing[bool] = Field(default=UNSET)
+    is_proxied: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cloudflare_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_fastly_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_old_ip_address: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    has_cname_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    has_mx_records_present: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_valid_domain: Missing[bool] = Field(default=UNSET)
+    is_apex_domain: Missing[bool] = Field(default=UNSET)
+    should_be_a_record: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cname_to_github_user_domain: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_cname_to_pages_dot_github_dot_com: Missing[Union[bool, None]] = Field(
+        default=UNSET
+    )
+    is_cname_to_fastly: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_pointed_to_github_pages_ip: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_non_github_pages_ip_present: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_pages_domain: Missing[bool] = Field(default=UNSET)
+    is_served_by_pages: Missing[Union[bool, None]] = Field(default=UNSET)
+    is_valid: Missing[bool] = Field(default=UNSET)
+    reason: Missing[Union[str, None]] = Field(default=UNSET)
+    responds_to_https: Missing[bool] = Field(default=UNSET)
+    enforces_https: Missing[bool] = Field(default=UNSET)
+    https_error: Missing[Union[str, None]] = Field(default=UNSET)
+    is_https_eligible: Missing[Union[bool, None]] = Field(default=UNSET)
+    caa_error: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(PagesHealthCheck)
+model_rebuild(PagesHealthCheckPropDomain)
+model_rebuild(PagesHealthCheckPropAltDomain)
+
+__all__ = (
+    "PagesHealthCheck",
+    "PagesHealthCheckPropDomain",
+    "PagesHealthCheckPropAltDomain",
+)

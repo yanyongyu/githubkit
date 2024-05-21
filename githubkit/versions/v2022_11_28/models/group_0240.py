@@ -11,29 +11,50 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+
+from .group_0238 import Metadata
 
 
-class CustomDeploymentRuleApp(GitHubModel):
-    """Custom deployment protection rule app
+class Manifest(GitHubModel):
+    """Manifest"""
 
-    A GitHub App that is providing a custom deployment protection rule.
+    name: str = Field(description="The name of the manifest.")
+    file: Missing[ManifestPropFile] = Field(default=UNSET)
+    metadata: Missing[Metadata] = Field(
+        default=UNSET,
+        title="metadata",
+        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
+    )
+    resolved: Missing[ManifestPropResolved] = Field(
+        default=UNSET, description="A collection of resolved package dependencies."
+    )
+
+
+class ManifestPropFile(GitHubModel):
+    """ManifestPropFile"""
+
+    source_location: Missing[str] = Field(
+        default=UNSET,
+        description="The path of the manifest file relative to the root of the Git repository.",
+    )
+
+
+class ManifestPropResolved(ExtraGitHubModel):
+    """ManifestPropResolved
+
+    A collection of resolved package dependencies.
     """
 
-    id: int = Field(
-        description="The unique identifier of the deployment protection rule integration."
-    )
-    slug: str = Field(
-        description="The slugified name of the deployment protection rule integration."
-    )
-    integration_url: str = Field(
-        description="The URL for the endpoint to get details about the app."
-    )
-    node_id: str = Field(
-        description="The node ID for the deployment protection rule integration."
-    )
 
+model_rebuild(Manifest)
+model_rebuild(ManifestPropFile)
+model_rebuild(ManifestPropResolved)
 
-model_rebuild(CustomDeploymentRuleApp)
-
-__all__ = ("CustomDeploymentRuleApp",)
+__all__ = (
+    "Manifest",
+    "ManifestPropFile",
+    "ManifestPropResolved",
+)

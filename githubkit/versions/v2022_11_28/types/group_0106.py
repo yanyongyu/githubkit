@@ -11,20 +11,22 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0098 import RepositoryRulesetConditionsPropRefNameType
-from .group_0102 import (
-    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
+from .group_0099 import RepositoryRulesetConditionsPropRefNameType
+from .group_0101 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
 )
 
 
-class OrgRulesetConditionsOneof1Type(TypedDict):
-    """repository_id_and_ref_name
+class OrgRulesetConditionsOneof0Type(TypedDict):
+    """repository_name_and_ref_name
 
-    Conditions to target repositories by id and refs by name
+    Conditions to target repositories by name and refs by name
     """
 
     ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
-    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
 
 
-__all__ = ("OrgRulesetConditionsOneof1Type",)
+__all__ = ("OrgRulesetConditionsOneof0Type",)

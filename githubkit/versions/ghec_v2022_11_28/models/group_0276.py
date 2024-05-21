@@ -15,29 +15,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0005 import Integration
+
+class HookResponse(GitHubModel):
+    """Hook Response"""
+
+    code: Union[int, None] = Field()
+    status: Union[str, None] = Field()
+    message: Union[str, None] = Field()
 
 
-class UnassignedIssueEvent(GitHubModel):
-    """Unassigned Issue Event
+model_rebuild(HookResponse)
 
-    Unassigned Issue Event
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration] = Field()
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-
-
-model_rebuild(UnassignedIssueEvent)
-
-__all__ = ("UnassignedIssueEvent",)
+__all__ = ("HookResponse",)

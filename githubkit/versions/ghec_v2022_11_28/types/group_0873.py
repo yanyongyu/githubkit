@@ -13,12 +13,12 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ProjectsProjectIdDeleteResponse403Type(TypedDict):
-    """ProjectsProjectIdDeleteResponse403"""
+class OrgsOrgOrganizationRolesPostBodyType(TypedDict):
+    """OrgsOrgOrganizationRolesPostBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    errors: NotRequired[List[str]]
+    name: str
+    description: NotRequired[str]
+    permissions: List[str]
 
 
-__all__ = ("ProjectsProjectIdDeleteResponse403Type",)
+__all__ = ("OrgsOrgOrganizationRolesPostBodyType",)

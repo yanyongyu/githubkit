@@ -11,20 +11,15 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .group_0162 import SimpleCommitType
 
+class KeySimpleType(TypedDict):
+    """Key Simple
 
-class MergeGroupType(TypedDict):
-    """Merge Group
-
-    A group of pull requests that the merge queue has grouped together to be merged.
+    Key Simple
     """
 
-    head_sha: str
-    head_ref: str
-    base_sha: str
-    base_ref: str
-    head_commit: SimpleCommitType
+    id: int
+    key: str
 
 
-__all__ = ("MergeGroupType",)
+__all__ = ("KeySimpleType",)

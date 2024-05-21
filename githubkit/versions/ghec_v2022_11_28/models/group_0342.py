@@ -9,24 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class CommitActivity(GitHubModel):
-    """Commit Activity
-
-    Commit Activity
-    """
-
-    days: List[int] = Field()
-    total: int = Field()
-    week: int = Field()
+from .group_0145 import RepositoryRuleCommitterEmailPatternPropParameters
 
 
-model_rebuild(CommitActivity)
+class RepositoryRuleDetailedOneof11(GitHubModel):
+    """RepositoryRuleDetailedOneof11"""
 
-__all__ = ("CommitActivity",)
+    type: Literal["committer_email_pattern"] = Field()
+    parameters: Missing[RepositoryRuleCommitterEmailPatternPropParameters] = Field(
+        default=UNSET
+    )
+    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        default=UNSET,
+        description="The type of source for the ruleset that includes this rule.",
+    )
+    ruleset_source: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the source of the ruleset that includes this rule.",
+    )
+    ruleset_id: Missing[int] = Field(
+        default=UNSET, description="The ID of the ruleset that includes this rule."
+    )
+
+
+model_rebuild(RepositoryRuleDetailedOneof11)
+
+__all__ = ("RepositoryRuleDetailedOneof11",)

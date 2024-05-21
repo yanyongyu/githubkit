@@ -10,42 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 from .group_0001 import SimpleUserType
-from .group_0005 import IntegrationType
+from .group_0006 import IntegrationType
 
 
-class RemovedFromProjectIssueEventType(TypedDict):
-    """Removed from Project Issue Event
+class MilestonedIssueEventType(TypedDict):
+    """Milestoned Issue Event
 
-    Removed from Project Issue Event
+    Milestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["removed_from_project"]
+    event: Literal["milestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType]
-    project_card: NotRequired[RemovedFromProjectIssueEventPropProjectCardType]
+    performed_via_github_app: Union[None, IntegrationType, None]
+    milestone: MilestonedIssueEventPropMilestoneType
 
 
-class RemovedFromProjectIssueEventPropProjectCardType(TypedDict):
-    """RemovedFromProjectIssueEventPropProjectCard"""
+class MilestonedIssueEventPropMilestoneType(TypedDict):
+    """MilestonedIssueEventPropMilestone"""
 
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    title: str
 
 
 __all__ = (
-    "RemovedFromProjectIssueEventType",
-    "RemovedFromProjectIssueEventPropProjectCardType",
+    "MilestonedIssueEventType",
+    "MilestonedIssueEventPropMilestoneType",
 )

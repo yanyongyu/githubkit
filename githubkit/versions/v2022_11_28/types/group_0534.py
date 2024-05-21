@@ -12,26 +12,8 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0357 import EnterpriseWebhooksType
-from .group_0358 import SimpleInstallationType
-from .group_0360 import RepositoryWebhooksType
-from .group_0361 import SimpleUserWebhooksType
-from .group_0359 import OrganizationSimpleWebhooksType
 
-
-class WebhookOrgBlockBlockedType(TypedDict):
-    """org_block blocked event"""
-
-    action: Literal["blocked"]
-    blocked_user: Union[WebhookOrgBlockBlockedPropBlockedUserType, None]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserWebhooksType
-
-
-class WebhookOrgBlockBlockedPropBlockedUserType(TypedDict):
+class WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -53,11 +35,8 @@ class WebhookOrgBlockBlockedPropBlockedUserType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
 
 
-__all__ = (
-    "WebhookOrgBlockBlockedType",
-    "WebhookOrgBlockBlockedPropBlockedUserType",
-)
+__all__ = ("WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType",)

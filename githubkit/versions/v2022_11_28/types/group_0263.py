@@ -10,40 +10,38 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 from .group_0001 import SimpleUserType
-from .group_0005 import IntegrationType
+from .group_0006 import IntegrationType
 
 
-class ReviewDismissedIssueEventType(TypedDict):
-    """Review Dismissed Issue Event
+class LabeledIssueEventType(TypedDict):
+    """Labeled Issue Event
 
-    Review Dismissed Issue Event
+    Labeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["review_dismissed"]
+    event: Literal["labeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[None, IntegrationType]
-    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewType
+    performed_via_github_app: Union[None, IntegrationType, None]
+    label: LabeledIssueEventPropLabelType
 
 
-class ReviewDismissedIssueEventPropDismissedReviewType(TypedDict):
-    """ReviewDismissedIssueEventPropDismissedReview"""
+class LabeledIssueEventPropLabelType(TypedDict):
+    """LabeledIssueEventPropLabel"""
 
-    state: str
-    review_id: int
-    dismissal_message: Union[str, None]
-    dismissal_commit_id: NotRequired[str]
+    name: str
+    color: str
 
 
 __all__ = (
-    "ReviewDismissedIssueEventType",
-    "ReviewDismissedIssueEventPropDismissedReviewType",
+    "LabeledIssueEventType",
+    "LabeledIssueEventPropLabelType",
 )

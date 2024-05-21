@@ -13,18 +13,21 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgCopilotBillingSelectedUsersPostBody(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
-
-    selected_usernames: List[str] = Field(
-        min_length=1,
-        description="The usernames of the organization members to be granted access to GitHub Copilot.",
-    )
+from .group_0017 import Repository
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersPostBody)
+class InstallationRepositoriesGetResponse200(GitHubModel):
+    """InstallationRepositoriesGetResponse200"""
 
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostBody",)
+    total_count: int = Field()
+    repositories: List[Repository] = Field()
+    repository_selection: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(InstallationRepositoriesGetResponse200)
+
+__all__ = ("InstallationRepositoriesGetResponse200",)

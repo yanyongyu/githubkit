@@ -9,17 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from typing import Union, Literal
+
+from pydantic import Field
+
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Metadata(ExtraGitHubModel):
-    """metadata
+class ContentFile(GitHubModel):
+    """Content File
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    Content File
     """
 
+    type: Literal["file"] = Field()
+    encoding: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    content: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentFilePropLinks = Field(alias="_links")
+    target: Missing[str] = Field(default=UNSET)
+    submodule_git_url: Missing[str] = Field(default=UNSET)
 
-model_rebuild(Metadata)
 
-__all__ = ("Metadata",)
+class ContentFilePropLinks(GitHubModel):
+    """ContentFilePropLinks"""
+
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(ContentFile)
+model_rebuild(ContentFilePropLinks)
+
+__all__ = (
+    "ContentFile",
+    "ContentFilePropLinks",
+)

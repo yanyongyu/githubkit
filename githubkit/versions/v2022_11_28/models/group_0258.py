@@ -9,44 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List
+from datetime import datetime
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0005 import Integration
+from .group_0257 import HookResponse
+from .group_0007 import WebhookConfig
 
 
-class MilestonedIssueEvent(GitHubModel):
-    """Milestoned Issue Event
+class Hook(GitHubModel):
+    """Webhook
 
-    Milestoned Issue Event
+    Webhooks for repositories.
     """
 
-    id: int = Field()
-    node_id: str = Field()
+    type: str = Field()
+    id: int = Field(description="Unique identifier of the webhook.")
+    name: str = Field(
+        description="The name of a valid service, use 'web' for a webhook."
+    )
+    active: bool = Field(
+        description="Determines whether the hook is actually triggered on pushes."
+    )
+    events: List[str] = Field(
+        description="Determines what events the hook is triggered for. Default: ['push']."
+    )
+    config: WebhookConfig = Field(
+        title="Webhook Configuration", description="Configuration object of the webhook"
+    )
+    updated_at: datetime = Field()
+    created_at: datetime = Field()
     url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["milestoned"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration] = Field()
-    milestone: MilestonedIssueEventPropMilestone = Field()
+    test_url: str = Field()
+    ping_url: str = Field()
+    deliveries_url: Missing[str] = Field(default=UNSET)
+    last_response: HookResponse = Field(title="Hook Response")
 
 
-class MilestonedIssueEventPropMilestone(GitHubModel):
-    """MilestonedIssueEventPropMilestone"""
+model_rebuild(Hook)
 
-    title: str = Field()
-
-
-model_rebuild(MilestonedIssueEvent)
-model_rebuild(MilestonedIssueEventPropMilestone)
-
-__all__ = (
-    "MilestonedIssueEvent",
-    "MilestonedIssueEventPropMilestone",
-)
+__all__ = ("Hook",)

@@ -9,23 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0001 import SimpleUserType
+from .group_0005 import IntegrationPropPermissionsType
 
-class IntegrationPropPermissionsType(TypedDict):
-    """IntegrationPropPermissions
 
-    The set of permissions for the GitHub app
+class IntegrationType(TypedDict):
+    """GitHub app
 
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
     """
 
-    issues: NotRequired[str]
-    checks: NotRequired[str]
-    metadata: NotRequired[str]
-    contents: NotRequired[str]
-    deployments: NotRequired[str]
+    id: int
+    slug: NotRequired[str]
+    node_id: str
+    owner: Union[None, SimpleUserType]
+    name: str
+    description: Union[str, None]
+    external_url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    permissions: IntegrationPropPermissionsType
+    events: List[str]
+    installations_count: NotRequired[int]
+    client_id: NotRequired[str]
+    client_secret: NotRequired[str]
+    webhook_secret: NotRequired[Union[str, None]]
+    pem: NotRequired[str]
 
 
-__all__ = ("IntegrationPropPermissionsType",)
+__all__ = ("IntegrationType",)

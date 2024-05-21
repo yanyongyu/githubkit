@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import List, Union
 
 from pydantic import Field
 
@@ -17,27 +18,50 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0115 import RepositoryRulePullRequestPropParameters
+from .group_0001 import SimpleUser
+from .group_0308 import ReleaseAsset
+from .group_0034 import ReactionRollup
 
 
-class RepositoryRuleDetailedOneof6(GitHubModel):
-    """RepositoryRuleDetailedOneof6"""
+class Release(GitHubModel):
+    """Release
 
-    type: Literal["pull_request"] = Field()
-    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
-    ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
-        default=UNSET,
-        description="The type of source for the ruleset that includes this rule.",
+    A release.
+    """
+
+    url: str = Field()
+    html_url: str = Field()
+    assets_url: str = Field()
+    upload_url: str = Field()
+    tarball_url: Union[str, None] = Field()
+    zipball_url: Union[str, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    tag_name: str = Field(description="The name of the tag.")
+    target_commitish: str = Field(
+        description="Specifies the commitish value that determines where the Git tag is created from."
     )
-    ruleset_source: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the source of the ruleset that includes this rule.",
+    name: Union[str, None] = Field()
+    body: Missing[Union[str, None]] = Field(default=UNSET)
+    draft: bool = Field(
+        description="true to create a draft (unpublished) release, false to create a published one."
     )
-    ruleset_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the ruleset that includes this rule."
+    prerelease: bool = Field(
+        description="Whether to identify the release as a prerelease or a full release."
     )
+    created_at: datetime = Field()
+    published_at: Union[datetime, None] = Field()
+    author: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    assets: List[ReleaseAsset] = Field()
+    body_html: Missing[Union[str, None]] = Field(default=UNSET)
+    body_text: Missing[Union[str, None]] = Field(default=UNSET)
+    mentions_count: Missing[int] = Field(default=UNSET)
+    discussion_url: Missing[str] = Field(
+        default=UNSET, description="The URL of the release discussion."
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(RepositoryRuleDetailedOneof6)
+model_rebuild(Release)
 
-__all__ = ("RepositoryRuleDetailedOneof6",)
+__all__ = ("Release",)

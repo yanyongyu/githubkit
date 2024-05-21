@@ -9,59 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0318 import ReleaseAsset
-from .group_0059 import ReactionRollup
+from .group_0320 import PullRequestPropBasePropRepo
 
 
-class Release(GitHubModel):
-    """Release
+class PullRequestPropBase(GitHubModel):
+    """PullRequestPropBase"""
 
-    A release.
-    """
+    label: str = Field()
+    ref: str = Field()
+    repo: PullRequestPropBasePropRepo = Field()
+    sha: str = Field()
+    user: PullRequestPropBasePropUser = Field()
 
-    url: str = Field()
+
+class PullRequestPropBasePropUser(GitHubModel):
+    """PullRequestPropBasePropUser"""
+
+    avatar_url: str = Field()
+    events_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
     html_url: str = Field()
-    assets_url: str = Field()
-    upload_url: str = Field()
-    tarball_url: Union[str, None] = Field()
-    zipball_url: Union[str, None] = Field()
     id: int = Field()
     node_id: str = Field()
-    tag_name: str = Field(description="The name of the tag.")
-    target_commitish: str = Field(
-        description="Specifies the commitish value that determines where the Git tag is created from."
-    )
-    name: Union[str, None] = Field()
-    body: Missing[Union[str, None]] = Field(default=UNSET)
-    draft: bool = Field(
-        description="true to create a draft (unpublished) release, false to create a published one."
-    )
-    prerelease: bool = Field(
-        description="Whether to identify the release as a prerelease or a full release."
-    )
-    created_at: datetime = Field()
-    published_at: Union[datetime, None] = Field()
-    author: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    assets: List[ReleaseAsset] = Field()
-    body_html: Missing[Union[str, None]] = Field(default=UNSET)
-    body_text: Missing[Union[str, None]] = Field(default=UNSET)
-    mentions_count: Missing[int] = Field(default=UNSET)
-    discussion_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the release discussion."
-    )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    login: str = Field()
+    organizations_url: str = Field()
+    received_events_url: str = Field()
+    repos_url: str = Field()
+    site_admin: bool = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    type: str = Field()
+    url: str = Field()
 
 
-model_rebuild(Release)
+model_rebuild(PullRequestPropBase)
+model_rebuild(PullRequestPropBasePropUser)
 
-__all__ = ("Release",)
+__all__ = (
+    "PullRequestPropBase",
+    "PullRequestPropBasePropUser",
+)

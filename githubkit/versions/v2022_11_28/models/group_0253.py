@@ -10,147 +10,93 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0075 import Team
-from .group_0034 import Issue
-from .group_0001 import SimpleUser
-from .group_0005 import Integration
 
+class GitCommit(GitHubModel):
+    """Git Commit
 
-class IssueEvent(GitHubModel):
-    """Issue Event
-
-    Issue Event
+    Low-level Git commit operations within a repository
     """
 
-    id: int = Field()
+    sha: str = Field(description="SHA for the commit")
     node_id: str = Field()
     url: str = Field()
-    actor: Union[None, SimpleUser] = Field()
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: datetime = Field()
-    issue: Missing[Union[None, Issue]] = Field(default=UNSET)
-    label: Missing[IssueEventLabel] = Field(
-        default=UNSET, title="Issue Event Label", description="Issue Event Label"
+    author: GitCommitPropAuthor = Field(
+        description="Identifying information for the git-user"
     )
-    assignee: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    assigner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    review_requester: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    requested_reviewer: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    requested_team: Missing[Team] = Field(
-        default=UNSET,
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
+    committer: GitCommitPropCommitter = Field(
+        description="Identifying information for the git-user"
     )
-    dismissed_review: Missing[IssueEventDismissedReview] = Field(
-        default=UNSET, title="Issue Event Dismissed Review"
-    )
-    milestone: Missing[IssueEventMilestone] = Field(
-        default=UNSET,
-        title="Issue Event Milestone",
-        description="Issue Event Milestone",
-    )
-    project_card: Missing[IssueEventProjectCard] = Field(
-        default=UNSET,
-        title="Issue Event Project Card",
-        description="Issue Event Project Card",
-    )
-    rename: Missing[IssueEventRename] = Field(
-        default=UNSET, title="Issue Event Rename", description="Issue Event Rename"
-    )
-    author_association: Missing[
-        Literal[
-            "COLLABORATOR",
-            "CONTRIBUTOR",
-            "FIRST_TIMER",
-            "FIRST_TIME_CONTRIBUTOR",
-            "MANNEQUIN",
-            "MEMBER",
-            "NONE",
-            "OWNER",
-        ]
-    ] = Field(
-        default=UNSET,
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    performed_via_github_app: Missing[Union[None, Integration]] = Field(default=UNSET)
+    message: str = Field(description="Message describing the purpose of the commit")
+    tree: GitCommitPropTree = Field()
+    parents: List[GitCommitPropParentsItems] = Field()
+    verification: GitCommitPropVerification = Field()
+    html_url: str = Field()
 
 
-class IssueEventLabel(GitHubModel):
-    """Issue Event Label
+class GitCommitPropAuthor(GitHubModel):
+    """GitCommitPropAuthor
 
-    Issue Event Label
+    Identifying information for the git-user
     """
 
-    name: Union[str, None] = Field()
-    color: Union[str, None] = Field()
+    date: datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
 
 
-class IssueEventDismissedReview(GitHubModel):
-    """Issue Event Dismissed Review"""
+class GitCommitPropCommitter(GitHubModel):
+    """GitCommitPropCommitter
 
-    state: str = Field()
-    review_id: int = Field()
-    dismissal_message: Union[str, None] = Field()
-    dismissal_commit_id: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class IssueEventMilestone(GitHubModel):
-    """Issue Event Milestone
-
-    Issue Event Milestone
+    Identifying information for the git-user
     """
 
-    title: str = Field()
+    date: datetime = Field(description="Timestamp of the commit")
+    email: str = Field(description="Git email address of the user")
+    name: str = Field(description="Name of the git user")
 
 
-class IssueEventProjectCard(GitHubModel):
-    """Issue Event Project Card
+class GitCommitPropTree(GitHubModel):
+    """GitCommitPropTree"""
 
-    Issue Event Project Card
-    """
-
+    sha: str = Field(description="SHA for the commit")
     url: str = Field()
-    id: int = Field()
-    project_url: str = Field()
-    project_id: int = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
 
 
-class IssueEventRename(GitHubModel):
-    """Issue Event Rename
+class GitCommitPropParentsItems(GitHubModel):
+    """GitCommitPropParentsItems"""
 
-    Issue Event Rename
-    """
-
-    from_: str = Field(alias="from")
-    to: str = Field()
+    sha: str = Field(description="SHA for the commit")
+    url: str = Field()
+    html_url: str = Field()
 
 
-model_rebuild(IssueEvent)
-model_rebuild(IssueEventLabel)
-model_rebuild(IssueEventDismissedReview)
-model_rebuild(IssueEventMilestone)
-model_rebuild(IssueEventProjectCard)
-model_rebuild(IssueEventRename)
+class GitCommitPropVerification(GitHubModel):
+    """GitCommitPropVerification"""
+
+    verified: bool = Field()
+    reason: str = Field()
+    signature: Union[str, None] = Field()
+    payload: Union[str, None] = Field()
+
+
+model_rebuild(GitCommit)
+model_rebuild(GitCommitPropAuthor)
+model_rebuild(GitCommitPropCommitter)
+model_rebuild(GitCommitPropTree)
+model_rebuild(GitCommitPropParentsItems)
+model_rebuild(GitCommitPropVerification)
 
 __all__ = (
-    "IssueEvent",
-    "IssueEventLabel",
-    "IssueEventDismissedReview",
-    "IssueEventMilestone",
-    "IssueEventProjectCard",
-    "IssueEventRename",
+    "GitCommit",
+    "GitCommitPropAuthor",
+    "GitCommitPropCommitter",
+    "GitCommitPropTree",
+    "GitCommitPropParentsItems",
+    "GitCommitPropVerification",
 )

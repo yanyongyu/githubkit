@@ -13,13 +13,16 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class RepositoryRuleDetailedOneof8Type(TypedDict):
-    """RepositoryRuleDetailedOneof8"""
+class RepositoryRuleRulesetInfoType(TypedDict):
+    """repository ruleset data for rule
 
-    type: Literal["non_fast_forward"]
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
+
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-__all__ = ("RepositoryRuleDetailedOneof8Type",)
+__all__ = ("RepositoryRuleRulesetInfoType",)

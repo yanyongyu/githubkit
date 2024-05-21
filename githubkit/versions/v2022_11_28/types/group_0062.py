@@ -9,25 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0061 import RunnerLabelType
 
+class RunnerLabelType(TypedDict):
+    """Self hosted runner label
 
-class RunnerType(TypedDict):
-    """Self hosted runners
-
-    A self hosted runner
+    A label for a self hosted runner
     """
 
-    id: int
-    runner_group_id: NotRequired[int]
+    id: NotRequired[int]
     name: str
-    os: str
-    status: str
-    busy: bool
-    labels: List[RunnerLabelType]
+    type: NotRequired[Literal["read-only", "custom"]]
 
 
-__all__ = ("RunnerType",)
+__all__ = ("RunnerLabelType",)

@@ -13,37 +13,18 @@ from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0198 import GitUser
-from .group_0199 import Verification
+
+class Verification(GitHubModel):
+    """Verification"""
+
+    verified: bool = Field()
+    reason: str = Field()
+    payload: Union[str, None] = Field()
+    signature: Union[str, None] = Field()
 
 
-class CommitPropCommit(GitHubModel):
-    """CommitPropCommit"""
+model_rebuild(Verification)
 
-    url: str = Field()
-    author: Union[None, GitUser] = Field()
-    committer: Union[None, GitUser] = Field()
-    message: str = Field()
-    comment_count: int = Field()
-    tree: CommitPropCommitPropTree = Field()
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
-
-
-class CommitPropCommitPropTree(GitHubModel):
-    """CommitPropCommitPropTree"""
-
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(CommitPropCommit)
-model_rebuild(CommitPropCommitPropTree)
-
-__all__ = (
-    "CommitPropCommit",
-    "CommitPropCommitPropTree",
-)
+__all__ = ("Verification",)

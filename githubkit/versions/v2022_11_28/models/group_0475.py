@@ -17,25 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0357 import EnterpriseWebhooks
-from .group_0358 import SimpleInstallation
-from .group_0360 import RepositoryWebhooks
-from .group_0361 import SimpleUserWebhooks
-from .group_0359 import OrganizationSimpleWebhooks
-from .group_0477 import WebhookIssueCommentEditedPropIssue
-from .group_0476 import WebhookIssueCommentEditedPropComment
+from .group_0381 import Discussion
+from .group_0367 import EnterpriseWebhooks
+from .group_0368 import SimpleInstallation
+from .group_0370 import RepositoryWebhooks
+from .group_0371 import SimpleUserWebhooks
+from .group_0369 import OrganizationSimpleWebhooks
+from .group_0476 import WebhookDiscussionTransferredPropChanges
 
 
-class WebhookIssueCommentEdited(GitHubModel):
-    """issue_comment edited event"""
+class WebhookDiscussionTransferred(GitHubModel):
+    """discussion transferred event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookIssueCommentEditedPropChanges = Field(
-        description="The changes to the comment."
-    )
-    comment: WebhookIssueCommentEditedPropComment = Field(
-        title="issue comment",
-        description="The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment) itself.",
+    action: Literal["transferred"] = Field()
+    changes: WebhookDiscussionTransferredPropChanges = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -46,9 +43,6 @@ class WebhookIssueCommentEdited(GitHubModel):
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    issue: WebhookIssueCommentEditedPropIssue = Field(
-        description="The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) the comment belongs to."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -65,27 +59,6 @@ class WebhookIssueCommentEdited(GitHubModel):
     )
 
 
-class WebhookIssueCommentEditedPropChanges(GitHubModel):
-    """WebhookIssueCommentEditedPropChanges
+model_rebuild(WebhookDiscussionTransferred)
 
-    The changes to the comment.
-    """
-
-    body: Missing[WebhookIssueCommentEditedPropChangesPropBody] = Field(default=UNSET)
-
-
-class WebhookIssueCommentEditedPropChangesPropBody(GitHubModel):
-    """WebhookIssueCommentEditedPropChangesPropBody"""
-
-    from_: str = Field(alias="from", description="The previous version of the body.")
-
-
-model_rebuild(WebhookIssueCommentEdited)
-model_rebuild(WebhookIssueCommentEditedPropChanges)
-model_rebuild(WebhookIssueCommentEditedPropChangesPropBody)
-
-__all__ = (
-    "WebhookIssueCommentEdited",
-    "WebhookIssueCommentEditedPropChanges",
-    "WebhookIssueCommentEditedPropChangesPropBody",
-)
+__all__ = ("WebhookDiscussionTransferred",)

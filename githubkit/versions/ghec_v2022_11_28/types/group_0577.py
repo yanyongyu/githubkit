@@ -9,79 +9,107 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0574 import WebhookRubygemsMetadataType
+from .group_0416 import WebhooksLabelType
+from .group_0400 import EnterpriseWebhooksType
+from .group_0401 import SimpleInstallationType
+from .group_0403 import RepositoryWebhooksType
+from .group_0404 import SimpleUserWebhooksType
+from .group_0402 import OrganizationSimpleWebhooksType
 
 
-class WebhookPackagePublishedPropPackagePropPackageVersionType(TypedDict):
-    """WebhookPackagePublishedPropPackagePropPackageVersion"""
+class WebhookIssuesEditedType(TypedDict):
+    """issues edited event"""
 
-    author: NotRequired[
-        Union[WebhookPackagePublishedPropPackagePropPackageVersionPropAuthorType, None]
+    action: Literal["edited"]
+    changes: WebhookIssuesEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    issue: WebhookIssuesEditedPropIssueType
+    label: NotRequired[WebhooksLabelType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+
+
+class WebhookIssuesEditedPropChangesType(TypedDict):
+    """WebhookIssuesEditedPropChanges
+
+    The changes to the issue.
+    """
+
+    body: NotRequired[WebhookIssuesEditedPropChangesPropBodyType]
+    title: NotRequired[WebhookIssuesEditedPropChangesPropTitleType]
+
+
+class WebhookIssuesEditedPropChangesPropBodyType(TypedDict):
+    """WebhookIssuesEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookIssuesEditedPropChangesPropTitleType(TypedDict):
+    """WebhookIssuesEditedPropChangesPropTitle"""
+
+    from_: str
+
+
+class WebhookIssuesEditedPropIssueType(TypedDict):
+    """Issue
+
+    The [issue](https://docs.github.com/enterprise-
+    cloud@latest//rest/issues/issues#get-an-issue) itself.
+    """
+
+    active_lock_reason: Union[
+        None, Literal["resolved", "off-topic", "too heated", "spam"]
     ]
-    body: NotRequired[
-        Union[
-            str, WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1Type
-        ]
+    assignee: NotRequired[Union[WebhookIssuesEditedPropIssuePropAssigneeType, None]]
+    assignees: List[Union[WebhookIssuesEditedPropIssuePropAssigneesItemsType, None]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
-    body_html: NotRequired[str]
-    container_metadata: NotRequired[
-        Union[
-            WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataType,
-            None,
-        ]
-    ]
-    created_at: NotRequired[str]
-    description: str
-    docker_metadata: NotRequired[
-        List[
-            WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItemsType
-        ]
-    ]
+    body: Union[str, None]
+    closed_at: Union[datetime, None]
+    comments: int
+    comments_url: str
+    created_at: datetime
     draft: NotRequired[bool]
+    events_url: str
     html_url: str
     id: int
-    installation_command: str
-    manifest: NotRequired[str]
-    metadata: List[
-        WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItemsType
+    labels: NotRequired[List[WebhookIssuesEditedPropIssuePropLabelsItemsType]]
+    labels_url: str
+    locked: NotRequired[bool]
+    milestone: Union[WebhookIssuesEditedPropIssuePropMilestoneType, None]
+    node_id: str
+    number: int
+    performed_via_github_app: NotRequired[
+        Union[WebhookIssuesEditedPropIssuePropPerformedViaGithubAppType, None]
     ]
-    name: str
-    npm_metadata: NotRequired[
-        Union[
-            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataType,
-            None,
-        ]
-    ]
-    nuget_metadata: NotRequired[
-        Union[
-            List[
-                WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsType
-            ],
-            None,
-        ]
-    ]
-    package_files: List[
-        WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItemsType
-    ]
-    package_url: NotRequired[str]
-    prerelease: NotRequired[bool]
-    release: NotRequired[
-        WebhookPackagePublishedPropPackagePropPackageVersionPropReleaseType
-    ]
-    rubygems_metadata: NotRequired[List[WebhookRubygemsMetadataType]]
-    source_url: NotRequired[str]
-    summary: str
-    tag_name: NotRequired[str]
-    target_commitish: NotRequired[str]
-    target_oid: NotRequired[str]
-    updated_at: NotRequired[str]
-    version: str
+    pull_request: NotRequired[WebhookIssuesEditedPropIssuePropPullRequestType]
+    reactions: WebhookIssuesEditedPropIssuePropReactionsType
+    repository_url: str
+    state: NotRequired[Literal["open", "closed"]]
+    state_reason: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    title: str
+    updated_at: datetime
+    url: str
+    user: Union[WebhookIssuesEditedPropIssuePropUserType, None]
 
 
-class WebhookPackagePublishedPropPackagePropPackageVersionPropAuthorType(TypedDict):
+class WebhookIssuesEditedPropIssuePropAssigneeType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -103,344 +131,179 @@ class WebhookPackagePublishedPropPackagePropPackageVersionPropAuthorType(TypedDi
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
 
 
-class WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1Type(TypedDict):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1"""
+class WebhookIssuesEditedPropIssuePropAssigneesItemsType(TypedDict):
+    """User"""
 
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadata"""
-
-    labels: NotRequired[
-        Union[
-            WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLabelsType,
-            None,
-        ]
-    ]
-    manifest: NotRequired[
-        Union[
-            WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifestType,
-            None,
-        ]
-    ]
-    tag: NotRequired[
-        WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTagType
-    ]
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLabelsType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLab
-    els
-    """
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifestType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropMan
-    ifest
-    """
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTagType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTag"""
-
-    digest: NotRequired[str]
-    name: NotRequired[str]
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItemsType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItems"""
-
-    tags: NotRequired[List[str]]
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItemsType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItems"""
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadata"""
-
-    name: NotRequired[str]
-    version: NotRequired[str]
-    npm_user: NotRequired[str]
-    author: NotRequired[
-        Union[
-            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthorType,
-            None,
-        ]
-    ]
-    bugs: NotRequired[
-        Union[
-            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugsType,
-            None,
-        ]
-    ]
-    dependencies: NotRequired[
-        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependenciesType
-    ]
-    dev_dependencies: NotRequired[
-        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependenciesType
-    ]
-    peer_dependencies: NotRequired[
-        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependenciesType
-    ]
-    optional_dependencies: NotRequired[
-        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependenciesType
-    ]
-    description: NotRequired[str]
-    dist: NotRequired[
-        Union[
-            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDistType,
-            None,
-        ]
-    ]
-    git_head: NotRequired[str]
-    homepage: NotRequired[str]
-    license_: NotRequired[str]
-    main: NotRequired[str]
-    repository: NotRequired[
-        Union[
-            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepositoryType,
-            None,
-        ]
-    ]
-    scripts: NotRequired[
-        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScriptsType
-    ]
-    id: NotRequired[str]
-    node_version: NotRequired[str]
-    npm_version: NotRequired[str]
-    has_shrinkwrap: NotRequired[bool]
-    maintainers: NotRequired[
-        List[
-            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItemsType
-        ]
-    ]
-    contributors: NotRequired[
-        List[
-            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItemsType
-        ]
-    ]
-    engines: NotRequired[
-        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEnginesType
-    ]
-    keywords: NotRequired[List[str]]
-    files: NotRequired[List[str]]
-    bin_: NotRequired[
-        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBinType
-    ]
-    man: NotRequired[
-        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropManType
-    ]
-    directories: NotRequired[
-        Union[
-            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectoriesType,
-            None,
-        ]
-    ]
-    os: NotRequired[List[str]]
-    cpu: NotRequired[List[str]]
-    readme: NotRequired[str]
-    installation_command: NotRequired[str]
-    release_id: NotRequired[int]
-    commit_oid: NotRequired[str]
-    published_via_actions: NotRequired[bool]
-    deleted_by_id: NotRequired[int]
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthorType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthor"""
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugsType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugs"""
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependenciesType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependenc
-    ies
-    """
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependenciesType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDepend
-    encies
-    """
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependenciesType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDepen
-    dencies
-    """
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependenciesType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalD
-    ependencies
-    """
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDistType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDist"""
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepositoryType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepositor
-    y
-    """
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScriptsType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScripts"""
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItemsType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintaine
-    rsItems
-    """
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItemsType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContribut
-    orsItems
-    """
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEnginesType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEngines"""
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBinType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBin"""
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropManType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMan"""
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectoriesType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectori
-    es
-    """
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItemsType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItems"""
-
-    content_type: str
-    created_at: str
-    download_url: str
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
     id: int
-    md5: Union[str, None]
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+
+
+class WebhookIssuesEditedPropIssuePropLabelsItemsType(TypedDict):
+    """Label"""
+
+    color: str
+    default: bool
+    description: Union[str, None]
+    id: int
     name: str
-    sha1: Union[str, None]
-    sha256: Union[str, None]
-    size: int
-    state: Union[str, None]
-    updated_at: str
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsType(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItems"""
-
-    id: NotRequired[Union[int, str]]
-    name: NotRequired[str]
-    value: NotRequired[
-        Union[
-            bool,
-            str,
-            int,
-            WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3Type,
-        ]
-    ]
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3Type(
-    TypedDict
-):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropVa
-    lueOneof3
-    """
-
-    url: NotRequired[str]
-    branch: NotRequired[str]
-    commit: NotRequired[str]
-    type: NotRequired[str]
-
-
-class WebhookPackagePublishedPropPackagePropPackageVersionPropReleaseType(TypedDict):
-    """WebhookPackagePublishedPropPackagePropPackageVersionPropRelease"""
-
-    author: Union[
-        WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthorType,
-        None,
-    ]
-    created_at: str
-    draft: bool
-    html_url: str
-    id: int
-    name: Union[str, None]
-    prerelease: bool
-    published_at: str
-    tag_name: str
-    target_commitish: str
+    node_id: str
     url: str
 
 
-class WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthorType(
-    TypedDict
-):
+class WebhookIssuesEditedPropIssuePropMilestoneType(TypedDict):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[datetime, None]
+    closed_issues: int
+    created_at: datetime
+    creator: Union[WebhookIssuesEditedPropIssuePropMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: datetime
+    url: str
+
+
+class WebhookIssuesEditedPropIssuePropMilestonePropCreatorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+
+
+class WebhookIssuesEditedPropIssuePropPerformedViaGithubAppType(TypedDict):
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[datetime, None]
+    description: Union[str, None]
+    events: NotRequired[
+        List[
+            Literal[
+                "branch_protection_rule",
+                "check_run",
+                "check_suite",
+                "code_scanning_alert",
+                "commit_comment",
+                "content_reference",
+                "create",
+                "delete",
+                "deployment",
+                "deployment_review",
+                "deployment_status",
+                "deploy_key",
+                "discussion",
+                "discussion_comment",
+                "fork",
+                "gollum",
+                "issues",
+                "issue_comment",
+                "label",
+                "member",
+                "membership",
+                "milestone",
+                "organization",
+                "org_block",
+                "page_build",
+                "project",
+                "project_card",
+                "project_column",
+                "public",
+                "pull_request",
+                "pull_request_review",
+                "pull_request_review_comment",
+                "push",
+                "registry_package",
+                "release",
+                "repository",
+                "repository_dispatch",
+                "secret_scanning_alert",
+                "star",
+                "status",
+                "team",
+                "team_add",
+                "watch",
+                "workflow_dispatch",
+                "workflow_run",
+                "security_and_analysis",
+                "pull_request_review_thread",
+                "reminder",
+            ]
+        ]
+    ]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropOwnerType, None
+    ]
+    permissions: NotRequired[
+        WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[datetime, None]
+
+
+class WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropOwnerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -463,38 +326,120 @@ class WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthorT
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
     type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropPermissionsType(
+    TypedDict
+):
+    """WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropPermissions
+
+    The set of permissions for the GitHub app
+    """
+
+    actions: NotRequired[Literal["read", "write"]]
+    administration: NotRequired[Literal["read", "write"]]
+    checks: NotRequired[Literal["read", "write"]]
+    content_references: NotRequired[Literal["read", "write"]]
+    contents: NotRequired[Literal["read", "write"]]
+    deployments: NotRequired[Literal["read", "write"]]
+    discussions: NotRequired[Literal["read", "write"]]
+    emails: NotRequired[Literal["read", "write"]]
+    environments: NotRequired[Literal["read", "write"]]
+    issues: NotRequired[Literal["read", "write"]]
+    keys: NotRequired[Literal["read", "write"]]
+    members: NotRequired[Literal["read", "write"]]
+    metadata: NotRequired[Literal["read", "write"]]
+    organization_administration: NotRequired[Literal["read", "write"]]
+    organization_hooks: NotRequired[Literal["read", "write"]]
+    organization_packages: NotRequired[Literal["read", "write"]]
+    organization_plan: NotRequired[Literal["read", "write"]]
+    organization_projects: NotRequired[Literal["read", "write", "admin"]]
+    organization_secrets: NotRequired[Literal["read", "write"]]
+    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
+    organization_user_blocking: NotRequired[Literal["read", "write"]]
+    packages: NotRequired[Literal["read", "write"]]
+    pages: NotRequired[Literal["read", "write"]]
+    pull_requests: NotRequired[Literal["read", "write"]]
+    repository_hooks: NotRequired[Literal["read", "write"]]
+    repository_projects: NotRequired[Literal["read", "write"]]
+    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
+    secrets: NotRequired[Literal["read", "write"]]
+    security_events: NotRequired[Literal["read", "write"]]
+    security_scanning_alert: NotRequired[Literal["read", "write"]]
+    single_file: NotRequired[Literal["read", "write"]]
+    statuses: NotRequired[Literal["read", "write"]]
+    team_discussions: NotRequired[Literal["read", "write"]]
+    vulnerability_alerts: NotRequired[Literal["read", "write"]]
+    workflows: NotRequired[Literal["read", "write"]]
+
+
+class WebhookIssuesEditedPropIssuePropPullRequestType(TypedDict):
+    """WebhookIssuesEditedPropIssuePropPullRequest"""
+
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[datetime, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
+
+
+class WebhookIssuesEditedPropIssuePropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookIssuesEditedPropIssuePropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookPackagePublishedPropPackagePropPackageVersionType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropAuthorType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1Type",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLabelsType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifestType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTagType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItemsType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItemsType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthorType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugsType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependenciesType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependenciesType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependenciesType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependenciesType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDistType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepositoryType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScriptsType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItemsType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItemsType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEnginesType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBinType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropManType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectoriesType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItemsType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3Type",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropReleaseType",
-    "WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthorType",
+    "WebhookIssuesEditedType",
+    "WebhookIssuesEditedPropChangesType",
+    "WebhookIssuesEditedPropChangesPropBodyType",
+    "WebhookIssuesEditedPropChangesPropTitleType",
+    "WebhookIssuesEditedPropIssueType",
+    "WebhookIssuesEditedPropIssuePropAssigneeType",
+    "WebhookIssuesEditedPropIssuePropAssigneesItemsType",
+    "WebhookIssuesEditedPropIssuePropLabelsItemsType",
+    "WebhookIssuesEditedPropIssuePropMilestoneType",
+    "WebhookIssuesEditedPropIssuePropMilestonePropCreatorType",
+    "WebhookIssuesEditedPropIssuePropPerformedViaGithubAppType",
+    "WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropOwnerType",
+    "WebhookIssuesEditedPropIssuePropPerformedViaGithubAppPropPermissionsType",
+    "WebhookIssuesEditedPropIssuePropPullRequestType",
+    "WebhookIssuesEditedPropIssuePropReactionsType",
+    "WebhookIssuesEditedPropIssuePropUserType",
 )

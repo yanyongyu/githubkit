@@ -9,70 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0652 import (
-    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType,
-)
+from .group_0435 import ProjectsV2Type
+from .group_0401 import SimpleInstallationType
+from .group_0404 import SimpleUserWebhooksType
+from .group_0402 import OrganizationSimpleWebhooksType
 
 
-class WebhookRegistryPackagePublishedPropRegistryPackageType(TypedDict):
-    """WebhookRegistryPackagePublishedPropRegistryPackage"""
+class WebhookProjectsV2ProjectEditedType(TypedDict):
+    """Projects v2 Project Edited Event"""
 
-    created_at: Union[str, None]
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType
-    package_type: str
-    package_version: Union[
-        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType, None
+    action: Literal["edited"]
+    changes: WebhookProjectsV2ProjectEditedPropChangesType
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    projects_v2: ProjectsV2Type
+    sender: SimpleUserWebhooksType
+
+
+class WebhookProjectsV2ProjectEditedPropChangesType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChanges"""
+
+    description: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType
     ]
-    registry: Union[
-        WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType, None
+    public: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropPublicType]
+    short_description: NotRequired[
+        WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType
     ]
-    updated_at: Union[str, None]
+    title: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropTitleType]
 
 
-class WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType(TypedDict):
-    """WebhookRegistryPackagePublishedPropRegistryPackagePropOwner"""
+class WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
 
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: str
-    html_url: str
-    id: int
-    login: str
-    node_id: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
 
 
-class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType(TypedDict):
-    """WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry"""
+class WebhookProjectsV2ProjectEditedPropChangesPropPublicType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
 
-    about_url: NotRequired[str]
-    name: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
-    vendor: NotRequired[str]
+    from_: NotRequired[bool]
+    to: NotRequired[bool]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropTitleType(TypedDict):
+    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
+
+    from_: NotRequired[str]
+    to: NotRequired[str]
 
 
 __all__ = (
-    "WebhookRegistryPackagePublishedPropRegistryPackageType",
-    "WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType",
-    "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType",
+    "WebhookProjectsV2ProjectEditedType",
+    "WebhookProjectsV2ProjectEditedPropChangesType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropPublicType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType",
+    "WebhookProjectsV2ProjectEditedPropChangesPropTitleType",
 )

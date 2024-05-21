@@ -9,22 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotBillingSelectedTeamsDeleteBody(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
+class EnterprisesEnterpriseSecretScanningAlertsGetResponse503(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningAlertsGetResponse503"""
 
-    selected_teams: List[str] = Field(
-        min_length=1,
-        description="The names of teams from which to revoke access to GitHub Copilot.",
-    )
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedTeamsDeleteBody)
+model_rebuild(EnterprisesEnterpriseSecretScanningAlertsGetResponse503)
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteBody",)
+__all__ = ("EnterprisesEnterpriseSecretScanningAlertsGetResponse503",)

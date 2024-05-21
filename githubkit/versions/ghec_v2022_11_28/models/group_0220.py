@@ -9,23 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import datetime
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeScanningSarifsReceipt(GitHubModel):
-    """CodeScanningSarifsReceipt"""
+class CodeScanningVariantAnalysisRepository(GitHubModel):
+    """Repository Identifier
 
-    id: Missing[str] = Field(default=UNSET, description="An identifier for the upload.")
-    url: Missing[str] = Field(
-        default=UNSET,
-        description="The REST API URL for checking the status of the upload.",
+    Repository Identifier
+    """
+
+    id: int = Field(description="A unique identifier of the repository.")
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field(
+        description="The full, globally unique, name of the repository."
     )
+    private: bool = Field(description="Whether the repository is private.")
+    stargazers_count: int = Field()
+    updated_at: Union[datetime, None] = Field()
 
 
-model_rebuild(CodeScanningSarifsReceipt)
+model_rebuild(CodeScanningVariantAnalysisRepository)
 
-__all__ = ("CodeScanningSarifsReceipt",)
+__all__ = ("CodeScanningVariantAnalysisRepository",)

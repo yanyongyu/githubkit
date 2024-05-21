@@ -9,34 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
+
+from .group_0172 import RateLimitType
+from .group_0174 import RateLimitOverviewPropResourcesType
 
 
-class ActionsCacheListType(TypedDict):
-    """Repository actions caches
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
 
-    Repository actions caches
+    Rate Limit Overview
     """
 
-    total_count: int
-    actions_caches: List[ActionsCacheListPropActionsCachesItemsType]
+    resources: RateLimitOverviewPropResourcesType
+    rate: RateLimitType
 
 
-class ActionsCacheListPropActionsCachesItemsType(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
-
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[datetime]
-    created_at: NotRequired[datetime]
-    size_in_bytes: NotRequired[int]
-
-
-__all__ = (
-    "ActionsCacheListType",
-    "ActionsCacheListPropActionsCachesItemsType",
-)
+__all__ = ("RateLimitOverviewType",)

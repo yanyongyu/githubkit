@@ -9,25 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0091 import TeamType
 from .group_0001 import SimpleUserType
-from .group_0291 import TimelineCrossReferencedEventPropSourceType
+from .group_0006 import IntegrationType
 
 
-class TimelineCrossReferencedEventType(TypedDict):
-    """Timeline Cross Referenced Event
+class ReviewRequestRemovedIssueEventType(TypedDict):
+    """Review Request Removed Issue Event
 
-    Timeline Cross Referenced Event
+    Review Request Removed Issue Event
     """
 
-    event: Literal["cross-referenced"]
-    actor: NotRequired[SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    source: TimelineCrossReferencedEventPropSourceType
+    id: int
+    node_id: str
+    url: str
+    actor: SimpleUserType
+    event: Literal["review_request_removed"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    review_requester: SimpleUserType
+    requested_team: NotRequired[TeamType]
+    requested_reviewer: NotRequired[SimpleUserType]
 
 
-__all__ = ("TimelineCrossReferencedEventType",)
+__all__ = ("ReviewRequestRemovedIssueEventType",)

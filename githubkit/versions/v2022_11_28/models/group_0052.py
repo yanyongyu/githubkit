@@ -10,30 +10,46 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from datetime import datetime
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0051 import MinimalRepository
 
-class ThreadSubscription(GitHubModel):
-    """Thread Subscription
 
-    Thread Subscription
+class Thread(GitHubModel):
+    """Thread
+
+    Thread
     """
 
-    subscribed: bool = Field()
-    ignored: bool = Field()
-    reason: Union[str, None] = Field()
-    created_at: Union[datetime, None] = Field()
+    id: str = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    subject: ThreadPropSubject = Field()
+    reason: str = Field()
+    unread: bool = Field()
+    updated_at: str = Field()
+    last_read_at: Union[str, None] = Field()
     url: str = Field()
-    thread_url: Missing[str] = Field(default=UNSET)
-    repository_url: Missing[str] = Field(default=UNSET)
+    subscription_url: str = Field()
 
 
-model_rebuild(ThreadSubscription)
+class ThreadPropSubject(GitHubModel):
+    """ThreadPropSubject"""
 
-__all__ = ("ThreadSubscription",)
+    title: str = Field()
+    url: str = Field()
+    latest_comment_url: str = Field()
+    type: str = Field()
+
+
+model_rebuild(Thread)
+model_rebuild(ThreadPropSubject)
+
+__all__ = (
+    "Thread",
+    "ThreadPropSubject",
+)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0187 import Deployment
-from .group_0390 import EnterpriseWebhooks
-from .group_0391 import SimpleInstallation
-from .group_0393 import RepositoryWebhooks
-from .group_0394 import SimpleUserWebhooks
-from .group_0392 import OrganizationSimpleWebhooks
+from .group_0400 import EnterpriseWebhooks
+from .group_0401 import SimpleInstallation
+from .group_0403 import RepositoryWebhooks
+from .group_0404 import SimpleUserWebhooks
+from .group_0402 import OrganizationSimpleWebhooks
 
 
-class WebhookWorkflowJobInProgress(GitHubModel):
-    """workflow_job in_progress event"""
+class WebhookRepositoryTransferred(GitHubModel):
+    """repository transferred event"""
 
-    action: Literal["in_progress"] = Field()
+    action: Literal["transferred"] = Field()
+    changes: WebhookRepositoryTransferredPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -52,79 +52,91 @@ class WebhookWorkflowJobInProgress(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    workflow_job: WebhookWorkflowJobInProgressPropWorkflowJob = Field()
-    deployment: Missing[Deployment] = Field(
-        default=UNSET,
-        title="Deployment",
-        description="A request for a specific ref(branch,sha,tag) to be deployed",
+
+
+class WebhookRepositoryTransferredPropChanges(GitHubModel):
+    """WebhookRepositoryTransferredPropChanges"""
+
+    owner: WebhookRepositoryTransferredPropChangesPropOwner = Field()
+
+
+class WebhookRepositoryTransferredPropChangesPropOwner(GitHubModel):
+    """WebhookRepositoryTransferredPropChangesPropOwner"""
+
+    from_: WebhookRepositoryTransferredPropChangesPropOwnerPropFrom = Field(
+        alias="from"
     )
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJob(GitHubModel):
-    """WebhookWorkflowJobInProgressPropWorkflowJob"""
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFrom(GitHubModel):
+    """WebhookRepositoryTransferredPropChangesPropOwnerPropFrom"""
 
-    check_run_url: str = Field()
-    completed_at: Union[Union[str, None], None] = Field()
-    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None] = (
-        Field()
-    )
-    created_at: str = Field(description="The time that the job created.")
-    head_sha: str = Field()
-    html_url: str = Field()
+    organization: Missing[
+        WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization
+    ] = Field(default=UNSET, title="Organization")
+    user: Missing[
+        Union[WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser, None]
+    ] = Field(default=UNSET, title="User")
+
+
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization(
+    GitHubModel
+):
+    """Organization"""
+
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
+    events_url: str = Field()
+    hooks_url: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
     id: int = Field()
-    labels: List[str] = Field(
-        description='Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/enterprise-cloud@latest//actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML.'
-    )
-    name: str = Field()
+    issues_url: str = Field()
+    login: str = Field()
+    members_url: str = Field()
     node_id: str = Field()
-    run_attempt: int = Field()
-    run_id: int = Field()
-    run_url: str = Field()
-    runner_group_id: Union[Union[int, None], None] = Field(
-        description="The ID of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
-    )
-    runner_group_name: Union[Union[str, None], None] = Field(
-        description="The name of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
-    )
-    runner_id: Union[Union[int, None], None] = Field(
-        description="The ID of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
-    )
-    runner_name: Union[Union[str, None], None] = Field(
-        description="The name of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
-    )
-    started_at: str = Field()
-    status: Literal["queued", "in_progress", "completed"] = Field(
-        description="The current status of the job. Can be `queued`, `in_progress`, or `completed`."
-    )
-    head_branch: Union[Union[str, None], None] = Field(
-        description="The name of the current branch."
-    )
-    workflow_name: Union[Union[str, None], None] = Field(
-        description="The name of the workflow."
-    )
-    steps: List[WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps] = Field()
+    public_members_url: str = Field()
+    repos_url: str = Field()
     url: str = Field()
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps(GitHubModel):
-    """WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps"""
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser(GitHubModel):
+    """User"""
 
-    completed_at: Union[Union[str, None], None] = Field()
-    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None] = (
-        Field()
-    )
-    name: str = Field()
-    number: int = Field()
-    started_at: Union[Union[str, None], None] = Field()
-    status: Literal["in_progress", "completed", "queued", "pending"] = Field()
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookWorkflowJobInProgress)
-model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJob)
-model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps)
+model_rebuild(WebhookRepositoryTransferred)
+model_rebuild(WebhookRepositoryTransferredPropChanges)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwner)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFrom)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization)
+model_rebuild(WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser)
 
 __all__ = (
-    "WebhookWorkflowJobInProgress",
-    "WebhookWorkflowJobInProgressPropWorkflowJob",
-    "WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps",
+    "WebhookRepositoryTransferred",
+    "WebhookRepositoryTransferredPropChanges",
+    "WebhookRepositoryTransferredPropChangesPropOwner",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFrom",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUser",
 )

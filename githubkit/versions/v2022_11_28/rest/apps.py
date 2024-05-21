@@ -76,8 +76,10 @@ class AppsClient:
         self,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[Integration]:
+    ) -> Response[Union[Integration, None]]:
         """See also: https://docs.github.com/rest/apps/apps#get-the-authenticated-app"""
+
+        from typing import Union
 
         from ..models import Integration
 
@@ -89,15 +91,17 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=Integration,
+            response_model=Union[Integration, None],
         )
 
     async def async_get_authenticated(
         self,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[Integration]:
+    ) -> Response[Union[Integration, None]]:
         """See also: https://docs.github.com/rest/apps/apps#get-the-authenticated-app"""
+
+        from typing import Union
 
         from ..models import Integration
 
@@ -109,7 +113,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=Integration,
+            response_model=Union[Integration, None],
         )
 
     def create_from_manifest(
@@ -1517,8 +1521,10 @@ class AppsClient:
         app_slug: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[Integration]:
+    ) -> Response[Union[Integration, None]]:
         """See also: https://docs.github.com/rest/apps/apps#get-an-app"""
+
+        from typing import Union
 
         from ..models import BasicError, Integration
 
@@ -1530,7 +1536,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=Integration,
+            response_model=Union[Integration, None],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -1542,8 +1548,10 @@ class AppsClient:
         app_slug: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[Integration]:
+    ) -> Response[Union[Integration, None]]:
         """See also: https://docs.github.com/rest/apps/apps#get-an-app"""
+
+        from typing import Union
 
         from ..models import BasicError, Integration
 
@@ -1555,7 +1563,7 @@ class AppsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=Integration,
+            response_model=Union[Integration, None],
             error_models={
                 "403": BasicError,
                 "404": BasicError,

@@ -9,35 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0246 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems
 
-class GitRef(GitHubModel):
-    """Git Reference
 
-    Git references within a repository
-    """
+class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
-    ref: str = Field()
+    id: int = Field()
     node_id: str = Field()
-    url: str = Field()
-    object_: GitRefPropObject = Field(alias="object")
-
-
-class GitRefPropObject(GitHubModel):
-    """GitRefPropObject"""
-
+    prevent_self_review: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether deployments to this environment can be approved by the user who created the deployment.",
+    )
     type: str = Field()
-    sha: str = Field(min_length=40, max_length=40, description="SHA for the reference")
-    url: str = Field()
+    reviewers: Missing[
+        List[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
+    ] = Field(
+        default=UNSET,
+        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
+    )
 
 
-model_rebuild(GitRef)
-model_rebuild(GitRefPropObject)
+model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1)
 
-__all__ = (
-    "GitRef",
-    "GitRefPropObject",
-)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1",)

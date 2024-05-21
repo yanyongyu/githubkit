@@ -9,21 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class CodeScanningAlertRuleSummaryType(TypedDict):
-    """CodeScanningAlertRuleSummary"""
+class ActionsPublicKeyType(TypedDict):
+    """ActionsPublicKey
 
-    id: NotRequired[Union[str, None]]
-    name: NotRequired[str]
-    tags: NotRequired[Union[List[str], None]]
-    severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
-    security_severity_level: NotRequired[
-        Union[None, Literal["low", "medium", "high", "critical"]]
-    ]
-    description: NotRequired[str]
+    The public key used for setting Actions Secrets.
+    """
+
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-__all__ = ("CodeScanningAlertRuleSummaryType",)
+__all__ = ("ActionsPublicKeyType",)

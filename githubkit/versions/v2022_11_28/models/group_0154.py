@@ -9,44 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from datetime import datetime
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0153 import RateLimit
+from .group_0155 import RateLimitOverviewPropResources
 
-class ActionsCacheList(GitHubModel):
-    """Repository actions caches
 
-    Repository actions caches
+class RateLimitOverview(GitHubModel):
+    """Rate Limit Overview
+
+    Rate Limit Overview
     """
 
-    total_count: int = Field(description="Total number of caches")
-    actions_caches: List[ActionsCacheListPropActionsCachesItems] = Field(
-        description="Array of caches"
-    )
+    resources: RateLimitOverviewPropResources = Field()
+    rate: RateLimit = Field(title="Rate Limit")
 
 
-class ActionsCacheListPropActionsCachesItems(GitHubModel):
-    """ActionsCacheListPropActionsCachesItems"""
+model_rebuild(RateLimitOverview)
 
-    id: Missing[int] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET)
-    key: Missing[str] = Field(default=UNSET)
-    version: Missing[str] = Field(default=UNSET)
-    last_accessed_at: Missing[datetime] = Field(default=UNSET)
-    created_at: Missing[datetime] = Field(default=UNSET)
-    size_in_bytes: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(ActionsCacheList)
-model_rebuild(ActionsCacheListPropActionsCachesItems)
-
-__all__ = (
-    "ActionsCacheList",
-    "ActionsCacheListPropActionsCachesItems",
-)
+__all__ = ("RateLimitOverview",)

@@ -18,22 +18,24 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgOrganizationRolesRoleIdPatchBody(GitHubModel):
-    """OrgsOrgOrganizationRolesRoleIdPatchBody"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostBody(GitHubModel):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the custom role."
+    name: str = Field(description="The name of the new runner.")
+    runner_group_id: int = Field(
+        description="The ID of the runner group to register the runner to."
     )
-    description: Missing[str] = Field(
+    labels: List[str] = Field(
+        max_length=100,
+        min_length=1,
+        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
+    )
+    work_folder: Missing[str] = Field(
         default=UNSET,
-        description="A short description about the intended usage of this role or what permissions it grants.",
-    )
-    permissions: Missing[List[str]] = Field(
-        default=UNSET,
-        description="A list of additional permissions included in this role.",
+        description="The working directory to be used for job execution, relative to the runner install directory.",
     )
 
 
-model_rebuild(OrgsOrgOrganizationRolesRoleIdPatchBody)
+model_rebuild(OrgsOrgActionsRunnersGenerateJitconfigPostBody)
 
-__all__ = ("OrgsOrgOrganizationRolesRoleIdPatchBody",)
+__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostBody",)

@@ -12,10 +12,12 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class NotificationsPutResponse202Type(TypedDict):
-    """NotificationsPutResponse202"""
+class WebhookStatusPropCommitPropCommitPropAuthorAllof1Type(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
 
-    message: NotRequired[str]
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
-__all__ = ("NotificationsPutResponse202Type",)
+__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof1Type",)

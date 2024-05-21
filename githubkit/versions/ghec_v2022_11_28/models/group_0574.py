@@ -9,54 +9,97 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
-
-class WebhookRubygemsMetadata(GitHubModel):
-    """Ruby Gems metadata"""
-
-    name: Missing[str] = Field(default=UNSET)
-    description: Missing[str] = Field(default=UNSET)
-    readme: Missing[str] = Field(default=UNSET)
-    homepage: Missing[str] = Field(default=UNSET)
-    version_info: Missing[WebhookRubygemsMetadataPropVersionInfo] = Field(default=UNSET)
-    platform: Missing[str] = Field(default=UNSET)
-    metadata: Missing[WebhookRubygemsMetadataPropMetadata] = Field(default=UNSET)
-    repo: Missing[str] = Field(default=UNSET)
-    dependencies: Missing[List[WebhookRubygemsMetadataPropDependenciesItems]] = Field(
-        default=UNSET
-    )
-    commit_oid: Missing[str] = Field(default=UNSET)
-
-
-class WebhookRubygemsMetadataPropVersionInfo(GitHubModel):
-    """WebhookRubygemsMetadataPropVersionInfo"""
-
-    version: Missing[str] = Field(default=UNSET)
-
-
-class WebhookRubygemsMetadataPropMetadata(ExtraGitHubModel):
-    """WebhookRubygemsMetadataPropMetadata"""
-
-
-class WebhookRubygemsMetadataPropDependenciesItems(ExtraGitHubModel):
-    """WebhookRubygemsMetadataPropDependenciesItems"""
-
-
-model_rebuild(WebhookRubygemsMetadata)
-model_rebuild(WebhookRubygemsMetadataPropVersionInfo)
-model_rebuild(WebhookRubygemsMetadataPropMetadata)
-model_rebuild(WebhookRubygemsMetadataPropDependenciesItems)
-
-__all__ = (
-    "WebhookRubygemsMetadata",
-    "WebhookRubygemsMetadataPropVersionInfo",
-    "WebhookRubygemsMetadataPropMetadata",
-    "WebhookRubygemsMetadataPropDependenciesItems",
+from .group_0569 import (
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
+    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
 )
+
+
+class WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp(GitHubModel):
+    """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
+
+    created_at: Union[datetime, None] = Field()
+    description: Union[str, None] = Field()
+    events: Missing[
+        List[
+            Literal[
+                "branch_protection_rule",
+                "check_run",
+                "check_suite",
+                "code_scanning_alert",
+                "commit_comment",
+                "content_reference",
+                "create",
+                "delete",
+                "deployment",
+                "deployment_review",
+                "deployment_status",
+                "deploy_key",
+                "discussion",
+                "discussion_comment",
+                "fork",
+                "gollum",
+                "issues",
+                "issue_comment",
+                "label",
+                "member",
+                "membership",
+                "milestone",
+                "organization",
+                "org_block",
+                "page_build",
+                "project",
+                "project_card",
+                "project_column",
+                "public",
+                "pull_request",
+                "pull_request_review",
+                "pull_request_review_comment",
+                "push",
+                "registry_package",
+                "release",
+                "repository",
+                "repository_dispatch",
+                "secret_scanning_alert",
+                "star",
+                "status",
+                "team",
+                "team_add",
+                "watch",
+                "workflow_dispatch",
+                "workflow_run",
+                "security_and_analysis",
+                "reminder",
+                "pull_request_review_thread",
+            ]
+        ]
+    ] = Field(default=UNSET, description="The list of events for the GitHub app")
+    external_url: Union[str, None] = Field()
+    html_url: str = Field()
+    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
+    name: str = Field(description="The name of the GitHub app")
+    node_id: str = Field()
+    owner: Union[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwner, None
+    ] = Field(title="User")
+    permissions: Missing[
+        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
+    slug: Missing[str] = Field(
+        default=UNSET, description="The slug name of the GitHub app"
+    )
+    updated_at: Union[datetime, None] = Field()
+
+
+model_rebuild(WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp)
+
+__all__ = ("WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp",)

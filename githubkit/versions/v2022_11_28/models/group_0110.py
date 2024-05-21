@@ -9,19 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class RepositoryRuleUpdatePropParameters(GitHubModel):
-    """RepositoryRuleUpdatePropParameters"""
-
-    update_allows_fetch_and_merge: bool = Field(
-        description="Branch can pull changes from its upstream repository"
-    )
+from .group_0111 import RepositoryRuleUpdatePropParameters
 
 
-model_rebuild(RepositoryRuleUpdatePropParameters)
+class RepositoryRuleUpdate(GitHubModel):
+    """update
 
-__all__ = ("RepositoryRuleUpdatePropParameters",)
+    Only allow users with bypass permission to update matching refs.
+    """
+
+    type: Literal["update"] = Field()
+    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
+
+
+model_rebuild(RepositoryRuleUpdate)
+
+__all__ = ("RepositoryRuleUpdate",)

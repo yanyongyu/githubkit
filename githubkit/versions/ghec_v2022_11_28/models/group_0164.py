@@ -10,6 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
+from datetime import datetime
 
 from pydantic import Field
 
@@ -18,50 +19,34 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0001 import SimpleUser
+from .group_0060 import ReactionRollup
 
 
-class TeamProject(GitHubModel):
-    """Team Project
+class TeamDiscussionComment(GitHubModel):
+    """Team Discussion Comment
 
-    A team's access to a project.
+    A reply to a discussion within a team.
     """
 
-    owner_url: str = Field()
-    url: str = Field()
+    author: Union[None, SimpleUser] = Field()
+    body: str = Field(description="The main text of the comment.")
+    body_html: str = Field()
+    body_version: str = Field(
+        description="The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server."
+    )
+    created_at: datetime = Field()
+    last_edited_at: Union[datetime, None] = Field()
+    discussion_url: str = Field()
     html_url: str = Field()
-    columns_url: str = Field()
-    id: int = Field()
     node_id: str = Field()
-    name: str = Field()
-    body: Union[str, None] = Field()
-    number: int = Field()
-    state: str = Field()
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    created_at: str = Field()
-    updated_at: str = Field()
-    organization_permission: Missing[str] = Field(
-        default=UNSET,
-        description="The organization permission for this project. Only present when owner is an organization.",
+    number: int = Field(
+        description="The unique sequence number of a team discussion comment."
     )
-    private: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the project is private or not. Only present when owner is an organization.",
-    )
-    permissions: TeamProjectPropPermissions = Field()
+    updated_at: datetime = Field()
+    url: str = Field()
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-class TeamProjectPropPermissions(GitHubModel):
-    """TeamProjectPropPermissions"""
+model_rebuild(TeamDiscussionComment)
 
-    read: bool = Field()
-    write: bool = Field()
-    admin: bool = Field()
-
-
-model_rebuild(TeamProject)
-model_rebuild(TeamProjectPropPermissions)
-
-__all__ = (
-    "TeamProject",
-    "TeamProjectPropPermissions",
-)
+__all__ = ("TeamDiscussionComment",)

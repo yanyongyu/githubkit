@@ -31,6 +31,9 @@ if TYPE_CHECKING:
         CodeScanningDefaultSetupUpdateType,
         ReposOwnerRepoCodeScanningSarifsPostBodyType,
         ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
+        ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
+        ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
+        ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type,
     )
     from ..models import (
         EmptyObject,
@@ -42,8 +45,10 @@ if TYPE_CHECKING:
         CodeScanningAlertInstance,
         CodeScanningSarifsReceipt,
         CodeScanningCodeqlDatabase,
+        CodeScanningVariantAnalysis,
         CodeScanningAnalysisDeletion,
         CodeScanningOrganizationAlertItems,
+        CodeScanningVariantAnalysisRepoTask,
     )
 
 
@@ -959,6 +964,382 @@ class CodeScanningClient:
             response_model=CodeScanningCodeqlDatabase,
             error_models={
                 "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def create_variant_analysis(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Union[
+            ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
+            ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
+            ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type,
+        ],
+    ) -> Response[CodeScanningVariantAnalysis]: ...
+
+    @overload
+    def create_variant_analysis(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        language: Literal[
+            "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
+        ],
+        query_pack: str,
+        repositories: List[str],
+        repository_lists: Missing[List[str]] = UNSET,
+        repository_owners: Missing[List[str]] = UNSET,
+    ) -> Response[CodeScanningVariantAnalysis]: ...
+
+    @overload
+    def create_variant_analysis(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        language: Literal[
+            "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
+        ],
+        query_pack: str,
+        repositories: Missing[List[str]] = UNSET,
+        repository_lists: List[str],
+        repository_owners: Missing[List[str]] = UNSET,
+    ) -> Response[CodeScanningVariantAnalysis]: ...
+
+    @overload
+    def create_variant_analysis(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        language: Literal[
+            "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
+        ],
+        query_pack: str,
+        repositories: Missing[List[str]] = UNSET,
+        repository_lists: Missing[List[str]] = UNSET,
+        repository_owners: List[str],
+    ) -> Response[CodeScanningVariantAnalysis]: ...
+
+    def create_variant_analysis(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[
+            Union[
+                ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
+                ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
+                ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type,
+            ]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[CodeScanningVariantAnalysis]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#create-a-codeql-variant-analysis"""
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            CodeScanningVariantAnalysis,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0,
+            ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1,
+            ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2,
+        )
+
+        url = f"/repos/{owner}/{repo}/code-scanning/codeql/variant-analyses"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = type_validate_python(
+            Union[
+                ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0,
+                ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1,
+                ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2,
+            ],
+            json,
+        )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=CodeScanningVariantAnalysis,
+            error_models={
+                "404": BasicError,
+                "422": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_create_variant_analysis(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Union[
+            ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
+            ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
+            ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type,
+        ],
+    ) -> Response[CodeScanningVariantAnalysis]: ...
+
+    @overload
+    async def async_create_variant_analysis(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        language: Literal[
+            "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
+        ],
+        query_pack: str,
+        repositories: List[str],
+        repository_lists: Missing[List[str]] = UNSET,
+        repository_owners: Missing[List[str]] = UNSET,
+    ) -> Response[CodeScanningVariantAnalysis]: ...
+
+    @overload
+    async def async_create_variant_analysis(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        language: Literal[
+            "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
+        ],
+        query_pack: str,
+        repositories: Missing[List[str]] = UNSET,
+        repository_lists: List[str],
+        repository_owners: Missing[List[str]] = UNSET,
+    ) -> Response[CodeScanningVariantAnalysis]: ...
+
+    @overload
+    async def async_create_variant_analysis(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        language: Literal[
+            "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
+        ],
+        query_pack: str,
+        repositories: Missing[List[str]] = UNSET,
+        repository_lists: Missing[List[str]] = UNSET,
+        repository_owners: List[str],
+    ) -> Response[CodeScanningVariantAnalysis]: ...
+
+    async def async_create_variant_analysis(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[
+            Union[
+                ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
+                ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
+                ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type,
+            ]
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[CodeScanningVariantAnalysis]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#create-a-codeql-variant-analysis"""
+
+        from typing import Union
+
+        from ..models import (
+            BasicError,
+            CodeScanningVariantAnalysis,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0,
+            ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1,
+            ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2,
+        )
+
+        url = f"/repos/{owner}/{repo}/code-scanning/codeql/variant-analyses"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = type_validate_python(
+            Union[
+                ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0,
+                ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1,
+                ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2,
+            ],
+            json,
+        )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=CodeScanningVariantAnalysis,
+            error_models={
+                "404": BasicError,
+                "422": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    def get_variant_analysis(
+        self,
+        owner: str,
+        repo: str,
+        codeql_variant_analysis_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[CodeScanningVariantAnalysis]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-the-summary-of-a-codeql-variant-analysis"""
+
+        from ..models import (
+            BasicError,
+            CodeScanningVariantAnalysis,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = f"/repos/{owner}/{repo}/code-scanning/codeql/variant-analyses/{codeql_variant_analysis_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CodeScanningVariantAnalysis,
+            error_models={
+                "404": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_variant_analysis(
+        self,
+        owner: str,
+        repo: str,
+        codeql_variant_analysis_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[CodeScanningVariantAnalysis]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-the-summary-of-a-codeql-variant-analysis"""
+
+        from ..models import (
+            BasicError,
+            CodeScanningVariantAnalysis,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = f"/repos/{owner}/{repo}/code-scanning/codeql/variant-analyses/{codeql_variant_analysis_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CodeScanningVariantAnalysis,
+            error_models={
+                "404": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    def get_variant_analysis_repo_task(
+        self,
+        owner: str,
+        repo: str,
+        codeql_variant_analysis_id: int,
+        repo_owner: str,
+        repo_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[CodeScanningVariantAnalysisRepoTask]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-the-analysis-status-of-a-repository-in-a-codeql-variant-analysis"""
+
+        from ..models import (
+            BasicError,
+            CodeScanningVariantAnalysisRepoTask,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = f"/repos/{owner}/{repo}/code-scanning/codeql/variant-analyses/{codeql_variant_analysis_id}/repos/{repo_owner}/{repo_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CodeScanningVariantAnalysisRepoTask,
+            error_models={
+                "404": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_variant_analysis_repo_task(
+        self,
+        owner: str,
+        repo: str,
+        codeql_variant_analysis_id: int,
+        repo_owner: str,
+        repo_name: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[CodeScanningVariantAnalysisRepoTask]:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#get-the-analysis-status-of-a-repository-in-a-codeql-variant-analysis"""
+
+        from ..models import (
+            BasicError,
+            CodeScanningVariantAnalysisRepoTask,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = f"/repos/{owner}/{repo}/code-scanning/codeql/variant-analyses/{codeql_variant_analysis_id}/repos/{repo_owner}/{repo_name}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CodeScanningVariantAnalysisRepoTask,
+            error_models={
                 "404": BasicError,
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },

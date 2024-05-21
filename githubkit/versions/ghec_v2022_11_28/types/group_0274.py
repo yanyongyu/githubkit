@@ -9,39 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
-from .group_0005 import IntegrationType
+from .group_0202 import VerificationType
 
 
-class UnlabeledIssueEventType(TypedDict):
-    """Unlabeled Issue Event
+class GitTagType(TypedDict):
+    """Git Tag
 
-    Unlabeled Issue Event
+    Metadata for a Git tag
     """
 
-    id: int
     node_id: str
+    tag: str
+    sha: str
     url: str
-    actor: SimpleUserType
-    event: Literal["unlabeled"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType]
-    label: UnlabeledIssueEventPropLabelType
+    message: str
+    tagger: GitTagPropTaggerType
+    object_: GitTagPropObjectType
+    verification: NotRequired[VerificationType]
 
 
-class UnlabeledIssueEventPropLabelType(TypedDict):
-    """UnlabeledIssueEventPropLabel"""
+class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
 
+    date: str
+    email: str
     name: str
-    color: str
+
+
+class GitTagPropObjectType(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
 
 
 __all__ = (
-    "UnlabeledIssueEventType",
-    "UnlabeledIssueEventPropLabelType",
+    "GitTagType",
+    "GitTagPropTaggerType",
+    "GitTagPropObjectType",
 )

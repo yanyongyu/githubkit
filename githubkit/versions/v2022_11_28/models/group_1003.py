@@ -15,16 +15,17 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0071 import Codespace
+from .group_0093 import CustomPropertyValue
 
 
-class UserCodespacesGetResponse200(GitHubModel):
-    """UserCodespacesGetResponse200"""
+class ReposOwnerRepoPropertiesValuesPatchBody(GitHubModel):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
 
-    total_count: int = Field()
-    codespaces: List[Codespace] = Field()
+    properties: List[CustomPropertyValue] = Field(
+        description="A list of custom property names and associated values to apply to the repositories."
+    )
 
 
-model_rebuild(UserCodespacesGetResponse200)
+model_rebuild(ReposOwnerRepoPropertiesValuesPatchBody)
 
-__all__ = ("UserCodespacesGetResponse200",)
+__all__ = ("ReposOwnerRepoPropertiesValuesPatchBody",)

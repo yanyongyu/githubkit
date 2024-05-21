@@ -9,25 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0077 import MinimalRepositoryType
+from .group_0378 import SearchResultTextMatchesItemsType
 
-class CodespaceExportDetailsType(TypedDict):
-    """Fetches information about an export of a codespace.
 
-    An export of a codespace. Also, latest export details for a codespace can be
-    fetched with id = latest
+class CodeSearchResultItemType(TypedDict):
+    """Code Search Result Item
+
+    Code Search Result Item
     """
 
-    state: NotRequired[Union[str, None]]
-    completed_at: NotRequired[Union[datetime, None]]
-    branch: NotRequired[Union[str, None]]
-    sha: NotRequired[Union[str, None]]
-    id: NotRequired[str]
-    export_url: NotRequired[str]
-    html_url: NotRequired[Union[str, None]]
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryType
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[datetime]
+    line_numbers: NotRequired[List[str]]
+    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
 
 
-__all__ = ("CodespaceExportDetailsType",)
+class SearchCodeGetResponse200Type(TypedDict):
+    """SearchCodeGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: List[CodeSearchResultItemType]
+
+
+__all__ = (
+    "CodeSearchResultItemType",
+    "SearchCodeGetResponse200Type",
+)

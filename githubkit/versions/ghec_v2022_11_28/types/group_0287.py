@@ -10,42 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 from .group_0001 import SimpleUserType
-from .group_0005 import IntegrationType
+from .group_0006 import IntegrationType
 
 
-class ConvertedNoteToIssueIssueEventType(TypedDict):
-    """Converted Note to Issue Issue Event
+class DemilestonedIssueEventType(TypedDict):
+    """Demilestoned Issue Event
 
-    Converted Note to Issue Issue Event
+    Demilestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["converted_note_to_issue"]
+    event: Literal["demilestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: IntegrationType
-    project_card: NotRequired[ConvertedNoteToIssueIssueEventPropProjectCardType]
+    performed_via_github_app: Union[None, IntegrationType, None]
+    milestone: DemilestonedIssueEventPropMilestoneType
 
 
-class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
+class DemilestonedIssueEventPropMilestoneType(TypedDict):
+    """DemilestonedIssueEventPropMilestone"""
 
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    title: str
 
 
 __all__ = (
-    "ConvertedNoteToIssueIssueEventType",
-    "ConvertedNoteToIssueIssueEventPropProjectCardType",
+    "DemilestonedIssueEventType",
+    "DemilestonedIssueEventPropMilestoneType",
 )
