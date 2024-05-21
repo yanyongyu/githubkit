@@ -29,7 +29,7 @@ if TYPE_CHECKING:
 
 
 A = TypeVar("A", bound=BaseAuthStrategy)
-A_o = TypeVar("A_o", bound=BaseAuthStrategy)
+AS = TypeVar("AS", bound=BaseAuthStrategy)
 
 CP = ParamSpec("CP")
 CT = TypeVar("CT")
@@ -64,8 +64,8 @@ class GitHub(GitHubCore[A]):
         # other auth strategies with config
         @overload
         def __init__(
-            self: "GitHub[A]",
-            auth: A,
+            self: "GitHub[AS]",
+            auth: AS,
             *,
             config: Config,
         ): ...
@@ -105,8 +105,8 @@ class GitHub(GitHubCore[A]):
         # other auth strategies without config
         @overload
         def __init__(
-            self: "GitHub[A]",
-            auth: A,
+            self: "GitHub[AS]",
+            auth: AS,
             *,
             base_url: Optional[Union[str, httpx.URL]] = None,
             accept_format: Optional[str] = None,
@@ -121,7 +121,7 @@ class GitHub(GitHubCore[A]):
         def __init__(self, *args, **kwargs): ...
 
     # copy github instance with other auth
-    def with_auth(self, auth: A_o) -> "GitHub[A_o]":
+    def with_auth(self, auth: AS) -> "GitHub[AS]":
         return GitHub(auth=auth, config=self.config.copy())
 
     # rest api

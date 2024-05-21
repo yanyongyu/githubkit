@@ -18,7 +18,7 @@ from .response import Response
 CP = ParamSpec("CP")
 CT = TypeVar("CT")
 RT = TypeVar("RT")
-RTI = TypeVar("RTI")
+RTS = TypeVar("RTS")
 
 R = Union[
     Callable[CP, Response[RT]],
@@ -29,8 +29,8 @@ R = Union[
 class Paginator(Generic[RT]):
     @overload
     def __init__(
-        self: "Paginator[RTI]",
-        request: R[CP, List[RTI]],
+        self: "Paginator[RTS]",
+        request: R[CP, List[RTS]],
         page: int = 1,
         per_page: int = 100,
         map_func: None = None,
@@ -40,11 +40,11 @@ class Paginator(Generic[RT]):
 
     @overload
     def __init__(
-        self: "Paginator[RTI]",
+        self: "Paginator[RTS]",
         request: R[CP, CT],
         page: int = 1,
         per_page: int = 100,
-        map_func: Callable[[Response[CT]], List[RTI]] = ...,
+        map_func: Callable[[Response[CT]], List[RTS]] = ...,
         *args: CP.args,
         **kwargs: CP.kwargs,
     ): ...

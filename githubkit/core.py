@@ -48,6 +48,7 @@ from .exception import (
 
 T = TypeVar("T")
 A = TypeVar("A", bound="BaseAuthStrategy")
+AS = TypeVar("AS", bound="BaseAuthStrategy")
 
 
 class GitHubCore(Generic[A]):
@@ -72,8 +73,8 @@ class GitHubCore(Generic[A]):
     # other auth strategies with config
     @overload
     def __init__(
-        self: "GitHubCore[A]",
-        auth: A,
+        self: "GitHubCore[AS]",
+        auth: AS,
         *,
         config: Config,
     ): ...
@@ -113,8 +114,8 @@ class GitHubCore(Generic[A]):
     # other auth strategies without config
     @overload
     def __init__(
-        self: "GitHubCore[A]",
-        auth: A,
+        self: "GitHubCore[AS]",
+        auth: AS,
         *,
         base_url: Optional[Union[str, httpx.URL]] = None,
         accept_format: Optional[str] = None,
