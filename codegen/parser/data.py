@@ -26,7 +26,8 @@ class ModelGroup:
     def get_dependency_by_model(self, model: ModelSchema) -> "ModelGroup":
         """Get the group that contains the model."""
         for group in self.group_dependencies:
-            if model in group.models:
+            # do not use `in` operator to avoid __eq__
+            if id(model) in map(id, group.models):
                 return group
         raise ValueError(f"Model {model.class_name} not found in any group dependency.")
 

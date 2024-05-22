@@ -12,12 +12,13 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0383 import WebhooksLabelType
+from .group_0388 import WebhooksIssueType
 from .group_0367 import EnterpriseWebhooksType
 from .group_0368 import SimpleInstallationType
 from .group_0370 import RepositoryWebhooksType
 from .group_0371 import SimpleUserWebhooksType
 from .group_0369 import OrganizationSimpleWebhooksType
-from .group_0388 import WebhooksIssueType, WebhooksLabelType
 
 
 class WebhookIssuesUnlabeledType(TypedDict):

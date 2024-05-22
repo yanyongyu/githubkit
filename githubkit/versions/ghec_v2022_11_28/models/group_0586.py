@@ -17,12 +17,13 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0416 import WebhooksLabel
+from .group_0421 import WebhooksIssue
 from .group_0400 import EnterpriseWebhooks
 from .group_0401 import SimpleInstallation
 from .group_0403 import RepositoryWebhooks
 from .group_0404 import SimpleUserWebhooks
 from .group_0402 import OrganizationSimpleWebhooks
-from .group_0421 import WebhooksIssue, WebhooksLabel
 
 
 class WebhookIssuesUnlabeled(GitHubModel):
