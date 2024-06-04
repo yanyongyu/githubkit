@@ -34,7 +34,7 @@ See: https://github.com/octokit/auth-oauth-user.js/blob/b8b1141b21f285027e36a4a1
 APP_AUTH_REGEX = re.compile(rf"^(?:{'|'.join(APP_ROUTES)})$", re.I)
 """Regex to match app authentication routes.
 
-See: https://github.com/octokit/auth-app.js/blob/c0068e06081a5d930799285a7c79c9c948b676b6/src/requires-app-auth.ts#L45
+See: https://github.com/octokit/auth-app.js/blob/9da834e0d8893b4cb233a2e9f67c3183abe8a341/src/requires-app-auth.ts#L46
 """
 BASIC_AUTH_REGEX = re.compile(r"/applications/[^/]+/(token|grant)s?")
 """Regex to match basic authentication routes.
