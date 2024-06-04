@@ -12,6 +12,7 @@ APP_ROUTES = {
     r"/app/installations/(?:.+?)",
     r"/app/installations/(?:.+?)/access_tokens",
     r"/app/installations/(?:.+?)/suspended",
+    r"/app/installation-requests",
     r"/marketplace_listing/accounts/(?:.+?)",
     r"/marketplace_listing/plan",
     r"/marketplace_listing/plans",
