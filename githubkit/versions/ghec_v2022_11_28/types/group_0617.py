@@ -9,42 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookRubygemsMetadataType(TypedDict):
-    """Ruby Gems metadata"""
-
-    name: NotRequired[str]
-    description: NotRequired[str]
-    readme: NotRequired[str]
-    homepage: NotRequired[str]
-    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoType]
-    platform: NotRequired[str]
-    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataType]
-    repo: NotRequired[str]
-    dependencies: NotRequired[List[WebhookRubygemsMetadataPropDependenciesItemsType]]
-    commit_oid: NotRequired[str]
+from .group_0426 import WebhooksMilestoneType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookRubygemsMetadataPropVersionInfoType(TypedDict):
-    """WebhookRubygemsMetadataPropVersionInfo"""
+class WebhookMilestoneEditedType(TypedDict):
+    """milestone edited event"""
 
-    version: NotRequired[str]
+    action: Literal["edited"]
+    changes: WebhookMilestoneEditedPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    milestone: WebhooksMilestoneType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-class WebhookRubygemsMetadataPropMetadataType(TypedDict):
-    """WebhookRubygemsMetadataPropMetadata"""
+class WebhookMilestoneEditedPropChangesType(TypedDict):
+    """WebhookMilestoneEditedPropChanges
+
+    The changes to the milestone if the action was `edited`.
+    """
+
+    description: NotRequired[WebhookMilestoneEditedPropChangesPropDescriptionType]
+    due_on: NotRequired[WebhookMilestoneEditedPropChangesPropDueOnType]
+    title: NotRequired[WebhookMilestoneEditedPropChangesPropTitleType]
 
 
-class WebhookRubygemsMetadataPropDependenciesItemsType(TypedDict):
-    """WebhookRubygemsMetadataPropDependenciesItems"""
+class WebhookMilestoneEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropDescription"""
+
+    from_: str
+
+
+class WebhookMilestoneEditedPropChangesPropDueOnType(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropDueOn"""
+
+    from_: str
+
+
+class WebhookMilestoneEditedPropChangesPropTitleType(TypedDict):
+    """WebhookMilestoneEditedPropChangesPropTitle"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookRubygemsMetadataType",
-    "WebhookRubygemsMetadataPropVersionInfoType",
-    "WebhookRubygemsMetadataPropMetadataType",
-    "WebhookRubygemsMetadataPropDependenciesItemsType",
+    "WebhookMilestoneEditedType",
+    "WebhookMilestoneEditedPropChangesType",
+    "WebhookMilestoneEditedPropChangesPropDescriptionType",
+    "WebhookMilestoneEditedPropChangesPropDueOnType",
+    "WebhookMilestoneEditedPropChangesPropTitleType",
 )

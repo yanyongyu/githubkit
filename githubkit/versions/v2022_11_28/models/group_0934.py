@@ -9,36 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
+from datetime import datetime
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBody"""
+class ReposOwnerRepoDependabotSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
-    state: Literal["dismissed", "open"] = Field(
-        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`."
-    )
-    dismissed_reason: Missing[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
-    ] = Field(
-        default=UNSET,
-        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
-    )
-    dismissed_comment: Missing[str] = Field(
-        max_length=280,
-        default=UNSET,
-        description="An optional comment associated with dismissing the alert.",
-    )
+    total_count: int = Field()
+    secrets: List[DependabotSecret] = Field()
 
 
-model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBody)
+class DependabotSecret(GitHubModel):
+    """Dependabot Secret
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBody",)
+    Set secrets for Dependabot.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+
+
+model_rebuild(ReposOwnerRepoDependabotSecretsGetResponse200)
+model_rebuild(DependabotSecret)
+
+__all__ = (
+    "ReposOwnerRepoDependabotSecretsGetResponse200",
+    "DependabotSecret",
+)

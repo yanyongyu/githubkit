@@ -12,41 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0448 import WebhooksSponsorshipType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0451 import WebhooksSecurityAdvisoryType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookSponsorshipEditedType(TypedDict):
-    """sponsorship edited event"""
+class WebhookSecurityAdvisoryPublishedType(TypedDict):
+    """security_advisory published event"""
 
-    action: Literal["edited"]
-    changes: WebhookSponsorshipEditedPropChangesType
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserWebhooksType
-    sponsorship: WebhooksSponsorshipType
+    security_advisory: WebhooksSecurityAdvisoryType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-class WebhookSponsorshipEditedPropChangesType(TypedDict):
-    """WebhookSponsorshipEditedPropChanges"""
-
-    privacy_level: NotRequired[WebhookSponsorshipEditedPropChangesPropPrivacyLevelType]
-
-
-class WebhookSponsorshipEditedPropChangesPropPrivacyLevelType(TypedDict):
-    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookSponsorshipEditedType",
-    "WebhookSponsorshipEditedPropChangesType",
-    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelType",
-)
+__all__ = ("WebhookSecurityAdvisoryPublishedType",)

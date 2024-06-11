@@ -20,10 +20,10 @@ from .group_0415 import WebhooksSponsorshipType
 from .group_0369 import OrganizationSimpleWebhooksType
 
 
-class WebhookSponsorshipCancelledType(TypedDict):
-    """sponsorship cancelled event"""
+class WebhookSponsorshipCreatedType(TypedDict):
+    """sponsorship created event"""
 
-    action: Literal["cancelled"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -32,4 +32,4 @@ class WebhookSponsorshipCancelledType(TypedDict):
     sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("WebhookSponsorshipCancelledType",)
+__all__ = ("WebhookSponsorshipCreatedType",)

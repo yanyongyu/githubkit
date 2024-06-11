@@ -12,19 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0154 import RepositoryRuleCodeScanningPropParametersType
+from .group_0154 import RepositoryRuleWorkflowsPropParametersType
 
 
-class RepositoryRuleCodeScanningType(TypedDict):
-    """code_scanning
+class RepositoryRuleWorkflowsType(TypedDict):
+    """workflows
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
 
 
-__all__ = ("RepositoryRuleCodeScanningType",)
+__all__ = ("RepositoryRuleWorkflowsType",)

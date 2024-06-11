@@ -9,17 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
+
+from .group_0182 import ActionsVariableType
 
 
-class ReposOwnerRepoHooksHookIdConfigPatchBodyType(TypedDict):
-    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    total_count: int
+    variables: List[ActionsVariableType]
 
 
-__all__ = ("ReposOwnerRepoHooksHookIdConfigPatchBodyType",)
+__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type",)

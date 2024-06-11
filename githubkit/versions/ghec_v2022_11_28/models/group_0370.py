@@ -9,45 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Literal
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserNameResponse(GitHubModel):
-    """UserNameResponse"""
+class Group(GitHubModel):
+    """Group"""
 
-    formatted: Missing[str] = Field(
-        default=UNSET,
-        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
+    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
     )
-    family_name: Missing[str] = Field(
-        default=UNSET, alias="familyName", description="The family name of the user."
+    external_id: str = Field(
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
     )
-    given_name: Missing[str] = Field(
-        default=UNSET, alias="givenName", description="The given name of the user."
+    display_name: str = Field(
+        alias="displayName", description="A human-readable name for a security group."
     )
-    middle_name: Missing[str] = Field(
-        default=UNSET, alias="middleName", description="The middle name(s) of the user."
-    )
+    members: List[GroupPropMembersItems] = Field(description="The group members.")
 
 
-class UserEmailsResponseItems(GitHubModel):
-    """UserEmailsResponseItems"""
+class GroupPropMembersItems(GitHubModel):
+    """GroupPropMembersItems"""
 
-    value: str = Field(description="The email address.")
-    type: Missing[str] = Field(default=UNSET, description="The type of email address.")
-    primary: Missing[bool] = Field(
-        default=UNSET, description="Whether this email address is the primary address."
+    value: str = Field(description="The local unique identifier for the member")
+    display_name: str = Field(
+        alias="displayName", description="The display name associated with the member"
     )
 
 
-model_rebuild(UserNameResponse)
-model_rebuild(UserEmailsResponseItems)
+model_rebuild(Group)
+model_rebuild(GroupPropMembersItems)
 
 __all__ = (
-    "UserNameResponse",
-    "UserEmailsResponseItems",
+    "Group",
+    "GroupPropMembersItems",
 )

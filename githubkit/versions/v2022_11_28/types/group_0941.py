@@ -9,25 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class ReposOwnerRepoDispatchesPostBodyType(TypedDict):
-    """ReposOwnerRepoDispatchesPostBody"""
-
-    event_type: str
-    client_payload: NotRequired[ReposOwnerRepoDispatchesPostBodyPropClientPayloadType]
+from .group_0243 import DeploymentBranchPolicySettingsType
 
 
-class ReposOwnerRepoDispatchesPostBodyPropClientPayloadType(TypedDict):
-    """ReposOwnerRepoDispatchesPostBodyPropClientPayload
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
 
-    JSON payload with extra information about the webhook event that your action or
-    workflow may use. The maximum number of top-level properties is 10.
-    """
+    wait_timer: NotRequired[int]
+    prevent_self_review: NotRequired[bool]
+    reviewers: NotRequired[
+        Union[
+            List[
+                ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType
+            ],
+            None,
+        ]
+    ]
+    deployment_branch_policy: NotRequired[
+        Union[DeploymentBranchPolicySettingsType, None]
+    ]
+
+
+class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
+
+    type: NotRequired[Literal["User", "Team"]]
+    id: NotRequired[int]
 
 
 __all__ = (
-    "ReposOwnerRepoDispatchesPostBodyType",
-    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType",
 )

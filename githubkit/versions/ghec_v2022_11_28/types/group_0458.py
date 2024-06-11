@@ -12,22 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
-from .group_0407 import CheckRunWithSimpleCheckSuiteType
+from .group_0407 import WebhooksRuleType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookCheckRunCreatedType(TypedDict):
-    """Check Run Created Event"""
+class WebhookBranchProtectionRuleDeletedType(TypedDict):
+    """branch protection rule deleted event"""
 
-    action: Literal["created"]
-    check_run: CheckRunWithSimpleCheckSuiteType
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
+    rule: WebhooksRuleType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookCheckRunCreatedType",)
+__all__ = ("WebhookBranchProtectionRuleDeletedType",)

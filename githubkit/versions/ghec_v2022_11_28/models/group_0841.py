@@ -15,16 +15,15 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0077 import MinimalRepository
+
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
+
+    runners: List[int] = Field(
+        description="List of runner IDs to add to the runner group."
+    )
 
 
-class OrgsOrgActionsVariablesNameRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
+model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody)
 
-    total_count: int = Field()
-    repositories: List[MinimalRepository] = Field()
-
-
-model_rebuild(OrgsOrgActionsVariablesNameRepositoriesGetResponse200)
-
-__all__ = ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200",)
+__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody",)

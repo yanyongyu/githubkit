@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -17,16 +17,87 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0133 import RepositoryRuleUpdate
+from .group_0157 import RepositoryRuleOneof17
+from .group_0153 import RepositoryRuleWorkflows
+from .group_0138 import RepositoryRulePullRequest
+from .group_0129 import OrgRulesetConditionsOneof0
+from .group_0130 import OrgRulesetConditionsOneof1
+from .group_0131 import OrgRulesetConditionsOneof2
+from .group_0155 import RepositoryRuleCodeScanning
+from .group_0120 import RepositoryRulesetBypassActor
+from .group_0150 import RepositoryRuleTagNamePattern
+from .group_0148 import RepositoryRuleBranchNamePattern
+from .group_0136 import RepositoryRuleRequiredDeployments
+from .group_0140 import RepositoryRuleRequiredStatusChecks
+from .group_0142 import RepositoryRuleCommitMessagePattern
+from .group_0146 import RepositoryRuleCommitterEmailPattern
+from .group_0144 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0135 import RepositoryRuleOneof15, RepositoryRuleRequiredLinearHistory
+from .group_0132 import (
+    RepositoryRuleOneof14,
+    RepositoryRuleOneof16,
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody"""
 
-    permission: Missing[Literal["read", "write", "admin"]] = Field(
+class OrgsOrgRulesetsPostBody(GitHubModel):
+    """OrgsOrgRulesetsPostBody"""
+
+    name: str = Field(description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
         default=UNSET,
-        description="The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see \"[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method).\"",
+        description="The target of the ruleset\n\n**Note**: The `push` target is in beta and is subject to change.",
     )
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page."
+    )
+    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[
+        Union[
+            OrgRulesetConditionsOneof0,
+            OrgRulesetConditionsOneof1,
+            OrgRulesetConditionsOneof2,
+        ]
+    ] = Field(
+        default=UNSET,
+        title="Organization ruleset conditions",
+        description="Conditions for an organization ruleset. The conditions object should contain both `repository_name` and `ref_name` properties or both `repository_id` and `ref_name` properties.\n",
+    )
+    rules: Missing[
+        List[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleOneof14,
+                RepositoryRuleOneof15,
+                RepositoryRuleOneof16,
+                RepositoryRuleOneof17,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody)
+model_rebuild(OrgsOrgRulesetsPostBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody",)
+__all__ = ("OrgsOrgRulesetsPostBody",)

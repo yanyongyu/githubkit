@@ -9,26 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPersonalAccessTokensPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokensPostBody"""
+class OrgsOrgPersonalAccessTokensPatIdPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
 
     action: Literal["revoke"] = Field(
         description="Action to apply to the fine-grained personal access token."
     )
-    pat_ids: List[int] = Field(
-        max_length=100,
-        min_length=1,
-        description="The IDs of the fine-grained personal access tokens.",
-    )
 
 
-model_rebuild(OrgsOrgPersonalAccessTokensPostBody)
+model_rebuild(OrgsOrgPersonalAccessTokensPatIdPostBody)
 
-__all__ = ("OrgsOrgPersonalAccessTokensPostBody",)
+__all__ = ("OrgsOrgPersonalAccessTokensPatIdPostBody",)

@@ -17,19 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0400 import EnterpriseWebhooks
-from .group_0401 import SimpleInstallation
-from .group_0403 import RepositoryWebhooks
-from .group_0404 import SimpleUserWebhooks
-from .group_0448 import WebhooksSponsorship
-from .group_0402 import OrganizationSimpleWebhooks
+from .group_0402 import EnterpriseWebhooks
+from .group_0403 import SimpleInstallation
+from .group_0405 import RepositoryWebhooks
+from .group_0406 import SimpleUserWebhooks
+from .group_0451 import WebhooksSecurityAdvisory
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookSponsorshipEdited(GitHubModel):
-    """sponsorship edited event"""
+class WebhookSecurityAdvisoryPublished(GitHubModel):
+    """security_advisory published event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookSponsorshipEditedPropChanges = Field()
+    action: Literal["published"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -50,36 +49,16 @@ class WebhookSponsorshipEdited(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
+    security_advisory: WebhooksSecurityAdvisory = Field(
+        description="The details of the security advisory, including summary, description, and severity."
+    )
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    sponsorship: WebhooksSponsorship = Field()
 
 
-class WebhookSponsorshipEditedPropChanges(GitHubModel):
-    """WebhookSponsorshipEditedPropChanges"""
+model_rebuild(WebhookSecurityAdvisoryPublished)
 
-    privacy_level: Missing[WebhookSponsorshipEditedPropChangesPropPrivacyLevel] = Field(
-        default=UNSET
-    )
-
-
-class WebhookSponsorshipEditedPropChangesPropPrivacyLevel(GitHubModel):
-    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
-
-    from_: str = Field(
-        alias="from",
-        description="The `edited` event types include the details about the change when someone edits a sponsorship to change the privacy.",
-    )
-
-
-model_rebuild(WebhookSponsorshipEdited)
-model_rebuild(WebhookSponsorshipEditedPropChanges)
-model_rebuild(WebhookSponsorshipEditedPropChangesPropPrivacyLevel)
-
-__all__ = (
-    "WebhookSponsorshipEdited",
-    "WebhookSponsorshipEditedPropChanges",
-    "WebhookSponsorshipEditedPropChangesPropPrivacyLevel",
-)
+__all__ = ("WebhookSecurityAdvisoryPublished",)

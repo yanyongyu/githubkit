@@ -17,22 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0400 import EnterpriseWebhooks
-from .group_0401 import SimpleInstallation
-from .group_0403 import RepositoryWebhooks
-from .group_0404 import SimpleUserWebhooks
-from .group_0448 import WebhooksSponsorship
-from .group_0402 import OrganizationSimpleWebhooks
+from .group_0402 import EnterpriseWebhooks
+from .group_0403 import SimpleInstallation
+from .group_0405 import RepositoryWebhooks
+from .group_0406 import SimpleUserWebhooks
+from .group_0451 import WebhooksSecurityAdvisory
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookSponsorshipPendingCancellation(GitHubModel):
-    """sponsorship pending_cancellation event"""
+class WebhookSecurityAdvisoryUpdated(GitHubModel):
+    """security_advisory updated event"""
 
-    action: Literal["pending_cancellation"] = Field()
-    effective_date: Missing[str] = Field(
-        default=UNSET,
-        description="The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect.",
-    )
+    action: Literal["updated"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,13 +49,16 @@ class WebhookSponsorshipPendingCancellation(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
+    security_advisory: WebhooksSecurityAdvisory = Field(
+        description="The details of the security advisory, including summary, description, and severity."
+    )
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookSponsorshipPendingCancellation)
+model_rebuild(WebhookSecurityAdvisoryUpdated)
 
-__all__ = ("WebhookSponsorshipPendingCancellation",)
+__all__ = ("WebhookSecurityAdvisoryUpdated",)

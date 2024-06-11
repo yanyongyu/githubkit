@@ -10,8 +10,9 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
+from .group_0367 import EnterpriseWebhooksType
 from .group_0368 import SimpleInstallationType
 from .group_0371 import SimpleUserWebhooksType
 from .group_0369 import OrganizationSimpleWebhooksType
@@ -24,6 +25,7 @@ class WebhookPersonalAccessTokenRequestDeniedType(TypedDict):
     action: Literal["denied"]
     personal_access_token_request: PersonalAccessTokenRequestType
     organization: OrganizationSimpleWebhooksType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     sender: SimpleUserWebhooksType
     installation: SimpleInstallationType
 

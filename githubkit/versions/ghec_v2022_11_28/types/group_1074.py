@@ -10,14 +10,15 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
+
+from .group_0116 import CustomPropertyValueType
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
+class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
 
-    reviewers: NotRequired[List[str]]
-    team_reviewers: List[str]
+    properties: List[CustomPropertyValueType]
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type",)
+__all__ = ("ReposOwnerRepoPropertiesValuesPatchBodyType",)

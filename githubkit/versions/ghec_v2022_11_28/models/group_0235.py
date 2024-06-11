@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -19,59 +19,33 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0001 import SimpleUser
-from .group_0060 import ReactionRollup
+from .group_0079 import MinimalRepository
 
 
-class CommitComment(GitHubModel):
-    """Commit Comment
+class RepositoryInvitation(GitHubModel):
+    """Repository Invitation
 
-    Commit Comment
+    Repository invitations let you manage who you collaborate with.
     """
 
-    html_url: str = Field()
-    url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    body: str = Field()
-    path: Union[str, None] = Field()
-    position: Union[int, None] = Field()
-    line: Union[int, None] = Field()
-    commit_id: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+    id: int = Field(description="Unique identifier of the repository invitation.")
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
+    invitee: Union[None, SimpleUser] = Field()
+    inviter: Union[None, SimpleUser] = Field()
+    permissions: Literal["read", "write", "admin", "triage", "maintain"] = Field(
+        description="The permission associated with the invitation."
+    )
+    created_at: datetime = Field()
+    expired: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the invitation has expired"
+    )
+    url: str = Field(description="URL for the repository invitation")
+    html_url: str = Field()
+    node_id: str = Field()
 
 
-class TimelineCommitCommentedEvent(GitHubModel):
-    """Timeline Commit Commented Event
+model_rebuild(RepositoryInvitation)
 
-    Timeline Commit Commented Event
-    """
-
-    event: Missing[Literal["commit_commented"]] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    commit_id: Missing[str] = Field(default=UNSET)
-    comments: Missing[List[CommitComment]] = Field(default=UNSET)
-
-
-model_rebuild(CommitComment)
-model_rebuild(TimelineCommitCommentedEvent)
-
-__all__ = (
-    "CommitComment",
-    "TimelineCommitCommentedEvent",
-)
+__all__ = ("RepositoryInvitation",)

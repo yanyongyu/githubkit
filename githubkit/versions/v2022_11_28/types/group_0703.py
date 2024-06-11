@@ -20,10 +20,10 @@ from .group_0369 import OrganizationSimpleWebhooksType
 from .group_0413 import SecretScanningAlertWebhookType
 
 
-class WebhookSecretScanningAlertRevokedType(TypedDict):
-    """secret_scanning_alert revoked event"""
+class WebhookSecretScanningAlertValidatedType(TypedDict):
+    """secret_scanning_alert validated event"""
 
-    action: Literal["revoked"]
+    action: Literal["validated"]
     alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -32,4 +32,4 @@ class WebhookSecretScanningAlertRevokedType(TypedDict):
     sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookSecretScanningAlertRevokedType",)
+__all__ = ("WebhookSecretScanningAlertValidatedType",)

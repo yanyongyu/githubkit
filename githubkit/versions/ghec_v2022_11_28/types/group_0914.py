@@ -9,13 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import TypedDict, NotRequired
 
 
-class ProjectsColumnsColumnIdMovesPostBodyType(TypedDict):
-    """ProjectsColumnsColumnIdMovesPostBody"""
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
 
-    position: str
+    groups: NotRequired[
+        List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
+    ]
 
 
-__all__ = ("ProjectsColumnsColumnIdMovesPostBodyType",)
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+
+
+__all__ = (
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
+)

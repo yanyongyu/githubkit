@@ -9,17 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0033 import RunnerLabelType
+from typing import List, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    total_count: int
-    labels: List[RunnerLabelType]
+    name: NotRequired[str]
+    visibility: NotRequired[Literal["selected", "all"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[List[str]]
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type",)
+__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBodyType",)

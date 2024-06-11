@@ -9,21 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class ActionsPublicKeyType(TypedDict):
-    """ActionsPublicKey
+class EmptyObjectType(TypedDict):
+    """Empty Object
 
-    The public key used for setting Actions Secrets.
+    An object without any properties.
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
 
-
-__all__ = ("ActionsPublicKeyType",)
+__all__ = ("EmptyObjectType",)

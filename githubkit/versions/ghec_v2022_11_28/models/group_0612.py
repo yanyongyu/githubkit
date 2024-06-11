@@ -17,34 +17,32 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0400 import EnterpriseWebhooks
-from .group_0401 import SimpleInstallation
-from .group_0403 import RepositoryWebhooks
-from .group_0404 import SimpleUserWebhooks
-from .group_0430 import WebhooksMembership
-from .group_0402 import OrganizationSimpleWebhooks
+from .group_0432 import MergeGroup
+from .group_0403 import SimpleInstallation
+from .group_0405 import RepositoryWebhooks
+from .group_0406 import SimpleUserWebhooks
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookOrganizationDeleted(GitHubModel):
-    """organization deleted event"""
+class WebhookMergeGroupDestroyed(GitHubModel):
+    """WebhookMergeGroupDestroyed"""
 
-    action: Literal["deleted"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    action: Literal["destroyed"] = Field()
+    reason: Missing[Literal["merged", "invalidated", "dequeued"]] = Field(
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+        description="Explains why the merge group is being destroyed. The group could have been merged, removed from the queue (dequeued), or invalidated by an earlier queue entry being dequeued (invalidated).",
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    membership: Missing[WebhooksMembership] = Field(
-        default=UNSET,
-        title="Membership",
-        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
+    merge_group: MergeGroup = Field(
+        title="Merge Group",
+        description="A group of pull requests that the merge queue has grouped together to be merged.\n",
     )
-    organization: OrganizationSimpleWebhooks = Field(
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
@@ -53,12 +51,13 @@ class WebhookOrganizationDeleted(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-model_rebuild(WebhookOrganizationDeleted)
+model_rebuild(WebhookMergeGroupDestroyed)
 
-__all__ = ("WebhookOrganizationDeleted",)
+__all__ = ("WebhookMergeGroupDestroyed",)

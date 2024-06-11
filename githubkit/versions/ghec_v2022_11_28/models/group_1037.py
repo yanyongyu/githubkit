@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,24 +18,17 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2"""
+class ReposOwnerRepoInvitationsInvitationIdPatchBody(GitHubModel):
+    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
 
-    labels: Missing[
-        List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems]
-    ] = Field(min_length=1, default=UNSET)
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems"""
-
-    name: str = Field()
+    permissions: Missing[Literal["read", "write", "maintain", "triage", "admin"]] = (
+        Field(
+            default=UNSET,
+            description="The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.",
+        )
+    )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems)
+model_rebuild(ReposOwnerRepoInvitationsInvitationIdPatchBody)
 
-__all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems",
-)
+__all__ = ("ReposOwnerRepoInvitationsInvitationIdPatchBody",)

@@ -9,27 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
+class OrgsOrgTeamsTeamSlugPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugPatchBody"""
 
-    groups: NotRequired[
-        List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
 
 
-class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
-    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
-
-    group_id: str
-    group_name: str
-    group_description: str
-
-
-__all__ = (
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType",
-    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
-)
+__all__ = ("OrgsOrgTeamsTeamSlugPatchBodyType",)

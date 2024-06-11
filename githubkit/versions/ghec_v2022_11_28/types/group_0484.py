@@ -12,24 +12,22 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0253 import DependabotAlertType
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0115 import OrgCustomPropertyType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookDependabotAlertFixedType(TypedDict):
-    """Dependabot alert fixed event"""
+class WebhookCustomPropertyCreatedType(TypedDict):
+    """custom property created event"""
 
-    action: Literal["fixed"]
-    alert: DependabotAlertType
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    action: Literal["created"]
+    definition: OrgCustomPropertyType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookDependabotAlertFixedType",)
+__all__ = ("WebhookCustomPropertyCreatedType",)

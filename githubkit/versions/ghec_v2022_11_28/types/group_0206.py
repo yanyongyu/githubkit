@@ -9,36 +9,51 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0204 import CommitType
-from .group_0199 import BranchProtectionType
+from .group_0205 import DiffEntryType
+from .group_0001 import SimpleUserType
+from .group_0207 import CommitPropCommitType
 
 
-class BranchWithProtectionType(TypedDict):
-    """Branch With Protection
+class CommitType(TypedDict):
+    """Commit
 
-    Branch With Protection
+    Commit
     """
 
-    name: str
-    commit: CommitType
-    links: BranchWithProtectionPropLinksType
-    protected: bool
-    protection: BranchProtectionType
-    protection_url: str
-    pattern: NotRequired[str]
-    required_approving_review_count: NotRequired[int]
+    url: str
+    sha: str
+    node_id: str
+    html_url: str
+    comments_url: str
+    commit: CommitPropCommitType
+    author: Union[None, SimpleUserType]
+    committer: Union[None, SimpleUserType]
+    parents: List[CommitPropParentsItemsType]
+    stats: NotRequired[CommitPropStatsType]
+    files: NotRequired[List[DiffEntryType]]
 
 
-class BranchWithProtectionPropLinksType(TypedDict):
-    """BranchWithProtectionPropLinks"""
+class CommitPropParentsItemsType(TypedDict):
+    """CommitPropParentsItems"""
 
-    html: str
-    self_: str
+    sha: str
+    url: str
+    html_url: NotRequired[str]
+
+
+class CommitPropStatsType(TypedDict):
+    """CommitPropStats"""
+
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+    total: NotRequired[int]
 
 
 __all__ = (
-    "BranchWithProtectionType",
-    "BranchWithProtectionPropLinksType",
+    "CommitType",
+    "CommitPropParentsItemsType",
+    "CommitPropStatsType",
 )

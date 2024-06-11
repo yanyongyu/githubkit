@@ -9,28 +9,121 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0114 import CustomPropertyValueType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookCustomPropertyValuesUpdatedType(TypedDict):
-    """Custom property values updated event"""
+class WebhookCodeScanningAlertCreatedType(TypedDict):
+    """code_scanning_alert created event"""
 
-    action: Literal["updated"]
+    action: Literal["created"]
+    alert: WebhookCodeScanningAlertCreatedPropAlertType
+    commit_oid: str
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    ref: str
     repository: RepositoryWebhooksType
-    organization: OrganizationSimpleWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
-    new_property_values: List[CustomPropertyValueType]
-    old_property_values: List[CustomPropertyValueType]
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookCustomPropertyValuesUpdatedType",)
+class WebhookCodeScanningAlertCreatedPropAlertType(TypedDict):
+    """WebhookCodeScanningAlertCreatedPropAlert
+
+    The code scanning alert involved in the event.
+    """
+
+    created_at: Union[datetime, None]
+    dismissed_at: None
+    dismissed_by: None
+    dismissed_comment: NotRequired[Union[str, None]]
+    dismissed_reason: None
+    fixed_at: NotRequired[None]
+    html_url: str
+    instances_url: NotRequired[str]
+    most_recent_instance: NotRequired[
+        Union[WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceType, None]
+    ]
+    number: int
+    rule: WebhookCodeScanningAlertCreatedPropAlertPropRuleType
+    state: Literal["open", "dismissed"]
+    tool: Union[WebhookCodeScanningAlertCreatedPropAlertPropToolType, None]
+    updated_at: NotRequired[Union[str, None]]
+    url: str
+
+
+class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceType(TypedDict):
+    """Alert Instance"""
+
+    analysis_key: str
+    category: NotRequired[str]
+    classifications: NotRequired[List[str]]
+    commit_sha: NotRequired[str]
+    environment: str
+    location: NotRequired[
+        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationType
+    ]
+    message: NotRequired[
+        WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageType
+    ]
+    ref: str
+    state: Literal["open", "dismissed", "fixed"]
+
+
+class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationType(
+    TypedDict
+):
+    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation"""
+
+    end_column: NotRequired[int]
+    end_line: NotRequired[int]
+    path: NotRequired[str]
+    start_column: NotRequired[int]
+    start_line: NotRequired[int]
+
+
+class WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageType(
+    TypedDict
+):
+    """WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage"""
+
+    text: NotRequired[str]
+
+
+class WebhookCodeScanningAlertCreatedPropAlertPropRuleType(TypedDict):
+    """WebhookCodeScanningAlertCreatedPropAlertPropRule"""
+
+    description: str
+    full_description: NotRequired[str]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
+    id: str
+    name: NotRequired[str]
+    severity: Union[None, Literal["none", "note", "warning", "error"]]
+    tags: NotRequired[Union[List[str], None]]
+
+
+class WebhookCodeScanningAlertCreatedPropAlertPropToolType(TypedDict):
+    """WebhookCodeScanningAlertCreatedPropAlertPropTool"""
+
+    guid: NotRequired[Union[str, None]]
+    name: str
+    version: Union[str, None]
+
+
+__all__ = (
+    "WebhookCodeScanningAlertCreatedType",
+    "WebhookCodeScanningAlertCreatedPropAlertType",
+    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstanceType",
+    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationType",
+    "WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageType",
+    "WebhookCodeScanningAlertCreatedPropAlertPropRuleType",
+    "WebhookCodeScanningAlertCreatedPropAlertPropToolType",
+)

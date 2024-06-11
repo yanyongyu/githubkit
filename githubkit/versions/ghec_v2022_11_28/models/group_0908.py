@@ -9,38 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse403(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostResponse403"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[
-        List[ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems]
-    ] = Field(default=UNSET)
-
-
-class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"""
-
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    resource: Missing[str] = Field(default=UNSET)
-    field: Missing[str] = Field(default=UNSET)
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(
+        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#about-reactions) to add to the team discussion."
+    )
 
 
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse403)
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems)
+model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody)
 
-__all__ = (
-    "ProjectsColumnsCardsCardIdMovesPostResponse403",
-    "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems",
-)
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody",)

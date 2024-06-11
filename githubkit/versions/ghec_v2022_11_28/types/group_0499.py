@@ -9,29 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0414 import DiscussionType
-from .group_0415 import WebhooksCommentType
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0192 import DeploymentType
+from .group_0319 import PullRequestType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookDiscussionCommentDeletedType(TypedDict):
-    """discussion_comment deleted event"""
+class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
+    """deployment protection rule requested event"""
 
-    action: Literal["deleted"]
-    comment: WebhooksCommentType
-    discussion: DiscussionType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    action: Literal["requested"]
+    environment: NotRequired[str]
+    event: NotRequired[str]
+    deployment_callback_url: NotRequired[str]
+    deployment: NotRequired[DeploymentType]
+    pull_requests: NotRequired[List[PullRequestType]]
+    repository: NotRequired[RepositoryWebhooksType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    installation: NotRequired[SimpleInstallationType]
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookDiscussionCommentDeletedType",)
+__all__ = ("WebhookDeploymentProtectionRuleRequestedType",)

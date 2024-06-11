@@ -18,68 +18,93 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
+
+class WebhooksReview(GitHubModel):
+    """WebhooksReview
+
+    The review that was affected.
+    """
+
+    links: WebhooksReviewPropLinks = Field(alias="_links")
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
+    )
+    body: Union[str, None] = Field(description="The text of the review.")
+    commit_id: str = Field(description="A commit SHA for the review.")
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the review")
+    node_id: str = Field()
+    pull_request_url: str = Field()
+    state: str = Field()
+    submitted_at: Union[datetime, None] = Field()
+    user: Union[WebhooksReviewPropUser, None] = Field(title="User")
 
 
-class SecretScanningAlertWebhook(GitHubModel):
-    """SecretScanningAlertWebhook"""
+class WebhooksReviewPropUser(GitHubModel):
+    """User"""
 
-    number: Missing[int] = Field(
-        default=UNSET, description="The security alert number."
-    )
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    updated_at: Missing[Union[None, datetime]] = Field(default=UNSET)
-    url: Missing[str] = Field(
-        default=UNSET, description="The REST API URL of the alert resource."
-    )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The GitHub URL of the alert resource."
-    )
-    locations_url: Missing[str] = Field(
-        default=UNSET,
-        description="The REST API URL of the code locations for this alert.",
-    )
-    resolution: Missing[
-        Union[
-            None,
-            Literal[
-                "false_positive",
-                "wont_fix",
-                "revoked",
-                "used_in_tests",
-                "pattern_deleted",
-                "pattern_edited",
-            ],
-        ]
-    ] = Field(default=UNSET, description="The reason for resolving the alert.")
-    resolved_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET, description="An optional comment to resolve an alert."
-    )
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
-    )
-    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
-        default=UNSET, description="The token status as of the latest validity check."
-    )
-    push_protection_bypassed: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether push protection was bypassed for the detected secret.",
-    )
-    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(SecretScanningAlertWebhook)
+class WebhooksReviewPropLinks(GitHubModel):
+    """WebhooksReviewPropLinks"""
 
-__all__ = ("SecretScanningAlertWebhook",)
+    html: WebhooksReviewPropLinksPropHtml = Field(title="Link")
+    pull_request: WebhooksReviewPropLinksPropPullRequest = Field(title="Link")
+
+
+class WebhooksReviewPropLinksPropHtml(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+class WebhooksReviewPropLinksPropPullRequest(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+model_rebuild(WebhooksReview)
+model_rebuild(WebhooksReviewPropUser)
+model_rebuild(WebhooksReviewPropLinks)
+model_rebuild(WebhooksReviewPropLinksPropHtml)
+model_rebuild(WebhooksReviewPropLinksPropPullRequest)
+
+__all__ = (
+    "WebhooksReview",
+    "WebhooksReviewPropUser",
+    "WebhooksReviewPropLinks",
+    "WebhooksReviewPropLinksPropHtml",
+    "WebhooksReviewPropLinksPropPullRequest",
+)

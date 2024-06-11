@@ -31,6 +31,7 @@ class HookDeliveryType(TypedDict):
     action: Union[str, None]
     installation_id: Union[int, None]
     repository_id: Union[int, None]
+    throttled_at: NotRequired[Union[datetime, None]]
     url: NotRequired[str]
     request: HookDeliveryPropRequestType
     response: HookDeliveryPropResponseType

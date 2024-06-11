@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -18,94 +17,45 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0536 import (
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-    WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissions,
-)
+from .group_0015 import Installation
+from .group_0402 import EnterpriseWebhooks
+from .group_0405 import RepositoryWebhooks
+from .group_0406 import SimpleUserWebhooks
+from .group_0421 import WebhooksRepositoriesItems
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubApp(GitHubModel):
-    """App
+class WebhookInstallationUnsuspend(GitHubModel):
+    """installation unsuspend event"""
 
-    GitHub apps are a new way to extend GitHub. They can be installed directly on
-    organizations and user accounts and granted access to specific repositories.
-    They come with granular permissions and built-in webhooks. GitHub apps are first
-    class actors within GitHub.
-    """
-
-    created_at: Union[datetime, None] = Field()
-    description: Union[str, None] = Field()
-    events: Missing[
-        List[
-            Literal[
-                "branch_protection_rule",
-                "check_run",
-                "check_suite",
-                "code_scanning_alert",
-                "commit_comment",
-                "content_reference",
-                "create",
-                "delete",
-                "deployment",
-                "deployment_review",
-                "deployment_status",
-                "deploy_key",
-                "discussion",
-                "discussion_comment",
-                "fork",
-                "gollum",
-                "issues",
-                "issue_comment",
-                "label",
-                "member",
-                "membership",
-                "milestone",
-                "organization",
-                "org_block",
-                "page_build",
-                "project",
-                "project_card",
-                "project_column",
-                "public",
-                "pull_request",
-                "pull_request_review",
-                "pull_request_review_comment",
-                "push",
-                "registry_package",
-                "release",
-                "repository",
-                "repository_dispatch",
-                "secret_scanning_alert",
-                "star",
-                "status",
-                "team",
-                "team_add",
-                "watch",
-                "workflow_dispatch",
-                "workflow_run",
-                "reminder",
-                "pull_request_review_thread",
-            ]
-        ]
-    ] = Field(default=UNSET, description="The list of events for the GitHub app")
-    external_url: Union[str, None] = Field()
-    html_url: str = Field()
-    id: Union[int, None] = Field(description="Unique identifier of the GitHub app")
-    name: str = Field(description="The name of the GitHub app")
-    node_id: str = Field()
-    owner: Union[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwner,
-        None,
-    ] = Field(title="User")
-    permissions: Missing[
-        WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
-    ] = Field(default=UNSET, description="The set of permissions for the GitHub app")
-    slug: Missing[str] = Field(
-        default=UNSET, description="The slug name of the GitHub app"
+    action: Literal["unsuspend"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
     )
-    updated_at: Union[datetime, None] = Field()
+    installation: Installation = Field(title="Installation", description="Installation")
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repositories: Missing[List[WebhooksRepositoriesItems]] = Field(
+        default=UNSET,
+        description="An array of repository objects that the installation can access.",
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    requester: Missing[None] = Field(default=UNSET)
+    sender: SimpleUserWebhooks = Field(
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
 
 
-model_rebuild(WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubApp)
+model_rebuild(WebhookInstallationUnsuspend)
 
-__all__ = ("WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubApp",)
+__all__ = ("WebhookInstallationUnsuspend",)

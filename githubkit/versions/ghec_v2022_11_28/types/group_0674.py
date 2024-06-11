@@ -12,18 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0438 import PullRequestWebhookType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0442 import PullRequestWebhookType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookPullRequestReadyForReviewType(TypedDict):
-    """pull_request ready_for_review event"""
+class WebhookPullRequestConvertedToDraftType(TypedDict):
+    """pull_request converted_to_draft event"""
 
-    action: Literal["ready_for_review"]
+    action: Literal["converted_to_draft"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
@@ -33,4 +33,4 @@ class WebhookPullRequestReadyForReviewType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookPullRequestReadyForReviewType",)
+__all__ = ("WebhookPullRequestConvertedToDraftType",)

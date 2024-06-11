@@ -26,10 +26,10 @@ from .group_0371 import SimpleUserWebhooks
 from .group_0369 import OrganizationSimpleWebhooks
 
 
-class WebhookWorkflowJobQueued(GitHubModel):
-    """workflow_job queued event"""
+class WebhookWorkflowJobWaiting(GitHubModel):
+    """workflow_job waiting event"""
 
-    action: Literal["queued"] = Field()
+    action: Literal["waiting"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,7 +53,7 @@ class WebhookWorkflowJobQueued(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    workflow_job: WebhookWorkflowJobQueuedPropWorkflowJob = Field()
+    workflow_job: WebhookWorkflowJobWaitingPropWorkflowJob = Field()
     deployment: Missing[Deployment] = Field(
         default=UNSET,
         title="Deployment",
@@ -61,8 +61,8 @@ class WebhookWorkflowJobQueued(GitHubModel):
     )
 
 
-class WebhookWorkflowJobQueuedPropWorkflowJob(GitHubModel):
-    """WebhookWorkflowJobQueuedPropWorkflowJob"""
+class WebhookWorkflowJobWaitingPropWorkflowJob(GitHubModel):
+    """WebhookWorkflowJobWaitingPropWorkflowJob"""
 
     check_run_url: str = Field()
     completed_at: Union[str, None] = Field()
@@ -82,14 +82,14 @@ class WebhookWorkflowJobQueuedPropWorkflowJob(GitHubModel):
     runner_id: Union[int, None] = Field()
     runner_name: Union[str, None] = Field()
     started_at: datetime = Field()
-    status: Literal["queued", "in_progress", "completed", "waiting"] = Field()
     head_branch: Union[str, None] = Field(description="The name of the current branch.")
     workflow_name: Union[str, None] = Field(description="The name of the workflow.")
-    steps: List[WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems] = Field()
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field()
+    steps: List[WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems] = Field()
     url: str = Field()
 
 
-class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems(GitHubModel):
+class WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems(GitHubModel):
     """Workflow Step"""
 
     completed_at: Union[str, None] = Field()
@@ -99,15 +99,17 @@ class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems(GitHubModel):
     name: str = Field()
     number: int = Field()
     started_at: Union[str, None] = Field()
-    status: Literal["completed", "in_progress", "queued", "pending"] = Field()
+    status: Literal["completed", "in_progress", "queued", "pending", "waiting"] = (
+        Field()
+    )
 
 
-model_rebuild(WebhookWorkflowJobQueued)
-model_rebuild(WebhookWorkflowJobQueuedPropWorkflowJob)
-model_rebuild(WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems)
+model_rebuild(WebhookWorkflowJobWaiting)
+model_rebuild(WebhookWorkflowJobWaitingPropWorkflowJob)
+model_rebuild(WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems)
 
 __all__ = (
-    "WebhookWorkflowJobQueued",
-    "WebhookWorkflowJobQueuedPropWorkflowJob",
-    "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems",
+    "WebhookWorkflowJobWaiting",
+    "WebhookWorkflowJobWaitingPropWorkflowJob",
+    "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems",
 )

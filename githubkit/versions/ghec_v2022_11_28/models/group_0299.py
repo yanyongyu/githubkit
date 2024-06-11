@@ -9,34 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0300 import TimelineCrossReferencedEventPropSource
 
+class Label(GitHubModel):
+    """Label
 
-class TimelineCrossReferencedEvent(GitHubModel):
-    """Timeline Cross Referenced Event
-
-    Timeline Cross Referenced Event
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    event: Literal["cross-referenced"] = Field()
-    actor: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field(description="URL for the label")
+    name: str = Field(description="The name of the label.")
+    description: Union[str, None] = Field()
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
     )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    source: TimelineCrossReferencedEventPropSource = Field()
+    default: bool = Field()
 
 
-model_rebuild(TimelineCrossReferencedEvent)
+model_rebuild(Label)
 
-__all__ = ("TimelineCrossReferencedEvent",)
+__all__ = ("Label",)

@@ -12,109 +12,77 @@ from __future__ import annotations
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
+from .group_0430 import WebhooksPreviousMarketplacePurchaseType
 
 
-class WebhookMetaDeletedType(TypedDict):
-    """meta deleted event"""
+class WebhookMarketplacePurchasePendingChangeCancelledType(TypedDict):
+    """marketplace_purchase pending_change_cancelled event"""
 
-    action: Literal["deleted"]
+    action: Literal["pending_change_cancelled"]
+    effective_date: str
     enterprise: NotRequired[EnterpriseWebhooksType]
-    hook: WebhookMetaDeletedPropHookType
-    hook_id: int
     installation: NotRequired[SimpleInstallationType]
+    marketplace_purchase: (
+        WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType
+    )
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
-    sender: NotRequired[SimpleUserWebhooksType]
+    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserWebhooksType
 
 
-class WebhookMetaDeletedPropHookType(TypedDict):
-    """WebhookMetaDeletedPropHook
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType(
+    TypedDict
+):
+    """Marketplace Purchase"""
 
-    The modified webhook. This will contain different keys based on the type of
-    webhook it is: repository, organization, business, app, or GitHub Marketplace.
+    account: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType
+    billing_cycle: str
+    free_trial_ends_on: None
+    next_billing_date: Union[str, None]
+    on_free_trial: bool
+    plan: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType
+    unit_count: int
+
+
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccou
+    nt
     """
 
-    active: bool
-    config: WebhookMetaDeletedPropHookPropConfigType
-    created_at: str
-    events: List[
-        Literal[
-            "*",
-            "branch_protection_rule",
-            "check_run",
-            "check_suite",
-            "code_scanning_alert",
-            "commit_comment",
-            "create",
-            "delete",
-            "deployment",
-            "deployment_status",
-            "deploy_key",
-            "discussion",
-            "discussion_comment",
-            "fork",
-            "gollum",
-            "issues",
-            "issue_comment",
-            "label",
-            "member",
-            "membership",
-            "meta",
-            "milestone",
-            "organization",
-            "org_block",
-            "package",
-            "page_build",
-            "project",
-            "project_card",
-            "project_column",
-            "public",
-            "pull_request",
-            "pull_request_review",
-            "pull_request_review_comment",
-            "pull_request_review_thread",
-            "push",
-            "registry_package",
-            "release",
-            "repository",
-            "repository_import",
-            "repository_vulnerability_alert",
-            "secret_scanning_alert",
-            "secret_scanning_alert_location",
-            "security_and_analysis",
-            "star",
-            "status",
-            "team",
-            "team_add",
-            "watch",
-            "workflow_job",
-            "workflow_run",
-            "repository_dispatch",
-            "projects_v2_item",
-        ]
-    ]
     id: int
-    name: str
+    login: str
+    node_id: str
+    organization_billing_email: Union[str, None]
     type: str
-    updated_at: str
 
 
-class WebhookMetaDeletedPropHookPropConfigType(TypedDict):
-    """WebhookMetaDeletedPropHookPropConfig"""
+class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType(
+    TypedDict
+):
+    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan"""
 
-    content_type: Literal["json", "form"]
-    insecure_ssl: str
-    secret: NotRequired[str]
-    url: str
+    bullets: List[str]
+    description: str
+    has_free_trial: bool
+    id: int
+    monthly_price_in_cents: int
+    name: str
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    unit_name: Union[str, None]
+    yearly_price_in_cents: int
 
 
 __all__ = (
-    "WebhookMetaDeletedType",
-    "WebhookMetaDeletedPropHookType",
-    "WebhookMetaDeletedPropHookPropConfigType",
+    "WebhookMarketplacePurchasePendingChangeCancelledType",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType",
+    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType",
 )

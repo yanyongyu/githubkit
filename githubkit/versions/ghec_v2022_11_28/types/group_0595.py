@@ -9,80 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
-from .group_0426 import WebhooksPreviousMarketplacePurchaseType
+from .group_0420 import WebhooksLabelType
+from .group_0425 import WebhooksIssueType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookMarketplacePurchasePendingChangeCancelledType(TypedDict):
-    """marketplace_purchase pending_change_cancelled event"""
+class WebhookIssuesUnlabeledType(TypedDict):
+    """issues unlabeled event"""
 
-    action: Literal["pending_change_cancelled"]
-    effective_date: str
+    action: Literal["unlabeled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: (
-        WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType
-    )
+    issue: WebhooksIssueType
+    label: NotRequired[WebhooksLabelType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType(
-    TypedDict
-):
-    """Marketplace Purchase"""
-
-    account: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType
-    billing_cycle: str
-    free_trial_ends_on: None
-    next_billing_date: Union[str, None]
-    on_free_trial: bool
-    plan: WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType
-    unit_count: int
-
-
-class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccou
-    nt
-    """
-
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlan"""
-
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
-
-
-__all__ = (
-    "WebhookMarketplacePurchasePendingChangeCancelledType",
-    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchaseType",
-    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropAccountType",
-    "WebhookMarketplacePurchasePendingChangeCancelledPropMarketplacePurchasePropPlanType",
-)
+__all__ = ("WebhookIssuesUnlabeledType",)

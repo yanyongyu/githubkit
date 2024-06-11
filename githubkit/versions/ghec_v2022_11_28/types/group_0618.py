@@ -12,24 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
-from .group_0619 import WebhookPackagePublishedPropPackageType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0433 import WebhooksMilestone3Type
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookPackagePublishedType(TypedDict):
-    """package published event"""
+class WebhookMilestoneOpenedType(TypedDict):
+    """milestone opened event"""
 
-    action: Literal["published"]
+    action: Literal["opened"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    milestone: WebhooksMilestone3Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    package: WebhookPackagePublishedPropPackageType
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookPackagePublishedType",)
+__all__ = ("WebhookMilestoneOpenedType",)

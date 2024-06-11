@@ -13,14 +13,25 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class ProjectsColumnsColumnIdCardsPostResponse503Type(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostResponse503"""
 
-    Actions OIDC subject customization for a repository
-    """
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    errors: NotRequired[
+        List[ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType]
+    ]
 
-    use_default: bool
-    include_claim_keys: NotRequired[List[str]]
+
+class ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems"""
+
+    code: NotRequired[str]
+    message: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",)
+__all__ = (
+    "ProjectsColumnsColumnIdCardsPostResponse503Type",
+    "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType",
+)

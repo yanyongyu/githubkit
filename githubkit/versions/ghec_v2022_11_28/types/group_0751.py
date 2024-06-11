@@ -9,26 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0078 import SecurityAndAnalysisType
 
 
-class WebhookStarDeletedType(TypedDict):
-    """star deleted event"""
+class WebhookSecurityAndAnalysisPropChangesPropFromType(TypedDict):
+    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-    starred_at: None
+    security_and_analysis: NotRequired[Union[SecurityAndAnalysisType, None]]
 
 
-__all__ = ("WebhookStarDeletedType",)
+__all__ = ("WebhookSecurityAndAnalysisPropChangesPropFromType",)

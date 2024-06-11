@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -17,18 +18,40 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0080 import OrganizationCustomRepositoryRole
+
+class OrgsOrgCodespacesSecretsGetResponse200(GitHubModel):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
+
+    total_count: int = Field()
+    secrets: List[CodespacesOrgSecret] = Field()
 
 
-class OrgsOrgCustomRepositoryRolesGetResponse200(GitHubModel):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+class CodespacesOrgSecret(GitHubModel):
+    """Codespaces Secret
 
-    total_count: Missing[int] = Field(
-        default=UNSET, description="The number of custom roles in this organization"
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str = Field(description="The name of the secret")
+    created_at: datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    custom_roles: Missing[List[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
+    updated_at: datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that the secret is visible to"
+    )
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
+    )
 
 
-model_rebuild(OrgsOrgCustomRepositoryRolesGetResponse200)
+model_rebuild(OrgsOrgCodespacesSecretsGetResponse200)
+model_rebuild(CodespacesOrgSecret)
 
-__all__ = ("OrgsOrgCustomRepositoryRolesGetResponse200",)
+__all__ = (
+    "OrgsOrgCodespacesSecretsGetResponse200",
+    "CodespacesOrgSecret",
+)

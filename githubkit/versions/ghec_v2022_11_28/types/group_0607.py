@@ -9,27 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0422 import WebhooksMilestoneType
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0416 import WebhooksUserType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookMilestoneDeletedType(TypedDict):
-    """milestone deleted event"""
+class WebhookMemberEditedType(TypedDict):
+    """member edited event"""
 
-    action: Literal["deleted"]
+    action: Literal["edited"]
+    changes: WebhookMemberEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    milestone: WebhooksMilestoneType
+    member: Union[WebhooksUserType, None]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookMilestoneDeletedType",)
+class WebhookMemberEditedPropChangesType(TypedDict):
+    """WebhookMemberEditedPropChanges
+
+    The changes to the collaborator permissions
+    """
+
+    old_permission: NotRequired[WebhookMemberEditedPropChangesPropOldPermissionType]
+    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionType]
+
+
+class WebhookMemberEditedPropChangesPropOldPermissionType(TypedDict):
+    """WebhookMemberEditedPropChangesPropOldPermission"""
+
+    from_: str
+
+
+class WebhookMemberEditedPropChangesPropPermissionType(TypedDict):
+    """WebhookMemberEditedPropChangesPropPermission"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "WebhookMemberEditedType",
+    "WebhookMemberEditedPropChangesType",
+    "WebhookMemberEditedPropChangesPropOldPermissionType",
+    "WebhookMemberEditedPropChangesPropPermissionType",
+)

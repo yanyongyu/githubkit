@@ -9,13 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse201(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostResponse201"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody(
+    GitHubModel
+):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPos
+    tBody
+    """
+
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(
+        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#about-reactions) to add to the team discussion comment."
+    )
 
 
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse201)
+model_rebuild(
+    OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody
+)
 
-__all__ = ("ProjectsColumnsCardsCardIdMovesPostResponse201",)
+__all__ = (
+    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody",
+)

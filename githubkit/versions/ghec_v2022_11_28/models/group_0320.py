@@ -18,11 +18,31 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0016 import LicenseSimple
+
+class PullRequestPropLabelsItems(GitHubModel):
+    """PullRequestPropLabelsItems"""
+
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    name: str = Field()
+    description: Union[str, None] = Field()
+    color: str = Field()
+    default: bool = Field()
 
 
-class PullRequestPropBasePropRepo(GitHubModel):
-    """PullRequestPropBasePropRepo"""
+class PullRequestPropHead(GitHubModel):
+    """PullRequestPropHead"""
+
+    label: Union[str, None] = Field()
+    ref: str = Field()
+    repo: Union[PullRequestPropHeadPropRepo, None] = Field()
+    sha: str = Field()
+    user: Union[PullRequestPropHeadPropUser, None] = Field()
+
+
+class PullRequestPropHeadPropRepo(GitHubModel):
+    """PullRequestPropHeadPropRepo"""
 
     archive_url: str = Field()
     assignees_url: str = Field()
@@ -47,7 +67,6 @@ class PullRequestPropBasePropRepo(GitHubModel):
     hooks_url: str = Field()
     html_url: str = Field()
     id: int = Field()
-    is_template: Missing[bool] = Field(default=UNSET)
     node_id: str = Field()
     issue_comment_url: str = Field()
     issue_events_url: str = Field()
@@ -59,7 +78,7 @@ class PullRequestPropBasePropRepo(GitHubModel):
     milestones_url: str = Field()
     name: str = Field()
     notifications_url: str = Field()
-    owner: PullRequestPropBasePropRepoPropOwner = Field()
+    owner: PullRequestPropHeadPropRepoPropOwner = Field()
     private: bool = Field()
     pulls_url: str = Field()
     releases_url: str = Field()
@@ -94,14 +113,16 @@ class PullRequestPropBasePropRepo(GitHubModel):
     mirror_url: Union[str, None] = Field()
     open_issues: int = Field()
     open_issues_count: int = Field()
-    permissions: Missing[PullRequestPropBasePropRepoPropPermissions] = Field(
+    permissions: Missing[PullRequestPropHeadPropRepoPropPermissions] = Field(
         default=UNSET
     )
     temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
     allow_merge_commit: Missing[bool] = Field(default=UNSET)
     allow_squash_merge: Missing[bool] = Field(default=UNSET)
     allow_rebase_merge: Missing[bool] = Field(default=UNSET)
-    license_: Union[None, LicenseSimple] = Field(alias="license")
+    license_: Union[PullRequestPropHeadPropRepoPropLicense, None] = Field(
+        alias="license"
+    )
     pushed_at: datetime = Field()
     size: int = Field()
     ssh_url: str = Field()
@@ -113,11 +134,12 @@ class PullRequestPropBasePropRepo(GitHubModel):
     created_at: datetime = Field()
     updated_at: datetime = Field()
     allow_forking: Missing[bool] = Field(default=UNSET)
+    is_template: Missing[bool] = Field(default=UNSET)
     web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
 
 
-class PullRequestPropBasePropRepoPropOwner(GitHubModel):
-    """PullRequestPropBasePropRepoPropOwner"""
+class PullRequestPropHeadPropRepoPropOwner(GitHubModel):
+    """PullRequestPropHeadPropRepoPropOwner"""
 
     avatar_url: str = Field()
     events_url: str = Field()
@@ -139,8 +161,8 @@ class PullRequestPropBasePropRepoPropOwner(GitHubModel):
     url: str = Field()
 
 
-class PullRequestPropBasePropRepoPropPermissions(GitHubModel):
-    """PullRequestPropBasePropRepoPropPermissions"""
+class PullRequestPropHeadPropRepoPropPermissions(GitHubModel):
+    """PullRequestPropHeadPropRepoPropPermissions"""
 
     admin: bool = Field()
     maintain: Missing[bool] = Field(default=UNSET)
@@ -149,12 +171,53 @@ class PullRequestPropBasePropRepoPropPermissions(GitHubModel):
     pull: bool = Field()
 
 
-model_rebuild(PullRequestPropBasePropRepo)
-model_rebuild(PullRequestPropBasePropRepoPropOwner)
-model_rebuild(PullRequestPropBasePropRepoPropPermissions)
+class PullRequestPropHeadPropRepoPropLicense(GitHubModel):
+    """PullRequestPropHeadPropRepoPropLicense"""
+
+    key: str = Field()
+    name: str = Field()
+    url: Union[str, None] = Field()
+    spdx_id: Union[str, None] = Field()
+    node_id: str = Field()
+
+
+class PullRequestPropHeadPropUser(GitHubModel):
+    """PullRequestPropHeadPropUser"""
+
+    avatar_url: str = Field()
+    events_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    html_url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    login: str = Field()
+    organizations_url: str = Field()
+    received_events_url: str = Field()
+    repos_url: str = Field()
+    site_admin: bool = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    type: str = Field()
+    url: str = Field()
+
+
+model_rebuild(PullRequestPropLabelsItems)
+model_rebuild(PullRequestPropHead)
+model_rebuild(PullRequestPropHeadPropRepo)
+model_rebuild(PullRequestPropHeadPropRepoPropOwner)
+model_rebuild(PullRequestPropHeadPropRepoPropPermissions)
+model_rebuild(PullRequestPropHeadPropRepoPropLicense)
+model_rebuild(PullRequestPropHeadPropUser)
 
 __all__ = (
-    "PullRequestPropBasePropRepo",
-    "PullRequestPropBasePropRepoPropOwner",
-    "PullRequestPropBasePropRepoPropPermissions",
+    "PullRequestPropLabelsItems",
+    "PullRequestPropHead",
+    "PullRequestPropHeadPropRepo",
+    "PullRequestPropHeadPropRepoPropOwner",
+    "PullRequestPropHeadPropRepoPropPermissions",
+    "PullRequestPropHeadPropRepoPropLicense",
+    "PullRequestPropHeadPropUser",
 )

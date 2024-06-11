@@ -18,24 +18,14 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+class ProjectsProjectIdPatchResponse403(GitHubModel):
+    """ProjectsProjectIdPatchResponse403"""
 
-    name: str = Field(description="The name of the new runner.")
-    runner_group_id: int = Field(
-        description="The ID of the runner group to register the runner to."
-    )
-    labels: List[str] = Field(
-        max_length=100,
-        min_length=1,
-        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
-    )
-    work_folder: Missing[str] = Field(
-        default=UNSET,
-        description="The working directory to be used for job execution, relative to the runner install directory.",
-    )
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[List[str]] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody)
+model_rebuild(ProjectsProjectIdPatchResponse403)
 
-__all__ = ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody",)
+__all__ = ("ProjectsProjectIdPatchResponse403",)

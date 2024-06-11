@@ -9,11 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
+class OrgsOrgInvitationsPostBodyType(TypedDict):
+    """OrgsOrgInvitationsPostBody"""
+
+    invitee_id: NotRequired[int]
+    email: NotRequired[str]
+    role: NotRequired[Literal["admin", "direct_member", "billing_manager", "reinstate"]]
+    team_ids: NotRequired[List[int]]
 
 
-__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1Type",)
+__all__ = ("OrgsOrgInvitationsPostBodyType",)

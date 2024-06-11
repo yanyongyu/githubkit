@@ -9,27 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0433 import WebhooksProjectType
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0436 import WebhooksProjectCardType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectCreatedType(TypedDict):
-    """project created event"""
+class WebhookProjectCardEditedType(TypedDict):
+    """project_card edited event"""
 
-    action: Literal["created"]
+    action: Literal["edited"]
+    changes: WebhookProjectCardEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhooksProjectType
+    project_card: WebhooksProjectCardType
     repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookProjectCreatedType",)
+class WebhookProjectCardEditedPropChangesType(TypedDict):
+    """WebhookProjectCardEditedPropChanges"""
+
+    note: WebhookProjectCardEditedPropChangesPropNoteType
+
+
+class WebhookProjectCardEditedPropChangesPropNoteType(TypedDict):
+    """WebhookProjectCardEditedPropChangesPropNote"""
+
+    from_: Union[str, None]
+
+
+__all__ = (
+    "WebhookProjectCardEditedType",
+    "WebhookProjectCardEditedPropChangesType",
+    "WebhookProjectCardEditedPropChangesPropNoteType",
+)

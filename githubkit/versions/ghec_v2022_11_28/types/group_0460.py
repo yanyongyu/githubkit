@@ -12,35 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
-from .group_0407 import CheckRunWithSimpleCheckSuiteType
+from .group_0409 import ExemptionRequestType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookCheckRunRequestedActionType(TypedDict):
-    """Check Run Requested Action Event"""
+class WebhookExemptionRequestCancelledType(TypedDict):
+    """Exemption request cancellation event"""
 
-    action: Literal["requested_action"]
-    check_run: CheckRunWithSimpleCheckSuiteType
+    action: Literal["cancelled"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    requested_action: NotRequired[WebhookCheckRunRequestedActionPropRequestedActionType]
+    repository: NotRequired[RepositoryWebhooksType]
+    exemption_request: ExemptionRequestType
     sender: SimpleUserWebhooksType
 
 
-class WebhookCheckRunRequestedActionPropRequestedActionType(TypedDict):
-    """WebhookCheckRunRequestedActionPropRequestedAction
-
-    The action requested by the user.
-    """
-
-    identifier: NotRequired[str]
-
-
-__all__ = (
-    "WebhookCheckRunRequestedActionType",
-    "WebhookCheckRunRequestedActionPropRequestedActionType",
-)
+__all__ = ("WebhookExemptionRequestCancelledType",)

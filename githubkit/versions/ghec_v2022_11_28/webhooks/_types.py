@@ -142,6 +142,9 @@ from .repository_vulnerability_alert import Event as RepositoryVulnerabilityAler
 from .branch_protection_rule import action_types as branch_protection_rule_action_types
 from .custom_property_values import action_types as custom_property_values_action_types
 from .branch_protection_configuration import Event as BranchProtectionConfigurationEvent
+from .exemption_request_secret_scanning import (
+    Event as ExemptionRequestSecretScanningEvent,
+)
 from .github_app_authorization import (
     action_types as github_app_authorization_action_types,
 )
@@ -169,10 +172,14 @@ from .secret_scanning_alert_location import (
 from .branch_protection_configuration import (
     action_types as branch_protection_configuration_action_types,
 )
+from .exemption_request_secret_scanning import (
+    action_types as exemption_request_secret_scanning_action_types,
+)
 
 WebhookEvent = Union[
     BranchProtectionConfigurationEvent,
     BranchProtectionRuleEvent,
+    ExemptionRequestSecretScanningEvent,
     CheckRunEvent,
     CheckSuiteEvent,
     CodeScanningAlertEvent,
@@ -247,6 +254,7 @@ WebhookEvent = Union[
 webhook_action_types = {
     "branch_protection_configuration": branch_protection_configuration_action_types,
     "branch_protection_rule": branch_protection_rule_action_types,
+    "exemption_request_secret_scanning": exemption_request_secret_scanning_action_types,
     "check_run": check_run_action_types,
     "check_suite": check_suite_action_types,
     "code_scanning_alert": code_scanning_alert_action_types,
@@ -321,6 +329,7 @@ webhook_action_types = {
 webhook_event_types = {
     "branch_protection_configuration": BranchProtectionConfigurationEvent,
     "branch_protection_rule": BranchProtectionRuleEvent,
+    "exemption_request_secret_scanning": ExemptionRequestSecretScanningEvent,
     "check_run": CheckRunEvent,
     "check_suite": CheckSuiteEvent,
     "code_scanning_alert": CodeScanningAlertEvent,

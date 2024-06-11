@@ -9,27 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0434 import WebhooksProjectColumnType
-from .group_0402 import OrganizationSimpleWebhooksType
+from typing_extensions import TypedDict
 
 
-class WebhookProjectColumnCreatedType(TypedDict):
-    """project_column created event"""
+class WebhookPingFormEncodedType(TypedDict):
+    """WebhookPingFormEncoded
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserWebhooksType]
+    The webhooks ping payload encoded with URL encoding.
+    """
+
+    payload: str
 
 
-__all__ = ("WebhookProjectColumnCreatedType",)
+__all__ = ("WebhookPingFormEncodedType",)

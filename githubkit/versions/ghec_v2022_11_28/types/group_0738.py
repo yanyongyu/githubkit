@@ -12,24 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0447 import WebhooksSecurityAdvisoryType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0449 import WebhooksAlertType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookSecurityAdvisoryPublishedType(TypedDict):
-    """security_advisory published event"""
+class WebhookRepositoryVulnerabilityAlertReopenType(TypedDict):
+    """repository_vulnerability_alert reopen event"""
 
-    action: Literal["published"]
+    action: Literal["reopen"]
+    alert: WebhooksAlertType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    security_advisory: WebhooksSecurityAdvisoryType
-    sender: NotRequired[SimpleUserWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookSecurityAdvisoryPublishedType",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertReopenType",)

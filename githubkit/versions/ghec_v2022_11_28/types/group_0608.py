@@ -9,63 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0422 import WebhooksMilestoneType
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0416 import WebhooksUserType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookMilestoneEditedType(TypedDict):
-    """milestone edited event"""
+class WebhookMemberRemovedType(TypedDict):
+    """member removed event"""
 
-    action: Literal["edited"]
-    changes: WebhookMilestoneEditedPropChangesType
+    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    milestone: WebhooksMilestoneType
+    member: Union[WebhooksUserType, None]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookMilestoneEditedPropChangesType(TypedDict):
-    """WebhookMilestoneEditedPropChanges
-
-    The changes to the milestone if the action was `edited`.
-    """
-
-    description: NotRequired[WebhookMilestoneEditedPropChangesPropDescriptionType]
-    due_on: NotRequired[WebhookMilestoneEditedPropChangesPropDueOnType]
-    title: NotRequired[WebhookMilestoneEditedPropChangesPropTitleType]
-
-
-class WebhookMilestoneEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDescription"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropDueOnType(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropDueOn"""
-
-    from_: str
-
-
-class WebhookMilestoneEditedPropChangesPropTitleType(TypedDict):
-    """WebhookMilestoneEditedPropChangesPropTitle"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookMilestoneEditedType",
-    "WebhookMilestoneEditedPropChangesType",
-    "WebhookMilestoneEditedPropChangesPropDescriptionType",
-    "WebhookMilestoneEditedPropChangesPropDueOnType",
-    "WebhookMilestoneEditedPropChangesPropTitleType",
-)
+__all__ = ("WebhookMemberRemovedType",)

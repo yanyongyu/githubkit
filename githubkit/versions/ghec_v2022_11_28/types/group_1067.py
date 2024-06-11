@@ -9,23 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class ReposOwnerRepoPullsPullNumberCodespacesPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
-
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    client_ip: NotRequired[str]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    multi_repo_permissions_opt_out: NotRequired[bool]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
-    display_name: NotRequired[str]
-    retention_period_minutes: NotRequired[int]
+from .group_1062 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberCodespacesPostBodyType",)
+class ReposOwnerRepoPagesPutBodyAnyof4Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof4"""
+
+    cname: NotRequired[Union[str, None]]
+    https_enforced: bool
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
+    public: NotRequired[bool]
+
+
+__all__ = ("ReposOwnerRepoPagesPutBodyAnyof4Type",)

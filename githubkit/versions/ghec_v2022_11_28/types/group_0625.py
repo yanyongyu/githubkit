@@ -10,22 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0401 import SimpleInstallationType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
-from .group_0431 import PersonalAccessTokenRequestType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0434 import WebhooksMembershipType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookPersonalAccessTokenRequestApprovedType(TypedDict):
-    """personal_access_token_request approved event"""
+class WebhookOrganizationRenamedType(TypedDict):
+    """organization renamed event"""
 
-    action: Literal["approved"]
-    personal_access_token_request: PersonalAccessTokenRequestType
+    action: Literal["renamed"]
+    changes: NotRequired[WebhookOrganizationRenamedPropChangesType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    membership: NotRequired[WebhooksMembershipType]
     organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
-    installation: SimpleInstallationType
 
 
-__all__ = ("WebhookPersonalAccessTokenRequestApprovedType",)
+class WebhookOrganizationRenamedPropChangesType(TypedDict):
+    """WebhookOrganizationRenamedPropChanges"""
+
+    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginType]
+
+
+class WebhookOrganizationRenamedPropChangesPropLoginType(TypedDict):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
+
+    from_: NotRequired[str]
+
+
+__all__ = (
+    "WebhookOrganizationRenamedType",
+    "WebhookOrganizationRenamedPropChangesType",
+    "WebhookOrganizationRenamedPropChangesPropLoginType",
+)

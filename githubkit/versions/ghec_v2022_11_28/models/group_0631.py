@@ -9,22 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union, Literal
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0632 import WebhookPackageUpdatedPropPackagePropPackageVersion
 
-class WebhookPingFormEncoded(GitHubModel):
-    """WebhookPingFormEncoded
 
-    The webhooks ping payload encoded with URL encoding.
+class WebhookPackageUpdatedPropPackage(GitHubModel):
+    """WebhookPackageUpdatedPropPackage
+
+    Information about the package.
     """
 
-    payload: str = Field(
-        description="A URL-encoded string of the ping JSON payload. The decoded payload is a JSON object."
-    )
+    created_at: str = Field()
+    description: Union[str, None] = Field()
+    ecosystem: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    name: str = Field()
+    namespace: str = Field()
+    owner: Union[WebhookPackageUpdatedPropPackagePropOwner, None] = Field(title="User")
+    package_type: str = Field()
+    package_version: WebhookPackageUpdatedPropPackagePropPackageVersion = Field()
+    registry: Union[WebhookPackageUpdatedPropPackagePropRegistry, None] = Field()
+    updated_at: str = Field()
 
 
-model_rebuild(WebhookPingFormEncoded)
+class WebhookPackageUpdatedPropPackagePropOwner(GitHubModel):
+    """User"""
 
-__all__ = ("WebhookPingFormEncoded",)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookPackageUpdatedPropPackagePropRegistry(GitHubModel):
+    """WebhookPackageUpdatedPropPackagePropRegistry"""
+
+    about_url: str = Field()
+    name: str = Field()
+    type: str = Field()
+    url: str = Field()
+    vendor: str = Field()
+
+
+model_rebuild(WebhookPackageUpdatedPropPackage)
+model_rebuild(WebhookPackageUpdatedPropPackagePropOwner)
+model_rebuild(WebhookPackageUpdatedPropPackagePropRegistry)
+
+__all__ = (
+    "WebhookPackageUpdatedPropPackage",
+    "WebhookPackageUpdatedPropPackagePropOwner",
+    "WebhookPackageUpdatedPropPackagePropRegistry",
+)

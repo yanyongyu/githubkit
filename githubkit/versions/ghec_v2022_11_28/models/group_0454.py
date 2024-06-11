@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,47 +17,66 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0405 import WebhooksRule
-from .group_0400 import EnterpriseWebhooks
-from .group_0401 import SimpleInstallation
-from .group_0403 import RepositoryWebhooks
-from .group_0404 import SimpleUserWebhooks
-from .group_0402 import OrganizationSimpleWebhooks
 
+class WebhooksTeam1(GitHubModel):
+    """Team
 
-class WebhookBranchProtectionRuleDeleted(GitHubModel):
-    """branch protection rule deleted event"""
+    Groups of organization members that gives permissions on specified repositories.
+    """
 
-    action: Literal["deleted"] = Field()
-    enterprise: Missing[EnterpriseWebhooks] = Field(
+    deleted: Missing[bool] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Description of the team"
+    )
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field(description="Unique identifier of the team")
+    members_url: Missing[str] = Field(default=UNSET)
+    name: str = Field(description="Name of the team")
+    node_id: Missing[str] = Field(default=UNSET)
+    parent: Missing[Union[WebhooksTeam1PropParent, None]] = Field(default=UNSET)
+    permission: Missing[str] = Field(
         default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+        description="Permission that the team will have for its repositories",
     )
-    installation: Missing[SimpleInstallation] = Field(
+    privacy: Missing[Literal["open", "closed", "secret"]] = Field(default=UNSET)
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
         default=UNSET,
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+        description="Whether team members will receive notifications when their team is @mentioned",
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    rule: WebhooksRule = Field(
-        title="branch protection rule",
-        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/enterprise-cloud@latest//github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
-    )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
+    repositories_url: Missing[str] = Field(default=UNSET)
+    slug: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET, description="URL for the team")
 
 
-model_rebuild(WebhookBranchProtectionRuleDeleted)
+class WebhooksTeam1PropParent(GitHubModel):
+    """WebhooksTeam1PropParent"""
 
-__all__ = ("WebhookBranchProtectionRuleDeleted",)
+    description: Union[str, None] = Field(description="Description of the team")
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the team")
+    members_url: str = Field()
+    name: str = Field(description="Name of the team")
+    node_id: str = Field()
+    permission: str = Field(
+        description="Permission that the team will have for its repositories"
+    )
+    privacy: Literal["open", "closed", "secret"] = Field()
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"] = (
+        Field(
+            description="Whether team members will receive notifications when their team is @mentioned"
+        )
+    )
+    repositories_url: str = Field()
+    slug: str = Field()
+    url: str = Field(description="URL for the team")
+
+
+model_rebuild(WebhooksTeam1)
+model_rebuild(WebhooksTeam1PropParent)
+
+__all__ = (
+    "WebhooksTeam1",
+    "WebhooksTeam1PropParent",
+)

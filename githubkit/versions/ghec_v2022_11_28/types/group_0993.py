@@ -9,20 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBody"""
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
 
-    state: Literal["dismissed", "open"]
-    dismissed_reason: NotRequired[
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ]
+    total_count: int
+    devcontainers: List[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType
     ]
-    dismissed_comment: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType",)
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
+
+    path: str
+    name: NotRequired[str]
+    display_name: NotRequired[str]
+
+
+__all__ = (
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200Type",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType",
+)

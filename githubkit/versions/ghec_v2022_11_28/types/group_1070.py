@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class ReposOwnerRepoPullsPullNumberMergePutBodyType(TypedDict):
-    """ReposOwnerRepoPullsPullNumberMergePutBody"""
-
-    commit_title: NotRequired[str]
-    commit_message: NotRequired[str]
-    sha: NotRequired[str]
-    merge_method: NotRequired[Literal["merge", "squash", "rebase"]]
+from .group_1068 import ReposOwnerRepoPagesPostBodyPropSourceType
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutBodyType",)
+class ReposOwnerRepoPagesPostBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof1"""
+
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceType]
+
+
+__all__ = ("ReposOwnerRepoPagesPostBodyAnyof1Type",)

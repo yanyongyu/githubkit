@@ -9,17 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
+
+from .group_0034 import RunnerType
 
 
-class OrgsOrgActionsVariablesNamePatchBodyType(TypedDict):
-    """OrgsOrgActionsVariablesNamePatchBody"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
 
-    name: NotRequired[str]
-    value: NotRequired[str]
-    visibility: NotRequired[Literal["all", "private", "selected"]]
-    selected_repository_ids: NotRequired[List[int]]
+    total_count: float
+    runners: List[RunnerType]
 
 
-__all__ = ("OrgsOrgActionsVariablesNamePatchBodyType",)
+__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",)

@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union, Literal
 
 from pydantic import Field
@@ -17,66 +18,68 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
 
-class WebhooksTeam1(GitHubModel):
-    """Team
 
-    Groups of organization members that gives permissions on specified repositories.
-    """
+class SecretScanningAlertWebhook(GitHubModel):
+    """SecretScanningAlertWebhook"""
 
-    deleted: Missing[bool] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Description of the team"
+    number: Missing[int] = Field(
+        default=UNSET, description="The security alert number."
     )
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field(description="Unique identifier of the team")
-    members_url: Missing[str] = Field(default=UNSET)
-    name: str = Field(description="Name of the team")
-    node_id: Missing[str] = Field(default=UNSET)
-    parent: Missing[Union[WebhooksTeam1PropParent, None]] = Field(default=UNSET)
-    permission: Missing[str] = Field(
+    created_at: Missing[datetime] = Field(
         default=UNSET,
-        description="Permission that the team will have for its repositories",
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    privacy: Missing[Literal["open", "closed", "secret"]] = Field(default=UNSET)
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
+    updated_at: Missing[Union[None, datetime]] = Field(default=UNSET)
+    url: Missing[str] = Field(
+        default=UNSET, description="The REST API URL of the alert resource."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The GitHub URL of the alert resource."
+    )
+    locations_url: Missing[str] = Field(
         default=UNSET,
-        description="Whether team members will receive notifications when their team is @mentioned",
+        description="The REST API URL of the code locations for this alert.",
     )
-    repositories_url: Missing[str] = Field(default=UNSET)
-    slug: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET, description="URL for the team")
-
-
-class WebhooksTeam1PropParent(GitHubModel):
-    """WebhooksTeam1PropParent"""
-
-    description: Union[str, None] = Field(description="Description of the team")
-    html_url: str = Field()
-    id: int = Field(description="Unique identifier of the team")
-    members_url: str = Field()
-    name: str = Field(description="Name of the team")
-    node_id: str = Field()
-    permission: str = Field(
-        description="Permission that the team will have for its repositories"
+    resolution: Missing[
+        Union[
+            None,
+            Literal[
+                "false_positive",
+                "wont_fix",
+                "revoked",
+                "used_in_tests",
+                "pattern_deleted",
+                "pattern_edited",
+            ],
+        ]
+    ] = Field(default=UNSET, description="The reason for resolving the alert.")
+    resolved_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    privacy: Literal["open", "closed", "secret"] = Field()
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"] = (
-        Field(
-            description="Whether team members will receive notifications when their team is @mentioned"
-        )
+    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET, description="An optional comment to resolve an alert."
     )
-    repositories_url: str = Field()
-    slug: str = Field()
-    url: str = Field(description="URL for the team")
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that secret scanning detected."
+    )
+    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
+        default=UNSET, description="The token status as of the latest validity check."
+    )
+    push_protection_bypassed: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether push protection was bypassed for the detected secret.",
+    )
+    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
 
 
-model_rebuild(WebhooksTeam1)
-model_rebuild(WebhooksTeam1PropParent)
+model_rebuild(SecretScanningAlertWebhook)
 
-__all__ = (
-    "WebhooksTeam1",
-    "WebhooksTeam1PropParent",
-)
+__all__ = ("SecretScanningAlertWebhook",)

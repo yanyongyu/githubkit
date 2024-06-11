@@ -16,7 +16,6 @@ from githubkit.compat import GitHubModel
 
 from ..models import (
     WebhookSecretScanningAlertCreated,
-    WebhookSecretScanningAlertRevoked,
     WebhookSecretScanningAlertReopened,
     WebhookSecretScanningAlertResolved,
     WebhookSecretScanningAlertValidated,
@@ -27,7 +26,6 @@ Event: TypeAlias = Annotated[
         WebhookSecretScanningAlertCreated,
         WebhookSecretScanningAlertReopened,
         WebhookSecretScanningAlertResolved,
-        WebhookSecretScanningAlertRevoked,
         WebhookSecretScanningAlertValidated,
     ],
     Field(discriminator="action"),
@@ -39,7 +37,6 @@ action_types: Dict[str, Type[GitHubModel]] = {
     "created": WebhookSecretScanningAlertCreated,
     "reopened": WebhookSecretScanningAlertReopened,
     "resolved": WebhookSecretScanningAlertResolved,
-    "revoked": WebhookSecretScanningAlertRevoked,
     "validated": WebhookSecretScanningAlertValidated,
 }
 

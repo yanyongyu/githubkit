@@ -13,10 +13,7 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0484 import (
-    WebhookForkPropForkeeAllof0PropPermissionsType,
-    WebhookForkPropForkeeAllof0PropCustomPropertiesType,
-)
+from .group_0484 import WebhookForkPropForkeeAllof0PropPermissionsType
 
 
 class WebhookForkPropForkeeAllof0Type(TypedDict):
@@ -44,7 +41,6 @@ class WebhookForkPropForkeeAllof0Type(TypedDict):
     contents_url: str
     contributors_url: str
     created_at: Union[int, datetime]
-    custom_properties: NotRequired[WebhookForkPropForkeeAllof0PropCustomPropertiesType]
     default_branch: str
     delete_branch_on_merge: NotRequired[bool]
     deployments_url: str

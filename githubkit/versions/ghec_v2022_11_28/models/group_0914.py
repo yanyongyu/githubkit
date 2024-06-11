@@ -9,20 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsColumnIdMovesPostBody(GitHubModel):
-    """ProjectsColumnsColumnIdMovesPostBody"""
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
 
-    position: str = Field(
-        pattern="^(?:first|last|after:\\d+)$",
-        description="The position of the column in a project. Can be one of: `first`, `last`, or `after:<column_id>` to place after the specified column.",
+    groups: Missing[
+        List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems]
+    ] = Field(
+        default=UNSET,
+        description="The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove.",
     )
 
 
-model_rebuild(ProjectsColumnsColumnIdMovesPostBody)
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubModel):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
 
-__all__ = ("ProjectsColumnsColumnIdMovesPostBody",)
+    group_id: str = Field(description="ID of the IdP group.")
+    group_name: str = Field(description="Name of the IdP group.")
+    group_description: str = Field(description="Description of the IdP group.")
+
+
+model_rebuild(OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody)
+model_rebuild(OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems)
+
+__all__ = (
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems",
+)

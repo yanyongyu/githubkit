@@ -9,60 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0268 import CustomDeploymentRuleApp
 
+class DeploymentBranchPolicyNamePattern(GitHubModel):
+    """Deployment branch policy name pattern"""
 
-class DeploymentProtectionRule(GitHubModel):
-    """Deployment protection rule
-
-    Deployment protection rule
-    """
-
-    id: int = Field(
-        description="The unique identifier for the deployment protection rule."
-    )
-    node_id: str = Field(description="The node ID for the deployment protection rule.")
-    enabled: bool = Field(
-        description="Whether the deployment protection rule is enabled for the environment."
-    )
-    app: CustomDeploymentRuleApp = Field(
-        title="Custom deployment protection rule app",
-        description="A GitHub App that is providing a custom deployment protection rule.",
+    name: str = Field(
+        description="The name pattern that branches must match in order to deploy to the environment.\n\nWildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.\nFor more information about pattern matching syntax, see the [Ruby File.fnmatch documentation](https://ruby-doc.org/core-2.5.1/File.html#method-c-fnmatch)."
     )
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+model_rebuild(DeploymentBranchPolicyNamePattern)
 
-    Examples:
-        {'$ref': '#/components/examples/deployment-protection-rules'}
-    """
-
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of enabled custom deployment protection rules for this environment",
-    )
-    custom_deployment_protection_rules: Missing[List[DeploymentProtectionRule]] = Field(
-        default=UNSET
-    )
-
-
-model_rebuild(DeploymentProtectionRule)
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
-)
-
-__all__ = (
-    "DeploymentProtectionRule",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200",
-)
+__all__ = ("DeploymentBranchPolicyNamePattern",)

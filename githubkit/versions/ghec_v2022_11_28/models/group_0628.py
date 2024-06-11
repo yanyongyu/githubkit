@@ -9,40 +9,83 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0401 import SimpleInstallation
-from .group_0404 import SimpleUserWebhooks
-from .group_0402 import OrganizationSimpleWebhooks
-from .group_0431 import PersonalAccessTokenRequest
+from .group_0629 import WebhookPackagePublishedPropPackagePropPackageVersion
 
 
-class WebhookPersonalAccessTokenRequestDenied(GitHubModel):
-    """personal_access_token_request denied event"""
+class WebhookPackagePublishedPropPackage(GitHubModel):
+    """WebhookPackagePublishedPropPackage
 
-    action: Literal["denied"] = Field()
-    personal_access_token_request: PersonalAccessTokenRequest = Field(
-        title="Personal Access Token Request",
-        description="Details of a Personal Access Token Request.",
+    Information about the package.
+    """
+
+    created_at: Union[str, None] = Field()
+    description: Union[str, None] = Field()
+    ecosystem: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    name: str = Field()
+    namespace: str = Field()
+    owner: Union[WebhookPackagePublishedPropPackagePropOwner, None] = Field(
+        title="User"
     )
-    organization: OrganizationSimpleWebhooks = Field(
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
-    installation: SimpleInstallation = Field(
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
+    package_type: str = Field()
+    package_version: Union[
+        WebhookPackagePublishedPropPackagePropPackageVersion, None
+    ] = Field()
+    registry: Union[WebhookPackagePublishedPropPackagePropRegistry, None] = Field()
+    updated_at: Union[str, None] = Field()
 
 
-model_rebuild(WebhookPersonalAccessTokenRequestDenied)
+class WebhookPackagePublishedPropPackagePropOwner(GitHubModel):
+    """User"""
 
-__all__ = ("WebhookPersonalAccessTokenRequestDenied",)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+class WebhookPackagePublishedPropPackagePropRegistry(GitHubModel):
+    """WebhookPackagePublishedPropPackagePropRegistry"""
+
+    about_url: str = Field()
+    name: str = Field()
+    type: str = Field()
+    url: str = Field()
+    vendor: str = Field()
+
+
+model_rebuild(WebhookPackagePublishedPropPackage)
+model_rebuild(WebhookPackagePublishedPropPackagePropOwner)
+model_rebuild(WebhookPackagePublishedPropPackagePropRegistry)
+
+__all__ = (
+    "WebhookPackagePublishedPropPackage",
+    "WebhookPackagePublishedPropPackagePropOwner",
+    "WebhookPackagePublishedPropPackagePropRegistry",
+)

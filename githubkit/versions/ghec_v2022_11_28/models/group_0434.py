@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -19,20 +18,50 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksProjectColumn(GitHubModel):
-    """Project Column"""
+class WebhooksMembership(GitHubModel):
+    """Membership
 
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    cards_url: str = Field()
-    created_at: datetime = Field()
-    id: int = Field(description="The unique identifier of the project column")
-    name: str = Field(description="Name of the project column")
-    node_id: str = Field()
-    project_url: str = Field()
-    updated_at: datetime = Field()
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
+    """
+
+    organization_url: str = Field()
+    role: str = Field()
+    state: str = Field()
     url: str = Field()
+    user: Union[WebhooksMembershipPropUser, None] = Field(title="User")
 
 
-model_rebuild(WebhooksProjectColumn)
+class WebhooksMembershipPropUser(GitHubModel):
+    """User"""
 
-__all__ = ("WebhooksProjectColumn",)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhooksMembership)
+model_rebuild(WebhooksMembershipPropUser)
+
+__all__ = (
+    "WebhooksMembership",
+    "WebhooksMembershipPropUser",
+)

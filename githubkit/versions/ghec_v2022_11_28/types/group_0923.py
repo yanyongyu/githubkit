@@ -9,17 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0175 import ArtifactType
+
+class ProjectsColumnsColumnIdCardsPostBodyOneof0Type(TypedDict):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof0"""
+
+    note: Union[str, None]
 
 
-class ReposOwnerRepoActionsArtifactsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
-
-    total_count: int
-    artifacts: List[ArtifactType]
-
-
-__all__ = ("ReposOwnerRepoActionsArtifactsGetResponse200Type",)
+__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof0Type",)

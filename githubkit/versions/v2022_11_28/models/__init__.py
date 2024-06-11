@@ -53,7 +53,7 @@ if TYPE_CHECKING:
     from .group_0240 import Manifest as Manifest
     from .group_0241 import Snapshot as Snapshot
     from .group_0289 import Language as Language
-    from .group_0886 import Workflow as Workflow
+    from .group_0885 import Workflow as Workflow
     from .group_0009 import ScimError as ScimError
     from .group_0022 import Classroom as Classroom
     from .group_0033 import Milestone as Milestone
@@ -148,9 +148,9 @@ if TYPE_CHECKING:
     from .group_0446 import WebhookDelete as WebhookDelete
     from .group_0487 import WebhookGollum as WebhookGollum
     from .group_0627 import WebhookPublic as WebhookPublic
-    from .group_0719 import WebhookStatus as WebhookStatus
-    from .group_0755 import GistsPostBody as GistsPostBody
-    from .group_1048 import UserPatchBody as UserPatchBody
+    from .group_0718 import WebhookStatus as WebhookStatus
+    from .group_0754 import GistsPostBody as GistsPostBody
+    from .group_1047 import UserPatchBody as UserPatchBody
     from .group_0002 import GlobalAdvisory as GlobalAdvisory
     from .group_0014 import AppPermissions as AppPermissions
     from .group_0034 import ReactionRollup as ReactionRollup
@@ -169,7 +169,7 @@ if TYPE_CHECKING:
     from .group_0390 import WebhooksIssue2 as WebhooksIssue2
     from .group_0404 import ProjectsV2Item as ProjectsV2Item
     from .group_0409 import WebhooksReview as WebhooksReview
-    from .group_0724 import WebhookTeamAdd as WebhookTeamAdd
+    from .group_0723 import WebhookTeamAdd as WebhookTeamAdd
     from .group_0010 import ValidationError as ValidationError
     from .group_0023 import SimpleClassroom as SimpleClassroom
     from .group_0059 import SelectedActions as SelectedActions
@@ -221,11 +221,11 @@ if TYPE_CHECKING:
     from .group_0411 import WebhooksRelease1 as WebhooksRelease1
     from .group_0416 import WebhooksChanges8 as WebhooksChanges8
     from .group_0591 import WebhookPageBuild as WebhookPageBuild
-    from .group_0762 import MarkdownPostBody as MarkdownPostBody
-    from .group_0766 import OrgsOrgPatchBody as OrgsOrgPatchBody
-    from .group_0935 import DependabotSecret as DependabotSecret
-    from .group_1052 import CodespacesSecret as CodespacesSecret
-    from .group_1066 import UserKeysPostBody as UserKeysPostBody
+    from .group_0761 import MarkdownPostBody as MarkdownPostBody
+    from .group_0765 import OrgsOrgPatchBody as OrgsOrgPatchBody
+    from .group_0934 import DependabotSecret as DependabotSecret
+    from .group_1051 import CodespacesSecret as CodespacesSecret
+    from .group_1065 import UserKeysPostBody as UserKeysPostBody
     from .group_0018 import InstallationToken as InstallationToken
     from .group_0039 import BaseGistPropFiles as BaseGistPropFiles
     from .group_0044 import GitignoreTemplate as GitignoreTemplate
@@ -249,8 +249,8 @@ if TYPE_CHECKING:
     from .group_0364 import StarredRepository as StarredRepository
     from .group_0375 import WebhooksDeployKey as WebhooksDeployKey
     from .group_0389 import WebhooksMilestone as WebhooksMilestone
-    from .group_0728 import WebhookTeamEdited as WebhookTeamEdited
-    from .group_1070 import UserReposPostBody as UserReposPostBody
+    from .group_0727 import WebhookTeamEdited as WebhookTeamEdited
+    from .group_1069 import UserReposPostBody as UserReposPostBody
     from .group_0019 import ScopedInstallation as ScopedInstallation
     from .group_0041 import PublicUserPropPlan as PublicUserPropPlan
     from .group_0053 import ThreadSubscription as ThreadSubscription
@@ -276,10 +276,10 @@ if TYPE_CHECKING:
     from .group_0558 import WebhookLabelEdited as WebhookLabelEdited
     from .group_0564 import WebhookMemberAdded as WebhookMemberAdded
     from .group_0571 import WebhookMetaDeleted as WebhookMetaDeleted
-    from .group_0717 import WebhookStarCreated as WebhookStarCreated
-    from .group_0718 import WebhookStarDeleted as WebhookStarDeleted
-    from .group_0726 import WebhookTeamCreated as WebhookTeamCreated
-    from .group_0727 import WebhookTeamDeleted as WebhookTeamDeleted
+    from .group_0716 import WebhookStarCreated as WebhookStarCreated
+    from .group_0717 import WebhookStarDeleted as WebhookStarDeleted
+    from .group_0725 import WebhookTeamCreated as WebhookTeamCreated
+    from .group_0726 import WebhookTeamDeleted as WebhookTeamDeleted
     from .group_0022 import ClassroomAssignment as ClassroomAssignment
     from .group_0023 import SimpleClassroomUser as SimpleClassroomUser
     from .group_0025 import CopilotUsageMetrics as CopilotUsageMetrics
@@ -314,9 +314,9 @@ if TYPE_CHECKING:
     from .group_0557 import WebhookLabelDeleted as WebhookLabelDeleted
     from .group_0565 import WebhookMemberEdited as WebhookMemberEdited
     from .group_0597 import WebhookPingPropHook as WebhookPingPropHook
-    from .group_0730 import WebhookWatchStarted as WebhookWatchStarted
-    from .group_0791 import CodespacesOrgSecret as CodespacesOrgSecret
-    from .group_1062 import UserGpgKeysPostBody as UserGpgKeysPostBody
+    from .group_0729 import WebhookWatchStarted as WebhookWatchStarted
+    from .group_0790 import CodespacesOrgSecret as CodespacesOrgSecret
+    from .group_1061 import UserGpgKeysPostBody as UserGpgKeysPostBody
     from .group_0020 import AuthorizationPropApp as AuthorizationPropApp
     from .group_0035 import IssuePropPullRequest as IssuePropPullRequest
     from .group_0040 import GistSimplePropForkOf as GistSimplePropForkOf
@@ -352,15 +352,15 @@ if TYPE_CHECKING:
     from .group_0606 import WebhookProjectClosed as WebhookProjectClosed
     from .group_0613 import WebhookProjectEdited as WebhookProjectEdited
     from .group_0668 import WebhookReleaseEdited as WebhookReleaseEdited
-    from .group_0753 import EmojisGetResponse200 as EmojisGetResponse200
-    from .group_0757 import GistsGistIdPatchBody as GistsGistIdPatchBody
-    from .group_0763 import NotificationsPutBody as NotificationsPutBody
-    from .group_0807 import OrgsOrgHooksPostBody as OrgsOrgHooksPostBody
-    from .group_0829 import OrgsOrgReposPostBody as OrgsOrgReposPostBody
-    from .group_0832 import OrgsOrgTeamsPostBody as OrgsOrgTeamsPostBody
-    from .group_0925 import RepoCodespacesSecret as RepoCodespacesSecret
-    from .group_1037 import TeamsTeamIdPatchBody as TeamsTeamIdPatchBody
-    from .group_1069 import UserProjectsPostBody as UserProjectsPostBody
+    from .group_0752 import EmojisGetResponse200 as EmojisGetResponse200
+    from .group_0756 import GistsGistIdPatchBody as GistsGistIdPatchBody
+    from .group_0762 import NotificationsPutBody as NotificationsPutBody
+    from .group_0806 import OrgsOrgHooksPostBody as OrgsOrgHooksPostBody
+    from .group_0828 import OrgsOrgReposPostBody as OrgsOrgReposPostBody
+    from .group_0831 import OrgsOrgTeamsPostBody as OrgsOrgTeamsPostBody
+    from .group_0924 import RepoCodespacesSecret as RepoCodespacesSecret
+    from .group_1036 import TeamsTeamIdPatchBody as TeamsTeamIdPatchBody
+    from .group_1068 import UserProjectsPostBody as UserProjectsPostBody
     from .group_0004 import ValidationErrorSimple as ValidationErrorSimple
     from .group_0109 import RepositoryRuleOneof14 as RepositoryRuleOneof14
     from .group_0109 import RepositoryRuleOneof16 as RepositoryRuleOneof16
@@ -437,10 +437,10 @@ if TYPE_CHECKING:
     from .group_0614 import WebhookProjectReopened as WebhookProjectReopened
     from .group_0671 import WebhookReleaseReleased as WebhookReleaseReleased
     from .group_0699 import SecretScanningLocation as SecretScanningLocation
-    from .group_0745 import AppHookConfigPatchBody as AppHookConfigPatchBody
-    from .group_0755 import GistsPostBodyPropFiles as GistsPostBodyPropFiles
-    from .group_0943 import DeploymentBranchPolicy as DeploymentBranchPolicy
-    from .group_1068 import UserMigrationsPostBody as UserMigrationsPostBody
+    from .group_0744 import AppHookConfigPatchBody as AppHookConfigPatchBody
+    from .group_0754 import GistsPostBodyPropFiles as GistsPostBodyPropFiles
+    from .group_0942 import DeploymentBranchPolicy as DeploymentBranchPolicy
+    from .group_1067 import UserMigrationsPostBody as UserMigrationsPostBody
     from .group_0011 import HookDeliveryPropRequest as HookDeliveryPropRequest
     from .group_0130 import RepositoryRuleWorkflows as RepositoryRuleWorkflows
     from .group_0156 import ArtifactPropWorkflowRun as ArtifactPropWorkflowRun
@@ -472,11 +472,11 @@ if TYPE_CHECKING:
     from .group_0670 import WebhookReleasePublished as WebhookReleasePublished
     from .group_0679 import WebhookRepositoryEdited as WebhookRepositoryEdited
     from .group_0680 import WebhookRepositoryImport as WebhookRepositoryImport
-    from .group_0719 import WebhookStatusPropCommit as WebhookStatusPropCommit
-    from .group_0731 import WebhookWorkflowDispatch as WebhookWorkflowDispatch
-    from .group_0825 import OrgsOrgProjectsPostBody as OrgsOrgProjectsPostBody
-    from .group_0830 import OrgsOrgRulesetsPostBody as OrgsOrgRulesetsPostBody
-    from .group_0863 import ReposOwnerRepoPatchBody as ReposOwnerRepoPatchBody
+    from .group_0718 import WebhookStatusPropCommit as WebhookStatusPropCommit
+    from .group_0730 import WebhookWorkflowDispatch as WebhookWorkflowDispatch
+    from .group_0824 import OrgsOrgProjectsPostBody as OrgsOrgProjectsPostBody
+    from .group_0829 import OrgsOrgRulesetsPostBody as OrgsOrgRulesetsPostBody
+    from .group_0862 import ReposOwnerRepoPatchBody as ReposOwnerRepoPatchBody
     from .group_0002 import VulnerabilityPropPackage as VulnerabilityPropPackage
     from .group_0011 import HookDeliveryPropResponse as HookDeliveryPropResponse
     from .group_0024 import ClassroomAssignmentGrade as ClassroomAssignmentGrade
@@ -516,9 +516,9 @@ if TYPE_CHECKING:
     from .group_0676 import WebhookRepositoryCreated as WebhookRepositoryCreated
     from .group_0677 import WebhookRepositoryDeleted as WebhookRepositoryDeleted
     from .group_0683 import WebhookRepositoryRenamed as WebhookRepositoryRenamed
-    from .group_0713 import WebhookSponsorshipEdited as WebhookSponsorshipEdited
-    from .group_0738 import WebhookWorkflowJobQueued as WebhookWorkflowJobQueued
-    from .group_1060 import UserEmailsPostBodyOneof0 as UserEmailsPostBodyOneof0
+    from .group_0712 import WebhookSponsorshipEdited as WebhookSponsorshipEdited
+    from .group_0737 import WebhookWorkflowJobQueued as WebhookWorkflowJobQueued
+    from .group_1059 import UserEmailsPostBodyOneof0 as UserEmailsPostBodyOneof0
     from .group_0017 import RepositoryPropPermissions as RepositoryPropPermissions
     from .group_0021 import SimpleClassroomRepository as SimpleClassroomRepository
     from .group_0023 import SimpleClassroomAssignment as SimpleClassroomAssignment
@@ -558,11 +558,11 @@ if TYPE_CHECKING:
     from .group_0669 import WebhookReleasePrereleased as WebhookReleasePrereleased
     from .group_0672 import WebhookReleaseUnpublished as WebhookReleaseUnpublished
     from .group_0675 import WebhookRepositoryArchived as WebhookRepositoryArchived
-    from .group_0712 import WebhookSponsorshipCreated as WebhookSponsorshipCreated
-    from .group_0739 import WebhookWorkflowJobWaiting as WebhookWorkflowJobWaiting
-    from .group_0756 import GistsGistIdGetResponse403 as GistsGistIdGetResponse403
-    from .group_0778 import OrganizationActionsSecret as OrganizationActionsSecret
-    from .group_0815 import OrgsOrgMigrationsPostBody as OrgsOrgMigrationsPostBody
+    from .group_0711 import WebhookSponsorshipCreated as WebhookSponsorshipCreated
+    from .group_0738 import WebhookWorkflowJobWaiting as WebhookWorkflowJobWaiting
+    from .group_0755 import GistsGistIdGetResponse403 as GistsGistIdGetResponse403
+    from .group_0777 import OrganizationActionsSecret as OrganizationActionsSecret
+    from .group_0814 import OrgsOrgMigrationsPostBody as OrgsOrgMigrationsPostBody
     from .group_0005 import IntegrationPropPermissions as IntegrationPropPermissions
     from .group_0035 import IssuePropLabelsItemsOneof1 as IssuePropLabelsItemsOneof1
     from .group_0043 import GistCommitPropChangeStatus as GistCommitPropChangeStatus
@@ -618,13 +618,13 @@ if TYPE_CHECKING:
     from .group_0636 import WebhookPullRequestEnqueued as WebhookPullRequestEnqueued
     from .group_0642 import WebhookPullRequestReopened as WebhookPullRequestReopened
     from .group_0658 import WebhookPullRequestUnlocked as WebhookPullRequestUnlocked
-    from .group_0708 import WebhookSecurityAndAnalysis as WebhookSecurityAndAnalysis
-    from .group_0812 import OrgsOrgInvitationsPostBody as OrgsOrgInvitationsPostBody
-    from .group_0858 import ProjectsProjectIdPatchBody as ProjectsProjectIdPatchBody
-    from .group_0982 import ReposOwnerRepoKeysPostBody as ReposOwnerRepoKeysPostBody
-    from .group_1061 import UserEmailsDeleteBodyOneof0 as UserEmailsDeleteBodyOneof0
-    from .group_1071 import UserSocialAccountsPostBody as UserSocialAccountsPostBody
-    from .group_1073 import UserSshSigningKeysPostBody as UserSshSigningKeysPostBody
+    from .group_0707 import WebhookSecurityAndAnalysis as WebhookSecurityAndAnalysis
+    from .group_0811 import OrgsOrgInvitationsPostBody as OrgsOrgInvitationsPostBody
+    from .group_0857 import ProjectsProjectIdPatchBody as ProjectsProjectIdPatchBody
+    from .group_0981 import ReposOwnerRepoKeysPostBody as ReposOwnerRepoKeysPostBody
+    from .group_1060 import UserEmailsDeleteBodyOneof0 as UserEmailsDeleteBodyOneof0
+    from .group_1070 import UserSocialAccountsPostBody as UserSocialAccountsPostBody
+    from .group_1072 import UserSshSigningKeysPostBody as UserSshSigningKeysPostBody
     from .group_0002 import GlobalAdvisoryPropCwesItems as GlobalAdvisoryPropCwesItems
     from .group_0022 import SimpleClassroomOrganization as SimpleClassroomOrganization
     from .group_0023 import ClassroomAcceptedAssignment as ClassroomAcceptedAssignment
@@ -663,19 +663,19 @@ if TYPE_CHECKING:
     from .group_0681 import WebhookRepositoryPrivatized as WebhookRepositoryPrivatized
     from .group_0682 import WebhookRepositoryPublicized as WebhookRepositoryPublicized
     from .group_0693 import WebhookRepositoryUnarchived as WebhookRepositoryUnarchived
-    from .group_0711 import WebhookSponsorshipCancelled as WebhookSponsorshipCancelled
-    from .group_0732 import WebhookWorkflowJobCompleted as WebhookWorkflowJobCompleted
-    from .group_0740 import WebhookWorkflowRunCompleted as WebhookWorkflowRunCompleted
-    from .group_0742 import WebhookWorkflowRunRequested as WebhookWorkflowRunRequested
-    from .group_0758 import GistsGistIdCommentsPostBody as GistsGistIdCommentsPostBody
-    from .group_0764 import NotificationsPutResponse202 as NotificationsPutResponse202
-    from .group_0782 import OrganizationActionsVariable as OrganizationActionsVariable
-    from .group_0808 import OrgsOrgHooksHookIdPatchBody as OrgsOrgHooksHookIdPatchBody
-    from .group_0951 import ReposOwnerRepoForksPostBody as ReposOwnerRepoForksPostBody
-    from .group_0958 import ReposOwnerRepoHooksPostBody as ReposOwnerRepoHooksPostBody
-    from .group_0961 import ReposOwnerRepoImportPutBody as ReposOwnerRepoImportPutBody
-    from .group_1004 import ReposOwnerRepoPullsPostBody as ReposOwnerRepoPullsPostBody
-    from .group_1034 import ReposOwnerRepoTopicsPutBody as ReposOwnerRepoTopicsPutBody
+    from .group_0710 import WebhookSponsorshipCancelled as WebhookSponsorshipCancelled
+    from .group_0731 import WebhookWorkflowJobCompleted as WebhookWorkflowJobCompleted
+    from .group_0739 import WebhookWorkflowRunCompleted as WebhookWorkflowRunCompleted
+    from .group_0741 import WebhookWorkflowRunRequested as WebhookWorkflowRunRequested
+    from .group_0757 import GistsGistIdCommentsPostBody as GistsGistIdCommentsPostBody
+    from .group_0763 import NotificationsPutResponse202 as NotificationsPutResponse202
+    from .group_0781 import OrganizationActionsVariable as OrganizationActionsVariable
+    from .group_0807 import OrgsOrgHooksHookIdPatchBody as OrgsOrgHooksHookIdPatchBody
+    from .group_0950 import ReposOwnerRepoForksPostBody as ReposOwnerRepoForksPostBody
+    from .group_0957 import ReposOwnerRepoHooksPostBody as ReposOwnerRepoHooksPostBody
+    from .group_0960 import ReposOwnerRepoImportPutBody as ReposOwnerRepoImportPutBody
+    from .group_1003 import ReposOwnerRepoPullsPostBody as ReposOwnerRepoPullsPostBody
+    from .group_1033 import ReposOwnerRepoTopicsPutBody as ReposOwnerRepoTopicsPutBody
     from .group_0051 import MinimalRepositoryPropLicense as MinimalRepositoryPropLicense
     from .group_0067 import CodeScanningAlertRuleSummary as CodeScanningAlertRuleSummary
     from .group_0084 import OrgMembershipPropPermissions as OrgMembershipPropPermissions
@@ -730,19 +730,19 @@ if TYPE_CHECKING:
     from .group_0656 import WebhookPullRequestUnassigned as WebhookPullRequestUnassigned
     from .group_0692 import WebhookRepositoryTransferred as WebhookRepositoryTransferred
     from .group_0699 import SecretScanningLocationCommit as SecretScanningLocationCommit
-    from .group_0725 import WebhookTeamAddedToRepository as WebhookTeamAddedToRepository
-    from .group_0728 import WebhookTeamEditedPropChanges as WebhookTeamEditedPropChanges
-    from .group_0735 import WebhookWorkflowJobInProgress as WebhookWorkflowJobInProgress
-    from .group_0741 import WebhookWorkflowRunInProgress as WebhookWorkflowRunInProgress
-    from .group_0803 import OrganizationDependabotSecret as OrganizationDependabotSecret
-    from .group_0967 import ReposOwnerRepoIssuesPostBody as ReposOwnerRepoIssuesPostBody
-    from .group_0983 import ReposOwnerRepoLabelsPostBody as ReposOwnerRepoLabelsPostBody
-    from .group_0986 import ReposOwnerRepoMergesPostBody as ReposOwnerRepoMergesPostBody
-    from .group_1049 import UserCodespacesGetResponse200 as UserCodespacesGetResponse200
-    from .group_1050 import UserCodespacesPostBodyOneof0 as UserCodespacesPostBodyOneof0
-    from .group_1051 import UserCodespacesPostBodyOneof1 as UserCodespacesPostBodyOneof1
-    from .group_1059 import UserEmailVisibilityPatchBody as UserEmailVisibilityPatchBody
-    from .group_1072 import UserSocialAccountsDeleteBody as UserSocialAccountsDeleteBody
+    from .group_0724 import WebhookTeamAddedToRepository as WebhookTeamAddedToRepository
+    from .group_0727 import WebhookTeamEditedPropChanges as WebhookTeamEditedPropChanges
+    from .group_0734 import WebhookWorkflowJobInProgress as WebhookWorkflowJobInProgress
+    from .group_0740 import WebhookWorkflowRunInProgress as WebhookWorkflowRunInProgress
+    from .group_0802 import OrganizationDependabotSecret as OrganizationDependabotSecret
+    from .group_0966 import ReposOwnerRepoIssuesPostBody as ReposOwnerRepoIssuesPostBody
+    from .group_0982 import ReposOwnerRepoLabelsPostBody as ReposOwnerRepoLabelsPostBody
+    from .group_0985 import ReposOwnerRepoMergesPostBody as ReposOwnerRepoMergesPostBody
+    from .group_1048 import UserCodespacesGetResponse200 as UserCodespacesGetResponse200
+    from .group_1049 import UserCodespacesPostBodyOneof0 as UserCodespacesPostBodyOneof0
+    from .group_1050 import UserCodespacesPostBodyOneof1 as UserCodespacesPostBodyOneof1
+    from .group_1058 import UserEmailVisibilityPatchBody as UserEmailVisibilityPatchBody
+    from .group_1071 import UserSocialAccountsDeleteBody as UserSocialAccountsDeleteBody
     from .group_0030 import (
         DependabotAlertWithRepository as DependabotAlertWithRepository,
     )
@@ -842,28 +842,28 @@ if TYPE_CHECKING:
     from .group_0663 import (
         WebhookRegistryPackageUpdated as WebhookRegistryPackageUpdated,
     )
-    from .group_0716 import (
+    from .group_0715 import (
         WebhookSponsorshipTierChanged as WebhookSponsorshipTierChanged,
     )
-    from .group_0757 import (
+    from .group_0756 import (
         GistsGistIdPatchBodyPropFiles as GistsGistIdPatchBodyPropFiles,
     )
-    from .group_0760 import (
+    from .group_0759 import (
         GistsGistIdStarGetResponse404 as GistsGistIdStarGetResponse404,
     )
-    from .group_0767 import (
+    from .group_0766 import (
         ActionsCacheUsageByRepository as ActionsCacheUsageByRepository,
     )
-    from .group_0833 import (
+    from .group_0832 import (
         OrgsOrgTeamsTeamSlugPatchBody as OrgsOrgTeamsTeamSlugPatchBody,
     )
-    from .group_0954 import (
+    from .group_0953 import (
         ReposOwnerRepoGitRefsPostBody as ReposOwnerRepoGitRefsPostBody,
     )
-    from .group_0956 import (
+    from .group_0955 import (
         ReposOwnerRepoGitTagsPostBody as ReposOwnerRepoGitTagsPostBody,
     )
-    from .group_0962 import (
+    from .group_0961 import (
         ReposOwnerRepoImportPatchBody as ReposOwnerRepoImportPatchBody,
     )
     from .group_0002 import (
@@ -989,37 +989,37 @@ if TYPE_CHECKING:
     from .group_0686 import (
         WebhookRepositoryRulesetEdited as WebhookRepositoryRulesetEdited,
     )
-    from .group_0706 import (
+    from .group_0705 import (
         WebhookSecurityAdvisoryUpdated as WebhookSecurityAdvisoryUpdated,
     )
-    from .group_0719 import (
+    from .group_0718 import (
         WebhookStatusPropBranchesItems as WebhookStatusPropBranchesItems,
     )
-    from .group_0788 import (
+    from .group_0787 import (
         OrgsOrgCodespacesAccessPutBody as OrgsOrgCodespacesAccessPutBody,
     )
-    from .group_0807 import (
+    from .group_0806 import (
         OrgsOrgHooksPostBodyPropConfig as OrgsOrgHooksPostBodyPropConfig,
     )
-    from .group_0952 import (
+    from .group_0951 import (
         ReposOwnerRepoGitBlobsPostBody as ReposOwnerRepoGitBlobsPostBody,
     )
-    from .group_0957 import (
+    from .group_0956 import (
         ReposOwnerRepoGitTreesPostBody as ReposOwnerRepoGitTreesPostBody,
     )
-    from .group_1002 import (
+    from .group_1001 import (
         ReposOwnerRepoProjectsPostBody as ReposOwnerRepoProjectsPostBody,
     )
-    from .group_1023 import (
+    from .group_1022 import (
         ReposOwnerRepoReleasesPostBody as ReposOwnerRepoReleasesPostBody,
     )
-    from .group_1028 import (
+    from .group_1027 import (
         ReposOwnerRepoRulesetsPostBody as ReposOwnerRepoRulesetsPostBody,
     )
-    from .group_1035 import (
+    from .group_1034 import (
         ReposOwnerRepoTransferPostBody as ReposOwnerRepoTransferPostBody,
     )
-    from .group_1038 import (
+    from .group_1037 import (
         TeamsTeamIdDiscussionsPostBody as TeamsTeamIdDiscussionsPostBody,
     )
     from .group_0028 import (
@@ -1100,28 +1100,28 @@ if TYPE_CHECKING:
     from .group_0699 import (
         SecretScanningLocationIssueBody as SecretScanningLocationIssueBody,
     )
-    from .group_0728 import (
+    from .group_0727 import (
         WebhookTeamEditedPropRepository as WebhookTeamEditedPropRepository,
     )
-    from .group_0783 import (
+    from .group_0782 import (
         OrgsOrgActionsVariablesPostBody as OrgsOrgActionsVariablesPostBody,
     )
-    from .group_0787 import (
+    from .group_0786 import (
         OrgsOrgCodespacesGetResponse200 as OrgsOrgCodespacesGetResponse200,
     )
-    from .group_0831 import (
+    from .group_0830 import (
         OrgsOrgRulesetsRulesetIdPutBody as OrgsOrgRulesetsRulesetIdPutBody,
     )
-    from .group_0862 import (
+    from .group_0861 import (
         ReposOwnerRepoDeleteResponse403 as ReposOwnerRepoDeleteResponse403,
     )
-    from .group_0889 import (
+    from .group_0888 import (
         ReposOwnerRepoAutolinksPostBody as ReposOwnerRepoAutolinksPostBody,
     )
-    from .group_1063 import (
+    from .group_1062 import (
         UserInstallationsGetResponse200 as UserInstallationsGetResponse200,
     )
-    from .group_1067 import (
+    from .group_1066 import (
         UserMembershipsOrgsOrgPatchBody as UserMembershipsOrgsOrgPatchBody,
     )
     from .group_0051 import (
@@ -1226,70 +1226,70 @@ if TYPE_CHECKING:
     from .group_0699 import (
         SecretScanningLocationWikiCommit as SecretScanningLocationWikiCommit,
     )
-    from .group_0705 import (
+    from .group_0704 import (
         WebhookSecurityAdvisoryPublished as WebhookSecurityAdvisoryPublished,
     )
-    from .group_0707 import (
+    from .group_0706 import (
         WebhookSecurityAdvisoryWithdrawn as WebhookSecurityAdvisoryWithdrawn,
     )
-    from .group_0726 import (
+    from .group_0725 import (
         WebhookTeamCreatedPropRepository as WebhookTeamCreatedPropRepository,
     )
-    from .group_0727 import (
+    from .group_0726 import (
         WebhookTeamDeletedPropRepository as WebhookTeamDeletedPropRepository,
     )
-    from .group_0729 import (
+    from .group_0728 import (
         WebhookTeamRemovedFromRepository as WebhookTeamRemovedFromRepository,
     )
-    from .group_0768 import (
+    from .group_0767 import (
         OrgsOrgActionsPermissionsPutBody as OrgsOrgActionsPermissionsPutBody,
     )
-    from .group_0816 import (
+    from .group_0815 import (
         OrgsOrgOrganizationRolesPostBody as OrgsOrgOrganizationRolesPostBody,
     )
-    from .group_0826 import (
+    from .group_0825 import (
         OrgsOrgPropertiesSchemaPatchBody as OrgsOrgPropertiesSchemaPatchBody,
     )
-    from .group_0828 import (
+    from .group_0827 import (
         OrgsOrgPropertiesValuesPatchBody as OrgsOrgPropertiesValuesPatchBody,
     )
-    from .group_0851 import (
+    from .group_0850 import (
         ProjectsColumnsColumnIdPatchBody as ProjectsColumnsColumnIdPatchBody,
     )
-    from .group_0861 import (
+    from .group_0860 import (
         ProjectsProjectIdColumnsPostBody as ProjectsProjectIdColumnsPostBody,
     )
-    from .group_0921 import (
+    from .group_0920 import (
         ReposOwnerRepoCodespacesPostBody as ReposOwnerRepoCodespacesPostBody,
     )
-    from .group_0941 import (
+    from .group_0940 import (
         ReposOwnerRepoDispatchesPostBody as ReposOwnerRepoDispatchesPostBody,
     )
-    from .group_0953 import (
+    from .group_0952 import (
         ReposOwnerRepoGitCommitsPostBody as ReposOwnerRepoGitCommitsPostBody,
     )
-    from .group_0964 import (
+    from .group_0963 import (
         ReposOwnerRepoImportLfsPatchBody as ReposOwnerRepoImportLfsPatchBody,
     )
-    from .group_0987 import (
+    from .group_0986 import (
         ReposOwnerRepoMilestonesPostBody as ReposOwnerRepoMilestonesPostBody,
     )
-    from .group_0992 import (
+    from .group_0991 import (
         ReposOwnerRepoPagesPutBodyAnyof0 as ReposOwnerRepoPagesPutBodyAnyof0,
     )
-    from .group_0993 import (
+    from .group_0992 import (
         ReposOwnerRepoPagesPutBodyAnyof1 as ReposOwnerRepoPagesPutBodyAnyof1,
     )
-    from .group_0994 import (
+    from .group_0993 import (
         ReposOwnerRepoPagesPutBodyAnyof2 as ReposOwnerRepoPagesPutBodyAnyof2,
     )
-    from .group_0995 import (
+    from .group_0994 import (
         ReposOwnerRepoPagesPutBodyAnyof3 as ReposOwnerRepoPagesPutBodyAnyof3,
     )
-    from .group_0996 import (
+    from .group_0995 import (
         ReposOwnerRepoPagesPutBodyAnyof4 as ReposOwnerRepoPagesPutBodyAnyof4,
     )
-    from .group_1047 import (
+    from .group_1046 import (
         TeamsTeamIdReposOwnerRepoPutBody as TeamsTeamIdReposOwnerRepoPutBody,
     )
     from .group_0049 import (
@@ -1367,55 +1367,52 @@ if TYPE_CHECKING:
     from .group_0698 import (
         WebhookSecretScanningAlertCreated as WebhookSecretScanningAlertCreated,
     )
-    from .group_0703 import (
-        WebhookSecretScanningAlertRevoked as WebhookSecretScanningAlertRevoked,
-    )
-    from .group_0719 import (
+    from .group_0718 import (
         WebhookStatusPropCommitPropAuthor as WebhookStatusPropCommitPropAuthor,
     )
-    from .group_0719 import (
+    from .group_0718 import (
         WebhookStatusPropCommitPropCommit as WebhookStatusPropCommitPropCommit,
     )
-    from .group_0731 import (
+    from .group_0730 import (
         WebhookWorkflowDispatchPropInputs as WebhookWorkflowDispatchPropInputs,
     )
-    from .group_0749 import (
+    from .group_0748 import (
         ApplicationsClientIdTokenPostBody as ApplicationsClientIdTokenPostBody,
     )
-    from .group_0809 import (
+    from .group_0808 import (
         OrgsOrgHooksHookIdConfigPatchBody as OrgsOrgHooksHookIdConfigPatchBody,
     )
-    from .group_0814 import (
+    from .group_0813 import (
         OrgsOrgMembershipsUsernamePutBody as OrgsOrgMembershipsUsernamePutBody,
     )
-    from .group_0859 import (
+    from .group_0858 import (
         ProjectsProjectIdPatchResponse403 as ProjectsProjectIdPatchResponse403,
     )
-    from .group_0912 import (
+    from .group_0911 import (
         ReposOwnerRepoCheckSuitesPostBody as ReposOwnerRepoCheckSuitesPostBody,
     )
-    from .group_0932 import (
+    from .group_0931 import (
         ReposOwnerRepoContentsPathPutBody as ReposOwnerRepoContentsPathPutBody,
     )
-    from .group_0938 import (
+    from .group_0937 import (
         ReposOwnerRepoDeploymentsPostBody as ReposOwnerRepoDeploymentsPostBody,
     )
-    from .group_0955 import (
+    from .group_0954 import (
         ReposOwnerRepoGitRefsRefPatchBody as ReposOwnerRepoGitRefsRefPatchBody,
     )
-    from .group_0984 import (
+    from .group_0983 import (
         ReposOwnerRepoLabelsNamePatchBody as ReposOwnerRepoLabelsNamePatchBody,
     )
-    from .group_0998 import (
+    from .group_0997 import (
         ReposOwnerRepoPagesPostBodyAnyof0 as ReposOwnerRepoPagesPostBodyAnyof0,
     )
-    from .group_0999 import (
+    from .group_0998 import (
         ReposOwnerRepoPagesPostBodyAnyof1 as ReposOwnerRepoPagesPostBodyAnyof1,
     )
-    from .group_1031 import (
+    from .group_1030 import (
         ReposOwnerRepoStatusesShaPostBody as ReposOwnerRepoStatusesShaPostBody,
     )
-    from .group_1032 import (
+    from .group_1031 import (
         ReposOwnerRepoSubscriptionPutBody as ReposOwnerRepoSubscriptionPutBody,
     )
     from .group_0002 import (
@@ -1553,22 +1550,22 @@ if TYPE_CHECKING:
     from .group_0702 import (
         WebhookSecretScanningAlertResolved as WebhookSecretScanningAlertResolved,
     )
-    from .group_0751 import (
+    from .group_0750 import (
         ApplicationsClientIdTokenPatchBody as ApplicationsClientIdTokenPatchBody,
     )
-    from .group_0756 import (
+    from .group_0755 import (
         GistsGistIdGetResponse403PropBlock as GistsGistIdGetResponse403PropBlock,
     )
-    from .group_0810 import (
+    from .group_0809 import (
         OrgsOrgInstallationsGetResponse200 as OrgsOrgInstallationsGetResponse200,
     )
-    from .group_0857 import (
+    from .group_0856 import (
         ProjectsProjectIdDeleteResponse403 as ProjectsProjectIdDeleteResponse403,
     )
-    from .group_0959 import (
+    from .group_0958 import (
         ReposOwnerRepoHooksHookIdPatchBody as ReposOwnerRepoHooksHookIdPatchBody,
     )
-    from .group_0989 import (
+    from .group_0988 import (
         ReposOwnerRepoNotificationsPutBody as ReposOwnerRepoNotificationsPutBody,
     )
     from .group_0011 import (
@@ -1673,40 +1670,40 @@ if TYPE_CHECKING:
     from .group_0683 import (
         WebhookRepositoryRenamedPropChanges as WebhookRepositoryRenamedPropChanges,
     )
-    from .group_0704 import (
+    from .group_0703 import (
         WebhookSecretScanningAlertValidated as WebhookSecretScanningAlertValidated,
     )
-    from .group_0713 import (
+    from .group_0712 import (
         WebhookSponsorshipEditedPropChanges as WebhookSponsorshipEditedPropChanges,
     )
-    from .group_0715 import (
+    from .group_0714 import (
         WebhookSponsorshipPendingTierChange as WebhookSponsorshipPendingTierChange,
     )
-    from .group_0748 import (
+    from .group_0747 import (
         ApplicationsClientIdGrantDeleteBody as ApplicationsClientIdGrantDeleteBody,
     )
-    from .group_0750 import (
+    from .group_0749 import (
         ApplicationsClientIdTokenDeleteBody as ApplicationsClientIdTokenDeleteBody,
     )
-    from .group_0771 import (
+    from .group_0770 import (
         OrgsOrgActionsRunnersGetResponse200 as OrgsOrgActionsRunnersGetResponse200,
     )
-    from .group_0778 import (
+    from .group_0777 import (
         OrgsOrgActionsSecretsGetResponse200 as OrgsOrgActionsSecretsGetResponse200,
     )
-    from .group_0823 import (
+    from .group_0822 import (
         OrgsOrgPersonalAccessTokensPostBody as OrgsOrgPersonalAccessTokensPostBody,
     )
-    from .group_0846 import (
+    from .group_0845 import (
         ProjectsColumnsCardsCardIdPatchBody as ProjectsColumnsCardsCardIdPatchBody,
     )
-    from .group_0985 import (
+    from .group_0984 import (
         ReposOwnerRepoMergeUpstreamPostBody as ReposOwnerRepoMergeUpstreamPostBody,
     )
-    from .group_1045 import (
+    from .group_1044 import (
         TeamsTeamIdProjectsProjectIdPutBody as TeamsTeamIdProjectsProjectIdPutBody,
     )
-    from .group_1052 import (
+    from .group_1051 import (
         UserCodespacesSecretsGetResponse200 as UserCodespacesSecretsGetResponse200,
     )
     from .group_0027 import (
@@ -1811,25 +1808,25 @@ if TYPE_CHECKING:
     from .group_0699 import (
         SecretScanningLocationDiscussionBody as SecretScanningLocationDiscussionBody,
     )
-    from .group_0719 import (
+    from .group_0718 import (
         WebhookStatusPropCommitPropCommitter as WebhookStatusPropCommitPropCommitter,
     )
-    from .group_0728 import (
+    from .group_0727 import (
         WebhookTeamEditedPropChangesPropName as WebhookTeamEditedPropChangesPropName,
     )
-    from .group_0784 import (
+    from .group_0783 import (
         OrgsOrgActionsVariablesNamePatchBody as OrgsOrgActionsVariablesNamePatchBody,
     )
-    from .group_0855 import (
+    from .group_0854 import (
         ProjectsColumnsColumnIdMovesPostBody as ProjectsColumnsColumnIdMovesPostBody,
     )
-    from .group_0933 import (
+    from .group_0932 import (
         ReposOwnerRepoContentsPathDeleteBody as ReposOwnerRepoContentsPathDeleteBody,
     )
-    from .group_1033 import (
+    from .group_1032 import (
         ReposOwnerRepoTagsProtectionPostBody as ReposOwnerRepoTagsProtectionPostBody,
     )
-    from .group_1056 import (
+    from .group_1055 import (
         UserCodespacesCodespaceNamePatchBody as UserCodespacesCodespaceNamePatchBody,
     )
     from .group_0025 import (
@@ -1913,34 +1910,34 @@ if TYPE_CHECKING:
     from .group_0699 import (
         SecretScanningLocationPullRequestBody as SecretScanningLocationPullRequestBody,
     )
-    from .group_0709 import (
+    from .group_0708 import (
         WebhookSecurityAndAnalysisPropChanges as WebhookSecurityAndAnalysisPropChanges,
     )
-    from .group_0714 import (
+    from .group_0713 import (
         WebhookSponsorshipPendingCancellation as WebhookSponsorshipPendingCancellation,
     )
-    from .group_0759 import (
+    from .group_0758 import (
         GistsGistIdCommentsCommentIdPatchBody as GistsGistIdCommentsCommentIdPatchBody,
     )
-    from .group_0782 import (
+    from .group_0781 import (
         OrgsOrgActionsVariablesGetResponse200 as OrgsOrgActionsVariablesGetResponse200,
     )
-    from .group_0808 import (
+    from .group_0807 import (
         OrgsOrgHooksHookIdPatchBodyPropConfig as OrgsOrgHooksHookIdPatchBodyPropConfig,
     )
-    from .group_0907 import (
+    from .group_0906 import (
         ReposOwnerRepoCheckRunsPostBodyOneof0 as ReposOwnerRepoCheckRunsPostBodyOneof0,
     )
-    from .group_0908 import (
+    from .group_0907 import (
         ReposOwnerRepoCheckRunsPostBodyOneof1 as ReposOwnerRepoCheckRunsPostBodyOneof1,
     )
-    from .group_0958 import (
+    from .group_0957 import (
         ReposOwnerRepoHooksPostBodyPropConfig as ReposOwnerRepoHooksPostBodyPropConfig,
     )
-    from .group_0997 import (
+    from .group_0996 import (
         ReposOwnerRepoPagesPostBodyPropSource as ReposOwnerRepoPagesPostBodyPropSource,
     )
-    from .group_1044 import (
+    from .group_1043 import (
         TeamsTeamIdMembershipsUsernamePutBody as TeamsTeamIdMembershipsUsernamePutBody,
     )
     from .group_0087 import (
@@ -2075,34 +2072,34 @@ if TYPE_CHECKING:
     from .group_0699 import (
         SecretScanningLocationPullRequestTitle as SecretScanningLocationPullRequestTitle,
     )
-    from .group_0761 import (
+    from .group_0760 import (
         InstallationRepositoriesGetResponse200 as InstallationRepositoriesGetResponse200,
     )
-    from .group_0779 import (
+    from .group_0778 import (
         OrgsOrgActionsSecretsSecretNamePutBody as OrgsOrgActionsSecretsSecretNamePutBody,
     )
-    from .group_0791 import (
+    from .group_0790 import (
         OrgsOrgCodespacesSecretsGetResponse200 as OrgsOrgCodespacesSecretsGetResponse200,
     )
-    from .group_0803 import (
+    from .group_0802 import (
         OrgsOrgDependabotSecretsGetResponse200 as OrgsOrgDependabotSecretsGetResponse200,
     )
-    from .group_0884 import (
+    from .group_0883 import (
         ReposOwnerRepoActionsVariablesPostBody as ReposOwnerRepoActionsVariablesPostBody,
     )
-    from .group_0920 import (
+    from .group_0919 import (
         ReposOwnerRepoCodespacesGetResponse200 as ReposOwnerRepoCodespacesGetResponse200,
     )
-    from .group_1000 import (
+    from .group_0999 import (
         ReposOwnerRepoPagesDeploymentsPostBody as ReposOwnerRepoPagesDeploymentsPostBody,
     )
-    from .group_1007 import (
+    from .group_1006 import (
         ReposOwnerRepoPullsPullNumberPatchBody as ReposOwnerRepoPullsPullNumberPatchBody,
     )
-    from .group_1029 import (
+    from .group_1028 import (
         ReposOwnerRepoRulesetsRulesetIdPutBody as ReposOwnerRepoRulesetsRulesetIdPutBody,
     )
-    from .group_1053 import (
+    from .group_1052 import (
         UserCodespacesSecretsSecretNamePutBody as UserCodespacesSecretsSecretNamePutBody,
     )
     from .group_0028 import (
@@ -2171,37 +2168,37 @@ if TYPE_CHECKING:
     from .group_0699 import (
         SecretScanningLocationPullRequestReview as SecretScanningLocationPullRequestReview,
     )
-    from .group_0719 import (
+    from .group_0718 import (
         WebhookStatusPropCommitPropParentsItems as WebhookStatusPropCommitPropParentsItems,
     )
-    from .group_0728 import (
+    from .group_0727 import (
         WebhookTeamEditedPropChangesPropPrivacy as WebhookTeamEditedPropChangesPropPrivacy,
     )
-    from .group_0738 import (
+    from .group_0737 import (
         WebhookWorkflowJobQueuedPropWorkflowJob as WebhookWorkflowJobQueuedPropWorkflowJob,
     )
-    from .group_0752 import (
+    from .group_0751 import (
         ApplicationsClientIdTokenScopedPostBody as ApplicationsClientIdTokenScopedPostBody,
     )
-    from .group_0817 import (
+    from .group_0816 import (
         OrgsOrgOrganizationRolesRoleIdPatchBody as OrgsOrgOrganizationRolesRoleIdPatchBody,
     )
-    from .group_0834 import (
+    from .group_0833 import (
         OrgsOrgTeamsTeamSlugDiscussionsPostBody as OrgsOrgTeamsTeamSlugDiscussionsPostBody,
     )
-    from .group_0847 import (
+    from .group_0846 import (
         ProjectsColumnsCardsCardIdMovesPostBody as ProjectsColumnsCardsCardIdMovesPostBody,
     )
-    from .group_0869 import (
+    from .group_0868 import (
         ReposOwnerRepoActionsPermissionsPutBody as ReposOwnerRepoActionsPermissionsPutBody,
     )
-    from .group_0874 import (
+    from .group_0873 import (
         ReposOwnerRepoActionsRunsGetResponse200 as ReposOwnerRepoActionsRunsGetResponse200,
     )
-    from .group_0956 import (
+    from .group_0955 import (
         ReposOwnerRepoGitTagsPostBodyPropTagger as ReposOwnerRepoGitTagsPostBodyPropTagger,
     )
-    from .group_1003 import (
+    from .group_1002 import (
         ReposOwnerRepoPropertiesValuesPatchBody as ReposOwnerRepoPropertiesValuesPatchBody,
     )
     from .group_0077 import (
@@ -2291,40 +2288,40 @@ if TYPE_CHECKING:
     from .group_0699 import (
         SecretScanningLocationPullRequestComment as SecretScanningLocationPullRequestComment,
     )
-    from .group_0719 import (
+    from .group_0718 import (
         WebhookStatusPropBranchesItemsPropCommit as WebhookStatusPropBranchesItemsPropCommit,
     )
-    from .group_0728 import (
+    from .group_0727 import (
         WebhookTeamEditedPropRepositoryPropOwner as WebhookTeamEditedPropRepositoryPropOwner,
     )
-    from .group_0739 import (
+    from .group_0738 import (
         WebhookWorkflowJobWaitingPropWorkflowJob as WebhookWorkflowJobWaitingPropWorkflowJob,
     )
-    from .group_0824 import (
+    from .group_0823 import (
         OrgsOrgPersonalAccessTokensPatIdPostBody as OrgsOrgPersonalAccessTokensPatIdPostBody,
     )
-    from .group_0829 import (
+    from .group_0828 import (
         OrgsOrgReposPostBodyPropCustomProperties as OrgsOrgReposPostBodyPropCustomProperties,
     )
-    from .group_0844 import (
+    from .group_0843 import (
         OrgsOrgSecurityProductEnablementPostBody as OrgsOrgSecurityProductEnablementPostBody,
     )
-    from .group_0919 import (
+    from .group_0918 import (
         ReposOwnerRepoCodeScanningSarifsPostBody as ReposOwnerRepoCodeScanningSarifsPostBody,
     )
-    from .group_0928 import (
+    from .group_0927 import (
         ReposOwnerRepoCommentsCommentIdPatchBody as ReposOwnerRepoCommentsCommentIdPatchBody,
     )
-    from .group_0939 import (
+    from .group_0938 import (
         ReposOwnerRepoDeploymentsPostResponse202 as ReposOwnerRepoDeploymentsPostResponse202,
     )
-    from .group_0960 import (
+    from .group_0959 import (
         ReposOwnerRepoHooksHookIdConfigPatchBody as ReposOwnerRepoHooksHookIdConfigPatchBody,
     )
-    from .group_0970 import (
+    from .group_0969 import (
         ReposOwnerRepoIssuesIssueNumberPatchBody as ReposOwnerRepoIssuesIssueNumberPatchBody,
     )
-    from .group_1026 import (
+    from .group_1025 import (
         ReposOwnerRepoReleasesReleaseIdPatchBody as ReposOwnerRepoReleasesReleaseIdPatchBody,
     )
     from .group_0131 import (
@@ -2459,37 +2456,37 @@ if TYPE_CHECKING:
     from .group_0699 import (
         WebhookSecretScanningAlertLocationCreated as WebhookSecretScanningAlertLocationCreated,
     )
-    from .group_0719 import (
+    from .group_0718 import (
         WebhookStatusPropCommitPropCommitPropTree as WebhookStatusPropCommitPropCommitPropTree,
     )
-    from .group_0726 import (
+    from .group_0725 import (
         WebhookTeamCreatedPropRepositoryPropOwner as WebhookTeamCreatedPropRepositoryPropOwner,
     )
-    from .group_0727 import (
+    from .group_0726 import (
         WebhookTeamDeletedPropRepositoryPropOwner as WebhookTeamDeletedPropRepositoryPropOwner,
     )
-    from .group_0792 import (
+    from .group_0791 import (
         OrgsOrgCodespacesSecretsSecretNamePutBody as OrgsOrgCodespacesSecretsSecretNamePutBody,
     )
-    from .group_0804 import (
+    from .group_0803 import (
         OrgsOrgDependabotSecretsSecretNamePutBody as OrgsOrgDependabotSecretsSecretNamePutBody,
     )
-    from .group_0843 import (
+    from .group_0842 import (
         OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody as OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody,
     )
-    from .group_0906 import (
+    from .group_0905 import (
         ReposOwnerRepoCheckRunsPostBodyPropOutput as ReposOwnerRepoCheckRunsPostBodyPropOutput,
     )
-    from .group_0924 import (
+    from .group_0923 import (
         ReposOwnerRepoCodespacesNewGetResponse200 as ReposOwnerRepoCodespacesNewGetResponse200,
     )
-    from .group_0990 import (
+    from .group_0989 import (
         ReposOwnerRepoNotificationsPutResponse202 as ReposOwnerRepoNotificationsPutResponse202,
     )
-    from .group_1011 import (
+    from .group_1010 import (
         ReposOwnerRepoPullsPullNumberMergePutBody as ReposOwnerRepoPullsPullNumberMergePutBody,
     )
-    from .group_1065 import (
+    from .group_1064 import (
         UserInteractionLimitsGetResponse200Anyof1 as UserInteractionLimitsGetResponse200Anyof1,
     )
     from .group_0048 import (
@@ -2582,73 +2579,73 @@ if TYPE_CHECKING:
     from .group_0697 import (
         WebhookRepositoryVulnerabilityAlertResolve as WebhookRepositoryVulnerabilityAlertResolve,
     )
-    from .group_0725 import (
+    from .group_0724 import (
         WebhookTeamAddedToRepositoryPropRepository as WebhookTeamAddedToRepositoryPropRepository,
     )
-    from .group_0728 import (
+    from .group_0727 import (
         WebhookTeamEditedPropChangesPropRepository as WebhookTeamEditedPropChangesPropRepository,
     )
-    from .group_0728 import (
+    from .group_0727 import (
         WebhookTeamEditedPropRepositoryPropLicense as WebhookTeamEditedPropRepositoryPropLicense,
     )
-    from .group_0732 import (
+    from .group_0731 import (
         WebhookWorkflowJobCompletedPropWorkflowJob as WebhookWorkflowJobCompletedPropWorkflowJob,
     )
-    from .group_0740 import (
+    from .group_0739 import (
         WebhookWorkflowRunCompletedPropWorkflowRun as WebhookWorkflowRunCompletedPropWorkflowRun,
     )
-    from .group_0742 import (
+    from .group_0741 import (
         WebhookWorkflowRunRequestedPropWorkflowRun as WebhookWorkflowRunRequestedPropWorkflowRun,
     )
-    from .group_0743 import (
+    from .group_0742 import (
         AppManifestsCodeConversionsPostResponse201 as AppManifestsCodeConversionsPostResponse201,
     )
-    from .group_0775 import (
+    from .group_0774 import (
         OrgsOrgActionsRunnersRunnerIdLabelsPutBody as OrgsOrgActionsRunnersRunnerIdLabelsPutBody,
     )
-    from .group_0795 import (
+    from .group_0794 import (
         OrgsOrgCopilotBillingSelectedTeamsPostBody as OrgsOrgCopilotBillingSelectedTeamsPostBody,
     )
-    from .group_0799 import (
+    from .group_0798 import (
         OrgsOrgCopilotBillingSelectedUsersPostBody as OrgsOrgCopilotBillingSelectedUsersPostBody,
     )
-    from .group_0818 import (
+    from .group_0817 import (
         OrgsOrgOutsideCollaboratorsUsernamePutBody as OrgsOrgOutsideCollaboratorsUsernamePutBody,
     )
-    from .group_0821 import (
+    from .group_0820 import (
         OrgsOrgPersonalAccessTokenRequestsPostBody as OrgsOrgPersonalAccessTokenRequestsPostBody,
     )
-    from .group_0852 import (
+    from .group_0851 import (
         ProjectsColumnsColumnIdCardsPostBodyOneof0 as ProjectsColumnsColumnIdCardsPostBodyOneof0,
     )
-    from .group_0853 import (
+    from .group_0852 import (
         ProjectsColumnsColumnIdCardsPostBodyOneof1 as ProjectsColumnsColumnIdCardsPostBodyOneof1,
     )
-    from .group_0870 import (
+    from .group_0869 import (
         ReposOwnerRepoActionsRunnersGetResponse200 as ReposOwnerRepoActionsRunnersGetResponse200,
     )
-    from .group_0881 import (
+    from .group_0880 import (
         ReposOwnerRepoActionsSecretsGetResponse200 as ReposOwnerRepoActionsSecretsGetResponse200,
     )
-    from .group_0905 import (
+    from .group_0904 import (
         ReposOwnerRepoBranchesBranchRenamePostBody as ReposOwnerRepoBranchesBranchRenamePostBody,
     )
-    from .group_0927 import (
+    from .group_0926 import (
         ReposOwnerRepoCollaboratorsUsernamePutBody as ReposOwnerRepoCollaboratorsUsernamePutBody,
     )
-    from .group_0953 import (
+    from .group_0952 import (
         ReposOwnerRepoGitCommitsPostBodyPropAuthor as ReposOwnerRepoGitCommitsPostBodyPropAuthor,
     )
-    from .group_0980 import (
+    from .group_0979 import (
         ReposOwnerRepoIssuesIssueNumberLockPutBody as ReposOwnerRepoIssuesIssueNumberLockPutBody,
     )
-    from .group_0991 import (
+    from .group_0990 import (
         ReposOwnerRepoPagesPutBodyPropSourceAnyof1 as ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
     )
-    from .group_1046 import (
+    from .group_1045 import (
         TeamsTeamIdProjectsProjectIdPutResponse403 as TeamsTeamIdProjectsProjectIdPutResponse403,
     )
-    from .group_1058 import (
+    from .group_1057 import (
         UserCodespacesCodespaceNamePublishPostBody as UserCodespacesCodespaceNamePublishPostBody,
     )
     from .group_0031 import (
@@ -2750,55 +2747,55 @@ if TYPE_CHECKING:
     from .group_0656 import (
         WebhookPullRequestUnassignedPropPullRequest as WebhookPullRequestUnassignedPropPullRequest,
     )
-    from .group_0719 import (
+    from .group_0718 import (
         WebhookStatusPropCommitPropCommitPropAuthor as WebhookStatusPropCommitPropCommitPropAuthor,
     )
-    from .group_0726 import (
+    from .group_0725 import (
         WebhookTeamCreatedPropRepositoryPropLicense as WebhookTeamCreatedPropRepositoryPropLicense,
     )
-    from .group_0727 import (
+    from .group_0726 import (
         WebhookTeamDeletedPropRepositoryPropLicense as WebhookTeamDeletedPropRepositoryPropLicense,
     )
-    from .group_0728 import (
+    from .group_0727 import (
         WebhookTeamEditedPropChangesPropDescription as WebhookTeamEditedPropChangesPropDescription,
     )
-    from .group_0735 import (
+    from .group_0734 import (
         WebhookWorkflowJobInProgressPropWorkflowJob as WebhookWorkflowJobInProgressPropWorkflowJob,
     )
-    from .group_0741 import (
+    from .group_0740 import (
         WebhookWorkflowRunInProgressPropWorkflowRun as WebhookWorkflowRunInProgressPropWorkflowRun,
     )
-    from .group_0776 import (
+    from .group_0775 import (
         OrgsOrgActionsRunnersRunnerIdLabelsPostBody as OrgsOrgActionsRunnersRunnerIdLabelsPostBody,
     )
-    from .group_0845 import (
+    from .group_0844 import (
         ProjectsColumnsCardsCardIdDeleteResponse403 as ProjectsColumnsCardsCardIdDeleteResponse403,
     )
-    from .group_0854 import (
+    from .group_0853 import (
         ProjectsColumnsColumnIdCardsPostResponse503 as ProjectsColumnsColumnIdCardsPostResponse503,
     )
-    from .group_0856 import (
+    from .group_0855 import (
         ProjectsColumnsColumnIdMovesPostResponse201 as ProjectsColumnsColumnIdMovesPostResponse201,
     )
-    from .group_0865 import (
+    from .group_0864 import (
         ReposOwnerRepoActionsJobsJobIdRerunPostBody as ReposOwnerRepoActionsJobsJobIdRerunPostBody,
     )
-    from .group_0879 import (
+    from .group_0878 import (
         ReposOwnerRepoActionsRunsRunIdRerunPostBody as ReposOwnerRepoActionsRunsRunIdRerunPostBody,
     )
-    from .group_0885 import (
+    from .group_0884 import (
         ReposOwnerRepoActionsVariablesNamePatchBody as ReposOwnerRepoActionsVariablesNamePatchBody,
     )
-    from .group_0932 import (
+    from .group_0931 import (
         ReposOwnerRepoContentsPathPutBodyPropAuthor as ReposOwnerRepoContentsPathPutBodyPropAuthor,
     )
-    from .group_0957 import (
+    from .group_0956 import (
         ReposOwnerRepoGitTreesPostBodyPropTreeItems as ReposOwnerRepoGitTreesPostBodyPropTreeItems,
     )
-    from .group_1025 import (
+    from .group_1024 import (
         ReposOwnerRepoReleasesGenerateNotesPostBody as ReposOwnerRepoReleasesGenerateNotesPostBody,
     )
-    from .group_1051 import (
+    from .group_1050 import (
         UserCodespacesPostBodyOneof1PropPullRequest as UserCodespacesPostBodyOneof1PropPullRequest,
     )
     from .group_0028 import (
@@ -2885,40 +2882,40 @@ if TYPE_CHECKING:
     from .group_0679 import (
         WebhookRepositoryEditedPropChangesPropTopics as WebhookRepositoryEditedPropChangesPropTopics,
     )
-    from .group_0770 import (
+    from .group_0769 import (
         OrgsOrgActionsPermissionsRepositoriesPutBody as OrgsOrgActionsPermissionsRepositoriesPutBody,
     )
-    from .group_0789 import (
+    from .group_0788 import (
         OrgsOrgCodespacesAccessSelectedUsersPostBody as OrgsOrgCodespacesAccessSelectedUsersPostBody,
     )
-    from .group_0797 import (
+    from .group_0796 import (
         OrgsOrgCopilotBillingSelectedTeamsDeleteBody as OrgsOrgCopilotBillingSelectedTeamsDeleteBody,
     )
-    from .group_0801 import (
+    from .group_0800 import (
         OrgsOrgCopilotBillingSelectedUsersDeleteBody as OrgsOrgCopilotBillingSelectedUsersDeleteBody,
     )
-    from .group_0811 import (
+    from .group_0810 import (
         OrgsOrgInteractionLimitsGetResponse200Anyof1 as OrgsOrgInteractionLimitsGetResponse200Anyof1,
     )
-    from .group_0841 import (
+    from .group_0840 import (
         OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody as OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody,
     )
-    from .group_0864 import (
+    from .group_0863 import (
         ReposOwnerRepoActionsArtifactsGetResponse200 as ReposOwnerRepoActionsArtifactsGetResponse200,
     )
-    from .group_0883 import (
+    from .group_0882 import (
         ReposOwnerRepoActionsVariablesGetResponse200 as ReposOwnerRepoActionsVariablesGetResponse200,
     )
-    from .group_0886 import (
+    from .group_0885 import (
         ReposOwnerRepoActionsWorkflowsGetResponse200 as ReposOwnerRepoActionsWorkflowsGetResponse200,
     )
-    from .group_0963 import (
+    from .group_0962 import (
         ReposOwnerRepoImportAuthorsAuthorIdPatchBody as ReposOwnerRepoImportAuthorsAuthorIdPatchBody,
     )
-    from .group_1017 import (
+    from .group_1016 import (
         ReposOwnerRepoPullsPullNumberReviewsPostBody as ReposOwnerRepoPullsPullNumberReviewsPostBody,
     )
-    from .group_1024 import (
+    from .group_1023 import (
         ReposOwnerRepoReleasesAssetsAssetIdPatchBody as ReposOwnerRepoReleasesAssetsAssetIdPatchBody,
     )
     from .group_0102 import (
@@ -2996,34 +2993,34 @@ if TYPE_CHECKING:
     from .group_0668 import (
         WebhookReleaseEditedPropChangesPropMakeLatest as WebhookReleaseEditedPropChangesPropMakeLatest,
     )
-    from .group_0710 import (
+    from .group_0709 import (
         WebhookSecurityAndAnalysisPropChangesPropFrom as WebhookSecurityAndAnalysisPropChangesPropFrom,
     )
-    from .group_0860 import (
+    from .group_0859 import (
         ProjectsProjectIdCollaboratorsUsernamePutBody as ProjectsProjectIdCollaboratorsUsernamePutBody,
     )
-    from .group_0882 import (
+    from .group_0881 import (
         ReposOwnerRepoActionsSecretsSecretNamePutBody as ReposOwnerRepoActionsSecretsSecretNamePutBody,
     )
-    from .group_0890 import (
+    from .group_0889 import (
         ReposOwnerRepoBranchesBranchProtectionPutBody as ReposOwnerRepoBranchesBranchProtectionPutBody,
     )
-    from .group_0913 import (
+    from .group_0912 import (
         ReposOwnerRepoCheckSuitesPreferencesPatchBody as ReposOwnerRepoCheckSuitesPreferencesPatchBody,
     )
-    from .group_0925 import (
+    from .group_0924 import (
         ReposOwnerRepoCodespacesSecretsGetResponse200 as ReposOwnerRepoCodespacesSecretsGetResponse200,
     )
-    from .group_0935 import (
+    from .group_0934 import (
         ReposOwnerRepoDependabotSecretsGetResponse200 as ReposOwnerRepoDependabotSecretsGetResponse200,
     )
-    from .group_0953 import (
+    from .group_0952 import (
         ReposOwnerRepoGitCommitsPostBodyPropCommitter as ReposOwnerRepoGitCommitsPostBodyPropCommitter,
     )
-    from .group_1005 import (
+    from .group_1004 import (
         ReposOwnerRepoPullsCommentsCommentIdPatchBody as ReposOwnerRepoPullsCommentsCommentIdPatchBody,
     )
-    from .group_1009 import (
+    from .group_1008 import (
         ReposOwnerRepoPullsPullNumberCommentsPostBody as ReposOwnerRepoPullsPullNumberCommentsPostBody,
     )
     from .group_0393 import (
@@ -3095,61 +3092,61 @@ if TYPE_CHECKING:
     from .group_0699 import (
         SecretScanningLocationPullRequestReviewComment as SecretScanningLocationPullRequestReviewComment,
     )
-    from .group_0719 import (
+    from .group_0718 import (
         WebhookStatusPropCommitPropCommitPropCommitter as WebhookStatusPropCommitPropCommitPropCommitter,
     )
-    from .group_0728 import (
+    from .group_0727 import (
         WebhookTeamEditedPropRepositoryPropPermissions as WebhookTeamEditedPropRepositoryPropPermissions,
     )
-    from .group_0729 import (
+    from .group_0728 import (
         WebhookTeamRemovedFromRepositoryPropRepository as WebhookTeamRemovedFromRepositoryPropRepository,
     )
-    from .group_0772 import (
+    from .group_0771 import (
         OrgsOrgActionsRunnersGenerateJitconfigPostBody as OrgsOrgActionsRunnersGenerateJitconfigPostBody,
     )
-    from .group_0786 import (
+    from .group_0785 import (
         OrgsOrgActionsVariablesNameRepositoriesPutBody as OrgsOrgActionsVariablesNameRepositoriesPutBody,
     )
-    from .group_0790 import (
+    from .group_0789 import (
         OrgsOrgCodespacesAccessSelectedUsersDeleteBody as OrgsOrgCodespacesAccessSelectedUsersDeleteBody,
     )
-    from .group_0813 import (
+    from .group_0812 import (
         OrgsOrgMembersUsernameCodespacesGetResponse200 as OrgsOrgMembersUsernameCodespacesGetResponse200,
     )
-    from .group_0840 import (
+    from .group_0839 import (
         OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody as OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody,
     )
-    from .group_0848 import (
+    from .group_0847 import (
         ProjectsColumnsCardsCardIdMovesPostResponse201 as ProjectsColumnsCardsCardIdMovesPostResponse201,
     )
-    from .group_0849 import (
+    from .group_0848 import (
         ProjectsColumnsCardsCardIdMovesPostResponse403 as ProjectsColumnsCardsCardIdMovesPostResponse403,
     )
-    from .group_0850 import (
+    from .group_0849 import (
         ProjectsColumnsCardsCardIdMovesPostResponse503 as ProjectsColumnsCardsCardIdMovesPostResponse503,
     )
-    from .group_0863 import (
+    from .group_0862 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysis as ReposOwnerRepoPatchBodyPropSecurityAndAnalysis,
     )
-    from .group_0923 import (
+    from .group_0922 import (
         ReposOwnerRepoCodespacesMachinesGetResponse200 as ReposOwnerRepoCodespacesMachinesGetResponse200,
     )
-    from .group_0930 import (
+    from .group_0929 import (
         ReposOwnerRepoCommitsCommitShaCommentsPostBody as ReposOwnerRepoCommitsCommitShaCommentsPostBody,
     )
-    from .group_0932 import (
+    from .group_0931 import (
         ReposOwnerRepoContentsPathPutBodyPropCommitter as ReposOwnerRepoContentsPathPutBodyPropCommitter,
     )
-    from .group_0933 import (
+    from .group_0932 import (
         ReposOwnerRepoContentsPathDeleteBodyPropAuthor as ReposOwnerRepoContentsPathDeleteBodyPropAuthor,
     )
-    from .group_0966 import (
+    from .group_0965 import (
         ReposOwnerRepoInvitationsInvitationIdPatchBody as ReposOwnerRepoInvitationsInvitationIdPatchBody,
     )
-    from .group_0968 import (
+    from .group_0967 import (
         ReposOwnerRepoIssuesCommentsCommentIdPatchBody as ReposOwnerRepoIssuesCommentsCommentIdPatchBody,
     )
-    from .group_1036 import (
+    from .group_1035 import (
         ReposTemplateOwnerTemplateRepoGeneratePostBody as ReposTemplateOwnerTemplateRepoGeneratePostBody,
     )
     from .group_0048 import (
@@ -3196,9 +3193,6 @@ if TYPE_CHECKING:
     )
     from .group_0460 import (
         WebhookDeploymentReviewRequestedPropWorkflowRun as WebhookDeploymentReviewRequestedPropWorkflowRun,
-    )
-    from .group_0484 import (
-        WebhookForkPropForkeeAllof0PropCustomProperties as WebhookForkPropForkeeAllof0PropCustomProperties,
     )
     from .group_0533 import (
         WebhookIssuesClosedPropIssueAllof0PropReactions as WebhookIssuesClosedPropIssueAllof0PropReactions,
@@ -3248,28 +3242,28 @@ if TYPE_CHECKING:
     from .group_0638 import (
         WebhookPullRequestLockedPropPullRequestPropUser as WebhookPullRequestLockedPropPullRequestPropUser,
     )
-    from .group_0726 import (
+    from .group_0725 import (
         WebhookTeamCreatedPropRepositoryPropPermissions as WebhookTeamCreatedPropRepositoryPropPermissions,
     )
-    from .group_0727 import (
+    from .group_0726 import (
         WebhookTeamDeletedPropRepositoryPropPermissions as WebhookTeamDeletedPropRepositoryPropPermissions,
     )
-    from .group_0765 import (
+    from .group_0764 import (
         NotificationsThreadsThreadIdSubscriptionPutBody as NotificationsThreadsThreadIdSubscriptionPutBody,
     )
-    from .group_0906 import (
+    from .group_0905 import (
         ReposOwnerRepoCheckRunsPostBodyPropActionsItems as ReposOwnerRepoCheckRunsPostBodyPropActionsItems,
     )
-    from .group_0931 import (
+    from .group_0930 import (
         ReposOwnerRepoCommitsRefCheckRunsGetResponse200 as ReposOwnerRepoCommitsRefCheckRunsGetResponse200,
     )
-    from .group_0973 import (
+    from .group_0972 import (
         ReposOwnerRepoIssuesIssueNumberCommentsPostBody as ReposOwnerRepoIssuesIssueNumberCommentsPostBody,
     )
-    from .group_1008 import (
+    from .group_1007 import (
         ReposOwnerRepoPullsPullNumberCodespacesPostBody as ReposOwnerRepoPullsPullNumberCodespacesPostBody,
     )
-    from .group_1039 import (
+    from .group_1038 import (
         TeamsTeamIdDiscussionsDiscussionNumberPatchBody as TeamsTeamIdDiscussionsDiscussionNumberPatchBody,
     )
     from .group_0050 import (
@@ -3359,61 +3353,61 @@ if TYPE_CHECKING:
     from .group_0692 import (
         WebhookRepositoryTransferredPropChangesPropOwner as WebhookRepositoryTransferredPropChangesPropOwner,
     )
-    from .group_0733 import (
+    from .group_0732 import (
         WebhookWorkflowJobCompletedPropWorkflowJobAllof0 as WebhookWorkflowJobCompletedPropWorkflowJobAllof0,
     )
-    from .group_0734 import (
+    from .group_0733 import (
         WebhookWorkflowJobCompletedPropWorkflowJobAllof1 as WebhookWorkflowJobCompletedPropWorkflowJobAllof1,
     )
-    from .group_0744 import (
+    from .group_0743 import (
         AppManifestsCodeConversionsPostResponse201Allof1 as AppManifestsCodeConversionsPostResponse201Allof1,
     )
-    from .group_0827 import (
+    from .group_0826 import (
         OrgsOrgPropertiesSchemaCustomPropertyNamePutBody as OrgsOrgPropertiesSchemaCustomPropertyNamePutBody,
     )
-    from .group_0866 import (
+    from .group_0865 import (
         ReposOwnerRepoActionsOidcCustomizationSubPutBody as ReposOwnerRepoActionsOidcCustomizationSubPutBody,
     )
-    from .group_0877 import (
+    from .group_0876 import (
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200 as ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
     )
-    from .group_0910 import (
+    from .group_0909 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0 as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0,
     )
-    from .group_0911 import (
+    from .group_0910 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1 as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1,
     )
-    from .group_0926 import (
+    from .group_0925 import (
         ReposOwnerRepoCodespacesSecretsSecretNamePutBody as ReposOwnerRepoCodespacesSecretsSecretNamePutBody,
     )
-    from .group_0929 import (
+    from .group_0928 import (
         ReposOwnerRepoCommentsCommentIdReactionsPostBody as ReposOwnerRepoCommentsCommentIdReactionsPostBody,
     )
-    from .group_0936 import (
+    from .group_0935 import (
         ReposOwnerRepoDependabotSecretsSecretNamePutBody as ReposOwnerRepoDependabotSecretsSecretNamePutBody,
     )
-    from .group_0942 import (
+    from .group_0941 import (
         ReposOwnerRepoEnvironmentsEnvironmentNamePutBody as ReposOwnerRepoEnvironmentsEnvironmentNamePutBody,
     )
-    from .group_0971 import (
+    from .group_0970 import (
         ReposOwnerRepoIssuesIssueNumberAssigneesPostBody as ReposOwnerRepoIssuesIssueNumberAssigneesPostBody,
     )
-    from .group_0981 import (
+    from .group_0980 import (
         ReposOwnerRepoIssuesIssueNumberReactionsPostBody as ReposOwnerRepoIssuesIssueNumberReactionsPostBody,
     )
-    from .group_0988 import (
+    from .group_0987 import (
         ReposOwnerRepoMilestonesMilestoneNumberPatchBody as ReposOwnerRepoMilestonesMilestoneNumberPatchBody,
     )
-    from .group_1012 import (
+    from .group_1011 import (
         ReposOwnerRepoPullsPullNumberMergePutResponse405 as ReposOwnerRepoPullsPullNumberMergePutResponse405,
     )
-    from .group_1013 import (
+    from .group_1012 import (
         ReposOwnerRepoPullsPullNumberMergePutResponse409 as ReposOwnerRepoPullsPullNumberMergePutResponse409,
     )
-    from .group_1021 import (
+    from .group_1020 import (
         ReposOwnerRepoPullsPullNumberUpdateBranchPutBody as ReposOwnerRepoPullsPullNumberUpdateBranchPutBody,
     )
-    from .group_1027 import (
+    from .group_1026 import (
         ReposOwnerRepoReleasesReleaseIdReactionsPostBody as ReposOwnerRepoReleasesReleaseIdReactionsPostBody,
     )
     from .group_0105 import (
@@ -3557,46 +3551,46 @@ if TYPE_CHECKING:
     from .group_0687 import (
         WebhookRepositoryRulesetEditedPropChangesPropName as WebhookRepositoryRulesetEditedPropChangesPropName,
     )
-    from .group_0719 import (
+    from .group_0718 import (
         WebhookStatusPropCommitPropCommitPropVerification as WebhookStatusPropCommitPropCommitPropVerification,
     )
-    from .group_0720 import (
+    from .group_0719 import (
         WebhookStatusPropCommitPropCommitPropAuthorAllof0 as WebhookStatusPropCommitPropCommitPropAuthorAllof0,
     )
-    from .group_0721 import (
+    from .group_0720 import (
         WebhookStatusPropCommitPropCommitPropAuthorAllof1 as WebhookStatusPropCommitPropCommitPropAuthorAllof1,
     )
-    from .group_0736 import (
+    from .group_0735 import (
         WebhookWorkflowJobInProgressPropWorkflowJobAllof0 as WebhookWorkflowJobInProgressPropWorkflowJobAllof0,
     )
-    from .group_0737 import (
+    from .group_0736 import (
         WebhookWorkflowJobInProgressPropWorkflowJobAllof1 as WebhookWorkflowJobInProgressPropWorkflowJobAllof1,
     )
-    from .group_0774 import (
+    from .group_0773 import (
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200 as OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
     )
-    from .group_0796 import (
+    from .group_0795 import (
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201 as OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
     )
-    from .group_0800 import (
+    from .group_0799 import (
         OrgsOrgCopilotBillingSelectedUsersPostResponse201 as OrgsOrgCopilotBillingSelectedUsersPostResponse201,
     )
-    from .group_0819 import (
+    from .group_0818 import (
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202 as OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
     )
-    from .group_0872 import (
+    from .group_0871 import (
         ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody as ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody,
     )
-    from .group_0933 import (
+    from .group_0932 import (
         ReposOwnerRepoContentsPathDeleteBodyPropCommitter as ReposOwnerRepoContentsPathDeleteBodyPropCommitter,
     )
-    from .group_0941 import (
+    from .group_0940 import (
         ReposOwnerRepoDispatchesPostBodyPropClientPayload as ReposOwnerRepoDispatchesPostBodyPropClientPayload,
     )
-    from .group_0967 import (
+    from .group_0966 import (
         ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1 as ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1,
     )
-    from .group_1057 import (
+    from .group_1056 import (
         UserCodespacesCodespaceNameMachinesGetResponse200 as UserCodespacesCodespaceNameMachinesGetResponse200,
     )
     from .group_0028 import (
@@ -3692,37 +3686,37 @@ if TYPE_CHECKING:
     from .group_0690 import (
         WebhookRepositoryRulesetEditedPropChangesPropRules as WebhookRepositoryRulesetEditedPropChangesPropRules,
     )
-    from .group_0746 import (
+    from .group_0745 import (
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202 as AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
     )
-    from .group_0747 import (
+    from .group_0746 import (
         AppInstallationsInstallationIdAccessTokensPostBody as AppInstallationsInstallationIdAccessTokensPostBody,
     )
-    from .group_0767 import (
+    from .group_0766 import (
         OrgsOrgActionsCacheUsageByRepositoryGetResponse200 as OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
     )
-    from .group_0781 import (
+    from .group_0780 import (
         OrgsOrgActionsSecretsSecretNameRepositoriesPutBody as OrgsOrgActionsSecretsSecretNameRepositoriesPutBody,
     )
-    from .group_0873 import (
+    from .group_0872 import (
         ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody as ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody,
     )
-    from .group_0934 import (
+    from .group_0933 import (
         ReposOwnerRepoDependabotAlertsAlertNumberPatchBody as ReposOwnerRepoDependabotAlertsAlertNumberPatchBody,
     )
-    from .group_0938 import (
+    from .group_0937 import (
         ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0 as ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0,
     )
-    from .group_0972 import (
+    from .group_0971 import (
         ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody as ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody,
     )
-    from .group_0974 import (
+    from .group_0973 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0 as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0,
     )
-    from .group_0975 import (
+    from .group_0974 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2 as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2,
     )
-    from .group_1055 import (
+    from .group_1054 import (
         UserCodespacesSecretsSecretNameRepositoriesPutBody as UserCodespacesSecretsSecretNameRepositoriesPutBody,
     )
     from .group_0028 import (
@@ -3791,49 +3785,49 @@ if TYPE_CHECKING:
     from .group_0697 import (
         WebhookRepositoryVulnerabilityAlertResolvePropAlert as WebhookRepositoryVulnerabilityAlertResolvePropAlert,
     )
-    from .group_0713 import (
+    from .group_0712 import (
         WebhookSponsorshipEditedPropChangesPropPrivacyLevel as WebhookSponsorshipEditedPropChangesPropPrivacyLevel,
     )
-    from .group_0725 import (
+    from .group_0724 import (
         WebhookTeamAddedToRepositoryPropRepositoryPropOwner as WebhookTeamAddedToRepositoryPropRepositoryPropOwner,
     )
-    from .group_0728 import (
+    from .group_0727 import (
         WebhookTeamEditedPropChangesPropNotificationSetting as WebhookTeamEditedPropChangesPropNotificationSetting,
     )
-    from .group_0728 import (
+    from .group_0727 import (
         WebhookTeamEditedPropRepositoryPropCustomProperties as WebhookTeamEditedPropRepositoryPropCustomProperties,
     )
-    from .group_0740 import (
+    from .group_0739 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropActor as WebhookWorkflowRunCompletedPropWorkflowRunPropActor,
     )
-    from .group_0742 import (
+    from .group_0741 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropActor as WebhookWorkflowRunRequestedPropWorkflowRunPropActor,
     )
-    from .group_0769 import (
+    from .group_0768 import (
         OrgsOrgActionsPermissionsRepositoriesGetResponse200 as OrgsOrgActionsPermissionsRepositoriesGetResponse200,
     )
-    from .group_0798 import (
+    from .group_0797 import (
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200 as OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
     )
-    from .group_0802 import (
+    from .group_0801 import (
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200 as OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
     )
-    from .group_0842 import (
+    from .group_0841 import (
         OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403 as OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403,
     )
-    from .group_0922 import (
+    from .group_0921 import (
         ReposOwnerRepoCodespacesDevcontainersGetResponse200 as ReposOwnerRepoCodespacesDevcontainersGetResponse200,
     )
-    from .group_0965 import (
+    from .group_0964 import (
         ReposOwnerRepoInteractionLimitsGetResponse200Anyof1 as ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
     )
-    from .group_0977 import (
+    from .group_0976 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0 as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
     )
-    from .group_0978 import (
+    from .group_0977 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2 as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
     )
-    from .group_1018 import (
+    from .group_1017 import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody as ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody,
     )
     from .group_0122 import (
@@ -3908,34 +3902,34 @@ if TYPE_CHECKING:
     from .group_0700 import (
         WebhookSecretScanningAlertLocationCreatedFormEncoded as WebhookSecretScanningAlertLocationCreatedFormEncoded,
     )
-    from .group_0707 import (
+    from .group_0706 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory,
     )
-    from .group_0722 import (
+    from .group_0721 import (
         WebhookStatusPropCommitPropCommitPropCommitterAllof0 as WebhookStatusPropCommitPropCommitPropCommitterAllof0,
     )
-    from .group_0723 import (
+    from .group_0722 import (
         WebhookStatusPropCommitPropCommitPropCommitterAllof1 as WebhookStatusPropCommitPropCommitPropCommitterAllof1,
     )
-    from .group_0726 import (
+    from .group_0725 import (
         WebhookTeamCreatedPropRepositoryPropCustomProperties as WebhookTeamCreatedPropRepositoryPropCustomProperties,
     )
-    from .group_0727 import (
+    from .group_0726 import (
         WebhookTeamDeletedPropRepositoryPropCustomProperties as WebhookTeamDeletedPropRepositoryPropCustomProperties,
     )
-    from .group_0741 import (
+    from .group_0740 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropActor as WebhookWorkflowRunInProgressPropWorkflowRunPropActor,
     )
-    from .group_0777 import (
+    from .group_0776 import (
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200 as OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200,
     )
-    from .group_0820 import (
+    from .group_0819 import (
         OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422 as OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422,
     )
-    from .group_0909 import (
+    from .group_0908 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput,
     )
-    from .group_0915 import (
+    from .group_0914 import (
         ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody as ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody,
     )
     from .group_0172 import (
@@ -4055,46 +4049,46 @@ if TYPE_CHECKING:
     from .group_0658 import (
         WebhookPullRequestUnlockedPropPullRequestPropMergedBy as WebhookPullRequestUnlockedPropPullRequestPropMergedBy,
     )
-    from .group_0725 import (
+    from .group_0724 import (
         WebhookTeamAddedToRepositoryPropRepositoryPropLicense as WebhookTeamAddedToRepositoryPropRepositoryPropLicense,
     )
-    from .group_0732 import (
+    from .group_0731 import (
         WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps as WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps,
     )
-    from .group_0738 import (
+    from .group_0737 import (
         WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems as WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems,
     )
-    from .group_0773 import (
+    from .group_0772 import (
         OrgsOrgActionsRunnersGenerateJitconfigPostResponse201 as OrgsOrgActionsRunnersGenerateJitconfigPostResponse201,
     )
-    from .group_0785 import (
+    from .group_0784 import (
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200 as OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
     )
-    from .group_0794 import (
+    from .group_0793 import (
         OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody as OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody,
     )
-    from .group_0806 import (
+    from .group_0805 import (
         OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody as OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody,
     )
-    from .group_0871 import (
+    from .group_0870 import (
         ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody as ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody,
     )
-    from .group_0875 import (
+    from .group_0874 import (
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200 as ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
     )
-    from .group_0880 import (
+    from .group_0879 import (
         ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody as ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody,
     )
-    from .group_0924 import (
+    from .group_0923 import (
         ReposOwnerRepoCodespacesNewGetResponse200PropDefaults as ReposOwnerRepoCodespacesNewGetResponse200PropDefaults,
     )
-    from .group_0937 import (
+    from .group_0936 import (
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201 as ReposOwnerRepoDependencyGraphSnapshotsPostResponse201,
     )
-    from .group_0940 import (
+    from .group_0939 import (
         ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody as ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody,
     )
-    from .group_1006 import (
+    from .group_1005 import (
         ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody as ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody,
     )
     from .group_0172 import (
@@ -4199,25 +4193,25 @@ if TYPE_CHECKING:
     from .group_0658 import (
         WebhookPullRequestUnlockedPropPullRequestPropMilestone as WebhookPullRequestUnlockedPropPullRequestPropMilestone,
     )
-    from .group_0735 import (
+    from .group_0734 import (
         WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps as WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps,
     )
-    from .group_0739 import (
+    from .group_0738 import (
         WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems as WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems,
     )
-    from .group_0822 import (
+    from .group_0821 import (
         OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody as OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody,
     )
-    from .group_0867 import (
+    from .group_0866 import (
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200 as ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
     )
-    from .group_0969 import (
+    from .group_0968 import (
         ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody as ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody,
     )
-    from .group_1030 import (
+    from .group_1029 import (
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody,
     )
-    from .group_1040 import (
+    from .group_1039 import (
         TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody as TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody,
     )
     from .group_0172 import (
@@ -4325,19 +4319,19 @@ if TYPE_CHECKING:
     from .group_0688 import (
         WebhookRepositoryRulesetEditedPropChangesPropConditions as WebhookRepositoryRulesetEditedPropChangesPropConditions,
     )
-    from .group_0729 import (
+    from .group_0728 import (
         WebhookTeamRemovedFromRepositoryPropRepositoryPropOwner as WebhookTeamRemovedFromRepositoryPropRepositoryPropOwner,
     )
-    from .group_0754 import (
+    from .group_0753 import (
         EnterprisesEnterpriseSecretScanningAlertsGetResponse503 as EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
     )
-    from .group_0976 import (
+    from .group_0975 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items,
     )
-    from .group_1022 import (
+    from .group_1021 import (
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202 as ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
     )
-    from .group_1043 import (
+    from .group_1042 import (
         TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody as TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody,
     )
     from .group_0330 import (
@@ -4460,31 +4454,31 @@ if TYPE_CHECKING:
     from .group_0692 import (
         WebhookRepositoryTransferredPropChangesPropOwnerPropFrom as WebhookRepositoryTransferredPropChangesPropOwnerPropFrom,
     )
-    from .group_0740 import (
+    from .group_0739 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommit as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommit,
     )
-    from .group_0740 import (
+    from .group_0739 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropRepository as WebhookWorkflowRunCompletedPropWorkflowRunPropRepository,
     )
-    from .group_0742 import (
+    from .group_0741 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit,
     )
-    from .group_0742 import (
+    from .group_0741 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropRepository as WebhookWorkflowRunRequestedPropWorkflowRunPropRepository,
     )
-    from .group_0835 import (
+    from .group_0834 import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody,
     )
-    from .group_0868 import (
+    from .group_0867 import (
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200 as ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
     )
-    from .group_0878 import (
+    from .group_0877 import (
         ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody as ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody,
     )
-    from .group_0906 import (
+    from .group_0905 import (
         ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems as ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems,
     )
-    from .group_0979 import (
+    from .group_0978 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items,
     )
     from .group_0089 import (
@@ -4610,34 +4604,34 @@ if TYPE_CHECKING:
     from .group_0683 import (
         WebhookRepositoryRenamedPropChangesPropRepositoryPropName as WebhookRepositoryRenamedPropChangesPropRepositoryPropName,
     )
-    from .group_0725 import (
+    from .group_0724 import (
         WebhookTeamAddedToRepositoryPropRepositoryPropPermissions as WebhookTeamAddedToRepositoryPropRepositoryPropPermissions,
     )
-    from .group_0728 import (
+    from .group_0727 import (
         WebhookTeamEditedPropChangesPropRepositoryPropPermissions as WebhookTeamEditedPropChangesPropRepositoryPropPermissions,
     )
-    from .group_0729 import (
+    from .group_0728 import (
         WebhookTeamRemovedFromRepositoryPropRepositoryPropLicense as WebhookTeamRemovedFromRepositoryPropRepositoryPropLicense,
     )
-    from .group_0741 import (
+    from .group_0740 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommit as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommit,
     )
-    from .group_0741 import (
+    from .group_0740 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropRepository as WebhookWorkflowRunInProgressPropWorkflowRunPropRepository,
     )
-    from .group_0780 import (
+    from .group_0779 import (
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200 as OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
     )
-    from .group_1001 import (
+    from .group_1000 import (
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200 as ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
     )
-    from .group_1016 import (
+    from .group_1015 import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody as ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody,
     )
-    from .group_1054 import (
+    from .group_1053 import (
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200 as UserCodespacesSecretsSecretNameRepositoriesGetResponse200,
     )
-    from .group_1064 import (
+    from .group_1063 import (
         UserInstallationsInstallationIdRepositoriesGetResponse200 as UserInstallationsInstallationIdRepositoriesGetResponse200,
     )
     from .group_0398 import (
@@ -4733,22 +4727,22 @@ if TYPE_CHECKING:
     from .group_0658 import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropSelf as WebhookPullRequestUnlockedPropPullRequestPropLinksPropSelf,
     )
-    from .group_0854 import (
+    from .group_0853 import (
         ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems as ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems,
     )
-    from .group_0887 import (
+    from .group_0886 import (
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody as ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody,
     )
-    from .group_0888 import (
+    from .group_0887 import (
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200 as ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
     )
-    from .group_0909 import (
+    from .group_0908 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems,
     )
-    from .group_0949 import (
+    from .group_0948 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody,
     )
-    from .group_1020 import (
+    from .group_1019 import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody as ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody,
     )
     from .group_0027 import (
@@ -4952,22 +4946,22 @@ if TYPE_CHECKING:
     from .group_0664 import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry as WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry,
     )
-    from .group_0707 import (
+    from .group_0706 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss,
     )
-    from .group_0740 import (
+    from .group_0739 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepository as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepository,
     )
-    from .group_0742 import (
+    from .group_0741 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository,
     )
-    from .group_0793 import (
+    from .group_0792 import (
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200 as OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200,
     )
-    from .group_0805 import (
+    from .group_0804 import (
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200 as OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200,
     )
-    from .group_0914 import (
+    from .group_0913 import (
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200 as ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
     )
     from .group_0103 import (
@@ -5105,55 +5099,55 @@ if TYPE_CHECKING:
     from .group_0658 import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropCommits as WebhookPullRequestUnlockedPropPullRequestPropLinksPropCommits,
     )
-    from .group_0729 import (
+    from .group_0728 import (
         WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions as WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions,
     )
-    from .group_0740 import (
+    from .group_0739 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActor as WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActor,
     )
-    from .group_0741 import (
+    from .group_0740 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepository as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepository,
     )
-    from .group_0742 import (
+    from .group_0741 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor as WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor,
     )
-    from .group_0849 import (
+    from .group_0848 import (
         ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems as ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems,
     )
-    from .group_0850 import (
+    from .group_0849 import (
         ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems as ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems,
     )
-    from .group_0890 import (
+    from .group_0889 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions,
     )
-    from .group_0906 import (
+    from .group_0905 import (
         ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems as ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems,
     )
-    from .group_0916 import (
+    from .group_0915 import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0 as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0,
     )
-    from .group_0917 import (
+    from .group_0916 import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1 as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1,
     )
-    from .group_0918 import (
+    from .group_0917 import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2 as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2,
     )
-    from .group_0970 import (
+    from .group_0969 import (
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1 as ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1,
     )
-    from .group_1010 import (
+    from .group_1009 import (
         ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody as ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody,
     )
-    from .group_1014 import (
+    from .group_1013 import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0 as ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0,
     )
-    from .group_1015 import (
+    from .group_1014 import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1 as ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1,
     )
-    from .group_1017 import (
+    from .group_1016 import (
         ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems as ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems,
     )
-    from .group_1019 import (
+    from .group_1018 import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody as ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody,
     )
     from .group_0398 import (
@@ -5288,19 +5282,19 @@ if TYPE_CHECKING:
     from .group_0661 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry as WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry,
     )
-    from .group_0725 import (
+    from .group_0724 import (
         WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties as WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties,
     )
-    from .group_0733 import (
+    from .group_0732 import (
         WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems as WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems,
     )
-    from .group_0734 import (
+    from .group_0733 import (
         WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems as WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems,
     )
-    from .group_0741 import (
+    from .group_0740 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor as WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor,
     )
-    from .group_0946 import (
+    from .group_0945 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
     )
     from .group_0178 import (
@@ -5393,22 +5387,22 @@ if TYPE_CHECKING:
     from .group_0669 import (
         WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploader as WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploader,
     )
-    from .group_0736 import (
+    from .group_0735 import (
         WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems as WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems,
     )
-    from .group_0737 import (
+    from .group_0736 import (
         WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems as WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems,
     )
-    from .group_0740 import (
+    from .group_0739 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems,
     )
-    from .group_0742 import (
+    from .group_0741 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems,
     )
-    from .group_0836 import (
+    from .group_0835 import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody,
     )
-    from .group_0950 import (
+    from .group_0949 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody,
     )
     from .group_0090 import (
@@ -5522,16 +5516,16 @@ if TYPE_CHECKING:
     from .group_0697 import (
         WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser as WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser,
     )
-    from .group_0741 import (
+    from .group_0740 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItems,
     )
-    from .group_0839 import (
+    from .group_0838 import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody,
     )
-    from .group_0863 import (
+    from .group_0862 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning,
     )
-    from .group_0948 import (
+    from .group_0947 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
     )
     from .group_0101 import (
@@ -5648,22 +5642,22 @@ if TYPE_CHECKING:
     from .group_0658 import (
         WebhookPullRequestUnlockedPropPullRequestPropMilestonePropCreator as WebhookPullRequestUnlockedPropPullRequestPropMilestonePropCreator,
     )
-    from .group_0707 import (
+    from .group_0706 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems,
     )
-    from .group_0728 import (
+    from .group_0727 import (
         WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom as WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom,
     )
-    from .group_0740 import (
+    from .group_0739 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwner as WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwner,
     )
-    from .group_0742 import (
+    from .group_0741 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner as WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner,
     )
-    from .group_0947 import (
+    from .group_0946 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
     )
-    from .group_0975 import (
+    from .group_0974 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems,
     )
     from .group_0089 import (
@@ -5834,25 +5828,25 @@ if TYPE_CHECKING:
     from .group_0691 import (
         WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems as WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems,
     )
-    from .group_0729 import (
+    from .group_0728 import (
         WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties as WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties,
     )
-    from .group_0740 import (
+    from .group_0739 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthor as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthor,
     )
-    from .group_0741 import (
+    from .group_0740 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropRepositoryPropOwner as WebhookWorkflowRunInProgressPropWorkflowRunPropRepositoryPropOwner,
     )
-    from .group_0742 import (
+    from .group_0741 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor,
     )
-    from .group_0863 import (
+    from .group_0862 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity,
     )
-    from .group_0942 import (
+    from .group_0941 import (
         ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems as ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems,
     )
-    from .group_0978 import (
+    from .group_0977 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems,
     )
     from .group_0205 import (
@@ -5993,16 +5987,16 @@ if TYPE_CHECKING:
     from .group_0658 import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropReviewComment as WebhookPullRequestUnlockedPropPullRequestPropLinksPropReviewComment,
     )
-    from .group_0741 import (
+    from .group_0740 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthor as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropAuthor,
     )
-    from .group_0892 import (
+    from .group_0891 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody,
     )
-    from .group_0896 import (
+    from .group_0895 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0,
     )
-    from .group_0909 import (
+    from .group_0908 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems,
     )
     from .group_0422 import (
@@ -6143,19 +6137,19 @@ if TYPE_CHECKING:
     from .group_0662 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion,
     )
-    from .group_0887 import (
+    from .group_0886 import (
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs as ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs,
     )
-    from .group_0897 import (
+    from .group_0896 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
     )
-    from .group_0899 import (
+    from .group_0898 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
     )
-    from .group_0902 import (
+    from .group_0901 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0,
     )
-    from .group_1041 import (
+    from .group_1040 import (
         TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody as TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
     )
     from .group_0237 import (
@@ -6284,28 +6278,28 @@ if TYPE_CHECKING:
     from .group_0657 import (
         WebhookPullRequestUnlabeledPropPullRequestPropLinksPropReviewComments as WebhookPullRequestUnlabeledPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0740 import (
+    from .group_0739 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitter as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitter,
     )
-    from .group_0740 import (
+    from .group_0739 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwner,
     )
-    from .group_0742 import (
+    from .group_0741 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter,
     )
-    from .group_0742 import (
+    from .group_0741 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner,
     )
-    from .group_0876 import (
+    from .group_0875 import (
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200 as ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
     )
-    from .group_0890 import (
+    from .group_0889 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks,
     )
-    from .group_0900 import (
+    from .group_0899 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
     )
-    from .group_0903 import (
+    from .group_0902 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0,
     )
     from .group_0190 import (
@@ -6410,19 +6404,19 @@ if TYPE_CHECKING:
     from .group_0656 import (
         WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComments as WebhookPullRequestUnassignedPropPullRequestPropLinksPropReviewComments,
     )
-    from .group_0740 import (
+    from .group_0739 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItems as WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItems,
     )
-    from .group_0741 import (
+    from .group_0740 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitter as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadCommitPropCommitter,
     )
-    from .group_0741 import (
+    from .group_0740 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepositoryPropOwner as WebhookWorkflowRunInProgressPropWorkflowRunPropHeadRepositoryPropOwner,
     )
-    from .group_0742 import (
+    from .group_0741 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems as WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems,
     )
-    from .group_0898 import (
+    from .group_0897 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0,
     )
     from .group_0089 import (
@@ -6548,31 +6542,31 @@ if TYPE_CHECKING:
     from .group_0689 import (
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems,
     )
-    from .group_0707 import (
+    from .group_0706 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems,
     )
-    from .group_0740 import (
+    from .group_0739 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBase,
     )
-    from .group_0740 import (
+    from .group_0739 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead,
     )
-    from .group_0741 import (
+    from .group_0740 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems as WebhookWorkflowRunInProgressPropWorkflowRunPropReferencedWorkflowsItems,
     )
-    from .group_0742 import (
+    from .group_0741 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase,
     )
-    from .group_0742 import (
+    from .group_0741 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead,
     )
-    from .group_0901 import (
+    from .group_0900 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
     )
-    from .group_0904 import (
+    from .group_0903 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
     )
-    from .group_0913 import (
+    from .group_0912 import (
         ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems as ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems,
     )
     from .group_0437 import (
@@ -6683,16 +6677,16 @@ if TYPE_CHECKING:
     from .group_0692 import (
         WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization as WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganization,
     )
-    from .group_0707 import (
+    from .group_0706 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems,
     )
-    from .group_0741 import (
+    from .group_0740 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBase,
     )
-    from .group_0741 import (
+    from .group_0740 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead,
     )
-    from .group_0909 import (
+    from .group_0908 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems,
     )
     from .group_0089 import (
@@ -6788,10 +6782,10 @@ if TYPE_CHECKING:
     from .group_0657 import (
         WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropPermissions,
     )
-    from .group_0891 import (
+    from .group_0890 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody as ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
     )
-    from .group_0922 import (
+    from .group_0921 import (
         ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems as ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems,
     )
     from .group_0436 import (
@@ -6929,7 +6923,7 @@ if TYPE_CHECKING:
     from .group_0658 import (
         WebhookPullRequestUnlockedPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestUnlockedPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0944 import (
+    from .group_0943 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody,
     )
     from .group_0438 import (
@@ -7061,7 +7055,7 @@ if TYPE_CHECKING:
     from .group_0657 import (
         WebhookPullRequestUnlabeledPropPullRequestPropRequestedTeamsItemsPropParent as WebhookPullRequestUnlabeledPropPullRequestPropRequestedTeamsItemsPropParent,
     )
-    from .group_0890 import (
+    from .group_0889 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews,
     )
     from .group_0190 import (
@@ -7148,10 +7142,10 @@ if TYPE_CHECKING:
     from .group_0665 import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropAuthor,
     )
-    from .group_0707 import (
+    from .group_0706 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems,
     )
-    from .group_1042 import (
+    from .group_1041 import (
         TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody as TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
     )
     from .group_0422 import (
@@ -7229,7 +7223,7 @@ if TYPE_CHECKING:
     from .group_0691 import (
         WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges as WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges,
     )
-    from .group_0837 import (
+    from .group_0836 import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
     )
     from .group_0435 import (
@@ -7298,7 +7292,7 @@ if TYPE_CHECKING:
     from .group_0662 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropAuthor as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropAuthor,
     )
-    from .group_0863 import (
+    from .group_0862 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection,
     )
     from .group_0433 import (
@@ -7376,22 +7370,22 @@ if TYPE_CHECKING:
     from .group_0662 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropRelease as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropRelease,
     )
-    from .group_0740 import (
+    from .group_0739 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
     )
-    from .group_0740 import (
+    from .group_0739 import (
         WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
     )
-    from .group_0742 import (
+    from .group_0741 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
     )
-    from .group_0742 import (
+    from .group_0741 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
     )
-    from .group_0893 import (
+    from .group_0892 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
     )
-    from .group_0943 import (
+    from .group_0942 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
     )
     from .group_0250 import (
@@ -7472,13 +7466,13 @@ if TYPE_CHECKING:
     from .group_0654 import (
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions as WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsPropReactions,
     )
-    from .group_0741 import (
+    from .group_0740 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBasePropRepo as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropBasePropRepo,
     )
-    from .group_0741 import (
+    from .group_0740 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo,
     )
-    from .group_0894 import (
+    from .group_0893 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
     )
     from .group_0439 import (
@@ -7604,10 +7598,10 @@ if TYPE_CHECKING:
     from .group_0689 import (
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges,
     )
-    from .group_0892 import (
+    from .group_0891 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems,
     )
-    from .group_0895 import (
+    from .group_0894 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
     )
     from .group_0434 import (
@@ -7724,10 +7718,10 @@ if TYPE_CHECKING:
     from .group_0658 import (
         WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0890 import (
+    from .group_0889 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems,
     )
-    from .group_0945 import (
+    from .group_0944 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
     )
     from .group_0587 import (
@@ -7772,7 +7766,7 @@ if TYPE_CHECKING:
     from .group_0662 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropMetadataItems as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropMetadataItems,
     )
-    from .group_0838 import (
+    from .group_0837 import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
     )
     from .group_0587 import (
@@ -7868,7 +7862,7 @@ if TYPE_CHECKING:
     from .group_0665 import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthor as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleasePropAuthor,
     )
-    from .group_0707 import (
+    from .group_0706 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage,
     )
     from .group_0422 import (
@@ -8024,7 +8018,7 @@ if TYPE_CHECKING:
     from .group_0654 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
-    from .group_0891 import (
+    from .group_0890 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions as ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions,
     )
     from .group_0662 import (
@@ -8039,10 +8033,10 @@ if TYPE_CHECKING:
     from .group_0689 import (
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropConditionType,
     )
-    from .group_0707 import (
+    from .group_0706 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion,
     )
-    from .group_0890 import (
+    from .group_0889 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions,
     )
     from .group_0662 import (
@@ -8069,13 +8063,13 @@ if TYPE_CHECKING:
     from .group_0662 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDirectoriesOneof1 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDirectoriesOneof1,
     )
-    from .group_0891 import (
+    from .group_0890 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances as ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances,
     )
     from .group_0662 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3 as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3,
     )
-    from .group_0890 import (
+    from .group_0889 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances,
     )
     from .group_0662 import (
@@ -9593,10 +9587,7 @@ else:
             "WebhookForkPropForkeeAllof0PropLicense",
             "WebhookForkPropForkeeAllof0PropOwner",
         ),
-        ".group_0484": (
-            "WebhookForkPropForkeeAllof0PropCustomProperties",
-            "WebhookForkPropForkeeAllof0PropPermissions",
-        ),
+        ".group_0484": ("WebhookForkPropForkeeAllof0PropPermissions",),
         ".group_0485": (
             "WebhookForkPropForkeeAllof1",
             "WebhookForkPropForkeeAllof1PropLicense",
@@ -11342,11 +11333,10 @@ else:
         ".group_0700": ("WebhookSecretScanningAlertLocationCreatedFormEncoded",),
         ".group_0701": ("WebhookSecretScanningAlertReopened",),
         ".group_0702": ("WebhookSecretScanningAlertResolved",),
-        ".group_0703": ("WebhookSecretScanningAlertRevoked",),
-        ".group_0704": ("WebhookSecretScanningAlertValidated",),
-        ".group_0705": ("WebhookSecurityAdvisoryPublished",),
-        ".group_0706": ("WebhookSecurityAdvisoryUpdated",),
-        ".group_0707": (
+        ".group_0703": ("WebhookSecretScanningAlertValidated",),
+        ".group_0704": ("WebhookSecurityAdvisoryPublished",),
+        ".group_0705": ("WebhookSecurityAdvisoryUpdated",),
+        ".group_0706": (
             "WebhookSecurityAdvisoryWithdrawn",
             "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory",
             "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss",
@@ -11357,22 +11347,22 @@ else:
             "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
             "WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
         ),
-        ".group_0708": ("WebhookSecurityAndAnalysis",),
-        ".group_0709": ("WebhookSecurityAndAnalysisPropChanges",),
-        ".group_0710": ("WebhookSecurityAndAnalysisPropChangesPropFrom",),
-        ".group_0711": ("WebhookSponsorshipCancelled",),
-        ".group_0712": ("WebhookSponsorshipCreated",),
-        ".group_0713": (
+        ".group_0707": ("WebhookSecurityAndAnalysis",),
+        ".group_0708": ("WebhookSecurityAndAnalysisPropChanges",),
+        ".group_0709": ("WebhookSecurityAndAnalysisPropChangesPropFrom",),
+        ".group_0710": ("WebhookSponsorshipCancelled",),
+        ".group_0711": ("WebhookSponsorshipCreated",),
+        ".group_0712": (
             "WebhookSponsorshipEdited",
             "WebhookSponsorshipEditedPropChanges",
             "WebhookSponsorshipEditedPropChangesPropPrivacyLevel",
         ),
-        ".group_0714": ("WebhookSponsorshipPendingCancellation",),
-        ".group_0715": ("WebhookSponsorshipPendingTierChange",),
-        ".group_0716": ("WebhookSponsorshipTierChanged",),
-        ".group_0717": ("WebhookStarCreated",),
-        ".group_0718": ("WebhookStarDeleted",),
-        ".group_0719": (
+        ".group_0713": ("WebhookSponsorshipPendingCancellation",),
+        ".group_0714": ("WebhookSponsorshipPendingTierChange",),
+        ".group_0715": ("WebhookSponsorshipTierChanged",),
+        ".group_0716": ("WebhookStarCreated",),
+        ".group_0717": ("WebhookStarDeleted",),
+        ".group_0718": (
             "WebhookStatus",
             "WebhookStatusPropBranchesItems",
             "WebhookStatusPropBranchesItemsPropCommit",
@@ -11386,12 +11376,12 @@ else:
             "WebhookStatusPropCommitPropCommitPropTree",
             "WebhookStatusPropCommitPropCommitPropVerification",
         ),
-        ".group_0720": ("WebhookStatusPropCommitPropCommitPropAuthorAllof0",),
-        ".group_0721": ("WebhookStatusPropCommitPropCommitPropAuthorAllof1",),
-        ".group_0722": ("WebhookStatusPropCommitPropCommitPropCommitterAllof0",),
-        ".group_0723": ("WebhookStatusPropCommitPropCommitPropCommitterAllof1",),
-        ".group_0724": ("WebhookTeamAdd",),
-        ".group_0725": (
+        ".group_0719": ("WebhookStatusPropCommitPropCommitPropAuthorAllof0",),
+        ".group_0720": ("WebhookStatusPropCommitPropCommitPropAuthorAllof1",),
+        ".group_0721": ("WebhookStatusPropCommitPropCommitPropCommitterAllof0",),
+        ".group_0722": ("WebhookStatusPropCommitPropCommitPropCommitterAllof1",),
+        ".group_0723": ("WebhookTeamAdd",),
+        ".group_0724": (
             "WebhookTeamAddedToRepository",
             "WebhookTeamAddedToRepositoryPropRepository",
             "WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties",
@@ -11399,7 +11389,7 @@ else:
             "WebhookTeamAddedToRepositoryPropRepositoryPropOwner",
             "WebhookTeamAddedToRepositoryPropRepositoryPropPermissions",
         ),
-        ".group_0726": (
+        ".group_0725": (
             "WebhookTeamCreated",
             "WebhookTeamCreatedPropRepository",
             "WebhookTeamCreatedPropRepositoryPropCustomProperties",
@@ -11407,7 +11397,7 @@ else:
             "WebhookTeamCreatedPropRepositoryPropOwner",
             "WebhookTeamCreatedPropRepositoryPropPermissions",
         ),
-        ".group_0727": (
+        ".group_0726": (
             "WebhookTeamDeleted",
             "WebhookTeamDeletedPropRepository",
             "WebhookTeamDeletedPropRepositoryPropCustomProperties",
@@ -11415,7 +11405,7 @@ else:
             "WebhookTeamDeletedPropRepositoryPropOwner",
             "WebhookTeamDeletedPropRepositoryPropPermissions",
         ),
-        ".group_0728": (
+        ".group_0727": (
             "WebhookTeamEdited",
             "WebhookTeamEditedPropRepository",
             "WebhookTeamEditedPropRepositoryPropCustomProperties",
@@ -11431,7 +11421,7 @@ else:
             "WebhookTeamEditedPropChangesPropRepositoryPropPermissions",
             "WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom",
         ),
-        ".group_0729": (
+        ".group_0728": (
             "WebhookTeamRemovedFromRepository",
             "WebhookTeamRemovedFromRepositoryPropRepository",
             "WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties",
@@ -11439,48 +11429,48 @@ else:
             "WebhookTeamRemovedFromRepositoryPropRepositoryPropOwner",
             "WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions",
         ),
-        ".group_0730": ("WebhookWatchStarted",),
-        ".group_0731": (
+        ".group_0729": ("WebhookWatchStarted",),
+        ".group_0730": (
             "WebhookWorkflowDispatch",
             "WebhookWorkflowDispatchPropInputs",
         ),
-        ".group_0732": (
+        ".group_0731": (
             "WebhookWorkflowJobCompleted",
             "WebhookWorkflowJobCompletedPropWorkflowJob",
             "WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps",
         ),
-        ".group_0733": (
+        ".group_0732": (
             "WebhookWorkflowJobCompletedPropWorkflowJobAllof0",
             "WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItems",
         ),
-        ".group_0734": (
+        ".group_0733": (
             "WebhookWorkflowJobCompletedPropWorkflowJobAllof1",
             "WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems",
         ),
-        ".group_0735": (
+        ".group_0734": (
             "WebhookWorkflowJobInProgress",
             "WebhookWorkflowJobInProgressPropWorkflowJob",
             "WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps",
         ),
-        ".group_0736": (
+        ".group_0735": (
             "WebhookWorkflowJobInProgressPropWorkflowJobAllof0",
             "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems",
         ),
-        ".group_0737": (
+        ".group_0736": (
             "WebhookWorkflowJobInProgressPropWorkflowJobAllof1",
             "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems",
         ),
-        ".group_0738": (
+        ".group_0737": (
             "WebhookWorkflowJobQueued",
             "WebhookWorkflowJobQueuedPropWorkflowJob",
             "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems",
         ),
-        ".group_0739": (
+        ".group_0738": (
             "WebhookWorkflowJobWaiting",
             "WebhookWorkflowJobWaitingPropWorkflowJob",
             "WebhookWorkflowJobWaitingPropWorkflowJobPropStepsItems",
         ),
-        ".group_0740": (
+        ".group_0739": (
             "WebhookWorkflowRunCompleted",
             "WebhookWorkflowRunCompletedPropWorkflowRun",
             "WebhookWorkflowRunCompletedPropWorkflowRunPropActor",
@@ -11499,7 +11489,7 @@ else:
             "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead",
             "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
         ),
-        ".group_0741": (
+        ".group_0740": (
             "WebhookWorkflowRunInProgress",
             "WebhookWorkflowRunInProgressPropWorkflowRun",
             "WebhookWorkflowRunInProgressPropWorkflowRunPropActor",
@@ -11518,7 +11508,7 @@ else:
             "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHead",
             "WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
         ),
-        ".group_0742": (
+        ".group_0741": (
             "WebhookWorkflowRunRequested",
             "WebhookWorkflowRunRequestedPropWorkflowRun",
             "WebhookWorkflowRunRequestedPropWorkflowRunPropActor",
@@ -11537,222 +11527,222 @@ else:
             "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead",
             "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
         ),
-        ".group_0743": ("AppManifestsCodeConversionsPostResponse201",),
-        ".group_0744": ("AppManifestsCodeConversionsPostResponse201Allof1",),
-        ".group_0745": ("AppHookConfigPatchBody",),
-        ".group_0746": ("AppHookDeliveriesDeliveryIdAttemptsPostResponse202",),
-        ".group_0747": ("AppInstallationsInstallationIdAccessTokensPostBody",),
-        ".group_0748": ("ApplicationsClientIdGrantDeleteBody",),
-        ".group_0749": ("ApplicationsClientIdTokenPostBody",),
-        ".group_0750": ("ApplicationsClientIdTokenDeleteBody",),
-        ".group_0751": ("ApplicationsClientIdTokenPatchBody",),
-        ".group_0752": ("ApplicationsClientIdTokenScopedPostBody",),
-        ".group_0753": ("EmojisGetResponse200",),
-        ".group_0754": ("EnterprisesEnterpriseSecretScanningAlertsGetResponse503",),
-        ".group_0755": (
+        ".group_0742": ("AppManifestsCodeConversionsPostResponse201",),
+        ".group_0743": ("AppManifestsCodeConversionsPostResponse201Allof1",),
+        ".group_0744": ("AppHookConfigPatchBody",),
+        ".group_0745": ("AppHookDeliveriesDeliveryIdAttemptsPostResponse202",),
+        ".group_0746": ("AppInstallationsInstallationIdAccessTokensPostBody",),
+        ".group_0747": ("ApplicationsClientIdGrantDeleteBody",),
+        ".group_0748": ("ApplicationsClientIdTokenPostBody",),
+        ".group_0749": ("ApplicationsClientIdTokenDeleteBody",),
+        ".group_0750": ("ApplicationsClientIdTokenPatchBody",),
+        ".group_0751": ("ApplicationsClientIdTokenScopedPostBody",),
+        ".group_0752": ("EmojisGetResponse200",),
+        ".group_0753": ("EnterprisesEnterpriseSecretScanningAlertsGetResponse503",),
+        ".group_0754": (
             "GistsPostBody",
             "GistsPostBodyPropFiles",
         ),
-        ".group_0756": (
+        ".group_0755": (
             "GistsGistIdGetResponse403",
             "GistsGistIdGetResponse403PropBlock",
         ),
-        ".group_0757": (
+        ".group_0756": (
             "GistsGistIdPatchBody",
             "GistsGistIdPatchBodyPropFiles",
         ),
-        ".group_0758": ("GistsGistIdCommentsPostBody",),
-        ".group_0759": ("GistsGistIdCommentsCommentIdPatchBody",),
-        ".group_0760": ("GistsGistIdStarGetResponse404",),
-        ".group_0761": ("InstallationRepositoriesGetResponse200",),
-        ".group_0762": ("MarkdownPostBody",),
-        ".group_0763": ("NotificationsPutBody",),
-        ".group_0764": ("NotificationsPutResponse202",),
-        ".group_0765": ("NotificationsThreadsThreadIdSubscriptionPutBody",),
-        ".group_0766": ("OrgsOrgPatchBody",),
-        ".group_0767": (
+        ".group_0757": ("GistsGistIdCommentsPostBody",),
+        ".group_0758": ("GistsGistIdCommentsCommentIdPatchBody",),
+        ".group_0759": ("GistsGistIdStarGetResponse404",),
+        ".group_0760": ("InstallationRepositoriesGetResponse200",),
+        ".group_0761": ("MarkdownPostBody",),
+        ".group_0762": ("NotificationsPutBody",),
+        ".group_0763": ("NotificationsPutResponse202",),
+        ".group_0764": ("NotificationsThreadsThreadIdSubscriptionPutBody",),
+        ".group_0765": ("OrgsOrgPatchBody",),
+        ".group_0766": (
             "OrgsOrgActionsCacheUsageByRepositoryGetResponse200",
             "ActionsCacheUsageByRepository",
         ),
-        ".group_0768": ("OrgsOrgActionsPermissionsPutBody",),
-        ".group_0769": ("OrgsOrgActionsPermissionsRepositoriesGetResponse200",),
-        ".group_0770": ("OrgsOrgActionsPermissionsRepositoriesPutBody",),
-        ".group_0771": ("OrgsOrgActionsRunnersGetResponse200",),
-        ".group_0772": ("OrgsOrgActionsRunnersGenerateJitconfigPostBody",),
-        ".group_0773": ("OrgsOrgActionsRunnersGenerateJitconfigPostResponse201",),
-        ".group_0774": ("OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200",),
-        ".group_0775": ("OrgsOrgActionsRunnersRunnerIdLabelsPutBody",),
-        ".group_0776": ("OrgsOrgActionsRunnersRunnerIdLabelsPostBody",),
-        ".group_0777": ("OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200",),
-        ".group_0778": (
+        ".group_0767": ("OrgsOrgActionsPermissionsPutBody",),
+        ".group_0768": ("OrgsOrgActionsPermissionsRepositoriesGetResponse200",),
+        ".group_0769": ("OrgsOrgActionsPermissionsRepositoriesPutBody",),
+        ".group_0770": ("OrgsOrgActionsRunnersGetResponse200",),
+        ".group_0771": ("OrgsOrgActionsRunnersGenerateJitconfigPostBody",),
+        ".group_0772": ("OrgsOrgActionsRunnersGenerateJitconfigPostResponse201",),
+        ".group_0773": ("OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200",),
+        ".group_0774": ("OrgsOrgActionsRunnersRunnerIdLabelsPutBody",),
+        ".group_0775": ("OrgsOrgActionsRunnersRunnerIdLabelsPostBody",),
+        ".group_0776": ("OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200",),
+        ".group_0777": (
             "OrgsOrgActionsSecretsGetResponse200",
             "OrganizationActionsSecret",
         ),
-        ".group_0779": ("OrgsOrgActionsSecretsSecretNamePutBody",),
-        ".group_0780": ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200",),
-        ".group_0781": ("OrgsOrgActionsSecretsSecretNameRepositoriesPutBody",),
-        ".group_0782": (
+        ".group_0778": ("OrgsOrgActionsSecretsSecretNamePutBody",),
+        ".group_0779": ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200",),
+        ".group_0780": ("OrgsOrgActionsSecretsSecretNameRepositoriesPutBody",),
+        ".group_0781": (
             "OrgsOrgActionsVariablesGetResponse200",
             "OrganizationActionsVariable",
         ),
-        ".group_0783": ("OrgsOrgActionsVariablesPostBody",),
-        ".group_0784": ("OrgsOrgActionsVariablesNamePatchBody",),
-        ".group_0785": ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200",),
-        ".group_0786": ("OrgsOrgActionsVariablesNameRepositoriesPutBody",),
-        ".group_0787": ("OrgsOrgCodespacesGetResponse200",),
-        ".group_0788": ("OrgsOrgCodespacesAccessPutBody",),
-        ".group_0789": ("OrgsOrgCodespacesAccessSelectedUsersPostBody",),
-        ".group_0790": ("OrgsOrgCodespacesAccessSelectedUsersDeleteBody",),
-        ".group_0791": (
+        ".group_0782": ("OrgsOrgActionsVariablesPostBody",),
+        ".group_0783": ("OrgsOrgActionsVariablesNamePatchBody",),
+        ".group_0784": ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200",),
+        ".group_0785": ("OrgsOrgActionsVariablesNameRepositoriesPutBody",),
+        ".group_0786": ("OrgsOrgCodespacesGetResponse200",),
+        ".group_0787": ("OrgsOrgCodespacesAccessPutBody",),
+        ".group_0788": ("OrgsOrgCodespacesAccessSelectedUsersPostBody",),
+        ".group_0789": ("OrgsOrgCodespacesAccessSelectedUsersDeleteBody",),
+        ".group_0790": (
             "OrgsOrgCodespacesSecretsGetResponse200",
             "CodespacesOrgSecret",
         ),
-        ".group_0792": ("OrgsOrgCodespacesSecretsSecretNamePutBody",),
-        ".group_0793": (
+        ".group_0791": ("OrgsOrgCodespacesSecretsSecretNamePutBody",),
+        ".group_0792": (
             "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200",
         ),
-        ".group_0794": ("OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",),
-        ".group_0795": ("OrgsOrgCopilotBillingSelectedTeamsPostBody",),
-        ".group_0796": ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201",),
-        ".group_0797": ("OrgsOrgCopilotBillingSelectedTeamsDeleteBody",),
-        ".group_0798": ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200",),
-        ".group_0799": ("OrgsOrgCopilotBillingSelectedUsersPostBody",),
-        ".group_0800": ("OrgsOrgCopilotBillingSelectedUsersPostResponse201",),
-        ".group_0801": ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",),
-        ".group_0802": ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",),
-        ".group_0803": (
+        ".group_0793": ("OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",),
+        ".group_0794": ("OrgsOrgCopilotBillingSelectedTeamsPostBody",),
+        ".group_0795": ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201",),
+        ".group_0796": ("OrgsOrgCopilotBillingSelectedTeamsDeleteBody",),
+        ".group_0797": ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200",),
+        ".group_0798": ("OrgsOrgCopilotBillingSelectedUsersPostBody",),
+        ".group_0799": ("OrgsOrgCopilotBillingSelectedUsersPostResponse201",),
+        ".group_0800": ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",),
+        ".group_0801": ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",),
+        ".group_0802": (
             "OrgsOrgDependabotSecretsGetResponse200",
             "OrganizationDependabotSecret",
         ),
-        ".group_0804": ("OrgsOrgDependabotSecretsSecretNamePutBody",),
-        ".group_0805": (
+        ".group_0803": ("OrgsOrgDependabotSecretsSecretNamePutBody",),
+        ".group_0804": (
             "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200",
         ),
-        ".group_0806": ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody",),
-        ".group_0807": (
+        ".group_0805": ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody",),
+        ".group_0806": (
             "OrgsOrgHooksPostBody",
             "OrgsOrgHooksPostBodyPropConfig",
         ),
-        ".group_0808": (
+        ".group_0807": (
             "OrgsOrgHooksHookIdPatchBody",
             "OrgsOrgHooksHookIdPatchBodyPropConfig",
         ),
-        ".group_0809": ("OrgsOrgHooksHookIdConfigPatchBody",),
-        ".group_0810": ("OrgsOrgInstallationsGetResponse200",),
-        ".group_0811": ("OrgsOrgInteractionLimitsGetResponse200Anyof1",),
-        ".group_0812": ("OrgsOrgInvitationsPostBody",),
-        ".group_0813": ("OrgsOrgMembersUsernameCodespacesGetResponse200",),
-        ".group_0814": ("OrgsOrgMembershipsUsernamePutBody",),
-        ".group_0815": ("OrgsOrgMigrationsPostBody",),
-        ".group_0816": ("OrgsOrgOrganizationRolesPostBody",),
-        ".group_0817": ("OrgsOrgOrganizationRolesRoleIdPatchBody",),
-        ".group_0818": ("OrgsOrgOutsideCollaboratorsUsernamePutBody",),
-        ".group_0819": ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202",),
-        ".group_0820": ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",),
-        ".group_0821": ("OrgsOrgPersonalAccessTokenRequestsPostBody",),
-        ".group_0822": ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",),
-        ".group_0823": ("OrgsOrgPersonalAccessTokensPostBody",),
-        ".group_0824": ("OrgsOrgPersonalAccessTokensPatIdPostBody",),
-        ".group_0825": ("OrgsOrgProjectsPostBody",),
-        ".group_0826": ("OrgsOrgPropertiesSchemaPatchBody",),
-        ".group_0827": ("OrgsOrgPropertiesSchemaCustomPropertyNamePutBody",),
-        ".group_0828": ("OrgsOrgPropertiesValuesPatchBody",),
-        ".group_0829": (
+        ".group_0808": ("OrgsOrgHooksHookIdConfigPatchBody",),
+        ".group_0809": ("OrgsOrgInstallationsGetResponse200",),
+        ".group_0810": ("OrgsOrgInteractionLimitsGetResponse200Anyof1",),
+        ".group_0811": ("OrgsOrgInvitationsPostBody",),
+        ".group_0812": ("OrgsOrgMembersUsernameCodespacesGetResponse200",),
+        ".group_0813": ("OrgsOrgMembershipsUsernamePutBody",),
+        ".group_0814": ("OrgsOrgMigrationsPostBody",),
+        ".group_0815": ("OrgsOrgOrganizationRolesPostBody",),
+        ".group_0816": ("OrgsOrgOrganizationRolesRoleIdPatchBody",),
+        ".group_0817": ("OrgsOrgOutsideCollaboratorsUsernamePutBody",),
+        ".group_0818": ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202",),
+        ".group_0819": ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",),
+        ".group_0820": ("OrgsOrgPersonalAccessTokenRequestsPostBody",),
+        ".group_0821": ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",),
+        ".group_0822": ("OrgsOrgPersonalAccessTokensPostBody",),
+        ".group_0823": ("OrgsOrgPersonalAccessTokensPatIdPostBody",),
+        ".group_0824": ("OrgsOrgProjectsPostBody",),
+        ".group_0825": ("OrgsOrgPropertiesSchemaPatchBody",),
+        ".group_0826": ("OrgsOrgPropertiesSchemaCustomPropertyNamePutBody",),
+        ".group_0827": ("OrgsOrgPropertiesValuesPatchBody",),
+        ".group_0828": (
             "OrgsOrgReposPostBody",
             "OrgsOrgReposPostBodyPropCustomProperties",
         ),
-        ".group_0830": ("OrgsOrgRulesetsPostBody",),
-        ".group_0831": ("OrgsOrgRulesetsRulesetIdPutBody",),
-        ".group_0832": ("OrgsOrgTeamsPostBody",),
-        ".group_0833": ("OrgsOrgTeamsTeamSlugPatchBody",),
-        ".group_0834": ("OrgsOrgTeamsTeamSlugDiscussionsPostBody",),
-        ".group_0835": ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody",),
-        ".group_0836": (
+        ".group_0829": ("OrgsOrgRulesetsPostBody",),
+        ".group_0830": ("OrgsOrgRulesetsRulesetIdPutBody",),
+        ".group_0831": ("OrgsOrgTeamsPostBody",),
+        ".group_0832": ("OrgsOrgTeamsTeamSlugPatchBody",),
+        ".group_0833": ("OrgsOrgTeamsTeamSlugDiscussionsPostBody",),
+        ".group_0834": ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody",),
+        ".group_0835": (
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody",
         ),
-        ".group_0837": (
+        ".group_0836": (
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody",
         ),
-        ".group_0838": (
+        ".group_0837": (
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody",
         ),
-        ".group_0839": (
+        ".group_0838": (
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody",
         ),
-        ".group_0840": ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody",),
-        ".group_0841": ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody",),
-        ".group_0842": ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403",),
-        ".group_0843": ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",),
-        ".group_0844": ("OrgsOrgSecurityProductEnablementPostBody",),
-        ".group_0845": ("ProjectsColumnsCardsCardIdDeleteResponse403",),
-        ".group_0846": ("ProjectsColumnsCardsCardIdPatchBody",),
-        ".group_0847": ("ProjectsColumnsCardsCardIdMovesPostBody",),
-        ".group_0848": ("ProjectsColumnsCardsCardIdMovesPostResponse201",),
-        ".group_0849": (
+        ".group_0839": ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody",),
+        ".group_0840": ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody",),
+        ".group_0841": ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403",),
+        ".group_0842": ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",),
+        ".group_0843": ("OrgsOrgSecurityProductEnablementPostBody",),
+        ".group_0844": ("ProjectsColumnsCardsCardIdDeleteResponse403",),
+        ".group_0845": ("ProjectsColumnsCardsCardIdPatchBody",),
+        ".group_0846": ("ProjectsColumnsCardsCardIdMovesPostBody",),
+        ".group_0847": ("ProjectsColumnsCardsCardIdMovesPostResponse201",),
+        ".group_0848": (
             "ProjectsColumnsCardsCardIdMovesPostResponse403",
             "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems",
         ),
-        ".group_0850": (
+        ".group_0849": (
             "ProjectsColumnsCardsCardIdMovesPostResponse503",
             "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems",
         ),
-        ".group_0851": ("ProjectsColumnsColumnIdPatchBody",),
-        ".group_0852": ("ProjectsColumnsColumnIdCardsPostBodyOneof0",),
-        ".group_0853": ("ProjectsColumnsColumnIdCardsPostBodyOneof1",),
-        ".group_0854": (
+        ".group_0850": ("ProjectsColumnsColumnIdPatchBody",),
+        ".group_0851": ("ProjectsColumnsColumnIdCardsPostBodyOneof0",),
+        ".group_0852": ("ProjectsColumnsColumnIdCardsPostBodyOneof1",),
+        ".group_0853": (
             "ProjectsColumnsColumnIdCardsPostResponse503",
             "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems",
         ),
-        ".group_0855": ("ProjectsColumnsColumnIdMovesPostBody",),
-        ".group_0856": ("ProjectsColumnsColumnIdMovesPostResponse201",),
-        ".group_0857": ("ProjectsProjectIdDeleteResponse403",),
-        ".group_0858": ("ProjectsProjectIdPatchBody",),
-        ".group_0859": ("ProjectsProjectIdPatchResponse403",),
-        ".group_0860": ("ProjectsProjectIdCollaboratorsUsernamePutBody",),
-        ".group_0861": ("ProjectsProjectIdColumnsPostBody",),
-        ".group_0862": ("ReposOwnerRepoDeleteResponse403",),
-        ".group_0863": (
+        ".group_0854": ("ProjectsColumnsColumnIdMovesPostBody",),
+        ".group_0855": ("ProjectsColumnsColumnIdMovesPostResponse201",),
+        ".group_0856": ("ProjectsProjectIdDeleteResponse403",),
+        ".group_0857": ("ProjectsProjectIdPatchBody",),
+        ".group_0858": ("ProjectsProjectIdPatchResponse403",),
+        ".group_0859": ("ProjectsProjectIdCollaboratorsUsernamePutBody",),
+        ".group_0860": ("ProjectsProjectIdColumnsPostBody",),
+        ".group_0861": ("ReposOwnerRepoDeleteResponse403",),
+        ".group_0862": (
             "ReposOwnerRepoPatchBody",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysis",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection",
         ),
-        ".group_0864": ("ReposOwnerRepoActionsArtifactsGetResponse200",),
-        ".group_0865": ("ReposOwnerRepoActionsJobsJobIdRerunPostBody",),
-        ".group_0866": ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",),
-        ".group_0867": ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200",),
-        ".group_0868": ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200",),
-        ".group_0869": ("ReposOwnerRepoActionsPermissionsPutBody",),
-        ".group_0870": ("ReposOwnerRepoActionsRunnersGetResponse200",),
-        ".group_0871": ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody",),
-        ".group_0872": ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",),
-        ".group_0873": ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",),
-        ".group_0874": ("ReposOwnerRepoActionsRunsGetResponse200",),
-        ".group_0875": ("ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200",),
-        ".group_0876": (
+        ".group_0863": ("ReposOwnerRepoActionsArtifactsGetResponse200",),
+        ".group_0864": ("ReposOwnerRepoActionsJobsJobIdRerunPostBody",),
+        ".group_0865": ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",),
+        ".group_0866": ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200",),
+        ".group_0867": ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200",),
+        ".group_0868": ("ReposOwnerRepoActionsPermissionsPutBody",),
+        ".group_0869": ("ReposOwnerRepoActionsRunnersGetResponse200",),
+        ".group_0870": ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody",),
+        ".group_0871": ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",),
+        ".group_0872": ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",),
+        ".group_0873": ("ReposOwnerRepoActionsRunsGetResponse200",),
+        ".group_0874": ("ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200",),
+        ".group_0875": (
             "ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200",
         ),
-        ".group_0877": ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200",),
-        ".group_0878": ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",),
-        ".group_0879": ("ReposOwnerRepoActionsRunsRunIdRerunPostBody",),
-        ".group_0880": ("ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody",),
-        ".group_0881": ("ReposOwnerRepoActionsSecretsGetResponse200",),
-        ".group_0882": ("ReposOwnerRepoActionsSecretsSecretNamePutBody",),
-        ".group_0883": ("ReposOwnerRepoActionsVariablesGetResponse200",),
-        ".group_0884": ("ReposOwnerRepoActionsVariablesPostBody",),
-        ".group_0885": ("ReposOwnerRepoActionsVariablesNamePatchBody",),
-        ".group_0886": (
+        ".group_0876": ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200",),
+        ".group_0877": ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",),
+        ".group_0878": ("ReposOwnerRepoActionsRunsRunIdRerunPostBody",),
+        ".group_0879": ("ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody",),
+        ".group_0880": ("ReposOwnerRepoActionsSecretsGetResponse200",),
+        ".group_0881": ("ReposOwnerRepoActionsSecretsSecretNamePutBody",),
+        ".group_0882": ("ReposOwnerRepoActionsVariablesGetResponse200",),
+        ".group_0883": ("ReposOwnerRepoActionsVariablesPostBody",),
+        ".group_0884": ("ReposOwnerRepoActionsVariablesNamePatchBody",),
+        ".group_0885": (
             "ReposOwnerRepoActionsWorkflowsGetResponse200",
             "Workflow",
         ),
-        ".group_0887": (
+        ".group_0886": (
             "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
             "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
         ),
-        ".group_0888": ("ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200",),
-        ".group_0889": ("ReposOwnerRepoAutolinksPostBody",),
-        ".group_0890": (
+        ".group_0887": ("ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200",),
+        ".group_0888": ("ReposOwnerRepoAutolinksPostBody",),
+        ".group_0889": (
             "ReposOwnerRepoBranchesBranchProtectionPutBody",
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks",
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems",
@@ -11761,329 +11751,329 @@ else:
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions",
         ),
-        ".group_0891": (
+        ".group_0890": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody",
             "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions",
             "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances",
         ),
-        ".group_0892": (
+        ".group_0891": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody",
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems",
         ),
-        ".group_0893": (
+        ".group_0892": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0",
         ),
-        ".group_0894": (
+        ".group_0893": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0",
         ),
-        ".group_0895": (
+        ".group_0894": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0",
         ),
-        ".group_0896": (
+        ".group_0895": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0",
         ),
-        ".group_0897": (
+        ".group_0896": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0",
         ),
-        ".group_0898": (
+        ".group_0897": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0",
         ),
-        ".group_0899": (
+        ".group_0898": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0",
         ),
-        ".group_0900": (
+        ".group_0899": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0",
         ),
-        ".group_0901": (
+        ".group_0900": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0",
         ),
-        ".group_0902": (
+        ".group_0901": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0",
         ),
-        ".group_0903": (
+        ".group_0902": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0",
         ),
-        ".group_0904": (
+        ".group_0903": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0",
         ),
-        ".group_0905": ("ReposOwnerRepoBranchesBranchRenamePostBody",),
-        ".group_0906": (
+        ".group_0904": ("ReposOwnerRepoBranchesBranchRenamePostBody",),
+        ".group_0905": (
             "ReposOwnerRepoCheckRunsPostBodyPropOutput",
             "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems",
             "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems",
             "ReposOwnerRepoCheckRunsPostBodyPropActionsItems",
         ),
-        ".group_0907": ("ReposOwnerRepoCheckRunsPostBodyOneof0",),
-        ".group_0908": ("ReposOwnerRepoCheckRunsPostBodyOneof1",),
-        ".group_0909": (
+        ".group_0906": ("ReposOwnerRepoCheckRunsPostBodyOneof0",),
+        ".group_0907": ("ReposOwnerRepoCheckRunsPostBodyOneof1",),
+        ".group_0908": (
             "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput",
             "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems",
             "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems",
             "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems",
         ),
-        ".group_0910": ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0",),
-        ".group_0911": ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1",),
-        ".group_0912": ("ReposOwnerRepoCheckSuitesPostBody",),
-        ".group_0913": (
+        ".group_0909": ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0",),
+        ".group_0910": ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1",),
+        ".group_0911": ("ReposOwnerRepoCheckSuitesPostBody",),
+        ".group_0912": (
             "ReposOwnerRepoCheckSuitesPreferencesPatchBody",
             "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems",
         ),
-        ".group_0914": (
+        ".group_0913": (
             "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200",
         ),
-        ".group_0915": ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody",),
-        ".group_0916": (
+        ".group_0914": ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody",),
+        ".group_0915": (
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0",
         ),
-        ".group_0917": (
+        ".group_0916": (
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1",
         ),
-        ".group_0918": (
+        ".group_0917": (
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2",
         ),
-        ".group_0919": ("ReposOwnerRepoCodeScanningSarifsPostBody",),
-        ".group_0920": ("ReposOwnerRepoCodespacesGetResponse200",),
-        ".group_0921": ("ReposOwnerRepoCodespacesPostBody",),
-        ".group_0922": (
+        ".group_0918": ("ReposOwnerRepoCodeScanningSarifsPostBody",),
+        ".group_0919": ("ReposOwnerRepoCodespacesGetResponse200",),
+        ".group_0920": ("ReposOwnerRepoCodespacesPostBody",),
+        ".group_0921": (
             "ReposOwnerRepoCodespacesDevcontainersGetResponse200",
             "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems",
         ),
-        ".group_0923": ("ReposOwnerRepoCodespacesMachinesGetResponse200",),
-        ".group_0924": (
+        ".group_0922": ("ReposOwnerRepoCodespacesMachinesGetResponse200",),
+        ".group_0923": (
             "ReposOwnerRepoCodespacesNewGetResponse200",
             "ReposOwnerRepoCodespacesNewGetResponse200PropDefaults",
         ),
-        ".group_0925": (
+        ".group_0924": (
             "ReposOwnerRepoCodespacesSecretsGetResponse200",
             "RepoCodespacesSecret",
         ),
-        ".group_0926": ("ReposOwnerRepoCodespacesSecretsSecretNamePutBody",),
-        ".group_0927": ("ReposOwnerRepoCollaboratorsUsernamePutBody",),
-        ".group_0928": ("ReposOwnerRepoCommentsCommentIdPatchBody",),
-        ".group_0929": ("ReposOwnerRepoCommentsCommentIdReactionsPostBody",),
-        ".group_0930": ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",),
-        ".group_0931": ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200",),
-        ".group_0932": (
+        ".group_0925": ("ReposOwnerRepoCodespacesSecretsSecretNamePutBody",),
+        ".group_0926": ("ReposOwnerRepoCollaboratorsUsernamePutBody",),
+        ".group_0927": ("ReposOwnerRepoCommentsCommentIdPatchBody",),
+        ".group_0928": ("ReposOwnerRepoCommentsCommentIdReactionsPostBody",),
+        ".group_0929": ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",),
+        ".group_0930": ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200",),
+        ".group_0931": (
             "ReposOwnerRepoContentsPathPutBody",
             "ReposOwnerRepoContentsPathPutBodyPropCommitter",
             "ReposOwnerRepoContentsPathPutBodyPropAuthor",
         ),
-        ".group_0933": (
+        ".group_0932": (
             "ReposOwnerRepoContentsPathDeleteBody",
             "ReposOwnerRepoContentsPathDeleteBodyPropCommitter",
             "ReposOwnerRepoContentsPathDeleteBodyPropAuthor",
         ),
-        ".group_0934": ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBody",),
-        ".group_0935": (
+        ".group_0933": ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBody",),
+        ".group_0934": (
             "ReposOwnerRepoDependabotSecretsGetResponse200",
             "DependabotSecret",
         ),
-        ".group_0936": ("ReposOwnerRepoDependabotSecretsSecretNamePutBody",),
-        ".group_0937": ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201",),
-        ".group_0938": (
+        ".group_0935": ("ReposOwnerRepoDependabotSecretsSecretNamePutBody",),
+        ".group_0936": ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201",),
+        ".group_0937": (
             "ReposOwnerRepoDeploymentsPostBody",
             "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0",
         ),
-        ".group_0939": ("ReposOwnerRepoDeploymentsPostResponse202",),
-        ".group_0940": ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody",),
-        ".group_0941": (
+        ".group_0938": ("ReposOwnerRepoDeploymentsPostResponse202",),
+        ".group_0939": ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody",),
+        ".group_0940": (
             "ReposOwnerRepoDispatchesPostBody",
             "ReposOwnerRepoDispatchesPostBodyPropClientPayload",
         ),
-        ".group_0942": (
+        ".group_0941": (
             "ReposOwnerRepoEnvironmentsEnvironmentNamePutBody",
             "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems",
         ),
-        ".group_0943": (
+        ".group_0942": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200",
             "DeploymentBranchPolicy",
         ),
-        ".group_0944": (
+        ".group_0943": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody",
         ),
-        ".group_0945": (
+        ".group_0944": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200",
         ),
-        ".group_0946": (
+        ".group_0945": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200",
         ),
-        ".group_0947": (
+        ".group_0946": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody",
         ),
-        ".group_0948": (
+        ".group_0947": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200",
         ),
-        ".group_0949": ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody",),
-        ".group_0950": (
+        ".group_0948": ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody",),
+        ".group_0949": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody",
         ),
-        ".group_0951": ("ReposOwnerRepoForksPostBody",),
-        ".group_0952": ("ReposOwnerRepoGitBlobsPostBody",),
-        ".group_0953": (
+        ".group_0950": ("ReposOwnerRepoForksPostBody",),
+        ".group_0951": ("ReposOwnerRepoGitBlobsPostBody",),
+        ".group_0952": (
             "ReposOwnerRepoGitCommitsPostBody",
             "ReposOwnerRepoGitCommitsPostBodyPropAuthor",
             "ReposOwnerRepoGitCommitsPostBodyPropCommitter",
         ),
-        ".group_0954": ("ReposOwnerRepoGitRefsPostBody",),
-        ".group_0955": ("ReposOwnerRepoGitRefsRefPatchBody",),
-        ".group_0956": (
+        ".group_0953": ("ReposOwnerRepoGitRefsPostBody",),
+        ".group_0954": ("ReposOwnerRepoGitRefsRefPatchBody",),
+        ".group_0955": (
             "ReposOwnerRepoGitTagsPostBody",
             "ReposOwnerRepoGitTagsPostBodyPropTagger",
         ),
-        ".group_0957": (
+        ".group_0956": (
             "ReposOwnerRepoGitTreesPostBody",
             "ReposOwnerRepoGitTreesPostBodyPropTreeItems",
         ),
-        ".group_0958": (
+        ".group_0957": (
             "ReposOwnerRepoHooksPostBody",
             "ReposOwnerRepoHooksPostBodyPropConfig",
         ),
-        ".group_0959": ("ReposOwnerRepoHooksHookIdPatchBody",),
-        ".group_0960": ("ReposOwnerRepoHooksHookIdConfigPatchBody",),
-        ".group_0961": ("ReposOwnerRepoImportPutBody",),
-        ".group_0962": ("ReposOwnerRepoImportPatchBody",),
-        ".group_0963": ("ReposOwnerRepoImportAuthorsAuthorIdPatchBody",),
-        ".group_0964": ("ReposOwnerRepoImportLfsPatchBody",),
-        ".group_0965": ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1",),
-        ".group_0966": ("ReposOwnerRepoInvitationsInvitationIdPatchBody",),
-        ".group_0967": (
+        ".group_0958": ("ReposOwnerRepoHooksHookIdPatchBody",),
+        ".group_0959": ("ReposOwnerRepoHooksHookIdConfigPatchBody",),
+        ".group_0960": ("ReposOwnerRepoImportPutBody",),
+        ".group_0961": ("ReposOwnerRepoImportPatchBody",),
+        ".group_0962": ("ReposOwnerRepoImportAuthorsAuthorIdPatchBody",),
+        ".group_0963": ("ReposOwnerRepoImportLfsPatchBody",),
+        ".group_0964": ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1",),
+        ".group_0965": ("ReposOwnerRepoInvitationsInvitationIdPatchBody",),
+        ".group_0966": (
             "ReposOwnerRepoIssuesPostBody",
             "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1",
         ),
-        ".group_0968": ("ReposOwnerRepoIssuesCommentsCommentIdPatchBody",),
-        ".group_0969": ("ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody",),
-        ".group_0970": (
+        ".group_0967": ("ReposOwnerRepoIssuesCommentsCommentIdPatchBody",),
+        ".group_0968": ("ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody",),
+        ".group_0969": (
             "ReposOwnerRepoIssuesIssueNumberPatchBody",
             "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1",
         ),
-        ".group_0971": ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",),
-        ".group_0972": ("ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody",),
-        ".group_0973": ("ReposOwnerRepoIssuesIssueNumberCommentsPostBody",),
-        ".group_0974": ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0",),
-        ".group_0975": (
+        ".group_0970": ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",),
+        ".group_0971": ("ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody",),
+        ".group_0972": ("ReposOwnerRepoIssuesIssueNumberCommentsPostBody",),
+        ".group_0973": ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0",),
+        ".group_0974": (
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2",
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems",
         ),
-        ".group_0976": ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items",),
-        ".group_0977": ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0",),
-        ".group_0978": (
+        ".group_0975": ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items",),
+        ".group_0976": ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0",),
+        ".group_0977": (
             "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2",
             "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems",
         ),
-        ".group_0979": ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items",),
-        ".group_0980": ("ReposOwnerRepoIssuesIssueNumberLockPutBody",),
-        ".group_0981": ("ReposOwnerRepoIssuesIssueNumberReactionsPostBody",),
-        ".group_0982": ("ReposOwnerRepoKeysPostBody",),
-        ".group_0983": ("ReposOwnerRepoLabelsPostBody",),
-        ".group_0984": ("ReposOwnerRepoLabelsNamePatchBody",),
-        ".group_0985": ("ReposOwnerRepoMergeUpstreamPostBody",),
-        ".group_0986": ("ReposOwnerRepoMergesPostBody",),
-        ".group_0987": ("ReposOwnerRepoMilestonesPostBody",),
-        ".group_0988": ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",),
-        ".group_0989": ("ReposOwnerRepoNotificationsPutBody",),
-        ".group_0990": ("ReposOwnerRepoNotificationsPutResponse202",),
-        ".group_0991": ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1",),
-        ".group_0992": ("ReposOwnerRepoPagesPutBodyAnyof0",),
-        ".group_0993": ("ReposOwnerRepoPagesPutBodyAnyof1",),
-        ".group_0994": ("ReposOwnerRepoPagesPutBodyAnyof2",),
-        ".group_0995": ("ReposOwnerRepoPagesPutBodyAnyof3",),
-        ".group_0996": ("ReposOwnerRepoPagesPutBodyAnyof4",),
-        ".group_0997": ("ReposOwnerRepoPagesPostBodyPropSource",),
-        ".group_0998": ("ReposOwnerRepoPagesPostBodyAnyof0",),
-        ".group_0999": ("ReposOwnerRepoPagesPostBodyAnyof1",),
-        ".group_1000": ("ReposOwnerRepoPagesDeploymentsPostBody",),
-        ".group_1001": ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",),
-        ".group_1002": ("ReposOwnerRepoProjectsPostBody",),
-        ".group_1003": ("ReposOwnerRepoPropertiesValuesPatchBody",),
-        ".group_1004": ("ReposOwnerRepoPullsPostBody",),
-        ".group_1005": ("ReposOwnerRepoPullsCommentsCommentIdPatchBody",),
-        ".group_1006": ("ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody",),
-        ".group_1007": ("ReposOwnerRepoPullsPullNumberPatchBody",),
-        ".group_1008": ("ReposOwnerRepoPullsPullNumberCodespacesPostBody",),
-        ".group_1009": ("ReposOwnerRepoPullsPullNumberCommentsPostBody",),
-        ".group_1010": (
+        ".group_0978": ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items",),
+        ".group_0979": ("ReposOwnerRepoIssuesIssueNumberLockPutBody",),
+        ".group_0980": ("ReposOwnerRepoIssuesIssueNumberReactionsPostBody",),
+        ".group_0981": ("ReposOwnerRepoKeysPostBody",),
+        ".group_0982": ("ReposOwnerRepoLabelsPostBody",),
+        ".group_0983": ("ReposOwnerRepoLabelsNamePatchBody",),
+        ".group_0984": ("ReposOwnerRepoMergeUpstreamPostBody",),
+        ".group_0985": ("ReposOwnerRepoMergesPostBody",),
+        ".group_0986": ("ReposOwnerRepoMilestonesPostBody",),
+        ".group_0987": ("ReposOwnerRepoMilestonesMilestoneNumberPatchBody",),
+        ".group_0988": ("ReposOwnerRepoNotificationsPutBody",),
+        ".group_0989": ("ReposOwnerRepoNotificationsPutResponse202",),
+        ".group_0990": ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1",),
+        ".group_0991": ("ReposOwnerRepoPagesPutBodyAnyof0",),
+        ".group_0992": ("ReposOwnerRepoPagesPutBodyAnyof1",),
+        ".group_0993": ("ReposOwnerRepoPagesPutBodyAnyof2",),
+        ".group_0994": ("ReposOwnerRepoPagesPutBodyAnyof3",),
+        ".group_0995": ("ReposOwnerRepoPagesPutBodyAnyof4",),
+        ".group_0996": ("ReposOwnerRepoPagesPostBodyPropSource",),
+        ".group_0997": ("ReposOwnerRepoPagesPostBodyAnyof0",),
+        ".group_0998": ("ReposOwnerRepoPagesPostBodyAnyof1",),
+        ".group_0999": ("ReposOwnerRepoPagesDeploymentsPostBody",),
+        ".group_1000": ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200",),
+        ".group_1001": ("ReposOwnerRepoProjectsPostBody",),
+        ".group_1002": ("ReposOwnerRepoPropertiesValuesPatchBody",),
+        ".group_1003": ("ReposOwnerRepoPullsPostBody",),
+        ".group_1004": ("ReposOwnerRepoPullsCommentsCommentIdPatchBody",),
+        ".group_1005": ("ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody",),
+        ".group_1006": ("ReposOwnerRepoPullsPullNumberPatchBody",),
+        ".group_1007": ("ReposOwnerRepoPullsPullNumberCodespacesPostBody",),
+        ".group_1008": ("ReposOwnerRepoPullsPullNumberCommentsPostBody",),
+        ".group_1009": (
             "ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody",
         ),
-        ".group_1011": ("ReposOwnerRepoPullsPullNumberMergePutBody",),
-        ".group_1012": ("ReposOwnerRepoPullsPullNumberMergePutResponse405",),
-        ".group_1013": ("ReposOwnerRepoPullsPullNumberMergePutResponse409",),
-        ".group_1014": (
+        ".group_1010": ("ReposOwnerRepoPullsPullNumberMergePutBody",),
+        ".group_1011": ("ReposOwnerRepoPullsPullNumberMergePutResponse405",),
+        ".group_1012": ("ReposOwnerRepoPullsPullNumberMergePutResponse409",),
+        ".group_1013": (
             "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0",
         ),
-        ".group_1015": (
+        ".group_1014": (
             "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1",
         ),
-        ".group_1016": ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",),
-        ".group_1017": (
+        ".group_1015": ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",),
+        ".group_1016": (
             "ReposOwnerRepoPullsPullNumberReviewsPostBody",
             "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems",
         ),
-        ".group_1018": ("ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody",),
-        ".group_1019": (
+        ".group_1017": ("ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody",),
+        ".group_1018": (
             "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody",
         ),
-        ".group_1020": ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody",),
-        ".group_1021": ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBody",),
-        ".group_1022": ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202",),
-        ".group_1023": ("ReposOwnerRepoReleasesPostBody",),
-        ".group_1024": ("ReposOwnerRepoReleasesAssetsAssetIdPatchBody",),
-        ".group_1025": ("ReposOwnerRepoReleasesGenerateNotesPostBody",),
-        ".group_1026": ("ReposOwnerRepoReleasesReleaseIdPatchBody",),
-        ".group_1027": ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",),
-        ".group_1028": ("ReposOwnerRepoRulesetsPostBody",),
-        ".group_1029": ("ReposOwnerRepoRulesetsRulesetIdPutBody",),
-        ".group_1030": ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody",),
-        ".group_1031": ("ReposOwnerRepoStatusesShaPostBody",),
-        ".group_1032": ("ReposOwnerRepoSubscriptionPutBody",),
-        ".group_1033": ("ReposOwnerRepoTagsProtectionPostBody",),
-        ".group_1034": ("ReposOwnerRepoTopicsPutBody",),
-        ".group_1035": ("ReposOwnerRepoTransferPostBody",),
-        ".group_1036": ("ReposTemplateOwnerTemplateRepoGeneratePostBody",),
-        ".group_1037": ("TeamsTeamIdPatchBody",),
-        ".group_1038": ("TeamsTeamIdDiscussionsPostBody",),
-        ".group_1039": ("TeamsTeamIdDiscussionsDiscussionNumberPatchBody",),
-        ".group_1040": ("TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody",),
-        ".group_1041": (
+        ".group_1019": ("ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody",),
+        ".group_1020": ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBody",),
+        ".group_1021": ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202",),
+        ".group_1022": ("ReposOwnerRepoReleasesPostBody",),
+        ".group_1023": ("ReposOwnerRepoReleasesAssetsAssetIdPatchBody",),
+        ".group_1024": ("ReposOwnerRepoReleasesGenerateNotesPostBody",),
+        ".group_1025": ("ReposOwnerRepoReleasesReleaseIdPatchBody",),
+        ".group_1026": ("ReposOwnerRepoReleasesReleaseIdReactionsPostBody",),
+        ".group_1027": ("ReposOwnerRepoRulesetsPostBody",),
+        ".group_1028": ("ReposOwnerRepoRulesetsRulesetIdPutBody",),
+        ".group_1029": ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody",),
+        ".group_1030": ("ReposOwnerRepoStatusesShaPostBody",),
+        ".group_1031": ("ReposOwnerRepoSubscriptionPutBody",),
+        ".group_1032": ("ReposOwnerRepoTagsProtectionPostBody",),
+        ".group_1033": ("ReposOwnerRepoTopicsPutBody",),
+        ".group_1034": ("ReposOwnerRepoTransferPostBody",),
+        ".group_1035": ("ReposTemplateOwnerTemplateRepoGeneratePostBody",),
+        ".group_1036": ("TeamsTeamIdPatchBody",),
+        ".group_1037": ("TeamsTeamIdDiscussionsPostBody",),
+        ".group_1038": ("TeamsTeamIdDiscussionsDiscussionNumberPatchBody",),
+        ".group_1039": ("TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody",),
+        ".group_1040": (
             "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody",
         ),
-        ".group_1042": (
+        ".group_1041": (
             "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody",
         ),
-        ".group_1043": ("TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody",),
-        ".group_1044": ("TeamsTeamIdMembershipsUsernamePutBody",),
-        ".group_1045": ("TeamsTeamIdProjectsProjectIdPutBody",),
-        ".group_1046": ("TeamsTeamIdProjectsProjectIdPutResponse403",),
-        ".group_1047": ("TeamsTeamIdReposOwnerRepoPutBody",),
-        ".group_1048": ("UserPatchBody",),
-        ".group_1049": ("UserCodespacesGetResponse200",),
-        ".group_1050": ("UserCodespacesPostBodyOneof0",),
-        ".group_1051": (
+        ".group_1042": ("TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody",),
+        ".group_1043": ("TeamsTeamIdMembershipsUsernamePutBody",),
+        ".group_1044": ("TeamsTeamIdProjectsProjectIdPutBody",),
+        ".group_1045": ("TeamsTeamIdProjectsProjectIdPutResponse403",),
+        ".group_1046": ("TeamsTeamIdReposOwnerRepoPutBody",),
+        ".group_1047": ("UserPatchBody",),
+        ".group_1048": ("UserCodespacesGetResponse200",),
+        ".group_1049": ("UserCodespacesPostBodyOneof0",),
+        ".group_1050": (
             "UserCodespacesPostBodyOneof1",
             "UserCodespacesPostBodyOneof1PropPullRequest",
         ),
-        ".group_1052": (
+        ".group_1051": (
             "UserCodespacesSecretsGetResponse200",
             "CodespacesSecret",
         ),
-        ".group_1053": ("UserCodespacesSecretsSecretNamePutBody",),
-        ".group_1054": ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200",),
-        ".group_1055": ("UserCodespacesSecretsSecretNameRepositoriesPutBody",),
-        ".group_1056": ("UserCodespacesCodespaceNamePatchBody",),
-        ".group_1057": ("UserCodespacesCodespaceNameMachinesGetResponse200",),
-        ".group_1058": ("UserCodespacesCodespaceNamePublishPostBody",),
-        ".group_1059": ("UserEmailVisibilityPatchBody",),
-        ".group_1060": ("UserEmailsPostBodyOneof0",),
-        ".group_1061": ("UserEmailsDeleteBodyOneof0",),
-        ".group_1062": ("UserGpgKeysPostBody",),
-        ".group_1063": ("UserInstallationsGetResponse200",),
-        ".group_1064": ("UserInstallationsInstallationIdRepositoriesGetResponse200",),
-        ".group_1065": ("UserInteractionLimitsGetResponse200Anyof1",),
-        ".group_1066": ("UserKeysPostBody",),
-        ".group_1067": ("UserMembershipsOrgsOrgPatchBody",),
-        ".group_1068": ("UserMigrationsPostBody",),
-        ".group_1069": ("UserProjectsPostBody",),
-        ".group_1070": ("UserReposPostBody",),
-        ".group_1071": ("UserSocialAccountsPostBody",),
-        ".group_1072": ("UserSocialAccountsDeleteBody",),
-        ".group_1073": ("UserSshSigningKeysPostBody",),
+        ".group_1052": ("UserCodespacesSecretsSecretNamePutBody",),
+        ".group_1053": ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200",),
+        ".group_1054": ("UserCodespacesSecretsSecretNameRepositoriesPutBody",),
+        ".group_1055": ("UserCodespacesCodespaceNamePatchBody",),
+        ".group_1056": ("UserCodespacesCodespaceNameMachinesGetResponse200",),
+        ".group_1057": ("UserCodespacesCodespaceNamePublishPostBody",),
+        ".group_1058": ("UserEmailVisibilityPatchBody",),
+        ".group_1059": ("UserEmailsPostBodyOneof0",),
+        ".group_1060": ("UserEmailsDeleteBodyOneof0",),
+        ".group_1061": ("UserGpgKeysPostBody",),
+        ".group_1062": ("UserInstallationsGetResponse200",),
+        ".group_1063": ("UserInstallationsInstallationIdRepositoriesGetResponse200",),
+        ".group_1064": ("UserInteractionLimitsGetResponse200Anyof1",),
+        ".group_1065": ("UserKeysPostBody",),
+        ".group_1066": ("UserMembershipsOrgsOrgPatchBody",),
+        ".group_1067": ("UserMigrationsPostBody",),
+        ".group_1068": ("UserProjectsPostBody",),
+        ".group_1069": ("UserReposPostBody",),
+        ".group_1070": ("UserSocialAccountsPostBody",),
+        ".group_1071": ("UserSocialAccountsDeleteBody",),
+        ".group_1072": ("UserSshSigningKeysPostBody",),
     }

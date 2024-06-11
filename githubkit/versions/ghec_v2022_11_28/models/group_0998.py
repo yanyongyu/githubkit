@@ -16,12 +16,15 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoDeploymentsPostResponse202(GitHubModel):
-    """ReposOwnerRepoDeploymentsPostResponse202"""
+class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubModel):
+    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
 
-    message: Missing[str] = Field(default=UNSET)
+    permission: Missing[str] = Field(
+        default=UNSET,
+        description="The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any.",
+    )
 
 
-model_rebuild(ReposOwnerRepoDeploymentsPostResponse202)
+model_rebuild(ReposOwnerRepoCollaboratorsUsernamePutBody)
 
-__all__ = ("ReposOwnerRepoDeploymentsPostResponse202",)
+__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBody",)

@@ -12,22 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0447 import WebhooksReleaseType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookRepositoryImportType(TypedDict):
-    """repository_import event"""
+class WebhookReleaseReleasedType(TypedDict):
+    """release released event"""
 
+    action: Literal["released"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhooksReleaseType
     repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-    status: Literal["success", "cancelled", "failure"]
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookRepositoryImportType",)
+__all__ = ("WebhookReleaseReleasedType",)

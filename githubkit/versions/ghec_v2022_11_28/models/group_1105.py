@@ -9,23 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody(GitHubModel):
-    """TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody"""
+class ReposOwnerRepoTopicsPutBody(GitHubModel):
+    """ReposOwnerRepoTopicsPutBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(
-        description="The [reaction type](https://docs.github.com/enterprise-cloud@latest//rest/reactions/reactions#about-reactions) to add to the team discussion."
+    names: List[str] = Field(
+        description="An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` cannot contain uppercase letters."
     )
 
 
-model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody)
+model_rebuild(ReposOwnerRepoTopicsPutBody)
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody",)
+__all__ = ("ReposOwnerRepoTopicsPutBody",)

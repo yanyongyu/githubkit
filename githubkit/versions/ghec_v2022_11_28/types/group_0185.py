@@ -9,72 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0001 import SimpleUserType
-from .group_0184 import SimpleCommitType
-from .group_0077 import MinimalRepositoryType
-from .group_0183 import PullRequestMinimalType
+from typing_extensions import TypedDict
 
 
-class WorkflowRunType(TypedDict):
-    """Workflow Run
-
-    An invocation of a workflow
-    """
+class PullRequestMinimalType(TypedDict):
+    """Pull Request Minimal"""
 
     id: int
-    name: NotRequired[Union[str, None]]
-    node_id: str
-    check_suite_id: NotRequired[int]
-    check_suite_node_id: NotRequired[str]
-    head_branch: Union[str, None]
-    head_sha: str
-    path: str
-    run_number: int
-    run_attempt: NotRequired[int]
-    referenced_workflows: NotRequired[Union[List[ReferencedWorkflowType], None]]
-    event: str
-    status: Union[str, None]
-    conclusion: Union[str, None]
-    workflow_id: int
+    number: int
     url: str
-    html_url: str
-    pull_requests: Union[List[PullRequestMinimalType], None]
-    created_at: datetime
-    updated_at: datetime
-    actor: NotRequired[SimpleUserType]
-    triggering_actor: NotRequired[SimpleUserType]
-    run_started_at: NotRequired[datetime]
-    jobs_url: str
-    logs_url: str
-    check_suite_url: str
-    artifacts_url: str
-    cancel_url: str
-    rerun_url: str
-    previous_attempt_url: NotRequired[Union[str, None]]
-    workflow_url: str
-    head_commit: Union[None, SimpleCommitType]
-    repository: MinimalRepositoryType
-    head_repository: MinimalRepositoryType
-    head_repository_id: NotRequired[int]
-    display_title: str
+    head: PullRequestMinimalPropHeadType
+    base: PullRequestMinimalPropBaseType
 
 
-class ReferencedWorkflowType(TypedDict):
-    """Referenced workflow
+class PullRequestMinimalPropHeadType(TypedDict):
+    """PullRequestMinimalPropHead"""
 
-    A workflow referenced/reused by the initial caller workflow
-    """
-
-    path: str
+    ref: str
     sha: str
-    ref: NotRequired[str]
+    repo: PullRequestMinimalPropHeadPropRepoType
+
+
+class PullRequestMinimalPropHeadPropRepoType(TypedDict):
+    """PullRequestMinimalPropHeadPropRepo"""
+
+    id: int
+    url: str
+    name: str
+
+
+class PullRequestMinimalPropBaseType(TypedDict):
+    """PullRequestMinimalPropBase"""
+
+    ref: str
+    sha: str
+    repo: PullRequestMinimalPropBasePropRepoType
+
+
+class PullRequestMinimalPropBasePropRepoType(TypedDict):
+    """PullRequestMinimalPropBasePropRepo"""
+
+    id: int
+    url: str
+    name: str
 
 
 __all__ = (
-    "WorkflowRunType",
-    "ReferencedWorkflowType",
+    "PullRequestMinimalType",
+    "PullRequestMinimalPropHeadType",
+    "PullRequestMinimalPropHeadPropRepoType",
+    "PullRequestMinimalPropBaseType",
+    "PullRequestMinimalPropBasePropRepoType",
 )

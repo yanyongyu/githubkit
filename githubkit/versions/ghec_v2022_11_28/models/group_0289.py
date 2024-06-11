@@ -13,43 +13,40 @@ from typing import Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0091 import Team
 from .group_0001 import SimpleUser
 from .group_0006 import Integration
 
 
-class ReviewRequestedIssueEvent(GitHubModel):
-    """Review Requested Issue Event
+class DemilestonedIssueEvent(GitHubModel):
+    """Demilestoned Issue Event
 
-    Review Requested Issue Event
+    Demilestoned Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["review_requested"] = Field()
+    event: Literal["demilestoned"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    review_requester: SimpleUser = Field(
-        title="Simple User", description="A GitHub user."
-    )
-    requested_team: Missing[Team] = Field(
-        default=UNSET,
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
-    )
-    requested_reviewer: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    milestone: DemilestonedIssueEventPropMilestone = Field()
 
 
-model_rebuild(ReviewRequestedIssueEvent)
+class DemilestonedIssueEventPropMilestone(GitHubModel):
+    """DemilestonedIssueEventPropMilestone"""
 
-__all__ = ("ReviewRequestedIssueEvent",)
+    title: str = Field()
+
+
+model_rebuild(DemilestonedIssueEvent)
+model_rebuild(DemilestonedIssueEventPropMilestone)
+
+__all__ = (
+    "DemilestonedIssueEvent",
+    "DemilestonedIssueEventPropMilestone",
+)

@@ -10,7 +10,6 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from datetime import datetime
 
 from pydantic import Field
 
@@ -21,29 +20,48 @@ from githubkit.compat import GitHubModel, model_rebuild
 from .group_0001 import SimpleUser
 
 
-class ProjectCard(GitHubModel):
-    """Project Card
+class TeamProject(GitHubModel):
+    """Team Project
 
-    Project cards represent a scope of work.
+    A team's access to a project.
     """
 
+    owner_url: str = Field()
     url: str = Field()
-    id: int = Field(description="The project card's ID")
+    html_url: str = Field()
+    columns_url: str = Field()
+    id: int = Field()
     node_id: str = Field()
-    note: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    archived: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the card is archived"
+    name: str = Field()
+    body: Union[str, None] = Field()
+    number: int = Field()
+    state: str = Field()
+    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: str = Field()
+    updated_at: str = Field()
+    organization_permission: Missing[str] = Field(
+        default=UNSET,
+        description="The organization permission for this project. Only present when owner is an organization.",
     )
-    column_name: Missing[str] = Field(default=UNSET)
-    project_id: Missing[str] = Field(default=UNSET)
-    column_url: str = Field()
-    content_url: Missing[str] = Field(default=UNSET)
-    project_url: str = Field()
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the project is private or not. Only present when owner is an organization.",
+    )
+    permissions: TeamProjectPropPermissions = Field()
 
 
-model_rebuild(ProjectCard)
+class TeamProjectPropPermissions(GitHubModel):
+    """TeamProjectPropPermissions"""
 
-__all__ = ("ProjectCard",)
+    read: bool = Field()
+    write: bool = Field()
+    admin: bool = Field()
+
+
+model_rebuild(TeamProject)
+model_rebuild(TeamProjectPropPermissions)
+
+__all__ = (
+    "TeamProject",
+    "TeamProjectPropPermissions",
+)

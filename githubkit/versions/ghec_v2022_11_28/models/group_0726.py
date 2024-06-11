@@ -17,17 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0400 import EnterpriseWebhooks
-from .group_0401 import SimpleInstallation
-from .group_0403 import RepositoryWebhooks
-from .group_0404 import SimpleUserWebhooks
-from .group_0402 import OrganizationSimpleWebhooks
+from .group_0158 import RepositoryRuleset
+from .group_0402 import EnterpriseWebhooks
+from .group_0403 import SimpleInstallation
+from .group_0405 import RepositoryWebhooks
+from .group_0406 import SimpleUserWebhooks
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryUnarchived(GitHubModel):
-    """repository unarchived event"""
+class WebhookRepositoryRulesetCreated(GitHubModel):
+    """repository ruleset created event"""
 
-    action: Literal["unarchived"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,9 +44,14 @@ class WebhookRepositoryUnarchived(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    repository_ruleset: RepositoryRuleset = Field(
+        title="Repository ruleset",
+        description="A set of rules to apply when specified conditions are met.",
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -53,6 +59,6 @@ class WebhookRepositoryUnarchived(GitHubModel):
     )
 
 
-model_rebuild(WebhookRepositoryUnarchived)
+model_rebuild(WebhookRepositoryRulesetCreated)
 
-__all__ = ("WebhookRepositoryUnarchived",)
+__all__ = ("WebhookRepositoryRulesetCreated",)

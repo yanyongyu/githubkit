@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import List
 
 from pydantic import Field
 
@@ -18,15 +18,16 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoNotificationsPutBody(GitHubModel):
-    """ReposOwnerRepoNotificationsPutBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
 
-    last_read_at: Missing[datetime] = Field(
+    labels: Missing[List[str]] = Field(
+        min_length=1,
         default=UNSET,
-        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
+        description='The names of the labels to add to the issue\'s existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also replace all of the labels for an issue. For more information, see "[Set labels for an issue](https://docs.github.com/enterprise-cloud@latest//rest/issues/labels#set-labels-for-an-issue)."',
     )
 
 
-model_rebuild(ReposOwnerRepoNotificationsPutBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0)
 
-__all__ = ("ReposOwnerRepoNotificationsPutBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0",)

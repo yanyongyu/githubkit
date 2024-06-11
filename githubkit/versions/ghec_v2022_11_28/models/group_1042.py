@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,22 +18,15 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoLabelsPostBody(GitHubModel):
-    """ReposOwnerRepoLabelsPostBody"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    name: str = Field(
-        description='The name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."'
-    )
-    color: Missing[str] = Field(
+    assignees: Missing[List[str]] = Field(
         default=UNSET,
-        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
-    )
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description of the label. Must be 100 characters or fewer.",
+        description="Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._",
     )
 
 
-model_rebuild(ReposOwnerRepoLabelsPostBody)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesPostBody)
 
-__all__ = ("ReposOwnerRepoLabelsPostBody",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBody",)

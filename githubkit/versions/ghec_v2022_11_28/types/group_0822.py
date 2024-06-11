@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsPermissionsRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
+class GistsGistIdCommentsCommentIdPatchBodyType(TypedDict):
+    """GistsGistIdCommentsCommentIdPatchBody"""
 
-    selected_repository_ids: List[int]
+    body: str
 
 
-__all__ = ("OrgsOrgActionsPermissionsRepositoriesPutBodyType",)
+__all__ = ("GistsGistIdCommentsCommentIdPatchBodyType",)

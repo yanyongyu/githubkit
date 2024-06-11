@@ -10,22 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Optional
+from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
+
+from pydantic import BaseModel
 
 from githubkit.typing import Missing
 from githubkit.utils import UNSET, exclude_unset
+from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
+    from typing import List
+
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
     from githubkit.typing import Missing
     from githubkit.response import Response
 
+    from ..types import (
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType,
+    )
     from ..models import (
+        GetAllCostCenters,
+        BillingUsageReport,
         ActionsBillingUsage,
         CombinedBillingUsage,
         PackagesBillingUsage,
         AdvancedSecurityActiveCommitters,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
     )
 
 
@@ -144,6 +157,368 @@ class BillingClient:
             response_model=AdvancedSecurityActiveCommitters,
         )
 
+    def get_all_cost_centers(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[GetAllCostCenters]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-all-cost-centers-for-an-enterprise"""
+
+        from ..models import (
+            BasicError,
+            GetAllCostCenters,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/cost-centers"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=GetAllCostCenters,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_all_cost_centers(
+        self,
+        enterprise: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[GetAllCostCenters]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-all-cost-centers-for-an-enterprise"""
+
+        from ..models import (
+            BasicError,
+            GetAllCostCenters,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/cost-centers"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=GetAllCostCenters,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def add_resource_to_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200
+    ]: ...
+
+    @overload
+    def add_resource_to_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        users: List[str],
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200
+    ]: ...
+
+    def add_resource_to_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#add-users-to-a-cost-center"""
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody,
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}/resource"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = type_validate_python(
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody,
+            json,
+        )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_add_resource_to_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200
+    ]: ...
+
+    @overload
+    async def async_add_resource_to_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        users: List[str],
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200
+    ]: ...
+
+    async def async_add_resource_to_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#add-users-to-a-cost-center"""
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody,
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}/resource"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = type_validate_python(
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody,
+            json,
+        )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostResponse200,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def remove_resource_from_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200
+    ]: ...
+
+    @overload
+    def remove_resource_from_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        users: List[str],
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200
+    ]: ...
+
+    def remove_resource_from_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#remove-users-from-a-cost-center"""
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody,
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}/resource"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = type_validate_python(
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody,
+            json,
+        )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_remove_resource_from_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType,
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200
+    ]: ...
+
+    @overload
+    async def async_remove_resource_from_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        users: List[str],
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200
+    ]: ...
+
+    async def async_remove_resource_from_cost_center(
+        self,
+        enterprise: str,
+        cost_center_id: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[
+        EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200
+    ]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#remove-users-from-a-cost-center"""
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody,
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}/resource"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = type_validate_python(
+            EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody,
+            json,
+        )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
     def get_github_packages_billing_ghe(
         self,
         enterprise: str,
@@ -226,6 +601,96 @@ class BillingClient:
             url,
             headers=exclude_unset(headers),
             response_model=CombinedBillingUsage,
+        )
+
+    def get_github_billing_usage_report_ghe(
+        self,
+        enterprise: str,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        hour: Missing[int] = UNSET,
+        cost_center_id: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[BillingUsageReport]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-usage-report-for-an-enterprise"""
+
+        from ..models import (
+            BasicError,
+            BillingUsageReport,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/usage"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "hour": hour,
+            "cost_center_id": cost_center_id,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=BillingUsageReport,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_get_github_billing_usage_report_ghe(
+        self,
+        enterprise: str,
+        year: Missing[int] = UNSET,
+        month: Missing[int] = UNSET,
+        day: Missing[int] = UNSET,
+        hour: Missing[int] = UNSET,
+        cost_center_id: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[BillingUsageReport]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/billing#get-billing-usage-report-for-an-enterprise"""
+
+        from ..models import (
+            BasicError,
+            BillingUsageReport,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+        )
+
+        url = f"/enterprises/{enterprise}/settings/billing/usage"
+
+        params = {
+            "year": year,
+            "month": month,
+            "day": day,
+            "hour": hour,
+            "cost_center_id": cost_center_id,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=BillingUsageReport,
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "500": BasicError,
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
         )
 
     def get_github_actions_billing_org(

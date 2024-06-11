@@ -9,28 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import Annotated
+from typing import List, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody"""
+class OrgsOrgPersonalAccessTokensPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokensPostBody"""
 
-    action: Literal["approve", "deny"] = Field(
-        description="Action to apply to the request."
+    action: Literal["revoke"] = Field(
+        description="Action to apply to the fine-grained personal access token."
     )
-    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
-        default=UNSET,
-        description="Reason for approving or denying the request. Max 1024 characters.",
+    pat_ids: List[int] = Field(
+        max_length=100,
+        min_length=1,
+        description="The IDs of the fine-grained personal access tokens.",
     )
 
 
-model_rebuild(OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody)
+model_rebuild(OrgsOrgPersonalAccessTokensPostBody)
 
-__all__ = ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody",)
+__all__ = ("OrgsOrgPersonalAccessTokensPostBody",)

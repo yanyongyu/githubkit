@@ -9,20 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type(
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody"""
+
+    ref: str
+    inputs: NotRequired[
+        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
+    ]
+
+
+class ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs
 
-    Examples:
-        {'teams': ['justice-league']}
+    Input keys and values configured in the workflow file. The maximum number of
+    properties is 10. Any default properties configured in the workflow file will be
+    used when `inputs` are omitted.
     """
 
-    teams: List[str]
 
-
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type",)
+__all__ = (
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType",
+    "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType",
+)

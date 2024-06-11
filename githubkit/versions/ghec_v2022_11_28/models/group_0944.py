@@ -9,20 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsVariablesNamePatchBody(GitHubModel):
-    """ReposOwnerRepoActionsVariablesNamePatchBody"""
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
-    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
+    labels: List[str] = Field(
+        max_length=100,
+        min_length=1,
+        description="The names of the custom labels to add to the runner.",
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsVariablesNamePatchBody)
+model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody)
 
-__all__ = ("ReposOwnerRepoActionsVariablesNamePatchBody",)
+__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",)

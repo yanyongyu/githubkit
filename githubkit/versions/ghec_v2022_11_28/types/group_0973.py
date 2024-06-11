@@ -12,14 +12,17 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0211 import CheckRunType
+
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0
+
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: List[str]
 
 
-class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
-
-    total_count: int
-    check_runs: List[CheckRunType]
-
-
-__all__ = ("ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type",)

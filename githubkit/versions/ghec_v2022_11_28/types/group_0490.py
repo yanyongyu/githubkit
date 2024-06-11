@@ -9,30 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0190 import DeploymentType
-from .group_0317 import PullRequestType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0255 import DependabotAlertType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
-    """deployment protection rule requested event"""
+class WebhookDependabotAlertAutoReopenedType(TypedDict):
+    """Dependabot alert auto-reopened event"""
 
-    action: Literal["requested"]
-    environment: NotRequired[str]
-    event: NotRequired[str]
-    deployment_callback_url: NotRequired[str]
-    deployment: NotRequired[DeploymentType]
-    pull_requests: NotRequired[List[PullRequestType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
+    action: Literal["auto_reopened"]
+    alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
-    sender: NotRequired[SimpleUserWebhooksType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookDeploymentProtectionRuleRequestedType",)
+__all__ = ("WebhookDependabotAlertAutoReopenedType",)

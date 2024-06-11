@@ -9,37 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0221 import CodeScanningVariantAnalysisSkippedRepoGroupType
+from .group_0001 import SimpleUserType
+from .group_0043 import SimpleRepositoryType
+from .group_0226 import CodeScanningVariantAnalysisPropSkippedRepositoriesType
+from .group_0225 import CodeScanningVariantAnalysisPropScannedRepositoriesItemsType
 
 
-class CodeScanningVariantAnalysisPropSkippedRepositoriesType(TypedDict):
-    """CodeScanningVariantAnalysisPropSkippedRepositories
+class CodeScanningVariantAnalysisType(TypedDict):
+    """Variant Analysis
 
-    Information about repositories that were skipped from processing. This
-    information is only available to the user that initiated the variant analysis.
+    A run of a CodeQL query against one or more repositories.
     """
 
-    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
-    not_found_repos: (
-        CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType
-    )
-    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
-    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroupType
+    id: int
+    controller_repo: SimpleRepositoryType
+    actor: SimpleUserType
+    query_language: Literal[
+        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
+    ]
+    query_pack_url: str
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
+    completed_at: NotRequired[Union[datetime, None]]
+    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
+    actions_workflow_run_id: NotRequired[int]
+    failure_reason: NotRequired[
+        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    ]
+    scanned_repositories: NotRequired[
+        List[CodeScanningVariantAnalysisPropScannedRepositoriesItemsType]
+    ]
+    skipped_repositories: NotRequired[
+        CodeScanningVariantAnalysisPropSkippedRepositoriesType
+    ]
 
 
-class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType(
-    TypedDict
-):
-    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
-
-    repository_count: int
-    repository_full_names: List[str]
-
-
-__all__ = (
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesType",
-    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType",
-)
+__all__ = ("CodeScanningVariantAnalysisType",)

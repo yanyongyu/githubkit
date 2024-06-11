@@ -9,16 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class UserCodespacesCodespaceNamePatchBodyType(TypedDict):
-    """UserCodespacesCodespaceNamePatchBody"""
+class TeamsTeamIdProjectsProjectIdPutBodyType(TypedDict):
+    """TeamsTeamIdProjectsProjectIdPutBody"""
 
-    machine: NotRequired[str]
-    display_name: NotRequired[str]
-    recent_folders: NotRequired[List[str]]
+    permission: NotRequired[Literal["read", "write", "admin"]]
 
 
-__all__ = ("UserCodespacesCodespaceNamePatchBodyType",)
+__all__ = ("TeamsTeamIdProjectsProjectIdPutBodyType",)

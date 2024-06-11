@@ -9,22 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0179 import ActionsSecret
+
+class ProjectsColumnsColumnIdMovesPostBody(GitHubModel):
+    """ProjectsColumnsColumnIdMovesPostBody"""
+
+    position: str = Field(
+        pattern="^(?:first|last|after:\\d+)$",
+        description="The position of the column in a project. Can be one of: `first`, `last`, or `after:<column_id>` to place after the specified column.",
+    )
 
 
-class ReposOwnerRepoActionsOrganizationSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
+model_rebuild(ProjectsColumnsColumnIdMovesPostBody)
 
-    total_count: int = Field()
-    secrets: List[ActionsSecret] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsOrganizationSecretsGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200",)
+__all__ = ("ProjectsColumnsColumnIdMovesPostBody",)

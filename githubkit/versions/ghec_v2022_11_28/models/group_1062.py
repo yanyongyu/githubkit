@@ -9,23 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0114 import CustomPropertyValue
 
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1(GitHubModel):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-class ReposOwnerRepoPropertiesValuesPatchBody(GitHubModel):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
+    Update the source for the repository. Must include the branch name and path.
+    """
 
-    properties: List[CustomPropertyValue] = Field(
-        description="A list of custom property names and associated values to apply to the repositories."
+    branch: str = Field(
+        description="The repository branch used to publish your site's source files."
+    )
+    path: Literal["/", "/docs"] = Field(
+        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`."
     )
 
 
-model_rebuild(ReposOwnerRepoPropertiesValuesPatchBody)
+model_rebuild(ReposOwnerRepoPagesPutBodyPropSourceAnyof1)
 
-__all__ = ("ReposOwnerRepoPropertiesValuesPatchBody",)
+__all__ = ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1",)

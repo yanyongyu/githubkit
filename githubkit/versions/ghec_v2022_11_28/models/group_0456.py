@@ -17,20 +17,21 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0401 import SimpleInstallation
-from .group_0403 import RepositoryWebhooks
-from .group_0404 import SimpleUserWebhooks
-from .group_0402 import OrganizationSimpleWebhooks
-from .group_0407 import CheckRunWithSimpleCheckSuite
+from .group_0402 import EnterpriseWebhooks
+from .group_0403 import SimpleInstallation
+from .group_0405 import RepositoryWebhooks
+from .group_0406 import SimpleUserWebhooks
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookCheckRunCompleted(GitHubModel):
-    """Check Run Completed Event"""
+class WebhookBranchProtectionConfigurationEnabled(GitHubModel):
+    """branch protection configuration enabled event"""
 
-    action: Literal["completed"] = Field()
-    check_run: CheckRunWithSimpleCheckSuite = Field(
-        title="CheckRun",
-        description="A check performed on the code of a given code change",
+    action: Literal["enabled"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -52,6 +53,6 @@ class WebhookCheckRunCompleted(GitHubModel):
     )
 
 
-model_rebuild(WebhookCheckRunCompleted)
+model_rebuild(WebhookBranchProtectionConfigurationEnabled)
 
-__all__ = ("WebhookCheckRunCompleted",)
+__all__ = ("WebhookBranchProtectionConfigurationEnabled",)

@@ -9,24 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Literal
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
+class OrgsOrgPersonalAccessTokensPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokensPostBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The discussion post's title."
+    action: Literal["revoke"] = Field(
+        description="Action to apply to the fine-grained personal access token."
     )
-    body: Missing[str] = Field(
-        default=UNSET, description="The discussion post's body text."
+    pat_ids: List[int] = Field(
+        max_length=100,
+        min_length=1,
+        description="The IDs of the fine-grained personal access tokens.",
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody)
+model_rebuild(OrgsOrgPersonalAccessTokensPostBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody",)
+__all__ = ("OrgsOrgPersonalAccessTokensPostBody",)

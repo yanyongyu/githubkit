@@ -17,19 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0412 import WebhooksUser
-from .group_0400 import EnterpriseWebhooks
-from .group_0401 import SimpleInstallation
-from .group_0403 import RepositoryWebhooks
-from .group_0404 import SimpleUserWebhooks
-from .group_0402 import OrganizationSimpleWebhooks
+from .group_0416 import WebhooksUser
+from .group_0431 import WebhooksTeam
+from .group_0402 import EnterpriseWebhooks
+from .group_0403 import SimpleInstallation
+from .group_0405 import RepositoryWebhooks
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookOrgBlockBlocked(GitHubModel):
-    """org_block blocked event"""
+class WebhookMembershipRemoved(GitHubModel):
+    """membership removed event"""
 
-    action: Literal["blocked"] = Field()
-    blocked_user: Union[WebhooksUser, None] = Field(title="User")
+    action: Literal["removed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,6 +39,7 @@ class WebhookOrgBlockBlocked(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    member: Union[WebhooksUser, None] = Field(title="User")
     organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
@@ -49,12 +49,46 @@ class WebhookOrgBlockBlocked(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    scope: Literal["team", "organization"] = Field(
+        description="The scope of the membership. Currently, can only be `team`."
+    )
+    sender: Union[WebhookMembershipRemovedPropSender, None] = Field(title="User")
+    team: WebhooksTeam = Field(
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
     )
 
 
-model_rebuild(WebhookOrgBlockBlocked)
+class WebhookMembershipRemovedPropSender(GitHubModel):
+    """User"""
 
-__all__ = ("WebhookOrgBlockBlocked",)
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookMembershipRemoved)
+model_rebuild(WebhookMembershipRemovedPropSender)
+
+__all__ = (
+    "WebhookMembershipRemoved",
+    "WebhookMembershipRemovedPropSender",
+)

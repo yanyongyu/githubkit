@@ -9,79 +9,88 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Any, List, Union
+from typing import List
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
-
-from .group_0001 import SimpleUser
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GistHistory(GitHubModel):
-    """Gist History
+class Feed(GitHubModel):
+    """Feed
 
-    Gist History
+    Feed
     """
 
-    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    version: Missing[str] = Field(default=UNSET)
-    committed_at: Missing[datetime] = Field(default=UNSET)
-    change_status: Missing[GistHistoryPropChangeStatus] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    timeline_url: str = Field()
+    user_url: str = Field()
+    current_user_public_url: Missing[str] = Field(default=UNSET)
+    current_user_url: Missing[str] = Field(default=UNSET)
+    current_user_actor_url: Missing[str] = Field(default=UNSET)
+    current_user_organization_url: Missing[str] = Field(default=UNSET)
+    current_user_organization_urls: Missing[List[str]] = Field(default=UNSET)
+    security_advisories_url: Missing[str] = Field(default=UNSET)
+    repository_discussions_url: Missing[str] = Field(
+        default=UNSET, description="A feed of discussions for a given repository."
+    )
+    repository_discussions_category_url: Missing[str] = Field(
+        default=UNSET,
+        description="A feed of discussions for a given repository and category.",
+    )
+    links: FeedPropLinks = Field(alias="_links")
 
 
-class GistHistoryPropChangeStatus(GitHubModel):
-    """GistHistoryPropChangeStatus"""
+class FeedPropLinks(GitHubModel):
+    """FeedPropLinks"""
 
-    total: Missing[int] = Field(default=UNSET)
-    additions: Missing[int] = Field(default=UNSET)
-    deletions: Missing[int] = Field(default=UNSET)
+    timeline: LinkWithType = Field(
+        title="Link With Type", description="Hypermedia Link with Type"
+    )
+    user: LinkWithType = Field(
+        title="Link With Type", description="Hypermedia Link with Type"
+    )
+    security_advisories: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_public: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_actor: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_organization: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    current_user_organizations: Missing[List[LinkWithType]] = Field(default=UNSET)
+    repository_discussions: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
+    repository_discussions_category: Missing[LinkWithType] = Field(
+        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
+    )
 
 
-class GistSimplePropForkOf(GitHubModel):
-    """Gist
+class LinkWithType(GitHubModel):
+    """Link With Type
 
-    Gist
+    Hypermedia Link with Type
     """
 
-    url: str = Field()
-    forks_url: str = Field()
-    commits_url: str = Field()
-    id: str = Field()
-    node_id: str = Field()
-    git_pull_url: str = Field()
-    git_push_url: str = Field()
-    html_url: str = Field()
-    files: GistSimplePropForkOfPropFiles = Field()
-    public: bool = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    description: Union[str, None] = Field()
-    comments: int = Field()
-    user: Union[None, SimpleUser] = Field()
-    comments_url: str = Field()
-    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    truncated: Missing[bool] = Field(default=UNSET)
-    forks: Missing[List[Any]] = Field(default=UNSET)
-    history: Missing[List[Any]] = Field(default=UNSET)
+    href: str = Field()
+    type: str = Field()
 
 
-class GistSimplePropForkOfPropFiles(ExtraGitHubModel):
-    """GistSimplePropForkOfPropFiles"""
-
-
-model_rebuild(GistHistory)
-model_rebuild(GistHistoryPropChangeStatus)
-model_rebuild(GistSimplePropForkOf)
-model_rebuild(GistSimplePropForkOfPropFiles)
+model_rebuild(Feed)
+model_rebuild(FeedPropLinks)
+model_rebuild(LinkWithType)
 
 __all__ = (
-    "GistHistory",
-    "GistHistoryPropChangeStatus",
-    "GistSimplePropForkOf",
-    "GistSimplePropForkOfPropFiles",
+    "Feed",
+    "FeedPropLinks",
+    "LinkWithType",
 )

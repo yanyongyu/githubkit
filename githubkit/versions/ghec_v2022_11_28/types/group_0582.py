@@ -9,27 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from datetime import datetime
+from typing import Union, Literal
+from typing_extensions import TypedDict
 
-from .group_0423 import WebhooksIssue2Type
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0576 import WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType
 
 
-class WebhookIssuesPinnedType(TypedDict):
-    """issues pinned event"""
+class WebhookIssuesClosedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedMilestone"""
 
-    action: Literal["pinned"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssue2Type
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    closed_at: Union[datetime, None]
+    closed_issues: int
+    created_at: datetime
+    creator: Union[WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: datetime
+    url: str
 
 
-__all__ = ("WebhookIssuesPinnedType",)
+__all__ = ("WebhookIssuesClosedPropIssueMergedMilestoneType",)

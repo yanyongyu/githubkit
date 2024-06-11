@@ -9,15 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
 
 
-class NotificationsPutBodyType(TypedDict):
-    """NotificationsPutBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
 
-    last_read_at: NotRequired[datetime]
-    read: NotRequired[bool]
+    users: List[str]
 
 
-__all__ = ("NotificationsPutBodyType",)
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBodyType",
+)

@@ -9,13 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
 
-class GistsGistIdCommentsPostBodyType(TypedDict):
-    """GistsGistIdCommentsPostBody"""
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
 
-    body: str
+    labels: List[str]
 
 
-__all__ = ("GistsGistIdCommentsPostBodyType",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBodyType",)

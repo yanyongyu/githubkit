@@ -12,22 +12,19 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0043 import SimpleRepositoryType
+from .group_0222 import CodeScanningVariantAnalysisRepositoryType
 
 
-class CodeScanningVariantAnalysisRepoTaskType(TypedDict):
-    """CodeScanningVariantAnalysisRepoTask"""
+class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
+    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
 
-    repository: SimpleRepositoryType
+    repository: CodeScanningVariantAnalysisRepositoryType
     analysis_status: Literal[
         "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
     ]
-    artifact_size_in_bytes: NotRequired[int]
     result_count: NotRequired[int]
+    artifact_size_in_bytes: NotRequired[int]
     failure_message: NotRequired[str]
-    database_commit_sha: NotRequired[str]
-    source_location_prefix: NotRequired[str]
-    artifact_url: NotRequired[str]
 
 
-__all__ = ("CodeScanningVariantAnalysisRepoTaskType",)
+__all__ = ("CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",)

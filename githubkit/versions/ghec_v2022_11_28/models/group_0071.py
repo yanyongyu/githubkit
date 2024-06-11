@@ -9,34 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
+from datetime import datetime
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
 
-class License(GitHubModel):
-    """License
 
-    License
+class GistCommit(GitHubModel):
+    """Gist Commit
+
+    Gist Commit
     """
 
-    key: str = Field()
-    name: str = Field()
-    spdx_id: Union[str, None] = Field()
-    url: Union[str, None] = Field()
-    node_id: str = Field()
-    html_url: str = Field()
-    description: str = Field()
-    implementation: str = Field()
-    permissions: List[str] = Field()
-    conditions: List[str] = Field()
-    limitations: List[str] = Field()
-    body: str = Field()
-    featured: bool = Field()
+    url: str = Field()
+    version: str = Field()
+    user: Union[None, SimpleUser] = Field()
+    change_status: GistCommitPropChangeStatus = Field()
+    committed_at: datetime = Field()
 
 
-model_rebuild(License)
+class GistCommitPropChangeStatus(GitHubModel):
+    """GistCommitPropChangeStatus"""
 
-__all__ = ("License",)
+    total: Missing[int] = Field(default=UNSET)
+    additions: Missing[int] = Field(default=UNSET)
+    deletions: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(GistCommit)
+model_rebuild(GistCommitPropChangeStatus)
+
+__all__ = (
+    "GistCommit",
+    "GistCommitPropChangeStatus",
+)

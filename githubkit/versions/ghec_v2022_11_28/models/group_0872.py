@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Literal
 
 from pydantic import Field
@@ -18,46 +19,32 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgMigrationsPostBody(GitHubModel):
-    """OrgsOrgMigrationsPostBody"""
+class OrgsOrgDependabotSecretsGetResponse200(GitHubModel):
+    """OrgsOrgDependabotSecretsGetResponse200"""
 
-    repositories: List[str] = Field(
-        description="A list of arrays indicating which repositories should be migrated."
-    )
-    lock_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether repositories should be locked (to prevent manipulation) while migrating data.",
-    )
-    exclude_metadata: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
-    )
-    exclude_git_data: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether the repository git data should be excluded from the migration.",
-    )
-    exclude_attachments: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether attachments should be excluded from the migration (to reduce migration archive file size).",
-    )
-    exclude_releases: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether releases should be excluded from the migration (to reduce migration archive file size).",
-    )
-    exclude_owner_projects: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether projects owned by the organization or users should be excluded. from the migration.",
-    )
-    org_metadata_only: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
-    )
-    exclude: Missing[List[Literal["repositories"]]] = Field(
-        default=UNSET,
-        description="Exclude related items from being returned in the response in order to improve performance of the request.",
-    )
+    total_count: int = Field()
+    secrets: List[OrganizationDependabotSecret] = Field()
 
 
-model_rebuild(OrgsOrgMigrationsPostBody)
+class OrganizationDependabotSecret(GitHubModel):
+    """Dependabot Secret for an Organization
 
-__all__ = ("OrgsOrgMigrationsPostBody",)
+    Secrets for GitHub Dependabot for an organization.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a secret"
+    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgDependabotSecretsGetResponse200)
+model_rebuild(OrganizationDependabotSecret)
+
+__all__ = (
+    "OrgsOrgDependabotSecretsGetResponse200",
+    "OrganizationDependabotSecret",
+)

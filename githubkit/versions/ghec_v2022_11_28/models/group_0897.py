@@ -9,17 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgTeamsTeamSlugExternalGroupsPatchBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
-
-    group_id: int = Field(description="External Group Id")
+from .group_0116 import CustomPropertyValue
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugExternalGroupsPatchBody)
+class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-__all__ = ("OrgsOrgTeamsTeamSlugExternalGroupsPatchBody",)
+    repository_names: List[str] = Field(
+        max_length=30,
+        min_length=1,
+        description="The names of repositories that the custom property values will be applied to.",
+    )
+    properties: List[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values to apply to the repositories."
+    )
+
+
+model_rebuild(OrgsOrgPropertiesValuesPatchBody)
+
+__all__ = ("OrgsOrgPropertiesValuesPatchBody",)

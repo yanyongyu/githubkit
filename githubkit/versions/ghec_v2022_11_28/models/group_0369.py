@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 
 from pydantic import Field
 
@@ -17,31 +17,36 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0367 import Meta
 
-class PatchSchema(GitHubModel):
-    """PatchSchema"""
 
-    operations: List[PatchSchemaPropOperationsItems] = Field(
-        alias="Operations", description="patch operations list"
+class ScimEnterpriseGroupResponseAllof1(GitHubModel):
+    """ScimEnterpriseGroupResponseAllof1"""
+
+    id: Missing[str] = Field(
+        default=UNSET, description="The internally generated id for the group object."
     )
-    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]] = Field()
-
-
-class PatchSchemaPropOperationsItems(GitHubModel):
-    """PatchSchemaPropOperationsItems"""
-
-    op: Literal["add", "replace", "remove"] = Field()
-    path: Missing[str] = Field(default=UNSET)
-    value: Missing[str] = Field(
+    members: Missing[List[ScimEnterpriseGroupResponseAllof1PropMembersItems]] = Field(
+        default=UNSET, description="The security group members."
+    )
+    meta: Missing[Meta] = Field(
         default=UNSET,
-        description="Corresponding 'value' of that field specified by 'path'",
+        description="The metadata associated with the creation/updates to the user.",
     )
 
 
-model_rebuild(PatchSchema)
-model_rebuild(PatchSchemaPropOperationsItems)
+class ScimEnterpriseGroupResponseAllof1PropMembersItems(GitHubModel):
+    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
+
+    value: Missing[str] = Field(default=UNSET)
+    ref: Missing[str] = Field(default=UNSET, alias="$ref")
+    display: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ScimEnterpriseGroupResponseAllof1)
+model_rebuild(ScimEnterpriseGroupResponseAllof1PropMembersItems)
 
 __all__ = (
-    "PatchSchema",
-    "PatchSchemaPropOperationsItems",
+    "ScimEnterpriseGroupResponseAllof1",
+    "ScimEnterpriseGroupResponseAllof1PropMembersItems",
 )

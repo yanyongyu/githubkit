@@ -9,14 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from typing import List, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
-    selected_repository_ids: List[int]
+    name: str
+    visibility: NotRequired[Literal["selected", "all", "private"]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[List[str]]
 
 
-__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType",)
+__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType",)

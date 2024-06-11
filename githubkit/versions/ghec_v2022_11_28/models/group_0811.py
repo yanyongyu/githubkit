@@ -9,13 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class GistsGistIdStarGetResponse404(GitHubModel):
-    """GistsGistIdStarGetResponse404"""
+from .group_0033 import RunnerLabel
 
 
-model_rebuild(GistsGistIdStarGetResponse404)
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200"""
 
-__all__ = ("GistsGistIdStarGetResponse404",)
+    total_count: int = Field()
+    labels: List[RunnerLabel] = Field()
+
+
+model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200)
+
+__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200",)

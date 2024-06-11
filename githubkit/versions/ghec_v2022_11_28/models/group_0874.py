@@ -13,27 +13,18 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgOrganizationRolesRoleIdPatchBody(GitHubModel):
-    """OrgsOrgOrganizationRolesRoleIdPatchBody"""
-
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the custom role."
-    )
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description about the intended usage of this role or what permissions it grants.",
-    )
-    permissions: Missing[List[str]] = Field(
-        default=UNSET,
-        description="A list of additional permissions included in this role.",
-    )
+from .group_0079 import MinimalRepository
 
 
-model_rebuild(OrgsOrgOrganizationRolesRoleIdPatchBody)
+class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
 
-__all__ = ("OrgsOrgOrganizationRolesRoleIdPatchBody",)
+    total_count: int = Field()
+    repositories: List[MinimalRepository] = Field()
+
+
+model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200)
+
+__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200",)

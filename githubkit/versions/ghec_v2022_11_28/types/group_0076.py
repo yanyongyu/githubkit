@@ -9,64 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-
-class SecurityAndAnalysisType(TypedDict):
-    """SecurityAndAnalysis"""
-
-    advanced_security: NotRequired[SecurityAndAnalysisPropAdvancedSecurityType]
-    dependabot_security_updates: NotRequired[
-        SecurityAndAnalysisPropDependabotSecurityUpdatesType
-    ]
-    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningType]
-    secret_scanning_push_protection: NotRequired[
-        SecurityAndAnalysisPropSecretScanningPushProtectionType
-    ]
-    secret_scanning_validity_checks: NotRequired[
-        SecurityAndAnalysisPropSecretScanningValidityChecksType
-    ]
+from .group_0074 import MarketplaceListingPlanType
 
 
-class SecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
-    """SecurityAndAnalysisPropAdvancedSecurity"""
+class MarketplacePurchasePropMarketplacePendingChangeType(TypedDict):
+    """MarketplacePurchasePropMarketplacePendingChange"""
 
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropDependabotSecurityUpdatesType(TypedDict):
-    """SecurityAndAnalysisPropDependabotSecurityUpdates
-
-    Enable or disable Dependabot security updates for the repository.
-    """
-
-    status: NotRequired[Literal["enabled", "disabled"]]
+    is_installed: NotRequired[bool]
+    effective_date: NotRequired[str]
+    unit_count: NotRequired[Union[int, None]]
+    id: NotRequired[int]
+    plan: NotRequired[MarketplaceListingPlanType]
 
 
-class SecurityAndAnalysisPropSecretScanningType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanning"""
+class MarketplacePurchasePropMarketplacePurchaseType(TypedDict):
+    """MarketplacePurchasePropMarketplacePurchase"""
 
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningPushProtectionType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningPushProtection"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningValidityChecksType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
+    billing_cycle: NotRequired[str]
+    next_billing_date: NotRequired[Union[str, None]]
+    is_installed: NotRequired[bool]
+    unit_count: NotRequired[Union[int, None]]
+    on_free_trial: NotRequired[bool]
+    free_trial_ends_on: NotRequired[Union[str, None]]
+    updated_at: NotRequired[str]
+    plan: NotRequired[MarketplaceListingPlanType]
 
 
 __all__ = (
-    "SecurityAndAnalysisType",
-    "SecurityAndAnalysisPropAdvancedSecurityType",
-    "SecurityAndAnalysisPropDependabotSecurityUpdatesType",
-    "SecurityAndAnalysisPropSecretScanningType",
-    "SecurityAndAnalysisPropSecretScanningPushProtectionType",
-    "SecurityAndAnalysisPropSecretScanningValidityChecksType",
+    "MarketplacePurchasePropMarketplacePendingChangeType",
+    "MarketplacePurchasePropMarketplacePurchaseType",
 )

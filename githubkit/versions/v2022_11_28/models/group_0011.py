@@ -46,6 +46,9 @@ class HookDelivery(GitHubModel):
     repository_id: Union[int, None] = Field(
         description="The id of the repository associated with this event."
     )
+    throttled_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET, description="Time when the webhook delivery was throttled."
+    )
     url: Missing[str] = Field(
         default=UNSET, description="The URL target of the delivery."
     )

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Union
 from datetime import datetime
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
 class HookDeliveryItemType(TypedDict):
@@ -31,6 +31,7 @@ class HookDeliveryItemType(TypedDict):
     action: Union[str, None]
     installation_id: Union[int, None]
     repository_id: Union[int, None]
+    throttled_at: NotRequired[Union[datetime, None]]
 
 
 __all__ = ("HookDeliveryItemType",)

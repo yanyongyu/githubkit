@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,31 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0991 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
+class ReposOwnerRepoPagesPostBodyPropSource(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyPropSource
 
-class ReposOwnerRepoPagesPutBodyAnyof4(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof4"""
+    The source branch and directory used to publish your Pages site.
+    """
 
-    cname: Missing[Union[str, None]] = Field(
+    branch: str = Field(
+        description="The repository branch used to publish your site's source files."
+    )
+    path: Missing[Literal["/", "/docs"]] = Field(
         default=UNSET,
-        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)."',
+        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. Default: `/`",
     )
-    https_enforced: bool = Field(
-        description="Specify whether HTTPS should be enforced for the repository."
-    )
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
-        default=UNSET,
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
-    )
-    source: Missing[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-        ]
-    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof4)
+model_rebuild(ReposOwnerRepoPagesPostBodyPropSource)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof4",)
+__all__ = ("ReposOwnerRepoPagesPostBodyPropSource",)

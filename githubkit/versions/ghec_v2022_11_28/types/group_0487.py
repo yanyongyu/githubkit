@@ -9,27 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0408 import WebhooksDeployKeyType
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0116 import CustomPropertyValueType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookDeployKeyCreatedType(TypedDict):
-    """deploy_key created event"""
+class WebhookCustomPropertyValuesUpdatedType(TypedDict):
+    """Custom property values updated event"""
 
-    action: Literal["created"]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    key: WebhooksDeployKeyType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
+    new_property_values: List[CustomPropertyValueType]
+    old_property_values: List[CustomPropertyValueType]
 
 
-__all__ = ("WebhookDeployKeyCreatedType",)
+__all__ = ("WebhookCustomPropertyValuesUpdatedType",)

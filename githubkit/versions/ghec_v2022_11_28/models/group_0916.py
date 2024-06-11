@@ -18,14 +18,14 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsProjectIdDeleteResponse403(GitHubModel):
-    """ProjectsProjectIdDeleteResponse403"""
+class ProjectsColumnsCardsCardIdDeleteResponse403(GitHubModel):
+    """ProjectsColumnsCardsCardIdDeleteResponse403"""
 
     message: Missing[str] = Field(default=UNSET)
     documentation_url: Missing[str] = Field(default=UNSET)
     errors: Missing[List[str]] = Field(default=UNSET)
 
 
-model_rebuild(ProjectsProjectIdDeleteResponse403)
+model_rebuild(ProjectsColumnsCardsCardIdDeleteResponse403)
 
-__all__ = ("ProjectsProjectIdDeleteResponse403",)
+__all__ = ("ProjectsColumnsCardsCardIdDeleteResponse403",)

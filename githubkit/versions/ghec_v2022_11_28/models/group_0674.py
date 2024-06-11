@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0400 import EnterpriseWebhooks
-from .group_0401 import SimpleInstallation
-from .group_0403 import RepositoryWebhooks
-from .group_0404 import SimpleUserWebhooks
-from .group_0438 import PullRequestWebhook
-from .group_0402 import OrganizationSimpleWebhooks
+from .group_0402 import EnterpriseWebhooks
+from .group_0403 import SimpleInstallation
+from .group_0405 import RepositoryWebhooks
+from .group_0406 import SimpleUserWebhooks
+from .group_0442 import PullRequestWebhook
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookPullRequestReadyForReview(GitHubModel):
-    """pull_request ready_for_review event"""
+class WebhookPullRequestConvertedToDraft(GitHubModel):
+    """pull_request converted_to_draft event"""
 
-    action: Literal["ready_for_review"] = Field()
+    action: Literal["converted_to_draft"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -56,6 +56,6 @@ class WebhookPullRequestReadyForReview(GitHubModel):
     )
 
 
-model_rebuild(WebhookPullRequestReadyForReview)
+model_rebuild(WebhookPullRequestConvertedToDraft)
 
-__all__ = ("WebhookPullRequestReadyForReview",)
+__all__ = ("WebhookPullRequestConvertedToDraft",)

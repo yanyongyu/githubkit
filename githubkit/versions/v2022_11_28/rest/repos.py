@@ -15149,7 +15149,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TagProtection]]:
-        """See also: https://docs.github.com/rest/repos/tags#list-tag-protection-states-for-a-repository"""
+        """See also: https://docs.github.com/rest/repos/tags#deprecated---list-tag-protection-states-for-a-repository"""
 
         from typing import List
 
@@ -15177,7 +15177,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TagProtection]]:
-        """See also: https://docs.github.com/rest/repos/tags#list-tag-protection-states-for-a-repository"""
+        """See also: https://docs.github.com/rest/repos/tags#deprecated---list-tag-protection-states-for-a-repository"""
 
         from typing import List
 
@@ -15228,7 +15228,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TagProtection]:
-        """See also: https://docs.github.com/rest/repos/tags#create-a-tag-protection-state-for-a-repository"""
+        """See also: https://docs.github.com/rest/repos/tags#deprecated---create-a-tag-protection-state-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -15289,7 +15289,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TagProtection]:
-        """See also: https://docs.github.com/rest/repos/tags#create-a-tag-protection-state-for-a-repository"""
+        """See also: https://docs.github.com/rest/repos/tags#deprecated---create-a-tag-protection-state-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -15328,7 +15328,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/repos/tags#delete-a-tag-protection-state-for-a-repository"""
+        """See also: https://docs.github.com/rest/repos/tags#deprecated---delete-a-tag-protection-state-for-a-repository"""
 
         from ..models import BasicError
 
@@ -15354,7 +15354,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/rest/repos/tags#delete-a-tag-protection-state-for-a-repository"""
+        """See also: https://docs.github.com/rest/repos/tags#deprecated---delete-a-tag-protection-state-for-a-repository"""
 
         from ..models import BasicError
 

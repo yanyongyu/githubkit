@@ -9,14 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class TeamsTeamIdProjectsProjectIdPutResponse403Type(TypedDict):
-    """TeamsTeamIdProjectsProjectIdPutResponse403"""
+class ScimV2OrganizationsOrgUsersPostBodyType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    user_name: str
+    display_name: NotRequired[str]
+    name: ScimV2OrganizationsOrgUsersPostBodyPropNameType
+    emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType]
+    schemas: NotRequired[List[str]]
+    external_id: NotRequired[str]
+    groups: NotRequired[List[str]]
+    active: NotRequired[bool]
 
 
-__all__ = ("TeamsTeamIdProjectsProjectIdPutResponse403Type",)
+class ScimV2OrganizationsOrgUsersPostBodyPropNameType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+
+
+__all__ = (
+    "ScimV2OrganizationsOrgUsersPostBodyType",
+    "ScimV2OrganizationsOrgUsersPostBodyPropNameType",
+    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType",
+)

@@ -2667,9 +2667,6 @@ if TYPE_CHECKING:
         WebhookSecretScanningAlertCreatedType as WebhookSecretScanningAlertCreatedType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        WebhookSecretScanningAlertRevokedType as WebhookSecretScanningAlertRevokedType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         WebhookStatusPropCommitPropAuthorType as WebhookStatusPropCommitPropAuthorType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -4474,9 +4471,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookDeploymentReviewRequestedPropWorkflowRunType as WebhookDeploymentReviewRequestedPropWorkflowRunType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        WebhookForkPropForkeeAllof0PropCustomPropertiesType as WebhookForkPropForkeeAllof0PropCustomPropertiesType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookIssuesClosedPropIssueAllof0PropMilestoneType as WebhookIssuesClosedPropIssueAllof0PropMilestoneType,
@@ -10474,7 +10468,6 @@ else:
             "WebhookForkPropForkeeAllof0Type",
             "WebhookForkPropForkeeAllof0PropLicenseType",
             "WebhookForkPropForkeeAllof0PropOwnerType",
-            "WebhookForkPropForkeeAllof0PropCustomPropertiesType",
             "WebhookForkPropForkeeAllof0PropPermissionsType",
             "WebhookForkPropForkeeAllof1Type",
             "WebhookForkPropForkeeAllof1PropLicenseType",
@@ -11989,7 +11982,6 @@ else:
             "WebhookSecretScanningAlertLocationCreatedFormEncodedType",
             "WebhookSecretScanningAlertReopenedType",
             "WebhookSecretScanningAlertResolvedType",
-            "WebhookSecretScanningAlertRevokedType",
             "WebhookSecretScanningAlertValidatedType",
             "WebhookSecurityAdvisoryPublishedType",
             "WebhookSecurityAdvisoryUpdatedType",

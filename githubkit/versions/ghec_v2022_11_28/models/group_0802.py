@@ -16,16 +16,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody"""
 
-    labels: List[str] = Field(
-        max_length=100,
-        min_length=1,
-        description="The names of the custom labels to add to the runner.",
+    selected_organization_ids: List[int] = Field(
+        description="List of organization IDs that can access the runner group."
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody)
+model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody",)
+__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody",)

@@ -9,28 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-
-class ReposOwnerRepoGitTreesPostBodyType(TypedDict):
-    """ReposOwnerRepoGitTreesPostBody"""
-
-    tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType]
-    base_tree: NotRequired[str]
+from .group_0270 import CustomDeploymentRuleAppType
 
 
-class ReposOwnerRepoGitTreesPostBodyPropTreeItemsType(TypedDict):
-    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
+    """
 
-    path: NotRequired[str]
-    mode: NotRequired[Literal["100644", "100755", "040000", "160000", "120000"]]
-    type: NotRequired[Literal["blob", "tree", "commit"]]
-    sha: NotRequired[Union[str, None]]
-    content: NotRequired[str]
+    total_count: NotRequired[int]
+    available_custom_deployment_protection_rule_integrations: NotRequired[
+        List[CustomDeploymentRuleAppType]
+    ]
 
 
 __all__ = (
-    "ReposOwnerRepoGitTreesPostBodyType",
-    "ReposOwnerRepoGitTreesPostBodyPropTreeItemsType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type",
 )

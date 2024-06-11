@@ -13,17 +13,22 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0082 import OrganizationCustomRepositoryRole
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
 
-    runners: List[int] = Field(
-        description="List of runner IDs to add to the runner group."
+class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubModel):
+    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
+
+    total_count: Missing[int] = Field(
+        default=UNSET, description="The number of custom roles in this organization"
     )
+    custom_roles: Missing[List[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody)
+model_rebuild(OrganizationsOrganizationIdCustomRolesGetResponse200)
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody",)
+__all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200",)

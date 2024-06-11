@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
+class ProjectsProjectIdCollaboratorsUsernamePutBodyType(TypedDict):
+    """ProjectsProjectIdCollaboratorsUsernamePutBody"""
 
-    labels: List[str]
+    permission: NotRequired[Literal["read", "write", "admin"]]
 
 
-__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType",)
+__all__ = ("ProjectsProjectIdCollaboratorsUsernamePutBodyType",)

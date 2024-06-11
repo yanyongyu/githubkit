@@ -10,16 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0404 import SimpleUserWebhooksType
-
-
-class WebhookGithubAppAuthorizationRevokedType(TypedDict):
-    """github_app_authorization revoked event"""
-
-    action: Literal["revoked"]
-    sender: SimpleUserWebhooksType
+from .group_0418 import DiscussionType
+from .group_0417 import WebhooksAnswerType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-__all__ = ("WebhookGithubAppAuthorizationRevokedType",)
+class WebhookDiscussionUnansweredType(TypedDict):
+    """discussion unanswered event"""
+
+    action: Literal["unanswered"]
+    discussion: DiscussionType
+    old_answer: WebhooksAnswerType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
+
+
+__all__ = ("WebhookDiscussionUnansweredType",)

@@ -12,15 +12,14 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class ReposOwnerRepoPagesPostBodyPropSourceType(TypedDict):
-    """ReposOwnerRepoPagesPostBodyPropSource
-
-    The source branch and directory used to publish your Pages site.
-    """
-
-    branch: str
-    path: NotRequired[Literal["/", "/docs"]]
+from .group_0996 import ReposOwnerRepoPagesPostBodyPropSourceType
 
 
-__all__ = ("ReposOwnerRepoPagesPostBodyPropSourceType",)
+class ReposOwnerRepoPagesPostBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPagesPostBodyAnyof0"""
+
+    build_type: NotRequired[Literal["legacy", "workflow"]]
+    source: ReposOwnerRepoPagesPostBodyPropSourceType
+
+
+__all__ = ("ReposOwnerRepoPagesPostBodyAnyof0Type",)

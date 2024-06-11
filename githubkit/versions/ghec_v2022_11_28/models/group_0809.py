@@ -9,17 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GistsGistIdCommentsPostBody(GitHubModel):
-    """GistsGistIdCommentsPostBody"""
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
 
-    body: str = Field(max_length=65535, description="The comment text.")
+    labels: List[str] = Field(
+        max_length=100,
+        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+    )
 
 
-model_rebuild(GistsGistIdCommentsPostBody)
+model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody)
 
-__all__ = ("GistsGistIdCommentsPostBody",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody",)

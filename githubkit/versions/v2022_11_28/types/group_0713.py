@@ -20,11 +20,11 @@ from .group_0415 import WebhooksSponsorshipType
 from .group_0369 import OrganizationSimpleWebhooksType
 
 
-class WebhookSponsorshipEditedType(TypedDict):
-    """sponsorship edited event"""
+class WebhookSponsorshipPendingCancellationType(TypedDict):
+    """sponsorship pending_cancellation event"""
 
-    action: Literal["edited"]
-    changes: WebhookSponsorshipEditedPropChangesType
+    action: Literal["pending_cancellation"]
+    effective_date: NotRequired[str]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -33,20 +33,4 @@ class WebhookSponsorshipEditedType(TypedDict):
     sponsorship: WebhooksSponsorshipType
 
 
-class WebhookSponsorshipEditedPropChangesType(TypedDict):
-    """WebhookSponsorshipEditedPropChanges"""
-
-    privacy_level: NotRequired[WebhookSponsorshipEditedPropChangesPropPrivacyLevelType]
-
-
-class WebhookSponsorshipEditedPropChangesPropPrivacyLevelType(TypedDict):
-    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookSponsorshipEditedType",
-    "WebhookSponsorshipEditedPropChangesType",
-    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelType",
-)
+__all__ = ("WebhookSponsorshipPendingCancellationType",)

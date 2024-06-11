@@ -16,20 +16,20 @@ from .group_0367 import EnterpriseWebhooksType
 from .group_0368 import SimpleInstallationType
 from .group_0370 import RepositoryWebhooksType
 from .group_0371 import SimpleUserWebhooksType
+from .group_0414 import WebhooksSecurityAdvisoryType
 from .group_0369 import OrganizationSimpleWebhooksType
-from .group_0413 import SecretScanningAlertWebhookType
 
 
-class WebhookSecretScanningAlertValidatedType(TypedDict):
-    """secret_scanning_alert validated event"""
+class WebhookSecurityAdvisoryPublishedType(TypedDict):
+    """security_advisory published event"""
 
-    action: Literal["validated"]
-    alert: SecretScanningAlertWebhookType
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    security_advisory: WebhooksSecurityAdvisoryType
     sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookSecretScanningAlertValidatedType",)
+__all__ = ("WebhookSecurityAdvisoryPublishedType",)

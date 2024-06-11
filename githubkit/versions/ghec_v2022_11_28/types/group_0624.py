@@ -9,80 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0434 import WebhooksMembershipType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookPageBuildType(TypedDict):
-    """page_build event"""
+class WebhookOrganizationMemberRemovedType(TypedDict):
+    """organization member_removed event"""
 
-    build: WebhookPageBuildPropBuildType
+    action: Literal["member_removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    id: int
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    membership: WebhooksMembershipType
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
 
 
-class WebhookPageBuildPropBuildType(TypedDict):
-    """WebhookPageBuildPropBuild
-
-    The [List GitHub Pages builds](https://docs.github.com/enterprise-
-    cloud@latest//rest/pages/pages#list-github-pages-builds) itself.
-    """
-
-    commit: Union[str, None]
-    created_at: str
-    duration: int
-    error: WebhookPageBuildPropBuildPropErrorType
-    pusher: Union[WebhookPageBuildPropBuildPropPusherType, None]
-    status: str
-    updated_at: str
-    url: str
-
-
-class WebhookPageBuildPropBuildPropErrorType(TypedDict):
-    """WebhookPageBuildPropBuildPropError"""
-
-    message: Union[str, None]
-
-
-class WebhookPageBuildPropBuildPropPusherType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-__all__ = (
-    "WebhookPageBuildType",
-    "WebhookPageBuildPropBuildType",
-    "WebhookPageBuildPropBuildPropErrorType",
-    "WebhookPageBuildPropBuildPropPusherType",
-)
+__all__ = ("WebhookOrganizationMemberRemovedType",)

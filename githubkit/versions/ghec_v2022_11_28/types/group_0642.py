@@ -12,41 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0434 import WebhooksProjectColumnType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0436 import WebhooksProjectCardType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectColumnEditedType(TypedDict):
-    """project_column edited event"""
+class WebhookProjectCardCreatedType(TypedDict):
+    """project_card created event"""
 
-    action: Literal["edited"]
-    changes: WebhookProjectColumnEditedPropChangesType
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
+    project_card: WebhooksProjectCardType
     repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserWebhooksType]
+    sender: SimpleUserWebhooksType
 
 
-class WebhookProjectColumnEditedPropChangesType(TypedDict):
-    """WebhookProjectColumnEditedPropChanges"""
-
-    name: NotRequired[WebhookProjectColumnEditedPropChangesPropNameType]
-
-
-class WebhookProjectColumnEditedPropChangesPropNameType(TypedDict):
-    """WebhookProjectColumnEditedPropChangesPropName"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookProjectColumnEditedType",
-    "WebhookProjectColumnEditedPropChangesType",
-    "WebhookProjectColumnEditedPropChangesPropNameType",
-)
+__all__ = ("WebhookProjectCardCreatedType",)

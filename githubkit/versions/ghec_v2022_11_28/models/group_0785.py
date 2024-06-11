@@ -9,46 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0014 import AppPermissions
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
-    """ApplicationsClientIdTokenScopedPostBody"""
+class AppManifestsCodeConversionsPostResponse201Allof1(ExtraGitHubModel):
+    """AppManifestsCodeConversionsPostResponse201Allof1"""
 
-    access_token: str = Field(
-        description="The access token used to authenticate to the GitHub API."
-    )
-    target: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
-    )
-    target_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
-    )
-    repositories: Missing[List[str]] = Field(
-        default=UNSET,
-        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
-    )
-    repository_ids: Missing[List[int]] = Field(
-        default=UNSET,
-        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
-    )
-    permissions: Missing[AppPermissions] = Field(
-        default=UNSET,
-        title="App Permissions",
-        description="The permissions granted to the user access token.",
-    )
+    client_id: str = Field()
+    client_secret: str = Field()
+    webhook_secret: Union[str, None] = Field()
+    pem: str = Field()
 
 
-model_rebuild(ApplicationsClientIdTokenScopedPostBody)
+model_rebuild(AppManifestsCodeConversionsPostResponse201Allof1)
 
-__all__ = ("ApplicationsClientIdTokenScopedPostBody",)
+__all__ = ("AppManifestsCodeConversionsPostResponse201Allof1",)

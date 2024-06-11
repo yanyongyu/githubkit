@@ -10,29 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoCodespacesSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyType(TypedDict):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
 
-    total_count: int
-    secrets: List[RepoCodespacesSecretType]
+    auto_trigger_checks: NotRequired[
+        List[
+            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
+        ]
+    ]
 
 
-class RepoCodespacesSecretType(TypedDict):
-    """Codespaces Secret
+class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType(
+    TypedDict
+):
+    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
 
-    Set repository secrets for GitHub Codespaces.
-    """
-
-    name: str
-    created_at: datetime
-    updated_at: datetime
+    app_id: int
+    setting: bool
 
 
 __all__ = (
-    "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
-    "RepoCodespacesSecretType",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyType",
+    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType",
 )

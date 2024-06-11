@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union
 
 from pydantic import Field
 
@@ -17,57 +17,30 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0076 import (
+    MarketplacePurchasePropMarketplacePurchase,
+    MarketplacePurchasePropMarketplacePendingChange,
+)
 
-class ApiOverview(GitHubModel):
-    """Api Overview
 
-    Api Overview
+class MarketplacePurchase(GitHubModel):
+    """Marketplace Purchase
+
+    Marketplace Purchase
     """
 
-    verifiable_password_authentication: bool = Field()
-    ssh_key_fingerprints: Missing[ApiOverviewPropSshKeyFingerprints] = Field(
-        default=UNSET
-    )
-    ssh_keys: Missing[List[str]] = Field(default=UNSET)
-    hooks: Missing[List[str]] = Field(default=UNSET)
-    github_enterprise_importer: Missing[List[str]] = Field(default=UNSET)
-    web: Missing[List[str]] = Field(default=UNSET)
-    api: Missing[List[str]] = Field(default=UNSET)
-    git: Missing[List[str]] = Field(default=UNSET)
-    packages: Missing[List[str]] = Field(default=UNSET)
-    pages: Missing[List[str]] = Field(default=UNSET)
-    importer: Missing[List[str]] = Field(default=UNSET)
-    actions: Missing[List[str]] = Field(default=UNSET)
-    actions_macos: Missing[List[str]] = Field(default=UNSET)
-    dependabot: Missing[List[str]] = Field(default=UNSET)
-    domains: Missing[ApiOverviewPropDomains] = Field(default=UNSET)
+    url: str = Field()
+    type: str = Field()
+    id: int = Field()
+    login: str = Field()
+    organization_billing_email: Missing[str] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    marketplace_pending_change: Missing[
+        Union[MarketplacePurchasePropMarketplacePendingChange, None]
+    ] = Field(default=UNSET)
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchase = Field()
 
 
-class ApiOverviewPropSshKeyFingerprints(GitHubModel):
-    """ApiOverviewPropSshKeyFingerprints"""
+model_rebuild(MarketplacePurchase)
 
-    sha256_rsa: Missing[str] = Field(default=UNSET, alias="SHA256_RSA")
-    sha256_dsa: Missing[str] = Field(default=UNSET, alias="SHA256_DSA")
-    sha256_ecdsa: Missing[str] = Field(default=UNSET, alias="SHA256_ECDSA")
-    sha256_ed25519: Missing[str] = Field(default=UNSET, alias="SHA256_ED25519")
-
-
-class ApiOverviewPropDomains(GitHubModel):
-    """ApiOverviewPropDomains"""
-
-    website: Missing[List[str]] = Field(default=UNSET)
-    codespaces: Missing[List[str]] = Field(default=UNSET)
-    copilot: Missing[List[str]] = Field(default=UNSET)
-    packages: Missing[List[str]] = Field(default=UNSET)
-    actions: Missing[List[str]] = Field(default=UNSET)
-
-
-model_rebuild(ApiOverview)
-model_rebuild(ApiOverviewPropSshKeyFingerprints)
-model_rebuild(ApiOverviewPropDomains)
-
-__all__ = (
-    "ApiOverview",
-    "ApiOverviewPropSshKeyFingerprints",
-    "ApiOverviewPropDomains",
-)
+__all__ = ("MarketplacePurchase",)

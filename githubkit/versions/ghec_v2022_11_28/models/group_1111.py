@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -18,33 +18,32 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserPatchBody(GitHubModel):
-    """UserPatchBody"""
+class TeamsTeamIdPatchBody(GitHubModel):
+    """TeamsTeamIdPatchBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The new name of the user.")
-    email: Missing[str] = Field(
-        default=UNSET, description="The publicly visible email address of the user."
+    name: str = Field(description="The name of the team.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the team."
     )
-    blog: Missing[str] = Field(
-        default=UNSET, description="The new blog URL of the user."
+    privacy: Missing[Literal["secret", "closed"]] = Field(
+        default=UNSET,
+        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
     )
-    twitter_username: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The new Twitter username of the user."
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
+        default=UNSET,
+        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
     )
-    company: Missing[str] = Field(
-        default=UNSET, description="The new company of the user."
+    permission: Missing[Literal["pull", "push", "admin"]] = Field(
+        default=UNSET,
+        description="**Deprecated**. The permission that new repositories will be added to the team with when none is specified.",
     )
-    location: Missing[str] = Field(
-        default=UNSET, description="The new location of the user."
-    )
-    hireable: Missing[bool] = Field(
-        default=UNSET, description="The new hiring availability of the user."
-    )
-    bio: Missing[str] = Field(
-        default=UNSET, description="The new short biography of the user."
+    parent_team_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of a team to set as the parent team."
     )
 
 
-model_rebuild(UserPatchBody)
+model_rebuild(TeamsTeamIdPatchBody)
 
-__all__ = ("UserPatchBody",)
+__all__ = ("TeamsTeamIdPatchBody",)

@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,59 +18,27 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoContentsPathDeleteBody(GitHubModel):
-    """ReposOwnerRepoContentsPathDeleteBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBody"""
 
-    message: str = Field(description="The commit message.")
-    sha: str = Field(description="The blob SHA of the file being deleted.")
-    branch: Missing[str] = Field(
+    state: Literal["dismissed", "open"] = Field(
+        description="The state of the Dependabot alert.\nA `dismissed_reason` must be provided when setting the state to `dismissed`."
+    )
+    dismissed_reason: Missing[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ] = Field(
         default=UNSET,
-        description="The branch name. Default: the repository’s default branch",
+        description="**Required when `state` is `dismissed`.** A reason for dismissing the alert.",
     )
-    committer: Missing[ReposOwnerRepoContentsPathDeleteBodyPropCommitter] = Field(
-        default=UNSET, description="object containing information about the committer."
-    )
-    author: Missing[ReposOwnerRepoContentsPathDeleteBodyPropAuthor] = Field(
-        default=UNSET, description="object containing information about the author."
-    )
-
-
-class ReposOwnerRepoContentsPathDeleteBodyPropCommitter(GitHubModel):
-    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
-
-    object containing information about the committer.
-    """
-
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the author (or committer) of the commit"
-    )
-    email: Missing[str] = Field(
+    dismissed_comment: Missing[str] = Field(
+        max_length=280,
         default=UNSET,
-        description="The email of the author (or committer) of the commit",
+        description="An optional comment associated with dismissing the alert.",
     )
 
 
-class ReposOwnerRepoContentsPathDeleteBodyPropAuthor(GitHubModel):
-    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
+model_rebuild(ReposOwnerRepoDependabotAlertsAlertNumberPatchBody)
 
-    object containing information about the author.
-    """
-
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the author (or committer) of the commit"
-    )
-    email: Missing[str] = Field(
-        default=UNSET,
-        description="The email of the author (or committer) of the commit",
-    )
-
-
-model_rebuild(ReposOwnerRepoContentsPathDeleteBody)
-model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropCommitter)
-model_rebuild(ReposOwnerRepoContentsPathDeleteBodyPropAuthor)
-
-__all__ = (
-    "ReposOwnerRepoContentsPathDeleteBody",
-    "ReposOwnerRepoContentsPathDeleteBodyPropCommitter",
-    "ReposOwnerRepoContentsPathDeleteBodyPropAuthor",
-)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBody",)

@@ -9,23 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0450 import WebhooksTeam1
-from .group_0400 import EnterpriseWebhooks
-from .group_0401 import SimpleInstallation
-from .group_0403 import RepositoryWebhooks
-from .group_0404 import SimpleUserWebhooks
-from .group_0402 import OrganizationSimpleWebhooks
+from .group_0453 import WebhooksChanges8
+from .group_0402 import EnterpriseWebhooks
+from .group_0403 import SimpleInstallation
+from .group_0405 import RepositoryWebhooks
+from .group_0406 import SimpleUserWebhooks
+from .group_0452 import WebhooksSponsorship
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookTeamAdd(GitHubModel):
-    """team_add event"""
+class WebhookSponsorshipTierChanged(GitHubModel):
+    """sponsorship tier_changed event"""
 
+    action: Literal["tier_changed"] = Field()
+    changes: WebhooksChanges8 = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -41,7 +46,8 @@ class WebhookTeamAdd(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
@@ -49,12 +55,9 @@ class WebhookTeamAdd(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    team: WebhooksTeam1 = Field(
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
-    )
+    sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookTeamAdd)
+model_rebuild(WebhookSponsorshipTierChanged)
 
-__all__ = ("WebhookTeamAdd",)
+__all__ = ("WebhookSponsorshipTierChanged",)

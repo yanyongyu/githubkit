@@ -9,21 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
-    """NotificationsThreadsThreadIdSubscriptionPutBody"""
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody(
+    GitHubModel
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
 
-    ignored: Missing[bool] = Field(
-        default=UNSET, description="Whether to block all notifications from a thread."
+    users: List[str] = Field(
+        description="The usernames of the users to remove from the cost center."
     )
 
 
-model_rebuild(NotificationsThreadsThreadIdSubscriptionPutBody)
+model_rebuild(
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody
+)
 
-__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBody",)
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody",
+)

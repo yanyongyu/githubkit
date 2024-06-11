@@ -9,16 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoCommitsCommitShaCommentsPostBodyType(TypedDict):
-    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type(TypedDict):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
 
-    body: str
-    path: NotRequired[str]
-    position: NotRequired[int]
-    line: NotRequired[int]
+    language: Literal[
+        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
+    ]
+    query_pack: str
+    repositories: NotRequired[List[str]]
+    repository_lists: NotRequired[List[str]]
+    repository_owners: List[str]
 
 
-__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBodyType",)
+__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type",)

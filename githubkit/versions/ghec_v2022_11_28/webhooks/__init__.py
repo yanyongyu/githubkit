@@ -229,6 +229,9 @@ if TYPE_CHECKING:
     from .installation_repositories import (
         installation_repositories_action_types as installation_repositories_action_types,
     )
+    from .exemption_request_secret_scanning import (
+        ExemptionRequestSecretScanningEvent as ExemptionRequestSecretScanningEvent,
+    )
     from .deployment_protection_rule import (
         deployment_protection_rule_action_types as deployment_protection_rule_action_types,
     )
@@ -250,6 +253,9 @@ if TYPE_CHECKING:
     from .branch_protection_configuration import (
         branch_protection_configuration_action_types as branch_protection_configuration_action_types,
     )
+    from .exemption_request_secret_scanning import (
+        exemption_request_secret_scanning_action_types as exemption_request_secret_scanning_action_types,
+    )
 else:
     __lazy_vars__ = {
         ".branch_protection_configuration": (
@@ -259,6 +265,10 @@ else:
         ".branch_protection_rule": (
             "BranchProtectionRuleEvent",
             "branch_protection_rule_action_types",
+        ),
+        ".exemption_request_secret_scanning": (
+            "ExemptionRequestSecretScanningEvent",
+            "exemption_request_secret_scanning_action_types",
         ),
         ".check_run": ("CheckRunEvent", "check_run_action_types"),
         ".check_suite": ("CheckSuiteEvent", "check_suite_action_types"),

@@ -13,19 +13,16 @@ from typing import List
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneo
-    f0
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0
 
     Examples:
-        {'contexts': ['contexts']}
+        {'apps': ['my-app']}
     """
 
-    contexts: List[str]
+    apps: List[str]
 
 
-__all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type",
-)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type",)

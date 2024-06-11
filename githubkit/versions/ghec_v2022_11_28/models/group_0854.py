@@ -9,20 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
+class OrgsOrgActionsVariablesNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
 
-    The total number of seat assignments cancelled.
-    """
+    selected_repository_ids: List[int] = Field(
+        description="The IDs of the repositories that can access the organization variable."
+    )
 
-    seats_cancelled: int = Field()
 
+model_rebuild(OrgsOrgActionsVariablesNameRepositoriesPutBody)
 
-model_rebuild(OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200)
-
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200",)
+__all__ = ("OrgsOrgActionsVariablesNameRepositoriesPutBody",)

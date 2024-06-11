@@ -9,59 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import List, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserCodespacesPostBodyOneof1(GitHubModel):
-    """UserCodespacesPostBodyOneof1"""
+class UserCodespacesSecretsGetResponse200(GitHubModel):
+    """UserCodespacesSecretsGetResponse200"""
 
-    pull_request: UserCodespacesPostBodyOneof1PropPullRequest = Field(
-        description="Pull request number for this codespace"
-    )
-    location: Missing[str] = Field(
-        default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
-    )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
-        default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.",
-    )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
-        default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
-    )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
-    )
+    total_count: int = Field()
+    secrets: List[CodespacesSecret] = Field()
 
 
-class UserCodespacesPostBodyOneof1PropPullRequest(GitHubModel):
-    """UserCodespacesPostBodyOneof1PropPullRequest
+class CodespacesSecret(GitHubModel):
+    """Codespaces Secret
 
-    Pull request number for this codespace
+    Secrets for a GitHub Codespace.
     """
 
-    pull_request_number: int = Field(description="Pull request number")
-    repository_id: int = Field(description="Repository id for this codespace")
+    name: str = Field(description="The name of the secret")
+    created_at: datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    updated_at: datetime = Field(
+        description="The date and time at which the secret was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that the secret is visible to"
+    )
+    selected_repositories_url: str = Field(
+        description="The API URL at which the list of repositories this secret is visible to can be retrieved"
+    )
 
 
-model_rebuild(UserCodespacesPostBodyOneof1)
-model_rebuild(UserCodespacesPostBodyOneof1PropPullRequest)
+model_rebuild(UserCodespacesSecretsGetResponse200)
+model_rebuild(CodespacesSecret)
 
 __all__ = (
-    "UserCodespacesPostBodyOneof1",
-    "UserCodespacesPostBodyOneof1PropPullRequest",
+    "UserCodespacesSecretsGetResponse200",
+    "CodespacesSecret",
 )

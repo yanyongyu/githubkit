@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0160 import ActionsSecretType
+from .group_0161 import ActionsVariableType
 
 
-class ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
 
     total_count: int
-    secrets: List[ActionsSecretType]
+    variables: List[ActionsVariableType]
 
 
-__all__ = ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",)

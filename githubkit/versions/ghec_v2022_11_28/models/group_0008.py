@@ -14,6 +14,8 @@ from datetime import datetime
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
@@ -47,6 +49,9 @@ class HookDeliveryItem(GitHubModel):
     )
     repository_id: Union[int, None] = Field(
         description="The id of the repository associated with this event."
+    )
+    throttled_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET, description="Time when the webhook delivery was throttled."
     )
 
 

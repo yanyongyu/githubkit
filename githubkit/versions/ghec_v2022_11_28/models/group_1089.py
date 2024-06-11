@@ -9,33 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody"""
+class ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody"""
 
-    state: Literal["open", "resolved"] = Field(
-        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
-    )
-    resolution: Missing[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
-    ] = Field(
-        default=UNSET,
-        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
-    )
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="An optional comment when closing an alert. Cannot be updated or deleted. Must be `null` when changing `state` to `open`.",
-    )
+    body: str = Field(description="The body text of the pull request review.")
 
 
-model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody",)

@@ -9,39 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0418 import DiscussionType
+from .group_0420 import WebhooksLabelType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookGollumType(TypedDict):
-    """gollum event"""
+class WebhookDiscussionUnlabeledType(TypedDict):
+    """discussion unlabeled event"""
 
+    action: Literal["unlabeled"]
+    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pages: List[WebhookGollumPropPagesItemsType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookGollumPropPagesItemsType(TypedDict):
-    """WebhookGollumPropPagesItems"""
-
-    action: Literal["created", "edited"]
-    html_url: str
-    page_name: str
-    sha: str
-    summary: Union[str, None]
-    title: str
-
-
-__all__ = (
-    "WebhookGollumType",
-    "WebhookGollumPropPagesItemsType",
-)
+__all__ = ("WebhookDiscussionUnlabeledType",)

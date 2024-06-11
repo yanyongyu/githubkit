@@ -9,29 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-from typing_extensions import TypedDict
+from typing import Union
+from datetime import datetime
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
 
 
-class LicenseType(TypedDict):
-    """License
+class GistCommitType(TypedDict):
+    """Gist Commit
 
-    License
+    Gist Commit
     """
 
-    key: str
-    name: str
-    spdx_id: Union[str, None]
-    url: Union[str, None]
-    node_id: str
-    html_url: str
-    description: str
-    implementation: str
-    permissions: List[str]
-    conditions: List[str]
-    limitations: List[str]
-    body: str
-    featured: bool
+    url: str
+    version: str
+    user: Union[None, SimpleUserType]
+    change_status: GistCommitPropChangeStatusType
+    committed_at: datetime
 
 
-__all__ = ("LicenseType",)
+class GistCommitPropChangeStatusType(TypedDict):
+    """GistCommitPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+__all__ = (
+    "GistCommitType",
+    "GistCommitPropChangeStatusType",
+)

@@ -9,38 +9,153 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookRepositoryDispatchSampleType(TypedDict):
-    """repository_dispatch event"""
+class WebhookReleasePrereleasedType(TypedDict):
+    """release prereleased event"""
 
-    action: str
-    branch: str
-    client_payload: Union[WebhookRepositoryDispatchSamplePropClientPayloadType, None]
+    action: Literal["prereleased"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: SimpleInstallationType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhookReleasePrereleasedPropReleaseType
     repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-class WebhookRepositoryDispatchSamplePropClientPayloadType(TypedDict):
-    """WebhookRepositoryDispatchSamplePropClientPayload
+class WebhookReleasePrereleasedPropReleaseType(TypedDict):
+    """Release
 
-    The `client_payload` that was specified in the `POST
-    /repos/{owner}/{repo}/dispatches` request body.
+    The [release](https://docs.github.com/enterprise-
+    cloud@latest//rest/releases/releases/#get-a-release) object.
     """
+
+    assets: List[Union[WebhookReleasePrereleasedPropReleasePropAssetsItemsType, None]]
+    assets_url: str
+    author: Union[WebhookReleasePrereleasedPropReleasePropAuthorType, None]
+    body: Union[str, None]
+    created_at: Union[datetime, None]
+    discussion_url: NotRequired[str]
+    draft: bool
+    html_url: str
+    id: int
+    name: Union[str, None]
+    node_id: str
+    prerelease: Literal[True]
+    published_at: Union[datetime, None]
+    reactions: NotRequired[WebhookReleasePrereleasedPropReleasePropReactionsType]
+    tag_name: str
+    tarball_url: Union[str, None]
+    target_commitish: str
+    upload_url: str
+    url: str
+    zipball_url: Union[str, None]
+
+
+class WebhookReleasePrereleasedPropReleasePropAssetsItemsType(TypedDict):
+    """Release Asset
+
+    Data related to a release.
+    """
+
+    browser_download_url: str
+    content_type: str
+    created_at: datetime
+    download_count: int
+    id: int
+    label: Union[str, None]
+    name: str
+    node_id: str
+    size: int
+    state: Literal["uploaded"]
+    updated_at: datetime
+    uploader: NotRequired[
+        Union[WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploaderType, None]
+    ]
+    url: str
+
+
+class WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploaderType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookReleasePrereleasedPropReleasePropAuthorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookReleasePrereleasedPropReleasePropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
 
 
 __all__ = (
-    "WebhookRepositoryDispatchSampleType",
-    "WebhookRepositoryDispatchSamplePropClientPayloadType",
+    "WebhookReleasePrereleasedType",
+    "WebhookReleasePrereleasedPropReleaseType",
+    "WebhookReleasePrereleasedPropReleasePropAssetsItemsType",
+    "WebhookReleasePrereleasedPropReleasePropAssetsItemsPropUploaderType",
+    "WebhookReleasePrereleasedPropReleasePropAuthorType",
+    "WebhookReleasePrereleasedPropReleasePropReactionsType",
 )

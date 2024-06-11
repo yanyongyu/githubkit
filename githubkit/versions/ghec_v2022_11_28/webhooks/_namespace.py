@@ -94,11 +94,13 @@ if TYPE_CHECKING:
     from .secret_scanning_alert_location import SecretScanningAlertLocationEvent
     from .repository_vulnerability_alert import RepositoryVulnerabilityAlertEvent
     from .branch_protection_configuration import BranchProtectionConfigurationEvent
+    from .exemption_request_secret_scanning import ExemptionRequestSecretScanningEvent
 
 
 EventNameType: TypeAlias = Literal[
     "branch_protection_configuration",
     "branch_protection_rule",
+    "exemption_request_secret_scanning",
     "check_run",
     "check_suite",
     "code_scanning_alert",
@@ -172,6 +174,7 @@ EventNameType: TypeAlias = Literal[
 VALID_EVENT_NAMES: Set[EventNameType] = {
     "branch_protection_configuration",
     "branch_protection_rule",
+    "exemption_request_secret_scanning",
     "check_run",
     "check_suite",
     "code_scanning_alert",
@@ -272,6 +275,11 @@ class WebhookNamespace:
     def parse(
         name: Literal["branch_protection_rule"], payload: Union[str, bytes]
     ) -> "BranchProtectionRuleEvent": ...
+    @overload
+    @staticmethod
+    def parse(
+        name: Literal["exemption_request_secret_scanning"], payload: Union[str, bytes]
+    ) -> "ExemptionRequestSecretScanningEvent": ...
     @overload
     @staticmethod
     def parse(
@@ -634,6 +642,11 @@ class WebhookNamespace:
     def parse_obj(
         name: Literal["branch_protection_rule"], payload: Dict[str, Any]
     ) -> "BranchProtectionRuleEvent": ...
+    @overload
+    @staticmethod
+    def parse_obj(
+        name: Literal["exemption_request_secret_scanning"], payload: Dict[str, Any]
+    ) -> "ExemptionRequestSecretScanningEvent": ...
     @overload
     @staticmethod
     def parse_obj(

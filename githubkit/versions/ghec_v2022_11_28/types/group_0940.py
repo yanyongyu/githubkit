@@ -9,17 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0179 import ActionsSecretType
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoActionsSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsSecretsGetResponse200"""
+class ReposOwnerRepoActionsPermissionsPutBodyType(TypedDict):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
 
-    total_count: int
-    secrets: List[ActionsSecretType]
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
 
 
-__all__ = ("ReposOwnerRepoActionsSecretsGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsPermissionsPutBodyType",)

@@ -13,18 +13,31 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0029 import OrganizationSimple
+from .group_0014 import AppPermissions
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
+class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-    total_count: float = Field()
-    organizations: List[OrganizationSimple] = Field()
+    repositories: Missing[List[str]] = Field(
+        default=UNSET,
+        description="List of repository names that the token should have access to",
+    )
+    repository_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="List of repository IDs that the token should have access to",
+    )
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200)
+model_rebuild(AppInstallationsInstallationIdAccessTokensPostBody)
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200",)
+__all__ = ("AppInstallationsInstallationIdAccessTokensPostBody",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,19 +17,27 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0253 import DependabotAlert
-from .group_0400 import EnterpriseWebhooks
-from .group_0401 import SimpleInstallation
-from .group_0403 import RepositoryWebhooks
-from .group_0404 import SimpleUserWebhooks
-from .group_0402 import OrganizationSimpleWebhooks
+from .group_0402 import EnterpriseWebhooks
+from .group_0403 import SimpleInstallation
+from .group_0405 import RepositoryWebhooks
+from .group_0406 import SimpleUserWebhooks
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookDependabotAlertCreated(GitHubModel):
-    """Dependabot alert created event"""
+class WebhookCommitCommentCreated(GitHubModel):
+    """commit_comment created event"""
 
-    action: Literal["created"] = Field()
-    alert: DependabotAlert = Field(description="A Dependabot alert.")
+    action: Literal["created"] = Field(
+        description="The action performed. Can be `created`."
+    )
+    comment: WebhookCommitCommentCreatedPropComment = Field(
+        description="The [commit comment](https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#get-a-commit-comment) resource."
+    )
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+    )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -39,11 +47,6 @@ class WebhookDependabotAlertCreated(GitHubModel):
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
     )
     repository: RepositoryWebhooks = Field(
         title="Repository",
@@ -55,6 +58,102 @@ class WebhookDependabotAlertCreated(GitHubModel):
     )
 
 
-model_rebuild(WebhookDependabotAlertCreated)
+class WebhookCommitCommentCreatedPropComment(GitHubModel):
+    """WebhookCommitCommentCreatedPropComment
 
-__all__ = ("WebhookDependabotAlertCreated",)
+    The [commit comment](https://docs.github.com/enterprise-
+    cloud@latest//rest/commits/comments#get-a-commit-comment) resource.
+    """
+
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
+    )
+    body: str = Field(description="The text of the comment.")
+    commit_id: str = Field(
+        description="The SHA of the commit to which the comment applies."
+    )
+    created_at: str = Field()
+    html_url: str = Field()
+    id: int = Field(description="The ID of the commit comment.")
+    line: Union[int, None] = Field(
+        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment"
+    )
+    node_id: str = Field(description="The node ID of the commit comment.")
+    path: Union[str, None] = Field(
+        description="The relative path of the file to which the comment applies."
+    )
+    position: Union[int, None] = Field(
+        description="The line index in the diff to which the comment applies."
+    )
+    reactions: Missing[WebhookCommitCommentCreatedPropCommentPropReactions] = Field(
+        default=UNSET, title="Reactions"
+    )
+    updated_at: str = Field()
+    url: str = Field()
+    user: Union[WebhookCommitCommentCreatedPropCommentPropUser, None] = Field(
+        title="User"
+    )
+
+
+class WebhookCommitCommentCreatedPropCommentPropReactions(GitHubModel):
+    """Reactions"""
+
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    confused: int = Field()
+    eyes: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    laugh: int = Field()
+    rocket: int = Field()
+    total_count: int = Field()
+    url: str = Field()
+
+
+class WebhookCommitCommentCreatedPropCommentPropUser(GitHubModel):
+    """User"""
+
+    avatar_url: Missing[str] = Field(default=UNSET)
+    deleted: Missing[bool] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    events_url: Missing[str] = Field(default=UNSET)
+    followers_url: Missing[str] = Field(default=UNSET)
+    following_url: Missing[str] = Field(default=UNSET)
+    gists_url: Missing[str] = Field(default=UNSET)
+    gravatar_id: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    login: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    organizations_url: Missing[str] = Field(default=UNSET)
+    received_events_url: Missing[str] = Field(default=UNSET)
+    repos_url: Missing[str] = Field(default=UNSET)
+    site_admin: Missing[bool] = Field(default=UNSET)
+    starred_url: Missing[str] = Field(default=UNSET)
+    subscriptions_url: Missing[str] = Field(default=UNSET)
+    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookCommitCommentCreated)
+model_rebuild(WebhookCommitCommentCreatedPropComment)
+model_rebuild(WebhookCommitCommentCreatedPropCommentPropReactions)
+model_rebuild(WebhookCommitCommentCreatedPropCommentPropUser)
+
+__all__ = (
+    "WebhookCommitCommentCreated",
+    "WebhookCommitCommentCreatedPropComment",
+    "WebhookCommitCommentCreatedPropCommentPropReactions",
+    "WebhookCommitCommentCreatedPropCommentPropUser",
+)

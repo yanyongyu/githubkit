@@ -10,17 +10,54 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0061 import MilestoneType
+from .group_0240 import AutoMergeType
+from .group_0001 import SimpleUserType
+from .group_0092 import TeamSimpleType
+from .group_0321 import PullRequestPropBaseType
+from .group_0323 import PullRequestPropLinksType
+from .group_0320 import PullRequestPropHeadType, PullRequestPropLabelsItemsType
 
-class WebhooksReviewType(TypedDict):
-    """WebhooksReview
 
-    The review that was affected.
-    """
+class PullRequestWebhookType(TypedDict):
+    """PullRequestWebhook"""
 
-    links: WebhooksReviewPropLinksType
+    url: str
+    id: int
+    node_id: str
+    html_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: Literal["open", "closed"]
+    locked: bool
+    title: str
+    user: SimpleUserType
+    body: Union[str, None]
+    labels: List[PullRequestPropLabelsItemsType]
+    milestone: Union[None, MilestoneType]
+    active_lock_reason: NotRequired[Union[str, None]]
+    created_at: datetime
+    updated_at: datetime
+    closed_at: Union[datetime, None]
+    merged_at: Union[datetime, None]
+    merge_commit_sha: Union[str, None]
+    assignee: Union[None, SimpleUserType]
+    assignees: NotRequired[Union[List[SimpleUserType], None]]
+    requested_reviewers: NotRequired[Union[List[SimpleUserType], None]]
+    requested_teams: NotRequired[Union[List[TeamSimpleType], None]]
+    head: PullRequestPropHeadType
+    base: PullRequestPropBaseType
+    links: PullRequestPropLinksType
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -31,66 +68,30 @@ class WebhooksReviewType(TypedDict):
         "NONE",
         "OWNER",
     ]
-    body: Union[str, None]
-    commit_id: str
-    html_url: str
-    id: int
-    node_id: str
-    pull_request_url: str
-    state: str
-    submitted_at: Union[datetime, None]
-    user: Union[WebhooksReviewPropUserType, None]
+    auto_merge: Union[AutoMergeType, None]
+    draft: NotRequired[bool]
+    merged: bool
+    mergeable: Union[bool, None]
+    rebaseable: NotRequired[Union[bool, None]]
+    mergeable_state: str
+    merged_by: Union[None, SimpleUserType]
+    comments: int
+    review_comments: int
+    maintainer_can_modify: bool
+    commits: int
+    additions: int
+    deletions: int
+    changed_files: int
+    allow_auto_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    use_squash_pr_title_as_default: NotRequired[bool]
 
 
-class WebhooksReviewPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhooksReviewPropLinksType(TypedDict):
-    """WebhooksReviewPropLinks"""
-
-    html: WebhooksReviewPropLinksPropHtmlType
-    pull_request: WebhooksReviewPropLinksPropPullRequestType
-
-
-class WebhooksReviewPropLinksPropHtmlType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewPropLinksPropPullRequestType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-__all__ = (
-    "WebhooksReviewType",
-    "WebhooksReviewPropUserType",
-    "WebhooksReviewPropLinksType",
-    "WebhooksReviewPropLinksPropHtmlType",
-    "WebhooksReviewPropLinksPropPullRequestType",
-)
+__all__ = ("PullRequestWebhookType",)

@@ -13,15 +13,14 @@ from typing import List
 from typing_extensions import TypedDict
 
 
-class UserSocialAccountsDeleteBodyType(TypedDict):
-    """UserSocialAccountsDeleteBody
+class UserEmailsPostBodyOneof0Type(TypedDict):
+    """UserEmailsPostBodyOneof0
 
     Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
+        {'emails': ['octocat@github.com', 'mona@github.com']}
     """
 
-    account_urls: List[str]
+    emails: List[str]
 
 
-__all__ = ("UserSocialAccountsDeleteBodyType",)
+__all__ = ("UserEmailsPostBodyOneof0Type",)

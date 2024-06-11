@@ -9,15 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
+
+from .group_0179 import JobType
 
 
-class ReposOwnerRepoAutolinksPostBodyType(TypedDict):
-    """ReposOwnerRepoAutolinksPostBody"""
+class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
 
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: NotRequired[bool]
+    total_count: int
+    jobs: List[JobType]
 
 
-__all__ = ("ReposOwnerRepoAutolinksPostBodyType",)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",)

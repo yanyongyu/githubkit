@@ -20,10 +20,10 @@ from .group_0414 import WebhooksSecurityAdvisoryType
 from .group_0369 import OrganizationSimpleWebhooksType
 
 
-class WebhookSecurityAdvisoryPublishedType(TypedDict):
-    """security_advisory published event"""
+class WebhookSecurityAdvisoryUpdatedType(TypedDict):
+    """security_advisory updated event"""
 
-    action: Literal["published"]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -32,4 +32,4 @@ class WebhookSecurityAdvisoryPublishedType(TypedDict):
     sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookSecurityAdvisoryPublishedType",)
+__all__ = ("WebhookSecurityAdvisoryUpdatedType",)

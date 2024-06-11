@@ -13,11 +13,11 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
 
-    reviewers: NotRequired[List[str]]
-    team_reviewers: List[str]
+    reviewers: List[str]
+    team_reviewers: NotRequired[List[str]]
 
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType",)

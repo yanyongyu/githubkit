@@ -9,17 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
 
 
-class OidcCustomSubType(TypedDict):
-    """Actions OIDC Subject customization
+class OrganizationCustomRepositoryRoleType(TypedDict):
+    """Organization Custom Repository Role
 
-    Actions OIDC Subject customization
+    Custom repository roles created by organization owners
     """
 
-    include_claim_keys: List[str]
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: List[str]
+    organization: SimpleUserType
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("OidcCustomSubType",)
+__all__ = ("OrganizationCustomRepositoryRoleType",)

@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1(GitHubModel):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2(GitHubModel):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
 
     language: Literal[
         "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
@@ -31,17 +31,17 @@ class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1(GitHubModel)
         default=UNSET,
         description="List of repository names (in the form `owner/repo-name`) to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
     )
-    repository_lists: List[str] = Field(
-        max_length=1,
-        description="List of repository lists to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
-    )
-    repository_owners: Missing[List[str]] = Field(
+    repository_lists: Missing[List[str]] = Field(
         max_length=1,
         default=UNSET,
+        description="List of repository lists to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
+    )
+    repository_owners: List[str] = Field(
+        max_length=1,
         description="List of organization or user names whose repositories the query should be run against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
     )
 
 
-model_rebuild(ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1)
+model_rebuild(ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2)
 
-__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1",)
+__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2",)

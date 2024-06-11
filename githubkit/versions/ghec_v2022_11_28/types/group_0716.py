@@ -12,46 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0162 import RepositoryAdvisoryType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookRepositoryRenamedType(TypedDict):
-    """repository renamed event"""
+class WebhookRepositoryAdvisoryReportedType(TypedDict):
+    """Repository advisory reported event"""
 
-    action: Literal["renamed"]
-    changes: WebhookRepositoryRenamedPropChangesType
+    action: Literal["reported"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    repository_advisory: RepositoryAdvisoryType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-class WebhookRepositoryRenamedPropChangesType(TypedDict):
-    """WebhookRepositoryRenamedPropChanges"""
-
-    repository: WebhookRepositoryRenamedPropChangesPropRepositoryType
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryType(TypedDict):
-    """WebhookRepositoryRenamedPropChangesPropRepository"""
-
-    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType(TypedDict):
-    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookRepositoryRenamedType",
-    "WebhookRepositoryRenamedPropChangesType",
-    "WebhookRepositoryRenamedPropChangesPropRepositoryType",
-    "WebhookRepositoryRenamedPropChangesPropRepositoryPropNameType",
-)
+__all__ = ("WebhookRepositoryAdvisoryReportedType",)

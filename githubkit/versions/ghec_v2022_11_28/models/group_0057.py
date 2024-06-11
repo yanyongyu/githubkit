@@ -9,25 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PackagesBillingUsage(GitHubModel):
-    """PackagesBillingUsage"""
+class GetAllCostCenters(GitHubModel):
+    """GetAllCostCenters"""
 
-    total_gigabytes_bandwidth_used: int = Field(
-        description="Sum of the free and paid storage space (GB) for GitHuub Packages."
-    )
-    total_paid_gigabytes_bandwidth_used: int = Field(
-        description="Total paid storage space (GB) for GitHuub Packages."
-    )
-    included_gigabytes_bandwidth: int = Field(
-        description="Free storage space (GB) for GitHub Packages."
+    cost_centers: Missing[List[GetAllCostCentersPropCostCentersItems]] = Field(
+        default=UNSET, alias="costCenters"
     )
 
 
-model_rebuild(PackagesBillingUsage)
+class GetAllCostCentersPropCostCentersItems(GitHubModel):
+    """GetAllCostCentersPropCostCentersItems"""
 
-__all__ = ("PackagesBillingUsage",)
+    id: str = Field(description="ID of the cost center.")
+    name: str = Field(description="Name of the cost center.")
+    resources: List[GetAllCostCentersPropCostCentersItemsPropResourcesItems] = Field()
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItems(GitHubModel):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str = Field(description="Type of the resource.")
+    name: str = Field(description="Name of the resource.")
+
+
+model_rebuild(GetAllCostCenters)
+model_rebuild(GetAllCostCentersPropCostCentersItems)
+model_rebuild(GetAllCostCentersPropCostCentersItemsPropResourcesItems)
+
+__all__ = (
+    "GetAllCostCenters",
+    "GetAllCostCentersPropCostCentersItems",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItems",
+)

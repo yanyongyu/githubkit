@@ -9,14 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
+
+from .group_0213 import CheckRunType
 
 
-class ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsSecretNamePutBody"""
+class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
 
-    encrypted_value: NotRequired[str]
-    key_id: NotRequired[str]
+    total_count: int
+    check_runs: List[CheckRunType]
 
 
-__all__ = ("ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType",)
+__all__ = ("ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type",)

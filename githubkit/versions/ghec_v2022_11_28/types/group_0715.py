@@ -12,22 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0162 import RepositoryAdvisoryType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookRepositoryPublicizedType(TypedDict):
-    """repository publicized event"""
+class WebhookRepositoryAdvisoryPublishedType(TypedDict):
+    """Repository advisory published event"""
 
-    action: Literal["publicized"]
+    action: Literal["published"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    repository_advisory: RepositoryAdvisoryType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookRepositoryPublicizedType",)
+__all__ = ("WebhookRepositoryAdvisoryPublishedType",)

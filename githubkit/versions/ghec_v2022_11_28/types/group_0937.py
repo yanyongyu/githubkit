@@ -9,16 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
+class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    environment_ids: List[int]
-    state: Literal["approved", "rejected"]
-    comment: str
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool
+    include_claim_keys: NotRequired[List[str]]
 
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType",)
+__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",)

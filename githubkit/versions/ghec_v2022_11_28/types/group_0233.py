@@ -9,30 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
-from .group_0077 import MinimalRepositoryType
 
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-class RepositoryInvitationType(TypedDict):
-    """Repository Invitation
-
-    Repository invitations let you manage who you collaborate with.
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    id: int
-    repository: MinimalRepositoryType
-    invitee: Union[None, SimpleUserType]
-    inviter: Union[None, SimpleUserType]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
-    created_at: datetime
-    expired: NotRequired[bool]
-    url: str
-    html_url: str
-    node_id: str
+    errors: List[CodeownersErrorsPropErrorsItemsType]
 
 
-__all__ = ("RepositoryInvitationType",)
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
+
+
+__all__ = (
+    "CodeownersErrorsType",
+    "CodeownersErrorsPropErrorsItemsType",
+)

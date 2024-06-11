@@ -9,20 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class ReposOwnerRepoPullsPostBodyType(TypedDict):
-    """ReposOwnerRepoPullsPostBody"""
-
-    title: NotRequired[str]
-    head: str
-    head_repo: NotRequired[str]
-    base: str
-    body: NotRequired[str]
-    maintainer_can_modify: NotRequired[bool]
-    draft: NotRequired[bool]
-    issue: NotRequired[int]
+from .group_1062 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type
 
 
-__all__ = ("ReposOwnerRepoPullsPostBodyType",)
+class ReposOwnerRepoPagesPutBodyAnyof0Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyAnyof0"""
+
+    cname: NotRequired[Union[str, None]]
+    https_enforced: NotRequired[bool]
+    build_type: Literal["legacy", "workflow"]
+    source: NotRequired[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
+        ]
+    ]
+    public: NotRequired[bool]
+
+
+__all__ = ("ReposOwnerRepoPagesPutBodyAnyof0Type",)

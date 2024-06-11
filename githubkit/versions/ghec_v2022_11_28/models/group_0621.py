@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0400 import EnterpriseWebhooks
-from .group_0401 import SimpleInstallation
-from .group_0403 import RepositoryWebhooks
-from .group_0404 import SimpleUserWebhooks
-from .group_0402 import OrganizationSimpleWebhooks
-from .group_0622 import WebhookPackageUpdatedPropPackage
+from .group_0402 import EnterpriseWebhooks
+from .group_0403 import SimpleInstallation
+from .group_0405 import RepositoryWebhooks
+from .group_0406 import SimpleUserWebhooks
+from .group_0434 import WebhooksMembership
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookPackageUpdated(GitHubModel):
-    """package updated event"""
+class WebhookOrganizationDeleted(GitHubModel):
+    """organization deleted event"""
 
-    action: Literal["updated"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,15 +39,17 @@ class WebhookPackageUpdated(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
+    membership: Missing[WebhooksMembership] = Field(
         default=UNSET,
+        title="Membership",
+        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
+    )
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    package: WebhookPackageUpdatedPropPackage = Field(
-        description="Information about the package."
-    )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
@@ -57,6 +59,6 @@ class WebhookPackageUpdated(GitHubModel):
     )
 
 
-model_rebuild(WebhookPackageUpdated)
+model_rebuild(WebhookOrganizationDeleted)
 
-__all__ = ("WebhookPackageUpdated",)
+__all__ = ("WebhookOrganizationDeleted",)

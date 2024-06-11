@@ -9,40 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0401 import SimpleInstallation
-from .group_0404 import SimpleUserWebhooks
-from .group_0402 import OrganizationSimpleWebhooks
-from .group_0431 import PersonalAccessTokenRequest
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 
-class WebhookPersonalAccessTokenRequestCancelled(GitHubModel):
-    """personal_access_token_request cancelled event"""
+class WebhookRubygemsMetadata(GitHubModel):
+    """Ruby Gems metadata"""
 
-    action: Literal["cancelled"] = Field()
-    personal_access_token_request: PersonalAccessTokenRequest = Field(
-        title="Personal Access Token Request",
-        description="Details of a Personal Access Token Request.",
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+    readme: Missing[str] = Field(default=UNSET)
+    homepage: Missing[str] = Field(default=UNSET)
+    version_info: Missing[WebhookRubygemsMetadataPropVersionInfo] = Field(default=UNSET)
+    platform: Missing[str] = Field(default=UNSET)
+    metadata: Missing[WebhookRubygemsMetadataPropMetadata] = Field(default=UNSET)
+    repo: Missing[str] = Field(default=UNSET)
+    dependencies: Missing[List[WebhookRubygemsMetadataPropDependenciesItems]] = Field(
+        default=UNSET
     )
-    organization: OrganizationSimpleWebhooks = Field(
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
-    installation: SimpleInstallation = Field(
-        title="Simple Installation",
-        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
+    commit_oid: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookPersonalAccessTokenRequestCancelled)
+class WebhookRubygemsMetadataPropVersionInfo(GitHubModel):
+    """WebhookRubygemsMetadataPropVersionInfo"""
 
-__all__ = ("WebhookPersonalAccessTokenRequestCancelled",)
+    version: Missing[str] = Field(default=UNSET)
+
+
+class WebhookRubygemsMetadataPropMetadata(ExtraGitHubModel):
+    """WebhookRubygemsMetadataPropMetadata"""
+
+
+class WebhookRubygemsMetadataPropDependenciesItems(ExtraGitHubModel):
+    """WebhookRubygemsMetadataPropDependenciesItems"""
+
+
+model_rebuild(WebhookRubygemsMetadata)
+model_rebuild(WebhookRubygemsMetadataPropVersionInfo)
+model_rebuild(WebhookRubygemsMetadataPropMetadata)
+model_rebuild(WebhookRubygemsMetadataPropDependenciesItems)
+
+__all__ = (
+    "WebhookRubygemsMetadata",
+    "WebhookRubygemsMetadataPropVersionInfo",
+    "WebhookRubygemsMetadataPropMetadata",
+    "WebhookRubygemsMetadataPropDependenciesItems",
+)

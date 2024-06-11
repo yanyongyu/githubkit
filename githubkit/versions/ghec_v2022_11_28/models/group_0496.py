@@ -10,7 +10,6 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from datetime import datetime
 
 from pydantic import Field
 
@@ -18,22 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0414 import Discussion
-from .group_0400 import EnterpriseWebhooks
-from .group_0401 import SimpleInstallation
-from .group_0403 import RepositoryWebhooks
-from .group_0404 import SimpleUserWebhooks
-from .group_0402 import OrganizationSimpleWebhooks
+from .group_0412 import WebhooksDeployKey
+from .group_0402 import EnterpriseWebhooks
+from .group_0403 import SimpleInstallation
+from .group_0405 import RepositoryWebhooks
+from .group_0406 import SimpleUserWebhooks
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionCategoryChanged(GitHubModel):
-    """discussion category changed event"""
+class WebhookDeployKeyCreated(GitHubModel):
+    """deploy_key created event"""
 
-    action: Literal["category_changed"] = Field()
-    changes: WebhookDiscussionCategoryChangedPropChanges = Field()
-    discussion: Discussion = Field(
-        title="Discussion", description="A Discussion in a repository."
-    )
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,6 +38,9 @@ class WebhookDiscussionCategoryChanged(GitHubModel):
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    key: WebhooksDeployKey = Field(
+        description="The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#get-a-deploy-key) resource."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -59,43 +57,6 @@ class WebhookDiscussionCategoryChanged(GitHubModel):
     )
 
 
-class WebhookDiscussionCategoryChangedPropChanges(GitHubModel):
-    """WebhookDiscussionCategoryChangedPropChanges"""
+model_rebuild(WebhookDeployKeyCreated)
 
-    category: WebhookDiscussionCategoryChangedPropChangesPropCategory = Field()
-
-
-class WebhookDiscussionCategoryChangedPropChangesPropCategory(GitHubModel):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
-
-    from_: WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom = Field(
-        alias="from"
-    )
-
-
-class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom(GitHubModel):
-    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
-
-    created_at: datetime = Field()
-    description: str = Field()
-    emoji: str = Field()
-    id: int = Field()
-    is_answerable: bool = Field()
-    name: str = Field()
-    node_id: Missing[str] = Field(default=UNSET)
-    repository_id: int = Field()
-    slug: str = Field()
-    updated_at: str = Field()
-
-
-model_rebuild(WebhookDiscussionCategoryChanged)
-model_rebuild(WebhookDiscussionCategoryChangedPropChanges)
-model_rebuild(WebhookDiscussionCategoryChangedPropChangesPropCategory)
-model_rebuild(WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom)
-
-__all__ = (
-    "WebhookDiscussionCategoryChanged",
-    "WebhookDiscussionCategoryChangedPropChanges",
-    "WebhookDiscussionCategoryChangedPropChangesPropCategory",
-    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom",
-)
+__all__ = ("WebhookDeployKeyCreated",)

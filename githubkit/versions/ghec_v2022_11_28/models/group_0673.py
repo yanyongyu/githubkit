@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0400 import EnterpriseWebhooks
-from .group_0401 import SimpleInstallation
-from .group_0403 import RepositoryWebhooks
-from .group_0404 import SimpleUserWebhooks
-from .group_0438 import PullRequestWebhook
-from .group_0402 import OrganizationSimpleWebhooks
+from .group_0402 import EnterpriseWebhooks
+from .group_0403 import SimpleInstallation
+from .group_0405 import RepositoryWebhooks
+from .group_0406 import SimpleUserWebhooks
+from .group_0442 import PullRequestWebhook
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookPullRequestOpened(GitHubModel):
-    """pull_request opened event"""
+class WebhookPullRequestClosed(GitHubModel):
+    """pull_request closed event"""
 
-    action: Literal["opened"] = Field()
+    action: Literal["closed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -56,6 +56,6 @@ class WebhookPullRequestOpened(GitHubModel):
     )
 
 
-model_rebuild(WebhookPullRequestOpened)
+model_rebuild(WebhookPullRequestClosed)
 
-__all__ = ("WebhookPullRequestOpened",)
+__all__ = ("WebhookPullRequestClosed",)

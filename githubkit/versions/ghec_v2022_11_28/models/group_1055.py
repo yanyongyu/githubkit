@@ -9,43 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_1050 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
+class ReposOwnerRepoLabelsNamePatchBody(GitHubModel):
+    """ReposOwnerRepoLabelsNamePatchBody"""
 
-class ReposOwnerRepoPagesPutBodyAnyof4(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof4"""
-
-    cname: Missing[Union[str, None]] = Field(
+    new_name: Missing[str] = Field(
         default=UNSET,
-        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/enterprise-cloud@latest//pages/configuring-a-custom-domain-for-your-github-pages-site)."',
+        description='The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."',
     )
-    https_enforced: bool = Field(
-        description="Specify whether HTTPS should be enforced for the repository."
-    )
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
+    color: Missing[str] = Field(
         default=UNSET,
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
+        description="The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.",
     )
-    source: Missing[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-        ]
-    ] = Field(default=UNSET)
-    public: Missing[bool] = Field(
+    description: Missing[str] = Field(
         default=UNSET,
-        description="Configures access controls for the GitHub Pages site. If public is set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site. This includes anyone in your Enterprise if the repository is set to `internal` visibility.",
+        description="A short description of the label. Must be 100 characters or fewer.",
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof4)
+model_rebuild(ReposOwnerRepoLabelsNamePatchBody)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof4",)
+__all__ = ("ReposOwnerRepoLabelsNamePatchBody",)

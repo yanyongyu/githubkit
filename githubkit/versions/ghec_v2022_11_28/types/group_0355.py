@@ -9,23 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
 
 
-class RepositorySubscriptionType(TypedDict):
-    """Repository Invitation
+class ContributorActivityType(TypedDict):
+    """Contributor Activity
 
-    Repository invitations let you manage who you collaborate with.
+    Contributor Activity
     """
 
-    subscribed: bool
-    ignored: bool
-    reason: Union[str, None]
-    created_at: datetime
-    url: str
-    repository_url: str
+    author: Union[None, SimpleUserType]
+    total: int
+    weeks: List[ContributorActivityPropWeeksItemsType]
 
 
-__all__ = ("RepositorySubscriptionType",)
+class ContributorActivityPropWeeksItemsType(TypedDict):
+    """ContributorActivityPropWeeksItems"""
+
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
+
+
+__all__ = (
+    "ContributorActivityType",
+    "ContributorActivityPropWeeksItemsType",
+)

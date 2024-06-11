@@ -9,25 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody"""
+class ReposOwnerRepoActionsOidcCustomizationSubPutBody(GitHubModel):
+    """Actions OIDC subject customization for a repository
 
-    environment_ids: List[int] = Field(
-        description="The list of environment ids to approve or reject"
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool = Field(
+        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
     )
-    state: Literal["approved", "rejected"] = Field(
-        description="Whether to approve or reject deployment to the specified environments."
+    include_claim_keys: Missing[List[str]] = Field(
+        default=UNSET,
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
     )
-    comment: str = Field(description="A comment to accompany the deployment review")
 
 
-model_rebuild(ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody)
+model_rebuild(ReposOwnerRepoActionsOidcCustomizationSubPutBody)
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody",)
+__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",)

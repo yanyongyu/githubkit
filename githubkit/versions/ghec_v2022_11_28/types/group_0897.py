@@ -9,13 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
-
-class OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
-
-    group_id: int
+from .group_0116 import CustomPropertyValueType
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType",)
+class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesValuesPatchBody"""
+
+    repository_names: List[str]
+    properties: List[CustomPropertyValueType]
+
+
+__all__ = ("OrgsOrgPropertiesValuesPatchBodyType",)

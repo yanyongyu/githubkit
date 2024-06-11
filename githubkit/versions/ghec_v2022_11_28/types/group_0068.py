@@ -10,35 +10,68 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
-from typing_extensions import TypedDict
+from typing import Any, List, Union
+from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
 
 
-class GistCommentType(TypedDict):
-    """Gist Comment
+class GistHistoryType(TypedDict):
+    """Gist History
 
-    A comment made to a gist.
+    Gist History
     """
 
-    id: int
-    node_id: str
+    user: NotRequired[Union[None, SimpleUserType]]
+    version: NotRequired[str]
+    committed_at: NotRequired[datetime]
+    change_status: NotRequired[GistHistoryPropChangeStatusType]
+    url: NotRequired[str]
+
+
+class GistHistoryPropChangeStatusType(TypedDict):
+    """GistHistoryPropChangeStatus"""
+
+    total: NotRequired[int]
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+
+
+class GistSimplePropForkOfType(TypedDict):
+    """Gist
+
+    Gist
+    """
+
     url: str
-    body: str
-    user: Union[None, SimpleUserType]
+    forks_url: str
+    commits_url: str
+    id: str
+    node_id: str
+    git_pull_url: str
+    git_push_url: str
+    html_url: str
+    files: GistSimplePropForkOfPropFilesType
+    public: bool
     created_at: datetime
     updated_at: datetime
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
+    description: Union[str, None]
+    comments: int
+    user: Union[None, SimpleUserType]
+    comments_url: str
+    owner: NotRequired[Union[None, SimpleUserType]]
+    truncated: NotRequired[bool]
+    forks: NotRequired[List[Any]]
+    history: NotRequired[List[Any]]
 
 
-__all__ = ("GistCommentType",)
+class GistSimplePropForkOfPropFilesType(TypedDict):
+    """GistSimplePropForkOfPropFiles"""
+
+
+__all__ = (
+    "GistHistoryType",
+    "GistHistoryPropChangeStatusType",
+    "GistSimplePropForkOfType",
+    "GistSimplePropForkOfPropFilesType",
+)

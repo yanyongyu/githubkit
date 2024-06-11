@@ -12,15 +12,6 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookForkPropForkeeAllof0PropCustomPropertiesType(TypedDict):
-    """WebhookForkPropForkeeAllof0PropCustomProperties
-
-    The custom properties that were defined for the repository. The keys are the
-    custom property names, and the values are the corresponding custom property
-    values.
-    """
-
-
 class WebhookForkPropForkeeAllof0PropPermissionsType(TypedDict):
     """WebhookForkPropForkeeAllof0PropPermissions"""
 
@@ -31,7 +22,4 @@ class WebhookForkPropForkeeAllof0PropPermissionsType(TypedDict):
     triage: NotRequired[bool]
 
 
-__all__ = (
-    "WebhookForkPropForkeeAllof0PropCustomPropertiesType",
-    "WebhookForkPropForkeeAllof0PropPermissionsType",
-)
+__all__ = ("WebhookForkPropForkeeAllof0PropPermissionsType",)

@@ -9,33 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from datetime import datetime
+from typing import List, Literal
+from typing_extensions import TypedDict
 
 
-class UserCodespacesPostBodyOneof1Type(TypedDict):
-    """UserCodespacesPostBodyOneof1"""
+class UserCodespacesSecretsGetResponse200Type(TypedDict):
+    """UserCodespacesSecretsGetResponse200"""
 
-    pull_request: UserCodespacesPostBodyOneof1PropPullRequestType
-    location: NotRequired[str]
-    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
-    machine: NotRequired[str]
-    devcontainer_path: NotRequired[str]
-    working_directory: NotRequired[str]
-    idle_timeout_minutes: NotRequired[int]
+    total_count: int
+    secrets: List[CodespacesSecretType]
 
 
-class UserCodespacesPostBodyOneof1PropPullRequestType(TypedDict):
-    """UserCodespacesPostBodyOneof1PropPullRequest
+class CodespacesSecretType(TypedDict):
+    """Codespaces Secret
 
-    Pull request number for this codespace
+    Secrets for a GitHub Codespace.
     """
 
-    pull_request_number: int
-    repository_id: int
+    name: str
+    created_at: datetime
+    updated_at: datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: str
 
 
 __all__ = (
-    "UserCodespacesPostBodyOneof1Type",
-    "UserCodespacesPostBodyOneof1PropPullRequestType",
+    "UserCodespacesSecretsGetResponse200Type",
+    "CodespacesSecretType",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,18 +17,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0400 import EnterpriseWebhooks
-from .group_0401 import SimpleInstallation
-from .group_0403 import RepositoryWebhooks
-from .group_0404 import SimpleUserWebhooks
-from .group_0434 import WebhooksProjectColumn
-from .group_0402 import OrganizationSimpleWebhooks
+from .group_0402 import EnterpriseWebhooks
+from .group_0403 import SimpleInstallation
+from .group_0405 import RepositoryWebhooks
+from .group_0406 import SimpleUserWebhooks
+from .group_0436 import WebhooksProjectCard
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectColumnDeleted(GitHubModel):
-    """project_column deleted event"""
+class WebhookProjectCardConverted(GitHubModel):
+    """project_card converted event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["converted"] = Field()
+    changes: WebhookProjectCardConvertedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,15 +45,36 @@ class WebhookProjectColumnDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_column: WebhooksProjectColumn = Field(title="Project Column")
-    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
-    sender: Missing[SimpleUserWebhooks] = Field(
+    project_card: WebhooksProjectCard = Field(title="Project Card")
+    repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-model_rebuild(WebhookProjectColumnDeleted)
+class WebhookProjectCardConvertedPropChanges(GitHubModel):
+    """WebhookProjectCardConvertedPropChanges"""
 
-__all__ = ("WebhookProjectColumnDeleted",)
+    note: WebhookProjectCardConvertedPropChangesPropNote = Field()
+
+
+class WebhookProjectCardConvertedPropChangesPropNote(GitHubModel):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookProjectCardConverted)
+model_rebuild(WebhookProjectCardConvertedPropChanges)
+model_rebuild(WebhookProjectCardConvertedPropChangesPropNote)
+
+__all__ = (
+    "WebhookProjectCardConverted",
+    "WebhookProjectCardConvertedPropChanges",
+    "WebhookProjectCardConvertedPropChangesPropNote",
+)

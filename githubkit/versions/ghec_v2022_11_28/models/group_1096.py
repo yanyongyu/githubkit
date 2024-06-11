@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,54 +16,26 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ScimV2OrganizationsOrgUsersPostBody(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBody"""
+class ReposOwnerRepoReleasesGenerateNotesPostBody(GitHubModel):
+    """ReposOwnerRepoReleasesGenerateNotesPostBody"""
 
-    user_name: str = Field(
-        alias="userName",
-        description="Configured by the admin. Could be an email, login, or username",
+    tag_name: str = Field(
+        description="The tag name for the release. This can be an existing tag or a new one."
     )
-    display_name: Missing[str] = Field(
+    target_commitish: Missing[str] = Field(
         default=UNSET,
-        alias="displayName",
-        description="The name of the user, suitable for display to end-users",
+        description="Specifies the commitish value that will be the target for the release's tag. Required if the supplied tag_name does not reference an existing tag. Ignored if the tag_name already exists.",
     )
-    name: ScimV2OrganizationsOrgUsersPostBodyPropName = Field()
-    emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems] = Field(
-        min_length=1, description="user emails"
+    previous_tag_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the previous tag to use as the starting point for the release notes. Use to manually specify the range for the set of changes considered as part this release.",
     )
-    schemas: Missing[List[str]] = Field(default=UNSET)
-    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
-    groups: Missing[List[str]] = Field(default=UNSET)
-    active: Missing[bool] = Field(default=UNSET)
+    configuration_file_path: Missing[str] = Field(
+        default=UNSET,
+        description="Specifies a path to a file in the repository containing configuration settings used for generating the release notes. If unspecified, the configuration file located in the repository at '.github/release.yml' or '.github/release.yaml' will be used. If that is not present, the default configuration will be used.",
+    )
 
 
-class ScimV2OrganizationsOrgUsersPostBodyPropName(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBodyPropName
+model_rebuild(ReposOwnerRepoReleasesGenerateNotesPostBody)
 
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str = Field(alias="givenName")
-    family_name: str = Field(alias="familyName")
-    formatted: Missing[str] = Field(default=UNSET)
-
-
-class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
-
-    value: str = Field()
-    primary: Missing[bool] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ScimV2OrganizationsOrgUsersPostBody)
-model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropName)
-model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems)
-
-__all__ = (
-    "ScimV2OrganizationsOrgUsersPostBody",
-    "ScimV2OrganizationsOrgUsersPostBodyPropName",
-    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems",
-)
+__all__ = ("ReposOwnerRepoReleasesGenerateNotesPostBody",)

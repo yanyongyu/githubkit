@@ -20,10 +20,11 @@ from .group_0415 import WebhooksSponsorshipType
 from .group_0369 import OrganizationSimpleWebhooksType
 
 
-class WebhookSponsorshipCreatedType(TypedDict):
-    """sponsorship created event"""
+class WebhookSponsorshipEditedType(TypedDict):
+    """sponsorship edited event"""
 
-    action: Literal["created"]
+    action: Literal["edited"]
+    changes: WebhookSponsorshipEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -32,4 +33,20 @@ class WebhookSponsorshipCreatedType(TypedDict):
     sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("WebhookSponsorshipCreatedType",)
+class WebhookSponsorshipEditedPropChangesType(TypedDict):
+    """WebhookSponsorshipEditedPropChanges"""
+
+    privacy_level: NotRequired[WebhookSponsorshipEditedPropChangesPropPrivacyLevelType]
+
+
+class WebhookSponsorshipEditedPropChangesPropPrivacyLevelType(TypedDict):
+    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookSponsorshipEditedType",
+    "WebhookSponsorshipEditedPropChangesType",
+    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelType",
+)

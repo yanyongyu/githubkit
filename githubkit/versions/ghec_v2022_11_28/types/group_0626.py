@@ -9,23 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
-
-from .group_0401 import SimpleInstallationType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
-from .group_0431 import PersonalAccessTokenRequestType
+from typing import List
+from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookPersonalAccessTokenRequestCancelledType(TypedDict):
-    """personal_access_token_request cancelled event"""
+class WebhookRubygemsMetadataType(TypedDict):
+    """Ruby Gems metadata"""
 
-    action: Literal["cancelled"]
-    personal_access_token_request: PersonalAccessTokenRequestType
-    organization: OrganizationSimpleWebhooksType
-    sender: SimpleUserWebhooksType
-    installation: SimpleInstallationType
+    name: NotRequired[str]
+    description: NotRequired[str]
+    readme: NotRequired[str]
+    homepage: NotRequired[str]
+    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoType]
+    platform: NotRequired[str]
+    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataType]
+    repo: NotRequired[str]
+    dependencies: NotRequired[List[WebhookRubygemsMetadataPropDependenciesItemsType]]
+    commit_oid: NotRequired[str]
 
 
-__all__ = ("WebhookPersonalAccessTokenRequestCancelledType",)
+class WebhookRubygemsMetadataPropVersionInfoType(TypedDict):
+    """WebhookRubygemsMetadataPropVersionInfo"""
+
+    version: NotRequired[str]
+
+
+class WebhookRubygemsMetadataPropMetadataType(TypedDict):
+    """WebhookRubygemsMetadataPropMetadata"""
+
+
+class WebhookRubygemsMetadataPropDependenciesItemsType(TypedDict):
+    """WebhookRubygemsMetadataPropDependenciesItems"""
+
+
+__all__ = (
+    "WebhookRubygemsMetadataType",
+    "WebhookRubygemsMetadataPropVersionInfoType",
+    "WebhookRubygemsMetadataPropMetadataType",
+    "WebhookRubygemsMetadataPropDependenciesItemsType",
+)

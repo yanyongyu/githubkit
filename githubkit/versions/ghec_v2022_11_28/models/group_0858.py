@@ -9,20 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+class OrgsOrgCodespacesAccessSelectedUsersDeleteBody(GitHubModel):
+    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
 
-    The total number of seat assignments cancelled.
-    """
+    selected_usernames: List[str] = Field(
+        max_length=100,
+        description="The usernames of the organization members whose codespaces should not be billed to the organization.",
+    )
 
-    seats_cancelled: int = Field()
 
+model_rebuild(OrgsOrgCodespacesAccessSelectedUsersDeleteBody)
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteResponse200)
-
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",)
+__all__ = ("OrgsOrgCodespacesAccessSelectedUsersDeleteBody",)

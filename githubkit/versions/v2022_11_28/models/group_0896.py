@@ -16,8 +16,8 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0
 
     Examples:
         {'apps': ['my-app']}
@@ -28,6 +28,6 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0(GitHub
     )
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0)
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0",)

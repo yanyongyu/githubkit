@@ -9,13 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from pydantic import Field
+
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EmojisGetResponse200(ExtraGitHubModel):
-    """EmojisGetResponse200"""
+class EnterprisesEnterpriseSecretScanningAlertsGetResponse503(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningAlertsGetResponse503"""
+
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(EmojisGetResponse200)
+model_rebuild(EnterprisesEnterpriseSecretScanningAlertsGetResponse503)
 
-__all__ = ("EmojisGetResponse200",)
+__all__ = ("EnterprisesEnterpriseSecretScanningAlertsGetResponse503",)

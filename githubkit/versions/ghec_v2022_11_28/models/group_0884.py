@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
-from typing_extensions import Annotated
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -19,34 +18,46 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPropertiesSchemaCustomPropertyNamePutBody(GitHubModel):
-    """OrgsOrgPropertiesSchemaCustomPropertyNamePutBody"""
+class OrgsOrgMigrationsPostBody(GitHubModel):
+    """OrgsOrgMigrationsPostBody"""
 
-    value_type: Literal["string", "single_select"] = Field(
-        description="The type of the value for the property"
+    repositories: List[str] = Field(
+        description="A list of arrays indicating which repositories should be migrated."
     )
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
-    )
-    default_value: Missing[Union[str, List[str], None]] = Field(
-        default=UNSET, description="Default value of the property"
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
-    )
-    allowed_values: Missing[
-        Union[
-            Annotated[
-                List[Annotated[str, Field(max_length=75)]], Field(max_length=200)
-            ],
-            None,
-        ]
-    ] = Field(
+    lock_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+        description="Indicates whether repositories should be locked (to prevent manipulation) while migrating data.",
+    )
+    exclude_metadata: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
+    )
+    exclude_git_data: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether the repository git data should be excluded from the migration.",
+    )
+    exclude_attachments: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether attachments should be excluded from the migration (to reduce migration archive file size).",
+    )
+    exclude_releases: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether releases should be excluded from the migration (to reduce migration archive file size).",
+    )
+    exclude_owner_projects: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether projects owned by the organization or users should be excluded. from the migration.",
+    )
+    org_metadata_only: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
+    )
+    exclude: Missing[List[Literal["repositories"]]] = Field(
+        default=UNSET,
+        description="Exclude related items from being returned in the response in order to improve performance of the request.",
     )
 
 
-model_rebuild(OrgsOrgPropertiesSchemaCustomPropertyNamePutBody)
+model_rebuild(OrgsOrgMigrationsPostBody)
 
-__all__ = ("OrgsOrgPropertiesSchemaCustomPropertyNamePutBody",)
+__all__ = ("OrgsOrgMigrationsPostBody",)

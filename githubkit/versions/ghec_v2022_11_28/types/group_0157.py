@@ -10,24 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
-class RuleSuitesItemsType(TypedDict):
-    """RuleSuitesItems"""
+class RepositoryRuleOneof17Type(TypedDict):
+    """max_file_size
 
-    id: NotRequired[int]
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-    before_sha: NotRequired[str]
-    after_sha: NotRequired[str]
-    ref: NotRequired[str]
-    repository_id: NotRequired[int]
-    repository_name: NotRequired[str]
-    pushed_at: NotRequired[datetime]
-    result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Literal["pass", "fail"]]
+    Note: max_file_size is in beta and subject to change.
+
+    Prevent commits that exceed a specified file size limit from being pushed to the
+    commit.
+    """
+
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleOneof17PropParametersType]
 
 
-__all__ = ("RuleSuitesItemsType",)
+class RepositoryRuleOneof17PropParametersType(TypedDict):
+    """RepositoryRuleOneof17PropParameters"""
+
+    max_file_size: int
+
+
+__all__ = (
+    "RepositoryRuleOneof17Type",
+    "RepositoryRuleOneof17PropParametersType",
+)

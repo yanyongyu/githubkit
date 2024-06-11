@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,38 +16,16 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeownersErrors(GitHubModel):
-    """CODEOWNERS errors
+class CodeScanningSarifsReceipt(GitHubModel):
+    """CodeScanningSarifsReceipt"""
 
-    A list of errors found in a repo's CODEOWNERS file
-    """
-
-    errors: List[CodeownersErrorsPropErrorsItems] = Field()
-
-
-class CodeownersErrorsPropErrorsItems(GitHubModel):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int = Field(description="The line number where this errors occurs.")
-    column: int = Field(description="The column number where this errors occurs.")
-    source: Missing[str] = Field(
-        default=UNSET, description="The contents of the line where the error occurs."
-    )
-    kind: str = Field(description="The type of error.")
-    suggestion: Missing[Union[str, None]] = Field(
+    id: Missing[str] = Field(default=UNSET, description="An identifier for the upload.")
+    url: Missing[str] = Field(
         default=UNSET,
-        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
+        description="The REST API URL for checking the status of the upload.",
     )
-    message: str = Field(
-        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
-    )
-    path: str = Field(description="The path of the file where the error occured.")
 
 
-model_rebuild(CodeownersErrors)
-model_rebuild(CodeownersErrorsPropErrorsItems)
+model_rebuild(CodeScanningSarifsReceipt)
 
-__all__ = (
-    "CodeownersErrors",
-    "CodeownersErrorsPropErrorsItems",
-)
+__all__ = ("CodeScanningSarifsReceipt",)

@@ -9,22 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgProjectsPostBody(GitHubModel):
-    """OrgsOrgProjectsPostBody"""
-
-    name: str = Field(description="The name of the project.")
-    body: Missing[str] = Field(
-        default=UNSET, description="The description of the project."
-    )
+from .group_0089 import Codespace
 
 
-model_rebuild(OrgsOrgProjectsPostBody)
+class OrgsOrgMembersUsernameCodespacesGetResponse200(GitHubModel):
+    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
 
-__all__ = ("OrgsOrgProjectsPostBody",)
+    total_count: int = Field()
+    codespaces: List[Codespace] = Field()
+
+
+model_rebuild(OrgsOrgMembersUsernameCodespacesGetResponse200)
+
+__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200",)

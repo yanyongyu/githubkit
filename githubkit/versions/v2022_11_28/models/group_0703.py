@@ -25,10 +25,10 @@ from .group_0369 import OrganizationSimpleWebhooks
 from .group_0413 import SecretScanningAlertWebhook
 
 
-class WebhookSecretScanningAlertRevoked(GitHubModel):
-    """secret_scanning_alert revoked event"""
+class WebhookSecretScanningAlertValidated(GitHubModel):
+    """secret_scanning_alert validated event"""
 
-    action: Literal["revoked"] = Field()
+    action: Literal["validated"] = Field()
     alert: SecretScanningAlertWebhook = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -56,6 +56,6 @@ class WebhookSecretScanningAlertRevoked(GitHubModel):
     )
 
 
-model_rebuild(WebhookSecretScanningAlertRevoked)
+model_rebuild(WebhookSecretScanningAlertValidated)
 
-__all__ = ("WebhookSecretScanningAlertRevoked",)
+__all__ = ("WebhookSecretScanningAlertValidated",)

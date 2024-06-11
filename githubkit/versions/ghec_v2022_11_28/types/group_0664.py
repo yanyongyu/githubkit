@@ -12,25 +12,20 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0438 import PullRequestWebhookType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0441 import ProjectsV2ItemType
+from .group_0403 import SimpleInstallationType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookPullRequestClosedType(TypedDict):
-    """pull_request closed event"""
+class WebhookProjectsV2ItemDeletedType(TypedDict):
+    """Projects v2 Item Deleted Event"""
 
-    action: Literal["closed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["deleted"]
     installation: NotRequired[SimpleInstallationType]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: PullRequestWebhookType
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookPullRequestClosedType",)
+__all__ = ("WebhookProjectsV2ItemDeletedType",)

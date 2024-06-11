@@ -15,16 +15,22 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody"""
-
-    labels: List[str] = Field(
-        max_length=100,
-        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
-    )
+from .group_0029 import OrganizationSimple
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody)
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody",)
+    total_count: float = Field()
+    organizations: List[OrganizationSimple] = Field()
+
+
+model_rebuild(
+    EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200
+)
+
+__all__ = (
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200",
+)

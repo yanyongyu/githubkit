@@ -25,10 +25,10 @@ from .group_0414 import WebhooksSecurityAdvisory
 from .group_0369 import OrganizationSimpleWebhooks
 
 
-class WebhookSecurityAdvisoryPublished(GitHubModel):
-    """security_advisory published event"""
+class WebhookSecurityAdvisoryUpdated(GitHubModel):
+    """security_advisory updated event"""
 
-    action: Literal["published"] = Field()
+    action: Literal["updated"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -59,6 +59,6 @@ class WebhookSecurityAdvisoryPublished(GitHubModel):
     )
 
 
-model_rebuild(WebhookSecurityAdvisoryPublished)
+model_rebuild(WebhookSecurityAdvisoryUpdated)
 
-__all__ = ("WebhookSecurityAdvisoryPublished",)
+__all__ = ("WebhookSecurityAdvisoryUpdated",)

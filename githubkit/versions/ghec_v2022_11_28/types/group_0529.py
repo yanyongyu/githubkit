@@ -9,29 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
-from .group_0531 import WebhookIssueCommentCreatedPropIssueType
-from .group_0530 import WebhookIssueCommentCreatedPropCommentType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookIssueCommentCreatedType(TypedDict):
-    """issue_comment created event"""
+class WebhookGollumType(TypedDict):
+    """gollum event"""
 
-    action: Literal["created"]
-    comment: WebhookIssueCommentCreatedPropCommentType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentCreatedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    pages: List[WebhookGollumPropPagesItemsType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookIssueCommentCreatedType",)
+class WebhookGollumPropPagesItemsType(TypedDict):
+    """WebhookGollumPropPagesItems"""
+
+    action: Literal["created", "edited"]
+    html_url: str
+    page_name: str
+    sha: str
+    summary: Union[str, None]
+    title: str
+
+
+__all__ = (
+    "WebhookGollumType",
+    "WebhookGollumPropPagesItemsType",
+)

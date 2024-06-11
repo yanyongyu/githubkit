@@ -12,11 +12,17 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-
-class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
-
-    assignees: NotRequired[List[str]]
+from .group_0007 import WebhookConfigType
 
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",)
+class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
+
+    config: NotRequired[WebhookConfigType]
+    events: NotRequired[List[str]]
+    add_events: NotRequired[List[str]]
+    remove_events: NotRequired[List[str]]
+    active: NotRequired[bool]
+
+
+__all__ = ("ReposOwnerRepoHooksHookIdPatchBodyType",)

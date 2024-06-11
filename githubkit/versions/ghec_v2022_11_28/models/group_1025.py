@@ -9,26 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoInvitationsInvitationIdPatchBody(GitHubModel):
-    """ReposOwnerRepoInvitationsInvitationIdPatchBody"""
+class ReposOwnerRepoGitRefsPostBody(GitHubModel):
+    """ReposOwnerRepoGitRefsPostBody"""
 
-    permissions: Missing[Literal["read", "write", "maintain", "triage", "admin"]] = (
-        Field(
-            default=UNSET,
-            description="The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.",
-        )
+    ref: str = Field(
+        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
     )
+    sha: str = Field(description="The SHA1 value for this reference.")
 
 
-model_rebuild(ReposOwnerRepoInvitationsInvitationIdPatchBody)
+model_rebuild(ReposOwnerRepoGitRefsPostBody)
 
-__all__ = ("ReposOwnerRepoInvitationsInvitationIdPatchBody",)
+__all__ = ("ReposOwnerRepoGitRefsPostBody",)

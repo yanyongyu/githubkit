@@ -9,38 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0378 import SearchResultTextMatchesItemsType
+from .group_0203 import GitUserType
+from .group_0204 import VerificationType
 
 
-class LabelSearchResultItemType(TypedDict):
-    """Label Search Result Item
+class CommitSearchResultItemPropCommitType(TypedDict):
+    """CommitSearchResultItemPropCommit"""
 
-    Label Search Result Item
-    """
-
-    id: int
-    node_id: str
+    author: CommitSearchResultItemPropCommitPropAuthorType
+    committer: Union[None, GitUserType]
+    comment_count: int
+    message: str
+    tree: CommitSearchResultItemPropCommitPropTreeType
     url: str
+    verification: NotRequired[VerificationType]
+
+
+class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
+    """CommitSearchResultItemPropCommitPropAuthor"""
+
     name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    score: float
-    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
+    email: str
+    date: datetime
 
 
-class SearchLabelsGetResponse200Type(TypedDict):
-    """SearchLabelsGetResponse200"""
+class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
+    """CommitSearchResultItemPropCommitPropTree"""
 
-    total_count: int
-    incomplete_results: bool
-    items: List[LabelSearchResultItemType]
+    sha: str
+    url: str
 
 
 __all__ = (
-    "LabelSearchResultItemType",
-    "SearchLabelsGetResponse200Type",
+    "CommitSearchResultItemPropCommitType",
+    "CommitSearchResultItemPropCommitPropAuthorType",
+    "CommitSearchResultItemPropCommitPropTreeType",
 )

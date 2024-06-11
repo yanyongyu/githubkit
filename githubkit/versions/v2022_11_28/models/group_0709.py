@@ -9,23 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0710 import WebhookSecurityAndAnalysisPropChangesPropFrom
+from .group_0050 import SecurityAndAnalysis
 
 
-class WebhookSecurityAndAnalysisPropChanges(GitHubModel):
-    """WebhookSecurityAndAnalysisPropChanges"""
+class WebhookSecurityAndAnalysisPropChangesPropFrom(GitHubModel):
+    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
 
-    from_: Missing[WebhookSecurityAndAnalysisPropChangesPropFrom] = Field(
-        default=UNSET, alias="from"
+    security_and_analysis: Missing[Union[SecurityAndAnalysis, None]] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(WebhookSecurityAndAnalysisPropChanges)
+model_rebuild(WebhookSecurityAndAnalysisPropChangesPropFrom)
 
-__all__ = ("WebhookSecurityAndAnalysisPropChanges",)
+__all__ = ("WebhookSecurityAndAnalysisPropChangesPropFrom",)

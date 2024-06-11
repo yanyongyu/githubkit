@@ -10,30 +10,31 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrganizationSimpleWebhooksType(TypedDict):
-    """Organization Simple
+class EnterpriseWebhooksType(TypedDict):
+    """Enterprise
 
-    A GitHub organization. Webhook payloads contain the `organization` property when
-    the webhook is configured for an
-    organization, or when the event occurs from activity in a repository owned by an
-    organization.
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/enterprise-
+    cloud@latest//admin/overview/about-enterprise-accounts)."
     """
 
-    login: str
+    description: NotRequired[Union[str, None]]
+    html_url: str
+    website_url: NotRequired[Union[str, None]]
     id: int
     node_id: str
-    url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
+    name: str
+    slug: str
+    created_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
     avatar_url: str
-    description: Union[str, None]
 
 
-__all__ = ("OrganizationSimpleWebhooksType",)
+__all__ = ("EnterpriseWebhooksType",)

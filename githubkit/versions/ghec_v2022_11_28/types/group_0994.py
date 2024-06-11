@@ -10,29 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from datetime import datetime
 from typing_extensions import TypedDict
 
+from .group_0088 import CodespaceMachineType
 
-class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+
+class ReposOwnerRepoCodespacesMachinesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
 
     total_count: int
-    secrets: List[DependabotSecretType]
+    machines: List[CodespaceMachineType]
 
 
-class DependabotSecretType(TypedDict):
-    """Dependabot Secret
-
-    Set secrets for Dependabot.
-    """
-
-    name: str
-    created_at: datetime
-    updated_at: datetime
-
-
-__all__ = (
-    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
-    "DependabotSecretType",
-)
+__all__ = ("ReposOwnerRepoCodespacesMachinesGetResponse200Type",)

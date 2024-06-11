@@ -9,17 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
+
+from .group_0072 import CodespaceType
 
 
-class OrgsOrgInvitationsPostBodyType(TypedDict):
-    """OrgsOrgInvitationsPostBody"""
+class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
+    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
 
-    invitee_id: NotRequired[int]
-    email: NotRequired[str]
-    role: NotRequired[Literal["admin", "direct_member", "billing_manager", "reinstate"]]
-    team_ids: NotRequired[List[int]]
+    total_count: int
+    codespaces: List[CodespaceType]
 
 
-__all__ = ("OrgsOrgInvitationsPostBodyType",)
+__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200Type",)

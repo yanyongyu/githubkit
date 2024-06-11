@@ -9,13 +9,117 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0133 import RepositoryRuleUpdateType
+from .group_0157 import RepositoryRuleOneof17Type
+from .group_0153 import RepositoryRuleWorkflowsType
+from .group_0138 import RepositoryRulePullRequestType
+from .group_0155 import RepositoryRuleCodeScanningType
+from .group_0150 import RepositoryRuleTagNamePatternType
+from .group_0148 import RepositoryRuleBranchNamePatternType
+from .group_0136 import RepositoryRuleRequiredDeploymentsType
+from .group_0140 import RepositoryRuleRequiredStatusChecksType
+from .group_0142 import RepositoryRuleCommitMessagePatternType
+from .group_0146 import RepositoryRuleCommitterEmailPatternType
+from .group_0144 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0135 import (
+    RepositoryRuleOneof15Type,
+    RepositoryRuleRequiredLinearHistoryType,
+)
+from .group_0132 import (
+    RepositoryRuleOneof14Type,
+    RepositoryRuleOneof16Type,
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
+)
 
 
-class WebhookSecretScanningAlertLocationCreatedFormEncodedType(TypedDict):
-    """Secret Scanning Alert Location Created Event"""
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems"""
 
-    payload: str
+    rule: NotRequired[
+        Union[
+            RepositoryRuleCreationType,
+            RepositoryRuleUpdateType,
+            RepositoryRuleDeletionType,
+            RepositoryRuleRequiredLinearHistoryType,
+            RepositoryRuleRequiredDeploymentsType,
+            RepositoryRuleRequiredSignaturesType,
+            RepositoryRulePullRequestType,
+            RepositoryRuleRequiredStatusChecksType,
+            RepositoryRuleNonFastForwardType,
+            RepositoryRuleCommitMessagePatternType,
+            RepositoryRuleCommitAuthorEmailPatternType,
+            RepositoryRuleCommitterEmailPatternType,
+            RepositoryRuleBranchNamePatternType,
+            RepositoryRuleTagNamePatternType,
+            RepositoryRuleOneof14Type,
+            RepositoryRuleOneof15Type,
+            RepositoryRuleOneof16Type,
+            RepositoryRuleOneof17Type,
+            RepositoryRuleWorkflowsType,
+            RepositoryRuleCodeScanningType,
+        ]
+    ]
+    changes: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType
+    ]
 
 
-__all__ = ("WebhookSecretScanningAlertLocationCreatedFormEncodedType",)
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges"""
+
+    configuration: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType
+    ]
+    rule_type: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType
+    ]
+    pattern: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType
+    ]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pConfiguration
+    """
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pRuleType
+    """
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType(
+    TypedDict
+):
+    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
+    pPattern
+    """
+
+    from_: NotRequired[str]
+
+
+__all__ = (
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType",
+    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType",
+)

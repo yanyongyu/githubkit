@@ -9,64 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class WebhooksProjectCard(GitHubModel):
-    """Project Card"""
-
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    archived: bool = Field(description="Whether or not the card is archived")
-    column_id: int = Field()
-    column_url: str = Field()
-    content_url: Missing[str] = Field(default=UNSET)
-    created_at: datetime = Field()
-    creator: Union[WebhooksProjectCardPropCreator, None] = Field(title="User")
-    id: int = Field(description="The project card's ID")
-    node_id: str = Field()
-    note: Union[str, None] = Field()
-    project_url: str = Field()
-    updated_at: datetime = Field()
-    url: str = Field()
+from .group_0186 import SimpleCommit
 
 
-class WebhooksProjectCardPropCreator(GitHubModel):
-    """User"""
+class MergeGroup(GitHubModel):
+    """Merge Group
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    A group of pull requests that the merge queue has grouped together to be merged.
+    """
+
+    head_sha: str = Field(description="The SHA of the merge group.")
+    head_ref: str = Field(description="The full ref of the merge group.")
+    base_sha: str = Field(description="The SHA of the merge group's parent commit.")
+    base_ref: str = Field(
+        description="The full ref of the branch the merge group will be merged into."
+    )
+    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
 
 
-model_rebuild(WebhooksProjectCard)
-model_rebuild(WebhooksProjectCardPropCreator)
+model_rebuild(MergeGroup)
 
-__all__ = (
-    "WebhooksProjectCard",
-    "WebhooksProjectCardPropCreator",
-)
+__all__ = ("MergeGroup",)

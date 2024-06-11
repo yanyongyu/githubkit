@@ -9,14 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgSecurityProductEnablementPostBodyType(TypedDict):
-    """OrgsOrgSecurityProductEnablementPostBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsPostBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
 
-    query_suite: NotRequired[Literal["default", "extended"]]
+    title: str
+    body: str
+    private: NotRequired[bool]
 
 
-__all__ = ("OrgsOrgSecurityProductEnablementPostBodyType",)
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsPostBodyType",)

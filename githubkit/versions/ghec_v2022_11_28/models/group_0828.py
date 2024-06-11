@@ -9,22 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0034 import Runner
+
+class NotificationsThreadsThreadIdSubscriptionPutBody(GitHubModel):
+    """NotificationsThreadsThreadIdSubscriptionPutBody"""
+
+    ignored: Missing[bool] = Field(
+        default=UNSET, description="Whether to block all notifications from a thread."
+    )
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
+model_rebuild(NotificationsThreadsThreadIdSubscriptionPutBody)
 
-    total_count: float = Field()
-    runners: List[Runner] = Field()
-
-
-model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200)
-
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200",)
+__all__ = ("NotificationsThreadsThreadIdSubscriptionPutBody",)

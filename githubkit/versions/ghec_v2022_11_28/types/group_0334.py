@@ -12,14 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0134 import RepositoryRuleUpdatePropParametersType
 
-class RepositoryRuleDetailedOneof3Type(TypedDict):
-    """RepositoryRuleDetailedOneof3"""
 
-    type: Literal["required_linear_history"]
+class RepositoryRuleDetailedOneof1Type(TypedDict):
+    """RepositoryRuleDetailedOneof1"""
+
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-__all__ = ("RepositoryRuleDetailedOneof3Type",)
+__all__ = ("RepositoryRuleDetailedOneof1Type",)

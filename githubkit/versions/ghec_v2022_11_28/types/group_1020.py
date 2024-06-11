@@ -9,18 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoImportPutBodyType(TypedDict):
-    """ReposOwnerRepoImportPutBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType(TypedDict):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody"""
 
-    vcs_url: str
-    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
-    vcs_username: NotRequired[str]
-    vcs_password: NotRequired[str]
-    tfvc_project: NotRequired[str]
+    name: str
+    value: str
 
 
-__all__ = ("ReposOwnerRepoImportPutBodyType",)
+__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType",)

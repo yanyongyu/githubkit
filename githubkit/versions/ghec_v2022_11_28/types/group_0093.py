@@ -9,29 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0092 import TeamSimpleType
 
-class CredentialAuthorizationType(TypedDict):
-    """Credential Authorization
 
-    Credential Authorization
+class TeamType(TypedDict):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    login: str
-    credential_id: int
-    credential_type: str
-    token_last_eight: NotRequired[str]
-    credential_authorized_at: datetime
-    scopes: NotRequired[List[str]]
-    fingerprint: NotRequired[str]
-    credential_accessed_at: Union[datetime, None]
-    authorized_credential_id: Union[int, None]
-    authorized_credential_title: NotRequired[Union[str, None]]
-    authorized_credential_note: NotRequired[Union[str, None]]
-    authorized_credential_expires_at: NotRequired[Union[datetime, None]]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsType]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    parent: Union[None, TeamSimpleType]
 
 
-__all__ = ("CredentialAuthorizationType",)
+class TeamPropPermissionsType(TypedDict):
+    """TeamPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
+
+
+__all__ = (
+    "TeamType",
+    "TeamPropPermissionsType",
+)

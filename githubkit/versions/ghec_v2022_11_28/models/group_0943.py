@@ -9,18 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsVariablesPostBody(GitHubModel):
-    """ReposOwnerRepoActionsVariablesPostBody"""
+class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody(GitHubModel):
+    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
+    labels: List[str] = Field(
+        max_length=100,
+        description="The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.",
+    )
 
 
-model_rebuild(ReposOwnerRepoActionsVariablesPostBody)
+model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody)
 
-__all__ = ("ReposOwnerRepoActionsVariablesPostBody",)
+__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody",)

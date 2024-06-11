@@ -13,84 +13,173 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0569 import (
-    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-    WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
-)
+from .group_0582 import WebhookIssuesClosedPropIssueMergedMilestoneType
+from .group_0580 import WebhookIssuesClosedPropIssueAllof0PropPullRequestType
+from .group_0583 import WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType
 
 
-class WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType(TypedDict):
-    """WebhookIssuesClosedPropIssueMergedPerformedViaGithubApp"""
+class WebhookIssuesClosedPropIssueType(TypedDict):
+    """WebhookIssuesClosedPropIssue
 
-    created_at: Union[datetime, None]
-    description: Union[str, None]
-    events: NotRequired[
-        List[
-            Literal[
-                "branch_protection_rule",
-                "check_run",
-                "check_suite",
-                "code_scanning_alert",
-                "commit_comment",
-                "content_reference",
-                "create",
-                "delete",
-                "deployment",
-                "deployment_review",
-                "deployment_status",
-                "deploy_key",
-                "discussion",
-                "discussion_comment",
-                "fork",
-                "gollum",
-                "issues",
-                "issue_comment",
-                "label",
-                "member",
-                "membership",
-                "milestone",
-                "organization",
-                "org_block",
-                "page_build",
-                "project",
-                "project_card",
-                "project_column",
-                "public",
-                "pull_request",
-                "pull_request_review",
-                "pull_request_review_comment",
-                "push",
-                "registry_package",
-                "release",
-                "repository",
-                "repository_dispatch",
-                "secret_scanning_alert",
-                "star",
-                "status",
-                "team",
-                "team_add",
-                "watch",
-                "workflow_dispatch",
-                "workflow_run",
-                "security_and_analysis",
-                "reminder",
-                "pull_request_review_thread",
-            ]
-        ]
+    The [issue](https://docs.github.com/enterprise-
+    cloud@latest//rest/issues/issues#get-an-issue) itself.
+    """
+
+    active_lock_reason: Union[
+        Literal["resolved", "off-topic", "too heated", "spam"], None
     ]
-    external_url: Union[str, None]
+    assignee: NotRequired[Union[WebhookIssuesClosedPropIssueMergedAssigneeType, None]]
+    assignees: List[WebhookIssuesClosedPropIssueMergedAssigneesType]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[Union[str, None], None]
+    closed_at: Union[datetime, None]
+    comments: int
+    comments_url: str
+    created_at: datetime
+    draft: NotRequired[bool]
+    events_url: str
     html_url: str
-    id: Union[int, None]
+    id: int
+    labels: NotRequired[List[WebhookIssuesClosedPropIssueMergedLabelsType]]
+    labels_url: str
+    locked: NotRequired[bool]
+    milestone: Union[WebhookIssuesClosedPropIssueMergedMilestoneType, None]
+    node_id: str
+    number: int
+    performed_via_github_app: NotRequired[
+        Union[WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType, None]
+    ]
+    pull_request: NotRequired[WebhookIssuesClosedPropIssueAllof0PropPullRequestType]
+    reactions: WebhookIssuesClosedPropIssueMergedReactionsType
+    repository_url: str
+    state: Literal["open", "closed"]
+    state_reason: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    title: str
+    updated_at: datetime
+    url: str
+    user: WebhookIssuesClosedPropIssueMergedUserType
+
+
+class WebhookIssuesClosedPropIssueMergedAssigneeType(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedAssignee"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+
+
+class WebhookIssuesClosedPropIssueMergedAssigneesType(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedAssignees"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+
+
+class WebhookIssuesClosedPropIssueMergedLabelsType(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedLabels"""
+
+    color: str
+    default: bool
+    description: Union[str, None]
+    id: int
     name: str
     node_id: str
-    owner: Union[
-        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType, None
-    ]
-    permissions: NotRequired[
-        WebhookIssuesClosedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[datetime, None]
+    url: str
 
 
-__all__ = ("WebhookIssuesClosedPropIssueMergedPerformedViaGithubAppType",)
+class WebhookIssuesClosedPropIssueMergedReactionsType(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedReactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookIssuesClosedPropIssueMergedUserType(TypedDict):
+    """WebhookIssuesClosedPropIssueMergedUser"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "WebhookIssuesClosedPropIssueType",
+    "WebhookIssuesClosedPropIssueMergedAssigneeType",
+    "WebhookIssuesClosedPropIssueMergedAssigneesType",
+    "WebhookIssuesClosedPropIssueMergedLabelsType",
+    "WebhookIssuesClosedPropIssueMergedReactionsType",
+    "WebhookIssuesClosedPropIssueMergedUserType",
+)

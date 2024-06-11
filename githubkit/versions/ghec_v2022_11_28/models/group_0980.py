@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -18,52 +18,105 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoCodespacesPostBody(GitHubModel):
-    """ReposOwnerRepoCodespacesPostBody"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput(GitHubModel):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput
 
-    ref: Missing[str] = Field(
+    Check runs can accept a variety of data in the `output` object, including a
+    `title` and `summary` and can optionally provide descriptive details about the
+    run.
+    """
+
+    title: Missing[str] = Field(default=UNSET, description="**Required**.")
+    summary: str = Field(max_length=65535, description="Can contain Markdown.")
+    text: Missing[str] = Field(
+        max_length=65535, default=UNSET, description="Can contain Markdown."
+    )
+    annotations: Missing[
+        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems]
+    ] = Field(
+        max_length=50,
         default=UNSET,
-        description="Git ref (typically a branch name) for this codespace",
+        description="Adds information from your analysis to specific lines of code. Annotations are visible in GitHub's pull request UI. Annotations are visible in GitHub's pull request UI. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/enterprise-cloud@latest//rest/checks/runs#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. GitHub Actions are limited to 10 warning annotations and 10 error annotations per step. For details about annotations in the UI, see \"[About status checks](https://docs.github.com/enterprise-cloud@latest//articles/about-status-checks#checks)\".",
     )
-    location: Missing[str] = Field(
+    images: Missing[
+        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems]
+    ] = Field(
         default=UNSET,
-        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
-    )
-    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
-        default=UNSET,
-        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.",
-    )
-    client_ip: Missing[str] = Field(
-        default=UNSET,
-        description="IP for location auto-detection when proxying a request",
-    )
-    machine: Missing[str] = Field(
-        default=UNSET, description="Machine type to use for this codespace"
-    )
-    devcontainer_path: Missing[str] = Field(
-        default=UNSET,
-        description="Path to devcontainer.json config to use for this codespace",
-    )
-    multi_repo_permissions_opt_out: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether to authorize requested permissions from devcontainer.json",
-    )
-    working_directory: Missing[str] = Field(
-        default=UNSET, description="Working directory for this codespace"
-    )
-    idle_timeout_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Time in minutes before codespace stops from inactivity",
-    )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    retention_period_minutes: Missing[int] = Field(
-        default=UNSET,
-        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+        description="Adds images to the output displayed in the GitHub pull request UI.",
     )
 
 
-model_rebuild(ReposOwnerRepoCodespacesPostBody)
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems(
+    GitHubModel
+):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems"""
 
-__all__ = ("ReposOwnerRepoCodespacesPostBody",)
+    path: str = Field(
+        description="The path of the file to add an annotation to. For example, `assets/css/main.css`."
+    )
+    start_line: int = Field(
+        description="The start line of the annotation. Line numbers start at 1."
+    )
+    end_line: int = Field(description="The end line of the annotation.")
+    start_column: Missing[int] = Field(
+        default=UNSET,
+        description="The start column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values. Column numbers start at 1.",
+    )
+    end_column: Missing[int] = Field(
+        default=UNSET,
+        description="The end column of the annotation. Annotations only support `start_column` and `end_column` on the same line. Omit this parameter if `start_line` and `end_line` have different values.",
+    )
+    annotation_level: Literal["notice", "warning", "failure"] = Field(
+        description="The level of the annotation."
+    )
+    message: str = Field(
+        description="A short description of the feedback for these lines of code. The maximum size is 64 KB."
+    )
+    title: Missing[str] = Field(
+        default=UNSET,
+        description="The title that represents the annotation. The maximum size is 255 characters.",
+    )
+    raw_details: Missing[str] = Field(
+        default=UNSET,
+        description="Details about this annotation. The maximum size is 64 KB.",
+    )
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems(GitHubModel):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems"""
+
+    alt: str = Field(description="The alternative text for the image.")
+    image_url: str = Field(description="The full URL of the image.")
+    caption: Missing[str] = Field(
+        default=UNSET, description="A short image description."
+    )
+
+
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems(GitHubModel):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems"""
+
+    label: str = Field(
+        max_length=20,
+        description="The text to be displayed on a button in the web UI. The maximum size is 20 characters.",
+    )
+    description: str = Field(
+        max_length=40,
+        description="A short explanation of what this action would do. The maximum size is 40 characters.",
+    )
+    identifier: str = Field(
+        max_length=20,
+        description="A reference for the action on the integrator's system. The maximum size is 20 characters.",
+    )
+
+
+model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput)
+model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems)
+model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems)
+model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems)
+
+__all__ = (
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems",
+)

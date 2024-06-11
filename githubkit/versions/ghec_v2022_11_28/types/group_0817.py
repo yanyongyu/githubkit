@@ -9,17 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0080 import OrganizationCustomRepositoryRoleType
+
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
+    e200
+    """
+
+    message: NotRequired[str]
 
 
-class OrganizationsOrganizationIdCustomRolesGetResponse200Type(TypedDict):
-    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[List[OrganizationCustomRepositoryRoleType]]
-
-
-__all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200Type",)
+__all__ = (
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200Type",
+)

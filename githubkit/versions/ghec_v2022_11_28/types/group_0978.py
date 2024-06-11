@@ -10,19 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0977 import (
+    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
+    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
+)
 
-class ReposOwnerRepoCodeScanningSarifsPostBodyType(TypedDict):
-    """ReposOwnerRepoCodeScanningSarifsPostBody"""
 
-    commit_sha: str
-    ref: str
-    sarif: str
-    checkout_uri: NotRequired[str]
+class ReposOwnerRepoCheckRunsPostBodyOneof0Type(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
+
+    name: str
+    head_sha: str
+    details_url: NotRequired[str]
+    external_id: NotRequired[str]
+    status: Literal["completed"]
     started_at: NotRequired[datetime]
-    tool_name: NotRequired[str]
-    validate_: NotRequired[bool]
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
+    ]
+    completed_at: NotRequired[datetime]
+    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
+    actions: NotRequired[List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
 
 
-__all__ = ("ReposOwnerRepoCodeScanningSarifsPostBodyType",)
+__all__ = ("ReposOwnerRepoCheckRunsPostBodyOneof0Type",)

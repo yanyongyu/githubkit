@@ -15,13 +15,11 @@ from typing_extensions import TypedDict
 from .group_0158 import JobType
 
 
-class ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200"""
+class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
 
     total_count: int
     jobs: List[JobType]
 
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",)

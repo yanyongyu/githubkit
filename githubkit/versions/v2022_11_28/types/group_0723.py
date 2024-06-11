@@ -11,13 +11,23 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0417 import WebhooksTeam1Type
+from .group_0367 import EnterpriseWebhooksType
+from .group_0368 import SimpleInstallationType
+from .group_0370 import RepositoryWebhooksType
+from .group_0371 import SimpleUserWebhooksType
+from .group_0369 import OrganizationSimpleWebhooksType
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof1Type(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
 
-    date: str
-    email: NotRequired[str]
-    name: NotRequired[str]
+class WebhookTeamAddType(TypedDict):
+    """team_add event"""
+
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+    team: WebhooksTeam1Type
 
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof1Type",)
+__all__ = ("WebhookTeamAddType",)

@@ -10,29 +10,21 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyType(TypedDict):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBody"""
-
-    auto_trigger_checks: NotRequired[
-        List[
-            ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType
-        ]
-    ]
-
-
-class ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type(
     TypedDict
 ):
-    """ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems"""
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0
 
-    app_id: int
-    setting: bool
+    Examples:
+        {'teams': ['my-team']}
+    """
+
+    teams: List[str]
 
 
 __all__ = (
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyType",
-    "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType",
+    "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type",
 )

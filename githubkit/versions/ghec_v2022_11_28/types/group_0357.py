@@ -9,20 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import Union
+from datetime import datetime
+from typing_extensions import TypedDict
 
 
-class TagProtectionType(TypedDict):
-    """Tag protection
+class RepositorySubscriptionType(TypedDict):
+    """Repository Invitation
 
-    Tag protection
+    Repository invitations let you manage who you collaborate with.
     """
 
-    id: NotRequired[int]
-    created_at: NotRequired[str]
-    updated_at: NotRequired[str]
-    enabled: NotRequired[bool]
-    pattern: str
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: datetime
+    url: str
+    repository_url: str
 
 
-__all__ = ("TagProtectionType",)
+__all__ = ("RepositorySubscriptionType",)

@@ -9,29 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookForkPropForkeeAllof0PropCustomPropertiesType(TypedDict):
-    """WebhookForkPropForkeeAllof0PropCustomProperties
-
-    The custom properties that were defined for the repository. The keys are the
-    custom property names, and the values are the corresponding custom property
-    values.
-    """
-
-
-class WebhookForkPropForkeeAllof0PropPermissionsType(TypedDict):
-    """WebhookForkPropForkeeAllof0PropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
+from .group_0418 import DiscussionType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
+from .group_0518 import WebhookDiscussionTransferredPropChangesType
 
 
-__all__ = (
-    "WebhookForkPropForkeeAllof0PropCustomPropertiesType",
-    "WebhookForkPropForkeeAllof0PropPermissionsType",
-)
+class WebhookDiscussionTransferredType(TypedDict):
+    """discussion transferred event"""
+
+    action: Literal["transferred"]
+    changes: WebhookDiscussionTransferredPropChangesType
+    discussion: DiscussionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+
+
+__all__ = ("WebhookDiscussionTransferredType",)

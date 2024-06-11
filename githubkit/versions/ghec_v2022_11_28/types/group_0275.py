@@ -9,34 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class GitTreeType(TypedDict):
-    """Git Tree
+class GitRefType(TypedDict):
+    """Git Reference
 
-    The hierarchy between files in a Git repository.
+    Git references within a repository
     """
 
+    ref: str
+    node_id: str
+    url: str
+    object_: GitRefPropObjectType
+
+
+class GitRefPropObjectType(TypedDict):
+    """GitRefPropObject"""
+
+    type: str
     sha: str
     url: str
-    truncated: bool
-    tree: List[GitTreePropTreeItemsType]
-
-
-class GitTreePropTreeItemsType(TypedDict):
-    """GitTreePropTreeItems"""
-
-    path: NotRequired[str]
-    mode: NotRequired[str]
-    type: NotRequired[str]
-    sha: NotRequired[str]
-    size: NotRequired[int]
-    url: NotRequired[str]
 
 
 __all__ = (
-    "GitTreeType",
-    "GitTreePropTreeItemsType",
+    "GitRefType",
+    "GitRefPropObjectType",
 )

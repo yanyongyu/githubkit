@@ -13,16 +13,58 @@ from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type(TypedDict):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
+class ReposOwnerRepoCheckRunsPostBodyPropOutputType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutput
 
-    language: Literal[
-        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
+    Check runs can accept a variety of data in the `output` object, including a
+    `title` and `summary` and can optionally provide descriptive details about the
+    run.
+    """
+
+    title: str
+    summary: str
+    text: NotRequired[str]
+    annotations: NotRequired[
+        List[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType]
     ]
-    query_pack: str
-    repositories: NotRequired[List[str]]
-    repository_lists: NotRequired[List[str]]
-    repository_owners: List[str]
+    images: NotRequired[
+        List[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType]
+    ]
 
 
-__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type",)
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
+
+    path: str
+    start_line: int
+    end_line: int
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+    annotation_level: Literal["notice", "warning", "failure"]
+    message: str
+    title: NotRequired[str]
+    raw_details: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
+
+    alt: str
+    image_url: str
+    caption: NotRequired[str]
+
+
+class ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
+
+    label: str
+    description: str
+    identifier: str
+
+
+__all__ = (
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType",
+    "ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType",
+)

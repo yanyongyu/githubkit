@@ -9,27 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0412 import WebhooksUserType
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0432 import MergeGroupType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookOrgBlockUnblockedType(TypedDict):
-    """org_block unblocked event"""
+class WebhookMergeGroupChecksRequestedType(TypedDict):
+    """WebhookMergeGroupChecksRequested"""
 
-    action: Literal["unblocked"]
-    blocked_user: Union[WebhooksUserType, None]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["checks_requested"]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
+    merge_group: MergeGroupType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookOrgBlockUnblockedType",)
+__all__ = ("WebhookMergeGroupChecksRequestedType",)

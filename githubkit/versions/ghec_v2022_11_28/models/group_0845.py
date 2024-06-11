@@ -16,15 +16,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCodespacesAccessSelectedUsersPostBody(GitHubModel):
-    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
+class OrgsOrgActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
+    """OrgsOrgActionsRunnersRunnerIdLabelsPostBody"""
 
-    selected_usernames: List[str] = Field(
+    labels: List[str] = Field(
         max_length=100,
-        description="The usernames of the organization members whose codespaces be billed to the organization.",
+        min_length=1,
+        description="The names of the custom labels to add to the runner.",
     )
 
 
-model_rebuild(OrgsOrgCodespacesAccessSelectedUsersPostBody)
+model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPostBody)
 
-__all__ = ("OrgsOrgCodespacesAccessSelectedUsersPostBody",)
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPostBody",)

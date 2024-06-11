@@ -13,26 +13,10 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType(
-    TypedDict
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
+class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType(TypedDict):
+    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
 
-    include: NotRequired[List[RepositoryRulesetConditionsRepositoryPropertySpecType]]
-    exclude: NotRequired[List[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+    repository_ids: NotRequired[List[int]]
 
 
-class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
-    """Repository ruleset property targeting definition
-
-    Parameters for a targeting a repository property
-    """
-
-    name: str
-    property_values: List[str]
-
-
-__all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
-    "RepositoryRulesetConditionsRepositoryPropertySpecType",
-)
+__all__ = ("RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType",)

@@ -9,17 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0997 import ReposOwnerRepoPagesPostBodyPropSourceType
+
+class ReposOwnerRepoPagesDeploymentsPostBodyType(TypedDict):
+    """ReposOwnerRepoPagesDeploymentsPostBody
+
+    The object used to create GitHub Pages deployment
+    """
+
+    artifact_id: NotRequired[float]
+    artifact_url: NotRequired[str]
+    environment: NotRequired[str]
+    pages_build_version: str
+    oidc_token: str
 
 
-class ReposOwnerRepoPagesPostBodyAnyof1Type(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof1"""
-
-    build_type: Literal["legacy", "workflow"]
-    source: NotRequired[ReposOwnerRepoPagesPostBodyPropSourceType]
-
-
-__all__ = ("ReposOwnerRepoPagesPostBodyAnyof1Type",)
+__all__ = ("ReposOwnerRepoPagesDeploymentsPostBodyType",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0367 import EnterpriseWebhooksType
@@ -19,16 +19,16 @@ from .group_0371 import SimpleUserWebhooksType
 from .group_0369 import OrganizationSimpleWebhooksType
 
 
-class WebhookStarCreatedType(TypedDict):
-    """star created event"""
+class WebhookStarDeletedType(TypedDict):
+    """star deleted event"""
 
-    action: Literal["created"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
-    starred_at: Union[str, None]
+    starred_at: None
 
 
-__all__ = ("WebhookStarCreatedType",)
+__all__ = ("WebhookStarDeletedType",)

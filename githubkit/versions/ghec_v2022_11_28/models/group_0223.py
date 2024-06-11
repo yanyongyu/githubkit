@@ -9,42 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0220 import CodeScanningVariantAnalysisRepository
+from .group_0222 import CodeScanningVariantAnalysisRepository
 
 
-class CodeScanningVariantAnalysisPropScannedRepositoriesItems(GitHubModel):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
+class CodeScanningVariantAnalysisSkippedRepoGroup(GitHubModel):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
 
-    repository: CodeScanningVariantAnalysisRepository = Field(
-        title="Repository Identifier", description="Repository Identifier"
+    repository_count: int = Field(
+        description="The total number of repositories that were skipped for this reason."
     )
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ] = Field(
-        description="The new status of the CodeQL variant analysis repository task."
-    )
-    result_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of results in the case of a successful analysis. This is only available for successful analyses.",
-    )
-    artifact_size_in_bytes: Missing[int] = Field(
-        default=UNSET,
-        description="The size of the artifact. This is only available for successful analyses.",
-    )
-    failure_message: Missing[str] = Field(
-        default=UNSET,
-        description="The reason of the failure of this repo task. This is only available if the repository task has failed.",
+    repositories: List[CodeScanningVariantAnalysisRepository] = Field(
+        description="A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it."
     )
 
 
-model_rebuild(CodeScanningVariantAnalysisPropScannedRepositoriesItems)
+model_rebuild(CodeScanningVariantAnalysisSkippedRepoGroup)
 
-__all__ = ("CodeScanningVariantAnalysisPropScannedRepositoriesItems",)
+__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroup",)

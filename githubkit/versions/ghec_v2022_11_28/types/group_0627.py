@@ -10,22 +10,26 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0401 import SimpleInstallationType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
-from .group_0431 import PersonalAccessTokenRequestType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
+from .group_0628 import WebhookPackagePublishedPropPackageType
 
 
-class WebhookPersonalAccessTokenRequestCreatedType(TypedDict):
-    """personal_access_token_request created event"""
+class WebhookPackagePublishedType(TypedDict):
+    """package published event"""
 
-    action: Literal["created"]
-    personal_access_token_request: PersonalAccessTokenRequestType
-    organization: OrganizationSimpleWebhooksType
+    action: Literal["published"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    package: WebhookPackagePublishedPropPackageType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
-    installation: SimpleInstallationType
 
 
-__all__ = ("WebhookPersonalAccessTokenRequestCreatedType",)
+__all__ = ("WebhookPackagePublishedType",)

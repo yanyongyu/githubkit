@@ -10,16 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict
-
-from .group_0087 import CodespaceType
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgCodespacesGetResponse200"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
 
-    total_count: int
-    codespaces: List[CodespaceType]
+    name: str
+    runner_group_id: int
+    labels: List[str]
+    work_folder: NotRequired[str]
 
 
-__all__ = ("OrgsOrgCodespacesGetResponse200Type",)
+__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostBodyType",)

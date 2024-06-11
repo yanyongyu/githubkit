@@ -9,28 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0438 import PullRequestWebhookType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0441 import ProjectsV2ItemType
+from .group_0403 import SimpleInstallationType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookPullRequestConvertedToDraftType(TypedDict):
-    """pull_request converted_to_draft event"""
+class WebhookProjectsV2ItemEditedType(TypedDict):
+    """Projects v2 Item Edited Event"""
 
-    action: Literal["converted_to_draft"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["edited"]
+    changes: NotRequired[
+        Union[
+            WebhookProjectsV2ItemEditedPropChangesOneof0Type,
+            WebhookProjectsV2ItemEditedPropChangesOneof1Type,
+        ]
+    ]
     installation: NotRequired[SimpleInstallationType]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: PullRequestWebhookType
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookPullRequestConvertedToDraftType",)
+class WebhookProjectsV2ItemEditedPropChangesOneof0Type(TypedDict):
+    """WebhookProjectsV2ItemEditedPropChangesOneof0"""
+
+    field_value: WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType
+
+
+class WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType(TypedDict):
+    """WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue"""
+
+    field_node_id: NotRequired[str]
+    field_type: NotRequired[str]
+
+
+class WebhookProjectsV2ItemEditedPropChangesOneof1Type(TypedDict):
+    """WebhookProjectsV2ItemEditedPropChangesOneof1"""
+
+    body: WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType
+
+
+class WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType(TypedDict):
+    """WebhookProjectsV2ItemEditedPropChangesOneof1PropBody"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "WebhookProjectsV2ItemEditedType",
+    "WebhookProjectsV2ItemEditedPropChangesOneof0Type",
+    "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType",
+    "WebhookProjectsV2ItemEditedPropChangesOneof1Type",
+    "WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType",
+)

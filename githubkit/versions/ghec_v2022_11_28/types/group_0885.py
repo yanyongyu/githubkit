@@ -10,16 +10,15 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict
-
-from .group_0114 import CustomPropertyValueType
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
+class OrgsOrgOrganizationRolesPostBodyType(TypedDict):
+    """OrgsOrgOrganizationRolesPostBody"""
 
-    repository_names: List[str]
-    properties: List[CustomPropertyValueType]
+    name: str
+    description: NotRequired[str]
+    permissions: List[str]
 
 
-__all__ = ("OrgsOrgPropertiesValuesPatchBodyType",)
+__all__ = ("OrgsOrgOrganizationRolesPostBodyType",)

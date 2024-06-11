@@ -9,22 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0086 import CodespaceMachine
+
+class TeamsTeamIdProjectsProjectIdPutResponse403(GitHubModel):
+    """TeamsTeamIdProjectsProjectIdPutResponse403"""
+
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-class UserCodespacesCodespaceNameMachinesGetResponse200(GitHubModel):
-    """UserCodespacesCodespaceNameMachinesGetResponse200"""
+model_rebuild(TeamsTeamIdProjectsProjectIdPutResponse403)
 
-    total_count: int = Field()
-    machines: List[CodespaceMachine] = Field()
-
-
-model_rebuild(UserCodespacesCodespaceNameMachinesGetResponse200)
-
-__all__ = ("UserCodespacesCodespaceNameMachinesGetResponse200",)
+__all__ = ("TeamsTeamIdProjectsProjectIdPutResponse403",)

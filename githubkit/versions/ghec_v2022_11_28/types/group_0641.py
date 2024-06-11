@@ -9,27 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0434 import WebhooksProjectColumnType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0436 import WebhooksProjectCardType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectColumnDeletedType(TypedDict):
-    """project_column deleted event"""
+class WebhookProjectCardConvertedType(TypedDict):
+    """project_card converted event"""
 
-    action: Literal["deleted"]
+    action: Literal["converted"]
+    changes: WebhookProjectCardConvertedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_column: WebhooksProjectColumnType
-    repository: NotRequired[Union[None, RepositoryWebhooksType]]
-    sender: NotRequired[SimpleUserWebhooksType]
+    project_card: WebhooksProjectCardType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookProjectColumnDeletedType",)
+class WebhookProjectCardConvertedPropChangesType(TypedDict):
+    """WebhookProjectCardConvertedPropChanges"""
+
+    note: WebhookProjectCardConvertedPropChangesPropNoteType
+
+
+class WebhookProjectCardConvertedPropChangesPropNoteType(TypedDict):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookProjectCardConvertedType",
+    "WebhookProjectCardConvertedPropChangesType",
+    "WebhookProjectCardConvertedPropChangesPropNoteType",
+)

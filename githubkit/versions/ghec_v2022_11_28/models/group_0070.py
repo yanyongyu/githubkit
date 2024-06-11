@@ -9,21 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union, Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
 
-class GitignoreTemplate(GitHubModel):
-    """Gitignore Template
 
-    Gitignore Template
+class GistComment(GitHubModel):
+    """Gist Comment
+
+    A comment made to a gist.
     """
 
-    name: str = Field()
-    source: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    body: str = Field(max_length=65535, description="The comment text.")
+    user: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
 
 
-model_rebuild(GitignoreTemplate)
+model_rebuild(GistComment)
 
-__all__ = ("GitignoreTemplate",)
+__all__ = ("GistComment",)

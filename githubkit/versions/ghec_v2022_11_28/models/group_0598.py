@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,21 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0412 import WebhooksUser
-from .group_0400 import EnterpriseWebhooks
-from .group_0401 import SimpleInstallation
-from .group_0403 import RepositoryWebhooks
-from .group_0404 import SimpleUserWebhooks
-from .group_0402 import OrganizationSimpleWebhooks
+from .group_0420 import WebhooksLabel
+from .group_0402 import EnterpriseWebhooks
+from .group_0403 import SimpleInstallation
+from .group_0405 import RepositoryWebhooks
+from .group_0406 import SimpleUserWebhooks
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookMemberEdited(GitHubModel):
-    """member edited event"""
+class WebhookLabelCreated(GitHubModel):
+    """label created event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookMemberEditedPropChanges = Field(
-        description="The changes to the collaborator permissions"
-    )
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -42,7 +39,7 @@ class WebhookMemberEdited(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    member: Union[WebhooksUser, None] = Field(title="User")
+    label: WebhooksLabel = Field(title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -52,50 +49,13 @@ class WebhookMemberEdited(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookMemberEditedPropChanges(GitHubModel):
-    """WebhookMemberEditedPropChanges
+model_rebuild(WebhookLabelCreated)
 
-    The changes to the collaborator permissions
-    """
-
-    old_permission: Missing[WebhookMemberEditedPropChangesPropOldPermission] = Field(
-        default=UNSET
-    )
-    permission: Missing[WebhookMemberEditedPropChangesPropPermission] = Field(
-        default=UNSET
-    )
-
-
-class WebhookMemberEditedPropChangesPropOldPermission(GitHubModel):
-    """WebhookMemberEditedPropChangesPropOldPermission"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous permissions of the collaborator if the action was edited.",
-    )
-
-
-class WebhookMemberEditedPropChangesPropPermission(GitHubModel):
-    """WebhookMemberEditedPropChangesPropPermission"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(WebhookMemberEdited)
-model_rebuild(WebhookMemberEditedPropChanges)
-model_rebuild(WebhookMemberEditedPropChangesPropOldPermission)
-model_rebuild(WebhookMemberEditedPropChangesPropPermission)
-
-__all__ = (
-    "WebhookMemberEdited",
-    "WebhookMemberEditedPropChanges",
-    "WebhookMemberEditedPropChangesPropOldPermission",
-    "WebhookMemberEditedPropChangesPropPermission",
-)
+__all__ = ("WebhookLabelCreated",)

@@ -9,34 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0015 import InstallationType
+from .group_0416 import WebhooksUserType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
+from .group_0422 import WebhooksRepositoriesAddedItemsType
 
-class WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType(TypedDict):
-    """User"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
+class WebhookInstallationRepositoriesRemovedType(TypedDict):
+    """installation_repositories removed event"""
+
+    action: Literal["removed"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: InstallationType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repositories_added: List[WebhooksRepositoriesAddedItemsType]
+    repositories_removed: List[
+        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType
+    ]
+    repository: NotRequired[RepositoryWebhooksType]
+    repository_selection: Literal["all", "selected"]
+    requester: Union[WebhooksUserType, None]
+    sender: SimpleUserWebhooksType
+
+
+class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType(TypedDict):
+    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
+
+    full_name: str
     id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
-    url: NotRequired[str]
+    name: str
+    node_id: str
+    private: bool
 
 
-__all__ = ("WebhookIssueCommentCreatedPropIssueAllof0PropMilestonePropCreatorType",)
+__all__ = (
+    "WebhookInstallationRepositoriesRemovedType",
+    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType",
+)

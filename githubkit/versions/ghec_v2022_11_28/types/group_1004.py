@@ -9,25 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0268 import CustomDeploymentRuleAppType
+
+class ReposOwnerRepoContentsPathDeleteBodyType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBody"""
+
+    message: str
+    sha: str
+    branch: NotRequired[str]
+    committer: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropCommitterType]
+    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType]
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
-    e200
+class ReposOwnerRepoContentsPathDeleteBodyPropCommitterType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
+
+    object containing information about the committer.
     """
 
-    total_count: NotRequired[int]
-    available_custom_deployment_protection_rule_integrations: NotRequired[
-        List[CustomDeploymentRuleAppType]
-    ]
+    name: NotRequired[str]
+    email: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathDeleteBodyPropAuthorType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
+
+    object containing information about the author.
+    """
+
+    name: NotRequired[str]
+    email: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type",
+    "ReposOwnerRepoContentsPathDeleteBodyType",
+    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
+    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
 )

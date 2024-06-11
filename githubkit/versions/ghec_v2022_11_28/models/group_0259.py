@@ -9,52 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
-
-from .group_0257 import Metadata
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class Manifest(GitHubModel):
-    """Manifest"""
+class Metadata(ExtraGitHubModel):
+    """metadata
 
-    name: str = Field(description="The name of the manifest.")
-    file: Missing[ManifestPropFile] = Field(default=UNSET)
-    metadata: Missing[Metadata] = Field(
-        default=UNSET,
-        title="metadata",
-        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
-    )
-    resolved: Missing[ManifestPropResolved] = Field(
-        default=UNSET, description="A collection of resolved package dependencies."
-    )
-
-
-class ManifestPropFile(GitHubModel):
-    """ManifestPropFile"""
-
-    source_location: Missing[str] = Field(
-        default=UNSET,
-        description="The path of the manifest file relative to the root of the Git repository.",
-    )
-
-
-class ManifestPropResolved(ExtraGitHubModel):
-    """ManifestPropResolved
-
-    A collection of resolved package dependencies.
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
     """
 
 
-model_rebuild(Manifest)
-model_rebuild(ManifestPropFile)
-model_rebuild(ManifestPropResolved)
+model_rebuild(Metadata)
 
-__all__ = (
-    "Manifest",
-    "ManifestPropFile",
-    "ManifestPropResolved",
-)
+__all__ = ("Metadata",)

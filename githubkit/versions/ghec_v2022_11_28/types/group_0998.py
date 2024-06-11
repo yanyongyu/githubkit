@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoDeploymentsPostResponse202Type(TypedDict):
-    """ReposOwnerRepoDeploymentsPostResponse202"""
+class ReposOwnerRepoCollaboratorsUsernamePutBodyType(TypedDict):
+    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
 
-    message: NotRequired[str]
+    permission: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoDeploymentsPostResponse202Type",)
+__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBodyType",)

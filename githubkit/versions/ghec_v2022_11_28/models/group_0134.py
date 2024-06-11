@@ -9,30 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0135 import RepositoryRuleRequiredDeploymentsPropParameters
 
+class RepositoryRuleUpdatePropParameters(GitHubModel):
+    """RepositoryRuleUpdatePropParameters"""
 
-class RepositoryRuleRequiredDeployments(GitHubModel):
-    """required_deployments
-
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
-    """
-
-    type: Literal["required_deployments"] = Field()
-    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
-        default=UNSET
+    update_allows_fetch_and_merge: bool = Field(
+        description="Branch can pull changes from its upstream repository"
     )
 
 
-model_rebuild(RepositoryRuleRequiredDeployments)
+model_rebuild(RepositoryRuleUpdatePropParameters)
 
-__all__ = ("RepositoryRuleRequiredDeployments",)
+__all__ = ("RepositoryRuleUpdatePropParameters",)

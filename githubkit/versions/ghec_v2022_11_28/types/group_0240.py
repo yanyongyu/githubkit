@@ -9,34 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 from typing_extensions import TypedDict
 
 from .group_0001 import SimpleUserType
-from .group_0017 import RepositoryType
 
 
-class PullRequestSimplePropHeadType(TypedDict):
-    """PullRequestSimplePropHead"""
+class AutoMergeType(TypedDict):
+    """Auto merge
 
-    label: Union[str, None]
-    ref: str
-    repo: Union[None, RepositoryType]
-    sha: str
-    user: Union[None, SimpleUserType]
+    The status of auto merging a pull request.
+    """
 
-
-class PullRequestSimplePropBaseType(TypedDict):
-    """PullRequestSimplePropBase"""
-
-    label: str
-    ref: str
-    repo: RepositoryType
-    sha: str
-    user: Union[None, SimpleUserType]
+    enabled_by: SimpleUserType
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
-__all__ = (
-    "PullRequestSimplePropHeadType",
-    "PullRequestSimplePropBaseType",
-)
+__all__ = ("AutoMergeType",)

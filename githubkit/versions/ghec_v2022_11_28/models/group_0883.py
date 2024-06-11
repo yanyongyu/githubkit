@@ -9,25 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0113 import OrgCustomProperty
 
+class OrgsOrgMembershipsUsernamePutBody(GitHubModel):
+    """OrgsOrgMembershipsUsernamePutBody"""
 
-class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
-    """OrgsOrgPropertiesSchemaPatchBody"""
-
-    properties: List[OrgCustomProperty] = Field(
-        max_length=100,
-        min_length=1,
-        description="The array of custom properties to create or update.",
+    role: Missing[Literal["admin", "member"]] = Field(
+        default=UNSET,
+        description="The role to give the user in the organization. Can be one of:  \n * `admin` - The user will become an owner of the organization.  \n * `member` - The user will become a non-owner member of the organization.",
     )
 
 
-model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
+model_rebuild(OrgsOrgMembershipsUsernamePutBody)
 
-__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)
+__all__ = ("OrgsOrgMembershipsUsernamePutBody",)

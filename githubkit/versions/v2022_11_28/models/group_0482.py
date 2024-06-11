@@ -18,10 +18,7 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0484 import (
-    WebhookForkPropForkeeAllof0PropPermissions,
-    WebhookForkPropForkeeAllof0PropCustomProperties,
-)
+from .group_0484 import WebhookForkPropForkeeAllof0PropPermissions
 
 
 class WebhookForkPropForkee(GitHubModel):
@@ -62,10 +59,6 @@ class WebhookForkPropForkee(GitHubModel):
     contents_url: str = Field()
     contributors_url: str = Field()
     created_at: datetime = Field()
-    custom_properties: Missing[WebhookForkPropForkeeAllof0PropCustomProperties] = Field(
-        default=UNSET,
-        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
-    )
     default_branch: str = Field(description="The default branch of the repository.")
     delete_branch_on_merge: Missing[bool] = Field(
         default=UNSET,

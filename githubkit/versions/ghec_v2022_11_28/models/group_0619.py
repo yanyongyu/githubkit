@@ -17,75 +17,44 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0620 import WebhookPackagePublishedPropPackagePropPackageVersion
+from .group_0416 import WebhooksUser
+from .group_0402 import EnterpriseWebhooks
+from .group_0403 import SimpleInstallation
+from .group_0405 import RepositoryWebhooks
+from .group_0406 import SimpleUserWebhooks
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookPackagePublishedPropPackage(GitHubModel):
-    """WebhookPackagePublishedPropPackage
+class WebhookOrgBlockBlocked(GitHubModel):
+    """org_block blocked event"""
 
-    Information about the package.
-    """
-
-    created_at: Union[str, None] = Field()
-    description: Union[str, None] = Field()
-    ecosystem: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field()
-    namespace: str = Field()
-    owner: Union[WebhookPackagePublishedPropPackagePropOwner, None] = Field(
-        title="User"
+    action: Literal["blocked"] = Field()
+    blocked_user: Union[WebhooksUser, None] = Field(title="User")
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
     )
-    package_type: str = Field()
-    package_version: Union[
-        WebhookPackagePublishedPropPackagePropPackageVersion, None
-    ] = Field()
-    registry: Union[WebhookPackagePublishedPropPackagePropRegistry, None] = Field()
-    updated_at: Union[str, None] = Field()
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUserWebhooks = Field(
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
 
 
-class WebhookPackagePublishedPropPackagePropOwner(GitHubModel):
-    """User"""
+model_rebuild(WebhookOrgBlockBlocked)
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class WebhookPackagePublishedPropPackagePropRegistry(GitHubModel):
-    """WebhookPackagePublishedPropPackagePropRegistry"""
-
-    about_url: str = Field()
-    name: str = Field()
-    type: str = Field()
-    url: str = Field()
-    vendor: str = Field()
-
-
-model_rebuild(WebhookPackagePublishedPropPackage)
-model_rebuild(WebhookPackagePublishedPropPackagePropOwner)
-model_rebuild(WebhookPackagePublishedPropPackagePropRegistry)
-
-__all__ = (
-    "WebhookPackagePublishedPropPackage",
-    "WebhookPackagePublishedPropPackagePropOwner",
-    "WebhookPackagePublishedPropPackagePropRegistry",
-)
+__all__ = ("WebhookOrgBlockBlocked",)

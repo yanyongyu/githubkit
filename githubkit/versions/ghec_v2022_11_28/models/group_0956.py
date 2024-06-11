@@ -9,25 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0(GitHubModel):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0
+class ReposOwnerRepoActionsVariablesNamePatchBody(GitHubModel):
+    """ReposOwnerRepoActionsVariablesNamePatchBody"""
 
-    Examples:
-        {'apps': ['my-app']}
-    """
-
-    apps: List[str] = Field(
-        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items."
-    )
+    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
+    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
 
 
-model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0)
+model_rebuild(ReposOwnerRepoActionsVariablesNamePatchBody)
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0",)
+__all__ = ("ReposOwnerRepoActionsVariablesNamePatchBody",)

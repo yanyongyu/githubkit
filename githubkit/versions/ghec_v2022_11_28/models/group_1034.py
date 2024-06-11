@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,24 +16,13 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+class ReposOwnerRepoImportAuthorsAuthorIdPatchBody(GitHubModel):
+    """ReposOwnerRepoImportAuthorsAuthorIdPatchBody"""
 
-    labels: Missing[
-        List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems]
-    ] = Field(min_length=1, default=UNSET)
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
-
-    name: str = Field()
+    email: Missing[str] = Field(default=UNSET, description="The new Git author email.")
+    name: Missing[str] = Field(default=UNSET, description="The new Git author name.")
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems)
+model_rebuild(ReposOwnerRepoImportAuthorsAuthorIdPatchBody)
 
-__all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems",
-)
+__all__ = ("ReposOwnerRepoImportAuthorsAuthorIdPatchBody",)

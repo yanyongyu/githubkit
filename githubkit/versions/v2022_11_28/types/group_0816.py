@@ -13,12 +13,12 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgOrganizationRolesPostBodyType(TypedDict):
-    """OrgsOrgOrganizationRolesPostBody"""
+class OrgsOrgOrganizationRolesRoleIdPatchBodyType(TypedDict):
+    """OrgsOrgOrganizationRolesRoleIdPatchBody"""
 
-    name: str
+    name: NotRequired[str]
     description: NotRequired[str]
-    permissions: List[str]
+    permissions: NotRequired[List[str]]
 
 
-__all__ = ("OrgsOrgOrganizationRolesPostBodyType",)
+__all__ = ("OrgsOrgOrganizationRolesRoleIdPatchBodyType",)

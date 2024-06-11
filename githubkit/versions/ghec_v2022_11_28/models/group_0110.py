@@ -9,97 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from datetime import datetime
+from typing import List, Union
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0001 import SimpleUser
 
 
-class OrganizationProgrammaticAccessGrantRequest(GitHubModel):
-    """Simple Organization Programmatic Access Grant Request
+class OrganizationRole(GitHubModel):
+    """Organization Role
 
-    Minimal representation of an organization programmatic access grant request for
-    enumerations
+    Organization roles
     """
 
-    id: int = Field(
-        description="Unique identifier of the request for access via fine-grained personal access token. The `pat_request_id` used to review PAT requests."
+    id: int = Field(description="The unique identifier of the role.")
+    name: str = Field(description="The name of the role.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    reason: Union[str, None] = Field(description="Reason for requesting access.")
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    repository_selection: Literal["none", "all", "subset"] = Field(
-        description="Type of repository selection requested."
+    permissions: List[str] = Field(
+        description="A list of permissions included in this role."
     )
-    repositories_url: str = Field(
-        description="URL to the list of repositories requested to be accessed via fine-grained personal access token. Should only be followed when `repository_selection` is `subset`."
-    )
-    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissions = Field(
-        description="Permissions requested, categorized by type of permission."
-    )
-    created_at: str = Field(
-        description="Date and time when the request for access was created."
-    )
-    token_expired: bool = Field(
-        description="Whether the associated fine-grained personal access token has expired."
-    )
-    token_expires_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token expires."
-    )
-    token_last_used_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token was last used for authentication."
+    organization: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field(description="The date and time the role was created.")
+    updated_at: datetime = Field(
+        description="The date and time the role was last updated."
     )
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissions(GitHubModel):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissions
+class OrgsOrgOrganizationRolesGetResponse200(GitHubModel):
+    """OrgsOrgOrganizationRolesGetResponse200"""
 
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
-    ] = Field(default=UNSET)
-    repository: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
-    ] = Field(default=UNSET)
-    other: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
-    ] = Field(default=UNSET)
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of organization roles available to the organization.",
+    )
+    roles: Missing[List[OrganizationRole]] = Field(
+        default=UNSET,
+        description="The list of organization roles available to the organization.",
+    )
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization"""
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository"""
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther"""
-
-
-model_rebuild(OrganizationProgrammaticAccessGrantRequest)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissions)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther)
+model_rebuild(OrganizationRole)
+model_rebuild(OrgsOrgOrganizationRolesGetResponse200)
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantRequest",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissions",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther",
+    "OrganizationRole",
+    "OrgsOrgOrganizationRolesGetResponse200",
 )

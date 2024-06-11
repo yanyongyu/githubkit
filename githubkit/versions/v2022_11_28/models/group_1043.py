@@ -13,19 +13,19 @@ from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody(GitHubModel):
-    """TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody"""
+class TeamsTeamIdMembershipsUsernamePutBody(GitHubModel):
+    """TeamsTeamIdMembershipsUsernamePutBody"""
 
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ] = Field(
-        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion."
+    role: Missing[Literal["member", "maintainer"]] = Field(
+        default=UNSET, description="The role that this user should have in the team."
     )
 
 
-model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody)
+model_rebuild(TeamsTeamIdMembershipsUsernamePutBody)
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody",)
+__all__ = ("TeamsTeamIdMembershipsUsernamePutBody",)

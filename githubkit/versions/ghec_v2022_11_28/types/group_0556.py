@@ -13,7 +13,9 @@ from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType(TypedDict):
+class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType(
+    TypedDict
+):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -35,8 +37,57 @@ class WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType(Typed
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
 
 
-__all__ = ("WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType",)
+class WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType(
+    TypedDict
+):
+    """WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermission
+    s
+
+    The set of permissions for the GitHub app
+    """
+
+    actions: NotRequired[Literal["read", "write"]]
+    administration: NotRequired[Literal["read", "write"]]
+    checks: NotRequired[Literal["read", "write"]]
+    content_references: NotRequired[Literal["read", "write"]]
+    contents: NotRequired[Literal["read", "write"]]
+    deployments: NotRequired[Literal["read", "write"]]
+    discussions: NotRequired[Literal["read", "write"]]
+    emails: NotRequired[Literal["read", "write"]]
+    environments: NotRequired[Literal["read", "write"]]
+    issues: NotRequired[Literal["read", "write"]]
+    keys: NotRequired[Literal["read", "write"]]
+    members: NotRequired[Literal["read", "write"]]
+    metadata: NotRequired[Literal["read", "write"]]
+    organization_administration: NotRequired[Literal["read", "write"]]
+    organization_hooks: NotRequired[Literal["read", "write"]]
+    organization_packages: NotRequired[Literal["read", "write"]]
+    organization_plan: NotRequired[Literal["read", "write"]]
+    organization_projects: NotRequired[Literal["read", "write"]]
+    organization_secrets: NotRequired[Literal["read", "write"]]
+    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
+    organization_user_blocking: NotRequired[Literal["read", "write"]]
+    packages: NotRequired[Literal["read", "write"]]
+    pages: NotRequired[Literal["read", "write"]]
+    pull_requests: NotRequired[Literal["read", "write"]]
+    repository_hooks: NotRequired[Literal["read", "write"]]
+    repository_projects: NotRequired[Literal["read", "write"]]
+    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
+    secrets: NotRequired[Literal["read", "write"]]
+    security_events: NotRequired[Literal["read", "write"]]
+    security_scanning_alert: NotRequired[Literal["read", "write"]]
+    single_file: NotRequired[Literal["read", "write"]]
+    statuses: NotRequired[Literal["read", "write"]]
+    team_discussions: NotRequired[Literal["read", "write"]]
+    vulnerability_alerts: NotRequired[Literal["read", "write"]]
+    workflows: NotRequired[Literal["read", "write"]]
+
+
+__all__ = (
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType",
+    "WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType",
+)

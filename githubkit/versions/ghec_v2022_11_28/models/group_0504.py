@@ -17,19 +17,20 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0414 import Discussion
-from .group_0416 import WebhooksLabel
-from .group_0400 import EnterpriseWebhooks
-from .group_0401 import SimpleInstallation
-from .group_0403 import RepositoryWebhooks
-from .group_0404 import SimpleUserWebhooks
-from .group_0402 import OrganizationSimpleWebhooks
+from .group_0418 import Discussion
+from .group_0417 import WebhooksAnswer
+from .group_0402 import EnterpriseWebhooks
+from .group_0403 import SimpleInstallation
+from .group_0405 import RepositoryWebhooks
+from .group_0406 import SimpleUserWebhooks
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionLabeled(GitHubModel):
-    """discussion labeled event"""
+class WebhookDiscussionAnswered(GitHubModel):
+    """discussion answered event"""
 
-    action: Literal["labeled"] = Field()
+    action: Literal["answered"] = Field()
+    answer: WebhooksAnswer = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -43,7 +44,6 @@ class WebhookDiscussionLabeled(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    label: WebhooksLabel = Field(title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -59,6 +59,6 @@ class WebhookDiscussionLabeled(GitHubModel):
     )
 
 
-model_rebuild(WebhookDiscussionLabeled)
+model_rebuild(WebhookDiscussionAnswered)
 
-__all__ = ("WebhookDiscussionLabeled",)
+__all__ = ("WebhookDiscussionAnswered",)

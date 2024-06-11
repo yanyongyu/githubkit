@@ -9,36 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodespaceMachine(GitHubModel):
-    """Codespace machine
+class ActionsOrganizationPermissions(GitHubModel):
+    """ActionsOrganizationPermissions"""
 
-    A description of the machine powering a codespace.
-    """
-
-    name: str = Field(description="The name of the machine.")
-    display_name: str = Field(
-        description="The display name of the machine includes cores, memory, and storage."
+    enabled_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
     )
-    operating_system: str = Field(description="The operating system of the machine.")
-    storage_in_bytes: int = Field(
-        description="How much storage is available to the codespace."
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the selected repositories that are allowed to run GitHub Actions, when `enabled_repositories` is set to `selected`.",
     )
-    memory_in_bytes: int = Field(
-        description="How much memory is available to the codespace."
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+        default=UNSET,
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
     )
-    cpus: int = Field(description="How many cores are available to the codespace.")
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]] = Field(
-        description='Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.'
+    selected_actions_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
     )
 
 
-model_rebuild(CodespaceMachine)
+model_rebuild(ActionsOrganizationPermissions)
 
-__all__ = ("CodespaceMachine",)
+__all__ = ("ActionsOrganizationPermissions",)

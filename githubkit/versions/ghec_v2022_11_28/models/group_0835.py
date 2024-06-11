@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 
 from pydantic import Field
 
@@ -18,26 +18,46 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsSecretsSecretNamePutBody(GitHubModel):
-    """OrgsOrgActionsSecretsSecretNamePutBody"""
+class OrgsOrgActionsRunnerGroupsGetResponse200(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsGetResponse200"""
 
-    encrypted_value: Missing[str] = Field(
-        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+    total_count: float = Field()
+    runner_groups: List[RunnerGroupsOrg] = Field()
+
+
+class RunnerGroupsOrg(GitHubModel):
+    """RunnerGroupsOrg"""
+
+    id: float = Field()
+    name: str = Field()
+    visibility: str = Field()
+    default: bool = Field()
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-organization-public-key) endpoint.",
+        description="Link to the selected repositories resource for this runner group. Not present unless visibility was set to `selected`",
     )
-    key_id: Missing[str] = Field(
-        default=UNSET, description="ID of the key you used to encrypt the secret."
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret."
-    )
-    selected_repository_ids: Missing[List[int]] = Field(
+    runners_url: str = Field()
+    inherited: bool = Field()
+    inherited_allows_public_repositories: Missing[bool] = Field(default=UNSET)
+    allows_public_repositories: bool = Field()
+    workflow_restrictions_read_only: Missing[bool] = Field(
         default=UNSET,
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
+        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
+    )
+    restricted_to_workflows: Missing[bool] = Field(
+        default=UNSET,
+        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
+    )
+    selected_workflows: Missing[List[str]] = Field(
+        default=UNSET,
+        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
     )
 
 
-model_rebuild(OrgsOrgActionsSecretsSecretNamePutBody)
+model_rebuild(OrgsOrgActionsRunnerGroupsGetResponse200)
+model_rebuild(RunnerGroupsOrg)
 
-__all__ = ("OrgsOrgActionsSecretsSecretNamePutBody",)
+__all__ = (
+    "OrgsOrgActionsRunnerGroupsGetResponse200",
+    "RunnerGroupsOrg",
+)

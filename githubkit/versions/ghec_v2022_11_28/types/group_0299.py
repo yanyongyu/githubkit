@@ -9,25 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0001 import SimpleUserType
-from .group_0300 import TimelineCrossReferencedEventPropSourceType
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class TimelineCrossReferencedEventType(TypedDict):
-    """Timeline Cross Referenced Event
+class LabelType(TypedDict):
+    """Label
 
-    Timeline Cross Referenced Event
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    event: Literal["cross-referenced"]
-    actor: NotRequired[SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    source: TimelineCrossReferencedEventPropSourceType
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
 
 
-__all__ = ("TimelineCrossReferencedEventType",)
+__all__ = ("LabelType",)

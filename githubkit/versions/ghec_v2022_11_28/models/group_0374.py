@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -17,23 +17,39 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0365 import Meta
-from .group_0375 import ScimEnterpriseUserResponseAllof1PropGroupsItems
+from .group_0373 import UserRoleItems
+from .group_0372 import UserNameResponse, UserEmailsResponseItems
 
 
-class ScimEnterpriseUserResponseAllof1(GitHubModel):
-    """ScimEnterpriseUserResponseAllof1"""
+class UserResponse(GitHubModel):
+    """UserResponse"""
 
-    id: str = Field(description="The internally generated id for the user object.")
-    groups: Missing[List[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
+    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
+    )
+    external_id: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Provisioned SCIM groups that the user is a member of.",
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
     )
-    meta: Meta = Field(
-        description="The metadata associated with the creation/updates to the user."
+    active: bool = Field(description="Whether the user active in the IdP.")
+    user_name: Missing[str] = Field(
+        default=UNSET, alias="userName", description="The username for the user."
+    )
+    name: Missing[UserNameResponse] = Field(default=UNSET)
+    display_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="A human-readable name for the user.",
+    )
+    emails: List[UserEmailsResponseItems] = Field(
+        description="The emails for the user."
+    )
+    roles: Missing[List[UserRoleItems]] = Field(
+        default=UNSET, description="The roles assigned to the user."
     )
 
 
-model_rebuild(ScimEnterpriseUserResponseAllof1)
+model_rebuild(UserResponse)
 
-__all__ = ("ScimEnterpriseUserResponseAllof1",)
+__all__ = ("UserResponse",)

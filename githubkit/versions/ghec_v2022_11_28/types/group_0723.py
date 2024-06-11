@@ -9,96 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0131 import RepositoryRuleUpdateType
-from .group_0155 import RepositoryRuleOneof17Type
-from .group_0151 import RepositoryRuleWorkflowsType
-from .group_0136 import RepositoryRulePullRequestType
-from .group_0153 import RepositoryRuleCodeScanningType
-from .group_0148 import RepositoryRuleTagNamePatternType
-from .group_0146 import RepositoryRuleBranchNamePatternType
-from .group_0134 import RepositoryRuleRequiredDeploymentsType
-from .group_0138 import RepositoryRuleRequiredStatusChecksType
-from .group_0140 import RepositoryRuleCommitMessagePatternType
-from .group_0144 import RepositoryRuleCommitterEmailPatternType
-from .group_0142 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0133 import (
-    RepositoryRuleOneof15Type,
-    RepositoryRuleRequiredLinearHistoryType,
-)
-from .group_0724 import (
-    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType,
-)
-from .group_0130 import (
-    RepositoryRuleOneof14Type,
-    RepositoryRuleOneof16Type,
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
+class WebhookRepositoryPrivatizedType(TypedDict):
+    """repository privatized event"""
 
-    added: NotRequired[
-        List[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleOneof14Type,
-                RepositoryRuleOneof15Type,
-                RepositoryRuleOneof16Type,
-                RepositoryRuleOneof17Type,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
-    deleted: NotRequired[
-        List[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleOneof14Type,
-                RepositoryRuleOneof15Type,
-                RepositoryRuleOneof16Type,
-                RepositoryRuleOneof17Type,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
-    updated: NotRequired[
-        List[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType]
-    ]
+    action: Literal["privatized"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropRulesType",)
+__all__ = ("WebhookRepositoryPrivatizedType",)

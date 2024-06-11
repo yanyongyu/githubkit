@@ -12,22 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0414 import DiscussionType
-from .group_0413 import WebhooksAnswerType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0418 import DiscussionType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookDiscussionUnansweredType(TypedDict):
-    """discussion unanswered event"""
+class WebhookDiscussionCreatedType(TypedDict):
+    """discussion created event"""
 
-    action: Literal["unanswered"]
+    action: Literal["created"]
     discussion: DiscussionType
-    old_answer: WebhooksAnswerType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookDiscussionUnansweredType",)
+__all__ = ("WebhookDiscussionCreatedType",)

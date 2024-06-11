@@ -9,22 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0034 import Runner
+
+class ProjectsProjectIdPatchBody(GitHubModel):
+    """ProjectsProjectIdPatchBody"""
+
+    name: Missing[str] = Field(default=UNSET, description="Name of the project")
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Body of the project"
+    )
+    state: Missing[str] = Field(
+        default=UNSET, description="State of the project; either 'open' or 'closed'"
+    )
+    organization_permission: Missing[Literal["read", "write", "admin", "none"]] = Field(
+        default=UNSET,
+        description="The baseline permission that all organization members have on this project",
+    )
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether or not this project can be seen by everyone.",
+    )
 
 
-class ReposOwnerRepoActionsRunnersGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsRunnersGetResponse200"""
+model_rebuild(ProjectsProjectIdPatchBody)
 
-    total_count: int = Field()
-    runners: List[Runner] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsRunnersGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsRunnersGetResponse200",)
+__all__ = ("ProjectsProjectIdPatchBody",)

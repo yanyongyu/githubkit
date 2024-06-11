@@ -10,34 +10,93 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
-from typing_extensions import TypedDict
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0567 import WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType
+from .group_0567 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+)
 
 
-class WebhookIssuesClosedPropIssueAllof0PropMilestoneType(TypedDict):
-    """Milestone
+class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
+    """App
 
-    A collection of related issues and pull requests.
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
     """
 
-    closed_at: Union[datetime, None]
-    closed_issues: int
-    created_at: datetime
-    creator: Union[WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreatorType, None]
+    created_at: Union[datetime, None]
     description: Union[str, None]
-    due_on: Union[datetime, None]
+    events: NotRequired[
+        List[
+            Literal[
+                "branch_protection_rule",
+                "check_run",
+                "check_suite",
+                "code_scanning_alert",
+                "commit_comment",
+                "content_reference",
+                "create",
+                "delete",
+                "deployment",
+                "deployment_review",
+                "deployment_status",
+                "deploy_key",
+                "discussion",
+                "discussion_comment",
+                "fork",
+                "gollum",
+                "issues",
+                "issue_comment",
+                "label",
+                "member",
+                "membership",
+                "milestone",
+                "organization",
+                "org_block",
+                "page_build",
+                "project",
+                "project_card",
+                "project_column",
+                "public",
+                "pull_request",
+                "pull_request_review",
+                "pull_request_review_comment",
+                "push",
+                "registry_package",
+                "release",
+                "repository",
+                "repository_dispatch",
+                "secret_scanning_alert",
+                "star",
+                "status",
+                "team",
+                "team_add",
+                "watch",
+                "workflow_dispatch",
+                "workflow_run",
+                "reminder",
+                "pull_request_review_thread",
+            ]
+        ]
+    ]
+    external_url: Union[str, None]
     html_url: str
-    id: int
-    labels_url: str
+    id: Union[int, None]
+    name: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: datetime
-    url: str
+    owner: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[datetime, None]
 
 
-__all__ = ("WebhookIssuesClosedPropIssueAllof0PropMilestoneType",)
+__all__ = ("WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppType",)

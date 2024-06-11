@@ -12,22 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0437 import ProjectsV2ItemType
-from .group_0401 import SimpleInstallationType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0436 import WebhooksProjectChangesType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0438 import WebhooksProjectColumnType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ItemArchivedType(TypedDict):
-    """Projects v2 Item Archived Event"""
+class WebhookProjectColumnMovedType(TypedDict):
+    """project_column moved event"""
 
-    action: Literal["archived"]
-    changes: WebhooksProjectChangesType
+    action: Literal["moved"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2_item: ProjectsV2ItemType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_column: WebhooksProjectColumnType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookProjectsV2ItemArchivedType",)
+__all__ = ("WebhookProjectColumnMovedType",)

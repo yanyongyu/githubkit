@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -24,10 +24,10 @@ from .group_0371 import SimpleUserWebhooks
 from .group_0369 import OrganizationSimpleWebhooks
 
 
-class WebhookStarCreated(GitHubModel):
-    """star created event"""
+class WebhookStarDeleted(GitHubModel):
+    """star deleted event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -51,11 +51,11 @@ class WebhookStarCreated(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    starred_at: Union[str, None] = Field(
+    starred_at: None = Field(
         description="The time the star was created. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the `deleted` action."
     )
 
 
-model_rebuild(WebhookStarCreated)
+model_rebuild(WebhookStarDeleted)
 
-__all__ = ("WebhookStarCreated",)
+__all__ = ("WebhookStarDeleted",)

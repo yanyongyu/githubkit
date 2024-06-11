@@ -17,11 +17,9 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0365 import Meta
 
-
-class ScimEnterpriseGroupResponse(GitHubModel):
-    """ScimEnterpriseGroupResponse"""
+class GroupResponse(GitHubModel):
+    """GroupResponse"""
 
     schemas: List[
         Literal[
@@ -41,20 +39,13 @@ class ScimEnterpriseGroupResponse(GitHubModel):
         alias="displayName",
         description="A human-readable name for a security group.",
     )
-    members: Missing[List[ScimEnterpriseGroupResponseMergedMembers]] = Field(
+    members: Missing[List[GroupResponsePropMembersItems]] = Field(
         default=UNSET, description="The group members."
     )
-    id: Missing[str] = Field(
-        default=UNSET, description="The internally generated id for the group object."
-    )
-    meta: Missing[Meta] = Field(
-        default=UNSET,
-        description="The metadata associated with the creation/updates to the user.",
-    )
 
 
-class ScimEnterpriseGroupResponseMergedMembers(GitHubModel):
-    """ScimEnterpriseGroupResponseMergedMembers"""
+class GroupResponsePropMembersItems(GitHubModel):
+    """GroupResponsePropMembersItems"""
 
     value: str = Field(description="The local unique identifier for the member")
     ref: str = Field(alias="$ref")
@@ -63,34 +54,10 @@ class ScimEnterpriseGroupResponseMergedMembers(GitHubModel):
     )
 
 
-class ScimEnterpriseGroupList(GitHubModel):
-    """ScimEnterpriseGroupList"""
-
-    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]] = (
-        Field(
-            description="The URIs that are used to indicate the namespaces of the list SCIM schemas."
-        )
-    )
-    total_results: int = Field(
-        alias="totalResults", description="Number of results found"
-    )
-    resources: List[ScimEnterpriseGroupResponse] = Field(
-        alias="Resources", description="Information about each provisioned group."
-    )
-    start_index: int = Field(
-        alias="startIndex", description="A starting index for the returned page"
-    )
-    items_per_page: int = Field(
-        alias="itemsPerPage", description="Number of objects per page"
-    )
-
-
-model_rebuild(ScimEnterpriseGroupResponse)
-model_rebuild(ScimEnterpriseGroupResponseMergedMembers)
-model_rebuild(ScimEnterpriseGroupList)
+model_rebuild(GroupResponse)
+model_rebuild(GroupResponsePropMembersItems)
 
 __all__ = (
-    "ScimEnterpriseGroupResponse",
-    "ScimEnterpriseGroupResponseMergedMembers",
-    "ScimEnterpriseGroupList",
+    "GroupResponse",
+    "GroupResponsePropMembersItems",
 )

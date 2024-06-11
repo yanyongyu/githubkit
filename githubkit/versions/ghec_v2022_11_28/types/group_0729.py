@@ -9,27 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0445 import WebhooksAlertType
-from .group_0400 import EnterpriseWebhooksType
-from .group_0401 import SimpleInstallationType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0732 import WebhookRepositoryRulesetEditedPropChangesPropRulesType
+from .group_0730 import WebhookRepositoryRulesetEditedPropChangesPropConditionsType
 
 
-class WebhookRepositoryVulnerabilityAlertReopenType(TypedDict):
-    """repository_vulnerability_alert reopen event"""
+class WebhookRepositoryRulesetEditedPropChangesType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChanges"""
 
-    action: Literal["reopen"]
-    alert: WebhooksAlertType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    name: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropNameType]
+    enforcement: NotRequired[
+        WebhookRepositoryRulesetEditedPropChangesPropEnforcementType
+    ]
+    conditions: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropConditionsType]
+    rules: NotRequired[WebhookRepositoryRulesetEditedPropChangesPropRulesType]
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertReopenType",)
+class WebhookRepositoryRulesetEditedPropChangesPropNameType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropName"""
+
+    from_: NotRequired[str]
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropEnforcementType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropEnforcement"""
+
+    from_: NotRequired[str]
+
+
+__all__ = (
+    "WebhookRepositoryRulesetEditedPropChangesType",
+    "WebhookRepositoryRulesetEditedPropChangesPropNameType",
+    "WebhookRepositoryRulesetEditedPropChangesPropEnforcementType",
+)

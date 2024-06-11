@@ -9,28 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0015 import InstallationType
-from .group_0400 import EnterpriseWebhooksType
-from .group_0403 import RepositoryWebhooksType
-from .group_0404 import SimpleUserWebhooksType
-from .group_0417 import WebhooksRepositoriesItemsType
-from .group_0402 import OrganizationSimpleWebhooksType
+from .group_0418 import DiscussionType
+from .group_0402 import EnterpriseWebhooksType
+from .group_0403 import SimpleInstallationType
+from .group_0405 import RepositoryWebhooksType
+from .group_0406 import SimpleUserWebhooksType
+from .group_0404 import OrganizationSimpleWebhooksType
 
 
-class WebhookInstallationDeletedType(TypedDict):
-    """installation deleted event"""
+class WebhookDiscussionUnpinnedType(TypedDict):
+    """discussion unpinned event"""
 
-    action: Literal["deleted"]
+    action: Literal["unpinned"]
+    discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[List[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
+    repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookInstallationDeletedType",)
+__all__ = ("WebhookDiscussionUnpinnedType",)

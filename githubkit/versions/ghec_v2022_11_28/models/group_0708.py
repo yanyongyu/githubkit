@@ -17,17 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0400 import EnterpriseWebhooks
-from .group_0401 import SimpleInstallation
-from .group_0403 import RepositoryWebhooks
-from .group_0404 import SimpleUserWebhooks
-from .group_0402 import OrganizationSimpleWebhooks
+from .group_0447 import WebhooksRelease
+from .group_0402 import EnterpriseWebhooks
+from .group_0403 import SimpleInstallation
+from .group_0405 import RepositoryWebhooks
+from .group_0406 import SimpleUserWebhooks
+from .group_0404 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryArchived(GitHubModel):
-    """repository archived event"""
+class WebhookReleaseCreated(GitHubModel):
+    """release created event"""
 
-    action: Literal["archived"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,6 +44,10 @@ class WebhookRepositoryArchived(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    release: WebhooksRelease = Field(
+        title="Release",
+        description="The [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases/#get-a-release) object.",
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -53,6 +58,6 @@ class WebhookRepositoryArchived(GitHubModel):
     )
 
 
-model_rebuild(WebhookRepositoryArchived)
+model_rebuild(WebhookReleaseCreated)
 
-__all__ = ("WebhookRepositoryArchived",)
+__all__ = ("WebhookReleaseCreated",)

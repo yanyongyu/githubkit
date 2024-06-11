@@ -9,45 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleRequiredStatusChecksPropParameters(GitHubModel):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
+class RepositoryRulePullRequestPropParameters(GitHubModel):
+    """RepositoryRulePullRequestPropParameters"""
 
-    required_status_checks: List[RepositoryRuleParamsStatusCheckConfiguration] = Field(
-        description="Status checks that are required."
+    dismiss_stale_reviews_on_push: bool = Field(
+        description="New, reviewable commits pushed will dismiss previous pull request review approvals."
     )
-    strict_required_status_checks_policy: bool = Field(
-        description="Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled."
+    require_code_owner_review: bool = Field(
+        description="Require an approving review in pull requests that modify files that have a designated code owner."
     )
-
-
-class RepositoryRuleParamsStatusCheckConfiguration(GitHubModel):
-    """StatusCheckConfiguration
-
-    Required status check
-    """
-
-    context: str = Field(
-        description="The status check context name that must be present on the commit."
+    require_last_push_approval: bool = Field(
+        description="Whether the most recent reviewable push must be approved by someone other than the person who pushed it."
     )
-    integration_id: Missing[int] = Field(
-        default=UNSET,
-        description="The optional integration ID that this status check must originate from.",
+    required_approving_review_count: int = Field(
+        le=10.0,
+        description="The number of approving reviews that are required before a pull request can be merged.",
+    )
+    required_review_thread_resolution: bool = Field(
+        description="All conversations on code must be resolved before a pull request can be merged."
     )
 
 
-model_rebuild(RepositoryRuleRequiredStatusChecksPropParameters)
-model_rebuild(RepositoryRuleParamsStatusCheckConfiguration)
+model_rebuild(RepositoryRulePullRequestPropParameters)
 
-__all__ = (
-    "RepositoryRuleRequiredStatusChecksPropParameters",
-    "RepositoryRuleParamsStatusCheckConfiguration",
-)
+__all__ = ("RepositoryRulePullRequestPropParameters",)

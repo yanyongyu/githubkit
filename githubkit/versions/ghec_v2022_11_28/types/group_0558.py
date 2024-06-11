@@ -9,13 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType(
-    TypedDict
-):
+class WebhookIssueCommentDeletedPropIssueAllof1Type(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof1"""
+
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignee: Union[WebhookIssueCommentDeletedPropIssueAllof1PropAssigneeType, None]
+    assignees: NotRequired[
+        List[
+            Union[WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItemsType, None]
+        ]
+    ]
+    author_association: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+    closed_at: NotRequired[Union[str, None]]
+    comments: NotRequired[int]
+    comments_url: NotRequired[str]
+    created_at: NotRequired[str]
+    events_url: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    labels: List[WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItemsType]
+    labels_url: NotRequired[str]
+    locked: bool
+    milestone: NotRequired[
+        Union[WebhookIssueCommentDeletedPropIssueAllof1PropMilestoneType, None]
+    ]
+    node_id: NotRequired[str]
+    number: NotRequired[int]
+    performed_via_github_app: NotRequired[
+        Union[
+            WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubAppType, None
+        ]
+    ]
+    reactions: NotRequired[WebhookIssueCommentDeletedPropIssueAllof1PropReactionsType]
+    repository_url: NotRequired[str]
+    state: Literal["open", "closed"]
+    timeline_url: NotRequired[str]
+    title: NotRequired[str]
+    updated_at: NotRequired[str]
+    url: NotRequired[str]
+    user: NotRequired[WebhookIssueCommentDeletedPropIssueAllof1PropUserType]
+
+
+class WebhookIssueCommentDeletedPropIssueAllof1PropAssigneeType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -37,56 +77,79 @@ class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwner
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
     url: NotRequired[str]
 
 
-class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType(
-    TypedDict
-):
-    """WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissions
+class WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItemsType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItems"""
 
-    The set of permissions for the GitHub app
-    """
 
-    actions: NotRequired[Literal["read", "write"]]
-    administration: NotRequired[Literal["read", "write"]]
-    checks: NotRequired[Literal["read", "write"]]
-    content_references: NotRequired[Literal["read", "write"]]
-    contents: NotRequired[Literal["read", "write"]]
-    deployments: NotRequired[Literal["read", "write"]]
-    discussions: NotRequired[Literal["read", "write"]]
-    emails: NotRequired[Literal["read", "write"]]
-    environments: NotRequired[Literal["read", "write"]]
-    issues: NotRequired[Literal["read", "write"]]
-    keys: NotRequired[Literal["read", "write"]]
-    members: NotRequired[Literal["read", "write"]]
-    metadata: NotRequired[Literal["read", "write"]]
-    organization_administration: NotRequired[Literal["read", "write"]]
-    organization_hooks: NotRequired[Literal["read", "write"]]
-    organization_packages: NotRequired[Literal["read", "write"]]
-    organization_plan: NotRequired[Literal["read", "write"]]
-    organization_projects: NotRequired[Literal["read", "write", "admin"]]
-    organization_secrets: NotRequired[Literal["read", "write"]]
-    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
-    organization_user_blocking: NotRequired[Literal["read", "write"]]
-    packages: NotRequired[Literal["read", "write"]]
-    pages: NotRequired[Literal["read", "write"]]
-    pull_requests: NotRequired[Literal["read", "write"]]
-    repository_hooks: NotRequired[Literal["read", "write"]]
-    repository_projects: NotRequired[Literal["read", "write"]]
-    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
-    secrets: NotRequired[Literal["read", "write"]]
-    security_events: NotRequired[Literal["read", "write"]]
-    security_scanning_alert: NotRequired[Literal["read", "write"]]
-    single_file: NotRequired[Literal["read", "write"]]
-    statuses: NotRequired[Literal["read", "write"]]
-    team_discussions: NotRequired[Literal["read", "write"]]
-    vulnerability_alerts: NotRequired[Literal["read", "write"]]
-    workflows: NotRequired[Literal["read", "write"]]
+class WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItemsType(TypedDict):
+    """Label"""
+
+    color: str
+    default: bool
+    description: Union[str, None]
+    id: int
+    name: str
+    node_id: str
+    url: str
+
+
+class WebhookIssueCommentDeletedPropIssueAllof1PropMilestoneType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof1PropMilestone"""
+
+
+class WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubAppType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubApp"""
+
+
+class WebhookIssueCommentDeletedPropIssueAllof1PropReactionsType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof1PropReactions"""
+
+    plus_one: NotRequired[int]
+    minus_one: NotRequired[int]
+    confused: NotRequired[int]
+    eyes: NotRequired[int]
+    heart: NotRequired[int]
+    hooray: NotRequired[int]
+    laugh: NotRequired[int]
+    rocket: NotRequired[int]
+    total_count: NotRequired[int]
+    url: NotRequired[str]
+
+
+class WebhookIssueCommentDeletedPropIssueAllof1PropUserType(TypedDict):
+    """WebhookIssueCommentDeletedPropIssueAllof1PropUser"""
+
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType",
-    "WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType",
+    "WebhookIssueCommentDeletedPropIssueAllof1Type",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropAssigneeType",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropAssigneesItemsType",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropLabelsItemsType",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropMilestoneType",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropPerformedViaGithubAppType",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropReactionsType",
+    "WebhookIssueCommentDeletedPropIssueAllof1PropUserType",
 )

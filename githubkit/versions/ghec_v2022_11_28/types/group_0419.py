@@ -9,19 +9,12 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0006 import IntegrationType
 
-
-class WebhooksIssueCommentType(TypedDict):
-    """issue comment
-
-    The [comment](https://docs.github.com/enterprise-
-    cloud@latest//rest/issues/comments#get-an-issue-comment) itself.
-    """
+class WebhooksCommentType(TypedDict):
+    """WebhooksComment"""
 
     author_association: Literal[
         "COLLABORATOR",
@@ -34,19 +27,20 @@ class WebhooksIssueCommentType(TypedDict):
         "OWNER",
     ]
     body: str
-    created_at: datetime
+    child_comment_count: int
+    created_at: str
+    discussion_id: int
     html_url: str
     id: int
-    issue_url: str
     node_id: str
-    performed_via_github_app: Union[IntegrationType, None]
-    reactions: WebhooksIssueCommentPropReactionsType
-    updated_at: datetime
-    url: str
-    user: Union[WebhooksIssueCommentPropUserType, None]
+    parent_id: Union[int, None]
+    reactions: WebhooksCommentPropReactionsType
+    repository_url: str
+    updated_at: str
+    user: Union[WebhooksCommentPropUserType, None]
 
 
-class WebhooksIssueCommentPropReactionsType(TypedDict):
+class WebhooksCommentPropReactionsType(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -61,7 +55,7 @@ class WebhooksIssueCommentPropReactionsType(TypedDict):
     url: str
 
 
-class WebhooksIssueCommentPropUserType(TypedDict):
+class WebhooksCommentPropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -83,12 +77,12 @@ class WebhooksIssueCommentPropUserType(TypedDict):
     site_admin: NotRequired[bool]
     starred_url: NotRequired[str]
     subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksIssueCommentType",
-    "WebhooksIssueCommentPropReactionsType",
-    "WebhooksIssueCommentPropUserType",
+    "WebhooksCommentType",
+    "WebhooksCommentPropReactionsType",
+    "WebhooksCommentPropUserType",
 )

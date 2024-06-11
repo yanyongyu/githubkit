@@ -13,13 +13,12 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+class ProjectsProjectIdPatchResponse403Type(TypedDict):
+    """ProjectsProjectIdPatchResponse403"""
 
-    name: str
-    runner_group_id: int
-    labels: List[str]
-    work_folder: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    errors: NotRequired[List[str]]
 
 
-__all__ = ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",)
+__all__ = ("ProjectsProjectIdPatchResponse403Type",)

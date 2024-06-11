@@ -13,8 +13,11 @@ from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0367 import EnterpriseWebhooks
 from .group_0368 import SimpleInstallation
 from .group_0371 import SimpleUserWebhooks
 from .group_0369 import OrganizationSimpleWebhooks
@@ -32,6 +35,11 @@ class WebhookPersonalAccessTokenRequestDenied(GitHubModel):
     organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",

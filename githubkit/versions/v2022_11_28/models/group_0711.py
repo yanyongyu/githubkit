@@ -25,10 +25,10 @@ from .group_0415 import WebhooksSponsorship
 from .group_0369 import OrganizationSimpleWebhooks
 
 
-class WebhookSponsorshipCancelled(GitHubModel):
-    """sponsorship cancelled event"""
+class WebhookSponsorshipCreated(GitHubModel):
+    """sponsorship created event"""
 
-    action: Literal["cancelled"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -56,6 +56,6 @@ class WebhookSponsorshipCancelled(GitHubModel):
     sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookSponsorshipCancelled)
+model_rebuild(WebhookSponsorshipCreated)
 
-__all__ = ("WebhookSponsorshipCancelled",)
+__all__ = ("WebhookSponsorshipCreated",)

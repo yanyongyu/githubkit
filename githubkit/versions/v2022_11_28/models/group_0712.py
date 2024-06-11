@@ -25,10 +25,11 @@ from .group_0415 import WebhooksSponsorship
 from .group_0369 import OrganizationSimpleWebhooks
 
 
-class WebhookSponsorshipCreated(GitHubModel):
-    """sponsorship created event"""
+class WebhookSponsorshipEdited(GitHubModel):
+    """sponsorship edited event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookSponsorshipEditedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -56,6 +57,29 @@ class WebhookSponsorshipCreated(GitHubModel):
     sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookSponsorshipCreated)
+class WebhookSponsorshipEditedPropChanges(GitHubModel):
+    """WebhookSponsorshipEditedPropChanges"""
 
-__all__ = ("WebhookSponsorshipCreated",)
+    privacy_level: Missing[WebhookSponsorshipEditedPropChangesPropPrivacyLevel] = Field(
+        default=UNSET
+    )
+
+
+class WebhookSponsorshipEditedPropChangesPropPrivacyLevel(GitHubModel):
+    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
+
+    from_: str = Field(
+        alias="from",
+        description="The `edited` event types include the details about the change when someone edits a sponsorship to change the privacy.",
+    )
+
+
+model_rebuild(WebhookSponsorshipEdited)
+model_rebuild(WebhookSponsorshipEditedPropChanges)
+model_rebuild(WebhookSponsorshipEditedPropChangesPropPrivacyLevel)
+
+__all__ = (
+    "WebhookSponsorshipEdited",
+    "WebhookSponsorshipEditedPropChanges",
+    "WebhookSponsorshipEditedPropChangesPropPrivacyLevel",
+)

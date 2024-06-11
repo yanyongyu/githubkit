@@ -21,12 +21,11 @@ from .group_0415 import WebhooksSponsorshipType
 from .group_0369 import OrganizationSimpleWebhooksType
 
 
-class WebhookSponsorshipPendingTierChangeType(TypedDict):
-    """sponsorship pending_tier_change event"""
+class WebhookSponsorshipTierChangedType(TypedDict):
+    """sponsorship tier_changed event"""
 
-    action: Literal["pending_tier_change"]
+    action: Literal["tier_changed"]
     changes: WebhooksChanges8Type
-    effective_date: NotRequired[str]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -35,4 +34,4 @@ class WebhookSponsorshipPendingTierChangeType(TypedDict):
     sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("WebhookSponsorshipPendingTierChangeType",)
+__all__ = ("WebhookSponsorshipTierChangedType",)

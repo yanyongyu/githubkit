@@ -9,16 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgOrganizationRolesRoleIdPatchBodyType(TypedDict):
-    """OrgsOrgOrganizationRolesRoleIdPatchBody"""
+class OrgsOrgOutsideCollaboratorsUsernamePutBodyType(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    permissions: NotRequired[List[str]]
+    async_: NotRequired[bool]
 
 
-__all__ = ("OrgsOrgOrganizationRolesRoleIdPatchBodyType",)
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBodyType",)

@@ -13,24 +13,24 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0114 import CustomPropertyValue
 
+class OrgsOrgOrganizationRolesPostBody(GitHubModel):
+    """OrgsOrgOrganizationRolesPostBody"""
 
-class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
-    """OrgsOrgPropertiesValuesPatchBody"""
-
-    repository_names: List[str] = Field(
-        max_length=30,
-        min_length=1,
-        description="The names of repositories that the custom property values will be applied to.",
+    name: str = Field(description="The name of the custom role.")
+    description: Missing[str] = Field(
+        default=UNSET,
+        description="A short description about the intended usage of this role or what permissions it grants.",
     )
-    properties: List[CustomPropertyValue] = Field(
-        description="List of custom property names and associated values to apply to the repositories."
+    permissions: List[str] = Field(
+        description="A list of additional permissions included in this role."
     )
 
 
-model_rebuild(OrgsOrgPropertiesValuesPatchBody)
+model_rebuild(OrgsOrgOrganizationRolesPostBody)
 
-__all__ = ("OrgsOrgPropertiesValuesPatchBody",)
+__all__ = ("OrgsOrgOrganizationRolesPostBody",)

@@ -12,17 +12,14 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0
-
-    Examples:
-        {'teams': ['my-team']}
-    """
-
-    teams: List[str]
+from .group_0187 import WorkflowRunType
 
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type",)
+class ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200"""
+
+    total_count: int
+    workflow_runs: List[WorkflowRunType]
+
+
+__all__ = ("ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type",)

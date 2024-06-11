@@ -9,61 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0001 import SimpleUserType
 
-class PrivateVulnerabilityReportCreateType(TypedDict):
-    """PrivateVulnerabilityReportCreate"""
 
-    summary: str
-    description: str
-    vulnerabilities: NotRequired[
-        Union[List[PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType], None]
+class SecretScanningAlertType(TypedDict):
+    """SecretScanningAlert"""
+
+    number: NotRequired[int]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[Union[None, datetime]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    locations_url: NotRequired[str]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
     ]
-    cwe_ids: NotRequired[Union[List[str], None]]
-    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
-    cvss_vector_string: NotRequired[Union[str, None]]
-    start_private_fork: NotRequired[bool]
+    resolved_at: NotRequired[Union[datetime, None]]
+    resolved_by: NotRequired[Union[None, SimpleUserType]]
+    resolution_comment: NotRequired[Union[str, None]]
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    secret: NotRequired[str]
+    push_protection_bypassed: NotRequired[Union[bool, None]]
+    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
+    push_protection_bypassed_at: NotRequired[Union[datetime, None]]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
 
 
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType(TypedDict):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
-
-    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType
-    vulnerable_version_range: NotRequired[Union[str, None]]
-    patched_versions: NotRequired[Union[str, None]]
-    vulnerable_functions: NotRequired[Union[List[str], None]]
-
-
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType(
-    TypedDict
-):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ]
-    name: NotRequired[Union[str, None]]
-
-
-__all__ = (
-    "PrivateVulnerabilityReportCreateType",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType",
-)
+__all__ = ("SecretScanningAlertType",)

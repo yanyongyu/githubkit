@@ -12,13 +12,14 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-
-class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType(
-    TypedDict
-):
-    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody"""
-
-    runners: List[int]
+from .group_0029 import OrganizationSimpleType
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType",)
+class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
+
+    total_count: float
+    organizations: List[OrganizationSimpleType]
+
+
+__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type",)

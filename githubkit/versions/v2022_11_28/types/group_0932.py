@@ -12,42 +12,38 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoContentsPathPutBodyType(TypedDict):
-    """ReposOwnerRepoContentsPathPutBody"""
+class ReposOwnerRepoContentsPathDeleteBodyType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBody"""
 
     message: str
-    content: str
-    sha: NotRequired[str]
+    sha: str
     branch: NotRequired[str]
-    committer: NotRequired[ReposOwnerRepoContentsPathPutBodyPropCommitterType]
-    author: NotRequired[ReposOwnerRepoContentsPathPutBodyPropAuthorType]
+    committer: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropCommitterType]
+    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType]
 
 
-class ReposOwnerRepoContentsPathPutBodyPropCommitterType(TypedDict):
-    """ReposOwnerRepoContentsPathPutBodyPropCommitter
+class ReposOwnerRepoContentsPathDeleteBodyPropCommitterType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
 
-    The person that committed the file. Default: the authenticated user.
+    object containing information about the committer.
     """
 
-    name: str
-    email: str
-    date: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
 
 
-class ReposOwnerRepoContentsPathPutBodyPropAuthorType(TypedDict):
-    """ReposOwnerRepoContentsPathPutBodyPropAuthor
+class ReposOwnerRepoContentsPathDeleteBodyPropAuthorType(TypedDict):
+    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
 
-    The author of the file. Default: The `committer` or the authenticated user if
-    you omit `committer`.
+    object containing information about the author.
     """
 
-    name: str
-    email: str
-    date: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoContentsPathPutBodyType",
-    "ReposOwnerRepoContentsPathPutBodyPropCommitterType",
-    "ReposOwnerRepoContentsPathPutBodyPropAuthorType",
+    "ReposOwnerRepoContentsPathDeleteBodyType",
+    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
+    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
 )

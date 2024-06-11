@@ -9,16 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200
+class OrgsOrgActionsVariablesNameRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
 
-    The total number of seat assignments cancelled.
-    """
-
-    seats_cancelled: int
+    selected_repository_ids: List[int]
 
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type",)
+__all__ = ("OrgsOrgActionsVariablesNameRepositoriesPutBodyType",)

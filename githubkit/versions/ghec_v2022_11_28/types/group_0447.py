@@ -9,92 +9,132 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class WebhooksSecurityAdvisoryType(TypedDict):
-    """WebhooksSecurityAdvisory
+class WebhooksReleaseType(TypedDict):
+    """Release
 
-    The details of the security advisory, including summary, description, and
-    severity.
+    The [release](https://docs.github.com/enterprise-
+    cloud@latest//rest/releases/releases/#get-a-release) object.
     """
 
-    cvss: WebhooksSecurityAdvisoryPropCvssType
-    cwes: List[WebhooksSecurityAdvisoryPropCwesItemsType]
-    description: str
-    ghsa_id: str
-    identifiers: List[WebhooksSecurityAdvisoryPropIdentifiersItemsType]
-    published_at: str
-    references: List[WebhooksSecurityAdvisoryPropReferencesItemsType]
-    severity: str
-    summary: str
-    updated_at: str
-    vulnerabilities: List[WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType]
-    withdrawn_at: Union[str, None]
+    assets: List[WebhooksReleasePropAssetsItemsType]
+    assets_url: str
+    author: Union[WebhooksReleasePropAuthorType, None]
+    body: Union[str, None]
+    created_at: Union[datetime, None]
+    discussion_url: NotRequired[str]
+    draft: bool
+    html_url: str
+    id: int
+    name: Union[str, None]
+    node_id: str
+    prerelease: bool
+    published_at: Union[datetime, None]
+    reactions: NotRequired[WebhooksReleasePropReactionsType]
+    tag_name: str
+    tarball_url: Union[str, None]
+    target_commitish: str
+    upload_url: str
+    url: str
+    zipball_url: Union[str, None]
 
 
-class WebhooksSecurityAdvisoryPropCvssType(TypedDict):
-    """WebhooksSecurityAdvisoryPropCvss"""
+class WebhooksReleasePropAuthorType(TypedDict):
+    """User"""
 
-    score: float
-    vector_string: Union[str, None]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
-class WebhooksSecurityAdvisoryPropCwesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropCwesItems"""
+class WebhooksReleasePropReactionsType(TypedDict):
+    """Reactions"""
 
-    cwe_id: str
-    name: str
-
-
-class WebhooksSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
-
-    type: str
-    value: str
-
-
-class WebhooksSecurityAdvisoryPropReferencesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropReferencesItems"""
-
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
     url: str
 
 
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType(TypedDict):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
+class WebhooksReleasePropAssetsItemsType(TypedDict):
+    """Release Asset
 
-    first_patched_version: Union[
-        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
-        None,
-    ]
-    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
-    severity: str
-    vulnerable_version_range: str
+    Data related to a release.
+    """
 
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
-    TypedDict
-):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
-
-    identifier: str
-
-
-class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(TypedDict):
-    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
-
-    ecosystem: str
+    browser_download_url: str
+    content_type: str
+    created_at: datetime
+    download_count: int
+    id: int
+    label: Union[str, None]
     name: str
+    node_id: str
+    size: int
+    state: Literal["uploaded"]
+    updated_at: datetime
+    uploader: NotRequired[Union[WebhooksReleasePropAssetsItemsPropUploaderType, None]]
+    url: str
+
+
+class WebhooksReleasePropAssetsItemsPropUploaderType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhooksSecurityAdvisoryType",
-    "WebhooksSecurityAdvisoryPropCvssType",
-    "WebhooksSecurityAdvisoryPropCwesItemsType",
-    "WebhooksSecurityAdvisoryPropIdentifiersItemsType",
-    "WebhooksSecurityAdvisoryPropReferencesItemsType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
-    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
+    "WebhooksReleaseType",
+    "WebhooksReleasePropAuthorType",
+    "WebhooksReleasePropReactionsType",
+    "WebhooksReleasePropAssetsItemsType",
+    "WebhooksReleasePropAssetsItemsPropUploaderType",
 )

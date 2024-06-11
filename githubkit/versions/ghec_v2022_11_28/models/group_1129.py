@@ -9,25 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class UserKeysPostBody(GitHubModel):
-    """UserKeysPostBody"""
-
-    title: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
-    )
-    key: str = Field(
-        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ",
-        description="The public SSH key to add to your GitHub account.",
-    )
+from .group_0079 import MinimalRepository
 
 
-model_rebuild(UserKeysPostBody)
+class UserCodespacesSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-__all__ = ("UserKeysPostBody",)
+    total_count: int = Field()
+    repositories: List[MinimalRepository] = Field()
+
+
+model_rebuild(UserCodespacesSecretsSecretNameRepositoriesGetResponse200)
+
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200",)
