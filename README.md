@@ -74,6 +74,11 @@ pdm add githubkit[auth-oauth-device]
 
 githubkit supports **both pydantic v1 and v2**, but pydantic v2 is recommended. If you have encountered any problems with pydantic v1/v2, please file an issue.
 
+> [!WARNING]
+> githubkit uses [GitHub's official openapi schema](https://github.com/github/rest-api-description) to generate apis and models.
+> You may occasionally encounter **breaking changes** like model names or model field types changing when upgrading githubkit.
+> This is due to **upstream schema changes** and githubkit can not control this.
+
 ## Usage
 
 ### Authentication
