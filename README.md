@@ -236,6 +236,24 @@ async with GitHub("<your_token_here>") as github:
     repo: FullRepository = resp.parsed_data
 ```
 
+> [!WARNING]
+> Note that you should hold a strong reference to the githubkit client instance. Otherwise, githubkit client will fail to call the request.
+> For example, you should not do this:
+>
+> ```python
+> from githubkit import GitHub
+>
+> def get_client() -> GitHub:
+>     return GitHub()
+>
+> # This will cause error
+> get_client().rest.repos.get("owner", "repo")
+>
+> # This is ok
+> client = get_client()
+> client.rest.repos.get("owner", "repo")
+> ```
+
 ### Data Validation
 
 As shown above, the response data is parsed and validated by accessing the `response.parsed_data` property. This ensures that the data type returned by the API is as expected and your code is safe to use it (with static type checking). But sometimes you may want to get the raw data returned by the API, such as when the schema is not correct. You can use the `response.text` property or `response.json()` method to get the raw data:
