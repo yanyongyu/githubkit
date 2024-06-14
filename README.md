@@ -247,7 +247,11 @@ async with GitHub("<your_token_here>") as github:
 >     return GitHub()
 >
 > # This will cause error
-> get_client().rest.repos.get("yanyongyu", "githubkit")
+> get_client().rest.repos.get("owner", "repo")
+>
+> # This is ok
+> client = get_client()
+> client.rest.repos.get("owner", "repo")
 > ```
 
 ### Data Validation
