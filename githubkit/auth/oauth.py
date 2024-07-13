@@ -6,12 +6,12 @@ from typing import (
     Any,
     Dict,
     List,
-    Union,
     Callable,
     ClassVar,
     Optional,
     Coroutine,
     Generator,
+    TypedDict,
     AsyncGenerator,
     cast,
 )
@@ -115,7 +115,10 @@ def exchange_device_code(
 
 
 def refresh_token(
-    github: "GitHubCore", client_id: str, client_secret: str, refresh_token: str
+    github: "GitHubCore",
+    client_id: str,
+    client_secret: Optional[str],  # client secret is optional in device flow
+    refresh_token: str,
 ) -> Generator[httpx.Request, httpx.Response, Dict[str, Any]]:
     """Refresh token."""
     base_url = get_oauth_base_url(github.config.base_url)
@@ -135,47 +138,85 @@ def refresh_token(
     return response.json()
 
 
+class TokenExchangeResult(TypedDict):
+    token: str
+    expire_time: Optional[datetime]
+    refresh_token: Optional[str]
+    refresh_token_expire_time: Optional[datetime]
+
+
+def _parse_token_exchange_response(data: Dict[str, Any]) -> TokenExchangeResult:
+    if "access_token" not in data:
+        raise AuthExpiredError(
+            "Refresh access token error! Check your credentials.", data
+        )
+
+    token = data["access_token"]
+    expire_time = datetime.now(timezone.utc) + timedelta(
+        minutes=-1, seconds=int(data["expires_in"])
+    )
+    refresh_token = data.get("refresh_token")
+    refresh_token_expire_time = None
+    if refresh_token:
+        refresh_token_expire_time = datetime.now(timezone.utc) + timedelta(
+            minutes=-1, seconds=int(data["refresh_token_expires_in"])
+        )
+    return {
+        "token": token,
+        "expire_time": expire_time,
+        "refresh_token": refresh_token,
+        "refresh_token_expire_time": refresh_token_expire_time,
+    }
+
+
 @dataclass
 class OAuthTokenAuth(httpx.Auth):
     """OAuth Token Authentication"""
 
     github: "GitHubCore"
-    client_id: str
-    client_secret: str
-    token: Optional[str] = field(default=None)
-    expire_time: Optional[datetime] = field(default=None)
-    refresh_token: Optional[str] = field(default=None)
-    refresh_token_expire_time: Optional[datetime] = field(default=None)
+    auth_strategy: "OAuthTokenAuthStrategy"
 
-    def __post_init__(self):
-        # either token or refresh_token should be provided
-        if not self.token and not self.refresh_token:
-            raise AuthCredentialError(
-                "Either token or refresh_token should be provided."
-            )
-        # when both token and refresh_token are provided, expire_time should be provided
-        if self.token and self.refresh_token and not self.expire_time:
-            raise AuthCredentialError(
-                "expire_time should be provided "
-                "when both token and refresh_token are provided."
-            )
+    requires_response_body: ClassVar[bool] = True
 
-    def _parse_response_data(self, data: Dict[str, Any]) -> str:
-        if "access_token" not in data:
-            raise AuthExpiredError(
-                "Refresh access token error! Check your credentials.", data
-            )
+    @property
+    def client_id(self) -> str:
+        return self.auth_strategy.client_id
 
-        self.token = token = data["access_token"]
-        if "refresh_token" in data:
-            self.expire_time = datetime.now(timezone.utc) + timedelta(
-                minutes=-1, seconds=int(data["expires_in"])
-            )
-            self.refresh_token = data["refresh_token"]
-            self.refresh_token_expire_time = datetime.now(timezone.utc) + timedelta(
-                minutes=-1, seconds=int(data["refresh_token_expires_in"])
-            )
-        return token
+    @property
+    def client_secret(self) -> Optional[str]:
+        return self.auth_strategy.client_secret
+
+    @property
+    def token(self) -> Optional[str]:
+        return self.auth_strategy.token
+
+    @token.setter
+    def token(self, value: str) -> None:
+        self.auth_strategy.token = value
+
+    @property
+    def expire_time(self) -> Optional[datetime]:
+        return self.auth_strategy.expire_time
+
+    @expire_time.setter
+    def expire_time(self, value: Optional[datetime]) -> None:
+        self.auth_strategy.expire_time = value
+
+    @property
+    def refresh_token(self) -> Optional[str]:
+        return self.auth_strategy.refresh_token
+
+    @refresh_token.setter
+    def refresh_token(self, value: Optional[str]) -> None:
+        self.auth_strategy.refresh_token = value
+
+    @property
+    def refresh_token_expire_time(self) -> Optional[datetime]:
+        return self.auth_strategy.refresh_token_expire_time
+
+    @refresh_token_expire_time.setter
+    def refresh_token_expire_time(self, value: Optional[datetime]) -> None:
+        self.auth_strategy.refresh_token_expire_time = value
 
     def auth_flow(
         self, request: httpx.Request
@@ -183,7 +224,9 @@ class OAuthTokenAuth(httpx.Auth):
         if require_bypass(request.url):
             yield request
             return
-        if require_basic_auth(request.url):
+
+        # check basic auth if is not device flow
+        if self.client_secret is not None and require_basic_auth(request.url):
             yield from httpx.BasicAuth(self.client_id, self.client_secret).auth_flow(
                 request
             )
@@ -206,91 +249,55 @@ class OAuthTokenAuth(httpx.Auth):
                 self.client_secret,
                 cast(str, self.refresh_token),
             )
-            token = self._parse_response_data(data)
+            result = _parse_token_exchange_response(data)
+            self.token = token = result["token"]
+            self.expire_time = result["expire_time"]
+            self.refresh_token = result["refresh_token"]
+            self.refresh_token_expire_time = result["refresh_token_expire_time"]
+
         request.headers["Authorization"] = f"token {token}"
         yield request
 
 
 @dataclass
 class OAuthWebAuth(httpx.Auth):
-    """OAuth Web Flow Hook Authentication"""
+    """OAuth Web Flow Hook Authentication
+
+    This auth flow wraps the OAuth token auth flow.
+    """
 
     github: "GitHubCore"
-    client_id: str
-    client_secret: str
-    code: str
-    redirect_uri: Optional[str] = None
-
-    _token: Optional[str] = field(default=None, init=False, repr=False, compare=False)
-    _expire_time: Optional[datetime] = field(
-        default=None, init=False, repr=False, compare=False
-    )
-    _refresh_token: Optional[str] = field(
-        default=None, init=False, repr=False, compare=False
-    )
-    _refresh_token_expire_time: Optional[datetime] = field(
-        default=None, init=False, repr=False, compare=False
-    )
-
-    requires_response_body: ClassVar[bool] = True
+    auth_strategy: "OAuthWebAuthStrategy"
 
     @property
-    def token(self) -> str:
-        if not self._token:
-            raise RuntimeError("Token not exchanged yet.")
-        return self._token
+    def client_id(self) -> str:
+        return self.auth_strategy.client_id
 
     @property
-    def expire_time(self) -> Optional[datetime]:
-        return self._expire_time
+    def client_secret(self) -> str:
+        return self.auth_strategy.client_secret
 
-    def _exchange_code(self) -> httpx.Request:
-        base_url = self.github.config.base_url
-        url = base_url.copy_with(
-            raw_path=f"{base_url.raw_path}login/oauth/access_token"
-        )
+    @property
+    def code(self) -> str:
+        return self.auth_strategy.code
 
-        body = {
-            "client_id": self.client_id,
-            "client_secret": self.client_secret,
-            "code": self.code,
-        }
-        if self.redirect_uri:
-            body["redirect_uri"] = self.redirect_uri
-        return httpx.Request(
-            "POST",
-            url,
-            json=body,
-            headers={
-                "User-Agent": self.github.config.user_agent,
-                "Accept": "application/json",
-            },
-        )
+    @property
+    def redirect_uri(self) -> Optional[str]:
+        return self.auth_strategy.redirect_uri
 
-    def _parse_response_data(self, data: Dict[str, Any]) -> str:
-        self._token = data["access_token"]
-        if "refresh_token" in data:
-            self._expire_time = datetime.now(timezone.utc) + timedelta(
-                minutes=-1, seconds=int(data["expires_in"])
-            )
-            self._refresh_token = data["refresh_token"]
-            self._refresh_token_expire_time = datetime.now(timezone.utc) + timedelta(
-                minutes=-1, seconds=int(data["refresh_token_expires_in"])
-            )
-        return self._token
+    @property
+    def _token_auth_strategy(self) -> Optional["OAuthTokenAuthStrategy"]:
+        return self.auth_strategy._token_auth
 
-    def auth_flow(
+    @_token_auth_strategy.setter
+    def _token_auth_strategy(self, value: "OAuthTokenAuthStrategy") -> None:
+        self.auth_strategy._token_auth = value
+
+    def sync_auth_flow(
         self, request: httpx.Request
     ) -> Generator[httpx.Request, httpx.Response, None]:
-        if require_bypass(request.url):
-            yield request
-            return
-        if require_basic_auth(request.url):
-            yield from httpx.BasicAuth(self.client_id, self.client_secret).auth_flow(
-                request
-            )
-            return
-        if not (token := self._token):
+        # exchange token for the first time
+        if (token_auth_strategy := self._token_auth_strategy) is None:
             data = yield from exchange_web_flow_code(
                 self.github,
                 self.client_id,
@@ -298,50 +305,84 @@ class OAuthWebAuth(httpx.Auth):
                 self.code,
                 self.redirect_uri,
             )
-            token = self._parse_response_data(data)
-        elif (
-            self._refresh_token_expire_time
-            and datetime.now(timezone.utc) > self._refresh_token_expire_time
-        ):
-            raise AuthExpiredError("Refresh token expired.")
-        elif self._expire_time and datetime.now(timezone.utc) > self._expire_time:
-            data = yield from refresh_token(
+            result = _parse_token_exchange_response(data)
+            token_auth_strategy = OAuthTokenAuthStrategy(
+                self.client_id, self.client_secret, **result
+            )
+            self._token_auth_strategy = token_auth_strategy
+
+        auth = token_auth_strategy.get_auth_flow(self.github)
+        yield from auth.sync_auth_flow(request)
+
+    async def async_auth_flow(
+        self, request: httpx.Request
+    ) -> AsyncGenerator[httpx.Request, httpx.Response]:
+        # exchange token for the first time
+        if (token_auth_strategy := self._token_auth_strategy) is None:
+            flow = exchange_web_flow_code(
                 self.github,
                 self.client_id,
                 self.client_secret,
-                cast(str, self._refresh_token),
+                self.code,
+                self.redirect_uri,
             )
-            token = self._parse_response_data(data)
-        request.headers["Authorization"] = f"token {token}"
-        yield request
+            exchange_request = next(flow)
+            while True:
+                response = yield exchange_request
+                await response.aread()
+                try:
+                    exchange_request = flow.send(response)
+                except StopIteration as e:
+                    data = e.value
+                    break
+
+            result = _parse_token_exchange_response(data)
+            token_auth_strategy = OAuthTokenAuthStrategy(
+                self.client_id, self.client_secret, **result
+            )
+            self._token_auth_strategy = token_auth_strategy
+
+        auth = token_auth_strategy.get_auth_flow(self.github)
+        flow = auth.async_auth_flow(request)
+        request = await anext(flow)
+        while True:
+            response = yield request
+            await response.aread()
+            try:
+                request = await flow.asend(response)
+            except StopAsyncIteration:
+                break
 
 
 @dataclass
 class OAuthDeviceAuth(httpx.Auth):
-    """OAuth Device Flow Hook Authentication"""
+    """OAuth Device Flow Hook Authentication
+
+    This auth flow wraps the OAuth token auth flow.
+    """
 
     github: "GitHubCore"
-    client_id: str
-    on_verification: Union[
-        Callable[[Dict[str, Any]], None],
-        Callable[[Dict[str, Any]], Coroutine[Any, Any, None]],
-    ]
-    scopes: Optional[List[str]] = None
+    auth_strategy: "OAuthDeviceAuthStrategy"
 
-    _token: Optional[str] = field(default=None, init=False, repr=False, compare=False)
-    _expire_time: Optional[datetime] = field(
-        default=None, init=False, repr=False, compare=False
-    )
-    _refresh_token: Optional[str] = field(
-        default=None, init=False, repr=False, compare=False
-    )
-    _refresh_token_expires_time: Optional[datetime] = field(
-        default=None, init=False, repr=False, compare=False
-    )
+    @property
+    def client_id(self) -> str:
+        return self.auth_strategy.client_id
 
-    def _parse_response_data(self, data: Dict[str, Any]) -> str:
-        self._token = data["access_token"]
-        return self._token
+    @property
+    def on_verification(self) -> Callable:
+        return self.auth_strategy.on_verification
+
+    @property
+    def scopes(self) -> Optional[List[str]]:
+        return self.auth_strategy.scopes
+
+    @property
+    def _token_auth_strategy(self) -> Optional["OAuthTokenAuthStrategy"]:
+        return self.auth_strategy._token_auth
+
+    @_token_auth_strategy.setter
+    def _token_auth_strategy(self, value: Optional["OAuthTokenAuthStrategy"]) -> None:
+        self.auth_strategy._token_auth = value
 
     def call_handler(self, data: Dict[str, Any]) -> None:
         if is_async(self.on_verification):
@@ -386,7 +427,10 @@ class OAuthDeviceAuth(httpx.Auth):
         if require_bypass(request.url):
             yield request
             return
-        if not (token := self._token):
+
+        # exchange token for the first time
+        if (auth_strategy := self._token_auth_strategy) is None:
+            # create device code
             flow = create_device_code(self.github, self.client_id, self.scopes)
             create_request = next(flow)
             while True:
@@ -405,7 +449,9 @@ class OAuthDeviceAuth(httpx.Auth):
             interval = int(data["interval"])
             self.call_handler(data)
 
+            # loop to wait for user verification
             while True:
+                # device code expired
                 if datetime.now(timezone.utc) > expire_time:
                     raise AuthExpiredError("Device code expired.")
                 flow = exchange_device_code(self.github, self.client_id, device_code)
@@ -418,13 +464,19 @@ class OAuthDeviceAuth(httpx.Auth):
                     except StopIteration as e:
                         data = e.value
                         break
+
                 if "error" in data:
                     sleep(interval)
                     continue
-                token = self._parse_response_data(data)
+
+                # exchange token successfully
+                result = _parse_token_exchange_response(data)
+                auth_strategy = OAuthTokenAuthStrategy(self.client_id, None, **result)
+                self._token_auth_strategy = auth_strategy
                 break
-        request.headers["Authorization"] = f"token {token}"
-        yield request
+
+        auth = auth_strategy.get_auth_flow(self.github)
+        yield from auth.sync_auth_flow(request)
 
     async def async_auth_flow(
         self, request: httpx.Request
@@ -432,12 +484,16 @@ class OAuthDeviceAuth(httpx.Auth):
         if require_bypass(request.url):
             yield request
             return
+
         if anyio is None:
             raise RuntimeError(
                 "AnyIO support for OAuth Device Flow should be installed "
                 "with `pip install githubkit[auth-oauth-device]`"
             )
-        if not (token := self._token):
+
+        # exchange token for the first time
+        if (auth_strategy := self._token_auth_strategy) is None:
+            # create device code
             flow = create_device_code(self.github, self.client_id, self.scopes)
             create_request = next(flow)
             while True:
@@ -456,7 +512,9 @@ class OAuthDeviceAuth(httpx.Auth):
             interval = int(data["interval"])
             await self.acall_handler(data)
 
+            # loop to wait for user verification
             while True:
+                # device code expired
                 if datetime.now(timezone.utc) > expire_time:
                     raise AuthExpiredError("Device code expired.")
                 flow = exchange_device_code(self.github, self.client_id, device_code)
@@ -469,13 +527,26 @@ class OAuthDeviceAuth(httpx.Auth):
                     except StopIteration as e:
                         data = e.value
                         break
+
                 if "error" in data:
                     await anyio.sleep(interval)
                     continue
-                token = self._parse_response_data(data)
+
+                result = _parse_token_exchange_response(data)
+                auth_strategy = OAuthTokenAuthStrategy(self.client_id, None, **result)
+                self._token_auth_strategy = auth_strategy
                 break
-        request.headers["Authorization"] = f"token {token}"
-        yield request
+
+        auth = auth_strategy.get_auth_flow(self.github)
+        flow = auth.async_auth_flow(request)
+        request = await anext(flow)
+        while True:
+            response = yield request
+            await response.aread()
+            try:
+                request = await flow.asend(response)
+            except StopAsyncIteration:
+                break
 
 
 @dataclass
@@ -497,29 +568,128 @@ class OAuthAppAuthStrategy(BaseAuthStrategy):
 
 
 @dataclass
+class OAuthTokenAuthStrategy(BaseAuthStrategy):
+    """OAuth Token Authentication"""
+
+    client_id: str
+    client_secret: Optional[str] = None  # client secret is optional in device flow
+    token: Optional[str] = None
+    expire_time: Optional[datetime] = None
+    refresh_token: Optional[str] = None
+    refresh_token_expire_time: Optional[datetime] = None
+
+    def __post_init__(self):
+        # either token or refresh_token should be provided
+        if not self.token and not self.refresh_token:
+            raise AuthCredentialError(
+                "Either token or refresh_token should be provided."
+            )
+        # when both token and refresh_token are provided, expire_time should be provided
+        if self.token and self.refresh_token and not self.expire_time:
+            raise AuthCredentialError(
+                "expire_time should be provided "
+                "when both token and refresh_token are provided."
+            )
+
+    def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
+        return OAuthTokenAuth(github, self)
+
+
+@dataclass
 class OAuthWebAuthStrategy(BaseAuthStrategy):
-    """OAuth Web Flow Authentication"""
+    """OAuth Web Flow Authentication
+
+    Note that this auth strategy is one-time use only.
+    The code will expire after token exchange.
+    """
 
     client_id: str
     client_secret: str
     code: str
     redirect_uri: Optional[str] = None
 
+    _token_auth: Optional[OAuthTokenAuthStrategy] = field(
+        default=None, init=False, repr=False
+    )
+
+    @property
+    def token(self) -> str:
+        if self._token_auth is None:
+            raise RuntimeError("Token is not exchanged yet.")
+        return cast(str, self._token_auth.token)
+
+    @property
+    def expire_time(self) -> Optional[datetime]:
+        if self._token_auth is None:
+            raise RuntimeError("Token is not exchanged yet.")
+        return self._token_auth.expire_time
+
+    @property
+    def refresh_token(self) -> Optional[str]:
+        if self._token_auth is None:
+            raise RuntimeError("Token is not exchanged yet.")
+        return self._token_auth.refresh_token
+
+    @property
+    def refresh_token_expire_time(self) -> Optional[datetime]:
+        if self._token_auth is None:
+            raise RuntimeError("Token is not exchanged yet.")
+        return self._token_auth.refresh_token_expire_time
+
     def as_oauth_app(self) -> OAuthAppAuthStrategy:
         return OAuthAppAuthStrategy(self.client_id, self.client_secret)
 
     def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
-        return OAuthWebAuth(
-            github, self.client_id, self.client_secret, self.code, self.redirect_uri
-        )
+        # use web auth flow to exchange token for the first time
+        if self._token_auth is None:
+            return OAuthWebAuth(github, self)
+
+        return self._token_auth.get_auth_flow(github)
 
 
 @dataclass
 class OAuthDeviceAuthStrategy(BaseAuthStrategy):
-    """OAuth Device Flow Authentication"""
+    """OAuth Device Flow Authentication
+
+    Note that this auth strategy instance is only for single device.
+    If you want to create new device auth, you should create a new instance.
+    """
 
     client_id: str
     on_verification: Callable
+    scopes: Optional[List[str]] = None
+
+    _token_auth: Optional[OAuthTokenAuthStrategy] = field(
+        default=None, init=False, repr=False
+    )
+
+    @property
+    def token(self) -> str:
+        if self._token_auth is None:
+            raise RuntimeError("Token is not exchanged yet.")
+        return cast(str, self._token_auth.token)
+
+    @property
+    def expire_time(self) -> Optional[datetime]:
+        if self._token_auth is None:
+            raise RuntimeError("Token is not exchanged yet.")
+        return self._token_auth.expire_time
+
+    @property
+    def refresh_token(self) -> Optional[str]:
+        if self._token_auth is None:
+            raise RuntimeError("Token is not exchanged yet.")
+        return self._token_auth.refresh_token
+
+    @property
+    def refresh_token_expire_time(self) -> Optional[datetime]:
+        if self._token_auth is None:
+            raise RuntimeError("Token is not exchanged yet.")
+        return self._token_auth.refresh_token_expire_time
 
     def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
-        return OAuthDeviceAuth(github, self.client_id, self.on_verification)
+        # use device auth flow to exchange token for the first time
+        if self._token_auth is None:
+            return OAuthDeviceAuth(github, self)
+
+        return self._token_auth.get_auth_flow(github)
