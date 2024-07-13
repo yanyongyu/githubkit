@@ -19,7 +19,7 @@ from typing import (
 import httpx
 
 from githubkit.utils import is_async
-from githubkit.exception import AuthExpiredError
+from githubkit.exception import AuthExpiredError, AuthCredentialError
 
 from .base import BaseAuthStrategy
 from ._url import require_bypass, get_oauth_base_url, require_basic_auth
@@ -133,6 +133,82 @@ def refresh_token(
     )
     response = github._check(response)
     return response.json()
+
+
+@dataclass
+class OAuthTokenAuth(httpx.Auth):
+    """OAuth Token Authentication"""
+
+    github: "GitHubCore"
+    client_id: str
+    client_secret: str
+    token: Optional[str] = field(default=None)
+    expire_time: Optional[datetime] = field(default=None)
+    refresh_token: Optional[str] = field(default=None)
+    refresh_token_expire_time: Optional[datetime] = field(default=None)
+
+    def __post_init__(self):
+        # either token or refresh_token should be provided
+        if not self.token and not self.refresh_token:
+            raise AuthCredentialError(
+                "Either token or refresh_token should be provided."
+            )
+        # when both token and refresh_token are provided, expire_time should be provided
+        if self.token and self.refresh_token and not self.expire_time:
+            raise AuthCredentialError(
+                "expire_time should be provided "
+                "when both token and refresh_token are provided."
+            )
+
+    def _parse_response_data(self, data: Dict[str, Any]) -> str:
+        if "access_token" not in data:
+            raise AuthExpiredError(
+                "Refresh access token error! Check your credentials.", data
+            )
+
+        self.token = token = data["access_token"]
+        if "refresh_token" in data:
+            self.expire_time = datetime.now(timezone.utc) + timedelta(
+                minutes=-1, seconds=int(data["expires_in"])
+            )
+            self.refresh_token = data["refresh_token"]
+            self.refresh_token_expire_time = datetime.now(timezone.utc) + timedelta(
+                minutes=-1, seconds=int(data["refresh_token_expires_in"])
+            )
+        return token
+
+    def auth_flow(
+        self, request: httpx.Request
+    ) -> Generator[httpx.Request, httpx.Response, None]:
+        if require_bypass(request.url):
+            yield request
+            return
+        if require_basic_auth(request.url):
+            yield from httpx.BasicAuth(self.client_id, self.client_secret).auth_flow(
+                request
+            )
+            return
+
+        # check refresh token expire
+        if (
+            self.refresh_token_expire_time
+            and datetime.now(timezone.utc) > self.refresh_token_expire_time
+        ):
+            raise AuthExpiredError("Refresh token expired.")
+
+        # refresh token if token is not provided or expired
+        if not (token := self.token) or (
+            self.expire_time and datetime.now(timezone.utc) > self.expire_time
+        ):
+            data = yield from refresh_token(
+                self.github,
+                self.client_id,
+                self.client_secret,
+                cast(str, self.refresh_token),
+            )
+            token = self._parse_response_data(data)
+        request.headers["Authorization"] = f"token {token}"
+        yield request
 
 
 @dataclass
