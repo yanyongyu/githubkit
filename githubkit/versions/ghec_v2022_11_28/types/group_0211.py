@@ -9,38 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0093 import TeamType
-from .group_0001 import SimpleUserType
-from .group_0006 import IntegrationType
+from .group_0207 import GitUserType
+from .group_0208 import VerificationType
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class CommitPropCommitType(TypedDict):
+    """CommitPropCommit"""
 
     url: str
-    users_url: str
-    teams_url: str
-    users: List[SimpleUserType]
-    teams: List[TeamType]
-    apps: NotRequired[List[Union[IntegrationType, None]]]
+    author: Union[None, GitUserType]
+    committer: Union[None, GitUserType]
+    message: str
+    comment_count: int
+    tree: CommitPropCommitPropTreeType
+    verification: NotRequired[VerificationType]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+class CommitPropCommitPropTreeType(TypedDict):
+    """CommitPropCommitPropTree"""
 
-    users: List[SimpleUserType]
-    teams: List[TeamType]
-    apps: NotRequired[List[Union[IntegrationType, None]]]
+    sha: str
+    url: str
 
 
 __all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
+    "CommitPropCommitType",
+    "CommitPropCommitPropTreeType",
 )

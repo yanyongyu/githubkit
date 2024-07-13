@@ -16,22 +16,31 @@ from .group_0001 import SimpleUserType
 from .group_0006 import IntegrationType
 
 
-class LockedIssueEventType(TypedDict):
-    """Locked Issue Event
+class DemilestonedIssueEventType(TypedDict):
+    """Demilestoned Issue Event
 
-    Locked Issue Event
+    Demilestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["locked"]
+    event: Literal["demilestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    lock_reason: Union[str, None]
+    milestone: DemilestonedIssueEventPropMilestoneType
 
 
-__all__ = ("LockedIssueEventType",)
+class DemilestonedIssueEventPropMilestoneType(TypedDict):
+    """DemilestonedIssueEventPropMilestone"""
+
+    title: str
+
+
+__all__ = (
+    "DemilestonedIssueEventType",
+    "DemilestonedIssueEventPropMilestoneType",
+)

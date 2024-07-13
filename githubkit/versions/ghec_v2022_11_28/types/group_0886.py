@@ -9,16 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class OrgsOrgOrganizationRolesRoleIdPatchBodyType(TypedDict):
-    """OrgsOrgOrganizationRolesRoleIdPatchBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
 
-    name: NotRequired[str]
-    description: NotRequired[str]
-    permissions: NotRequired[List[str]]
+    The total number of seat assignments cancelled.
+    """
+
+    seats_cancelled: int
 
 
-__all__ = ("OrgsOrgOrganizationRolesRoleIdPatchBodyType",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",)

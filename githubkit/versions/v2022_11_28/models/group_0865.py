@@ -18,21 +18,29 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsOidcCustomizationSubPutBody(GitHubModel):
-    """Actions OIDC subject customization for a repository
+class ProjectsColumnsCardsCardIdMovesPostResponse403(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403"""
 
-    Actions OIDC subject customization for a repository
-    """
-
-    use_default: bool = Field(
-        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
-    )
-    include_claim_keys: Missing[List[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
-    )
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[
+        List[ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoActionsOidcCustomizationSubPutBody)
+class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"""
 
-__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",)
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse403)
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems)
+
+__all__ = (
+    "ProjectsColumnsCardsCardIdMovesPostResponse403",
+    "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems",
+)

@@ -287,6 +287,9 @@ if TYPE_CHECKING:
         GithubAppAuthorizationEvent as GithubAppAuthorizationEvent,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
+        ProjectsV2StatusUpdateEvent as ProjectsV2StatusUpdateEvent,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
         commit_comment_action_types as commit_comment_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
@@ -384,6 +387,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         installation_repositories_action_types as installation_repositories_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        projects_v2_status_update_action_types as projects_v2_status_update_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         deployment_protection_rule_action_types as deployment_protection_rule_action_types,
@@ -583,6 +589,10 @@ else:
         "githubkit.versions.v2022_11_28.webhooks.projects_v2_item": (
             "ProjectsV2ItemEvent",
             "projects_v2_item_action_types",
+        ),
+        "githubkit.versions.v2022_11_28.webhooks.projects_v2_status_update": (
+            "ProjectsV2StatusUpdateEvent",
+            "projects_v2_status_update_action_types",
         ),
         "githubkit.versions.v2022_11_28.webhooks.public": (
             "PublicEvent",

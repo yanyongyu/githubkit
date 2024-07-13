@@ -18,100 +18,41 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleCreation(GitHubModel):
-    """creation
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty(
+    GitHubModel
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
 
-    Only allow users with bypass permission to create matching refs.
-    """
-
-    type: Literal["creation"] = Field()
-
-
-class RepositoryRuleDeletion(GitHubModel):
-    """deletion
-
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"] = Field()
-
-
-class RepositoryRuleRequiredSignatures(GitHubModel):
-    """required_signatures
-
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"] = Field()
-
-
-class RepositoryRuleNonFastForward(GitHubModel):
-    """non_fast_forward
-
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"] = Field()
-
-
-class RepositoryRuleOneof14(GitHubModel):
-    """file_path_restriction
-
-    Note: file_path_restriction is in beta and subject to change.
-
-    Prevent commits that include changes in specified file paths from being pushed
-    to the commit graph.
-    """
-
-    type: Literal["file_path_restriction"] = Field()
-    parameters: Missing[RepositoryRuleOneof14PropParameters] = Field(default=UNSET)
-
-
-class RepositoryRuleOneof14PropParameters(GitHubModel):
-    """RepositoryRuleOneof14PropParameters"""
-
-    restricted_file_paths: List[str] = Field(
-        description="The file paths that are restricted from being pushed to the commit graph."
+    include: Missing[List[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+        default=UNSET,
+        description="The repository properties and values to include. All of these properties must match for the condition to pass.",
+    )
+    exclude: Missing[List[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+        default=UNSET,
+        description="The repository properties and values to exclude. The condition will not pass if any of these properties match.",
     )
 
 
-class RepositoryRuleOneof16(GitHubModel):
-    """file_extension_restriction
+class RepositoryRulesetConditionsRepositoryPropertySpec(GitHubModel):
+    """Repository ruleset property targeting definition
 
-    Note: file_extension_restriction is in beta and subject to change.
-
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
+    Parameters for a targeting a repository property
     """
 
-    type: Literal["file_extension_restriction"] = Field()
-    parameters: Missing[RepositoryRuleOneof16PropParameters] = Field(default=UNSET)
-
-
-class RepositoryRuleOneof16PropParameters(GitHubModel):
-    """RepositoryRuleOneof16PropParameters"""
-
-    restricted_file_extensions: List[str] = Field(
-        description="The file extensions that are restricted from being pushed to the commit graph."
+    name: str = Field(description="The name of the repository property to target")
+    property_values: List[str] = Field(
+        description="The values to match for the repository property"
+    )
+    source: Missing[Literal["custom", "system"]] = Field(
+        default=UNSET,
+        description="The source of the repository property. Defaults to 'custom' if not specified.",
     )
 
 
-model_rebuild(RepositoryRuleCreation)
-model_rebuild(RepositoryRuleDeletion)
-model_rebuild(RepositoryRuleRequiredSignatures)
-model_rebuild(RepositoryRuleNonFastForward)
-model_rebuild(RepositoryRuleOneof14)
-model_rebuild(RepositoryRuleOneof14PropParameters)
-model_rebuild(RepositoryRuleOneof16)
-model_rebuild(RepositoryRuleOneof16PropParameters)
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty)
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertySpec)
 
 __all__ = (
-    "RepositoryRuleCreation",
-    "RepositoryRuleDeletion",
-    "RepositoryRuleRequiredSignatures",
-    "RepositoryRuleNonFastForward",
-    "RepositoryRuleOneof14",
-    "RepositoryRuleOneof14PropParameters",
-    "RepositoryRuleOneof16",
-    "RepositoryRuleOneof16PropParameters",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
+    "RepositoryRulesetConditionsRepositoryPropertySpec",
 )

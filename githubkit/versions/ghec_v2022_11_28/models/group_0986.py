@@ -9,36 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import Annotated
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0(GitHubModel):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0
 
-    state: Literal["open", "dismissed"] = Field(
-        description="Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`."
-    )
-    dismissed_reason: Missing[
-        Union[None, Literal["false positive", "won't fix", "used in tests"]]
-    ] = Field(
-        default=UNSET,
-        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
-    )
-    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
-        Field(
-            default=UNSET,
-            description="The dismissal comment associated with the dismissal of the alert.",
-        )
+    Examples:
+        {'apps': ['my-app']}
+    """
+
+    apps: List[str] = Field(
+        description="The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items."
     )
 
 
-model_rebuild(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody)
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0)
 
-__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0",)

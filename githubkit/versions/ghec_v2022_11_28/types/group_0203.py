@@ -9,18 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0048 import TeamType
+from .group_0001 import SimpleUserType
+from .group_0006 import IntegrationType
 
-class GitUserType(TypedDict):
-    """Git User
 
-    Metaproperties for Git author/committer information.
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+
+    users: NotRequired[List[SimpleUserType]]
+    teams: NotRequired[List[TeamType]]
+    apps: NotRequired[List[Union[IntegrationType, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    name: NotRequired[str]
-    email: NotRequired[str]
-    date: NotRequired[str]
+    users: NotRequired[List[SimpleUserType]]
+    teams: NotRequired[List[TeamType]]
+    apps: NotRequired[List[Union[IntegrationType, None]]]
 
 
-__all__ = ("GitUserType",)
+__all__ = (
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
+)

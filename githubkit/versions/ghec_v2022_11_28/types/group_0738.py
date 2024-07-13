@@ -9,27 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0449 import WebhooksAlertType
-from .group_0402 import EnterpriseWebhooksType
-from .group_0403 import SimpleInstallationType
-from .group_0405 import RepositoryWebhooksType
-from .group_0406 import SimpleUserWebhooksType
-from .group_0404 import OrganizationSimpleWebhooksType
+from .group_0125 import RepositoryRulesetConditionsType
+from .group_0739 import (
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType,
+)
 
 
-class WebhookRepositoryVulnerabilityAlertReopenType(TypedDict):
-    """repository_vulnerability_alert reopen event"""
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
 
-    action: Literal["reopen"]
-    alert: WebhooksAlertType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    added: NotRequired[List[RepositoryRulesetConditionsType]]
+    deleted: NotRequired[List[RepositoryRulesetConditionsType]]
+    updated: NotRequired[
+        List[
+            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType
+        ]
+    ]
 
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertReopenType",)
+__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropConditionsType",)

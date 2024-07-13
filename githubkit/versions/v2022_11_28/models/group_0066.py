@@ -9,27 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0065 import RunnerLabel
 
-class ActionsPublicKey(GitHubModel):
-    """ActionsPublicKey
 
-    The public key used for setting Actions Secrets.
+class Runner(GitHubModel):
+    """Self hosted runners
+
+    A self hosted runner
     """
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
-    id: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
+    id: int = Field(description="The id of the runner.")
+    runner_group_id: Missing[int] = Field(
+        default=UNSET, description="The id of the runner group."
+    )
+    name: str = Field(description="The name of the runner.")
+    os: str = Field(description="The Operating System of the runner.")
+    status: str = Field(description="The status of the runner.")
+    busy: bool = Field()
+    labels: List[RunnerLabel] = Field()
 
 
-model_rebuild(ActionsPublicKey)
+model_rebuild(Runner)
 
-__all__ = ("ActionsPublicKey",)
+__all__ = ("Runner",)

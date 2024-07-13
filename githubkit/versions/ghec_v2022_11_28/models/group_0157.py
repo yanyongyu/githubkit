@@ -17,34 +17,20 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0158 import RepositoryRuleWorkflowsPropParameters
 
-class RepositoryRuleOneof17(GitHubModel):
-    """max_file_size
 
-    Note: max_file_size is in beta and subject to change.
+class RepositoryRuleWorkflows(GitHubModel):
+    """workflows
 
-    Prevent commits that exceed a specified file size limit from being pushed to the
-    commit.
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    type: Literal["max_file_size"] = Field()
-    parameters: Missing[RepositoryRuleOneof17PropParameters] = Field(default=UNSET)
+    type: Literal["workflows"] = Field()
+    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
 
 
-class RepositoryRuleOneof17PropParameters(GitHubModel):
-    """RepositoryRuleOneof17PropParameters"""
+model_rebuild(RepositoryRuleWorkflows)
 
-    max_file_size: int = Field(
-        le=100.0,
-        ge=1.0,
-        description="The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
-    )
-
-
-model_rebuild(RepositoryRuleOneof17)
-model_rebuild(RepositoryRuleOneof17PropParameters)
-
-__all__ = (
-    "RepositoryRuleOneof17",
-    "RepositoryRuleOneof17PropParameters",
-)
+__all__ = ("RepositoryRuleWorkflows",)

@@ -18,40 +18,46 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgTeamsPostBody(GitHubModel):
-    """OrgsOrgTeamsPostBody"""
+class OrgsOrgMigrationsPostBody(GitHubModel):
+    """OrgsOrgMigrationsPostBody"""
 
-    name: str = Field(description="The name of the team.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the team."
+    repositories: List[str] = Field(
+        description="A list of arrays indicating which repositories should be migrated."
     )
-    maintainers: Missing[List[str]] = Field(
+    lock_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="List GitHub IDs for organization members who will become team maintainers.",
+        description="Indicates whether repositories should be locked (to prevent manipulation) while migrating data.",
     )
-    repo_names: Missing[List[str]] = Field(
+    exclude_metadata: Missing[bool] = Field(
         default=UNSET,
-        description='The full name (e.g., "organization-name/repository-name") of repositories to add the team to.',
+        description="Indicates whether metadata should be excluded and only git source should be included for the migration.",
     )
-    privacy: Missing[Literal["secret", "closed"]] = Field(
+    exclude_git_data: Missing[bool] = Field(
         default=UNSET,
-        description="The level of privacy this team should have. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \nDefault: `secret`  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.  \nDefault for child team: `closed`",
+        description="Indicates whether the repository git data should be excluded from the migration.",
     )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
+    exclude_attachments: Missing[bool] = Field(
         default=UNSET,
-        description="The notification setting the team has chosen. The options are:  \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.  \nDefault: `notifications_enabled`",
+        description="Indicates whether attachments should be excluded from the migration (to reduce migration archive file size).",
     )
-    permission: Missing[Literal["pull", "push"]] = Field(
+    exclude_releases: Missing[bool] = Field(
         default=UNSET,
-        description="**Deprecated**. The permission that new repositories will be added to the team with when none is specified.",
+        description="Indicates whether releases should be excluded from the migration (to reduce migration archive file size).",
     )
-    parent_team_id: Missing[int] = Field(
-        default=UNSET, description="The ID of a team to set as the parent team."
+    exclude_owner_projects: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether projects owned by the organization or users should be excluded. from the migration.",
+    )
+    org_metadata_only: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
+    )
+    exclude: Missing[List[Literal["repositories"]]] = Field(
+        default=UNSET,
+        description="Exclude related items from being returned in the response in order to improve performance of the request.",
     )
 
 
-model_rebuild(OrgsOrgTeamsPostBody)
+model_rebuild(OrgsOrgMigrationsPostBody)
 
-__all__ = ("OrgsOrgTeamsPostBody",)
+__all__ = ("OrgsOrgMigrationsPostBody",)

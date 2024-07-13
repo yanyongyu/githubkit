@@ -9,49 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0016 import LicenseSimpleType
-from .group_0095 import CodeOfConductSimpleType
+from .group_0026 import TeamType
+from .group_0037 import MilestoneType
+from .group_0224 import AutoMergeType
+from .group_0001 import SimpleUserType
+from .group_0227 import PullRequestSimplePropLinksType
+from .group_0226 import PullRequestSimplePropBaseType, PullRequestSimplePropHeadType
 
 
-class CommunityProfilePropFilesType(TypedDict):
-    """CommunityProfilePropFiles"""
+class PullRequestSimpleType(TypedDict):
+    """Pull Request Simple
 
-    code_of_conduct: Union[None, CodeOfConductSimpleType]
-    code_of_conduct_file: Union[None, CommunityHealthFileType]
-    license_: Union[None, LicenseSimpleType]
-    contributing: Union[None, CommunityHealthFileType]
-    readme: Union[None, CommunityHealthFileType]
-    issue_template: Union[None, CommunityHealthFileType]
-    pull_request_template: Union[None, CommunityHealthFileType]
-
-
-class CommunityHealthFileType(TypedDict):
-    """Community Health File"""
-
-    url: str
-    html_url: str
-
-
-class CommunityProfileType(TypedDict):
-    """Community Profile
-
-    Community Profile
+    Pull Request Simple
     """
 
-    health_percentage: int
+    url: str
+    id: int
+    node_id: str
+    html_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: str
+    locked: bool
+    title: str
+    user: Union[None, SimpleUserType]
+    body: Union[str, None]
+    labels: List[PullRequestSimplePropLabelsItemsType]
+    milestone: Union[None, MilestoneType]
+    active_lock_reason: NotRequired[Union[str, None]]
+    created_at: datetime
+    updated_at: datetime
+    closed_at: Union[datetime, None]
+    merged_at: Union[datetime, None]
+    merge_commit_sha: Union[str, None]
+    assignee: Union[None, SimpleUserType]
+    assignees: NotRequired[Union[List[SimpleUserType], None]]
+    requested_reviewers: NotRequired[Union[List[SimpleUserType], None]]
+    requested_teams: NotRequired[Union[List[TeamType], None]]
+    head: PullRequestSimplePropHeadType
+    base: PullRequestSimplePropBaseType
+    links: PullRequestSimplePropLinksType
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    auto_merge: Union[AutoMergeType, None]
+    draft: NotRequired[bool]
+
+
+class PullRequestSimplePropLabelsItemsType(TypedDict):
+    """PullRequestSimplePropLabelsItems"""
+
+    id: int
+    node_id: str
+    url: str
+    name: str
     description: Union[str, None]
-    documentation: Union[str, None]
-    files: CommunityProfilePropFilesType
-    updated_at: Union[datetime, None]
-    content_reports_enabled: NotRequired[bool]
+    color: str
+    default: bool
 
 
 __all__ = (
-    "CommunityProfilePropFilesType",
-    "CommunityHealthFileType",
-    "CommunityProfileType",
+    "PullRequestSimpleType",
+    "PullRequestSimplePropLabelsItemsType",
 )

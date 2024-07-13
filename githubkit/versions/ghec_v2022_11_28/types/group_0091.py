@@ -12,39 +12,14 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class CopilotOrganizationDetailsType(TypedDict):
-    """Copilot Business Organization Details
-
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business subscription.
-    """
-
-    seat_breakdown: CopilotSeatBreakdownType
-    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"]
-    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
-    ]
+from .group_0090 import CodeSecurityConfigurationType
 
 
-class CopilotSeatBreakdownType(TypedDict):
-    """Copilot Business Seat Breakdown
+class CodeSecurityDefaultConfigurationsItemsType(TypedDict):
+    """CodeSecurityDefaultConfigurationsItems"""
 
-    The breakdown of Copilot Business seats for the organization.
-    """
-
-    total: NotRequired[int]
-    added_this_cycle: NotRequired[int]
-    pending_cancellation: NotRequired[int]
-    pending_invitation: NotRequired[int]
-    active_this_cycle: NotRequired[int]
-    inactive_this_cycle: NotRequired[int]
+    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-__all__ = (
-    "CopilotOrganizationDetailsType",
-    "CopilotSeatBreakdownType",
-)
+__all__ = ("CodeSecurityDefaultConfigurationsItemsType",)

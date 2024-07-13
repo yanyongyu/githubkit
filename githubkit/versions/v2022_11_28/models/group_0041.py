@@ -16,128 +16,88 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0040 import GistHistory, GistSimplePropForkOf
+from .group_0039 import Issue
+from .group_0040 import IssueComment
 
 
-class GistSimple(GitHubModel):
-    """Gist Simple
+class EventPropPayload(GitHubModel):
+    """EventPropPayload"""
 
-    Gist Simple
-    """
-
-    forks: Missing[Union[List[GistSimplePropForksItems], None]] = Field(default=UNSET)
-    history: Missing[Union[List[GistHistory], None]] = Field(default=UNSET)
-    fork_of: Missing[Union[GistSimplePropForkOf, None]] = Field(
-        default=UNSET, title="Gist", description="Gist"
+    action: Missing[str] = Field(default=UNSET)
+    issue: Missing[Issue] = Field(
+        default=UNSET,
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
-    url: Missing[str] = Field(default=UNSET)
-    forks_url: Missing[str] = Field(default=UNSET)
-    commits_url: Missing[str] = Field(default=UNSET)
-    id: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    git_pull_url: Missing[str] = Field(default=UNSET)
-    git_push_url: Missing[str] = Field(default=UNSET)
+    comment: Missing[IssueComment] = Field(
+        default=UNSET,
+        title="Issue Comment",
+        description="Comments provide a way for people to collaborate on an issue.",
+    )
+    pages: Missing[List[EventPropPayloadPropPagesItems]] = Field(default=UNSET)
+
+
+class EventPropPayloadPropPagesItems(GitHubModel):
+    """EventPropPayloadPropPagesItems"""
+
+    page_name: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    summary: Missing[Union[str, None]] = Field(default=UNSET)
+    action: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
-    files: Missing[GistSimplePropFiles] = Field(default=UNSET)
-    public: Missing[bool] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-    comments: Missing[int] = Field(default=UNSET)
-    user: Missing[Union[str, None]] = Field(default=UNSET)
-    comments_url: Missing[str] = Field(default=UNSET)
-    owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    truncated: Missing[bool] = Field(default=UNSET)
 
 
-class GistSimplePropFiles(ExtraGitHubModel):
-    """GistSimplePropFiles"""
+class Event(GitHubModel):
+    """Event
 
-
-class GistSimplePropForksItems(GitHubModel):
-    """GistSimplePropForksItems"""
-
-    id: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    user: Missing[PublicUser] = Field(
-        default=UNSET, title="Public User", description="Public User"
-    )
-    created_at: Missing[datetime] = Field(default=UNSET)
-    updated_at: Missing[datetime] = Field(default=UNSET)
-
-
-class PublicUser(GitHubModel):
-    """Public User
-
-    Public User
+    Event
     """
 
-    login: str = Field()
+    id: str = Field()
+    type: Union[str, None] = Field()
+    actor: Actor = Field(title="Actor", description="Actor")
+    repo: EventPropRepo = Field()
+    org: Missing[Actor] = Field(default=UNSET, title="Actor", description="Actor")
+    payload: EventPropPayload = Field()
+    public: bool = Field()
+    created_at: Union[datetime, None] = Field()
+
+
+class Actor(GitHubModel):
+    """Actor
+
+    Actor
+    """
+
     id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
+    login: str = Field()
+    display_login: Missing[str] = Field(default=UNSET)
     gravatar_id: Union[str, None] = Field()
     url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    name: Union[str, None] = Field()
-    company: Union[str, None] = Field()
-    blog: Union[str, None] = Field()
-    location: Union[str, None] = Field()
-    email: Union[str, None] = Field()
-    notification_email: Missing[Union[str, None]] = Field(default=UNSET)
-    hireable: Union[bool, None] = Field()
-    bio: Union[str, None] = Field()
-    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
-    public_repos: int = Field()
-    public_gists: int = Field()
-    followers: int = Field()
-    following: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    plan: Missing[PublicUserPropPlan] = Field(default=UNSET)
-    suspended_at: Missing[Union[datetime, None]] = Field(default=UNSET)
-    private_gists: Missing[int] = Field(default=UNSET)
-    total_private_repos: Missing[int] = Field(default=UNSET)
-    owned_private_repos: Missing[int] = Field(default=UNSET)
-    disk_usage: Missing[int] = Field(default=UNSET)
-    collaborators: Missing[int] = Field(default=UNSET)
+    avatar_url: str = Field()
 
 
-class PublicUserPropPlan(GitHubModel):
-    """PublicUserPropPlan"""
+class EventPropRepo(GitHubModel):
+    """EventPropRepo"""
 
-    collaborators: int = Field()
+    id: int = Field()
     name: str = Field()
-    space: int = Field()
-    private_repos: int = Field()
+    url: str = Field()
 
 
-model_rebuild(GistSimple)
-model_rebuild(GistSimplePropFiles)
-model_rebuild(GistSimplePropForksItems)
-model_rebuild(PublicUser)
-model_rebuild(PublicUserPropPlan)
+model_rebuild(EventPropPayload)
+model_rebuild(EventPropPayloadPropPagesItems)
+model_rebuild(Event)
+model_rebuild(Actor)
+model_rebuild(EventPropRepo)
 
 __all__ = (
-    "GistSimple",
-    "GistSimplePropFiles",
-    "GistSimplePropForksItems",
-    "PublicUser",
-    "PublicUserPropPlan",
+    "EventPropPayload",
+    "EventPropPayloadPropPagesItems",
+    "Event",
+    "Actor",
+    "EventPropRepo",
 )

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -17,40 +17,33 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0093 import Team
-from .group_0001 import SimpleUser
-from .group_0006 import Integration
+from .group_0207 import GitUser
+from .group_0208 import Verification
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(
-    GitHubModel
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class CommitPropCommit(GitHubModel):
+    """CommitPropCommit"""
 
     url: str = Field()
-    users_url: str = Field()
-    teams_url: str = Field()
-    users: List[SimpleUser] = Field()
-    teams: List[Team] = Field()
-    apps: Missing[List[Union[Integration, None]]] = Field(default=UNSET)
+    author: Union[None, GitUser] = Field()
+    committer: Union[None, GitUser] = Field()
+    message: str = Field()
+    comment_count: int = Field()
+    tree: CommitPropCommitPropTree = Field()
+    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
-    GitHubModel
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+class CommitPropCommitPropTree(GitHubModel):
+    """CommitPropCommitPropTree"""
 
-    users: List[SimpleUser] = Field()
-    teams: List[Team] = Field()
-    apps: Missing[List[Union[Integration, None]]] = Field(default=UNSET)
+    sha: str = Field()
+    url: str = Field()
 
 
-model_rebuild(ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions)
-model_rebuild(
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
-)
+model_rebuild(CommitPropCommit)
+model_rebuild(CommitPropCommitPropTree)
 
 __all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
+    "CommitPropCommit",
+    "CommitPropCommitPropTree",
 )

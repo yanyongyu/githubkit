@@ -19,24 +19,34 @@ from .group_0001 import SimpleUser
 from .group_0006 import Integration
 
 
-class LockedIssueEvent(GitHubModel):
-    """Locked Issue Event
+class DemilestonedIssueEvent(GitHubModel):
+    """Demilestoned Issue Event
 
-    Locked Issue Event
+    Demilestoned Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["locked"] = Field()
+    event: Literal["demilestoned"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    lock_reason: Union[str, None] = Field()
+    milestone: DemilestonedIssueEventPropMilestone = Field()
 
 
-model_rebuild(LockedIssueEvent)
+class DemilestonedIssueEventPropMilestone(GitHubModel):
+    """DemilestonedIssueEventPropMilestone"""
 
-__all__ = ("LockedIssueEvent",)
+    title: str = Field()
+
+
+model_rebuild(DemilestonedIssueEvent)
+model_rebuild(DemilestonedIssueEventPropMilestone)
+
+__all__ = (
+    "DemilestonedIssueEvent",
+    "DemilestonedIssueEventPropMilestone",
+)

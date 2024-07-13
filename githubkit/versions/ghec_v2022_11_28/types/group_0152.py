@@ -9,17 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0153 import RepositoryRuleBranchNamePatternPropParametersType
 
-class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
-    """RestrictedCommits
 
-    Restricted commit
+class RepositoryRuleBranchNamePatternType(TypedDict):
+    """branch_name_pattern
+
+    Parameters to be used for the branch_name_pattern rule
     """
 
-    oid: str
-    reason: NotRequired[str]
+    type: Literal["branch_name_pattern"]
+    parameters: NotRequired[RepositoryRuleBranchNamePatternPropParametersType]
 
 
-__all__ = ("RepositoryRuleParamsRestrictedCommitsType",)
+__all__ = ("RepositoryRuleBranchNamePatternType",)

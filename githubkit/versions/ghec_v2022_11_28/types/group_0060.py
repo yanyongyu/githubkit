@@ -13,29 +13,29 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class BillingUsageReportType(TypedDict):
-    """BillingUsageReport"""
+class GetAllCostCentersType(TypedDict):
+    """GetAllCostCenters"""
 
-    usage_items: NotRequired[List[BillingUsageReportPropUsageItemsItemsType]]
+    cost_centers: NotRequired[List[GetAllCostCentersPropCostCentersItemsType]]
 
 
-class BillingUsageReportPropUsageItemsItemsType(TypedDict):
-    """BillingUsageReportPropUsageItemsItems"""
+class GetAllCostCentersPropCostCentersItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItems"""
 
-    date: str
-    product: str
-    sku: str
-    quantity: int
-    unit_type: str
-    price_per_unit: float
-    gross_amount: float
-    discount_amount: float
-    net_amount: float
-    organization_name: str
-    repository_name: NotRequired[str]
+    id: str
+    name: str
+    resources: List[GetAllCostCentersPropCostCentersItemsPropResourcesItemsType]
+
+
+class GetAllCostCentersPropCostCentersItemsPropResourcesItemsType(TypedDict):
+    """GetAllCostCentersPropCostCentersItemsPropResourcesItems"""
+
+    type: str
+    name: str
 
 
 __all__ = (
-    "BillingUsageReportType",
-    "BillingUsageReportPropUsageItemsItemsType",
+    "GetAllCostCentersType",
+    "GetAllCostCentersPropCostCentersItemsType",
+    "GetAllCostCentersPropCostCentersItemsPropResourcesItemsType",
 )

@@ -10,15 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
+
+from .group_0098 import CustomPropertyValueType
 
 
-class ProjectsColumnsCardsCardIdDeleteResponse403Type(TypedDict):
-    """ProjectsColumnsCardsCardIdDeleteResponse403"""
+class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    errors: NotRequired[List[str]]
+    repository_names: List[str]
+    properties: List[CustomPropertyValueType]
 
 
-__all__ = ("ProjectsColumnsCardsCardIdDeleteResponse403Type",)
+__all__ = ("OrgsOrgPropertiesValuesPatchBodyType",)

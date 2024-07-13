@@ -9,79 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
 
+class Label(GitHubModel):
+    """Label
 
-class TimelineReviewedEvent(GitHubModel):
-    """Timeline Reviewed Event
-
-    Timeline Reviewed Event
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
-    event: Literal["reviewed"] = Field()
-    id: int = Field(description="Unique identifier of the review")
+    id: int = Field()
     node_id: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    body: Union[str, None] = Field(description="The text of the review.")
-    state: str = Field()
-    html_url: str = Field()
-    pull_request_url: str = Field()
-    links: TimelineReviewedEventPropLinks = Field(alias="_links")
-    submitted_at: Missing[datetime] = Field(default=UNSET)
-    commit_id: str = Field(description="A commit SHA for the review.")
-    body_html: Missing[Union[str, None]] = Field(default=UNSET)
-    body_text: Missing[Union[str, None]] = Field(default=UNSET)
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+    url: str = Field(description="URL for the label")
+    name: str = Field(description="The name of the label.")
+    description: Union[str, None] = Field()
+    color: str = Field(
+        description="6-character hex code, without the leading #, identifying the color"
     )
+    default: bool = Field()
 
 
-class TimelineReviewedEventPropLinks(GitHubModel):
-    """TimelineReviewedEventPropLinks"""
+model_rebuild(Label)
 
-    html: TimelineReviewedEventPropLinksPropHtml = Field()
-    pull_request: TimelineReviewedEventPropLinksPropPullRequest = Field()
-
-
-class TimelineReviewedEventPropLinksPropHtml(GitHubModel):
-    """TimelineReviewedEventPropLinksPropHtml"""
-
-    href: str = Field()
-
-
-class TimelineReviewedEventPropLinksPropPullRequest(GitHubModel):
-    """TimelineReviewedEventPropLinksPropPullRequest"""
-
-    href: str = Field()
-
-
-model_rebuild(TimelineReviewedEvent)
-model_rebuild(TimelineReviewedEventPropLinks)
-model_rebuild(TimelineReviewedEventPropLinksPropHtml)
-model_rebuild(TimelineReviewedEventPropLinksPropPullRequest)
-
-__all__ = (
-    "TimelineReviewedEvent",
-    "TimelineReviewedEventPropLinks",
-    "TimelineReviewedEventPropLinksPropHtml",
-    "TimelineReviewedEventPropLinksPropPullRequest",
-)
+__all__ = ("Label",)

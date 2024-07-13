@@ -9,26 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union
+from datetime import datetime
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0340 import Traffic
 
+class RepositorySubscription(GitHubModel):
+    """Repository Invitation
 
-class CloneTraffic(GitHubModel):
-    """Clone Traffic
-
-    Clone Traffic
+    Repository invitations let you manage who you collaborate with.
     """
 
-    count: int = Field()
-    uniques: int = Field()
-    clones: List[Traffic] = Field()
+    subscribed: bool = Field(
+        description="Determines if notifications should be received from this repository."
+    )
+    ignored: bool = Field(
+        description="Determines if all notifications should be blocked from this repository."
+    )
+    reason: Union[str, None] = Field()
+    created_at: datetime = Field()
+    url: str = Field()
+    repository_url: str = Field()
 
 
-model_rebuild(CloneTraffic)
+model_rebuild(RepositorySubscription)
 
-__all__ = ("CloneTraffic",)
+__all__ = ("RepositorySubscription",)

@@ -12,18 +12,20 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0418 import DiscussionType
-from .group_0402 import EnterpriseWebhooksType
-from .group_0403 import SimpleInstallationType
-from .group_0405 import RepositoryWebhooksType
-from .group_0406 import SimpleUserWebhooksType
-from .group_0404 import OrganizationSimpleWebhooksType
+from .group_0422 import DiscussionType
+from .group_0406 import EnterpriseWebhooksType
+from .group_0407 import SimpleInstallationType
+from .group_0409 import RepositoryWebhooksType
+from .group_0410 import SimpleUserWebhooksType
+from .group_0408 import OrganizationSimpleWebhooksType
+from .group_0523 import WebhookDiscussionTransferredPropChangesType
 
 
-class WebhookDiscussionUnpinnedType(TypedDict):
-    """discussion unpinned event"""
+class WebhookDiscussionTransferredType(TypedDict):
+    """discussion transferred event"""
 
-    action: Literal["unpinned"]
+    action: Literal["transferred"]
+    changes: WebhookDiscussionTransferredPropChangesType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -32,4 +34,4 @@ class WebhookDiscussionUnpinnedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookDiscussionUnpinnedType",)
+__all__ = ("WebhookDiscussionTransferredType",)

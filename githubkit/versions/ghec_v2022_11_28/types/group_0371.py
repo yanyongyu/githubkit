@@ -9,26 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class PatchSchemaType(TypedDict):
-    """PatchSchema"""
+class MetaType(TypedDict):
+    """Meta
 
-    operations: List[PatchSchemaPropOperationsItemsType]
-    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
+    The metadata associated with the creation/updates to the user.
+    """
 
-
-class PatchSchemaPropOperationsItemsType(TypedDict):
-    """PatchSchemaPropOperationsItems"""
-
-    op: Literal["add", "replace", "remove"]
-    path: NotRequired[str]
-    value: NotRequired[str]
+    resource_type: Literal["User", "Group"]
+    created: NotRequired[str]
+    last_modified: NotRequired[str]
+    location: NotRequired[str]
 
 
-__all__ = (
-    "PatchSchemaType",
-    "PatchSchemaPropOperationsItemsType",
-)
+__all__ = ("MetaType",)

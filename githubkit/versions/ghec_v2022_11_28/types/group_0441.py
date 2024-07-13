@@ -13,24 +13,52 @@ from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
 
+class WebhooksProjectType(TypedDict):
+    """Project"""
 
-class ProjectsV2ItemType(TypedDict):
-    """Projects v2 Item
-
-    An item belonging to a project
-    """
-
-    id: float
-    node_id: NotRequired[str]
-    project_node_id: NotRequired[str]
-    content_node_id: str
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
-    creator: NotRequired[SimpleUserType]
+    body: Union[str, None]
+    columns_url: str
     created_at: datetime
+    creator: Union[WebhooksProjectPropCreatorType, None]
+    html_url: str
+    id: int
+    name: str
+    node_id: str
+    number: int
+    owner_url: str
+    state: Literal["open", "closed"]
     updated_at: datetime
-    archived_at: Union[datetime, None]
+    url: str
 
 
-__all__ = ("ProjectsV2ItemType",)
+class WebhooksProjectPropCreatorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "WebhooksProjectType",
+    "WebhooksProjectPropCreatorType",
+)

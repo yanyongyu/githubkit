@@ -9,27 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0389 import WebhooksMilestoneType
-from .group_0367 import EnterpriseWebhooksType
-from .group_0368 import SimpleInstallationType
-from .group_0370 import RepositoryWebhooksType
-from .group_0371 import SimpleUserWebhooksType
-from .group_0369 import OrganizationSimpleWebhooksType
+from .group_0384 import WebhooksUserType
+from .group_0372 import EnterpriseWebhooksType
+from .group_0373 import SimpleInstallationType
+from .group_0375 import RepositoryWebhooksType
+from .group_0376 import SimpleUserWebhooksType
+from .group_0374 import OrganizationSimpleWebhooksType
 
 
-class WebhookMilestoneClosedType(TypedDict):
-    """milestone closed event"""
+class WebhookMemberRemovedType(TypedDict):
+    """member removed event"""
 
-    action: Literal["closed"]
+    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    milestone: WebhooksMilestoneType
+    member: Union[WebhooksUserType, None]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookMilestoneClosedType",)
+__all__ = ("WebhookMemberRemovedType",)

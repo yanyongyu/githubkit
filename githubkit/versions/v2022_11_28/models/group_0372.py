@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Literal
 
 from pydantic import Field
 
@@ -19,64 +19,33 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksRule(GitHubModel):
-    """branch protection rule
+class EnterpriseWebhooks(GitHubModel):
+    """Enterprise
 
-    The branch protection rule. Includes a `name` and all the [branch protection
-    settings](https://docs.github.com/github/administering-a-repository/defining-
-    the-mergeability-of-pull-requests/about-protected-branches#about-branch-
-    protection-settings) applied to branches that match the name. Binary settings
-    are boolean. Multi-level configurations are one of `off`, `non_admins`, or
-    `everyone`. Actor and build lists are arrays of strings.
+    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
+    the webhook is configured
+    on an enterprise account or an organization that's part of an enterprise
+    account. For more information,
+    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
+    enterprise-accounts)."
     """
 
-    admin_enforced: bool = Field()
-    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A short description of the enterprise."
     )
-    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
+    html_url: str = Field()
+    website_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The enterprise's website URL."
     )
-    authorized_actor_names: List[str] = Field()
-    authorized_actors_only: bool = Field()
-    authorized_dismissal_actors_only: bool = Field()
-    create_protected: Missing[bool] = Field(default=UNSET)
-    created_at: datetime = Field()
-    dismiss_stale_reviews_on_push: bool = Field()
-    id: int = Field()
-    ignore_approvals_from_contributors: bool = Field()
-    linear_history_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
-    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"] = Field()
-    name: str = Field()
-    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    repository_id: int = Field()
-    require_code_owner_review: bool = Field()
-    require_last_push_approval: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the most recent push must be approved by someone other than the person who pushed it",
-    )
-    required_approving_review_count: int = Field()
-    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"] = (
-        Field()
-    )
-    required_status_checks: List[str] = Field()
-    required_status_checks_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
-    signature_requirement_enforcement_level: Literal[
-        "off", "non_admins", "everyone"
-    ] = Field()
-    strict_required_status_checks_policy: bool = Field()
-    updated_at: datetime = Field()
+    id: int = Field(description="Unique identifier of the enterprise")
+    node_id: str = Field()
+    name: str = Field(description="The name of the enterprise.")
+    slug: str = Field(description="The slug url identifier for the enterprise.")
+    created_at: Union[datetime, None] = Field()
+    updated_at: Union[datetime, None] = Field()
+    avatar_url: str = Field()
 
 
-model_rebuild(WebhooksRule)
+model_rebuild(EnterpriseWebhooks)
 
-__all__ = ("WebhooksRule",)
+__all__ = ("EnterpriseWebhooks",)

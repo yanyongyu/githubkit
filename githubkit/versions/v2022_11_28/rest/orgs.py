@@ -41,6 +41,8 @@ if TYPE_CHECKING:
         MinimalRepository,
         OrgCustomProperty,
         OrganizationSimple,
+        TeamRoleAssignment,
+        UserRoleAssignment,
         OrganizationInvitation,
         OrgRepoCustomPropertyValues,
         OrganizationFineGrainedPermission,
@@ -48,6 +50,7 @@ if TYPE_CHECKING:
         OrganizationProgrammaticAccessGrant,
         OrgsOrgOrganizationRolesGetResponse200,
         OrganizationProgrammaticAccessGrantRequest,
+        OrgsOrgAttestationsSubjectDigestGetResponse200,
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
     )
@@ -446,6 +449,70 @@ class OrgsClient:
                 "422": Union[ValidationError, ValidationErrorSimple],
                 "409": BasicError,
             },
+        )
+
+    def list_attestations(
+        self,
+        org: str,
+        subject_digest: str,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[OrgsOrgAttestationsSubjectDigestGetResponse200]:
+        """See also: https://docs.github.com/rest/orgs/orgs#list-attestations"""
+
+        from ..models import OrgsOrgAttestationsSubjectDigestGetResponse200
+
+        url = f"/orgs/{org}/attestations/{subject_digest}"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgAttestationsSubjectDigestGetResponse200,
+        )
+
+    async def async_list_attestations(
+        self,
+        org: str,
+        subject_digest: str,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[OrgsOrgAttestationsSubjectDigestGetResponse200]:
+        """See also: https://docs.github.com/rest/orgs/orgs#list-attestations"""
+
+        from ..models import OrgsOrgAttestationsSubjectDigestGetResponse200
+
+        url = f"/orgs/{org}/attestations/{subject_digest}"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgAttestationsSubjectDigestGetResponse200,
         )
 
     def list_blocked_users(
@@ -3010,12 +3077,12 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Team]]:
+    ) -> Response[List[TeamRoleAssignment]]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role"""
 
         from typing import List
 
-        from ..models import Team
+        from ..models import TeamRoleAssignment
 
         url = f"/orgs/{org}/organization-roles/{role_id}/teams"
 
@@ -3031,7 +3098,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=List[TeamRoleAssignment],
             error_models={},
         )
 
@@ -3043,12 +3110,12 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Team]]:
+    ) -> Response[List[TeamRoleAssignment]]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role"""
 
         from typing import List
 
-        from ..models import Team
+        from ..models import TeamRoleAssignment
 
         url = f"/orgs/{org}/organization-roles/{role_id}/teams"
 
@@ -3064,7 +3131,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=List[TeamRoleAssignment],
             error_models={},
         )
 
@@ -3076,12 +3143,12 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+    ) -> Response[List[UserRoleAssignment]]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role"""
 
         from typing import List
 
-        from ..models import SimpleUser
+        from ..models import UserRoleAssignment
 
         url = f"/orgs/{org}/organization-roles/{role_id}/users"
 
@@ -3097,7 +3164,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=List[UserRoleAssignment],
             error_models={},
         )
 
@@ -3109,12 +3176,12 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+    ) -> Response[List[UserRoleAssignment]]:
         """See also: https://docs.github.com/rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role"""
 
         from typing import List
 
-        from ..models import SimpleUser
+        from ..models import UserRoleAssignment
 
         url = f"/orgs/{org}/organization-roles/{role_id}/users"
 
@@ -3130,7 +3197,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=List[UserRoleAssignment],
             error_models={},
         )
 
@@ -4492,7 +4559,7 @@ class OrgsClient:
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
-        value_type: Literal["string", "single_select"],
+        value_type: Literal["string", "single_select", "multi_select", "true_false"],
         required: Missing[bool] = UNSET,
         default_value: Missing[Union[str, List[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -4559,7 +4626,7 @@ class OrgsClient:
         *,
         data: Literal[UNSET] = UNSET,
         headers: Optional[Dict[str, str]] = None,
-        value_type: Literal["string", "single_select"],
+        value_type: Literal["string", "single_select", "multi_select", "true_false"],
         required: Missing[bool] = UNSET,
         default_value: Missing[Union[str, List[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -5101,7 +5168,6 @@ class OrgsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
-            error_models={},
         )
 
     async def async_add_security_manager_team(
@@ -5121,7 +5187,6 @@ class OrgsClient:
             "PUT",
             url,
             headers=exclude_unset(headers),
-            error_models={},
         )
 
     def remove_security_manager_team(

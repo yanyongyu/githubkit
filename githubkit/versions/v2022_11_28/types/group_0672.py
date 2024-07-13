@@ -12,24 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0411 import WebhooksRelease1Type
-from .group_0367 import EnterpriseWebhooksType
-from .group_0368 import SimpleInstallationType
-from .group_0370 import RepositoryWebhooksType
-from .group_0371 import SimpleUserWebhooksType
-from .group_0369 import OrganizationSimpleWebhooksType
+from .group_0372 import EnterpriseWebhooksType
+from .group_0373 import SimpleInstallationType
+from .group_0375 import RepositoryWebhooksType
+from .group_0376 import SimpleUserWebhooksType
+from .group_0374 import OrganizationSimpleWebhooksType
+from .group_0673 import WebhookRegistryPackageUpdatedPropRegistryPackageType
 
 
-class WebhookReleaseUnpublishedType(TypedDict):
-    """release unpublished event"""
+class WebhookRegistryPackageUpdatedType(TypedDict):
+    """WebhookRegistryPackageUpdated"""
 
-    action: Literal["unpublished"]
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksRelease1Type
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
+    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackageType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookReleaseUnpublishedType",)
+__all__ = ("WebhookRegistryPackageUpdatedType",)

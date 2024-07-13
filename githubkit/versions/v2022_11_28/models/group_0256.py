@@ -9,44 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GitTree(GitHubModel):
-    """Git Tree
+class ShortBlob(GitHubModel):
+    """Short Blob
 
-    The hierarchy between files in a Git repository.
+    Short Blob
     """
 
-    sha: str = Field()
     url: str = Field()
-    truncated: bool = Field()
-    tree: List[GitTreePropTreeItems] = Field(
-        description="Objects specifying a tree structure"
-    )
+    sha: str = Field()
 
 
-class GitTreePropTreeItems(GitHubModel):
-    """GitTreePropTreeItems"""
+model_rebuild(ShortBlob)
 
-    path: Missing[str] = Field(default=UNSET)
-    mode: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-    size: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(GitTree)
-model_rebuild(GitTreePropTreeItems)
-
-__all__ = (
-    "GitTree",
-    "GitTreePropTreeItems",
-)
+__all__ = ("ShortBlob",)

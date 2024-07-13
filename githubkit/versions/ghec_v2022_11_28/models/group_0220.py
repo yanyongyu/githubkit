@@ -9,27 +9,50 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0082 import MinimalRepository
 
-class CodeScanningAnalysisDeletion(GitHubModel):
-    """Analysis deletion
 
-    Successful deletion of a code scanning analysis
+class CheckSuitePreference(GitHubModel):
+    """Check Suite Preference
+
+    Check suite configuration preferences for a repository.
     """
 
-    next_analysis_url: Union[str, None] = Field(
-        description="Next deletable analysis in chain, without last analysis deletion confirmation"
-    )
-    confirm_delete_url: Union[str, None] = Field(
-        description="Next deletable analysis in chain, with last analysis deletion confirmation"
+    preferences: CheckSuitePreferencePropPreferences = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
 
 
-model_rebuild(CodeScanningAnalysisDeletion)
+class CheckSuitePreferencePropPreferences(GitHubModel):
+    """CheckSuitePreferencePropPreferences"""
 
-__all__ = ("CodeScanningAnalysisDeletion",)
+    auto_trigger_checks: Missing[
+        List[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems]
+    ] = Field(default=UNSET)
+
+
+class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems(GitHubModel):
+    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+
+    app_id: int = Field()
+    setting: bool = Field()
+
+
+model_rebuild(CheckSuitePreference)
+model_rebuild(CheckSuitePreferencePropPreferences)
+model_rebuild(CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems)
+
+__all__ = (
+    "CheckSuitePreference",
+    "CheckSuitePreferencePropPreferences",
+    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems",
+)

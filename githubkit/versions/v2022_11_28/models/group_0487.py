@@ -9,28 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0367 import EnterpriseWebhooks
-from .group_0368 import SimpleInstallation
-from .group_0370 import RepositoryWebhooks
-from .group_0371 import SimpleUserWebhooks
-from .group_0369 import OrganizationSimpleWebhooks
+from .group_0372 import EnterpriseWebhooks
+from .group_0373 import SimpleInstallation
+from .group_0375 import RepositoryWebhooks
+from .group_0376 import SimpleUserWebhooks
+from .group_0488 import WebhookForkPropForkee
+from .group_0374 import OrganizationSimpleWebhooks
 
 
-class WebhookGollum(GitHubModel):
-    """gollum event"""
+class WebhookFork(GitHubModel):
+    """fork event
+
+    A user forks a repository.
+    """
 
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+    )
+    forkee: WebhookForkPropForkee = Field(
+        description="The created [`repository`](https://docs.github.com/rest/repos/repos#get-a-repository) resource."
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -42,9 +47,6 @@ class WebhookGollum(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pages: List[WebhookGollumPropPagesItems] = Field(
-        description="The pages that were updated."
-    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
@@ -55,23 +57,6 @@ class WebhookGollum(GitHubModel):
     )
 
 
-class WebhookGollumPropPagesItems(GitHubModel):
-    """WebhookGollumPropPagesItems"""
+model_rebuild(WebhookFork)
 
-    action: Literal["created", "edited"] = Field(
-        description="The action that was performed on the page. Can be `created` or `edited`."
-    )
-    html_url: str = Field(description="Points to the HTML wiki page.")
-    page_name: str = Field(description="The name of the page.")
-    sha: str = Field(description="The latest commit SHA of the page.")
-    summary: Union[str, None] = Field()
-    title: str = Field(description="The current page title.")
-
-
-model_rebuild(WebhookGollum)
-model_rebuild(WebhookGollumPropPagesItems)
-
-__all__ = (
-    "WebhookGollum",
-    "WebhookGollumPropPagesItems",
-)
+__all__ = ("WebhookFork",)

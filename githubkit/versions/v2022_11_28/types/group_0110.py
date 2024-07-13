@@ -9,20 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0111 import RepositoryRuleUpdatePropParametersType
+
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
+
+    include: NotRequired[List[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+    exclude: NotRequired[List[RepositoryRulesetConditionsRepositoryPropertySpecType]]
 
 
-class RepositoryRuleUpdateType(TypedDict):
-    """update
+class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
+    """Repository ruleset property targeting definition
 
-    Only allow users with bypass permission to update matching refs.
+    Parameters for a targeting a repository property
     """
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
+    name: str
+    property_values: List[str]
+    source: NotRequired[Literal["custom", "system"]]
 
 
-__all__ = ("RepositoryRuleUpdateType",)
+__all__ = (
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
+    "RepositoryRulesetConditionsRepositoryPropertySpecType",
+)

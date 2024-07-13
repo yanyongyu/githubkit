@@ -9,56 +9,95 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0064 import MilestoneType
+from .group_0001 import SimpleUserType
+from .group_0017 import RepositoryType
+from .group_0006 import IntegrationType
+from .group_0065 import ReactionRollupType
 
-class FeedType(TypedDict):
-    """Feed
 
-    Feed
+class IssueType(TypedDict):
+    """Issue
+
+    Issues are a great way to keep track of tasks, enhancements, and bugs for your
+    projects.
     """
 
-    timeline_url: str
-    user_url: str
-    current_user_public_url: NotRequired[str]
-    current_user_url: NotRequired[str]
-    current_user_actor_url: NotRequired[str]
-    current_user_organization_url: NotRequired[str]
-    current_user_organization_urls: NotRequired[List[str]]
-    security_advisories_url: NotRequired[str]
-    repository_discussions_url: NotRequired[str]
-    repository_discussions_category_url: NotRequired[str]
-    links: FeedPropLinksType
+    id: int
+    node_id: str
+    url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
+    number: int
+    state: str
+    state_reason: NotRequired[
+        Union[None, Literal["completed", "reopened", "not_planned"]]
+    ]
+    title: str
+    body: NotRequired[Union[str, None]]
+    user: Union[None, SimpleUserType]
+    labels: List[Union[str, IssuePropLabelsItemsOneof1Type]]
+    assignee: Union[None, SimpleUserType]
+    assignees: NotRequired[Union[List[SimpleUserType], None]]
+    milestone: Union[None, MilestoneType]
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    comments: int
+    pull_request: NotRequired[IssuePropPullRequestType]
+    closed_at: Union[datetime, None]
+    created_at: datetime
+    updated_at: datetime
+    draft: NotRequired[bool]
+    closed_by: NotRequired[Union[None, SimpleUserType]]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    repository: NotRequired[RepositoryType]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class FeedPropLinksType(TypedDict):
-    """FeedPropLinks"""
+class IssuePropLabelsItemsOneof1Type(TypedDict):
+    """IssuePropLabelsItemsOneof1"""
 
-    timeline: LinkWithTypeType
-    user: LinkWithTypeType
-    security_advisories: NotRequired[LinkWithTypeType]
-    current_user: NotRequired[LinkWithTypeType]
-    current_user_public: NotRequired[LinkWithTypeType]
-    current_user_actor: NotRequired[LinkWithTypeType]
-    current_user_organization: NotRequired[LinkWithTypeType]
-    current_user_organizations: NotRequired[List[LinkWithTypeType]]
-    repository_discussions: NotRequired[LinkWithTypeType]
-    repository_discussions_category: NotRequired[LinkWithTypeType]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
+    name: NotRequired[str]
+    description: NotRequired[Union[str, None]]
+    color: NotRequired[Union[str, None]]
+    default: NotRequired[bool]
 
 
-class LinkWithTypeType(TypedDict):
-    """Link With Type
+class IssuePropPullRequestType(TypedDict):
+    """IssuePropPullRequest"""
 
-    Hypermedia Link with Type
-    """
-
-    href: str
-    type: str
+    merged_at: NotRequired[Union[datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
 
 
 __all__ = (
-    "FeedType",
-    "FeedPropLinksType",
-    "LinkWithTypeType",
+    "IssueType",
+    "IssuePropLabelsItemsOneof1Type",
+    "IssuePropPullRequestType",
 )

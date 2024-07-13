@@ -13,146 +13,65 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0417 import WebhooksTeam1Type
-from .group_0367 import EnterpriseWebhooksType
-from .group_0368 import SimpleInstallationType
-from .group_0371 import SimpleUserWebhooksType
-from .group_0369 import OrganizationSimpleWebhooksType
+from .group_0372 import EnterpriseWebhooksType
+from .group_0373 import SimpleInstallationType
+from .group_0375 import RepositoryWebhooksType
+from .group_0376 import SimpleUserWebhooksType
+from .group_0374 import OrganizationSimpleWebhooksType
 
 
-class WebhookTeamEditedType(TypedDict):
-    """team edited event"""
+class WebhookStatusType(TypedDict):
+    """status event"""
 
-    action: Literal["edited"]
-    changes: WebhookTeamEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[WebhookTeamEditedPropRepositoryType]
-    sender: SimpleUserWebhooksType
-    team: WebhooksTeam1Type
-
-
-class WebhookTeamEditedPropRepositoryType(TypedDict):
-    """Repository
-
-    A git repository
-    """
-
-    allow_auto_merge: NotRequired[bool]
-    allow_forking: NotRequired[bool]
-    allow_merge_commit: NotRequired[bool]
-    allow_rebase_merge: NotRequired[bool]
-    allow_squash_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    archive_url: str
-    archived: bool
-    assignees_url: str
-    blobs_url: str
-    branches_url: str
-    clone_url: str
-    collaborators_url: str
-    comments_url: str
-    commits_url: str
-    compare_url: str
-    contents_url: str
-    contributors_url: str
-    created_at: Union[int, datetime]
-    custom_properties: NotRequired[
-        WebhookTeamEditedPropRepositoryPropCustomPropertiesType
-    ]
-    default_branch: str
-    delete_branch_on_merge: NotRequired[bool]
-    deployments_url: str
+    avatar_url: NotRequired[Union[str, None]]
+    branches: List[WebhookStatusPropBranchesItemsType]
+    commit: WebhookStatusPropCommitType
+    context: str
+    created_at: str
     description: Union[str, None]
-    disabled: NotRequired[bool]
-    downloads_url: str
-    events_url: str
-    fork: bool
-    forks: int
-    forks_count: int
-    forks_url: str
-    full_name: str
-    git_commits_url: str
-    git_refs_url: str
-    git_tags_url: str
-    git_url: str
-    has_downloads: bool
-    has_issues: bool
-    has_pages: bool
-    has_projects: bool
-    has_wiki: bool
-    homepage: Union[str, None]
-    hooks_url: str
-    html_url: str
+    enterprise: NotRequired[EnterpriseWebhooksType]
     id: int
-    is_template: NotRequired[bool]
-    issue_comment_url: str
-    issue_events_url: str
-    issues_url: str
-    keys_url: str
-    labels_url: str
-    language: Union[str, None]
-    languages_url: str
-    license_: Union[WebhookTeamEditedPropRepositoryPropLicenseType, None]
-    master_branch: NotRequired[str]
-    merges_url: str
-    milestones_url: str
-    mirror_url: Union[str, None]
+    installation: NotRequired[SimpleInstallationType]
     name: str
-    node_id: str
-    notifications_url: str
-    open_issues: int
-    open_issues_count: int
-    organization: NotRequired[str]
-    owner: Union[WebhookTeamEditedPropRepositoryPropOwnerType, None]
-    permissions: NotRequired[WebhookTeamEditedPropRepositoryPropPermissionsType]
-    private: bool
-    public: NotRequired[bool]
-    pulls_url: str
-    pushed_at: Union[int, datetime, None]
-    releases_url: str
-    role_name: NotRequired[Union[str, None]]
-    size: int
-    ssh_url: str
-    stargazers: NotRequired[int]
-    stargazers_count: int
-    stargazers_url: str
-    statuses_url: str
-    subscribers_url: str
-    subscription_url: str
-    svn_url: str
-    tags_url: str
-    teams_url: str
-    topics: List[str]
-    trees_url: str
-    updated_at: datetime
-    url: str
-    visibility: Literal["public", "private", "internal"]
-    watchers: int
-    watchers_count: int
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+    sha: str
+    state: Literal["pending", "success", "failure", "error"]
+    target_url: Union[str, None]
+    updated_at: str
 
 
-class WebhookTeamEditedPropRepositoryPropCustomPropertiesType(TypedDict):
-    """WebhookTeamEditedPropRepositoryPropCustomProperties
+class WebhookStatusPropBranchesItemsType(TypedDict):
+    """WebhookStatusPropBranchesItems"""
 
-    The custom properties that were defined for the repository. The keys are the
-    custom property names, and the values are the corresponding custom property
-    values.
-    """
-
-
-class WebhookTeamEditedPropRepositoryPropLicenseType(TypedDict):
-    """License"""
-
-    key: str
+    commit: WebhookStatusPropBranchesItemsPropCommitType
     name: str
-    node_id: str
-    spdx_id: str
+    protected: bool
+
+
+class WebhookStatusPropBranchesItemsPropCommitType(TypedDict):
+    """WebhookStatusPropBranchesItemsPropCommit"""
+
+    sha: Union[str, None]
     url: Union[str, None]
 
 
-class WebhookTeamEditedPropRepositoryPropOwnerType(TypedDict):
+class WebhookStatusPropCommitType(TypedDict):
+    """WebhookStatusPropCommit"""
+
+    author: Union[WebhookStatusPropCommitPropAuthorType, None]
+    comments_url: str
+    commit: WebhookStatusPropCommitPropCommitType
+    committer: Union[WebhookStatusPropCommitPropCommitterType, None]
+    html_url: str
+    node_id: str
+    parents: List[WebhookStatusPropCommitPropParentsItemsType]
+    sha: str
+    url: str
+
+
+class WebhookStatusPropCommitPropAuthorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -164,8 +83,8 @@ class WebhookTeamEditedPropRepositoryPropOwnerType(TypedDict):
     gists_url: NotRequired[str]
     gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    id: int
-    login: str
+    id: NotRequired[int]
+    login: NotRequired[str]
     name: NotRequired[str]
     node_id: NotRequired[str]
     organizations_url: NotRequired[str]
@@ -178,88 +97,113 @@ class WebhookTeamEditedPropRepositoryPropOwnerType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookTeamEditedPropRepositoryPropPermissionsType(TypedDict):
-    """WebhookTeamEditedPropRepositoryPropPermissions"""
+class WebhookStatusPropCommitPropCommitterType(TypedDict):
+    """User"""
 
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
-class WebhookTeamEditedPropChangesType(TypedDict):
-    """WebhookTeamEditedPropChanges
+class WebhookStatusPropCommitPropParentsItemsType(TypedDict):
+    """WebhookStatusPropCommitPropParentsItems"""
 
-    The changes to the team if the action was `edited`.
-    """
+    html_url: str
+    sha: str
+    url: str
 
-    description: NotRequired[WebhookTeamEditedPropChangesPropDescriptionType]
-    name: NotRequired[WebhookTeamEditedPropChangesPropNameType]
-    privacy: NotRequired[WebhookTeamEditedPropChangesPropPrivacyType]
-    notification_setting: NotRequired[
-        WebhookTeamEditedPropChangesPropNotificationSettingType
+
+class WebhookStatusPropCommitPropCommitType(TypedDict):
+    """WebhookStatusPropCommitPropCommit"""
+
+    author: WebhookStatusPropCommitPropCommitPropAuthorType
+    comment_count: int
+    committer: WebhookStatusPropCommitPropCommitPropCommitterType
+    message: str
+    tree: WebhookStatusPropCommitPropCommitPropTreeType
+    url: str
+    verification: WebhookStatusPropCommitPropCommitPropVerificationType
+
+
+class WebhookStatusPropCommitPropCommitPropAuthorType(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropAuthor"""
+
+    date: datetime
+    email: str
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropCommitPropCommitterType(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitter"""
+
+    date: datetime
+    email: str
+    name: str
+    username: NotRequired[str]
+
+
+class WebhookStatusPropCommitPropCommitPropTreeType(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class WebhookStatusPropCommitPropCommitPropVerificationType(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropVerification"""
+
+    payload: Union[str, None]
+    reason: Literal[
+        "expired_key",
+        "not_signing_key",
+        "gpgverify_error",
+        "gpgverify_unavailable",
+        "unsigned",
+        "unknown_signature_type",
+        "no_user",
+        "unverified_email",
+        "bad_email",
+        "unknown_key",
+        "malformed_signature",
+        "invalid",
+        "valid",
+        "bad_cert",
+        "ocsp_pending",
     ]
-    repository: NotRequired[WebhookTeamEditedPropChangesPropRepositoryType]
-
-
-class WebhookTeamEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookTeamEditedPropChangesPropDescription"""
-
-    from_: str
-
-
-class WebhookTeamEditedPropChangesPropNameType(TypedDict):
-    """WebhookTeamEditedPropChangesPropName"""
-
-    from_: str
-
-
-class WebhookTeamEditedPropChangesPropPrivacyType(TypedDict):
-    """WebhookTeamEditedPropChangesPropPrivacy"""
-
-    from_: str
-
-
-class WebhookTeamEditedPropChangesPropNotificationSettingType(TypedDict):
-    """WebhookTeamEditedPropChangesPropNotificationSetting"""
-
-    from_: str
-
-
-class WebhookTeamEditedPropChangesPropRepositoryType(TypedDict):
-    """WebhookTeamEditedPropChangesPropRepository"""
-
-    permissions: WebhookTeamEditedPropChangesPropRepositoryPropPermissionsType
-
-
-class WebhookTeamEditedPropChangesPropRepositoryPropPermissionsType(TypedDict):
-    """WebhookTeamEditedPropChangesPropRepositoryPropPermissions"""
-
-    from_: WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFromType
-
-
-class WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFromType(TypedDict):
-    """WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom"""
-
-    admin: NotRequired[bool]
-    pull: NotRequired[bool]
-    push: NotRequired[bool]
+    signature: Union[str, None]
+    verified: bool
 
 
 __all__ = (
-    "WebhookTeamEditedType",
-    "WebhookTeamEditedPropRepositoryType",
-    "WebhookTeamEditedPropRepositoryPropCustomPropertiesType",
-    "WebhookTeamEditedPropRepositoryPropLicenseType",
-    "WebhookTeamEditedPropRepositoryPropOwnerType",
-    "WebhookTeamEditedPropRepositoryPropPermissionsType",
-    "WebhookTeamEditedPropChangesType",
-    "WebhookTeamEditedPropChangesPropDescriptionType",
-    "WebhookTeamEditedPropChangesPropNameType",
-    "WebhookTeamEditedPropChangesPropPrivacyType",
-    "WebhookTeamEditedPropChangesPropNotificationSettingType",
-    "WebhookTeamEditedPropChangesPropRepositoryType",
-    "WebhookTeamEditedPropChangesPropRepositoryPropPermissionsType",
-    "WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFromType",
+    "WebhookStatusType",
+    "WebhookStatusPropBranchesItemsType",
+    "WebhookStatusPropBranchesItemsPropCommitType",
+    "WebhookStatusPropCommitType",
+    "WebhookStatusPropCommitPropAuthorType",
+    "WebhookStatusPropCommitPropCommitterType",
+    "WebhookStatusPropCommitPropParentsItemsType",
+    "WebhookStatusPropCommitPropCommitType",
+    "WebhookStatusPropCommitPropCommitPropAuthorType",
+    "WebhookStatusPropCommitPropCommitPropCommitterType",
+    "WebhookStatusPropCommitPropCommitPropTreeType",
+    "WebhookStatusPropCommitPropCommitPropVerificationType",
 )

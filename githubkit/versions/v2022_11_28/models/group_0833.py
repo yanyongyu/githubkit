@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,17 +18,22 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsPostBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
+class OrgsOrgOrganizationRolesRoleIdPatchBody(GitHubModel):
+    """OrgsOrgOrganizationRolesRoleIdPatchBody"""
 
-    title: str = Field(description="The discussion post's title.")
-    body: str = Field(description="The discussion post's body text.")
-    private: Missing[bool] = Field(
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the custom role."
+    )
+    description: Missing[str] = Field(
         default=UNSET,
-        description="Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to `true` to create a private post.",
+        description="A short description about the intended usage of this role or what permissions it grants.",
+    )
+    permissions: Missing[List[str]] = Field(
+        default=UNSET,
+        description="A list of additional permissions included in this role.",
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsPostBody)
+model_rebuild(OrgsOrgOrganizationRolesRoleIdPatchBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsPostBody",)
+__all__ = ("OrgsOrgOrganizationRolesRoleIdPatchBody",)

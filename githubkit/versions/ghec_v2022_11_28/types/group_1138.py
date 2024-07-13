@@ -9,17 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0015 import InstallationType
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class UserInstallationsGetResponse200Type(TypedDict):
-    """UserInstallationsGetResponse200"""
+class TeamsTeamIdProjectsProjectIdPutBodyType(TypedDict):
+    """TeamsTeamIdProjectsProjectIdPutBody"""
 
-    total_count: int
-    installations: List[InstallationType]
+    permission: NotRequired[Literal["read", "write", "admin"]]
 
 
-__all__ = ("UserInstallationsGetResponse200Type",)
+__all__ = ("TeamsTeamIdProjectsProjectIdPutBodyType",)

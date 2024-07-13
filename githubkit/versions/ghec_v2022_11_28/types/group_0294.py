@@ -16,22 +16,32 @@ from .group_0001 import SimpleUserType
 from .group_0006 import IntegrationType
 
 
-class LockedIssueEventType(TypedDict):
-    """Locked Issue Event
+class RenamedIssueEventType(TypedDict):
+    """Renamed Issue Event
 
-    Locked Issue Event
+    Renamed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["locked"]
+    event: Literal["renamed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    lock_reason: Union[str, None]
+    rename: RenamedIssueEventPropRenameType
 
 
-__all__ = ("LockedIssueEventType",)
+class RenamedIssueEventPropRenameType(TypedDict):
+    """RenamedIssueEventPropRename"""
+
+    from_: str
+    to: str
+
+
+__all__ = (
+    "RenamedIssueEventType",
+    "RenamedIssueEventPropRenameType",
+)

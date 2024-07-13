@@ -16,11 +16,14 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0576 import WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreator
+from .group_0581 import WebhookIssuesClosedPropIssueAllof0PropMilestonePropCreator
 
 
-class WebhookIssuesClosedPropIssueMergedMilestone(GitHubModel):
-    """WebhookIssuesClosedPropIssueMergedMilestone"""
+class WebhookIssuesClosedPropIssueAllof0PropMilestone(GitHubModel):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
 
     closed_at: Union[datetime, None] = Field()
     closed_issues: int = Field()
@@ -42,6 +45,6 @@ class WebhookIssuesClosedPropIssueMergedMilestone(GitHubModel):
     url: str = Field()
 
 
-model_rebuild(WebhookIssuesClosedPropIssueMergedMilestone)
+model_rebuild(WebhookIssuesClosedPropIssueAllof0PropMilestone)
 
-__all__ = ("WebhookIssuesClosedPropIssueMergedMilestone",)
+__all__ = ("WebhookIssuesClosedPropIssueAllof0PropMilestone",)

@@ -17,20 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0368 import SimpleInstallation
-from .group_0370 import RepositoryWebhooks
-from .group_0371 import SimpleUserWebhooks
-from .group_0369 import OrganizationSimpleWebhooks
-from .group_0374 import CheckRunWithSimpleCheckSuite
+from .group_0377 import WebhooksRule
+from .group_0372 import EnterpriseWebhooks
+from .group_0373 import SimpleInstallation
+from .group_0375 import RepositoryWebhooks
+from .group_0376 import SimpleUserWebhooks
+from .group_0374 import OrganizationSimpleWebhooks
 
 
-class WebhookCheckRunRequestedAction(GitHubModel):
-    """Check Run Requested Action Event"""
+class WebhookBranchProtectionRuleDeleted(GitHubModel):
+    """branch protection rule deleted event"""
 
-    action: Literal["requested_action"] = Field()
-    check_run: CheckRunWithSimpleCheckSuite = Field(
-        title="CheckRun",
-        description="A check performed on the code of a given code change",
+    action: Literal["deleted"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -46,8 +48,9 @@ class WebhookCheckRunRequestedAction(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    requested_action: Missing[WebhookCheckRunRequestedActionPropRequestedAction] = (
-        Field(default=UNSET, description="The action requested by the user.")
+    rule: WebhooksRule = Field(
+        title="branch protection rule",
+        description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -55,22 +58,6 @@ class WebhookCheckRunRequestedAction(GitHubModel):
     )
 
 
-class WebhookCheckRunRequestedActionPropRequestedAction(GitHubModel):
-    """WebhookCheckRunRequestedActionPropRequestedAction
+model_rebuild(WebhookBranchProtectionRuleDeleted)
 
-    The action requested by the user.
-    """
-
-    identifier: Missing[str] = Field(
-        default=UNSET,
-        description="The integrator reference of the action requested by the user.",
-    )
-
-
-model_rebuild(WebhookCheckRunRequestedAction)
-model_rebuild(WebhookCheckRunRequestedActionPropRequestedAction)
-
-__all__ = (
-    "WebhookCheckRunRequestedAction",
-    "WebhookCheckRunRequestedActionPropRequestedAction",
-)
+__all__ = ("WebhookBranchProtectionRuleDeleted",)

@@ -9,16 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0406 import EnterpriseWebhooksType
+from .group_0407 import SimpleInstallationType
+from .group_0410 import SimpleUserWebhooksType
+from .group_0408 import OrganizationSimpleWebhooksType
+from .group_0439 import PersonalAccessTokenRequestType
 
 
-class WebhookPingFormEncodedType(TypedDict):
-    """WebhookPingFormEncoded
+class WebhookPersonalAccessTokenRequestCancelledType(TypedDict):
+    """personal_access_token_request cancelled event"""
 
-    The webhooks ping payload encoded with URL encoding.
-    """
+    action: Literal["cancelled"]
+    personal_access_token_request: PersonalAccessTokenRequestType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    organization: OrganizationSimpleWebhooksType
+    sender: SimpleUserWebhooksType
+    installation: SimpleInstallationType
 
-    payload: str
 
-
-__all__ = ("WebhookPingFormEncodedType",)
+__all__ = ("WebhookPersonalAccessTokenRequestCancelledType",)

@@ -9,22 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReviewCustomGatesCommentRequired(GitHubModel):
-    """ReviewCustomGatesCommentRequired"""
+class ActionsWorkflowAccessToRepository(GitHubModel):
+    """ActionsWorkflowAccessToRepository"""
 
-    environment_name: str = Field(
-        description="The name of the environment to approve or reject."
-    )
-    comment: str = Field(
-        description="Comment associated with the pending deployment protection rule. **Required when state is not provided.**"
+    access_level: Literal["none", "user", "organization"] = Field(
+        description="Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the\nrepository.\n\n`none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization."
     )
 
 
-model_rebuild(ReviewCustomGatesCommentRequired)
+model_rebuild(ActionsWorkflowAccessToRepository)
 
-__all__ = ("ReviewCustomGatesCommentRequired",)
+__all__ = ("ActionsWorkflowAccessToRepository",)

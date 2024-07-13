@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,79 +17,49 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0110 import RepositoryRuleUpdate
-from .group_0134 import RepositoryRuleOneof17
-from .group_0130 import RepositoryRuleWorkflows
-from .group_0115 import RepositoryRulePullRequest
-from .group_0132 import RepositoryRuleCodeScanning
-from .group_0098 import RepositoryRulesetConditions
-from .group_0097 import RepositoryRulesetBypassActor
-from .group_0127 import RepositoryRuleTagNamePattern
-from .group_0125 import RepositoryRuleBranchNamePattern
-from .group_0113 import RepositoryRuleRequiredDeployments
-from .group_0117 import RepositoryRuleRequiredStatusChecks
-from .group_0119 import RepositoryRuleCommitMessagePattern
-from .group_0123 import RepositoryRuleCommitterEmailPattern
-from .group_0121 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0112 import RepositoryRuleOneof15, RepositoryRuleRequiredLinearHistory
-from .group_0109 import (
-    RepositoryRuleOneof14,
-    RepositoryRuleOneof16,
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
 
+class ReposOwnerRepoPullsPullNumberCodespacesPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberCodespacesPostBody"""
 
-class ReposOwnerRepoRulesetsPostBody(GitHubModel):
-    """ReposOwnerRepoRulesetsPostBody"""
-
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
+    location: Missing[str] = Field(
         default=UNSET,
-        description="The target of the ruleset\n\n**Note**: The `push` target is in beta and is subject to change.",
+        description="The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.",
     )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
-    )
-    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
+    geo: Missing[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description="The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.",
     )
-    conditions: Missing[RepositoryRulesetConditions] = Field(
+    client_ip: Missing[str] = Field(
         default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
+        description="IP for location auto-detection when proxying a request",
     )
-    rules: Missing[
-        List[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleOneof14,
-                RepositoryRuleOneof15,
-                RepositoryRuleOneof16,
-                RepositoryRuleOneof17,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    machine: Missing[str] = Field(
+        default=UNSET, description="Machine type to use for this codespace"
+    )
+    devcontainer_path: Missing[str] = Field(
+        default=UNSET,
+        description="Path to devcontainer.json config to use for this codespace",
+    )
+    multi_repo_permissions_opt_out: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to authorize requested permissions from devcontainer.json",
+    )
+    working_directory: Missing[str] = Field(
+        default=UNSET, description="Working directory for this codespace"
+    )
+    idle_timeout_minutes: Missing[int] = Field(
+        default=UNSET,
+        description="Time in minutes before codespace stops from inactivity",
+    )
+    display_name: Missing[str] = Field(
+        default=UNSET, description="Display name for this codespace"
+    )
+    retention_period_minutes: Missing[int] = Field(
+        default=UNSET,
+        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+    )
 
 
-model_rebuild(ReposOwnerRepoRulesetsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberCodespacesPostBody)
 
-__all__ = ("ReposOwnerRepoRulesetsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberCodespacesPostBody",)

@@ -12,13 +12,14 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0115 import OrgCustomPropertyType
+from .group_0015 import InstallationType
 
 
-class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesSchemaPatchBody"""
+class OrgsOrgInstallationsGetResponse200Type(TypedDict):
+    """OrgsOrgInstallationsGetResponse200"""
 
-    properties: List[OrgCustomPropertyType]
+    total_count: int
+    installations: List[InstallationType]
 
 
-__all__ = ("OrgsOrgPropertiesSchemaPatchBodyType",)
+__all__ = ("OrgsOrgInstallationsGetResponse200Type",)

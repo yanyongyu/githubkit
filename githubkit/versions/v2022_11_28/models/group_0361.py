@@ -18,43 +18,35 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0046 import MarketplaceListingPlan
 
+class CodespaceExportDetails(GitHubModel):
+    """Fetches information about an export of a codespace.
 
-class UserMarketplacePurchase(GitHubModel):
-    """User Marketplace Purchase
-
-    User Marketplace Purchase
+    An export of a codespace. Also, latest export details for a codespace can be
+    fetched with id = latest
     """
 
-    billing_cycle: str = Field()
-    next_billing_date: Union[datetime, None] = Field()
-    unit_count: Union[int, None] = Field()
-    on_free_trial: bool = Field()
-    free_trial_ends_on: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
-    account: MarketplaceAccount = Field(title="Marketplace Account")
-    plan: MarketplaceListingPlan = Field(
-        title="Marketplace Listing Plan", description="Marketplace Listing Plan"
+    state: Missing[Union[str, None]] = Field(
+        default=UNSET, description="State of the latest export"
+    )
+    completed_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET, description="Completion time of the last export operation"
+    )
+    branch: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Name of the exported branch"
+    )
+    sha: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Git commit SHA of the exported branch"
+    )
+    id: Missing[str] = Field(default=UNSET, description="Id for the export details")
+    export_url: Missing[str] = Field(
+        default=UNSET, description="Url for fetching export details"
+    )
+    html_url: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Web url for the exported branch"
     )
 
 
-class MarketplaceAccount(GitHubModel):
-    """Marketplace Account"""
+model_rebuild(CodespaceExportDetails)
 
-    url: str = Field()
-    id: int = Field()
-    type: str = Field()
-    node_id: Missing[str] = Field(default=UNSET)
-    login: str = Field()
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    organization_billing_email: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(UserMarketplacePurchase)
-model_rebuild(MarketplaceAccount)
-
-__all__ = (
-    "UserMarketplacePurchase",
-    "MarketplaceAccount",
-)
+__all__ = ("CodespaceExportDetails",)

@@ -25,8 +25,8 @@ ruff = "^0.5.0"
 isort = "^5.13.2"
 Jinja2 = "^3.1.2"
 nonemoji = "^0.1.2"
-jsonpointer = "^3.0.0"
 pre-commit = "^3.0.0"
+jsonpointer = "^3.0.0"
 openapi-pydantic = "^0.4.0"
 tomli = { version = "^2.0.1", python = "<3.11" }
 

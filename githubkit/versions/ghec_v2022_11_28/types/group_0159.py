@@ -10,24 +10,21 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-
-class RuleSuitesItemsType(TypedDict):
-    """RuleSuitesItems"""
-
-    id: NotRequired[int]
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
-    before_sha: NotRequired[str]
-    after_sha: NotRequired[str]
-    ref: NotRequired[str]
-    repository_id: NotRequired[int]
-    repository_name: NotRequired[str]
-    pushed_at: NotRequired[datetime]
-    result: NotRequired[Literal["pass", "fail", "bypass"]]
-    evaluation_result: NotRequired[Literal["pass", "fail"]]
+from .group_0160 import RepositoryRuleCodeScanningPropParametersType
 
 
-__all__ = ("RuleSuitesItemsType",)
+class RepositoryRuleCodeScanningType(TypedDict):
+    """code_scanning
+
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
+    """
+
+    type: Literal["code_scanning"]
+    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
+
+
+__all__ = ("RepositoryRuleCodeScanningType",)

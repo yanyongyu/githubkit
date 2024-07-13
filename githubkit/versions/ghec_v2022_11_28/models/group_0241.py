@@ -18,53 +18,28 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0093 import Team
-from .group_0061 import Milestone
-from .group_0240 import AutoMerge
 from .group_0001 import SimpleUser
-from .group_0243 import PullRequestSimplePropLinks
-from .group_0242 import PullRequestSimplePropBase, PullRequestSimplePropHead
+from .group_0065 import ReactionRollup
 
 
-class PullRequestSimple(GitHubModel):
-    """Pull Request Simple
+class CommitComment(GitHubModel):
+    """Commit Comment
 
-    Pull Request Simple
+    Commit Comment
     """
 
+    html_url: str = Field()
     url: str = Field()
     id: int = Field()
     node_id: str = Field()
-    html_url: str = Field()
-    diff_url: str = Field()
-    patch_url: str = Field()
-    issue_url: str = Field()
-    commits_url: str = Field()
-    review_comments_url: str = Field()
-    review_comment_url: str = Field()
-    comments_url: str = Field()
-    statuses_url: str = Field()
-    number: int = Field()
-    state: str = Field()
-    locked: bool = Field()
-    title: str = Field()
+    body: str = Field()
+    path: Union[str, None] = Field()
+    position: Union[int, None] = Field()
+    line: Union[int, None] = Field()
+    commit_id: str = Field()
     user: Union[None, SimpleUser] = Field()
-    body: Union[str, None] = Field()
-    labels: List[PullRequestSimplePropLabelsItems] = Field()
-    milestone: Union[None, Milestone] = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
     created_at: datetime = Field()
     updated_at: datetime = Field()
-    closed_at: Union[datetime, None] = Field()
-    merged_at: Union[datetime, None] = Field()
-    merge_commit_sha: Union[str, None] = Field()
-    assignee: Union[None, SimpleUser] = Field()
-    assignees: Missing[Union[List[SimpleUser], None]] = Field(default=UNSET)
-    requested_reviewers: Missing[Union[List[SimpleUser], None]] = Field(default=UNSET)
-    requested_teams: Missing[Union[List[Team], None]] = Field(default=UNSET)
-    head: PullRequestSimplePropHead = Field()
-    base: PullRequestSimplePropBase = Field()
-    links: PullRequestSimplePropLinks = Field(alias="_links")
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -78,31 +53,25 @@ class PullRequestSimple(GitHubModel):
         title="author_association",
         description="How the author is associated with the repository.",
     )
-    auto_merge: Union[AutoMerge, None] = Field(
-        title="Auto merge", description="The status of auto merging a pull request."
-    )
-    draft: Missing[bool] = Field(
-        default=UNSET,
-        description="Indicates whether or not the pull request is a draft.",
-    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-class PullRequestSimplePropLabelsItems(GitHubModel):
-    """PullRequestSimplePropLabelsItems"""
+class TimelineCommitCommentedEvent(GitHubModel):
+    """Timeline Commit Commented Event
 
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    name: str = Field()
-    description: Union[str, None] = Field()
-    color: str = Field()
-    default: bool = Field()
+    Timeline Commit Commented Event
+    """
+
+    event: Missing[Literal["commit_commented"]] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    commit_id: Missing[str] = Field(default=UNSET)
+    comments: Missing[List[CommitComment]] = Field(default=UNSET)
 
 
-model_rebuild(PullRequestSimple)
-model_rebuild(PullRequestSimplePropLabelsItems)
+model_rebuild(CommitComment)
+model_rebuild(TimelineCommitCommentedEvent)
 
 __all__ = (
-    "PullRequestSimple",
-    "PullRequestSimplePropLabelsItems",
+    "CommitComment",
+    "TimelineCommitCommentedEvent",
 )

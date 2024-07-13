@@ -9,21 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0065 import RunnerLabelType
 
-class ActionsPublicKeyType(TypedDict):
-    """ActionsPublicKey
 
-    The public key used for setting Actions Secrets.
+class RunnerType(TypedDict):
+    """Self hosted runners
+
+    A self hosted runner
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    id: int
+    runner_group_id: NotRequired[int]
+    name: str
+    os: str
+    status: str
+    busy: bool
+    labels: List[RunnerLabelType]
 
 
-__all__ = ("ActionsPublicKeyType",)
+__all__ = ("RunnerType",)

@@ -163,6 +163,9 @@ if TYPE_CHECKING:
     from .github_app_authorization import (
         GithubAppAuthorizationEvent as GithubAppAuthorizationEvent,
     )
+    from .projects_v2_status_update import (
+        ProjectsV2StatusUpdateEvent as ProjectsV2StatusUpdateEvent,
+    )
     from .discussion_comment import (
         discussion_comment_action_types as discussion_comment_action_types,
     )
@@ -228,6 +231,9 @@ if TYPE_CHECKING:
     )
     from .installation_repositories import (
         installation_repositories_action_types as installation_repositories_action_types,
+    )
+    from .projects_v2_status_update import (
+        projects_v2_status_update_action_types as projects_v2_status_update_action_types,
     )
     from .deployment_protection_rule import (
         deployment_protection_rule_action_types as deployment_protection_rule_action_types,
@@ -335,6 +341,10 @@ else:
         ".project_column": ("ProjectColumnEvent", "project_column_action_types"),
         ".projects_v2": ("ProjectsV2Event", "projects_v2_action_types"),
         ".projects_v2_item": ("ProjectsV2ItemEvent", "projects_v2_item_action_types"),
+        ".projects_v2_status_update": (
+            "ProjectsV2StatusUpdateEvent",
+            "projects_v2_status_update_action_types",
+        ),
         ".public": ("PublicEvent", "public_action_types"),
         ".pull_request": ("PullRequestEvent", "pull_request_action_types"),
         ".pull_request_review_comment": (

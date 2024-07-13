@@ -9,26 +9,105 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0201 import CodeScanningVariantAnalysisRepository
+from .group_0001 import SimpleUser
+from .group_0071 import CodeScanningAnalysisTool
+from .group_0072 import CodeScanningAlertInstance
 
 
-class CodeScanningVariantAnalysisSkippedRepoGroup(GitHubModel):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+class CodeScanningAlert(GitHubModel):
+    """CodeScanningAlert"""
 
-    repository_count: int = Field(
-        description="The total number of repositories that were skipped for this reason."
+    number: int = Field(description="The security alert number.")
+    created_at: datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    repositories: List[CodeScanningVariantAnalysisRepository] = Field(
-        description="A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it."
+    updated_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    instances_url: str = Field(
+        description="The REST API URL for fetching the list of instances for an alert."
+    )
+    state: Literal["open", "dismissed", "fixed"] = Field(
+        description="State of a code scanning alert."
+    )
+    fixed_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    dismissed_by: Union[None, SimpleUser] = Field()
+    dismissed_at: Union[datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ] = Field(
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
+    )
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
+    )
+    rule: CodeScanningAlertRule = Field()
+    tool: CodeScanningAnalysisTool = Field()
+    most_recent_instance: CodeScanningAlertInstance = Field()
+
+
+class CodeScanningAlertRule(GitHubModel):
+    """CodeScanningAlertRule"""
+
+    id: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A unique identifier for the rule used to detect the alert.",
+    )
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the rule used to detect the alert."
+    )
+    severity: Missing[Union[None, Literal["none", "note", "warning", "error"]]] = Field(
+        default=UNSET, description="The severity of the alert."
+    )
+    security_severity_level: Missing[
+        Union[None, Literal["low", "medium", "high", "critical"]]
+    ] = Field(default=UNSET, description="The security severity of the alert.")
+    description: Missing[str] = Field(
+        default=UNSET,
+        description="A short description of the rule used to detect the alert.",
+    )
+    full_description: Missing[str] = Field(
+        default=UNSET, description="description of the rule used to detect the alert."
+    )
+    tags: Missing[Union[List[str], None]] = Field(
+        default=UNSET, description="A set of tags applicable for the rule."
+    )
+    help_: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="help",
+        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
+    )
+    help_uri: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A link to the documentation for the rule used to detect the alert.",
     )
 
 
-model_rebuild(CodeScanningVariantAnalysisSkippedRepoGroup)
+model_rebuild(CodeScanningAlert)
+model_rebuild(CodeScanningAlertRule)
 
-__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroup",)
+__all__ = (
+    "CodeScanningAlert",
+    "CodeScanningAlertRule",
+)

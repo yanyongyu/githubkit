@@ -9,33 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0001 import SimpleUser
+from .group_0055 import MinimalRepository
 
 
-class AutoMerge(GitHubModel):
-    """Auto merge
+class RepositoryInvitation(GitHubModel):
+    """Repository Invitation
 
-    The status of auto merging a pull request.
+    Repository invitations let you manage who you collaborate with.
     """
 
-    enabled_by: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    merge_method: Literal["merge", "squash", "rebase"] = Field(
-        description="The merge method to use."
+    id: int = Field(description="Unique identifier of the repository invitation.")
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    commit_title: Union[str, None] = Field(
-        description="Title for the merge commit message."
+    invitee: Union[None, SimpleUser] = Field()
+    inviter: Union[None, SimpleUser] = Field()
+    permissions: Literal["read", "write", "admin", "triage", "maintain"] = Field(
+        description="The permission associated with the invitation."
     )
-    commit_message: Union[str, None] = Field(
-        description="Commit message for the merge commit."
+    created_at: datetime = Field()
+    expired: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the invitation has expired"
     )
+    url: str = Field(description="URL for the repository invitation")
+    html_url: str = Field()
+    node_id: str = Field()
 
 
-model_rebuild(AutoMerge)
+model_rebuild(RepositoryInvitation)
 
-__all__ = ("AutoMerge",)
+__all__ = ("RepositoryInvitation",)

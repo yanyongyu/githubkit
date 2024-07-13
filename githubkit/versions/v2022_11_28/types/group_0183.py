@@ -9,17 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0026 import TeamType
+from .group_0001 import SimpleUserType
+from .group_0006 import IntegrationType
 
 
-class VerificationType(TypedDict):
-    """Verification"""
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
 
-    verified: bool
-    reason: str
-    payload: Union[str, None]
-    signature: Union[str, None]
+    users: NotRequired[List[SimpleUserType]]
+    teams: NotRequired[List[TeamType]]
+    apps: NotRequired[List[Union[IntegrationType, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
 
 
-__all__ = ("VerificationType",)
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
+
+    users: NotRequired[List[SimpleUserType]]
+    teams: NotRequired[List[TeamType]]
+    apps: NotRequired[List[Union[IntegrationType, None]]]
+
+
+__all__ = (
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
+)

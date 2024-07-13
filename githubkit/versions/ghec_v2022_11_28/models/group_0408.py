@@ -9,42 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from datetime import datetime
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ExemptionResponse(GitHubModel):
-    """Exemption response
+class OrganizationSimpleWebhooks(GitHubModel):
+    """Organization Simple
 
-    A response to an exemption request by a delegated bypasser.
+    A GitHub organization. Webhook payloads contain the `organization` property when
+    the webhook is configured for an
+    organization, or when the event occurs from activity in a repository owned by an
+    organization.
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the exemption response."
-    )
-    reviewer_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the user who reviewed the exemption request.",
-    )
-    reviewer_login: Missing[str] = Field(
-        default=UNSET,
-        description="The login of the user who reviewed the exemption request.",
-    )
-    status: Missing[Literal["approved", "rejected", "dismissed"]] = Field(
-        default=UNSET, description="The status of the exemption response."
-    )
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time the exemption request was created.",
-    )
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    hooks_url: str = Field()
+    issues_url: str = Field()
+    members_url: str = Field()
+    public_members_url: str = Field()
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
 
 
-model_rebuild(ExemptionResponse)
+model_rebuild(OrganizationSimpleWebhooks)
 
-__all__ = ("ExemptionResponse",)
+__all__ = ("OrganizationSimpleWebhooks",)

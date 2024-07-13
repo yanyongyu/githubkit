@@ -17,11 +17,16 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0141 import RepositoryRuleRequiredDeploymentsPropParameters
 
-class RepositoryRuleDetailedOneof8(GitHubModel):
-    """RepositoryRuleDetailedOneof8"""
 
-    type: Literal["non_fast_forward"] = Field()
+class RepositoryRuleDetailedOneof4(GitHubModel):
+    """RepositoryRuleDetailedOneof4"""
+
+    type: Literal["required_deployments"] = Field()
+    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
+        default=UNSET
+    )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -35,6 +40,6 @@ class RepositoryRuleDetailedOneof8(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof8)
+model_rebuild(RepositoryRuleDetailedOneof4)
 
-__all__ = ("RepositoryRuleDetailedOneof8",)
+__all__ = ("RepositoryRuleDetailedOneof4",)

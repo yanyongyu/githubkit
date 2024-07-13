@@ -19,39 +19,37 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCodespacesSecretsGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
+class OrgsOrgActionsVariablesGetResponse200(GitHubModel):
+    """OrgsOrgActionsVariablesGetResponse200"""
 
     total_count: int = Field()
-    secrets: List[CodespacesOrgSecret] = Field()
+    variables: List[OrganizationActionsVariable] = Field()
 
 
-class CodespacesOrgSecret(GitHubModel):
-    """Codespaces Secret
+class OrganizationActionsVariable(GitHubModel):
+    """Actions Variable for an Organization
 
-    Secrets for a GitHub Codespace.
+    Organization variable for GitHub Actions.
     """
 
-    name: str = Field(description="The name of the secret")
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
     created_at: datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
     updated_at: datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
     visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that the secret is visible to"
+        description="Visibility of a variable"
     )
-    selected_repositories_url: Missing[str] = Field(
-        default=UNSET,
-        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
-    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCodespacesSecretsGetResponse200)
-model_rebuild(CodespacesOrgSecret)
+model_rebuild(OrgsOrgActionsVariablesGetResponse200)
+model_rebuild(OrganizationActionsVariable)
 
 __all__ = (
-    "OrgsOrgCodespacesSecretsGetResponse200",
-    "CodespacesOrgSecret",
+    "OrgsOrgActionsVariablesGetResponse200",
+    "OrganizationActionsVariable",
 )

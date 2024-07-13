@@ -9,31 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
+from .group_0006 import Integration
 
-class Label(GitHubModel):
-    """Label
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+class LockedIssueEvent(GitHubModel):
+    """Locked Issue Event
+
+    Locked Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
-    url: str = Field(description="URL for the label")
-    name: str = Field(description="The name of the label.")
-    description: Union[str, None] = Field()
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
-    )
-    default: bool = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["locked"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    lock_reason: Union[str, None] = Field()
 
 
-model_rebuild(Label)
+model_rebuild(LockedIssueEvent)
 
-__all__ = ("Label",)
+__all__ = ("LockedIssueEvent",)

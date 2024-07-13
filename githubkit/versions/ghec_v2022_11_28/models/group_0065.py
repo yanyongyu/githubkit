@@ -9,95 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0063 import Issue
-from .group_0064 import IssueComment
 
+class ReactionRollup(GitHubModel):
+    """Reaction Rollup"""
 
-class EventPropPayload(GitHubModel):
-    """EventPropPayload"""
-
-    action: Missing[str] = Field(default=UNSET)
-    issue: Missing[Issue] = Field(
-        default=UNSET,
-        title="Issue",
-        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
-    )
-    comment: Missing[IssueComment] = Field(
-        default=UNSET,
-        title="Issue Comment",
-        description="Comments provide a way for people to collaborate on an issue.",
-    )
-    pages: Missing[List[EventPropPayloadPropPagesItems]] = Field(default=UNSET)
-
-
-class EventPropPayloadPropPagesItems(GitHubModel):
-    """EventPropPayloadPropPagesItems"""
-
-    page_name: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    summary: Missing[Union[str, None]] = Field(default=UNSET)
-    action: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-
-
-class Event(GitHubModel):
-    """Event
-
-    Event
-    """
-
-    id: str = Field()
-    type: Union[str, None] = Field()
-    actor: Actor = Field(title="Actor", description="Actor")
-    repo: EventPropRepo = Field()
-    org: Missing[Actor] = Field(default=UNSET, title="Actor", description="Actor")
-    payload: EventPropPayload = Field()
-    public: bool = Field()
-    created_at: Union[datetime, None] = Field()
-
-
-class Actor(GitHubModel):
-    """Actor
-
-    Actor
-    """
-
-    id: int = Field()
-    login: str = Field()
-    display_login: Missing[str] = Field(default=UNSET)
-    gravatar_id: Union[str, None] = Field()
     url: str = Field()
-    avatar_url: str = Field()
+    total_count: int = Field()
+    plus_one: int = Field(alias="+1")
+    minus_one: int = Field(alias="-1")
+    laugh: int = Field()
+    confused: int = Field()
+    heart: int = Field()
+    hooray: int = Field()
+    eyes: int = Field()
+    rocket: int = Field()
 
 
-class EventPropRepo(GitHubModel):
-    """EventPropRepo"""
+model_rebuild(ReactionRollup)
 
-    id: int = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-model_rebuild(EventPropPayload)
-model_rebuild(EventPropPayloadPropPagesItems)
-model_rebuild(Event)
-model_rebuild(Actor)
-model_rebuild(EventPropRepo)
-
-__all__ = (
-    "EventPropPayload",
-    "EventPropPayloadPropPagesItems",
-    "Event",
-    "Actor",
-    "EventPropRepo",
-)
+__all__ = ("ReactionRollup",)

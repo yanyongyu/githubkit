@@ -10,41 +10,39 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
-class CopilotOrganizationDetailsType(TypedDict):
-    """Copilot Business Organization Details
+class CodeSecurityConfigurationType(TypedDict):
+    """CodeSecurityConfiguration
 
-    Information about the seat breakdown and policies set for an organization with a
-    Copilot Business subscription.
+    A code security configuration
     """
 
-    seat_breakdown: CopilotSeatBreakdownType
-    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"]
-    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
-    seat_management_setting: Literal[
-        "assign_all", "assign_selected", "disabled", "unconfigured"
+    id: NotRequired[int]
+    name: NotRequired[str]
+    target_type: NotRequired[Literal["global", "organization"]]
+    description: NotRequired[str]
+    advanced_security: NotRequired[Literal["enabled", "disabled"]]
+    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning_push_protection: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
     ]
+    secret_scanning_validity_checks: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    private_vulnerability_reporting: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
 
 
-class CopilotSeatBreakdownType(TypedDict):
-    """Copilot Business Seat Breakdown
-
-    The breakdown of Copilot Business seats for the organization.
-    """
-
-    total: NotRequired[int]
-    added_this_cycle: NotRequired[int]
-    pending_cancellation: NotRequired[int]
-    pending_invitation: NotRequired[int]
-    active_this_cycle: NotRequired[int]
-    inactive_this_cycle: NotRequired[int]
-
-
-__all__ = (
-    "CopilotOrganizationDetailsType",
-    "CopilotSeatBreakdownType",
-)
+__all__ = ("CodeSecurityConfigurationType",)

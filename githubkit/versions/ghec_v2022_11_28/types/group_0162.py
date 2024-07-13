@@ -13,136 +13,116 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0093 import TeamType
-from .group_0001 import SimpleUserType
-from .group_0161 import RepositoryAdvisoryCreditType
+from .group_0137 import RepositoryRuleUpdateType
+from .group_0161 import RepositoryRuleOneof17Type
+from .group_0157 import RepositoryRuleWorkflowsType
+from .group_0142 import RepositoryRulePullRequestType
+from .group_0133 import OrgRulesetConditionsOneof0Type
+from .group_0134 import OrgRulesetConditionsOneof1Type
+from .group_0135 import OrgRulesetConditionsOneof2Type
+from .group_0159 import RepositoryRuleCodeScanningType
+from .group_0125 import RepositoryRulesetConditionsType
+from .group_0124 import RepositoryRulesetBypassActorType
+from .group_0154 import RepositoryRuleTagNamePatternType
+from .group_0152 import RepositoryRuleBranchNamePatternType
+from .group_0140 import RepositoryRuleRequiredDeploymentsType
+from .group_0144 import RepositoryRuleRequiredStatusChecksType
+from .group_0146 import RepositoryRuleCommitMessagePatternType
+from .group_0150 import RepositoryRuleCommitterEmailPatternType
+from .group_0148 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0139 import (
+    RepositoryRuleOneof15Type,
+    RepositoryRuleRequiredLinearHistoryType,
+)
+from .group_0136 import (
+    RepositoryRuleOneof14Type,
+    RepositoryRuleOneof16Type,
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
+)
 
 
-class RepositoryAdvisoryType(TypedDict):
-    """RepositoryAdvisory
+class RepositoryRulesetType(TypedDict):
+    """Repository ruleset
 
-    A repository security advisory.
+    A set of rules to apply when specified conditions are met.
     """
 
-    ghsa_id: str
-    cve_id: Union[str, None]
-    url: str
-    html_url: str
-    summary: str
-    description: Union[str, None]
-    severity: Union[None, Literal["critical", "high", "medium", "low"]]
-    author: None
-    publisher: None
-    identifiers: List[RepositoryAdvisoryPropIdentifiersItemsType]
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
-    created_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    published_at: Union[datetime, None]
-    closed_at: Union[datetime, None]
-    withdrawn_at: Union[datetime, None]
-    submission: Union[RepositoryAdvisoryPropSubmissionType, None]
-    vulnerabilities: Union[List[RepositoryAdvisoryVulnerabilityType], None]
-    cvss: Union[RepositoryAdvisoryPropCvssType, None]
-    cwes: Union[List[RepositoryAdvisoryPropCwesItemsType], None]
-    cwe_ids: Union[List[str], None]
-    credits_: Union[List[RepositoryAdvisoryPropCreditsItemsType], None]
-    credits_detailed: Union[List[RepositoryAdvisoryCreditType], None]
-    collaborating_users: Union[List[SimpleUserType], None]
-    collaborating_teams: Union[List[TeamType], None]
-    private_fork: None
-
-
-class RepositoryAdvisoryPropIdentifiersItemsType(TypedDict):
-    """RepositoryAdvisoryPropIdentifiersItems"""
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class RepositoryAdvisoryPropSubmissionType(TypedDict):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool
-
-
-class RepositoryAdvisoryPropCvssType(TypedDict):
-    """RepositoryAdvisoryPropCvss"""
-
-    vector_string: Union[str, None]
-    score: Union[float, None]
-
-
-class RepositoryAdvisoryPropCwesItemsType(TypedDict):
-    """RepositoryAdvisoryPropCwesItems"""
-
-    cwe_id: str
+    id: int
     name: str
-
-
-class RepositoryAdvisoryPropCreditsItemsType(TypedDict):
-    """RepositoryAdvisoryPropCreditsItems"""
-
-    login: NotRequired[str]
-    type: NotRequired[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
+    target: NotRequired[Literal["branch", "tag", "push"]]
+    source_type: NotRequired[Literal["Repository", "Organization"]]
+    source: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
+    current_user_can_bypass: NotRequired[
+        Literal["always", "pull_requests_only", "never"]
+    ]
+    node_id: NotRequired[str]
+    links: NotRequired[RepositoryRulesetPropLinksType]
+    conditions: NotRequired[
+        Union[
+            RepositoryRulesetConditionsType,
+            OrgRulesetConditionsOneof0Type,
+            OrgRulesetConditionsOneof1Type,
+            OrgRulesetConditionsOneof2Type,
+            None,
         ]
     ]
-
-
-class RepositoryAdvisoryVulnerabilityType(TypedDict):
-    """RepositoryAdvisoryVulnerability
-
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
-    """
-
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackageType, None]
-    vulnerable_version_range: Union[str, None]
-    patched_versions: Union[str, None]
-    vulnerable_functions: Union[List[str], None]
-
-
-class RepositoryAdvisoryVulnerabilityPropPackageType(TypedDict):
-    """RepositoryAdvisoryVulnerabilityPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
+    rules: NotRequired[
+        List[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleOneof14Type,
+                RepositoryRuleOneof15Type,
+                RepositoryRuleOneof16Type,
+                RepositoryRuleOneof17Type,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+            ]
+        ]
     ]
-    name: Union[str, None]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
+
+
+class RepositoryRulesetPropLinksType(TypedDict):
+    """RepositoryRulesetPropLinks"""
+
+    self_: NotRequired[RepositoryRulesetPropLinksPropSelfType]
+    html: NotRequired[RepositoryRulesetPropLinksPropHtmlType]
+
+
+class RepositoryRulesetPropLinksPropSelfType(TypedDict):
+    """RepositoryRulesetPropLinksPropSelf"""
+
+    href: NotRequired[str]
+
+
+class RepositoryRulesetPropLinksPropHtmlType(TypedDict):
+    """RepositoryRulesetPropLinksPropHtml"""
+
+    href: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryAdvisoryType",
-    "RepositoryAdvisoryPropIdentifiersItemsType",
-    "RepositoryAdvisoryPropSubmissionType",
-    "RepositoryAdvisoryPropCvssType",
-    "RepositoryAdvisoryPropCwesItemsType",
-    "RepositoryAdvisoryPropCreditsItemsType",
-    "RepositoryAdvisoryVulnerabilityType",
-    "RepositoryAdvisoryVulnerabilityPropPackageType",
+    "RepositoryRulesetType",
+    "RepositoryRulesetPropLinksType",
+    "RepositoryRulesetPropLinksPropSelfType",
+    "RepositoryRulesetPropLinksPropHtmlType",
 )

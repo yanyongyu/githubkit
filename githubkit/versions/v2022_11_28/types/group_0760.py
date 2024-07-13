@@ -12,15 +12,18 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0017 import RepositoryType
+from .group_0014 import AppPermissionsType
 
 
-class InstallationRepositoriesGetResponse200Type(TypedDict):
-    """InstallationRepositoriesGetResponse200"""
+class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
+    """ApplicationsClientIdTokenScopedPostBody"""
 
-    total_count: int
-    repositories: List[RepositoryType]
-    repository_selection: NotRequired[str]
+    access_token: str
+    target: NotRequired[str]
+    target_id: NotRequired[int]
+    repositories: NotRequired[List[str]]
+    repository_ids: NotRequired[List[int]]
+    permissions: NotRequired[AppPermissionsType]
 
 
-__all__ = ("InstallationRepositoriesGetResponse200Type",)
+__all__ = ("ApplicationsClientIdTokenScopedPostBodyType",)

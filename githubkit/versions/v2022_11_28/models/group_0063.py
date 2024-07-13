@@ -9,34 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0062 import RunnerLabel
 
+class ActionsGetDefaultWorkflowPermissions(GitHubModel):
+    """ActionsGetDefaultWorkflowPermissions"""
 
-class Runner(GitHubModel):
-    """Self hosted runners
-
-    A self hosted runner
-    """
-
-    id: int = Field(description="The id of the runner.")
-    runner_group_id: Missing[int] = Field(
-        default=UNSET, description="The id of the runner group."
+    default_workflow_permissions: Literal["read", "write"] = Field(
+        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows."
     )
-    name: str = Field(description="The name of the runner.")
-    os: str = Field(description="The Operating System of the runner.")
-    status: str = Field(description="The status of the runner.")
-    busy: bool = Field()
-    labels: List[RunnerLabel] = Field()
+    can_approve_pull_request_reviews: bool = Field(
+        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk."
+    )
 
 
-model_rebuild(Runner)
+model_rebuild(ActionsGetDefaultWorkflowPermissions)
 
-__all__ = ("Runner",)
+__all__ = ("ActionsGetDefaultWorkflowPermissions",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,79 +17,46 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0133 import RepositoryRuleUpdate
-from .group_0157 import RepositoryRuleOneof17
-from .group_0153 import RepositoryRuleWorkflows
-from .group_0138 import RepositoryRulePullRequest
-from .group_0155 import RepositoryRuleCodeScanning
-from .group_0121 import RepositoryRulesetConditions
-from .group_0120 import RepositoryRulesetBypassActor
-from .group_0150 import RepositoryRuleTagNamePattern
-from .group_0148 import RepositoryRuleBranchNamePattern
-from .group_0136 import RepositoryRuleRequiredDeployments
-from .group_0140 import RepositoryRuleRequiredStatusChecks
-from .group_0142 import RepositoryRuleCommitMessagePattern
-from .group_0146 import RepositoryRuleCommitterEmailPattern
-from .group_0144 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0135 import RepositoryRuleOneof15, RepositoryRuleRequiredLinearHistory
-from .group_0132 import (
-    RepositoryRuleOneof14,
-    RepositoryRuleOneof16,
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
 
+class ReposOwnerRepoPullsPullNumberCommentsPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberCommentsPostBody"""
 
-class ReposOwnerRepoRulesetsPostBody(GitHubModel):
-    """ReposOwnerRepoRulesetsPostBody"""
-
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
+    body: str = Field(description="The text of the review comment.")
+    commit_id: str = Field(
+        description="The SHA of the commit needing a comment. Not using the latest commit SHA may render your comment outdated if a subsequent commit modifies the line you specify as the `position`."
+    )
+    path: str = Field(
+        description="The relative path to the file that necessitates a comment."
+    )
+    position: Missing[int] = Field(
         default=UNSET,
-        description="The target of the ruleset\n\n**Note**: The `push` target is in beta and is subject to change.",
+        description='**This parameter is deprecated. Use `line` instead**. The position in the diff where you want to add a review comment. Note this value is not the same as the line number in the file. The position value equals the number of lines down from the first "@@" hunk header in the file you want to add a comment. The line just below the "@@" line is position 1, the next line is position 2, and so on. The position in the diff continues to increase through lines of whitespace and additional hunks until the beginning of a new file.',
     )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page."
-    )
-    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
+    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
         default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+        description='In a split diff view, the side of the diff that the pull request\'s changes appear on. Can be `LEFT` or `RIGHT`. Use `LEFT` for deletions that appear in red. Use `RIGHT` for additions that appear in green or unchanged lines that appear in white and are shown for context. For a multi-line comment, side represents whether the last line of the comment range is a deletion or addition. For more information, see "[Diff view options](https://docs.github.com/enterprise-cloud@latest//articles/about-comparing-branches-in-pull-requests#diff-view-options)" in the GitHub Help documentation.',
     )
-    conditions: Missing[RepositoryRulesetConditions] = Field(
+    line: Missing[int] = Field(
         default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
+        description="**Required unless using `subject_type:file`**. The line of the blob in the pull request diff that the comment applies to. For a multi-line comment, the last line of the range that your comment applies to.",
     )
-    rules: Missing[
-        List[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleOneof14,
-                RepositoryRuleOneof15,
-                RepositoryRuleOneof16,
-                RepositoryRuleOneof17,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+    start_line: Missing[int] = Field(
+        default=UNSET,
+        description='**Required when using multi-line comments unless using `in_reply_to`**. The `start_line` is the first line in the pull request diff that your multi-line comment applies to. To learn more about multi-line comments, see "[Commenting on a pull request](https://docs.github.com/enterprise-cloud@latest//articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the GitHub Help documentation.',
+    )
+    start_side: Missing[Literal["LEFT", "RIGHT", "side"]] = Field(
+        default=UNSET,
+        description='**Required when using multi-line comments unless using `in_reply_to`**. The `start_side` is the starting side of the diff that the comment applies to. Can be `LEFT` or `RIGHT`. To learn more about multi-line comments, see "[Commenting on a pull request](https://docs.github.com/enterprise-cloud@latest//articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the GitHub Help documentation. See `side` in this table for additional context.',
+    )
+    in_reply_to: Missing[int] = Field(
+        default=UNSET,
+        description='The ID of the review comment to reply to. To find the ID of a review comment with ["List review comments on a pull request"](#list-review-comments-on-a-pull-request). When specified, all parameters other than `body` in the request body are ignored.',
+    )
+    subject_type: Missing[Literal["line", "file"]] = Field(
+        default=UNSET, description="The level at which the comment is targeted."
+    )
 
 
-model_rebuild(ReposOwnerRepoRulesetsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberCommentsPostBody)
 
-__all__ = ("ReposOwnerRepoRulesetsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberCommentsPostBody",)

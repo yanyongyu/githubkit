@@ -9,45 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
-from typing_extensions import TypedDict, NotRequired
+from typing import Union, Literal
+from typing_extensions import TypedDict
 
-from .group_0079 import MinimalRepositoryType
+from .group_0001 import SimpleUserType
 
 
-class CombinedCommitStatusType(TypedDict):
-    """Combined Commit Status
+class AutoMergeType(TypedDict):
+    """Auto merge
 
-    Combined Commit Status
+    The status of auto merging a pull request.
     """
 
-    state: str
-    statuses: List[SimpleCommitStatusType]
-    sha: str
-    total_count: int
-    repository: MinimalRepositoryType
-    commit_url: str
-    url: str
+    enabled_by: SimpleUserType
+    merge_method: Literal["merge", "squash", "rebase"]
+    commit_title: Union[str, None]
+    commit_message: Union[str, None]
 
 
-class SimpleCommitStatusType(TypedDict):
-    """Simple Commit Status"""
-
-    description: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    context: str
-    target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
-    url: str
-    created_at: datetime
-    updated_at: datetime
-
-
-__all__ = (
-    "CombinedCommitStatusType",
-    "SimpleCommitStatusType",
-)
+__all__ = ("AutoMergeType",)

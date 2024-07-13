@@ -18,37 +18,23 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty(
-    GitHubModel
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName(GitHubModel):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
 
-    include: Missing[List[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+    include: Missing[List[str]] = Field(
         default=UNSET,
-        description="The repository properties and values to include. All of these properties must match for the condition to pass.",
+        description="Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories.",
     )
-    exclude: Missing[List[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+    exclude: Missing[List[str]] = Field(
         default=UNSET,
-        description="The repository properties and values to exclude. The condition will not pass if any of these properties match.",
+        description="Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match.",
+    )
+    protected: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether renaming of target repositories is prevented.",
     )
 
 
-class RepositoryRulesetConditionsRepositoryPropertySpec(GitHubModel):
-    """Repository ruleset property targeting definition
+model_rebuild(RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName)
 
-    Parameters for a targeting a repository property
-    """
-
-    name: str = Field(description="The name of the repository property to target")
-    property_values: List[str] = Field(
-        description="The values to match for the repository property"
-    )
-
-
-model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty)
-model_rebuild(RepositoryRulesetConditionsRepositoryPropertySpec)
-
-__all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
-    "RepositoryRulesetConditionsRepositoryPropertySpec",
-)
+__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName",)

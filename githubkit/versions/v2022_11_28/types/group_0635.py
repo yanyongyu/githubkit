@@ -9,79 +9,77 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import date
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0367 import EnterpriseWebhooksType
-from .group_0368 import SimpleInstallationType
-from .group_0370 import RepositoryWebhooksType
-from .group_0371 import SimpleUserWebhooksType
-from .group_0405 import PullRequestWebhookType
-from .group_0369 import OrganizationSimpleWebhooksType
+from .group_0373 import SimpleInstallationType
+from .group_0376 import SimpleUserWebhooksType
+from .group_0410 import ProjectsV2StatusUpdateType
+from .group_0374 import OrganizationSimpleWebhooksType
 
 
-class WebhookPullRequestEditedType(TypedDict):
-    """pull_request edited event"""
+class WebhookProjectsV2StatusUpdateEditedType(TypedDict):
+    """Projects v2 Status Update Edited Event"""
 
     action: Literal["edited"]
-    changes: WebhookPullRequestEditedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    changes: NotRequired[WebhookProjectsV2StatusUpdateEditedPropChangesType]
     installation: NotRequired[SimpleInstallationType]
-    number: int
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: PullRequestWebhookType
-    repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_status_update: ProjectsV2StatusUpdateType
+    sender: SimpleUserWebhooksType
 
 
-class WebhookPullRequestEditedPropChangesType(TypedDict):
-    """WebhookPullRequestEditedPropChanges
+class WebhookProjectsV2StatusUpdateEditedPropChangesType(TypedDict):
+    """WebhookProjectsV2StatusUpdateEditedPropChanges"""
 
-    The changes to the comment if the action was `edited`.
-    """
-
-    base: NotRequired[WebhookPullRequestEditedPropChangesPropBaseType]
-    body: NotRequired[WebhookPullRequestEditedPropChangesPropBodyType]
-    title: NotRequired[WebhookPullRequestEditedPropChangesPropTitleType]
-
-
-class WebhookPullRequestEditedPropChangesPropBodyType(TypedDict):
-    """WebhookPullRequestEditedPropChangesPropBody"""
-
-    from_: str
+    body: NotRequired[WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyType]
+    status: NotRequired[WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType]
+    start_date: NotRequired[
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateType
+    ]
+    target_date: NotRequired[
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType
+    ]
 
 
-class WebhookPullRequestEditedPropChangesPropTitleType(TypedDict):
-    """WebhookPullRequestEditedPropChangesPropTitle"""
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyType(TypedDict):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropBody"""
 
-    from_: str
-
-
-class WebhookPullRequestEditedPropChangesPropBaseType(TypedDict):
-    """WebhookPullRequestEditedPropChangesPropBase"""
-
-    ref: WebhookPullRequestEditedPropChangesPropBasePropRefType
-    sha: WebhookPullRequestEditedPropChangesPropBasePropShaType
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
 
 
-class WebhookPullRequestEditedPropChangesPropBasePropRefType(TypedDict):
-    """WebhookPullRequestEditedPropChangesPropBasePropRef"""
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType(TypedDict):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus"""
 
-    from_: str
+    from_: NotRequired[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ]
+    to: NotRequired[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ]
 
 
-class WebhookPullRequestEditedPropChangesPropBasePropShaType(TypedDict):
-    """WebhookPullRequestEditedPropChangesPropBasePropSha"""
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateType(TypedDict):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate"""
 
-    from_: str
+    from_: NotRequired[Union[date, None]]
+    to: NotRequired[Union[date, None]]
+
+
+class WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType(TypedDict):
+    """WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate"""
+
+    from_: NotRequired[Union[date, None]]
+    to: NotRequired[Union[date, None]]
 
 
 __all__ = (
-    "WebhookPullRequestEditedType",
-    "WebhookPullRequestEditedPropChangesType",
-    "WebhookPullRequestEditedPropChangesPropBodyType",
-    "WebhookPullRequestEditedPropChangesPropTitleType",
-    "WebhookPullRequestEditedPropChangesPropBaseType",
-    "WebhookPullRequestEditedPropChangesPropBasePropRefType",
-    "WebhookPullRequestEditedPropChangesPropBasePropShaType",
+    "WebhookProjectsV2StatusUpdateEditedType",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesType",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyType",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateType",
+    "WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType",
 )

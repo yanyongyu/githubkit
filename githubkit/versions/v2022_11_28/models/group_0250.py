@@ -17,52 +17,27 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0249 import CustomDeploymentRuleApp
+from .group_0251 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems
 
 
-class DeploymentProtectionRule(GitHubModel):
-    """Deployment protection rule
+class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
-    Deployment protection rule
-    """
-
-    id: int = Field(
-        description="The unique identifier for the deployment protection rule."
-    )
-    node_id: str = Field(description="The node ID for the deployment protection rule.")
-    enabled: bool = Field(
-        description="Whether the deployment protection rule is enabled for the environment."
-    )
-    app: CustomDeploymentRuleApp = Field(
-        title="Custom deployment protection rule app",
-        description="A GitHub App that is providing a custom deployment protection rule.",
-    )
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
-
-    Examples:
-        {'$ref': '#/components/examples/deployment-protection-rules'}
-    """
-
-    total_count: Missing[int] = Field(
+    id: int = Field()
+    node_id: str = Field()
+    prevent_self_review: Missing[bool] = Field(
         default=UNSET,
-        description="The number of enabled custom deployment protection rules for this environment",
+        description="Whether deployments to this environment can be approved by the user who created the deployment.",
     )
-    custom_deployment_protection_rules: Missing[List[DeploymentProtectionRule]] = Field(
-        default=UNSET
+    type: str = Field()
+    reviewers: Missing[
+        List[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
+    ] = Field(
+        default=UNSET,
+        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
     )
 
 
-model_rebuild(DeploymentProtectionRule)
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
-)
+model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1)
 
-__all__ = (
-    "DeploymentProtectionRule",
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200",
-)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1",)

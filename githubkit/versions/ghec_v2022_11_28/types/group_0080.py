@@ -9,39 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0079 import MinimalRepositoryType
+from typing import List
+from typing_extensions import TypedDict, NotRequired
 
 
-class ThreadType(TypedDict):
-    """Thread
+class ApiOverviewType(TypedDict):
+    """Api Overview
 
-    Thread
+    Api Overview
     """
 
-    id: str
-    repository: MinimalRepositoryType
-    subject: ThreadPropSubjectType
-    reason: str
-    unread: bool
-    updated_at: str
-    last_read_at: Union[str, None]
-    url: str
-    subscription_url: str
+    verifiable_password_authentication: bool
+    ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsType]
+    ssh_keys: NotRequired[List[str]]
+    hooks: NotRequired[List[str]]
+    github_enterprise_importer: NotRequired[List[str]]
+    web: NotRequired[List[str]]
+    api: NotRequired[List[str]]
+    git: NotRequired[List[str]]
+    packages: NotRequired[List[str]]
+    pages: NotRequired[List[str]]
+    importer: NotRequired[List[str]]
+    actions: NotRequired[List[str]]
+    actions_macos: NotRequired[List[str]]
+    dependabot: NotRequired[List[str]]
+    domains: NotRequired[ApiOverviewPropDomainsType]
 
 
-class ThreadPropSubjectType(TypedDict):
-    """ThreadPropSubject"""
+class ApiOverviewPropSshKeyFingerprintsType(TypedDict):
+    """ApiOverviewPropSshKeyFingerprints"""
 
-    title: str
-    url: str
-    latest_comment_url: str
-    type: str
+    sha256_rsa: NotRequired[str]
+    sha256_dsa: NotRequired[str]
+    sha256_ecdsa: NotRequired[str]
+    sha256_ed25519: NotRequired[str]
+
+
+class ApiOverviewPropDomainsType(TypedDict):
+    """ApiOverviewPropDomains"""
+
+    website: NotRequired[List[str]]
+    codespaces: NotRequired[List[str]]
+    copilot: NotRequired[List[str]]
+    packages: NotRequired[List[str]]
+    actions: NotRequired[List[str]]
 
 
 __all__ = (
-    "ThreadType",
-    "ThreadPropSubjectType",
+    "ApiOverviewType",
+    "ApiOverviewPropSshKeyFingerprintsType",
+    "ApiOverviewPropDomainsType",
 )

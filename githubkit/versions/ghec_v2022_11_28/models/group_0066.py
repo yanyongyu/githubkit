@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -17,80 +18,108 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0064 import Milestone
+from .group_0001 import SimpleUser
+from .group_0017 import Repository
+from .group_0006 import Integration
+from .group_0065 import ReactionRollup
 
-class Feed(GitHubModel):
-    """Feed
 
-    Feed
+class Issue(GitHubModel):
+    """Issue
+
+    Issues are a great way to keep track of tasks, enhancements, and bugs for your
+    projects.
     """
 
-    timeline_url: str = Field()
-    user_url: str = Field()
-    current_user_public_url: Missing[str] = Field(default=UNSET)
-    current_user_url: Missing[str] = Field(default=UNSET)
-    current_user_actor_url: Missing[str] = Field(default=UNSET)
-    current_user_organization_url: Missing[str] = Field(default=UNSET)
-    current_user_organization_urls: Missing[List[str]] = Field(default=UNSET)
-    security_advisories_url: Missing[str] = Field(default=UNSET)
-    repository_discussions_url: Missing[str] = Field(
-        default=UNSET, description="A feed of discussions for a given repository."
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field(description="URL for the issue")
+    repository_url: str = Field()
+    labels_url: str = Field()
+    comments_url: str = Field()
+    events_url: str = Field()
+    html_url: str = Field()
+    number: int = Field(
+        description="Number uniquely identifying the issue within its repository"
     )
-    repository_discussions_category_url: Missing[str] = Field(
-        default=UNSET,
-        description="A feed of discussions for a given repository and category.",
+    state: str = Field(description="State of the issue; either 'open' or 'closed'")
+    state_reason: Missing[
+        Union[None, Literal["completed", "reopened", "not_planned"]]
+    ] = Field(default=UNSET, description="The reason for the current state")
+    title: str = Field(description="Title of the issue")
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Contents of the issue"
     )
-    links: FeedPropLinks = Field(alias="_links")
+    user: Union[None, SimpleUser] = Field()
+    labels: List[Union[str, IssuePropLabelsItemsOneof1]] = Field(
+        description="Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository"
+    )
+    assignee: Union[None, SimpleUser] = Field()
+    assignees: Missing[Union[List[SimpleUser], None]] = Field(default=UNSET)
+    milestone: Union[None, Milestone] = Field()
+    locked: bool = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    comments: int = Field()
+    pull_request: Missing[IssuePropPullRequest] = Field(default=UNSET)
+    closed_at: Union[datetime, None] = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    draft: Missing[bool] = Field(default=UNSET)
+    closed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    body_html: Missing[Union[str, None]] = Field(default=UNSET)
+    body_text: Missing[Union[str, None]] = Field(default=UNSET)
+    timeline_url: Missing[str] = Field(default=UNSET)
+    repository: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-class FeedPropLinks(GitHubModel):
-    """FeedPropLinks"""
+class IssuePropLabelsItemsOneof1(GitHubModel):
+    """IssuePropLabelsItemsOneof1"""
 
-    timeline: LinkWithType = Field(
-        title="Link With Type", description="Hypermedia Link with Type"
-    )
-    user: LinkWithType = Field(
-        title="Link With Type", description="Hypermedia Link with Type"
-    )
-    security_advisories: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_public: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_actor: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_organization: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    current_user_organizations: Missing[List[LinkWithType]] = Field(default=UNSET)
-    repository_discussions: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
-    repository_discussions_category: Missing[LinkWithType] = Field(
-        default=UNSET, title="Link With Type", description="Hypermedia Link with Type"
-    )
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
+    color: Missing[Union[str, None]] = Field(default=UNSET)
+    default: Missing[bool] = Field(default=UNSET)
 
 
-class LinkWithType(GitHubModel):
-    """Link With Type
+class IssuePropPullRequest(GitHubModel):
+    """IssuePropPullRequest"""
 
-    Hypermedia Link with Type
-    """
+    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    diff_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    patch_url: Union[str, None] = Field()
+    url: Union[str, None] = Field()
 
-    href: str = Field()
-    type: str = Field()
 
-
-model_rebuild(Feed)
-model_rebuild(FeedPropLinks)
-model_rebuild(LinkWithType)
+model_rebuild(Issue)
+model_rebuild(IssuePropLabelsItemsOneof1)
+model_rebuild(IssuePropPullRequest)
 
 __all__ = (
-    "Feed",
-    "FeedPropLinks",
-    "LinkWithType",
+    "Issue",
+    "IssuePropLabelsItemsOneof1",
+    "IssuePropPullRequest",
 )

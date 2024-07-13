@@ -9,88 +9,64 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import date, datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class PagesHealthCheckType(TypedDict):
-    """Pages Health Check Status
+class PageType(TypedDict):
+    """GitHub Pages
 
-    Pages Health Check Status
+    The configuration for GitHub Pages for a repository.
     """
 
-    domain: NotRequired[PagesHealthCheckPropDomainType]
-    alt_domain: NotRequired[Union[PagesHealthCheckPropAltDomainType, None]]
+    url: str
+    status: Union[None, Literal["built", "building", "errored"]]
+    cname: Union[str, None]
+    protected_domain_state: NotRequired[
+        Union[None, Literal["pending", "verified", "unverified"]]
+    ]
+    pending_domain_unverified_at: NotRequired[Union[datetime, None]]
+    custom_404: bool
+    html_url: NotRequired[str]
+    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
+    source: NotRequired[PagesSourceHashType]
+    public: bool
+    https_certificate: NotRequired[PagesHttpsCertificateType]
+    https_enforced: NotRequired[bool]
 
 
-class PagesHealthCheckPropDomainType(TypedDict):
-    """PagesHealthCheckPropDomain"""
+class PagesSourceHashType(TypedDict):
+    """Pages Source Hash"""
 
-    host: NotRequired[str]
-    uri: NotRequired[str]
-    nameservers: NotRequired[str]
-    dns_resolves: NotRequired[bool]
-    is_proxied: NotRequired[Union[bool, None]]
-    is_cloudflare_ip: NotRequired[Union[bool, None]]
-    is_fastly_ip: NotRequired[Union[bool, None]]
-    is_old_ip_address: NotRequired[Union[bool, None]]
-    is_a_record: NotRequired[Union[bool, None]]
-    has_cname_record: NotRequired[Union[bool, None]]
-    has_mx_records_present: NotRequired[Union[bool, None]]
-    is_valid_domain: NotRequired[bool]
-    is_apex_domain: NotRequired[bool]
-    should_be_a_record: NotRequired[Union[bool, None]]
-    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
-    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
-    is_cname_to_fastly: NotRequired[Union[bool, None]]
-    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
-    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
-    is_pages_domain: NotRequired[bool]
-    is_served_by_pages: NotRequired[Union[bool, None]]
-    is_valid: NotRequired[bool]
-    reason: NotRequired[Union[str, None]]
-    responds_to_https: NotRequired[bool]
-    enforces_https: NotRequired[bool]
-    https_error: NotRequired[Union[str, None]]
-    is_https_eligible: NotRequired[Union[bool, None]]
-    caa_error: NotRequired[Union[str, None]]
+    branch: str
+    path: str
 
 
-class PagesHealthCheckPropAltDomainType(TypedDict):
-    """PagesHealthCheckPropAltDomain"""
+class PagesHttpsCertificateType(TypedDict):
+    """Pages Https Certificate"""
 
-    host: NotRequired[str]
-    uri: NotRequired[str]
-    nameservers: NotRequired[str]
-    dns_resolves: NotRequired[bool]
-    is_proxied: NotRequired[Union[bool, None]]
-    is_cloudflare_ip: NotRequired[Union[bool, None]]
-    is_fastly_ip: NotRequired[Union[bool, None]]
-    is_old_ip_address: NotRequired[Union[bool, None]]
-    is_a_record: NotRequired[Union[bool, None]]
-    has_cname_record: NotRequired[Union[bool, None]]
-    has_mx_records_present: NotRequired[Union[bool, None]]
-    is_valid_domain: NotRequired[bool]
-    is_apex_domain: NotRequired[bool]
-    should_be_a_record: NotRequired[Union[bool, None]]
-    is_cname_to_github_user_domain: NotRequired[Union[bool, None]]
-    is_cname_to_pages_dot_github_dot_com: NotRequired[Union[bool, None]]
-    is_cname_to_fastly: NotRequired[Union[bool, None]]
-    is_pointed_to_github_pages_ip: NotRequired[Union[bool, None]]
-    is_non_github_pages_ip_present: NotRequired[Union[bool, None]]
-    is_pages_domain: NotRequired[bool]
-    is_served_by_pages: NotRequired[Union[bool, None]]
-    is_valid: NotRequired[bool]
-    reason: NotRequired[Union[str, None]]
-    responds_to_https: NotRequired[bool]
-    enforces_https: NotRequired[bool]
-    https_error: NotRequired[Union[str, None]]
-    is_https_eligible: NotRequired[Union[bool, None]]
-    caa_error: NotRequired[Union[str, None]]
+    state: Literal[
+        "new",
+        "authorization_created",
+        "authorization_pending",
+        "authorized",
+        "authorization_revoked",
+        "issued",
+        "uploaded",
+        "approved",
+        "errored",
+        "bad_authz",
+        "destroy_pending",
+        "dns_changed",
+    ]
+    description: str
+    domains: List[str]
+    expires_at: NotRequired[date]
 
 
 __all__ = (
-    "PagesHealthCheckType",
-    "PagesHealthCheckPropDomainType",
-    "PagesHealthCheckPropAltDomainType",
+    "PageType",
+    "PagesSourceHashType",
+    "PagesHttpsCertificateType",
 )

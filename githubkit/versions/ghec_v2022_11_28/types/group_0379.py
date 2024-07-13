@@ -9,112 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Any, List, Union, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class ScimUserListType(TypedDict):
-    """SCIM User List
-
-    SCIM User List
-    """
-
-    schemas: List[str]
-    total_results: int
-    items_per_page: int
-    start_index: int
-    resources: List[ScimUserType]
+from .group_0371 import MetaType
+from .group_0377 import UserRoleItemsType
+from .group_0376 import UserNameResponseType, UserEmailsResponseItemsType
+from .group_0381 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
 
 
-class ScimUserType(TypedDict):
-    """SCIM /Users
+class ScimEnterpriseUserResponseType(TypedDict):
+    """ScimEnterpriseUserResponse"""
 
-    SCIM /Users provisioning endpoints
-    """
-
-    schemas: List[str]
-    id: str
+    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
     external_id: NotRequired[Union[str, None]]
-    user_name: NotRequired[Union[str, None]]
-    display_name: NotRequired[Union[str, None]]
-    name: NotRequired[ScimUserPropNameType]
-    emails: List[ScimUserPropEmailsItemsType]
     active: bool
-    meta: ScimUserPropMetaType
-    organization_id: NotRequired[int]
-    operations: NotRequired[List[ScimUserPropOperationsItemsType]]
-    groups: NotRequired[List[ScimUserPropGroupsItemsType]]
-    roles: NotRequired[List[ScimUserPropRolesItemsType]]
+    user_name: NotRequired[str]
+    name: NotRequired[UserNameResponseType]
+    display_name: NotRequired[Union[str, None]]
+    emails: List[UserEmailsResponseItemsType]
+    roles: NotRequired[List[UserRoleItemsType]]
+    id: str
+    groups: NotRequired[List[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
 
 
-class ScimUserPropNameType(TypedDict):
-    """ScimUserPropName
+class ScimEnterpriseUserListType(TypedDict):
+    """ScimEnterpriseUserList"""
 
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: NotRequired[Union[str, None]]
-    family_name: NotRequired[Union[str, None]]
-    formatted: NotRequired[Union[str, None]]
-
-
-class ScimUserPropEmailsItemsType(TypedDict):
-    """ScimUserPropEmailsItems"""
-
-    value: str
-    primary: NotRequired[bool]
-    type: NotRequired[str]
-
-
-class ScimUserPropMetaType(TypedDict):
-    """ScimUserPropMeta"""
-
-    resource_type: NotRequired[str]
-    created: NotRequired[datetime]
-    last_modified: NotRequired[datetime]
-    location: NotRequired[str]
-
-
-class ScimUserPropGroupsItemsType(TypedDict):
-    """ScimUserPropGroupsItems"""
-
-    value: NotRequired[str]
-    display: NotRequired[str]
-
-
-class ScimUserPropRolesItemsType(TypedDict):
-    """ScimUserPropRolesItems"""
-
-    value: NotRequired[str]
-    primary: NotRequired[bool]
-    type: NotRequired[str]
-    display: NotRequired[str]
-
-
-class ScimUserPropOperationsItemsType(TypedDict):
-    """ScimUserPropOperationsItems"""
-
-    op: Literal["add", "remove", "replace"]
-    path: NotRequired[str]
-    value: NotRequired[
-        Union[str, ScimUserPropOperationsItemsPropValueOneof1Type, List[Any]]
-    ]
-
-
-class ScimUserPropOperationsItemsPropValueOneof1Type(TypedDict):
-    """ScimUserPropOperationsItemsPropValueOneof1"""
+    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: List[ScimEnterpriseUserResponseType]
+    start_index: int
+    items_per_page: int
 
 
 __all__ = (
-    "ScimUserListType",
-    "ScimUserType",
-    "ScimUserPropNameType",
-    "ScimUserPropEmailsItemsType",
-    "ScimUserPropMetaType",
-    "ScimUserPropGroupsItemsType",
-    "ScimUserPropRolesItemsType",
-    "ScimUserPropOperationsItemsType",
-    "ScimUserPropOperationsItemsPropValueOneof1Type",
+    "ScimEnterpriseUserResponseType",
+    "ScimEnterpriseUserListType",
 )

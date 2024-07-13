@@ -17,18 +17,21 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0418 import Discussion
-from .group_0402 import EnterpriseWebhooks
-from .group_0403 import SimpleInstallation
-from .group_0405 import RepositoryWebhooks
-from .group_0406 import SimpleUserWebhooks
-from .group_0404 import OrganizationSimpleWebhooks
+from .group_0422 import Discussion
+from .group_0423 import WebhooksComment
+from .group_0406 import EnterpriseWebhooks
+from .group_0407 import SimpleInstallation
+from .group_0409 import RepositoryWebhooks
+from .group_0410 import SimpleUserWebhooks
+from .group_0408 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionLocked(GitHubModel):
-    """discussion locked event"""
+class WebhookDiscussionCommentEdited(GitHubModel):
+    """discussion_comment edited event"""
 
-    action: Literal["locked"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookDiscussionCommentEditedPropChanges = Field()
+    comment: WebhooksComment = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -57,6 +60,24 @@ class WebhookDiscussionLocked(GitHubModel):
     )
 
 
-model_rebuild(WebhookDiscussionLocked)
+class WebhookDiscussionCommentEditedPropChanges(GitHubModel):
+    """WebhookDiscussionCommentEditedPropChanges"""
 
-__all__ = ("WebhookDiscussionLocked",)
+    body: WebhookDiscussionCommentEditedPropChangesPropBody = Field()
+
+
+class WebhookDiscussionCommentEditedPropChangesPropBody(GitHubModel):
+    """WebhookDiscussionCommentEditedPropChangesPropBody"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookDiscussionCommentEdited)
+model_rebuild(WebhookDiscussionCommentEditedPropChanges)
+model_rebuild(WebhookDiscussionCommentEditedPropChangesPropBody)
+
+__all__ = (
+    "WebhookDiscussionCommentEdited",
+    "WebhookDiscussionCommentEditedPropChanges",
+    "WebhookDiscussionCommentEditedPropChangesPropBody",
+)

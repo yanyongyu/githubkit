@@ -9,26 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
+from .group_0006 import Integration
 
-class MergedUpstream(GitHubModel):
-    """Merged upstream
 
-    Results of a successful merge upstream request
+class TimelineUnassignedIssueEvent(GitHubModel):
+    """Timeline Unassigned Issue Event
+
+    Timeline Unassigned Issue Event
     """
 
-    message: Missing[str] = Field(default=UNSET)
-    merge_type: Missing[Literal["merge", "fast-forward", "none"]] = Field(default=UNSET)
-    base_branch: Missing[str] = Field(default=UNSET)
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["unassigned"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(MergedUpstream)
+model_rebuild(TimelineUnassignedIssueEvent)
 
-__all__ = ("MergedUpstream",)
+__all__ = ("TimelineUnassignedIssueEvent",)

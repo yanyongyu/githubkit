@@ -9,39 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict
+from typing import List
+from datetime import datetime
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
-from .group_0006 import IntegrationType
+from .group_0262 import HookResponseType
+from .group_0007 import WebhookConfigType
 
 
-class LabeledIssueEventType(TypedDict):
-    """Labeled Issue Event
+class HookType(TypedDict):
+    """Webhook
 
-    Labeled Issue Event
+    Webhooks for repositories.
     """
 
+    type: str
     id: int
-    node_id: str
-    url: str
-    actor: SimpleUserType
-    event: Literal["labeled"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[None, IntegrationType, None]
-    label: LabeledIssueEventPropLabelType
-
-
-class LabeledIssueEventPropLabelType(TypedDict):
-    """LabeledIssueEventPropLabel"""
-
     name: str
-    color: str
+    active: bool
+    events: List[str]
+    config: WebhookConfigType
+    updated_at: datetime
+    created_at: datetime
+    url: str
+    test_url: str
+    ping_url: str
+    deliveries_url: NotRequired[str]
+    last_response: HookResponseType
 
 
-__all__ = (
-    "LabeledIssueEventType",
-    "LabeledIssueEventPropLabelType",
-)
+__all__ = ("HookType",)

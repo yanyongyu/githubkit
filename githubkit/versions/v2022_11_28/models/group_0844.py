@@ -13,19 +13,24 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ProjectsColumnsCardsCardIdDeleteResponse403(GitHubModel):
-    """ProjectsColumnsCardsCardIdDeleteResponse403"""
-
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[List[str]] = Field(default=UNSET)
+from .group_0098 import CustomPropertyValue
 
 
-model_rebuild(ProjectsColumnsCardsCardIdDeleteResponse403)
+class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
+    """OrgsOrgPropertiesValuesPatchBody"""
 
-__all__ = ("ProjectsColumnsCardsCardIdDeleteResponse403",)
+    repository_names: List[str] = Field(
+        max_length=30,
+        min_length=1,
+        description="The names of repositories that the custom property values will be applied to.",
+    )
+    properties: List[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values to apply to the repositories."
+    )
+
+
+model_rebuild(OrgsOrgPropertiesValuesPatchBody)
+
+__all__ = ("OrgsOrgPropertiesValuesPatchBody",)

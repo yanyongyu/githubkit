@@ -9,51 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0205 import DiffEntryType
-from .group_0001 import SimpleUserType
-from .group_0207 import CommitPropCommitType
+from .group_0205 import BranchProtectionType
 
 
-class CommitType(TypedDict):
-    """Commit
+class ShortBranchType(TypedDict):
+    """Short Branch
 
-    Commit
+    Short Branch
     """
 
-    url: str
-    sha: str
-    node_id: str
-    html_url: str
-    comments_url: str
-    commit: CommitPropCommitType
-    author: Union[None, SimpleUserType]
-    committer: Union[None, SimpleUserType]
-    parents: List[CommitPropParentsItemsType]
-    stats: NotRequired[CommitPropStatsType]
-    files: NotRequired[List[DiffEntryType]]
+    name: str
+    commit: ShortBranchPropCommitType
+    protected: bool
+    protection: NotRequired[BranchProtectionType]
+    protection_url: NotRequired[str]
 
 
-class CommitPropParentsItemsType(TypedDict):
-    """CommitPropParentsItems"""
+class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
 
     sha: str
     url: str
-    html_url: NotRequired[str]
-
-
-class CommitPropStatsType(TypedDict):
-    """CommitPropStats"""
-
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-    total: NotRequired[int]
 
 
 __all__ = (
-    "CommitType",
-    "CommitPropParentsItemsType",
-    "CommitPropStatsType",
+    "ShortBranchType",
+    "ShortBranchPropCommitType",
 )

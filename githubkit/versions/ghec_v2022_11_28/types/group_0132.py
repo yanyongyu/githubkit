@@ -13,87 +13,27 @@ from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class RepositoryRuleCreationType(TypedDict):
-    """creation
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
 
-    Only allow users with bypass permission to create matching refs.
+    include: NotRequired[List[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+    exclude: NotRequired[List[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+
+
+class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a repository property
     """
 
-    type: Literal["creation"]
-
-
-class RepositoryRuleDeletionType(TypedDict):
-    """deletion
-
-    Only allow users with bypass permissions to delete matching refs.
-    """
-
-    type: Literal["deletion"]
-
-
-class RepositoryRuleRequiredSignaturesType(TypedDict):
-    """required_signatures
-
-    Commits pushed to matching refs must have verified signatures.
-    """
-
-    type: Literal["required_signatures"]
-
-
-class RepositoryRuleNonFastForwardType(TypedDict):
-    """non_fast_forward
-
-    Prevent users with push access from force pushing to refs.
-    """
-
-    type: Literal["non_fast_forward"]
-
-
-class RepositoryRuleOneof14Type(TypedDict):
-    """file_path_restriction
-
-    Note: file_path_restriction is in beta and subject to change.
-
-    Prevent commits that include changes in specified file paths from being pushed
-    to the commit graph.
-    """
-
-    type: Literal["file_path_restriction"]
-    parameters: NotRequired[RepositoryRuleOneof14PropParametersType]
-
-
-class RepositoryRuleOneof14PropParametersType(TypedDict):
-    """RepositoryRuleOneof14PropParameters"""
-
-    restricted_file_paths: List[str]
-
-
-class RepositoryRuleOneof16Type(TypedDict):
-    """file_extension_restriction
-
-    Note: file_extension_restriction is in beta and subject to change.
-
-    Prevent commits that include files with specified file extensions from being
-    pushed to the commit graph.
-    """
-
-    type: Literal["file_extension_restriction"]
-    parameters: NotRequired[RepositoryRuleOneof16PropParametersType]
-
-
-class RepositoryRuleOneof16PropParametersType(TypedDict):
-    """RepositoryRuleOneof16PropParameters"""
-
-    restricted_file_extensions: List[str]
+    name: str
+    property_values: List[str]
+    source: NotRequired[Literal["custom", "system"]]
 
 
 __all__ = (
-    "RepositoryRuleCreationType",
-    "RepositoryRuleDeletionType",
-    "RepositoryRuleRequiredSignaturesType",
-    "RepositoryRuleNonFastForwardType",
-    "RepositoryRuleOneof14Type",
-    "RepositoryRuleOneof14PropParametersType",
-    "RepositoryRuleOneof16Type",
-    "RepositoryRuleOneof16PropParametersType",
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
+    "RepositoryRulesetConditionsRepositoryPropertySpecType",
 )

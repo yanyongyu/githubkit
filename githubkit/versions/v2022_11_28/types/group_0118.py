@@ -9,28 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
-
-    required_status_checks: List[RepositoryRuleParamsStatusCheckConfigurationType]
-    strict_required_status_checks_policy: bool
+from .group_0119 import RepositoryRuleRequiredDeploymentsPropParametersType
 
 
-class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
-    """StatusCheckConfiguration
+class RepositoryRuleRequiredDeploymentsType(TypedDict):
+    """required_deployments
 
-    Required status check
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    context: str
-    integration_id: NotRequired[int]
+    type: Literal["required_deployments"]
+    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
 
 
-__all__ = (
-    "RepositoryRuleRequiredStatusChecksPropParametersType",
-    "RepositoryRuleParamsStatusCheckConfigurationType",
-)
+__all__ = ("RepositoryRuleRequiredDeploymentsType",)

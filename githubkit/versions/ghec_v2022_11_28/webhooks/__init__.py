@@ -163,6 +163,9 @@ if TYPE_CHECKING:
     from .github_app_authorization import (
         GithubAppAuthorizationEvent as GithubAppAuthorizationEvent,
     )
+    from .projects_v2_status_update import (
+        ProjectsV2StatusUpdateEvent as ProjectsV2StatusUpdateEvent,
+    )
     from .discussion_comment import (
         discussion_comment_action_types as discussion_comment_action_types,
     )
@@ -214,6 +217,9 @@ if TYPE_CHECKING:
     from .custom_property_values import (
         custom_property_values_action_types as custom_property_values_action_types,
     )
+    from .exemption_request_push_ruleset import (
+        ExemptionRequestPushRulesetEvent as ExemptionRequestPushRulesetEvent,
+    )
     from .secret_scanning_alert_location import (
         SecretScanningAlertLocationEvent as SecretScanningAlertLocationEvent,
     )
@@ -229,6 +235,9 @@ if TYPE_CHECKING:
     from .installation_repositories import (
         installation_repositories_action_types as installation_repositories_action_types,
     )
+    from .projects_v2_status_update import (
+        projects_v2_status_update_action_types as projects_v2_status_update_action_types,
+    )
     from .exemption_request_secret_scanning import (
         ExemptionRequestSecretScanningEvent as ExemptionRequestSecretScanningEvent,
     )
@@ -243,6 +252,9 @@ if TYPE_CHECKING:
     )
     from .personal_access_token_request import (
         personal_access_token_request_action_types as personal_access_token_request_action_types,
+    )
+    from .exemption_request_push_ruleset import (
+        exemption_request_push_ruleset_action_types as exemption_request_push_ruleset_action_types,
     )
     from .repository_vulnerability_alert import (
         repository_vulnerability_alert_action_types as repository_vulnerability_alert_action_types,
@@ -265,6 +277,10 @@ else:
         ".branch_protection_rule": (
             "BranchProtectionRuleEvent",
             "branch_protection_rule_action_types",
+        ),
+        ".exemption_request_push_ruleset": (
+            "ExemptionRequestPushRulesetEvent",
+            "exemption_request_push_ruleset_action_types",
         ),
         ".exemption_request_secret_scanning": (
             "ExemptionRequestSecretScanningEvent",
@@ -345,6 +361,10 @@ else:
         ".project_column": ("ProjectColumnEvent", "project_column_action_types"),
         ".projects_v2": ("ProjectsV2Event", "projects_v2_action_types"),
         ".projects_v2_item": ("ProjectsV2ItemEvent", "projects_v2_item_action_types"),
+        ".projects_v2_status_update": (
+            "ProjectsV2StatusUpdateEvent",
+            "projects_v2_status_update_action_types",
+        ),
         ".public": ("PublicEvent", "public_action_types"),
         ".pull_request": ("PullRequestEvent", "pull_request_action_types"),
         ".pull_request_review_comment": (

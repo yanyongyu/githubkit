@@ -9,140 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0076 import TeamType
-from .group_0001 import SimpleUserType
-from .group_0138 import RepositoryAdvisoryCreditType
 
+class RepositoryRuleOneof17Type(TypedDict):
+    """max_file_size
 
-class RepositoryAdvisoryType(TypedDict):
-    """RepositoryAdvisory
+    Note: max_file_size is in beta and subject to change.
 
-    A repository security advisory.
+    Prevent commits that exceed a specified file size limit from being pushed to the
+    commit.
     """
 
-    ghsa_id: str
-    cve_id: Union[str, None]
-    url: str
-    html_url: str
-    summary: str
-    description: Union[str, None]
-    severity: Union[None, Literal["critical", "high", "medium", "low"]]
-    author: None
-    publisher: None
-    identifiers: List[RepositoryAdvisoryPropIdentifiersItemsType]
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"]
-    created_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    published_at: Union[datetime, None]
-    closed_at: Union[datetime, None]
-    withdrawn_at: Union[datetime, None]
-    submission: Union[RepositoryAdvisoryPropSubmissionType, None]
-    vulnerabilities: Union[List[RepositoryAdvisoryVulnerabilityType], None]
-    cvss: Union[RepositoryAdvisoryPropCvssType, None]
-    cwes: Union[List[RepositoryAdvisoryPropCwesItemsType], None]
-    cwe_ids: Union[List[str], None]
-    credits_: Union[List[RepositoryAdvisoryPropCreditsItemsType], None]
-    credits_detailed: Union[List[RepositoryAdvisoryCreditType], None]
-    collaborating_users: Union[List[SimpleUserType], None]
-    collaborating_teams: Union[List[TeamType], None]
-    private_fork: None
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleOneof17PropParametersType]
 
 
-class RepositoryAdvisoryPropIdentifiersItemsType(TypedDict):
-    """RepositoryAdvisoryPropIdentifiersItems"""
+class RepositoryRuleOneof17PropParametersType(TypedDict):
+    """RepositoryRuleOneof17PropParameters"""
 
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class RepositoryAdvisoryPropSubmissionType(TypedDict):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool
-
-
-class RepositoryAdvisoryPropCvssType(TypedDict):
-    """RepositoryAdvisoryPropCvss"""
-
-    vector_string: Union[str, None]
-    score: Union[float, None]
-
-
-class RepositoryAdvisoryPropCwesItemsType(TypedDict):
-    """RepositoryAdvisoryPropCwesItems"""
-
-    cwe_id: str
-    name: str
-
-
-class RepositoryAdvisoryPropCreditsItemsType(TypedDict):
-    """RepositoryAdvisoryPropCreditsItems"""
-
-    login: NotRequired[str]
-    type: NotRequired[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
-        ]
-    ]
-
-
-class RepositoryAdvisoryVulnerabilityType(TypedDict):
-    """RepositoryAdvisoryVulnerability
-
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
-    """
-
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackageType, None]
-    vulnerable_version_range: Union[str, None]
-    patched_versions: Union[str, None]
-    vulnerable_functions: Union[List[str], None]
-
-
-class RepositoryAdvisoryVulnerabilityPropPackageType(TypedDict):
-    """RepositoryAdvisoryVulnerabilityPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ]
-    name: Union[str, None]
+    max_file_size: int
 
 
 __all__ = (
-    "RepositoryAdvisoryType",
-    "RepositoryAdvisoryPropIdentifiersItemsType",
-    "RepositoryAdvisoryPropSubmissionType",
-    "RepositoryAdvisoryPropCvssType",
-    "RepositoryAdvisoryPropCwesItemsType",
-    "RepositoryAdvisoryPropCreditsItemsType",
-    "RepositoryAdvisoryVulnerabilityType",
-    "RepositoryAdvisoryVulnerabilityPropPackageType",
+    "RepositoryRuleOneof17Type",
+    "RepositoryRuleOneof17PropParametersType",
 )

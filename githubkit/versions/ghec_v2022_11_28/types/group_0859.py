@@ -14,20 +14,21 @@ from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgCodespacesSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
+class OrgsOrgActionsVariablesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsVariablesGetResponse200"""
 
     total_count: int
-    secrets: List[CodespacesOrgSecretType]
+    variables: List[OrganizationActionsVariableType]
 
 
-class CodespacesOrgSecretType(TypedDict):
-    """Codespaces Secret
+class OrganizationActionsVariableType(TypedDict):
+    """Actions Variable for an Organization
 
-    Secrets for a GitHub Codespace.
+    Organization variable for GitHub Actions.
     """
 
     name: str
+    value: str
     created_at: datetime
     updated_at: datetime
     visibility: Literal["all", "private", "selected"]
@@ -35,6 +36,6 @@ class CodespacesOrgSecretType(TypedDict):
 
 
 __all__ = (
-    "OrgsOrgCodespacesSecretsGetResponse200Type",
-    "CodespacesOrgSecretType",
+    "OrgsOrgActionsVariablesGetResponse200Type",
+    "OrganizationActionsVariableType",
 )

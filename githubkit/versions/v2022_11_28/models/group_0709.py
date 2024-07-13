@@ -9,25 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0050 import SecurityAndAnalysis
 
+class WebhookSecretScanningAlertLocationCreatedFormEncoded(GitHubModel):
+    """Secret Scanning Alert Location Created Event"""
 
-class WebhookSecurityAndAnalysisPropChangesPropFrom(GitHubModel):
-    """WebhookSecurityAndAnalysisPropChangesPropFrom"""
-
-    security_and_analysis: Missing[Union[SecurityAndAnalysis, None]] = Field(
-        default=UNSET
+    payload: str = Field(
+        description="A URL-encoded string of the secret_scanning_alert_location.created JSON payload. The decoded payload is a JSON object."
     )
 
 
-model_rebuild(WebhookSecurityAndAnalysisPropChangesPropFrom)
+model_rebuild(WebhookSecretScanningAlertLocationCreatedFormEncoded)
 
-__all__ = ("WebhookSecurityAndAnalysisPropChangesPropFrom",)
+__all__ = ("WebhookSecretScanningAlertLocationCreatedFormEncoded",)

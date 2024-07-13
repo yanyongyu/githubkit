@@ -9,67 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0006 import IntegrationType
-from .group_0191 import DeploymentSimpleType
-from .group_0373 import SimpleCheckSuiteType
-from .group_0164 import PullRequestMinimalType
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class CheckRunWithSimpleCheckSuiteType(TypedDict):
-    """CheckRun
+class OrganizationSimpleWebhooksType(TypedDict):
+    """Organization Simple
 
-    A check performed on the code of a given code change
+    A GitHub organization. Webhook payloads contain the `organization` property when
+    the webhook is configured for an
+    organization, or when the event occurs from activity in a repository owned by an
+    organization.
     """
 
-    app: Union[None, IntegrationType, None]
-    check_suite: SimpleCheckSuiteType
-    completed_at: Union[datetime, None]
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    deployment: NotRequired[DeploymentSimpleType]
-    details_url: str
-    external_id: str
-    head_sha: str
-    html_url: str
+    login: str
     id: int
-    name: str
     node_id: str
-    output: CheckRunWithSimpleCheckSuitePropOutputType
-    pull_requests: List[PullRequestMinimalType]
-    started_at: datetime
-    status: Literal["queued", "in_progress", "completed", "pending"]
     url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
 
 
-class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
-
-    annotations_count: int
-    annotations_url: str
-    summary: Union[str, None]
-    text: Union[str, None]
-    title: Union[str, None]
-
-
-__all__ = (
-    "CheckRunWithSimpleCheckSuiteType",
-    "CheckRunWithSimpleCheckSuitePropOutputType",
-)
+__all__ = ("OrganizationSimpleWebhooksType",)

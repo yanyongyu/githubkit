@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,16 +17,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0402 import EnterpriseWebhooks
-from .group_0403 import SimpleInstallation
-from .group_0405 import RepositoryWebhooks
-from .group_0406 import SimpleUserWebhooks
-from .group_0404 import OrganizationSimpleWebhooks
+from .group_0406 import EnterpriseWebhooks
+from .group_0407 import SimpleInstallation
+from .group_0409 import RepositoryWebhooks
+from .group_0410 import SimpleUserWebhooks
+from .group_0408 import OrganizationSimpleWebhooks
 
 
-class WebhookDelete(GitHubModel):
-    """delete event"""
+class WebhookCreate(GitHubModel):
+    """create event"""
 
+    description: Union[str, None] = Field(
+        description="The repository's current description."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -36,6 +39,9 @@ class WebhookDelete(GitHubModel):
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    master_branch: str = Field(
+        description="The name of the repository's default branch (usually `main`)."
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
@@ -49,7 +55,7 @@ class WebhookDelete(GitHubModel):
         description="The [`git ref`](https://docs.github.com/enterprise-cloud@latest//rest/git/refs#get-a-reference) resource."
     )
     ref_type: Literal["tag", "branch"] = Field(
-        description="The type of Git ref object deleted in the repository."
+        description="The type of Git ref object created in the repository."
     )
     repository: RepositoryWebhooks = Field(
         title="Repository",
@@ -61,6 +67,6 @@ class WebhookDelete(GitHubModel):
     )
 
 
-model_rebuild(WebhookDelete)
+model_rebuild(WebhookCreate)
 
-__all__ = ("WebhookDelete",)
+__all__ = ("WebhookCreate",)

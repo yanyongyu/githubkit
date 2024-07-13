@@ -9,44 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0001 import SimpleUserType
-from .group_0029 import SimpleRepositoryType
-from .group_0028 import DependabotAlertSecurityAdvisoryType
-from .group_0027 import DependabotAlertSecurityVulnerabilityType
-from .group_0031 import DependabotAlertWithRepositoryPropDependencyType
+from typing_extensions import TypedDict
 
 
-class DependabotAlertWithRepositoryType(TypedDict):
-    """DependabotAlertWithRepository
+class DependabotAlertPackageType(TypedDict):
+    """DependabotAlertPackage
 
-    A Dependabot alert.
+    Details for the vulnerable package.
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertWithRepositoryPropDependencyType
-    security_advisory: DependabotAlertSecurityAdvisoryType
-    security_vulnerability: DependabotAlertSecurityVulnerabilityType
-    url: str
-    html_url: str
-    created_at: datetime
-    updated_at: datetime
-    dismissed_at: Union[datetime, None]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[datetime, None]
-    auto_dismissed_at: NotRequired[Union[datetime, None]]
-    repository: SimpleRepositoryType
+    ecosystem: str
+    name: str
 
 
-__all__ = ("DependabotAlertWithRepositoryType",)
+__all__ = ("DependabotAlertPackageType",)

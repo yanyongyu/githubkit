@@ -12,19 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0133 import RepositoryRuleCodeScanningPropParametersType
+from .group_0133 import RepositoryRuleTagNamePatternPropParametersType
 
 
-class RepositoryRuleCodeScanningType(TypedDict):
-    """code_scanning
+class RepositoryRuleTagNamePatternType(TypedDict):
+    """tag_name_pattern
 
-    Choose which tools must provide code scanning results before the reference is
-    updated. When configured, code scanning must be enabled and have results for
-    both the commit and the reference being updated.
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    type: Literal["code_scanning"]
-    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
 
 
-__all__ = ("RepositoryRuleCodeScanningType",)
+__all__ = ("RepositoryRuleTagNamePatternType",)

@@ -17,45 +17,39 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0048 import Team
 from .group_0001 import SimpleUser
 from .group_0006 import Integration
 
 
-class AddedToProjectIssueEvent(GitHubModel):
-    """Added to Project Issue Event
+class ReviewRequestedIssueEvent(GitHubModel):
+    """Review Requested Issue Event
 
-    Added to Project Issue Event
+    Review Requested Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["added_to_project"] = Field()
+    event: Literal["review_requested"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    project_card: Missing[AddedToProjectIssueEventPropProjectCard] = Field(
-        default=UNSET
+    review_requester: SimpleUser = Field(
+        title="Simple User", description="A GitHub user."
+    )
+    requested_team: Missing[Team] = Field(
+        default=UNSET,
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+    )
+    requested_reviewer: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-class AddedToProjectIssueEventPropProjectCard(GitHubModel):
-    """AddedToProjectIssueEventPropProjectCard"""
+model_rebuild(ReviewRequestedIssueEvent)
 
-    id: int = Field()
-    url: str = Field()
-    project_id: int = Field()
-    project_url: str = Field()
-    column_name: str = Field()
-    previous_column_name: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(AddedToProjectIssueEvent)
-model_rebuild(AddedToProjectIssueEventPropProjectCard)
-
-__all__ = (
-    "AddedToProjectIssueEvent",
-    "AddedToProjectIssueEventPropProjectCard",
-)
+__all__ = ("ReviewRequestedIssueEvent",)

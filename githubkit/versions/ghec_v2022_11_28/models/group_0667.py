@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,18 +17,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0441 import ProjectsV2Item
-from .group_0403 import SimpleInstallation
-from .group_0406 import SimpleUserWebhooks
-from .group_0440 import WebhooksProjectChanges
-from .group_0404 import OrganizationSimpleWebhooks
+from .group_0445 import ProjectsV2Item
+from .group_0407 import SimpleInstallation
+from .group_0410 import SimpleUserWebhooks
+from .group_0408 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ItemRestored(GitHubModel):
-    """Projects v2 Item Restored Event"""
+class WebhookProjectsV2ItemConverted(GitHubModel):
+    """Projects v2 Item Converted Event"""
 
-    action: Literal["restored"] = Field()
-    changes: WebhooksProjectChanges = Field()
+    action: Literal["converted"] = Field()
+    changes: WebhookProjectsV2ItemConvertedPropChanges = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -47,6 +46,27 @@ class WebhookProjectsV2ItemRestored(GitHubModel):
     )
 
 
-model_rebuild(WebhookProjectsV2ItemRestored)
+class WebhookProjectsV2ItemConvertedPropChanges(GitHubModel):
+    """WebhookProjectsV2ItemConvertedPropChanges"""
 
-__all__ = ("WebhookProjectsV2ItemRestored",)
+    content_type: Missing[WebhookProjectsV2ItemConvertedPropChangesPropContentType] = (
+        Field(default=UNSET)
+    )
+
+
+class WebhookProjectsV2ItemConvertedPropChangesPropContentType(GitHubModel):
+    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
+
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookProjectsV2ItemConverted)
+model_rebuild(WebhookProjectsV2ItemConvertedPropChanges)
+model_rebuild(WebhookProjectsV2ItemConvertedPropChangesPropContentType)
+
+__all__ = (
+    "WebhookProjectsV2ItemConverted",
+    "WebhookProjectsV2ItemConvertedPropChanges",
+    "WebhookProjectsV2ItemConvertedPropChangesPropContentType",
+)

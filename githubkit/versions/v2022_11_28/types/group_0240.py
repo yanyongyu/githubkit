@@ -9,35 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0238 import MetadataType
+from .group_0030 import DependabotAlertPackageType
 
 
-class ManifestType(TypedDict):
-    """Manifest"""
+class DependabotAlertPropDependencyType(TypedDict):
+    """DependabotAlertPropDependency
 
-    name: str
-    file: NotRequired[ManifestPropFileType]
-    metadata: NotRequired[MetadataType]
-    resolved: NotRequired[ManifestPropResolvedType]
-
-
-class ManifestPropFileType(TypedDict):
-    """ManifestPropFile"""
-
-    source_location: NotRequired[str]
-
-
-class ManifestPropResolvedType(TypedDict):
-    """ManifestPropResolved
-
-    A collection of resolved package dependencies.
+    Details for the vulnerable dependency.
     """
 
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
 
-__all__ = (
-    "ManifestType",
-    "ManifestPropFileType",
-    "ManifestPropResolvedType",
-)
+
+__all__ = ("DependabotAlertPropDependencyType",)

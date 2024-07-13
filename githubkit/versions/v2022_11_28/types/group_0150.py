@@ -14,27 +14,28 @@ from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
+from .group_0038 import ReactionRollupType
 
 
-class ProjectCardType(TypedDict):
-    """Project Card
+class TeamDiscussionCommentType(TypedDict):
+    """Team Discussion Comment
 
-    Project cards represent a scope of work.
+    A reply to a discussion within a team.
     """
 
-    url: str
-    id: int
-    node_id: str
-    note: Union[str, None]
-    creator: Union[None, SimpleUserType]
+    author: Union[None, SimpleUserType]
+    body: str
+    body_html: str
+    body_version: str
     created_at: datetime
+    last_edited_at: Union[datetime, None]
+    discussion_url: str
+    html_url: str
+    node_id: str
+    number: int
     updated_at: datetime
-    archived: NotRequired[bool]
-    column_name: NotRequired[str]
-    project_id: NotRequired[str]
-    column_url: str
-    content_url: NotRequired[str]
-    project_url: str
+    url: str
+    reactions: NotRequired[ReactionRollupType]
 
 
-__all__ = ("ProjectCardType",)
+__all__ = ("TeamDiscussionCommentType",)

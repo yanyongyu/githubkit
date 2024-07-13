@@ -10,85 +10,113 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0029 import SimpleRepository
+from .group_0031 import DependabotAlertSecurityVulnerability
 
 
-class OrganizationSecretScanningAlert(GitHubModel):
-    """OrganizationSecretScanningAlert"""
+class DependabotAlertSecurityAdvisory(GitHubModel):
+    """DependabotAlertSecurityAdvisory
 
-    number: Missing[int] = Field(
-        default=UNSET, description="The security alert number."
+    Details for the GitHub Security Advisory.
+    """
+
+    ghsa_id: str = Field(
+        description="The unique GitHub Security Advisory ID assigned to the advisory."
     )
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    cve_id: Union[str, None] = Field(
+        description="The unique CVE ID assigned to the advisory."
     )
-    updated_at: Missing[Union[None, datetime]] = Field(default=UNSET)
-    url: Missing[str] = Field(
-        default=UNSET, description="The REST API URL of the alert resource."
+    summary: str = Field(
+        max_length=1024, description="A short, plain text summary of the advisory."
     )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The GitHub URL of the alert resource."
+    description: str = Field(
+        description="A long-form Markdown-supported description of the advisory."
     )
-    locations_url: Missing[str] = Field(
-        default=UNSET,
-        description="The REST API URL of the code locations for this alert.",
+    vulnerabilities: List[DependabotAlertSecurityVulnerability] = Field(
+        description="Vulnerable version range information for the advisory."
     )
-    state: Missing[Literal["open", "resolved"]] = Field(
-        default=UNSET,
-        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
+    severity: Literal["low", "medium", "high", "critical"] = Field(
+        description="The severity of the advisory."
     )
-    resolution: Missing[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
-    ] = Field(
-        default=UNSET,
-        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+    cvss: DependabotAlertSecurityAdvisoryPropCvss = Field(
+        description="Details for the advisory pertaining to the Common Vulnerability Scoring System."
     )
-    resolved_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    cwes: List[DependabotAlertSecurityAdvisoryPropCwesItems] = Field(
+        description="Details for the advisory pertaining to Common Weakness Enumeration."
     )
-    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
+    identifiers: List[DependabotAlertSecurityAdvisoryPropIdentifiersItems] = Field(
+        description="Values that identify this advisory among security information sources."
     )
-    secret_type_display_name: Missing[str] = Field(
-        default=UNSET,
-        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Secret scanning patterns](https://docs.github.com/code-security/secret-scanning/secret-scanning-patterns#supported-secrets-for-advanced-security)."',
+    references: List[DependabotAlertSecurityAdvisoryPropReferencesItems] = Field(
+        description="Links to additional advisory information."
     )
-    secret: Missing[str] = Field(
-        default=UNSET, description="The secret that was detected."
+    published_at: datetime = Field(
+        description="The time that the advisory was published in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    repository: Missing[SimpleRepository] = Field(
-        default=UNSET, title="Simple Repository", description="A GitHub repository."
+    updated_at: datetime = Field(
+        description="The time that the advisory was last modified in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    push_protection_bypassed: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether push protection was bypassed for the detected secret.",
-    )
-    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The comment that was optionally added when this alert was closed",
-    )
-    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
-        default=UNSET, description="The token status as of the latest validity check."
+    withdrawn_at: Union[datetime, None] = Field(
+        description="The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
 
 
-model_rebuild(OrganizationSecretScanningAlert)
+class DependabotAlertSecurityAdvisoryPropCvss(GitHubModel):
+    """DependabotAlertSecurityAdvisoryPropCvss
 
-__all__ = ("OrganizationSecretScanningAlert",)
+    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    """
+
+    score: float = Field(le=10.0, description="The overall CVSS score of the advisory.")
+    vector_string: Union[str, None] = Field(
+        description="The full CVSS vector string for the advisory."
+    )
+
+
+class DependabotAlertSecurityAdvisoryPropCwesItems(GitHubModel):
+    """DependabotAlertSecurityAdvisoryPropCwesItems
+
+    A CWE weakness assigned to the advisory.
+    """
+
+    cwe_id: str = Field(description="The unique CWE ID.")
+    name: str = Field(description="The short, plain text name of the CWE.")
+
+
+class DependabotAlertSecurityAdvisoryPropIdentifiersItems(GitHubModel):
+    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
+
+    An advisory identifier.
+    """
+
+    type: Literal["CVE", "GHSA"] = Field(description="The type of advisory identifier.")
+    value: str = Field(description="The value of the advisory identifer.")
+
+
+class DependabotAlertSecurityAdvisoryPropReferencesItems(GitHubModel):
+    """DependabotAlertSecurityAdvisoryPropReferencesItems
+
+    A link to additional advisory information.
+    """
+
+    url: str = Field(description="The URL of the reference.")
+
+
+model_rebuild(DependabotAlertSecurityAdvisory)
+model_rebuild(DependabotAlertSecurityAdvisoryPropCvss)
+model_rebuild(DependabotAlertSecurityAdvisoryPropCwesItems)
+model_rebuild(DependabotAlertSecurityAdvisoryPropIdentifiersItems)
+model_rebuild(DependabotAlertSecurityAdvisoryPropReferencesItems)
+
+__all__ = (
+    "DependabotAlertSecurityAdvisory",
+    "DependabotAlertSecurityAdvisoryPropCvss",
+    "DependabotAlertSecurityAdvisoryPropCwesItems",
+    "DependabotAlertSecurityAdvisoryPropIdentifiersItems",
+    "DependabotAlertSecurityAdvisoryPropReferencesItems",
+)

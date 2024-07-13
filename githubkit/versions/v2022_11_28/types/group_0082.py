@@ -9,20 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
+from .group_0055 import MinimalRepositoryType
 
 
-class InteractionLimitResponseType(TypedDict):
-    """Interaction Limits
+class PackageType(TypedDict):
+    """Package
 
-    Interaction limit settings.
+    A software package
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    origin: str
-    expires_at: datetime
+    id: int
+    name: str
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    url: str
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[None, SimpleUserType]]
+    repository: NotRequired[Union[None, MinimalRepositoryType]]
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("InteractionLimitResponseType",)
+__all__ = ("PackageType",)

@@ -45,6 +45,7 @@ if TYPE_CHECKING:
     from .migrations import MigrationsClient
     from .interactions import InteractionsClient
     from .code_scanning import CodeScanningClient
+    from .code_security import CodeSecurityClient
     from .secret_scanning import SecretScanningClient
     from .codes_of_conduct import CodesOfConductClient
     from .dependency_graph import DependencyGraphClient
@@ -177,6 +178,12 @@ class RestNamespace:
         from .code_scanning import CodeScanningClient
 
         return CodeScanningClient(self._github)
+
+    @cached_property
+    def code_security(self) -> "CodeSecurityClient":
+        from .code_security import CodeSecurityClient
+
+        return CodeSecurityClient(self._github)
 
     @cached_property
     def codespaces(self) -> "CodespacesClient":

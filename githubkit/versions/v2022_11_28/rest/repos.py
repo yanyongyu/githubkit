@@ -115,7 +115,9 @@ if TYPE_CHECKING:
         ProtectedBranchPullRequestReview,
         RepositoryCollaboratorPermission,
         ReposOwnerRepoEnvironmentsGetResponse200,
+        ReposOwnerRepoAttestationsPostResponse201,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
@@ -173,6 +175,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoStatusesShaPostBodyType,
         RepositoryRuleCommitMessagePatternType,
         RepositoryRuleRequiredStatusChecksType,
+        ReposOwnerRepoAttestationsPostBodyType,
         ReposOwnerRepoHooksHookIdPatchBodyType,
         RepositoryRuleCommitterEmailPatternType,
         RepositoryRuleRequiredLinearHistoryType,
@@ -195,6 +198,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
         ReposOwnerRepoContentsPathPutBodyPropAuthorType,
         ReposOwnerRepoReleasesGenerateNotesPostBodyType,
+        ReposOwnerRepoAttestationsPostBodyPropBundleType,
         ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType,
         ReposOwnerRepoBranchesBranchProtectionPutBodyType,
         ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
@@ -1590,6 +1594,196 @@ class ReposClient:
             error_models={
                 "422": ValidationErrorSimple,
             },
+        )
+
+    @overload
+    def create_attestation(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoAttestationsPostBodyType,
+    ) -> Response[ReposOwnerRepoAttestationsPostResponse201]: ...
+
+    @overload
+    def create_attestation(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType,
+    ) -> Response[ReposOwnerRepoAttestationsPostResponse201]: ...
+
+    def create_attestation(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[ReposOwnerRepoAttestationsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ReposOwnerRepoAttestationsPostResponse201]:
+        """See also: https://docs.github.com/rest/repos/repos#create-an-attestation"""
+
+        from ..models import (
+            BasicError,
+            ValidationError,
+            ReposOwnerRepoAttestationsPostBody,
+            ReposOwnerRepoAttestationsPostResponse201,
+        )
+
+        url = f"/repos/{owner}/{repo}/attestations"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = type_validate_python(ReposOwnerRepoAttestationsPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=ReposOwnerRepoAttestationsPostResponse201,
+            error_models={
+                "403": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    @overload
+    async def async_create_attestation(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoAttestationsPostBodyType,
+    ) -> Response[ReposOwnerRepoAttestationsPostResponse201]: ...
+
+    @overload
+    async def async_create_attestation(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: Literal[UNSET] = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType,
+    ) -> Response[ReposOwnerRepoAttestationsPostResponse201]: ...
+
+    async def async_create_attestation(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[ReposOwnerRepoAttestationsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[ReposOwnerRepoAttestationsPostResponse201]:
+        """See also: https://docs.github.com/rest/repos/repos#create-an-attestation"""
+
+        from ..models import (
+            BasicError,
+            ValidationError,
+            ReposOwnerRepoAttestationsPostBody,
+            ReposOwnerRepoAttestationsPostResponse201,
+        )
+
+        url = f"/repos/{owner}/{repo}/attestations"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = type_validate_python(ReposOwnerRepoAttestationsPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=ReposOwnerRepoAttestationsPostResponse201,
+            error_models={
+                "403": BasicError,
+                "422": ValidationError,
+            },
+        )
+
+    def list_attestations(
+        self,
+        owner: str,
+        repo: str,
+        subject_digest: str,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[ReposOwnerRepoAttestationsSubjectDigestGetResponse200]:
+        """See also: https://docs.github.com/rest/repos/repos#list-attestations"""
+
+        from ..models import ReposOwnerRepoAttestationsSubjectDigestGetResponse200
+
+        url = f"/repos/{owner}/{repo}/attestations/{subject_digest}"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
+        )
+
+    async def async_list_attestations(
+        self,
+        owner: str,
+        repo: str,
+        subject_digest: str,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[ReposOwnerRepoAttestationsSubjectDigestGetResponse200]:
+        """See also: https://docs.github.com/rest/repos/repos#list-attestations"""
+
+        from ..models import ReposOwnerRepoAttestationsSubjectDigestGetResponse200
+
+        url = f"/repos/{owner}/{repo}/attestations/{subject_digest}"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
         )
 
     def list_autolinks(

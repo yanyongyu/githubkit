@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,17 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0441 import ProjectsV2Item
-from .group_0403 import SimpleInstallation
-from .group_0406 import SimpleUserWebhooks
-from .group_0404 import OrganizationSimpleWebhooks
+from .group_0445 import ProjectsV2Item
+from .group_0407 import SimpleInstallation
+from .group_0410 import SimpleUserWebhooks
+from .group_0444 import WebhooksProjectChanges
+from .group_0408 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ItemReordered(GitHubModel):
-    """Projects v2 Item Reordered Event"""
+class WebhookProjectsV2ItemArchived(GitHubModel):
+    """Projects v2 Item Archived Event"""
 
-    action: Literal["reordered"] = Field()
-    changes: WebhookProjectsV2ItemReorderedPropChanges = Field()
+    action: Literal["archived"] = Field()
+    changes: WebhooksProjectChanges = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -46,29 +47,6 @@ class WebhookProjectsV2ItemReordered(GitHubModel):
     )
 
 
-class WebhookProjectsV2ItemReorderedPropChanges(GitHubModel):
-    """WebhookProjectsV2ItemReorderedPropChanges"""
+model_rebuild(WebhookProjectsV2ItemArchived)
 
-    previous_projects_v2_item_node_id: Missing[
-        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId
-    ] = Field(default=UNSET)
-
-
-class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId(
-    GitHubModel
-):
-    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(WebhookProjectsV2ItemReordered)
-model_rebuild(WebhookProjectsV2ItemReorderedPropChanges)
-model_rebuild(WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId)
-
-__all__ = (
-    "WebhookProjectsV2ItemReordered",
-    "WebhookProjectsV2ItemReorderedPropChanges",
-    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId",
-)
+__all__ = ("WebhookProjectsV2ItemArchived",)

@@ -9,15 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-
-class NotificationsPutBodyType(TypedDict):
-    """NotificationsPutBody"""
-
-    last_read_at: NotRequired[datetime]
-    read: NotRequired[bool]
+from .group_0028 import CopilotSeatDetailsType
 
 
-__all__ = ("NotificationsPutBodyType",)
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
+
+    total_seats: NotRequired[int]
+    seats: NotRequired[List[CopilotSeatDetailsType]]
+
+
+__all__ = ("EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",)

@@ -9,21 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
-class CodespacesPublicKeyType(TypedDict):
-    """CodespacesPublicKey
+class CodeSecurityConfigurationType(TypedDict):
+    """CodeSecurityConfiguration
 
-    The public key used for setting Codespaces secrets.
+    A code security configuration
     """
 
-    key_id: str
-    key: str
     id: NotRequired[int]
+    name: NotRequired[str]
+    target_type: NotRequired[Literal["global", "organization"]]
+    description: NotRequired[str]
+    advanced_security: NotRequired[Literal["enabled", "disabled"]]
+    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning_push_protection: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    secret_scanning_validity_checks: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    private_vulnerability_reporting: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
     url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    html_url: NotRequired[str]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
 
 
-__all__ = ("CodespacesPublicKeyType",)
+__all__ = ("CodeSecurityConfigurationType",)

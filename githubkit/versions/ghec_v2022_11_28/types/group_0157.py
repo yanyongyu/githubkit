@@ -12,27 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0158 import RepositoryRuleWorkflowsPropParametersType
 
-class RepositoryRuleOneof17Type(TypedDict):
-    """max_file_size
 
-    Note: max_file_size is in beta and subject to change.
+class RepositoryRuleWorkflowsType(TypedDict):
+    """workflows
 
-    Prevent commits that exceed a specified file size limit from being pushed to the
-    commit.
+    Require all changes made to a targeted branch to pass the specified workflows
+    before they can be merged.
     """
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleOneof17PropParametersType]
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
 
 
-class RepositoryRuleOneof17PropParametersType(TypedDict):
-    """RepositoryRuleOneof17PropParameters"""
-
-    max_file_size: int
-
-
-__all__ = (
-    "RepositoryRuleOneof17Type",
-    "RepositoryRuleOneof17PropParametersType",
-)
+__all__ = ("RepositoryRuleWorkflowsType",)

@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,18 +17,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0192 import Deployment
-from .group_0402 import EnterpriseWebhooks
-from .group_0403 import SimpleInstallation
-from .group_0405 import RepositoryWebhooks
-from .group_0406 import SimpleUserWebhooks
-from .group_0404 import OrganizationSimpleWebhooks
+from .group_0406 import EnterpriseWebhooks
+from .group_0407 import SimpleInstallation
+from .group_0409 import RepositoryWebhooks
+from .group_0410 import SimpleUserWebhooks
+from .group_0408 import OrganizationSimpleWebhooks
 
 
-class WebhookWorkflowJobQueued(GitHubModel):
-    """workflow_job queued event"""
+class WebhookWatchStarted(GitHubModel):
+    """watch started event"""
 
-    action: Literal["queued"] = Field()
+    action: Literal["started"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,61 +51,8 @@ class WebhookWorkflowJobQueued(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    workflow_job: WebhookWorkflowJobQueuedPropWorkflowJob = Field()
-    deployment: Missing[Deployment] = Field(
-        default=UNSET,
-        title="Deployment",
-        description="A request for a specific ref(branch,sha,tag) to be deployed",
-    )
 
 
-class WebhookWorkflowJobQueuedPropWorkflowJob(GitHubModel):
-    """WebhookWorkflowJobQueuedPropWorkflowJob"""
+model_rebuild(WebhookWatchStarted)
 
-    check_run_url: str = Field()
-    completed_at: Union[str, None] = Field()
-    conclusion: Union[str, None] = Field()
-    created_at: str = Field(description="The time that the job created.")
-    head_sha: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels: List[str] = Field()
-    name: str = Field()
-    node_id: str = Field()
-    run_attempt: int = Field()
-    run_id: int = Field()
-    run_url: str = Field()
-    runner_group_id: Union[int, None] = Field()
-    runner_group_name: Union[str, None] = Field()
-    runner_id: Union[int, None] = Field()
-    runner_name: Union[str, None] = Field()
-    started_at: datetime = Field()
-    status: Literal["queued", "in_progress", "completed", "waiting"] = Field()
-    head_branch: Union[str, None] = Field(description="The name of the current branch.")
-    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
-    steps: List[WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems] = Field()
-    url: str = Field()
-
-
-class WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems(GitHubModel):
-    """Workflow Step"""
-
-    completed_at: Union[str, None] = Field()
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
-        Field()
-    )
-    name: str = Field()
-    number: int = Field()
-    started_at: Union[str, None] = Field()
-    status: Literal["completed", "in_progress", "queued", "pending"] = Field()
-
-
-model_rebuild(WebhookWorkflowJobQueued)
-model_rebuild(WebhookWorkflowJobQueuedPropWorkflowJob)
-model_rebuild(WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems)
-
-__all__ = (
-    "WebhookWorkflowJobQueued",
-    "WebhookWorkflowJobQueuedPropWorkflowJob",
-    "WebhookWorkflowJobQueuedPropWorkflowJobPropStepsItems",
-)
+__all__ = ("WebhookWatchStarted",)

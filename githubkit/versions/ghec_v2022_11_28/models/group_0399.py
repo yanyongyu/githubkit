@@ -15,19 +15,22 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0017 import Repository
 
+class Key(GitHubModel):
+    """Key
 
-class StarredRepository(GitHubModel):
-    """Starred Repository
-
-    Starred Repository
+    Key
     """
 
-    starred_at: datetime = Field()
-    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
+    key: str = Field()
+    id: int = Field()
+    url: str = Field()
+    title: str = Field()
+    created_at: datetime = Field()
+    verified: bool = Field()
+    read_only: bool = Field()
 
 
-model_rebuild(StarredRepository)
+model_rebuild(Key)
 
-__all__ = ("StarredRepository",)
+__all__ = ("Key",)

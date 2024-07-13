@@ -9,145 +9,102 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import date
+from typing import List, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
 
+class CopilotUsageMetrics(GitHubModel):
+    """Copilot Usage Metrics
 
-class SimpleRepository(GitHubModel):
-    """Simple Repository
-
-    A GitHub repository.
+    Summary of Copilot usage.
     """
 
-    id: int = Field(description="A unique identifier of the repository.")
-    node_id: str = Field(description="The GraphQL identifier of the repository.")
-    name: str = Field(description="The name of the repository.")
-    full_name: str = Field(
-        description="The full, globally unique, name of the repository."
+    day: date = Field(
+        description="The date for which the usage metrics are reported, in `YYYY-MM-DD` format."
     )
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    private: bool = Field(description="Whether the repository is private.")
-    html_url: str = Field(description="The URL to view the repository on GitHub.com.")
-    description: Union[str, None] = Field(description="The repository description.")
-    fork: bool = Field(description="Whether the repository is a fork.")
-    url: str = Field(
-        description="The URL to get more information about the repository from the GitHub API."
+    total_suggestions_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of Copilot code completion suggestions shown to users.",
     )
-    archive_url: str = Field(
-        description="A template for the API URL to download the repository as an archive."
+    total_acceptances_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of Copilot code completion suggestions accepted by users.",
     )
-    assignees_url: str = Field(
-        description="A template for the API URL to list the available assignees for issues in the repository."
+    total_lines_suggested: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of lines of code completions suggested by Copilot.",
     )
-    blobs_url: str = Field(
-        description="A template for the API URL to create or retrieve a raw Git blob in the repository."
+    total_lines_accepted: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of lines of code completions accepted by users.",
     )
-    branches_url: str = Field(
-        description="A template for the API URL to get information about branches in the repository."
+    total_active_users: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of users who were shown Copilot code completion suggestions during the day specified.",
     )
-    collaborators_url: str = Field(
-        description="A template for the API URL to get information about collaborators of the repository."
+    total_chat_acceptances: Missing[int] = Field(
+        default=UNSET,
+        description="The total instances of users who accepted code suggested by Copilot Chat in the IDE (panel and inline).",
     )
-    comments_url: str = Field(
-        description="A template for the API URL to get information about comments on the repository."
+    total_chat_turns: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of chat turns (prompt and response pairs) sent between users and Copilot Chat in the IDE.",
     )
-    commits_url: str = Field(
-        description="A template for the API URL to get information about commits on the repository."
+    total_active_chat_users: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of users who interacted with Copilot Chat in the IDE during the day specified.",
     )
-    compare_url: str = Field(
-        description="A template for the API URL to compare two commits or refs."
-    )
-    contents_url: str = Field(
-        description="A template for the API URL to get the contents of the repository."
-    )
-    contributors_url: str = Field(
-        description="A template for the API URL to list the contributors to the repository."
-    )
-    deployments_url: str = Field(
-        description="The API URL to list the deployments of the repository."
-    )
-    downloads_url: str = Field(
-        description="The API URL to list the downloads on the repository."
-    )
-    events_url: str = Field(
-        description="The API URL to list the events of the repository."
-    )
-    forks_url: str = Field(
-        description="The API URL to list the forks of the repository."
-    )
-    git_commits_url: str = Field(
-        description="A template for the API URL to get information about Git commits of the repository."
-    )
-    git_refs_url: str = Field(
-        description="A template for the API URL to get information about Git refs of the repository."
-    )
-    git_tags_url: str = Field(
-        description="A template for the API URL to get information about Git tags of the repository."
-    )
-    issue_comment_url: str = Field(
-        description="A template for the API URL to get information about issue comments on the repository."
-    )
-    issue_events_url: str = Field(
-        description="A template for the API URL to get information about issue events on the repository."
-    )
-    issues_url: str = Field(
-        description="A template for the API URL to get information about issues on the repository."
-    )
-    keys_url: str = Field(
-        description="A template for the API URL to get information about deploy keys on the repository."
-    )
-    labels_url: str = Field(
-        description="A template for the API URL to get information about labels of the repository."
-    )
-    languages_url: str = Field(
-        description="The API URL to get information about the languages of the repository."
-    )
-    merges_url: str = Field(
-        description="The API URL to merge branches in the repository."
-    )
-    milestones_url: str = Field(
-        description="A template for the API URL to get information about milestones of the repository."
-    )
-    notifications_url: str = Field(
-        description="A template for the API URL to get information about notifications on the repository."
-    )
-    pulls_url: str = Field(
-        description="A template for the API URL to get information about pull requests on the repository."
-    )
-    releases_url: str = Field(
-        description="A template for the API URL to get information about releases on the repository."
-    )
-    stargazers_url: str = Field(
-        description="The API URL to list the stargazers on the repository."
-    )
-    statuses_url: str = Field(
-        description="A template for the API URL to get information about statuses of a commit."
-    )
-    subscribers_url: str = Field(
-        description="The API URL to list the subscribers on the repository."
-    )
-    subscription_url: str = Field(
-        description="The API URL to subscribe to notifications for this repository."
-    )
-    tags_url: str = Field(
-        description="The API URL to get information about tags on the repository."
-    )
-    teams_url: str = Field(
-        description="The API URL to list the teams on the repository."
-    )
-    trees_url: str = Field(
-        description="A template for the API URL to create or retrieve a raw Git tree of the repository."
-    )
-    hooks_url: str = Field(
-        description="The API URL to list the hooks on the repository."
+    breakdown: Union[List[CopilotUsageMetricsPropBreakdownItems], None] = Field(
+        description="Breakdown of Copilot code completions usage by language and editor"
     )
 
 
-model_rebuild(SimpleRepository)
+class CopilotUsageMetricsPropBreakdownItems(ExtraGitHubModel):
+    """CopilotUsageMetricsPropBreakdownItems
 
-__all__ = ("SimpleRepository",)
+    Breakdown of Copilot usage by editor for this language
+    """
+
+    language: Missing[str] = Field(
+        default=UNSET,
+        description="The language in which Copilot suggestions were shown to users in the specified editor.",
+    )
+    editor: Missing[str] = Field(
+        default=UNSET,
+        description="The editor in which Copilot suggestions were shown to users for the specified language.",
+    )
+    suggestions_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of Copilot suggestions shown to users in the editor specified during the day specified.",
+    )
+    acceptances_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of Copilot suggestions accepted by users in the editor specified during the day specified.",
+    )
+    lines_suggested: Missing[int] = Field(
+        default=UNSET,
+        description="The number of lines of code suggested by Copilot in the editor specified during the day specified.",
+    )
+    lines_accepted: Missing[int] = Field(
+        default=UNSET,
+        description="The number of lines of code accepted by users in the editor specified during the day specified.",
+    )
+    active_users: Missing[int] = Field(
+        default=UNSET,
+        description="The number of users who were shown Copilot completion suggestions in the editor specified during the day specified.",
+    )
+
+
+model_rebuild(CopilotUsageMetrics)
+model_rebuild(CopilotUsageMetricsPropBreakdownItems)
+
+__all__ = (
+    "CopilotUsageMetrics",
+    "CopilotUsageMetricsPropBreakdownItems",
+)

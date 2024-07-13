@@ -9,14 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from datetime import datetime
+from typing_extensions import TypedDict, NotRequired
 
 
-class EmptyObjectType(TypedDict):
-    """Empty Object
+class ThreadSubscriptionType(TypedDict):
+    """Thread Subscription
 
-    An object without any properties.
+    Thread Subscription
     """
 
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[datetime, None]
+    url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
-__all__ = ("EmptyObjectType",)
+
+__all__ = ("ThreadSubscriptionType",)

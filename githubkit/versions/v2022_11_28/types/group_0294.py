@@ -12,14 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class PageBuildStatusType(TypedDict):
-    """Page Build Status
+class LanguageType(TypedDict):
+    """Language
 
-    Page Build Status
+    Language
     """
 
-    url: str
-    status: str
 
-
-__all__ = ("PageBuildStatusType",)
+__all__ = ("LanguageType",)

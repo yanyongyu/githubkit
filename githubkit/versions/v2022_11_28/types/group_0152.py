@@ -9,20 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import TypedDict
 
-from .group_0001 import SimpleUserType
 
+class TeamMembershipType(TypedDict):
+    """Team Membership
 
-class ProjectCollaboratorPermissionType(TypedDict):
-    """Project Collaborator Permission
-
-    Project Collaborator Permission
+    Team Membership
     """
 
-    permission: str
-    user: Union[None, SimpleUserType]
+    url: str
+    role: Literal["member", "maintainer"]
+    state: Literal["active", "pending"]
 
 
-__all__ = ("ProjectCollaboratorPermissionType",)
+__all__ = ("TeamMembershipType",)

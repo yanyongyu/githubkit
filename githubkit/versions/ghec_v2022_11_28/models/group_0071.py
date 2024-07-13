@@ -9,43 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
+from typing import Any, List, Union
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 from .group_0001 import SimpleUser
 
 
-class GistCommit(GitHubModel):
-    """Gist Commit
+class GistHistory(GitHubModel):
+    """Gist History
 
-    Gist Commit
+    Gist History
     """
 
-    url: str = Field()
-    version: str = Field()
-    user: Union[None, SimpleUser] = Field()
-    change_status: GistCommitPropChangeStatus = Field()
-    committed_at: datetime = Field()
+    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    version: Missing[str] = Field(default=UNSET)
+    committed_at: Missing[datetime] = Field(default=UNSET)
+    change_status: Missing[GistHistoryPropChangeStatus] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-class GistCommitPropChangeStatus(GitHubModel):
-    """GistCommitPropChangeStatus"""
+class GistHistoryPropChangeStatus(GitHubModel):
+    """GistHistoryPropChangeStatus"""
 
     total: Missing[int] = Field(default=UNSET)
     additions: Missing[int] = Field(default=UNSET)
     deletions: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(GistCommit)
-model_rebuild(GistCommitPropChangeStatus)
+class GistSimplePropForkOf(GitHubModel):
+    """Gist
+
+    Gist
+    """
+
+    url: str = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
+    node_id: str = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
+    html_url: str = Field()
+    files: GistSimplePropForkOfPropFiles = Field()
+    public: bool = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    description: Union[str, None] = Field()
+    comments: int = Field()
+    user: Union[None, SimpleUser] = Field()
+    comments_url: str = Field()
+    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[List[Any]] = Field(default=UNSET)
+    history: Missing[List[Any]] = Field(default=UNSET)
+
+
+class GistSimplePropForkOfPropFiles(ExtraGitHubModel):
+    """GistSimplePropForkOfPropFiles"""
+
+
+model_rebuild(GistHistory)
+model_rebuild(GistHistoryPropChangeStatus)
+model_rebuild(GistSimplePropForkOf)
+model_rebuild(GistSimplePropForkOfPropFiles)
 
 __all__ = (
-    "GistCommit",
-    "GistCommitPropChangeStatus",
+    "GistHistory",
+    "GistHistoryPropChangeStatus",
+    "GistSimplePropForkOf",
+    "GistSimplePropForkOfPropFiles",
 )

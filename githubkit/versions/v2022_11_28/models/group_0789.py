@@ -15,16 +15,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgCodespacesAccessSelectedUsersDeleteBody(GitHubModel):
-    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
-
-    selected_usernames: List[str] = Field(
-        max_length=100,
-        description="The usernames of the organization members whose codespaces should not be billed to the organization.",
-    )
+from .group_0055 import MinimalRepository
 
 
-model_rebuild(OrgsOrgCodespacesAccessSelectedUsersDeleteBody)
+class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
 
-__all__ = ("OrgsOrgCodespacesAccessSelectedUsersDeleteBody",)
+    total_count: int = Field()
+    repositories: List[MinimalRepository] = Field()
+
+
+model_rebuild(OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200)
+
+__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200",)

@@ -9,27 +9,40 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
+from .group_0055 import MinimalRepository
 
-class InteractionLimitResponse(GitHubModel):
-    """Interaction Limits
 
-    Interaction limit settings.
+class Package(GitHubModel):
+    """Package
+
+    A software package
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
-        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
-    )
-    origin: str = Field()
-    expires_at: datetime = Field()
+    id: int = Field(description="Unique identifier of the package.")
+    name: str = Field(description="The name of the package.")
+    package_type: Literal[
+        "npm", "maven", "rubygems", "docker", "nuget", "container"
+    ] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    version_count: int = Field(description="The number of versions of the package.")
+    visibility: Literal["private", "public"] = Field()
+    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    repository: Missing[Union[None, MinimalRepository]] = Field(default=UNSET)
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(InteractionLimitResponse)
+model_rebuild(Package)
 
-__all__ = ("InteractionLimitResponse",)
+__all__ = ("Package",)

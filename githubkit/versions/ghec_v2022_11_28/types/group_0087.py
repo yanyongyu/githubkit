@@ -9,21 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
 
 
-class ActionsPublicKeyType(TypedDict):
-    """ActionsPublicKey
+class OidcCustomSubType(TypedDict):
+    """Actions OIDC Subject customization
 
-    The public key used for setting Actions Secrets.
+    Actions OIDC Subject customization
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    include_claim_keys: List[str]
 
 
-__all__ = ("ActionsPublicKeyType",)
+__all__ = ("OidcCustomSubType",)

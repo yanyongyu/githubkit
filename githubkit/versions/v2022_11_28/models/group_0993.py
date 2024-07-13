@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List
 
 from pydantic import Field
 
@@ -17,31 +17,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0990 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0"""
 
-class ReposOwnerRepoPagesPutBodyAnyof2(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof2"""
-
-    cname: Union[str, None] = Field(
-        description='Specify a custom domain for the repository. Sending a `null` value will remove the custom domain. For more about custom domains, see "[Using a custom domain with GitHub Pages](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site)."'
-    )
-    https_enforced: Missing[bool] = Field(
+    labels: Missing[List[str]] = Field(
+        min_length=1,
         default=UNSET,
-        description="Specify whether HTTPS should be enforced for the repository.",
+        description='The names of the labels to set for the issue. The labels you set replace any existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also add labels to the existing labels for an issue. For more information, see "[Add labels to an issue](https://docs.github.com/rest/issues/labels#add-labels-to-an-issue)."',
     )
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
-        default=UNSET,
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
-    )
-    source: Missing[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-        ]
-    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof2)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof2",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0",)

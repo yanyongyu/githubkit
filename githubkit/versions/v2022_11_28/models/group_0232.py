@@ -18,114 +18,65 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class FileCommit(GitHubModel):
-    """File Commit
+class ContentTree(GitHubModel):
+    """Content Tree
 
-    File Commit
+    Content Tree
     """
 
-    content: Union[FileCommitPropContent, None] = Field()
-    commit: FileCommitPropCommit = Field()
+    type: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    entries: Missing[List[ContentTreePropEntriesItems]] = Field(default=UNSET)
+    links: ContentTreePropLinks = Field(alias="_links")
 
 
-class FileCommitPropContent(GitHubModel):
-    """FileCommitPropContent"""
+class ContentTreePropLinks(GitHubModel):
+    """ContentTreePropLinks"""
 
-    name: Missing[str] = Field(default=UNSET)
-    path: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-    size: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    git_url: Missing[str] = Field(default=UNSET)
-    download_url: Missing[str] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-    links: Missing[FileCommitPropContentPropLinks] = Field(
-        default=UNSET, alias="_links"
-    )
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
 
 
-class FileCommitPropContentPropLinks(GitHubModel):
-    """FileCommitPropContentPropLinks"""
+class ContentTreePropEntriesItems(GitHubModel):
+    """ContentTreePropEntriesItems"""
 
-    self_: Missing[str] = Field(default=UNSET, alias="self")
-    git: Missing[str] = Field(default=UNSET)
-    html: Missing[str] = Field(default=UNSET)
-
-
-class FileCommitPropCommit(GitHubModel):
-    """FileCommitPropCommit"""
-
-    sha: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    author: Missing[FileCommitPropCommitPropAuthor] = Field(default=UNSET)
-    committer: Missing[FileCommitPropCommitPropCommitter] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    tree: Missing[FileCommitPropCommitPropTree] = Field(default=UNSET)
-    parents: Missing[List[FileCommitPropCommitPropParentsItems]] = Field(default=UNSET)
-    verification: Missing[FileCommitPropCommitPropVerification] = Field(default=UNSET)
+    type: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    content: Missing[str] = Field(default=UNSET)
+    sha: str = Field()
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentTreePropEntriesItemsPropLinks = Field(alias="_links")
 
 
-class FileCommitPropCommitPropAuthor(GitHubModel):
-    """FileCommitPropCommitPropAuthor"""
+class ContentTreePropEntriesItemsPropLinks(GitHubModel):
+    """ContentTreePropEntriesItemsPropLinks"""
 
-    date: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    email: Missing[str] = Field(default=UNSET)
-
-
-class FileCommitPropCommitPropCommitter(GitHubModel):
-    """FileCommitPropCommitPropCommitter"""
-
-    date: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    email: Missing[str] = Field(default=UNSET)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
 
 
-class FileCommitPropCommitPropTree(GitHubModel):
-    """FileCommitPropCommitPropTree"""
-
-    url: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-
-
-class FileCommitPropCommitPropParentsItems(GitHubModel):
-    """FileCommitPropCommitPropParentsItems"""
-
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-
-
-class FileCommitPropCommitPropVerification(GitHubModel):
-    """FileCommitPropCommitPropVerification"""
-
-    verified: Missing[bool] = Field(default=UNSET)
-    reason: Missing[str] = Field(default=UNSET)
-    signature: Missing[Union[str, None]] = Field(default=UNSET)
-    payload: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(FileCommit)
-model_rebuild(FileCommitPropContent)
-model_rebuild(FileCommitPropContentPropLinks)
-model_rebuild(FileCommitPropCommit)
-model_rebuild(FileCommitPropCommitPropAuthor)
-model_rebuild(FileCommitPropCommitPropCommitter)
-model_rebuild(FileCommitPropCommitPropTree)
-model_rebuild(FileCommitPropCommitPropParentsItems)
-model_rebuild(FileCommitPropCommitPropVerification)
+model_rebuild(ContentTree)
+model_rebuild(ContentTreePropLinks)
+model_rebuild(ContentTreePropEntriesItems)
+model_rebuild(ContentTreePropEntriesItemsPropLinks)
 
 __all__ = (
-    "FileCommit",
-    "FileCommitPropContent",
-    "FileCommitPropContentPropLinks",
-    "FileCommitPropCommit",
-    "FileCommitPropCommitPropAuthor",
-    "FileCommitPropCommitPropCommitter",
-    "FileCommitPropCommitPropTree",
-    "FileCommitPropCommitPropParentsItems",
-    "FileCommitPropCommitPropVerification",
+    "ContentTree",
+    "ContentTreePropLinks",
+    "ContentTreePropEntriesItems",
+    "ContentTreePropEntriesItemsPropLinks",
 )

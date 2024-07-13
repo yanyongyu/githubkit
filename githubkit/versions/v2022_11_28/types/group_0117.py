@@ -12,18 +12,37 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0118 import RepositoryRuleRequiredStatusChecksPropParametersType
 
+class RepositoryRuleRequiredLinearHistoryType(TypedDict):
+    """required_linear_history
 
-class RepositoryRuleRequiredStatusChecksType(TypedDict):
-    """required_status_checks
-
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
+    Prevent merge commits from being pushed to matching refs.
     """
 
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
+    type: Literal["required_linear_history"]
 
 
-__all__ = ("RepositoryRuleRequiredStatusChecksType",)
+class RepositoryRuleOneof15Type(TypedDict):
+    """max_file_path_length
+
+    Note: max_file_path_length is in beta and subject to change.
+
+    Prevent commits that include file paths that exceed a specified character limit
+    from being pushed to the commit graph.
+    """
+
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[RepositoryRuleOneof15PropParametersType]
+
+
+class RepositoryRuleOneof15PropParametersType(TypedDict):
+    """RepositoryRuleOneof15PropParameters"""
+
+    max_file_path_length: int
+
+
+__all__ = (
+    "RepositoryRuleRequiredLinearHistoryType",
+    "RepositoryRuleOneof15Type",
+    "RepositoryRuleOneof15PropParametersType",
+)

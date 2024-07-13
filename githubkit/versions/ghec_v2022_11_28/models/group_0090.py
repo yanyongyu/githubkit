@@ -9,6 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+from datetime import datetime
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,20 +19,75 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodespacesPublicKey(GitHubModel):
-    """CodespacesPublicKey
+class CodeSecurityConfiguration(GitHubModel):
+    """CodeSecurityConfiguration
 
-    The public key used for setting Codespaces secrets.
+    A code security configuration
     """
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
-    id: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the code security configuration"
+    )
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the code security configuration. Must be unique within the organization.",
+    )
+    target_type: Missing[Literal["global", "organization"]] = Field(
+        default=UNSET, description="The type of the code security configuration."
+    )
+    description: Missing[str] = Field(
+        default=UNSET, description="A description of the code security configuration"
+    )
+    advanced_security: Missing[Literal["enabled", "disabled"]] = Field(
+        default=UNSET, description="The enablement status of GitHub Advanced Security"
+    )
+    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of Dependency Graph"
+    )
+    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of Dependabot alerts"
+    )
+    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
+        Field(
+            default=UNSET,
+            description="The enablement status of Dependabot security updates",
+        )
+    )
+    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
+        Field(
+            default=UNSET,
+            description="The enablement status of code scanning default setup",
+        )
+    )
+    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of secret scanning"
+    )
+    secret_scanning_push_protection: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning push protection",
+    )
+    secret_scanning_validity_checks: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning validity checks",
+    )
+    private_vulnerability_reporting: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of private vulnerability reporting",
+    )
+    url: Missing[str] = Field(default=UNSET, description="The URL of the configuration")
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The URL of the configuration"
+    )
+    created_at: Missing[datetime] = Field(default=UNSET)
+    updated_at: Missing[datetime] = Field(default=UNSET)
 
 
-model_rebuild(CodespacesPublicKey)
+model_rebuild(CodeSecurityConfiguration)
 
-__all__ = ("CodespacesPublicKey",)
+__all__ = ("CodeSecurityConfiguration",)

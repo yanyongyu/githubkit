@@ -9,22 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0267 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType
+from .group_0263 import MetadataType
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class SnapshotType(TypedDict):
+    """snapshot
 
-    id: int
-    node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        List[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
-    ]
+    Create a new snapshot of a repository's dependencies.
+    """
+
+    version: int
+    job: SnapshotPropJobType
+    sha: str
+    ref: str
+    detector: SnapshotPropDetectorType
+    metadata: NotRequired[MetadataType]
+    manifests: NotRequired[SnapshotPropManifestsType]
+    scanned: datetime
 
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1Type",)
+class SnapshotPropJobType(TypedDict):
+    """SnapshotPropJob"""
+
+    id: str
+    correlator: str
+    html_url: NotRequired[str]
+
+
+class SnapshotPropDetectorType(TypedDict):
+    """SnapshotPropDetector
+
+    A description of the detector used.
+    """
+
+    name: str
+    version: str
+    url: str
+
+
+class SnapshotPropManifestsType(TypedDict):
+    """SnapshotPropManifests
+
+    A collection of package manifests, which are a collection of related
+    dependencies declared in a file or representing a logical group of dependencies.
+    """
+
+
+__all__ = (
+    "SnapshotType",
+    "SnapshotPropJobType",
+    "SnapshotPropDetectorType",
+    "SnapshotPropManifestsType",
+)

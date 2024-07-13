@@ -13,18 +13,19 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0166 import WorkflowRun
+
+class ProjectsProjectIdDeleteResponse403(GitHubModel):
+    """ProjectsProjectIdDeleteResponse403"""
+
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[List[str]] = Field(default=UNSET)
 
 
-class ReposOwnerRepoActionsRunsGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsRunsGetResponse200"""
+model_rebuild(ProjectsProjectIdDeleteResponse403)
 
-    total_count: int = Field()
-    workflow_runs: List[WorkflowRun] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsRunsGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsRunsGetResponse200",)
+__all__ = ("ProjectsProjectIdDeleteResponse403",)

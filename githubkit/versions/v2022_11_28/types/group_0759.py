@@ -12,8 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class GistsGistIdStarGetResponse404Type(TypedDict):
-    """GistsGistIdStarGetResponse404"""
+class ApplicationsClientIdTokenPatchBodyType(TypedDict):
+    """ApplicationsClientIdTokenPatchBody"""
+
+    access_token: str
 
 
-__all__ = ("GistsGistIdStarGetResponse404Type",)
+__all__ = ("ApplicationsClientIdTokenPatchBodyType",)

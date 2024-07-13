@@ -9,23 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import TypedDict, NotRequired
 
 
-class WebhooksWorkflowType(TypedDict):
-    """Workflow"""
+class SimpleUserWebhooksType(TypedDict):
+    """Simple User
 
-    badge_url: str
-    created_at: datetime
-    html_url: str
+    The GitHub user that triggered the event. This property is included in every
+    webhook payload.
+    """
+
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
-    name: str
     node_id: str
-    path: str
-    state: str
-    updated_at: datetime
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
 
 
-__all__ = ("WebhooksWorkflowType",)
+__all__ = ("SimpleUserWebhooksType",)

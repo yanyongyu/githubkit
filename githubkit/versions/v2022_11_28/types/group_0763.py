@@ -12,10 +12,12 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class NotificationsPutResponse202Type(TypedDict):
-    """NotificationsPutResponse202"""
+class EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type(TypedDict):
+    """EnterprisesEnterpriseSecretScanningAlertsGetResponse503"""
 
+    code: NotRequired[str]
     message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-__all__ = ("NotificationsPutResponse202Type",)
+__all__ = ("EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type",)

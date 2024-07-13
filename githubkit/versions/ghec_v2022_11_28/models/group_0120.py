@@ -9,33 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List, Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRulesetBypassActor(GitHubModel):
-    """Repository Ruleset Bypass Actor
+class CustomPropertyValue(GitHubModel):
+    """Custom Property Value
 
-    An actor that can bypass rules in a ruleset
+    Custom property name and associated value
     """
 
-    actor_id: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The ID of the actor that can bypass a ruleset. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. `OrganizationAdmin` is not applicable for personal repositories.\n",
-    )
-    actor_type: Literal[
-        "Integration", "OrganizationAdmin", "RepositoryRole", "Team", "DeployKey"
-    ] = Field(description="The type of actor that can bypass a ruleset.\n")
-    bypass_mode: Literal["always", "pull_request"] = Field(
-        description="When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type.\n"
+    property_name: str = Field(description="The name of the property")
+    value: Union[str, List[str], None] = Field(
+        description="The value assigned to the property"
     )
 
 
-model_rebuild(RepositoryRulesetBypassActor)
+model_rebuild(CustomPropertyValue)
 
-__all__ = ("RepositoryRulesetBypassActor",)
+__all__ = ("CustomPropertyValue",)

@@ -9,15 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
+
+from .group_0078 import CodespaceType
 
 
-class UserProjectsPostBodyType(TypedDict):
-    """UserProjectsPostBody"""
+class UserCodespacesGetResponse200Type(TypedDict):
+    """UserCodespacesGetResponse200"""
 
-    name: str
-    body: NotRequired[Union[str, None]]
+    total_count: int
+    codespaces: List[CodespaceType]
 
 
-__all__ = ("UserProjectsPostBodyType",)
+__all__ = ("UserCodespacesGetResponse200Type",)

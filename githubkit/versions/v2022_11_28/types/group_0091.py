@@ -9,34 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
+from .group_0025 import TeamSimpleType
 
 
-class ProjectType(TypedDict):
-    """Project
+class TeamRoleAssignmentType(TypedDict):
+    """A Role Assignment for a Team
 
-    Projects are a way to organize columns and cards of work.
+    The Relationship a Team has with a role.
     """
 
-    owner_url: str
-    url: str
-    html_url: str
-    columns_url: str
     id: int
     node_id: str
     name: str
-    body: Union[str, None]
-    number: int
-    state: str
-    creator: Union[None, SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    organization_permission: NotRequired[Literal["read", "write", "admin", "none"]]
-    private: NotRequired[bool]
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    parent: Union[None, TeamSimpleType]
 
 
-__all__ = ("ProjectType",)
+class TeamRoleAssignmentPropPermissionsType(TypedDict):
+    """TeamRoleAssignmentPropPermissions"""
+
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
+
+
+__all__ = (
+    "TeamRoleAssignmentType",
+    "TeamRoleAssignmentPropPermissionsType",
+)

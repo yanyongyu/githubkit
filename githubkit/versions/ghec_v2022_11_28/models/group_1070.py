@@ -17,21 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_1068 import ReposOwnerRepoPagesPostBodyPropSource
 
+class ReposOwnerRepoIssuesIssueNumberLockPutBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
 
-class ReposOwnerRepoPagesPostBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoPagesPostBodyAnyof1"""
-
-    build_type: Literal["legacy", "workflow"] = Field(
-        description='The process in which the Page will be built. Possible values are `"legacy"` and `"workflow"`.'
-    )
-    source: Missing[ReposOwnerRepoPagesPostBodyPropSource] = Field(
-        default=UNSET,
-        description="The source branch and directory used to publish your Pages site.",
+    lock_reason: Missing[Literal["off-topic", "too heated", "resolved", "spam"]] = (
+        Field(
+            default=UNSET,
+            description="The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  \n * `off-topic`  \n * `too heated`  \n * `resolved`  \n * `spam`",
+        )
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPostBodyAnyof1)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLockPutBody)
 
-__all__ = ("ReposOwnerRepoPagesPostBodyAnyof1",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLockPutBody",)

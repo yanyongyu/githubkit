@@ -2611,7 +2611,6 @@ class EnterpriseAdminClient:
             bool
         ] = UNSET,
         secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = UNSET,
-        secret_scanning_validity_checks_enabled: Missing[Union[bool, None]] = UNSET,
     ) -> Response: ...
 
     def patch_security_analysis_settings_for_enterprise(
@@ -2680,7 +2679,6 @@ class EnterpriseAdminClient:
             bool
         ] = UNSET,
         secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = UNSET,
-        secret_scanning_validity_checks_enabled: Missing[Union[bool, None]] = UNSET,
     ) -> Response: ...
 
     async def async_patch_security_analysis_settings_for_enterprise(

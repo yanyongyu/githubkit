@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-from datetime import date, datetime
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -18,124 +18,157 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0093 import Team
 from .group_0001 import SimpleUser
+from .group_0093 import CodespaceMachine
+from .group_0082 import MinimalRepository
 
 
-class CopilotSeatDetails(GitHubModel):
-    """Copilot Business Seat Detail
+class Codespace(GitHubModel):
+    """Codespace
 
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
+    A codespace.
     """
 
-    assignee: Union[SimpleUser, Team, Organization] = Field(
-        description="The assignee that has been granted access to GitHub Copilot."
-    )
-    assigning_team: Missing[Union[Team, None]] = Field(
-        default=UNSET,
-        description="The team that granted access to GitHub Copilot to the assignee. This will be null if the user was assigned a seat individually.",
-    )
-    pending_cancellation_date: Missing[Union[date, None]] = Field(
-        default=UNSET,
-        description="The pending cancellation date for the seat, in `YYYY-MM-DD` format. This will be null unless the assignee's Copilot access has been canceled during the current billing cycle. If the seat has been cancelled, this corresponds to the start of the organization's next billing cycle.",
-    )
-    last_activity_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="Timestamp of user's last GitHub Copilot activity, in ISO 8601 format.",
-    )
-    last_activity_editor: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Last editor that was used by the user for a GitHub Copilot completion.",
-    )
-    created_at: datetime = Field(
-        description="Timestamp of when the assignee was last granted access to GitHub Copilot, in ISO 8601 format."
-    )
-    updated_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="Timestamp of when the assignee's GitHub Copilot access was last updated, in ISO 8601 format.",
-    )
-
-
-class Organization(GitHubModel):
-    """Organization
-
-    GitHub account for managing multiple users, teams, and repositories
-    """
-
-    login: str = Field(description="Unique login name of the organization")
-    url: str = Field(description="URL for the organization")
     id: int = Field()
-    node_id: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
-    blog: Missing[str] = Field(
-        default=UNSET, description="Display blog url for the organization"
+    name: str = Field(description="Automatically generated name of this codespace.")
+    display_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Display name for this codespace."
     )
-    html_url: str = Field()
-    name: Missing[str] = Field(
-        default=UNSET, description="Display name for the organization"
+    environment_id: Union[str, None] = Field(
+        description="UUID identifying this codespace's environment."
     )
-    company: Missing[str] = Field(
-        default=UNSET, description="Display company name for the organization"
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    billable_owner: SimpleUser = Field(
+        title="Simple User", description="A GitHub user."
     )
-    location: Missing[str] = Field(
-        default=UNSET, description="Display location for the organization"
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    email: Missing[str] = Field(
-        default=UNSET, description="Display email for the organization"
+    machine: Union[None, CodespaceMachine] = Field()
+    devcontainer_path: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Path to devcontainer.json from repo root used to create Codespace.",
     )
-    has_organization_projects: bool = Field(
-        description="Specifies if organization projects are enabled for this org"
+    prebuild: Union[bool, None] = Field(
+        description="Whether the codespace was created from a prebuild."
     )
-    has_repository_projects: bool = Field(
-        description="Specifies if repository projects are enabled for repositories that belong to this org"
-    )
-    is_verified: Missing[bool] = Field(default=UNSET)
-    public_repos: int = Field()
-    public_gists: int = Field()
-    followers: int = Field()
-    following: int = Field()
-    type: str = Field()
     created_at: datetime = Field()
     updated_at: datetime = Field()
-    plan: Missing[OrganizationPropPlan] = Field(default=UNSET)
-
-
-class OrganizationPropPlan(GitHubModel):
-    """OrganizationPropPlan"""
-
-    name: Missing[str] = Field(default=UNSET)
-    space: Missing[int] = Field(default=UNSET)
-    private_repos: Missing[int] = Field(default=UNSET)
-    filled_seats: Missing[int] = Field(default=UNSET)
-    seats: Missing[int] = Field(default=UNSET)
-
-
-class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
-
-    total_seats: Missing[int] = Field(
-        default=UNSET,
-        description="Total number of Copilot seats for the organization currently being billed.",
+    last_used_at: datetime = Field(
+        description="Last known time this codespace was started."
     )
-    seats: Missing[List[CopilotSeatDetails]] = Field(default=UNSET)
+    state: Literal[
+        "Unknown",
+        "Created",
+        "Queued",
+        "Provisioning",
+        "Available",
+        "Awaiting",
+        "Unavailable",
+        "Deleted",
+        "Moved",
+        "Shutdown",
+        "Archived",
+        "Starting",
+        "ShuttingDown",
+        "Failed",
+        "Exporting",
+        "Updating",
+        "Rebuilding",
+    ] = Field(description="State of this codespace.")
+    url: str = Field(description="API URL for this codespace.")
+    git_status: CodespacePropGitStatus = Field(
+        description="Details about the codespace's git repository."
+    )
+    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"] = Field(
+        description="The initally assigned location of a new codespace."
+    )
+    idle_timeout_minutes: Union[int, None] = Field(
+        description="The number of minutes of inactivity after which this codespace will be automatically stopped."
+    )
+    web_url: str = Field(description="URL to access this codespace on the web.")
+    machines_url: str = Field(
+        description="API URL to access available alternate machine types for this codespace."
+    )
+    start_url: str = Field(description="API URL to start this codespace.")
+    stop_url: str = Field(description="API URL to stop this codespace.")
+    publish_url: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="API URL to publish this codespace to a new repository.",
+    )
+    pulls_url: Union[str, None] = Field(
+        description="API URL for the Pull Request associated with this codespace, if any."
+    )
+    recent_folders: List[str] = Field()
+    runtime_constraints: Missing[CodespacePropRuntimeConstraints] = Field(default=UNSET)
+    pending_operation: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether or not a codespace has a pending async operation. This would mean that the codespace is temporarily unavailable. The only thing that you can do with a codespace in this state is delete it.",
+    )
+    pending_operation_disabled_reason: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Text to show user when codespace is disabled by a pending operation",
+    )
+    idle_timeout_notice: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="Text to show user when codespace idle timeout minutes has been overriden by an organization policy",
+    )
+    retention_period_minutes: Missing[Union[int, None]] = Field(
+        default=UNSET,
+        description="Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).",
+    )
+    retention_expires_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description='When a codespace will be auto-deleted based on the "retention_period_minutes" and "last_used_at"',
+    )
+    last_known_stop_notice: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The text to display to a user when a codespace has been stopped for a potentially actionable reason.",
+    )
 
 
-model_rebuild(CopilotSeatDetails)
-model_rebuild(Organization)
-model_rebuild(OrganizationPropPlan)
-model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)
+class CodespacePropGitStatus(GitHubModel):
+    """CodespacePropGitStatus
+
+    Details about the codespace's git repository.
+    """
+
+    ahead: Missing[int] = Field(
+        default=UNSET,
+        description="The number of commits the local repository is ahead of the remote.",
+    )
+    behind: Missing[int] = Field(
+        default=UNSET,
+        description="The number of commits the local repository is behind the remote.",
+    )
+    has_unpushed_changes: Missing[bool] = Field(
+        default=UNSET, description="Whether the local repository has unpushed changes."
+    )
+    has_uncommitted_changes: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the local repository has uncommitted changes.",
+    )
+    ref: Missing[str] = Field(
+        default=UNSET,
+        description="The current branch (or SHA if in detached HEAD state) of the local repository.",
+    )
+
+
+class CodespacePropRuntimeConstraints(GitHubModel):
+    """CodespacePropRuntimeConstraints"""
+
+    allowed_port_privacy_settings: Missing[Union[List[str], None]] = Field(
+        default=UNSET,
+        description="The privacy settings a user can select from when forwarding a port.",
+    )
+
+
+model_rebuild(Codespace)
+model_rebuild(CodespacePropGitStatus)
+model_rebuild(CodespacePropRuntimeConstraints)
 
 __all__ = (
-    "CopilotSeatDetails",
-    "Organization",
-    "OrganizationPropPlan",
-    "OrgsOrgCopilotBillingSeatsGetResponse200",
+    "Codespace",
+    "CodespacePropGitStatus",
+    "CodespacePropRuntimeConstraints",
 )

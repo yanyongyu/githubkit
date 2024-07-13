@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,36 +18,21 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleWorkflowsPropParameters(GitHubModel):
-    """RepositoryRuleWorkflowsPropParameters"""
+class RepositoryRuleBranchNamePatternPropParameters(GitHubModel):
+    """RepositoryRuleBranchNamePatternPropParameters"""
 
-    workflows: List[RepositoryRuleParamsWorkflowFileReference] = Field(
-        description="Workflows that must pass for this rule to pass."
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
     )
-
-
-class RepositoryRuleParamsWorkflowFileReference(GitHubModel):
-    """WorkflowFileReference
-
-    A workflow that must run for this rule to pass
-    """
-
-    path: str = Field(description="The path to the workflow file")
-    ref: Missing[str] = Field(
-        default=UNSET, description="The ref (branch or tag) of the workflow file to use"
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
     )
-    repository_id: int = Field(
-        description="The ID of the repository where the workflow is defined"
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
     )
-    sha: Missing[str] = Field(
-        default=UNSET, description="The commit SHA of the workflow file to use"
-    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRuleWorkflowsPropParameters)
-model_rebuild(RepositoryRuleParamsWorkflowFileReference)
+model_rebuild(RepositoryRuleBranchNamePatternPropParameters)
 
-__all__ = (
-    "RepositoryRuleWorkflowsPropParameters",
-    "RepositoryRuleParamsWorkflowFileReference",
-)
+__all__ = ("RepositoryRuleBranchNamePatternPropParameters",)

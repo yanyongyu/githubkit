@@ -9,46 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0322 import PullRequestPropBasePropRepoType
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class PullRequestPropBaseType(TypedDict):
-    """PullRequestPropBase"""
+class PagesDeploymentStatusType(TypedDict):
+    """GitHub Pages deployment status"""
 
-    label: str
-    ref: str
-    repo: PullRequestPropBasePropRepoType
-    sha: str
-    user: PullRequestPropBasePropUserType
-
-
-class PullRequestPropBasePropUserType(TypedDict):
-    """PullRequestPropBasePropUser"""
-
-    avatar_url: str
-    events_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    gravatar_id: Union[str, None]
-    html_url: str
-    id: int
-    node_id: str
-    login: str
-    organizations_url: str
-    received_events_url: str
-    repos_url: str
-    site_admin: bool
-    starred_url: str
-    subscriptions_url: str
-    type: str
-    url: str
+    status: NotRequired[
+        Literal[
+            "deployment_in_progress",
+            "syncing_files",
+            "finished_file_sync",
+            "updating_pages",
+            "purging_cdn",
+            "deployment_cancelled",
+            "deployment_failed",
+            "deployment_content_failed",
+            "deployment_attempt_error",
+            "deployment_lost",
+            "succeed",
+        ]
+    ]
 
 
-__all__ = (
-    "PullRequestPropBaseType",
-    "PullRequestPropBasePropUserType",
-)
+__all__ = ("PagesDeploymentStatusType",)

@@ -9,15 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict, NotRequired
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class RepositoryRulesetConditionsPropRefNameType(TypedDict):
-    """RepositoryRulesetConditionsPropRefName"""
+class CodeOfConductSimpleType(TypedDict):
+    """Code Of Conduct Simple
 
-    include: NotRequired[List[str]]
-    exclude: NotRequired[List[str]]
+    Code of Conduct Simple
+    """
+
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
 
 
-__all__ = ("RepositoryRulesetConditionsPropRefNameType",)
+__all__ = ("CodeOfConductSimpleType",)

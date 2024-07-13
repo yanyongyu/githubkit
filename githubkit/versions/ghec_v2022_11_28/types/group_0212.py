@@ -9,34 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0006 import IntegrationType
+from .group_0210 import CommitType
+from .group_0205 import BranchProtectionType
 
 
-class DeploymentSimpleType(TypedDict):
-    """Deployment
+class BranchWithProtectionType(TypedDict):
+    """Branch With Protection
 
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    Branch With Protection
     """
 
-    url: str
-    id: int
-    node_id: str
-    task: str
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    created_at: datetime
-    updated_at: datetime
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    name: str
+    commit: CommitType
+    links: BranchWithProtectionPropLinksType
+    protected: bool
+    protection: BranchProtectionType
+    protection_url: str
+    pattern: NotRequired[str]
+    required_approving_review_count: NotRequired[int]
 
 
-__all__ = ("DeploymentSimpleType",)
+class BranchWithProtectionPropLinksType(TypedDict):
+    """BranchWithProtectionPropLinks"""
+
+    html: str
+    self_: str
+
+
+__all__ = (
+    "BranchWithProtectionType",
+    "BranchWithProtectionPropLinksType",
+)

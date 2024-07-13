@@ -9,32 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import Union
+from typing_extensions import TypedDict
 
-from .group_0185 import CommitType
-from .group_0184 import DiffEntryType
-
-
-class CommitComparisonType(TypedDict):
-    """Commit Comparison
-
-    Commit Comparison
-    """
-
-    url: str
-    html_url: str
-    permalink_url: str
-    diff_url: str
-    patch_url: str
-    base_commit: CommitType
-    merge_base_commit: CommitType
-    status: Literal["diverged", "ahead", "behind", "identical"]
-    ahead_by: int
-    behind_by: int
-    total_commits: int
-    commits: List[CommitType]
-    files: NotRequired[List[DiffEntryType]]
+from .group_0001 import SimpleUserType
+from .group_0017 import RepositoryType
 
 
-__all__ = ("CommitComparisonType",)
+class PullRequestSimplePropHeadType(TypedDict):
+    """PullRequestSimplePropHead"""
+
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
+    sha: str
+    user: Union[None, SimpleUserType]
+
+
+class PullRequestSimplePropBaseType(TypedDict):
+    """PullRequestSimplePropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: Union[None, SimpleUserType]
+
+
+__all__ = (
+    "PullRequestSimplePropHeadType",
+    "PullRequestSimplePropBaseType",
+)

@@ -9,99 +9,142 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import List, Union, Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ActionsBillingUsage(GitHubModel):
-    """ActionsBillingUsage"""
-
-    total_minutes_used: int = Field(
-        description="The sum of the free and paid GitHub Actions minutes used."
-    )
-    total_paid_minutes_used: int = Field(
-        description="The total paid GitHub Actions minutes used."
-    )
-    included_minutes: int = Field(
-        description="The amount of free GitHub Actions minutes available."
-    )
-    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdown = Field()
-
-
-class ActionsBillingUsagePropMinutesUsedBreakdown(GitHubModel):
-    """ActionsBillingUsagePropMinutesUsedBreakdown"""
-
-    ubuntu: Missing[int] = Field(
-        default=UNSET,
-        alias="UBUNTU",
-        description="Total minutes used on Ubuntu runner machines.",
-    )
-    macos: Missing[int] = Field(
-        default=UNSET,
-        alias="MACOS",
-        description="Total minutes used on macOS runner machines.",
-    )
-    windows: Missing[int] = Field(
-        default=UNSET,
-        alias="WINDOWS",
-        description="Total minutes used on Windows runner machines.",
-    )
-    ubuntu_4_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 4 core runner machines.",
-    )
-    ubuntu_8_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 8 core runner machines.",
-    )
-    ubuntu_16_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 16 core runner machines.",
-    )
-    ubuntu_32_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 32 core runner machines.",
-    )
-    ubuntu_64_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 64 core runner machines.",
-    )
-    windows_4_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 4 core runner machines.",
-    )
-    windows_8_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 8 core runner machines.",
-    )
-    windows_16_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 16 core runner machines.",
-    )
-    windows_32_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 32 core runner machines.",
-    )
-    windows_64_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 64 core runner machines.",
-    )
-    macos_12_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on macOS 12 core runner machines.",
-    )
-    total: Missing[int] = Field(
-        default=UNSET, description="Total minutes used on all runner machines."
-    )
+from .group_0115 import RepositoryRuleUpdate
+from .group_0139 import RepositoryRuleOneof17
+from .group_0135 import RepositoryRuleWorkflows
+from .group_0120 import RepositoryRulePullRequest
+from .group_0111 import OrgRulesetConditionsOneof0
+from .group_0112 import OrgRulesetConditionsOneof1
+from .group_0113 import OrgRulesetConditionsOneof2
+from .group_0137 import RepositoryRuleCodeScanning
+from .group_0103 import RepositoryRulesetConditions
+from .group_0102 import RepositoryRulesetBypassActor
+from .group_0132 import RepositoryRuleTagNamePattern
+from .group_0130 import RepositoryRuleBranchNamePattern
+from .group_0118 import RepositoryRuleRequiredDeployments
+from .group_0122 import RepositoryRuleRequiredStatusChecks
+from .group_0124 import RepositoryRuleCommitMessagePattern
+from .group_0128 import RepositoryRuleCommitterEmailPattern
+from .group_0126 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0117 import RepositoryRuleOneof15, RepositoryRuleRequiredLinearHistory
+from .group_0114 import (
+    RepositoryRuleOneof14,
+    RepositoryRuleOneof16,
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
 
 
-model_rebuild(ActionsBillingUsage)
-model_rebuild(ActionsBillingUsagePropMinutesUsedBreakdown)
+class RepositoryRuleset(GitHubModel):
+    """Repository ruleset
+
+    A set of rules to apply when specified conditions are met.
+    """
+
+    id: int = Field(description="The ID of the ruleset")
+    name: str = Field(description="The name of the ruleset")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
+        default=UNSET,
+        description="The target of the ruleset\n\n**Note**: The `push` target is in beta and is subject to change.",
+    )
+    source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        default=UNSET, description="The type of the source of the ruleset"
+    )
+    source: str = Field(description="The name of the source")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
+    )
+    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    current_user_can_bypass: Missing[
+        Literal["always", "pull_requests_only", "never"]
+    ] = Field(
+        default=UNSET,
+        description="The bypass type of the user making the API request for this ruleset. This field is only returned when\nquerying the repository-level endpoint.",
+    )
+    node_id: Missing[str] = Field(default=UNSET)
+    links: Missing[RepositoryRulesetPropLinks] = Field(default=UNSET, alias="_links")
+    conditions: Missing[
+        Union[
+            RepositoryRulesetConditions,
+            OrgRulesetConditionsOneof0,
+            OrgRulesetConditionsOneof1,
+            OrgRulesetConditionsOneof2,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    rules: Missing[
+        List[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleOneof14,
+                RepositoryRuleOneof15,
+                RepositoryRuleOneof16,
+                RepositoryRuleOneof17,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+            ]
+        ]
+    ] = Field(default=UNSET)
+    created_at: Missing[datetime] = Field(default=UNSET)
+    updated_at: Missing[datetime] = Field(default=UNSET)
+
+
+class RepositoryRulesetPropLinks(GitHubModel):
+    """RepositoryRulesetPropLinks"""
+
+    self_: Missing[RepositoryRulesetPropLinksPropSelf] = Field(
+        default=UNSET, alias="self"
+    )
+    html: Missing[RepositoryRulesetPropLinksPropHtml] = Field(default=UNSET)
+
+
+class RepositoryRulesetPropLinksPropSelf(GitHubModel):
+    """RepositoryRulesetPropLinksPropSelf"""
+
+    href: Missing[str] = Field(default=UNSET, description="The URL of the ruleset")
+
+
+class RepositoryRulesetPropLinksPropHtml(GitHubModel):
+    """RepositoryRulesetPropLinksPropHtml"""
+
+    href: Missing[str] = Field(default=UNSET, description="The html URL of the ruleset")
+
+
+model_rebuild(RepositoryRuleset)
+model_rebuild(RepositoryRulesetPropLinks)
+model_rebuild(RepositoryRulesetPropLinksPropSelf)
+model_rebuild(RepositoryRulesetPropLinksPropHtml)
 
 __all__ = (
-    "ActionsBillingUsage",
-    "ActionsBillingUsagePropMinutesUsedBreakdown",
+    "RepositoryRuleset",
+    "RepositoryRulesetPropLinks",
+    "RepositoryRulesetPropLinksPropSelf",
+    "RepositoryRulesetPropLinksPropHtml",
 )

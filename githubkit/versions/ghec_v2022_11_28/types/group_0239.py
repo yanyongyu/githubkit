@@ -9,16 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
+from .group_0082 import MinimalRepositoryType
 
 
-class LinkType(TypedDict):
-    """Link
+class RepositoryInvitationType(TypedDict):
+    """Repository Invitation
 
-    Hypermedia Link
+    Repository invitations let you manage who you collaborate with.
     """
 
-    href: str
+    id: int
+    repository: MinimalRepositoryType
+    invitee: Union[None, SimpleUserType]
+    inviter: Union[None, SimpleUserType]
+    permissions: Literal["read", "write", "admin", "triage", "maintain"]
+    created_at: datetime
+    expired: NotRequired[bool]
+    url: str
+    html_url: str
+    node_id: str
 
 
-__all__ = ("LinkType",)
+__all__ = ("RepositoryInvitationType",)

@@ -11,42 +11,33 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 from .group_0001 import SimpleUserType
-from .group_0006 import IntegrationType
-from .group_0062 import ReactionRollupType
 
 
-class IssueCommentType(TypedDict):
-    """Issue Comment
+class MilestoneType(TypedDict):
+    """Milestone
 
-    Comments provide a way for people to collaborate on an issue.
+    A collection of related issues and pull requests.
     """
 
+    url: str
+    html_url: str
+    labels_url: str
     id: int
     node_id: str
-    url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: Union[None, SimpleUserType]
+    number: int
+    state: Literal["open", "closed"]
+    title: str
+    description: Union[str, None]
+    creator: Union[None, SimpleUserType]
+    open_issues: int
+    closed_issues: int
     created_at: datetime
     updated_at: datetime
-    issue_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    reactions: NotRequired[ReactionRollupType]
+    closed_at: Union[datetime, None]
+    due_on: Union[datetime, None]
 
 
-__all__ = ("IssueCommentType",)
+__all__ = ("MilestoneType",)

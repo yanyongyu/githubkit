@@ -9,47 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0373 import UserRoleItems
-from .group_0372 import UserNameResponse, UserEmailsResponseItems
 
+class Group(GitHubModel):
+    """Group"""
 
-class UserResponse(GitHubModel):
-    """UserResponse"""
-
-    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
+    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]] = Field(
         description="The URIs that are used to indicate the namespaces of the SCIM schemas."
     )
-    external_id: Missing[Union[str, None]] = Field(
-        default=UNSET,
+    external_id: str = Field(
         alias="externalId",
         description="A unique identifier for the resource as defined by the provisioning client.",
     )
-    active: bool = Field(description="Whether the user active in the IdP.")
-    user_name: Missing[str] = Field(
-        default=UNSET, alias="userName", description="The username for the user."
+    display_name: str = Field(
+        alias="displayName", description="A human-readable name for a security group."
     )
-    name: Missing[UserNameResponse] = Field(default=UNSET)
-    display_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        alias="displayName",
-        description="A human-readable name for the user.",
-    )
-    emails: List[UserEmailsResponseItems] = Field(
-        description="The emails for the user."
-    )
-    roles: Missing[List[UserRoleItems]] = Field(
-        default=UNSET, description="The roles assigned to the user."
+    members: List[GroupPropMembersItems] = Field(description="The group members.")
+
+
+class GroupPropMembersItems(GitHubModel):
+    """GroupPropMembersItems"""
+
+    value: str = Field(description="The local unique identifier for the member")
+    display_name: str = Field(
+        alias="displayName", description="The display name associated with the member"
     )
 
 
-model_rebuild(UserResponse)
+model_rebuild(Group)
+model_rebuild(GroupPropMembersItems)
 
-__all__ = ("UserResponse",)
+__all__ = (
+    "Group",
+    "GroupPropMembersItems",
+)

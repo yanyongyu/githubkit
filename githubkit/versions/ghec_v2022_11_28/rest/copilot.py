@@ -41,6 +41,7 @@ if TYPE_CHECKING:
         OrgsOrgCopilotBillingSelectedUsersPostResponse201,
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200,
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200,
+        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
     )
 
 
@@ -57,6 +58,82 @@ class CopilotClient:
         raise RuntimeError(
             "GitHub client has already been collected. "
             "Do not use this client after the client has been collected."
+        )
+
+    def list_copilot_seats_for_enterprise(
+        self,
+        enterprise: str,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[EnterprisesEnterpriseCopilotBillingSeatsGetResponse200]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-enterprise"""
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/seats"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_copilot_seats_for_enterprise(
+        self,
+        enterprise: str,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[EnterprisesEnterpriseCopilotBillingSeatsGetResponse200]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-enterprise"""
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
+        )
+
+        url = f"/enterprises/{enterprise}/copilot/billing/seats"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
         )
 
     def usage_metrics_for_enterprise(

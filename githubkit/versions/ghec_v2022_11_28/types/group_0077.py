@@ -9,54 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict, NotRequired
+from typing import List, Union, Literal
+from typing_extensions import TypedDict
 
 
-class ApiOverviewType(TypedDict):
-    """Api Overview
+class MarketplaceListingPlanType(TypedDict):
+    """Marketplace Listing Plan
 
-    Api Overview
+    Marketplace Listing Plan
     """
 
-    verifiable_password_authentication: bool
-    ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsType]
-    ssh_keys: NotRequired[List[str]]
-    hooks: NotRequired[List[str]]
-    github_enterprise_importer: NotRequired[List[str]]
-    web: NotRequired[List[str]]
-    api: NotRequired[List[str]]
-    git: NotRequired[List[str]]
-    packages: NotRequired[List[str]]
-    pages: NotRequired[List[str]]
-    importer: NotRequired[List[str]]
-    actions: NotRequired[List[str]]
-    actions_macos: NotRequired[List[str]]
-    dependabot: NotRequired[List[str]]
-    domains: NotRequired[ApiOverviewPropDomainsType]
+    url: str
+    accounts_url: str
+    id: int
+    number: int
+    name: str
+    description: str
+    monthly_price_in_cents: int
+    yearly_price_in_cents: int
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
+    has_free_trial: bool
+    unit_name: Union[str, None]
+    state: str
+    bullets: List[str]
 
 
-class ApiOverviewPropSshKeyFingerprintsType(TypedDict):
-    """ApiOverviewPropSshKeyFingerprints"""
-
-    sha256_rsa: NotRequired[str]
-    sha256_dsa: NotRequired[str]
-    sha256_ecdsa: NotRequired[str]
-    sha256_ed25519: NotRequired[str]
-
-
-class ApiOverviewPropDomainsType(TypedDict):
-    """ApiOverviewPropDomains"""
-
-    website: NotRequired[List[str]]
-    codespaces: NotRequired[List[str]]
-    copilot: NotRequired[List[str]]
-    packages: NotRequired[List[str]]
-    actions: NotRequired[List[str]]
-
-
-__all__ = (
-    "ApiOverviewType",
-    "ApiOverviewPropSshKeyFingerprintsType",
-    "ApiOverviewPropDomainsType",
-)
+__all__ = ("MarketplaceListingPlanType",)

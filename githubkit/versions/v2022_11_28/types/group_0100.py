@@ -9,22 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0101 import (
-    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
-)
 
+class CodeOfConductSimpleType(TypedDict):
+    """Code Of Conduct Simple
 
-class RepositoryRulesetConditionsRepositoryNameTargetType(TypedDict):
-    """Repository ruleset conditions for repository names
-
-    Parameters for a repository name condition
+    Code of Conduct Simple
     """
 
-    repository_name: (
-        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
-    )
+    url: str
+    key: str
+    name: str
+    html_url: Union[str, None]
 
 
-__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetType",)
+__all__ = ("CodeOfConductSimpleType",)

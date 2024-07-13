@@ -16,12 +16,14 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class NotificationsPutResponse202(GitHubModel):
-    """NotificationsPutResponse202"""
+class EnterprisesEnterpriseSecretScanningAlertsGetResponse503(GitHubModel):
+    """EnterprisesEnterpriseSecretScanningAlertsGetResponse503"""
 
+    code: Missing[str] = Field(default=UNSET)
     message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(NotificationsPutResponse202)
+model_rebuild(EnterprisesEnterpriseSecretScanningAlertsGetResponse503)
 
-__all__ = ("NotificationsPutResponse202",)
+__all__ = ("EnterprisesEnterpriseSecretScanningAlertsGetResponse503",)

@@ -9,33 +9,80 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0257 import HookResponseType
-from .group_0007 import WebhookConfigType
+from typing import List, Union
+from typing_extensions import TypedDict
 
 
-class HookType(TypedDict):
-    """Webhook
+class GitCommitType(TypedDict):
+    """Git Commit
 
-    Webhooks for repositories.
+    Low-level Git commit operations within a repository
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: List[str]
-    config: WebhookConfigType
-    updated_at: datetime
-    created_at: datetime
+    sha: str
+    node_id: str
     url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseType
+    author: GitCommitPropAuthorType
+    committer: GitCommitPropCommitterType
+    message: str
+    tree: GitCommitPropTreeType
+    parents: List[GitCommitPropParentsItemsType]
+    verification: GitCommitPropVerificationType
+    html_url: str
 
 
-__all__ = ("HookType",)
+class GitCommitPropAuthorType(TypedDict):
+    """GitCommitPropAuthor
+
+    Identifying information for the git-user
+    """
+
+    date: datetime
+    email: str
+    name: str
+
+
+class GitCommitPropCommitterType(TypedDict):
+    """GitCommitPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: datetime
+    email: str
+    name: str
+
+
+class GitCommitPropTreeType(TypedDict):
+    """GitCommitPropTree"""
+
+    sha: str
+    url: str
+
+
+class GitCommitPropParentsItemsType(TypedDict):
+    """GitCommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class GitCommitPropVerificationType(TypedDict):
+    """GitCommitPropVerification"""
+
+    verified: bool
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
+
+
+__all__ = (
+    "GitCommitType",
+    "GitCommitPropAuthorType",
+    "GitCommitPropCommitterType",
+    "GitCommitPropTreeType",
+    "GitCommitPropParentsItemsType",
+    "GitCommitPropVerificationType",
+)

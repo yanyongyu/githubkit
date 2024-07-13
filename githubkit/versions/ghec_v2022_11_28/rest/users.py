@@ -37,6 +37,7 @@ if TYPE_CHECKING:
         PrivateUser,
         SocialAccount,
         SshSigningKey,
+        UsersUsernameAttestationsSubjectDigestGetResponse200,
     )
     from ..types import (
         UserPatchBodyType,
@@ -2376,6 +2377,58 @@ class UsersClient:
             },
         )
 
+    def get_by_id(
+        self,
+        account_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[Union[PrivateUser, PublicUser]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-a-user-using-their-id"""
+
+        from typing import Union
+
+        from ..models import BasicError, PublicUser, PrivateUser
+
+        url = f"/user/{account_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=Union[PrivateUser, PublicUser],
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_by_id(
+        self,
+        account_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[Union[PrivateUser, PublicUser]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-a-user-using-their-id"""
+
+        from typing import Union
+
+        from ..models import BasicError, PublicUser, PrivateUser
+
+        url = f"/user/{account_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=Union[PrivateUser, PublicUser],
+            error_models={
+                "404": BasicError,
+            },
+        )
+
     def list(
         self,
         since: Missing[int] = UNSET,
@@ -2483,6 +2536,82 @@ class UsersClient:
             url,
             headers=exclude_unset(headers),
             response_model=Union[PrivateUser, PublicUser],
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    def list_attestations(
+        self,
+        username: str,
+        subject_digest: str,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[UsersUsernameAttestationsSubjectDigestGetResponse200]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#list-attestations"""
+
+        from ..models import (
+            BasicError,
+            UsersUsernameAttestationsSubjectDigestGetResponse200,
+        )
+
+        url = f"/users/{username}/attestations/{subject_digest}"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=UsersUsernameAttestationsSubjectDigestGetResponse200,
+            error_models={
+                "404": BasicError,
+            },
+        )
+
+    async def async_list_attestations(
+        self,
+        username: str,
+        subject_digest: str,
+        per_page: Missing[int] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[UsersUsernameAttestationsSubjectDigestGetResponse200]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/attestations#list-attestations"""
+
+        from ..models import (
+            BasicError,
+            UsersUsernameAttestationsSubjectDigestGetResponse200,
+        )
+
+        url = f"/users/{username}/attestations/{subject_digest}"
+
+        params = {
+            "per_page": per_page,
+            "before": before,
+            "after": after,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=UsersUsernameAttestationsSubjectDigestGetResponse200,
             error_models={
                 "404": BasicError,
             },

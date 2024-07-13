@@ -9,87 +9,94 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-from datetime import date, datetime
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0093 import TeamType
 from .group_0001 import SimpleUserType
+from .group_0093 import CodespaceMachineType
+from .group_0082 import MinimalRepositoryType
 
 
-class CopilotSeatDetailsType(TypedDict):
-    """Copilot Business Seat Detail
+class CodespaceType(TypedDict):
+    """Codespace
 
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
+    A codespace.
     """
 
-    assignee: Union[SimpleUserType, TeamType, OrganizationType]
-    assigning_team: NotRequired[Union[TeamType, None]]
-    pending_cancellation_date: NotRequired[Union[date, None]]
-    last_activity_at: NotRequired[Union[datetime, None]]
-    last_activity_editor: NotRequired[Union[str, None]]
-    created_at: datetime
-    updated_at: NotRequired[datetime]
-
-
-class OrganizationType(TypedDict):
-    """Organization
-
-    GitHub account for managing multiple users, teams, and repositories
-    """
-
-    login: str
-    url: str
     id: int
-    node_id: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
-    blog: NotRequired[str]
-    html_url: str
-    name: NotRequired[str]
-    company: NotRequired[str]
-    location: NotRequired[str]
-    email: NotRequired[str]
-    has_organization_projects: bool
-    has_repository_projects: bool
-    is_verified: NotRequired[bool]
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    type: str
+    name: str
+    display_name: NotRequired[Union[str, None]]
+    environment_id: Union[str, None]
+    owner: SimpleUserType
+    billable_owner: SimpleUserType
+    repository: MinimalRepositoryType
+    machine: Union[None, CodespaceMachineType]
+    devcontainer_path: NotRequired[Union[str, None]]
+    prebuild: Union[bool, None]
     created_at: datetime
     updated_at: datetime
-    plan: NotRequired[OrganizationPropPlanType]
+    last_used_at: datetime
+    state: Literal[
+        "Unknown",
+        "Created",
+        "Queued",
+        "Provisioning",
+        "Available",
+        "Awaiting",
+        "Unavailable",
+        "Deleted",
+        "Moved",
+        "Shutdown",
+        "Archived",
+        "Starting",
+        "ShuttingDown",
+        "Failed",
+        "Exporting",
+        "Updating",
+        "Rebuilding",
+    ]
+    url: str
+    git_status: CodespacePropGitStatusType
+    location: Literal["EastUs", "SouthEastAsia", "WestEurope", "WestUs2"]
+    idle_timeout_minutes: Union[int, None]
+    web_url: str
+    machines_url: str
+    start_url: str
+    stop_url: str
+    publish_url: NotRequired[Union[str, None]]
+    pulls_url: Union[str, None]
+    recent_folders: List[str]
+    runtime_constraints: NotRequired[CodespacePropRuntimeConstraintsType]
+    pending_operation: NotRequired[Union[bool, None]]
+    pending_operation_disabled_reason: NotRequired[Union[str, None]]
+    idle_timeout_notice: NotRequired[Union[str, None]]
+    retention_period_minutes: NotRequired[Union[int, None]]
+    retention_expires_at: NotRequired[Union[datetime, None]]
+    last_known_stop_notice: NotRequired[Union[str, None]]
 
 
-class OrganizationPropPlanType(TypedDict):
-    """OrganizationPropPlan"""
+class CodespacePropGitStatusType(TypedDict):
+    """CodespacePropGitStatus
 
-    name: NotRequired[str]
-    space: NotRequired[int]
-    private_repos: NotRequired[int]
-    filled_seats: NotRequired[int]
-    seats: NotRequired[int]
+    Details about the codespace's git repository.
+    """
+
+    ahead: NotRequired[int]
+    behind: NotRequired[int]
+    has_unpushed_changes: NotRequired[bool]
+    has_uncommitted_changes: NotRequired[bool]
+    ref: NotRequired[str]
 
 
-class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+class CodespacePropRuntimeConstraintsType(TypedDict):
+    """CodespacePropRuntimeConstraints"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[List[CopilotSeatDetailsType]]
+    allowed_port_privacy_settings: NotRequired[Union[List[str], None]]
 
 
 __all__ = (
-    "CopilotSeatDetailsType",
-    "OrganizationType",
-    "OrganizationPropPlanType",
-    "OrgsOrgCopilotBillingSeatsGetResponse200Type",
+    "CodespaceType",
+    "CodespacePropGitStatusType",
+    "CodespacePropRuntimeConstraintsType",
 )

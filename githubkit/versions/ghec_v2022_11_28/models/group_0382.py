@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -17,59 +17,65 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0203 import GitUser
-from .group_0001 import SimpleUser
-from .group_0079 import MinimalRepository
-from .group_0380 import SearchResultTextMatchesItems
-from .group_0383 import CommitSearchResultItemPropCommit
+from .group_0377 import UserRoleItems
 
 
-class CommitSearchResultItem(GitHubModel):
-    """Commit Search Result Item
+class User(GitHubModel):
+    """User"""
 
-    Commit Search Result Item
-    """
-
-    url: str = Field()
-    sha: str = Field()
-    html_url: str = Field()
-    comments_url: str = Field()
-    commit: CommitSearchResultItemPropCommit = Field()
-    author: Union[None, SimpleUser] = Field()
-    committer: Union[None, GitUser] = Field()
-    parents: List[CommitSearchResultItemPropParentsItems] = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
     )
-    score: float = Field()
-    node_id: str = Field()
-    text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    external_id: str = Field(
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
+    )
+    active: bool = Field(description="Whether the user active in the IdP.")
+    user_name: str = Field(alias="userName", description="The username for the user.")
+    name: Missing[UserName] = Field(default=UNSET)
+    display_name: str = Field(
+        alias="displayName", description="A human-readable name for the user."
+    )
+    emails: List[UserEmailsItems] = Field(description="The emails for the user.")
+    roles: Missing[List[UserRoleItems]] = Field(
+        default=UNSET, description="The roles assigned to the user."
     )
 
 
-class CommitSearchResultItemPropParentsItems(GitHubModel):
-    """CommitSearchResultItemPropParentsItems"""
+class UserName(GitHubModel):
+    """UserName"""
 
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
+    formatted: Missing[str] = Field(
+        default=UNSET,
+        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
+    )
+    family_name: str = Field(
+        alias="familyName", description="The family name of the user."
+    )
+    given_name: str = Field(
+        alias="givenName", description="The given name of the user."
+    )
+    middle_name: Missing[str] = Field(
+        default=UNSET, alias="middleName", description="The middle name(s) of the user."
+    )
 
 
-class SearchCommitsGetResponse200(GitHubModel):
-    """SearchCommitsGetResponse200"""
+class UserEmailsItems(GitHubModel):
+    """UserEmailsItems"""
 
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: List[CommitSearchResultItem] = Field()
+    value: str = Field(description="The email address.")
+    type: str = Field(description="The type of email address.")
+    primary: bool = Field(
+        description="Whether this email address is the primary address."
+    )
 
 
-model_rebuild(CommitSearchResultItem)
-model_rebuild(CommitSearchResultItemPropParentsItems)
-model_rebuild(SearchCommitsGetResponse200)
+model_rebuild(User)
+model_rebuild(UserName)
+model_rebuild(UserEmailsItems)
 
 __all__ = (
-    "CommitSearchResultItem",
-    "CommitSearchResultItemPropParentsItems",
-    "SearchCommitsGetResponse200",
+    "User",
+    "UserName",
+    "UserEmailsItems",
 )

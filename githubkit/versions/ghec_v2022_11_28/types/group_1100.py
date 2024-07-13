@@ -9,71 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0133 import RepositoryRuleUpdateType
-from .group_0157 import RepositoryRuleOneof17Type
-from .group_0153 import RepositoryRuleWorkflowsType
-from .group_0138 import RepositoryRulePullRequestType
-from .group_0155 import RepositoryRuleCodeScanningType
-from .group_0121 import RepositoryRulesetConditionsType
-from .group_0120 import RepositoryRulesetBypassActorType
-from .group_0150 import RepositoryRuleTagNamePatternType
-from .group_0148 import RepositoryRuleBranchNamePatternType
-from .group_0136 import RepositoryRuleRequiredDeploymentsType
-from .group_0140 import RepositoryRuleRequiredStatusChecksType
-from .group_0142 import RepositoryRuleCommitMessagePatternType
-from .group_0146 import RepositoryRuleCommitterEmailPatternType
-from .group_0144 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0135 import (
-    RepositoryRuleOneof15Type,
-    RepositoryRuleRequiredLinearHistoryType,
-)
-from .group_0132 import (
-    RepositoryRuleOneof14Type,
-    RepositoryRuleOneof16Type,
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
-    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+class ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType(TypedDict):
+    """ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBody"""
 
-    name: NotRequired[str]
-    target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[RepositoryRulesetConditionsType]
-    rules: NotRequired[
-        List[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleOneof14Type,
-                RepositoryRuleOneof15Type,
-                RepositoryRuleOneof16Type,
-                RepositoryRuleOneof17Type,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
+    body: str
 
 
-__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBodyType",)
+__all__ = ("ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType",)

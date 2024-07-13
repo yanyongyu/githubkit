@@ -9,33 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0182 import GitUserType
-from .group_0183 import VerificationType
+from .group_0185 import BranchProtectionType
 
 
-class CommitPropCommitType(TypedDict):
-    """CommitPropCommit"""
+class ShortBranchType(TypedDict):
+    """Short Branch
 
-    url: str
-    author: Union[None, GitUserType]
-    committer: Union[None, GitUserType]
-    message: str
-    comment_count: int
-    tree: CommitPropCommitPropTreeType
-    verification: NotRequired[VerificationType]
+    Short Branch
+    """
+
+    name: str
+    commit: ShortBranchPropCommitType
+    protected: bool
+    protection: NotRequired[BranchProtectionType]
+    protection_url: NotRequired[str]
 
 
-class CommitPropCommitPropTreeType(TypedDict):
-    """CommitPropCommitPropTree"""
+class ShortBranchPropCommitType(TypedDict):
+    """ShortBranchPropCommit"""
 
     sha: str
     url: str
 
 
 __all__ = (
-    "CommitPropCommitType",
-    "CommitPropCommitPropTreeType",
+    "ShortBranchType",
+    "ShortBranchPropCommitType",
 )

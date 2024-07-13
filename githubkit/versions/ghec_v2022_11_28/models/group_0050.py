@@ -9,114 +9,102 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from datetime import date
+from typing import List, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0049 import DependabotAlertSecurityVulnerability
 
+class CopilotUsageMetrics(GitHubModel):
+    """Copilot Usage Metrics
 
-class DependabotAlertSecurityAdvisory(GitHubModel):
-    """DependabotAlertSecurityAdvisory
-
-    Details for the GitHub Security Advisory.
+    Summary of Copilot usage.
     """
 
-    ghsa_id: str = Field(
-        description="The unique GitHub Security Advisory ID assigned to the advisory."
+    day: date = Field(
+        description="The date for which the usage metrics are reported, in `YYYY-MM-DD` format."
     )
-    cve_id: Union[str, None] = Field(
-        description="The unique CVE ID assigned to the advisory."
+    total_suggestions_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of Copilot code completion suggestions shown to users.",
     )
-    summary: str = Field(
-        max_length=1024, description="A short, plain text summary of the advisory."
+    total_acceptances_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of Copilot code completion suggestions accepted by users.",
     )
-    description: str = Field(
-        description="A long-form Markdown-supported description of the advisory."
+    total_lines_suggested: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of lines of code completions suggested by Copilot.",
     )
-    vulnerabilities: List[DependabotAlertSecurityVulnerability] = Field(
-        description="Vulnerable version range information for the advisory."
+    total_lines_accepted: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of lines of code completions accepted by users.",
     )
-    severity: Literal["low", "medium", "high", "critical"] = Field(
-        description="The severity of the advisory."
+    total_active_users: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of users who were shown Copilot code completion suggestions during the day specified.",
     )
-    cvss: DependabotAlertSecurityAdvisoryPropCvss = Field(
-        description="Details for the advisory pertaining to the Common Vulnerability Scoring System."
+    total_chat_acceptances: Missing[int] = Field(
+        default=UNSET,
+        description="The total instances of users who accepted code suggested by Copilot Chat in the IDE (panel and inline).",
     )
-    cwes: List[DependabotAlertSecurityAdvisoryPropCwesItems] = Field(
-        description="Details for the advisory pertaining to Common Weakness Enumeration."
+    total_chat_turns: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of chat turns (prompt and response pairs) sent between users and Copilot Chat in the IDE.",
     )
-    identifiers: List[DependabotAlertSecurityAdvisoryPropIdentifiersItems] = Field(
-        description="Values that identify this advisory among security information sources."
+    total_active_chat_users: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of users who interacted with Copilot Chat in the IDE during the day specified.",
     )
-    references: List[DependabotAlertSecurityAdvisoryPropReferencesItems] = Field(
-        description="Links to additional advisory information."
-    )
-    published_at: datetime = Field(
-        description="The time that the advisory was published in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    updated_at: datetime = Field(
-        description="The time that the advisory was last modified in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    withdrawn_at: Union[datetime, None] = Field(
-        description="The time that the advisory was withdrawn in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    breakdown: Union[List[CopilotUsageMetricsPropBreakdownItems], None] = Field(
+        description="Breakdown of Copilot code completions usage by language and editor"
     )
 
 
-class DependabotAlertSecurityAdvisoryPropCvss(GitHubModel):
-    """DependabotAlertSecurityAdvisoryPropCvss
+class CopilotUsageMetricsPropBreakdownItems(ExtraGitHubModel):
+    """CopilotUsageMetricsPropBreakdownItems
 
-    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    Breakdown of Copilot usage by editor for this language
     """
 
-    score: float = Field(le=10.0, description="The overall CVSS score of the advisory.")
-    vector_string: Union[str, None] = Field(
-        description="The full CVSS vector string for the advisory."
+    language: Missing[str] = Field(
+        default=UNSET,
+        description="The language in which Copilot suggestions were shown to users in the specified editor.",
+    )
+    editor: Missing[str] = Field(
+        default=UNSET,
+        description="The editor in which Copilot suggestions were shown to users for the specified language.",
+    )
+    suggestions_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of Copilot suggestions shown to users in the editor specified during the day specified.",
+    )
+    acceptances_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of Copilot suggestions accepted by users in the editor specified during the day specified.",
+    )
+    lines_suggested: Missing[int] = Field(
+        default=UNSET,
+        description="The number of lines of code suggested by Copilot in the editor specified during the day specified.",
+    )
+    lines_accepted: Missing[int] = Field(
+        default=UNSET,
+        description="The number of lines of code accepted by users in the editor specified during the day specified.",
+    )
+    active_users: Missing[int] = Field(
+        default=UNSET,
+        description="The number of users who were shown Copilot completion suggestions in the editor specified during the day specified.",
     )
 
 
-class DependabotAlertSecurityAdvisoryPropCwesItems(GitHubModel):
-    """DependabotAlertSecurityAdvisoryPropCwesItems
-
-    A CWE weakness assigned to the advisory.
-    """
-
-    cwe_id: str = Field(description="The unique CWE ID.")
-    name: str = Field(description="The short, plain text name of the CWE.")
-
-
-class DependabotAlertSecurityAdvisoryPropIdentifiersItems(GitHubModel):
-    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
-
-    An advisory identifier.
-    """
-
-    type: Literal["CVE", "GHSA"] = Field(description="The type of advisory identifier.")
-    value: str = Field(description="The value of the advisory identifer.")
-
-
-class DependabotAlertSecurityAdvisoryPropReferencesItems(GitHubModel):
-    """DependabotAlertSecurityAdvisoryPropReferencesItems
-
-    A link to additional advisory information.
-    """
-
-    url: str = Field(description="The URL of the reference.")
-
-
-model_rebuild(DependabotAlertSecurityAdvisory)
-model_rebuild(DependabotAlertSecurityAdvisoryPropCvss)
-model_rebuild(DependabotAlertSecurityAdvisoryPropCwesItems)
-model_rebuild(DependabotAlertSecurityAdvisoryPropIdentifiersItems)
-model_rebuild(DependabotAlertSecurityAdvisoryPropReferencesItems)
+model_rebuild(CopilotUsageMetrics)
+model_rebuild(CopilotUsageMetricsPropBreakdownItems)
 
 __all__ = (
-    "DependabotAlertSecurityAdvisory",
-    "DependabotAlertSecurityAdvisoryPropCvss",
-    "DependabotAlertSecurityAdvisoryPropCwesItems",
-    "DependabotAlertSecurityAdvisoryPropIdentifiersItems",
-    "DependabotAlertSecurityAdvisoryPropReferencesItems",
+    "CopilotUsageMetrics",
+    "CopilotUsageMetricsPropBreakdownItems",
 )

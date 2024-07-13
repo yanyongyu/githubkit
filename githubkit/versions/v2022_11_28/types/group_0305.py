@@ -9,65 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import Union
+from typing_extensions import TypedDict
 
-from .group_0001 import SimpleUserType
+from .group_0306 import PullRequestPropBasePropRepoType
 
 
-class PullRequestReviewType(TypedDict):
-    """Pull Request Review
+class PullRequestPropBaseType(TypedDict):
+    """PullRequestPropBase"""
 
-    Pull Request Reviews are reviews on pull requests.
-    """
+    label: str
+    ref: str
+    repo: PullRequestPropBasePropRepoType
+    sha: str
+    user: PullRequestPropBasePropUserType
 
+
+class PullRequestPropBasePropUserType(TypedDict):
+    """PullRequestPropBasePropUser"""
+
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: Union[str, None]
+    html_url: str
     id: int
     node_id: str
-    user: Union[None, SimpleUserType]
-    body: str
-    state: str
-    html_url: str
-    pull_request_url: str
-    links: PullRequestReviewPropLinksType
-    submitted_at: NotRequired[datetime]
-    commit_id: Union[str, None]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-
-
-class PullRequestReviewPropLinksType(TypedDict):
-    """PullRequestReviewPropLinks"""
-
-    html: PullRequestReviewPropLinksPropHtmlType
-    pull_request: PullRequestReviewPropLinksPropPullRequestType
-
-
-class PullRequestReviewPropLinksPropHtmlType(TypedDict):
-    """PullRequestReviewPropLinksPropHtml"""
-
-    href: str
-
-
-class PullRequestReviewPropLinksPropPullRequestType(TypedDict):
-    """PullRequestReviewPropLinksPropPullRequest"""
-
-    href: str
+    login: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
 
 
 __all__ = (
-    "PullRequestReviewType",
-    "PullRequestReviewPropLinksType",
-    "PullRequestReviewPropLinksPropHtmlType",
-    "PullRequestReviewPropLinksPropPullRequestType",
+    "PullRequestPropBaseType",
+    "PullRequestPropBasePropUserType",
 )

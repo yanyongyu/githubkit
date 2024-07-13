@@ -10,78 +10,94 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, List, Union
+from typing import List, Union
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
+from .group_0066 import Issue
+from .group_0067 import IssueComment
 
 
-class GistHistory(GitHubModel):
-    """Gist History
+class EventPropPayload(GitHubModel):
+    """EventPropPayload"""
 
-    Gist History
+    action: Missing[str] = Field(default=UNSET)
+    issue: Missing[Issue] = Field(
+        default=UNSET,
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
+    comment: Missing[IssueComment] = Field(
+        default=UNSET,
+        title="Issue Comment",
+        description="Comments provide a way for people to collaborate on an issue.",
+    )
+    pages: Missing[List[EventPropPayloadPropPagesItems]] = Field(default=UNSET)
+
+
+class EventPropPayloadPropPagesItems(GitHubModel):
+    """EventPropPayloadPropPagesItems"""
+
+    page_name: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    summary: Missing[Union[str, None]] = Field(default=UNSET)
+    action: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+
+
+class Event(GitHubModel):
+    """Event
+
+    Event
     """
 
-    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    version: Missing[str] = Field(default=UNSET)
-    committed_at: Missing[datetime] = Field(default=UNSET)
-    change_status: Missing[GistHistoryPropChangeStatus] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-class GistHistoryPropChangeStatus(GitHubModel):
-    """GistHistoryPropChangeStatus"""
-
-    total: Missing[int] = Field(default=UNSET)
-    additions: Missing[int] = Field(default=UNSET)
-    deletions: Missing[int] = Field(default=UNSET)
-
-
-class GistSimplePropForkOf(GitHubModel):
-    """Gist
-
-    Gist
-    """
-
-    url: str = Field()
-    forks_url: str = Field()
-    commits_url: str = Field()
     id: str = Field()
-    node_id: str = Field()
-    git_pull_url: str = Field()
-    git_push_url: str = Field()
-    html_url: str = Field()
-    files: GistSimplePropForkOfPropFiles = Field()
+    type: Union[str, None] = Field()
+    actor: Actor = Field(title="Actor", description="Actor")
+    repo: EventPropRepo = Field()
+    org: Missing[Actor] = Field(default=UNSET, title="Actor", description="Actor")
+    payload: EventPropPayload = Field()
     public: bool = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    description: Union[str, None] = Field()
-    comments: int = Field()
-    user: Union[None, SimpleUser] = Field()
-    comments_url: str = Field()
-    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    truncated: Missing[bool] = Field(default=UNSET)
-    forks: Missing[List[Any]] = Field(default=UNSET)
-    history: Missing[List[Any]] = Field(default=UNSET)
+    created_at: Union[datetime, None] = Field()
 
 
-class GistSimplePropForkOfPropFiles(ExtraGitHubModel):
-    """GistSimplePropForkOfPropFiles"""
+class Actor(GitHubModel):
+    """Actor
+
+    Actor
+    """
+
+    id: int = Field()
+    login: str = Field()
+    display_login: Missing[str] = Field(default=UNSET)
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    avatar_url: str = Field()
 
 
-model_rebuild(GistHistory)
-model_rebuild(GistHistoryPropChangeStatus)
-model_rebuild(GistSimplePropForkOf)
-model_rebuild(GistSimplePropForkOfPropFiles)
+class EventPropRepo(GitHubModel):
+    """EventPropRepo"""
+
+    id: int = Field()
+    name: str = Field()
+    url: str = Field()
+
+
+model_rebuild(EventPropPayload)
+model_rebuild(EventPropPayloadPropPagesItems)
+model_rebuild(Event)
+model_rebuild(Actor)
+model_rebuild(EventPropRepo)
 
 __all__ = (
-    "GistHistory",
-    "GistHistoryPropChangeStatus",
-    "GistSimplePropForkOf",
-    "GistSimplePropForkOfPropFiles",
+    "EventPropPayload",
+    "EventPropPayloadPropPagesItems",
+    "Event",
+    "Actor",
+    "EventPropRepo",
 )

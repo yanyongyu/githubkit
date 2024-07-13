@@ -11,7 +11,6 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import List, Union, Literal
-from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -19,189 +18,133 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0093 import Team
-from .group_0001 import SimpleUser
-from .group_0161 import RepositoryAdvisoryCredit
+from .group_0137 import RepositoryRuleUpdate
+from .group_0161 import RepositoryRuleOneof17
+from .group_0157 import RepositoryRuleWorkflows
+from .group_0142 import RepositoryRulePullRequest
+from .group_0133 import OrgRulesetConditionsOneof0
+from .group_0134 import OrgRulesetConditionsOneof1
+from .group_0135 import OrgRulesetConditionsOneof2
+from .group_0159 import RepositoryRuleCodeScanning
+from .group_0125 import RepositoryRulesetConditions
+from .group_0124 import RepositoryRulesetBypassActor
+from .group_0154 import RepositoryRuleTagNamePattern
+from .group_0152 import RepositoryRuleBranchNamePattern
+from .group_0140 import RepositoryRuleRequiredDeployments
+from .group_0144 import RepositoryRuleRequiredStatusChecks
+from .group_0146 import RepositoryRuleCommitMessagePattern
+from .group_0150 import RepositoryRuleCommitterEmailPattern
+from .group_0148 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0139 import RepositoryRuleOneof15, RepositoryRuleRequiredLinearHistory
+from .group_0136 import (
+    RepositoryRuleOneof14,
+    RepositoryRuleOneof16,
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
 
 
-class RepositoryAdvisory(GitHubModel):
-    """RepositoryAdvisory
+class RepositoryRuleset(GitHubModel):
+    """Repository ruleset
 
-    A repository security advisory.
+    A set of rules to apply when specified conditions are met.
     """
 
-    ghsa_id: str = Field(description="The GitHub Security Advisory ID.")
-    cve_id: Union[str, None] = Field(
-        description="The Common Vulnerabilities and Exposures (CVE) ID."
+    id: int = Field(description="The ID of the ruleset")
+    name: str = Field(description="The name of the ruleset")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
+        default=UNSET,
+        description="The target of the ruleset\n\n**Note**: The `push` target is in beta and is subject to change.",
     )
-    url: str = Field(description="The API URL for the advisory.")
-    html_url: str = Field(description="The URL for the advisory.")
-    summary: str = Field(
-        max_length=1024, description="A short summary of the advisory."
+    source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        default=UNSET, description="The type of the source of the ruleset"
     )
-    description: Union[Annotated[str, Field(max_length=65535)], None] = Field(
-        description="A detailed description of what the advisory entails."
+    source: str = Field(description="The name of the source")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page."
     )
-    severity: Union[None, Literal["critical", "high", "medium", "low"]] = Field(
-        description="The severity of the advisory."
+    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
     )
-    author: None = Field(description="The author of the advisory.")
-    publisher: None = Field(description="The publisher of the advisory.")
-    identifiers: List[RepositoryAdvisoryPropIdentifiersItems] = Field()
-    state: Literal["published", "closed", "withdrawn", "draft", "triage"] = Field(
-        description="The state of the advisory."
+    current_user_can_bypass: Missing[
+        Literal["always", "pull_requests_only", "never"]
+    ] = Field(
+        default=UNSET,
+        description="The bypass type of the user making the API request for this ruleset. This field is only returned when\nquerying the repository-level endpoint.",
     )
-    created_at: Union[datetime, None] = Field(
-        description="The date and time of when the advisory was created, in ISO 8601 format."
-    )
-    updated_at: Union[datetime, None] = Field(
-        description="The date and time of when the advisory was last updated, in ISO 8601 format."
-    )
-    published_at: Union[datetime, None] = Field(
-        description="The date and time of when the advisory was published, in ISO 8601 format."
-    )
-    closed_at: Union[datetime, None] = Field(
-        description="The date and time of when the advisory was closed, in ISO 8601 format."
-    )
-    withdrawn_at: Union[datetime, None] = Field(
-        description="The date and time of when the advisory was withdrawn, in ISO 8601 format."
-    )
-    submission: Union[RepositoryAdvisoryPropSubmission, None] = Field()
-    vulnerabilities: Union[List[RepositoryAdvisoryVulnerability], None] = Field()
-    cvss: Union[RepositoryAdvisoryPropCvss, None] = Field()
-    cwes: Union[List[RepositoryAdvisoryPropCwesItems], None] = Field()
-    cwe_ids: Union[List[str], None] = Field(description="A list of only the CWE IDs.")
-    credits_: Union[List[RepositoryAdvisoryPropCreditsItems], None] = Field(
-        alias="credits"
-    )
-    credits_detailed: Union[List[RepositoryAdvisoryCredit], None] = Field()
-    collaborating_users: Union[List[SimpleUser], None] = Field(
-        description="A list of users that collaborate on the advisory."
-    )
-    collaborating_teams: Union[List[Team], None] = Field(
-        description="A list of teams that collaborate on the advisory."
-    )
-    private_fork: None = Field(
-        description="A temporary private fork of the advisory's repository for collaborating on a fix."
-    )
-
-
-class RepositoryAdvisoryPropIdentifiersItems(GitHubModel):
-    """RepositoryAdvisoryPropIdentifiersItems"""
-
-    type: Literal["CVE", "GHSA"] = Field(description="The type of identifier.")
-    value: str = Field(description="The identifier value.")
-
-
-class RepositoryAdvisoryPropSubmission(GitHubModel):
-    """RepositoryAdvisoryPropSubmission"""
-
-    accepted: bool = Field(
-        description="Whether a private vulnerability report was accepted by the repository's administrators."
-    )
-
-
-class RepositoryAdvisoryPropCvss(GitHubModel):
-    """RepositoryAdvisoryPropCvss"""
-
-    vector_string: Union[str, None] = Field(description="The CVSS vector.")
-    score: Union[Annotated[float, Field(le=10.0)], None] = Field(
-        description="The CVSS score."
-    )
-
-
-class RepositoryAdvisoryPropCwesItems(GitHubModel):
-    """RepositoryAdvisoryPropCwesItems"""
-
-    cwe_id: str = Field(description="The Common Weakness Enumeration (CWE) identifier.")
-    name: str = Field(description="The name of the CWE.")
-
-
-class RepositoryAdvisoryPropCreditsItems(GitHubModel):
-    """RepositoryAdvisoryPropCreditsItems"""
-
-    login: Missing[str] = Field(
-        default=UNSET, description="The username of the user credited."
-    )
-    type: Missing[
-        Literal[
-            "analyst",
-            "finder",
-            "reporter",
-            "coordinator",
-            "remediation_developer",
-            "remediation_reviewer",
-            "remediation_verifier",
-            "tool",
-            "sponsor",
-            "other",
+    node_id: Missing[str] = Field(default=UNSET)
+    links: Missing[RepositoryRulesetPropLinks] = Field(default=UNSET, alias="_links")
+    conditions: Missing[
+        Union[
+            RepositoryRulesetConditions,
+            OrgRulesetConditionsOneof0,
+            OrgRulesetConditionsOneof1,
+            OrgRulesetConditionsOneof2,
+            None,
         ]
-    ] = Field(default=UNSET, description="The type of credit the user is receiving.")
+    ] = Field(default=UNSET)
+    rules: Missing[
+        List[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleOneof14,
+                RepositoryRuleOneof15,
+                RepositoryRuleOneof16,
+                RepositoryRuleOneof17,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+            ]
+        ]
+    ] = Field(default=UNSET)
+    created_at: Missing[datetime] = Field(default=UNSET)
+    updated_at: Missing[datetime] = Field(default=UNSET)
 
 
-class RepositoryAdvisoryVulnerability(GitHubModel):
-    """RepositoryAdvisoryVulnerability
+class RepositoryRulesetPropLinks(GitHubModel):
+    """RepositoryRulesetPropLinks"""
 
-    A product affected by the vulnerability detailed in a repository security
-    advisory.
-    """
-
-    package: Union[RepositoryAdvisoryVulnerabilityPropPackage, None] = Field(
-        description="The name of the package affected by the vulnerability."
+    self_: Missing[RepositoryRulesetPropLinksPropSelf] = Field(
+        default=UNSET, alias="self"
     )
-    vulnerable_version_range: Union[str, None] = Field(
-        description="The range of the package versions affected by the vulnerability."
-    )
-    patched_versions: Union[str, None] = Field(
-        description="The package version(s) that resolve the vulnerability."
-    )
-    vulnerable_functions: Union[List[str], None] = Field(
-        description="The functions in the package that are affected."
-    )
+    html: Missing[RepositoryRulesetPropLinksPropHtml] = Field(default=UNSET)
 
 
-class RepositoryAdvisoryVulnerabilityPropPackage(GitHubModel):
-    """RepositoryAdvisoryVulnerabilityPropPackage
+class RepositoryRulesetPropLinksPropSelf(GitHubModel):
+    """RepositoryRulesetPropLinksPropSelf"""
 
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ] = Field(description="The package's language or package management ecosystem.")
-    name: Union[str, None] = Field(
-        description="The unique package name within its ecosystem."
-    )
+    href: Missing[str] = Field(default=UNSET, description="The URL of the ruleset")
 
 
-model_rebuild(RepositoryAdvisory)
-model_rebuild(RepositoryAdvisoryPropIdentifiersItems)
-model_rebuild(RepositoryAdvisoryPropSubmission)
-model_rebuild(RepositoryAdvisoryPropCvss)
-model_rebuild(RepositoryAdvisoryPropCwesItems)
-model_rebuild(RepositoryAdvisoryPropCreditsItems)
-model_rebuild(RepositoryAdvisoryVulnerability)
-model_rebuild(RepositoryAdvisoryVulnerabilityPropPackage)
+class RepositoryRulesetPropLinksPropHtml(GitHubModel):
+    """RepositoryRulesetPropLinksPropHtml"""
+
+    href: Missing[str] = Field(default=UNSET, description="The html URL of the ruleset")
+
+
+model_rebuild(RepositoryRuleset)
+model_rebuild(RepositoryRulesetPropLinks)
+model_rebuild(RepositoryRulesetPropLinksPropSelf)
+model_rebuild(RepositoryRulesetPropLinksPropHtml)
 
 __all__ = (
-    "RepositoryAdvisory",
-    "RepositoryAdvisoryPropIdentifiersItems",
-    "RepositoryAdvisoryPropSubmission",
-    "RepositoryAdvisoryPropCvss",
-    "RepositoryAdvisoryPropCwesItems",
-    "RepositoryAdvisoryPropCreditsItems",
-    "RepositoryAdvisoryVulnerability",
-    "RepositoryAdvisoryVulnerabilityPropPackage",
+    "RepositoryRuleset",
+    "RepositoryRulesetPropLinks",
+    "RepositoryRulesetPropLinksPropSelf",
+    "RepositoryRulesetPropLinksPropHtml",
 )

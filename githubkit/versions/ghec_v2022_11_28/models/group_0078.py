@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,78 +17,30 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class SecurityAndAnalysis(GitHubModel):
-    """SecurityAndAnalysis"""
-
-    advanced_security: Missing[SecurityAndAnalysisPropAdvancedSecurity] = Field(
-        default=UNSET
-    )
-    dependabot_security_updates: Missing[
-        SecurityAndAnalysisPropDependabotSecurityUpdates
-    ] = Field(
-        default=UNSET,
-        description="Enable or disable Dependabot security updates for the repository.",
-    )
-    secret_scanning: Missing[SecurityAndAnalysisPropSecretScanning] = Field(
-        default=UNSET
-    )
-    secret_scanning_push_protection: Missing[
-        SecurityAndAnalysisPropSecretScanningPushProtection
-    ] = Field(default=UNSET)
-    secret_scanning_validity_checks: Missing[
-        SecurityAndAnalysisPropSecretScanningValidityChecks
-    ] = Field(default=UNSET)
+from .group_0079 import (
+    MarketplacePurchasePropMarketplacePurchase,
+    MarketplacePurchasePropMarketplacePendingChange,
+)
 
 
-class SecurityAndAnalysisPropAdvancedSecurity(GitHubModel):
-    """SecurityAndAnalysisPropAdvancedSecurity"""
+class MarketplacePurchase(GitHubModel):
+    """Marketplace Purchase
 
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropDependabotSecurityUpdates(GitHubModel):
-    """SecurityAndAnalysisPropDependabotSecurityUpdates
-
-    Enable or disable Dependabot security updates for the repository.
+    Marketplace Purchase
     """
 
-    status: Missing[Literal["enabled", "disabled"]] = Field(
-        default=UNSET,
-        description="The enablement status of Dependabot security updates for the repository.",
-    )
+    url: str = Field()
+    type: str = Field()
+    id: int = Field()
+    login: str = Field()
+    organization_billing_email: Missing[str] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    marketplace_pending_change: Missing[
+        Union[MarketplacePurchasePropMarketplacePendingChange, None]
+    ] = Field(default=UNSET)
+    marketplace_purchase: MarketplacePurchasePropMarketplacePurchase = Field()
 
 
-class SecurityAndAnalysisPropSecretScanning(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanning"""
+model_rebuild(MarketplacePurchase)
 
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningPushProtection(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningPushProtection"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-class SecurityAndAnalysisPropSecretScanningValidityChecks(GitHubModel):
-    """SecurityAndAnalysisPropSecretScanningValidityChecks"""
-
-    status: Missing[Literal["enabled", "disabled"]] = Field(default=UNSET)
-
-
-model_rebuild(SecurityAndAnalysis)
-model_rebuild(SecurityAndAnalysisPropAdvancedSecurity)
-model_rebuild(SecurityAndAnalysisPropDependabotSecurityUpdates)
-model_rebuild(SecurityAndAnalysisPropSecretScanning)
-model_rebuild(SecurityAndAnalysisPropSecretScanningPushProtection)
-model_rebuild(SecurityAndAnalysisPropSecretScanningValidityChecks)
-
-__all__ = (
-    "SecurityAndAnalysis",
-    "SecurityAndAnalysisPropAdvancedSecurity",
-    "SecurityAndAnalysisPropDependabotSecurityUpdates",
-    "SecurityAndAnalysisPropSecretScanning",
-    "SecurityAndAnalysisPropSecretScanningPushProtection",
-    "SecurityAndAnalysisPropSecretScanningValidityChecks",
-)
+__all__ = ("MarketplacePurchase",)

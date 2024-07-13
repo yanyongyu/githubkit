@@ -17,20 +17,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0116 import RepositoryRulePullRequestPropParameters
+from .group_0116 import RepositoryRuleUpdatePropParameters
 
 
-class RepositoryRulePullRequest(GitHubModel):
-    """pull_request
+class RepositoryRuleUpdate(GitHubModel):
+    """update
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Only allow users with bypass permission to update matching refs.
     """
 
-    type: Literal["pull_request"] = Field()
-    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
+    type: Literal["update"] = Field()
+    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRulePullRequest)
+model_rebuild(RepositoryRuleUpdate)
 
-__all__ = ("RepositoryRulePullRequest",)
+__all__ = ("RepositoryRuleUpdate",)

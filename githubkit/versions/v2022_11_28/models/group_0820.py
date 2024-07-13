@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
-from typing_extensions import Annotated
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -19,24 +18,26 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPersonalAccessTokenRequestsPostBody(GitHubModel):
-    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
+class OrgsOrgDependabotSecretsSecretNamePutBody(GitHubModel):
+    """OrgsOrgDependabotSecretsSecretNamePutBody"""
 
-    pat_request_ids: Missing[List[int]] = Field(
-        max_length=100,
-        min_length=1,
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
-        description="Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values.",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key) endpoint.",
     )
-    action: Literal["approve", "deny"] = Field(
-        description="Action to apply to the requests."
+    key_id: Missing[str] = Field(
+        default=UNSET, description="ID of the key you used to encrypt the secret."
     )
-    reason: Missing[Union[Annotated[str, Field(max_length=1024)], None]] = Field(
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret."
+    )
+    selected_repository_ids: Missing[List[str]] = Field(
         default=UNSET,
-        description="Reason for approving or denying the requests. Max 1024 characters.",
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
     )
 
 
-model_rebuild(OrgsOrgPersonalAccessTokenRequestsPostBody)
+model_rebuild(OrgsOrgDependabotSecretsSecretNamePutBody)
 
-__all__ = ("OrgsOrgPersonalAccessTokenRequestsPostBody",)
+__all__ = ("OrgsOrgDependabotSecretsSecretNamePutBody",)

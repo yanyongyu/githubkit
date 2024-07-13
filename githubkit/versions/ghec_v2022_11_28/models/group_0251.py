@@ -9,44 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0210 import Commit
+from .group_0209 import DiffEntry
 
-class ContentSymlink(GitHubModel):
-    """Symlink Content
 
-    An object describing a symlink
+class CommitComparison(GitHubModel):
+    """Commit Comparison
+
+    Commit Comparison
     """
 
-    type: Literal["symlink"] = Field()
-    target: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
     url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentSymlinkPropLinks = Field(alias="_links")
+    html_url: str = Field()
+    permalink_url: str = Field()
+    diff_url: str = Field()
+    patch_url: str = Field()
+    base_commit: Commit = Field(title="Commit", description="Commit")
+    merge_base_commit: Commit = Field(title="Commit", description="Commit")
+    status: Literal["diverged", "ahead", "behind", "identical"] = Field()
+    ahead_by: int = Field()
+    behind_by: int = Field()
+    total_commits: int = Field()
+    commits: List[Commit] = Field()
+    files: Missing[List[DiffEntry]] = Field(default=UNSET)
 
 
-class ContentSymlinkPropLinks(GitHubModel):
-    """ContentSymlinkPropLinks"""
+model_rebuild(CommitComparison)
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(ContentSymlink)
-model_rebuild(ContentSymlinkPropLinks)
-
-__all__ = (
-    "ContentSymlink",
-    "ContentSymlinkPropLinks",
-)
+__all__ = ("CommitComparison",)

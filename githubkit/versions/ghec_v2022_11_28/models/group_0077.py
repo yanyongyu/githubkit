@@ -9,65 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ApiOverview(GitHubModel):
-    """Api Overview
+class MarketplaceListingPlan(GitHubModel):
+    """Marketplace Listing Plan
 
-    Api Overview
+    Marketplace Listing Plan
     """
 
-    verifiable_password_authentication: bool = Field()
-    ssh_key_fingerprints: Missing[ApiOverviewPropSshKeyFingerprints] = Field(
-        default=UNSET
-    )
-    ssh_keys: Missing[List[str]] = Field(default=UNSET)
-    hooks: Missing[List[str]] = Field(default=UNSET)
-    github_enterprise_importer: Missing[List[str]] = Field(default=UNSET)
-    web: Missing[List[str]] = Field(default=UNSET)
-    api: Missing[List[str]] = Field(default=UNSET)
-    git: Missing[List[str]] = Field(default=UNSET)
-    packages: Missing[List[str]] = Field(default=UNSET)
-    pages: Missing[List[str]] = Field(default=UNSET)
-    importer: Missing[List[str]] = Field(default=UNSET)
-    actions: Missing[List[str]] = Field(default=UNSET)
-    actions_macos: Missing[List[str]] = Field(default=UNSET)
-    dependabot: Missing[List[str]] = Field(default=UNSET)
-    domains: Missing[ApiOverviewPropDomains] = Field(default=UNSET)
+    url: str = Field()
+    accounts_url: str = Field()
+    id: int = Field()
+    number: int = Field()
+    name: str = Field()
+    description: str = Field()
+    monthly_price_in_cents: int = Field()
+    yearly_price_in_cents: int = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    has_free_trial: bool = Field()
+    unit_name: Union[str, None] = Field()
+    state: str = Field()
+    bullets: List[str] = Field()
 
 
-class ApiOverviewPropSshKeyFingerprints(GitHubModel):
-    """ApiOverviewPropSshKeyFingerprints"""
+model_rebuild(MarketplaceListingPlan)
 
-    sha256_rsa: Missing[str] = Field(default=UNSET, alias="SHA256_RSA")
-    sha256_dsa: Missing[str] = Field(default=UNSET, alias="SHA256_DSA")
-    sha256_ecdsa: Missing[str] = Field(default=UNSET, alias="SHA256_ECDSA")
-    sha256_ed25519: Missing[str] = Field(default=UNSET, alias="SHA256_ED25519")
-
-
-class ApiOverviewPropDomains(GitHubModel):
-    """ApiOverviewPropDomains"""
-
-    website: Missing[List[str]] = Field(default=UNSET)
-    codespaces: Missing[List[str]] = Field(default=UNSET)
-    copilot: Missing[List[str]] = Field(default=UNSET)
-    packages: Missing[List[str]] = Field(default=UNSET)
-    actions: Missing[List[str]] = Field(default=UNSET)
-
-
-model_rebuild(ApiOverview)
-model_rebuild(ApiOverviewPropSshKeyFingerprints)
-model_rebuild(ApiOverviewPropDomains)
-
-__all__ = (
-    "ApiOverview",
-    "ApiOverviewPropSshKeyFingerprints",
-    "ApiOverviewPropDomains",
-)
+__all__ = ("MarketplaceListingPlan",)

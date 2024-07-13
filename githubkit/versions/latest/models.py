@@ -155,6 +155,7 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.models import CommitActivity as CommitActivity
     from githubkit.versions.v2022_11_28.models import ContentSymlink as ContentSymlink
     from githubkit.versions.v2022_11_28.models import ContentTraffic as ContentTraffic
+    from githubkit.versions.v2022_11_28.models import EnterpriseTeam as EnterpriseTeam
     from githubkit.versions.v2022_11_28.models import FullRepository as FullRepository
     from githubkit.versions.v2022_11_28.models import GlobalAdvisory as GlobalAdvisory
     from githubkit.versions.v2022_11_28.models import LicenseContent as LicenseContent
@@ -182,6 +183,7 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.models import ReferrerTraffic as ReferrerTraffic
     from githubkit.versions.v2022_11_28.models import RuleSuitesItems as RuleSuitesItems
     from githubkit.versions.v2022_11_28.models import SelectedActions as SelectedActions
+    from githubkit.versions.v2022_11_28.models import SigstoreBundle0 as SigstoreBundle0
     from githubkit.versions.v2022_11_28.models import SimpleClassroom as SimpleClassroom
     from githubkit.versions.v2022_11_28.models import SnapshotPropJob as SnapshotPropJob
     from githubkit.versions.v2022_11_28.models import ValidationError as ValidationError
@@ -433,7 +435,13 @@ if TYPE_CHECKING:
         SimpleUserWebhooks as SimpleUserWebhooks,
     )
     from githubkit.versions.v2022_11_28.models import (
+        TeamRoleAssignment as TeamRoleAssignment,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ThreadSubscription as ThreadSubscription,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        UserRoleAssignment as UserRoleAssignment,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookLabelEdited as WebhookLabelEdited,
@@ -868,6 +876,9 @@ if TYPE_CHECKING:
         OrganizationInvitation as OrganizationInvitation,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ProjectsV2StatusUpdate as ProjectsV2StatusUpdate,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         PullRequestMergeResult as PullRequestMergeResult,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -1189,6 +1200,9 @@ if TYPE_CHECKING:
         CodeScanningSarifsReceipt as CodeScanningSarifsReceipt,
     )
     from githubkit.versions.v2022_11_28.models import (
+        CodeSecurityConfiguration as CodeSecurityConfiguration,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         CommunityProfilePropFiles as CommunityProfilePropFiles,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -1358,6 +1372,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ProjectsProjectIdPatchBody as ProjectsProjectIdPatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ProjectsV2IterationSetting as ProjectsV2IterationSetting,
     )
     from githubkit.versions.v2022_11_28.models import (
         PullRequestMinimalPropBase as PullRequestMinimalPropBase,
@@ -1676,6 +1693,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         OrganizationDependabotSecret as OrganizationDependabotSecret,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ProjectsV2SingleSelectOption as ProjectsV2SingleSelectOption,
     )
     from githubkit.versions.v2022_11_28.models import (
         ProtectedBranchAdminEnforced as ProtectedBranchAdminEnforced,
@@ -2173,6 +2193,9 @@ if TYPE_CHECKING:
         SecretScanningLocationIssueBody as SecretScanningLocationIssueBody,
     )
     from githubkit.versions.v2022_11_28.models import (
+        SigstoreBundle0PropDsseEnvelope as SigstoreBundle0PropDsseEnvelope,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         UserInstallationsGetResponse200 as UserInstallationsGetResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2479,6 +2502,9 @@ if TYPE_CHECKING:
         RuleSuitePropRuleEvaluationsItems as RuleSuitePropRuleEvaluationsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
+        TeamRoleAssignmentPropPermissions as TeamRoleAssignmentPropPermissions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookBranchProtectionRuleEdited as WebhookBranchProtectionRuleEdited,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2570,6 +2596,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         PullRequestReviewPropLinksPropHtml as PullRequestReviewPropLinksPropHtml,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoAttestationsPostBody as ReposOwnerRepoAttestationsPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoHooksHookIdPatchBody as ReposOwnerRepoHooksHookIdPatchBody,
@@ -2779,6 +2808,9 @@ if TYPE_CHECKING:
         WebhookProjectCardEditedPropChanges as WebhookProjectCardEditedPropChanges,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookProjectsV2StatusUpdateEdited as WebhookProjectsV2StatusUpdateEdited,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestAutoMergeDisabled as WebhookPullRequestAutoMergeDisabled,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2908,6 +2940,12 @@ if TYPE_CHECKING:
         WebhookMetaDeletedPropHookPropConfig as WebhookMetaDeletedPropHookPropConfig,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookProjectsV2StatusUpdateCreated as WebhookProjectsV2StatusUpdateCreated,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookProjectsV2StatusUpdateDeleted as WebhookProjectsV2StatusUpdateDeleted,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookPushPropRepositoryPropLicense as WebhookPushPropRepositoryPropLicense,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2945,6 +2983,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         CodeScanningVariantAnalysisRepository as CodeScanningVariantAnalysisRepository,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        CodeSecurityConfigurationRepositories as CodeSecurityConfigurationRepositories,
     )
     from githubkit.versions.v2022_11_28.models import (
         CopilotUsageMetricsPropBreakdownItems as CopilotUsageMetricsPropBreakdownItems,
@@ -3059,6 +3100,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         CodeScanningDefaultSetupUpdateResponse as CodeScanningDefaultSetupUpdateResponse,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        CodeSecurityDefaultConfigurationsItems as CodeSecurityDefaultConfigurationsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         CommitSearchResultItemPropParentsItems as CommitSearchResultItemPropParentsItems,
@@ -3254,6 +3298,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         SecurityAndAnalysisPropAdvancedSecurity as SecurityAndAnalysisPropAdvancedSecurity,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        SigstoreBundle0PropVerificationMaterial as SigstoreBundle0PropVerificationMaterial,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookDeploymentCreatedPropWorkflowRun as WebhookDeploymentCreatedPropWorkflowRun,
@@ -3454,6 +3501,9 @@ if TYPE_CHECKING:
         EnvironmentPropProtectionRulesItemsAnyof2 as EnvironmentPropProtectionRulesItemsAnyof2,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgCodeSecurityConfigurationsPostBody as OrgsOrgCodeSecurityConfigurationsPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         OrgsOrgCodespacesSecretsSecretNamePutBody as OrgsOrgCodespacesSecretsSecretNamePutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3470,6 +3520,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         PullRequestReviewPropLinksPropPullRequest as PullRequestReviewPropLinksPropPullRequest,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoAttestationsPostResponse201 as ReposOwnerRepoAttestationsPostResponse201,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCheckRunsPostBodyPropOutput as ReposOwnerRepoCheckRunsPostBodyPropOutput,
@@ -3937,6 +3990,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoActionsWorkflowsGetResponse200 as ReposOwnerRepoActionsWorkflowsGetResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoAttestationsPostBodyPropBundle as ReposOwnerRepoAttestationsPostBodyPropBundle,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoImportAuthorsAuthorIdPatchBody as ReposOwnerRepoImportAuthorsAuthorIdPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4138,6 +4194,9 @@ if TYPE_CHECKING:
         OrgsOrgActionsVariablesNameRepositoriesPutBody as OrgsOrgActionsVariablesNameRepositoriesPutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgAttestationsSubjectDigestGetResponse200 as OrgsOrgAttestationsSubjectDigestGetResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         OrgsOrgCodespacesAccessSelectedUsersDeleteBody as OrgsOrgCodespacesAccessSelectedUsersDeleteBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4232,6 +4291,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookProjectCardMovedPropChangesPropColumnId as WebhookProjectCardMovedPropChangesPropColumnId,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookProjectsV2StatusUpdateEditedPropChanges as WebhookProjectsV2StatusUpdateEditedPropChanges,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookReleasePrereleasedPropReleasePropAuthor as WebhookReleasePrereleasedPropReleasePropAuthor,
@@ -4744,6 +4806,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2 as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2,
     )
     from githubkit.versions.v2022_11_28.models import (
+        SigstoreBundle0PropDsseEnvelopePropSignaturesItems as SigstoreBundle0PropDsseEnvelopePropSignaturesItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         UserCodespacesSecretsSecretNameRepositoriesPutBody as UserCodespacesSecretsSecretNameRepositoriesPutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -4954,6 +5019,9 @@ if TYPE_CHECKING:
         RepositoryRuleCommitAuthorEmailPatternPropParameters as RepositoryRuleCommitAuthorEmailPatternPropParameters,
     )
     from githubkit.versions.v2022_11_28.models import (
+        UsersUsernameAttestationsSubjectDigestGetResponse200 as UsersUsernameAttestationsSubjectDigestGetResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookInstallationTargetRenamedPropChangesPropLogin as WebhookInstallationTargetRenamedPropChangesPropLogin,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5060,6 +5128,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody as ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200 as ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCodespacesNewGetResponse200PropDefaults as ReposOwnerRepoCodespacesNewGetResponse200PropDefaults,
@@ -5200,6 +5271,9 @@ if TYPE_CHECKING:
         WorkflowRunUsagePropBillablePropMacosPropJobRunsItems as WorkflowRunUsagePropBillablePropMacosPropJobRunsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
+        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200 as EnterprisesEnterpriseCopilotBillingSeatsGetResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody as OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5267,6 +5341,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesUnlockedPropIssuePropMilestonePropCreator as WebhookIssuesUnlockedPropIssuePropMilestonePropCreator,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropBody as WebhookProjectsV2StatusUpdateEditedPropChangesPropBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestAssignedPropPullRequestPropAutoMerge as WebhookPullRequestAssignedPropPullRequestPropAutoMerge,
@@ -5464,6 +5541,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items,
     )
     from githubkit.versions.v2022_11_28.models import (
+        SecurityAndAnalysisPropSecretScanningNonProviderPatterns as SecurityAndAnalysisPropSecretScanningNonProviderPatterns,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwner as WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5507,6 +5587,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookProjectsV2ProjectEditedPropChangesPropDescription as WebhookProjectsV2ProjectEditedPropChangesPropDescription,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus as WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestAssignedPropPullRequestPropLabelsItems as WebhookPullRequestAssignedPropPullRequestPropLabelsItems,
@@ -5594,6 +5677,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200 as OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody as OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         ProtectedBranchPullRequestReviewPropDismissalRestrictions as ProtectedBranchPullRequestReviewPropDismissalRestrictions,
@@ -5869,6 +5955,9 @@ if TYPE_CHECKING:
         RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage as RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage,
     )
     from githubkit.versions.v2022_11_28.models import (
+        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropRepository as WebhookDeploymentStatusCreatedPropWorkflowRunPropRepository,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -5894,6 +5983,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropAssignee as WebhookIssuesTransferredPropChangesPropNewIssuePropAssignee,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate as WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestAssignedPropPullRequestPropAssigneesItems as WebhookPullRequestAssignedPropPullRequestPropAssigneesItems,
@@ -5968,6 +6060,9 @@ if TYPE_CHECKING:
         PersonalAccessTokenRequestPropPermissionsAddedPropRepository as PersonalAccessTokenRequestPropPermissionsAddedPropRepository,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope as ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200 as ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -6002,6 +6097,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor as WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate as WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropCommits as WebhookPullRequestLabeledPropPullRequestPropLinksPropCommits,
@@ -6259,6 +6357,9 @@ if TYPE_CHECKING:
         WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor as WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody as OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         PersonalAccessTokenRequestPropPermissionsAddedPropOrganization as PersonalAccessTokenRequestPropPermissionsAddedPropOrganization,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -6406,6 +6507,9 @@ if TYPE_CHECKING:
         WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor as WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActor,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody as OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -6419,6 +6523,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        SigstoreBundle0PropVerificationMaterialPropX509CertificateChain as SigstoreBundle0PropVerificationMaterialPropX509CertificateChain,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItems as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItems,
@@ -6784,6 +6891,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync as WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthor as WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthor,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -6961,6 +7071,9 @@ if TYPE_CHECKING:
         CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos as CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage as PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -7111,6 +7224,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs as ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial as ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -7118,6 +7234,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId,
     )
     from githubkit.versions.v2022_11_28.models import (
         TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody as TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
@@ -7411,6 +7530,9 @@ if TYPE_CHECKING:
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200 as OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions as ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -7538,6 +7660,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems as ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval as WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase,
@@ -7810,6 +7935,9 @@ if TYPE_CHECKING:
         RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty as RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
     )
     from githubkit.versions.v2022_11_28.models import (
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessage,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -7897,7 +8025,16 @@ if TYPE_CHECKING:
         WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropPermissions as WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropPermissions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel as WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocation,
@@ -8257,6 +8394,9 @@ if TYPE_CHECKING:
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -8408,6 +8548,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepo,
@@ -8656,6 +8799,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel as WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessage as WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessage,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -8713,6 +8859,9 @@ if TYPE_CHECKING:
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocation as WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocation,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -8764,10 +8913,16 @@ if TYPE_CHECKING:
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItems as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItems,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItems as SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel as WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel,
@@ -9079,6 +9234,9 @@ if TYPE_CHECKING:
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTarget,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -9145,7 +9303,13 @@ if TYPE_CHECKING:
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropManifest as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropManifest,
@@ -9182,6 +9346,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial,
     )
 else:
     __lazy_vars__ = {
@@ -9230,6 +9397,14 @@ else:
             "SimpleClassroomAssignment",
             "SimpleClassroom",
             "ClassroomAssignmentGrade",
+            "TeamSimple",
+            "Team",
+            "TeamPropPermissions",
+            "OrganizationSimple",
+            "CopilotSeatDetails",
+            "EnterpriseTeam",
+            "Organization",
+            "OrganizationPropPlan",
             "CopilotUsageMetrics",
             "CopilotUsageMetricsPropBreakdownItems",
             "DependabotAlertPackage",
@@ -9286,6 +9461,7 @@ else:
             "SecurityAndAnalysisPropDependabotSecurityUpdates",
             "SecurityAndAnalysisPropSecretScanning",
             "SecurityAndAnalysisPropSecretScanningPushProtection",
+            "SecurityAndAnalysisPropSecretScanningNonProviderPatterns",
             "MinimalRepository",
             "CodeOfConduct",
             "MinimalRepositoryPropPermissions",
@@ -9297,7 +9473,6 @@ else:
             "OrganizationFullPropPlan",
             "ActionsCacheUsageOrgEnterprise",
             "OidcCustomSub",
-            "EmptyObject",
             "ActionsOrganizationPermissions",
             "SelectedActions",
             "ActionsGetDefaultWorkflowPermissions",
@@ -9314,6 +9489,9 @@ else:
             "CodeScanningAlertLocation",
             "CodeScanningAlertInstancePropMessage",
             "CodeScanningOrganizationAlertItems",
+            "CodeSecurityConfiguration",
+            "CodeSecurityDefaultConfigurationsItems",
+            "CodeSecurityConfigurationRepositories",
             "CodespaceMachine",
             "Codespace",
             "CodespacePropGitStatus",
@@ -9321,13 +9499,6 @@ else:
             "CodespacesPublicKey",
             "CopilotOrganizationDetails",
             "CopilotSeatBreakdown",
-            "TeamSimple",
-            "Team",
-            "TeamPropPermissions",
-            "CopilotSeatDetails",
-            "Organization",
-            "OrganizationPropPlan",
-            "OrgsOrgCopilotBillingSeatsGetResponse200",
             "DependabotPublicKey",
             "Package",
             "OrganizationInvitation",
@@ -9336,12 +9507,14 @@ else:
             "InteractionLimitResponse",
             "InteractionLimit",
             "OrgMembership",
-            "OrganizationSimple",
             "OrgMembershipPropPermissions",
             "Migration",
             "OrganizationFineGrainedPermission",
             "OrganizationRole",
             "OrgsOrgOrganizationRolesGetResponse200",
+            "TeamRoleAssignment",
+            "TeamRoleAssignmentPropPermissions",
+            "UserRoleAssignment",
             "PackageVersion",
             "PackageVersionPropMetadata",
             "PackageVersionPropMetadataPropContainer",
@@ -9527,6 +9700,7 @@ else:
             "Verification",
             "DiffEntry",
             "Commit",
+            "EmptyObject",
             "CommitPropParentsItems",
             "CommitPropStats",
             "CommitPropCommit",
@@ -9965,6 +10139,7 @@ else:
             "WebhooksProjectChanges",
             "WebhooksProjectChangesPropArchivedAt",
             "ProjectsV2Item",
+            "ProjectsV2StatusUpdate",
             "PullRequestWebhook",
             "PullRequestWebhookAllof1",
             "WebhooksPullRequest5",
@@ -10057,6 +10232,10 @@ else:
             "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly",
             "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly",
             "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel",
+            "WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel",
+            "WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync",
+            "WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel",
+            "WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval",
             "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks",
             "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel",
             "WebhookCheckRunCompleted",
@@ -10771,6 +10950,8 @@ else:
             "WebhookProjectsV2ItemEdited",
             "WebhookProjectsV2ItemEditedPropChangesOneof0",
             "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue",
+            "ProjectsV2SingleSelectOption",
+            "ProjectsV2IterationSetting",
             "WebhookProjectsV2ItemEditedPropChangesOneof1",
             "WebhookProjectsV2ItemEditedPropChangesOneof1PropBody",
             "WebhookProjectsV2ItemReordered",
@@ -10778,6 +10959,14 @@ else:
             "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId",
             "WebhookProjectsV2ItemRestored",
             "WebhookProjectsV2ProjectReopened",
+            "WebhookProjectsV2StatusUpdateCreated",
+            "WebhookProjectsV2StatusUpdateDeleted",
+            "WebhookProjectsV2StatusUpdateEdited",
+            "WebhookProjectsV2StatusUpdateEditedPropChanges",
+            "WebhookProjectsV2StatusUpdateEditedPropChangesPropBody",
+            "WebhookProjectsV2StatusUpdateEditedPropChangesPropStatus",
+            "WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDate",
+            "WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDate",
             "WebhookPublic",
             "WebhookPullRequestAssigned",
             "WebhookPullRequestAssignedPropPullRequest",
@@ -11983,6 +12172,7 @@ else:
             "ApplicationsClientIdTokenPatchBody",
             "ApplicationsClientIdTokenScopedPostBody",
             "EmojisGetResponse200",
+            "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200",
             "EnterprisesEnterpriseSecretScanningAlertsGetResponse503",
             "GistsPostBody",
             "GistsPostBodyPropFiles",
@@ -12022,6 +12212,16 @@ else:
             "OrgsOrgActionsVariablesNamePatchBody",
             "OrgsOrgActionsVariablesNameRepositoriesGetResponse200",
             "OrgsOrgActionsVariablesNameRepositoriesPutBody",
+            "OrgsOrgAttestationsSubjectDigestGetResponse200",
+            "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+            "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
+            "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
+            "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
+            "OrgsOrgCodeSecurityConfigurationsPostBody",
+            "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody",
+            "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody",
+            "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",
+            "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",
             "OrgsOrgCodespacesGetResponse200",
             "OrgsOrgCodespacesAccessPutBody",
             "OrgsOrgCodespacesAccessSelectedUsersPostBody",
@@ -12031,6 +12231,7 @@ else:
             "OrgsOrgCodespacesSecretsSecretNamePutBody",
             "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200",
             "OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",
+            "OrgsOrgCopilotBillingSeatsGetResponse200",
             "OrgsOrgCopilotBillingSelectedTeamsPostBody",
             "OrgsOrgCopilotBillingSelectedTeamsPostResponse201",
             "OrgsOrgCopilotBillingSelectedTeamsDeleteBody",
@@ -12111,6 +12312,7 @@ else:
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurity",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanning",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtection",
+            "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns",
             "ReposOwnerRepoActionsArtifactsGetResponse200",
             "ReposOwnerRepoActionsJobsJobIdRerunPostBody",
             "ReposOwnerRepoActionsOidcCustomizationSubPutBody",
@@ -12138,6 +12340,16 @@ else:
             "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody",
             "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputs",
             "ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200",
+            "ReposOwnerRepoAttestationsPostBody",
+            "ReposOwnerRepoAttestationsPostBodyPropBundle",
+            "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial",
+            "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelope",
+            "ReposOwnerRepoAttestationsPostResponse201",
+            "ReposOwnerRepoAttestationsSubjectDigestGetResponse200",
+            "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+            "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundle",
+            "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
+            "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
             "ReposOwnerRepoAutolinksPostBody",
             "ReposOwnerRepoBranchesBranchProtectionPutBody",
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks",
@@ -12363,5 +12575,17 @@ else:
             "UserSocialAccountsPostBody",
             "UserSocialAccountsDeleteBody",
             "UserSshSigningKeysPostBody",
+            "UsersUsernameAttestationsSubjectDigestGetResponse200",
+            "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems",
+            "SigstoreBundle0",
+            "SigstoreBundle0PropDsseEnvelope",
+            "SigstoreBundle0PropDsseEnvelopePropSignaturesItems",
+            "SigstoreBundle0PropVerificationMaterial",
+            "SigstoreBundle0PropVerificationMaterialPropX509CertificateChain",
+            "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItems",
+            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems",
+            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId",
+            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersion",
+            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromise",
         )
     }

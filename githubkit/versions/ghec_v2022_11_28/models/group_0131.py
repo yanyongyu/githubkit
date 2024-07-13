@@ -11,26 +11,22 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0122 import RepositoryRulesetConditionsPropRefName
-from .group_0128 import (
+from .group_0132 import (
     RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
 )
 
 
-class OrgRulesetConditionsOneof2(GitHubModel):
-    """repository_property_and_ref_name
+class RepositoryRulesetConditionsRepositoryPropertyTarget(GitHubModel):
+    """Repository ruleset conditions for repository properties
 
-    Conditions to target repositories by property and refs by name
+    Parameters for a repository property condition
     """
 
-    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
     repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
 
 
-model_rebuild(OrgRulesetConditionsOneof2)
+model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTarget)
 
-__all__ = ("OrgRulesetConditionsOneof2",)
+__all__ = ("RepositoryRulesetConditionsRepositoryPropertyTarget",)

@@ -9,37 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-from typing_extensions import TypedDict, NotRequired
+from datetime import datetime
+from typing import Union, Literal
+from typing_extensions import TypedDict
 
-from .group_0093 import TeamType
 from .group_0001 import SimpleUserType
-from .group_0006 import IntegrationType
 
 
-class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+class ActivityType(TypedDict):
+    """Activity
 
-    users: NotRequired[List[SimpleUserType]]
-    teams: NotRequired[List[TeamType]]
-    apps: NotRequired[List[Union[IntegrationType, None]]]
-    url: NotRequired[str]
-    users_url: NotRequired[str]
-    teams_url: NotRequired[str]
-
-
-class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
-    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    Activity
     """
 
-    users: NotRequired[List[SimpleUserType]]
-    teams: NotRequired[List[TeamType]]
-    apps: NotRequired[List[Union[IntegrationType, None]]]
+    id: int
+    node_id: str
+    before: str
+    after: str
+    ref: str
+    timestamp: datetime
+    activity_type: Literal[
+        "push",
+        "force_push",
+        "branch_deletion",
+        "branch_creation",
+        "pr_merge",
+        "merge_queue_merge",
+    ]
+    actor: Union[None, SimpleUserType]
 
 
-__all__ = (
-    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
-    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
-)
+__all__ = ("ActivityType",)

@@ -116,6 +116,7 @@ from .custom_property import action_types as custom_property_action_types
 from .github_app_authorization import Event as GithubAppAuthorizationEvent
 from .dependabot_alert import action_types as dependabot_alert_action_types
 from .projects_v2_item import action_types as projects_v2_item_action_types
+from .projects_v2_status_update import Event as ProjectsV2StatusUpdateEvent
 from .registry_package import action_types as registry_package_action_types
 from .deployment_review import action_types as deployment_review_action_types
 from .deployment_status import action_types as deployment_status_action_types
@@ -135,6 +136,7 @@ from .repository_advisory import action_types as repository_advisory_action_type
 from .repository_dispatch import action_types as repository_dispatch_action_types
 from .marketplace_purchase import action_types as marketplace_purchase_action_types
 from .personal_access_token_request import Event as PersonalAccessTokenRequestEvent
+from .exemption_request_push_ruleset import Event as ExemptionRequestPushRulesetEvent
 from .secret_scanning_alert import action_types as secret_scanning_alert_action_types
 from .secret_scanning_alert_location import Event as SecretScanningAlertLocationEvent
 from .security_and_analysis import action_types as security_and_analysis_action_types
@@ -151,6 +153,9 @@ from .github_app_authorization import (
 from .installation_repositories import (
     action_types as installation_repositories_action_types,
 )
+from .projects_v2_status_update import (
+    action_types as projects_v2_status_update_action_types,
+)
 from .deployment_protection_rule import (
     action_types as deployment_protection_rule_action_types,
 )
@@ -162,6 +167,9 @@ from .pull_request_review_comment import (
 )
 from .personal_access_token_request import (
     action_types as personal_access_token_request_action_types,
+)
+from .exemption_request_push_ruleset import (
+    action_types as exemption_request_push_ruleset_action_types,
 )
 from .repository_vulnerability_alert import (
     action_types as repository_vulnerability_alert_action_types,
@@ -179,6 +187,7 @@ from .exemption_request_secret_scanning import (
 WebhookEvent = Union[
     BranchProtectionConfigurationEvent,
     BranchProtectionRuleEvent,
+    ExemptionRequestPushRulesetEvent,
     ExemptionRequestSecretScanningEvent,
     CheckRunEvent,
     CheckSuiteEvent,
@@ -222,6 +231,7 @@ WebhookEvent = Union[
     ProjectColumnEvent,
     ProjectsV2Event,
     ProjectsV2ItemEvent,
+    ProjectsV2StatusUpdateEvent,
     PublicEvent,
     PullRequestEvent,
     PullRequestReviewCommentEvent,
@@ -254,6 +264,7 @@ WebhookEvent = Union[
 webhook_action_types = {
     "branch_protection_configuration": branch_protection_configuration_action_types,
     "branch_protection_rule": branch_protection_rule_action_types,
+    "exemption_request_push_ruleset": exemption_request_push_ruleset_action_types,
     "exemption_request_secret_scanning": exemption_request_secret_scanning_action_types,
     "check_run": check_run_action_types,
     "check_suite": check_suite_action_types,
@@ -297,6 +308,7 @@ webhook_action_types = {
     "project_column": project_column_action_types,
     "projects_v2": projects_v2_action_types,
     "projects_v2_item": projects_v2_item_action_types,
+    "projects_v2_status_update": projects_v2_status_update_action_types,
     "public": public_action_types,
     "pull_request": pull_request_action_types,
     "pull_request_review_comment": pull_request_review_comment_action_types,
@@ -329,6 +341,7 @@ webhook_action_types = {
 webhook_event_types = {
     "branch_protection_configuration": BranchProtectionConfigurationEvent,
     "branch_protection_rule": BranchProtectionRuleEvent,
+    "exemption_request_push_ruleset": ExemptionRequestPushRulesetEvent,
     "exemption_request_secret_scanning": ExemptionRequestSecretScanningEvent,
     "check_run": CheckRunEvent,
     "check_suite": CheckSuiteEvent,
@@ -372,6 +385,7 @@ webhook_event_types = {
     "project_column": ProjectColumnEvent,
     "projects_v2": ProjectsV2Event,
     "projects_v2_item": ProjectsV2ItemEvent,
+    "projects_v2_status_update": ProjectsV2StatusUpdateEvent,
     "public": PublicEvent,
     "pull_request": PullRequestEvent,
     "pull_request_review_comment": PullRequestReviewCommentEvent,

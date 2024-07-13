@@ -9,54 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0203 import GitUserType
-from .group_0001 import SimpleUserType
-from .group_0079 import MinimalRepositoryType
-from .group_0380 import SearchResultTextMatchesItemsType
-from .group_0383 import CommitSearchResultItemPropCommitType
+from .group_0377 import UserRoleItemsType
 
 
-class CommitSearchResultItemType(TypedDict):
-    """Commit Search Result Item
+class UserType(TypedDict):
+    """User"""
 
-    Commit Search Result Item
-    """
-
-    url: str
-    sha: str
-    html_url: str
-    comments_url: str
-    commit: CommitSearchResultItemPropCommitType
-    author: Union[None, SimpleUserType]
-    committer: Union[None, GitUserType]
-    parents: List[CommitSearchResultItemPropParentsItemsType]
-    repository: MinimalRepositoryType
-    score: float
-    node_id: str
-    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
+    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: str
+    active: bool
+    user_name: str
+    name: NotRequired[UserNameType]
+    display_name: str
+    emails: List[UserEmailsItemsType]
+    roles: NotRequired[List[UserRoleItemsType]]
 
 
-class CommitSearchResultItemPropParentsItemsType(TypedDict):
-    """CommitSearchResultItemPropParentsItems"""
+class UserNameType(TypedDict):
+    """UserName"""
 
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
+    formatted: NotRequired[str]
+    family_name: str
+    given_name: str
+    middle_name: NotRequired[str]
 
 
-class SearchCommitsGetResponse200Type(TypedDict):
-    """SearchCommitsGetResponse200"""
+class UserEmailsItemsType(TypedDict):
+    """UserEmailsItems"""
 
-    total_count: int
-    incomplete_results: bool
-    items: List[CommitSearchResultItemType]
+    value: str
+    type: str
+    primary: bool
 
 
 __all__ = (
-    "CommitSearchResultItemType",
-    "CommitSearchResultItemPropParentsItemsType",
-    "SearchCommitsGetResponse200Type",
+    "UserType",
+    "UserNameType",
+    "UserEmailsItemsType",
 )

@@ -13,35 +13,38 @@ from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
 
+class RepositoryRuleOneof17(GitHubModel):
+    """max_file_size
 
-class RepositoryAdvisoryCredit(GitHubModel):
-    """RepositoryAdvisoryCredit
+    Note: max_file_size is in beta and subject to change.
 
-    A credit given to a user for a repository security advisory.
+    Prevent commits that exceed a specified file size limit from being pushed to the
+    commit.
     """
 
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ] = Field(description="The type of credit the user is receiving.")
-    state: Literal["accepted", "declined", "pending"] = Field(
-        description="The state of the user's acceptance of the credit."
+    type: Literal["max_file_size"] = Field()
+    parameters: Missing[RepositoryRuleOneof17PropParameters] = Field(default=UNSET)
+
+
+class RepositoryRuleOneof17PropParameters(GitHubModel):
+    """RepositoryRuleOneof17PropParameters"""
+
+    max_file_size: int = Field(
+        le=100.0,
+        ge=1.0,
+        description="The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
     )
 
 
-model_rebuild(RepositoryAdvisoryCredit)
+model_rebuild(RepositoryRuleOneof17)
+model_rebuild(RepositoryRuleOneof17PropParameters)
 
-__all__ = ("RepositoryAdvisoryCredit",)
+__all__ = (
+    "RepositoryRuleOneof17",
+    "RepositoryRuleOneof17PropParameters",
+)

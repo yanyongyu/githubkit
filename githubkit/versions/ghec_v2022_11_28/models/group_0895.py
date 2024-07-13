@@ -15,19 +15,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0115 import OrgCustomProperty
+from .group_0015 import Installation
 
 
-class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
-    """OrgsOrgPropertiesSchemaPatchBody"""
+class OrgsOrgInstallationsGetResponse200(GitHubModel):
+    """OrgsOrgInstallationsGetResponse200"""
 
-    properties: List[OrgCustomProperty] = Field(
-        max_length=100,
-        min_length=1,
-        description="The array of custom properties to create or update.",
-    )
+    total_count: int = Field()
+    installations: List[Installation] = Field()
 
 
-model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
+model_rebuild(OrgsOrgInstallationsGetResponse200)
 
-__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)
+__all__ = ("OrgsOrgInstallationsGetResponse200",)

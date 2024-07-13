@@ -9,20 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0001 import SimpleUserType
 
-class InteractionLimitType(TypedDict):
-    """Interaction Restrictions
 
-    Limit interactions to a specific type of user for a specified duration
+class OrganizationInvitationType(TypedDict):
+    """Organization Invitation
+
+    Organization Invitation
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
-    expiry: NotRequired[
-        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
-    ]
+    id: int
+    login: Union[str, None]
+    email: Union[str, None]
+    role: str
+    created_at: str
+    failed_at: NotRequired[Union[str, None]]
+    failed_reason: NotRequired[Union[str, None]]
+    inviter: SimpleUserType
+    team_count: int
+    node_id: str
+    invitation_teams_url: str
+    invitation_source: NotRequired[str]
 
 
-__all__ = ("InteractionLimitType",)
+__all__ = ("OrganizationInvitationType",)

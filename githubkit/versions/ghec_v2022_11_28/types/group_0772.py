@@ -9,34 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0402 import EnterpriseWebhooksType
-from .group_0403 import SimpleInstallationType
-from .group_0405 import RepositoryWebhooksType
-from .group_0406 import SimpleUserWebhooksType
-from .group_0404 import OrganizationSimpleWebhooksType
+
+class WebhookStatusPropCommitPropCommitPropCommitterAllof1Type(TypedDict):
+    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
+
+    date: str
+    email: NotRequired[str]
+    name: NotRequired[str]
 
 
-class WebhookWorkflowDispatchType(TypedDict):
-    """workflow_dispatch event"""
-
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    inputs: Union[WebhookWorkflowDispatchPropInputsType, None]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    ref: str
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-    workflow: str
-
-
-class WebhookWorkflowDispatchPropInputsType(TypedDict):
-    """WebhookWorkflowDispatchPropInputs"""
-
-
-__all__ = (
-    "WebhookWorkflowDispatchType",
-    "WebhookWorkflowDispatchPropInputsType",
-)
+__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof1Type",)

@@ -9,69 +9,106 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Literal
+from typing import List
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0980 import (
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems,
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody"""
+
+    dismissal_restrictions: Missing[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions
+    ] = Field(
+        default=UNSET,
+        description="Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.",
+    )
+    dismiss_stale_reviews: Missing[bool] = Field(
+        default=UNSET,
+        description="Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new commit.",
+    )
+    require_code_owner_reviews: Missing[bool] = Field(
+        default=UNSET,
+        description="Blocks merging pull requests until [code owners](https://docs.github.com/enterprise-cloud@latest//articles/about-code-owners/) have reviewed.",
+    )
+    required_approving_review_count: Missing[int] = Field(
+        default=UNSET,
+        description="Specifies the number of reviewers required to approve pull requests. Use a number between 1 and 6 or 0 to not require reviewers.",
+    )
+    require_last_push_approval: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the most recent push must be approved by someone other than the person who pushed it. Default: `false`",
+    )
+    bypass_pull_request_allowances: Missing[
+        ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances
+    ] = Field(
+        default=UNSET,
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
+    )
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDis
+    missalRestrictions
+
+    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
+    empty `dismissal_restrictions` object to disable. User and team
+    `dismissal_restrictions` are only available for organization-owned repositories.
+    Omit this parameter for personal repositories.
+    """
+
+    users: Missing[List[str]] = Field(
+        default=UNSET, description="The list of user `login`s with dismissal access"
+    )
+    teams: Missing[List[str]] = Field(
+        default=UNSET, description="The list of team `slug`s with dismissal access"
+    )
+    apps: Missing[List[str]] = Field(
+        default=UNSET, description="The list of app `slug`s with dismissal access"
+    )
+
+
+class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances(
+    GitHubModel
+):
+    """ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropByp
+    assPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
+    """
+
+    users: Missing[List[str]] = Field(
+        default=UNSET,
+        description="The list of user `login`s allowed to bypass pull request requirements.",
+    )
+    teams: Missing[List[str]] = Field(
+        default=UNSET,
+        description="The list of team `slug`s allowed to bypass pull request requirements.",
+    )
+    apps: Missing[List[str]] = Field(
+        default=UNSET,
+        description="The list of app `slug`s allowed to bypass pull request requirements.",
+    )
+
+
+model_rebuild(ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions
+)
+model_rebuild(
+    ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances
 )
 
-
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0(ExtraGitHubModel):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
-
-    name: Missing[str] = Field(
-        default=UNSET,
-        description='The name of the check. For example, "code-coverage".',
-    )
-    details_url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL of the integrator's site that has the full details of the check.",
-    )
-    external_id: Missing[str] = Field(
-        default=UNSET, description="A reference for the run on the integrator's system."
-    )
-    started_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    status: Missing[Literal["completed"]] = Field(default=UNSET)
-    conclusion: Literal[
-        "action_required",
-        "cancelled",
-        "failure",
-        "neutral",
-        "success",
-        "skipped",
-        "stale",
-        "timed_out",
-    ] = Field(
-        description="**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. \n**Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this."
-    )
-    completed_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    output: Missing[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput] = Field(
-        default=UNSET,
-        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run.",
-    )
-    actions: Missing[
-        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems]
-    ] = Field(
-        max_length=3,
-        default=UNSET,
-        description='Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/enterprise-cloud@latest//rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)."',
-    )
-
-
-model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0)
-
-__all__ = ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0",)
+__all__ = (
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictions",
+    "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowances",
+)

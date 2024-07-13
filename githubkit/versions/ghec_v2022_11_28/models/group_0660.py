@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,92 +17,86 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0439 import ProjectsV2
-from .group_0403 import SimpleInstallation
-from .group_0406 import SimpleUserWebhooks
-from .group_0404 import OrganizationSimpleWebhooks
+from .group_0441 import WebhooksProject
+from .group_0406 import EnterpriseWebhooks
+from .group_0407 import SimpleInstallation
+from .group_0409 import RepositoryWebhooks
+from .group_0410 import SimpleUserWebhooks
+from .group_0408 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ProjectEdited(GitHubModel):
-    """Projects v2 Project Edited Event"""
+class WebhookProjectEdited(GitHubModel):
+    """project edited event"""
 
     action: Literal["edited"] = Field()
-    changes: WebhookProjectsV2ProjectEditedPropChanges = Field()
+    changes: Missing[WebhookProjectEditedPropChanges] = Field(
+        default=UNSET,
+        description="The changes to the project if the action was `edited`.",
+    )
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+    )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: OrganizationSimpleWebhooks = Field(
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    projects_v2: ProjectsV2 = Field(
-        title="Projects v2 Project", description="A projects v2 project"
+    project: WebhooksProject = Field(title="Project")
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookProjectsV2ProjectEditedPropChanges(GitHubModel):
-    """WebhookProjectsV2ProjectEditedPropChanges"""
+class WebhookProjectEditedPropChanges(GitHubModel):
+    """WebhookProjectEditedPropChanges
 
-    description: Missing[WebhookProjectsV2ProjectEditedPropChangesPropDescription] = (
-        Field(default=UNSET)
+    The changes to the project if the action was `edited`.
+    """
+
+    body: Missing[WebhookProjectEditedPropChangesPropBody] = Field(default=UNSET)
+    name: Missing[WebhookProjectEditedPropChangesPropName] = Field(default=UNSET)
+
+
+class WebhookProjectEditedPropChangesPropBody(GitHubModel):
+    """WebhookProjectEditedPropChangesPropBody"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the body if the action was `edited`.",
     )
-    public: Missing[WebhookProjectsV2ProjectEditedPropChangesPropPublic] = Field(
-        default=UNSET
+
+
+class WebhookProjectEditedPropChangesPropName(GitHubModel):
+    """WebhookProjectEditedPropChangesPropName"""
+
+    from_: str = Field(
+        alias="from",
+        description="The changes to the project if the action was `edited`.",
     )
-    short_description: Missing[
-        WebhookProjectsV2ProjectEditedPropChangesPropShortDescription
-    ] = Field(default=UNSET)
-    title: Missing[WebhookProjectsV2ProjectEditedPropChangesPropTitle] = Field(
-        default=UNSET
-    )
 
 
-class WebhookProjectsV2ProjectEditedPropChangesPropDescription(GitHubModel):
-    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropPublic(GitHubModel):
-    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
-
-    from_: Missing[bool] = Field(default=UNSET, alias="from")
-    to: Missing[bool] = Field(default=UNSET)
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropShortDescription(GitHubModel):
-    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropTitle(GitHubModel):
-    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-    to: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookProjectsV2ProjectEdited)
-model_rebuild(WebhookProjectsV2ProjectEditedPropChanges)
-model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropDescription)
-model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropPublic)
-model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropShortDescription)
-model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropTitle)
+model_rebuild(WebhookProjectEdited)
+model_rebuild(WebhookProjectEditedPropChanges)
+model_rebuild(WebhookProjectEditedPropChangesPropBody)
+model_rebuild(WebhookProjectEditedPropChangesPropName)
 
 __all__ = (
-    "WebhookProjectsV2ProjectEdited",
-    "WebhookProjectsV2ProjectEditedPropChanges",
-    "WebhookProjectsV2ProjectEditedPropChangesPropDescription",
-    "WebhookProjectsV2ProjectEditedPropChangesPropPublic",
-    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescription",
-    "WebhookProjectsV2ProjectEditedPropChangesPropTitle",
+    "WebhookProjectEdited",
+    "WebhookProjectEditedPropChanges",
+    "WebhookProjectEditedPropChangesPropBody",
+    "WebhookProjectEditedPropChangesPropName",
 )

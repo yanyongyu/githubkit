@@ -9,45 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0183 import VerificationType
+from .group_0254 import CustomDeploymentRuleAppType
 
 
-class GitTagType(TypedDict):
-    """Git Tag
+class DeploymentProtectionRuleType(TypedDict):
+    """Deployment protection rule
 
-    Metadata for a Git tag
+    Deployment protection rule
     """
 
+    id: int
     node_id: str
-    tag: str
-    sha: str
-    url: str
-    message: str
-    tagger: GitTagPropTaggerType
-    object_: GitTagPropObjectType
-    verification: NotRequired[VerificationType]
+    enabled: bool
+    app: CustomDeploymentRuleAppType
 
 
-class GitTagPropTaggerType(TypedDict):
-    """GitTagPropTagger"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
-    date: str
-    email: str
-    name: str
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
 
-
-class GitTagPropObjectType(TypedDict):
-    """GitTagPropObject"""
-
-    sha: str
-    type: str
-    url: str
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[List[DeploymentProtectionRuleType]]
 
 
 __all__ = (
-    "GitTagType",
-    "GitTagPropTaggerType",
-    "GitTagPropObjectType",
+    "DeploymentProtectionRuleType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
 )

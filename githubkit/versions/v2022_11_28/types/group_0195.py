@@ -9,39 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0051 import MinimalRepositoryType
+from .group_0026 import TeamType
+from .group_0001 import SimpleUserType
+from .group_0006 import IntegrationType
 
 
-class CheckSuitePreferenceType(TypedDict):
-    """Check Suite Preference
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
 
-    Check suite configuration preferences for a repository.
-    """
-
-    preferences: CheckSuitePreferencePropPreferencesType
-    repository: MinimalRepositoryType
-
-
-class CheckSuitePreferencePropPreferencesType(TypedDict):
-    """CheckSuitePreferencePropPreferences"""
-
-    auto_trigger_checks: NotRequired[
-        List[CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType]
-    ]
+    url: str
+    users_url: str
+    teams_url: str
+    users: List[SimpleUserType]
+    teams: List[TeamType]
+    apps: NotRequired[List[Union[IntegrationType, None]]]
 
 
-class CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType(TypedDict):
-    """CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItems"""
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
 
-    app_id: int
-    setting: bool
+    users: List[SimpleUserType]
+    teams: List[TeamType]
+    apps: NotRequired[List[Union[IntegrationType, None]]]
 
 
 __all__ = (
-    "CheckSuitePreferenceType",
-    "CheckSuitePreferencePropPreferencesType",
-    "CheckSuitePreferencePropPreferencesPropAutoTriggerChecksItemsType",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
 )

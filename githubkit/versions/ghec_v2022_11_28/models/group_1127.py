@@ -9,46 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Literal
+from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserCodespacesSecretsGetResponse200(GitHubModel):
-    """UserCodespacesSecretsGetResponse200"""
+class ScimV2OrganizationsOrgUsersPostBody(GitHubModel):
+    """ScimV2OrganizationsOrgUsersPostBody"""
 
-    total_count: int = Field()
-    secrets: List[CodespacesSecret] = Field()
+    user_name: str = Field(
+        alias="userName",
+        description="Configured by the admin. Could be an email, login, or username",
+    )
+    display_name: Missing[str] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="The name of the user, suitable for display to end-users",
+    )
+    name: ScimV2OrganizationsOrgUsersPostBodyPropName = Field()
+    emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems] = Field(
+        min_length=1, description="user emails"
+    )
+    schemas: Missing[List[str]] = Field(default=UNSET)
+    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
+    groups: Missing[List[str]] = Field(default=UNSET)
+    active: Missing[bool] = Field(default=UNSET)
 
 
-class CodespacesSecret(GitHubModel):
-    """Codespaces Secret
+class ScimV2OrganizationsOrgUsersPostBodyPropName(GitHubModel):
+    """ScimV2OrganizationsOrgUsersPostBodyPropName
 
-    Secrets for a GitHub Codespace.
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
     """
 
-    name: str = Field(description="The name of the secret")
-    created_at: datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    updated_at: datetime = Field(
-        description="The date and time at which the secret was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that the secret is visible to"
-    )
-    selected_repositories_url: str = Field(
-        description="The API URL at which the list of repositories this secret is visible to can be retrieved"
-    )
+    given_name: str = Field(alias="givenName")
+    family_name: str = Field(alias="familyName")
+    formatted: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(UserCodespacesSecretsGetResponse200)
-model_rebuild(CodespacesSecret)
+class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems(GitHubModel):
+    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
+
+    value: str = Field()
+    primary: Missing[bool] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ScimV2OrganizationsOrgUsersPostBody)
+model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropName)
+model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems)
 
 __all__ = (
-    "UserCodespacesSecretsGetResponse200",
-    "CodespacesSecret",
+    "ScimV2OrganizationsOrgUsersPostBody",
+    "ScimV2OrganizationsOrgUsersPostBodyPropName",
+    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems",
 )

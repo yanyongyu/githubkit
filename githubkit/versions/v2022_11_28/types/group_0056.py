@@ -9,17 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union
 from typing_extensions import TypedDict
 
+from .group_0055 import MinimalRepositoryType
 
-class OidcCustomSubType(TypedDict):
-    """Actions OIDC Subject customization
 
-    Actions OIDC Subject customization
+class ThreadType(TypedDict):
+    """Thread
+
+    Thread
     """
 
-    include_claim_keys: List[str]
+    id: str
+    repository: MinimalRepositoryType
+    subject: ThreadPropSubjectType
+    reason: str
+    unread: bool
+    updated_at: str
+    last_read_at: Union[str, None]
+    url: str
+    subscription_url: str
 
 
-__all__ = ("OidcCustomSubType",)
+class ThreadPropSubjectType(TypedDict):
+    """ThreadPropSubject"""
+
+    title: str
+    url: str
+    latest_comment_url: str
+    type: str
+
+
+__all__ = (
+    "ThreadType",
+    "ThreadPropSubjectType",
+)

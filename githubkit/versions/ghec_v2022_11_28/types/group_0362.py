@@ -9,21 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
-from .group_0361 import TrafficType
 
+class TagType(TypedDict):
+    """Tag
 
-class CloneTrafficType(TypedDict):
-    """Clone Traffic
-
-    Clone Traffic
+    Tag
     """
 
-    count: int
-    uniques: int
-    clones: List[TrafficType]
+    name: str
+    commit: TagPropCommitType
+    zipball_url: str
+    tarball_url: str
+    node_id: str
 
 
-__all__ = ("CloneTrafficType",)
+class TagPropCommitType(TypedDict):
+    """TagPropCommit"""
+
+    sha: str
+    url: str
+
+
+__all__ = (
+    "TagType",
+    "TagPropCommitType",
+)

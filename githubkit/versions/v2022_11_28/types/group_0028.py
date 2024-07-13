@@ -9,77 +9,100 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import TypedDict
+from typing import Union
+from datetime import date, datetime
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0027 import DependabotAlertSecurityVulnerabilityType
+from .group_0026 import TeamType
+from .group_0001 import SimpleUserType
+from .group_0027 import OrganizationSimpleType
 
 
-class DependabotAlertSecurityAdvisoryType(TypedDict):
-    """DependabotAlertSecurityAdvisory
+class CopilotSeatDetailsType(TypedDict):
+    """Copilot Business Seat Detail
 
-    Details for the GitHub Security Advisory.
+    Information about a Copilot Business seat assignment for a user, team, or
+    organization.
     """
 
-    ghsa_id: str
-    cve_id: Union[str, None]
-    summary: str
-    description: str
-    vulnerabilities: List[DependabotAlertSecurityVulnerabilityType]
-    severity: Literal["low", "medium", "high", "critical"]
-    cvss: DependabotAlertSecurityAdvisoryPropCvssType
-    cwes: List[DependabotAlertSecurityAdvisoryPropCwesItemsType]
-    identifiers: List[DependabotAlertSecurityAdvisoryPropIdentifiersItemsType]
-    references: List[DependabotAlertSecurityAdvisoryPropReferencesItemsType]
-    published_at: datetime
-    updated_at: datetime
-    withdrawn_at: Union[datetime, None]
+    assignee: Union[SimpleUserType, TeamType, OrganizationType]
+    organization: NotRequired[Union[OrganizationSimpleType, None]]
+    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
+    pending_cancellation_date: NotRequired[Union[date, None]]
+    last_activity_at: NotRequired[Union[datetime, None]]
+    last_activity_editor: NotRequired[Union[str, None]]
+    created_at: datetime
+    updated_at: NotRequired[datetime]
 
 
-class DependabotAlertSecurityAdvisoryPropCvssType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCvss
+class EnterpriseTeamType(TypedDict):
+    """Enterprise Team
 
-    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    Group of enterprise owners and/or members
     """
 
-    score: float
-    vector_string: Union[str, None]
-
-
-class DependabotAlertSecurityAdvisoryPropCwesItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropCwesItems
-
-    A CWE weakness assigned to the advisory.
-    """
-
-    cwe_id: str
+    id: int
     name: str
-
-
-class DependabotAlertSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
-
-    An advisory identifier.
-    """
-
-    type: Literal["CVE", "GHSA"]
-    value: str
-
-
-class DependabotAlertSecurityAdvisoryPropReferencesItemsType(TypedDict):
-    """DependabotAlertSecurityAdvisoryPropReferencesItems
-
-    A link to additional advisory information.
-    """
-
+    slug: str
     url: str
+    sync_to_organizations: str
+    group_id: NotRequired[Union[int, None]]
+    html_url: str
+    members_url: str
+    created_at: datetime
+    updated_at: datetime
+
+
+class OrganizationType(TypedDict):
+    """Organization
+
+    GitHub account for managing multiple users, teams, and repositories
+    """
+
+    login: str
+    url: str
+    id: int
+    node_id: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
+    blog: NotRequired[str]
+    html_url: str
+    name: NotRequired[str]
+    company: NotRequired[str]
+    location: NotRequired[str]
+    email: NotRequired[str]
+    has_organization_projects: bool
+    has_repository_projects: bool
+    is_verified: NotRequired[bool]
+    public_repos: int
+    public_gists: int
+    followers: int
+    following: int
+    type: str
+    created_at: datetime
+    updated_at: datetime
+    plan: NotRequired[OrganizationPropPlanType]
+
+
+class OrganizationPropPlanType(TypedDict):
+    """OrganizationPropPlan"""
+
+    name: NotRequired[str]
+    space: NotRequired[int]
+    private_repos: NotRequired[int]
+    filled_seats: NotRequired[int]
+    seats: NotRequired[int]
 
 
 __all__ = (
-    "DependabotAlertSecurityAdvisoryType",
-    "DependabotAlertSecurityAdvisoryPropCvssType",
-    "DependabotAlertSecurityAdvisoryPropCwesItemsType",
-    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsType",
-    "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
+    "CopilotSeatDetailsType",
+    "EnterpriseTeamType",
+    "OrganizationType",
+    "OrganizationPropPlanType",
 )

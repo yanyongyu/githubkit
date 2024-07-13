@@ -16,17 +16,17 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserCodespacesCodespaceNamePublishPostBody(GitHubModel):
-    """UserCodespacesCodespaceNamePublishPostBody"""
+class TeamsTeamIdDiscussionsPostBody(GitHubModel):
+    """TeamsTeamIdDiscussionsPostBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="A name for the new repository."
-    )
+    title: str = Field(description="The discussion post's title.")
+    body: str = Field(description="The discussion post's body text.")
     private: Missing[bool] = Field(
-        default=UNSET, description="Whether the new repository should be private."
+        default=UNSET,
+        description="Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to `true` to create a private post.",
     )
 
 
-model_rebuild(UserCodespacesCodespaceNamePublishPostBody)
+model_rebuild(TeamsTeamIdDiscussionsPostBody)
 
-__all__ = ("UserCodespacesCodespaceNamePublishPostBody",)
+__all__ = ("TeamsTeamIdDiscussionsPostBody",)

@@ -10,68 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, List, Union
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
+from .group_0006 import IntegrationType
+from .group_0038 import ReactionRollupType
 
 
-class GistHistoryType(TypedDict):
-    """Gist History
+class IssueCommentType(TypedDict):
+    """Issue Comment
 
-    Gist History
+    Comments provide a way for people to collaborate on an issue.
     """
 
-    user: NotRequired[Union[None, SimpleUserType]]
-    version: NotRequired[str]
-    committed_at: NotRequired[datetime]
-    change_status: NotRequired[GistHistoryPropChangeStatusType]
-    url: NotRequired[str]
-
-
-class GistHistoryPropChangeStatusType(TypedDict):
-    """GistHistoryPropChangeStatus"""
-
-    total: NotRequired[int]
-    additions: NotRequired[int]
-    deletions: NotRequired[int]
-
-
-class GistSimplePropForkOfType(TypedDict):
-    """Gist
-
-    Gist
-    """
-
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
+    id: int
     node_id: str
-    git_pull_url: str
-    git_push_url: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
     html_url: str
-    files: GistSimplePropForkOfPropFilesType
-    public: bool
+    user: Union[None, SimpleUserType]
     created_at: datetime
     updated_at: datetime
-    description: Union[str, None]
-    comments: int
-    user: Union[None, SimpleUserType]
-    comments_url: str
-    owner: NotRequired[Union[None, SimpleUserType]]
-    truncated: NotRequired[bool]
-    forks: NotRequired[List[Any]]
-    history: NotRequired[List[Any]]
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class GistSimplePropForkOfPropFilesType(TypedDict):
-    """GistSimplePropForkOfPropFiles"""
-
-
-__all__ = (
-    "GistHistoryType",
-    "GistHistoryPropChangeStatusType",
-    "GistSimplePropForkOfType",
-    "GistSimplePropForkOfPropFilesType",
-)
+__all__ = ("IssueCommentType",)

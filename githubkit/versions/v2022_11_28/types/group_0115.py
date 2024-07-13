@@ -12,18 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0116 import RepositoryRulePullRequestPropParametersType
+from .group_0116 import RepositoryRuleUpdatePropParametersType
 
 
-class RepositoryRulePullRequestType(TypedDict):
-    """pull_request
+class RepositoryRuleUpdateType(TypedDict):
+    """update
 
-    Require all commits be made to a non-target branch and submitted via a pull
-    request before they can be merged.
+    Only allow users with bypass permission to update matching refs.
     """
 
-    type: Literal["pull_request"]
-    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
 
 
-__all__ = ("RepositoryRulePullRequestType",)
+__all__ = ("RepositoryRuleUpdateType",)

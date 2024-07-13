@@ -9,34 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class ActionsCacheListType(TypedDict):
-    """Repository actions caches
+class RateLimitType(TypedDict):
+    """Rate Limit"""
 
-    Repository actions caches
-    """
-
-    total_count: int
-    actions_caches: List[ActionsCacheListPropActionsCachesItemsType]
-
-
-class ActionsCacheListPropActionsCachesItemsType(TypedDict):
-    """ActionsCacheListPropActionsCachesItems"""
-
-    id: NotRequired[int]
-    ref: NotRequired[str]
-    key: NotRequired[str]
-    version: NotRequired[str]
-    last_accessed_at: NotRequired[datetime]
-    created_at: NotRequired[datetime]
-    size_in_bytes: NotRequired[int]
+    limit: int
+    remaining: int
+    reset: int
+    used: int
 
 
-__all__ = (
-    "ActionsCacheListType",
-    "ActionsCacheListPropActionsCachesItemsType",
-)
+__all__ = ("RateLimitType",)

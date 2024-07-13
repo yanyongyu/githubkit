@@ -10,42 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
-from .group_0029 import SimpleRepositoryType
-from .group_0205 import CodeScanningVariantAnalysisPropSkippedRepositoriesType
-from .group_0204 import CodeScanningVariantAnalysisPropScannedRepositoriesItemsType
+from .group_0071 import CodeScanningAnalysisToolType
 
 
-class CodeScanningVariantAnalysisType(TypedDict):
-    """Variant Analysis
+class CodeScanningAnalysisType(TypedDict):
+    """CodeScanningAnalysis"""
 
-    A run of a CodeQL query against one or more repositories.
-    """
-
+    ref: str
+    commit_sha: str
+    analysis_key: str
+    environment: str
+    category: NotRequired[str]
+    error: str
+    created_at: datetime
+    results_count: int
+    rules_count: int
     id: int
-    controller_repo: SimpleRepositoryType
-    actor: SimpleUserType
-    query_language: Literal[
-        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
-    ]
-    query_pack_url: str
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
-    completed_at: NotRequired[Union[datetime, None]]
-    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
-    actions_workflow_run_id: NotRequired[int]
-    failure_reason: NotRequired[
-        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
-    ]
-    scanned_repositories: NotRequired[
-        List[CodeScanningVariantAnalysisPropScannedRepositoriesItemsType]
-    ]
-    skipped_repositories: NotRequired[
-        CodeScanningVariantAnalysisPropSkippedRepositoriesType
-    ]
+    url: str
+    sarif_id: str
+    tool: CodeScanningAnalysisToolType
+    deletable: bool
+    warning: str
 
 
-__all__ = ("CodeScanningVariantAnalysisType",)
+__all__ = ("CodeScanningAnalysisType",)

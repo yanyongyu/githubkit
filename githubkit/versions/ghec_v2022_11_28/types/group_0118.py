@@ -9,20 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
 
 
-class CodeOfConductSimpleType(TypedDict):
-    """Code Of Conduct Simple
+class ProjectType(TypedDict):
+    """Project
 
-    Code of Conduct Simple
+    Projects are a way to organize columns and cards of work.
     """
 
+    owner_url: str
     url: str
-    key: str
+    html_url: str
+    columns_url: str
+    id: int
+    node_id: str
     name: str
-    html_url: Union[str, None]
+    body: Union[str, None]
+    number: int
+    state: str
+    creator: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    organization_permission: NotRequired[Literal["read", "write", "admin", "none"]]
+    private: NotRequired[bool]
 
 
-__all__ = ("CodeOfConductSimpleType",)
+__all__ = ("ProjectType",)

@@ -9,32 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class CodeownersErrorsType(TypedDict):
-    """CODEOWNERS errors
+class CodeScanningDefaultSetupUpdateType(TypedDict):
+    """CodeScanningDefaultSetupUpdate
 
-    A list of errors found in a repo's CODEOWNERS file
+    Configuration for code scanning default setup.
     """
 
-    errors: List[CodeownersErrorsPropErrorsItemsType]
+    state: NotRequired[Literal["configured", "not-configured"]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    languages: NotRequired[
+        List[
+            Literal[
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ]
 
 
-class CodeownersErrorsPropErrorsItemsType(TypedDict):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int
-    column: int
-    source: NotRequired[str]
-    kind: str
-    suggestion: NotRequired[Union[str, None]]
-    message: str
-    path: str
-
-
-__all__ = (
-    "CodeownersErrorsType",
-    "CodeownersErrorsPropErrorsItemsType",
-)
+__all__ = ("CodeScanningDefaultSetupUpdateType",)

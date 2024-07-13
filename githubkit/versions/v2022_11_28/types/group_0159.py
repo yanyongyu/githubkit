@@ -9,18 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
+
+from .group_0158 import RateLimitType
+from .group_0160 import RateLimitOverviewPropResourcesType
 
 
-class OidcCustomSubRepoType(TypedDict):
-    """Actions OIDC subject customization for a repository
+class RateLimitOverviewType(TypedDict):
+    """Rate Limit Overview
 
-    Actions OIDC subject customization for a repository
+    Rate Limit Overview
     """
 
-    use_default: bool
-    include_claim_keys: NotRequired[List[str]]
+    resources: RateLimitOverviewPropResourcesType
+    rate: RateLimitType
 
 
-__all__ = ("OidcCustomSubRepoType",)
+__all__ = ("RateLimitOverviewType",)

@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class UserGpgKeysPostBodyType(TypedDict):
-    """UserGpgKeysPostBody"""
+class TeamsTeamIdMembershipsUsernamePutBodyType(TypedDict):
+    """TeamsTeamIdMembershipsUsernamePutBody"""
 
-    name: NotRequired[str]
-    armored_public_key: str
+    role: NotRequired[Literal["member", "maintainer"]]
 
 
-__all__ = ("UserGpgKeysPostBodyType",)
+__all__ = ("TeamsTeamIdMembershipsUsernamePutBodyType",)

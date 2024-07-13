@@ -9,52 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0006 import IntegrationType
-from .group_0051 import MinimalRepositoryType
-from .group_0164 import PullRequestMinimalType
+from typing_extensions import TypedDict
 
 
-class SimpleCheckSuiteType(TypedDict):
-    """SimpleCheckSuite
+class SimpleInstallationType(TypedDict):
+    """Simple Installation
 
-    A suite of checks performed on the code of a given code change
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
+    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
     """
 
-    after: NotRequired[Union[str, None]]
-    app: NotRequired[Union[IntegrationType, None]]
-    before: NotRequired[Union[str, None]]
-    conclusion: NotRequired[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-        ]
-    ]
-    created_at: NotRequired[datetime]
-    head_branch: NotRequired[Union[str, None]]
-    head_sha: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    pull_requests: NotRequired[List[PullRequestMinimalType]]
-    repository: NotRequired[MinimalRepositoryType]
-    status: NotRequired[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ]
-    updated_at: NotRequired[datetime]
-    url: NotRequired[str]
+    id: int
+    node_id: str
 
 
-__all__ = ("SimpleCheckSuiteType",)
+__all__ = ("SimpleInstallationType",)

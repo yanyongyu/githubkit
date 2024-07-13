@@ -9,29 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
+from .group_0041 import CodeScanningAnalysisToolType
+from .group_0042 import CodeScanningAlertInstanceType
+from .group_0040 import CodeScanningAlertRuleSummaryType
 
 
-class CodeScanningCodeqlDatabaseType(TypedDict):
-    """CodeQL Database
+class CodeScanningAlertItemsType(TypedDict):
+    """CodeScanningAlertItems"""
 
-    A CodeQL database.
-    """
-
-    id: int
-    name: str
-    language: str
-    uploader: SimpleUserType
-    content_type: str
-    size: int
+    number: int
     created_at: datetime
-    updated_at: datetime
+    updated_at: NotRequired[datetime]
     url: str
-    commit_oid: NotRequired[Union[str, None]]
+    html_url: str
+    instances_url: str
+    state: Literal["open", "dismissed", "fixed"]
+    fixed_at: NotRequired[Union[datetime, None]]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_at: Union[datetime, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleSummaryType
+    tool: CodeScanningAnalysisToolType
+    most_recent_instance: CodeScanningAlertInstanceType
 
 
-__all__ = ("CodeScanningCodeqlDatabaseType",)
+__all__ = ("CodeScanningAlertItemsType",)

@@ -9,29 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectColumn(GitHubModel):
-    """Project Column
+class TeamMembership(GitHubModel):
+    """Team Membership
 
-    Project columns contain cards of work.
+    Team Membership
     """
 
     url: str = Field()
-    project_url: str = Field()
-    cards_url: str = Field()
-    id: int = Field(description="The unique identifier of the project column")
-    node_id: str = Field()
-    name: str = Field(description="Name of the project column")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    role: Literal["member", "maintainer"] = Field(
+        default="member", description="The role of the user in the team."
+    )
+    state: Literal["active", "pending"] = Field(
+        description="The state of the user's membership in the team."
+    )
 
 
-model_rebuild(ProjectColumn)
+model_rebuild(TeamMembership)
 
-__all__ = ("ProjectColumn",)
+__all__ = ("TeamMembership",)

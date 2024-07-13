@@ -9,17 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from datetime import datetime
+from typing import Union, Literal
+from typing_extensions import TypedDict
+
+from .group_0001 import SimpleUserType
 
 
-class RepositoryRuleDetailedOneof0Type(TypedDict):
-    """RepositoryRuleDetailedOneof0"""
+class ReleaseAssetType(TypedDict):
+    """Release Asset
 
-    type: Literal["creation"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Data related to a release.
+    """
+
+    url: str
+    browser_download_url: str
+    id: int
+    node_id: str
+    name: str
+    label: Union[str, None]
+    state: Literal["uploaded", "open"]
+    content_type: str
+    size: int
+    download_count: int
+    created_at: datetime
+    updated_at: datetime
+    uploader: Union[None, SimpleUserType]
 
 
-__all__ = ("RepositoryRuleDetailedOneof0Type",)
+__all__ = ("ReleaseAssetType",)

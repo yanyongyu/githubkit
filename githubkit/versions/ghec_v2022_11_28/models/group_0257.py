@@ -9,43 +9,123 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List, Union
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class DependencyGraphDiffItems(GitHubModel):
-    """DependencyGraphDiffItems"""
+class FileCommit(GitHubModel):
+    """File Commit
 
-    change_type: Literal["added", "removed"] = Field()
-    manifest: str = Field()
-    ecosystem: str = Field()
-    name: str = Field()
-    version: str = Field()
-    package_url: Union[str, None] = Field()
-    license_: Union[str, None] = Field(alias="license")
-    source_repository_url: Union[str, None] = Field()
-    vulnerabilities: List[DependencyGraphDiffItemsPropVulnerabilitiesItems] = Field()
-    scope: Literal["unknown", "runtime", "development"] = Field(
-        description="Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment."
+    File Commit
+    """
+
+    content: Union[FileCommitPropContent, None] = Field()
+    commit: FileCommitPropCommit = Field()
+
+
+class FileCommitPropContent(GitHubModel):
+    """FileCommitPropContent"""
+
+    name: Missing[str] = Field(default=UNSET)
+    path: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+    size: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    git_url: Missing[str] = Field(default=UNSET)
+    download_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    links: Missing[FileCommitPropContentPropLinks] = Field(
+        default=UNSET, alias="_links"
     )
 
 
-class DependencyGraphDiffItemsPropVulnerabilitiesItems(GitHubModel):
-    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+class FileCommitPropContentPropLinks(GitHubModel):
+    """FileCommitPropContentPropLinks"""
 
-    severity: str = Field()
-    advisory_ghsa_id: str = Field()
-    advisory_summary: str = Field()
-    advisory_url: str = Field()
+    self_: Missing[str] = Field(default=UNSET, alias="self")
+    git: Missing[str] = Field(default=UNSET)
+    html: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(DependencyGraphDiffItems)
-model_rebuild(DependencyGraphDiffItemsPropVulnerabilitiesItems)
+class FileCommitPropCommit(GitHubModel):
+    """FileCommitPropCommit"""
+
+    sha: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    author: Missing[FileCommitPropCommitPropAuthor] = Field(default=UNSET)
+    committer: Missing[FileCommitPropCommitPropCommitter] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    tree: Missing[FileCommitPropCommitPropTree] = Field(default=UNSET)
+    parents: Missing[List[FileCommitPropCommitPropParentsItems]] = Field(default=UNSET)
+    verification: Missing[FileCommitPropCommitPropVerification] = Field(default=UNSET)
+
+
+class FileCommitPropCommitPropAuthor(GitHubModel):
+    """FileCommitPropCommitPropAuthor"""
+
+    date: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    email: Missing[str] = Field(default=UNSET)
+
+
+class FileCommitPropCommitPropCommitter(GitHubModel):
+    """FileCommitPropCommitPropCommitter"""
+
+    date: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    email: Missing[str] = Field(default=UNSET)
+
+
+class FileCommitPropCommitPropTree(GitHubModel):
+    """FileCommitPropCommitPropTree"""
+
+    url: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+
+
+class FileCommitPropCommitPropParentsItems(GitHubModel):
+    """FileCommitPropCommitPropParentsItems"""
+
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+
+
+class FileCommitPropCommitPropVerification(GitHubModel):
+    """FileCommitPropCommitPropVerification"""
+
+    verified: Missing[bool] = Field(default=UNSET)
+    reason: Missing[str] = Field(default=UNSET)
+    signature: Missing[Union[str, None]] = Field(default=UNSET)
+    payload: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(FileCommit)
+model_rebuild(FileCommitPropContent)
+model_rebuild(FileCommitPropContentPropLinks)
+model_rebuild(FileCommitPropCommit)
+model_rebuild(FileCommitPropCommitPropAuthor)
+model_rebuild(FileCommitPropCommitPropCommitter)
+model_rebuild(FileCommitPropCommitPropTree)
+model_rebuild(FileCommitPropCommitPropParentsItems)
+model_rebuild(FileCommitPropCommitPropVerification)
 
 __all__ = (
-    "DependencyGraphDiffItems",
-    "DependencyGraphDiffItemsPropVulnerabilitiesItems",
+    "FileCommit",
+    "FileCommitPropContent",
+    "FileCommitPropContentPropLinks",
+    "FileCommitPropCommit",
+    "FileCommitPropCommitPropAuthor",
+    "FileCommitPropCommitPropCommitter",
+    "FileCommitPropCommitPropTree",
+    "FileCommitPropCommitPropParentsItems",
+    "FileCommitPropCommitPropVerification",
 )

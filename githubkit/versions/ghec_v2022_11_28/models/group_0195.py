@@ -10,40 +10,64 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0048 import Team
 from .group_0001 import SimpleUser
 
 
-class Activity(GitHubModel):
-    """Activity
+class PendingDeploymentPropReviewersItems(GitHubModel):
+    """PendingDeploymentPropReviewersItems"""
 
-    Activity
+    type: Missing[Literal["User", "Team"]] = Field(
+        default=UNSET, description="The type of reviewer."
+    )
+    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
+
+
+class PendingDeployment(GitHubModel):
+    """Pending Deployment
+
+    Details of a deployment that is waiting for protection rules to pass
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    before: str = Field(description="The SHA of the commit before the activity.")
-    after: str = Field(description="The SHA of the commit after the activity.")
-    ref: str = Field(
-        description="The full Git reference, formatted as `refs/heads/<branch name>`."
+    environment: PendingDeploymentPropEnvironment = Field()
+    wait_timer: int = Field(description="The set duration of the wait timer")
+    wait_timer_started_at: Union[datetime, None] = Field(
+        description="The time that the wait timer began."
     )
-    timestamp: datetime = Field(description="The time when the activity occurred.")
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ] = Field(description="The type of the activity that was performed.")
-    actor: Union[None, SimpleUser] = Field()
+    current_user_can_approve: bool = Field(
+        description="Whether the currently authenticated user can approve the deployment"
+    )
+    reviewers: List[PendingDeploymentPropReviewersItems] = Field(
+        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed."
+    )
 
 
-model_rebuild(Activity)
+class PendingDeploymentPropEnvironment(GitHubModel):
+    """PendingDeploymentPropEnvironment"""
 
-__all__ = ("Activity",)
+    id: Missing[int] = Field(default=UNSET, description="The id of the environment.")
+    node_id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the environment."
+    )
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(PendingDeploymentPropReviewersItems)
+model_rebuild(PendingDeployment)
+model_rebuild(PendingDeploymentPropEnvironment)
+
+__all__ = (
+    "PendingDeploymentPropReviewersItems",
+    "PendingDeployment",
+    "PendingDeploymentPropEnvironment",
+)

@@ -252,6 +252,9 @@ if TYPE_CHECKING:
         ContentTrafficType as ContentTrafficType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        EnterpriseTeamType as EnterpriseTeamType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         FullRepositoryType as FullRepositoryType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -331,6 +334,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         SelectedActionsType as SelectedActionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        SigstoreBundle0Type as SigstoreBundle0Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         SimpleClassroomType as SimpleClassroomType,
@@ -597,7 +603,13 @@ if TYPE_CHECKING:
         SimpleUserWebhooksType as SimpleUserWebhooksType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        TeamRoleAssignmentType as TeamRoleAssignmentType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ThreadSubscriptionType as ThreadSubscriptionType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        UserRoleAssignmentType as UserRoleAssignmentType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookLabelEditedType as WebhookLabelEditedType,
@@ -1032,6 +1044,9 @@ if TYPE_CHECKING:
         OrganizationInvitationType as OrganizationInvitationType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2StatusUpdateType as ProjectsV2StatusUpdateType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         PullRequestMergeResultType as PullRequestMergeResultType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1353,6 +1368,9 @@ if TYPE_CHECKING:
         CodeScanningSarifsReceiptType as CodeScanningSarifsReceiptType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        CodeSecurityConfigurationType as CodeSecurityConfigurationType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         CommunityProfilePropFilesType as CommunityProfilePropFilesType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1522,6 +1540,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         ProjectsProjectIdPatchBodyType as ProjectsProjectIdPatchBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2IterationSettingType as ProjectsV2IterationSettingType,
     )
     from githubkit.versions.v2022_11_28.types import (
         PullRequestMinimalPropBaseType as PullRequestMinimalPropBaseType,
@@ -1840,6 +1861,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrganizationDependabotSecretType as OrganizationDependabotSecretType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ProjectsV2SingleSelectOptionType as ProjectsV2SingleSelectOptionType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ProtectedBranchAdminEnforcedType as ProtectedBranchAdminEnforcedType,
@@ -2337,6 +2361,9 @@ if TYPE_CHECKING:
         SecretScanningLocationIssueBodyType as SecretScanningLocationIssueBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        SigstoreBundle0PropDsseEnvelopeType as SigstoreBundle0PropDsseEnvelopeType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         UserInstallationsGetResponse200Type as UserInstallationsGetResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -2643,6 +2670,9 @@ if TYPE_CHECKING:
         RuleSuitePropRuleEvaluationsItemsType as RuleSuitePropRuleEvaluationsItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        TeamRoleAssignmentPropPermissionsType as TeamRoleAssignmentPropPermissionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookBranchProtectionRuleEditedType as WebhookBranchProtectionRuleEditedType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -2734,6 +2764,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         PullRequestReviewPropLinksPropHtmlType as PullRequestReviewPropLinksPropHtmlType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoAttestationsPostBodyType as ReposOwnerRepoAttestationsPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoHooksHookIdPatchBodyType as ReposOwnerRepoHooksHookIdPatchBodyType,
@@ -2943,6 +2976,9 @@ if TYPE_CHECKING:
         WebhookProjectCardEditedPropChangesType as WebhookProjectCardEditedPropChangesType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        WebhookProjectsV2StatusUpdateEditedType as WebhookProjectsV2StatusUpdateEditedType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookPullRequestAutoMergeDisabledType as WebhookPullRequestAutoMergeDisabledType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3072,6 +3108,12 @@ if TYPE_CHECKING:
         WebhookMetaDeletedPropHookPropConfigType as WebhookMetaDeletedPropHookPropConfigType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        WebhookProjectsV2StatusUpdateCreatedType as WebhookProjectsV2StatusUpdateCreatedType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookProjectsV2StatusUpdateDeletedType as WebhookProjectsV2StatusUpdateDeletedType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookPushPropRepositoryPropLicenseType as WebhookPushPropRepositoryPropLicenseType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3109,6 +3151,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         CodeScanningVariantAnalysisRepositoryType as CodeScanningVariantAnalysisRepositoryType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        CodeSecurityConfigurationRepositoriesType as CodeSecurityConfigurationRepositoriesType,
     )
     from githubkit.versions.v2022_11_28.types import (
         CopilotUsageMetricsPropBreakdownItemsType as CopilotUsageMetricsPropBreakdownItemsType,
@@ -3223,6 +3268,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         CodeScanningDefaultSetupUpdateResponseType as CodeScanningDefaultSetupUpdateResponseType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        CodeSecurityDefaultConfigurationsItemsType as CodeSecurityDefaultConfigurationsItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
         CommitSearchResultItemPropParentsItemsType as CommitSearchResultItemPropParentsItemsType,
@@ -3418,6 +3466,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         SecurityAndAnalysisPropAdvancedSecurityType as SecurityAndAnalysisPropAdvancedSecurityType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        SigstoreBundle0PropVerificationMaterialType as SigstoreBundle0PropVerificationMaterialType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookDeploymentCreatedPropWorkflowRunType as WebhookDeploymentCreatedPropWorkflowRunType,
@@ -3618,6 +3669,9 @@ if TYPE_CHECKING:
         EnvironmentPropProtectionRulesItemsAnyof2Type as EnvironmentPropProtectionRulesItemsAnyof2Type,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgCodeSecurityConfigurationsPostBodyType as OrgsOrgCodeSecurityConfigurationsPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         OrgsOrgCodespacesSecretsSecretNamePutBodyType as OrgsOrgCodespacesSecretsSecretNamePutBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -3634,6 +3688,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         PullRequestReviewPropLinksPropPullRequestType as PullRequestReviewPropLinksPropPullRequestType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoAttestationsPostResponse201Type as ReposOwnerRepoAttestationsPostResponse201Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoCheckRunsPostBodyPropOutputType as ReposOwnerRepoCheckRunsPostBodyPropOutputType,
@@ -4101,6 +4158,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoActionsWorkflowsGetResponse200Type as ReposOwnerRepoActionsWorkflowsGetResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoAttestationsPostBodyPropBundleType as ReposOwnerRepoAttestationsPostBodyPropBundleType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType as ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -4302,6 +4362,9 @@ if TYPE_CHECKING:
         OrgsOrgActionsVariablesNameRepositoriesPutBodyType as OrgsOrgActionsVariablesNameRepositoriesPutBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgAttestationsSubjectDigestGetResponse200Type as OrgsOrgAttestationsSubjectDigestGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType as OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -4396,6 +4459,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookProjectCardMovedPropChangesPropColumnIdType as WebhookProjectCardMovedPropChangesPropColumnIdType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookProjectsV2StatusUpdateEditedPropChangesType as WebhookProjectsV2StatusUpdateEditedPropChangesType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookReleasePrereleasedPropReleasePropAuthorType as WebhookReleasePrereleasedPropReleasePropAuthorType,
@@ -4908,6 +4974,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
     )
     from githubkit.versions.v2022_11_28.types import (
+        SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType as SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         UserCodespacesSecretsSecretNameRepositoriesPutBodyType as UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -5118,6 +5187,9 @@ if TYPE_CHECKING:
         RepositoryRuleCommitAuthorEmailPatternPropParametersType as RepositoryRuleCommitAuthorEmailPatternPropParametersType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        UsersUsernameAttestationsSubjectDigestGetResponse200Type as UsersUsernameAttestationsSubjectDigestGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookInstallationTargetRenamedPropChangesPropLoginType as WebhookInstallationTargetRenamedPropChangesPropLoginType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -5224,6 +5296,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType as ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type as ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType as ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType,
@@ -5364,6 +5439,9 @@ if TYPE_CHECKING:
         WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType as WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type as EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType as OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -5431,6 +5509,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookIssuesUnlockedPropIssuePropMilestonePropCreatorType as WebhookIssuesUnlockedPropIssuePropMilestonePropCreatorType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyType as WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookPullRequestAssignedPropPullRequestPropAutoMergeType as WebhookPullRequestAssignedPropPullRequestPropAutoMergeType,
@@ -5628,6 +5709,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        SecurityAndAnalysisPropSecretScanningNonProviderPatternsType as SecurityAndAnalysisPropSecretScanningNonProviderPatternsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerType as WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -5671,6 +5755,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType as WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType as WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookPullRequestAssignedPropPullRequestPropLabelsItemsType as WebhookPullRequestAssignedPropPullRequestPropLabelsItemsType,
@@ -5758,6 +5845,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type as OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType as OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ProtectedBranchPullRequestReviewPropDismissalRestrictionsType as ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
@@ -6033,6 +6123,9 @@ if TYPE_CHECKING:
         RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType as RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookDeploymentStatusCreatedPropWorkflowRunPropRepositoryType as WebhookDeploymentStatusCreatedPropWorkflowRunPropRepositoryType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -6058,6 +6151,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneeType as WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneeType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateType as WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookPullRequestAssignedPropPullRequestPropAssigneesItemsType as WebhookPullRequestAssignedPropPullRequestPropAssigneesItemsType,
@@ -6132,6 +6228,9 @@ if TYPE_CHECKING:
         PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType as PersonalAccessTokenRequestPropPermissionsAddedPropRepositoryType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType as ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type as ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -6166,6 +6265,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthorType as WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthorType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType as WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookPullRequestLabeledPropPullRequestPropLinksPropCommitsType as WebhookPullRequestLabeledPropPullRequestPropLinksPropCommitsType,
@@ -6423,6 +6525,9 @@ if TYPE_CHECKING:
         WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActorType as WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActorType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType as OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType as PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -6570,6 +6675,9 @@ if TYPE_CHECKING:
         WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActorType as WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActorType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType as OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -6583,6 +6691,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType as SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsType as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsType,
@@ -6948,6 +7059,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType as WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorType as WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -7125,6 +7239,9 @@ if TYPE_CHECKING:
         CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType as CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType as PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -7275,6 +7392,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType as ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType as ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -7282,6 +7402,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType,
     )
     from githubkit.versions.v2022_11_28.types import (
         TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType as TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
@@ -7575,6 +7698,9 @@ if TYPE_CHECKING:
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwnerType as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwnerType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type as OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType as ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -7702,6 +7828,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType as ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalType as WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseType as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseType,
@@ -7974,6 +8103,9 @@ if TYPE_CHECKING:
         RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType as RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageType as WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropMessageType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -8061,7 +8193,16 @@ if TYPE_CHECKING:
         WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropPermissionsType as WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropPermissionsType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType as WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationType as WebhookCodeScanningAlertCreatedPropAlertPropMostRecentInstancePropLocationType,
@@ -8421,6 +8562,9 @@ if TYPE_CHECKING:
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -8572,6 +8716,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType as WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType,
@@ -8820,6 +8967,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType as WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageType as WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropMessageType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -8877,6 +9027,9 @@ if TYPE_CHECKING:
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesType as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationType as WebhookCodeScanningAlertAppearedInBranchPropAlertPropMostRecentInstancePropLocationType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -8928,10 +9081,16 @@ if TYPE_CHECKING:
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType as SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType as WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType,
@@ -9243,6 +9402,9 @@ if TYPE_CHECKING:
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetType as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropTargetType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1PropParentType as WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1PropParentType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -9309,7 +9471,13 @@ if TYPE_CHECKING:
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictionsType as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictionsType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType,
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropManifestType as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropManifestType,
@@ -9346,6 +9514,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropOptionalDependenciesType as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropOptionalDependenciesType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType,
     )
 else:
     __lazy_vars__ = {
@@ -9394,6 +9565,14 @@ else:
             "SimpleClassroomAssignmentType",
             "SimpleClassroomType",
             "ClassroomAssignmentGradeType",
+            "TeamSimpleType",
+            "TeamType",
+            "TeamPropPermissionsType",
+            "OrganizationSimpleType",
+            "CopilotSeatDetailsType",
+            "EnterpriseTeamType",
+            "OrganizationType",
+            "OrganizationPropPlanType",
             "CopilotUsageMetricsType",
             "CopilotUsageMetricsPropBreakdownItemsType",
             "DependabotAlertPackageType",
@@ -9450,6 +9629,7 @@ else:
             "SecurityAndAnalysisPropDependabotSecurityUpdatesType",
             "SecurityAndAnalysisPropSecretScanningType",
             "SecurityAndAnalysisPropSecretScanningPushProtectionType",
+            "SecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
             "MinimalRepositoryType",
             "CodeOfConductType",
             "MinimalRepositoryPropPermissionsType",
@@ -9461,7 +9641,6 @@ else:
             "OrganizationFullPropPlanType",
             "ActionsCacheUsageOrgEnterpriseType",
             "OidcCustomSubType",
-            "EmptyObjectType",
             "ActionsOrganizationPermissionsType",
             "SelectedActionsType",
             "ActionsGetDefaultWorkflowPermissionsType",
@@ -9478,6 +9657,9 @@ else:
             "CodeScanningAlertLocationType",
             "CodeScanningAlertInstancePropMessageType",
             "CodeScanningOrganizationAlertItemsType",
+            "CodeSecurityConfigurationType",
+            "CodeSecurityDefaultConfigurationsItemsType",
+            "CodeSecurityConfigurationRepositoriesType",
             "CodespaceMachineType",
             "CodespaceType",
             "CodespacePropGitStatusType",
@@ -9485,13 +9667,6 @@ else:
             "CodespacesPublicKeyType",
             "CopilotOrganizationDetailsType",
             "CopilotSeatBreakdownType",
-            "TeamSimpleType",
-            "TeamType",
-            "TeamPropPermissionsType",
-            "CopilotSeatDetailsType",
-            "OrganizationType",
-            "OrganizationPropPlanType",
-            "OrgsOrgCopilotBillingSeatsGetResponse200Type",
             "DependabotPublicKeyType",
             "PackageType",
             "OrganizationInvitationType",
@@ -9500,12 +9675,14 @@ else:
             "InteractionLimitResponseType",
             "InteractionLimitType",
             "OrgMembershipType",
-            "OrganizationSimpleType",
             "OrgMembershipPropPermissionsType",
             "MigrationType",
             "OrganizationFineGrainedPermissionType",
             "OrganizationRoleType",
             "OrgsOrgOrganizationRolesGetResponse200Type",
+            "TeamRoleAssignmentType",
+            "TeamRoleAssignmentPropPermissionsType",
+            "UserRoleAssignmentType",
             "PackageVersionType",
             "PackageVersionPropMetadataType",
             "PackageVersionPropMetadataPropContainerType",
@@ -9691,6 +9868,7 @@ else:
             "VerificationType",
             "DiffEntryType",
             "CommitType",
+            "EmptyObjectType",
             "CommitPropParentsItemsType",
             "CommitPropStatsType",
             "CommitPropCommitType",
@@ -10129,6 +10307,7 @@ else:
             "WebhooksProjectChangesType",
             "WebhooksProjectChangesPropArchivedAtType",
             "ProjectsV2ItemType",
+            "ProjectsV2StatusUpdateType",
             "PullRequestWebhookType",
             "PullRequestWebhookAllof1Type",
             "WebhooksPullRequest5Type",
@@ -10221,6 +10400,10 @@ else:
             "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnlyType",
             "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnlyType",
             "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevelType",
+            "WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevelType",
+            "WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSyncType",
+            "WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevelType",
+            "WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApprovalType",
             "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksType",
             "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevelType",
             "WebhookCheckRunCompletedType",
@@ -10935,6 +11118,8 @@ else:
             "WebhookProjectsV2ItemEditedType",
             "WebhookProjectsV2ItemEditedPropChangesOneof0Type",
             "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValueType",
+            "ProjectsV2SingleSelectOptionType",
+            "ProjectsV2IterationSettingType",
             "WebhookProjectsV2ItemEditedPropChangesOneof1Type",
             "WebhookProjectsV2ItemEditedPropChangesOneof1PropBodyType",
             "WebhookProjectsV2ItemReorderedType",
@@ -10942,6 +11127,14 @@ else:
             "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType",
             "WebhookProjectsV2ItemRestoredType",
             "WebhookProjectsV2ProjectReopenedType",
+            "WebhookProjectsV2StatusUpdateCreatedType",
+            "WebhookProjectsV2StatusUpdateDeletedType",
+            "WebhookProjectsV2StatusUpdateEditedType",
+            "WebhookProjectsV2StatusUpdateEditedPropChangesType",
+            "WebhookProjectsV2StatusUpdateEditedPropChangesPropBodyType",
+            "WebhookProjectsV2StatusUpdateEditedPropChangesPropStatusType",
+            "WebhookProjectsV2StatusUpdateEditedPropChangesPropStartDateType",
+            "WebhookProjectsV2StatusUpdateEditedPropChangesPropTargetDateType",
             "WebhookPublicType",
             "WebhookPullRequestAssignedType",
             "WebhookPullRequestAssignedPropPullRequestType",
@@ -12147,6 +12340,7 @@ else:
             "ApplicationsClientIdTokenPatchBodyType",
             "ApplicationsClientIdTokenScopedPostBodyType",
             "EmojisGetResponse200Type",
+            "EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",
             "EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type",
             "GistsPostBodyType",
             "GistsPostBodyPropFilesType",
@@ -12186,6 +12380,16 @@ else:
             "OrgsOrgActionsVariablesNamePatchBodyType",
             "OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type",
             "OrgsOrgActionsVariablesNameRepositoriesPutBodyType",
+            "OrgsOrgAttestationsSubjectDigestGetResponse200Type",
+            "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+            "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
+            "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
+            "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
+            "OrgsOrgCodeSecurityConfigurationsPostBodyType",
+            "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType",
+            "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
+            "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
+            "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
             "OrgsOrgCodespacesGetResponse200Type",
             "OrgsOrgCodespacesAccessPutBodyType",
             "OrgsOrgCodespacesAccessSelectedUsersPostBodyType",
@@ -12195,6 +12399,7 @@ else:
             "OrgsOrgCodespacesSecretsSecretNamePutBodyType",
             "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
             "OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType",
+            "OrgsOrgCopilotBillingSeatsGetResponse200Type",
             "OrgsOrgCopilotBillingSelectedTeamsPostBodyType",
             "OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",
             "OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType",
@@ -12275,6 +12480,7 @@ else:
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType",
+            "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
             "ReposOwnerRepoActionsArtifactsGetResponse200Type",
             "ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",
             "ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",
@@ -12302,6 +12508,16 @@ else:
             "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType",
             "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType",
             "ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type",
+            "ReposOwnerRepoAttestationsPostBodyType",
+            "ReposOwnerRepoAttestationsPostBodyPropBundleType",
+            "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType",
+            "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType",
+            "ReposOwnerRepoAttestationsPostResponse201Type",
+            "ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type",
+            "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+            "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
+            "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
+            "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
             "ReposOwnerRepoAutolinksPostBodyType",
             "ReposOwnerRepoBranchesBranchProtectionPutBodyType",
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType",
@@ -12527,5 +12743,17 @@ else:
             "UserSocialAccountsPostBodyType",
             "UserSocialAccountsDeleteBodyType",
             "UserSshSigningKeysPostBodyType",
+            "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
+            "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+            "SigstoreBundle0Type",
+            "SigstoreBundle0PropDsseEnvelopeType",
+            "SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType",
+            "SigstoreBundle0PropVerificationMaterialType",
+            "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType",
+            "SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType",
+            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType",
+            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType",
+            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType",
+            "SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType",
         )
     }

@@ -9,13 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
+from pydantic import Field
+
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgInteractionLimitsGetResponse200Anyof1(GitHubModel):
-    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
+from .group_0028 import CopilotSeatDetails
 
 
-model_rebuild(OrgsOrgInteractionLimitsGetResponse200Anyof1)
+class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1",)
+    total_seats: Missing[int] = Field(
+        default=UNSET,
+        description="Total number of Copilot seats for the organization currently being billed.",
+    )
+    seats: Missing[List[CopilotSeatDetails]] = Field(default=UNSET)
+
+
+model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)
+
+__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200",)

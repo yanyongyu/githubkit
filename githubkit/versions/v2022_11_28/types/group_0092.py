@@ -9,25 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgCustomPropertyType(TypedDict):
-    """Organization Custom Property
+class UserRoleAssignmentType(TypedDict):
+    """A Role Assignment for a User
 
-    Custom property defined on an organization
+    The Relationship a User has with a role.
     """
 
-    property_name: str
-    value_type: Literal["string", "single_select"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, List[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[List[str], None]]
-    values_editable_by: NotRequired[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ]
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
+    id: int
+    node_id: str
+    avatar_url: str
+    gravatar_id: Union[str, None]
+    url: str
+    html_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
 
 
-__all__ = ("OrgCustomPropertyType",)
+__all__ = ("UserRoleAssignmentType",)

@@ -9,17 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrganizationFineGrainedPermissionType(TypedDict):
-    """Organization Fine-Grained Permission
+class InteractionLimitType(TypedDict):
+    """Interaction Restrictions
 
-    A fine-grained permission that protects organization resources.
+    Limit interactions to a specific type of user for a specified duration
     """
 
-    name: str
-    description: str
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"]
+    expiry: NotRequired[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ]
 
 
-__all__ = ("OrganizationFineGrainedPermissionType",)
+__all__ = ("InteractionLimitType",)

@@ -12,17 +12,20 @@ from __future__ import annotations
 from datetime import datetime
 from typing_extensions import TypedDict
 
-from .group_0017 import RepositoryType
 
+class KeyType(TypedDict):
+    """Key
 
-class StarredRepositoryType(TypedDict):
-    """Starred Repository
-
-    Starred Repository
+    Key
     """
 
-    starred_at: datetime
-    repo: RepositoryType
+    key: str
+    id: int
+    url: str
+    title: str
+    created_at: datetime
+    verified: bool
+    read_only: bool
 
 
-__all__ = ("StarredRepositoryType",)
+__all__ = ("KeyType",)

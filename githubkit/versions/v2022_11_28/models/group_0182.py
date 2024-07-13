@@ -15,18 +15,37 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0183 import (
+    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
+)
 
-class GitUser(GitHubModel):
-    """Git User
 
-    Metaproperties for Git author/committer information.
+class ProtectedBranchPullRequestReview(GitHubModel):
+    """Protected Branch Pull Request Review
+
+    Protected Branch Pull Request Review
     """
 
-    name: Missing[str] = Field(default=UNSET)
-    email: Missing[str] = Field(default=UNSET)
-    date: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    dismissal_restrictions: Missing[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictions
+    ] = Field(default=UNSET)
+    bypass_pull_request_allowances: Missing[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+    ] = Field(
+        default=UNSET,
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
+    )
+    dismiss_stale_reviews: bool = Field()
+    require_code_owner_reviews: bool = Field()
+    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
+    require_last_push_approval: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
+    )
 
 
-model_rebuild(GitUser)
+model_rebuild(ProtectedBranchPullRequestReview)
 
-__all__ = ("GitUser",)
+__all__ = ("ProtectedBranchPullRequestReview",)

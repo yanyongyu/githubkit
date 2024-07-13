@@ -9,20 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0134 import RepositoryRuleUpdatePropParametersType
+from .group_0126 import RepositoryRulesetConditionsPropRefNameType
+from .group_0128 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType,
+)
 
 
-class RepositoryRuleUpdateType(TypedDict):
-    """update
+class OrgRulesetConditionsOneof0Type(TypedDict):
+    """repository_name_and_ref_name
 
-    Only allow users with bypass permission to update matching refs.
+    Conditions to target repositories by name and refs by name
     """
 
-    type: Literal["update"]
-    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
+    ref_name: NotRequired[RepositoryRulesetConditionsPropRefNameType]
+    repository_name: (
+        RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType
+    )
 
 
-__all__ = ("RepositoryRuleUpdateType",)
+__all__ = ("OrgRulesetConditionsOneof0Type",)

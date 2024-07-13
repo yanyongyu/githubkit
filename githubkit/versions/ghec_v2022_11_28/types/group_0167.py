@@ -9,27 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
-from typing_extensions import TypedDict
-
-from .group_0001 import SimpleUserType
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReactionType(TypedDict):
-    """Reaction
+class GroupMappingType(TypedDict):
+    """GroupMapping
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    External Groups to be mapped to a team for membership
     """
 
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserType]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
-    ]
-    created_at: datetime
+    groups: NotRequired[List[GroupMappingPropGroupsItemsType]]
 
 
-__all__ = ("ReactionType",)
+class GroupMappingPropGroupsItemsType(TypedDict):
+    """GroupMappingPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+    status: NotRequired[str]
+    synced_at: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "GroupMappingType",
+    "GroupMappingPropGroupsItemsType",
+)

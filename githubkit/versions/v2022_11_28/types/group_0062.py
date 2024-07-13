@@ -9,19 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class RunnerLabelType(TypedDict):
-    """Self hosted runner label
+class SelectedActionsType(TypedDict):
+    """SelectedActions"""
 
-    A label for a self hosted runner
-    """
-
-    id: NotRequired[int]
-    name: str
-    type: NotRequired[Literal["read-only", "custom"]]
+    github_owned_allowed: NotRequired[bool]
+    verified_allowed: NotRequired[bool]
+    patterns_allowed: NotRequired[List[str]]
 
 
-__all__ = ("RunnerLabelType",)
+__all__ = ("SelectedActionsType",)

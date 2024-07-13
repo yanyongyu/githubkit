@@ -9,42 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0367 import MetaType
-from .group_0373 import UserRoleItemsType
-from .group_0372 import UserNameResponseType, UserEmailsResponseItemsType
-from .group_0377 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
+
+class PatchSchemaType(TypedDict):
+    """PatchSchema"""
+
+    operations: List[PatchSchemaPropOperationsItemsType]
+    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]]
 
 
-class ScimEnterpriseUserResponseType(TypedDict):
-    """ScimEnterpriseUserResponse"""
+class PatchSchemaPropOperationsItemsType(TypedDict):
+    """PatchSchemaPropOperationsItems"""
 
-    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseType]
-    display_name: NotRequired[Union[str, None]]
-    emails: List[UserEmailsResponseItemsType]
-    roles: NotRequired[List[UserRoleItemsType]]
-    id: str
-    groups: NotRequired[List[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
-    meta: MetaType
-
-
-class ScimEnterpriseUserListType(TypedDict):
-    """ScimEnterpriseUserList"""
-
-    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
-    total_results: int
-    resources: List[ScimEnterpriseUserResponseType]
-    start_index: int
-    items_per_page: int
+    op: Literal["add", "replace", "remove"]
+    path: NotRequired[str]
+    value: NotRequired[str]
 
 
 __all__ = (
-    "ScimEnterpriseUserResponseType",
-    "ScimEnterpriseUserListType",
+    "PatchSchemaType",
+    "PatchSchemaPropOperationsItemsType",
 )

@@ -9,43 +9,112 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
+from typing import Any, List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0203 import GitUserType
-from .group_0204 import VerificationType
+
+class ScimUserListType(TypedDict):
+    """SCIM User List
+
+    SCIM User List
+    """
+
+    schemas: List[str]
+    total_results: int
+    items_per_page: int
+    start_index: int
+    resources: List[ScimUserType]
 
 
-class CommitSearchResultItemPropCommitType(TypedDict):
-    """CommitSearchResultItemPropCommit"""
+class ScimUserType(TypedDict):
+    """SCIM /Users
 
-    author: CommitSearchResultItemPropCommitPropAuthorType
-    committer: Union[None, GitUserType]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeType
-    url: str
-    verification: NotRequired[VerificationType]
+    SCIM /Users provisioning endpoints
+    """
+
+    schemas: List[str]
+    id: str
+    external_id: NotRequired[Union[str, None]]
+    user_name: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    name: NotRequired[ScimUserPropNameType]
+    emails: List[ScimUserPropEmailsItemsType]
+    active: bool
+    meta: ScimUserPropMetaType
+    organization_id: NotRequired[int]
+    operations: NotRequired[List[ScimUserPropOperationsItemsType]]
+    groups: NotRequired[List[ScimUserPropGroupsItemsType]]
+    roles: NotRequired[List[ScimUserPropRolesItemsType]]
 
 
-class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
+class ScimUserPropNameType(TypedDict):
+    """ScimUserPropName
 
-    name: str
-    email: str
-    date: datetime
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: NotRequired[Union[str, None]]
+    family_name: NotRequired[Union[str, None]]
+    formatted: NotRequired[Union[str, None]]
 
 
-class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
+class ScimUserPropEmailsItemsType(TypedDict):
+    """ScimUserPropEmailsItems"""
 
-    sha: str
-    url: str
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+
+
+class ScimUserPropMetaType(TypedDict):
+    """ScimUserPropMeta"""
+
+    resource_type: NotRequired[str]
+    created: NotRequired[datetime]
+    last_modified: NotRequired[datetime]
+    location: NotRequired[str]
+
+
+class ScimUserPropGroupsItemsType(TypedDict):
+    """ScimUserPropGroupsItems"""
+
+    value: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimUserPropRolesItemsType(TypedDict):
+    """ScimUserPropRolesItems"""
+
+    value: NotRequired[str]
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimUserPropOperationsItemsType(TypedDict):
+    """ScimUserPropOperationsItems"""
+
+    op: Literal["add", "remove", "replace"]
+    path: NotRequired[str]
+    value: NotRequired[
+        Union[str, ScimUserPropOperationsItemsPropValueOneof1Type, List[Any]]
+    ]
+
+
+class ScimUserPropOperationsItemsPropValueOneof1Type(TypedDict):
+    """ScimUserPropOperationsItemsPropValueOneof1"""
 
 
 __all__ = (
-    "CommitSearchResultItemPropCommitType",
-    "CommitSearchResultItemPropCommitPropAuthorType",
-    "CommitSearchResultItemPropCommitPropTreeType",
+    "ScimUserListType",
+    "ScimUserType",
+    "ScimUserPropNameType",
+    "ScimUserPropEmailsItemsType",
+    "ScimUserPropMetaType",
+    "ScimUserPropGroupsItemsType",
+    "ScimUserPropRolesItemsType",
+    "ScimUserPropOperationsItemsType",
+    "ScimUserPropOperationsItemsPropValueOneof1Type",
 )

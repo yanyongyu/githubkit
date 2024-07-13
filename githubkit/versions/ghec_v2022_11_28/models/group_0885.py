@@ -13,24 +13,18 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgOrganizationRolesPostBody(GitHubModel):
-    """OrgsOrgOrganizationRolesPostBody"""
+class OrgsOrgCopilotBillingSelectedUsersDeleteBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description about the intended usage of this role or what permissions it grants.",
-    )
-    permissions: List[str] = Field(
-        description="A list of additional permissions included in this role."
+    selected_usernames: List[str] = Field(
+        min_length=1,
+        description="The usernames of the organization members for which to revoke access to GitHub Copilot.",
     )
 
 
-model_rebuild(OrgsOrgOrganizationRolesPostBody)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteBody)
 
-__all__ = ("OrgsOrgOrganizationRolesPostBody",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",)

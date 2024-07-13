@@ -13,48 +13,29 @@ from typing import Union
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0301 import PullRequestPropBasePropRepo
+
+class PageDeployment(GitHubModel):
+    """GitHub Pages
+
+    The GitHub Pages deployment status.
+    """
+
+    id: Union[int, str] = Field(
+        description="The ID of the GitHub Pages deployment. This is the Git SHA of the deployed commit."
+    )
+    status_url: str = Field(
+        description="The URI to monitor GitHub Pages deployment status."
+    )
+    page_url: str = Field(description="The URI to the deployed GitHub Pages.")
+    preview_url: Missing[str] = Field(
+        default=UNSET, description="The URI to the deployed GitHub Pages preview."
+    )
 
 
-class PullRequestPropBase(GitHubModel):
-    """PullRequestPropBase"""
+model_rebuild(PageDeployment)
 
-    label: str = Field()
-    ref: str = Field()
-    repo: PullRequestPropBasePropRepo = Field()
-    sha: str = Field()
-    user: PullRequestPropBasePropUser = Field()
-
-
-class PullRequestPropBasePropUser(GitHubModel):
-    """PullRequestPropBasePropUser"""
-
-    avatar_url: str = Field()
-    events_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    html_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    login: str = Field()
-    organizations_url: str = Field()
-    received_events_url: str = Field()
-    repos_url: str = Field()
-    site_admin: bool = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    type: str = Field()
-    url: str = Field()
-
-
-model_rebuild(PullRequestPropBase)
-model_rebuild(PullRequestPropBasePropUser)
-
-__all__ = (
-    "PullRequestPropBase",
-    "PullRequestPropBasePropUser",
-)
+__all__ = ("PageDeployment",)

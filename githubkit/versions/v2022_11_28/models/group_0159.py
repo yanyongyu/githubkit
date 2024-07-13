@@ -9,30 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0158 import RateLimit
+from .group_0160 import RateLimitOverviewPropResources
 
-class OidcCustomSubRepo(GitHubModel):
-    """Actions OIDC subject customization for a repository
 
-    Actions OIDC subject customization for a repository
+class RateLimitOverview(GitHubModel):
+    """Rate Limit Overview
+
+    Rate Limit Overview
     """
 
-    use_default: bool = Field(
-        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
-    )
-    include_claim_keys: Missing[List[str]] = Field(
-        default=UNSET,
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
-    )
+    resources: RateLimitOverviewPropResources = Field()
+    rate: RateLimit = Field(title="Rate Limit")
 
 
-model_rebuild(OidcCustomSubRepo)
+model_rebuild(RateLimitOverview)
 
-__all__ = ("OidcCustomSubRepo",)
+__all__ = ("RateLimitOverview",)

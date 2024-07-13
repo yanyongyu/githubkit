@@ -9,29 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
-    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+class GistsGistIdPatchBodyType(TypedDict):
+    """GistsGistIdPatchBody"""
 
-    total_count: int
-    repository_cache_usages: List[ActionsCacheUsageByRepositoryType]
+    description: NotRequired[str]
+    files: NotRequired[GistsGistIdPatchBodyPropFilesType]
 
 
-class ActionsCacheUsageByRepositoryType(TypedDict):
-    """Actions Cache Usage by repository
+class GistsGistIdPatchBodyPropFilesType(TypedDict):
+    """GistsGistIdPatchBodyPropFiles
 
-    GitHub Actions Cache Usage by repository.
+    The gist files to be updated, renamed, or deleted. Each `key` must match the
+    current filename
+    (including extension) of the targeted gist file. For example: `hello.py`.
+
+    To delete a file, set the whole file to null. For example: `hello.py : null`.
+    The file will also be
+    deleted if the specified object does not contain at least one of `content` or
+    `filename`.
+
+    Examples:
+        {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
     """
-
-    full_name: str
-    active_caches_size_in_bytes: int
-    active_caches_count: int
 
 
 __all__ = (
-    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
-    "ActionsCacheUsageByRepositoryType",
+    "GistsGistIdPatchBodyType",
+    "GistsGistIdPatchBodyPropFilesType",
 )

@@ -9,47 +9,65 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0079 import MinimalRepository
 
+class ApiOverview(GitHubModel):
+    """Api Overview
 
-class Thread(GitHubModel):
-    """Thread
-
-    Thread
+    Api Overview
     """
 
-    id: str = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    verifiable_password_authentication: bool = Field()
+    ssh_key_fingerprints: Missing[ApiOverviewPropSshKeyFingerprints] = Field(
+        default=UNSET
     )
-    subject: ThreadPropSubject = Field()
-    reason: str = Field()
-    unread: bool = Field()
-    updated_at: str = Field()
-    last_read_at: Union[str, None] = Field()
-    url: str = Field()
-    subscription_url: str = Field()
+    ssh_keys: Missing[List[str]] = Field(default=UNSET)
+    hooks: Missing[List[str]] = Field(default=UNSET)
+    github_enterprise_importer: Missing[List[str]] = Field(default=UNSET)
+    web: Missing[List[str]] = Field(default=UNSET)
+    api: Missing[List[str]] = Field(default=UNSET)
+    git: Missing[List[str]] = Field(default=UNSET)
+    packages: Missing[List[str]] = Field(default=UNSET)
+    pages: Missing[List[str]] = Field(default=UNSET)
+    importer: Missing[List[str]] = Field(default=UNSET)
+    actions: Missing[List[str]] = Field(default=UNSET)
+    actions_macos: Missing[List[str]] = Field(default=UNSET)
+    dependabot: Missing[List[str]] = Field(default=UNSET)
+    domains: Missing[ApiOverviewPropDomains] = Field(default=UNSET)
 
 
-class ThreadPropSubject(GitHubModel):
-    """ThreadPropSubject"""
+class ApiOverviewPropSshKeyFingerprints(GitHubModel):
+    """ApiOverviewPropSshKeyFingerprints"""
 
-    title: str = Field()
-    url: str = Field()
-    latest_comment_url: str = Field()
-    type: str = Field()
+    sha256_rsa: Missing[str] = Field(default=UNSET, alias="SHA256_RSA")
+    sha256_dsa: Missing[str] = Field(default=UNSET, alias="SHA256_DSA")
+    sha256_ecdsa: Missing[str] = Field(default=UNSET, alias="SHA256_ECDSA")
+    sha256_ed25519: Missing[str] = Field(default=UNSET, alias="SHA256_ED25519")
 
 
-model_rebuild(Thread)
-model_rebuild(ThreadPropSubject)
+class ApiOverviewPropDomains(GitHubModel):
+    """ApiOverviewPropDomains"""
+
+    website: Missing[List[str]] = Field(default=UNSET)
+    codespaces: Missing[List[str]] = Field(default=UNSET)
+    copilot: Missing[List[str]] = Field(default=UNSET)
+    packages: Missing[List[str]] = Field(default=UNSET)
+    actions: Missing[List[str]] = Field(default=UNSET)
+
+
+model_rebuild(ApiOverview)
+model_rebuild(ApiOverviewPropSshKeyFingerprints)
+model_rebuild(ApiOverviewPropDomains)
 
 __all__ = (
-    "Thread",
-    "ThreadPropSubject",
+    "ApiOverview",
+    "ApiOverviewPropSshKeyFingerprints",
+    "ApiOverviewPropDomains",
 )

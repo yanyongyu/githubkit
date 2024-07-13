@@ -12,25 +12,13 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class BranchShortType(TypedDict):
-    """Branch Short
+class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
+    """Codespaces Permissions Check
 
-    Branch Short
+    Permission check result for a given devcontainer config.
     """
 
-    name: str
-    commit: BranchShortPropCommitType
-    protected: bool
+    accepted: bool
 
 
-class BranchShortPropCommitType(TypedDict):
-    """BranchShortPropCommit"""
-
-    sha: str
-    url: str
-
-
-__all__ = (
-    "BranchShortType",
-    "BranchShortPropCommitType",
-)
+__all__ = ("CodespacesPermissionsCheckForDevcontainerType",)

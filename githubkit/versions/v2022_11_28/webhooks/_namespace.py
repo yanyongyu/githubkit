@@ -86,6 +86,7 @@ if TYPE_CHECKING:
     from .branch_protection_rule import BranchProtectionRuleEvent
     from .custom_property_values import CustomPropertyValuesEvent
     from .github_app_authorization import GithubAppAuthorizationEvent
+    from .projects_v2_status_update import ProjectsV2StatusUpdateEvent
     from .installation_repositories import InstallationRepositoriesEvent
     from .pull_request_review_thread import PullRequestReviewThreadEvent
     from .deployment_protection_rule import DeploymentProtectionRuleEvent
@@ -141,6 +142,7 @@ EventNameType: TypeAlias = Literal[
     "project_column",
     "projects_v2",
     "projects_v2_item",
+    "projects_v2_status_update",
     "public",
     "pull_request",
     "pull_request_review_comment",
@@ -214,6 +216,7 @@ VALID_EVENT_NAMES: Set[EventNameType] = {
     "project_column",
     "projects_v2",
     "projects_v2_item",
+    "projects_v2_status_update",
     "public",
     "pull_request",
     "pull_request_review_comment",
@@ -464,6 +467,11 @@ class WebhookNamespace:
     def parse(
         name: Literal["projects_v2_item"], payload: Union[str, bytes]
     ) -> "ProjectsV2ItemEvent": ...
+    @overload
+    @staticmethod
+    def parse(
+        name: Literal["projects_v2_status_update"], payload: Union[str, bytes]
+    ) -> "ProjectsV2StatusUpdateEvent": ...
     @overload
     @staticmethod
     def parse(name: Literal["public"], payload: Union[str, bytes]) -> "PublicEvent": ...
@@ -836,6 +844,11 @@ class WebhookNamespace:
     def parse_obj(
         name: Literal["projects_v2_item"], payload: Dict[str, Any]
     ) -> "ProjectsV2ItemEvent": ...
+    @overload
+    @staticmethod
+    def parse_obj(
+        name: Literal["projects_v2_status_update"], payload: Dict[str, Any]
+    ) -> "ProjectsV2StatusUpdateEvent": ...
     @overload
     @staticmethod
     def parse_obj(

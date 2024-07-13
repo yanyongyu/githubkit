@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,31 +16,23 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeScanningAlertRuleSummary(GitHubModel):
-    """CodeScanningAlertRuleSummary"""
+class RunnerApplication(GitHubModel):
+    """Runner Application
 
-    id: Missing[Union[str, None]] = Field(
+    Runner Application
+    """
+
+    os: str = Field()
+    architecture: str = Field()
+    download_url: str = Field()
+    filename: str = Field()
+    temp_download_token: Missing[str] = Field(
         default=UNSET,
-        description="A unique identifier for the rule used to detect the alert.",
+        description="A short lived bearer token used to download the runner, if needed.",
     )
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the rule used to detect the alert."
-    )
-    tags: Missing[Union[List[str], None]] = Field(
-        default=UNSET, description="A set of tags applicable for the rule."
-    )
-    severity: Missing[Union[None, Literal["none", "note", "warning", "error"]]] = Field(
-        default=UNSET, description="The severity of the alert."
-    )
-    security_severity_level: Missing[
-        Union[None, Literal["low", "medium", "high", "critical"]]
-    ] = Field(default=UNSET, description="The security severity of the alert.")
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description of the rule used to detect the alert.",
-    )
+    sha256_checksum: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAlertRuleSummary)
+model_rebuild(RunnerApplication)
 
-__all__ = ("CodeScanningAlertRuleSummary",)
+__all__ = ("RunnerApplication",)

@@ -10,43 +10,55 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import Any, List, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 from .group_0001 import SimpleUser
 
 
-class GistComment(GitHubModel):
-    """Gist Comment
+class BaseGist(GitHubModel):
+    """Base Gist
 
-    A comment made to a gist.
+    Base Gist
     """
 
-    id: int = Field()
-    node_id: str = Field()
     url: str = Field()
-    body: str = Field(max_length=65535, description="The comment text.")
-    user: Union[None, SimpleUser] = Field()
+    forks_url: str = Field()
+    commits_url: str = Field()
+    id: str = Field()
+    node_id: str = Field()
+    git_pull_url: str = Field()
+    git_push_url: str = Field()
+    html_url: str = Field()
+    files: BaseGistPropFiles = Field()
+    public: bool = Field()
     created_at: datetime = Field()
     updated_at: datetime = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
+    description: Union[str, None] = Field()
+    comments: int = Field()
+    user: Union[None, SimpleUser] = Field()
+    comments_url: str = Field()
+    owner: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
+    truncated: Missing[bool] = Field(default=UNSET)
+    forks: Missing[List[Any]] = Field(default=UNSET)
+    history: Missing[List[Any]] = Field(default=UNSET)
 
 
-model_rebuild(GistComment)
+class BaseGistPropFiles(ExtraGitHubModel):
+    """BaseGistPropFiles"""
 
-__all__ = ("GistComment",)
+
+model_rebuild(BaseGist)
+model_rebuild(BaseGistPropFiles)
+
+__all__ = (
+    "BaseGist",
+    "BaseGistPropFiles",
+)

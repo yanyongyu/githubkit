@@ -9,45 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0092 import TeamSimpleType
+from typing import Union, Literal
+from typing_extensions import TypedDict
 
 
-class TeamType(TypedDict):
-    """Team
+class CodespaceMachineType(TypedDict):
+    """Codespace machine
 
-    Groups of organization members that gives permissions on specified repositories.
+    A description of the machine powering a codespace.
     """
 
-    id: int
-    node_id: str
     name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsType]
-    url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleType]
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
 
 
-class TeamPropPermissionsType(TypedDict):
-    """TeamPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
-
-
-__all__ = (
-    "TeamType",
-    "TeamPropPermissionsType",
-)
+__all__ = ("CodespaceMachineType",)

@@ -10,35 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from datetime import datetime
-from typing_extensions import TypedDict
-
-from .group_0001 import SimpleUserType
+from typing_extensions import TypedDict, NotRequired
 
 
-class PageBuildType(TypedDict):
-    """Page Build
+class DeployKeyType(TypedDict):
+    """Deploy Key
 
-    Page Build
+    An SSH key granting access to a single repository.
     """
 
+    id: int
+    key: str
     url: str
-    status: str
-    error: PageBuildPropErrorType
-    pusher: Union[None, SimpleUserType]
-    commit: str
-    duration: int
-    created_at: datetime
-    updated_at: datetime
+    title: str
+    verified: bool
+    created_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[str, None]]
 
 
-class PageBuildPropErrorType(TypedDict):
-    """PageBuildPropError"""
-
-    message: Union[str, None]
-
-
-__all__ = (
-    "PageBuildType",
-    "PageBuildPropErrorType",
-)
+__all__ = ("DeployKeyType",)

@@ -9,31 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
+from .group_0006 import Integration
 
-class Label(GitHubModel):
-    """Label
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+class AddedToProjectIssueEvent(GitHubModel):
+    """Added to Project Issue Event
+
+    Added to Project Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
-    url: str = Field(description="URL for the label")
-    name: str = Field(description="The name of the label.")
-    description: Union[str, None] = Field()
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["added_to_project"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    project_card: Missing[AddedToProjectIssueEventPropProjectCard] = Field(
+        default=UNSET
     )
-    default: bool = Field()
 
 
-model_rebuild(Label)
+class AddedToProjectIssueEventPropProjectCard(GitHubModel):
+    """AddedToProjectIssueEventPropProjectCard"""
 
-__all__ = ("Label",)
+    id: int = Field()
+    url: str = Field()
+    project_id: int = Field()
+    project_url: str = Field()
+    column_name: str = Field()
+    previous_column_name: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(AddedToProjectIssueEvent)
+model_rebuild(AddedToProjectIssueEventPropProjectCard)
+
+__all__ = (
+    "AddedToProjectIssueEvent",
+    "AddedToProjectIssueEventPropProjectCard",
+)

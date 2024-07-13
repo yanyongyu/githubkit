@@ -10,45 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, List, Union
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
+from .group_0006 import IntegrationType
+from .group_0065 import ReactionRollupType
 
 
-class BaseGistType(TypedDict):
-    """Base Gist
+class IssueCommentType(TypedDict):
+    """Issue Comment
 
-    Base Gist
+    Comments provide a way for people to collaborate on an issue.
     """
 
-    url: str
-    forks_url: str
-    commits_url: str
-    id: str
+    id: int
     node_id: str
-    git_pull_url: str
-    git_push_url: str
+    url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
     html_url: str
-    files: BaseGistPropFilesType
-    public: bool
+    user: Union[None, SimpleUserType]
     created_at: datetime
     updated_at: datetime
-    description: Union[str, None]
-    comments: int
-    user: Union[None, SimpleUserType]
-    comments_url: str
-    owner: NotRequired[SimpleUserType]
-    truncated: NotRequired[bool]
-    forks: NotRequired[List[Any]]
-    history: NotRequired[List[Any]]
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class BaseGistPropFilesType(TypedDict):
-    """BaseGistPropFiles"""
-
-
-__all__ = (
-    "BaseGistType",
-    "BaseGistPropFilesType",
-)
+__all__ = ("IssueCommentType",)

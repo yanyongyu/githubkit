@@ -9,53 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0104 import RepositoryRulesetConditionsPropRefName
+from .group_0108 import RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId
 
-class RepositoryRuleRequiredLinearHistory(GitHubModel):
-    """required_linear_history
 
-    Prevent merge commits from being pushed to matching refs.
+class OrgRulesetConditionsOneof1(GitHubModel):
+    """repository_id_and_ref_name
+
+    Conditions to target repositories by id and refs by name
     """
 
-    type: Literal["required_linear_history"] = Field()
-
-
-class RepositoryRuleOneof15(GitHubModel):
-    """max_file_path_length
-
-    Note: max_file_path_length is in beta and subject to change.
-
-    Prevent commits that include file paths that exceed a specified character limit
-    from being pushed to the commit graph.
-    """
-
-    type: Literal["max_file_path_length"] = Field()
-    parameters: Missing[RepositoryRuleOneof15PropParameters] = Field(default=UNSET)
-
-
-class RepositoryRuleOneof15PropParameters(GitHubModel):
-    """RepositoryRuleOneof15PropParameters"""
-
-    max_file_path_length: int = Field(
-        le=256.0,
-        ge=1.0,
-        description="The maximum amount of characters allowed in file paths",
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId = (
+        Field()
     )
 
 
-model_rebuild(RepositoryRuleRequiredLinearHistory)
-model_rebuild(RepositoryRuleOneof15)
-model_rebuild(RepositoryRuleOneof15PropParameters)
+model_rebuild(OrgRulesetConditionsOneof1)
 
-__all__ = (
-    "RepositoryRuleRequiredLinearHistory",
-    "RepositoryRuleOneof15",
-    "RepositoryRuleOneof15PropParameters",
-)
+__all__ = ("OrgRulesetConditionsOneof1",)

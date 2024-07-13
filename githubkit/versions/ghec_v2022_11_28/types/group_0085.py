@@ -9,14 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
 
 
-class EmptyObjectType(TypedDict):
-    """Empty Object
+class OrganizationCustomRepositoryRoleType(TypedDict):
+    """Organization Custom Repository Role
 
-    An object without any properties.
+    Custom repository roles created by organization owners
     """
 
+    id: int
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: List[str]
+    organization: SimpleUserType
+    created_at: datetime
+    updated_at: datetime
 
-__all__ = ("EmptyObjectType",)
+
+__all__ = ("OrganizationCustomRepositoryRoleType",)
