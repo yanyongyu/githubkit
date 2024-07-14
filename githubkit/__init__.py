@@ -15,5 +15,6 @@ from .auth import ActionAuthStrategy as ActionAuthStrategy
 from .auth import UnauthAuthStrategy as UnauthAuthStrategy
 from .auth import OAuthAppAuthStrategy as OAuthAppAuthStrategy
 from .auth import OAuthWebAuthStrategy as OAuthWebAuthStrategy
+from .auth import OAuthTokenAuthStrategy as OAuthTokenAuthStrategy
 from .auth import OAuthDeviceAuthStrategy as OAuthDeviceAuthStrategy
 from .auth import AppInstallationAuthStrategy as AppInstallationAuthStrategy
