@@ -536,7 +536,7 @@ from githubkit import GitHub
 event = GitHub.webhooks("2022-11-28").parse(request.headers["X-GitHub-Event"], request.body)
 ```
 
-### Switch between AuthStrategy (Installation, OAuth Web Flow)
+### Switch between AuthStrategy (Installation, OAuth Web/Device Flow)
 
 You can change the auth strategy and get a new client simplely using `with_auth`.
 
@@ -551,7 +551,7 @@ installation_github = github.with_auth(
 )
 ```
 
-Change from `OAuthAppAuthStrategy` to `OAuthWebAuthStrategy`:
+Change from `OAuthAppAuthStrategy` to `OAuthWebAuthStrategy` (OAuth Web Flow):
 
 ```python
 from githubkit import GitHub, OAuthAppAuthStrategy
@@ -568,8 +568,11 @@ user_token = user_github.auth.token
 user_token_expire_time = user_github.auth.expire_time
 refresh_token = user_github.auth.refresh_token
 refresh_token_expire_time = user_github.auth.refresh_token_expire_time
+```
 
-# you can also get the user token directly without making a request
+you can also get the user token directly without making a request (Change from `OAuthWebAuthStrategy` to `OAuthTokenAuthStrategy`):
+
+```python
 auth: OAuthTokenAuthStrategy = github.auth.as_web_user("<code>").exchange_token(github)
 # or asynchronously
 auth: OAuthTokenAuthStrategy = await github.auth.as_web_user("<code>").async_exchange_token(github)
@@ -577,6 +580,40 @@ user_token = auth.token
 user_token_expire_time = auth.expire_time
 refresh_token = auth.refresh_token
 refresh_token_expire_time = auth.refresh_token_expire_time
+
+user_github = github.with_auth(auth)
+```
+
+Change from `OAuthDeviceAuthStrategy` to `OAuthTokenAuthStrategy`:
+
+```python
+from githubkit import GitHub, OAuthDeviceAuthStrategy
+
+def callback(data: dict):
+    print(data["user_code"])
+
+user_github = GitHub(OAuthDeviceAuthStrategy("<client_id>", callback))
+
+# now you can act as the user
+resp = user_github.rest.users.get_authenticated()
+user = resp.parsed_data
+
+# you can get the user token after you maked a request as user
+user_token = user_github.auth.token
+user_token_expire_time = user_github.auth.expire_time
+refresh_token = user_github.auth.refresh_token
+refresh_token_expire_time = user_github.auth.refresh_token_expire_time
+
+# you can also exchange the token directly without making a request
+auth: OAuthTokenAuthStrategy = github.auth.exchange_token(github)
+# or asynchronously
+auth: OAuthTokenAuthStrategy = await github.auth.async_exchange_token(github)
+user_token = auth.token
+user_token_expire_time = auth.expire_time
+refresh_token = auth.refresh_token
+refresh_token_expire_time = auth.refresh_token_expire_time
+
+user_github = github.with_auth(auth)
 ```
 
 ## Development

@@ -674,7 +674,9 @@ class OAuthWebAuthStrategy(BaseAuthStrategy):
                         break
 
         result = _parse_token_exchange_response(data)
-        return OAuthTokenAuthStrategy(self.client_id, self.client_secret, **result)
+        auth = OAuthTokenAuthStrategy(self.client_id, self.client_secret, **result)
+        self._token_auth = auth
+        return auth
 
     async def async_exchange_token(
         self, github: "GitHubCore"
@@ -698,7 +700,9 @@ class OAuthWebAuthStrategy(BaseAuthStrategy):
                         break
 
         result = _parse_token_exchange_response(data)
-        return OAuthTokenAuthStrategy(self.client_id, self.client_secret, **result)
+        auth = OAuthTokenAuthStrategy(self.client_id, self.client_secret, **result)
+        self._token_auth = auth
+        return auth
 
     def as_oauth_app(self) -> OAuthAppAuthStrategy:
         return OAuthAppAuthStrategy(self.client_id, self.client_secret)
@@ -792,7 +796,9 @@ class OAuthDeviceAuthStrategy(BaseAuthStrategy):
                         continue
 
                     result = _parse_token_exchange_response(data)
-                    return OAuthTokenAuthStrategy(self.client_id, None, **result)
+                    auth = OAuthTokenAuthStrategy(self.client_id, None, **result)
+                    self._token_auth = auth
+                    return auth
 
     async def async_exchange_token(
         self, github: "GitHubCore"
@@ -843,7 +849,9 @@ class OAuthDeviceAuthStrategy(BaseAuthStrategy):
                         continue
 
                     result = _parse_token_exchange_response(data)
-                    return OAuthTokenAuthStrategy(self.client_id, None, **result)
+                    auth = OAuthTokenAuthStrategy(self.client_id, None, **result)
+                    self._token_auth = auth
+                    return auth
 
     def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
         # use device auth flow to exchange token for the first time
