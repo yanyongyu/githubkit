@@ -536,7 +536,7 @@ from githubkit import GitHub
 event = GitHub.webhooks("2022-11-28").parse(request.headers["X-GitHub-Event"], request.body)
 ```
 
-### Switch between AuthStrategy
+### Switch between AuthStrategy (Installation, OAuth Web Flow)
 
 You can change the auth strategy and get a new client simplely using `with_auth`.
 
