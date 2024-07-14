@@ -152,12 +152,13 @@ def _parse_token_exchange_response(data: Dict[str, Any]) -> TokenExchangeResult:
         )
 
     token = data["access_token"]
-    expire_time = datetime.now(timezone.utc) + timedelta(
-        minutes=-1, seconds=int(data["expires_in"])
-    )
-    refresh_token = data.get("refresh_token")
+    expire_time = None
+    refresh_token = data.get("refresh_token", None)
     refresh_token_expire_time = None
-    if refresh_token:
+    if refresh_token is not None:
+        expire_time = datetime.now(timezone.utc) + timedelta(
+            minutes=-1, seconds=int(data["expires_in"])
+        )
         refresh_token_expire_time = datetime.now(timezone.utc) + timedelta(
             minutes=-1, seconds=int(data["refresh_token_expires_in"])
         )
@@ -167,6 +168,55 @@ def _parse_token_exchange_response(data: Dict[str, Any]) -> TokenExchangeResult:
         "refresh_token": refresh_token,
         "refresh_token_expire_time": refresh_token_expire_time,
     }
+
+
+class CreateDeviceCodeResult(TypedDict):
+    device_code: str
+    expire_time: datetime
+    interval: int
+
+
+def _parse_create_device_code_response(data: Dict[str, Any]) -> CreateDeviceCodeResult:
+    return {
+        "device_code": data["device_code"],
+        "expire_time": (
+            datetime.now(timezone.utc) + timedelta(seconds=int(data["expires_in"]))
+        ),
+        "interval": int(data["interval"]),
+    }
+
+
+def _call_handler(handler: Callable, data: Dict[str, Any]) -> None:
+    if is_async(handler):
+        if anyio is None or threadlocals is None or run_async is None:
+            raise RuntimeError(
+                "AnyIO support for OAuth Device Callback should be installed "
+                "with `pip install githubkit[auth-oauth-device]`"
+            )
+        handler = cast(Callable[[Dict[str, Any]], Coroutine[None, None, None]], handler)
+        if getattr(threadlocals, "current_async_module", None):
+            # in anyio thread worker
+            run_async(handler, data)
+        else:
+            # create and start a new event loop
+            anyio.run(handler, data)
+    else:
+        handler = cast(Callable[[Dict[str, Any]], None], handler)
+        handler(data)
+
+
+async def _async_call_handler(handler: Callable, data: Dict[str, Any]) -> None:
+    if is_async(handler):
+        handler = cast(Callable[[Dict[str, Any]], Coroutine[None, None, None]], handler)
+        await handler(data)
+    else:
+        if run_sync is None:
+            raise RuntimeError(
+                "AnyIO support for OAuth Device Callback should be installed "
+                "with `pip install githubkit[auth-oauth-device]`"
+            )
+        handler = cast(Callable[[Dict[str, Any]], None], handler)
+        await run_sync(handler, data)
 
 
 @dataclass
@@ -298,13 +348,23 @@ class OAuthWebAuth(httpx.Auth):
     ) -> Generator[httpx.Request, httpx.Response, None]:
         # exchange token for the first time
         if (token_auth_strategy := self._token_auth_strategy) is None:
-            data = yield from exchange_web_flow_code(
+            flow = exchange_web_flow_code(
                 self.github,
                 self.client_id,
                 self.client_secret,
                 self.code,
                 self.redirect_uri,
             )
+            exchange_request = next(flow)
+            while True:
+                response = yield exchange_request
+                response.read()
+                try:
+                    exchange_request = flow.send(response)
+                except StopIteration as e:
+                    data = e.value
+                    break
+
             result = _parse_token_exchange_response(data)
             token_auth_strategy = OAuthTokenAuthStrategy(
                 self.client_id, self.client_secret, **result
@@ -347,7 +407,6 @@ class OAuthWebAuth(httpx.Auth):
         request = await anext(flow)
         while True:
             response = yield request
-            await response.aread()
             try:
                 request = await flow.asend(response)
             except StopAsyncIteration:
@@ -369,7 +428,7 @@ class OAuthDeviceAuth(httpx.Auth):
         return self.auth_strategy.client_id
 
     @property
-    def on_verification(self) -> Callable:
+    def on_verification(self) -> Callable[[Any], Any]:
         return self.auth_strategy.on_verification
 
     @property
@@ -383,43 +442,6 @@ class OAuthDeviceAuth(httpx.Auth):
     @_token_auth_strategy.setter
     def _token_auth_strategy(self, value: Optional["OAuthTokenAuthStrategy"]) -> None:
         self.auth_strategy._token_auth = value
-
-    def call_handler(self, data: Dict[str, Any]) -> None:
-        if is_async(self.on_verification):
-            if anyio is None or threadlocals is None or run_async is None:
-                raise RuntimeError(
-                    "AnyIO support for OAuth Device Callback should be installed "
-                    "with `pip install githubkit[auth-oauth-device]`"
-                )
-            handler = cast(
-                Callable[[Dict[str, Any]], Coroutine[None, None, None]],
-                self.on_verification,
-            )
-            if getattr(threadlocals, "current_async_module", None):
-                # in anyio thread worker
-                run_async(handler, data)
-            else:
-                # create and start a new event loop
-                anyio.run(handler, data)
-        else:
-            handler = cast(Callable[[Dict[str, Any]], None], self.on_verification)
-            handler(data)
-
-    async def acall_handler(self, data: Dict[str, Any]) -> None:
-        if is_async(self.on_verification):
-            handler = cast(
-                Callable[[Dict[str, Any]], Coroutine[None, None, None]],
-                self.on_verification,
-            )
-            await handler(data)
-        else:
-            if run_sync is None:
-                raise RuntimeError(
-                    "AnyIO support for OAuth Device Callback should be installed "
-                    "with `pip install githubkit[auth-oauth-device]`"
-                )
-            handler = cast(Callable[[Dict[str, Any]], None], self.on_verification)
-            await run_sync(handler, data)
 
     def sync_auth_flow(
         self, request: httpx.Request
@@ -442,19 +464,17 @@ class OAuthDeviceAuth(httpx.Auth):
                     data = e.value
                     break
 
-            device_code = data["device_code"]
-            expire_time = datetime.now(timezone.utc) + timedelta(
-                seconds=int(data["expires_in"])
-            )
-            interval = int(data["interval"])
-            self.call_handler(data)
+            result = _parse_create_device_code_response(data)
+            _call_handler(self.on_verification, data)
 
             # loop to wait for user verification
             while True:
                 # device code expired
-                if datetime.now(timezone.utc) > expire_time:
+                if datetime.now(timezone.utc) > result["expire_time"]:
                     raise AuthExpiredError("Device code expired.")
-                flow = exchange_device_code(self.github, self.client_id, device_code)
+                flow = exchange_device_code(
+                    self.github, self.client_id, result["device_code"]
+                )
                 auth_request = next(flow)
                 while True:
                     response = yield auth_request
@@ -466,7 +486,7 @@ class OAuthDeviceAuth(httpx.Auth):
                         break
 
                 if "error" in data:
-                    sleep(interval)
+                    sleep(result["interval"])
                     continue
 
                 # exchange token successfully
@@ -505,19 +525,17 @@ class OAuthDeviceAuth(httpx.Auth):
                     data = e.value
                     break
 
-            device_code = data["device_code"]
-            expire_time = datetime.now(timezone.utc) + timedelta(
-                seconds=int(data["expires_in"])
-            )
-            interval = int(data["interval"])
-            await self.acall_handler(data)
+            result = _parse_create_device_code_response(data)
+            await _async_call_handler(self.on_verification, data)
 
             # loop to wait for user verification
             while True:
                 # device code expired
-                if datetime.now(timezone.utc) > expire_time:
+                if datetime.now(timezone.utc) > result["expire_time"]:
                     raise AuthExpiredError("Device code expired.")
-                flow = exchange_device_code(self.github, self.client_id, device_code)
+                flow = exchange_device_code(
+                    self.github, self.client_id, result["device_code"]
+                )
                 auth_request = next(flow)
                 while True:
                     response = yield auth_request
@@ -529,7 +547,7 @@ class OAuthDeviceAuth(httpx.Auth):
                         break
 
                 if "error" in data:
-                    await anyio.sleep(interval)
+                    await anyio.sleep(result["interval"])
                     continue
 
                 result = _parse_token_exchange_response(data)
@@ -636,6 +654,46 @@ class OAuthWebAuthStrategy(BaseAuthStrategy):
             raise RuntimeError("Token is not exchanged yet.")
         return self._token_auth.refresh_token_expire_time
 
+    def exchange_token(self, github: "GitHubCore") -> OAuthTokenAuthStrategy:
+        flow = exchange_web_flow_code(
+            github, self.client_id, self.client_secret, self.code, self.redirect_uri
+        )
+        with github:
+            with github.get_sync_client() as client:
+                exchange_request = next(flow)
+                while True:
+                    response = client.send(exchange_request)
+                    response.read()
+                    try:
+                        exchange_request = flow.send(response)
+                    except StopIteration as e:
+                        data = e.value
+                        break
+
+        result = _parse_token_exchange_response(data)
+        return OAuthTokenAuthStrategy(self.client_id, self.client_secret, **result)
+
+    async def async_exchange_token(
+        self, github: "GitHubCore"
+    ) -> OAuthTokenAuthStrategy:
+        flow = exchange_web_flow_code(
+            github, self.client_id, self.client_secret, self.code, self.redirect_uri
+        )
+        async with github:
+            async with github.get_async_client() as client:
+                exchange_request = next(flow)
+                while True:
+                    response = await client.send(exchange_request)
+                    await response.aread()
+                    try:
+                        exchange_request = flow.send(response)
+                    except StopIteration as e:
+                        data = e.value
+                        break
+
+        result = _parse_token_exchange_response(data)
+        return OAuthTokenAuthStrategy(self.client_id, self.client_secret, **result)
+
     def as_oauth_app(self) -> OAuthAppAuthStrategy:
         return OAuthAppAuthStrategy(self.client_id, self.client_secret)
 
@@ -656,7 +714,7 @@ class OAuthDeviceAuthStrategy(BaseAuthStrategy):
     """
 
     client_id: str
-    on_verification: Callable
+    on_verification: Callable[[Any], Any]
     scopes: Optional[List[str]] = None
 
     _token_auth: Optional[OAuthTokenAuthStrategy] = field(
@@ -686,6 +744,94 @@ class OAuthDeviceAuthStrategy(BaseAuthStrategy):
         if self._token_auth is None:
             raise RuntimeError("Token is not exchanged yet.")
         return self._token_auth.refresh_token_expire_time
+
+    def exchange_token(self, github: "GitHubCore") -> OAuthTokenAuthStrategy:
+        flow = create_device_code(github, self.client_id, self.scopes)
+        with github:
+            with github.get_sync_client() as client:
+                create_request = next(flow)
+                while True:
+                    response = client.send(create_request)
+                    response.read()
+                    try:
+                        create_request = flow.send(response)
+                    except StopIteration as e:
+                        data = e.value
+                        break
+
+                result = _parse_create_device_code_response(data)
+                _call_handler(self.on_verification, data)
+
+                while True:
+                    if datetime.now(timezone.utc) > result["expire_time"]:
+                        raise AuthExpiredError("Device code expired.")
+                    flow = exchange_device_code(
+                        github, self.client_id, result["device_code"]
+                    )
+                    auth_request = next(flow)
+                    while True:
+                        response = client.send(auth_request)
+                        response.read()
+                        try:
+                            auth_request = flow.send(response)
+                        except StopIteration as e:
+                            data = e.value
+                            break
+
+                    if "error" in data:
+                        sleep(result["interval"])
+                        continue
+
+                    result = _parse_token_exchange_response(data)
+                    return OAuthTokenAuthStrategy(self.client_id, None, **result)
+
+    async def async_exchange_token(
+        self, github: "GitHubCore"
+    ) -> OAuthTokenAuthStrategy:
+        if anyio is None:
+            raise RuntimeError(
+                "AnyIO support for OAuth Device Flow should be installed "
+                "with `pip install githubkit[auth-oauth-device]`"
+            )
+
+        flow = create_device_code(github, self.client_id, self.scopes)
+        async with github:
+            async with github.get_async_client() as client:
+                create_request = next(flow)
+                while True:
+                    response = await client.send(create_request)
+                    await response.aread()
+                    try:
+                        create_request = flow.send(response)
+                    except StopIteration as e:
+                        data = e.value
+                        break
+
+                result = _parse_create_device_code_response(data)
+                await _async_call_handler(self.on_verification, data)
+
+                while True:
+                    if datetime.now(timezone.utc) > result["expire_time"]:
+                        raise AuthExpiredError("Device code expired.")
+                    flow = exchange_device_code(
+                        github, self.client_id, result["device_code"]
+                    )
+                    auth_request = next(flow)
+                    while True:
+                        response = await client.send(auth_request)
+                        await response.aread()
+                        try:
+                            auth_request = flow.send(response)
+                        except StopIteration as e:
+                            data = e.value
+                            break
+
+                    if "error" in data:
+                        await anyio.sleep(result["interval"])
+                        continue
+
+                    result = _parse_token_exchange_response(data)
+                    return OAuthTokenAuthStrategy(self.client_id, None, **result)
 
     def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
         # use device auth flow to exchange token for the first time
