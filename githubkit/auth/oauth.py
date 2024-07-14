@@ -655,6 +655,9 @@ class OAuthWebAuthStrategy(BaseAuthStrategy):
         return self._token_auth.refresh_token_expire_time
 
     def exchange_token(self, github: "GitHubCore") -> OAuthTokenAuthStrategy:
+        if self._token_auth is not None:
+            return self._token_auth
+
         flow = exchange_web_flow_code(
             github, self.client_id, self.client_secret, self.code, self.redirect_uri
         )
@@ -676,6 +679,9 @@ class OAuthWebAuthStrategy(BaseAuthStrategy):
     async def async_exchange_token(
         self, github: "GitHubCore"
     ) -> OAuthTokenAuthStrategy:
+        if self._token_auth is not None:
+            return self._token_auth
+
         flow = exchange_web_flow_code(
             github, self.client_id, self.client_secret, self.code, self.redirect_uri
         )
@@ -746,6 +752,9 @@ class OAuthDeviceAuthStrategy(BaseAuthStrategy):
         return self._token_auth.refresh_token_expire_time
 
     def exchange_token(self, github: "GitHubCore") -> OAuthTokenAuthStrategy:
+        if self._token_auth is not None:
+            return self._token_auth
+
         flow = create_device_code(github, self.client_id, self.scopes)
         with github:
             with github.get_sync_client() as client:
@@ -788,6 +797,9 @@ class OAuthDeviceAuthStrategy(BaseAuthStrategy):
     async def async_exchange_token(
         self, github: "GitHubCore"
     ) -> OAuthTokenAuthStrategy:
+        if self._token_auth is not None:
+            return self._token_auth
+
         if anyio is None:
             raise RuntimeError(
                 "AnyIO support for OAuth Device Flow should be installed "
