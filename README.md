@@ -79,6 +79,123 @@ githubkit supports **both pydantic v1 and v2**, but pydantic v2 is recommended. 
 > You may occasionally encounter **breaking changes** like model names or model field types changing when upgrading githubkit.
 > This is due to **upstream schema changes** and githubkit can not control this.
 
+## Quick Start
+
+Here is some common use cases to help you get started quickly. For more detailed usage, please refer to the [Usage](#usage) section.
+
+### Use personal access token (PAT) to call GitHub API
+
+```python
+from githubkit import GitHub
+from githubkit.versions.latest.models import User
+
+github = GitHub("<your_token_here>")
+
+# call GitHub rest api
+resp = github.rest.users.get_authenticated()
+user: User = resp.parsed_data
+
+# call GitHub graphql api
+data: dict = github.graphql("{ viewer { login } }")
+```
+
+### Develop a OAuth APP with web flow
+
+```python
+from githubkit.versions.latest.models import User
+from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
+
+github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
+
+# redirect user to github oauth page and get the code from callback
+
+# one time usage
+user_github = github.with_auth(github.auth.as_web_user("<code>"))
+
+# or, store the user token in a database
+auth: OAuthTokenAuthStrategy = github.auth.as_web_user("<code>").exchange_token(github)
+access_token = auth.token
+refresh_token = auth.refresh_token
+# restore the user token from database
+user_github = github.with_auth(
+    OAuthTokenAuthStrategy(
+        "<client_id>", "<client_secret>", refresh_token=refresh_token
+    )
+)
+
+# now you can act as the user
+resp = user_github.rest.users.get_authenticated()
+user: User = resp.parsed_data
+```
+
+### Develop a OAuth APP with device flow
+
+```python
+from githubkit.versions.latest.models import User
+from githubkit import GitHub, OAuthDeviceAuthStrategy, OAuthTokenAuthStrategy
+
+# sync/async func for displaying user code to user
+def callback(data: dict):
+    print(data["user_code"])
+
+user_github = GitHub(OAuthDeviceAuthStrategy("<client_id>", callback))
+
+# if you want to store the user token in a database
+auth: OAuthTokenAuthStrategy = user_github.auth.exchange_token(user_github)
+access_token = auth.token
+refresh_token = auth.refresh_token
+# restore the user token from database
+user_github = user_github.with_auth(
+    OAuthTokenAuthStrategy(
+        "<client_id>", None, refresh_token=refresh_token
+    )
+)
+```
+
+### Develop a GitHub APP
+
+Authenticating as a repository installation to do something with the repository:
+
+```python
+from githubkit import GitHub, AppAuthStrategy
+from githubkit.versions.latest.models import Issue, Installation
+
+github = GitHub(
+    AppAuthStrategy("your_app_id", "your_private_key", "client_id", "client_secret")
+)
+
+resp = github.rest.apps.get_repo_installation("owner", "repo")
+repo_installation: Installation = resp.parsed_data
+
+installation_github = github.with_auth(
+    github.auth.as_installation(repo_installation.id)
+)
+
+resp = installation_github.rest.issues.get("owner", "repo", 1)
+issue: Issue = resp.parsed_data
+```
+
+Authenticating as a user installation to do something on behalf of the user:
+
+```python
+from githubkit import GitHub, AppAuthStrategy
+from githubkit.versions.latest.models import Installation, IssueComment
+
+github = GitHub(
+    AppAuthStrategy("your_app_id", "your_private_key", "client_id", "client_secret")
+)
+
+resp = github.rest.apps.get_user_installation("username")
+user_installation: Installation = resp.parsed_data
+
+installation_github = github.with_auth(
+    github.auth.as_installation(user_installation.id)
+)
+
+resp = installation_github.rest.issues.create_comment("owner", "repo", 1, body="Hello")
+issue: IssueComment = resp.parsed_data
+```
+
 ## Usage
 
 ### Authentication
@@ -179,6 +296,8 @@ github = GitHub(
     )
 )
 ```
+
+See [Switch between AuthStrategy](#switch-between-authstrategy-installation-oauth-webdevice-flow) for more detail about oauth flow.
 
 or using GitHub Action authentication:
 
