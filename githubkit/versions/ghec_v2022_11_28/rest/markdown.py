@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -53,7 +53,7 @@ class MarkdownClient:
     def render(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         text: str,
         mode: Missing[Literal["markdown", "gfm"]] = UNSET,
@@ -99,7 +99,7 @@ class MarkdownClient:
     async def async_render(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         text: str,
         mode: Missing[Literal["markdown", "gfm"]] = UNSET,

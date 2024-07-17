@@ -46,7 +46,7 @@ headers: Optional[Dict[str, str]] = None,
 {{ header_params(endpoint) }}
 {{ cookie_params(endpoint) }}
 *,
-data: Literal[UNSET] = UNSET,
+data: UnsetType = UNSET,
 headers: Optional[Dict[str, str]] = None,
 {{ body_params(model, endpoint.param_names) }}
 {% endmacro %}

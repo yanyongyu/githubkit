@@ -39,6 +39,7 @@ class CodeSecurityConfigurationType(TypedDict):
     private_vulnerability_reporting: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]
+    enforcement: NotRequired[Literal["enforced", "unenforced"]]
     url: NotRequired[str]
     html_url: NotRequired[str]
     created_at: NotRequired[datetime]

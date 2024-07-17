@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -155,7 +155,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -224,7 +224,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -413,7 +413,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -478,7 +478,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -669,7 +669,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -736,7 +736,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -929,7 +929,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -998,7 +998,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -1195,7 +1195,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -1262,7 +1262,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -1455,7 +1455,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -1524,7 +1524,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -1719,7 +1719,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
     ) -> Response[Reaction]: ...
@@ -1784,7 +1784,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
     ) -> Response[Reaction]: ...
@@ -1969,7 +1969,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -2035,7 +2035,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -2175,7 +2175,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
@@ -2237,7 +2237,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"

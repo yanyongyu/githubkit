@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -131,7 +131,7 @@ class UsersClient:
     def update_authenticated(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         email: Missing[str] = UNSET,
@@ -191,7 +191,7 @@ class UsersClient:
     async def async_update_authenticated(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         email: Missing[str] = UNSET,
@@ -473,7 +473,7 @@ class UsersClient:
     def set_primary_email_visibility_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         visibility: Literal["public", "private"],
     ) -> Response[List[Email]]: ...
@@ -533,7 +533,7 @@ class UsersClient:
     async def async_set_primary_email_visibility_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         visibility: Literal["public", "private"],
     ) -> Response[List[Email]]: ...
@@ -663,7 +663,7 @@ class UsersClient:
     def add_email_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         emails: List[str],
     ) -> Response[List[Email]]: ...
@@ -725,7 +725,7 @@ class UsersClient:
     async def async_add_email_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         emails: List[str],
     ) -> Response[List[Email]]: ...
@@ -787,7 +787,7 @@ class UsersClient:
     def delete_email_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         emails: List[str],
     ) -> Response: ...
@@ -843,7 +843,7 @@ class UsersClient:
     async def async_delete_email_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         emails: List[str],
     ) -> Response: ...
@@ -1252,7 +1252,7 @@ class UsersClient:
     def create_gpg_key_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         armored_public_key: str,
@@ -1303,7 +1303,7 @@ class UsersClient:
     async def async_create_gpg_key_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         armored_public_key: str,
@@ -1528,7 +1528,7 @@ class UsersClient:
     def create_public_ssh_key_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
@@ -1579,7 +1579,7 @@ class UsersClient:
     async def async_create_public_ssh_key_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
@@ -1875,7 +1875,7 @@ class UsersClient:
     def add_social_account_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         account_urls: List[str],
     ) -> Response[List[SocialAccount]]: ...
@@ -1935,7 +1935,7 @@ class UsersClient:
     async def async_add_social_account_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         account_urls: List[str],
     ) -> Response[List[SocialAccount]]: ...
@@ -1995,7 +1995,7 @@ class UsersClient:
     def delete_social_account_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         account_urls: List[str],
     ) -> Response: ...
@@ -2047,7 +2047,7 @@ class UsersClient:
     async def async_delete_social_account_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         account_urls: List[str],
     ) -> Response: ...
@@ -2169,7 +2169,7 @@ class UsersClient:
     def create_ssh_signing_key_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
@@ -2228,7 +2228,7 @@ class UsersClient:
     async def async_create_ssh_signing_key_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,

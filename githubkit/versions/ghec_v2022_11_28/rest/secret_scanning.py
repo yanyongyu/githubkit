@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -449,7 +449,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         state: Literal["open", "resolved"],
         resolution: Missing[
@@ -522,7 +522,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         state: Literal["open", "resolved"],
         resolution: Missing[

@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -152,7 +152,7 @@ class ProjectsClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
@@ -215,7 +215,7 @@ class ProjectsClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
@@ -380,7 +380,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         note: Missing[Union[str, None]] = UNSET,
         archived: Missing[bool] = UNSET,
@@ -442,7 +442,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         note: Missing[Union[str, None]] = UNSET,
         archived: Missing[bool] = UNSET,
@@ -504,7 +504,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         position: str,
         column_id: Missing[int] = UNSET,
@@ -568,7 +568,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         position: str,
         column_id: Missing[int] = UNSET,
@@ -732,7 +732,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
     ) -> Response[ProjectColumn]: ...
@@ -786,7 +786,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
     ) -> Response[ProjectColumn]: ...
@@ -917,7 +917,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         note: Union[str, None],
     ) -> Response[ProjectCard]: ...
@@ -927,7 +927,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content_id: int,
         content_type: str,
@@ -1008,7 +1008,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         note: Union[str, None],
     ) -> Response[ProjectCard]: ...
@@ -1018,7 +1018,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         content_id: int,
         content_type: str,
@@ -1096,7 +1096,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         position: str,
     ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]: ...
@@ -1156,7 +1156,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         position: str,
     ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]: ...
@@ -1318,7 +1318,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
@@ -1386,7 +1386,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
@@ -1536,7 +1536,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
@@ -1606,7 +1606,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
@@ -1852,7 +1852,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
     ) -> Response[ProjectColumn]: ...
@@ -1912,7 +1912,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
     ) -> Response[ProjectColumn]: ...
@@ -2056,7 +2056,7 @@ class ProjectsClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
@@ -2122,7 +2122,7 @@ class ProjectsClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
@@ -2184,7 +2184,7 @@ class ProjectsClient:
     def create_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[Union[str, None]] = UNSET,
@@ -2242,7 +2242,7 @@ class ProjectsClient:
     async def async_create_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         body: Missing[Union[str, None]] = UNSET,

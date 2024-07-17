@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -226,7 +226,7 @@ class AppsClient:
     def update_webhook_config_for_app(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
@@ -276,7 +276,7 @@ class AppsClient:
     async def async_update_webhook_config_for_app(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
@@ -736,7 +736,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         repositories: Missing[List[str]] = UNSET,
         repository_ids: Missing[List[int]] = UNSET,
@@ -801,7 +801,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         repositories: Missing[List[str]] = UNSET,
         repository_ids: Missing[List[int]] = UNSET,
@@ -958,7 +958,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
     ) -> Response: ...
@@ -1010,7 +1010,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
     ) -> Response: ...
@@ -1062,7 +1062,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
     ) -> Response[Authorization]: ...
@@ -1121,7 +1121,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
     ) -> Response[Authorization]: ...
@@ -1180,7 +1180,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
     ) -> Response: ...
@@ -1232,7 +1232,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
     ) -> Response: ...
@@ -1284,7 +1284,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
     ) -> Response[Authorization]: ...
@@ -1341,7 +1341,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
     ) -> Response[Authorization]: ...
@@ -1398,7 +1398,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
         target: Missing[str] = UNSET,
@@ -1464,7 +1464,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         access_token: str,
         target: Missing[str] = UNSET,

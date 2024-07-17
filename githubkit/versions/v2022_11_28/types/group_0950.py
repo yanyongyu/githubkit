@@ -9,17 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0197 import CheckRunType
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCommitsRefCheckRunsGetResponse200"""
+class ReposOwnerRepoCommitsCommitShaCommentsPostBodyType(TypedDict):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
-    total_count: int
-    check_runs: List[CheckRunType]
+    body: str
+    path: NotRequired[str]
+    position: NotRequired[int]
+    line: NotRequired[int]
 
 
-__all__ = ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",)
+__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBodyType",)

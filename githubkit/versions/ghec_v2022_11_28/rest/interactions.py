@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -124,7 +124,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
@@ -180,7 +180,7 @@ class InteractionsClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
@@ -344,7 +344,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
@@ -401,7 +401,7 @@ class InteractionsClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
@@ -549,7 +549,7 @@ class InteractionsClient:
     def set_restrictions_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[
@@ -599,7 +599,7 @@ class InteractionsClient:
     async def async_set_restrictions_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         limit: Literal["existing_users", "contributors_only", "collaborators_only"],
         expiry: Missing[

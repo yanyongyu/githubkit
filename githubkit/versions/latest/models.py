@@ -4587,6 +4587,9 @@ if TYPE_CHECKING:
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200 as OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgCodeSecurityConfigurationsDetachDeleteBody as OrgsOrgCodeSecurityConfigurationsDetachDeleteBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201 as OrgsOrgCopilotBillingSelectedTeamsPostResponse201,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -12218,6 +12221,7 @@ else:
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
             "OrgsOrgCodeSecurityConfigurationsPostBody",
+            "OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody",
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody",
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",

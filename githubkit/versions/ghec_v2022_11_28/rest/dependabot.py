@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -462,7 +462,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
@@ -518,7 +518,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
@@ -676,7 +676,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
     ) -> Response: ...
@@ -732,7 +732,7 @@ class DependabotClient:
         org: str,
         secret_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
     ) -> Response: ...
@@ -1060,7 +1060,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         state: Literal["dismissed", "open"],
         dismissed_reason: Missing[
@@ -1140,7 +1140,7 @@ class DependabotClient:
         repo: str,
         alert_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         state: Literal["dismissed", "open"],
         dismissed_reason: Missing[
@@ -1370,7 +1370,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
@@ -1432,7 +1432,7 @@ class DependabotClient:
         repo: str,
         secret_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,

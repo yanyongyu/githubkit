@@ -33,6 +33,7 @@ class OrgsOrgCodeSecurityConfigurationsPostBodyType(TypedDict):
     private_vulnerability_reporting: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]
+    enforcement: NotRequired[Literal["enforced", "unenforced"]]
 
 
 __all__ = ("OrgsOrgCodeSecurityConfigurationsPostBodyType",)

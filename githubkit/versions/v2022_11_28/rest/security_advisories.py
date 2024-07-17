@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -457,7 +457,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         summary: str,
         description: str,
@@ -532,7 +532,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         summary: str,
         description: str,
@@ -607,7 +607,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         summary: str,
         description: str,
@@ -682,7 +682,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         summary: str,
         description: str,
@@ -813,7 +813,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         summary: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -895,7 +895,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         summary: Missing[str] = UNSET,
         description: Missing[str] = UNSET,

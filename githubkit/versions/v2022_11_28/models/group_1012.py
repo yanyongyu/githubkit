@@ -17,11 +17,11 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_1010 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+from .group_1011 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
 
-class ReposOwnerRepoPagesPutBodyAnyof1(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyAnyof1"""
+class ReposOwnerRepoPagesPutBodyAnyof0(GitHubModel):
+    """ReposOwnerRepoPagesPutBodyAnyof0"""
 
     cname: Missing[Union[str, None]] = Field(
         default=UNSET,
@@ -31,16 +31,17 @@ class ReposOwnerRepoPagesPutBodyAnyof1(GitHubModel):
         default=UNSET,
         description="Specify whether HTTPS should be enforced for the repository.",
     )
-    build_type: Missing[Literal["legacy", "workflow"]] = Field(
-        default=UNSET,
-        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch.",
+    build_type: Literal["legacy", "workflow"] = Field(
+        description="The process by which the GitHub Pages site will be built. `workflow` means that the site is built by a custom GitHub Actions workflow. `legacy` means that the site is built by GitHub when changes are pushed to a specific branch."
     )
-    source: Union[
-        Literal["gh-pages", "master", "master /docs"],
-        ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
-    ] = Field()
+    source: Missing[
+        Union[
+            Literal["gh-pages", "master", "master /docs"],
+            ReposOwnerRepoPagesPutBodyPropSourceAnyof1,
+        ]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyAnyof1)
+model_rebuild(ReposOwnerRepoPagesPutBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof1",)
+__all__ = ("ReposOwnerRepoPagesPutBodyAnyof0",)
