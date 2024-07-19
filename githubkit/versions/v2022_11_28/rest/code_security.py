@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -35,6 +35,7 @@ if TYPE_CHECKING:
     )
     from ..types import (
         OrgsOrgCodeSecurityConfigurationsPostBodyType,
+        OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
@@ -148,7 +149,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         description: str,
@@ -171,6 +172,7 @@ class CodeSecurityClient:
         private_vulnerability_reporting: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
     ) -> Response[CodeSecurityConfiguration]: ...
 
     def create_configuration(
@@ -221,7 +223,7 @@ class CodeSecurityClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         description: str,
@@ -244,6 +246,7 @@ class CodeSecurityClient:
         private_vulnerability_reporting: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
     ) -> Response[CodeSecurityConfiguration]: ...
 
     async def async_create_configuration(
@@ -331,6 +334,126 @@ class CodeSecurityClient:
             error_models={
                 "403": BasicError,
                 "404": BasicError,
+            },
+        )
+
+    @overload
+    def detach_configuration(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType,
+    ) -> Response: ...
+
+    @overload
+    def detach_configuration(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        selected_repository_ids: Missing[List[int]] = UNSET,
+    ) -> Response: ...
+
+    def detach_configuration(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/code-security/configurations#detach-configurations-from-repositories"""
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCodeSecurityConfigurationsDetachDeleteBody,
+        )
+
+        url = f"/orgs/{org}/code-security/configurations/detach"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = type_validate_python(
+            OrgsOrgCodeSecurityConfigurationsDetachDeleteBody, json
+        )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
+            },
+        )
+
+    @overload
+    async def async_detach_configuration(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_detach_configuration(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        selected_repository_ids: Missing[List[int]] = UNSET,
+    ) -> Response: ...
+
+    async def async_detach_configuration(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/code-security/configurations#detach-configurations-from-repositories"""
+
+        from ..models import (
+            BasicError,
+            OrgsOrgCodeSecurityConfigurationsDetachDeleteBody,
+        )
+
+        url = f"/orgs/{org}/code-security/configurations/detach"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = type_validate_python(
+            OrgsOrgCodeSecurityConfigurationsDetachDeleteBody, json
+        )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            error_models={
+                "400": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+                "409": BasicError,
             },
         )
 
@@ -456,7 +579,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -479,6 +602,7 @@ class CodeSecurityClient:
         private_vulnerability_reporting: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
     ) -> Response[CodeSecurityConfiguration]: ...
 
     def update_configuration(
@@ -536,7 +660,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -559,6 +683,7 @@ class CodeSecurityClient:
         private_vulnerability_reporting: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        enforcement: Missing[Literal["enforced", "unenforced"]] = UNSET,
     ) -> Response[CodeSecurityConfiguration]: ...
 
     async def async_update_configuration(
@@ -616,7 +741,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         scope: Literal["all", "public", "private_or_internal", "selected"],
         selected_repository_ids: Missing[List[int]] = UNSET,
@@ -677,7 +802,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         scope: Literal["all", "public", "private_or_internal", "selected"],
         selected_repository_ids: Missing[List[int]] = UNSET,
@@ -740,7 +865,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         default_for_new_repos: Missing[
             Literal["all", "none", "private_and_internal", "public"]
@@ -813,7 +938,7 @@ class CodeSecurityClient:
         org: str,
         configuration_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         default_for_new_repos: Missing[
             Literal["all", "none", "private_and_internal", "public"]

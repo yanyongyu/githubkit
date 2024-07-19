@@ -69,6 +69,9 @@ class OrgsOrgCodeSecurityConfigurationsPostBody(GitHubModel):
         default=UNSET,
         description="The enablement status of private vulnerability reporting",
     )
+    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
+        default=UNSET, description="The status of enforcement"
+    )
 
 
 model_rebuild(OrgsOrgCodeSecurityConfigurationsPostBody)

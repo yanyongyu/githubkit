@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class UserCodespacesCodespaceNamePublishPostBody(GitHubModel):
-    """UserCodespacesCodespaceNamePublishPostBody"""
-
-    name: Missing[str] = Field(
-        default=UNSET, description="A name for the new repository."
-    )
-    private: Missing[bool] = Field(
-        default=UNSET, description="Whether the new repository should be private."
-    )
+from .group_0077 import CodespaceMachine
 
 
-model_rebuild(UserCodespacesCodespaceNamePublishPostBody)
+class UserCodespacesCodespaceNameMachinesGetResponse200(GitHubModel):
+    """UserCodespacesCodespaceNameMachinesGetResponse200"""
 
-__all__ = ("UserCodespacesCodespaceNamePublishPostBody",)
+    total_count: int = Field()
+    machines: List[CodespaceMachine] = Field()
+
+
+model_rebuild(UserCodespacesCodespaceNameMachinesGetResponse200)
+
+__all__ = ("UserCodespacesCodespaceNameMachinesGetResponse200",)

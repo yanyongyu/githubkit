@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -86,7 +86,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         head_sha: str,
@@ -117,7 +117,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         head_sha: str,
@@ -212,7 +212,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         head_sha: str,
@@ -243,7 +243,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         head_sha: str,
@@ -386,7 +386,7 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
@@ -419,7 +419,7 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
@@ -518,7 +518,7 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
@@ -551,7 +551,7 @@ class ChecksClient:
         repo: str,
         check_run_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         details_url: Missing[str] = UNSET,
@@ -767,7 +767,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         head_sha: str,
     ) -> Response[CheckSuite]: ...
@@ -820,7 +820,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         head_sha: str,
     ) -> Response[CheckSuite]: ...
@@ -873,7 +873,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         auto_trigger_checks: Missing[
             List[
@@ -933,7 +933,7 @@ class ChecksClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         auto_trigger_checks: Missing[
             List[

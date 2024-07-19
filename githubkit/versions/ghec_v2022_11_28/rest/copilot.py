@@ -10,11 +10,11 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
+from typing import TYPE_CHECKING, Dict, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -356,7 +356,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_teams: List[str],
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]: ...
@@ -416,7 +416,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_teams: List[str],
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]: ...
@@ -476,7 +476,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_teams: List[str],
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]: ...
@@ -536,7 +536,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_teams: List[str],
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]: ...
@@ -596,7 +596,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]: ...
@@ -656,7 +656,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]: ...
@@ -716,7 +716,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]: ...
@@ -776,7 +776,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]: ...

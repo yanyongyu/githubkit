@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -377,7 +377,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         state: Literal["open", "dismissed"],
         dismissed_reason: Missing[
@@ -449,7 +449,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         state: Literal["open", "dismissed"],
         dismissed_reason: Missing[
@@ -989,7 +989,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
@@ -1006,7 +1006,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
@@ -1023,7 +1023,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
@@ -1113,7 +1113,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
@@ -1130,7 +1130,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
@@ -1147,7 +1147,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
@@ -1423,7 +1423,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         state: Missing[Literal["configured", "not-configured"]] = UNSET,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
@@ -1502,7 +1502,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         state: Missing[Literal["configured", "not-configured"]] = UNSET,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
@@ -1581,7 +1581,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         commit_sha: str,
         ref: str,
@@ -1650,7 +1650,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         commit_sha: str,
         ref: str,

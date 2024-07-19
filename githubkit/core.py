@@ -10,7 +10,6 @@ from typing import (
     Type,
     Union,
     Generic,
-    Literal,
     TypeVar,
     Optional,
     Generator,
@@ -28,15 +27,6 @@ from .response import Response
 from .compat import to_jsonable_python
 from .config import Config, get_config
 from .auth import BaseAuthStrategy, TokenAuthStrategy, UnauthAuthStrategy
-from .typing import (
-    URLTypes,
-    CookieTypes,
-    HeaderTypes,
-    ContentTypes,
-    RequestFiles,
-    QueryParamTypes,
-    RetryDecisionFunc,
-)
 from .exception import (
     RequestError,
     RequestFailed,
@@ -44,6 +34,16 @@ from .exception import (
     GitHubException,
     PrimaryRateLimitExceeded,
     SecondaryRateLimitExceeded,
+)
+from .typing import (
+    URLTypes,
+    UnsetType,
+    CookieTypes,
+    HeaderTypes,
+    ContentTypes,
+    RequestFiles,
+    QueryParamTypes,
+    RetryDecisionFunc,
 )
 
 T = TypeVar("T")
@@ -332,14 +332,14 @@ class GitHubCore(Generic[A]):
     def _check(
         self,
         response: httpx.Response,
-        response_model: Literal[UNSET] = UNSET,
+        response_model: UnsetType = UNSET,
         error_models: Optional[Dict[str, type]] = None,
     ) -> Response[Any]: ...
 
     def _check(
         self,
         response: httpx.Response,
-        response_model: Union[Type[T], Literal[UNSET]] = UNSET,
+        response_model: Union[Type[T], UnsetType] = UNSET,
         error_models: Optional[Dict[str, type]] = None,
     ) -> Union[Response[T], Response[Any]]:
         if response.is_error:
@@ -446,7 +446,7 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
-        response_model: Literal[UNSET] = UNSET,
+        response_model: UnsetType = UNSET,
         error_models: Optional[Dict[str, type]] = None,
     ) -> Response[Any]: ...
 
@@ -462,7 +462,7 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
-        response_model: Union[Type[T], Literal[UNSET]] = UNSET,
+        response_model: Union[Type[T], UnsetType] = UNSET,
         error_models: Optional[Dict[str, type]] = None,
     ) -> Union[Response[T], Response[Any]]:
         retry_count: int = 0
@@ -523,7 +523,7 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
-        response_model: Literal[UNSET] = UNSET,
+        response_model: UnsetType = UNSET,
         error_models: Optional[Dict[str, type]] = None,
     ) -> Response[Any]: ...
 
@@ -539,7 +539,7 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
-        response_model: Union[Type[T], Literal[UNSET]] = UNSET,
+        response_model: Union[Type[T], UnsetType] = UNSET,
         error_models: Optional[Dict[str, type]] = None,
     ) -> Union[Response[T], Response[Any]]:
         retry_count: int = 0

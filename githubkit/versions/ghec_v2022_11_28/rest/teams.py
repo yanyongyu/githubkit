@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -332,7 +332,7 @@ class TeamsClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
@@ -395,7 +395,7 @@ class TeamsClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
@@ -548,7 +548,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -618,7 +618,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -760,7 +760,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: str,
         body: str,
@@ -815,7 +815,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: str,
         body: str,
@@ -960,7 +960,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
@@ -1026,7 +1026,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
@@ -1160,7 +1160,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> Response[TeamDiscussionComment]: ...
@@ -1223,7 +1223,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> Response[TeamDiscussionComment]: ...
@@ -1378,7 +1378,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> Response[TeamDiscussionComment]: ...
@@ -1445,7 +1445,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> Response[TeamDiscussionComment]: ...
@@ -1590,7 +1590,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         group_id: int,
     ) -> Response[ExternalGroup]: ...
@@ -1643,7 +1643,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         group_id: int,
     ) -> Response[ExternalGroup]: ...
@@ -1878,7 +1878,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
     ) -> Response[TeamMembership]: ...
@@ -1940,7 +1940,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
     ) -> Response[TeamMembership]: ...
@@ -2158,7 +2158,7 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
@@ -2227,7 +2227,7 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
@@ -2450,7 +2450,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[str] = UNSET,
     ) -> Response: ...
@@ -2508,7 +2508,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[str] = UNSET,
     ) -> Response: ...
@@ -2648,7 +2648,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         groups: Missing[
             List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
@@ -2708,7 +2708,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         groups: Missing[
             List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
@@ -2926,7 +2926,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
@@ -2988,7 +2988,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
@@ -3116,7 +3116,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: str,
         body: str,
@@ -3168,7 +3168,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: str,
         body: str,
@@ -3304,7 +3304,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
@@ -3363,7 +3363,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
@@ -3490,7 +3490,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> Response[TeamDiscussionComment]: ...
@@ -3550,7 +3550,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> Response[TeamDiscussionComment]: ...
@@ -3698,7 +3698,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> Response[TeamDiscussionComment]: ...
@@ -3761,7 +3761,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> Response[TeamDiscussionComment]: ...
@@ -4134,7 +4134,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
     ) -> Response[TeamMembership]: ...
@@ -4194,7 +4194,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
     ) -> Response[TeamMembership]: ...
@@ -4408,7 +4408,7 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
@@ -4470,7 +4470,7 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
@@ -4700,7 +4700,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
     ) -> Response: ...
@@ -4763,7 +4763,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
     ) -> Response: ...
@@ -4912,7 +4912,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
         synced_at: Missing[str] = UNSET,
@@ -4972,7 +4972,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItemsType],
         synced_at: Missing[str] = UNSET,

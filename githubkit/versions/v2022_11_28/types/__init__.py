@@ -53,7 +53,7 @@ if TYPE_CHECKING:
     from .group_0245 import ManifestType as ManifestType
     from .group_0246 import SnapshotType as SnapshotType
     from .group_0294 import LanguageType as LanguageType
-    from .group_0902 import WorkflowType as WorkflowType
+    from .group_0903 import WorkflowType as WorkflowType
     from .group_0009 import ScimErrorType as ScimErrorType
     from .group_0022 import ClassroomType as ClassroomType
     from .group_0037 import MilestoneType as MilestoneType
@@ -150,7 +150,7 @@ if TYPE_CHECKING:
     from .group_0636 import WebhookPublicType as WebhookPublicType
     from .group_0727 import WebhookStatusType as WebhookStatusType
     from .group_0764 import GistsPostBodyType as GistsPostBodyType
-    from .group_1067 import UserPatchBodyType as UserPatchBodyType
+    from .group_1068 import UserPatchBodyType as UserPatchBodyType
     from .group_0002 import GlobalAdvisoryType as GlobalAdvisoryType
     from .group_0014 import AppPermissionsType as AppPermissionsType
     from .group_0028 import EnterpriseTeamType as EnterpriseTeamType
@@ -190,7 +190,7 @@ if TYPE_CHECKING:
     from .group_0392 import WebhooksChangesType as WebhooksChangesType
     from .group_0405 import WebhooksProjectType as WebhooksProjectType
     from .group_0416 import WebhooksReleaseType as WebhooksReleaseType
-    from .group_1093 import SigstoreBundle0Type as SigstoreBundle0Type
+    from .group_1094 import SigstoreBundle0Type as SigstoreBundle0Type
     from .group_0008 import HookDeliveryItemType as HookDeliveryItemType
     from .group_0033 import SimpleRepositoryType as SimpleRepositoryType
     from .group_0041 import EventPropPayloadType as EventPropPayloadType
@@ -225,9 +225,9 @@ if TYPE_CHECKING:
     from .group_0597 import WebhookPageBuildType as WebhookPageBuildType
     from .group_0771 import MarkdownPostBodyType as MarkdownPostBodyType
     from .group_0775 import OrgsOrgPatchBodyType as OrgsOrgPatchBodyType
-    from .group_0954 import DependabotSecretType as DependabotSecretType
-    from .group_1071 import CodespacesSecretType as CodespacesSecretType
-    from .group_1085 import UserKeysPostBodyType as UserKeysPostBodyType
+    from .group_0955 import DependabotSecretType as DependabotSecretType
+    from .group_1072 import CodespacesSecretType as CodespacesSecretType
+    from .group_1086 import UserKeysPostBodyType as UserKeysPostBodyType
     from .group_0018 import InstallationTokenType as InstallationTokenType
     from .group_0043 import BaseGistPropFilesType as BaseGistPropFilesType
     from .group_0048 import GitignoreTemplateType as GitignoreTemplateType
@@ -252,7 +252,7 @@ if TYPE_CHECKING:
     from .group_0380 import WebhooksDeployKeyType as WebhooksDeployKeyType
     from .group_0394 import WebhooksMilestoneType as WebhooksMilestoneType
     from .group_0736 import WebhookTeamEditedType as WebhookTeamEditedType
-    from .group_1089 import UserReposPostBodyType as UserReposPostBodyType
+    from .group_1090 import UserReposPostBodyType as UserReposPostBodyType
     from .group_0019 import ScopedInstallationType as ScopedInstallationType
     from .group_0027 import OrganizationSimpleType as OrganizationSimpleType
     from .group_0028 import CopilotSeatDetailsType as CopilotSeatDetailsType
@@ -319,8 +319,8 @@ if TYPE_CHECKING:
     from .group_0571 import WebhookMemberEditedType as WebhookMemberEditedType
     from .group_0603 import WebhookPingPropHookType as WebhookPingPropHookType
     from .group_0738 import WebhookWatchStartedType as WebhookWatchStartedType
-    from .group_0806 import CodespacesOrgSecretType as CodespacesOrgSecretType
-    from .group_1081 import UserGpgKeysPostBodyType as UserGpgKeysPostBodyType
+    from .group_0807 import CodespacesOrgSecretType as CodespacesOrgSecretType
+    from .group_1082 import UserGpgKeysPostBodyType as UserGpgKeysPostBodyType
     from .group_0020 import AuthorizationPropAppType as AuthorizationPropAppType
     from .group_0028 import OrganizationPropPlanType as OrganizationPropPlanType
     from .group_0039 import IssuePropPullRequestType as IssuePropPullRequestType
@@ -359,12 +359,12 @@ if TYPE_CHECKING:
     from .group_0761 import EmojisGetResponse200Type as EmojisGetResponse200Type
     from .group_0766 import GistsGistIdPatchBodyType as GistsGistIdPatchBodyType
     from .group_0772 import NotificationsPutBodyType as NotificationsPutBodyType
-    from .group_0823 import OrgsOrgHooksPostBodyType as OrgsOrgHooksPostBodyType
-    from .group_0845 import OrgsOrgReposPostBodyType as OrgsOrgReposPostBodyType
-    from .group_0848 import OrgsOrgTeamsPostBodyType as OrgsOrgTeamsPostBodyType
-    from .group_0944 import RepoCodespacesSecretType as RepoCodespacesSecretType
-    from .group_1056 import TeamsTeamIdPatchBodyType as TeamsTeamIdPatchBodyType
-    from .group_1088 import UserProjectsPostBodyType as UserProjectsPostBodyType
+    from .group_0824 import OrgsOrgHooksPostBodyType as OrgsOrgHooksPostBodyType
+    from .group_0846 import OrgsOrgReposPostBodyType as OrgsOrgReposPostBodyType
+    from .group_0849 import OrgsOrgTeamsPostBodyType as OrgsOrgTeamsPostBodyType
+    from .group_0945 import RepoCodespacesSecretType as RepoCodespacesSecretType
+    from .group_1057 import TeamsTeamIdPatchBodyType as TeamsTeamIdPatchBodyType
+    from .group_1089 import UserProjectsPostBodyType as UserProjectsPostBodyType
     from .group_0004 import ValidationErrorSimpleType as ValidationErrorSimpleType
     from .group_0114 import RepositoryRuleOneof14Type as RepositoryRuleOneof14Type
     from .group_0114 import RepositoryRuleOneof16Type as RepositoryRuleOneof16Type
@@ -444,8 +444,8 @@ if TYPE_CHECKING:
     from .group_0708 import SecretScanningLocationType as SecretScanningLocationType
     from .group_0753 import AppHookConfigPatchBodyType as AppHookConfigPatchBodyType
     from .group_0764 import GistsPostBodyPropFilesType as GistsPostBodyPropFilesType
-    from .group_0962 import DeploymentBranchPolicyType as DeploymentBranchPolicyType
-    from .group_1087 import UserMigrationsPostBodyType as UserMigrationsPostBodyType
+    from .group_0963 import DeploymentBranchPolicyType as DeploymentBranchPolicyType
+    from .group_1088 import UserMigrationsPostBodyType as UserMigrationsPostBodyType
     from .group_0011 import HookDeliveryPropRequestType as HookDeliveryPropRequestType
     from .group_0135 import RepositoryRuleWorkflowsType as RepositoryRuleWorkflowsType
     from .group_0161 import ArtifactPropWorkflowRunType as ArtifactPropWorkflowRunType
@@ -479,9 +479,9 @@ if TYPE_CHECKING:
     from .group_0689 import WebhookRepositoryImportType as WebhookRepositoryImportType
     from .group_0727 import WebhookStatusPropCommitType as WebhookStatusPropCommitType
     from .group_0739 import WebhookWorkflowDispatchType as WebhookWorkflowDispatchType
-    from .group_0841 import OrgsOrgProjectsPostBodyType as OrgsOrgProjectsPostBodyType
-    from .group_0846 import OrgsOrgRulesetsPostBodyType as OrgsOrgRulesetsPostBodyType
-    from .group_0879 import ReposOwnerRepoPatchBodyType as ReposOwnerRepoPatchBodyType
+    from .group_0842 import OrgsOrgProjectsPostBodyType as OrgsOrgProjectsPostBodyType
+    from .group_0847 import OrgsOrgRulesetsPostBodyType as OrgsOrgRulesetsPostBodyType
+    from .group_0880 import ReposOwnerRepoPatchBodyType as ReposOwnerRepoPatchBodyType
     from .group_0002 import VulnerabilityPropPackageType as VulnerabilityPropPackageType
     from .group_0011 import HookDeliveryPropResponseType as HookDeliveryPropResponseType
     from .group_0024 import ClassroomAssignmentGradeType as ClassroomAssignmentGradeType
@@ -523,7 +523,7 @@ if TYPE_CHECKING:
     from .group_0692 import WebhookRepositoryRenamedType as WebhookRepositoryRenamedType
     from .group_0721 import WebhookSponsorshipEditedType as WebhookSponsorshipEditedType
     from .group_0746 import WebhookWorkflowJobQueuedType as WebhookWorkflowJobQueuedType
-    from .group_1079 import UserEmailsPostBodyOneof0Type as UserEmailsPostBodyOneof0Type
+    from .group_1080 import UserEmailsPostBodyOneof0Type as UserEmailsPostBodyOneof0Type
     from .group_0017 import (
         RepositoryPropPermissionsType as RepositoryPropPermissionsType,
     )
@@ -656,7 +656,7 @@ if TYPE_CHECKING:
     from .group_0787 import (
         OrganizationActionsSecretType as OrganizationActionsSecretType,
     )
-    from .group_0831 import (
+    from .group_0832 import (
         OrgsOrgMigrationsPostBodyType as OrgsOrgMigrationsPostBodyType,
     )
     from .group_0005 import (
@@ -830,22 +830,22 @@ if TYPE_CHECKING:
     from .group_0716 import (
         WebhookSecurityAndAnalysisType as WebhookSecurityAndAnalysisType,
     )
-    from .group_0828 import (
+    from .group_0829 import (
         OrgsOrgInvitationsPostBodyType as OrgsOrgInvitationsPostBodyType,
     )
-    from .group_0874 import (
+    from .group_0875 import (
         ProjectsProjectIdPatchBodyType as ProjectsProjectIdPatchBodyType,
     )
-    from .group_1001 import (
+    from .group_1002 import (
         ReposOwnerRepoKeysPostBodyType as ReposOwnerRepoKeysPostBodyType,
     )
-    from .group_1080 import (
+    from .group_1081 import (
         UserEmailsDeleteBodyOneof0Type as UserEmailsDeleteBodyOneof0Type,
     )
-    from .group_1090 import (
+    from .group_1091 import (
         UserSocialAccountsPostBodyType as UserSocialAccountsPostBodyType,
     )
-    from .group_1092 import (
+    from .group_1093 import (
         UserSshSigningKeysPostBodyType as UserSshSigningKeysPostBodyType,
     )
     from .group_0002 import (
@@ -983,22 +983,22 @@ if TYPE_CHECKING:
     from .group_0791 import (
         OrganizationActionsVariableType as OrganizationActionsVariableType,
     )
-    from .group_0824 import (
+    from .group_0825 import (
         OrgsOrgHooksHookIdPatchBodyType as OrgsOrgHooksHookIdPatchBodyType,
     )
-    from .group_0970 import (
+    from .group_0971 import (
         ReposOwnerRepoForksPostBodyType as ReposOwnerRepoForksPostBodyType,
     )
-    from .group_0977 import (
+    from .group_0978 import (
         ReposOwnerRepoHooksPostBodyType as ReposOwnerRepoHooksPostBodyType,
     )
-    from .group_0980 import (
+    from .group_0981 import (
         ReposOwnerRepoImportPutBodyType as ReposOwnerRepoImportPutBodyType,
     )
-    from .group_1023 import (
+    from .group_1024 import (
         ReposOwnerRepoPullsPostBodyType as ReposOwnerRepoPullsPostBodyType,
     )
-    from .group_1053 import (
+    from .group_1054 import (
         ReposOwnerRepoTopicsPutBodyType as ReposOwnerRepoTopicsPutBodyType,
     )
     from .group_0055 import (
@@ -1178,31 +1178,31 @@ if TYPE_CHECKING:
     from .group_0749 import (
         WebhookWorkflowRunInProgressType as WebhookWorkflowRunInProgressType,
     )
-    from .group_0819 import (
+    from .group_0820 import (
         OrganizationDependabotSecretType as OrganizationDependabotSecretType,
     )
-    from .group_0986 import (
+    from .group_0987 import (
         ReposOwnerRepoIssuesPostBodyType as ReposOwnerRepoIssuesPostBodyType,
     )
-    from .group_1002 import (
+    from .group_1003 import (
         ReposOwnerRepoLabelsPostBodyType as ReposOwnerRepoLabelsPostBodyType,
     )
-    from .group_1005 import (
+    from .group_1006 import (
         ReposOwnerRepoMergesPostBodyType as ReposOwnerRepoMergesPostBodyType,
     )
-    from .group_1068 import (
+    from .group_1069 import (
         UserCodespacesGetResponse200Type as UserCodespacesGetResponse200Type,
     )
-    from .group_1069 import (
+    from .group_1070 import (
         UserCodespacesPostBodyOneof0Type as UserCodespacesPostBodyOneof0Type,
     )
-    from .group_1070 import (
+    from .group_1071 import (
         UserCodespacesPostBodyOneof1Type as UserCodespacesPostBodyOneof1Type,
     )
-    from .group_1078 import (
+    from .group_1079 import (
         UserEmailVisibilityPatchBodyType as UserEmailVisibilityPatchBodyType,
     )
-    from .group_1091 import (
+    from .group_1092 import (
         UserSocialAccountsDeleteBodyType as UserSocialAccountsDeleteBodyType,
     )
     from .group_0034 import (
@@ -1316,16 +1316,16 @@ if TYPE_CHECKING:
     from .group_0776 import (
         ActionsCacheUsageByRepositoryType as ActionsCacheUsageByRepositoryType,
     )
-    from .group_0849 import (
+    from .group_0850 import (
         OrgsOrgTeamsTeamSlugPatchBodyType as OrgsOrgTeamsTeamSlugPatchBodyType,
     )
-    from .group_0973 import (
+    from .group_0974 import (
         ReposOwnerRepoGitRefsPostBodyType as ReposOwnerRepoGitRefsPostBodyType,
     )
-    from .group_0975 import (
+    from .group_0976 import (
         ReposOwnerRepoGitTagsPostBodyType as ReposOwnerRepoGitTagsPostBodyType,
     )
-    from .group_0981 import (
+    from .group_0982 import (
         ReposOwnerRepoImportPatchBodyType as ReposOwnerRepoImportPatchBodyType,
     )
     from .group_0002 import (
@@ -1457,31 +1457,31 @@ if TYPE_CHECKING:
     from .group_0727 import (
         WebhookStatusPropBranchesItemsType as WebhookStatusPropBranchesItemsType,
     )
-    from .group_0803 import (
+    from .group_0804 import (
         OrgsOrgCodespacesAccessPutBodyType as OrgsOrgCodespacesAccessPutBodyType,
     )
-    from .group_0823 import (
+    from .group_0824 import (
         OrgsOrgHooksPostBodyPropConfigType as OrgsOrgHooksPostBodyPropConfigType,
     )
-    from .group_0971 import (
+    from .group_0972 import (
         ReposOwnerRepoGitBlobsPostBodyType as ReposOwnerRepoGitBlobsPostBodyType,
     )
-    from .group_0976 import (
+    from .group_0977 import (
         ReposOwnerRepoGitTreesPostBodyType as ReposOwnerRepoGitTreesPostBodyType,
     )
-    from .group_1021 import (
+    from .group_1022 import (
         ReposOwnerRepoProjectsPostBodyType as ReposOwnerRepoProjectsPostBodyType,
     )
-    from .group_1042 import (
+    from .group_1043 import (
         ReposOwnerRepoReleasesPostBodyType as ReposOwnerRepoReleasesPostBodyType,
     )
-    from .group_1047 import (
+    from .group_1048 import (
         ReposOwnerRepoRulesetsPostBodyType as ReposOwnerRepoRulesetsPostBodyType,
     )
-    from .group_1054 import (
+    from .group_1055 import (
         ReposOwnerRepoTransferPostBodyType as ReposOwnerRepoTransferPostBodyType,
     )
-    from .group_1057 import (
+    from .group_1058 import (
         TeamsTeamIdDiscussionsPostBodyType as TeamsTeamIdDiscussionsPostBodyType,
     )
     from .group_0032 import (
@@ -1568,25 +1568,25 @@ if TYPE_CHECKING:
     from .group_0792 import (
         OrgsOrgActionsVariablesPostBodyType as OrgsOrgActionsVariablesPostBodyType,
     )
-    from .group_0802 import (
+    from .group_0803 import (
         OrgsOrgCodespacesGetResponse200Type as OrgsOrgCodespacesGetResponse200Type,
     )
-    from .group_0847 import (
+    from .group_0848 import (
         OrgsOrgRulesetsRulesetIdPutBodyType as OrgsOrgRulesetsRulesetIdPutBodyType,
     )
-    from .group_0878 import (
+    from .group_0879 import (
         ReposOwnerRepoDeleteResponse403Type as ReposOwnerRepoDeleteResponse403Type,
     )
-    from .group_0908 import (
+    from .group_0909 import (
         ReposOwnerRepoAutolinksPostBodyType as ReposOwnerRepoAutolinksPostBodyType,
     )
-    from .group_1082 import (
+    from .group_1083 import (
         UserInstallationsGetResponse200Type as UserInstallationsGetResponse200Type,
     )
-    from .group_1086 import (
+    from .group_1087 import (
         UserMembershipsOrgsOrgPatchBodyType as UserMembershipsOrgsOrgPatchBodyType,
     )
-    from .group_1093 import (
+    from .group_1094 import (
         SigstoreBundle0PropDsseEnvelopeType as SigstoreBundle0PropDsseEnvelopeType,
     )
     from .group_0055 import (
@@ -1709,52 +1709,52 @@ if TYPE_CHECKING:
     from .group_0777 import (
         OrgsOrgActionsPermissionsPutBodyType as OrgsOrgActionsPermissionsPutBodyType,
     )
-    from .group_0832 import (
+    from .group_0833 import (
         OrgsOrgOrganizationRolesPostBodyType as OrgsOrgOrganizationRolesPostBodyType,
     )
-    from .group_0842 import (
+    from .group_0843 import (
         OrgsOrgPropertiesSchemaPatchBodyType as OrgsOrgPropertiesSchemaPatchBodyType,
     )
-    from .group_0844 import (
+    from .group_0845 import (
         OrgsOrgPropertiesValuesPatchBodyType as OrgsOrgPropertiesValuesPatchBodyType,
     )
-    from .group_0867 import (
+    from .group_0868 import (
         ProjectsColumnsColumnIdPatchBodyType as ProjectsColumnsColumnIdPatchBodyType,
     )
-    from .group_0877 import (
+    from .group_0878 import (
         ProjectsProjectIdColumnsPostBodyType as ProjectsProjectIdColumnsPostBodyType,
     )
-    from .group_0940 import (
+    from .group_0941 import (
         ReposOwnerRepoCodespacesPostBodyType as ReposOwnerRepoCodespacesPostBodyType,
     )
-    from .group_0960 import (
+    from .group_0961 import (
         ReposOwnerRepoDispatchesPostBodyType as ReposOwnerRepoDispatchesPostBodyType,
     )
-    from .group_0972 import (
+    from .group_0973 import (
         ReposOwnerRepoGitCommitsPostBodyType as ReposOwnerRepoGitCommitsPostBodyType,
     )
-    from .group_0983 import (
+    from .group_0984 import (
         ReposOwnerRepoImportLfsPatchBodyType as ReposOwnerRepoImportLfsPatchBodyType,
     )
-    from .group_1006 import (
+    from .group_1007 import (
         ReposOwnerRepoMilestonesPostBodyType as ReposOwnerRepoMilestonesPostBodyType,
     )
-    from .group_1011 import (
+    from .group_1012 import (
         ReposOwnerRepoPagesPutBodyAnyof0Type as ReposOwnerRepoPagesPutBodyAnyof0Type,
     )
-    from .group_1012 import (
+    from .group_1013 import (
         ReposOwnerRepoPagesPutBodyAnyof1Type as ReposOwnerRepoPagesPutBodyAnyof1Type,
     )
-    from .group_1013 import (
+    from .group_1014 import (
         ReposOwnerRepoPagesPutBodyAnyof2Type as ReposOwnerRepoPagesPutBodyAnyof2Type,
     )
-    from .group_1014 import (
+    from .group_1015 import (
         ReposOwnerRepoPagesPutBodyAnyof3Type as ReposOwnerRepoPagesPutBodyAnyof3Type,
     )
-    from .group_1015 import (
+    from .group_1016 import (
         ReposOwnerRepoPagesPutBodyAnyof4Type as ReposOwnerRepoPagesPutBodyAnyof4Type,
     )
-    from .group_1066 import (
+    from .group_1067 import (
         TeamsTeamIdReposOwnerRepoPutBodyType as TeamsTeamIdReposOwnerRepoPutBodyType,
     )
     from .group_0053 import (
@@ -1847,40 +1847,40 @@ if TYPE_CHECKING:
     from .group_0757 import (
         ApplicationsClientIdTokenPostBodyType as ApplicationsClientIdTokenPostBodyType,
     )
-    from .group_0825 import (
+    from .group_0826 import (
         OrgsOrgHooksHookIdConfigPatchBodyType as OrgsOrgHooksHookIdConfigPatchBodyType,
     )
-    from .group_0830 import (
+    from .group_0831 import (
         OrgsOrgMembershipsUsernamePutBodyType as OrgsOrgMembershipsUsernamePutBodyType,
     )
-    from .group_0875 import (
+    from .group_0876 import (
         ProjectsProjectIdPatchResponse403Type as ProjectsProjectIdPatchResponse403Type,
     )
-    from .group_0931 import (
+    from .group_0932 import (
         ReposOwnerRepoCheckSuitesPostBodyType as ReposOwnerRepoCheckSuitesPostBodyType,
     )
-    from .group_0951 import (
+    from .group_0952 import (
         ReposOwnerRepoContentsPathPutBodyType as ReposOwnerRepoContentsPathPutBodyType,
     )
-    from .group_0957 import (
+    from .group_0958 import (
         ReposOwnerRepoDeploymentsPostBodyType as ReposOwnerRepoDeploymentsPostBodyType,
     )
-    from .group_0974 import (
+    from .group_0975 import (
         ReposOwnerRepoGitRefsRefPatchBodyType as ReposOwnerRepoGitRefsRefPatchBodyType,
     )
-    from .group_1003 import (
+    from .group_1004 import (
         ReposOwnerRepoLabelsNamePatchBodyType as ReposOwnerRepoLabelsNamePatchBodyType,
     )
-    from .group_1017 import (
+    from .group_1018 import (
         ReposOwnerRepoPagesPostBodyAnyof0Type as ReposOwnerRepoPagesPostBodyAnyof0Type,
     )
-    from .group_1018 import (
+    from .group_1019 import (
         ReposOwnerRepoPagesPostBodyAnyof1Type as ReposOwnerRepoPagesPostBodyAnyof1Type,
     )
-    from .group_1050 import (
+    from .group_1051 import (
         ReposOwnerRepoStatusesShaPostBodyType as ReposOwnerRepoStatusesShaPostBodyType,
     )
-    from .group_1051 import (
+    from .group_1052 import (
         ReposOwnerRepoSubscriptionPutBodyType as ReposOwnerRepoSubscriptionPutBodyType,
     )
     from .group_0002 import (
@@ -2024,19 +2024,19 @@ if TYPE_CHECKING:
     from .group_0765 import (
         GistsGistIdGetResponse403PropBlockType as GistsGistIdGetResponse403PropBlockType,
     )
-    from .group_0826 import (
+    from .group_0827 import (
         OrgsOrgInstallationsGetResponse200Type as OrgsOrgInstallationsGetResponse200Type,
     )
-    from .group_0873 import (
+    from .group_0874 import (
         ProjectsProjectIdDeleteResponse403Type as ProjectsProjectIdDeleteResponse403Type,
     )
-    from .group_0905 import (
+    from .group_0906 import (
         ReposOwnerRepoAttestationsPostBodyType as ReposOwnerRepoAttestationsPostBodyType,
     )
-    from .group_0978 import (
+    from .group_0979 import (
         ReposOwnerRepoHooksHookIdPatchBodyType as ReposOwnerRepoHooksHookIdPatchBodyType,
     )
-    from .group_1008 import (
+    from .group_1009 import (
         ReposOwnerRepoNotificationsPutBodyType as ReposOwnerRepoNotificationsPutBodyType,
     )
     from .group_0011 import (
@@ -2165,19 +2165,19 @@ if TYPE_CHECKING:
     from .group_0787 import (
         OrgsOrgActionsSecretsGetResponse200Type as OrgsOrgActionsSecretsGetResponse200Type,
     )
-    from .group_0839 import (
+    from .group_0840 import (
         OrgsOrgPersonalAccessTokensPostBodyType as OrgsOrgPersonalAccessTokensPostBodyType,
     )
-    from .group_0862 import (
+    from .group_0863 import (
         ProjectsColumnsCardsCardIdPatchBodyType as ProjectsColumnsCardsCardIdPatchBodyType,
     )
-    from .group_1004 import (
+    from .group_1005 import (
         ReposOwnerRepoMergeUpstreamPostBodyType as ReposOwnerRepoMergeUpstreamPostBodyType,
     )
-    from .group_1064 import (
+    from .group_1065 import (
         TeamsTeamIdProjectsProjectIdPutBodyType as TeamsTeamIdProjectsProjectIdPutBodyType,
     )
-    from .group_1071 import (
+    from .group_1072 import (
         UserCodespacesSecretsGetResponse200Type as UserCodespacesSecretsGetResponse200Type,
     )
     from .group_0031 import (
@@ -2297,16 +2297,16 @@ if TYPE_CHECKING:
     from .group_0793 import (
         OrgsOrgActionsVariablesNamePatchBodyType as OrgsOrgActionsVariablesNamePatchBodyType,
     )
-    from .group_0871 import (
+    from .group_0872 import (
         ProjectsColumnsColumnIdMovesPostBodyType as ProjectsColumnsColumnIdMovesPostBodyType,
     )
-    from .group_0952 import (
+    from .group_0953 import (
         ReposOwnerRepoContentsPathDeleteBodyType as ReposOwnerRepoContentsPathDeleteBodyType,
     )
-    from .group_1052 import (
+    from .group_1053 import (
         ReposOwnerRepoTagsProtectionPostBodyType as ReposOwnerRepoTagsProtectionPostBodyType,
     )
-    from .group_1075 import (
+    from .group_1076 import (
         UserCodespacesCodespaceNamePatchBodyType as UserCodespacesCodespaceNamePatchBodyType,
     )
     from .group_0029 import (
@@ -2405,22 +2405,22 @@ if TYPE_CHECKING:
     from .group_0791 import (
         OrgsOrgActionsVariablesGetResponse200Type as OrgsOrgActionsVariablesGetResponse200Type,
     )
-    from .group_0824 import (
+    from .group_0825 import (
         OrgsOrgHooksHookIdPatchBodyPropConfigType as OrgsOrgHooksHookIdPatchBodyPropConfigType,
     )
-    from .group_0926 import (
+    from .group_0927 import (
         ReposOwnerRepoCheckRunsPostBodyOneof0Type as ReposOwnerRepoCheckRunsPostBodyOneof0Type,
     )
-    from .group_0927 import (
+    from .group_0928 import (
         ReposOwnerRepoCheckRunsPostBodyOneof1Type as ReposOwnerRepoCheckRunsPostBodyOneof1Type,
     )
-    from .group_0977 import (
+    from .group_0978 import (
         ReposOwnerRepoHooksPostBodyPropConfigType as ReposOwnerRepoHooksPostBodyPropConfigType,
     )
-    from .group_1016 import (
+    from .group_1017 import (
         ReposOwnerRepoPagesPostBodyPropSourceType as ReposOwnerRepoPagesPostBodyPropSourceType,
     )
-    from .group_1063 import (
+    from .group_1064 import (
         TeamsTeamIdMembershipsUsernamePutBodyType as TeamsTeamIdMembershipsUsernamePutBodyType,
     )
     from .group_0075 import (
@@ -2564,28 +2564,28 @@ if TYPE_CHECKING:
     from .group_0788 import (
         OrgsOrgActionsSecretsSecretNamePutBodyType as OrgsOrgActionsSecretsSecretNamePutBodyType,
     )
-    from .group_0806 import (
+    from .group_0807 import (
         OrgsOrgCodespacesSecretsGetResponse200Type as OrgsOrgCodespacesSecretsGetResponse200Type,
     )
-    from .group_0819 import (
+    from .group_0820 import (
         OrgsOrgDependabotSecretsGetResponse200Type as OrgsOrgDependabotSecretsGetResponse200Type,
     )
-    from .group_0900 import (
+    from .group_0901 import (
         ReposOwnerRepoActionsVariablesPostBodyType as ReposOwnerRepoActionsVariablesPostBodyType,
     )
-    from .group_0939 import (
+    from .group_0940 import (
         ReposOwnerRepoCodespacesGetResponse200Type as ReposOwnerRepoCodespacesGetResponse200Type,
     )
-    from .group_1019 import (
+    from .group_1020 import (
         ReposOwnerRepoPagesDeploymentsPostBodyType as ReposOwnerRepoPagesDeploymentsPostBodyType,
     )
-    from .group_1026 import (
+    from .group_1027 import (
         ReposOwnerRepoPullsPullNumberPatchBodyType as ReposOwnerRepoPullsPullNumberPatchBodyType,
     )
-    from .group_1048 import (
+    from .group_1049 import (
         ReposOwnerRepoRulesetsRulesetIdPutBodyType as ReposOwnerRepoRulesetsRulesetIdPutBodyType,
     )
-    from .group_1072 import (
+    from .group_1073 import (
         UserCodespacesSecretsSecretNamePutBodyType as UserCodespacesSecretsSecretNamePutBodyType,
     )
     from .group_0032 import (
@@ -2666,28 +2666,28 @@ if TYPE_CHECKING:
     from .group_0760 import (
         ApplicationsClientIdTokenScopedPostBodyType as ApplicationsClientIdTokenScopedPostBodyType,
     )
-    from .group_0833 import (
+    from .group_0834 import (
         OrgsOrgOrganizationRolesRoleIdPatchBodyType as OrgsOrgOrganizationRolesRoleIdPatchBodyType,
     )
-    from .group_0850 import (
+    from .group_0851 import (
         OrgsOrgTeamsTeamSlugDiscussionsPostBodyType as OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
     )
-    from .group_0863 import (
+    from .group_0864 import (
         ProjectsColumnsCardsCardIdMovesPostBodyType as ProjectsColumnsCardsCardIdMovesPostBodyType,
     )
-    from .group_0885 import (
+    from .group_0886 import (
         ReposOwnerRepoActionsPermissionsPutBodyType as ReposOwnerRepoActionsPermissionsPutBodyType,
     )
-    from .group_0890 import (
+    from .group_0891 import (
         ReposOwnerRepoActionsRunsGetResponse200Type as ReposOwnerRepoActionsRunsGetResponse200Type,
     )
-    from .group_0975 import (
+    from .group_0976 import (
         ReposOwnerRepoGitTagsPostBodyPropTaggerType as ReposOwnerRepoGitTagsPostBodyPropTaggerType,
     )
-    from .group_1022 import (
+    from .group_1023 import (
         ReposOwnerRepoPropertiesValuesPatchBodyType as ReposOwnerRepoPropertiesValuesPatchBodyType,
     )
-    from .group_1093 import (
+    from .group_1094 import (
         SigstoreBundle0PropVerificationMaterialType as SigstoreBundle0PropVerificationMaterialType,
     )
     from .group_0138 import (
@@ -2783,34 +2783,34 @@ if TYPE_CHECKING:
     from .group_0747 import (
         WebhookWorkflowJobWaitingPropWorkflowJobType as WebhookWorkflowJobWaitingPropWorkflowJobType,
     )
-    from .group_0810 import (
+    from .group_0811 import (
         OrgsOrgCopilotBillingSeatsGetResponse200Type as OrgsOrgCopilotBillingSeatsGetResponse200Type,
     )
-    from .group_0840 import (
+    from .group_0841 import (
         OrgsOrgPersonalAccessTokensPatIdPostBodyType as OrgsOrgPersonalAccessTokensPatIdPostBodyType,
     )
-    from .group_0845 import (
+    from .group_0846 import (
         OrgsOrgReposPostBodyPropCustomPropertiesType as OrgsOrgReposPostBodyPropCustomPropertiesType,
     )
-    from .group_0860 import (
+    from .group_0861 import (
         OrgsOrgSecurityProductEnablementPostBodyType as OrgsOrgSecurityProductEnablementPostBodyType,
     )
-    from .group_0938 import (
+    from .group_0939 import (
         ReposOwnerRepoCodeScanningSarifsPostBodyType as ReposOwnerRepoCodeScanningSarifsPostBodyType,
     )
-    from .group_0947 import (
+    from .group_0948 import (
         ReposOwnerRepoCommentsCommentIdPatchBodyType as ReposOwnerRepoCommentsCommentIdPatchBodyType,
     )
-    from .group_0958 import (
+    from .group_0959 import (
         ReposOwnerRepoDeploymentsPostResponse202Type as ReposOwnerRepoDeploymentsPostResponse202Type,
     )
-    from .group_0979 import (
+    from .group_0980 import (
         ReposOwnerRepoHooksHookIdConfigPatchBodyType as ReposOwnerRepoHooksHookIdConfigPatchBodyType,
     )
-    from .group_0989 import (
+    from .group_0990 import (
         ReposOwnerRepoIssuesIssueNumberPatchBodyType as ReposOwnerRepoIssuesIssueNumberPatchBodyType,
     )
-    from .group_1045 import (
+    from .group_1046 import (
         ReposOwnerRepoReleasesReleaseIdPatchBodyType as ReposOwnerRepoReleasesReleaseIdPatchBodyType,
     )
     from .group_0136 import (
@@ -2957,31 +2957,31 @@ if TYPE_CHECKING:
     from .group_0797 import (
         OrgsOrgCodeSecurityConfigurationsPostBodyType as OrgsOrgCodeSecurityConfigurationsPostBodyType,
     )
-    from .group_0807 import (
+    from .group_0808 import (
         OrgsOrgCodespacesSecretsSecretNamePutBodyType as OrgsOrgCodespacesSecretsSecretNamePutBodyType,
     )
-    from .group_0820 import (
+    from .group_0821 import (
         OrgsOrgDependabotSecretsSecretNamePutBodyType as OrgsOrgDependabotSecretsSecretNamePutBodyType,
     )
-    from .group_0859 import (
+    from .group_0860 import (
         OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType as OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType,
     )
-    from .group_0906 import (
+    from .group_0907 import (
         ReposOwnerRepoAttestationsPostResponse201Type as ReposOwnerRepoAttestationsPostResponse201Type,
     )
-    from .group_0925 import (
+    from .group_0926 import (
         ReposOwnerRepoCheckRunsPostBodyPropOutputType as ReposOwnerRepoCheckRunsPostBodyPropOutputType,
     )
-    from .group_0943 import (
+    from .group_0944 import (
         ReposOwnerRepoCodespacesNewGetResponse200Type as ReposOwnerRepoCodespacesNewGetResponse200Type,
     )
-    from .group_1009 import (
+    from .group_1010 import (
         ReposOwnerRepoNotificationsPutResponse202Type as ReposOwnerRepoNotificationsPutResponse202Type,
     )
-    from .group_1030 import (
+    from .group_1031 import (
         ReposOwnerRepoPullsPullNumberMergePutBodyType as ReposOwnerRepoPullsPullNumberMergePutBodyType,
     )
-    from .group_1084 import (
+    from .group_1085 import (
         UserInteractionLimitsGetResponse200Anyof1Type as UserInteractionLimitsGetResponse200Anyof1Type,
     )
     from .group_0052 import (
@@ -3098,49 +3098,49 @@ if TYPE_CHECKING:
     from .group_0784 import (
         OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType as OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
     )
-    from .group_0811 import (
+    from .group_0812 import (
         OrgsOrgCopilotBillingSelectedTeamsPostBodyType as OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
     )
-    from .group_0815 import (
+    from .group_0816 import (
         OrgsOrgCopilotBillingSelectedUsersPostBodyType as OrgsOrgCopilotBillingSelectedUsersPostBodyType,
     )
-    from .group_0834 import (
+    from .group_0835 import (
         OrgsOrgOutsideCollaboratorsUsernamePutBodyType as OrgsOrgOutsideCollaboratorsUsernamePutBodyType,
     )
-    from .group_0837 import (
+    from .group_0838 import (
         OrgsOrgPersonalAccessTokenRequestsPostBodyType as OrgsOrgPersonalAccessTokenRequestsPostBodyType,
     )
-    from .group_0868 import (
+    from .group_0869 import (
         ProjectsColumnsColumnIdCardsPostBodyOneof0Type as ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
     )
-    from .group_0869 import (
+    from .group_0870 import (
         ProjectsColumnsColumnIdCardsPostBodyOneof1Type as ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
     )
-    from .group_0886 import (
+    from .group_0887 import (
         ReposOwnerRepoActionsRunnersGetResponse200Type as ReposOwnerRepoActionsRunnersGetResponse200Type,
     )
-    from .group_0897 import (
+    from .group_0898 import (
         ReposOwnerRepoActionsSecretsGetResponse200Type as ReposOwnerRepoActionsSecretsGetResponse200Type,
     )
-    from .group_0924 import (
+    from .group_0925 import (
         ReposOwnerRepoBranchesBranchRenamePostBodyType as ReposOwnerRepoBranchesBranchRenamePostBodyType,
     )
-    from .group_0946 import (
+    from .group_0947 import (
         ReposOwnerRepoCollaboratorsUsernamePutBodyType as ReposOwnerRepoCollaboratorsUsernamePutBodyType,
     )
-    from .group_0972 import (
+    from .group_0973 import (
         ReposOwnerRepoGitCommitsPostBodyPropAuthorType as ReposOwnerRepoGitCommitsPostBodyPropAuthorType,
     )
-    from .group_0999 import (
+    from .group_1000 import (
         ReposOwnerRepoIssuesIssueNumberLockPutBodyType as ReposOwnerRepoIssuesIssueNumberLockPutBodyType,
     )
-    from .group_1010 import (
+    from .group_1011 import (
         ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type as ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
     )
-    from .group_1065 import (
+    from .group_1066 import (
         TeamsTeamIdProjectsProjectIdPutResponse403Type as TeamsTeamIdProjectsProjectIdPutResponse403Type,
     )
-    from .group_1077 import (
+    from .group_1078 import (
         UserCodespacesCodespaceNamePublishPostBodyType as UserCodespacesCodespaceNamePublishPostBodyType,
     )
     from .group_0035 import (
@@ -3263,34 +3263,34 @@ if TYPE_CHECKING:
     from .group_0785 import (
         OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType as OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
     )
-    from .group_0861 import (
+    from .group_0862 import (
         ProjectsColumnsCardsCardIdDeleteResponse403Type as ProjectsColumnsCardsCardIdDeleteResponse403Type,
     )
-    from .group_0870 import (
+    from .group_0871 import (
         ProjectsColumnsColumnIdCardsPostResponse503Type as ProjectsColumnsColumnIdCardsPostResponse503Type,
     )
-    from .group_0872 import (
+    from .group_0873 import (
         ProjectsColumnsColumnIdMovesPostResponse201Type as ProjectsColumnsColumnIdMovesPostResponse201Type,
     )
-    from .group_0881 import (
+    from .group_0882 import (
         ReposOwnerRepoActionsJobsJobIdRerunPostBodyType as ReposOwnerRepoActionsJobsJobIdRerunPostBodyType,
     )
-    from .group_0895 import (
+    from .group_0896 import (
         ReposOwnerRepoActionsRunsRunIdRerunPostBodyType as ReposOwnerRepoActionsRunsRunIdRerunPostBodyType,
     )
-    from .group_0901 import (
+    from .group_0902 import (
         ReposOwnerRepoActionsVariablesNamePatchBodyType as ReposOwnerRepoActionsVariablesNamePatchBodyType,
     )
-    from .group_0951 import (
+    from .group_0952 import (
         ReposOwnerRepoContentsPathPutBodyPropAuthorType as ReposOwnerRepoContentsPathPutBodyPropAuthorType,
     )
-    from .group_0976 import (
+    from .group_0977 import (
         ReposOwnerRepoGitTreesPostBodyPropTreeItemsType as ReposOwnerRepoGitTreesPostBodyPropTreeItemsType,
     )
-    from .group_1044 import (
+    from .group_1045 import (
         ReposOwnerRepoReleasesGenerateNotesPostBodyType as ReposOwnerRepoReleasesGenerateNotesPostBodyType,
     )
-    from .group_1070 import (
+    from .group_1071 import (
         UserCodespacesPostBodyOneof1PropPullRequestType as UserCodespacesPostBodyOneof1PropPullRequestType,
     )
     from .group_0032 import (
@@ -3380,40 +3380,40 @@ if TYPE_CHECKING:
     from .group_0779 import (
         OrgsOrgActionsPermissionsRepositoriesPutBodyType as OrgsOrgActionsPermissionsRepositoriesPutBodyType,
     )
-    from .group_0804 import (
+    from .group_0805 import (
         OrgsOrgCodespacesAccessSelectedUsersPostBodyType as OrgsOrgCodespacesAccessSelectedUsersPostBodyType,
     )
-    from .group_0813 import (
+    from .group_0814 import (
         OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType as OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
     )
-    from .group_0817 import (
+    from .group_0818 import (
         OrgsOrgCopilotBillingSelectedUsersDeleteBodyType as OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
     )
-    from .group_0827 import (
+    from .group_0828 import (
         OrgsOrgInteractionLimitsGetResponse200Anyof1Type as OrgsOrgInteractionLimitsGetResponse200Anyof1Type,
     )
-    from .group_0857 import (
+    from .group_0858 import (
         OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType as OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType,
     )
-    from .group_0880 import (
+    from .group_0881 import (
         ReposOwnerRepoActionsArtifactsGetResponse200Type as ReposOwnerRepoActionsArtifactsGetResponse200Type,
     )
-    from .group_0899 import (
+    from .group_0900 import (
         ReposOwnerRepoActionsVariablesGetResponse200Type as ReposOwnerRepoActionsVariablesGetResponse200Type,
     )
-    from .group_0902 import (
+    from .group_0903 import (
         ReposOwnerRepoActionsWorkflowsGetResponse200Type as ReposOwnerRepoActionsWorkflowsGetResponse200Type,
     )
-    from .group_0905 import (
+    from .group_0906 import (
         ReposOwnerRepoAttestationsPostBodyPropBundleType as ReposOwnerRepoAttestationsPostBodyPropBundleType,
     )
-    from .group_0982 import (
+    from .group_0983 import (
         ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType as ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType,
     )
-    from .group_1036 import (
+    from .group_1037 import (
         ReposOwnerRepoPullsPullNumberReviewsPostBodyType as ReposOwnerRepoPullsPullNumberReviewsPostBodyType,
     )
-    from .group_1043 import (
+    from .group_1044 import (
         ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType as ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType,
     )
     from .group_0107 import (
@@ -3494,31 +3494,31 @@ if TYPE_CHECKING:
     from .group_0718 import (
         WebhookSecurityAndAnalysisPropChangesPropFromType as WebhookSecurityAndAnalysisPropChangesPropFromType,
     )
-    from .group_0876 import (
+    from .group_0877 import (
         ProjectsProjectIdCollaboratorsUsernamePutBodyType as ProjectsProjectIdCollaboratorsUsernamePutBodyType,
     )
-    from .group_0898 import (
+    from .group_0899 import (
         ReposOwnerRepoActionsSecretsSecretNamePutBodyType as ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
     )
-    from .group_0909 import (
+    from .group_0910 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyType as ReposOwnerRepoBranchesBranchProtectionPutBodyType,
     )
-    from .group_0932 import (
+    from .group_0933 import (
         ReposOwnerRepoCheckSuitesPreferencesPatchBodyType as ReposOwnerRepoCheckSuitesPreferencesPatchBodyType,
     )
-    from .group_0944 import (
+    from .group_0945 import (
         ReposOwnerRepoCodespacesSecretsGetResponse200Type as ReposOwnerRepoCodespacesSecretsGetResponse200Type,
     )
-    from .group_0954 import (
+    from .group_0955 import (
         ReposOwnerRepoDependabotSecretsGetResponse200Type as ReposOwnerRepoDependabotSecretsGetResponse200Type,
     )
-    from .group_0972 import (
+    from .group_0973 import (
         ReposOwnerRepoGitCommitsPostBodyPropCommitterType as ReposOwnerRepoGitCommitsPostBodyPropCommitterType,
     )
-    from .group_1024 import (
+    from .group_1025 import (
         ReposOwnerRepoPullsCommentsCommentIdPatchBodyType as ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
     )
-    from .group_1028 import (
+    from .group_1029 import (
         ReposOwnerRepoPullsPullNumberCommentsPostBodyType as ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
     )
     from .group_0398 import (
@@ -3611,46 +3611,46 @@ if TYPE_CHECKING:
     from .group_0796 import (
         OrgsOrgAttestationsSubjectDigestGetResponse200Type as OrgsOrgAttestationsSubjectDigestGetResponse200Type,
     )
-    from .group_0805 import (
+    from .group_0806 import (
         OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType as OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType,
     )
-    from .group_0829 import (
+    from .group_0830 import (
         OrgsOrgMembersUsernameCodespacesGetResponse200Type as OrgsOrgMembersUsernameCodespacesGetResponse200Type,
     )
-    from .group_0856 import (
+    from .group_0857 import (
         OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType as OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType,
     )
-    from .group_0864 import (
+    from .group_0865 import (
         ProjectsColumnsCardsCardIdMovesPostResponse201Type as ProjectsColumnsCardsCardIdMovesPostResponse201Type,
     )
-    from .group_0865 import (
+    from .group_0866 import (
         ProjectsColumnsCardsCardIdMovesPostResponse403Type as ProjectsColumnsCardsCardIdMovesPostResponse403Type,
     )
-    from .group_0866 import (
+    from .group_0867 import (
         ProjectsColumnsCardsCardIdMovesPostResponse503Type as ProjectsColumnsCardsCardIdMovesPostResponse503Type,
     )
-    from .group_0879 import (
+    from .group_0880 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType,
     )
-    from .group_0942 import (
+    from .group_0943 import (
         ReposOwnerRepoCodespacesMachinesGetResponse200Type as ReposOwnerRepoCodespacesMachinesGetResponse200Type,
     )
-    from .group_0949 import (
+    from .group_0950 import (
         ReposOwnerRepoCommitsCommitShaCommentsPostBodyType as ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
     )
-    from .group_0951 import (
+    from .group_0952 import (
         ReposOwnerRepoContentsPathPutBodyPropCommitterType as ReposOwnerRepoContentsPathPutBodyPropCommitterType,
     )
-    from .group_0952 import (
+    from .group_0953 import (
         ReposOwnerRepoContentsPathDeleteBodyPropAuthorType as ReposOwnerRepoContentsPathDeleteBodyPropAuthorType,
     )
-    from .group_0985 import (
+    from .group_0986 import (
         ReposOwnerRepoInvitationsInvitationIdPatchBodyType as ReposOwnerRepoInvitationsInvitationIdPatchBodyType,
     )
-    from .group_0987 import (
+    from .group_0988 import (
         ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType as ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
     )
-    from .group_1055 import (
+    from .group_1056 import (
         ReposTemplateOwnerTemplateRepoGeneratePostBodyType as ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
     )
     from .group_0052 import (
@@ -3755,19 +3755,19 @@ if TYPE_CHECKING:
     from .group_0774 import (
         NotificationsThreadsThreadIdSubscriptionPutBodyType as NotificationsThreadsThreadIdSubscriptionPutBodyType,
     )
-    from .group_0925 import (
+    from .group_0926 import (
         ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType as ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
     )
-    from .group_0950 import (
+    from .group_0951 import (
         ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type as ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type,
     )
-    from .group_0992 import (
+    from .group_0993 import (
         ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType as ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
     )
-    from .group_1027 import (
+    from .group_1028 import (
         ReposOwnerRepoPullsPullNumberCodespacesPostBodyType as ReposOwnerRepoPullsPullNumberCodespacesPostBodyType,
     )
-    from .group_1058 import (
+    from .group_1059 import (
         TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType as TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType,
     )
     from .group_0054 import (
@@ -3866,52 +3866,52 @@ if TYPE_CHECKING:
     from .group_0752 import (
         AppManifestsCodeConversionsPostResponse201Allof1Type as AppManifestsCodeConversionsPostResponse201Allof1Type,
     )
-    from .group_0843 import (
+    from .group_0844 import (
         OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType as OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
     )
-    from .group_0882 import (
+    from .group_0883 import (
         ReposOwnerRepoActionsOidcCustomizationSubPutBodyType as ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
     )
-    from .group_0893 import (
+    from .group_0894 import (
         ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type as ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type,
     )
-    from .group_0929 import (
+    from .group_0930 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type,
     )
-    from .group_0930 import (
+    from .group_0931 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type,
     )
-    from .group_0945 import (
+    from .group_0946 import (
         ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType as ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType,
     )
-    from .group_0948 import (
+    from .group_0949 import (
         ReposOwnerRepoCommentsCommentIdReactionsPostBodyType as ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
     )
-    from .group_0955 import (
+    from .group_0956 import (
         ReposOwnerRepoDependabotSecretsSecretNamePutBodyType as ReposOwnerRepoDependabotSecretsSecretNamePutBodyType,
     )
-    from .group_0961 import (
+    from .group_0962 import (
         ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType as ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType,
     )
-    from .group_0990 import (
+    from .group_0991 import (
         ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType as ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType,
     )
-    from .group_1000 import (
+    from .group_1001 import (
         ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType as ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
     )
-    from .group_1007 import (
+    from .group_1008 import (
         ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType as ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType,
     )
-    from .group_1031 import (
+    from .group_1032 import (
         ReposOwnerRepoPullsPullNumberMergePutResponse405Type as ReposOwnerRepoPullsPullNumberMergePutResponse405Type,
     )
-    from .group_1032 import (
+    from .group_1033 import (
         ReposOwnerRepoPullsPullNumberMergePutResponse409Type as ReposOwnerRepoPullsPullNumberMergePutResponse409Type,
     )
-    from .group_1040 import (
+    from .group_1041 import (
         ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType as ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType,
     )
-    from .group_1046 import (
+    from .group_1047 import (
         ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType as ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
     )
     from .group_0110 import (
@@ -4073,28 +4073,31 @@ if TYPE_CHECKING:
     from .group_0783 import (
         OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type as OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type,
     )
-    from .group_0812 import (
+    from .group_0798 import (
+        OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType as OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType,
+    )
+    from .group_0813 import (
         OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type as OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type,
     )
-    from .group_0816 import (
+    from .group_0817 import (
         OrgsOrgCopilotBillingSelectedUsersPostResponse201Type as OrgsOrgCopilotBillingSelectedUsersPostResponse201Type,
     )
-    from .group_0835 import (
+    from .group_0836 import (
         OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type as OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type,
     )
-    from .group_0888 import (
+    from .group_0889 import (
         ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType as ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
     )
-    from .group_0952 import (
+    from .group_0953 import (
         ReposOwnerRepoContentsPathDeleteBodyPropCommitterType as ReposOwnerRepoContentsPathDeleteBodyPropCommitterType,
     )
-    from .group_0960 import (
+    from .group_0961 import (
         ReposOwnerRepoDispatchesPostBodyPropClientPayloadType as ReposOwnerRepoDispatchesPostBodyPropClientPayloadType,
     )
-    from .group_0986 import (
+    from .group_0987 import (
         ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type as ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type,
     )
-    from .group_1076 import (
+    from .group_1077 import (
         UserCodespacesCodespaceNameMachinesGetResponse200Type as UserCodespacesCodespaceNameMachinesGetResponse200Type,
     )
     from .group_0032 import (
@@ -4202,28 +4205,28 @@ if TYPE_CHECKING:
     from .group_0790 import (
         OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType as OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
     )
-    from .group_0889 import (
+    from .group_0890 import (
         ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType as ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
     )
-    from .group_0953 import (
+    from .group_0954 import (
         ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType as ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType,
     )
-    from .group_0957 import (
+    from .group_0958 import (
         ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type as ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type,
     )
-    from .group_0991 import (
+    from .group_0992 import (
         ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType as ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType,
     )
-    from .group_0993 import (
+    from .group_0994 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
     )
-    from .group_0994 import (
+    from .group_0995 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
     )
-    from .group_1074 import (
+    from .group_1075 import (
         UserCodespacesSecretsSecretNameRepositoriesPutBodyType as UserCodespacesSecretsSecretNameRepositoriesPutBodyType,
     )
-    from .group_1093 import (
+    from .group_1094 import (
         SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType as SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType,
     )
     from .group_0032 import (
@@ -4313,28 +4316,28 @@ if TYPE_CHECKING:
     from .group_0778 import (
         OrgsOrgActionsPermissionsRepositoriesGetResponse200Type as OrgsOrgActionsPermissionsRepositoriesGetResponse200Type,
     )
-    from .group_0814 import (
+    from .group_0815 import (
         OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type as OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type,
     )
-    from .group_0818 import (
+    from .group_0819 import (
         OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type as OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type,
     )
-    from .group_0858 import (
+    from .group_0859 import (
         OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type as OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type,
     )
-    from .group_0941 import (
+    from .group_0942 import (
         ReposOwnerRepoCodespacesDevcontainersGetResponse200Type as ReposOwnerRepoCodespacesDevcontainersGetResponse200Type,
     )
-    from .group_0984 import (
+    from .group_0985 import (
         ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type as ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type,
     )
-    from .group_0996 import (
+    from .group_0997 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
     )
-    from .group_0997 import (
+    from .group_0998 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
     )
-    from .group_1037 import (
+    from .group_1038 import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType as ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
     )
     from .group_0127 import (
@@ -4430,16 +4433,16 @@ if TYPE_CHECKING:
     from .group_0786 import (
         OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type as OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type,
     )
-    from .group_0836 import (
+    from .group_0837 import (
         OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type as OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type,
     )
-    from .group_0928 import (
+    from .group_0929 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
     )
-    from .group_0934 import (
+    from .group_0935 import (
         ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType as ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
     )
-    from .group_1093 import (
+    from .group_1094 import (
         UsersUsernameAttestationsSubjectDigestGetResponse200Type as UsersUsernameAttestationsSubjectDigestGetResponse200Type,
     )
     from .group_0177 import (
@@ -4574,34 +4577,34 @@ if TYPE_CHECKING:
     from .group_0794 import (
         OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type as OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type,
     )
-    from .group_0809 import (
+    from .group_0810 import (
         OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType as OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType,
     )
-    from .group_0822 import (
+    from .group_0823 import (
         OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType as OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType,
     )
-    from .group_0887 import (
+    from .group_0888 import (
         ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType as ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
     )
-    from .group_0891 import (
+    from .group_0892 import (
         ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type as ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type,
     )
-    from .group_0896 import (
+    from .group_0897 import (
         ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType as ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType,
     )
-    from .group_0907 import (
+    from .group_0908 import (
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type as ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type,
     )
-    from .group_0943 import (
+    from .group_0944 import (
         ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType as ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType,
     )
-    from .group_0956 import (
+    from .group_0957 import (
         ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type as ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type,
     )
-    from .group_0959 import (
+    from .group_0960 import (
         ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType as ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
     )
-    from .group_1025 import (
+    from .group_1026 import (
         ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType as ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
     )
     from .group_0177 import (
@@ -4718,19 +4721,19 @@ if TYPE_CHECKING:
     from .group_0762 import (
         EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type as EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type,
     )
-    from .group_0838 import (
+    from .group_0839 import (
         OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType as OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
     )
-    from .group_0883 import (
+    from .group_0884 import (
         ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type as ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type,
     )
-    from .group_0988 import (
+    from .group_0989 import (
         ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType as ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
     )
-    from .group_1049 import (
+    from .group_1050 import (
         ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType as ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
     )
-    from .group_1059 import (
+    from .group_1060 import (
         TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType as TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
     )
     from .group_0177 import (
@@ -4844,13 +4847,13 @@ if TYPE_CHECKING:
     from .group_0763 import (
         EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type as EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type,
     )
-    from .group_0995 import (
+    from .group_0996 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType,
     )
-    from .group_1041 import (
+    from .group_1042 import (
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type as ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type,
     )
-    from .group_1062 import (
+    from .group_1063 import (
         TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType as TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
     )
     from .group_0054 import (
@@ -4991,19 +4994,19 @@ if TYPE_CHECKING:
     from .group_0750 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryType as WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryType,
     )
-    from .group_0851 import (
+    from .group_0852 import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType,
     )
-    from .group_0884 import (
+    from .group_0885 import (
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type as ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type,
     )
-    from .group_0894 import (
+    from .group_0895 import (
         ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType as ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
     )
-    from .group_0925 import (
+    from .group_0926 import (
         ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType as ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType,
     )
-    from .group_0998 import (
+    from .group_0999 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType,
     )
     from .group_0094 import (
@@ -5147,19 +5150,19 @@ if TYPE_CHECKING:
     from .group_0789 import (
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type as OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type,
     )
-    from .group_0798 import (
+    from .group_0799 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType as OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
     )
-    from .group_1020 import (
+    from .group_1021 import (
         ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type as ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type,
     )
-    from .group_1035 import (
+    from .group_1036 import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType as ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
     )
-    from .group_1073 import (
+    from .group_1074 import (
         UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type as UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
     )
-    from .group_1083 import (
+    from .group_1084 import (
         UserInstallationsInstallationIdRepositoriesGetResponse200Type as UserInstallationsInstallationIdRepositoriesGetResponse200Type,
     )
     from .group_0403 import (
@@ -5255,22 +5258,22 @@ if TYPE_CHECKING:
     from .group_0667 import (
         WebhookPullRequestUnlockedPropPullRequestPropLinksPropSelfType as WebhookPullRequestUnlockedPropPullRequestPropLinksPropSelfType,
     )
-    from .group_0870 import (
+    from .group_0871 import (
         ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType as ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType,
     )
-    from .group_0903 import (
+    from .group_0904 import (
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType as ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
     )
-    from .group_0904 import (
+    from .group_0905 import (
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type as ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type,
     )
-    from .group_0928 import (
+    from .group_0929 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
     )
-    from .group_0968 import (
+    from .group_0969 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
     )
-    from .group_1039 import (
+    from .group_1040 import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType as ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
     )
     from .group_0031 import (
@@ -5381,7 +5384,7 @@ if TYPE_CHECKING:
     from .group_0670 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType as WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType,
     )
-    from .group_1093 import (
+    from .group_1094 import (
         SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType,
     )
     from .group_0403 import (
@@ -5492,16 +5495,16 @@ if TYPE_CHECKING:
     from .group_0750 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryType as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryType,
     )
-    from .group_0808 import (
+    from .group_0809 import (
         OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type as OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type,
     )
-    from .group_0821 import (
+    from .group_0822 import (
         OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type as OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type,
     )
-    from .group_0905 import (
+    from .group_0906 import (
         ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType as ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType,
     )
-    from .group_0933 import (
+    from .group_0934 import (
         ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type as ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type,
     )
     from .group_0108 import (
@@ -5651,43 +5654,43 @@ if TYPE_CHECKING:
     from .group_0750 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActorType as WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActorType,
     )
-    from .group_0865 import (
+    from .group_0866 import (
         ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType as ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType,
     )
-    from .group_0866 import (
+    from .group_0867 import (
         ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType as ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType,
     )
-    from .group_0909 import (
+    from .group_0910 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType,
     )
-    from .group_0925 import (
+    from .group_0926 import (
         ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType as ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType,
     )
-    from .group_0935 import (
+    from .group_0936 import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
     )
-    from .group_0936 import (
+    from .group_0937 import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
     )
-    from .group_0937 import (
+    from .group_0938 import (
         ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type as ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type,
     )
-    from .group_0989 import (
+    from .group_0990 import (
         ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type as ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type,
     )
-    from .group_1029 import (
+    from .group_1030 import (
         ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType as ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
     )
-    from .group_1033 import (
+    from .group_1034 import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type as ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type,
     )
-    from .group_1034 import (
+    from .group_1035 import (
         ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type as ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
     )
-    from .group_1036 import (
+    from .group_1037 import (
         ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType as ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType,
     )
-    from .group_1038 import (
+    from .group_1039 import (
         ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType as ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
     )
     from .group_0403 import (
@@ -5834,10 +5837,10 @@ if TYPE_CHECKING:
     from .group_0749 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActorType as WebhookWorkflowRunInProgressPropWorkflowRunPropTriggeringActorType,
     )
-    from .group_0799 import (
+    from .group_0800 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType as OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
     )
-    from .group_0965 import (
+    from .group_0966 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type,
     )
     from .group_0183 import (
@@ -5942,16 +5945,16 @@ if TYPE_CHECKING:
     from .group_0750 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsType as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsType,
     )
-    from .group_0800 import (
+    from .group_0801 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType as OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
     )
-    from .group_0852 import (
+    from .group_0853 import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
     )
-    from .group_0969 import (
+    from .group_0970 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
     )
-    from .group_1093 import (
+    from .group_1094 import (
         SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType as SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType,
     )
     from .group_0095 import (
@@ -6068,13 +6071,13 @@ if TYPE_CHECKING:
     from .group_0749 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsType as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsType,
     )
-    from .group_0855 import (
+    from .group_0856 import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
     )
-    from .group_0879 import (
+    from .group_0880 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningType,
     )
-    from .group_0967 import (
+    from .group_0968 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type,
     )
     from .group_0106 import (
@@ -6203,10 +6206,10 @@ if TYPE_CHECKING:
     from .group_0750 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwnerType as WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwnerType,
     )
-    from .group_0966 import (
+    from .group_0967 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
     )
-    from .group_0994 import (
+    from .group_0995 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType as ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType,
     )
     from .group_0094 import (
@@ -6392,13 +6395,13 @@ if TYPE_CHECKING:
     from .group_0750 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthorType as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthorType,
     )
-    from .group_0879 import (
+    from .group_0880 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType,
     )
-    from .group_0961 import (
+    from .group_0962 import (
         ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType as ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType,
     )
-    from .group_0997 import (
+    from .group_0998 import (
         ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType as ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType,
     )
     from .group_0210 import (
@@ -6545,13 +6548,13 @@ if TYPE_CHECKING:
     from .group_0796 import (
         OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType,
     )
-    from .group_0911 import (
+    from .group_0912 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType,
     )
-    from .group_0915 import (
+    from .group_0916 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
     )
-    from .group_0928 import (
+    from .group_0929 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType,
     )
     from .group_0428 import (
@@ -6692,25 +6695,25 @@ if TYPE_CHECKING:
     from .group_0671 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType,
     )
-    from .group_0903 import (
+    from .group_0904 import (
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType as ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType,
     )
-    from .group_0905 import (
+    from .group_0906 import (
         ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType as ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType,
     )
-    from .group_0916 import (
+    from .group_0917 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
     )
-    from .group_0918 import (
+    from .group_0919 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
     )
-    from .group_0921 import (
+    from .group_0922 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
     )
-    from .group_1060 import (
+    from .group_1061 import (
         TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType as TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
     )
-    from .group_1093 import (
+    from .group_1094 import (
         SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType,
     )
     from .group_0242 import (
@@ -6851,16 +6854,16 @@ if TYPE_CHECKING:
     from .group_0750 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwnerType as WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwnerType,
     )
-    from .group_0892 import (
+    from .group_0893 import (
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type as ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type,
     )
-    from .group_0909 import (
+    from .group_0910 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
     )
-    from .group_0919 import (
+    from .group_0920 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
     )
-    from .group_0922 import (
+    from .group_0923 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
     )
     from .group_0195 import (
@@ -6977,10 +6980,10 @@ if TYPE_CHECKING:
     from .group_0750 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItemsType as WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItemsType,
     )
-    from .group_0801 import (
+    from .group_0802 import (
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type as OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type,
     )
-    from .group_0917 import (
+    from .group_0918 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
     )
     from .group_0094 import (
@@ -7127,13 +7130,13 @@ if TYPE_CHECKING:
     from .group_0750 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadType as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadType,
     )
-    from .group_0920 import (
+    from .group_0921 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
     )
-    from .group_0923 import (
+    from .group_0924 import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
     )
-    from .group_0932 import (
+    from .group_0933 import (
         ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType as ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType,
     )
     from .group_0443 import (
@@ -7253,7 +7256,7 @@ if TYPE_CHECKING:
     from .group_0749 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadType as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadType,
     )
-    from .group_0928 import (
+    from .group_0929 import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType,
     )
     from .group_0094 import (
@@ -7349,13 +7352,13 @@ if TYPE_CHECKING:
     from .group_0666 import (
         WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropPermissionsType as WebhookPullRequestUnlabeledPropPullRequestPropHeadPropRepoPropPermissionsType,
     )
-    from .group_0910 import (
+    from .group_0911 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType as ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType,
     )
-    from .group_0941 import (
+    from .group_0942 import (
         ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType as ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType,
     )
-    from .group_1093 import (
+    from .group_1094 import (
         UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType as UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType,
     )
     from .group_0428 import (
@@ -7496,13 +7499,13 @@ if TYPE_CHECKING:
     from .group_0667 import (
         WebhookPullRequestUnlockedPropPullRequestPropRequestedTeamsItemsPropParentType as WebhookPullRequestUnlockedPropPullRequestPropRequestedTeamsItemsPropParentType,
     )
-    from .group_0907 import (
+    from .group_0908 import (
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType,
     )
-    from .group_0963 import (
+    from .group_0964 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
     )
-    from .group_1093 import (
+    from .group_1094 import (
         SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropKindVersionType,
     )
     from .group_0444 import (
@@ -7634,7 +7637,7 @@ if TYPE_CHECKING:
     from .group_0666 import (
         WebhookPullRequestUnlabeledPropPullRequestPropRequestedTeamsItemsPropParentType as WebhookPullRequestUnlabeledPropPullRequestPropRequestedTeamsItemsPropParentType,
     )
-    from .group_0909 import (
+    from .group_0910 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType,
     )
     from .group_0195 import (
@@ -7724,7 +7727,7 @@ if TYPE_CHECKING:
     from .group_0715 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType,
     )
-    from .group_1061 import (
+    from .group_1062 import (
         TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType as TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     )
     from .group_0428 import (
@@ -7805,7 +7808,7 @@ if TYPE_CHECKING:
     from .group_0796 import (
         OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType,
     )
-    from .group_0853 import (
+    from .group_0854 import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
     )
     from .group_0441 import (
@@ -7874,7 +7877,7 @@ if TYPE_CHECKING:
     from .group_0671 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropAuthorType as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropAuthorType,
     )
-    from .group_0879 import (
+    from .group_0880 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType,
     )
     from .group_0439 import (
@@ -7964,13 +7967,13 @@ if TYPE_CHECKING:
     from .group_0750 import (
         WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType as WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType,
     )
-    from .group_0912 import (
+    from .group_0913 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
     )
-    from .group_0962 import (
+    from .group_0963 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type,
     )
-    from .group_1093 import (
+    from .group_1094 import (
         SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropInclusionPromiseType,
     )
     from .group_0255 import (
@@ -8057,7 +8060,7 @@ if TYPE_CHECKING:
     from .group_0749 import (
         WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType as WebhookWorkflowRunInProgressPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType,
     )
-    from .group_0913 import (
+    from .group_0914 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
     )
     from .group_0445 import (
@@ -8186,10 +8189,10 @@ if TYPE_CHECKING:
     from .group_0698 import (
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesType as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesType,
     )
-    from .group_0911 import (
+    from .group_0912 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType,
     )
-    from .group_0914 import (
+    from .group_0915 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
     )
     from .group_0440 import (
@@ -8243,7 +8246,7 @@ if TYPE_CHECKING:
     from .group_0674 import (
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType as WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType,
     )
-    from .group_0879 import (
+    from .group_0880 import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsType as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsType,
     )
     from .group_0428 import (
@@ -8309,16 +8312,16 @@ if TYPE_CHECKING:
     from .group_0667 import (
         WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof1PropParentType as WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof1PropParentType,
     )
-    from .group_0907 import (
+    from .group_0908 import (
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType,
     )
-    from .group_0909 import (
+    from .group_0910 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType,
     )
-    from .group_0964 import (
+    from .group_0965 import (
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type as ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type,
     )
-    from .group_1093 import (
+    from .group_1094 import (
         SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType as SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType,
     )
     from .group_0593 import (
@@ -8363,7 +8366,7 @@ if TYPE_CHECKING:
     from .group_0671 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropMetadataItemsType as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropMetadataItemsType,
     )
-    from .group_0854 import (
+    from .group_0855 import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     )
     from .group_0593 import (
@@ -8618,7 +8621,7 @@ if TYPE_CHECKING:
     from .group_0663 import (
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParentType as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParentType,
     )
-    from .group_0910 import (
+    from .group_0911 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType as ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType,
     )
     from .group_0671 import (
@@ -8636,10 +8639,10 @@ if TYPE_CHECKING:
     from .group_0715 import (
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType as WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
     )
-    from .group_0907 import (
+    from .group_0908 import (
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType,
     )
-    from .group_0909 import (
+    from .group_0910 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictionsType as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictionsType,
     )
     from .group_0671 import (
@@ -8669,19 +8672,19 @@ if TYPE_CHECKING:
     from .group_0671 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDirectoriesOneof1Type as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropDirectoriesOneof1Type,
     )
-    from .group_0910 import (
+    from .group_0911 import (
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType as ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType,
     )
     from .group_0671 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3Type as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3Type,
     )
-    from .group_0909 import (
+    from .group_0910 import (
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType,
     )
     from .group_0671 import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropOptionalDependenciesType as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropOptionalDependenciesType,
     )
-    from .group_0907 import (
+    from .group_0908 import (
         ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType as ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType,
     )
 else:
@@ -12241,134 +12244,135 @@ else:
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
         ),
         ".group_0797": ("OrgsOrgCodeSecurityConfigurationsPostBodyType",),
-        ".group_0798": (
+        ".group_0798": ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType",),
+        ".group_0799": (
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType",
         ),
-        ".group_0799": (
+        ".group_0800": (
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",
         ),
-        ".group_0800": (
+        ".group_0801": (
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",
         ),
-        ".group_0801": (
+        ".group_0802": (
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
         ),
-        ".group_0802": ("OrgsOrgCodespacesGetResponse200Type",),
-        ".group_0803": ("OrgsOrgCodespacesAccessPutBodyType",),
-        ".group_0804": ("OrgsOrgCodespacesAccessSelectedUsersPostBodyType",),
-        ".group_0805": ("OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType",),
-        ".group_0806": (
+        ".group_0803": ("OrgsOrgCodespacesGetResponse200Type",),
+        ".group_0804": ("OrgsOrgCodespacesAccessPutBodyType",),
+        ".group_0805": ("OrgsOrgCodespacesAccessSelectedUsersPostBodyType",),
+        ".group_0806": ("OrgsOrgCodespacesAccessSelectedUsersDeleteBodyType",),
+        ".group_0807": (
             "OrgsOrgCodespacesSecretsGetResponse200Type",
             "CodespacesOrgSecretType",
         ),
-        ".group_0807": ("OrgsOrgCodespacesSecretsSecretNamePutBodyType",),
-        ".group_0808": (
+        ".group_0808": ("OrgsOrgCodespacesSecretsSecretNamePutBodyType",),
+        ".group_0809": (
             "OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
         ),
-        ".group_0809": ("OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType",),
-        ".group_0810": ("OrgsOrgCopilotBillingSeatsGetResponse200Type",),
-        ".group_0811": ("OrgsOrgCopilotBillingSelectedTeamsPostBodyType",),
-        ".group_0812": ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",),
-        ".group_0813": ("OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType",),
-        ".group_0814": ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type",),
-        ".group_0815": ("OrgsOrgCopilotBillingSelectedUsersPostBodyType",),
-        ".group_0816": ("OrgsOrgCopilotBillingSelectedUsersPostResponse201Type",),
-        ".group_0817": ("OrgsOrgCopilotBillingSelectedUsersDeleteBodyType",),
-        ".group_0818": ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",),
-        ".group_0819": (
+        ".group_0810": ("OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBodyType",),
+        ".group_0811": ("OrgsOrgCopilotBillingSeatsGetResponse200Type",),
+        ".group_0812": ("OrgsOrgCopilotBillingSelectedTeamsPostBodyType",),
+        ".group_0813": ("OrgsOrgCopilotBillingSelectedTeamsPostResponse201Type",),
+        ".group_0814": ("OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType",),
+        ".group_0815": ("OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200Type",),
+        ".group_0816": ("OrgsOrgCopilotBillingSelectedUsersPostBodyType",),
+        ".group_0817": ("OrgsOrgCopilotBillingSelectedUsersPostResponse201Type",),
+        ".group_0818": ("OrgsOrgCopilotBillingSelectedUsersDeleteBodyType",),
+        ".group_0819": ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",),
+        ".group_0820": (
             "OrgsOrgDependabotSecretsGetResponse200Type",
             "OrganizationDependabotSecretType",
         ),
-        ".group_0820": ("OrgsOrgDependabotSecretsSecretNamePutBodyType",),
-        ".group_0821": (
+        ".group_0821": ("OrgsOrgDependabotSecretsSecretNamePutBodyType",),
+        ".group_0822": (
             "OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",
         ),
-        ".group_0822": ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType",),
-        ".group_0823": (
+        ".group_0823": ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType",),
+        ".group_0824": (
             "OrgsOrgHooksPostBodyType",
             "OrgsOrgHooksPostBodyPropConfigType",
         ),
-        ".group_0824": (
+        ".group_0825": (
             "OrgsOrgHooksHookIdPatchBodyType",
             "OrgsOrgHooksHookIdPatchBodyPropConfigType",
         ),
-        ".group_0825": ("OrgsOrgHooksHookIdConfigPatchBodyType",),
-        ".group_0826": ("OrgsOrgInstallationsGetResponse200Type",),
-        ".group_0827": ("OrgsOrgInteractionLimitsGetResponse200Anyof1Type",),
-        ".group_0828": ("OrgsOrgInvitationsPostBodyType",),
-        ".group_0829": ("OrgsOrgMembersUsernameCodespacesGetResponse200Type",),
-        ".group_0830": ("OrgsOrgMembershipsUsernamePutBodyType",),
-        ".group_0831": ("OrgsOrgMigrationsPostBodyType",),
-        ".group_0832": ("OrgsOrgOrganizationRolesPostBodyType",),
-        ".group_0833": ("OrgsOrgOrganizationRolesRoleIdPatchBodyType",),
-        ".group_0834": ("OrgsOrgOutsideCollaboratorsUsernamePutBodyType",),
-        ".group_0835": ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type",),
-        ".group_0836": ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",),
-        ".group_0837": ("OrgsOrgPersonalAccessTokenRequestsPostBodyType",),
-        ".group_0838": ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType",),
-        ".group_0839": ("OrgsOrgPersonalAccessTokensPostBodyType",),
-        ".group_0840": ("OrgsOrgPersonalAccessTokensPatIdPostBodyType",),
-        ".group_0841": ("OrgsOrgProjectsPostBodyType",),
-        ".group_0842": ("OrgsOrgPropertiesSchemaPatchBodyType",),
-        ".group_0843": ("OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType",),
-        ".group_0844": ("OrgsOrgPropertiesValuesPatchBodyType",),
-        ".group_0845": (
+        ".group_0826": ("OrgsOrgHooksHookIdConfigPatchBodyType",),
+        ".group_0827": ("OrgsOrgInstallationsGetResponse200Type",),
+        ".group_0828": ("OrgsOrgInteractionLimitsGetResponse200Anyof1Type",),
+        ".group_0829": ("OrgsOrgInvitationsPostBodyType",),
+        ".group_0830": ("OrgsOrgMembersUsernameCodespacesGetResponse200Type",),
+        ".group_0831": ("OrgsOrgMembershipsUsernamePutBodyType",),
+        ".group_0832": ("OrgsOrgMigrationsPostBodyType",),
+        ".group_0833": ("OrgsOrgOrganizationRolesPostBodyType",),
+        ".group_0834": ("OrgsOrgOrganizationRolesRoleIdPatchBodyType",),
+        ".group_0835": ("OrgsOrgOutsideCollaboratorsUsernamePutBodyType",),
+        ".group_0836": ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type",),
+        ".group_0837": ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",),
+        ".group_0838": ("OrgsOrgPersonalAccessTokenRequestsPostBodyType",),
+        ".group_0839": ("OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType",),
+        ".group_0840": ("OrgsOrgPersonalAccessTokensPostBodyType",),
+        ".group_0841": ("OrgsOrgPersonalAccessTokensPatIdPostBodyType",),
+        ".group_0842": ("OrgsOrgProjectsPostBodyType",),
+        ".group_0843": ("OrgsOrgPropertiesSchemaPatchBodyType",),
+        ".group_0844": ("OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType",),
+        ".group_0845": ("OrgsOrgPropertiesValuesPatchBodyType",),
+        ".group_0846": (
             "OrgsOrgReposPostBodyType",
             "OrgsOrgReposPostBodyPropCustomPropertiesType",
         ),
-        ".group_0846": ("OrgsOrgRulesetsPostBodyType",),
-        ".group_0847": ("OrgsOrgRulesetsRulesetIdPutBodyType",),
-        ".group_0848": ("OrgsOrgTeamsPostBodyType",),
-        ".group_0849": ("OrgsOrgTeamsTeamSlugPatchBodyType",),
-        ".group_0850": ("OrgsOrgTeamsTeamSlugDiscussionsPostBodyType",),
-        ".group_0851": (
+        ".group_0847": ("OrgsOrgRulesetsPostBodyType",),
+        ".group_0848": ("OrgsOrgRulesetsRulesetIdPutBodyType",),
+        ".group_0849": ("OrgsOrgTeamsPostBodyType",),
+        ".group_0850": ("OrgsOrgTeamsTeamSlugPatchBodyType",),
+        ".group_0851": ("OrgsOrgTeamsTeamSlugDiscussionsPostBodyType",),
+        ".group_0852": (
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType",
         ),
-        ".group_0852": (
+        ".group_0853": (
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType",
         ),
-        ".group_0853": (
+        ".group_0854": (
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType",
         ),
-        ".group_0854": (
+        ".group_0855": (
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType",
         ),
-        ".group_0855": (
+        ".group_0856": (
             "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType",
         ),
-        ".group_0856": ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType",),
-        ".group_0857": ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType",),
-        ".group_0858": ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type",),
-        ".group_0859": ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",),
-        ".group_0860": ("OrgsOrgSecurityProductEnablementPostBodyType",),
-        ".group_0861": ("ProjectsColumnsCardsCardIdDeleteResponse403Type",),
-        ".group_0862": ("ProjectsColumnsCardsCardIdPatchBodyType",),
-        ".group_0863": ("ProjectsColumnsCardsCardIdMovesPostBodyType",),
-        ".group_0864": ("ProjectsColumnsCardsCardIdMovesPostResponse201Type",),
-        ".group_0865": (
+        ".group_0857": ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType",),
+        ".group_0858": ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType",),
+        ".group_0859": ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type",),
+        ".group_0860": ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType",),
+        ".group_0861": ("OrgsOrgSecurityProductEnablementPostBodyType",),
+        ".group_0862": ("ProjectsColumnsCardsCardIdDeleteResponse403Type",),
+        ".group_0863": ("ProjectsColumnsCardsCardIdPatchBodyType",),
+        ".group_0864": ("ProjectsColumnsCardsCardIdMovesPostBodyType",),
+        ".group_0865": ("ProjectsColumnsCardsCardIdMovesPostResponse201Type",),
+        ".group_0866": (
             "ProjectsColumnsCardsCardIdMovesPostResponse403Type",
             "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType",
         ),
-        ".group_0866": (
+        ".group_0867": (
             "ProjectsColumnsCardsCardIdMovesPostResponse503Type",
             "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType",
         ),
-        ".group_0867": ("ProjectsColumnsColumnIdPatchBodyType",),
-        ".group_0868": ("ProjectsColumnsColumnIdCardsPostBodyOneof0Type",),
-        ".group_0869": ("ProjectsColumnsColumnIdCardsPostBodyOneof1Type",),
-        ".group_0870": (
+        ".group_0868": ("ProjectsColumnsColumnIdPatchBodyType",),
+        ".group_0869": ("ProjectsColumnsColumnIdCardsPostBodyOneof0Type",),
+        ".group_0870": ("ProjectsColumnsColumnIdCardsPostBodyOneof1Type",),
+        ".group_0871": (
             "ProjectsColumnsColumnIdCardsPostResponse503Type",
             "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItemsType",
         ),
-        ".group_0871": ("ProjectsColumnsColumnIdMovesPostBodyType",),
-        ".group_0872": ("ProjectsColumnsColumnIdMovesPostResponse201Type",),
-        ".group_0873": ("ProjectsProjectIdDeleteResponse403Type",),
-        ".group_0874": ("ProjectsProjectIdPatchBodyType",),
-        ".group_0875": ("ProjectsProjectIdPatchResponse403Type",),
-        ".group_0876": ("ProjectsProjectIdCollaboratorsUsernamePutBodyType",),
-        ".group_0877": ("ProjectsProjectIdColumnsPostBodyType",),
-        ".group_0878": ("ReposOwnerRepoDeleteResponse403Type",),
-        ".group_0879": (
+        ".group_0872": ("ProjectsColumnsColumnIdMovesPostBodyType",),
+        ".group_0873": ("ProjectsColumnsColumnIdMovesPostResponse201Type",),
+        ".group_0874": ("ProjectsProjectIdDeleteResponse403Type",),
+        ".group_0875": ("ProjectsProjectIdPatchBodyType",),
+        ".group_0876": ("ProjectsProjectIdPatchResponse403Type",),
+        ".group_0877": ("ProjectsProjectIdCollaboratorsUsernamePutBodyType",),
+        ".group_0878": ("ProjectsProjectIdColumnsPostBodyType",),
+        ".group_0879": ("ReposOwnerRepoDeleteResponse403Type",),
+        ".group_0880": (
             "ReposOwnerRepoPatchBodyType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropAdvancedSecurityType",
@@ -12376,61 +12380,61 @@ else:
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningPushProtectionType",
             "ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
         ),
-        ".group_0880": ("ReposOwnerRepoActionsArtifactsGetResponse200Type",),
-        ".group_0881": ("ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",),
-        ".group_0882": ("ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",),
-        ".group_0883": ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type",),
-        ".group_0884": (
+        ".group_0881": ("ReposOwnerRepoActionsArtifactsGetResponse200Type",),
+        ".group_0882": ("ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",),
+        ".group_0883": ("ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",),
+        ".group_0884": ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type",),
+        ".group_0885": (
             "ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",
         ),
-        ".group_0885": ("ReposOwnerRepoActionsPermissionsPutBodyType",),
-        ".group_0886": ("ReposOwnerRepoActionsRunnersGetResponse200Type",),
-        ".group_0887": ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",),
-        ".group_0888": ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType",),
-        ".group_0889": ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType",),
-        ".group_0890": ("ReposOwnerRepoActionsRunsGetResponse200Type",),
-        ".group_0891": ("ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type",),
-        ".group_0892": (
+        ".group_0886": ("ReposOwnerRepoActionsPermissionsPutBodyType",),
+        ".group_0887": ("ReposOwnerRepoActionsRunnersGetResponse200Type",),
+        ".group_0888": ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",),
+        ".group_0889": ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType",),
+        ".group_0890": ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType",),
+        ".group_0891": ("ReposOwnerRepoActionsRunsGetResponse200Type",),
+        ".group_0892": ("ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type",),
+        ".group_0893": (
             "ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type",
         ),
-        ".group_0893": ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",),
-        ".group_0894": (
+        ".group_0894": ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",),
+        ".group_0895": (
             "ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType",
         ),
-        ".group_0895": ("ReposOwnerRepoActionsRunsRunIdRerunPostBodyType",),
-        ".group_0896": ("ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType",),
-        ".group_0897": ("ReposOwnerRepoActionsSecretsGetResponse200Type",),
-        ".group_0898": ("ReposOwnerRepoActionsSecretsSecretNamePutBodyType",),
-        ".group_0899": ("ReposOwnerRepoActionsVariablesGetResponse200Type",),
-        ".group_0900": ("ReposOwnerRepoActionsVariablesPostBodyType",),
-        ".group_0901": ("ReposOwnerRepoActionsVariablesNamePatchBodyType",),
-        ".group_0902": (
+        ".group_0896": ("ReposOwnerRepoActionsRunsRunIdRerunPostBodyType",),
+        ".group_0897": ("ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType",),
+        ".group_0898": ("ReposOwnerRepoActionsSecretsGetResponse200Type",),
+        ".group_0899": ("ReposOwnerRepoActionsSecretsSecretNamePutBodyType",),
+        ".group_0900": ("ReposOwnerRepoActionsVariablesGetResponse200Type",),
+        ".group_0901": ("ReposOwnerRepoActionsVariablesPostBodyType",),
+        ".group_0902": ("ReposOwnerRepoActionsVariablesNamePatchBodyType",),
+        ".group_0903": (
             "ReposOwnerRepoActionsWorkflowsGetResponse200Type",
             "WorkflowType",
         ),
-        ".group_0903": (
+        ".group_0904": (
             "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType",
             "ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType",
         ),
-        ".group_0904": (
+        ".group_0905": (
             "ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type",
         ),
-        ".group_0905": (
+        ".group_0906": (
             "ReposOwnerRepoAttestationsPostBodyType",
             "ReposOwnerRepoAttestationsPostBodyPropBundleType",
             "ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType",
             "ReposOwnerRepoAttestationsPostBodyPropBundlePropDsseEnvelopeType",
         ),
-        ".group_0906": ("ReposOwnerRepoAttestationsPostResponse201Type",),
-        ".group_0907": (
+        ".group_0907": ("ReposOwnerRepoAttestationsPostResponse201Type",),
+        ".group_0908": (
             "ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type",
             "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
             "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
             "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
             "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
         ),
-        ".group_0908": ("ReposOwnerRepoAutolinksPostBodyType",),
-        ".group_0909": (
+        ".group_0909": ("ReposOwnerRepoAutolinksPostBodyType",),
+        ".group_0910": (
             "ReposOwnerRepoBranchesBranchProtectionPutBodyType",
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType",
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType",
@@ -12439,346 +12443,346 @@ else:
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
             "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType",
         ),
-        ".group_0910": (
+        ".group_0911": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType",
             "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType",
             "ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType",
         ),
-        ".group_0911": (
+        ".group_0912": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType",
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType",
         ),
-        ".group_0912": (
+        ".group_0913": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type",
         ),
-        ".group_0913": (
+        ".group_0914": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type",
         ),
-        ".group_0914": (
+        ".group_0915": (
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type",
         ),
-        ".group_0915": (
+        ".group_0916": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type",
         ),
-        ".group_0916": (
+        ".group_0917": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type",
         ),
-        ".group_0917": (
+        ".group_0918": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type",
         ),
-        ".group_0918": (
+        ".group_0919": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type",
         ),
-        ".group_0919": (
+        ".group_0920": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type",
         ),
-        ".group_0920": (
+        ".group_0921": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type",
         ),
-        ".group_0921": (
+        ".group_0922": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type",
         ),
-        ".group_0922": (
+        ".group_0923": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type",
         ),
-        ".group_0923": (
+        ".group_0924": (
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type",
         ),
-        ".group_0924": ("ReposOwnerRepoBranchesBranchRenamePostBodyType",),
-        ".group_0925": (
+        ".group_0925": ("ReposOwnerRepoBranchesBranchRenamePostBodyType",),
+        ".group_0926": (
             "ReposOwnerRepoCheckRunsPostBodyPropOutputType",
             "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType",
             "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItemsType",
             "ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType",
         ),
-        ".group_0926": ("ReposOwnerRepoCheckRunsPostBodyOneof0Type",),
-        ".group_0927": ("ReposOwnerRepoCheckRunsPostBodyOneof1Type",),
-        ".group_0928": (
+        ".group_0927": ("ReposOwnerRepoCheckRunsPostBodyOneof0Type",),
+        ".group_0928": ("ReposOwnerRepoCheckRunsPostBodyOneof1Type",),
+        ".group_0929": (
             "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType",
             "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType",
             "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType",
             "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType",
         ),
-        ".group_0929": ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type",),
-        ".group_0930": ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type",),
-        ".group_0931": ("ReposOwnerRepoCheckSuitesPostBodyType",),
-        ".group_0932": (
+        ".group_0930": ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type",),
+        ".group_0931": ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type",),
+        ".group_0932": ("ReposOwnerRepoCheckSuitesPostBodyType",),
+        ".group_0933": (
             "ReposOwnerRepoCheckSuitesPreferencesPatchBodyType",
             "ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType",
         ),
-        ".group_0933": (
+        ".group_0934": (
             "ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type",
         ),
-        ".group_0934": ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType",),
-        ".group_0935": (
+        ".group_0935": ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType",),
+        ".group_0936": (
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type",
         ),
-        ".group_0936": (
+        ".group_0937": (
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type",
         ),
-        ".group_0937": (
+        ".group_0938": (
             "ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type",
         ),
-        ".group_0938": ("ReposOwnerRepoCodeScanningSarifsPostBodyType",),
-        ".group_0939": ("ReposOwnerRepoCodespacesGetResponse200Type",),
-        ".group_0940": ("ReposOwnerRepoCodespacesPostBodyType",),
-        ".group_0941": (
+        ".group_0939": ("ReposOwnerRepoCodeScanningSarifsPostBodyType",),
+        ".group_0940": ("ReposOwnerRepoCodespacesGetResponse200Type",),
+        ".group_0941": ("ReposOwnerRepoCodespacesPostBodyType",),
+        ".group_0942": (
             "ReposOwnerRepoCodespacesDevcontainersGetResponse200Type",
             "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType",
         ),
-        ".group_0942": ("ReposOwnerRepoCodespacesMachinesGetResponse200Type",),
-        ".group_0943": (
+        ".group_0943": ("ReposOwnerRepoCodespacesMachinesGetResponse200Type",),
+        ".group_0944": (
             "ReposOwnerRepoCodespacesNewGetResponse200Type",
             "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType",
         ),
-        ".group_0944": (
+        ".group_0945": (
             "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
             "RepoCodespacesSecretType",
         ),
-        ".group_0945": ("ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType",),
-        ".group_0946": ("ReposOwnerRepoCollaboratorsUsernamePutBodyType",),
-        ".group_0947": ("ReposOwnerRepoCommentsCommentIdPatchBodyType",),
-        ".group_0948": ("ReposOwnerRepoCommentsCommentIdReactionsPostBodyType",),
-        ".group_0949": ("ReposOwnerRepoCommitsCommitShaCommentsPostBodyType",),
-        ".group_0950": ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",),
-        ".group_0951": (
+        ".group_0946": ("ReposOwnerRepoCodespacesSecretsSecretNamePutBodyType",),
+        ".group_0947": ("ReposOwnerRepoCollaboratorsUsernamePutBodyType",),
+        ".group_0948": ("ReposOwnerRepoCommentsCommentIdPatchBodyType",),
+        ".group_0949": ("ReposOwnerRepoCommentsCommentIdReactionsPostBodyType",),
+        ".group_0950": ("ReposOwnerRepoCommitsCommitShaCommentsPostBodyType",),
+        ".group_0951": ("ReposOwnerRepoCommitsRefCheckRunsGetResponse200Type",),
+        ".group_0952": (
             "ReposOwnerRepoContentsPathPutBodyType",
             "ReposOwnerRepoContentsPathPutBodyPropCommitterType",
             "ReposOwnerRepoContentsPathPutBodyPropAuthorType",
         ),
-        ".group_0952": (
+        ".group_0953": (
             "ReposOwnerRepoContentsPathDeleteBodyType",
             "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
             "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
         ),
-        ".group_0953": ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType",),
-        ".group_0954": (
+        ".group_0954": ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType",),
+        ".group_0955": (
             "ReposOwnerRepoDependabotSecretsGetResponse200Type",
             "DependabotSecretType",
         ),
-        ".group_0955": ("ReposOwnerRepoDependabotSecretsSecretNamePutBodyType",),
-        ".group_0956": ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type",),
-        ".group_0957": (
+        ".group_0956": ("ReposOwnerRepoDependabotSecretsSecretNamePutBodyType",),
+        ".group_0957": ("ReposOwnerRepoDependencyGraphSnapshotsPostResponse201Type",),
+        ".group_0958": (
             "ReposOwnerRepoDeploymentsPostBodyType",
             "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type",
         ),
-        ".group_0958": ("ReposOwnerRepoDeploymentsPostResponse202Type",),
-        ".group_0959": ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType",),
-        ".group_0960": (
+        ".group_0959": ("ReposOwnerRepoDeploymentsPostResponse202Type",),
+        ".group_0960": ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType",),
+        ".group_0961": (
             "ReposOwnerRepoDispatchesPostBodyType",
             "ReposOwnerRepoDispatchesPostBodyPropClientPayloadType",
         ),
-        ".group_0961": (
+        ".group_0962": (
             "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType",
             "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType",
         ),
-        ".group_0962": (
+        ".group_0963": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
             "DeploymentBranchPolicyType",
         ),
-        ".group_0963": (
+        ".group_0964": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType",
         ),
-        ".group_0964": (
+        ".group_0965": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type",
         ),
-        ".group_0965": (
+        ".group_0966": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type",
         ),
-        ".group_0966": (
+        ".group_0967": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType",
         ),
-        ".group_0967": (
+        ".group_0968": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type",
         ),
-        ".group_0968": (
+        ".group_0969": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType",
         ),
-        ".group_0969": (
+        ".group_0970": (
             "ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType",
         ),
-        ".group_0970": ("ReposOwnerRepoForksPostBodyType",),
-        ".group_0971": ("ReposOwnerRepoGitBlobsPostBodyType",),
-        ".group_0972": (
+        ".group_0971": ("ReposOwnerRepoForksPostBodyType",),
+        ".group_0972": ("ReposOwnerRepoGitBlobsPostBodyType",),
+        ".group_0973": (
             "ReposOwnerRepoGitCommitsPostBodyType",
             "ReposOwnerRepoGitCommitsPostBodyPropAuthorType",
             "ReposOwnerRepoGitCommitsPostBodyPropCommitterType",
         ),
-        ".group_0973": ("ReposOwnerRepoGitRefsPostBodyType",),
-        ".group_0974": ("ReposOwnerRepoGitRefsRefPatchBodyType",),
-        ".group_0975": (
+        ".group_0974": ("ReposOwnerRepoGitRefsPostBodyType",),
+        ".group_0975": ("ReposOwnerRepoGitRefsRefPatchBodyType",),
+        ".group_0976": (
             "ReposOwnerRepoGitTagsPostBodyType",
             "ReposOwnerRepoGitTagsPostBodyPropTaggerType",
         ),
-        ".group_0976": (
+        ".group_0977": (
             "ReposOwnerRepoGitTreesPostBodyType",
             "ReposOwnerRepoGitTreesPostBodyPropTreeItemsType",
         ),
-        ".group_0977": (
+        ".group_0978": (
             "ReposOwnerRepoHooksPostBodyType",
             "ReposOwnerRepoHooksPostBodyPropConfigType",
         ),
-        ".group_0978": ("ReposOwnerRepoHooksHookIdPatchBodyType",),
-        ".group_0979": ("ReposOwnerRepoHooksHookIdConfigPatchBodyType",),
-        ".group_0980": ("ReposOwnerRepoImportPutBodyType",),
-        ".group_0981": ("ReposOwnerRepoImportPatchBodyType",),
-        ".group_0982": ("ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType",),
-        ".group_0983": ("ReposOwnerRepoImportLfsPatchBodyType",),
-        ".group_0984": ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type",),
-        ".group_0985": ("ReposOwnerRepoInvitationsInvitationIdPatchBodyType",),
-        ".group_0986": (
+        ".group_0979": ("ReposOwnerRepoHooksHookIdPatchBodyType",),
+        ".group_0980": ("ReposOwnerRepoHooksHookIdConfigPatchBodyType",),
+        ".group_0981": ("ReposOwnerRepoImportPutBodyType",),
+        ".group_0982": ("ReposOwnerRepoImportPatchBodyType",),
+        ".group_0983": ("ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType",),
+        ".group_0984": ("ReposOwnerRepoImportLfsPatchBodyType",),
+        ".group_0985": ("ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type",),
+        ".group_0986": ("ReposOwnerRepoInvitationsInvitationIdPatchBodyType",),
+        ".group_0987": (
             "ReposOwnerRepoIssuesPostBodyType",
             "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type",
         ),
-        ".group_0987": ("ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType",),
-        ".group_0988": ("ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType",),
-        ".group_0989": (
+        ".group_0988": ("ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType",),
+        ".group_0989": ("ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType",),
+        ".group_0990": (
             "ReposOwnerRepoIssuesIssueNumberPatchBodyType",
             "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type",
         ),
-        ".group_0990": ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",),
-        ".group_0991": ("ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType",),
-        ".group_0992": ("ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType",),
-        ".group_0993": ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type",),
-        ".group_0994": (
+        ".group_0991": ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",),
+        ".group_0992": ("ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType",),
+        ".group_0993": ("ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType",),
+        ".group_0994": ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type",),
+        ".group_0995": (
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type",
             "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType",
         ),
-        ".group_0995": ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType",),
-        ".group_0996": ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type",),
-        ".group_0997": (
+        ".group_0996": ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType",),
+        ".group_0997": ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type",),
+        ".group_0998": (
             "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type",
             "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType",
         ),
-        ".group_0998": (
+        ".group_0999": (
             "ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType",
         ),
-        ".group_0999": ("ReposOwnerRepoIssuesIssueNumberLockPutBodyType",),
-        ".group_1000": ("ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType",),
-        ".group_1001": ("ReposOwnerRepoKeysPostBodyType",),
-        ".group_1002": ("ReposOwnerRepoLabelsPostBodyType",),
-        ".group_1003": ("ReposOwnerRepoLabelsNamePatchBodyType",),
-        ".group_1004": ("ReposOwnerRepoMergeUpstreamPostBodyType",),
-        ".group_1005": ("ReposOwnerRepoMergesPostBodyType",),
-        ".group_1006": ("ReposOwnerRepoMilestonesPostBodyType",),
-        ".group_1007": ("ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType",),
-        ".group_1008": ("ReposOwnerRepoNotificationsPutBodyType",),
-        ".group_1009": ("ReposOwnerRepoNotificationsPutResponse202Type",),
-        ".group_1010": ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",),
-        ".group_1011": ("ReposOwnerRepoPagesPutBodyAnyof0Type",),
-        ".group_1012": ("ReposOwnerRepoPagesPutBodyAnyof1Type",),
-        ".group_1013": ("ReposOwnerRepoPagesPutBodyAnyof2Type",),
-        ".group_1014": ("ReposOwnerRepoPagesPutBodyAnyof3Type",),
-        ".group_1015": ("ReposOwnerRepoPagesPutBodyAnyof4Type",),
-        ".group_1016": ("ReposOwnerRepoPagesPostBodyPropSourceType",),
-        ".group_1017": ("ReposOwnerRepoPagesPostBodyAnyof0Type",),
-        ".group_1018": ("ReposOwnerRepoPagesPostBodyAnyof1Type",),
-        ".group_1019": ("ReposOwnerRepoPagesDeploymentsPostBodyType",),
-        ".group_1020": (
+        ".group_1000": ("ReposOwnerRepoIssuesIssueNumberLockPutBodyType",),
+        ".group_1001": ("ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType",),
+        ".group_1002": ("ReposOwnerRepoKeysPostBodyType",),
+        ".group_1003": ("ReposOwnerRepoLabelsPostBodyType",),
+        ".group_1004": ("ReposOwnerRepoLabelsNamePatchBodyType",),
+        ".group_1005": ("ReposOwnerRepoMergeUpstreamPostBodyType",),
+        ".group_1006": ("ReposOwnerRepoMergesPostBodyType",),
+        ".group_1007": ("ReposOwnerRepoMilestonesPostBodyType",),
+        ".group_1008": ("ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType",),
+        ".group_1009": ("ReposOwnerRepoNotificationsPutBodyType",),
+        ".group_1010": ("ReposOwnerRepoNotificationsPutResponse202Type",),
+        ".group_1011": ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",),
+        ".group_1012": ("ReposOwnerRepoPagesPutBodyAnyof0Type",),
+        ".group_1013": ("ReposOwnerRepoPagesPutBodyAnyof1Type",),
+        ".group_1014": ("ReposOwnerRepoPagesPutBodyAnyof2Type",),
+        ".group_1015": ("ReposOwnerRepoPagesPutBodyAnyof3Type",),
+        ".group_1016": ("ReposOwnerRepoPagesPutBodyAnyof4Type",),
+        ".group_1017": ("ReposOwnerRepoPagesPostBodyPropSourceType",),
+        ".group_1018": ("ReposOwnerRepoPagesPostBodyAnyof0Type",),
+        ".group_1019": ("ReposOwnerRepoPagesPostBodyAnyof1Type",),
+        ".group_1020": ("ReposOwnerRepoPagesDeploymentsPostBodyType",),
+        ".group_1021": (
             "ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",
         ),
-        ".group_1021": ("ReposOwnerRepoProjectsPostBodyType",),
-        ".group_1022": ("ReposOwnerRepoPropertiesValuesPatchBodyType",),
-        ".group_1023": ("ReposOwnerRepoPullsPostBodyType",),
-        ".group_1024": ("ReposOwnerRepoPullsCommentsCommentIdPatchBodyType",),
-        ".group_1025": ("ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType",),
-        ".group_1026": ("ReposOwnerRepoPullsPullNumberPatchBodyType",),
-        ".group_1027": ("ReposOwnerRepoPullsPullNumberCodespacesPostBodyType",),
-        ".group_1028": ("ReposOwnerRepoPullsPullNumberCommentsPostBodyType",),
-        ".group_1029": (
+        ".group_1022": ("ReposOwnerRepoProjectsPostBodyType",),
+        ".group_1023": ("ReposOwnerRepoPropertiesValuesPatchBodyType",),
+        ".group_1024": ("ReposOwnerRepoPullsPostBodyType",),
+        ".group_1025": ("ReposOwnerRepoPullsCommentsCommentIdPatchBodyType",),
+        ".group_1026": ("ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType",),
+        ".group_1027": ("ReposOwnerRepoPullsPullNumberPatchBodyType",),
+        ".group_1028": ("ReposOwnerRepoPullsPullNumberCodespacesPostBodyType",),
+        ".group_1029": ("ReposOwnerRepoPullsPullNumberCommentsPostBodyType",),
+        ".group_1030": (
             "ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType",
         ),
-        ".group_1030": ("ReposOwnerRepoPullsPullNumberMergePutBodyType",),
-        ".group_1031": ("ReposOwnerRepoPullsPullNumberMergePutResponse405Type",),
-        ".group_1032": ("ReposOwnerRepoPullsPullNumberMergePutResponse409Type",),
-        ".group_1033": (
+        ".group_1031": ("ReposOwnerRepoPullsPullNumberMergePutBodyType",),
+        ".group_1032": ("ReposOwnerRepoPullsPullNumberMergePutResponse405Type",),
+        ".group_1033": ("ReposOwnerRepoPullsPullNumberMergePutResponse409Type",),
+        ".group_1034": (
             "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0Type",
         ),
-        ".group_1034": (
+        ".group_1035": (
             "ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type",
         ),
-        ".group_1035": (
+        ".group_1036": (
             "ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType",
         ),
-        ".group_1036": (
+        ".group_1037": (
             "ReposOwnerRepoPullsPullNumberReviewsPostBodyType",
             "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType",
         ),
-        ".group_1037": ("ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType",),
-        ".group_1038": (
+        ".group_1038": ("ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType",),
+        ".group_1039": (
             "ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType",
         ),
-        ".group_1039": (
+        ".group_1040": (
             "ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType",
         ),
-        ".group_1040": ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType",),
-        ".group_1041": ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type",),
-        ".group_1042": ("ReposOwnerRepoReleasesPostBodyType",),
-        ".group_1043": ("ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType",),
-        ".group_1044": ("ReposOwnerRepoReleasesGenerateNotesPostBodyType",),
-        ".group_1045": ("ReposOwnerRepoReleasesReleaseIdPatchBodyType",),
-        ".group_1046": ("ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType",),
-        ".group_1047": ("ReposOwnerRepoRulesetsPostBodyType",),
-        ".group_1048": ("ReposOwnerRepoRulesetsRulesetIdPutBodyType",),
-        ".group_1049": ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType",),
-        ".group_1050": ("ReposOwnerRepoStatusesShaPostBodyType",),
-        ".group_1051": ("ReposOwnerRepoSubscriptionPutBodyType",),
-        ".group_1052": ("ReposOwnerRepoTagsProtectionPostBodyType",),
-        ".group_1053": ("ReposOwnerRepoTopicsPutBodyType",),
-        ".group_1054": ("ReposOwnerRepoTransferPostBodyType",),
-        ".group_1055": ("ReposTemplateOwnerTemplateRepoGeneratePostBodyType",),
-        ".group_1056": ("TeamsTeamIdPatchBodyType",),
-        ".group_1057": ("TeamsTeamIdDiscussionsPostBodyType",),
-        ".group_1058": ("TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType",),
-        ".group_1059": ("TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType",),
-        ".group_1060": (
+        ".group_1041": ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType",),
+        ".group_1042": ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type",),
+        ".group_1043": ("ReposOwnerRepoReleasesPostBodyType",),
+        ".group_1044": ("ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType",),
+        ".group_1045": ("ReposOwnerRepoReleasesGenerateNotesPostBodyType",),
+        ".group_1046": ("ReposOwnerRepoReleasesReleaseIdPatchBodyType",),
+        ".group_1047": ("ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType",),
+        ".group_1048": ("ReposOwnerRepoRulesetsPostBodyType",),
+        ".group_1049": ("ReposOwnerRepoRulesetsRulesetIdPutBodyType",),
+        ".group_1050": ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType",),
+        ".group_1051": ("ReposOwnerRepoStatusesShaPostBodyType",),
+        ".group_1052": ("ReposOwnerRepoSubscriptionPutBodyType",),
+        ".group_1053": ("ReposOwnerRepoTagsProtectionPostBodyType",),
+        ".group_1054": ("ReposOwnerRepoTopicsPutBodyType",),
+        ".group_1055": ("ReposOwnerRepoTransferPostBodyType",),
+        ".group_1056": ("ReposTemplateOwnerTemplateRepoGeneratePostBodyType",),
+        ".group_1057": ("TeamsTeamIdPatchBodyType",),
+        ".group_1058": ("TeamsTeamIdDiscussionsPostBodyType",),
+        ".group_1059": ("TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType",),
+        ".group_1060": ("TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType",),
+        ".group_1061": (
             "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType",
         ),
-        ".group_1061": (
+        ".group_1062": (
             "TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType",
         ),
-        ".group_1062": ("TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType",),
-        ".group_1063": ("TeamsTeamIdMembershipsUsernamePutBodyType",),
-        ".group_1064": ("TeamsTeamIdProjectsProjectIdPutBodyType",),
-        ".group_1065": ("TeamsTeamIdProjectsProjectIdPutResponse403Type",),
-        ".group_1066": ("TeamsTeamIdReposOwnerRepoPutBodyType",),
-        ".group_1067": ("UserPatchBodyType",),
-        ".group_1068": ("UserCodespacesGetResponse200Type",),
-        ".group_1069": ("UserCodespacesPostBodyOneof0Type",),
-        ".group_1070": (
+        ".group_1063": ("TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType",),
+        ".group_1064": ("TeamsTeamIdMembershipsUsernamePutBodyType",),
+        ".group_1065": ("TeamsTeamIdProjectsProjectIdPutBodyType",),
+        ".group_1066": ("TeamsTeamIdProjectsProjectIdPutResponse403Type",),
+        ".group_1067": ("TeamsTeamIdReposOwnerRepoPutBodyType",),
+        ".group_1068": ("UserPatchBodyType",),
+        ".group_1069": ("UserCodespacesGetResponse200Type",),
+        ".group_1070": ("UserCodespacesPostBodyOneof0Type",),
+        ".group_1071": (
             "UserCodespacesPostBodyOneof1Type",
             "UserCodespacesPostBodyOneof1PropPullRequestType",
         ),
-        ".group_1071": (
+        ".group_1072": (
             "UserCodespacesSecretsGetResponse200Type",
             "CodespacesSecretType",
         ),
-        ".group_1072": ("UserCodespacesSecretsSecretNamePutBodyType",),
-        ".group_1073": (
+        ".group_1073": ("UserCodespacesSecretsSecretNamePutBodyType",),
+        ".group_1074": (
             "UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",
         ),
-        ".group_1074": ("UserCodespacesSecretsSecretNameRepositoriesPutBodyType",),
-        ".group_1075": ("UserCodespacesCodespaceNamePatchBodyType",),
-        ".group_1076": ("UserCodespacesCodespaceNameMachinesGetResponse200Type",),
-        ".group_1077": ("UserCodespacesCodespaceNamePublishPostBodyType",),
-        ".group_1078": ("UserEmailVisibilityPatchBodyType",),
-        ".group_1079": ("UserEmailsPostBodyOneof0Type",),
-        ".group_1080": ("UserEmailsDeleteBodyOneof0Type",),
-        ".group_1081": ("UserGpgKeysPostBodyType",),
-        ".group_1082": ("UserInstallationsGetResponse200Type",),
-        ".group_1083": (
+        ".group_1075": ("UserCodespacesSecretsSecretNameRepositoriesPutBodyType",),
+        ".group_1076": ("UserCodespacesCodespaceNamePatchBodyType",),
+        ".group_1077": ("UserCodespacesCodespaceNameMachinesGetResponse200Type",),
+        ".group_1078": ("UserCodespacesCodespaceNamePublishPostBodyType",),
+        ".group_1079": ("UserEmailVisibilityPatchBodyType",),
+        ".group_1080": ("UserEmailsPostBodyOneof0Type",),
+        ".group_1081": ("UserEmailsDeleteBodyOneof0Type",),
+        ".group_1082": ("UserGpgKeysPostBodyType",),
+        ".group_1083": ("UserInstallationsGetResponse200Type",),
+        ".group_1084": (
             "UserInstallationsInstallationIdRepositoriesGetResponse200Type",
         ),
-        ".group_1084": ("UserInteractionLimitsGetResponse200Anyof1Type",),
-        ".group_1085": ("UserKeysPostBodyType",),
-        ".group_1086": ("UserMembershipsOrgsOrgPatchBodyType",),
-        ".group_1087": ("UserMigrationsPostBodyType",),
-        ".group_1088": ("UserProjectsPostBodyType",),
-        ".group_1089": ("UserReposPostBodyType",),
-        ".group_1090": ("UserSocialAccountsPostBodyType",),
-        ".group_1091": ("UserSocialAccountsDeleteBodyType",),
-        ".group_1092": ("UserSshSigningKeysPostBodyType",),
-        ".group_1093": (
+        ".group_1085": ("UserInteractionLimitsGetResponse200Anyof1Type",),
+        ".group_1086": ("UserKeysPostBodyType",),
+        ".group_1087": ("UserMembershipsOrgsOrgPatchBodyType",),
+        ".group_1088": ("UserMigrationsPostBodyType",),
+        ".group_1089": ("UserProjectsPostBodyType",),
+        ".group_1090": ("UserReposPostBodyType",),
+        ".group_1091": ("UserSocialAccountsPostBodyType",),
+        ".group_1092": ("UserSocialAccountsDeleteBodyType",),
+        ".group_1093": ("UserSshSigningKeysPostBodyType",),
+        ".group_1094": (
             "UsersUsernameAttestationsSubjectDigestGetResponse200Type",
             "UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
             "SigstoreBundle0Type",

@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -132,7 +132,7 @@ class GistsClient:
     def create(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
@@ -183,7 +183,7 @@ class GistsClient:
     async def async_create(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
@@ -481,7 +481,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         description: Missing[str] = UNSET,
         files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
@@ -543,7 +543,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         description: Missing[str] = UNSET,
         files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
@@ -675,7 +675,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> Response[GistComment]: ...
@@ -729,7 +729,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> Response[GistComment]: ...
@@ -887,7 +887,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> Response[GistComment]: ...
@@ -947,7 +947,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> Response[GistComment]: ...

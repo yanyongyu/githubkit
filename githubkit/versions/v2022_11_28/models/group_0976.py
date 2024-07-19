@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
+from datetime import datetime
 
 from pydantic import Field
 
@@ -18,45 +19,43 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoGitTreesPostBody(GitHubModel):
-    """ReposOwnerRepoGitTreesPostBody"""
+class ReposOwnerRepoGitTagsPostBody(GitHubModel):
+    """ReposOwnerRepoGitTagsPostBody"""
 
-    tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItems] = Field(
-        description="Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure."
+    tag: str = Field(
+        description='The tag\'s name. This is typically a version (e.g., "v0.0.1").'
     )
-    base_tree: Missing[str] = Field(
+    message: str = Field(description="The tag message.")
+    object_: str = Field(
+        alias="object", description="The SHA of the git object this is tagging."
+    )
+    type: Literal["commit", "tree", "blob"] = Field(
+        description="The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`."
+    )
+    tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTagger] = Field(
         default=UNSET,
-        description="The SHA1 of an existing Git tree object which will be used as the base for the new tree. If provided, a new Git tree object will be created from entries in the Git tree object pointed to by `base_tree` and entries defined in the `tree` parameter. Entries defined in the `tree` parameter will overwrite items from `base_tree` with the same `path`. If you're creating new changes on a branch, then normally you'd set `base_tree` to the SHA1 of the Git tree object of the current latest commit on the branch you're working on.\nIf not provided, GitHub will create a new Git tree object from only the entries defined in the `tree` parameter. If you create a new commit pointing to such a tree, then all files which were a part of the parent commit's tree and were not defined in the `tree` parameter will be listed as deleted by the new commit.\n",
+        description="An object with information about the individual creating the tag.",
     )
 
 
-class ReposOwnerRepoGitTreesPostBodyPropTreeItems(GitHubModel):
-    """ReposOwnerRepoGitTreesPostBodyPropTreeItems"""
+class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubModel):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
 
-    path: Missing[str] = Field(
-        default=UNSET, description="The file referenced in the tree."
-    )
-    mode: Missing[Literal["100644", "100755", "040000", "160000", "120000"]] = Field(
+    An object with information about the individual creating the tag.
+    """
+
+    name: str = Field(description="The name of the author of the tag")
+    email: str = Field(description="The email of the author of the tag")
+    date: Missing[datetime] = Field(
         default=UNSET,
-        description="The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink.",
-    )
-    type: Missing[Literal["blob", "tree", "commit"]] = Field(
-        default=UNSET, description="Either `blob`, `tree`, or `commit`."
-    )
-    sha: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The SHA1 checksum ID of the object in the tree. Also called `tree.sha`. If the value is `null` then the file will be deleted.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
-    )
-    content: Missing[str] = Field(
-        default=UNSET,
-        description="The content you want this file to have. GitHub will write this blob out and use that SHA for this entry. Use either this, or `tree.sha`.  \n  \n**Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.",
+        description="When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
 
 
-model_rebuild(ReposOwnerRepoGitTreesPostBody)
-model_rebuild(ReposOwnerRepoGitTreesPostBodyPropTreeItems)
+model_rebuild(ReposOwnerRepoGitTagsPostBody)
+model_rebuild(ReposOwnerRepoGitTagsPostBodyPropTagger)
 
 __all__ = (
-    "ReposOwnerRepoGitTreesPostBody",
-    "ReposOwnerRepoGitTreesPostBodyPropTreeItems",
+    "ReposOwnerRepoGitTagsPostBody",
+    "ReposOwnerRepoGitTagsPostBodyPropTagger",
 )

@@ -10,11 +10,11 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
+from typing import TYPE_CHECKING, Dict, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -142,7 +142,7 @@ class ScimClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         user_name: str,
         display_name: Missing[str] = UNSET,
@@ -206,7 +206,7 @@ class ScimClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         user_name: str,
         display_name: Missing[str] = UNSET,
@@ -324,7 +324,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         schemas: Missing[List[str]] = UNSET,
         display_name: Missing[str] = UNSET,
@@ -392,7 +392,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         schemas: Missing[List[str]] = UNSET,
         display_name: Missing[str] = UNSET,
@@ -510,7 +510,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         schemas: Missing[List[str]] = UNSET,
         operations: List[
@@ -579,7 +579,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         schemas: Missing[List[str]] = UNSET,
         operations: List[

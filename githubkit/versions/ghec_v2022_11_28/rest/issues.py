@@ -15,7 +15,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import Field, BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -552,7 +552,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: Union[str, int],
         body: Missing[str] = UNSET,
@@ -626,7 +626,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: Union[str, int],
         body: Missing[str] = UNSET,
@@ -878,7 +878,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> Response[IssueComment]: ...
@@ -943,7 +943,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> Response[IssueComment]: ...
@@ -1188,7 +1188,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: Missing[Union[str, int, None]] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
@@ -1273,7 +1273,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: Missing[Union[str, int, None]] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
@@ -1358,7 +1358,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         assignees: Missing[List[str]] = UNSET,
     ) -> Response[Issue]: ...
@@ -1416,7 +1416,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         assignees: Missing[List[str]] = UNSET,
     ) -> Response[Issue]: ...
@@ -1474,7 +1474,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         assignees: Missing[List[str]] = UNSET,
     ) -> Response[Issue]: ...
@@ -1532,7 +1532,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         assignees: Missing[List[str]] = UNSET,
     ) -> Response[Issue]: ...
@@ -1720,7 +1720,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> Response[IssueComment]: ...
@@ -1789,7 +1789,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         body: str,
     ) -> Response[IssueComment]: ...
@@ -2122,7 +2122,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: Missing[List[str]] = UNSET,
     ) -> Response[List[Label]]: ...
@@ -2134,7 +2134,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: Missing[
             List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
@@ -2234,7 +2234,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: Missing[List[str]] = UNSET,
     ) -> Response[List[Label]]: ...
@@ -2246,7 +2246,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: Missing[
             List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
@@ -2346,7 +2346,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: Missing[List[str]] = UNSET,
     ) -> Response[List[Label]]: ...
@@ -2358,7 +2358,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: Missing[
             List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
@@ -2458,7 +2458,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: Missing[List[str]] = UNSET,
     ) -> Response[List[Label]]: ...
@@ -2470,7 +2470,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         labels: Missing[
             List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
@@ -2676,7 +2676,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         lock_reason: Missing[
             Literal["off-topic", "too heated", "resolved", "spam"]
@@ -2751,7 +2751,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         lock_reason: Missing[
             Literal["off-topic", "too heated", "resolved", "spam"]
@@ -3170,7 +3170,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         color: Missing[str] = UNSET,
@@ -3234,7 +3234,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: str,
         color: Missing[str] = UNSET,
@@ -3392,7 +3392,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
@@ -3450,7 +3450,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
@@ -3588,7 +3588,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: str,
         state: Missing[Literal["open", "closed"]] = UNSET,
@@ -3653,7 +3653,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: str,
         state: Missing[Literal["open", "closed"]] = UNSET,
@@ -3822,7 +3822,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
@@ -3883,7 +3883,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         title: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,

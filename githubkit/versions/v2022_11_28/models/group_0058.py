@@ -75,27 +75,27 @@ class OrganizationFull(GitHubModel):
     web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
     advanced_security_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="Whether GitHub Advanced Security is enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+        description="**Deprecated.** Please use [code security configurations](https://docs.github.com/rest/code-security/configurations) instead.\n\nWhether GitHub Advanced Security is enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
     )
     dependabot_alerts_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="Whether GitHub Advanced Security is automatically enabled for new repositories and repositories transferred to\nthis organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+        description="**Deprecated.** Please use [code security configurations](https://docs.github.com/rest/code-security/configurations) instead.\n\nWhether Dependabot alerts are automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
     )
     dependabot_security_updates_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="Whether dependabot security updates are automatically enabled for new repositories and repositories transferred\nto this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+        description="**Deprecated.** Please use [code security configurations](https://docs.github.com/rest/code-security/configurations) instead.\n\nWhether Dependabot security updates are automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
     )
     dependency_graph_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="Whether dependency graph is automatically enabled for new repositories and repositories transferred to this\norganization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+        description="**Deprecated.** Please use [code security configurations](https://docs.github.com/rest/code-security/configurations) instead.\n\nWhether dependency graph is automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
     )
     secret_scanning_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="Whether secret scanning is automatically enabled for new repositories and repositories transferred to this\norganization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+        description="**Deprecated.** Please use [code security configurations](https://docs.github.com/rest/code-security/configurations) instead.\n\nWhether secret scanning is automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
     )
     secret_scanning_push_protection_enabled_for_new_repositories: Missing[bool] = Field(
         default=UNSET,
-        description="Whether secret scanning push protection is automatically enabled for new repositories and repositories\ntransferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
+        description="**Deprecated.** Please use [code security configurations](https://docs.github.com/rest/code-security/configurations) instead.\n\nWhether secret scanning push protection is automatically enabled for new repositories and repositories transferred to this organization.\n\nThis field is only visible to organization owners or members of a team with the security manager role.",
     )
     secret_scanning_push_protection_custom_link_enabled: Missing[bool] = Field(
         default=UNSET,

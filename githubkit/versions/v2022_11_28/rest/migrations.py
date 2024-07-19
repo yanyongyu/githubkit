@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -138,7 +138,7 @@ class MigrationsClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         repositories: List[str],
         lock_repositories: Missing[bool] = UNSET,
@@ -205,7 +205,7 @@ class MigrationsClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         repositories: List[str],
         lock_repositories: Missing[bool] = UNSET,
@@ -604,7 +604,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         vcs_url: str,
         vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = UNSET,
@@ -671,7 +671,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         vcs_url: str,
         vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = UNSET,
@@ -786,7 +786,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
@@ -847,7 +847,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
@@ -978,7 +978,7 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
@@ -1045,7 +1045,7 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
@@ -1164,7 +1164,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         use_lfs: Literal["opt_in", "opt_out"],
     ) -> Response[Import]: ...
@@ -1226,7 +1226,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         use_lfs: Literal["opt_in", "opt_out"],
     ) -> Response[Import]: ...
@@ -1352,7 +1352,7 @@ class MigrationsClient:
     def start_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         lock_repositories: Missing[bool] = UNSET,
         exclude_metadata: Missing[bool] = UNSET,
@@ -1417,7 +1417,7 @@ class MigrationsClient:
     async def async_start_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         lock_repositories: Missing[bool] = UNSET,
         exclude_metadata: Missing[bool] = UNSET,

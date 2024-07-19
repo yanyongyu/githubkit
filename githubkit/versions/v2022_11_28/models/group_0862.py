@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List
 
 from pydantic import Field
 
@@ -18,17 +18,14 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsCardsCardIdPatchBody(GitHubModel):
-    """ProjectsColumnsCardsCardIdPatchBody"""
+class ProjectsColumnsCardsCardIdDeleteResponse403(GitHubModel):
+    """ProjectsColumnsCardsCardIdDeleteResponse403"""
 
-    note: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The project card's note"
-    )
-    archived: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the card is archived"
-    )
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[List[str]] = Field(default=UNSET)
 
 
-model_rebuild(ProjectsColumnsCardsCardIdPatchBody)
+model_rebuild(ProjectsColumnsCardsCardIdDeleteResponse403)
 
-__all__ = ("ProjectsColumnsCardsCardIdPatchBody",)
+__all__ = ("ProjectsColumnsCardsCardIdDeleteResponse403",)

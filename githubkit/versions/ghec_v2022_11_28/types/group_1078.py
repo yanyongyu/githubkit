@@ -14,13 +14,13 @@ from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoMilestonesMilestoneNumberPatchBody"""
+class ReposOwnerRepoMilestonesPostBodyType(TypedDict):
+    """ReposOwnerRepoMilestonesPostBody"""
 
-    title: NotRequired[str]
+    title: str
     state: NotRequired[Literal["open", "closed"]]
     description: NotRequired[str]
     due_on: NotRequired[datetime]
 
 
-__all__ = ("ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType",)
+__all__ = ("ReposOwnerRepoMilestonesPostBodyType",)

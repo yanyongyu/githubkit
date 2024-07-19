@@ -17,7 +17,7 @@ from typing import (
 import httpx
 from pydantic import Field
 
-from .utils import UNSET
+from .utils import Unset
 from .compat import PYDANTIC_V2
 from .exception import GitHubException
 
@@ -76,9 +76,11 @@ if PYDANTIC_V2:  # pragma: pydantic-v2
 else:  # pragma: pydantic-v1
     UniqueList: TypeAlias = Annotated[List[H], Field(unique_items=True)]  # type: ignore
 
+UnsetType: TypeAlias = Literal[Unset._UNSET]
+
 # if the property is not required, we allow it to have the value null.
 # See https://github.com/yanyongyu/githubkit/issues/47
-Missing: TypeAlias = Union[Literal[UNSET], T, None]
+Missing: TypeAlias = Union[UnsetType, T, None]
 
 
 class RetryOption(NamedTuple):

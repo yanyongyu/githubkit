@@ -13,13 +13,14 @@ from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoStatusesShaPostBodyType(TypedDict):
-    """ReposOwnerRepoStatusesShaPostBody"""
+class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody"""
 
-    state: Literal["error", "failure", "pending", "success"]
-    target_url: NotRequired[Union[str, None]]
-    description: NotRequired[Union[str, None]]
-    context: NotRequired[str]
+    state: Literal["open", "resolved"]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ]
+    resolution_comment: NotRequired[Union[str, None]]
 
 
-__all__ = ("ReposOwnerRepoStatusesShaPostBodyType",)
+__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType",)

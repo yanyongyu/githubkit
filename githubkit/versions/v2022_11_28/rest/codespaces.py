@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -170,7 +170,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         visibility: Literal[
             "disabled",
@@ -230,7 +230,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         visibility: Literal[
             "disabled",
@@ -290,7 +290,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
     ) -> Response: ...
@@ -348,7 +348,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
     ) -> Response: ...
@@ -406,7 +406,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
     ) -> Response: ...
@@ -466,7 +466,7 @@ class CodespacesClient:
         self,
         org: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_usernames: List[str],
     ) -> Response: ...
@@ -672,7 +672,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
@@ -737,7 +737,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
@@ -922,7 +922,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
     ) -> Response: ...
@@ -984,7 +984,7 @@ class CodespacesClient:
         org: str,
         secret_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
     ) -> Response: ...
@@ -1424,7 +1424,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
@@ -1503,7 +1503,7 @@ class CodespacesClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         ref: Missing[str] = UNSET,
         location: Missing[str] = UNSET,
@@ -2044,7 +2044,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
@@ -2106,7 +2106,7 @@ class CodespacesClient:
         repo: str,
         secret_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
@@ -2208,7 +2208,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         location: Missing[str] = UNSET,
         geo: Missing[
@@ -2292,7 +2292,7 @@ class CodespacesClient:
         repo: str,
         pull_number: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         location: Missing[str] = UNSET,
         geo: Missing[
@@ -2442,7 +2442,7 @@ class CodespacesClient:
     def create_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         repository_id: int,
         ref: Missing[str] = UNSET,
@@ -2464,7 +2464,7 @@ class CodespacesClient:
     def create_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         pull_request: UserCodespacesPostBodyOneof1PropPullRequestType,
         location: Missing[str] = UNSET,
@@ -2537,7 +2537,7 @@ class CodespacesClient:
     async def async_create_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         repository_id: int,
         ref: Missing[str] = UNSET,
@@ -2559,7 +2559,7 @@ class CodespacesClient:
     async def async_create_for_authenticated_user(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         pull_request: UserCodespacesPostBodyOneof1PropPullRequestType,
         location: Missing[str] = UNSET,
@@ -2772,7 +2772,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: str,
@@ -2833,7 +2833,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: str,
@@ -2990,7 +2990,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
     ) -> Response: ...
@@ -3050,7 +3050,7 @@ class CodespacesClient:
         self,
         secret_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         selected_repository_ids: List[int],
     ) -> Response: ...
@@ -3332,7 +3332,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         machine: Missing[str] = UNSET,
         display_name: Missing[str] = UNSET,
@@ -3389,7 +3389,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         machine: Missing[str] = UNSET,
         display_name: Missing[str] = UNSET,
@@ -3612,7 +3612,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         private: Missing[bool] = UNSET,
@@ -3674,7 +3674,7 @@ class CodespacesClient:
         self,
         codespace_name: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         name: Missing[str] = UNSET,
         private: Missing[bool] = UNSET,

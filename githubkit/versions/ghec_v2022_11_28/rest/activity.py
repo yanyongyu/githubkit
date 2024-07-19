@@ -14,7 +14,7 @@ from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
 from pydantic import BaseModel
 
-from githubkit.typing import Missing
+from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
@@ -350,7 +350,7 @@ class ActivityClient:
     def mark_notifications_as_read(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
         read: Missing[bool] = UNSET,
@@ -406,7 +406,7 @@ class ActivityClient:
     async def async_mark_notifications_as_read(
         self,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
         read: Missing[bool] = UNSET,
@@ -646,7 +646,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         ignored: Missing[bool] = UNSET,
     ) -> Response[ThreadSubscription]: ...
@@ -706,7 +706,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         ignored: Missing[bool] = UNSET,
     ) -> Response[ThreadSubscription]: ...
@@ -1022,7 +1022,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
     ) -> Response[ReposOwnerRepoNotificationsPutResponse202]: ...
@@ -1078,7 +1078,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
     ) -> Response[ReposOwnerRepoNotificationsPutResponse202]: ...
@@ -1318,7 +1318,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
@@ -1372,7 +1372,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        data: Literal[UNSET] = UNSET,
+        data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
