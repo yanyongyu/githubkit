@@ -358,6 +358,8 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
   "repository",
   "sender",
 ] }
+# webhook check suite completed events can be any strings
+"/components/schemas/webhook-check-suite-completed/properties/check_suite/properties/app/properties/events/items" = { enum = "<unset>" }
 # webhook deployment protection rule action is required
 "/components/schemas/webhook-deployment-protection-rule-requested" = { required = [
   "action",
