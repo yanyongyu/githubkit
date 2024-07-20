@@ -358,8 +358,34 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
   "repository",
   "sender",
 ] }
-# webhook check suite completed events can be any strings
+
+# webhook github app events enum schema is not always up to date
+# https://github.com/github/rest-api-description/issues/3775
+"/components/schemas/webhooks_issue/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhooks_issue_2/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
 "/components/schemas/webhook-check-suite-completed/properties/check_suite/properties/app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-check-suite-requested/properties/check_suite/properties/app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-check-suite-rerequested/properties/check_suite/properties/app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-deployment-created/properties/deployment/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-deployment-status-created/properties/deployment/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-deployment-status-created/properties/deployment_status/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-issue-comment-created/properties/issue/allOf/0/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-issue-comment-deleted/properties/issue/allOf/0/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-issue-comment-edited/properties/issue/allOf/0/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-issues-closed/properties/issue/allOf/0/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-issues-deleted/properties/issue/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-issues-demilestoned/properties/issue/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-issues-edited/properties/issue/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-issues-labeled/properties/issue/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-issues-locked/properties/issue/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-issues-milestoned/properties/issue/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-issues-opened/properties/changes/properties/old_issue/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-issues-opened/properties/issue/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-issues-reopened/properties/issue/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-issues-transferred/properties/changes/properties/new_issue/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-issues-unlocked/properties/issue/properties/performed_via_github_app/properties/events/items" = { enum = "<unset>" }
+"/components/schemas/webhook-meta-deleted/properties/hook/properties/events/items" = { enum = "<unset>" }
+
 # webhook deployment protection rule action is required
 "/components/schemas/webhook-deployment-protection-rule-requested" = { required = [
   "action",
