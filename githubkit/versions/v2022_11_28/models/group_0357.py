@@ -18,93 +18,65 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0350 import SearchResultTextMatchesItems
+from .group_0349 import SearchResultTextMatchesItems
 
 
-class TopicSearchResultItem(GitHubModel):
-    """Topic Search Result Item
+class UserSearchResultItem(GitHubModel):
+    """User Search Result Item
 
-    Topic Search Result Item
+    User Search Result Item
     """
 
-    name: str = Field()
-    display_name: Union[str, None] = Field()
-    short_description: Union[str, None] = Field()
-    description: Union[str, None] = Field()
-    created_by: Union[str, None] = Field()
-    released: Union[str, None] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    featured: bool = Field()
-    curated: bool = Field()
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
     score: float = Field()
-    repository_count: Missing[Union[int, None]] = Field(default=UNSET)
-    logo_url: Missing[Union[str, None]] = Field(default=UNSET)
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    events_url: str = Field()
+    public_repos: Missing[int] = Field(default=UNSET)
+    public_gists: Missing[int] = Field(default=UNSET)
+    followers: Missing[int] = Field(default=UNSET)
+    following: Missing[int] = Field(default=UNSET)
+    created_at: Missing[datetime] = Field(default=UNSET)
+    updated_at: Missing[datetime] = Field(default=UNSET)
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    bio: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    location: Missing[Union[str, None]] = Field(default=UNSET)
+    site_admin: bool = Field()
+    hireable: Missing[Union[bool, None]] = Field(default=UNSET)
     text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
         default=UNSET, title="Search Result Text Matches"
     )
-    related: Missing[Union[List[TopicSearchResultItemPropRelatedItems], None]] = Field(
-        default=UNSET
-    )
-    aliases: Missing[Union[List[TopicSearchResultItemPropAliasesItems], None]] = Field(
-        default=UNSET
-    )
+    blog: Missing[Union[str, None]] = Field(default=UNSET)
+    company: Missing[Union[str, None]] = Field(default=UNSET)
+    suspended_at: Missing[Union[datetime, None]] = Field(default=UNSET)
 
 
-class TopicSearchResultItemPropRelatedItems(GitHubModel):
-    """TopicSearchResultItemPropRelatedItems"""
-
-    topic_relation: Missing[TopicSearchResultItemPropRelatedItemsPropTopicRelation] = (
-        Field(default=UNSET)
-    )
-
-
-class TopicSearchResultItemPropRelatedItemsPropTopicRelation(GitHubModel):
-    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
-
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    topic_id: Missing[int] = Field(default=UNSET)
-    relation_type: Missing[str] = Field(default=UNSET)
-
-
-class TopicSearchResultItemPropAliasesItems(GitHubModel):
-    """TopicSearchResultItemPropAliasesItems"""
-
-    topic_relation: Missing[TopicSearchResultItemPropAliasesItemsPropTopicRelation] = (
-        Field(default=UNSET)
-    )
-
-
-class TopicSearchResultItemPropAliasesItemsPropTopicRelation(GitHubModel):
-    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
-
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    topic_id: Missing[int] = Field(default=UNSET)
-    relation_type: Missing[str] = Field(default=UNSET)
-
-
-class SearchTopicsGetResponse200(GitHubModel):
-    """SearchTopicsGetResponse200"""
+class SearchUsersGetResponse200(GitHubModel):
+    """SearchUsersGetResponse200"""
 
     total_count: int = Field()
     incomplete_results: bool = Field()
-    items: List[TopicSearchResultItem] = Field()
+    items: List[UserSearchResultItem] = Field()
 
 
-model_rebuild(TopicSearchResultItem)
-model_rebuild(TopicSearchResultItemPropRelatedItems)
-model_rebuild(TopicSearchResultItemPropRelatedItemsPropTopicRelation)
-model_rebuild(TopicSearchResultItemPropAliasesItems)
-model_rebuild(TopicSearchResultItemPropAliasesItemsPropTopicRelation)
-model_rebuild(SearchTopicsGetResponse200)
+model_rebuild(UserSearchResultItem)
+model_rebuild(SearchUsersGetResponse200)
 
 __all__ = (
-    "TopicSearchResultItem",
-    "TopicSearchResultItemPropRelatedItems",
-    "TopicSearchResultItemPropRelatedItemsPropTopicRelation",
-    "TopicSearchResultItemPropAliasesItems",
-    "TopicSearchResultItemPropAliasesItemsPropTopicRelation",
-    "SearchTopicsGetResponse200",
+    "UserSearchResultItem",
+    "SearchUsersGetResponse200",
 )

@@ -9,21 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import List
 from typing_extensions import TypedDict
 
-from .group_0001 import SimpleUserType
 
+class CommitActivityType(TypedDict):
+    """Commit Activity
 
-class StargazerType(TypedDict):
-    """Stargazer
-
-    Stargazer
+    Commit Activity
     """
 
-    starred_at: datetime
-    user: Union[None, SimpleUserType]
+    days: List[int]
+    total: int
+    week: int
 
 
-__all__ = ("StargazerType",)
+__all__ = ("CommitActivityType",)

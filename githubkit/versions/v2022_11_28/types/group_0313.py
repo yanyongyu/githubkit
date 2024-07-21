@@ -10,31 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
-from typing_extensions import TypedDict
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
+from .group_0312 import ReleaseAssetType
+from .group_0038 import ReactionRollupType
 
 
-class ReleaseAssetType(TypedDict):
-    """Release Asset
+class ReleaseType(TypedDict):
+    """Release
 
-    Data related to a release.
+    A release.
     """
 
     url: str
-    browser_download_url: str
+    html_url: str
+    assets_url: str
+    upload_url: str
+    tarball_url: Union[str, None]
+    zipball_url: Union[str, None]
     id: int
     node_id: str
-    name: str
-    label: Union[str, None]
-    state: Literal["uploaded", "open"]
-    content_type: str
-    size: int
-    download_count: int
+    tag_name: str
+    target_commitish: str
+    name: Union[str, None]
+    body: NotRequired[Union[str, None]]
+    draft: bool
+    prerelease: bool
     created_at: datetime
-    updated_at: datetime
-    uploader: Union[None, SimpleUserType]
+    published_at: Union[datetime, None]
+    author: SimpleUserType
+    assets: List[ReleaseAssetType]
+    body_html: NotRequired[Union[str, None]]
+    body_text: NotRequired[Union[str, None]]
+    mentions_count: NotRequired[int]
+    discussion_url: NotRequired[str]
+    reactions: NotRequired[ReactionRollupType]
 
 
-__all__ = ("ReleaseAssetType",)
+__all__ = ("ReleaseType",)

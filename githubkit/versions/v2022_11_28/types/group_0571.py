@@ -12,19 +12,18 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0384 import WebhooksUserType
-from .group_0372 import EnterpriseWebhooksType
-from .group_0373 import SimpleInstallationType
-from .group_0375 import RepositoryWebhooksType
-from .group_0376 import SimpleUserWebhooksType
-from .group_0374 import OrganizationSimpleWebhooksType
+from .group_0383 import WebhooksUserType
+from .group_0371 import EnterpriseWebhooksType
+from .group_0372 import SimpleInstallationType
+from .group_0374 import RepositoryWebhooksType
+from .group_0375 import SimpleUserWebhooksType
+from .group_0373 import OrganizationSimpleWebhooksType
 
 
-class WebhookMemberEditedType(TypedDict):
-    """member edited event"""
+class WebhookMemberRemovedType(TypedDict):
+    """member removed event"""
 
-    action: Literal["edited"]
-    changes: WebhookMemberEditedPropChangesType
+    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     member: Union[WebhooksUserType, None]
@@ -33,32 +32,4 @@ class WebhookMemberEditedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-class WebhookMemberEditedPropChangesType(TypedDict):
-    """WebhookMemberEditedPropChanges
-
-    The changes to the collaborator permissions
-    """
-
-    old_permission: NotRequired[WebhookMemberEditedPropChangesPropOldPermissionType]
-    permission: NotRequired[WebhookMemberEditedPropChangesPropPermissionType]
-
-
-class WebhookMemberEditedPropChangesPropOldPermissionType(TypedDict):
-    """WebhookMemberEditedPropChangesPropOldPermission"""
-
-    from_: str
-
-
-class WebhookMemberEditedPropChangesPropPermissionType(TypedDict):
-    """WebhookMemberEditedPropChangesPropPermission"""
-
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-__all__ = (
-    "WebhookMemberEditedType",
-    "WebhookMemberEditedPropChangesType",
-    "WebhookMemberEditedPropChangesPropOldPermissionType",
-    "WebhookMemberEditedPropChangesPropPermissionType",
-)
+__all__ = ("WebhookMemberRemovedType",)

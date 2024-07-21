@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0372 import EnterpriseWebhooksType
-from .group_0373 import SimpleInstallationType
-from .group_0375 import RepositoryWebhooksType
-from .group_0376 import SimpleUserWebhooksType
-from .group_0374 import OrganizationSimpleWebhooksType
+from .group_0371 import EnterpriseWebhooksType
+from .group_0372 import SimpleInstallationType
+from .group_0374 import RepositoryWebhooksType
+from .group_0375 import SimpleUserWebhooksType
+from .group_0373 import OrganizationSimpleWebhooksType
 
 
-class WebhookBranchProtectionConfigurationDisabledType(TypedDict):
-    """branch protection configuration disabled event"""
+class WebhookBranchProtectionConfigurationEnabledType(TypedDict):
+    """branch protection configuration enabled event"""
 
-    action: Literal["disabled"]
+    action: Literal["enabled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -30,4 +30,4 @@ class WebhookBranchProtectionConfigurationDisabledType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookBranchProtectionConfigurationDisabledType",)
+__all__ = ("WebhookBranchProtectionConfigurationEnabledType",)

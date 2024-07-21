@@ -10,57 +10,36 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0243 import MetadataType
+from .group_0001 import SimpleUserType
+from .group_0006 import IntegrationType
 
 
-class SnapshotType(TypedDict):
-    """snapshot
+class DeploymentStatusType(TypedDict):
+    """Deployment Status
 
-    Create a new snapshot of a repository's dependencies.
+    The status of a deployment.
     """
 
-    version: int
-    job: SnapshotPropJobType
-    sha: str
-    ref: str
-    detector: SnapshotPropDetectorType
-    metadata: NotRequired[MetadataType]
-    manifests: NotRequired[SnapshotPropManifestsType]
-    scanned: datetime
-
-
-class SnapshotPropJobType(TypedDict):
-    """SnapshotPropJob"""
-
-    id: str
-    correlator: str
-    html_url: NotRequired[str]
-
-
-class SnapshotPropDetectorType(TypedDict):
-    """SnapshotPropDetector
-
-    A description of the detector used.
-    """
-
-    name: str
-    version: str
     url: str
+    id: int
+    node_id: str
+    state: Literal[
+        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
+    ]
+    creator: Union[None, SimpleUserType]
+    description: str
+    environment: NotRequired[str]
+    target_url: str
+    created_at: datetime
+    updated_at: datetime
+    deployment_url: str
+    repository_url: str
+    environment_url: NotRequired[str]
+    log_url: NotRequired[str]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-class SnapshotPropManifestsType(TypedDict):
-    """SnapshotPropManifests
-
-    A collection of package manifests, which are a collection of related
-    dependencies declared in a file or representing a logical group of dependencies.
-    """
-
-
-__all__ = (
-    "SnapshotType",
-    "SnapshotPropJobType",
-    "SnapshotPropDetectorType",
-    "SnapshotPropManifestsType",
-)
+__all__ = ("DeploymentStatusType",)

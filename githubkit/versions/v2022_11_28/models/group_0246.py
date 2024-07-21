@@ -10,87 +10,56 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0243 import Metadata
+from .group_0001 import SimpleUser
+from .group_0006 import Integration
 
 
-class Snapshot(GitHubModel):
-    """snapshot
+class DeploymentStatus(GitHubModel):
+    """Deployment Status
 
-    Create a new snapshot of a repository's dependencies.
+    The status of a deployment.
     """
 
-    version: int = Field(
-        description="The version of the repository snapshot submission."
+    url: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    state: Literal[
+        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
+    ] = Field(description="The state of the status.")
+    creator: Union[None, SimpleUser] = Field()
+    description: str = Field(
+        max_length=140, default="", description="A short description of the status."
     )
-    job: SnapshotPropJob = Field()
-    sha: str = Field(
-        min_length=40,
-        max_length=40,
-        description="The commit SHA associated with this dependency snapshot. Maximum length: 40 characters.",
-    )
-    ref: str = Field(
-        pattern="^refs/",
-        description="The repository branch that triggered this snapshot.",
-    )
-    detector: SnapshotPropDetector = Field(
-        description="A description of the detector used."
-    )
-    metadata: Missing[Metadata] = Field(
+    environment: Missing[str] = Field(
         default=UNSET,
-        title="metadata",
-        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
+        description="The environment of the deployment that the status is for.",
     )
-    manifests: Missing[SnapshotPropManifests] = Field(
-        default=UNSET,
-        description="A collection of package manifests, which are a collection of related dependencies declared in a file or representing a logical group of dependencies.",
+    target_url: str = Field(
+        default="", description="Deprecated: the URL to associate with this status."
     )
-    scanned: datetime = Field(description="The time at which the snapshot was scanned.")
-
-
-class SnapshotPropJob(GitHubModel):
-    """SnapshotPropJob"""
-
-    id: str = Field(description="The external ID of the job.")
-    correlator: str = Field(
-        description="Correlator provides a key that is used to group snapshots submitted over time. Only the \"latest\" submitted snapshot for a given combination of `job.correlator` and `detector.name` will be considered when calculating a repository's current dependencies. Correlator should be as unique as it takes to distinguish all detection runs for a given \"wave\" of CI workflow you run. If you're using GitHub Actions, a good default value for this could be the environment variables GITHUB_WORKFLOW and GITHUB_JOB concatenated together. If you're using a build matrix, then you'll also need to add additional key(s) to distinguish between each submission inside a matrix variation."
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    deployment_url: str = Field()
+    repository_url: str = Field()
+    environment_url: Missing[str] = Field(
+        default=UNSET, description="The URL for accessing your environment."
     )
-    html_url: Missing[str] = Field(default=UNSET, description="The url for the job.")
+    log_url: Missing[str] = Field(
+        default=UNSET, description="The URL to associate with this status."
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
 
 
-class SnapshotPropDetector(GitHubModel):
-    """SnapshotPropDetector
+model_rebuild(DeploymentStatus)
 
-    A description of the detector used.
-    """
-
-    name: str = Field(description="The name of the detector used.")
-    version: str = Field(description="The version of the detector used.")
-    url: str = Field(description="The url of the detector used.")
-
-
-class SnapshotPropManifests(ExtraGitHubModel):
-    """SnapshotPropManifests
-
-    A collection of package manifests, which are a collection of related
-    dependencies declared in a file or representing a logical group of dependencies.
-    """
-
-
-model_rebuild(Snapshot)
-model_rebuild(SnapshotPropJob)
-model_rebuild(SnapshotPropDetector)
-model_rebuild(SnapshotPropManifests)
-
-__all__ = (
-    "Snapshot",
-    "SnapshotPropJob",
-    "SnapshotPropDetector",
-    "SnapshotPropManifests",
-)
+__all__ = ("DeploymentStatus",)

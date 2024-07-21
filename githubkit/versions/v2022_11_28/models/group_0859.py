@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,13 +18,14 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403(GitHubModel):
-    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403"""
+class ProjectsColumnsCardsCardIdDeleteResponse403(GitHubModel):
+    """ProjectsColumnsCardsCardIdDeleteResponse403"""
 
     message: Missing[str] = Field(default=UNSET)
     documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[List[str]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403)
+model_rebuild(ProjectsColumnsCardsCardIdDeleteResponse403)
 
-__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403",)
+__all__ = ("ProjectsColumnsCardsCardIdDeleteResponse403",)

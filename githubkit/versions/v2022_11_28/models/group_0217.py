@@ -9,47 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeownersErrors(GitHubModel):
-    """CODEOWNERS errors
+class CodespacesPermissionsCheckForDevcontainer(GitHubModel):
+    """Codespaces Permissions Check
 
-    A list of errors found in a repo's CODEOWNERS file
+    Permission check result for a given devcontainer config.
     """
 
-    errors: List[CodeownersErrorsPropErrorsItems] = Field()
-
-
-class CodeownersErrorsPropErrorsItems(GitHubModel):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int = Field(description="The line number where this errors occurs.")
-    column: int = Field(description="The column number where this errors occurs.")
-    source: Missing[str] = Field(
-        default=UNSET, description="The contents of the line where the error occurs."
+    accepted: bool = Field(
+        description="Whether the user has accepted the permissions defined by the devcontainer config"
     )
-    kind: str = Field(description="The type of error.")
-    suggestion: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
-    )
-    message: str = Field(
-        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
-    )
-    path: str = Field(description="The path of the file where the error occured.")
 
 
-model_rebuild(CodeownersErrors)
-model_rebuild(CodeownersErrorsPropErrorsItems)
+model_rebuild(CodespacesPermissionsCheckForDevcontainer)
 
-__all__ = (
-    "CodeownersErrors",
-    "CodeownersErrorsPropErrorsItems",
-)
+__all__ = ("CodespacesPermissionsCheckForDevcontainer",)

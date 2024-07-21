@@ -9,15 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 from typing_extensions import TypedDict
 
-
-class OrgsOrgPersonalAccessTokensPostBodyType(TypedDict):
-    """OrgsOrgPersonalAccessTokensPostBody"""
-
-    action: Literal["revoke"]
-    pat_ids: List[int]
+from .group_0096 import OrgCustomPropertyType
 
 
-__all__ = ("OrgsOrgPersonalAccessTokensPostBodyType",)
+class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
+
+    properties: List[OrgCustomPropertyType]
+
+
+__all__ = ("OrgsOrgPropertiesSchemaPatchBodyType",)

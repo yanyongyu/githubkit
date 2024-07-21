@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GitUser(GitHubModel):
-    """Git User
+class Verification(GitHubModel):
+    """Verification"""
 
-    Metaproperties for Git author/committer information.
-    """
-
-    name: Missing[str] = Field(default=UNSET)
-    email: Missing[str] = Field(default=UNSET)
-    date: Missing[str] = Field(default=UNSET)
+    verified: bool = Field()
+    reason: str = Field()
+    payload: Union[str, None] = Field()
+    signature: Union[str, None] = Field()
 
 
-model_rebuild(GitUser)
+model_rebuild(Verification)
 
-__all__ = ("GitUser",)
+__all__ = ("Verification",)

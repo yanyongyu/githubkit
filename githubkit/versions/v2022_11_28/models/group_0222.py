@@ -14,28 +14,15 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class BranchShort(GitHubModel):
-    """Branch Short
+class Link(GitHubModel):
+    """Link
 
-    Branch Short
+    Hypermedia Link
     """
 
-    name: str = Field()
-    commit: BranchShortPropCommit = Field()
-    protected: bool = Field()
+    href: str = Field()
 
 
-class BranchShortPropCommit(GitHubModel):
-    """BranchShortPropCommit"""
+model_rebuild(Link)
 
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(BranchShort)
-model_rebuild(BranchShortPropCommit)
-
-__all__ = (
-    "BranchShort",
-    "BranchShortPropCommit",
-)
+__all__ = ("Link",)

@@ -9,96 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0115 import RepositoryRuleUpdate
-from .group_0139 import RepositoryRuleOneof17
-from .group_0135 import RepositoryRuleWorkflows
-from .group_0120 import RepositoryRulePullRequest
-from .group_0111 import OrgRulesetConditionsOneof0
-from .group_0112 import OrgRulesetConditionsOneof1
-from .group_0113 import OrgRulesetConditionsOneof2
-from .group_0137 import RepositoryRuleCodeScanning
-from .group_0102 import RepositoryRulesetBypassActor
-from .group_0132 import RepositoryRuleTagNamePattern
-from .group_0130 import RepositoryRuleBranchNamePattern
-from .group_0118 import RepositoryRuleRequiredDeployments
-from .group_0122 import RepositoryRuleRequiredStatusChecks
-from .group_0124 import RepositoryRuleCommitMessagePattern
-from .group_0128 import RepositoryRuleCommitterEmailPattern
-from .group_0126 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0117 import RepositoryRuleOneof15, RepositoryRuleRequiredLinearHistory
-from .group_0114 import (
-    RepositoryRuleOneof14,
-    RepositoryRuleOneof16,
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
 
+class OrgsOrgTeamsTeamSlugDiscussionsPostBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
 
-class OrgsOrgRulesetsRulesetIdPutBody(GitHubModel):
-    """OrgsOrgRulesetsRulesetIdPutBody"""
-
-    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
+    title: str = Field(description="The discussion post's title.")
+    body: str = Field(description="The discussion post's body text.")
+    private: Missing[bool] = Field(
         default=UNSET,
-        description="The target of the ruleset\n\n**Note**: The `push` target is in beta and is subject to change.",
+        description="Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to `true` to create a private post.",
     )
-    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
-        default=UNSET,
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
-    )
-    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
-        default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
-    )
-    conditions: Missing[
-        Union[
-            OrgRulesetConditionsOneof0,
-            OrgRulesetConditionsOneof1,
-            OrgRulesetConditionsOneof2,
-        ]
-    ] = Field(
-        default=UNSET,
-        title="Organization ruleset conditions",
-        description="Conditions for an organization ruleset. The conditions object should contain both `repository_name` and `ref_name` properties or both `repository_id` and `ref_name` properties.\n",
-    )
-    rules: Missing[
-        List[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleOneof14,
-                RepositoryRuleOneof15,
-                RepositoryRuleOneof16,
-                RepositoryRuleOneof17,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(OrgsOrgRulesetsRulesetIdPutBody)
+model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsPostBody)
 
-__all__ = ("OrgsOrgRulesetsRulesetIdPutBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsPostBody",)

@@ -9,31 +9,60 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
+from .group_0006 import Integration
+from .group_0038 import ReactionRollup
 
-class Label(GitHubModel):
-    """Label
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+class TimelineCommentEvent(GitHubModel):
+    """Timeline Comment Event
+
+    Timeline Comment Event
     """
 
-    id: int = Field()
+    event: Literal["commented"] = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    id: int = Field(description="Unique identifier of the issue comment")
     node_id: str = Field()
-    url: str = Field(description="URL for the label")
-    name: str = Field(description="The name of the label.")
-    description: Union[str, None] = Field()
-    color: str = Field(
-        description="6-character hex code, without the leading #, identifying the color"
+    url: str = Field(description="URL for the issue comment")
+    body: Missing[str] = Field(
+        default=UNSET, description="Contents of the issue comment"
     )
-    default: bool = Field()
+    body_text: Missing[str] = Field(default=UNSET)
+    body_html: Missing[str] = Field(default=UNSET)
+    html_url: str = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    issue_url: str = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(Label)
+model_rebuild(TimelineCommentEvent)
 
-__all__ = ("Label",)
+__all__ = ("TimelineCommentEvent",)

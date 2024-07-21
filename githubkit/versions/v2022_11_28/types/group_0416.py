@@ -14,16 +14,16 @@ from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhooksReleaseType(TypedDict):
+class WebhooksRelease1Type(TypedDict):
     """Release
 
     The [release](https://docs.github.com/rest/releases/releases/#get-a-release)
     object.
     """
 
-    assets: List[WebhooksReleasePropAssetsItemsType]
+    assets: List[Union[WebhooksRelease1PropAssetsItemsType, None]]
     assets_url: str
-    author: Union[WebhooksReleasePropAuthorType, None]
+    author: Union[WebhooksRelease1PropAuthorType, None]
     body: Union[str, None]
     created_at: Union[datetime, None]
     discussion_url: NotRequired[str]
@@ -34,7 +34,7 @@ class WebhooksReleaseType(TypedDict):
     node_id: str
     prerelease: bool
     published_at: Union[datetime, None]
-    reactions: NotRequired[WebhooksReleasePropReactionsType]
+    reactions: NotRequired[WebhooksRelease1PropReactionsType]
     tag_name: str
     tarball_url: Union[str, None]
     target_commitish: str
@@ -43,48 +43,7 @@ class WebhooksReleaseType(TypedDict):
     zipball_url: Union[str, None]
 
 
-class WebhooksReleasePropAuthorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhooksReleasePropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksReleasePropAssetsItemsType(TypedDict):
+class WebhooksRelease1PropAssetsItemsType(TypedDict):
     """Release Asset
 
     Data related to a release.
@@ -101,11 +60,11 @@ class WebhooksReleasePropAssetsItemsType(TypedDict):
     size: int
     state: Literal["uploaded"]
     updated_at: datetime
-    uploader: NotRequired[Union[WebhooksReleasePropAssetsItemsPropUploaderType, None]]
+    uploader: NotRequired[Union[WebhooksRelease1PropAssetsItemsPropUploaderType, None]]
     url: str
 
 
-class WebhooksReleasePropAssetsItemsPropUploaderType(TypedDict):
+class WebhooksRelease1PropAssetsItemsPropUploaderType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -131,10 +90,51 @@ class WebhooksReleasePropAssetsItemsPropUploaderType(TypedDict):
     url: NotRequired[str]
 
 
+class WebhooksRelease1PropAuthorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhooksRelease1PropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
 __all__ = (
-    "WebhooksReleaseType",
-    "WebhooksReleasePropAuthorType",
-    "WebhooksReleasePropReactionsType",
-    "WebhooksReleasePropAssetsItemsType",
-    "WebhooksReleasePropAssetsItemsPropUploaderType",
+    "WebhooksRelease1Type",
+    "WebhooksRelease1PropAssetsItemsType",
+    "WebhooksRelease1PropAssetsItemsPropUploaderType",
+    "WebhooksRelease1PropAuthorType",
+    "WebhooksRelease1PropReactionsType",
 )

@@ -9,30 +9,120 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0114 import RepositoryRuleUpdateType
+from .group_0138 import RepositoryRuleOneof17Type
+from .group_0134 import RepositoryRuleWorkflowsType
+from .group_0119 import RepositoryRulePullRequestType
+from .group_0110 import OrgRulesetConditionsOneof0Type
+from .group_0111 import OrgRulesetConditionsOneof1Type
+from .group_0112 import OrgRulesetConditionsOneof2Type
+from .group_0136 import RepositoryRuleCodeScanningType
+from .group_0102 import RepositoryRulesetConditionsType
+from .group_0101 import RepositoryRulesetBypassActorType
+from .group_0131 import RepositoryRuleTagNamePatternType
+from .group_0129 import RepositoryRuleBranchNamePatternType
+from .group_0117 import RepositoryRuleRequiredDeploymentsType
+from .group_0121 import RepositoryRuleRequiredStatusChecksType
+from .group_0123 import RepositoryRuleCommitMessagePatternType
+from .group_0127 import RepositoryRuleCommitterEmailPatternType
+from .group_0125 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0116 import (
+    RepositoryRuleOneof15Type,
+    RepositoryRuleRequiredLinearHistoryType,
+)
+from .group_0113 import (
+    RepositoryRuleOneof14Type,
+    RepositoryRuleOneof16Type,
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
+)
 
-class RepositoryRuleOneof17Type(TypedDict):
-    """max_file_size
 
-    Note: max_file_size is in beta and subject to change.
+class RepositoryRulesetType(TypedDict):
+    """Repository ruleset
 
-    Prevent commits that exceed a specified file size limit from being pushed to the
-    commit.
+    A set of rules to apply when specified conditions are met.
     """
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleOneof17PropParametersType]
+    id: int
+    name: str
+    target: NotRequired[Literal["branch", "tag", "push"]]
+    source_type: NotRequired[Literal["Repository", "Organization"]]
+    source: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
+    current_user_can_bypass: NotRequired[
+        Literal["always", "pull_requests_only", "never"]
+    ]
+    node_id: NotRequired[str]
+    links: NotRequired[RepositoryRulesetPropLinksType]
+    conditions: NotRequired[
+        Union[
+            RepositoryRulesetConditionsType,
+            OrgRulesetConditionsOneof0Type,
+            OrgRulesetConditionsOneof1Type,
+            OrgRulesetConditionsOneof2Type,
+            None,
+        ]
+    ]
+    rules: NotRequired[
+        List[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleOneof14Type,
+                RepositoryRuleOneof15Type,
+                RepositoryRuleOneof16Type,
+                RepositoryRuleOneof17Type,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+            ]
+        ]
+    ]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
 
 
-class RepositoryRuleOneof17PropParametersType(TypedDict):
-    """RepositoryRuleOneof17PropParameters"""
+class RepositoryRulesetPropLinksType(TypedDict):
+    """RepositoryRulesetPropLinks"""
 
-    max_file_size: int
+    self_: NotRequired[RepositoryRulesetPropLinksPropSelfType]
+    html: NotRequired[RepositoryRulesetPropLinksPropHtmlType]
+
+
+class RepositoryRulesetPropLinksPropSelfType(TypedDict):
+    """RepositoryRulesetPropLinksPropSelf"""
+
+    href: NotRequired[str]
+
+
+class RepositoryRulesetPropLinksPropHtmlType(TypedDict):
+    """RepositoryRulesetPropLinksPropHtml"""
+
+    href: NotRequired[str]
 
 
 __all__ = (
-    "RepositoryRuleOneof17Type",
-    "RepositoryRuleOneof17PropParametersType",
+    "RepositoryRulesetType",
+    "RepositoryRulesetPropLinksType",
+    "RepositoryRulesetPropLinksPropSelfType",
+    "RepositoryRulesetPropLinksPropHtmlType",
 )

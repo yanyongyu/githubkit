@@ -15,62 +15,55 @@ from typing_extensions import TypedDict, NotRequired
 from .group_0001 import SimpleUserType
 
 
-class OrganizationProgrammaticAccessGrantRequestType(TypedDict):
-    """Simple Organization Programmatic Access Grant Request
+class OrganizationProgrammaticAccessGrantType(TypedDict):
+    """Organization Programmatic Access Grant
 
-    Minimal representation of an organization programmatic access grant request for
+    Minimal representation of an organization programmatic access grant for
     enumerations
     """
 
     id: int
-    reason: Union[str, None]
     owner: SimpleUserType
     repository_selection: Literal["none", "all", "subset"]
     repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissionsType
-    created_at: str
+    permissions: OrganizationProgrammaticAccessGrantPropPermissionsType
+    access_granted_at: str
     token_expired: bool
     token_expires_at: Union[str, None]
     token_last_used_at: Union[str, None]
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsType(TypedDict):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissions
+class OrganizationProgrammaticAccessGrantPropPermissionsType(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissions
 
     Permissions requested, categorized by type of permission.
     """
 
     organization: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType
     ]
     repository: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType
+        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType
     ]
-    other: NotRequired[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType
-    ]
+    other: NotRequired[OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType]
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType(
-    TypedDict
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization"""
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType(
-    TypedDict
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository"""
+class OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType(TypedDict):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther"""
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType(TypedDict):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
 
 
 __all__ = (
-    "OrganizationProgrammaticAccessGrantRequestType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType",
+    "OrganizationProgrammaticAccessGrantType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
 )

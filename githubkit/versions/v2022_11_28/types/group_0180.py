@@ -12,16 +12,14 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class AutolinkType(TypedDict):
-    """Autolink reference
+class CheckAutomatedSecurityFixesType(TypedDict):
+    """Check Automated Security Fixes
 
-    An autolink reference.
+    Check Automated Security Fixes
     """
 
-    id: int
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: bool
+    enabled: bool
+    paused: bool
 
 
-__all__ = ("AutolinkType",)
+__all__ = ("CheckAutomatedSecurityFixesType",)

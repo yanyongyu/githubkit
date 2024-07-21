@@ -9,68 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0248 import DeploymentBranchPolicySettingsType
-from .group_0250 import EnvironmentPropProtectionRulesItemsAnyof1Type
+from .group_0250 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType
 
 
-class EnvironmentType(TypedDict):
-    """Environment
-
-    Details of a deployment environment
-    """
+class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
+    """EnvironmentPropProtectionRulesItemsAnyof1"""
 
     id: int
     node_id: str
-    name: str
-    url: str
-    html_url: str
-    created_at: datetime
-    updated_at: datetime
-    protection_rules: NotRequired[
-        List[
-            Union[
-                EnvironmentPropProtectionRulesItemsAnyof0Type,
-                EnvironmentPropProtectionRulesItemsAnyof1Type,
-                EnvironmentPropProtectionRulesItemsAnyof2Type,
-            ]
-        ]
-    ]
-    deployment_branch_policy: NotRequired[
-        Union[DeploymentBranchPolicySettingsType, None]
+    prevent_self_review: NotRequired[bool]
+    type: str
+    reviewers: NotRequired[
+        List[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
     ]
 
 
-class EnvironmentPropProtectionRulesItemsAnyof0Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof0"""
-
-    id: int
-    node_id: str
-    type: str
-    wait_timer: NotRequired[int]
-
-
-class EnvironmentPropProtectionRulesItemsAnyof2Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof2"""
-
-    id: int
-    node_id: str
-    type: str
-
-
-class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsGetResponse200"""
-
-    total_count: NotRequired[int]
-    environments: NotRequired[List[EnvironmentType]]
-
-
-__all__ = (
-    "EnvironmentType",
-    "EnvironmentPropProtectionRulesItemsAnyof0Type",
-    "EnvironmentPropProtectionRulesItemsAnyof2Type",
-    "ReposOwnerRepoEnvironmentsGetResponse200Type",
-)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1Type",)

@@ -18,34 +18,40 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ContentDirectoryItems(GitHubModel):
-    """ContentDirectoryItems"""
+class ContentFile(GitHubModel):
+    """Content File
 
-    type: Literal["dir", "file", "submodule", "symlink"] = Field()
+    Content File
+    """
+
+    type: Literal["file"] = Field()
+    encoding: str = Field()
     size: int = Field()
     name: str = Field()
     path: str = Field()
-    content: Missing[str] = Field(default=UNSET)
+    content: str = Field()
     sha: str = Field()
     url: str = Field()
     git_url: Union[str, None] = Field()
     html_url: Union[str, None] = Field()
     download_url: Union[str, None] = Field()
-    links: ContentDirectoryItemsPropLinks = Field(alias="_links")
+    links: ContentFilePropLinks = Field(alias="_links")
+    target: Missing[str] = Field(default=UNSET)
+    submodule_git_url: Missing[str] = Field(default=UNSET)
 
 
-class ContentDirectoryItemsPropLinks(GitHubModel):
-    """ContentDirectoryItemsPropLinks"""
+class ContentFilePropLinks(GitHubModel):
+    """ContentFilePropLinks"""
 
     git: Union[str, None] = Field()
     html: Union[str, None] = Field()
     self_: str = Field(alias="self")
 
 
-model_rebuild(ContentDirectoryItems)
-model_rebuild(ContentDirectoryItemsPropLinks)
+model_rebuild(ContentFile)
+model_rebuild(ContentFilePropLinks)
 
 __all__ = (
-    "ContentDirectoryItems",
-    "ContentDirectoryItemsPropLinks",
+    "ContentFile",
+    "ContentFilePropLinks",
 )

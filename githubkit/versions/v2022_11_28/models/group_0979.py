@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,35 +17,28 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0007 import WebhookConfig
 
+class ReposOwnerRepoImportPatchBody(GitHubModel):
+    """ReposOwnerRepoImportPatchBody"""
 
-class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
-    """ReposOwnerRepoHooksHookIdPatchBody"""
-
-    config: Missing[WebhookConfig] = Field(
+    vcs_username: Missing[str] = Field(
         default=UNSET,
-        title="Webhook Configuration",
-        description="Configuration object of the webhook",
+        description="The username to provide to the originating repository.",
     )
-    events: Missing[List[str]] = Field(
+    vcs_password: Missing[str] = Field(
         default=UNSET,
-        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.",
+        description="The password to provide to the originating repository.",
     )
-    add_events: Missing[List[str]] = Field(
+    vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = Field(
         default=UNSET,
-        description="Determines a list of events to be added to the list of events that the Hook triggers for.",
+        description="The type of version control system you are migrating from.",
     )
-    remove_events: Missing[List[str]] = Field(
+    tfvc_project: Missing[str] = Field(
         default=UNSET,
-        description="Determines a list of events to be removed from the list of events that the Hook triggers for.",
-    )
-    active: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+        description="For a tfvc import, the name of the project that is being imported.",
     )
 
 
-model_rebuild(ReposOwnerRepoHooksHookIdPatchBody)
+model_rebuild(ReposOwnerRepoImportPatchBody)
 
-__all__ = ("ReposOwnerRepoHooksHookIdPatchBody",)
+__all__ = ("ReposOwnerRepoImportPatchBody",)

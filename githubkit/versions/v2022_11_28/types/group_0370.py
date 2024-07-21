@@ -9,27 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
-class HovercardType(TypedDict):
-    """Hovercard
+class KeySimpleType(TypedDict):
+    """Key Simple
 
-    Hovercard
+    Key Simple
     """
 
-    contexts: List[HovercardPropContextsItemsType]
+    id: int
+    key: str
 
 
-class HovercardPropContextsItemsType(TypedDict):
-    """HovercardPropContextsItems"""
-
-    message: str
-    octicon: str
-
-
-__all__ = (
-    "HovercardType",
-    "HovercardPropContextsItemsType",
-)
+__all__ = ("KeySimpleType",)

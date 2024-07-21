@@ -9,16 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0372 import SimpleInstallationType
+from .group_0374 import RepositoryWebhooksType
+from .group_0375 import SimpleUserWebhooksType
+from .group_0373 import OrganizationSimpleWebhooksType
+from .group_0378 import CheckRunWithSimpleCheckSuiteType
 
 
-class WebhookCheckRunRequestedActionFormEncodedType(TypedDict):
-    """Check Run Requested Action Event
+class WebhookCheckRunRerequestedType(TypedDict):
+    """Check Run Re-Requested Event"""
 
-    The check_run.requested_action webhook encoded with URL encoding
-    """
+    action: Literal["rerequested"]
+    check_run: CheckRunWithSimpleCheckSuiteType
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
-    payload: str
 
-
-__all__ = ("WebhookCheckRunRequestedActionFormEncodedType",)
+__all__ = ("WebhookCheckRunRerequestedType",)

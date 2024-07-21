@@ -9,117 +9,104 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0115 import RepositoryRuleUpdateType
-from .group_0139 import RepositoryRuleOneof17Type
-from .group_0135 import RepositoryRuleWorkflowsType
-from .group_0120 import RepositoryRulePullRequestType
-from .group_0137 import RepositoryRuleCodeScanningType
-from .group_0132 import RepositoryRuleTagNamePatternType
-from .group_0130 import RepositoryRuleBranchNamePatternType
-from .group_0118 import RepositoryRuleRequiredDeploymentsType
-from .group_0122 import RepositoryRuleRequiredStatusChecksType
-from .group_0124 import RepositoryRuleCommitMessagePatternType
-from .group_0128 import RepositoryRuleCommitterEmailPatternType
-from .group_0126 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0117 import (
-    RepositoryRuleOneof15Type,
-    RepositoryRuleRequiredLinearHistoryType,
-)
-from .group_0114 import (
-    RepositoryRuleOneof14Type,
-    RepositoryRuleOneof16Type,
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
+from .group_0371 import EnterpriseWebhooksType
+from .group_0372 import SimpleInstallationType
+from .group_0374 import RepositoryWebhooksType
+from .group_0375 import SimpleUserWebhooksType
+from .group_0373 import OrganizationSimpleWebhooksType
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems"""
+class WebhookRepositoryTransferredType(TypedDict):
+    """repository transferred event"""
 
-    rule: NotRequired[
+    action: Literal["transferred"]
+    changes: WebhookRepositoryTransferredPropChangesType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+
+
+class WebhookRepositoryTransferredPropChangesType(TypedDict):
+    """WebhookRepositoryTransferredPropChanges"""
+
+    owner: WebhookRepositoryTransferredPropChangesPropOwnerType
+
+
+class WebhookRepositoryTransferredPropChangesPropOwnerType(TypedDict):
+    """WebhookRepositoryTransferredPropChangesPropOwner"""
+
+    from_: WebhookRepositoryTransferredPropChangesPropOwnerPropFromType
+
+
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromType(TypedDict):
+    """WebhookRepositoryTransferredPropChangesPropOwnerPropFrom"""
+
+    organization: NotRequired[
+        WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationType
+    ]
+    user: NotRequired[
         Union[
-            RepositoryRuleCreationType,
-            RepositoryRuleUpdateType,
-            RepositoryRuleDeletionType,
-            RepositoryRuleRequiredLinearHistoryType,
-            RepositoryRuleRequiredDeploymentsType,
-            RepositoryRuleRequiredSignaturesType,
-            RepositoryRulePullRequestType,
-            RepositoryRuleRequiredStatusChecksType,
-            RepositoryRuleNonFastForwardType,
-            RepositoryRuleCommitMessagePatternType,
-            RepositoryRuleCommitAuthorEmailPatternType,
-            RepositoryRuleCommitterEmailPatternType,
-            RepositoryRuleBranchNamePatternType,
-            RepositoryRuleTagNamePatternType,
-            RepositoryRuleOneof14Type,
-            RepositoryRuleOneof15Type,
-            RepositoryRuleOneof16Type,
-            RepositoryRuleOneof17Type,
-            RepositoryRuleWorkflowsType,
-            RepositoryRuleCodeScanningType,
+            WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserType, None
         ]
     ]
-    changes: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType
-    ]
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType(
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationType(
     TypedDict
 ):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChanges"""
+    """Organization"""
 
-    configuration: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType
-    ]
-    rule_type: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType
-    ]
-    pattern: NotRequired[
-        WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType
-    ]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pConfiguration
-    """
-
-    from_: NotRequired[str]
+    avatar_url: str
+    description: Union[str, None]
+    events_url: str
+    hooks_url: str
+    html_url: NotRequired[str]
+    id: int
+    issues_url: str
+    login: str
+    members_url: str
+    node_id: str
+    public_members_url: str
+    repos_url: str
+    url: str
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pRuleType
-    """
+class WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserType(TypedDict):
+    """User"""
 
-    from_: NotRequired[str]
-
-
-class WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType(
-    TypedDict
-):
-    """WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPro
-    pPattern
-    """
-
-    from_: NotRequired[str]
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
 
 
 __all__ = (
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropConfigurationType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropRuleTypeType",
-    "WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsPropChangesPropPatternType",
+    "WebhookRepositoryTransferredType",
+    "WebhookRepositoryTransferredPropChangesType",
+    "WebhookRepositoryTransferredPropChangesPropOwnerType",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromType",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropOrganizationType",
+    "WebhookRepositoryTransferredPropChangesPropOwnerPropFromPropUserType",
 )

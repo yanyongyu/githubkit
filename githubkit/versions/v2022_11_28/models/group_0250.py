@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,27 +17,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0251 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems
+from .group_0026 import Team
+from .group_0001 import SimpleUser
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems(GitHubModel):
+    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
 
-    id: int = Field()
-    node_id: str = Field()
-    prevent_self_review: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether deployments to this environment can be approved by the user who created the deployment.",
+    type: Missing[Literal["User", "Team"]] = Field(
+        default=UNSET, description="The type of reviewer."
     )
-    type: str = Field()
-    reviewers: Missing[
-        List[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
-    ] = Field(
-        default=UNSET,
-        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
-    )
+    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
 
 
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1)
+model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems)
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1",)
+__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems",)

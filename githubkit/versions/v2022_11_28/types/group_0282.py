@@ -9,43 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0001 import SimpleUserType
-from .group_0006 import IntegrationType
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class ConvertedNoteToIssueIssueEventType(TypedDict):
-    """Converted Note to Issue Issue Event
+class LabelType(TypedDict):
+    """Label
 
-    Converted Note to Issue Issue Event
+    Color-coded labels help you categorize and filter your issues (just like labels
+    in Gmail).
     """
 
     id: int
     node_id: str
     url: str
-    actor: SimpleUserType
-    event: Literal["converted_note_to_issue"]
-    commit_id: Union[str, None]
-    commit_url: Union[str, None]
-    created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
-    project_card: NotRequired[ConvertedNoteToIssueIssueEventPropProjectCardType]
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
 
 
-class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
-
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
-
-
-__all__ = (
-    "ConvertedNoteToIssueIssueEventType",
-    "ConvertedNoteToIssueIssueEventPropProjectCardType",
-)
+__all__ = ("LabelType",)

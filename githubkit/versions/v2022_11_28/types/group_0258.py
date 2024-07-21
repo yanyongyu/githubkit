@@ -9,80 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
 from typing_extensions import TypedDict
 
 
-class GitCommitType(TypedDict):
-    """Git Commit
+class GitRefType(TypedDict):
+    """Git Reference
 
-    Low-level Git commit operations within a repository
+    Git references within a repository
     """
 
-    sha: str
+    ref: str
     node_id: str
     url: str
-    author: GitCommitPropAuthorType
-    committer: GitCommitPropCommitterType
-    message: str
-    tree: GitCommitPropTreeType
-    parents: List[GitCommitPropParentsItemsType]
-    verification: GitCommitPropVerificationType
-    html_url: str
+    object_: GitRefPropObjectType
 
 
-class GitCommitPropAuthorType(TypedDict):
-    """GitCommitPropAuthor
+class GitRefPropObjectType(TypedDict):
+    """GitRefPropObject"""
 
-    Identifying information for the git-user
-    """
-
-    date: datetime
-    email: str
-    name: str
-
-
-class GitCommitPropCommitterType(TypedDict):
-    """GitCommitPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: datetime
-    email: str
-    name: str
-
-
-class GitCommitPropTreeType(TypedDict):
-    """GitCommitPropTree"""
-
+    type: str
     sha: str
     url: str
-
-
-class GitCommitPropParentsItemsType(TypedDict):
-    """GitCommitPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class GitCommitPropVerificationType(TypedDict):
-    """GitCommitPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
 
 
 __all__ = (
-    "GitCommitType",
-    "GitCommitPropAuthorType",
-    "GitCommitPropCommitterType",
-    "GitCommitPropTreeType",
-    "GitCommitPropParentsItemsType",
-    "GitCommitPropVerificationType",
+    "GitRefType",
+    "GitRefPropObjectType",
 )

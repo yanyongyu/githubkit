@@ -9,17 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0206 import CodeScanningVariantAnalysisRepositoryType
-
-
-class CodeScanningVariantAnalysisSkippedRepoGroupType(TypedDict):
-    """CodeScanningVariantAnalysisSkippedRepoGroup"""
-
-    repository_count: int
-    repositories: List[CodeScanningVariantAnalysisRepositoryType]
+from .group_0001 import SimpleUserType
+from .group_0033 import SimpleRepositoryType
+from .group_0209 import CodeScanningVariantAnalysisPropSkippedRepositoriesType
+from .group_0208 import CodeScanningVariantAnalysisPropScannedRepositoriesItemsType
 
 
-__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroupType",)
+class CodeScanningVariantAnalysisType(TypedDict):
+    """Variant Analysis
+
+    A run of a CodeQL query against one or more repositories.
+    """
+
+    id: int
+    controller_repo: SimpleRepositoryType
+    actor: SimpleUserType
+    query_language: Literal[
+        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
+    ]
+    query_pack_url: str
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
+    completed_at: NotRequired[Union[datetime, None]]
+    status: Literal["in_progress", "succeeded", "failed", "cancelled"]
+    actions_workflow_run_id: NotRequired[int]
+    failure_reason: NotRequired[
+        Literal["no_repos_queried", "actions_workflow_run_failed", "internal_error"]
+    ]
+    scanned_repositories: NotRequired[
+        List[CodeScanningVariantAnalysisPropScannedRepositoriesItemsType]
+    ]
+    skipped_repositories: NotRequired[
+        CodeScanningVariantAnalysisPropSkippedRepositoriesType
+    ]
+
+
+__all__ = ("CodeScanningVariantAnalysisType",)

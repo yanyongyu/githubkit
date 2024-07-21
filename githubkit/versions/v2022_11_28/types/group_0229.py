@@ -10,28 +10,48 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
+from .group_0016 import LicenseSimpleType
+from .group_0099 import CodeOfConductSimpleType
 
 
-class StatusType(TypedDict):
-    """Status
+class CommunityProfilePropFilesType(TypedDict):
+    """CommunityProfilePropFiles"""
 
-    The status of a commit.
-    """
+    code_of_conduct: Union[None, CodeOfConductSimpleType]
+    code_of_conduct_file: Union[None, CommunityHealthFileType]
+    license_: Union[None, LicenseSimpleType]
+    contributing: Union[None, CommunityHealthFileType]
+    readme: Union[None, CommunityHealthFileType]
+    issue_template: Union[None, CommunityHealthFileType]
+    pull_request_template: Union[None, CommunityHealthFileType]
+
+
+class CommunityHealthFileType(TypedDict):
+    """Community Health File"""
 
     url: str
-    avatar_url: Union[str, None]
-    id: int
-    node_id: str
-    state: str
+    html_url: str
+
+
+class CommunityProfileType(TypedDict):
+    """Community Profile
+
+    Community Profile
+    """
+
+    health_percentage: int
     description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
-    created_at: str
-    updated_at: str
-    creator: Union[None, SimpleUserType]
+    documentation: Union[str, None]
+    files: CommunityProfilePropFilesType
+    updated_at: Union[datetime, None]
+    content_reports_enabled: NotRequired[bool]
 
 
-__all__ = ("StatusType",)
+__all__ = (
+    "CommunityProfilePropFilesType",
+    "CommunityHealthFileType",
+    "CommunityProfileType",
+)

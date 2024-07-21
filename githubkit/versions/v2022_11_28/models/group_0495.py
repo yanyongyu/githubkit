@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0015 import Installation
-from .group_0372 import EnterpriseWebhooks
-from .group_0375 import RepositoryWebhooks
-from .group_0376 import SimpleUserWebhooks
-from .group_0389 import WebhooksRepositoriesItems
-from .group_0374 import OrganizationSimpleWebhooks
+from .group_0371 import EnterpriseWebhooks
+from .group_0374 import RepositoryWebhooks
+from .group_0375 import SimpleUserWebhooks
+from .group_0388 import WebhooksRepositoriesItems
+from .group_0373 import OrganizationSimpleWebhooks
 
 
-class WebhookInstallationDeleted(GitHubModel):
-    """installation deleted event"""
+class WebhookInstallationNewPermissionsAccepted(GitHubModel):
+    """installation new_permissions_accepted event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["new_permissions_accepted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -56,6 +56,6 @@ class WebhookInstallationDeleted(GitHubModel):
     )
 
 
-model_rebuild(WebhookInstallationDeleted)
+model_rebuild(WebhookInstallationNewPermissionsAccepted)
 
-__all__ = ("WebhookInstallationDeleted",)
+__all__ = ("WebhookInstallationNewPermissionsAccepted",)

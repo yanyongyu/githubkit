@@ -9,84 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import Union
+from typing_extensions import TypedDict
 
-from .group_0026 import TeamType
-from .group_0037 import MilestoneType
-from .group_0224 import AutoMergeType
 from .group_0001 import SimpleUserType
-from .group_0227 import PullRequestSimplePropLinksType
-from .group_0226 import PullRequestSimplePropBaseType, PullRequestSimplePropHeadType
+from .group_0017 import RepositoryType
 
 
-class PullRequestSimpleType(TypedDict):
-    """Pull Request Simple
+class PullRequestSimplePropHeadType(TypedDict):
+    """PullRequestSimplePropHead"""
 
-    Pull Request Simple
-    """
-
-    url: str
-    id: int
-    node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: str
-    locked: bool
-    title: str
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
+    sha: str
     user: Union[None, SimpleUserType]
-    body: Union[str, None]
-    labels: List[PullRequestSimplePropLabelsItemsType]
-    milestone: Union[None, MilestoneType]
-    active_lock_reason: NotRequired[Union[str, None]]
-    created_at: datetime
-    updated_at: datetime
-    closed_at: Union[datetime, None]
-    merged_at: Union[datetime, None]
-    merge_commit_sha: Union[str, None]
-    assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[Union[List[SimpleUserType], None]]
-    requested_reviewers: NotRequired[Union[List[SimpleUserType], None]]
-    requested_teams: NotRequired[Union[List[TeamType], None]]
-    head: PullRequestSimplePropHeadType
-    base: PullRequestSimplePropBaseType
-    links: PullRequestSimplePropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[AutoMergeType, None]
-    draft: NotRequired[bool]
 
 
-class PullRequestSimplePropLabelsItemsType(TypedDict):
-    """PullRequestSimplePropLabelsItems"""
+class PullRequestSimplePropBaseType(TypedDict):
+    """PullRequestSimplePropBase"""
 
-    id: int
-    node_id: str
-    url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: Union[None, SimpleUserType]
 
 
 __all__ = (
-    "PullRequestSimpleType",
-    "PullRequestSimplePropLabelsItemsType",
+    "PullRequestSimplePropHeadType",
+    "PullRequestSimplePropBaseType",
 )

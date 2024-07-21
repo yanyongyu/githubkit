@@ -9,17 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class ActionsVariableType(TypedDict):
-    """Actions Variable"""
+class ActionsRepositoryPermissionsType(TypedDict):
+    """ActionsRepositoryPermissions"""
 
-    name: str
-    value: str
-    created_at: datetime
-    updated_at: datetime
+    enabled: bool
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
 
 
-__all__ = ("ActionsVariableType",)
+__all__ = ("ActionsRepositoryPermissionsType",)

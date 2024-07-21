@@ -761,6 +761,7 @@ class ReposClient:
     def get_org_rule_suites(
         self,
         org: str,
+        ref: Missing[str] = UNSET,
         repository_name: Missing[int] = UNSET,
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
         actor_name: Missing[str] = UNSET,
@@ -779,6 +780,7 @@ class ReposClient:
         url = f"/orgs/{org}/rulesets/rule-suites"
 
         params = {
+            "ref": ref,
             "repository_name": repository_name,
             "time_period": time_period,
             "actor_name": actor_name,
@@ -804,6 +806,7 @@ class ReposClient:
     async def async_get_org_rule_suites(
         self,
         org: str,
+        ref: Missing[str] = UNSET,
         repository_name: Missing[int] = UNSET,
         time_period: Missing[Literal["hour", "day", "week", "month"]] = UNSET,
         actor_name: Missing[str] = UNSET,
@@ -822,6 +825,7 @@ class ReposClient:
         url = f"/orgs/{org}/rulesets/rule-suites"
 
         params = {
+            "ref": ref,
             "repository_name": repository_name,
             "time_period": time_period,
             "actor_name": actor_name,

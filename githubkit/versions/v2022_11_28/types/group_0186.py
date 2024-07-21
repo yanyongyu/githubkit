@@ -11,30 +11,16 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0185 import BranchProtectionType
 
+class GitUserType(TypedDict):
+    """Git User
 
-class ShortBranchType(TypedDict):
-    """Short Branch
-
-    Short Branch
+    Metaproperties for Git author/committer information.
     """
 
-    name: str
-    commit: ShortBranchPropCommitType
-    protected: bool
-    protection: NotRequired[BranchProtectionType]
-    protection_url: NotRequired[str]
+    name: NotRequired[str]
+    email: NotRequired[str]
+    date: NotRequired[str]
 
 
-class ShortBranchPropCommitType(TypedDict):
-    """ShortBranchPropCommit"""
-
-    sha: str
-    url: str
-
-
-__all__ = (
-    "ShortBranchType",
-    "ShortBranchPropCommitType",
-)
+__all__ = ("GitUserType",)

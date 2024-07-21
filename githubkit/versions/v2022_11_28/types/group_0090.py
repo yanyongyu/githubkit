@@ -9,36 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
+from .group_0025 import TeamSimpleType
 
 
-class OrganizationRoleType(TypedDict):
-    """Organization Role
+class TeamRoleAssignmentType(TypedDict):
+    """A Role Assignment for a Team
 
-    Organization roles
+    The Relationship a Team has with a role.
     """
 
     id: int
+    node_id: str
     name: str
-    description: NotRequired[Union[str, None]]
-    permissions: List[str]
-    organization: Union[None, SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    parent: Union[None, TeamSimpleType]
 
 
-class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
-    """OrgsOrgOrganizationRolesGetResponse200"""
+class TeamRoleAssignmentPropPermissionsType(TypedDict):
+    """TeamRoleAssignmentPropPermissions"""
 
-    total_count: NotRequired[int]
-    roles: NotRequired[List[OrganizationRoleType]]
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
 
 
 __all__ = (
-    "OrganizationRoleType",
-    "OrgsOrgOrganizationRolesGetResponse200Type",
+    "TeamRoleAssignmentType",
+    "TeamRoleAssignmentPropPermissionsType",
 )

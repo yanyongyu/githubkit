@@ -2433,9 +2433,6 @@ if TYPE_CHECKING:
         OrgsOrgActionsPermissionsPutBodyType as OrgsOrgActionsPermissionsPutBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        OrgsOrgOrganizationRolesPostBodyType as OrgsOrgOrganizationRolesPostBodyType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         OrgsOrgPropertiesSchemaPatchBodyType as OrgsOrgPropertiesSchemaPatchBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -2611,9 +2608,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         MilestonedIssueEventPropMilestoneType as MilestonedIssueEventPropMilestoneType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        OrganizationFineGrainedPermissionType as OrganizationFineGrainedPermissionType,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgHooksHookIdConfigPatchBodyType as OrgsOrgHooksHookIdConfigPatchBodyType,
@@ -3430,9 +3424,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         DependabotAlertSecurityAdvisoryPropCvssType as DependabotAlertSecurityAdvisoryPropCvssType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        OrgsOrgOrganizationRolesRoleIdPatchBodyType as OrgsOrgOrganizationRolesRoleIdPatchBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgTeamsTeamSlugDiscussionsPostBodyType as OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
@@ -9680,7 +9671,6 @@ else:
             "OrgMembershipType",
             "OrgMembershipPropPermissionsType",
             "MigrationType",
-            "OrganizationFineGrainedPermissionType",
             "OrganizationRoleType",
             "OrgsOrgOrganizationRolesGetResponse200Type",
             "TeamRoleAssignmentType",
@@ -12428,8 +12418,6 @@ else:
             "OrgsOrgMembersUsernameCodespacesGetResponse200Type",
             "OrgsOrgMembershipsUsernamePutBodyType",
             "OrgsOrgMigrationsPostBodyType",
-            "OrgsOrgOrganizationRolesPostBodyType",
-            "OrgsOrgOrganizationRolesRoleIdPatchBodyType",
             "OrgsOrgOutsideCollaboratorsUsernamePutBodyType",
             "OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type",
             "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",

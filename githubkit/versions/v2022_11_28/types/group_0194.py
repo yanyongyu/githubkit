@@ -9,28 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0195 import (
-    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType,
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType,
-)
+from .group_0026 import TeamType
+from .group_0001 import SimpleUserType
+from .group_0006 import IntegrationType
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsType(TypedDict):
-    """ProtectedBranchPropRequiredPullRequestReviews"""
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
 
     url: str
-    dismiss_stale_reviews: NotRequired[bool]
-    require_code_owner_reviews: NotRequired[bool]
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType
-    ]
+    users_url: str
+    teams_url: str
+    users: List[SimpleUserType]
+    teams: List[TeamType]
+    apps: NotRequired[List[Union[IntegrationType, None]]]
 
 
-__all__ = ("ProtectedBranchPropRequiredPullRequestReviewsType",)
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
+    TypedDict
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
+
+    users: List[SimpleUserType]
+    teams: List[TeamType]
+    apps: NotRequired[List[Union[IntegrationType, None]]]
+
+
+__all__ = (
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
+)

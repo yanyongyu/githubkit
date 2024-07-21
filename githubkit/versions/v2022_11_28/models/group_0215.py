@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union, Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,16 +18,23 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeScanningSarifsReceipt(GitHubModel):
-    """CodeScanningSarifsReceipt"""
+class CodeScanningSarifsStatus(GitHubModel):
+    """CodeScanningSarifsStatus"""
 
-    id: Missing[str] = Field(default=UNSET, description="An identifier for the upload.")
-    url: Missing[str] = Field(
+    processing_status: Missing[Literal["pending", "complete", "failed"]] = Field(
         default=UNSET,
-        description="The REST API URL for checking the status of the upload.",
+        description="`pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.",
+    )
+    analyses_url: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The REST API URL for getting the analyses associated with the upload.",
+    )
+    errors: Missing[Union[List[str], None]] = Field(
+        default=UNSET,
+        description="Any errors that ocurred during processing of the delivery.",
     )
 
 
-model_rebuild(CodeScanningSarifsReceipt)
+model_rebuild(CodeScanningSarifsStatus)
 
-__all__ = ("CodeScanningSarifsReceipt",)
+__all__ = ("CodeScanningSarifsStatus",)

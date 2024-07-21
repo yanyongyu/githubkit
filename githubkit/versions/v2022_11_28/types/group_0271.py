@@ -9,30 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 from typing_extensions import TypedDict
 
 from .group_0001 import SimpleUserType
 from .group_0006 import IntegrationType
 
 
-class UnassignedIssueEventType(TypedDict):
-    """Unassigned Issue Event
+class MilestonedIssueEventType(TypedDict):
+    """Milestoned Issue Event
 
-    Unassigned Issue Event
+    Milestoned Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: str
+    event: Literal["milestoned"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    assignee: SimpleUserType
-    assigner: SimpleUserType
+    milestone: MilestonedIssueEventPropMilestoneType
 
 
-__all__ = ("UnassignedIssueEventType",)
+class MilestonedIssueEventPropMilestoneType(TypedDict):
+    """MilestonedIssueEventPropMilestone"""
+
+    title: str
+
+
+__all__ = (
+    "MilestonedIssueEventType",
+    "MilestonedIssueEventPropMilestoneType",
+)

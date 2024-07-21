@@ -11,23 +11,41 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0182 import (
+    ProtectedBranchPullRequestReviewPropDismissalRestrictions,
+    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
+)
 
-class CheckAutomatedSecurityFixes(GitHubModel):
-    """Check Automated Security Fixes
 
-    Check Automated Security Fixes
+class ProtectedBranchPullRequestReview(GitHubModel):
+    """Protected Branch Pull Request Review
+
+    Protected Branch Pull Request Review
     """
 
-    enabled: bool = Field(
-        description="Whether automated security fixes are enabled for the repository."
+    url: Missing[str] = Field(default=UNSET)
+    dismissal_restrictions: Missing[
+        ProtectedBranchPullRequestReviewPropDismissalRestrictions
+    ] = Field(default=UNSET)
+    bypass_pull_request_allowances: Missing[
+        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+    ] = Field(
+        default=UNSET,
+        description="Allow specific users, teams, or apps to bypass pull request requirements.",
     )
-    paused: bool = Field(
-        description="Whether automated security fixes are paused for the repository."
+    dismiss_stale_reviews: bool = Field()
+    require_code_owner_reviews: bool = Field()
+    required_approving_review_count: Missing[int] = Field(le=6.0, default=UNSET)
+    require_last_push_approval: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the most recent push must be approved by someone other than the person who pushed it.",
     )
 
 
-model_rebuild(CheckAutomatedSecurityFixes)
+model_rebuild(ProtectedBranchPullRequestReview)
 
-__all__ = ("CheckAutomatedSecurityFixes",)
+__all__ = ("ProtectedBranchPullRequestReview",)

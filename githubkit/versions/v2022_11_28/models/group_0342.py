@@ -11,33 +11,24 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Tag(GitHubModel):
-    """Tag
+class TagProtection(GitHubModel):
+    """Tag protection
 
-    Tag
+    Tag protection
     """
 
-    name: str = Field()
-    commit: TagPropCommit = Field()
-    zipball_url: str = Field()
-    tarball_url: str = Field()
-    node_id: str = Field()
+    id: Missing[int] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    enabled: Missing[bool] = Field(default=UNSET)
+    pattern: str = Field()
 
 
-class TagPropCommit(GitHubModel):
-    """TagPropCommit"""
+model_rebuild(TagProtection)
 
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(Tag)
-model_rebuild(TagPropCommit)
-
-__all__ = (
-    "Tag",
-    "TagPropCommit",
-)
+__all__ = ("TagProtection",)

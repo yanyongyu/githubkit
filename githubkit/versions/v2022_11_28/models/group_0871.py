@@ -18,28 +18,14 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsColumnIdCardsPostResponse503(GitHubModel):
-    """ProjectsColumnsColumnIdCardsPostResponse503"""
+class ProjectsProjectIdDeleteResponse403(GitHubModel):
+    """ProjectsProjectIdDeleteResponse403"""
 
-    code: Missing[str] = Field(default=UNSET)
     message: Missing[str] = Field(default=UNSET)
     documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[
-        List[ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems]
-    ] = Field(default=UNSET)
+    errors: Missing[List[str]] = Field(default=UNSET)
 
 
-class ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems(GitHubModel):
-    """ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems"""
+model_rebuild(ProjectsProjectIdDeleteResponse403)
 
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ProjectsColumnsColumnIdCardsPostResponse503)
-model_rebuild(ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems)
-
-__all__ = (
-    "ProjectsColumnsColumnIdCardsPostResponse503",
-    "ProjectsColumnsColumnIdCardsPostResponse503PropErrorsItems",
-)
+__all__ = ("ProjectsProjectIdDeleteResponse403",)

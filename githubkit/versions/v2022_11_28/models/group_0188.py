@@ -9,22 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Verification(GitHubModel):
-    """Verification"""
+class DiffEntry(GitHubModel):
+    """Diff Entry
 
-    verified: bool = Field()
-    reason: str = Field()
-    payload: Union[str, None] = Field()
-    signature: Union[str, None] = Field()
+    Diff Entry
+    """
+
+    sha: str = Field()
+    filename: str = Field()
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ] = Field()
+    additions: int = Field()
+    deletions: int = Field()
+    changes: int = Field()
+    blob_url: str = Field()
+    raw_url: str = Field()
+    contents_url: str = Field()
+    patch: Missing[str] = Field(default=UNSET)
+    previous_filename: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(Verification)
+model_rebuild(DiffEntry)
 
-__all__ = ("Verification",)
+__all__ = ("DiffEntry",)

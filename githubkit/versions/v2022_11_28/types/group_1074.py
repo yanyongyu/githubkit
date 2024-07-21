@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0055 import MinimalRepositoryType
+from .group_0077 import CodespaceMachineType
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class UserCodespacesCodespaceNameMachinesGetResponse200Type(TypedDict):
+    """UserCodespacesCodespaceNameMachinesGetResponse200"""
 
     total_count: int
-    repositories: List[MinimalRepositoryType]
+    machines: List[CodespaceMachineType]
 
 
-__all__ = ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",)
+__all__ = ("UserCodespacesCodespaceNameMachinesGetResponse200Type",)

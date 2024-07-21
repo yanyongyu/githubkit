@@ -45,7 +45,6 @@ if TYPE_CHECKING:
         UserRoleAssignment,
         OrganizationInvitation,
         OrgRepoCustomPropertyValues,
-        OrganizationFineGrainedPermission,
         OrgsOrgInstallationsGetResponse200,
         OrganizationProgrammaticAccessGrant,
         OrgsOrgOrganizationRolesGetResponse200,
@@ -63,14 +62,12 @@ if TYPE_CHECKING:
         OrgsOrgHooksHookIdPatchBodyType,
         OrgsOrgHooksPostBodyPropConfigType,
         UserMembershipsOrgsOrgPatchBodyType,
-        OrgsOrgOrganizationRolesPostBodyType,
         OrgsOrgPropertiesSchemaPatchBodyType,
         OrgsOrgPropertiesValuesPatchBodyType,
         OrgsOrgHooksHookIdConfigPatchBodyType,
         OrgsOrgMembershipsUsernamePutBodyType,
         OrgsOrgPersonalAccessTokensPostBodyType,
         OrgsOrgHooksHookIdPatchBodyPropConfigType,
-        OrgsOrgOrganizationRolesRoleIdPatchBodyType,
         OrgsOrgPersonalAccessTokensPatIdPostBodyType,
         OrgsOrgSecurityProductEnablementPostBodyType,
         OrgsOrgOutsideCollaboratorsUsernamePutBodyType,
@@ -2365,68 +2362,6 @@ class OrgsClient:
             },
         )
 
-    def list_organization_fine_grained_permissions(
-        self,
-        org: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationFineGrainedPermission]]:
-        """See also: https://docs.github.com/rest/orgs/organization-roles#list-organization-fine-grained-permissions-for-an-organization"""
-
-        from typing import List
-
-        from ..models import (
-            BasicError,
-            ValidationError,
-            OrganizationFineGrainedPermission,
-        )
-
-        url = f"/orgs/{org}/organization-fine-grained-permissions"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            response_model=List[OrganizationFineGrainedPermission],
-            error_models={
-                "404": BasicError,
-                "422": ValidationError,
-            },
-        )
-
-    async def async_list_organization_fine_grained_permissions(
-        self,
-        org: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationFineGrainedPermission]]:
-        """See also: https://docs.github.com/rest/orgs/organization-roles#list-organization-fine-grained-permissions-for-an-organization"""
-
-        from typing import List
-
-        from ..models import (
-            BasicError,
-            ValidationError,
-            OrganizationFineGrainedPermission,
-        )
-
-        url = f"/orgs/{org}/organization-fine-grained-permissions"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "GET",
-            url,
-            headers=exclude_unset(headers),
-            response_model=List[OrganizationFineGrainedPermission],
-            error_models={
-                "404": BasicError,
-                "422": ValidationError,
-            },
-        )
-
     def list_org_roles(
         self,
         org: str,
@@ -2482,130 +2417,6 @@ class OrgsClient:
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
-            },
-        )
-
-    @overload
-    def create_custom_organization_role(
-        self,
-        org: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: OrgsOrgOrganizationRolesPostBodyType,
-    ) -> Response[OrganizationRole]: ...
-
-    @overload
-    def create_custom_organization_role(
-        self,
-        org: str,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        name: str,
-        description: Missing[str] = UNSET,
-        permissions: List[str],
-    ) -> Response[OrganizationRole]: ...
-
-    def create_custom_organization_role(
-        self,
-        org: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrgsOrgOrganizationRolesPostBodyType] = UNSET,
-        **kwargs,
-    ) -> Response[OrganizationRole]:
-        """See also: https://docs.github.com/rest/orgs/organization-roles#create-a-custom-organization-role"""
-
-        from ..models import (
-            BasicError,
-            ValidationError,
-            OrganizationRole,
-            OrgsOrgOrganizationRolesPostBody,
-        )
-
-        url = f"/orgs/{org}/organization-roles"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgOrganizationRolesPostBody, json)
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            response_model=OrganizationRole,
-            error_models={
-                "422": ValidationError,
-                "404": BasicError,
-                "409": BasicError,
-            },
-        )
-
-    @overload
-    async def async_create_custom_organization_role(
-        self,
-        org: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: OrgsOrgOrganizationRolesPostBodyType,
-    ) -> Response[OrganizationRole]: ...
-
-    @overload
-    async def async_create_custom_organization_role(
-        self,
-        org: str,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        name: str,
-        description: Missing[str] = UNSET,
-        permissions: List[str],
-    ) -> Response[OrganizationRole]: ...
-
-    async def async_create_custom_organization_role(
-        self,
-        org: str,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrgsOrgOrganizationRolesPostBodyType] = UNSET,
-        **kwargs,
-    ) -> Response[OrganizationRole]:
-        """See also: https://docs.github.com/rest/orgs/organization-roles#create-a-custom-organization-role"""
-
-        from ..models import (
-            BasicError,
-            ValidationError,
-            OrganizationRole,
-            OrgsOrgOrganizationRolesPostBody,
-        )
-
-        url = f"/orgs/{org}/organization-roles"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgOrganizationRolesPostBody, json)
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "POST",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            response_model=OrganizationRole,
-            error_models={
-                "422": ValidationError,
-                "404": BasicError,
-                "409": BasicError,
             },
         )
 
@@ -2898,174 +2709,6 @@ class OrgsClient:
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
-            },
-        )
-
-    def delete_custom_organization_role(
-        self,
-        org: str,
-        role_id: int,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response:
-        """See also: https://docs.github.com/rest/orgs/organization-roles#delete-a-custom-organization-role"""
-
-        url = f"/orgs/{org}/organization-roles/{role_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return self._github.request(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-        )
-
-    async def async_delete_custom_organization_role(
-        self,
-        org: str,
-        role_id: int,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response:
-        """See also: https://docs.github.com/rest/orgs/organization-roles#delete-a-custom-organization-role"""
-
-        url = f"/orgs/{org}/organization-roles/{role_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        return await self._github.arequest(
-            "DELETE",
-            url,
-            headers=exclude_unset(headers),
-        )
-
-    @overload
-    def patch_custom_organization_role(
-        self,
-        org: str,
-        role_id: int,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: OrgsOrgOrganizationRolesRoleIdPatchBodyType,
-    ) -> Response[OrganizationRole]: ...
-
-    @overload
-    def patch_custom_organization_role(
-        self,
-        org: str,
-        role_id: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        name: Missing[str] = UNSET,
-        description: Missing[str] = UNSET,
-        permissions: Missing[List[str]] = UNSET,
-    ) -> Response[OrganizationRole]: ...
-
-    def patch_custom_organization_role(
-        self,
-        org: str,
-        role_id: int,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrgsOrgOrganizationRolesRoleIdPatchBodyType] = UNSET,
-        **kwargs,
-    ) -> Response[OrganizationRole]:
-        """See also: https://docs.github.com/rest/orgs/organization-roles#update-a-custom-organization-role"""
-
-        from ..models import (
-            BasicError,
-            ValidationError,
-            OrganizationRole,
-            OrgsOrgOrganizationRolesRoleIdPatchBody,
-        )
-
-        url = f"/orgs/{org}/organization-roles/{role_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgOrganizationRolesRoleIdPatchBody, json)
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return self._github.request(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            response_model=OrganizationRole,
-            error_models={
-                "422": ValidationError,
-                "409": BasicError,
-                "404": BasicError,
-            },
-        )
-
-    @overload
-    async def async_patch_custom_organization_role(
-        self,
-        org: str,
-        role_id: int,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: OrgsOrgOrganizationRolesRoleIdPatchBodyType,
-    ) -> Response[OrganizationRole]: ...
-
-    @overload
-    async def async_patch_custom_organization_role(
-        self,
-        org: str,
-        role_id: int,
-        *,
-        data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        name: Missing[str] = UNSET,
-        description: Missing[str] = UNSET,
-        permissions: Missing[List[str]] = UNSET,
-    ) -> Response[OrganizationRole]: ...
-
-    async def async_patch_custom_organization_role(
-        self,
-        org: str,
-        role_id: int,
-        *,
-        headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrgsOrgOrganizationRolesRoleIdPatchBodyType] = UNSET,
-        **kwargs,
-    ) -> Response[OrganizationRole]:
-        """See also: https://docs.github.com/rest/orgs/organization-roles#update-a-custom-organization-role"""
-
-        from ..models import (
-            BasicError,
-            ValidationError,
-            OrganizationRole,
-            OrgsOrgOrganizationRolesRoleIdPatchBody,
-        )
-
-        url = f"/orgs/{org}/organization-roles/{role_id}"
-
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
-
-        json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgOrganizationRolesRoleIdPatchBody, json)
-        json = model_dump(json) if isinstance(json, BaseModel) else json
-
-        return await self._github.arequest(
-            "PATCH",
-            url,
-            json=exclude_unset(json),
-            headers=exclude_unset(headers),
-            response_model=OrganizationRole,
-            error_models={
-                "422": ValidationError,
-                "409": BasicError,
-                "404": BasicError,
             },
         )
 

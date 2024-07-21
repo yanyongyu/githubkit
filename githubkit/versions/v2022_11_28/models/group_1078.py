@@ -9,24 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserCodespacesCodespaceNamePublishPostBody(GitHubModel):
-    """UserCodespacesCodespaceNamePublishPostBody"""
+class UserEmailsDeleteBodyOneof0(GitHubModel):
+    """UserEmailsDeleteBodyOneof0
 
-    name: Missing[str] = Field(
-        default=UNSET, description="A name for the new repository."
+    Deletes one or more email addresses from your GitHub account. Must contain at
+    least one email address. **Note:** Alternatively, you can pass a single email
+    address or an `array` of emails addresses directly, but we recommend that you
+    pass an object using the `emails` key.
+
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: List[str] = Field(
+        description="Email addresses associated with the GitHub user account."
     )
-    private: Missing[bool] = Field(
-        default=UNSET, description="Whether the new repository should be private."
-    )
 
 
-model_rebuild(UserCodespacesCodespaceNamePublishPostBody)
+model_rebuild(UserEmailsDeleteBodyOneof0)
 
-__all__ = ("UserCodespacesCodespaceNamePublishPostBody",)
+__all__ = ("UserEmailsDeleteBodyOneof0",)

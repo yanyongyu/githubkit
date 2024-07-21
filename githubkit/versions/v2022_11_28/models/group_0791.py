@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Literal
 
 from pydantic import Field
@@ -19,37 +18,20 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsVariablesGetResponse200(GitHubModel):
-    """OrgsOrgActionsVariablesGetResponse200"""
-
-    total_count: int = Field()
-    variables: List[OrganizationActionsVariable] = Field()
-
-
-class OrganizationActionsVariable(GitHubModel):
-    """Actions Variable for an Organization
-
-    Organization variable for GitHub Actions.
-    """
+class OrgsOrgActionsVariablesPostBody(GitHubModel):
+    """OrgsOrgActionsVariablesPostBody"""
 
     name: str = Field(description="The name of the variable.")
     value: str = Field(description="The value of the variable.")
-    created_at: datetime = Field(
-        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    updated_at: datetime = Field(
-        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
     visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a variable"
+        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable."
     )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
+    selected_repository_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
+    )
 
 
-model_rebuild(OrgsOrgActionsVariablesGetResponse200)
-model_rebuild(OrganizationActionsVariable)
+model_rebuild(OrgsOrgActionsVariablesPostBody)
 
-__all__ = (
-    "OrgsOrgActionsVariablesGetResponse200",
-    "OrganizationActionsVariable",
-)
+__all__ = ("OrgsOrgActionsVariablesPostBody",)

@@ -13,10 +13,10 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class TeamsTeamIdMembershipsUsernamePutBodyType(TypedDict):
-    """TeamsTeamIdMembershipsUsernamePutBody"""
+class TeamsTeamIdReposOwnerRepoPutBodyType(TypedDict):
+    """TeamsTeamIdReposOwnerRepoPutBody"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
 
 
-__all__ = ("TeamsTeamIdMembershipsUsernamePutBodyType",)
+__all__ = ("TeamsTeamIdReposOwnerRepoPutBodyType",)

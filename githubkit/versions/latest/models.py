@@ -2265,9 +2265,6 @@ if TYPE_CHECKING:
         OrgsOrgActionsPermissionsPutBody as OrgsOrgActionsPermissionsPutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
-        OrgsOrgOrganizationRolesPostBody as OrgsOrgOrganizationRolesPostBody,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         OrgsOrgPropertiesSchemaPatchBody as OrgsOrgPropertiesSchemaPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2443,9 +2440,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         MilestonedIssueEventPropMilestone as MilestonedIssueEventPropMilestone,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        OrganizationFineGrainedPermission as OrganizationFineGrainedPermission,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgHooksHookIdConfigPatchBody as OrgsOrgHooksHookIdConfigPatchBody,
@@ -3262,9 +3256,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         DependabotAlertSecurityAdvisoryPropCvss as DependabotAlertSecurityAdvisoryPropCvss,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        OrgsOrgOrganizationRolesRoleIdPatchBody as OrgsOrgOrganizationRolesRoleIdPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgTeamsTeamSlugDiscussionsPostBody as OrgsOrgTeamsTeamSlugDiscussionsPostBody,
@@ -9512,7 +9503,6 @@ else:
             "OrgMembership",
             "OrgMembershipPropPermissions",
             "Migration",
-            "OrganizationFineGrainedPermission",
             "OrganizationRole",
             "OrgsOrgOrganizationRolesGetResponse200",
             "TeamRoleAssignment",
@@ -12260,8 +12250,6 @@ else:
             "OrgsOrgMembersUsernameCodespacesGetResponse200",
             "OrgsOrgMembershipsUsernamePutBody",
             "OrgsOrgMigrationsPostBody",
-            "OrgsOrgOrganizationRolesPostBody",
-            "OrgsOrgOrganizationRolesRoleIdPatchBody",
             "OrgsOrgOutsideCollaboratorsUsernamePutBody",
             "OrgsOrgOutsideCollaboratorsUsernamePutResponse202",
             "OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422",

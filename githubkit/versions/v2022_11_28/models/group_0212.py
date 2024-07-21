@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -19,15 +18,17 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeScanningDefaultSetup(GitHubModel):
-    """CodeScanningDefaultSetup
+class CodeScanningDefaultSetupUpdate(GitHubModel):
+    """CodeScanningDefaultSetupUpdate
 
     Configuration for code scanning default setup.
     """
 
     state: Missing[Literal["configured", "not-configured"]] = Field(
-        default=UNSET,
-        description="Code scanning default setup has been configured or not.",
+        default=UNSET, description="The desired state of code scanning default setup."
+    )
+    query_suite: Missing[Literal["default", "extended"]] = Field(
+        default=UNSET, description="CodeQL query suite to be used."
     )
     languages: Missing[
         List[
@@ -37,25 +38,14 @@ class CodeScanningDefaultSetup(GitHubModel):
                 "go",
                 "java-kotlin",
                 "javascript-typescript",
-                "javascript",
                 "python",
                 "ruby",
-                "typescript",
                 "swift",
             ]
         ]
-    ] = Field(default=UNSET, description="Languages to be analyzed.")
-    query_suite: Missing[Literal["default", "extended"]] = Field(
-        default=UNSET, description="CodeQL query suite to be used."
-    )
-    updated_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET, description="Timestamp of latest configuration update."
-    )
-    schedule: Missing[Union[None, Literal["weekly"]]] = Field(
-        default=UNSET, description="The frequency of the periodic analysis."
-    )
+    ] = Field(default=UNSET, description="CodeQL languages to be analyzed.")
 
 
-model_rebuild(CodeScanningDefaultSetup)
+model_rebuild(CodeScanningDefaultSetupUpdate)
 
-__all__ = ("CodeScanningDefaultSetup",)
+__all__ = ("CodeScanningDefaultSetupUpdate",)

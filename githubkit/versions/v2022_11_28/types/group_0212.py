@@ -9,18 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class CodeScanningDefaultSetupType(TypedDict):
-    """CodeScanningDefaultSetup
+class CodeScanningDefaultSetupUpdateType(TypedDict):
+    """CodeScanningDefaultSetupUpdate
 
     Configuration for code scanning default setup.
     """
 
     state: NotRequired[Literal["configured", "not-configured"]]
+    query_suite: NotRequired[Literal["default", "extended"]]
     languages: NotRequired[
         List[
             Literal[
@@ -29,17 +29,12 @@ class CodeScanningDefaultSetupType(TypedDict):
                 "go",
                 "java-kotlin",
                 "javascript-typescript",
-                "javascript",
                 "python",
                 "ruby",
-                "typescript",
                 "swift",
             ]
         ]
     ]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    updated_at: NotRequired[Union[datetime, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
 
 
-__all__ = ("CodeScanningDefaultSetupType",)
+__all__ = ("CodeScanningDefaultSetupUpdateType",)

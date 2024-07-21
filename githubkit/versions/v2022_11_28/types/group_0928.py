@@ -14,20 +14,19 @@ from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0926 import (
-    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
-    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
 )
 
 
-class ReposOwnerRepoCheckRunsPostBodyOneof1Type(TypedDict):
-    """ReposOwnerRepoCheckRunsPostBodyOneof1"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type(TypedDict):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1"""
 
-    name: str
-    head_sha: str
+    name: NotRequired[str]
     details_url: NotRequired[str]
     external_id: NotRequired[str]
-    status: NotRequired[Literal["queued", "in_progress"]]
     started_at: NotRequired[datetime]
+    status: NotRequired[Literal["queued", "in_progress"]]
     conclusion: NotRequired[
         Literal[
             "action_required",
@@ -41,8 +40,10 @@ class ReposOwnerRepoCheckRunsPostBodyOneof1Type(TypedDict):
         ]
     ]
     completed_at: NotRequired[datetime]
-    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
-    actions: NotRequired[List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
+    output: NotRequired[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType]
+    actions: NotRequired[
+        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
+    ]
 
 
-__all__ = ("ReposOwnerRepoCheckRunsPostBodyOneof1Type",)
+__all__ = ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1Type",)

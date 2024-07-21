@@ -11,27 +11,21 @@ from __future__ import annotations
 
 from typing import Union
 from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0001 import SimpleUserType
+from typing_extensions import TypedDict
 
 
-class CodeScanningCodeqlDatabaseType(TypedDict):
-    """CodeQL Database
+class CodeScanningVariantAnalysisRepositoryType(TypedDict):
+    """Repository Identifier
 
-    A CodeQL database.
+    Repository Identifier
     """
 
     id: int
     name: str
-    language: str
-    uploader: SimpleUserType
-    content_type: str
-    size: int
-    created_at: datetime
-    updated_at: datetime
-    url: str
-    commit_oid: NotRequired[Union[str, None]]
+    full_name: str
+    private: bool
+    stargazers_count: int
+    updated_at: Union[datetime, None]
 
 
-__all__ = ("CodeScanningCodeqlDatabaseType",)
+__all__ = ("CodeScanningVariantAnalysisRepositoryType",)

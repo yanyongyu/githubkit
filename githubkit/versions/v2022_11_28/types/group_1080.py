@@ -12,15 +12,14 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-
-class UserEmailsPostBodyOneof0Type(TypedDict):
-    """UserEmailsPostBodyOneof0
-
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: List[str]
+from .group_0015 import InstallationType
 
 
-__all__ = ("UserEmailsPostBodyOneof0Type",)
+class UserInstallationsGetResponse200Type(TypedDict):
+    """UserInstallationsGetResponse200"""
+
+    total_count: int
+    installations: List[InstallationType]
+
+
+__all__ = ("UserInstallationsGetResponse200Type",)

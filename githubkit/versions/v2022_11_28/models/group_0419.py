@@ -9,81 +9,103 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
+
+class WebhooksSecurityAdvisory(GitHubModel):
+    """WebhooksSecurityAdvisory
+
+    The details of the security advisory, including summary, description, and
+    severity.
+    """
+
+    cvss: WebhooksSecurityAdvisoryPropCvss = Field()
+    cwes: List[WebhooksSecurityAdvisoryPropCwesItems] = Field()
+    description: str = Field()
+    ghsa_id: str = Field()
+    identifiers: List[WebhooksSecurityAdvisoryPropIdentifiersItems] = Field()
+    published_at: str = Field()
+    references: List[WebhooksSecurityAdvisoryPropReferencesItems] = Field()
+    severity: str = Field()
+    summary: str = Field()
+    updated_at: str = Field()
+    vulnerabilities: List[WebhooksSecurityAdvisoryPropVulnerabilitiesItems] = Field()
+    withdrawn_at: Union[str, None] = Field()
 
 
-class SecretScanningAlertWebhook(GitHubModel):
-    """SecretScanningAlertWebhook"""
+class WebhooksSecurityAdvisoryPropCvss(GitHubModel):
+    """WebhooksSecurityAdvisoryPropCvss"""
 
-    number: Missing[int] = Field(
-        default=UNSET, description="The security alert number."
-    )
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    updated_at: Missing[Union[None, datetime]] = Field(default=UNSET)
-    url: Missing[str] = Field(
-        default=UNSET, description="The REST API URL of the alert resource."
-    )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The GitHub URL of the alert resource."
-    )
-    locations_url: Missing[str] = Field(
-        default=UNSET,
-        description="The REST API URL of the code locations for this alert.",
-    )
-    resolution: Missing[
-        Union[
-            None,
-            Literal[
-                "false_positive",
-                "wont_fix",
-                "revoked",
-                "used_in_tests",
-                "pattern_deleted",
-                "pattern_edited",
-            ],
-        ]
-    ] = Field(default=UNSET, description="The reason for resolving the alert.")
-    resolved_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    resolution_comment: Missing[Union[str, None]] = Field(
-        default=UNSET, description="An optional comment to resolve an alert."
-    )
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that secret scanning detected."
-    )
-    secret_type_display_name: Missing[str] = Field(
-        default=UNSET,
-        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Secret scanning patterns](https://docs.github.com/code-security/secret-scanning/secret-scanning-patterns#supported-secrets-for-advanced-security)."',
-    )
-    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
-        default=UNSET, description="The token status as of the latest validity check."
-    )
-    push_protection_bypassed: Missing[Union[bool, None]] = Field(
-        default=UNSET,
-        description="Whether push protection was bypassed for the detected secret.",
-    )
-    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
+    score: float = Field()
+    vector_string: Union[str, None] = Field()
 
 
-model_rebuild(SecretScanningAlertWebhook)
+class WebhooksSecurityAdvisoryPropCwesItems(GitHubModel):
+    """WebhooksSecurityAdvisoryPropCwesItems"""
 
-__all__ = ("SecretScanningAlertWebhook",)
+    cwe_id: str = Field()
+    name: str = Field()
+
+
+class WebhooksSecurityAdvisoryPropIdentifiersItems(GitHubModel):
+    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str = Field()
+    value: str = Field()
+
+
+class WebhooksSecurityAdvisoryPropReferencesItems(GitHubModel):
+    """WebhooksSecurityAdvisoryPropReferencesItems"""
+
+    url: str = Field()
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItems(GitHubModel):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion, None
+    ] = Field()
+    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = Field()
+    severity: str = Field()
+    vulnerable_version_range: str = Field()
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
+    GitHubModel
+):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
+
+    identifier: str = Field()
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(GitHubModel):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
+
+    ecosystem: str = Field()
+    name: str = Field()
+
+
+model_rebuild(WebhooksSecurityAdvisory)
+model_rebuild(WebhooksSecurityAdvisoryPropCvss)
+model_rebuild(WebhooksSecurityAdvisoryPropCwesItems)
+model_rebuild(WebhooksSecurityAdvisoryPropIdentifiersItems)
+model_rebuild(WebhooksSecurityAdvisoryPropReferencesItems)
+model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItems)
+model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion)
+model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage)
+
+__all__ = (
+    "WebhooksSecurityAdvisory",
+    "WebhooksSecurityAdvisoryPropCvss",
+    "WebhooksSecurityAdvisoryPropCwesItems",
+    "WebhooksSecurityAdvisoryPropIdentifiersItems",
+    "WebhooksSecurityAdvisoryPropReferencesItems",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItems",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
+)

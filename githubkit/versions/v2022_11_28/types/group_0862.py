@@ -9,16 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class ProjectsColumnsCardsCardIdDeleteResponse403Type(TypedDict):
-    """ProjectsColumnsCardsCardIdDeleteResponse403"""
-
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    errors: NotRequired[List[str]]
+class ProjectsColumnsCardsCardIdMovesPostResponse201Type(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse201"""
 
 
-__all__ = ("ProjectsColumnsCardsCardIdDeleteResponse403Type",)
+__all__ = ("ProjectsColumnsCardsCardIdMovesPostResponse201Type",)

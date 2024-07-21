@@ -9,37 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class UserRoleAssignmentType(TypedDict):
-    """A Role Assignment for a User
+class PackageVersionType(TypedDict):
+    """Package Version
 
-    The Relationship a User has with a role.
+    A version of a software package
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
     id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
+    name: str
     url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
+    created_at: datetime
+    updated_at: datetime
+    deleted_at: NotRequired[datetime]
+    metadata: NotRequired[PackageVersionPropMetadataType]
 
 
-__all__ = ("UserRoleAssignmentType",)
+class PackageVersionPropMetadataType(TypedDict):
+    """Package Version Metadata"""
+
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerType]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
+
+
+class PackageVersionPropMetadataPropContainerType(TypedDict):
+    """Container Metadata"""
+
+    tags: List[str]
+
+
+class PackageVersionPropMetadataPropDockerType(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[List[str]]
+
+
+__all__ = (
+    "PackageVersionType",
+    "PackageVersionPropMetadataType",
+    "PackageVersionPropMetadataPropContainerType",
+    "PackageVersionPropMetadataPropDockerType",
+)

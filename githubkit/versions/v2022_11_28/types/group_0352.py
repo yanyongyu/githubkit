@@ -9,54 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0187 import GitUserType
-from .group_0001 import SimpleUserType
-from .group_0055 import MinimalRepositoryType
-from .group_0350 import SearchResultTextMatchesItemsType
-from .group_0353 import CommitSearchResultItemPropCommitType
+from .group_0186 import GitUserType
+from .group_0187 import VerificationType
 
 
-class CommitSearchResultItemType(TypedDict):
-    """Commit Search Result Item
+class CommitSearchResultItemPropCommitType(TypedDict):
+    """CommitSearchResultItemPropCommit"""
 
-    Commit Search Result Item
-    """
-
-    url: str
-    sha: str
-    html_url: str
-    comments_url: str
-    commit: CommitSearchResultItemPropCommitType
-    author: Union[None, SimpleUserType]
+    author: CommitSearchResultItemPropCommitPropAuthorType
     committer: Union[None, GitUserType]
-    parents: List[CommitSearchResultItemPropParentsItemsType]
-    repository: MinimalRepositoryType
-    score: float
-    node_id: str
-    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
+    comment_count: int
+    message: str
+    tree: CommitSearchResultItemPropCommitPropTreeType
+    url: str
+    verification: NotRequired[VerificationType]
 
 
-class CommitSearchResultItemPropParentsItemsType(TypedDict):
-    """CommitSearchResultItemPropParentsItems"""
+class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
+    """CommitSearchResultItemPropCommitPropAuthor"""
 
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
+    name: str
+    email: str
+    date: datetime
 
 
-class SearchCommitsGetResponse200Type(TypedDict):
-    """SearchCommitsGetResponse200"""
+class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
+    """CommitSearchResultItemPropCommitPropTree"""
 
-    total_count: int
-    incomplete_results: bool
-    items: List[CommitSearchResultItemType]
+    sha: str
+    url: str
 
 
 __all__ = (
-    "CommitSearchResultItemType",
-    "CommitSearchResultItemPropParentsItemsType",
-    "SearchCommitsGetResponse200Type",
+    "CommitSearchResultItemPropCommitType",
+    "CommitSearchResultItemPropCommitPropAuthorType",
+    "CommitSearchResultItemPropCommitPropTreeType",
 )

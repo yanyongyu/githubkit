@@ -12,42 +12,34 @@ from __future__ import annotations
 from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0025 import TeamSimpleType
 
+class UserRoleAssignmentType(TypedDict):
+    """A Role Assignment for a User
 
-class TeamRoleAssignmentType(TypedDict):
-    """A Role Assignment for a Team
-
-    The Relationship a Team has with a role.
+    The Relationship a User has with a role.
     """
 
+    name: NotRequired[Union[str, None]]
+    email: NotRequired[Union[str, None]]
+    login: str
     id: int
     node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
+    avatar_url: str
+    gravatar_id: Union[str, None]
     url: str
     html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleType]
+    followers_url: str
+    following_url: str
+    gists_url: str
+    starred_url: str
+    subscriptions_url: str
+    organizations_url: str
+    repos_url: str
+    events_url: str
+    received_events_url: str
+    type: str
+    site_admin: bool
+    starred_at: NotRequired[str]
 
 
-class TeamRoleAssignmentPropPermissionsType(TypedDict):
-    """TeamRoleAssignmentPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
-
-
-__all__ = (
-    "TeamRoleAssignmentType",
-    "TeamRoleAssignmentPropPermissionsType",
-)
+__all__ = ("UserRoleAssignmentType",)

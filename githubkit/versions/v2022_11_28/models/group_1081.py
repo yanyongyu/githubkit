@@ -13,26 +13,21 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class UserEmailsDeleteBodyOneof0(GitHubModel):
-    """UserEmailsDeleteBodyOneof0
-
-    Deletes one or more email addresses from your GitHub account. Must contain at
-    least one email address. **Note:** Alternatively, you can pass a single email
-    address or an `array` of emails addresses directly, but we recommend that you
-    pass an object using the `emails` key.
-
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: List[str] = Field(
-        description="Email addresses associated with the GitHub user account."
-    )
+from .group_0017 import Repository
 
 
-model_rebuild(UserEmailsDeleteBodyOneof0)
+class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
+    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
 
-__all__ = ("UserEmailsDeleteBodyOneof0",)
+    total_count: int = Field()
+    repository_selection: Missing[str] = Field(default=UNSET)
+    repositories: List[Repository] = Field()
+
+
+model_rebuild(UserInstallationsInstallationIdRepositoriesGetResponse200)
+
+__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200",)

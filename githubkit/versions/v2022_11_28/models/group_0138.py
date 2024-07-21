@@ -9,42 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleCodeScanningPropParameters(GitHubModel):
-    """RepositoryRuleCodeScanningPropParameters"""
+class RepositoryRuleOneof17(GitHubModel):
+    """max_file_size
 
-    code_scanning_tools: List[RepositoryRuleParamsCodeScanningTool] = Field(
-        description="Tools that must provide code scanning results for this rule to pass."
-    )
+    Note: max_file_size is in beta and subject to change.
 
-
-class RepositoryRuleParamsCodeScanningTool(GitHubModel):
-    """CodeScanningTool
-
-    A tool that must provide code scanning results for this rule to pass.
+    Prevent commits that exceed a specified file size limit from being pushed to the
+    commit.
     """
 
-    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"] = Field(
-        description='The severity level at which code scanning results that raise alerts block a reference update. For more information on alert severity levels, see "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
-    )
-    security_alerts_threshold: Literal[
-        "none", "critical", "high_or_higher", "medium_or_higher", "all"
-    ] = Field(
-        description='The severity level at which code scanning results that raise security alerts block a reference update. For more information on security severity levels, see "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
-    )
-    tool: str = Field(description="The name of a code scanning tool")
+    type: Literal["max_file_size"] = Field()
+    parameters: Missing[RepositoryRuleOneof17PropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleCodeScanningPropParameters)
-model_rebuild(RepositoryRuleParamsCodeScanningTool)
+class RepositoryRuleOneof17PropParameters(GitHubModel):
+    """RepositoryRuleOneof17PropParameters"""
+
+    max_file_size: int = Field(
+        le=100.0,
+        ge=1.0,
+        description="The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
+    )
+
+
+model_rebuild(RepositoryRuleOneof17)
+model_rebuild(RepositoryRuleOneof17PropParameters)
 
 __all__ = (
-    "RepositoryRuleCodeScanningPropParameters",
-    "RepositoryRuleParamsCodeScanningTool",
+    "RepositoryRuleOneof17",
+    "RepositoryRuleOneof17PropParameters",
 )

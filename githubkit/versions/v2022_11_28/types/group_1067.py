@@ -13,10 +13,21 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class TeamsTeamIdReposOwnerRepoPutBodyType(TypedDict):
-    """TeamsTeamIdReposOwnerRepoPutBody"""
+class UserCodespacesPostBodyOneof0Type(TypedDict):
+    """UserCodespacesPostBodyOneof0"""
 
-    permission: NotRequired[Literal["pull", "push", "admin"]]
+    repository_id: int
+    ref: NotRequired[str]
+    location: NotRequired[str]
+    geo: NotRequired[Literal["EuropeWest", "SoutheastAsia", "UsEast", "UsWest"]]
+    client_ip: NotRequired[str]
+    machine: NotRequired[str]
+    devcontainer_path: NotRequired[str]
+    multi_repo_permissions_opt_out: NotRequired[bool]
+    working_directory: NotRequired[str]
+    idle_timeout_minutes: NotRequired[int]
+    display_name: NotRequired[str]
+    retention_period_minutes: NotRequired[int]
 
 
-__all__ = ("TeamsTeamIdReposOwnerRepoPutBodyType",)
+__all__ = ("UserCodespacesPostBodyOneof0Type",)

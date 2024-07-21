@@ -9,20 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0158 import RateLimitType
-from .group_0160 import RateLimitOverviewPropResourcesType
-
-
-class RateLimitOverviewType(TypedDict):
-    """Rate Limit Overview
-
-    Rate Limit Overview
-    """
-
-    resources: RateLimitOverviewPropResourcesType
-    rate: RateLimitType
+from .group_0157 import RateLimitType
 
 
-__all__ = ("RateLimitOverviewType",)
+class RateLimitOverviewPropResourcesType(TypedDict):
+    """RateLimitOverviewPropResources"""
+
+    core: RateLimitType
+    graphql: NotRequired[RateLimitType]
+    search: RateLimitType
+    code_search: NotRequired[RateLimitType]
+    source_import: NotRequired[RateLimitType]
+    integration_manifest: NotRequired[RateLimitType]
+    code_scanning_upload: NotRequired[RateLimitType]
+    actions_runner_registration: NotRequired[RateLimitType]
+    scim: NotRequired[RateLimitType]
+    dependency_snapshots: NotRequired[RateLimitType]
+
+
+__all__ = ("RateLimitOverviewPropResourcesType",)

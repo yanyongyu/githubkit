@@ -9,31 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0183 import (
-    ProtectedBranchPullRequestReviewPropDismissalRestrictionsType,
-    ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
-)
+from .group_0026 import TeamType
+from .group_0001 import SimpleUserType
+from .group_0006 import IntegrationType
 
 
-class ProtectedBranchPullRequestReviewType(TypedDict):
-    """Protected Branch Pull Request Review
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
 
-    Protected Branch Pull Request Review
+    users: NotRequired[List[SimpleUserType]]
+    teams: NotRequired[List[TeamType]]
+    apps: NotRequired[List[Union[IntegrationType, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    url: NotRequired[str]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPullRequestReviewPropDismissalRestrictionsType
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType
-    ]
-    dismiss_stale_reviews: bool
-    require_code_owner_reviews: bool
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
+    users: NotRequired[List[SimpleUserType]]
+    teams: NotRequired[List[TeamType]]
+    apps: NotRequired[List[Union[IntegrationType, None]]]
 
 
-__all__ = ("ProtectedBranchPullRequestReviewType",)
+__all__ = (
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
+)

@@ -9,15 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class DeploymentBranchPolicyNamePatternWithTypeType(TypedDict):
-    """Deployment branch and tag policy name pattern"""
+class DeploymentBranchPolicyNamePatternType(TypedDict):
+    """Deployment branch policy name pattern"""
 
     name: str
-    type: NotRequired[Literal["branch", "tag"]]
 
 
-__all__ = ("DeploymentBranchPolicyNamePatternWithTypeType",)
+__all__ = ("DeploymentBranchPolicyNamePatternType",)

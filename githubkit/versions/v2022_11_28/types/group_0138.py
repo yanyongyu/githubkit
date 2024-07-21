@@ -9,30 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class RepositoryRuleCodeScanningPropParametersType(TypedDict):
-    """RepositoryRuleCodeScanningPropParameters"""
+class RepositoryRuleOneof17Type(TypedDict):
+    """max_file_size
 
-    code_scanning_tools: List[RepositoryRuleParamsCodeScanningToolType]
+    Note: max_file_size is in beta and subject to change.
 
-
-class RepositoryRuleParamsCodeScanningToolType(TypedDict):
-    """CodeScanningTool
-
-    A tool that must provide code scanning results for this rule to pass.
+    Prevent commits that exceed a specified file size limit from being pushed to the
+    commit.
     """
 
-    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
-    security_alerts_threshold: Literal[
-        "none", "critical", "high_or_higher", "medium_or_higher", "all"
-    ]
-    tool: str
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleOneof17PropParametersType]
+
+
+class RepositoryRuleOneof17PropParametersType(TypedDict):
+    """RepositoryRuleOneof17PropParameters"""
+
+    max_file_size: int
 
 
 __all__ = (
-    "RepositoryRuleCodeScanningPropParametersType",
-    "RepositoryRuleParamsCodeScanningToolType",
+    "RepositoryRuleOneof17Type",
+    "RepositoryRuleOneof17PropParametersType",
 )

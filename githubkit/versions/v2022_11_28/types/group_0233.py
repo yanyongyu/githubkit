@@ -13,24 +13,30 @@ from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ContentDirectoryItemsType(TypedDict):
-    """ContentDirectoryItems"""
+class ContentFileType(TypedDict):
+    """Content File
 
-    type: Literal["dir", "file", "submodule", "symlink"]
+    Content File
+    """
+
+    type: Literal["file"]
+    encoding: str
     size: int
     name: str
     path: str
-    content: NotRequired[str]
+    content: str
     sha: str
     url: str
     git_url: Union[str, None]
     html_url: Union[str, None]
     download_url: Union[str, None]
-    links: ContentDirectoryItemsPropLinksType
+    links: ContentFilePropLinksType
+    target: NotRequired[str]
+    submodule_git_url: NotRequired[str]
 
 
-class ContentDirectoryItemsPropLinksType(TypedDict):
-    """ContentDirectoryItemsPropLinks"""
+class ContentFilePropLinksType(TypedDict):
+    """ContentFilePropLinks"""
 
     git: Union[str, None]
     html: Union[str, None]
@@ -38,6 +44,6 @@ class ContentDirectoryItemsPropLinksType(TypedDict):
 
 
 __all__ = (
-    "ContentDirectoryItemsType",
-    "ContentDirectoryItemsPropLinksType",
+    "ContentFileType",
+    "ContentFilePropLinksType",
 )

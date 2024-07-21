@@ -19,10 +19,10 @@ from .group_0001 import SimpleUser
 from .group_0006 import Integration
 
 
-class AssignedIssueEvent(GitHubModel):
-    """Assigned Issue Event
+class UnassignedIssueEvent(GitHubModel):
+    """Unassigned Issue Event
 
-    Assigned Issue Event
+    Unassigned Issue Event
     """
 
     id: int = Field()
@@ -33,14 +33,11 @@ class AssignedIssueEvent(GitHubModel):
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
-    performed_via_github_app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
-    )
+    performed_via_github_app: Union[None, Integration, None] = Field()
     assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
     assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(AssignedIssueEvent)
+model_rebuild(UnassignedIssueEvent)
 
-__all__ = ("AssignedIssueEvent",)
+__all__ = ("UnassignedIssueEvent",)

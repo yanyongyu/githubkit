@@ -9,33 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Hovercard(GitHubModel):
-    """Hovercard
+class KeySimple(GitHubModel):
+    """Key Simple
 
-    Hovercard
+    Key Simple
     """
 
-    contexts: List[HovercardPropContextsItems] = Field()
+    id: int = Field()
+    key: str = Field()
 
 
-class HovercardPropContextsItems(GitHubModel):
-    """HovercardPropContextsItems"""
+model_rebuild(KeySimple)
 
-    message: str = Field()
-    octicon: str = Field()
-
-
-model_rebuild(Hovercard)
-model_rebuild(HovercardPropContextsItems)
-
-__all__ = (
-    "Hovercard",
-    "HovercardPropContextsItems",
-)
+__all__ = ("KeySimple",)

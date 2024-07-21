@@ -9,16 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 
-class CodeScanningSarifsStatusType(TypedDict):
-    """CodeScanningSarifsStatus"""
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-    processing_status: NotRequired[Literal["pending", "complete", "failed"]]
-    analyses_url: NotRequired[Union[str, None]]
-    errors: NotRequired[Union[List[str], None]]
+    A list of errors found in a repo's CODEOWNERS file
+    """
+
+    errors: List[CodeownersErrorsPropErrorsItemsType]
 
 
-__all__ = ("CodeScanningSarifsStatusType",)
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
+
+
+__all__ = (
+    "CodeownersErrorsType",
+    "CodeownersErrorsPropErrorsItemsType",
+)

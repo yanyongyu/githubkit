@@ -9,17 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class RuleSuitesItemsType(TypedDict):
-    """RuleSuitesItems"""
+class RuleSuiteType(TypedDict):
+    """Rule Suite
+
+    Response
+    """
 
     id: NotRequired[int]
-    actor_id: NotRequired[int]
-    actor_name: NotRequired[str]
+    actor_id: NotRequired[Union[int, None]]
+    actor_name: NotRequired[Union[str, None]]
     before_sha: NotRequired[str]
     after_sha: NotRequired[str]
     ref: NotRequired[str]
@@ -28,6 +31,29 @@ class RuleSuitesItemsType(TypedDict):
     pushed_at: NotRequired[datetime]
     result: NotRequired[Literal["pass", "fail", "bypass"]]
     evaluation_result: NotRequired[Literal["pass", "fail"]]
+    rule_evaluations: NotRequired[List[RuleSuitePropRuleEvaluationsItemsType]]
 
 
-__all__ = ("RuleSuitesItemsType",)
+class RuleSuitePropRuleEvaluationsItemsType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItems"""
+
+    rule_source: NotRequired[RuleSuitePropRuleEvaluationsItemsPropRuleSourceType]
+    enforcement: NotRequired[Literal["active", "evaluate", "deleted ruleset"]]
+    result: NotRequired[Literal["pass", "fail"]]
+    rule_type: NotRequired[str]
+    details: NotRequired[str]
+
+
+class RuleSuitePropRuleEvaluationsItemsPropRuleSourceType(TypedDict):
+    """RuleSuitePropRuleEvaluationsItemsPropRuleSource"""
+
+    type: NotRequired[str]
+    id: NotRequired[Union[int, None]]
+    name: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "RuleSuiteType",
+    "RuleSuitePropRuleEvaluationsItemsType",
+    "RuleSuitePropRuleEvaluationsItemsPropRuleSourceType",
+)

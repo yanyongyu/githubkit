@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -18,88 +18,70 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
 
-class TimelineCommittedEvent(GitHubModel):
-    """Timeline Committed Event
 
-    Timeline Committed Event
+class TimelineReviewedEvent(GitHubModel):
+    """Timeline Reviewed Event
+
+    Timeline Reviewed Event
     """
 
-    event: Missing[Literal["committed"]] = Field(default=UNSET)
-    sha: str = Field(description="SHA for the commit")
+    event: Literal["reviewed"] = Field()
+    id: int = Field(description="Unique identifier of the review")
     node_id: str = Field()
-    url: str = Field()
-    author: TimelineCommittedEventPropAuthor = Field(
-        description="Identifying information for the git-user"
-    )
-    committer: TimelineCommittedEventPropCommitter = Field(
-        description="Identifying information for the git-user"
-    )
-    message: str = Field(description="Message describing the purpose of the commit")
-    tree: TimelineCommittedEventPropTree = Field()
-    parents: List[TimelineCommittedEventPropParentsItems] = Field()
-    verification: TimelineCommittedEventPropVerification = Field()
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    body: Union[str, None] = Field(description="The text of the review.")
+    state: str = Field()
     html_url: str = Field()
+    pull_request_url: str = Field()
+    links: TimelineReviewedEventPropLinks = Field(alias="_links")
+    submitted_at: Missing[datetime] = Field(default=UNSET)
+    commit_id: str = Field(description="A commit SHA for the review.")
+    body_html: Missing[Union[str, None]] = Field(default=UNSET)
+    body_text: Missing[Union[str, None]] = Field(default=UNSET)
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
 
 
-class TimelineCommittedEventPropAuthor(GitHubModel):
-    """TimelineCommittedEventPropAuthor
+class TimelineReviewedEventPropLinks(GitHubModel):
+    """TimelineReviewedEventPropLinks"""
 
-    Identifying information for the git-user
-    """
-
-    date: datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
+    html: TimelineReviewedEventPropLinksPropHtml = Field()
+    pull_request: TimelineReviewedEventPropLinksPropPullRequest = Field()
 
 
-class TimelineCommittedEventPropCommitter(GitHubModel):
-    """TimelineCommittedEventPropCommitter
+class TimelineReviewedEventPropLinksPropHtml(GitHubModel):
+    """TimelineReviewedEventPropLinksPropHtml"""
 
-    Identifying information for the git-user
-    """
-
-    date: datetime = Field(description="Timestamp of the commit")
-    email: str = Field(description="Git email address of the user")
-    name: str = Field(description="Name of the git user")
+    href: str = Field()
 
 
-class TimelineCommittedEventPropTree(GitHubModel):
-    """TimelineCommittedEventPropTree"""
+class TimelineReviewedEventPropLinksPropPullRequest(GitHubModel):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
 
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-
-
-class TimelineCommittedEventPropParentsItems(GitHubModel):
-    """TimelineCommittedEventPropParentsItems"""
-
-    sha: str = Field(description="SHA for the commit")
-    url: str = Field()
-    html_url: str = Field()
+    href: str = Field()
 
 
-class TimelineCommittedEventPropVerification(GitHubModel):
-    """TimelineCommittedEventPropVerification"""
-
-    verified: bool = Field()
-    reason: str = Field()
-    signature: Union[str, None] = Field()
-    payload: Union[str, None] = Field()
-
-
-model_rebuild(TimelineCommittedEvent)
-model_rebuild(TimelineCommittedEventPropAuthor)
-model_rebuild(TimelineCommittedEventPropCommitter)
-model_rebuild(TimelineCommittedEventPropTree)
-model_rebuild(TimelineCommittedEventPropParentsItems)
-model_rebuild(TimelineCommittedEventPropVerification)
+model_rebuild(TimelineReviewedEvent)
+model_rebuild(TimelineReviewedEventPropLinks)
+model_rebuild(TimelineReviewedEventPropLinksPropHtml)
+model_rebuild(TimelineReviewedEventPropLinksPropPullRequest)
 
 __all__ = (
-    "TimelineCommittedEvent",
-    "TimelineCommittedEventPropAuthor",
-    "TimelineCommittedEventPropCommitter",
-    "TimelineCommittedEventPropTree",
-    "TimelineCommittedEventPropParentsItems",
-    "TimelineCommittedEventPropVerification",
+    "TimelineReviewedEvent",
+    "TimelineReviewedEventPropLinks",
+    "TimelineReviewedEventPropLinksPropHtml",
+    "TimelineReviewedEventPropLinksPropPullRequest",
 )

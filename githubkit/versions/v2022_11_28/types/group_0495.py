@@ -13,17 +13,17 @@ from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0015 import InstallationType
-from .group_0372 import EnterpriseWebhooksType
-from .group_0375 import RepositoryWebhooksType
-from .group_0376 import SimpleUserWebhooksType
-from .group_0389 import WebhooksRepositoriesItemsType
-from .group_0374 import OrganizationSimpleWebhooksType
+from .group_0371 import EnterpriseWebhooksType
+from .group_0374 import RepositoryWebhooksType
+from .group_0375 import SimpleUserWebhooksType
+from .group_0388 import WebhooksRepositoriesItemsType
+from .group_0373 import OrganizationSimpleWebhooksType
 
 
-class WebhookInstallationDeletedType(TypedDict):
-    """installation deleted event"""
+class WebhookInstallationNewPermissionsAcceptedType(TypedDict):
+    """installation new_permissions_accepted event"""
 
-    action: Literal["deleted"]
+    action: Literal["new_permissions_accepted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -33,4 +33,4 @@ class WebhookInstallationDeletedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookInstallationDeletedType",)
+__all__ = ("WebhookInstallationNewPermissionsAcceptedType",)

@@ -9,36 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
 from typing_extensions import TypedDict
 
-from .group_0001 import SimpleUserType
 
+class PageBuildStatusType(TypedDict):
+    """Page Build Status
 
-class PageBuildType(TypedDict):
-    """Page Build
-
-    Page Build
+    Page Build Status
     """
 
     url: str
     status: str
-    error: PageBuildPropErrorType
-    pusher: Union[None, SimpleUserType]
-    commit: str
-    duration: int
-    created_at: datetime
-    updated_at: datetime
 
 
-class PageBuildPropErrorType(TypedDict):
-    """PageBuildPropError"""
-
-    message: Union[str, None]
-
-
-__all__ = (
-    "PageBuildType",
-    "PageBuildPropErrorType",
-)
+__all__ = ("PageBuildStatusType",)

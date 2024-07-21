@@ -17,21 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0384 import WebhooksUser
-from .group_0372 import EnterpriseWebhooks
-from .group_0373 import SimpleInstallation
-from .group_0375 import RepositoryWebhooks
-from .group_0376 import SimpleUserWebhooks
-from .group_0374 import OrganizationSimpleWebhooks
+from .group_0383 import WebhooksUser
+from .group_0371 import EnterpriseWebhooks
+from .group_0372 import SimpleInstallation
+from .group_0374 import RepositoryWebhooks
+from .group_0375 import SimpleUserWebhooks
+from .group_0373 import OrganizationSimpleWebhooks
 
 
-class WebhookMemberEdited(GitHubModel):
-    """member edited event"""
+class WebhookMemberRemoved(GitHubModel):
+    """member removed event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookMemberEditedPropChanges = Field(
-        description="The changes to the collaborator permissions"
-    )
+    action: Literal["removed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -58,44 +55,6 @@ class WebhookMemberEdited(GitHubModel):
     )
 
 
-class WebhookMemberEditedPropChanges(GitHubModel):
-    """WebhookMemberEditedPropChanges
+model_rebuild(WebhookMemberRemoved)
 
-    The changes to the collaborator permissions
-    """
-
-    old_permission: Missing[WebhookMemberEditedPropChangesPropOldPermission] = Field(
-        default=UNSET
-    )
-    permission: Missing[WebhookMemberEditedPropChangesPropPermission] = Field(
-        default=UNSET
-    )
-
-
-class WebhookMemberEditedPropChangesPropOldPermission(GitHubModel):
-    """WebhookMemberEditedPropChangesPropOldPermission"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous permissions of the collaborator if the action was edited.",
-    )
-
-
-class WebhookMemberEditedPropChangesPropPermission(GitHubModel):
-    """WebhookMemberEditedPropChangesPropPermission"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(WebhookMemberEdited)
-model_rebuild(WebhookMemberEditedPropChanges)
-model_rebuild(WebhookMemberEditedPropChangesPropOldPermission)
-model_rebuild(WebhookMemberEditedPropChangesPropPermission)
-
-__all__ = (
-    "WebhookMemberEdited",
-    "WebhookMemberEditedPropChanges",
-    "WebhookMemberEditedPropChangesPropOldPermission",
-    "WebhookMemberEditedPropChangesPropPermission",
-)
+__all__ = ("WebhookMemberRemoved",)

@@ -9,42 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
-
-from .group_0016 import LicenseSimpleType
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class LicenseContentType(TypedDict):
-    """License Content
+class MergedUpstreamType(TypedDict):
+    """Merged upstream
 
-    License Content
+    Results of a successful merge upstream request
     """
 
-    name: str
-    path: str
-    sha: str
-    size: int
-    url: str
-    html_url: Union[str, None]
-    git_url: Union[str, None]
-    download_url: Union[str, None]
-    type: str
-    content: str
-    encoding: str
-    links: LicenseContentPropLinksType
-    license_: Union[None, LicenseSimpleType]
+    message: NotRequired[str]
+    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
+    base_branch: NotRequired[str]
 
 
-class LicenseContentPropLinksType(TypedDict):
-    """LicenseContentPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-__all__ = (
-    "LicenseContentType",
-    "LicenseContentPropLinksType",
-)
+__all__ = ("MergedUpstreamType",)

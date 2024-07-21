@@ -9,24 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
+from .group_0006 import IntegrationType
+from .group_0038 import ReactionRollupType
 
 
-class LabelType(TypedDict):
-    """Label
+class TimelineCommentEventType(TypedDict):
+    """Timeline Comment Event
 
-    Color-coded labels help you categorize and filter your issues (just like labels
-    in Gmail).
+    Timeline Comment Event
     """
 
+    event: Literal["commented"]
+    actor: SimpleUserType
     id: int
     node_id: str
     url: str
-    name: str
-    description: Union[str, None]
-    color: str
-    default: bool
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: SimpleUserType
+    created_at: datetime
+    updated_at: datetime
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-__all__ = ("LabelType",)
+__all__ = ("TimelineCommentEventType",)

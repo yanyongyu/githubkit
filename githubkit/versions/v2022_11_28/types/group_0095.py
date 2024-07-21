@@ -9,61 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
 
 
-class OrganizationProgrammaticAccessGrantType(TypedDict):
-    """Organization Programmatic Access Grant
+class ProjectType(TypedDict):
+    """Project
 
-    Minimal representation of an organization programmatic access grant for
-    enumerations
+    Projects are a way to organize columns and cards of work.
     """
 
+    owner_url: str
+    url: str
+    html_url: str
+    columns_url: str
     id: int
-    owner: SimpleUserType
-    repository_selection: Literal["none", "all", "subset"]
-    repositories_url: str
-    permissions: OrganizationProgrammaticAccessGrantPropPermissionsType
-    access_granted_at: str
-    token_expired: bool
-    token_expires_at: Union[str, None]
-    token_last_used_at: Union[str, None]
+    node_id: str
+    name: str
+    body: Union[str, None]
+    number: int
+    state: str
+    creator: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    organization_permission: NotRequired[Literal["read", "write", "admin", "none"]]
+    private: NotRequired[bool]
 
 
-class OrganizationProgrammaticAccessGrantPropPermissionsType(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissions
-
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType
-    ]
-    repository: NotRequired[
-        OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType
-    ]
-    other: NotRequired[OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType]
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
-
-
-class OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType(TypedDict):
-    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
-
-
-__all__ = (
-    "OrganizationProgrammaticAccessGrantType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganizationType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepositoryType",
-    "OrganizationProgrammaticAccessGrantPropPermissionsPropOtherType",
-)
+__all__ = ("ProjectType",)

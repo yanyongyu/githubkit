@@ -9,38 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0026 import TeamType
-from .group_0001 import SimpleUserType
 from .group_0006 import IntegrationType
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+class DeploymentSimpleType(TypedDict):
+    """Deployment
+
+    A deployment created as the result of an Actions check run from a workflow that
+    references an environment
+    """
 
     url: str
-    users_url: str
-    teams_url: str
-    users: List[SimpleUserType]
-    teams: List[TeamType]
-    apps: NotRequired[List[Union[IntegrationType, None]]]
+    id: int
+    node_id: str
+    task: str
+    original_environment: NotRequired[str]
+    environment: str
+    description: Union[str, None]
+    created_at: datetime
+    updated_at: datetime
+    statuses_url: str
+    repository_url: str
+    transient_environment: NotRequired[bool]
+    production_environment: NotRequired[bool]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
-
-    users: List[SimpleUserType]
-    teams: List[TeamType]
-    apps: NotRequired[List[Union[IntegrationType, None]]]
-
-
-__all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
-)
+__all__ = ("DeploymentSimpleType",)

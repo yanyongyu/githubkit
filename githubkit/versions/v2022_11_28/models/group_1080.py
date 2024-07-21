@@ -15,19 +15,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class UserEmailsPostBodyOneof0(GitHubModel):
-    """UserEmailsPostBodyOneof0
-
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: List[str] = Field(
-        description="Adds one or more email addresses to your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key."
-    )
+from .group_0015 import Installation
 
 
-model_rebuild(UserEmailsPostBodyOneof0)
+class UserInstallationsGetResponse200(GitHubModel):
+    """UserInstallationsGetResponse200"""
 
-__all__ = ("UserEmailsPostBodyOneof0",)
+    total_count: int = Field()
+    installations: List[Installation] = Field()
+
+
+model_rebuild(UserInstallationsGetResponse200)
+
+__all__ = ("UserInstallationsGetResponse200",)

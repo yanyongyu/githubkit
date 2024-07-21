@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,19 +18,21 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
-    """ReposOwnerRepoSubscriptionPutBody"""
+class ReposOwnerRepoTransferPostBody(GitHubModel):
+    """ReposOwnerRepoTransferPostBody"""
 
-    subscribed: Missing[bool] = Field(
-        default=UNSET,
-        description="Determines if notifications should be received from this repository.",
+    new_owner: str = Field(
+        description="The username or organization name the repository will be transferred to."
     )
-    ignored: Missing[bool] = Field(
+    new_name: Missing[str] = Field(
+        default=UNSET, description="The new name to be given to the repository."
+    )
+    team_ids: Missing[List[int]] = Field(
         default=UNSET,
-        description="Determines if all notifications should be blocked from this repository.",
+        description="ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.",
     )
 
 
-model_rebuild(ReposOwnerRepoSubscriptionPutBody)
+model_rebuild(ReposOwnerRepoTransferPostBody)
 
-__all__ = ("ReposOwnerRepoSubscriptionPutBody",)
+__all__ = ("ReposOwnerRepoTransferPostBody",)

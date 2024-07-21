@@ -9,15 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
 
 
-class UserProjectsPostBodyType(TypedDict):
-    """UserProjectsPostBody"""
+class UserSocialAccountsDeleteBodyType(TypedDict):
+    """UserSocialAccountsDeleteBody
 
-    name: str
-    body: NotRequired[Union[str, None]]
+    Examples:
+        {'account_urls': ['https://www.linkedin.com/company/github/',
+    'https://twitter.com/github']}
+    """
+
+    account_urls: List[str]
 
 
-__all__ = ("UserProjectsPostBodyType",)
+__all__ = ("UserSocialAccountsDeleteBodyType",)

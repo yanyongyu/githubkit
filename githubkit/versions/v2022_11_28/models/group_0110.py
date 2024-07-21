@@ -9,50 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty(
-    GitHubModel
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
-
-    include: Missing[List[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
-        default=UNSET,
-        description="The repository properties and values to include. All of these properties must match for the condition to pass.",
-    )
-    exclude: Missing[List[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
-        default=UNSET,
-        description="The repository properties and values to exclude. The condition will not pass if any of these properties match.",
-    )
+from .group_0103 import RepositoryRulesetConditionsPropRefName
+from .group_0105 import (
+    RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName,
+)
 
 
-class RepositoryRulesetConditionsRepositoryPropertySpec(GitHubModel):
-    """Repository ruleset property targeting definition
+class OrgRulesetConditionsOneof0(GitHubModel):
+    """repository_name_and_ref_name
 
-    Parameters for a targeting a repository property
+    Conditions to target repositories by name and refs by name
     """
 
-    name: str = Field(description="The name of the repository property to target")
-    property_values: List[str] = Field(
-        description="The values to match for the repository property"
-    )
-    source: Missing[Literal["custom", "system"]] = Field(
-        default=UNSET,
-        description="The source of the repository property. Defaults to 'custom' if not specified.",
-    )
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_name: RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName = Field()
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty)
-model_rebuild(RepositoryRulesetConditionsRepositoryPropertySpec)
+model_rebuild(OrgRulesetConditionsOneof0)
 
-__all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
-    "RepositoryRulesetConditionsRepositoryPropertySpec",
-)
+__all__ = ("OrgRulesetConditionsOneof0",)

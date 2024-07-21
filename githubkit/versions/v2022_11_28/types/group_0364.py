@@ -10,69 +10,22 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, List, Union
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class GpgKeyType(TypedDict):
-    """GPG Key
+class KeyType(TypedDict):
+    """Key
 
-    A unique encryption key
+    Key
     """
 
+    key: str
     id: int
-    name: NotRequired[Union[str, None]]
-    primary_key_id: Union[int, None]
-    key_id: str
-    public_key: str
-    emails: List[GpgKeyPropEmailsItemsType]
-    subkeys: List[GpgKeyPropSubkeysItemsType]
-    can_sign: bool
-    can_encrypt_comms: bool
-    can_encrypt_storage: bool
-    can_certify: bool
+    url: str
+    title: str
     created_at: datetime
-    expires_at: Union[datetime, None]
-    revoked: bool
-    raw_key: Union[str, None]
+    verified: bool
+    read_only: bool
 
 
-class GpgKeyPropEmailsItemsType(TypedDict):
-    """GpgKeyPropEmailsItems"""
-
-    email: NotRequired[str]
-    verified: NotRequired[bool]
-
-
-class GpgKeyPropSubkeysItemsType(TypedDict):
-    """GpgKeyPropSubkeysItems"""
-
-    id: NotRequired[int]
-    primary_key_id: NotRequired[int]
-    key_id: NotRequired[str]
-    public_key: NotRequired[str]
-    emails: NotRequired[List[GpgKeyPropSubkeysItemsPropEmailsItemsType]]
-    subkeys: NotRequired[List[Any]]
-    can_sign: NotRequired[bool]
-    can_encrypt_comms: NotRequired[bool]
-    can_encrypt_storage: NotRequired[bool]
-    can_certify: NotRequired[bool]
-    created_at: NotRequired[str]
-    expires_at: NotRequired[Union[str, None]]
-    raw_key: NotRequired[Union[str, None]]
-    revoked: NotRequired[bool]
-
-
-class GpgKeyPropSubkeysItemsPropEmailsItemsType(TypedDict):
-    """GpgKeyPropSubkeysItemsPropEmailsItems"""
-
-    email: NotRequired[str]
-    verified: NotRequired[bool]
-
-
-__all__ = (
-    "GpgKeyType",
-    "GpgKeyPropEmailsItemsType",
-    "GpgKeyPropSubkeysItemsType",
-    "GpgKeyPropSubkeysItemsPropEmailsItemsType",
-)
+__all__ = ("KeyType",)

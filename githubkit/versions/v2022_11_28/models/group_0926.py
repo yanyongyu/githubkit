@@ -18,41 +18,38 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoCheckRunsPostBodyPropOutput(GitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutput
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput(GitHubModel):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput
 
     Check runs can accept a variety of data in the `output` object, including a
     `title` and `summary` and can optionally provide descriptive details about the
     run.
     """
 
-    title: str = Field(description="The title of the check run.")
-    summary: str = Field(
-        max_length=65535,
-        description="The summary of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters.",
-    )
+    title: Missing[str] = Field(default=UNSET, description="**Required**.")
+    summary: str = Field(max_length=65535, description="Can contain Markdown.")
     text: Missing[str] = Field(
-        max_length=65535,
-        default=UNSET,
-        description="The details of the check run. This parameter supports Markdown. **Maximum length**: 65535 characters.",
+        max_length=65535, default=UNSET, description="Can contain Markdown."
     )
     annotations: Missing[
-        List[ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems]
+        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems]
     ] = Field(
         max_length=50,
         default=UNSET,
-        description='Adds information from your analysis to specific lines of code. Annotations are visible on GitHub in the **Checks** and **Files changed** tab of the pull request. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/checks/runs#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. GitHub Actions are limited to 10 warning annotations and 10 error annotations per step. For details about how you can view annotations on GitHub, see "[About status checks](https://docs.github.com/articles/about-status-checks#checks)".',
+        description="Adds information from your analysis to specific lines of code. Annotations are visible in GitHub's pull request UI. Annotations are visible in GitHub's pull request UI. The Checks API limits the number of annotations to a maximum of 50 per API request. To create more than 50 annotations, you have to make multiple requests to the [Update a check run](https://docs.github.com/rest/checks/runs#update-a-check-run) endpoint. Each time you update the check run, annotations are appended to the list of annotations that already exist for the check run. GitHub Actions are limited to 10 warning annotations and 10 error annotations per step. For details about annotations in the UI, see \"[About status checks](https://docs.github.com/articles/about-status-checks#checks)\".",
     )
-    images: Missing[List[ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems]] = (
-        Field(
-            default=UNSET,
-            description="Adds images to the output displayed in the GitHub pull request UI.",
-        )
+    images: Missing[
+        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems]
+    ] = Field(
+        default=UNSET,
+        description="Adds images to the output displayed in the GitHub pull request UI.",
     )
 
 
-class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems(GitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems(
+    GitHubModel
+):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems"""
 
     path: str = Field(
         description="The path of the file to add an annotation to. For example, `assets/css/main.css`."
@@ -85,8 +82,8 @@ class ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems(GitHubModel)
     )
 
 
-class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems(GitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems(GitHubModel):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems"""
 
     alt: str = Field(description="The alternative text for the image.")
     image_url: str = Field(description="The full URL of the image.")
@@ -95,8 +92,8 @@ class ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems(GitHubModel):
     )
 
 
-class ReposOwnerRepoCheckRunsPostBodyPropActionsItems(GitHubModel):
-    """ReposOwnerRepoCheckRunsPostBodyPropActionsItems"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems(GitHubModel):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems"""
 
     label: str = Field(
         max_length=20,
@@ -112,14 +109,14 @@ class ReposOwnerRepoCheckRunsPostBodyPropActionsItems(GitHubModel):
     )
 
 
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropOutput)
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems)
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems)
-model_rebuild(ReposOwnerRepoCheckRunsPostBodyPropActionsItems)
+model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput)
+model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems)
+model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems)
+model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems)
 
 __all__ = (
-    "ReposOwnerRepoCheckRunsPostBodyPropOutput",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems",
-    "ReposOwnerRepoCheckRunsPostBodyPropOutputPropImagesItems",
-    "ReposOwnerRepoCheckRunsPostBodyPropActionsItems",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItems",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems",
+    "ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems",
 )

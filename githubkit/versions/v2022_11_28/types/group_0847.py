@@ -9,79 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0115 import RepositoryRuleUpdateType
-from .group_0139 import RepositoryRuleOneof17Type
-from .group_0135 import RepositoryRuleWorkflowsType
-from .group_0120 import RepositoryRulePullRequestType
-from .group_0111 import OrgRulesetConditionsOneof0Type
-from .group_0112 import OrgRulesetConditionsOneof1Type
-from .group_0113 import OrgRulesetConditionsOneof2Type
-from .group_0137 import RepositoryRuleCodeScanningType
-from .group_0102 import RepositoryRulesetBypassActorType
-from .group_0132 import RepositoryRuleTagNamePatternType
-from .group_0130 import RepositoryRuleBranchNamePatternType
-from .group_0118 import RepositoryRuleRequiredDeploymentsType
-from .group_0122 import RepositoryRuleRequiredStatusChecksType
-from .group_0124 import RepositoryRuleCommitMessagePatternType
-from .group_0128 import RepositoryRuleCommitterEmailPatternType
-from .group_0126 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0117 import (
-    RepositoryRuleOneof15Type,
-    RepositoryRuleRequiredLinearHistoryType,
-)
-from .group_0114 import (
-    RepositoryRuleOneof14Type,
-    RepositoryRuleOneof16Type,
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
 
+class OrgsOrgTeamsTeamSlugPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugPatchBody"""
 
-class OrgsOrgRulesetsPostBodyType(TypedDict):
-    """OrgsOrgRulesetsPostBody"""
-
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[
-        Union[
-            OrgRulesetConditionsOneof0Type,
-            OrgRulesetConditionsOneof1Type,
-            OrgRulesetConditionsOneof2Type,
-        ]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    privacy: NotRequired[Literal["secret", "closed"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
     ]
-    rules: NotRequired[
-        List[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleOneof14Type,
-                RepositoryRuleOneof15Type,
-                RepositoryRuleOneof16Type,
-                RepositoryRuleOneof17Type,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
+    permission: NotRequired[Literal["pull", "push", "admin"]]
+    parent_team_id: NotRequired[Union[int, None]]
 
 
-__all__ = ("OrgsOrgRulesetsPostBodyType",)
+__all__ = ("OrgsOrgTeamsTeamSlugPatchBodyType",)

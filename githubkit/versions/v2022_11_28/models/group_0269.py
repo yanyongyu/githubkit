@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -19,35 +19,28 @@ from .group_0001 import SimpleUser
 from .group_0006 import Integration
 
 
-class UnlabeledIssueEvent(GitHubModel):
-    """Unlabeled Issue Event
+class AssignedIssueEvent(GitHubModel):
+    """Assigned Issue Event
 
-    Unlabeled Issue Event
+    Assigned Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["unlabeled"] = Field()
+    event: str = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    label: UnlabeledIssueEventPropLabel = Field()
+    performed_via_github_app: Union[Integration, None] = Field(
+        title="GitHub app",
+        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    )
+    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class UnlabeledIssueEventPropLabel(GitHubModel):
-    """UnlabeledIssueEventPropLabel"""
+model_rebuild(AssignedIssueEvent)
 
-    name: str = Field()
-    color: str = Field()
-
-
-model_rebuild(UnlabeledIssueEvent)
-model_rebuild(UnlabeledIssueEventPropLabel)
-
-__all__ = (
-    "UnlabeledIssueEvent",
-    "UnlabeledIssueEventPropLabel",
-)
+__all__ = ("AssignedIssueEvent",)

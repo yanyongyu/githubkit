@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 
 from pydantic import Field
 
@@ -17,22 +17,37 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0123 import RepositoryRuleRequiredStatusChecksPropParameters
 
+class RepositoryRuleRequiredStatusChecksPropParameters(GitHubModel):
+    """RepositoryRuleRequiredStatusChecksPropParameters"""
 
-class RepositoryRuleRequiredStatusChecks(GitHubModel):
-    """required_status_checks
-
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
-    """
-
-    type: Literal["required_status_checks"] = Field()
-    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
-        default=UNSET
+    required_status_checks: List[RepositoryRuleParamsStatusCheckConfiguration] = Field(
+        description="Status checks that are required."
+    )
+    strict_required_status_checks_policy: bool = Field(
+        description="Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled."
     )
 
 
-model_rebuild(RepositoryRuleRequiredStatusChecks)
+class RepositoryRuleParamsStatusCheckConfiguration(GitHubModel):
+    """StatusCheckConfiguration
 
-__all__ = ("RepositoryRuleRequiredStatusChecks",)
+    Required status check
+    """
+
+    context: str = Field(
+        description="The status check context name that must be present on the commit."
+    )
+    integration_id: Missing[int] = Field(
+        default=UNSET,
+        description="The optional integration ID that this status check must originate from.",
+    )
+
+
+model_rebuild(RepositoryRuleRequiredStatusChecksPropParameters)
+model_rebuild(RepositoryRuleParamsStatusCheckConfiguration)
+
+__all__ = (
+    "RepositoryRuleRequiredStatusChecksPropParameters",
+    "RepositoryRuleParamsStatusCheckConfiguration",
+)

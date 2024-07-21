@@ -17,11 +17,14 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0120 import RepositoryRulePullRequestPropParameters
 
-class RepositoryRuleDetailedOneof5(GitHubModel):
-    """RepositoryRuleDetailedOneof5"""
 
-    type: Literal["required_signatures"] = Field()
+class RepositoryRuleDetailedOneof6(GitHubModel):
+    """RepositoryRuleDetailedOneof6"""
+
+    type: Literal["pull_request"] = Field()
+    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -35,6 +38,6 @@ class RepositoryRuleDetailedOneof5(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof5)
+model_rebuild(RepositoryRuleDetailedOneof6)
 
-__all__ = ("RepositoryRuleDetailedOneof5",)
+__all__ = ("RepositoryRuleDetailedOneof6",)

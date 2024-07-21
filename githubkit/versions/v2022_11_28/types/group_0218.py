@@ -9,16 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
+from .group_0055 import MinimalRepositoryType
 
 
-class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
-    """Codespaces Permissions Check
+class RepositoryInvitationType(TypedDict):
+    """Repository Invitation
 
-    Permission check result for a given devcontainer config.
+    Repository invitations let you manage who you collaborate with.
     """
 
-    accepted: bool
+    id: int
+    repository: MinimalRepositoryType
+    invitee: Union[None, SimpleUserType]
+    inviter: Union[None, SimpleUserType]
+    permissions: Literal["read", "write", "admin", "triage", "maintain"]
+    created_at: datetime
+    expired: NotRequired[bool]
+    url: str
+    html_url: str
+    node_id: str
 
 
-__all__ = ("CodespacesPermissionsCheckForDevcontainerType",)
+__all__ = ("RepositoryInvitationType",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List
 
 from pydantic import Field
 
@@ -18,17 +18,29 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsCardsCardIdPatchBody(GitHubModel):
-    """ProjectsColumnsCardsCardIdPatchBody"""
+class ProjectsColumnsCardsCardIdMovesPostResponse403(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403"""
 
-    note: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The project card's note"
-    )
-    archived: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the card is archived"
-    )
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[
+        List[ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems]
+    ] = Field(default=UNSET)
 
 
-model_rebuild(ProjectsColumnsCardsCardIdPatchBody)
+class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"""
 
-__all__ = ("ProjectsColumnsCardsCardIdPatchBody",)
+    code: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse403)
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems)
+
+__all__ = (
+    "ProjectsColumnsCardsCardIdMovesPostResponse403",
+    "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems",
+)

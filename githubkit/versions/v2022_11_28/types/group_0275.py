@@ -17,17 +17,17 @@ from .group_0001 import SimpleUserType
 from .group_0006 import IntegrationType
 
 
-class ReviewRequestedIssueEventType(TypedDict):
-    """Review Requested Issue Event
+class ReviewRequestRemovedIssueEventType(TypedDict):
+    """Review Request Removed Issue Event
 
-    Review Requested Issue Event
+    Review Request Removed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["review_requested"]
+    event: Literal["review_request_removed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
@@ -37,4 +37,4 @@ class ReviewRequestedIssueEventType(TypedDict):
     requested_reviewer: NotRequired[SimpleUserType]
 
 
-__all__ = ("ReviewRequestedIssueEventType",)
+__all__ = ("ReviewRequestRemovedIssueEventType",)

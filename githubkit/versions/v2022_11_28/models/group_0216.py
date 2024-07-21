@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List, Union
 
 from pydantic import Field
 
@@ -18,23 +18,38 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeScanningSarifsStatus(GitHubModel):
-    """CodeScanningSarifsStatus"""
+class CodeownersErrors(GitHubModel):
+    """CODEOWNERS errors
 
-    processing_status: Missing[Literal["pending", "complete", "failed"]] = Field(
-        default=UNSET,
-        description="`pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.",
+    A list of errors found in a repo's CODEOWNERS file
+    """
+
+    errors: List[CodeownersErrorsPropErrorsItems] = Field()
+
+
+class CodeownersErrorsPropErrorsItems(GitHubModel):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int = Field(description="The line number where this errors occurs.")
+    column: int = Field(description="The column number where this errors occurs.")
+    source: Missing[str] = Field(
+        default=UNSET, description="The contents of the line where the error occurs."
     )
-    analyses_url: Missing[Union[str, None]] = Field(
+    kind: str = Field(description="The type of error.")
+    suggestion: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The REST API URL for getting the analyses associated with the upload.",
+        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
     )
-    errors: Missing[Union[List[str], None]] = Field(
-        default=UNSET,
-        description="Any errors that ocurred during processing of the delivery.",
+    message: str = Field(
+        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
     )
+    path: str = Field(description="The path of the file where the error occured.")
 
 
-model_rebuild(CodeScanningSarifsStatus)
+model_rebuild(CodeownersErrors)
+model_rebuild(CodeownersErrorsPropErrorsItems)
 
-__all__ = ("CodeScanningSarifsStatus",)
+__all__ = (
+    "CodeownersErrors",
+    "CodeownersErrorsPropErrorsItems",
+)

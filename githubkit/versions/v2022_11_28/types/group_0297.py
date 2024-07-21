@@ -9,64 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date, datetime
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import Union
+from datetime import datetime
+from typing_extensions import TypedDict
+
+from .group_0001 import SimpleUserType
 
 
-class PageType(TypedDict):
-    """GitHub Pages
+class PageBuildType(TypedDict):
+    """Page Build
 
-    The configuration for GitHub Pages for a repository.
+    Page Build
     """
 
     url: str
-    status: Union[None, Literal["built", "building", "errored"]]
-    cname: Union[str, None]
-    protected_domain_state: NotRequired[
-        Union[None, Literal["pending", "verified", "unverified"]]
-    ]
-    pending_domain_unverified_at: NotRequired[Union[datetime, None]]
-    custom_404: bool
-    html_url: NotRequired[str]
-    build_type: NotRequired[Union[None, Literal["legacy", "workflow"]]]
-    source: NotRequired[PagesSourceHashType]
-    public: bool
-    https_certificate: NotRequired[PagesHttpsCertificateType]
-    https_enforced: NotRequired[bool]
+    status: str
+    error: PageBuildPropErrorType
+    pusher: Union[None, SimpleUserType]
+    commit: str
+    duration: int
+    created_at: datetime
+    updated_at: datetime
 
 
-class PagesSourceHashType(TypedDict):
-    """Pages Source Hash"""
+class PageBuildPropErrorType(TypedDict):
+    """PageBuildPropError"""
 
-    branch: str
-    path: str
-
-
-class PagesHttpsCertificateType(TypedDict):
-    """Pages Https Certificate"""
-
-    state: Literal[
-        "new",
-        "authorization_created",
-        "authorization_pending",
-        "authorized",
-        "authorization_revoked",
-        "issued",
-        "uploaded",
-        "approved",
-        "errored",
-        "bad_authz",
-        "destroy_pending",
-        "dns_changed",
-    ]
-    description: str
-    domains: List[str]
-    expires_at: NotRequired[date]
+    message: Union[str, None]
 
 
 __all__ = (
-    "PageType",
-    "PagesSourceHashType",
-    "PagesHttpsCertificateType",
+    "PageBuildType",
+    "PageBuildPropErrorType",
 )

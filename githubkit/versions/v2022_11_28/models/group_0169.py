@@ -9,63 +9,58 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import datetime
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PullRequestMinimal(GitHubModel):
-    """Pull Request Minimal"""
+class SimpleCommit(GitHubModel):
+    """Simple Commit
 
-    id: int = Field()
-    number: int = Field()
-    url: str = Field()
-    head: PullRequestMinimalPropHead = Field()
-    base: PullRequestMinimalPropBase = Field()
+    A commit.
+    """
 
-
-class PullRequestMinimalPropHead(GitHubModel):
-    """PullRequestMinimalPropHead"""
-
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropHeadPropRepo = Field()
-
-
-class PullRequestMinimalPropHeadPropRepo(GitHubModel):
-    """PullRequestMinimalPropHeadPropRepo"""
-
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
+    id: str = Field(description="SHA for the commit")
+    tree_id: str = Field(description="SHA for the commit's tree")
+    message: str = Field(description="Message describing the purpose of the commit")
+    timestamp: datetime = Field(description="Timestamp of the commit")
+    author: Union[SimpleCommitPropAuthor, None] = Field(
+        description="Information about the Git author"
+    )
+    committer: Union[SimpleCommitPropCommitter, None] = Field(
+        description="Information about the Git committer"
+    )
 
 
-class PullRequestMinimalPropBase(GitHubModel):
-    """PullRequestMinimalPropBase"""
+class SimpleCommitPropAuthor(GitHubModel):
+    """SimpleCommitPropAuthor
 
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropBasePropRepo = Field()
+    Information about the Git author
+    """
 
-
-class PullRequestMinimalPropBasePropRepo(GitHubModel):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
+    name: str = Field(description="Name of the commit's author")
+    email: str = Field(description="Git email address of the commit's author")
 
 
-model_rebuild(PullRequestMinimal)
-model_rebuild(PullRequestMinimalPropHead)
-model_rebuild(PullRequestMinimalPropHeadPropRepo)
-model_rebuild(PullRequestMinimalPropBase)
-model_rebuild(PullRequestMinimalPropBasePropRepo)
+class SimpleCommitPropCommitter(GitHubModel):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str = Field(description="Name of the commit's committer")
+    email: str = Field(description="Git email address of the commit's committer")
+
+
+model_rebuild(SimpleCommit)
+model_rebuild(SimpleCommitPropAuthor)
+model_rebuild(SimpleCommitPropCommitter)
 
 __all__ = (
-    "PullRequestMinimal",
-    "PullRequestMinimalPropHead",
-    "PullRequestMinimalPropHeadPropRepo",
-    "PullRequestMinimalPropBase",
-    "PullRequestMinimalPropBasePropRepo",
+    "SimpleCommit",
+    "SimpleCommitPropAuthor",
+    "SimpleCommitPropCommitter",
 )

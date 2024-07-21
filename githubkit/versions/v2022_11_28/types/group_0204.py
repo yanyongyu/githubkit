@@ -10,17 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
 
 
-class CodeScanningAnalysisDeletionType(TypedDict):
-    """Analysis deletion
+class CodeScanningCodeqlDatabaseType(TypedDict):
+    """CodeQL Database
 
-    Successful deletion of a code scanning analysis
+    A CodeQL database.
     """
 
-    next_analysis_url: Union[str, None]
-    confirm_delete_url: Union[str, None]
+    id: int
+    name: str
+    language: str
+    uploader: SimpleUserType
+    content_type: str
+    size: int
+    created_at: datetime
+    updated_at: datetime
+    url: str
+    commit_oid: NotRequired[Union[str, None]]
 
 
-__all__ = ("CodeScanningAnalysisDeletionType",)
+__all__ = ("CodeScanningCodeqlDatabaseType",)

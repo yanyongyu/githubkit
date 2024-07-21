@@ -14,47 +14,62 @@ from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0006 import IntegrationType
-from .group_0055 import MinimalRepositoryType
-from .group_0169 import PullRequestMinimalType
+from .group_0195 import DeploymentSimpleType
+from .group_0377 import SimpleCheckSuiteType
+from .group_0168 import PullRequestMinimalType
 
 
-class SimpleCheckSuiteType(TypedDict):
-    """SimpleCheckSuite
+class CheckRunWithSimpleCheckSuiteType(TypedDict):
+    """CheckRun
 
-    A suite of checks performed on the code of a given code change
+    A check performed on the code of a given code change
     """
 
-    after: NotRequired[Union[str, None]]
-    app: NotRequired[Union[IntegrationType, None]]
-    before: NotRequired[Union[str, None]]
-    conclusion: NotRequired[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-        ]
+    app: Union[None, IntegrationType, None]
+    check_suite: SimpleCheckSuiteType
+    completed_at: Union[datetime, None]
+    conclusion: Union[
+        None,
+        Literal[
+            "waiting",
+            "pending",
+            "startup_failure",
+            "stale",
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
     ]
-    created_at: NotRequired[datetime]
-    head_branch: NotRequired[Union[str, None]]
-    head_sha: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    pull_requests: NotRequired[List[PullRequestMinimalType]]
-    repository: NotRequired[MinimalRepositoryType]
-    status: NotRequired[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ]
-    updated_at: NotRequired[datetime]
-    url: NotRequired[str]
+    deployment: NotRequired[DeploymentSimpleType]
+    details_url: str
+    external_id: str
+    head_sha: str
+    html_url: str
+    id: int
+    name: str
+    node_id: str
+    output: CheckRunWithSimpleCheckSuitePropOutputType
+    pull_requests: List[PullRequestMinimalType]
+    started_at: datetime
+    status: Literal["queued", "in_progress", "completed", "pending"]
+    url: str
 
 
-__all__ = ("SimpleCheckSuiteType",)
+class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
+    """CheckRunWithSimpleCheckSuitePropOutput"""
+
+    annotations_count: int
+    annotations_url: str
+    summary: Union[str, None]
+    text: Union[str, None]
+    title: Union[str, None]
+
+
+__all__ = (
+    "CheckRunWithSimpleCheckSuiteType",
+    "CheckRunWithSimpleCheckSuitePropOutputType",
+)

@@ -9,26 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0386 import Discussion
-from .group_0375 import RepositoryWebhooks
+from .group_0385 import Discussion
+from .group_0384 import WebhooksAnswer
+from .group_0374 import RepositoryWebhooks
+from .group_0375 import SimpleUserWebhooks
+from .group_0373 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionTransferredPropChanges(GitHubModel):
-    """WebhookDiscussionTransferredPropChanges"""
+class WebhookDiscussionUnanswered(GitHubModel):
+    """discussion unanswered event"""
 
-    new_discussion: Discussion = Field(
+    action: Literal["unanswered"] = Field()
+    discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
-    new_repository: RepositoryWebhooks = Field(
+    old_answer: WebhooksAnswer = Field()
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
 
 
-model_rebuild(WebhookDiscussionTransferredPropChanges)
+model_rebuild(WebhookDiscussionUnanswered)
 
-__all__ = ("WebhookDiscussionTransferredPropChanges",)
+__all__ = ("WebhookDiscussionUnanswered",)

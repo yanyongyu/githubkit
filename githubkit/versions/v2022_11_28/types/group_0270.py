@@ -16,10 +16,10 @@ from .group_0001 import SimpleUserType
 from .group_0006 import IntegrationType
 
 
-class AssignedIssueEventType(TypedDict):
-    """Assigned Issue Event
+class UnassignedIssueEventType(TypedDict):
+    """Unassigned Issue Event
 
-    Assigned Issue Event
+    Unassigned Issue Event
     """
 
     id: int
@@ -30,9 +30,9 @@ class AssignedIssueEventType(TypedDict):
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
+    performed_via_github_app: Union[None, IntegrationType, None]
     assignee: SimpleUserType
     assigner: SimpleUserType
 
 
-__all__ = ("AssignedIssueEventType",)
+__all__ = ("UnassignedIssueEventType",)

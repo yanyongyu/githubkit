@@ -9,48 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from datetime import datetime
+from typing import Union, Literal
+from typing_extensions import TypedDict
+
+from .group_0001 import SimpleUserType
 
 
-class WorkflowUsageType(TypedDict):
-    """Workflow Usage
+class ActivityType(TypedDict):
+    """Activity
 
-    Workflow Usage
+    Activity
     """
 
-    billable: WorkflowUsagePropBillableType
+    id: int
+    node_id: str
+    before: str
+    after: str
+    ref: str
+    timestamp: datetime
+    activity_type: Literal[
+        "push",
+        "force_push",
+        "branch_deletion",
+        "branch_creation",
+        "pr_merge",
+        "merge_queue_merge",
+    ]
+    actor: Union[None, SimpleUserType]
 
 
-class WorkflowUsagePropBillableType(TypedDict):
-    """WorkflowUsagePropBillable"""
-
-    ubuntu: NotRequired[WorkflowUsagePropBillablePropUbuntuType]
-    macos: NotRequired[WorkflowUsagePropBillablePropMacosType]
-    windows: NotRequired[WorkflowUsagePropBillablePropWindowsType]
-
-
-class WorkflowUsagePropBillablePropUbuntuType(TypedDict):
-    """WorkflowUsagePropBillablePropUbuntu"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropMacosType(TypedDict):
-    """WorkflowUsagePropBillablePropMacos"""
-
-    total_ms: NotRequired[int]
-
-
-class WorkflowUsagePropBillablePropWindowsType(TypedDict):
-    """WorkflowUsagePropBillablePropWindows"""
-
-    total_ms: NotRequired[int]
-
-
-__all__ = (
-    "WorkflowUsageType",
-    "WorkflowUsagePropBillableType",
-    "WorkflowUsagePropBillablePropUbuntuType",
-    "WorkflowUsagePropBillablePropMacosType",
-    "WorkflowUsagePropBillablePropWindowsType",
-)
+__all__ = ("ActivityType",)

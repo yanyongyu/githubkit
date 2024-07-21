@@ -13,33 +13,55 @@ from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class PrivateVulnerabilityReportCreateType(TypedDict):
-    """PrivateVulnerabilityReportCreate"""
+class RepositoryAdvisoryUpdateType(TypedDict):
+    """RepositoryAdvisoryUpdate"""
 
-    summary: str
-    description: str
+    summary: NotRequired[str]
+    description: NotRequired[str]
+    cve_id: NotRequired[Union[str, None]]
     vulnerabilities: NotRequired[
-        Union[List[PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType], None]
+        List[RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType]
     ]
     cwe_ids: NotRequired[Union[List[str], None]]
+    credits_: NotRequired[
+        Union[List[RepositoryAdvisoryUpdatePropCreditsItemsType], None]
+    ]
     severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
     cvss_vector_string: NotRequired[Union[str, None]]
-    start_private_fork: NotRequired[bool]
+    state: NotRequired[Literal["published", "closed", "draft"]]
+    collaborating_users: NotRequired[Union[List[str], None]]
+    collaborating_teams: NotRequired[Union[List[str], None]]
 
 
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType(TypedDict):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
+class RepositoryAdvisoryUpdatePropCreditsItemsType(TypedDict):
+    """RepositoryAdvisoryUpdatePropCreditsItems"""
 
-    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType
+    login: str
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+
+
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType(TypedDict):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType
     vulnerable_version_range: NotRequired[Union[str, None]]
     patched_versions: NotRequired[Union[str, None]]
     vulnerable_functions: NotRequired[Union[List[str], None]]
 
 
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType(
-    TypedDict
-):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType(TypedDict):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage
 
     The name of the package affected by the vulnerability.
     """
@@ -63,7 +85,8 @@ class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType(
 
 
 __all__ = (
-    "PrivateVulnerabilityReportCreateType",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackageType",
+    "RepositoryAdvisoryUpdateType",
+    "RepositoryAdvisoryUpdatePropCreditsItemsType",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType",
 )

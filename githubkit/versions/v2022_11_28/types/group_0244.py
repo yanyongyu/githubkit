@@ -9,20 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0243 import MetadataType
+from .group_0242 import MetadataType
 
 
-class DependencyType(TypedDict):
-    """Dependency"""
+class ManifestType(TypedDict):
+    """Manifest"""
 
-    package_url: NotRequired[str]
+    name: str
+    file: NotRequired[ManifestPropFileType]
     metadata: NotRequired[MetadataType]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[List[str]]
+    resolved: NotRequired[ManifestPropResolvedType]
 
 
-__all__ = ("DependencyType",)
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+class ManifestPropResolvedType(TypedDict):
+    """ManifestPropResolved
+
+    A collection of resolved package dependencies.
+    """
+
+
+__all__ = (
+    "ManifestType",
+    "ManifestPropFileType",
+    "ManifestPropResolvedType",
+)
