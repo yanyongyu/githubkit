@@ -87,13 +87,13 @@ Here is some common use cases to help you get started quickly. For more detailed
 
 ```python
 from githubkit import GitHub
-from githubkit.versions.latest.models import User
+from githubkit.versions.latest.models import PublicUser, PrivateUser
 
 github = GitHub("<your_token_here>")
 
 # call GitHub rest api
 resp = github.rest.users.get_authenticated()
-user: User = resp.parsed_data
+user: PublicUser | PrivateUser = resp.parsed_data
 
 # call GitHub graphql api
 data: dict = github.graphql("{ viewer { login } }")
@@ -102,7 +102,7 @@ data: dict = github.graphql("{ viewer { login } }")
 ### Develop a OAuth APP with web flow
 
 ```python
-from githubkit.versions.latest.models import User
+from githubkit.versions.latest.models import PublicUser, PrivateUser
 from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
 
 github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
@@ -125,13 +125,12 @@ user_github = github.with_auth(
 
 # now you can act as the user
 resp = user_github.rest.users.get_authenticated()
-user: User = resp.parsed_data
+user: PublicUser | PrivateUser = resp.parsed_data
 ```
 
 ### Develop a OAuth APP with device flow
 
 ```python
-from githubkit.versions.latest.models import User
 from githubkit import GitHub, OAuthDeviceAuthStrategy, OAuthTokenAuthStrategy
 
 # sync/async func for displaying user code to user
