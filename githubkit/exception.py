@@ -73,7 +73,11 @@ class SecondaryRateLimitExceeded(RateLimitExceeded):
     """API request failed with secondary rate limit exceeded"""
 
 
-class GraphQLFailed(GitHubException):
+class GraphQLError(GitHubException):
+    """Simple GraphQL request error"""
+
+
+class GraphQLFailed(GraphQLError):
     """GraphQL request with errors in response"""
 
     def __init__(self, response: "GraphQLResponse"):
@@ -81,6 +85,24 @@ class GraphQLFailed(GitHubException):
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.response.errors!r})"
+
+
+class GraphQLPaginationError(GraphQLError):
+    """GraphQL paginate response error"""
+
+    def __init__(self, response: "GraphQLResponse"):
+        self.response = response
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}({self.response})"
+
+
+class GraphQLMissingPageInfo(GraphQLPaginationError):
+    """GraphQL paginate response missing PageInfo object"""
+
+
+class GraphQLMissingCursorChange(GraphQLPaginationError):
+    """GraphQL paginate response missing cursor change"""
 
 
 class WebhookTypeNotFound(GitHubException):

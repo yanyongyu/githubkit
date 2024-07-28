@@ -457,7 +457,7 @@ Current supported versions are: (you can find it in the section `[[tool.codegen.
 - 2022-11-28 (latest)
 - ghec-2022-11-28
 
-### Pagination
+### Rest API Pagination
 
 Pagination type checking is also supported:
 
@@ -508,6 +508,79 @@ Simple async call:
 ```python
 data: Dict[str, Any] = await github.async_graphql(query, variables={"foo": "bar"})
 ```
+
+### GraphQL Pagination
+
+githubkit also provides a helper function to paginate the GraphQL API.
+
+First, You must accept a `cursor` parameter and return a `pageInfo` object in your query. For example:
+
+```graphql
+query ($owner: String!, $repo: String!, $cursor: String) {
+  repository(owner: $owner, name: $repo) {
+    issues(first: 10, after: $cursor) {
+      nodes {
+        number
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+    }
+  }
+}
+```
+
+The `pageInfo` object in your query must be one of the following types depending on the direction of the pagination:
+
+For forward pagination, use:
+
+```graphql
+pageInfo {
+  hasNextPage
+  endCursor
+}
+```
+
+For backward pagination, use:
+
+```graphql
+pageInfo {
+  hasPreviousPage
+  startCursor
+}
+```
+
+If you provide all 4 properties in a `pageInfo`, githubkit will default to forward pagination.
+
+Then, you can iterate over the paginated results by using the graphql `paginate` method:
+
+```python
+for result in github.graphql.paginate(
+    query, variables={"owner": "owner", "repo": "repo"}
+):
+    print(result)
+```
+
+Note that the `result` is a dict containing the list of nodes/edges for each page and the `pageInfo` object. You should iterate over the `nodes` or `edges` list to get the actual data. For example:
+
+```python
+for result in g.graphql.paginate(query, {"owner": "owner", "repo": "repo"}):
+    for issue in result["repository"]["issues"]["nodes"]:
+        print(issue)
+```
+
+You can also provide a initial cursor value to start pagination from a specific point:
+
+```python
+for result in github.graphql.paginate(
+    query, variables={"owner": "owner", "repo": "repo", "cursor": "initial_cursor"}
+):
+    print(result)
+```
+
+> [!NOTE]
+> Nested pagination is not supported.
 
 ### Auto Retry
 

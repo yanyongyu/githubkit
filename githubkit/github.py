@@ -17,9 +17,9 @@ from .core import GitHubCore
 from .response import Response
 from .paginator import Paginator
 from .auth import BaseAuthStrategy
+from .graphql import GraphQLNamespace
 from .typing import RetryDecisionFunc
 from .versions import RestVersionSwitcher, WebhooksVersionSwitcher
-from .graphql import GraphQLResponse, build_graphql_request, parse_graphql_response
 
 if TYPE_CHECKING:
     import httpx
@@ -133,27 +133,15 @@ class GitHub(GitHubCore[A]):
     webhooks = WebhooksVersionSwitcher()
 
     # graphql
-    def graphql(
-        self, query: str, variables: Optional[Dict[str, Any]] = None
-    ) -> Dict[str, Any]:
-        json = build_graphql_request(query, variables)
+    @cached_property
+    def graphql(self) -> GraphQLNamespace:
+        return GraphQLNamespace(self)
 
-        return parse_graphql_response(
-            self,
-            self.request("POST", "/graphql", json=json, response_model=GraphQLResponse),
-        )
-
+    # alias for graphql.arequest
     async def async_graphql(
         self, query: str, variables: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
-        json = build_graphql_request(query, variables)
-
-        return parse_graphql_response(
-            self,
-            await self.arequest(
-                "POST", "/graphql", json=json, response_model=GraphQLResponse
-            ),
-        )
+        return await self.graphql.arequest(query, variables)
 
     # rest pagination
     paginate = Paginator
