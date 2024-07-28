@@ -3,6 +3,7 @@ from typing import TYPE_CHECKING, Any, Dict, Optional, cast
 
 from githubkit.exception import GraphQLFailed, PrimaryRateLimitExceeded
 
+from .paginator import Paginator as Paginator
 from .models import GraphQLError as GraphQLError
 from .models import SourceLocation as SourceLocation
 from .models import GraphQLResponse as GraphQLResponse
@@ -83,3 +84,8 @@ class GraphQLNamespace:
         self, query: str, variables: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
         return self.request(query, variables)
+
+    def paginate(
+        self, query: str, variables: Optional[Dict[str, Any]] = None
+    ) -> Paginator:
+        return Paginator(self, query, variables)
