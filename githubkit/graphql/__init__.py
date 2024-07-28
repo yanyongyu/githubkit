@@ -50,27 +50,33 @@ class GraphQLNamespace:
             raise GraphQLFailed(response_data)
         return cast(Dict[str, Any], response_data.data)
 
+    def _request(
+        self, query: str, variables: Optional[Dict[str, Any]] = None
+    ) -> "Response[GraphQLResponse]":
+        json = self.build_graphql_request(query, variables)
+
+        return self._github.request(
+            "POST", "/graphql", json=json, response_model=GraphQLResponse
+        )
+
     def request(
         self, query: str, variables: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
+        return self.parse_graphql_response(self._request(query, variables))
+
+    async def _arequest(
+        self, query: str, variables: Optional[Dict[str, Any]] = None
+    ) -> "Response[GraphQLResponse]":
         json = self.build_graphql_request(query, variables)
 
-        return self.parse_graphql_response(
-            self._github.request(
-                "POST", "/graphql", json=json, response_model=GraphQLResponse
-            ),
+        return await self._github.arequest(
+            "POST", "/graphql", json=json, response_model=GraphQLResponse
         )
 
     async def arequest(
         self, query: str, variables: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
-        json = self.build_graphql_request(query, variables)
-
-        return self.parse_graphql_response(
-            await self._github.arequest(
-                "POST", "/graphql", json=json, response_model=GraphQLResponse
-            ),
-        )
+        return self.parse_graphql_response(await self._arequest(query, variables))
 
     # backport for calling graphql directly
     def __call__(
