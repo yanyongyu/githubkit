@@ -22,7 +22,16 @@ class CodeSecurityConfigurationRepositoriesType(TypedDict):
     """
 
     status: NotRequired[
-        Literal["attached", "attaching", "detached", "enforced", "failed", "updating"]
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
     ]
     repository: NotRequired[SimpleRepositoryType]
 

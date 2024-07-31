@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,19 +18,15 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgOrganizationRolesPostBody(GitHubModel):
-    """OrgsOrgOrganizationRolesPostBody"""
+class OrgsOrgMembershipsUsernamePutBody(GitHubModel):
+    """OrgsOrgMembershipsUsernamePutBody"""
 
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[str] = Field(
+    role: Missing[Literal["admin", "member"]] = Field(
         default=UNSET,
-        description="A short description about the intended usage of this role or what permissions it grants.",
-    )
-    permissions: List[str] = Field(
-        description="A list of additional permissions included in this role."
+        description="The role to give the user in the organization. Can be one of:  \n * `admin` - The user will become an owner of the organization.  \n * `member` - The user will become a non-owner member of the organization.",
     )
 
 
-model_rebuild(OrgsOrgOrganizationRolesPostBody)
+model_rebuild(OrgsOrgMembershipsUsernamePutBody)
 
-__all__ = ("OrgsOrgOrganizationRolesPostBody",)
+__all__ = ("OrgsOrgMembershipsUsernamePutBody",)

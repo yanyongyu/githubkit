@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,27 +18,23 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoImportPatchBody(GitHubModel):
-    """ReposOwnerRepoImportPatchBody"""
+class ReposOwnerRepoHooksHookIdConfigPatchBody(GitHubModel):
+    """ReposOwnerRepoHooksHookIdConfigPatchBody"""
 
-    vcs_username: Missing[str] = Field(
-        default=UNSET,
-        description="The username to provide to the originating repository.",
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to which the payloads will be delivered."
     )
-    vcs_password: Missing[str] = Field(
+    content_type: Missing[str] = Field(
         default=UNSET,
-        description="The password to provide to the originating repository.",
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
     )
-    vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = Field(
+    secret: Missing[str] = Field(
         default=UNSET,
-        description="The type of version control system you are migrating from.",
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
     )
-    tfvc_project: Missing[str] = Field(
-        default=UNSET,
-        description="For a tfvc import, the name of the project that is being imported.",
-    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoImportPatchBody)
+model_rebuild(ReposOwnerRepoHooksHookIdConfigPatchBody)
 
-__all__ = ("ReposOwnerRepoImportPatchBody",)
+__all__ = ("ReposOwnerRepoHooksHookIdConfigPatchBody",)

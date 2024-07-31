@@ -9,33 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0406 import EnterpriseWebhooks
-from .group_0407 import SimpleInstallation
-from .group_0409 import RepositoryWebhooks
-from .group_0410 import SimpleUserWebhooks
-from .group_0529 import WebhookForkPropForkee
-from .group_0408 import OrganizationSimpleWebhooks
+from .group_0424 import Discussion
+from .group_0408 import EnterpriseWebhooks
+from .group_0409 import SimpleInstallation
+from .group_0411 import RepositoryWebhooks
+from .group_0412 import SimpleUserWebhooks
+from .group_0410 import OrganizationSimpleWebhooks
 
 
-class WebhookFork(GitHubModel):
-    """fork event
+class WebhookDiscussionUnlocked(GitHubModel):
+    """discussion unlocked event"""
 
-    A user forks a repository.
-    """
-
+    action: Literal["unlocked"] = Field()
+    discussion: Discussion = Field(
+        title="Discussion", description="A Discussion in a repository."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
-    )
-    forkee: WebhookForkPropForkee = Field(
-        description="The created [`repository`](https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#get-a-repository) resource."
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -57,6 +57,6 @@ class WebhookFork(GitHubModel):
     )
 
 
-model_rebuild(WebhookFork)
+model_rebuild(WebhookDiscussionUnlocked)
 
-__all__ = ("WebhookFork",)
+__all__ = ("WebhookDiscussionUnlocked",)

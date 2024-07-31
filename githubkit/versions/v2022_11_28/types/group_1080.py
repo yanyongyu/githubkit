@@ -12,14 +12,20 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0015 import InstallationType
+
+class UserEmailsDeleteBodyOneof0Type(TypedDict):
+    """UserEmailsDeleteBodyOneof0
+
+    Deletes one or more email addresses from your GitHub account. Must contain at
+    least one email address. **Note:** Alternatively, you can pass a single email
+    address or an `array` of emails addresses directly, but we recommend that you
+    pass an object using the `emails` key.
+
+    Examples:
+        {'emails': ['octocat@github.com', 'mona@github.com']}
+    """
+
+    emails: List[str]
 
 
-class UserInstallationsGetResponse200Type(TypedDict):
-    """UserInstallationsGetResponse200"""
-
-    total_count: int
-    installations: List[InstallationType]
-
-
-__all__ = ("UserInstallationsGetResponse200Type",)
+__all__ = ("UserEmailsDeleteBodyOneof0Type",)

@@ -13,31 +13,31 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0417 import WebhooksWorkflowType
-from .group_0406 import EnterpriseWebhooksType
-from .group_0407 import SimpleInstallationType
-from .group_0409 import RepositoryWebhooksType
-from .group_0410 import SimpleUserWebhooksType
-from .group_0408 import OrganizationSimpleWebhooksType
+from .group_0419 import WebhooksWorkflowType
+from .group_0408 import EnterpriseWebhooksType
+from .group_0409 import SimpleInstallationType
+from .group_0411 import RepositoryWebhooksType
+from .group_0412 import SimpleUserWebhooksType
+from .group_0410 import OrganizationSimpleWebhooksType
 
 
-class WebhookWorkflowRunRequestedType(TypedDict):
-    """workflow_run requested event"""
+class WebhookWorkflowRunCompletedType(TypedDict):
+    """workflow_run completed event"""
 
-    action: Literal["requested"]
+    action: Literal["completed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
     workflow: Union[WebhooksWorkflowType, None]
-    workflow_run: WebhookWorkflowRunRequestedPropWorkflowRunType
+    workflow_run: WebhookWorkflowRunCompletedPropWorkflowRunType
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunType(TypedDict):
+class WebhookWorkflowRunCompletedPropWorkflowRunType(TypedDict):
     """Workflow Run"""
 
-    actor: Union[WebhookWorkflowRunRequestedPropWorkflowRunPropActorType, None]
+    actor: Union[WebhookWorkflowRunCompletedPropWorkflowRunPropActorType, None]
     artifacts_url: str
     cancel_url: str
     check_suite_id: int
@@ -46,22 +46,21 @@ class WebhookWorkflowRunRequestedPropWorkflowRunType(TypedDict):
     conclusion: Union[
         None,
         Literal[
-            "success",
+            "action_required",
+            "cancelled",
             "failure",
             "neutral",
-            "cancelled",
-            "timed_out",
-            "action_required",
-            "stale",
             "skipped",
-            "startup_failure",
+            "stale",
+            "success",
+            "timed_out",
         ],
     ]
     created_at: datetime
     event: str
     head_branch: Union[str, None]
-    head_commit: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitType
-    head_repository: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryType
+    head_commit: WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitType
+    head_repository: WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryType
     head_sha: str
     html_url: str
     id: int
@@ -72,17 +71,17 @@ class WebhookWorkflowRunRequestedPropWorkflowRunType(TypedDict):
     path: str
     previous_attempt_url: Union[str, None]
     pull_requests: List[
-        WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsType
+        Union[WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsType, None]
     ]
     referenced_workflows: NotRequired[
         Union[
             List[
-                WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItemsType
+                WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItemsType
             ],
             None,
         ]
     ]
-    repository: WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryType
+    repository: WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryType
     rerun_url: str
     run_attempt: int
     run_number: int
@@ -91,16 +90,16 @@ class WebhookWorkflowRunRequestedPropWorkflowRunType(TypedDict):
         "requested", "in_progress", "completed", "queued", "pending", "waiting"
     ]
     triggering_actor: Union[
-        WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActorType, None
+        WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActorType, None
     ]
     updated_at: datetime
     url: str
     workflow_id: int
     workflow_url: str
-    display_title: str
+    display_title: NotRequired[str]
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropActorType(TypedDict):
+class WebhookWorkflowRunCompletedPropWorkflowRunPropActorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -126,17 +125,17 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropActorType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItemsType(
+class WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItemsType(
     TypedDict
 ):
-    """WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems"""
+    """WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItems"""
 
     path: str
     ref: NotRequired[str]
     sha: str
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActorType(TypedDict):
+class WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -162,18 +161,18 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActorType(TypedDic
     url: NotRequired[str]
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitType(TypedDict):
+class WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitType(TypedDict):
     """SimpleCommit"""
 
-    author: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthorType
-    committer: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitterType
+    author: WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthorType
+    committer: WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitterType
     id: str
     message: str
     timestamp: str
     tree_id: str
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthorType(TypedDict):
+class WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthorType(TypedDict):
     """Committer
 
     Metaproperties for Git author/committer information.
@@ -185,7 +184,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthorType(Typ
     username: NotRequired[str]
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitterType(
+class WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitterType(
     TypedDict
 ):
     """Committer
@@ -199,7 +198,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitterType(
     username: NotRequired[str]
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryType(TypedDict):
+class WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryType(TypedDict):
     """Repository Lite"""
 
     archive_url: str
@@ -237,7 +236,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryType(TypedDict
     node_id: str
     notifications_url: str
     owner: Union[
-        WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwnerType, None
+        WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwnerType, None
     ]
     private: bool
     pulls_url: str
@@ -252,7 +251,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryType(TypedDict
     url: str
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwnerType(
+class WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwnerType(
     TypedDict
 ):
     """User"""
@@ -280,7 +279,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwnerType(
     url: NotRequired[str]
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryType(TypedDict):
+class WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryType(TypedDict):
     """Repository Lite"""
 
     archive_url: str
@@ -318,7 +317,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryType(TypedDict):
     node_id: str
     notifications_url: str
     owner: Union[
-        WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwnerType, None
+        WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwnerType, None
     ]
     private: bool
     pulls_url: str
@@ -333,7 +332,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryType(TypedDict):
     url: str
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwnerType(TypedDict):
+class WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwnerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -359,27 +358,27 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwnerType(Type
     url: NotRequired[str]
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsType(TypedDict):
-    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems"""
+class WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsType(TypedDict):
+    """WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems"""
 
-    base: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBaseType
-    head: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadType
+    base: WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBaseType
+    head: WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadType
     id: float
     number: float
     url: str
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBaseType(
+class WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBaseType(
     TypedDict
 ):
-    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase"""
+    """WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBase"""
 
     ref: str
-    repo: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType
+    repo: WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType
     sha: str
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType(
+class WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType(
     TypedDict
 ):
     """Repo Ref"""
@@ -389,17 +388,17 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePro
     url: str
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadType(
+class WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadType(
     TypedDict
 ):
-    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead"""
+    """WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead"""
 
     ref: str
-    repo: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType
+    repo: WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType
     sha: str
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType(
+class WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType(
     TypedDict
 ):
     """Repo Ref"""
@@ -410,21 +409,21 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPro
 
 
 __all__ = (
-    "WebhookWorkflowRunRequestedType",
-    "WebhookWorkflowRunRequestedPropWorkflowRunType",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropActorType",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItemsType",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActorType",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitType",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthorType",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitterType",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryType",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwnerType",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryType",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwnerType",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsType",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBaseType",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadType",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType",
+    "WebhookWorkflowRunCompletedType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropActorType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItemsType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActorType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthorType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitterType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwnerType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwnerType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBaseType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepoType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadType",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepoType",
 )

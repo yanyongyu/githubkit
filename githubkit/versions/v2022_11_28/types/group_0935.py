@@ -13,16 +13,16 @@ from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type(TypedDict):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type(TypedDict):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0"""
 
     language: Literal[
         "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
     ]
     query_pack: str
-    repositories: NotRequired[List[str]]
+    repositories: List[str]
     repository_lists: NotRequired[List[str]]
-    repository_owners: List[str]
+    repository_owners: NotRequired[List[str]]
 
 
-__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type",)
+__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type",)

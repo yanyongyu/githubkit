@@ -9,25 +9,104 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0096 import OrgCustomPropertyType
-from .group_0371 import EnterpriseWebhooksType
-from .group_0372 import SimpleInstallationType
-from .group_0375 import SimpleUserWebhooksType
-from .group_0373 import OrganizationSimpleWebhooksType
+from .group_0373 import EnterpriseWebhooksType
+from .group_0374 import SimpleInstallationType
+from .group_0376 import RepositoryWebhooksType
+from .group_0377 import SimpleUserWebhooksType
+from .group_0375 import OrganizationSimpleWebhooksType
 
 
-class WebhookCustomPropertyCreatedType(TypedDict):
-    """custom property created event"""
+class WebhookCommitCommentCreatedType(TypedDict):
+    """commit_comment created event"""
 
     action: Literal["created"]
-    definition: OrgCustomPropertyType
+    comment: WebhookCommitCommentCreatedPropCommentType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookCustomPropertyCreatedType",)
+class WebhookCommitCommentCreatedPropCommentType(TypedDict):
+    """WebhookCommitCommentCreatedPropComment
+
+    The [commit comment](https://docs.github.com/rest/commits/comments#get-a-commit-
+    comment) resource.
+    """
+
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    commit_id: str
+    created_at: str
+    html_url: str
+    id: int
+    line: Union[int, None]
+    node_id: str
+    path: Union[str, None]
+    position: Union[int, None]
+    reactions: NotRequired[WebhookCommitCommentCreatedPropCommentPropReactionsType]
+    updated_at: str
+    url: str
+    user: Union[WebhookCommitCommentCreatedPropCommentPropUserType, None]
+
+
+class WebhookCommitCommentCreatedPropCommentPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookCommitCommentCreatedPropCommentPropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "WebhookCommitCommentCreatedType",
+    "WebhookCommitCommentCreatedPropCommentType",
+    "WebhookCommitCommentCreatedPropCommentPropReactionsType",
+    "WebhookCommitCommentCreatedPropCommentPropUserType",
+)

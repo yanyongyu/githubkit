@@ -9,32 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
 
 
-class EnterpriseWebhooksType(TypedDict):
-    """Enterprise
+class HovercardType(TypedDict):
+    """Hovercard
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/enterprise-
-    cloud@latest//admin/overview/about-enterprise-accounts)."
+    Hovercard
     """
 
-    description: NotRequired[Union[str, None]]
-    html_url: str
-    website_url: NotRequired[Union[str, None]]
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    created_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    avatar_url: str
+    contexts: List[HovercardPropContextsItemsType]
 
 
-__all__ = ("EnterpriseWebhooksType",)
+class HovercardPropContextsItemsType(TypedDict):
+    """HovercardPropContextsItems"""
+
+    message: str
+    octicon: str
+
+
+__all__ = (
+    "HovercardType",
+    "HovercardPropContextsItemsType",
+)

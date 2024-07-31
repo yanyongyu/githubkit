@@ -9,33 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0207 import GitUserType
-from .group_0208 import VerificationType
 
+class DiffEntryType(TypedDict):
+    """Diff Entry
 
-class CommitPropCommitType(TypedDict):
-    """CommitPropCommit"""
-
-    url: str
-    author: Union[None, GitUserType]
-    committer: Union[None, GitUserType]
-    message: str
-    comment_count: int
-    tree: CommitPropCommitPropTreeType
-    verification: NotRequired[VerificationType]
-
-
-class CommitPropCommitPropTreeType(TypedDict):
-    """CommitPropCommitPropTree"""
+    Diff Entry
+    """
 
     sha: str
-    url: str
+    filename: str
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ]
+    additions: int
+    deletions: int
+    changes: int
+    blob_url: str
+    raw_url: str
+    contents_url: str
+    patch: NotRequired[str]
+    previous_filename: NotRequired[str]
 
 
-__all__ = (
-    "CommitPropCommitType",
-    "CommitPropCommitPropTreeType",
-)
+__all__ = ("DiffEntryType",)

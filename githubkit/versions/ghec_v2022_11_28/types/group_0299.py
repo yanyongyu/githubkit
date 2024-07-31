@@ -16,36 +16,34 @@ from .group_0001 import SimpleUserType
 from .group_0006 import IntegrationType
 
 
-class AddedToProjectIssueEventType(TypedDict):
-    """Added to Project Issue Event
+class ReviewDismissedIssueEventType(TypedDict):
+    """Review Dismissed Issue Event
 
-    Added to Project Issue Event
+    Review Dismissed Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["added_to_project"]
+    event: Literal["review_dismissed"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    project_card: NotRequired[AddedToProjectIssueEventPropProjectCardType]
+    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewType
 
 
-class AddedToProjectIssueEventPropProjectCardType(TypedDict):
-    """AddedToProjectIssueEventPropProjectCard"""
+class ReviewDismissedIssueEventPropDismissedReviewType(TypedDict):
+    """ReviewDismissedIssueEventPropDismissedReview"""
 
-    id: int
-    url: str
-    project_id: int
-    project_url: str
-    column_name: str
-    previous_column_name: NotRequired[str]
+    state: str
+    review_id: int
+    dismissal_message: Union[str, None]
+    dismissal_commit_id: NotRequired[str]
 
 
 __all__ = (
-    "AddedToProjectIssueEventType",
-    "AddedToProjectIssueEventPropProjectCardType",
+    "ReviewDismissedIssueEventType",
+    "ReviewDismissedIssueEventPropDismissedReviewType",
 )

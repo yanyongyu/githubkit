@@ -18,17 +18,14 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody"""
+class OrgsOrgCodeSecurityConfigurationsPostBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsPostBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the code security configuration. Must be unique within the organization.",
+    name: str = Field(
+        description="The name of the code security configuration. Must be unique within the organization."
     )
-    description: Missing[str] = Field(
-        max_length=255,
-        default=UNSET,
-        description="A description of the code security configuration",
+    description: str = Field(
+        max_length=255, description="A description of the code security configuration"
     )
     advanced_security: Missing[Literal["enabled", "disabled"]] = Field(
         default=UNSET, description="The enablement status of GitHub Advanced Security"
@@ -73,10 +70,10 @@ class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody(GitHubModel):
         description="The enablement status of private vulnerability reporting",
     )
     enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
-        default=UNSET, description="The status of enforcement"
+        default=UNSET, description="The enforcement status for a security configuration"
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody)
+model_rebuild(OrgsOrgCodeSecurityConfigurationsPostBody)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsPostBody",)

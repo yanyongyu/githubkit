@@ -27,7 +27,16 @@ class CodeSecurityConfigurationRepositories(GitHubModel):
     """
 
     status: Missing[
-        Literal["attached", "attaching", "detached", "enforced", "failed", "updating"]
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
     ] = Field(
         default=UNSET,
         description="The attachment status of the code security configuration on the repository.",

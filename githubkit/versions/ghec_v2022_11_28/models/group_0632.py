@@ -17,35 +17,37 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0406 import EnterpriseWebhooks
-from .group_0407 import SimpleInstallation
-from .group_0409 import RepositoryWebhooks
-from .group_0410 import SimpleUserWebhooks
-from .group_0408 import OrganizationSimpleWebhooks
-from .group_0633 import WebhookPackagePublishedPropPackage
+from .group_0408 import EnterpriseWebhooks
+from .group_0409 import SimpleInstallation
+from .group_0411 import RepositoryWebhooks
+from .group_0412 import SimpleUserWebhooks
+from .group_0440 import WebhooksMembership
+from .group_0410 import OrganizationSimpleWebhooks
 
 
-class WebhookPackagePublished(GitHubModel):
-    """package published event"""
+class WebhookOrganizationRenamed(GitHubModel):
+    """organization renamed event"""
 
-    action: Literal["published"] = Field()
+    action: Literal["renamed"] = Field()
+    changes: Missing[WebhookOrganizationRenamedPropChanges] = Field(default=UNSET)
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
+    membership: Missing[WebhooksMembership] = Field(
         default=UNSET,
+        title="Membership",
+        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
+    )
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
-    )
-    package: WebhookPackagePublishedPropPackage = Field(
-        description="Information about the package."
     )
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
@@ -58,6 +60,26 @@ class WebhookPackagePublished(GitHubModel):
     )
 
 
-model_rebuild(WebhookPackagePublished)
+class WebhookOrganizationRenamedPropChanges(GitHubModel):
+    """WebhookOrganizationRenamedPropChanges"""
 
-__all__ = ("WebhookPackagePublished",)
+    login: Missing[WebhookOrganizationRenamedPropChangesPropLogin] = Field(
+        default=UNSET
+    )
+
+
+class WebhookOrganizationRenamedPropChangesPropLogin(GitHubModel):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+
+
+model_rebuild(WebhookOrganizationRenamed)
+model_rebuild(WebhookOrganizationRenamedPropChanges)
+model_rebuild(WebhookOrganizationRenamedPropChangesPropLogin)
+
+__all__ = (
+    "WebhookOrganizationRenamed",
+    "WebhookOrganizationRenamedPropChanges",
+    "WebhookOrganizationRenamedPropChangesPropLogin",
+)

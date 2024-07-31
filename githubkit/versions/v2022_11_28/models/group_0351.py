@@ -17,59 +17,30 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0186 import GitUser
-from .group_0001 import SimpleUser
-from .group_0055 import MinimalRepository
-from .group_0349 import SearchResultTextMatchesItems
-from .group_0352 import CommitSearchResultItemPropCommit
 
+class SearchResultTextMatchesItems(GitHubModel):
+    """SearchResultTextMatchesItems"""
 
-class CommitSearchResultItem(GitHubModel):
-    """Commit Search Result Item
-
-    Commit Search Result Item
-    """
-
-    url: str = Field()
-    sha: str = Field()
-    html_url: str = Field()
-    comments_url: str = Field()
-    commit: CommitSearchResultItemPropCommit = Field()
-    author: Union[None, SimpleUser] = Field()
-    committer: Union[None, GitUser] = Field()
-    parents: List[CommitSearchResultItemPropParentsItems] = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
-    score: float = Field()
-    node_id: str = Field()
-    text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    object_url: Missing[str] = Field(default=UNSET)
+    object_type: Missing[Union[str, None]] = Field(default=UNSET)
+    property_: Missing[str] = Field(default=UNSET, alias="property")
+    fragment: Missing[str] = Field(default=UNSET)
+    matches: Missing[List[SearchResultTextMatchesItemsPropMatchesItems]] = Field(
+        default=UNSET
     )
 
 
-class CommitSearchResultItemPropParentsItems(GitHubModel):
-    """CommitSearchResultItemPropParentsItems"""
+class SearchResultTextMatchesItemsPropMatchesItems(GitHubModel):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
 
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-
-
-class SearchCommitsGetResponse200(GitHubModel):
-    """SearchCommitsGetResponse200"""
-
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: List[CommitSearchResultItem] = Field()
+    text: Missing[str] = Field(default=UNSET)
+    indices: Missing[List[int]] = Field(default=UNSET)
 
 
-model_rebuild(CommitSearchResultItem)
-model_rebuild(CommitSearchResultItemPropParentsItems)
-model_rebuild(SearchCommitsGetResponse200)
+model_rebuild(SearchResultTextMatchesItems)
+model_rebuild(SearchResultTextMatchesItemsPropMatchesItems)
 
 __all__ = (
-    "CommitSearchResultItem",
-    "CommitSearchResultItemPropParentsItems",
-    "SearchCommitsGetResponse200",
+    "SearchResultTextMatchesItems",
+    "SearchResultTextMatchesItemsPropMatchesItems",
 )

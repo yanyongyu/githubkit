@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Literal
+from datetime import datetime
 
 from pydantic import Field
 
@@ -18,51 +19,43 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoHooksPostBody(GitHubModel):
-    """ReposOwnerRepoHooksPostBody"""
+class ReposOwnerRepoGitTagsPostBody(GitHubModel):
+    """ReposOwnerRepoGitTagsPostBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET,
-        description="Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.",
+    tag: str = Field(
+        description='The tag\'s name. This is typically a version (e.g., "v0.0.1").'
     )
-    config: Missing[ReposOwnerRepoHooksPostBodyPropConfig] = Field(
-        default=UNSET,
-        description="Key/value pairs to provide settings for this webhook.",
+    message: str = Field(description="The tag message.")
+    object_: str = Field(
+        alias="object", description="The SHA of the git object this is tagging."
     )
-    events: Missing[List[str]] = Field(
-        default=UNSET,
-        description="Determines what [events](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads) the hook is triggered for.",
+    type: Literal["commit", "tree", "blob"] = Field(
+        description="The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`."
     )
-    active: Missing[bool] = Field(
+    tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTagger] = Field(
         default=UNSET,
-        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
+        description="An object with information about the individual creating the tag.",
     )
 
 
-class ReposOwnerRepoHooksPostBodyPropConfig(GitHubModel):
-    """ReposOwnerRepoHooksPostBodyPropConfig
+class ReposOwnerRepoGitTagsPostBodyPropTagger(GitHubModel):
+    """ReposOwnerRepoGitTagsPostBodyPropTagger
 
-    Key/value pairs to provide settings for this webhook.
+    An object with information about the individual creating the tag.
     """
 
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
-    )
-    content_type: Missing[str] = Field(
+    name: str = Field(description="The name of the author of the tag")
+    email: str = Field(description="The email of the author of the tag")
+    date: Missing[datetime] = Field(
         default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+        description="When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoHooksPostBody)
-model_rebuild(ReposOwnerRepoHooksPostBodyPropConfig)
+model_rebuild(ReposOwnerRepoGitTagsPostBody)
+model_rebuild(ReposOwnerRepoGitTagsPostBodyPropTagger)
 
 __all__ = (
-    "ReposOwnerRepoHooksPostBody",
-    "ReposOwnerRepoHooksPostBodyPropConfig",
+    "ReposOwnerRepoGitTagsPostBody",
+    "ReposOwnerRepoGitTagsPostBodyPropTagger",
 )

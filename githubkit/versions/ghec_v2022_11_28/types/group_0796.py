@@ -9,18 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0014 import AppPermissionsType
+
+class AppHookConfigPatchBodyType(TypedDict):
+    """AppHookConfigPatchBody"""
+
+    url: NotRequired[str]
+    content_type: NotRequired[str]
+    secret: NotRequired[str]
+    insecure_ssl: NotRequired[Union[str, float]]
 
 
-class AppInstallationsInstallationIdAccessTokensPostBodyType(TypedDict):
-    """AppInstallationsInstallationIdAccessTokensPostBody"""
-
-    repositories: NotRequired[List[str]]
-    repository_ids: NotRequired[List[int]]
-    permissions: NotRequired[AppPermissionsType]
-
-
-__all__ = ("AppInstallationsInstallationIdAccessTokensPostBodyType",)
+__all__ = ("AppHookConfigPatchBodyType",)

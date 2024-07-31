@@ -9,40 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0371 import EnterpriseWebhooks
-from .group_0372 import SimpleInstallation
-from .group_0374 import RepositoryWebhooks
-from .group_0375 import SimpleUserWebhooks
-from .group_0373 import OrganizationSimpleWebhooks
+from .group_0374 import SimpleInstallation
+from .group_0377 import SimpleUserWebhooks
+from .group_0411 import ProjectsV2StatusUpdate
+from .group_0375 import OrganizationSimpleWebhooks
 
 
-class WebhookPublic(GitHubModel):
-    """public event"""
+class WebhookProjectsV2StatusUpdateDeleted(GitHubModel):
+    """Projects v2 Status Update Deleted Event"""
 
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
-    )
+    action: Literal["deleted"] = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: Missing[OrganizationSimpleWebhooks] = Field(
-        default=UNSET,
+    organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    projects_v2_status_update: ProjectsV2StatusUpdate = Field(
+        title="Projects v2 Status Update",
+        description="An status update belonging to a project",
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -50,6 +46,6 @@ class WebhookPublic(GitHubModel):
     )
 
 
-model_rebuild(WebhookPublic)
+model_rebuild(WebhookProjectsV2StatusUpdateDeleted)
 
-__all__ = ("WebhookPublic",)
+__all__ = ("WebhookProjectsV2StatusUpdateDeleted",)

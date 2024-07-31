@@ -9,96 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0114 import RepositoryRuleUpdateType
-from .group_0138 import RepositoryRuleOneof17Type
-from .group_0134 import RepositoryRuleWorkflowsType
-from .group_0119 import RepositoryRulePullRequestType
-from .group_0136 import RepositoryRuleCodeScanningType
-from .group_0131 import RepositoryRuleTagNamePatternType
-from .group_0129 import RepositoryRuleBranchNamePatternType
-from .group_0117 import RepositoryRuleRequiredDeploymentsType
-from .group_0121 import RepositoryRuleRequiredStatusChecksType
-from .group_0123 import RepositoryRuleCommitMessagePatternType
-from .group_0127 import RepositoryRuleCommitterEmailPatternType
-from .group_0125 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0116 import (
-    RepositoryRuleOneof15Type,
-    RepositoryRuleRequiredLinearHistoryType,
-)
+from .group_0102 import RepositoryRulesetConditionsType
 from .group_0699 import (
-    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType,
-)
-from .group_0113 import (
-    RepositoryRuleOneof14Type,
-    RepositoryRuleOneof16Type,
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType,
 )
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRulesType(TypedDict):
-    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
 
-    added: NotRequired[
-        List[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleOneof14Type,
-                RepositoryRuleOneof15Type,
-                RepositoryRuleOneof16Type,
-                RepositoryRuleOneof17Type,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
-    deleted: NotRequired[
-        List[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleOneof14Type,
-                RepositoryRuleOneof15Type,
-                RepositoryRuleOneof16Type,
-                RepositoryRuleOneof17Type,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
+    added: NotRequired[List[RepositoryRulesetConditionsType]]
+    deleted: NotRequired[List[RepositoryRulesetConditionsType]]
     updated: NotRequired[
-        List[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType]
+        List[
+            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType
+        ]
     ]
 
 
-__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropRulesType",)
+__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropConditionsType",)

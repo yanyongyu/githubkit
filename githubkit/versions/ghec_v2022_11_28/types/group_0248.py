@@ -9,45 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
-from typing_extensions import TypedDict, NotRequired
+from typing import Union
+from typing_extensions import TypedDict
 
-from .group_0082 import MinimalRepositoryType
+from .group_0001 import SimpleUserType
+from .group_0017 import RepositoryType
 
 
-class CombinedCommitStatusType(TypedDict):
-    """Combined Commit Status
+class PullRequestSimplePropHeadType(TypedDict):
+    """PullRequestSimplePropHead"""
 
-    Combined Commit Status
-    """
-
-    state: str
-    statuses: List[SimpleCommitStatusType]
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
     sha: str
-    total_count: int
-    repository: MinimalRepositoryType
-    commit_url: str
-    url: str
+    user: Union[None, SimpleUserType]
 
 
-class SimpleCommitStatusType(TypedDict):
-    """Simple Commit Status"""
+class PullRequestSimplePropBaseType(TypedDict):
+    """PullRequestSimplePropBase"""
 
-    description: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    context: str
-    target_url: Union[str, None]
-    required: NotRequired[Union[bool, None]]
-    avatar_url: Union[str, None]
-    url: str
-    created_at: datetime
-    updated_at: datetime
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: Union[None, SimpleUserType]
 
 
 __all__ = (
-    "CombinedCommitStatusType",
-    "SimpleCommitStatusType",
+    "PullRequestSimplePropHeadType",
+    "PullRequestSimplePropBaseType",
 )

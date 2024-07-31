@@ -9,61 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
+class ScimV2OrganizationsOrgUsersPostBodyType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBody"""
 
+    user_name: str
+    display_name: NotRequired[str]
+    name: ScimV2OrganizationsOrgUsersPostBodyPropNameType
+    emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType]
     schemas: NotRequired[List[str]]
-    operations: List[
-        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
-    ]
+    external_id: NotRequired[str]
+    groups: NotRequired[List[str]]
+    active: NotRequired[bool]
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType(TypedDict):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
+class ScimV2OrganizationsOrgUsersPostBodyPropNameType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropName
 
-    op: Literal["add", "remove", "replace"]
-    path: NotRequired[str]
-    value: NotRequired[
-        Union[
-            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type,
-            List[
-                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType
-            ],
-            str,
-        ]
-    ]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type(
-    TypedDict
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
-
-    active: NotRequired[Union[bool, None]]
-    user_name: NotRequired[Union[str, None]]
-    external_id: NotRequired[Union[str, None]]
-    given_name: NotRequired[Union[str, None]]
-    family_name: NotRequired[Union[str, None]]
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType(
-    TypedDict
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
-    Items
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
     """
 
-    value: NotRequired[str]
+    given_name: str
+    family_name: str
+    formatted: NotRequired[str]
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType(TypedDict):
+    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
+
+    value: str
     primary: NotRequired[bool]
+    type: NotRequired[str]
 
 
 __all__ = (
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType",
+    "ScimV2OrganizationsOrgUsersPostBodyType",
+    "ScimV2OrganizationsOrgUsersPostBodyPropNameType",
+    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType",
 )

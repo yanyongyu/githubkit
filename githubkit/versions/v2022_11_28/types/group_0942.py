@@ -10,29 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from datetime import datetime
 from typing_extensions import TypedDict
 
+from .group_0077 import CodespaceMachineType
 
-class ReposOwnerRepoCodespacesSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
+
+class ReposOwnerRepoCodespacesMachinesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
 
     total_count: int
-    secrets: List[RepoCodespacesSecretType]
+    machines: List[CodespaceMachineType]
 
 
-class RepoCodespacesSecretType(TypedDict):
-    """Codespaces Secret
-
-    Set repository secrets for GitHub Codespaces.
-    """
-
-    name: str
-    created_at: datetime
-    updated_at: datetime
-
-
-__all__ = (
-    "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
-    "RepoCodespacesSecretType",
-)
+__all__ = ("ReposOwnerRepoCodespacesMachinesGetResponse200Type",)

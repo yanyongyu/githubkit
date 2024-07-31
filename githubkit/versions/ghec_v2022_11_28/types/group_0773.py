@@ -9,25 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0459 import WebhooksTeam1Type
-from .group_0406 import EnterpriseWebhooksType
-from .group_0407 import SimpleInstallationType
-from .group_0409 import RepositoryWebhooksType
-from .group_0410 import SimpleUserWebhooksType
-from .group_0408 import OrganizationSimpleWebhooksType
+
+class WebhookStatusPropCommitPropCommitPropCommitterAllof0Type(TypedDict):
+    """Committer
+
+    Metaproperties for Git author/committer information.
+    """
+
+    date: NotRequired[datetime]
+    email: Union[str, None]
+    name: str
+    username: NotRequired[str]
 
 
-class WebhookTeamAddType(TypedDict):
-    """team_add event"""
-
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-    team: WebhooksTeam1Type
-
-
-__all__ = ("WebhookTeamAddType",)
+__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof0Type",)

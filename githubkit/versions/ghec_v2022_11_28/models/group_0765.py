@@ -17,24 +17,26 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0458 import WebhooksChanges8
-from .group_0406 import EnterpriseWebhooks
-from .group_0407 import SimpleInstallation
-from .group_0409 import RepositoryWebhooks
-from .group_0410 import SimpleUserWebhooks
-from .group_0457 import WebhooksSponsorship
-from .group_0408 import OrganizationSimpleWebhooks
+from .group_0408 import EnterpriseWebhooks
+from .group_0409 import SimpleInstallation
+from .group_0411 import RepositoryWebhooks
+from .group_0412 import SimpleUserWebhooks
+from .group_0459 import WebhooksSponsorship
+from .group_0410 import OrganizationSimpleWebhooks
 
 
-class WebhookSponsorshipTierChanged(GitHubModel):
-    """sponsorship tier_changed event"""
+class WebhookSponsorshipPendingCancellation(GitHubModel):
+    """sponsorship pending_cancellation event"""
 
-    action: Literal["tier_changed"] = Field()
-    changes: WebhooksChanges8 = Field()
+    action: Literal["pending_cancellation"] = Field()
+    effective_date: Missing[str] = Field(
+        default=UNSET,
+        description="The `pending_cancellation` and `pending_tier_change` event types will include the date the cancellation or tier change will take effect.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -58,6 +60,6 @@ class WebhookSponsorshipTierChanged(GitHubModel):
     sponsorship: WebhooksSponsorship = Field()
 
 
-model_rebuild(WebhookSponsorshipTierChanged)
+model_rebuild(WebhookSponsorshipPendingCancellation)
 
-__all__ = ("WebhookSponsorshipTierChanged",)
+__all__ = ("WebhookSponsorshipPendingCancellation",)

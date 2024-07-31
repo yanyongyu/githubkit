@@ -9,132 +9,72 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoBranchesBranchProtectionPutBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionPutBody"""
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type(TypedDict):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
 
-    required_status_checks: Union[
-        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType, None
-    ]
-    enforce_admins: Union[bool, None]
-    required_pull_request_reviews: Union[
-        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType,
-        None,
-    ]
-    restrictions: Union[
-        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType, None
-    ]
-    required_linear_history: NotRequired[bool]
-    allow_force_pushes: NotRequired[Union[bool, None]]
-    allow_deletions: NotRequired[bool]
-    block_creations: NotRequired[bool]
-    required_conversation_resolution: NotRequired[bool]
-    lock_branch: NotRequired[bool]
-    allow_fork_syncing: NotRequired[bool]
-
-
-class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks
-
-    Require status checks to pass before merging. Set to `null` to disable.
-    """
-
-    strict: bool
-    contexts: List[str]
-    checks: NotRequired[
+    attestations: NotRequired[
         List[
-            ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType
+            ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
         ]
     ]
 
 
-class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType(
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksI
-    tems
-    """
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems"""
 
-    context: str
-    app_id: NotRequired[int]
-
-
-class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType(
-    TypedDict
-):
-    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviews
-
-    Require at least one approving review on a pull request, before merging. Set to
-    `null` to disable.
-    """
-
-    dismissal_restrictions: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictionsType
+    bundle: NotRequired[
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType
     ]
-    dismiss_stale_reviews: NotRequired[bool]
-    require_code_owner_reviews: NotRequired[bool]
-    required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
-    bypass_pull_request_allowances: NotRequired[
-        ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType
+    repository_id: NotRequired[int]
+
+
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType(
+    TypedDict
+):
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
+    ndle
+
+    The attestation's Sigstore Bundle.
+    Refer to the [Sigstore Bundle
+    Specification](https://github.com/sigstore/protobuf-
+    specs/blob/main/protos/sigstore_bundle.proto) for more information.
+    """
+
+    media_type: NotRequired[str]
+    verification_material: NotRequired[
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType
+    ]
+    dsse_envelope: NotRequired[
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType
     ]
 
 
-class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropD
-    ismissalRestrictions
-
-    Specify which users, teams, and apps can dismiss pull request reviews. Pass an
-    empty `dismissal_restrictions` object to disable. User and team
-    `dismissal_restrictions` are only available for organization-owned repositories.
-    Omit this parameter for personal repositories.
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
+    ndlePropVerificationMaterial
     """
 
-    users: NotRequired[List[str]]
-    teams: NotRequired[List[str]]
-    apps: NotRequired[List[str]]
 
-
-class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
+class ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropB
-    ypassPullRequestAllowances
-
-    Allow specific users, teams, or apps to bypass pull request requirements.
+    """ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBu
+    ndlePropDsseEnvelope
     """
-
-    users: NotRequired[List[str]]
-    teams: NotRequired[List[str]]
-    apps: NotRequired[List[str]]
-
-
-class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType(TypedDict):
-    """ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions
-
-    Restrict who can push to the protected branch. User, app, and team
-    `restrictions` are only available for organization-owned repositories. Set to
-    `null` to disable.
-    """
-
-    users: List[str]
-    teams: List[str]
-    apps: NotRequired[List[str]]
 
 
 __all__ = (
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyType",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
-    "ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundleType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterialType",
+    "ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelopeType",
 )

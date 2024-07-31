@@ -13,12 +13,12 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ProjectsProjectIdPatchResponse403Type(TypedDict):
-    """ProjectsProjectIdPatchResponse403"""
+class ProjectsProjectIdDeleteResponse403Type(TypedDict):
+    """ProjectsProjectIdDeleteResponse403"""
 
     message: NotRequired[str]
     documentation_url: NotRequired[str]
     errors: NotRequired[List[str]]
 
 
-__all__ = ("ProjectsProjectIdPatchResponse403Type",)
+__all__ = ("ProjectsProjectIdDeleteResponse403Type",)

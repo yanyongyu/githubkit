@@ -19,33 +19,28 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0001 import SimpleUser
-from .group_0038 import ReactionRollup
-from .group_0311 import ReviewCommentPropLinks
 
 
-class ReviewComment(GitHubModel):
-    """Legacy Review Comment
+class PullRequestReview(GitHubModel):
+    """Pull Request Review
 
-    Legacy Review Comment
+    Pull Request Reviews are reviews on pull requests.
     """
 
-    url: str = Field()
-    pull_request_review_id: Union[int, None] = Field()
-    id: int = Field()
+    id: int = Field(description="Unique identifier of the review")
     node_id: str = Field()
-    diff_hunk: str = Field()
-    path: str = Field()
-    position: Union[int, None] = Field()
-    original_position: int = Field()
-    commit_id: str = Field()
-    original_commit_id: str = Field()
-    in_reply_to_id: Missing[int] = Field(default=UNSET)
     user: Union[None, SimpleUser] = Field()
-    body: str = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    body: str = Field(description="The text of the review.")
+    state: str = Field()
     html_url: str = Field()
     pull_request_url: str = Field()
+    links: PullRequestReviewPropLinks = Field(alias="_links")
+    submitted_at: Missing[datetime] = Field(default=UNSET)
+    commit_id: Union[str, None] = Field(
+        description="A commit SHA for the review. If the commit object was garbage collected or forcibly deleted, then it no longer exists in Git and this value will be `null`."
+    )
+    body_html: Missing[str] = Field(default=UNSET)
+    body_text: Missing[str] = Field(default=UNSET)
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -59,36 +54,35 @@ class ReviewComment(GitHubModel):
         title="author_association",
         description="How the author is associated with the repository.",
     )
-    links: ReviewCommentPropLinks = Field(alias="_links")
-    body_text: Missing[str] = Field(default=UNSET)
-    body_html: Missing[str] = Field(default=UNSET)
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
-        default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
-    )
-    start_side: Missing[Union[None, Literal["LEFT", "RIGHT"]]] = Field(
-        default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
-    )
-    line: Missing[int] = Field(
-        default=UNSET,
-        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    original_line: Missing[int] = Field(
-        default=UNSET,
-        description="The original line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The first line of the range for a multi-line comment.",
-    )
-    original_start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The original first line of the range for a multi-line comment.",
-    )
 
 
-model_rebuild(ReviewComment)
+class PullRequestReviewPropLinks(GitHubModel):
+    """PullRequestReviewPropLinks"""
 
-__all__ = ("ReviewComment",)
+    html: PullRequestReviewPropLinksPropHtml = Field()
+    pull_request: PullRequestReviewPropLinksPropPullRequest = Field()
+
+
+class PullRequestReviewPropLinksPropHtml(GitHubModel):
+    """PullRequestReviewPropLinksPropHtml"""
+
+    href: str = Field()
+
+
+class PullRequestReviewPropLinksPropPullRequest(GitHubModel):
+    """PullRequestReviewPropLinksPropPullRequest"""
+
+    href: str = Field()
+
+
+model_rebuild(PullRequestReview)
+model_rebuild(PullRequestReviewPropLinks)
+model_rebuild(PullRequestReviewPropLinksPropHtml)
+model_rebuild(PullRequestReviewPropLinksPropPullRequest)
+
+__all__ = (
+    "PullRequestReview",
+    "PullRequestReviewPropLinks",
+    "PullRequestReviewPropLinksPropHtml",
+    "PullRequestReviewPropLinksPropPullRequest",
+)

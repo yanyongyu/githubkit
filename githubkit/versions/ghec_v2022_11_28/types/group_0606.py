@@ -12,27 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0406 import EnterpriseWebhooksType
-from .group_0407 import SimpleInstallationType
-from .group_0409 import RepositoryWebhooksType
-from .group_0410 import SimpleUserWebhooksType
-from .group_0408 import OrganizationSimpleWebhooksType
-from .group_0433 import WebhooksMarketplacePurchaseType
-from .group_0434 import WebhooksPreviousMarketplacePurchaseType
+from .group_0426 import WebhooksLabelType
+from .group_0408 import EnterpriseWebhooksType
+from .group_0409 import SimpleInstallationType
+from .group_0411 import RepositoryWebhooksType
+from .group_0412 import SimpleUserWebhooksType
+from .group_0410 import OrganizationSimpleWebhooksType
 
 
-class WebhookMarketplacePurchaseCancelledType(TypedDict):
-    """marketplace_purchase cancelled event"""
+class WebhookLabelDeletedType(TypedDict):
+    """label deleted event"""
 
-    action: Literal["cancelled"]
-    effective_date: str
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhooksMarketplacePurchaseType
+    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[WebhooksPreviousMarketplacePurchaseType]
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookMarketplacePurchaseCancelledType",)
+__all__ = ("WebhookLabelDeletedType",)

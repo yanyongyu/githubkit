@@ -27,21 +27,22 @@ class RepositoryRuleRequiredLinearHistory(GitHubModel):
     type: Literal["required_linear_history"] = Field()
 
 
-class RepositoryRuleOneof15(GitHubModel):
+class RepositoryRuleOneof16(GitHubModel):
     """max_file_path_length
 
-    Note: max_file_path_length is in beta and subject to change.
+    > [!NOTE]
+    > `max_file_path_length` is in beta and subject to change.
 
     Prevent commits that include file paths that exceed a specified character limit
     from being pushed to the commit graph.
     """
 
     type: Literal["max_file_path_length"] = Field()
-    parameters: Missing[RepositoryRuleOneof15PropParameters] = Field(default=UNSET)
+    parameters: Missing[RepositoryRuleOneof16PropParameters] = Field(default=UNSET)
 
 
-class RepositoryRuleOneof15PropParameters(GitHubModel):
-    """RepositoryRuleOneof15PropParameters"""
+class RepositoryRuleOneof16PropParameters(GitHubModel):
+    """RepositoryRuleOneof16PropParameters"""
 
     max_file_path_length: int = Field(
         le=256.0,
@@ -51,11 +52,11 @@ class RepositoryRuleOneof15PropParameters(GitHubModel):
 
 
 model_rebuild(RepositoryRuleRequiredLinearHistory)
-model_rebuild(RepositoryRuleOneof15)
-model_rebuild(RepositoryRuleOneof15PropParameters)
+model_rebuild(RepositoryRuleOneof16)
+model_rebuild(RepositoryRuleOneof16PropParameters)
 
 __all__ = (
     "RepositoryRuleRequiredLinearHistory",
-    "RepositoryRuleOneof15",
-    "RepositoryRuleOneof15PropParameters",
+    "RepositoryRuleOneof16",
+    "RepositoryRuleOneof16PropParameters",
 )

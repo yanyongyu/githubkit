@@ -9,17 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
-from .group_0078 import CodespaceType
+
+class OrgsOrgInteractionLimitsGetResponse200Anyof1Type(TypedDict):
+    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
 
 
-class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: List[CodespaceType]
-
-
-__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200Type",)
+__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1Type",)

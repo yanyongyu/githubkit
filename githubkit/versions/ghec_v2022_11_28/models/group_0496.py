@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0259 import DependabotAlert
-from .group_0406 import EnterpriseWebhooks
-from .group_0407 import SimpleInstallation
-from .group_0409 import RepositoryWebhooks
-from .group_0410 import SimpleUserWebhooks
-from .group_0408 import OrganizationSimpleWebhooks
+from .group_0261 import DependabotAlert
+from .group_0408 import EnterpriseWebhooks
+from .group_0409 import SimpleInstallation
+from .group_0411 import RepositoryWebhooks
+from .group_0412 import SimpleUserWebhooks
+from .group_0410 import OrganizationSimpleWebhooks
 
 
-class WebhookDependabotAlertCreated(GitHubModel):
-    """Dependabot alert created event"""
+class WebhookDependabotAlertAutoDismissed(GitHubModel):
+    """Dependabot alert auto-dismissed event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["auto_dismissed"] = Field()
     alert: DependabotAlert = Field(description="A Dependabot alert.")
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -43,7 +43,7 @@ class WebhookDependabotAlertCreated(GitHubModel):
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
     repository: RepositoryWebhooks = Field(
         title="Repository",
@@ -55,6 +55,6 @@ class WebhookDependabotAlertCreated(GitHubModel):
     )
 
 
-model_rebuild(WebhookDependabotAlertCreated)
+model_rebuild(WebhookDependabotAlertAutoDismissed)
 
-__all__ = ("WebhookDependabotAlertCreated",)
+__all__ = ("WebhookDependabotAlertAutoDismissed",)

@@ -12,18 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0406 import EnterpriseWebhooksType
-from .group_0407 import SimpleInstallationType
-from .group_0409 import RepositoryWebhooksType
-from .group_0410 import SimpleUserWebhooksType
-from .group_0447 import PullRequestWebhookType
-from .group_0408 import OrganizationSimpleWebhooksType
+from .group_0408 import EnterpriseWebhooksType
+from .group_0409 import SimpleInstallationType
+from .group_0411 import RepositoryWebhooksType
+from .group_0412 import SimpleUserWebhooksType
+from .group_0449 import PullRequestWebhookType
+from .group_0410 import OrganizationSimpleWebhooksType
 
 
-class WebhookPullRequestReopenedType(TypedDict):
-    """pull_request reopened event"""
+class WebhookPullRequestOpenedType(TypedDict):
+    """pull_request opened event"""
 
-    action: Literal["reopened"]
+    action: Literal["opened"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
@@ -33,4 +33,4 @@ class WebhookPullRequestReopenedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookPullRequestReopenedType",)
+__all__ = ("WebhookPullRequestOpenedType",)

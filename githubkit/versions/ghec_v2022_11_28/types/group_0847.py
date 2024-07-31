@@ -9,17 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0082 import MinimalRepositoryType
+from typing import List, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
+class OrgsOrgActionsRunnerGroupsPostBodyType(TypedDict):
+    """OrgsOrgActionsRunnerGroupsPostBody"""
 
-    total_count: float
-    repositories: List[MinimalRepositoryType]
+    name: str
+    visibility: NotRequired[Literal["selected", "all", "private"]]
+    selected_repository_ids: NotRequired[List[int]]
+    runners: NotRequired[List[int]]
+    allows_public_repositories: NotRequired[bool]
+    restricted_to_workflows: NotRequired[bool]
+    selected_workflows: NotRequired[List[str]]
 
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type",)
+__all__ = ("OrgsOrgActionsRunnerGroupsPostBodyType",)

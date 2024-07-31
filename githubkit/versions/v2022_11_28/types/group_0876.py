@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoDeleteResponse403Type(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
+class ProjectsProjectIdCollaboratorsUsernamePutBodyType(TypedDict):
+    """ProjectsProjectIdCollaboratorsUsernamePutBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    permission: NotRequired[Literal["read", "write", "admin"]]
 
 
-__all__ = ("ReposOwnerRepoDeleteResponse403Type",)
+__all__ = ("ProjectsProjectIdCollaboratorsUsernamePutBodyType",)

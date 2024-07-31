@@ -54,42 +54,44 @@ class RepositoryRuleNonFastForward(GitHubModel):
     type: Literal["non_fast_forward"] = Field()
 
 
-class RepositoryRuleOneof14(GitHubModel):
+class RepositoryRuleOneof15(GitHubModel):
     """file_path_restriction
 
-    Note: file_path_restriction is in beta and subject to change.
+    > [!NOTE]
+    > `file_path_restriction` is in beta and subject to change.
 
     Prevent commits that include changes in specified file paths from being pushed
     to the commit graph.
     """
 
     type: Literal["file_path_restriction"] = Field()
-    parameters: Missing[RepositoryRuleOneof14PropParameters] = Field(default=UNSET)
+    parameters: Missing[RepositoryRuleOneof15PropParameters] = Field(default=UNSET)
 
 
-class RepositoryRuleOneof14PropParameters(GitHubModel):
-    """RepositoryRuleOneof14PropParameters"""
+class RepositoryRuleOneof15PropParameters(GitHubModel):
+    """RepositoryRuleOneof15PropParameters"""
 
     restricted_file_paths: List[str] = Field(
         description="The file paths that are restricted from being pushed to the commit graph."
     )
 
 
-class RepositoryRuleOneof16(GitHubModel):
+class RepositoryRuleOneof17(GitHubModel):
     """file_extension_restriction
 
-    Note: file_extension_restriction is in beta and subject to change.
+    > [!NOTE]
+    > `file_extension_restriction` is in beta and subject to change.
 
     Prevent commits that include files with specified file extensions from being
     pushed to the commit graph.
     """
 
     type: Literal["file_extension_restriction"] = Field()
-    parameters: Missing[RepositoryRuleOneof16PropParameters] = Field(default=UNSET)
+    parameters: Missing[RepositoryRuleOneof17PropParameters] = Field(default=UNSET)
 
 
-class RepositoryRuleOneof16PropParameters(GitHubModel):
-    """RepositoryRuleOneof16PropParameters"""
+class RepositoryRuleOneof17PropParameters(GitHubModel):
+    """RepositoryRuleOneof17PropParameters"""
 
     restricted_file_extensions: List[str] = Field(
         description="The file extensions that are restricted from being pushed to the commit graph."
@@ -100,18 +102,18 @@ model_rebuild(RepositoryRuleCreation)
 model_rebuild(RepositoryRuleDeletion)
 model_rebuild(RepositoryRuleRequiredSignatures)
 model_rebuild(RepositoryRuleNonFastForward)
-model_rebuild(RepositoryRuleOneof14)
-model_rebuild(RepositoryRuleOneof14PropParameters)
-model_rebuild(RepositoryRuleOneof16)
-model_rebuild(RepositoryRuleOneof16PropParameters)
+model_rebuild(RepositoryRuleOneof15)
+model_rebuild(RepositoryRuleOneof15PropParameters)
+model_rebuild(RepositoryRuleOneof17)
+model_rebuild(RepositoryRuleOneof17PropParameters)
 
 __all__ = (
     "RepositoryRuleCreation",
     "RepositoryRuleDeletion",
     "RepositoryRuleRequiredSignatures",
     "RepositoryRuleNonFastForward",
-    "RepositoryRuleOneof14",
-    "RepositoryRuleOneof14PropParameters",
-    "RepositoryRuleOneof16",
-    "RepositoryRuleOneof16PropParameters",
+    "RepositoryRuleOneof15",
+    "RepositoryRuleOneof15PropParameters",
+    "RepositoryRuleOneof17",
+    "RepositoryRuleOneof17PropParameters",
 )

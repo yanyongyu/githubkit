@@ -12,13 +12,13 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
 
-    The total number of seat assignments cancelled.
+    The total number of seat assignments created.
     """
 
-    seats_cancelled: int
+    seats_created: int
 
 
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200Type",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostResponse201Type",)

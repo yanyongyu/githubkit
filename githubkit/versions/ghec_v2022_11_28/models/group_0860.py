@@ -9,29 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsVariablesPostBody(GitHubModel):
-    """OrgsOrgActionsVariablesPostBody"""
+class OrgsOrgActionsSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
 
-    name: str = Field(description="The name of the variable.")
-    value: str = Field(description="The value of the variable.")
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable."
-    )
-    selected_repository_ids: Missing[List[int]] = Field(
-        default=UNSET,
-        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
+    selected_repository_ids: List[int] = Field(
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints."
     )
 
 
-model_rebuild(OrgsOrgActionsVariablesPostBody)
+model_rebuild(OrgsOrgActionsSecretsSecretNameRepositoriesPutBody)
 
-__all__ = ("OrgsOrgActionsVariablesPostBody",)
+__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesPutBody",)

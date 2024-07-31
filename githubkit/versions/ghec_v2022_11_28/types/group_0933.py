@@ -13,12 +13,23 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ProjectsColumnsCardsCardIdDeleteResponse403Type(TypedDict):
-    """ProjectsColumnsCardsCardIdDeleteResponse403"""
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    errors: NotRequired[List[str]]
+    groups: NotRequired[
+        List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
+    ]
 
 
-__all__ = ("ProjectsColumnsCardsCardIdDeleteResponse403Type",)
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
+
+    group_id: str
+    group_name: str
+    group_description: str
+
+
+__all__ = (
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
+)

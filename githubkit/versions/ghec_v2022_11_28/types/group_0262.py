@@ -9,70 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0051 import DependabotAlertPackageType
 
-class DependencyGraphSpdxSbomType(TypedDict):
-    """Dependency Graph SPDX SBOM
 
-    A schema for the SPDX JSON format returned by the Dependency Graph.
+class DependabotAlertPropDependencyType(TypedDict):
+    """DependabotAlertPropDependency
+
+    Details for the vulnerable dependency.
     """
 
-    sbom: DependencyGraphSpdxSbomPropSbomType
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
 
 
-class DependencyGraphSpdxSbomPropSbomType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbom"""
-
-    spdxid: str
-    spdx_version: str
-    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoType
-    name: str
-    data_license: str
-    document_describes: List[str]
-    document_namespace: str
-    packages: List[DependencyGraphSpdxSbomPropSbomPropPackagesItemsType]
-
-
-class DependencyGraphSpdxSbomPropSbomPropCreationInfoType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
-
-    created: str
-    creators: List[str]
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsType(TypedDict):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
-
-    spdxid: NotRequired[str]
-    name: NotRequired[str]
-    version_info: NotRequired[str]
-    download_location: NotRequired[str]
-    files_analyzed: NotRequired[bool]
-    license_concluded: NotRequired[str]
-    license_declared: NotRequired[str]
-    supplier: NotRequired[str]
-    copyright_text: NotRequired[str]
-    external_refs: NotRequired[
-        List[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType]
-    ]
-
-
-class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType(
-    TypedDict
-):
-    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
-
-    reference_category: str
-    reference_locator: str
-    reference_type: str
-
-
-__all__ = (
-    "DependencyGraphSpdxSbomType",
-    "DependencyGraphSpdxSbomPropSbomType",
-    "DependencyGraphSpdxSbomPropSbomPropCreationInfoType",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsType",
-    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType",
-)
+__all__ = ("DependabotAlertPropDependencyType",)

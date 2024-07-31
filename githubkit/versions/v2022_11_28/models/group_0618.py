@@ -17,26 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0404 import WebhooksProject
-from .group_0371 import EnterpriseWebhooks
-from .group_0372 import SimpleInstallation
-from .group_0374 import RepositoryWebhooks
-from .group_0375 import SimpleUserWebhooks
-from .group_0373 import OrganizationSimpleWebhooks
+from .group_0406 import WebhooksProject
+from .group_0373 import EnterpriseWebhooks
+from .group_0374 import SimpleInstallation
+from .group_0376 import RepositoryWebhooks
+from .group_0377 import SimpleUserWebhooks
+from .group_0375 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectEdited(GitHubModel):
-    """project edited event"""
+class WebhookProjectCreated(GitHubModel):
+    """project created event"""
 
-    action: Literal["edited"] = Field()
-    changes: Missing[WebhookProjectEditedPropChanges] = Field(
-        default=UNSET,
-        description="The changes to the project if the action was `edited`.",
-    )
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -54,49 +50,12 @@ class WebhookProjectEdited(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUserWebhooks] = Field(
-        default=UNSET,
+    sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookProjectEditedPropChanges(GitHubModel):
-    """WebhookProjectEditedPropChanges
+model_rebuild(WebhookProjectCreated)
 
-    The changes to the project if the action was `edited`.
-    """
-
-    body: Missing[WebhookProjectEditedPropChangesPropBody] = Field(default=UNSET)
-    name: Missing[WebhookProjectEditedPropChangesPropName] = Field(default=UNSET)
-
-
-class WebhookProjectEditedPropChangesPropBody(GitHubModel):
-    """WebhookProjectEditedPropChangesPropBody"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the body if the action was `edited`.",
-    )
-
-
-class WebhookProjectEditedPropChangesPropName(GitHubModel):
-    """WebhookProjectEditedPropChangesPropName"""
-
-    from_: str = Field(
-        alias="from",
-        description="The changes to the project if the action was `edited`.",
-    )
-
-
-model_rebuild(WebhookProjectEdited)
-model_rebuild(WebhookProjectEditedPropChanges)
-model_rebuild(WebhookProjectEditedPropChangesPropBody)
-model_rebuild(WebhookProjectEditedPropChangesPropName)
-
-__all__ = (
-    "WebhookProjectEdited",
-    "WebhookProjectEditedPropChanges",
-    "WebhookProjectEditedPropChangesPropBody",
-    "WebhookProjectEditedPropChangesPropName",
-)
+__all__ = ("WebhookProjectCreated",)

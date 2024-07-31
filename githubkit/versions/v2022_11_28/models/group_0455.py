@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0238 import DependabotAlert
-from .group_0371 import EnterpriseWebhooks
-from .group_0372 import SimpleInstallation
-from .group_0374 import RepositoryWebhooks
-from .group_0375 import SimpleUserWebhooks
-from .group_0373 import OrganizationSimpleWebhooks
+from .group_0240 import DependabotAlert
+from .group_0373 import EnterpriseWebhooks
+from .group_0374 import SimpleInstallation
+from .group_0376 import RepositoryWebhooks
+from .group_0377 import SimpleUserWebhooks
+from .group_0375 import OrganizationSimpleWebhooks
 
 
-class WebhookDependabotAlertDismissed(GitHubModel):
-    """Dependabot alert dismissed event"""
+class WebhookDependabotAlertAutoReopened(GitHubModel):
+    """Dependabot alert auto-reopened event"""
 
-    action: Literal["dismissed"] = Field()
+    action: Literal["auto_reopened"] = Field()
     alert: DependabotAlert = Field(description="A Dependabot alert.")
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -43,7 +43,7 @@ class WebhookDependabotAlertDismissed(GitHubModel):
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     repository: RepositoryWebhooks = Field(
         title="Repository",
@@ -55,6 +55,6 @@ class WebhookDependabotAlertDismissed(GitHubModel):
     )
 
 
-model_rebuild(WebhookDependabotAlertDismissed)
+model_rebuild(WebhookDependabotAlertAutoReopened)
 
-__all__ = ("WebhookDependabotAlertDismissed",)
+__all__ = ("WebhookDependabotAlertAutoReopened",)

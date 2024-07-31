@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -18,206 +18,97 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0064 import Milestone
+from .group_0246 import AutoMerge
+from .group_0001 import SimpleUser
+from .group_0047 import TeamSimple
+from .group_0326 import PullRequestPropBase
+from .group_0328 import PullRequestPropLinks
+from .group_0325 import PullRequestPropHead, PullRequestPropLabelsItems
 
-class PullRequestPropLabelsItems(GitHubModel):
-    """PullRequestPropLabelsItems"""
 
+class PullRequest(GitHubModel):
+    """Pull Request
+
+    Pull requests let you tell others about changes you've pushed to a repository on
+    GitHub. Once a pull request is sent, interested parties can review the set of
+    changes, discuss potential modifications, and even push follow-up commits if
+    necessary.
+    """
+
+    url: str = Field()
     id: int = Field()
     node_id: str = Field()
-    url: str = Field()
-    name: str = Field()
-    description: Union[str, None] = Field()
-    color: str = Field()
-    default: bool = Field()
-
-
-class PullRequestPropHead(GitHubModel):
-    """PullRequestPropHead"""
-
-    label: Union[str, None] = Field()
-    ref: str = Field()
-    repo: Union[PullRequestPropHeadPropRepo, None] = Field()
-    sha: str = Field()
-    user: Union[PullRequestPropHeadPropUser, None] = Field()
-
-
-class PullRequestPropHeadPropRepo(GitHubModel):
-    """PullRequestPropHeadPropRepo"""
-
-    archive_url: str = Field()
-    assignees_url: str = Field()
-    blobs_url: str = Field()
-    branches_url: str = Field()
-    collaborators_url: str = Field()
-    comments_url: str = Field()
-    commits_url: str = Field()
-    compare_url: str = Field()
-    contents_url: str = Field()
-    contributors_url: str = Field()
-    deployments_url: str = Field()
-    description: Union[str, None] = Field()
-    downloads_url: str = Field()
-    events_url: str = Field()
-    fork: bool = Field()
-    forks_url: str = Field()
-    full_name: str = Field()
-    git_commits_url: str = Field()
-    git_refs_url: str = Field()
-    git_tags_url: str = Field()
-    hooks_url: str = Field()
     html_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    issue_comment_url: str = Field()
-    issue_events_url: str = Field()
-    issues_url: str = Field()
-    keys_url: str = Field()
-    labels_url: str = Field()
-    languages_url: str = Field()
-    merges_url: str = Field()
-    milestones_url: str = Field()
-    name: str = Field()
-    notifications_url: str = Field()
-    owner: PullRequestPropHeadPropRepoPropOwner = Field()
-    private: bool = Field()
-    pulls_url: str = Field()
-    releases_url: str = Field()
-    stargazers_url: str = Field()
+    diff_url: str = Field()
+    patch_url: str = Field()
+    issue_url: str = Field()
+    commits_url: str = Field()
+    review_comments_url: str = Field()
+    review_comment_url: str = Field()
+    comments_url: str = Field()
     statuses_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    tags_url: str = Field()
-    teams_url: str = Field()
-    trees_url: str = Field()
-    url: str = Field()
-    clone_url: str = Field()
-    default_branch: str = Field()
-    forks: int = Field()
-    forks_count: int = Field()
-    git_url: str = Field()
-    has_downloads: bool = Field()
-    has_issues: bool = Field()
-    has_projects: bool = Field()
-    has_wiki: bool = Field()
-    has_pages: bool = Field()
-    has_discussions: bool = Field()
-    homepage: Union[str, None] = Field()
-    language: Union[str, None] = Field()
-    master_branch: Missing[str] = Field(default=UNSET)
-    archived: bool = Field()
-    disabled: bool = Field()
-    visibility: Missing[str] = Field(
-        default=UNSET,
-        description="The repository visibility: public, private, or internal.",
+    number: int = Field(
+        description="Number uniquely identifying the pull request within its repository."
     )
-    mirror_url: Union[str, None] = Field()
-    open_issues: int = Field()
-    open_issues_count: int = Field()
-    permissions: Missing[PullRequestPropHeadPropRepoPropPermissions] = Field(
-        default=UNSET
+    state: Literal["open", "closed"] = Field(
+        description="State of this Pull Request. Either `open` or `closed`."
     )
-    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
-    allow_merge_commit: Missing[bool] = Field(default=UNSET)
-    allow_squash_merge: Missing[bool] = Field(default=UNSET)
-    allow_rebase_merge: Missing[bool] = Field(default=UNSET)
-    license_: Union[PullRequestPropHeadPropRepoPropLicense, None] = Field(
-        alias="license"
-    )
-    pushed_at: datetime = Field()
-    size: int = Field()
-    ssh_url: str = Field()
-    stargazers_count: int = Field()
-    svn_url: str = Field()
-    topics: Missing[List[str]] = Field(default=UNSET)
-    watchers: int = Field()
-    watchers_count: int = Field()
+    locked: bool = Field()
+    title: str = Field(description="The title of the pull request.")
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    body: Union[str, None] = Field()
+    labels: List[PullRequestPropLabelsItems] = Field()
+    milestone: Union[None, Milestone] = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
     created_at: datetime = Field()
     updated_at: datetime = Field()
-    allow_forking: Missing[bool] = Field(default=UNSET)
-    is_template: Missing[bool] = Field(default=UNSET)
-    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
+    closed_at: Union[datetime, None] = Field()
+    merged_at: Union[datetime, None] = Field()
+    merge_commit_sha: Union[str, None] = Field()
+    assignee: Union[None, SimpleUser] = Field()
+    assignees: Missing[Union[List[SimpleUser], None]] = Field(default=UNSET)
+    requested_reviewers: Missing[Union[List[SimpleUser], None]] = Field(default=UNSET)
+    requested_teams: Missing[Union[List[TeamSimple], None]] = Field(default=UNSET)
+    head: PullRequestPropHead = Field()
+    base: PullRequestPropBase = Field()
+    links: PullRequestPropLinks = Field(alias="_links")
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    auto_merge: Union[AutoMerge, None] = Field(
+        title="Auto merge", description="The status of auto merging a pull request."
+    )
+    draft: Missing[bool] = Field(
+        default=UNSET,
+        description="Indicates whether or not the pull request is a draft.",
+    )
+    merged: bool = Field()
+    mergeable: Union[bool, None] = Field()
+    rebaseable: Missing[Union[bool, None]] = Field(default=UNSET)
+    mergeable_state: str = Field()
+    merged_by: Union[None, SimpleUser] = Field()
+    comments: int = Field()
+    review_comments: int = Field()
+    maintainer_can_modify: bool = Field(
+        description="Indicates whether maintainers can modify the pull request."
+    )
+    commits: int = Field()
+    additions: int = Field()
+    deletions: int = Field()
+    changed_files: int = Field()
 
 
-class PullRequestPropHeadPropRepoPropOwner(GitHubModel):
-    """PullRequestPropHeadPropRepoPropOwner"""
+model_rebuild(PullRequest)
 
-    avatar_url: str = Field()
-    events_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    html_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    login: str = Field()
-    organizations_url: str = Field()
-    received_events_url: str = Field()
-    repos_url: str = Field()
-    site_admin: bool = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    type: str = Field()
-    url: str = Field()
-
-
-class PullRequestPropHeadPropRepoPropPermissions(GitHubModel):
-    """PullRequestPropHeadPropRepoPropPermissions"""
-
-    admin: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
-    push: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-    pull: bool = Field()
-
-
-class PullRequestPropHeadPropRepoPropLicense(GitHubModel):
-    """PullRequestPropHeadPropRepoPropLicense"""
-
-    key: str = Field()
-    name: str = Field()
-    url: Union[str, None] = Field()
-    spdx_id: Union[str, None] = Field()
-    node_id: str = Field()
-
-
-class PullRequestPropHeadPropUser(GitHubModel):
-    """PullRequestPropHeadPropUser"""
-
-    avatar_url: str = Field()
-    events_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    html_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    login: str = Field()
-    organizations_url: str = Field()
-    received_events_url: str = Field()
-    repos_url: str = Field()
-    site_admin: bool = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    type: str = Field()
-    url: str = Field()
-
-
-model_rebuild(PullRequestPropLabelsItems)
-model_rebuild(PullRequestPropHead)
-model_rebuild(PullRequestPropHeadPropRepo)
-model_rebuild(PullRequestPropHeadPropRepoPropOwner)
-model_rebuild(PullRequestPropHeadPropRepoPropPermissions)
-model_rebuild(PullRequestPropHeadPropRepoPropLicense)
-model_rebuild(PullRequestPropHeadPropUser)
-
-__all__ = (
-    "PullRequestPropLabelsItems",
-    "PullRequestPropHead",
-    "PullRequestPropHeadPropRepo",
-    "PullRequestPropHeadPropRepoPropOwner",
-    "PullRequestPropHeadPropRepoPropPermissions",
-    "PullRequestPropHeadPropRepoPropLicense",
-    "PullRequestPropHeadPropUser",
-)
+__all__ = ("PullRequest",)

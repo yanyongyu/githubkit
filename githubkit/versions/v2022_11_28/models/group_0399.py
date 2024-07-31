@@ -9,28 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union, Literal
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0169 import SimpleCommit
+
+class WebhooksPreviousMarketplacePurchase(GitHubModel):
+    """Marketplace Purchase"""
+
+    account: WebhooksPreviousMarketplacePurchasePropAccount = Field()
+    billing_cycle: str = Field()
+    free_trial_ends_on: None = Field()
+    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
+    on_free_trial: bool = Field()
+    plan: WebhooksPreviousMarketplacePurchasePropPlan = Field()
+    unit_count: int = Field()
 
 
-class MergeGroup(GitHubModel):
-    """Merge Group
+class WebhooksPreviousMarketplacePurchasePropAccount(GitHubModel):
+    """WebhooksPreviousMarketplacePurchasePropAccount"""
 
-    A group of pull requests that the merge queue has grouped together to be merged.
-    """
-
-    head_sha: str = Field(description="The SHA of the merge group.")
-    head_ref: str = Field(description="The full ref of the merge group.")
-    base_sha: str = Field(description="The SHA of the merge group's parent commit.")
-    base_ref: str = Field(
-        description="The full ref of the branch the merge group will be merged into."
-    )
-    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
+    id: int = Field()
+    login: str = Field()
+    node_id: str = Field()
+    organization_billing_email: Union[str, None] = Field()
+    type: str = Field()
 
 
-model_rebuild(MergeGroup)
+class WebhooksPreviousMarketplacePurchasePropPlan(GitHubModel):
+    """WebhooksPreviousMarketplacePurchasePropPlan"""
 
-__all__ = ("MergeGroup",)
+    bullets: List[str] = Field()
+    description: str = Field()
+    has_free_trial: bool = Field()
+    id: int = Field()
+    monthly_price_in_cents: int = Field()
+    name: str = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    unit_name: Union[str, None] = Field()
+    yearly_price_in_cents: int = Field()
+
+
+model_rebuild(WebhooksPreviousMarketplacePurchase)
+model_rebuild(WebhooksPreviousMarketplacePurchasePropAccount)
+model_rebuild(WebhooksPreviousMarketplacePurchasePropPlan)
+
+__all__ = (
+    "WebhooksPreviousMarketplacePurchase",
+    "WebhooksPreviousMarketplacePurchasePropAccount",
+    "WebhooksPreviousMarketplacePurchasePropPlan",
+)

@@ -12,14 +12,13 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0097 import CustomPropertyValueType
+from .group_0096 import OrgCustomPropertyType
 
 
-class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
-    """OrgsOrgPropertiesValuesPatchBody"""
+class OrgsOrgPropertiesSchemaPatchBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    repository_names: List[str]
-    properties: List[CustomPropertyValueType]
+    properties: List[OrgCustomPropertyType]
 
 
-__all__ = ("OrgsOrgPropertiesValuesPatchBodyType",)
+__all__ = ("OrgsOrgPropertiesSchemaPatchBodyType",)

@@ -17,23 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0139 import RepositoryRuleset
-from .group_0371 import EnterpriseWebhooks
-from .group_0372 import SimpleInstallation
-from .group_0374 import RepositoryWebhooks
-from .group_0375 import SimpleUserWebhooks
-from .group_0373 import OrganizationSimpleWebhooks
-from .group_0695 import WebhookRepositoryRulesetEditedPropChanges
+from .group_0141 import RepositoryRuleset
+from .group_0373 import EnterpriseWebhooks
+from .group_0374 import SimpleInstallation
+from .group_0376 import RepositoryWebhooks
+from .group_0377 import SimpleUserWebhooks
+from .group_0375 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryRulesetEdited(GitHubModel):
-    """repository ruleset edited event"""
+class WebhookRepositoryRulesetCreated(GitHubModel):
+    """repository ruleset created event"""
 
-    action: Literal["edited"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -54,13 +53,12 @@ class WebhookRepositoryRulesetEdited(GitHubModel):
         title="Repository ruleset",
         description="A set of rules to apply when specified conditions are met.",
     )
-    changes: Missing[WebhookRepositoryRulesetEditedPropChanges] = Field(default=UNSET)
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-model_rebuild(WebhookRepositoryRulesetEdited)
+model_rebuild(WebhookRepositoryRulesetCreated)
 
-__all__ = ("WebhookRepositoryRulesetEdited",)
+__all__ = ("WebhookRepositoryRulesetCreated",)

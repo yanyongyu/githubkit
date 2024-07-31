@@ -9,15 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
 
-    scope: Literal["all", "public", "private_or_internal", "selected"]
     selected_repository_ids: NotRequired[List[int]]
 
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBodyType",)

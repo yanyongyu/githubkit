@@ -12,38 +12,29 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0048 import TeamType
 from .group_0001 import SimpleUserType
 from .group_0006 import IntegrationType
 
 
-class ReviewDismissedIssueEventType(TypedDict):
-    """Review Dismissed Issue Event
+class ReviewRequestedIssueEventType(TypedDict):
+    """Review Requested Issue Event
 
-    Review Dismissed Issue Event
+    Review Requested Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["review_dismissed"]
+    event: Literal["review_requested"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    dismissed_review: ReviewDismissedIssueEventPropDismissedReviewType
+    review_requester: SimpleUserType
+    requested_team: NotRequired[TeamType]
+    requested_reviewer: NotRequired[SimpleUserType]
 
 
-class ReviewDismissedIssueEventPropDismissedReviewType(TypedDict):
-    """ReviewDismissedIssueEventPropDismissedReview"""
-
-    state: str
-    review_id: int
-    dismissal_message: Union[str, None]
-    dismissal_commit_id: NotRequired[str]
-
-
-__all__ = (
-    "ReviewDismissedIssueEventType",
-    "ReviewDismissedIssueEventPropDismissedReviewType",
-)
+__all__ = ("ReviewRequestedIssueEventType",)

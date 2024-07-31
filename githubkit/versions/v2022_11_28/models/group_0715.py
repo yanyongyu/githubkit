@@ -9,28 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0100 import FullRepository
-from .group_0371 import EnterpriseWebhooks
-from .group_0372 import SimpleInstallation
-from .group_0375 import SimpleUserWebhooks
-from .group_0373 import OrganizationSimpleWebhooks
-from .group_0716 import WebhookSecurityAndAnalysisPropChanges
+from .group_0373 import EnterpriseWebhooks
+from .group_0374 import SimpleInstallation
+from .group_0376 import RepositoryWebhooks
+from .group_0377 import SimpleUserWebhooks
+from .group_0421 import WebhooksSecurityAdvisory
+from .group_0375 import OrganizationSimpleWebhooks
 
 
-class WebhookSecurityAndAnalysis(GitHubModel):
-    """security_and_analysis event"""
+class WebhookSecurityAdvisoryUpdated(GitHubModel):
+    """security_advisory updated event"""
 
-    changes: WebhookSecurityAndAnalysisPropChanges = Field()
+    action: Literal["updated"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -42,8 +44,13 @@ class WebhookSecurityAndAnalysis(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: FullRepository = Field(
-        title="Full Repository", description="Full Repository"
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    security_advisory: WebhooksSecurityAdvisory = Field(
+        description="The details of the security advisory, including summary, description, and severity."
     )
     sender: Missing[SimpleUserWebhooks] = Field(
         default=UNSET,
@@ -52,6 +59,6 @@ class WebhookSecurityAndAnalysis(GitHubModel):
     )
 
 
-model_rebuild(WebhookSecurityAndAnalysis)
+model_rebuild(WebhookSecurityAdvisoryUpdated)
 
-__all__ = ("WebhookSecurityAndAnalysis",)
+__all__ = ("WebhookSecurityAdvisoryUpdated",)

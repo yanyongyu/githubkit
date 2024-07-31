@@ -9,49 +9,61 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Union
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 
-class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody(GitHubModel):
-    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
+class ReposOwnerRepoDeploymentsPostBody(GitHubModel):
+    """ReposOwnerRepoDeploymentsPostBody"""
 
-    state: Literal[
-        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
-    ] = Field(
-        description="The state of the status. When you set a transient deployment to `inactive`, the deployment will be shown as `destroyed` in GitHub."
+    ref: str = Field(
+        description="The ref to deploy. This can be a branch, tag, or SHA."
     )
-    target_url: Missing[str] = Field(
+    task: Missing[str] = Field(
         default=UNSET,
-        description="The target URL to associate with this status. This URL should contain output to keep the user updated while the task is running or serve as historical information for what happened in the deployment. **Note:** It's recommended to use the `log_url` parameter, which replaces `target_url`.",
+        description="Specifies a task to execute (e.g., `deploy` or `deploy:migrations`).",
     )
-    log_url: Missing[str] = Field(
+    auto_merge: Missing[bool] = Field(
         default=UNSET,
-        description='The full URL of the deployment\'s output. This parameter replaces `target_url`. We will continue to accept `target_url` to support legacy uses, but we recommend replacing `target_url` with `log_url`. Setting `log_url` will automatically set `target_url` to the same value. Default: `""`',
+        description="Attempts to automatically merge the default branch into the requested ref, if it's behind the default branch.",
     )
-    description: Missing[str] = Field(
+    required_contexts: Missing[List[str]] = Field(
         default=UNSET,
-        description="A short description of the status. The maximum description length is 140 characters.",
+        description="The [status](https://docs.github.com/rest/commits/statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.",
+    )
+    payload: Missing[Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0, str]] = (
+        Field(default=UNSET)
     )
     environment: Missing[str] = Field(
         default=UNSET,
-        description="Name for the target deployment environment, which can be changed when setting a deploy status. For example, `production`, `staging`, or `qa`. If not defined, the environment of the previous status on the deployment will be used, if it exists. Otherwise, the environment of the deployment will be used.",
+        description="Name for the target deployment environment (e.g., `production`, `staging`, `qa`).",
     )
-    environment_url: Missing[str] = Field(
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the deployment."
+    )
+    transient_environment: Missing[bool] = Field(
         default=UNSET,
-        description='Sets the URL for accessing your environment. Default: `""`',
+        description="Specifies if the given environment is specific to the deployment and will no longer exist at some point in the future. Default: `false`",
     )
-    auto_inactive: Missing[bool] = Field(
+    production_environment: Missing[bool] = Field(
         default=UNSET,
-        description="Adds a new `inactive` status to all prior non-transient, non-production environment deployments with the same repository and `environment` name as the created status's deployment. An `inactive` status is only added to deployments that had a `success` state. Default: `true`",
+        description="Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise.",
     )
 
 
-model_rebuild(ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody)
+class ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0(ExtraGitHubModel):
+    """ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0"""
 
-__all__ = ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody",)
+
+model_rebuild(ReposOwnerRepoDeploymentsPostBody)
+model_rebuild(ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0)
+
+__all__ = (
+    "ReposOwnerRepoDeploymentsPostBody",
+    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0",
+)

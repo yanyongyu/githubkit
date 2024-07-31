@@ -14,15 +14,15 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteResponse200(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteResponse200
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
 
-    The total number of seat assignments cancelled.
+    The total number of seat assignments created.
     """
 
-    seats_cancelled: int = Field()
+    seats_created: int = Field()
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteResponse200)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersPostResponse201)
 
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteResponse200",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostResponse201",)

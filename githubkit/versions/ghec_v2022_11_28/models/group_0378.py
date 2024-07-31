@@ -9,47 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0377 import UserRoleItems
-from .group_0376 import UserNameResponse, UserEmailsResponseItems
 
+class UserNameResponse(GitHubModel):
+    """UserNameResponse"""
 
-class UserResponse(GitHubModel):
-    """UserResponse"""
-
-    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
-        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
-    )
-    external_id: Missing[Union[str, None]] = Field(
+    formatted: Missing[str] = Field(
         default=UNSET,
-        alias="externalId",
-        description="A unique identifier for the resource as defined by the provisioning client.",
+        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
     )
-    active: bool = Field(description="Whether the user active in the IdP.")
-    user_name: Missing[str] = Field(
-        default=UNSET, alias="userName", description="The username for the user."
+    family_name: Missing[str] = Field(
+        default=UNSET, alias="familyName", description="The family name of the user."
     )
-    name: Missing[UserNameResponse] = Field(default=UNSET)
-    display_name: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        alias="displayName",
-        description="A human-readable name for the user.",
+    given_name: Missing[str] = Field(
+        default=UNSET, alias="givenName", description="The given name of the user."
     )
-    emails: List[UserEmailsResponseItems] = Field(
-        description="The emails for the user."
-    )
-    roles: Missing[List[UserRoleItems]] = Field(
-        default=UNSET, description="The roles assigned to the user."
+    middle_name: Missing[str] = Field(
+        default=UNSET, alias="middleName", description="The middle name(s) of the user."
     )
 
 
-model_rebuild(UserResponse)
+class UserEmailsResponseItems(GitHubModel):
+    """UserEmailsResponseItems"""
 
-__all__ = ("UserResponse",)
+    value: str = Field(description="The email address.")
+    type: Missing[str] = Field(default=UNSET, description="The type of email address.")
+    primary: Missing[bool] = Field(
+        default=UNSET, description="Whether this email address is the primary address."
+    )
+
+
+model_rebuild(UserNameResponse)
+model_rebuild(UserEmailsResponseItems)
+
+__all__ = (
+    "UserNameResponse",
+    "UserEmailsResponseItems",
+)

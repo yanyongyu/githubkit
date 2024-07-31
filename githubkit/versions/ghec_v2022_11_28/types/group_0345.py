@@ -12,14 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0145 import RepositoryRulePullRequestPropParametersType
 
-class RepositoryRuleDetailedOneof8Type(TypedDict):
-    """RepositoryRuleDetailedOneof8"""
 
-    type: Literal["non_fast_forward"]
+class RepositoryRuleDetailedOneof7Type(TypedDict):
+    """RepositoryRuleDetailedOneof7"""
+
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-__all__ = ("RepositoryRuleDetailedOneof8Type",)
+__all__ = ("RepositoryRuleDetailedOneof7Type",)

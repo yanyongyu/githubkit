@@ -13,26 +13,18 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class UserCodespacesCodespaceNamePatchBody(GitHubModel):
-    """UserCodespacesCodespaceNamePatchBody"""
-
-    machine: Missing[str] = Field(
-        default=UNSET, description="A valid machine to transition this codespace to."
-    )
-    display_name: Missing[str] = Field(
-        default=UNSET, description="Display name for this codespace"
-    )
-    recent_folders: Missing[List[str]] = Field(
-        default=UNSET,
-        description="Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in.",
-    )
+from .group_0082 import MinimalRepository
 
 
-model_rebuild(UserCodespacesCodespaceNamePatchBody)
+class UserCodespacesSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-__all__ = ("UserCodespacesCodespaceNamePatchBody",)
+    total_count: int = Field()
+    repositories: List[MinimalRepository] = Field()
+
+
+model_rebuild(UserCodespacesSecretsSecretNameRepositoriesGetResponse200)
+
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200",)

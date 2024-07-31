@@ -9,42 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleCodeScanningPropParameters(GitHubModel):
-    """RepositoryRuleCodeScanningPropParameters"""
+class RepositoryRuleWorkflowsPropParameters(GitHubModel):
+    """RepositoryRuleWorkflowsPropParameters"""
 
-    code_scanning_tools: List[RepositoryRuleParamsCodeScanningTool] = Field(
-        description="Tools that must provide code scanning results for this rule to pass."
+    do_not_enforce_on_create: Missing[bool] = Field(
+        default=UNSET,
+        description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
+    )
+    workflows: List[RepositoryRuleParamsWorkflowFileReference] = Field(
+        description="Workflows that must pass for this rule to pass."
     )
 
 
-class RepositoryRuleParamsCodeScanningTool(GitHubModel):
-    """CodeScanningTool
+class RepositoryRuleParamsWorkflowFileReference(GitHubModel):
+    """WorkflowFileReference
 
-    A tool that must provide code scanning results for this rule to pass.
+    A workflow that must run for this rule to pass
     """
 
-    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"] = Field(
-        description='The severity level at which code scanning results that raise alerts block a reference update. For more information on alert severity levels, see "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
+    path: str = Field(description="The path to the workflow file")
+    ref: Missing[str] = Field(
+        default=UNSET, description="The ref (branch or tag) of the workflow file to use"
     )
-    security_alerts_threshold: Literal[
-        "none", "critical", "high_or_higher", "medium_or_higher", "all"
-    ] = Field(
-        description='The severity level at which code scanning results that raise security alerts block a reference update. For more information on security severity levels, see "[About code scanning alerts](https://docs.github.com/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-severity-and-security-severity-levels)."'
+    repository_id: int = Field(
+        description="The ID of the repository where the workflow is defined"
     )
-    tool: str = Field(description="The name of a code scanning tool")
+    sha: Missing[str] = Field(
+        default=UNSET, description="The commit SHA of the workflow file to use"
+    )
 
 
-model_rebuild(RepositoryRuleCodeScanningPropParameters)
-model_rebuild(RepositoryRuleParamsCodeScanningTool)
+model_rebuild(RepositoryRuleWorkflowsPropParameters)
+model_rebuild(RepositoryRuleParamsWorkflowFileReference)
 
 __all__ = (
-    "RepositoryRuleCodeScanningPropParameters",
-    "RepositoryRuleParamsCodeScanningTool",
+    "RepositoryRuleWorkflowsPropParameters",
+    "RepositoryRuleParamsWorkflowFileReference",
 )

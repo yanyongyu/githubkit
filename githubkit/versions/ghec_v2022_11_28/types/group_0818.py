@@ -12,11 +12,14 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
-
-    labels: List[str]
+from .group_0033 import RunnerLabelType
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType",)
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200"""
+
+    total_count: int
+    labels: List[RunnerLabelType]
+
+
+__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type",)

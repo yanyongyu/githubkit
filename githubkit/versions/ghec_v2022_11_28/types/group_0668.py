@@ -12,20 +12,22 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0445 import ProjectsV2ItemType
-from .group_0407 import SimpleInstallationType
-from .group_0410 import SimpleUserWebhooksType
-from .group_0408 import OrganizationSimpleWebhooksType
+from .group_0447 import ProjectsV2ItemType
+from .group_0409 import SimpleInstallationType
+from .group_0412 import SimpleUserWebhooksType
+from .group_0446 import WebhooksProjectChangesType
+from .group_0410 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ItemCreatedType(TypedDict):
-    """Projects v2 Item Created Event"""
+class WebhookProjectsV2ItemArchivedType(TypedDict):
+    """Projects v2 Item Archived Event"""
 
-    action: Literal["created"]
+    action: Literal["archived"]
+    changes: WebhooksProjectChangesType
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookProjectsV2ItemCreatedType",)
+__all__ = ("WebhookProjectsV2ItemArchivedType",)

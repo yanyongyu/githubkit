@@ -16,14 +16,14 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookStatusPropCommitPropCommitPropCommitterAllof1(GitHubModel):
-    """WebhookStatusPropCommitPropCommitPropCommitterAllof1"""
+class WebhookStatusPropCommitPropCommitPropAuthorAllof1(GitHubModel):
+    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
 
     date: str = Field()
     email: Missing[str] = Field(default=UNSET)
     name: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookStatusPropCommitPropCommitPropCommitterAllof1)
+model_rebuild(WebhookStatusPropCommitPropCommitPropAuthorAllof1)
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropCommitterAllof1",)
+__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof1",)

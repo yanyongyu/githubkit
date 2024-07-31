@@ -13,26 +13,26 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0422 import WebhooksTeam1Type
-from .group_0371 import EnterpriseWebhooksType
-from .group_0372 import SimpleInstallationType
-from .group_0375 import SimpleUserWebhooksType
-from .group_0373 import OrganizationSimpleWebhooksType
+from .group_0424 import WebhooksTeam1Type
+from .group_0373 import EnterpriseWebhooksType
+from .group_0374 import SimpleInstallationType
+from .group_0377 import SimpleUserWebhooksType
+from .group_0375 import OrganizationSimpleWebhooksType
 
 
-class WebhookTeamRemovedFromRepositoryType(TypedDict):
-    """team removed_from_repository event"""
+class WebhookTeamDeletedType(TypedDict):
+    """team deleted event"""
 
-    action: Literal["removed_from_repository"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[WebhookTeamRemovedFromRepositoryPropRepositoryType]
-    sender: SimpleUserWebhooksType
+    repository: NotRequired[WebhookTeamDeletedPropRepositoryType]
+    sender: NotRequired[SimpleUserWebhooksType]
     team: WebhooksTeam1Type
 
 
-class WebhookTeamRemovedFromRepositoryPropRepositoryType(TypedDict):
+class WebhookTeamDeletedPropRepositoryType(TypedDict):
     """Repository
 
     A git repository
@@ -58,7 +58,7 @@ class WebhookTeamRemovedFromRepositoryPropRepositoryType(TypedDict):
     contributors_url: str
     created_at: Union[int, datetime]
     custom_properties: NotRequired[
-        WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomPropertiesType
+        WebhookTeamDeletedPropRepositoryPropCustomPropertiesType
     ]
     default_branch: str
     delete_branch_on_merge: NotRequired[bool]
@@ -93,7 +93,7 @@ class WebhookTeamRemovedFromRepositoryPropRepositoryType(TypedDict):
     labels_url: str
     language: Union[str, None]
     languages_url: str
-    license_: Union[WebhookTeamRemovedFromRepositoryPropRepositoryPropLicenseType, None]
+    license_: Union[WebhookTeamDeletedPropRepositoryPropLicenseType, None]
     master_branch: NotRequired[str]
     merges_url: str
     milestones_url: str
@@ -104,10 +104,8 @@ class WebhookTeamRemovedFromRepositoryPropRepositoryType(TypedDict):
     open_issues: int
     open_issues_count: int
     organization: NotRequired[str]
-    owner: Union[WebhookTeamRemovedFromRepositoryPropRepositoryPropOwnerType, None]
-    permissions: NotRequired[
-        WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissionsType
-    ]
+    owner: Union[WebhookTeamDeletedPropRepositoryPropOwnerType, None]
+    permissions: NotRequired[WebhookTeamDeletedPropRepositoryPropPermissionsType]
     private: bool
     public: NotRequired[bool]
     pulls_url: str
@@ -134,8 +132,8 @@ class WebhookTeamRemovedFromRepositoryPropRepositoryType(TypedDict):
     watchers_count: int
 
 
-class WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomPropertiesType(TypedDict):
-    """WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomProperties
+class WebhookTeamDeletedPropRepositoryPropCustomPropertiesType(TypedDict):
+    """WebhookTeamDeletedPropRepositoryPropCustomProperties
 
     The custom properties that were defined for the repository. The keys are the
     custom property names, and the values are the corresponding custom property
@@ -143,7 +141,7 @@ class WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomPropertiesType(Typ
     """
 
 
-class WebhookTeamRemovedFromRepositoryPropRepositoryPropLicenseType(TypedDict):
+class WebhookTeamDeletedPropRepositoryPropLicenseType(TypedDict):
     """License"""
 
     key: str
@@ -153,7 +151,7 @@ class WebhookTeamRemovedFromRepositoryPropRepositoryPropLicenseType(TypedDict):
     url: Union[str, None]
 
 
-class WebhookTeamRemovedFromRepositoryPropRepositoryPropOwnerType(TypedDict):
+class WebhookTeamDeletedPropRepositoryPropOwnerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -179,8 +177,8 @@ class WebhookTeamRemovedFromRepositoryPropRepositoryPropOwnerType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissionsType(TypedDict):
-    """WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissions"""
+class WebhookTeamDeletedPropRepositoryPropPermissionsType(TypedDict):
+    """WebhookTeamDeletedPropRepositoryPropPermissions"""
 
     admin: bool
     maintain: NotRequired[bool]
@@ -190,10 +188,10 @@ class WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissionsType(TypedDic
 
 
 __all__ = (
-    "WebhookTeamRemovedFromRepositoryType",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryType",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryPropCustomPropertiesType",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryPropLicenseType",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryPropOwnerType",
-    "WebhookTeamRemovedFromRepositoryPropRepositoryPropPermissionsType",
+    "WebhookTeamDeletedType",
+    "WebhookTeamDeletedPropRepositoryType",
+    "WebhookTeamDeletedPropRepositoryPropCustomPropertiesType",
+    "WebhookTeamDeletedPropRepositoryPropLicenseType",
+    "WebhookTeamDeletedPropRepositoryPropOwnerType",
+    "WebhookTeamDeletedPropRepositoryPropPermissionsType",
 )

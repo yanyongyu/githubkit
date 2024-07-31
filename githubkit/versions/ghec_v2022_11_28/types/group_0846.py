@@ -9,18 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class OrgsOrgActionsRunnerGroupsGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnerGroupsGetResponse200"""
 
+    total_count: float
+    runner_groups: List[RunnerGroupsOrgType]
+
+
+class RunnerGroupsOrgType(TypedDict):
+    """RunnerGroupsOrg"""
+
+    id: float
     name: str
-    visibility: NotRequired[Literal["selected", "all", "private"]]
-    allows_public_repositories: NotRequired[bool]
+    visibility: str
+    default: bool
+    selected_repositories_url: NotRequired[str]
+    runners_url: str
+    hosted_runners_url: NotRequired[str]
+    inherited: bool
+    inherited_allows_public_repositories: NotRequired[bool]
+    allows_public_repositories: bool
+    workflow_restrictions_read_only: NotRequired[bool]
     restricted_to_workflows: NotRequired[bool]
     selected_workflows: NotRequired[List[str]]
 
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType",)
+__all__ = (
+    "OrgsOrgActionsRunnerGroupsGetResponse200Type",
+    "RunnerGroupsOrgType",
+)

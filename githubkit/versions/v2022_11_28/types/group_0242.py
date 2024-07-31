@@ -9,15 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union, Literal
 from typing_extensions import TypedDict
 
 
-class MetadataType(TypedDict):
-    """metadata
+class DependencyGraphDiffItemsType(TypedDict):
+    """DependencyGraphDiffItems"""
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
-    """
+    change_type: Literal["added", "removed"]
+    manifest: str
+    ecosystem: str
+    name: str
+    version: str
+    package_url: Union[str, None]
+    license_: Union[str, None]
+    source_repository_url: Union[str, None]
+    vulnerabilities: List[DependencyGraphDiffItemsPropVulnerabilitiesItemsType]
+    scope: Literal["unknown", "runtime", "development"]
 
 
-__all__ = ("MetadataType",)
+class DependencyGraphDiffItemsPropVulnerabilitiesItemsType(TypedDict):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
+
+    severity: str
+    advisory_ghsa_id: str
+    advisory_summary: str
+    advisory_url: str
+
+
+__all__ = (
+    "DependencyGraphDiffItemsType",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
+)

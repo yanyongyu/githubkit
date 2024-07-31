@@ -13,41 +13,12 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ScimV2OrganizationsOrgUsersPostBodyType(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBody"""
+class ReposOwnerRepoTransferPostBodyType(TypedDict):
+    """ReposOwnerRepoTransferPostBody"""
 
-    user_name: str
-    display_name: NotRequired[str]
-    name: ScimV2OrganizationsOrgUsersPostBodyPropNameType
-    emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType]
-    schemas: NotRequired[List[str]]
-    external_id: NotRequired[str]
-    groups: NotRequired[List[str]]
-    active: NotRequired[bool]
+    new_owner: str
+    new_name: NotRequired[str]
+    team_ids: NotRequired[List[int]]
 
 
-class ScimV2OrganizationsOrgUsersPostBodyPropNameType(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBodyPropName
-
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str
-    family_name: str
-    formatted: NotRequired[str]
-
-
-class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType(TypedDict):
-    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
-
-    value: str
-    primary: NotRequired[bool]
-    type: NotRequired[str]
-
-
-__all__ = (
-    "ScimV2OrganizationsOrgUsersPostBodyType",
-    "ScimV2OrganizationsOrgUsersPostBodyPropNameType",
-    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType",
-)
+__all__ = ("ReposOwnerRepoTransferPostBodyType",)

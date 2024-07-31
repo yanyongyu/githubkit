@@ -9,29 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class RepositoryRuleWorkflowsPropParametersType(TypedDict):
-    """RepositoryRuleWorkflowsPropParameters"""
+class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
+    """RestrictedCommits
 
-    workflows: List[RepositoryRuleParamsWorkflowFileReferenceType]
-
-
-class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):
-    """WorkflowFileReference
-
-    A workflow that must run for this rule to pass
+    Restricted commit
     """
 
-    path: str
-    ref: NotRequired[str]
-    repository_id: int
-    sha: NotRequired[str]
+    oid: str
+    reason: NotRequired[str]
 
 
-__all__ = (
-    "RepositoryRuleWorkflowsPropParametersType",
-    "RepositoryRuleParamsWorkflowFileReferenceType",
-)
+__all__ = ("RepositoryRuleParamsRestrictedCommitsType",)

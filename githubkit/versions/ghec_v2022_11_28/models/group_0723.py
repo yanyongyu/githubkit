@@ -17,22 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0166 import RepositoryAdvisory
-from .group_0406 import EnterpriseWebhooks
-from .group_0407 import SimpleInstallation
-from .group_0409 import RepositoryWebhooks
-from .group_0410 import SimpleUserWebhooks
-from .group_0408 import OrganizationSimpleWebhooks
+from .group_0454 import WebhooksRelease
+from .group_0408 import EnterpriseWebhooks
+from .group_0409 import SimpleInstallation
+from .group_0411 import RepositoryWebhooks
+from .group_0412 import SimpleUserWebhooks
+from .group_0410 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryAdvisoryPublished(GitHubModel):
-    """Repository advisory published event"""
+class WebhookReleaseReleased(GitHubModel):
+    """release released event"""
 
-    action: Literal["published"] = Field()
+    action: Literal["released"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -44,12 +44,13 @@ class WebhookRepositoryAdvisoryPublished(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
+    release: WebhooksRelease = Field(
+        title="Release",
+        description="The [release](https://docs.github.com/enterprise-cloud@latest//rest/releases/releases/#get-a-release) object.",
+    )
     repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    repository_advisory: RepositoryAdvisory = Field(
-        description="A repository security advisory."
     )
     sender: Missing[SimpleUserWebhooks] = Field(
         default=UNSET,
@@ -58,6 +59,6 @@ class WebhookRepositoryAdvisoryPublished(GitHubModel):
     )
 
 
-model_rebuild(WebhookRepositoryAdvisoryPublished)
+model_rebuild(WebhookReleaseReleased)
 
-__all__ = ("WebhookRepositoryAdvisoryPublished",)
+__all__ = ("WebhookReleaseReleased",)

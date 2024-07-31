@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody"""
+class OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
 
-    permission: NotRequired[Literal["read", "write", "admin"]]
+    group_id: int
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType",)
+__all__ = ("OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType",)

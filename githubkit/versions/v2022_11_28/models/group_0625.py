@@ -17,17 +17,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0408 import ProjectsV2Item
-from .group_0372 import SimpleInstallation
-from .group_0375 import SimpleUserWebhooks
-from .group_0373 import OrganizationSimpleWebhooks
+from .group_0408 import ProjectsV2
+from .group_0374 import SimpleInstallation
+from .group_0377 import SimpleUserWebhooks
+from .group_0375 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ItemConverted(GitHubModel):
-    """Projects v2 Item Converted Event"""
+class WebhookProjectsV2ProjectEdited(GitHubModel):
+    """Projects v2 Project Edited Event"""
 
-    action: Literal["converted"] = Field()
-    changes: WebhookProjectsV2ItemConvertedPropChanges = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookProjectsV2ProjectEditedPropChanges = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -37,8 +37,8 @@ class WebhookProjectsV2ItemConverted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    projects_v2_item: ProjectsV2Item = Field(
-        title="Projects v2 Item", description="An item belonging to a project"
+    projects_v2: ProjectsV2 = Field(
+        title="Projects v2 Project", description="A projects v2 project"
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -46,27 +46,63 @@ class WebhookProjectsV2ItemConverted(GitHubModel):
     )
 
 
-class WebhookProjectsV2ItemConvertedPropChanges(GitHubModel):
-    """WebhookProjectsV2ItemConvertedPropChanges"""
+class WebhookProjectsV2ProjectEditedPropChanges(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChanges"""
 
-    content_type: Missing[WebhookProjectsV2ItemConvertedPropChangesPropContentType] = (
+    description: Missing[WebhookProjectsV2ProjectEditedPropChangesPropDescription] = (
         Field(default=UNSET)
+    )
+    public: Missing[WebhookProjectsV2ProjectEditedPropChangesPropPublic] = Field(
+        default=UNSET
+    )
+    short_description: Missing[
+        WebhookProjectsV2ProjectEditedPropChangesPropShortDescription
+    ] = Field(default=UNSET)
+    title: Missing[WebhookProjectsV2ProjectEditedPropChangesPropTitle] = Field(
+        default=UNSET
     )
 
 
-class WebhookProjectsV2ItemConvertedPropChangesPropContentType(GitHubModel):
-    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
+class WebhookProjectsV2ProjectEditedPropChangesPropDescription(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
 
     from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropPublic(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
+
+    from_: Missing[bool] = Field(default=UNSET, alias="from")
+    to: Missing[bool] = Field(default=UNSET)
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropShortDescription(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
+
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropTitle(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
     to: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookProjectsV2ItemConverted)
-model_rebuild(WebhookProjectsV2ItemConvertedPropChanges)
-model_rebuild(WebhookProjectsV2ItemConvertedPropChangesPropContentType)
+model_rebuild(WebhookProjectsV2ProjectEdited)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChanges)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropDescription)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropPublic)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropShortDescription)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropTitle)
 
 __all__ = (
-    "WebhookProjectsV2ItemConverted",
-    "WebhookProjectsV2ItemConvertedPropChanges",
-    "WebhookProjectsV2ItemConvertedPropChangesPropContentType",
+    "WebhookProjectsV2ProjectEdited",
+    "WebhookProjectsV2ProjectEditedPropChanges",
+    "WebhookProjectsV2ProjectEditedPropChangesPropDescription",
+    "WebhookProjectsV2ProjectEditedPropChangesPropPublic",
+    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescription",
+    "WebhookProjectsV2ProjectEditedPropChangesPropTitle",
 )

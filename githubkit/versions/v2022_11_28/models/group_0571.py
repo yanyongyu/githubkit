@@ -17,22 +17,23 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0383 import WebhooksUser
-from .group_0371 import EnterpriseWebhooks
-from .group_0372 import SimpleInstallation
-from .group_0374 import RepositoryWebhooks
-from .group_0375 import SimpleUserWebhooks
-from .group_0373 import OrganizationSimpleWebhooks
+from .group_0385 import WebhooksUser
+from .group_0373 import EnterpriseWebhooks
+from .group_0374 import SimpleInstallation
+from .group_0376 import RepositoryWebhooks
+from .group_0377 import SimpleUserWebhooks
+from .group_0375 import OrganizationSimpleWebhooks
 
 
-class WebhookMemberRemoved(GitHubModel):
-    """member removed event"""
+class WebhookMemberAdded(GitHubModel):
+    """member added event"""
 
-    action: Literal["removed"] = Field()
+    action: Literal["added"] = Field()
+    changes: Missing[WebhookMemberAddedPropChanges] = Field(default=UNSET)
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -55,6 +56,50 @@ class WebhookMemberRemoved(GitHubModel):
     )
 
 
-model_rebuild(WebhookMemberRemoved)
+class WebhookMemberAddedPropChanges(GitHubModel):
+    """WebhookMemberAddedPropChanges"""
 
-__all__ = ("WebhookMemberRemoved",)
+    permission: Missing[WebhookMemberAddedPropChangesPropPermission] = Field(
+        default=UNSET,
+        description="This field is included for legacy purposes; use the `role_name` field instead. The `maintain`\nrole is mapped to `write` and the `triage` role is mapped to `read`. To determine the role\nassigned to the collaborator, use the `role_name` field instead, which will provide the full\nrole name, including custom roles.",
+    )
+    role_name: Missing[WebhookMemberAddedPropChangesPropRoleName] = Field(
+        default=UNSET, description="The role assigned to the collaborator."
+    )
+
+
+class WebhookMemberAddedPropChangesPropPermission(GitHubModel):
+    """WebhookMemberAddedPropChangesPropPermission
+
+    This field is included for legacy purposes; use the `role_name` field instead.
+    The `maintain`
+    role is mapped to `write` and the `triage` role is mapped to `read`. To
+    determine the role
+    assigned to the collaborator, use the `role_name` field instead, which will
+    provide the full
+    role name, including custom roles.
+    """
+
+    to: Literal["write", "admin", "read"] = Field()
+
+
+class WebhookMemberAddedPropChangesPropRoleName(GitHubModel):
+    """WebhookMemberAddedPropChangesPropRoleName
+
+    The role assigned to the collaborator.
+    """
+
+    to: str = Field()
+
+
+model_rebuild(WebhookMemberAdded)
+model_rebuild(WebhookMemberAddedPropChanges)
+model_rebuild(WebhookMemberAddedPropChangesPropPermission)
+model_rebuild(WebhookMemberAddedPropChangesPropRoleName)
+
+__all__ = (
+    "WebhookMemberAdded",
+    "WebhookMemberAddedPropChanges",
+    "WebhookMemberAddedPropChangesPropPermission",
+    "WebhookMemberAddedPropChangesPropRoleName",
+)

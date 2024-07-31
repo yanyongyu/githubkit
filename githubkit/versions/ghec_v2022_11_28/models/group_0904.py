@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,16 +18,19 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
+class OrgsOrgOrganizationRolesPostBody(GitHubModel):
+    """OrgsOrgOrganizationRolesPostBody"""
 
-    async_: Missing[bool] = Field(
+    name: str = Field(description="The name of the custom role.")
+    description: Missing[str] = Field(
         default=UNSET,
-        alias="async",
-        description="When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued.",
+        description="A short description about the intended usage of this role or what permissions it grants.",
+    )
+    permissions: List[str] = Field(
+        description="A list of additional permissions included in this role."
     )
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutBody)
+model_rebuild(OrgsOrgOrganizationRolesPostBody)
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBody",)
+__all__ = ("OrgsOrgOrganizationRolesPostBody",)

@@ -9,30 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoTransferPostBody(GitHubModel):
-    """ReposOwnerRepoTransferPostBody"""
+class ReposOwnerRepoTagsProtectionPostBody(GitHubModel):
+    """ReposOwnerRepoTagsProtectionPostBody"""
 
-    new_owner: str = Field(
-        description="The username or organization name the repository will be transferred to."
-    )
-    new_name: Missing[str] = Field(
-        default=UNSET, description="The new name to be given to the repository."
-    )
-    team_ids: Missing[List[int]] = Field(
-        default=UNSET,
-        description="ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.",
+    pattern: str = Field(
+        description="An optional glob pattern to match against when enforcing tag protection."
     )
 
 
-model_rebuild(ReposOwnerRepoTransferPostBody)
+model_rebuild(ReposOwnerRepoTagsProtectionPostBody)
 
-__all__ = ("ReposOwnerRepoTransferPostBody",)
+__all__ = ("ReposOwnerRepoTagsProtectionPostBody",)

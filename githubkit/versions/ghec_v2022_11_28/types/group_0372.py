@@ -12,11 +12,9 @@ from __future__ import annotations
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0371 import MetaType
 
-
-class ScimEnterpriseGroupResponseType(TypedDict):
-    """ScimEnterpriseGroupResponse"""
+class GroupResponseType(TypedDict):
+    """GroupResponse"""
 
     schemas: List[
         Literal[
@@ -26,31 +24,18 @@ class ScimEnterpriseGroupResponseType(TypedDict):
     ]
     external_id: NotRequired[Union[str, None]]
     display_name: NotRequired[Union[str, None]]
-    members: NotRequired[List[ScimEnterpriseGroupResponseMergedMembersType]]
-    id: NotRequired[str]
-    meta: NotRequired[MetaType]
+    members: NotRequired[List[GroupResponsePropMembersItemsType]]
 
 
-class ScimEnterpriseGroupResponseMergedMembersType(TypedDict):
-    """ScimEnterpriseGroupResponseMergedMembers"""
+class GroupResponsePropMembersItemsType(TypedDict):
+    """GroupResponsePropMembersItems"""
 
     value: str
     ref: str
     display: NotRequired[str]
 
 
-class ScimEnterpriseGroupListType(TypedDict):
-    """ScimEnterpriseGroupList"""
-
-    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
-    total_results: int
-    resources: List[ScimEnterpriseGroupResponseType]
-    start_index: int
-    items_per_page: int
-
-
 __all__ = (
-    "ScimEnterpriseGroupResponseType",
-    "ScimEnterpriseGroupResponseMergedMembersType",
-    "ScimEnterpriseGroupListType",
+    "GroupResponseType",
+    "GroupResponsePropMembersItemsType",
 )

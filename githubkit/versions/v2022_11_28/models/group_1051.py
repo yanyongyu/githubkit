@@ -9,21 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoTopicsPutBody(GitHubModel):
-    """ReposOwnerRepoTopicsPutBody"""
+class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
+    """ReposOwnerRepoSubscriptionPutBody"""
 
-    names: List[str] = Field(
-        description="An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` cannot contain uppercase letters."
+    subscribed: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications should be received from this repository.",
+    )
+    ignored: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if all notifications should be blocked from this repository.",
     )
 
 
-model_rebuild(ReposOwnerRepoTopicsPutBody)
+model_rebuild(ReposOwnerRepoSubscriptionPutBody)
 
-__all__ = ("ReposOwnerRepoTopicsPutBody",)
+__all__ = ("ReposOwnerRepoSubscriptionPutBody",)

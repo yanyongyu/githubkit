@@ -10,6 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
+from datetime import datetime
 
 from pydantic import Field
 
@@ -17,27 +18,26 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0385 import Discussion
-from .group_0386 import WebhooksComment
-from .group_0371 import EnterpriseWebhooks
-from .group_0372 import SimpleInstallation
-from .group_0374 import RepositoryWebhooks
-from .group_0375 import SimpleUserWebhooks
-from .group_0373 import OrganizationSimpleWebhooks
+from .group_0387 import Discussion
+from .group_0373 import EnterpriseWebhooks
+from .group_0374 import SimpleInstallation
+from .group_0376 import RepositoryWebhooks
+from .group_0377 import SimpleUserWebhooks
+from .group_0375 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionCommentCreated(GitHubModel):
-    """discussion_comment created event"""
+class WebhookDiscussionCategoryChanged(GitHubModel):
+    """discussion category changed event"""
 
-    action: Literal["created"] = Field()
-    comment: WebhooksComment = Field()
+    action: Literal["category_changed"] = Field()
+    changes: WebhookDiscussionCategoryChangedPropChanges = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -59,6 +59,43 @@ class WebhookDiscussionCommentCreated(GitHubModel):
     )
 
 
-model_rebuild(WebhookDiscussionCommentCreated)
+class WebhookDiscussionCategoryChangedPropChanges(GitHubModel):
+    """WebhookDiscussionCategoryChangedPropChanges"""
 
-__all__ = ("WebhookDiscussionCommentCreated",)
+    category: WebhookDiscussionCategoryChangedPropChangesPropCategory = Field()
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategory(GitHubModel):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategory"""
+
+    from_: WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom = Field(
+        alias="from"
+    )
+
+
+class WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom(GitHubModel):
+    """WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom"""
+
+    created_at: datetime = Field()
+    description: str = Field()
+    emoji: str = Field()
+    id: int = Field()
+    is_answerable: bool = Field()
+    name: str = Field()
+    node_id: Missing[str] = Field(default=UNSET)
+    repository_id: int = Field()
+    slug: str = Field()
+    updated_at: str = Field()
+
+
+model_rebuild(WebhookDiscussionCategoryChanged)
+model_rebuild(WebhookDiscussionCategoryChangedPropChanges)
+model_rebuild(WebhookDiscussionCategoryChangedPropChangesPropCategory)
+model_rebuild(WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom)
+
+__all__ = (
+    "WebhookDiscussionCategoryChanged",
+    "WebhookDiscussionCategoryChangedPropChanges",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategory",
+    "WebhookDiscussionCategoryChangedPropChangesPropCategoryPropFrom",
+)

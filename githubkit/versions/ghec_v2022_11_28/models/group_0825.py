@@ -16,20 +16,20 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody(
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
 
     users: List[str] = Field(
-        description="The usernames of the users to remove from the cost center."
+        description="The usernames of the users to add to the cost center."
     )
 
 
 model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody
 )
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody",
 )

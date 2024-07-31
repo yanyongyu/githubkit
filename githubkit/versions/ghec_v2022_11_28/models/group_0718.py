@@ -17,23 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0452 import WebhooksRelease
-from .group_0406 import EnterpriseWebhooks
-from .group_0407 import SimpleInstallation
-from .group_0409 import RepositoryWebhooks
-from .group_0410 import SimpleUserWebhooks
-from .group_0408 import OrganizationSimpleWebhooks
+from .group_0454 import WebhooksRelease
+from .group_0408 import EnterpriseWebhooks
+from .group_0409 import SimpleInstallation
+from .group_0411 import RepositoryWebhooks
+from .group_0412 import SimpleUserWebhooks
+from .group_0410 import OrganizationSimpleWebhooks
 
 
-class WebhookReleaseEdited(GitHubModel):
-    """release edited event"""
+class WebhookReleaseCreated(GitHubModel):
+    """release created event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookReleaseEditedPropChanges = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -53,59 +52,12 @@ class WebhookReleaseEdited(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUserWebhooks] = Field(
-        default=UNSET,
+    sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookReleaseEditedPropChanges(GitHubModel):
-    """WebhookReleaseEditedPropChanges"""
+model_rebuild(WebhookReleaseCreated)
 
-    body: Missing[WebhookReleaseEditedPropChangesPropBody] = Field(default=UNSET)
-    name: Missing[WebhookReleaseEditedPropChangesPropName] = Field(default=UNSET)
-    make_latest: Missing[WebhookReleaseEditedPropChangesPropMakeLatest] = Field(
-        default=UNSET
-    )
-
-
-class WebhookReleaseEditedPropChangesPropBody(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropBody"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the body if the action was `edited`.",
-    )
-
-
-class WebhookReleaseEditedPropChangesPropName(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropName"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the name if the action was `edited`.",
-    )
-
-
-class WebhookReleaseEditedPropChangesPropMakeLatest(GitHubModel):
-    """WebhookReleaseEditedPropChangesPropMakeLatest"""
-
-    to: bool = Field(
-        description="Whether this release was explicitly `edited` to be the latest."
-    )
-
-
-model_rebuild(WebhookReleaseEdited)
-model_rebuild(WebhookReleaseEditedPropChanges)
-model_rebuild(WebhookReleaseEditedPropChangesPropBody)
-model_rebuild(WebhookReleaseEditedPropChangesPropName)
-model_rebuild(WebhookReleaseEditedPropChangesPropMakeLatest)
-
-__all__ = (
-    "WebhookReleaseEdited",
-    "WebhookReleaseEditedPropChanges",
-    "WebhookReleaseEditedPropChangesPropBody",
-    "WebhookReleaseEditedPropChangesPropName",
-    "WebhookReleaseEditedPropChangesPropMakeLatest",
-)
+__all__ = ("WebhookReleaseCreated",)

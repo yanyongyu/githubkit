@@ -13,11 +13,11 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody"""
+class OrgsOrgCodeSecurityConfigurationsPostBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsPostBody"""
 
-    name: NotRequired[str]
-    description: NotRequired[str]
+    name: str
+    description: str
     advanced_security: NotRequired[Literal["enabled", "disabled"]]
     dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
     dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
@@ -36,4 +36,4 @@ class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType(TypedDict):
     enforcement: NotRequired[Literal["enforced", "unenforced"]]
 
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsPostBodyType",)

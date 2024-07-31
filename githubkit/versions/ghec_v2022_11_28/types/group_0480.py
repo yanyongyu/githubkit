@@ -13,18 +13,18 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0406 import EnterpriseWebhooksType
-from .group_0407 import SimpleInstallationType
-from .group_0409 import RepositoryWebhooksType
-from .group_0410 import SimpleUserWebhooksType
-from .group_0408 import OrganizationSimpleWebhooksType
+from .group_0408 import EnterpriseWebhooksType
+from .group_0409 import SimpleInstallationType
+from .group_0411 import RepositoryWebhooksType
+from .group_0412 import SimpleUserWebhooksType
+from .group_0410 import OrganizationSimpleWebhooksType
 
 
-class WebhookCheckSuiteRerequestedType(TypedDict):
-    """check_suite rerequested event"""
+class WebhookCheckSuiteCompletedType(TypedDict):
+    """check_suite completed event"""
 
-    action: Literal["rerequested"]
-    check_suite: WebhookCheckSuiteRerequestedPropCheckSuiteType
+    action: Literal["completed"]
+    check_suite: WebhookCheckSuiteCompletedPropCheckSuiteType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -32,15 +32,15 @@ class WebhookCheckSuiteRerequestedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuiteType(TypedDict):
-    """WebhookCheckSuiteRerequestedPropCheckSuite
+class WebhookCheckSuiteCompletedPropCheckSuiteType(TypedDict):
+    """WebhookCheckSuiteCompletedPropCheckSuite
 
     The [check_suite](https://docs.github.com/enterprise-
     cloud@latest//rest/checks/suites#get-a-check-suite).
     """
 
     after: Union[str, None]
-    app: WebhookCheckSuiteRerequestedPropCheckSuitePropAppType
+    app: WebhookCheckSuiteCompletedPropCheckSuitePropAppType
     before: Union[str, None]
     check_runs_url: str
     conclusion: Union[
@@ -53,26 +53,30 @@ class WebhookCheckSuiteRerequestedPropCheckSuiteType(TypedDict):
             "timed_out",
             "action_required",
             "stale",
+            "skipped",
+            "startup_failure",
         ],
     ]
     created_at: datetime
     head_branch: Union[str, None]
-    head_commit: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitType
+    head_commit: WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitType
     head_sha: str
     id: int
     latest_check_runs_count: int
     node_id: str
     pull_requests: List[
-        WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsType
+        WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsType
     ]
     rerequestable: NotRequired[bool]
     runs_rerequestable: NotRequired[bool]
-    status: Union[None, Literal["requested", "in_progress", "completed", "queued"]]
+    status: Union[
+        None, Literal["requested", "in_progress", "completed", "queued", "pending"]
+    ]
     updated_at: datetime
     url: str
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropAppType(TypedDict):
+class WebhookCheckSuiteCompletedPropCheckSuitePropAppType(TypedDict):
     """App
 
     GitHub apps are a new way to extend GitHub. They can be installed directly on
@@ -89,15 +93,15 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropAppType(TypedDict):
     id: Union[int, None]
     name: str
     node_id: str
-    owner: Union[WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerType, None]
+    owner: Union[WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerType, None]
     permissions: NotRequired[
-        WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsType
+        WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsType
     ]
     slug: NotRequired[str]
     updated_at: Union[datetime, None]
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerType(TypedDict):
+class WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -123,8 +127,8 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsType(TypedDict):
-    """WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissions
+class WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsType(TypedDict):
+    """WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissions
 
     The set of permissions for the GitHub app
     """
@@ -166,18 +170,18 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsType(Typed
     workflows: NotRequired[Literal["read", "write"]]
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitType(TypedDict):
+class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitType(TypedDict):
     """SimpleCommit"""
 
-    author: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorType
-    committer: WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterType
+    author: WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthorType
+    committer: WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitterType
     id: str
     message: str
     timestamp: str
     tree_id: str
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorType(TypedDict):
+class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthorType(TypedDict):
     """Committer
 
     Metaproperties for Git author/committer information.
@@ -189,7 +193,7 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorType(Typ
     username: NotRequired[str]
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterType(
+class WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitterType(
     TypedDict
 ):
     """Committer
@@ -203,27 +207,27 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterType(
     username: NotRequired[str]
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsType(TypedDict):
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsType(TypedDict):
     """Check Run Pull Request"""
 
-    base: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseType
-    head: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadType
+    base: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseType
+    head: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadType
     id: int
     number: int
     url: str
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseType(
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseType(
     TypedDict
 ):
-    """WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBase"""
+    """WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase"""
 
     ref: str
-    repo: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType
+    repo: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType
     sha: str
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType(
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType(
     TypedDict
 ):
     """Repo Ref"""
@@ -233,17 +237,17 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePro
     url: str
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadType(
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadType(
     TypedDict
 ):
-    """WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHead"""
+    """WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHead"""
 
     ref: str
-    repo: WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType
+    repo: WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType
     sha: str
 
 
-class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType(
+class WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType(
     TypedDict
 ):
     """Repo Ref"""
@@ -254,17 +258,17 @@ class WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPro
 
 
 __all__ = (
-    "WebhookCheckSuiteRerequestedType",
-    "WebhookCheckSuiteRerequestedPropCheckSuiteType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwnerType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropPermissionsType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropAuthorType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropHeadCommitPropCommitterType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBaseType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadType",
-    "WebhookCheckSuiteRerequestedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType",
+    "WebhookCheckSuiteCompletedType",
+    "WebhookCheckSuiteCompletedPropCheckSuiteType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropAppType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropAppPropOwnerType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropAppPropPermissionsType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropAuthorType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropHeadCommitPropCommitterType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBasePropRepoType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadType",
+    "WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropHeadPropRepoType",
 )

@@ -10,57 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
-from .group_0038 import ReactionRollupType
+from .group_0055 import MinimalRepositoryType
 
 
-class CommitCommentType(TypedDict):
-    """Commit Comment
+class RepositoryInvitationType(TypedDict):
+    """Repository Invitation
 
-    Commit Comment
+    Repository invitations let you manage who you collaborate with.
     """
 
-    html_url: str
-    url: str
     id: int
-    node_id: str
-    body: str
-    path: Union[str, None]
-    position: Union[int, None]
-    line: Union[int, None]
-    commit_id: str
-    user: Union[None, SimpleUserType]
+    repository: MinimalRepositoryType
+    invitee: Union[None, SimpleUserType]
+    inviter: Union[None, SimpleUserType]
+    permissions: Literal["read", "write", "admin", "triage", "maintain"]
     created_at: datetime
-    updated_at: datetime
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    reactions: NotRequired[ReactionRollupType]
+    expired: NotRequired[bool]
+    url: str
+    html_url: str
+    node_id: str
 
 
-class TimelineCommitCommentedEventType(TypedDict):
-    """Timeline Commit Commented Event
-
-    Timeline Commit Commented Event
-    """
-
-    event: NotRequired[Literal["commit_commented"]]
-    node_id: NotRequired[str]
-    commit_id: NotRequired[str]
-    comments: NotRequired[List[CommitCommentType]]
-
-
-__all__ = (
-    "CommitCommentType",
-    "TimelineCommitCommentedEventType",
-)
+__all__ = ("RepositoryInvitationType",)

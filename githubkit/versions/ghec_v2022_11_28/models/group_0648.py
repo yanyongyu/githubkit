@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,21 +17,23 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0406 import EnterpriseWebhooks
-from .group_0407 import SimpleInstallation
-from .group_0409 import RepositoryWebhooks
-from .group_0410 import SimpleUserWebhooks
-from .group_0408 import OrganizationSimpleWebhooks
+from .group_0408 import EnterpriseWebhooks
+from .group_0409 import SimpleInstallation
+from .group_0411 import RepositoryWebhooks
+from .group_0412 import SimpleUserWebhooks
+from .group_0442 import WebhooksProjectCard
+from .group_0410 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectCardDeleted(GitHubModel):
-    """project_card deleted event"""
+class WebhookProjectCardConverted(GitHubModel):
+    """project_card converted event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["converted"] = Field()
+    changes: WebhookProjectCardConvertedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -44,68 +45,36 @@ class WebhookProjectCardDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    project_card: WebhookProjectCardDeletedPropProjectCard = Field(title="Project Card")
-    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
+    project_card: WebhooksProjectCard = Field(title="Project Card")
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookProjectCardDeletedPropProjectCard(GitHubModel):
-    """Project Card"""
+class WebhookProjectCardConvertedPropChanges(GitHubModel):
+    """WebhookProjectCardConvertedPropChanges"""
 
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    archived: bool = Field(description="Whether or not the card is archived")
-    column_id: Union[int, None] = Field()
-    column_url: str = Field()
-    content_url: Missing[str] = Field(default=UNSET)
-    created_at: datetime = Field()
-    creator: Union[WebhookProjectCardDeletedPropProjectCardPropCreator, None] = Field(
-        title="User"
-    )
-    id: int = Field(description="The project card's ID")
-    node_id: str = Field()
-    note: Union[str, None] = Field()
-    project_url: str = Field()
-    updated_at: datetime = Field()
-    url: str = Field()
+    note: WebhookProjectCardConvertedPropChangesPropNote = Field()
 
 
-class WebhookProjectCardDeletedPropProjectCardPropCreator(GitHubModel):
-    """User"""
+class WebhookProjectCardConvertedPropChangesPropNote(GitHubModel):
+    """WebhookProjectCardConvertedPropChangesPropNote"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization", "Mannequin"]] = Field(
-        default=UNSET
-    )
-    url: Missing[str] = Field(default=UNSET)
+    from_: str = Field(alias="from")
 
 
-model_rebuild(WebhookProjectCardDeleted)
-model_rebuild(WebhookProjectCardDeletedPropProjectCard)
-model_rebuild(WebhookProjectCardDeletedPropProjectCardPropCreator)
+model_rebuild(WebhookProjectCardConverted)
+model_rebuild(WebhookProjectCardConvertedPropChanges)
+model_rebuild(WebhookProjectCardConvertedPropChangesPropNote)
 
 __all__ = (
-    "WebhookProjectCardDeleted",
-    "WebhookProjectCardDeletedPropProjectCard",
-    "WebhookProjectCardDeletedPropProjectCardPropCreator",
+    "WebhookProjectCardConverted",
+    "WebhookProjectCardConvertedPropChanges",
+    "WebhookProjectCardConvertedPropChangesPropNote",
 )

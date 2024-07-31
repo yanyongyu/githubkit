@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -17,25 +17,81 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0137 import RepositoryRuleUpdate
+from .group_0163 import RepositoryRuleOneof18
+from .group_0159 import RepositoryRuleWorkflows
+from .group_0140 import RepositoryRuleMergeQueue
+from .group_0144 import RepositoryRulePullRequest
+from .group_0161 import RepositoryRuleCodeScanning
+from .group_0125 import RepositoryRulesetConditions
+from .group_0124 import RepositoryRulesetBypassActor
+from .group_0156 import RepositoryRuleTagNamePattern
+from .group_0154 import RepositoryRuleBranchNamePattern
+from .group_0142 import RepositoryRuleRequiredDeployments
+from .group_0146 import RepositoryRuleRequiredStatusChecks
+from .group_0148 import RepositoryRuleCommitMessagePattern
+from .group_0152 import RepositoryRuleCommitterEmailPattern
+from .group_0150 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0139 import RepositoryRuleOneof16, RepositoryRuleRequiredLinearHistory
+from .group_0136 import (
+    RepositoryRuleOneof15,
+    RepositoryRuleOneof17,
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
 
-class ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody(GitHubModel):
-    """ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody"""
 
-    state: Literal["open", "resolved"] = Field(
-        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`."
-    )
-    resolution: Missing[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
-    ] = Field(
+class ReposOwnerRepoRulesetsPostBody(GitHubModel):
+    """ReposOwnerRepoRulesetsPostBody"""
+
+    name: str = Field(description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
         default=UNSET,
-        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+        description="The target of the ruleset\n\n> [!NOTE]\n> The `push` target is in beta and is subject to change.",
     )
-    resolution_comment: Missing[Union[str, None]] = Field(
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page."
+    )
+    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
-        description="An optional comment when closing an alert. Cannot be updated or deleted. Must be `null` when changing `state` to `open`.",
+        description="The actors that can bypass the rules in this ruleset",
     )
+    conditions: Missing[RepositoryRulesetConditions] = Field(
+        default=UNSET,
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
+    )
+    rules: Missing[
+        List[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleOneof15,
+                RepositoryRuleOneof16,
+                RepositoryRuleOneof17,
+                RepositoryRuleOneof18,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody)
+model_rebuild(ReposOwnerRepoRulesetsPostBody)
 
-__all__ = ("ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody",)
+__all__ = ("ReposOwnerRepoRulesetsPostBody",)

@@ -9,21 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseCodeScanningAlertsGetResponse503(GitHubModel):
-    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
 
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    labels: List[str] = Field(
+        max_length=100,
+        min_length=1,
+        description="The names of the custom labels to add to the runner.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCodeScanningAlertsGetResponse503)
+model_rebuild(EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody)
 
-__all__ = ("EnterprisesEnterpriseCodeScanningAlertsGetResponse503",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody",)

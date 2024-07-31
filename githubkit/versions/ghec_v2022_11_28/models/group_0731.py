@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -17,21 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0406 import EnterpriseWebhooks
-from .group_0407 import SimpleInstallation
-from .group_0409 import RepositoryWebhooks
-from .group_0410 import SimpleUserWebhooks
-from .group_0408 import OrganizationSimpleWebhooks
+from .group_0408 import EnterpriseWebhooks
+from .group_0409 import SimpleInstallation
+from .group_0411 import RepositoryWebhooks
+from .group_0412 import SimpleUserWebhooks
+from .group_0410 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryPrivatized(GitHubModel):
-    """repository privatized event"""
+class WebhookRepositoryEdited(GitHubModel):
+    """repository edited event"""
 
-    action: Literal["privatized"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookRepositoryEditedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -53,6 +54,57 @@ class WebhookRepositoryPrivatized(GitHubModel):
     )
 
 
-model_rebuild(WebhookRepositoryPrivatized)
+class WebhookRepositoryEditedPropChanges(GitHubModel):
+    """WebhookRepositoryEditedPropChanges"""
 
-__all__ = ("WebhookRepositoryPrivatized",)
+    default_branch: Missing[WebhookRepositoryEditedPropChangesPropDefaultBranch] = (
+        Field(default=UNSET)
+    )
+    description: Missing[WebhookRepositoryEditedPropChangesPropDescription] = Field(
+        default=UNSET
+    )
+    homepage: Missing[WebhookRepositoryEditedPropChangesPropHomepage] = Field(
+        default=UNSET
+    )
+    topics: Missing[WebhookRepositoryEditedPropChangesPropTopics] = Field(default=UNSET)
+
+
+class WebhookRepositoryEditedPropChangesPropDefaultBranch(GitHubModel):
+    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
+
+    from_: str = Field(alias="from")
+
+
+class WebhookRepositoryEditedPropChangesPropDescription(GitHubModel):
+    """WebhookRepositoryEditedPropChangesPropDescription"""
+
+    from_: Union[str, None] = Field(alias="from")
+
+
+class WebhookRepositoryEditedPropChangesPropHomepage(GitHubModel):
+    """WebhookRepositoryEditedPropChangesPropHomepage"""
+
+    from_: Union[str, None] = Field(alias="from")
+
+
+class WebhookRepositoryEditedPropChangesPropTopics(GitHubModel):
+    """WebhookRepositoryEditedPropChangesPropTopics"""
+
+    from_: Missing[Union[List[str], None]] = Field(default=UNSET, alias="from")
+
+
+model_rebuild(WebhookRepositoryEdited)
+model_rebuild(WebhookRepositoryEditedPropChanges)
+model_rebuild(WebhookRepositoryEditedPropChangesPropDefaultBranch)
+model_rebuild(WebhookRepositoryEditedPropChangesPropDescription)
+model_rebuild(WebhookRepositoryEditedPropChangesPropHomepage)
+model_rebuild(WebhookRepositoryEditedPropChangesPropTopics)
+
+__all__ = (
+    "WebhookRepositoryEdited",
+    "WebhookRepositoryEditedPropChanges",
+    "WebhookRepositoryEditedPropChangesPropDefaultBranch",
+    "WebhookRepositoryEditedPropChangesPropDescription",
+    "WebhookRepositoryEditedPropChangesPropHomepage",
+    "WebhookRepositoryEditedPropChangesPropTopics",
+)

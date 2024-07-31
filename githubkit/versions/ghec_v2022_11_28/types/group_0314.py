@@ -9,14 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import TypedDict, NotRequired
 
 
-class LanguageType(TypedDict):
-    """Language
+class DeployKeyType(TypedDict):
+    """Deploy Key
 
-    Language
+    An SSH key granting access to a single repository.
     """
 
+    id: int
+    key: str
+    url: str
+    title: str
+    verified: bool
+    created_at: str
+    read_only: bool
+    added_by: NotRequired[Union[str, None]]
+    last_used: NotRequired[Union[str, None]]
 
-__all__ = ("LanguageType",)
+
+__all__ = ("DeployKeyType",)

@@ -9,53 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0229 import CodeScanningVariantAnalysisSkippedRepoGroup
 
-class CodeScanningDefaultSetup(GitHubModel):
-    """CodeScanningDefaultSetup
 
-    Configuration for code scanning default setup.
+class CodeScanningVariantAnalysisPropSkippedRepositories(GitHubModel):
+    """CodeScanningVariantAnalysisPropSkippedRepositories
+
+    Information about repositories that were skipped from processing. This
+    information is only available to the user that initiated the variant analysis.
     """
 
-    state: Missing[Literal["configured", "not-configured"]] = Field(
-        default=UNSET,
-        description="Code scanning default setup has been configured or not.",
+    access_mismatch_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+    not_found_repos: CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos = Field()
+    no_codeql_db_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+    over_limit_repos: CodeScanningVariantAnalysisSkippedRepoGroup = Field()
+
+
+class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos(GitHubModel):
+    """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
+
+    repository_count: int = Field(
+        description="The total number of repositories that were skipped for this reason."
     )
-    languages: Missing[
-        List[
-            Literal[
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "javascript",
-                "python",
-                "ruby",
-                "typescript",
-                "swift",
-            ]
-        ]
-    ] = Field(default=UNSET, description="Languages to be analyzed.")
-    query_suite: Missing[Literal["default", "extended"]] = Field(
-        default=UNSET, description="CodeQL query suite to be used."
-    )
-    updated_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET, description="Timestamp of latest configuration update."
-    )
-    schedule: Missing[Union[None, Literal["weekly"]]] = Field(
-        default=UNSET, description="The frequency of the periodic analysis."
+    repository_full_names: List[str] = Field(
+        description="A list of full repository names that were skipped. This list may not include all repositories that were skipped."
     )
 
 
-model_rebuild(CodeScanningDefaultSetup)
+model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositories)
+model_rebuild(CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos)
 
-__all__ = ("CodeScanningDefaultSetup",)
+__all__ = (
+    "CodeScanningVariantAnalysisPropSkippedRepositories",
+    "CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos",
+)

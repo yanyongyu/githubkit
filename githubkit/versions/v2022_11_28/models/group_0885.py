@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,24 +18,18 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+class ReposOwnerRepoActionsPermissionsPutBody(GitHubModel):
+    """ReposOwnerRepoActionsPermissionsPutBody"""
 
-    name: str = Field(description="The name of the new runner.")
-    runner_group_id: int = Field(
-        description="The ID of the runner group to register the runner to."
+    enabled: bool = Field(
+        description="Whether GitHub Actions is enabled on the repository."
     )
-    labels: List[str] = Field(
-        max_length=100,
-        min_length=1,
-        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
-    )
-    work_folder: Missing[str] = Field(
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
         default=UNSET,
-        description="The working directory to be used for job execution, relative to the runner install directory.",
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
     )
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody)
+model_rebuild(ReposOwnerRepoActionsPermissionsPutBody)
 
-__all__ = ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody",)
+__all__ = ("ReposOwnerRepoActionsPermissionsPutBody",)

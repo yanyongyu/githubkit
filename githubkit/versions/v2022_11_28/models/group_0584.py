@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,32 +17,28 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0371 import EnterpriseWebhooks
-from .group_0372 import SimpleInstallation
-from .group_0374 import RepositoryWebhooks
-from .group_0375 import SimpleUserWebhooks
-from .group_0401 import WebhooksMembership
-from .group_0373 import OrganizationSimpleWebhooks
+from .group_0385 import WebhooksUser
+from .group_0373 import EnterpriseWebhooks
+from .group_0374 import SimpleInstallation
+from .group_0376 import RepositoryWebhooks
+from .group_0377 import SimpleUserWebhooks
+from .group_0375 import OrganizationSimpleWebhooks
 
 
-class WebhookOrganizationDeleted(GitHubModel):
-    """organization deleted event"""
+class WebhookOrgBlockBlocked(GitHubModel):
+    """org_block blocked event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["blocked"] = Field()
+    blocked_user: Union[WebhooksUser, None] = Field(title="User")
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    membership: Missing[WebhooksMembership] = Field(
-        default=UNSET,
-        title="Membership",
-        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
     )
     organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
@@ -59,6 +55,6 @@ class WebhookOrganizationDeleted(GitHubModel):
     )
 
 
-model_rebuild(WebhookOrganizationDeleted)
+model_rebuild(WebhookOrgBlockBlocked)
 
-__all__ = ("WebhookOrganizationDeleted",)
+__all__ = ("WebhookOrgBlockBlocked",)

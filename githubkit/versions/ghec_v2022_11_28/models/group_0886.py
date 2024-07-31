@@ -16,15 +16,15 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteBody(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
+class OrgsOrgCopilotBillingSelectedUsersPostBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersPostBody"""
 
     selected_usernames: List[str] = Field(
         min_length=1,
-        description="The usernames of the organization members for which to revoke access to GitHub Copilot.",
+        description="The usernames of the organization members to be granted access to GitHub Copilot.",
     )
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteBody)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersPostBody)
 
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostBody",)

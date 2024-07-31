@@ -112,6 +112,7 @@ if TYPE_CHECKING:
         RepositoryRuleDetailedOneof13,
         RepositoryRuleDetailedOneof14,
         RepositoryRuleDetailedOneof15,
+        RepositoryRuleDetailedOneof16,
         ProtectedBranchPullRequestReview,
         RepositoryCollaboratorPermission,
         ReposOwnerRepoEnvironmentsGetResponse200,
@@ -129,15 +130,16 @@ if TYPE_CHECKING:
         CustomPropertyValueType,
         OrgsOrgReposPostBodyType,
         RepositoryRuleUpdateType,
-        RepositoryRuleOneof14Type,
         RepositoryRuleOneof15Type,
         RepositoryRuleOneof16Type,
         RepositoryRuleOneof17Type,
+        RepositoryRuleOneof18Type,
         RepositoryRuleCreationType,
         RepositoryRuleDeletionType,
         OrgsOrgRulesetsPostBodyType,
         RepositoryRuleWorkflowsType,
         ReposOwnerRepoPatchBodyType,
+        RepositoryRuleMergeQueueType,
         RepositoryRulePullRequestType,
         OrgRulesetConditionsOneof0Type,
         OrgRulesetConditionsOneof1Type,
@@ -612,6 +614,7 @@ class ReposClient:
                     RepositoryRuleUpdateType,
                     RepositoryRuleDeletionType,
                     RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleMergeQueueType,
                     RepositoryRuleRequiredDeploymentsType,
                     RepositoryRuleRequiredSignaturesType,
                     RepositoryRulePullRequestType,
@@ -622,10 +625,10 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
-                    RepositoryRuleOneof14Type,
                     RepositoryRuleOneof15Type,
                     RepositoryRuleOneof16Type,
                     RepositoryRuleOneof17Type,
+                    RepositoryRuleOneof18Type,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
                 ]
@@ -702,6 +705,7 @@ class ReposClient:
                     RepositoryRuleUpdateType,
                     RepositoryRuleDeletionType,
                     RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleMergeQueueType,
                     RepositoryRuleRequiredDeploymentsType,
                     RepositoryRuleRequiredSignaturesType,
                     RepositoryRulePullRequestType,
@@ -712,10 +716,10 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
-                    RepositoryRuleOneof14Type,
                     RepositoryRuleOneof15Type,
                     RepositoryRuleOneof16Type,
                     RepositoryRuleOneof17Type,
+                    RepositoryRuleOneof18Type,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
                 ]
@@ -988,6 +992,7 @@ class ReposClient:
                     RepositoryRuleUpdateType,
                     RepositoryRuleDeletionType,
                     RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleMergeQueueType,
                     RepositoryRuleRequiredDeploymentsType,
                     RepositoryRuleRequiredSignaturesType,
                     RepositoryRulePullRequestType,
@@ -998,10 +1003,10 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
-                    RepositoryRuleOneof14Type,
                     RepositoryRuleOneof15Type,
                     RepositoryRuleOneof16Type,
                     RepositoryRuleOneof17Type,
+                    RepositoryRuleOneof18Type,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
                 ]
@@ -1085,6 +1090,7 @@ class ReposClient:
                     RepositoryRuleUpdateType,
                     RepositoryRuleDeletionType,
                     RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleMergeQueueType,
                     RepositoryRuleRequiredDeploymentsType,
                     RepositoryRuleRequiredSignaturesType,
                     RepositoryRulePullRequestType,
@@ -1095,10 +1101,10 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
-                    RepositoryRuleOneof14Type,
                     RepositoryRuleOneof15Type,
                     RepositoryRuleOneof16Type,
                     RepositoryRuleOneof17Type,
+                    RepositoryRuleOneof18Type,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
                 ]
@@ -14158,6 +14164,7 @@ class ReposClient:
                 RepositoryRuleDetailedOneof13,
                 RepositoryRuleDetailedOneof14,
                 RepositoryRuleDetailedOneof15,
+                RepositoryRuleDetailedOneof16,
             ]
         ]
     ]:
@@ -14182,6 +14189,7 @@ class ReposClient:
             RepositoryRuleDetailedOneof13,
             RepositoryRuleDetailedOneof14,
             RepositoryRuleDetailedOneof15,
+            RepositoryRuleDetailedOneof16,
         )
 
         url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
@@ -14216,6 +14224,7 @@ class ReposClient:
                     RepositoryRuleDetailedOneof13,
                     RepositoryRuleDetailedOneof14,
                     RepositoryRuleDetailedOneof15,
+                    RepositoryRuleDetailedOneof16,
                 ]
             ],
         )
@@ -14248,6 +14257,7 @@ class ReposClient:
                 RepositoryRuleDetailedOneof13,
                 RepositoryRuleDetailedOneof14,
                 RepositoryRuleDetailedOneof15,
+                RepositoryRuleDetailedOneof16,
             ]
         ]
     ]:
@@ -14272,6 +14282,7 @@ class ReposClient:
             RepositoryRuleDetailedOneof13,
             RepositoryRuleDetailedOneof14,
             RepositoryRuleDetailedOneof15,
+            RepositoryRuleDetailedOneof16,
         )
 
         url = f"/repos/{owner}/{repo}/rules/branches/{branch}"
@@ -14306,6 +14317,7 @@ class ReposClient:
                     RepositoryRuleDetailedOneof13,
                     RepositoryRuleDetailedOneof14,
                     RepositoryRuleDetailedOneof15,
+                    RepositoryRuleDetailedOneof16,
                 ]
             ],
         )
@@ -14416,6 +14428,7 @@ class ReposClient:
                     RepositoryRuleUpdateType,
                     RepositoryRuleDeletionType,
                     RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleMergeQueueType,
                     RepositoryRuleRequiredDeploymentsType,
                     RepositoryRuleRequiredSignaturesType,
                     RepositoryRulePullRequestType,
@@ -14426,10 +14439,10 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
-                    RepositoryRuleOneof14Type,
                     RepositoryRuleOneof15Type,
                     RepositoryRuleOneof16Type,
                     RepositoryRuleOneof17Type,
+                    RepositoryRuleOneof18Type,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
                 ]
@@ -14507,6 +14520,7 @@ class ReposClient:
                     RepositoryRuleUpdateType,
                     RepositoryRuleDeletionType,
                     RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleMergeQueueType,
                     RepositoryRuleRequiredDeploymentsType,
                     RepositoryRuleRequiredSignaturesType,
                     RepositoryRulePullRequestType,
@@ -14517,10 +14531,10 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
-                    RepositoryRuleOneof14Type,
                     RepositoryRuleOneof15Type,
                     RepositoryRuleOneof16Type,
                     RepositoryRuleOneof17Type,
+                    RepositoryRuleOneof18Type,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
                 ]
@@ -14808,6 +14822,7 @@ class ReposClient:
                     RepositoryRuleUpdateType,
                     RepositoryRuleDeletionType,
                     RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleMergeQueueType,
                     RepositoryRuleRequiredDeploymentsType,
                     RepositoryRuleRequiredSignaturesType,
                     RepositoryRulePullRequestType,
@@ -14818,10 +14833,10 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
-                    RepositoryRuleOneof14Type,
                     RepositoryRuleOneof15Type,
                     RepositoryRuleOneof16Type,
                     RepositoryRuleOneof17Type,
+                    RepositoryRuleOneof18Type,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
                 ]
@@ -14902,6 +14917,7 @@ class ReposClient:
                     RepositoryRuleUpdateType,
                     RepositoryRuleDeletionType,
                     RepositoryRuleRequiredLinearHistoryType,
+                    RepositoryRuleMergeQueueType,
                     RepositoryRuleRequiredDeploymentsType,
                     RepositoryRuleRequiredSignaturesType,
                     RepositoryRulePullRequestType,
@@ -14912,10 +14928,10 @@ class ReposClient:
                     RepositoryRuleCommitterEmailPatternType,
                     RepositoryRuleBranchNamePatternType,
                     RepositoryRuleTagNamePatternType,
-                    RepositoryRuleOneof14Type,
                     RepositoryRuleOneof15Type,
                     RepositoryRuleOneof16Type,
                     RepositoryRuleOneof17Type,
+                    RepositoryRuleOneof18Type,
                     RepositoryRuleWorkflowsType,
                     RepositoryRuleCodeScanningType,
                 ]

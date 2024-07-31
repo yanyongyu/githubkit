@@ -9,25 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0119 import OrgCustomProperty
 
+class OrgsOrgPersonalAccessTokensPatIdPostBody(GitHubModel):
+    """OrgsOrgPersonalAccessTokensPatIdPostBody"""
 
-class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
-    """OrgsOrgPropertiesSchemaPatchBody"""
-
-    properties: List[OrgCustomProperty] = Field(
-        max_length=100,
-        min_length=1,
-        description="The array of custom properties to create or update.",
+    action: Literal["revoke"] = Field(
+        description="Action to apply to the fine-grained personal access token."
     )
 
 
-model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
+model_rebuild(OrgsOrgPersonalAccessTokensPatIdPostBody)
 
-__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)
+__all__ = ("OrgsOrgPersonalAccessTokensPatIdPostBody",)

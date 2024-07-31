@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,53 +17,41 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0247 import DeploymentBranchPolicySettings
 
+class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody(GitHubModel):
+    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
 
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBody"""
-
-    wait_timer: Missing[int] = Field(
-        default=UNSET,
-        description="The amount of time to delay a job after the job is initially triggered. The time (in minutes) must be an integer between 0 and 43,200 (30 days).",
-    )
-    prevent_self_review: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether or not a user who created the job is prevented from approving their own job.",
-    )
-    reviewers: Missing[
-        Union[
-            List[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems],
-            None,
-        ]
+    state: Literal[
+        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
     ] = Field(
+        description="The state of the status. When you set a transient deployment to `inactive`, the deployment will be shown as `destroyed` in GitHub."
+    )
+    target_url: Missing[str] = Field(
         default=UNSET,
-        description="The people or teams that may review jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
+        description="The target URL to associate with this status. This URL should contain output to keep the user updated while the task is running or serve as historical information for what happened in the deployment.\n\n> [!NOTE]\n> It's recommended to use the `log_url` parameter, which replaces `target_url`.",
     )
-    deployment_branch_policy: Missing[Union[DeploymentBranchPolicySettings, None]] = (
-        Field(
-            default=UNSET,
-            description="The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.",
-        )
-    )
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems"""
-
-    type: Missing[Literal["User", "Team"]] = Field(
-        default=UNSET, description="The type of reviewer."
-    )
-    id: Missing[int] = Field(
+    log_url: Missing[str] = Field(
         default=UNSET,
-        description="The id of the user or team who can review the deployment",
+        description='The full URL of the deployment\'s output. This parameter replaces `target_url`. We will continue to accept `target_url` to support legacy uses, but we recommend replacing `target_url` with `log_url`. Setting `log_url` will automatically set `target_url` to the same value. Default: `""`',
+    )
+    description: Missing[str] = Field(
+        default=UNSET,
+        description="A short description of the status. The maximum description length is 140 characters.",
+    )
+    environment: Missing[str] = Field(
+        default=UNSET,
+        description="Name for the target deployment environment, which can be changed when setting a deploy status. For example, `production`, `staging`, or `qa`. If not defined, the environment of the previous status on the deployment will be used, if it exists. Otherwise, the environment of the deployment will be used.",
+    )
+    environment_url: Missing[str] = Field(
+        default=UNSET,
+        description='Sets the URL for accessing your environment. Default: `""`',
+    )
+    auto_inactive: Missing[bool] = Field(
+        default=UNSET,
+        description="Adds a new `inactive` status to all prior non-transient, non-production environment deployments with the same repository and `environment` name as the created status's deployment. An `inactive` status is only added to deployments that had a `success` state. Default: `true`",
     )
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNamePutBody)
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems)
+model_rebuild(ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody)
 
-__all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBody",
-    "ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems",
-)
+__all__ = ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody",)

@@ -9,37 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict, NotRequired
+from typing import Union, Literal
+from typing_extensions import TypedDict
 
 
-class ContributorType(TypedDict):
-    """Contributor
+class ContentSubmoduleType(TypedDict):
+    """Submodule Content
 
-    Contributor
+    An object describing a submodule
     """
 
-    login: NotRequired[str]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    avatar_url: NotRequired[str]
-    gravatar_id: NotRequired[Union[str, None]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    organizations_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    events_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    type: str
-    site_admin: NotRequired[bool]
-    contributions: int
-    email: NotRequired[str]
-    name: NotRequired[str]
+    type: Literal["submodule"]
+    submodule_git_url: str
+    size: int
+    name: str
+    path: str
+    sha: str
+    url: str
+    git_url: Union[str, None]
+    html_url: Union[str, None]
+    download_url: Union[str, None]
+    links: ContentSubmodulePropLinksType
 
 
-__all__ = ("ContributorType",)
+class ContentSubmodulePropLinksType(TypedDict):
+    """ContentSubmodulePropLinks"""
+
+    git: Union[str, None]
+    html: Union[str, None]
+    self_: str
+
+
+__all__ = (
+    "ContentSubmoduleType",
+    "ContentSubmodulePropLinksType",
+)

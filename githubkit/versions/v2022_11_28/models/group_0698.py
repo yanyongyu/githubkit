@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List
 
 from pydantic import Field
 
@@ -17,92 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0114 import RepositoryRuleUpdate
-from .group_0138 import RepositoryRuleOneof17
-from .group_0134 import RepositoryRuleWorkflows
-from .group_0119 import RepositoryRulePullRequest
-from .group_0136 import RepositoryRuleCodeScanning
-from .group_0131 import RepositoryRuleTagNamePattern
-from .group_0129 import RepositoryRuleBranchNamePattern
-from .group_0117 import RepositoryRuleRequiredDeployments
-from .group_0121 import RepositoryRuleRequiredStatusChecks
-from .group_0123 import RepositoryRuleCommitMessagePattern
-from .group_0127 import RepositoryRuleCommitterEmailPattern
-from .group_0125 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0116 import RepositoryRuleOneof15, RepositoryRuleRequiredLinearHistory
+from .group_0102 import RepositoryRulesetConditions
 from .group_0699 import (
-    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems,
-)
-from .group_0113 import (
-    RepositoryRuleOneof14,
-    RepositoryRuleOneof16,
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems,
 )
 
 
-class WebhookRepositoryRulesetEditedPropChangesPropRules(GitHubModel):
-    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
+class WebhookRepositoryRulesetEditedPropChangesPropConditions(GitHubModel):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
 
-    added: Missing[
-        List[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleOneof14,
-                RepositoryRuleOneof15,
-                RepositoryRuleOneof16,
-                RepositoryRuleOneof17,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET)
-    deleted: Missing[
-        List[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleOneof14,
-                RepositoryRuleOneof15,
-                RepositoryRuleOneof16,
-                RepositoryRuleOneof17,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET)
+    added: Missing[List[RepositoryRulesetConditions]] = Field(default=UNSET)
+    deleted: Missing[List[RepositoryRulesetConditions]] = Field(default=UNSET)
     updated: Missing[
-        List[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems]
+        List[WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems]
     ] = Field(default=UNSET)
 
 
-model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropRules)
+model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropConditions)
 
-__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropRules",)
+__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropConditions",)

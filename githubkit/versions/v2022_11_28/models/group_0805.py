@@ -9,22 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCodespacesAccessSelectedUsersDeleteBody(GitHubModel):
-    """OrgsOrgCodespacesAccessSelectedUsersDeleteBody"""
+class OrgsOrgCodespacesAccessPutBody(GitHubModel):
+    """OrgsOrgCodespacesAccessPutBody"""
 
-    selected_usernames: List[str] = Field(
+    visibility: Literal[
+        "disabled",
+        "selected_members",
+        "all_members",
+        "all_members_and_outside_collaborators",
+    ] = Field(
+        description="Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization."
+    )
+    selected_usernames: Missing[List[str]] = Field(
         max_length=100,
-        description="The usernames of the organization members whose codespaces should not be billed to the organization.",
+        default=UNSET,
+        description="The usernames of the organization members who should have access to codespaces in the organization. Required when `visibility` is `selected_members`. The provided list of usernames will replace any existing value.",
     )
 
 
-model_rebuild(OrgsOrgCodespacesAccessSelectedUsersDeleteBody)
+model_rebuild(OrgsOrgCodespacesAccessPutBody)
 
-__all__ = ("OrgsOrgCodespacesAccessSelectedUsersDeleteBody",)
+__all__ = ("OrgsOrgCodespacesAccessPutBody",)

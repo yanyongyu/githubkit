@@ -9,26 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0048 import Team
-from .group_0001 import SimpleUser
 
+class PullRequestMergeResult(GitHubModel):
+    """Pull Request Merge Result
 
-class PullRequestReviewRequest(GitHubModel):
-    """Pull Request Review Request
-
-    Pull Request Review Request
+    Pull Request Merge Result
     """
 
-    users: List[SimpleUser] = Field()
-    teams: List[Team] = Field()
+    sha: str = Field()
+    merged: bool = Field()
+    message: str = Field()
 
 
-model_rebuild(PullRequestReviewRequest)
+model_rebuild(PullRequestMergeResult)
 
-__all__ = ("PullRequestReviewRequest",)
+__all__ = ("PullRequestMergeResult",)

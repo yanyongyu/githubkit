@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List
 
 from pydantic import Field
 
@@ -18,70 +18,54 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBody(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
+class ScimV2OrganizationsOrgUsersPostBody(GitHubModel):
+    """ScimV2OrganizationsOrgUsersPostBody"""
 
-    schemas: Missing[List[str]] = Field(default=UNSET)
-    operations: List[
-        ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems
-    ] = Field(
-        min_length=1,
-        alias="Operations",
-        description="Set of operations to be performed",
+    user_name: str = Field(
+        alias="userName",
+        description="Configured by the admin. Could be an email, login, or username",
     )
+    display_name: Missing[str] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="The name of the user, suitable for display to end-users",
+    )
+    name: ScimV2OrganizationsOrgUsersPostBodyPropName = Field()
+    emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems] = Field(
+        min_length=1, description="user emails"
+    )
+    schemas: Missing[List[str]] = Field(default=UNSET)
+    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
+    groups: Missing[List[str]] = Field(default=UNSET)
+    active: Missing[bool] = Field(default=UNSET)
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems"""
+class ScimV2OrganizationsOrgUsersPostBodyPropName(GitHubModel):
+    """ScimV2OrganizationsOrgUsersPostBodyPropName
 
-    op: Literal["add", "remove", "replace"] = Field()
-    path: Missing[str] = Field(default=UNSET)
-    value: Missing[
-        Union[
-            ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0,
-            List[
-                ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items
-            ],
-            str,
-        ]
-    ] = Field(default=UNSET)
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0(
-    GitHubModel
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0"""
-
-    active: Missing[Union[bool, None]] = Field(default=UNSET)
-    user_name: Missing[Union[str, None]] = Field(default=UNSET, alias="userName")
-    external_id: Missing[Union[str, None]] = Field(default=UNSET, alias="externalId")
-    given_name: Missing[Union[str, None]] = Field(default=UNSET, alias="givenName")
-    family_name: Missing[Union[str, None]] = Field(default=UNSET, alias="familyName")
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items(
-    GitHubModel
-):
-    """ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1
-    Items
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
     """
 
-    value: Missing[str] = Field(default=UNSET)
+    given_name: str = Field(alias="givenName")
+    family_name: str = Field(alias="familyName")
+    formatted: Missing[str] = Field(default=UNSET)
+
+
+class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems(GitHubModel):
+    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
+
+    value: str = Field()
     primary: Missing[bool] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPatchBody)
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems)
-model_rebuild(
-    ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0
-)
-model_rebuild(
-    ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items
-)
+model_rebuild(ScimV2OrganizationsOrgUsersPostBody)
+model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropName)
+model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems)
 
 __all__ = (
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBody",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0",
-    "ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items",
+    "ScimV2OrganizationsOrgUsersPostBody",
+    "ScimV2OrganizationsOrgUsersPostBodyPropName",
+    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems",
 )

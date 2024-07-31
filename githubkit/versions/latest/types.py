@@ -912,9 +912,6 @@ if TYPE_CHECKING:
         PagesHttpsCertificateType as PagesHttpsCertificateType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        RepositoryRuleOneof14Type as RepositoryRuleOneof14Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleOneof15Type as RepositoryRuleOneof15Type,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -922,6 +919,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleOneof17Type as RepositoryRuleOneof17Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleOneof18Type as RepositoryRuleOneof18Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         ShortBranchPropCommitType as ShortBranchPropCommitType,
@@ -1285,6 +1285,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryAdvisoryUpdateType as RepositoryAdvisoryUpdateType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleMergeQueueType as RepositoryRuleMergeQueueType,
     )
     from githubkit.versions.v2022_11_28.types import (
         SearchCodeGetResponse200Type as SearchCodeGetResponse200Type,
@@ -2106,6 +2109,9 @@ if TYPE_CHECKING:
         RepositoryRuleDetailedOneof15Type as RepositoryRuleDetailedOneof15Type,
     )
     from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleDetailedOneof16Type as RepositoryRuleDetailedOneof16Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         TeamRepositoryPropPermissionsType as TeamRepositoryPropPermissionsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -2919,9 +2925,6 @@ if TYPE_CHECKING:
         RepositoryRuleCommitterEmailPatternType as RepositoryRuleCommitterEmailPatternType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        RepositoryRuleOneof14PropParametersType as RepositoryRuleOneof14PropParametersType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleOneof15PropParametersType as RepositoryRuleOneof15PropParametersType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -2929,6 +2932,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleOneof17PropParametersType as RepositoryRuleOneof17PropParametersType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleOneof18PropParametersType as RepositoryRuleOneof18PropParametersType,
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleRequiredLinearHistoryType as RepositoryRuleRequiredLinearHistoryType,
@@ -3307,6 +3313,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryRuleCommitAuthorEmailPatternType as RepositoryRuleCommitAuthorEmailPatternType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        RepositoryRuleMergeQueuePropParametersType as RepositoryRuleMergeQueuePropParametersType,
     )
     from githubkit.versions.v2022_11_28.types import (
         RepositoryRulesetConditionsPropRefNameType as RepositoryRulesetConditionsPropRefNameType,
@@ -9715,15 +9724,17 @@ else:
             "RepositoryRuleDeletionType",
             "RepositoryRuleRequiredSignaturesType",
             "RepositoryRuleNonFastForwardType",
-            "RepositoryRuleOneof14Type",
-            "RepositoryRuleOneof14PropParametersType",
-            "RepositoryRuleOneof16Type",
-            "RepositoryRuleOneof16PropParametersType",
+            "RepositoryRuleOneof15Type",
+            "RepositoryRuleOneof15PropParametersType",
+            "RepositoryRuleOneof17Type",
+            "RepositoryRuleOneof17PropParametersType",
             "RepositoryRuleUpdateType",
             "RepositoryRuleUpdatePropParametersType",
             "RepositoryRuleRequiredLinearHistoryType",
-            "RepositoryRuleOneof15Type",
-            "RepositoryRuleOneof15PropParametersType",
+            "RepositoryRuleOneof16Type",
+            "RepositoryRuleOneof16PropParametersType",
+            "RepositoryRuleMergeQueueType",
+            "RepositoryRuleMergeQueuePropParametersType",
             "RepositoryRuleRequiredDeploymentsType",
             "RepositoryRuleRequiredDeploymentsPropParametersType",
             "RepositoryRulePullRequestType",
@@ -9748,8 +9759,8 @@ else:
             "RepositoryRuleCodeScanningType",
             "RepositoryRuleCodeScanningPropParametersType",
             "RepositoryRuleParamsCodeScanningToolType",
-            "RepositoryRuleOneof17Type",
-            "RepositoryRuleOneof17PropParametersType",
+            "RepositoryRuleOneof18Type",
+            "RepositoryRuleOneof18PropParametersType",
             "RepositoryRulesetType",
             "RepositoryRulesetPropLinksType",
             "RepositoryRulesetPropLinksPropSelfType",
@@ -10041,7 +10052,6 @@ else:
             "RemovedFromProjectIssueEventPropProjectCardType",
             "ConvertedNoteToIssueIssueEventType",
             "ConvertedNoteToIssueIssueEventPropProjectCardType",
-            "LabelType",
             "TimelineCommentEventType",
             "TimelineCrossReferencedEventType",
             "TimelineCrossReferencedEventPropSourceType",
@@ -10122,6 +10132,7 @@ else:
             "RepositoryRuleDetailedOneof13Type",
             "RepositoryRuleDetailedOneof14Type",
             "RepositoryRuleDetailedOneof15Type",
+            "RepositoryRuleDetailedOneof16Type",
             "SecretScanningAlertType",
             "RepositoryAdvisoryCreateType",
             "RepositoryAdvisoryCreatePropCreditsItemsType",
@@ -10222,6 +10233,7 @@ else:
             "WebhooksAnswerPropReactionsType",
             "WebhooksAnswerPropUserType",
             "DiscussionType",
+            "LabelType",
             "DiscussionPropAnswerChosenByType",
             "DiscussionPropCategoryType",
             "DiscussionPropReactionsType",

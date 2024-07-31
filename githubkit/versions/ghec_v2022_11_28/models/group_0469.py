@@ -17,23 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0413 import ExemptionRequest
-from .group_0412 import ExemptionResponse
-from .group_0406 import EnterpriseWebhooks
-from .group_0407 import SimpleInstallation
-from .group_0409 import RepositoryWebhooks
-from .group_0410 import SimpleUserWebhooks
-from .group_0408 import OrganizationSimpleWebhooks
+from .group_0415 import ExemptionRequest
+from .group_0408 import EnterpriseWebhooks
+from .group_0409 import SimpleInstallation
+from .group_0411 import RepositoryWebhooks
+from .group_0412 import SimpleUserWebhooks
+from .group_0410 import OrganizationSimpleWebhooks
 
 
-class WebhookExemptionRequestResponseSubmitted(GitHubModel):
-    """Exemption response submitted event"""
+class WebhookExemptionRequestCreated(GitHubModel):
+    """Exemption request created event"""
 
-    action: Literal["response_submitted"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -54,16 +53,12 @@ class WebhookExemptionRequestResponseSubmitted(GitHubModel):
         title="Exemption Request",
         description="A request from a user to be exempted from a set of rules.",
     )
-    exemption_response: ExemptionResponse = Field(
-        title="Exemption response",
-        description="A response to an exemption request by a delegated bypasser.",
-    )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-model_rebuild(WebhookExemptionRequestResponseSubmitted)
+model_rebuild(WebhookExemptionRequestCreated)
 
-__all__ = ("WebhookExemptionRequestResponseSubmitted",)
+__all__ = ("WebhookExemptionRequestCreated",)

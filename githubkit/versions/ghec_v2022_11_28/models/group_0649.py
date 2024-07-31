@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,23 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0406 import EnterpriseWebhooks
-from .group_0407 import SimpleInstallation
-from .group_0409 import RepositoryWebhooks
-from .group_0410 import SimpleUserWebhooks
-from .group_0440 import WebhooksProjectCard
-from .group_0408 import OrganizationSimpleWebhooks
+from .group_0408 import EnterpriseWebhooks
+from .group_0409 import SimpleInstallation
+from .group_0411 import RepositoryWebhooks
+from .group_0412 import SimpleUserWebhooks
+from .group_0442 import WebhooksProjectCard
+from .group_0410 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectCardEdited(GitHubModel):
-    """project_card edited event"""
+class WebhookProjectCardCreated(GitHubModel):
+    """project_card created event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookProjectCardEditedPropChanges = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -57,24 +56,6 @@ class WebhookProjectCardEdited(GitHubModel):
     )
 
 
-class WebhookProjectCardEditedPropChanges(GitHubModel):
-    """WebhookProjectCardEditedPropChanges"""
+model_rebuild(WebhookProjectCardCreated)
 
-    note: WebhookProjectCardEditedPropChangesPropNote = Field()
-
-
-class WebhookProjectCardEditedPropChangesPropNote(GitHubModel):
-    """WebhookProjectCardEditedPropChangesPropNote"""
-
-    from_: Union[str, None] = Field(alias="from")
-
-
-model_rebuild(WebhookProjectCardEdited)
-model_rebuild(WebhookProjectCardEditedPropChanges)
-model_rebuild(WebhookProjectCardEditedPropChangesPropNote)
-
-__all__ = (
-    "WebhookProjectCardEdited",
-    "WebhookProjectCardEditedPropChanges",
-    "WebhookProjectCardEditedPropChangesPropNote",
-)
+__all__ = ("WebhookProjectCardCreated",)

@@ -18,22 +18,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0380 import WebhooksWorkflow
-from .group_0371 import EnterpriseWebhooks
-from .group_0372 import SimpleInstallation
-from .group_0374 import RepositoryWebhooks
-from .group_0375 import SimpleUserWebhooks
-from .group_0373 import OrganizationSimpleWebhooks
+from .group_0382 import WebhooksWorkflow
+from .group_0373 import EnterpriseWebhooks
+from .group_0374 import SimpleInstallation
+from .group_0376 import RepositoryWebhooks
+from .group_0377 import SimpleUserWebhooks
+from .group_0375 import OrganizationSimpleWebhooks
 
 
-class WebhookWorkflowRunRequested(GitHubModel):
-    """workflow_run requested event"""
+class WebhookWorkflowRunCompleted(GitHubModel):
+    """workflow_run completed event"""
 
-    action: Literal["requested"] = Field()
+    action: Literal["completed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -54,15 +54,15 @@ class WebhookWorkflowRunRequested(GitHubModel):
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
     workflow: Union[WebhooksWorkflow, None] = Field(title="Workflow")
-    workflow_run: WebhookWorkflowRunRequestedPropWorkflowRun = Field(
+    workflow_run: WebhookWorkflowRunCompletedPropWorkflowRun = Field(
         title="Workflow Run"
     )
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRun(GitHubModel):
+class WebhookWorkflowRunCompletedPropWorkflowRun(GitHubModel):
     """Workflow Run"""
 
-    actor: Union[WebhookWorkflowRunRequestedPropWorkflowRunPropActor, None] = Field(
+    actor: Union[WebhookWorkflowRunCompletedPropWorkflowRunPropActor, None] = Field(
         title="User"
     )
     artifacts_url: str = Field()
@@ -73,24 +73,23 @@ class WebhookWorkflowRunRequestedPropWorkflowRun(GitHubModel):
     conclusion: Union[
         None,
         Literal[
-            "success",
+            "action_required",
+            "cancelled",
             "failure",
             "neutral",
-            "cancelled",
-            "timed_out",
-            "action_required",
-            "stale",
             "skipped",
-            "startup_failure",
+            "stale",
+            "success",
+            "timed_out",
         ],
     ] = Field()
     created_at: datetime = Field()
     event: str = Field()
     head_branch: Union[str, None] = Field()
-    head_commit: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit = Field(
+    head_commit: WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommit = Field(
         title="SimpleCommit"
     )
-    head_repository: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository = (
+    head_repository: WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepository = (
         Field(title="Repository Lite")
     )
     head_sha: str = Field()
@@ -103,17 +102,17 @@ class WebhookWorkflowRunRequestedPropWorkflowRun(GitHubModel):
     path: str = Field()
     previous_attempt_url: Union[str, None] = Field()
     pull_requests: List[
-        WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems
+        Union[WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems, None]
     ] = Field()
     referenced_workflows: Missing[
         Union[
             List[
-                WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems
+                WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItems
             ],
             None,
         ]
     ] = Field(default=UNSET)
-    repository: WebhookWorkflowRunRequestedPropWorkflowRunPropRepository = Field(
+    repository: WebhookWorkflowRunCompletedPropWorkflowRunPropRepository = Field(
         title="Repository Lite"
     )
     rerun_url: str = Field()
@@ -124,16 +123,19 @@ class WebhookWorkflowRunRequestedPropWorkflowRun(GitHubModel):
         "requested", "in_progress", "completed", "queued", "pending", "waiting"
     ] = Field()
     triggering_actor: Union[
-        WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor, None
+        WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActor, None
     ] = Field(title="User")
     updated_at: datetime = Field()
     url: str = Field()
     workflow_id: int = Field()
     workflow_url: str = Field()
-    display_title: str = Field()
+    display_title: Missing[str] = Field(
+        default=UNSET,
+        description="The event-specific title associated with the run or the run-name if set, or the value of `run-name` if it is set in the workflow.",
+    )
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropActor(GitHubModel):
+class WebhookWorkflowRunCompletedPropWorkflowRunPropActor(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -159,17 +161,17 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropActor(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems(
+class WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItems(
     GitHubModel
 ):
-    """WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems"""
+    """WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItems"""
 
     path: str = Field()
     ref: Missing[str] = Field(default=UNSET)
     sha: str = Field()
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor(GitHubModel):
+class WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActor(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -195,14 +197,14 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor(GitHubModel)
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit(GitHubModel):
+class WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommit(GitHubModel):
     """SimpleCommit"""
 
-    author: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor = Field(
+    author: WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthor = Field(
         title="Committer",
         description="Metaproperties for Git author/committer information.",
     )
-    committer: WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter = (
+    committer: WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitter = (
         Field(
             title="Committer",
             description="Metaproperties for Git author/committer information.",
@@ -214,7 +216,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit(GitHubModel):
     tree_id: str = Field()
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor(GitHubModel):
+class WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthor(GitHubModel):
     """Committer
 
     Metaproperties for Git author/committer information.
@@ -226,7 +228,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor(GitHubM
     username: Missing[str] = Field(default=UNSET)
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter(
+class WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitter(
     GitHubModel
 ):
     """Committer
@@ -240,7 +242,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter(
     username: Missing[str] = Field(default=UNSET)
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository(GitHubModel):
+class WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepository(GitHubModel):
     """Repository Lite"""
 
     archive_url: str = Field()
@@ -278,7 +280,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository(GitHubModel):
     node_id: str = Field()
     notifications_url: str = Field()
     owner: Union[
-        WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner, None
+        WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwner, None
     ] = Field(title="User")
     private: bool = Field(description="Whether the repository is private or public.")
     pulls_url: str = Field()
@@ -293,7 +295,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository(GitHubModel):
     url: str = Field()
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner(
+class WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwner(
     GitHubModel
 ):
     """User"""
@@ -321,7 +323,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner(
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropRepository(GitHubModel):
+class WebhookWorkflowRunCompletedPropWorkflowRunPropRepository(GitHubModel):
     """Repository Lite"""
 
     archive_url: str = Field()
@@ -359,7 +361,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropRepository(GitHubModel):
     node_id: str = Field()
     notifications_url: str = Field()
     owner: Union[
-        WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner, None
+        WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwner, None
     ] = Field(title="User")
     private: bool = Field(description="Whether the repository is private or public.")
     pulls_url: str = Field()
@@ -374,7 +376,7 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropRepository(GitHubModel):
     url: str = Field()
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner(GitHubModel):
+class WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwner(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -400,13 +402,13 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner(GitHubMo
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems(GitHubModel):
-    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems"""
+class WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems(GitHubModel):
+    """WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems"""
 
-    base: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase = (
+    base: WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBase = (
         Field()
     )
-    head: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead = (
+    head: WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead = (
         Field()
     )
     id: float = Field()
@@ -414,19 +416,19 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems(GitHubMode
     url: str = Field()
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase(
+class WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBase(
     GitHubModel
 ):
-    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase"""
+    """WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBase"""
 
     ref: str = Field()
-    repo: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo = Field(
+    repo: WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo = Field(
         title="Repo Ref"
     )
     sha: str = Field()
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo(
+class WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo(
     GitHubModel
 ):
     """Repo Ref"""
@@ -436,19 +438,19 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePro
     url: str = Field()
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead(
+class WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead(
     GitHubModel
 ):
-    """WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead"""
+    """WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead"""
 
     ref: str = Field()
-    repo: WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo = Field(
+    repo: WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo = Field(
         title="Repo Ref"
     )
     sha: str = Field()
 
 
-class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo(
+class WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo(
     GitHubModel
 ):
     """Repo Ref"""
@@ -458,44 +460,44 @@ class WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPro
     url: str = Field()
 
 
-model_rebuild(WebhookWorkflowRunRequested)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRun)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropActor)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropRepository)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems)
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase)
+model_rebuild(WebhookWorkflowRunCompleted)
+model_rebuild(WebhookWorkflowRunCompletedPropWorkflowRun)
+model_rebuild(WebhookWorkflowRunCompletedPropWorkflowRunPropActor)
+model_rebuild(WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItems)
+model_rebuild(WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActor)
+model_rebuild(WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommit)
+model_rebuild(WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthor)
+model_rebuild(WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitter)
+model_rebuild(WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepository)
+model_rebuild(WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwner)
+model_rebuild(WebhookWorkflowRunCompletedPropWorkflowRunPropRepository)
+model_rebuild(WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwner)
+model_rebuild(WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems)
+model_rebuild(WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBase)
 model_rebuild(
-    WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo
+    WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo
 )
-model_rebuild(WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead)
+model_rebuild(WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead)
 model_rebuild(
-    WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo
+    WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo
 )
 
 __all__ = (
-    "WebhookWorkflowRunRequested",
-    "WebhookWorkflowRunRequestedPropWorkflowRun",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropActor",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropReferencedWorkflowsItems",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropTriggeringActor",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommit",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropAuthor",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadCommitPropCommitter",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepository",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropHeadRepositoryPropOwner",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropRepository",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropRepositoryPropOwner",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItems",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBase",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHead",
-    "WebhookWorkflowRunRequestedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
+    "WebhookWorkflowRunCompleted",
+    "WebhookWorkflowRunCompletedPropWorkflowRun",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropActor",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItems",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropTriggeringActor",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommit",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropAuthor",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadCommitPropCommitter",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepository",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropHeadRepositoryPropOwner",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropRepository",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropRepositoryPropOwner",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBase",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropBasePropRepo",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHead",
+    "WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsPropHeadPropRepo",
 )

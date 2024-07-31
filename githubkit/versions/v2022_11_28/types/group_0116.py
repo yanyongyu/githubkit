@@ -22,27 +22,28 @@ class RepositoryRuleRequiredLinearHistoryType(TypedDict):
     type: Literal["required_linear_history"]
 
 
-class RepositoryRuleOneof15Type(TypedDict):
+class RepositoryRuleOneof16Type(TypedDict):
     """max_file_path_length
 
-    Note: max_file_path_length is in beta and subject to change.
+    > [!NOTE]
+    > `max_file_path_length` is in beta and subject to change.
 
     Prevent commits that include file paths that exceed a specified character limit
     from being pushed to the commit graph.
     """
 
     type: Literal["max_file_path_length"]
-    parameters: NotRequired[RepositoryRuleOneof15PropParametersType]
+    parameters: NotRequired[RepositoryRuleOneof16PropParametersType]
 
 
-class RepositoryRuleOneof15PropParametersType(TypedDict):
-    """RepositoryRuleOneof15PropParameters"""
+class RepositoryRuleOneof16PropParametersType(TypedDict):
+    """RepositoryRuleOneof16PropParameters"""
 
     max_file_path_length: int
 
 
 __all__ = (
     "RepositoryRuleRequiredLinearHistoryType",
-    "RepositoryRuleOneof15Type",
-    "RepositoryRuleOneof15PropParametersType",
+    "RepositoryRuleOneof16Type",
+    "RepositoryRuleOneof16PropParametersType",
 )

@@ -18,16 +18,16 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0096 import OrgCustomProperty
-from .group_0371 import EnterpriseWebhooks
-from .group_0372 import SimpleInstallation
-from .group_0375 import SimpleUserWebhooks
-from .group_0373 import OrganizationSimpleWebhooks
+from .group_0373 import EnterpriseWebhooks
+from .group_0374 import SimpleInstallation
+from .group_0377 import SimpleUserWebhooks
+from .group_0375 import OrganizationSimpleWebhooks
 
 
-class WebhookCustomPropertyUpdated(GitHubModel):
-    """custom property updated event"""
+class WebhookCustomPropertyCreated(GitHubModel):
+    """custom property created event"""
 
-    action: Literal["updated"] = Field()
+    action: Literal["created"] = Field()
     definition: OrgCustomProperty = Field(
         title="Organization Custom Property",
         description="Custom property defined on an organization",
@@ -35,14 +35,15 @@ class WebhookCustomPropertyUpdated(GitHubModel):
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: OrganizationSimpleWebhooks = Field(
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
@@ -53,6 +54,6 @@ class WebhookCustomPropertyUpdated(GitHubModel):
     )
 
 
-model_rebuild(WebhookCustomPropertyUpdated)
+model_rebuild(WebhookCustomPropertyCreated)
 
-__all__ = ("WebhookCustomPropertyUpdated",)
+__all__ = ("WebhookCustomPropertyCreated",)

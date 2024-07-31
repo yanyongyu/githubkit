@@ -9,34 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposTemplateOwnerTemplateRepoGeneratePostBody(GitHubModel):
-    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
+class ReposOwnerRepoTopicsPutBody(GitHubModel):
+    """ReposOwnerRepoTopicsPutBody"""
 
-    owner: Missing[str] = Field(
-        default=UNSET,
-        description="The organization or person who will own the new repository. To create a new repository in an organization, the authenticated user must be a member of the specified organization.",
-    )
-    name: str = Field(description="The name of the new repository.")
-    description: Missing[str] = Field(
-        default=UNSET, description="A short description of the new repository."
-    )
-    include_all_branches: Missing[bool] = Field(
-        default=UNSET,
-        description="Set to `true` to include the directory structure and files from all branches in the template repository, and not just the default branch. Default: `false`.",
-    )
-    private: Missing[bool] = Field(
-        default=UNSET,
-        description="Either `true` to create a new private repository or `false` to create a new public one.",
+    names: List[str] = Field(
+        description="An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` cannot contain uppercase letters."
     )
 
 
-model_rebuild(ReposTemplateOwnerTemplateRepoGeneratePostBody)
+model_rebuild(ReposOwnerRepoTopicsPutBody)
 
-__all__ = ("ReposTemplateOwnerTemplateRepoGeneratePostBody",)
+__all__ = ("ReposOwnerRepoTopicsPutBody",)

@@ -9,13 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
+from pydantic import Field
+
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgOutsideCollaboratorsUsernamePutResponse202(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
+class OrgsOrgOrganizationRolesRoleIdPatchBody(GitHubModel):
+    """OrgsOrgOrganizationRolesRoleIdPatchBody"""
+
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the custom role."
+    )
+    description: Missing[str] = Field(
+        default=UNSET,
+        description="A short description about the intended usage of this role or what permissions it grants.",
+    )
+    permissions: Missing[List[str]] = Field(
+        default=UNSET,
+        description="A list of additional permissions included in this role.",
+    )
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutResponse202)
+model_rebuild(OrgsOrgOrganizationRolesRoleIdPatchBody)
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202",)
+__all__ = ("OrgsOrgOrganizationRolesRoleIdPatchBody",)

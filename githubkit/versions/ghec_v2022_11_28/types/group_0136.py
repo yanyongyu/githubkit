@@ -49,40 +49,42 @@ class RepositoryRuleNonFastForwardType(TypedDict):
     type: Literal["non_fast_forward"]
 
 
-class RepositoryRuleOneof14Type(TypedDict):
+class RepositoryRuleOneof15Type(TypedDict):
     """file_path_restriction
 
-    Note: file_path_restriction is in beta and subject to change.
+    > [!NOTE]
+    > `file_path_restriction` is in beta and subject to change.
 
     Prevent commits that include changes in specified file paths from being pushed
     to the commit graph.
     """
 
     type: Literal["file_path_restriction"]
-    parameters: NotRequired[RepositoryRuleOneof14PropParametersType]
+    parameters: NotRequired[RepositoryRuleOneof15PropParametersType]
 
 
-class RepositoryRuleOneof14PropParametersType(TypedDict):
-    """RepositoryRuleOneof14PropParameters"""
+class RepositoryRuleOneof15PropParametersType(TypedDict):
+    """RepositoryRuleOneof15PropParameters"""
 
     restricted_file_paths: List[str]
 
 
-class RepositoryRuleOneof16Type(TypedDict):
+class RepositoryRuleOneof17Type(TypedDict):
     """file_extension_restriction
 
-    Note: file_extension_restriction is in beta and subject to change.
+    > [!NOTE]
+    > `file_extension_restriction` is in beta and subject to change.
 
     Prevent commits that include files with specified file extensions from being
     pushed to the commit graph.
     """
 
     type: Literal["file_extension_restriction"]
-    parameters: NotRequired[RepositoryRuleOneof16PropParametersType]
+    parameters: NotRequired[RepositoryRuleOneof17PropParametersType]
 
 
-class RepositoryRuleOneof16PropParametersType(TypedDict):
-    """RepositoryRuleOneof16PropParameters"""
+class RepositoryRuleOneof17PropParametersType(TypedDict):
+    """RepositoryRuleOneof17PropParameters"""
 
     restricted_file_extensions: List[str]
 
@@ -92,8 +94,8 @@ __all__ = (
     "RepositoryRuleDeletionType",
     "RepositoryRuleRequiredSignaturesType",
     "RepositoryRuleNonFastForwardType",
-    "RepositoryRuleOneof14Type",
-    "RepositoryRuleOneof14PropParametersType",
-    "RepositoryRuleOneof16Type",
-    "RepositoryRuleOneof16PropParametersType",
+    "RepositoryRuleOneof15Type",
+    "RepositoryRuleOneof15PropParametersType",
+    "RepositoryRuleOneof17Type",
+    "RepositoryRuleOneof17PropParametersType",
 )

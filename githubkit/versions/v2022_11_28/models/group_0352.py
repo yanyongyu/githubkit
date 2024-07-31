@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
+from typing import List, Union
 
 from pydantic import Field
 
@@ -18,43 +18,47 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0186 import GitUser
-from .group_0187 import Verification
+from .group_0055 import MinimalRepository
+from .group_0351 import SearchResultTextMatchesItems
 
 
-class CommitSearchResultItemPropCommit(GitHubModel):
-    """CommitSearchResultItemPropCommit"""
+class CodeSearchResultItem(GitHubModel):
+    """Code Search Result Item
 
-    author: CommitSearchResultItemPropCommitPropAuthor = Field()
-    committer: Union[None, GitUser] = Field()
-    comment_count: int = Field()
-    message: str = Field()
-    tree: CommitSearchResultItemPropCommitPropTree = Field()
-    url: str = Field()
-    verification: Missing[Verification] = Field(default=UNSET, title="Verification")
-
-
-class CommitSearchResultItemPropCommitPropAuthor(GitHubModel):
-    """CommitSearchResultItemPropCommitPropAuthor"""
+    Code Search Result Item
+    """
 
     name: str = Field()
-    email: str = Field()
-    date: datetime = Field()
-
-
-class CommitSearchResultItemPropCommitPropTree(GitHubModel):
-    """CommitSearchResultItemPropCommitPropTree"""
-
+    path: str = Field()
     sha: str = Field()
     url: str = Field()
+    git_url: str = Field()
+    html_url: str = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    score: float = Field()
+    file_size: Missing[int] = Field(default=UNSET)
+    language: Missing[Union[str, None]] = Field(default=UNSET)
+    last_modified_at: Missing[datetime] = Field(default=UNSET)
+    line_numbers: Missing[List[str]] = Field(default=UNSET)
+    text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
 
 
-model_rebuild(CommitSearchResultItemPropCommit)
-model_rebuild(CommitSearchResultItemPropCommitPropAuthor)
-model_rebuild(CommitSearchResultItemPropCommitPropTree)
+class SearchCodeGetResponse200(GitHubModel):
+    """SearchCodeGetResponse200"""
+
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: List[CodeSearchResultItem] = Field()
+
+
+model_rebuild(CodeSearchResultItem)
+model_rebuild(SearchCodeGetResponse200)
 
 __all__ = (
-    "CommitSearchResultItemPropCommit",
-    "CommitSearchResultItemPropCommitPropAuthor",
-    "CommitSearchResultItemPropCommitPropTree",
+    "CodeSearchResultItem",
+    "SearchCodeGetResponse200",
 )

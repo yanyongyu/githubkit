@@ -9,38 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0001 import SimpleUserType
+from typing_extensions import TypedDict
 
 
-class EnvironmentApprovalsType(TypedDict):
-    """Environment Approval
+class SimpleCommitType(TypedDict):
+    """Simple Commit
 
-    An entry in the reviews log for environment deployments
+    A commit.
     """
 
-    environments: List[EnvironmentApprovalsPropEnvironmentsItemsType]
-    state: Literal["approved", "rejected", "pending"]
-    user: SimpleUserType
-    comment: str
+    id: str
+    tree_id: str
+    message: str
+    timestamp: datetime
+    author: Union[SimpleCommitPropAuthorType, None]
+    committer: Union[SimpleCommitPropCommitterType, None]
 
 
-class EnvironmentApprovalsPropEnvironmentsItemsType(TypedDict):
-    """EnvironmentApprovalsPropEnvironmentsItems"""
+class SimpleCommitPropAuthorType(TypedDict):
+    """SimpleCommitPropAuthor
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    name: NotRequired[str]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
+    Information about the Git author
+    """
+
+    name: str
+    email: str
+
+
+class SimpleCommitPropCommitterType(TypedDict):
+    """SimpleCommitPropCommitter
+
+    Information about the Git committer
+    """
+
+    name: str
+    email: str
 
 
 __all__ = (
-    "EnvironmentApprovalsType",
-    "EnvironmentApprovalsPropEnvironmentsItemsType",
+    "SimpleCommitType",
+    "SimpleCommitPropAuthorType",
+    "SimpleCommitPropCommitterType",
 )

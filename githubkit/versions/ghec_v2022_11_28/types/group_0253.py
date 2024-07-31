@@ -9,35 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0212 import CommitType
+from .group_0211 import DiffEntryType
 
-class ContentDirectoryItemsType(TypedDict):
-    """ContentDirectoryItems"""
 
-    type: Literal["dir", "file", "submodule", "symlink"]
-    size: int
-    name: str
-    path: str
-    content: NotRequired[str]
-    sha: str
+class CommitComparisonType(TypedDict):
+    """Commit Comparison
+
+    Commit Comparison
+    """
+
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentDirectoryItemsPropLinksType
+    html_url: str
+    permalink_url: str
+    diff_url: str
+    patch_url: str
+    base_commit: CommitType
+    merge_base_commit: CommitType
+    status: Literal["diverged", "ahead", "behind", "identical"]
+    ahead_by: int
+    behind_by: int
+    total_commits: int
+    commits: List[CommitType]
+    files: NotRequired[List[DiffEntryType]]
 
 
-class ContentDirectoryItemsPropLinksType(TypedDict):
-    """ContentDirectoryItemsPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-__all__ = (
-    "ContentDirectoryItemsType",
-    "ContentDirectoryItemsPropLinksType",
-)
+__all__ = ("CommitComparisonType",)

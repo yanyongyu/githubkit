@@ -9,29 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-
-class GistsPostBodyType(TypedDict):
-    """GistsPostBody"""
-
-    description: NotRequired[str]
-    files: GistsPostBodyPropFilesType
-    public: NotRequired[Union[bool, Literal["true", "false"]]]
+from .group_0028 import CopilotSeatDetailsType
 
 
-class GistsPostBodyPropFilesType(TypedDict):
-    """GistsPostBodyPropFiles
+class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
 
-    Names and content for the files that make up the gist
-
-    Examples:
-        {'hello.rb': {'content': 'puts "Hello, World!"'}}
-    """
+    total_seats: NotRequired[int]
+    seats: NotRequired[List[CopilotSeatDetailsType]]
 
 
-__all__ = (
-    "GistsPostBodyType",
-    "GistsPostBodyPropFilesType",
-)
+__all__ = ("EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",)

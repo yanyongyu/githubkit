@@ -17,23 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0371 import EnterpriseWebhooks
-from .group_0372 import SimpleInstallation
-from .group_0374 import RepositoryWebhooks
-from .group_0375 import SimpleUserWebhooks
-from .group_0420 import WebhooksSponsorship
-from .group_0373 import OrganizationSimpleWebhooks
+from .group_0373 import EnterpriseWebhooks
+from .group_0374 import SimpleInstallation
+from .group_0376 import RepositoryWebhooks
+from .group_0377 import SimpleUserWebhooks
+from .group_0422 import WebhooksSponsorship
+from .group_0375 import OrganizationSimpleWebhooks
 
 
-class WebhookSponsorshipEdited(GitHubModel):
-    """sponsorship edited event"""
+class WebhookSponsorshipCancelled(GitHubModel):
+    """sponsorship cancelled event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookSponsorshipEditedPropChanges = Field()
+    action: Literal["cancelled"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -57,29 +56,6 @@ class WebhookSponsorshipEdited(GitHubModel):
     sponsorship: WebhooksSponsorship = Field()
 
 
-class WebhookSponsorshipEditedPropChanges(GitHubModel):
-    """WebhookSponsorshipEditedPropChanges"""
+model_rebuild(WebhookSponsorshipCancelled)
 
-    privacy_level: Missing[WebhookSponsorshipEditedPropChangesPropPrivacyLevel] = Field(
-        default=UNSET
-    )
-
-
-class WebhookSponsorshipEditedPropChangesPropPrivacyLevel(GitHubModel):
-    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
-
-    from_: str = Field(
-        alias="from",
-        description="The `edited` event types include the details about the change when someone edits a sponsorship to change the privacy.",
-    )
-
-
-model_rebuild(WebhookSponsorshipEdited)
-model_rebuild(WebhookSponsorshipEditedPropChanges)
-model_rebuild(WebhookSponsorshipEditedPropChangesPropPrivacyLevel)
-
-__all__ = (
-    "WebhookSponsorshipEdited",
-    "WebhookSponsorshipEditedPropChanges",
-    "WebhookSponsorshipEditedPropChangesPropPrivacyLevel",
-)
+__all__ = ("WebhookSponsorshipCancelled",)

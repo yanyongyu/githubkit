@@ -9,32 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import List, Union
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
 
-class RepositorySubscription(GitHubModel):
-    """Repository Invitation
 
-    Repository invitations let you manage who you collaborate with.
+class ContributorActivity(GitHubModel):
+    """Contributor Activity
+
+    Contributor Activity
     """
 
-    subscribed: bool = Field(
-        description="Determines if notifications should be received from this repository."
-    )
-    ignored: bool = Field(
-        description="Determines if all notifications should be blocked from this repository."
-    )
-    reason: Union[str, None] = Field()
-    created_at: datetime = Field()
-    url: str = Field()
-    repository_url: str = Field()
+    author: Union[None, SimpleUser] = Field()
+    total: int = Field()
+    weeks: List[ContributorActivityPropWeeksItems] = Field()
 
 
-model_rebuild(RepositorySubscription)
+class ContributorActivityPropWeeksItems(GitHubModel):
+    """ContributorActivityPropWeeksItems"""
 
-__all__ = ("RepositorySubscription",)
+    w: Missing[int] = Field(default=UNSET)
+    a: Missing[int] = Field(default=UNSET)
+    d: Missing[int] = Field(default=UNSET)
+    c: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(ContributorActivity)
+model_rebuild(ContributorActivityPropWeeksItems)
+
+__all__ = (
+    "ContributorActivity",
+    "ContributorActivityPropWeeksItems",
+)

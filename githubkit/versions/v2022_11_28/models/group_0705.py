@@ -18,25 +18,25 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0371 import EnterpriseWebhooks
-from .group_0372 import SimpleInstallation
-from .group_0374 import RepositoryWebhooks
-from .group_0375 import SimpleUserWebhooks
-from .group_0373 import OrganizationSimpleWebhooks
+from .group_0373 import EnterpriseWebhooks
+from .group_0374 import SimpleInstallation
+from .group_0376 import RepositoryWebhooks
+from .group_0377 import SimpleUserWebhooks
+from .group_0375 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryVulnerabilityAlertResolve(GitHubModel):
-    """repository_vulnerability_alert resolve event"""
+class WebhookRepositoryVulnerabilityAlertDismiss(GitHubModel):
+    """repository_vulnerability_alert dismiss event"""
 
-    action: Literal["resolve"] = Field()
-    alert: WebhookRepositoryVulnerabilityAlertResolvePropAlert = Field(
+    action: Literal["dismiss"] = Field()
+    alert: WebhookRepositoryVulnerabilityAlertDismissPropAlert = Field(
         title="Repository Vulnerability Alert Alert",
         description="The security alert of the vulnerable dependency.",
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
@@ -58,7 +58,7 @@ class WebhookRepositoryVulnerabilityAlertResolve(GitHubModel):
     )
 
 
-class WebhookRepositoryVulnerabilityAlertResolvePropAlert(GitHubModel):
+class WebhookRepositoryVulnerabilityAlertDismissPropAlert(GitHubModel):
     """Repository Vulnerability Alert Alert
 
     The security alert of the vulnerable dependency.
@@ -67,11 +67,12 @@ class WebhookRepositoryVulnerabilityAlertResolvePropAlert(GitHubModel):
     affected_package_name: str = Field()
     affected_range: str = Field()
     created_at: str = Field()
-    dismiss_reason: Missing[str] = Field(default=UNSET)
-    dismissed_at: Missing[str] = Field(default=UNSET)
-    dismisser: Missing[
-        Union[WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser, None]
-    ] = Field(default=UNSET, title="User")
+    dismiss_comment: Missing[Union[str, None]] = Field(default=UNSET)
+    dismiss_reason: str = Field()
+    dismissed_at: str = Field()
+    dismisser: Union[
+        WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser, None
+    ] = Field(title="User")
     external_identifier: str = Field()
     external_reference: Union[str, None] = Field()
     fix_reason: Missing[str] = Field(default=UNSET)
@@ -82,10 +83,10 @@ class WebhookRepositoryVulnerabilityAlertResolvePropAlert(GitHubModel):
     node_id: str = Field()
     number: int = Field()
     severity: str = Field()
-    state: Literal["fixed", "open"] = Field()
+    state: Literal["dismissed"] = Field()
 
 
-class WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser(GitHubModel):
+class WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -111,12 +112,12 @@ class WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser(GitHubMod
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertResolve)
-model_rebuild(WebhookRepositoryVulnerabilityAlertResolvePropAlert)
-model_rebuild(WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser)
+model_rebuild(WebhookRepositoryVulnerabilityAlertDismiss)
+model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlert)
+model_rebuild(WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser)
 
 __all__ = (
-    "WebhookRepositoryVulnerabilityAlertResolve",
-    "WebhookRepositoryVulnerabilityAlertResolvePropAlert",
-    "WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisser",
+    "WebhookRepositoryVulnerabilityAlertDismiss",
+    "WebhookRepositoryVulnerabilityAlertDismissPropAlert",
+    "WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisser",
 )

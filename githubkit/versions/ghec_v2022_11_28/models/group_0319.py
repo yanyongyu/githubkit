@@ -9,21 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import datetime
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
 
-class PageBuildStatus(GitHubModel):
-    """Page Build Status
 
-    Page Build Status
+class PageBuild(GitHubModel):
+    """Page Build
+
+    Page Build
     """
 
     url: str = Field()
     status: str = Field()
+    error: PageBuildPropError = Field()
+    pusher: Union[None, SimpleUser] = Field()
+    commit: str = Field()
+    duration: int = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(PageBuildStatus)
+class PageBuildPropError(GitHubModel):
+    """PageBuildPropError"""
 
-__all__ = ("PageBuildStatus",)
+    message: Union[str, None] = Field()
+
+
+model_rebuild(PageBuild)
+model_rebuild(PageBuildPropError)
+
+__all__ = (
+    "PageBuild",
+    "PageBuildPropError",
+)

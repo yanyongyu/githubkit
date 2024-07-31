@@ -11,18 +11,21 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoGitRefsPostBody(GitHubModel):
-    """ReposOwnerRepoGitRefsPostBody"""
+class ReposOwnerRepoGitBlobsPostBody(GitHubModel):
+    """ReposOwnerRepoGitBlobsPostBody"""
 
-    ref: str = Field(
-        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
+    content: str = Field(description="The new blob's content.")
+    encoding: Missing[str] = Field(
+        default=UNSET,
+        description='The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported.',
     )
-    sha: str = Field(description="The SHA1 value for this reference.")
 
 
-model_rebuild(ReposOwnerRepoGitRefsPostBody)
+model_rebuild(ReposOwnerRepoGitBlobsPostBody)
 
-__all__ = ("ReposOwnerRepoGitRefsPostBody",)
+__all__ = ("ReposOwnerRepoGitBlobsPostBody",)

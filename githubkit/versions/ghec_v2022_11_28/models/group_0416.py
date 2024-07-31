@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -17,25 +18,58 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0006 import Integration
+from .group_0082 import MinimalRepository
+from .group_0191 import PullRequestMinimal
 
-class WebhooksDeployKey(GitHubModel):
-    """WebhooksDeployKey
 
-    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/deploy-
-    keys/deploy-keys#get-a-deploy-key) resource.
+class SimpleCheckSuite(GitHubModel):
+    """SimpleCheckSuite
+
+    A suite of checks performed on the code of a given code change
     """
 
-    added_by: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: str = Field()
-    id: int = Field()
-    key: str = Field()
-    last_used: Missing[Union[str, None]] = Field(default=UNSET)
-    read_only: bool = Field()
-    title: str = Field()
-    url: str = Field()
-    verified: bool = Field()
+    after: Missing[Union[str, None]] = Field(default=UNSET)
+    app: Missing[Union[Integration, None]] = Field(
+        default=UNSET,
+        title="GitHub app",
+        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    )
+    before: Missing[Union[str, None]] = Field(default=UNSET)
+    conclusion: Missing[
+        Union[
+            None,
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+        ]
+    ] = Field(default=UNSET)
+    created_at: Missing[datetime] = Field(default=UNSET)
+    head_branch: Missing[Union[str, None]] = Field(default=UNSET)
+    head_sha: Missing[str] = Field(
+        default=UNSET, description="The SHA of the head commit that is being checked."
+    )
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    pull_requests: Missing[List[PullRequestMinimal]] = Field(default=UNSET)
+    repository: Missing[MinimalRepository] = Field(
+        default=UNSET, title="Minimal Repository", description="Minimal Repository"
+    )
+    status: Missing[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    ] = Field(default=UNSET)
+    updated_at: Missing[datetime] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksDeployKey)
+model_rebuild(SimpleCheckSuite)
 
-__all__ = ("WebhooksDeployKey",)
+__all__ = ("SimpleCheckSuite",)

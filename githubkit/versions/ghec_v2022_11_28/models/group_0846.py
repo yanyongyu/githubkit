@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 
 from pydantic import Field
 
@@ -18,17 +18,32 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
+class OrgsOrgActionsRunnerGroupsGetResponse200(GitHubModel):
+    """OrgsOrgActionsRunnerGroupsGetResponse200"""
 
-    name: str = Field(description="Name of the runner group.")
-    visibility: Missing[Literal["selected", "all", "private"]] = Field(
+    total_count: float = Field()
+    runner_groups: List[RunnerGroupsOrg] = Field()
+
+
+class RunnerGroupsOrg(GitHubModel):
+    """RunnerGroupsOrg"""
+
+    id: float = Field()
+    name: str = Field()
+    visibility: str = Field()
+    default: bool = Field()
+    selected_repositories_url: Missing[str] = Field(
         default=UNSET,
-        description="Visibility of a runner group. You can select all repositories, select individual repositories, or all private repositories.",
+        description="Link to the selected repositories resource for this runner group. Not present unless visibility was set to `selected`",
     )
-    allows_public_repositories: Missing[bool] = Field(
+    runners_url: str = Field()
+    hosted_runners_url: Missing[str] = Field(default=UNSET)
+    inherited: bool = Field()
+    inherited_allows_public_repositories: Missing[bool] = Field(default=UNSET)
+    allows_public_repositories: bool = Field()
+    workflow_restrictions_read_only: Missing[bool] = Field(
         default=UNSET,
-        description="Whether the runner group can be used by `public` repositories.",
+        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
     )
     restricted_to_workflows: Missing[bool] = Field(
         default=UNSET,
@@ -40,6 +55,10 @@ class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel):
     )
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody)
+model_rebuild(OrgsOrgActionsRunnerGroupsGetResponse200)
+model_rebuild(RunnerGroupsOrg)
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody",)
+__all__ = (
+    "OrgsOrgActionsRunnerGroupsGetResponse200",
+    "RunnerGroupsOrg",
+)

@@ -9,22 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+from datetime import datetime
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubModel):
-    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
+class ReposOwnerRepoCodespacesSecretsGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
-    permission: Missing[str] = Field(
-        default=UNSET,
-        description="The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any.",
-    )
+    total_count: int = Field()
+    secrets: List[RepoCodespacesSecret] = Field()
 
 
-model_rebuild(ReposOwnerRepoCollaboratorsUsernamePutBody)
+class RepoCodespacesSecret(GitHubModel):
+    """Codespaces Secret
 
-__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBody",)
+    Set repository secrets for GitHub Codespaces.
+    """
+
+    name: str = Field(description="The name of the secret.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+
+
+model_rebuild(ReposOwnerRepoCodespacesSecretsGetResponse200)
+model_rebuild(RepoCodespacesSecret)
+
+__all__ = (
+    "ReposOwnerRepoCodespacesSecretsGetResponse200",
+    "RepoCodespacesSecret",
+)

@@ -9,16 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0376 import RepositoryWebhooksType
+from .group_0377 import SimpleUserWebhooksType
+from .group_0604 import WebhookPingPropHookType
+from .group_0375 import OrganizationSimpleWebhooksType
 
 
-class WebhookPingFormEncodedType(TypedDict):
-    """WebhookPingFormEncoded
+class WebhookPingType(TypedDict):
+    """WebhookPing"""
 
-    The webhooks ping payload encoded with URL encoding.
-    """
+    hook: NotRequired[WebhookPingPropHookType]
+    hook_id: NotRequired[int]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserWebhooksType]
+    zen: NotRequired[str]
 
-    payload: str
 
-
-__all__ = ("WebhookPingFormEncodedType",)
+__all__ = ("WebhookPingType",)

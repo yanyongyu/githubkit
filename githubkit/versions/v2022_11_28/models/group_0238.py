@@ -9,9 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
-from typing_extensions import Annotated
+from typing import List, Union
 
 from pydantic import Field
 
@@ -19,61 +17,115 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0239 import DependabotAlertPropDependency
-from .group_0032 import DependabotAlertSecurityAdvisory
-from .group_0031 import DependabotAlertSecurityVulnerability
 
+class FileCommit(GitHubModel):
+    """File Commit
 
-class DependabotAlert(GitHubModel):
-    """DependabotAlert
-
-    A Dependabot alert.
+    File Commit
     """
 
-    number: int = Field(description="The security alert number.")
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"] = Field(
-        description="The state of the Dependabot alert."
-    )
-    dependency: DependabotAlertPropDependency = Field(
-        description="Details for the vulnerable dependency."
-    )
-    security_advisory: DependabotAlertSecurityAdvisory = Field(
-        description="Details for the GitHub Security Advisory."
-    )
-    security_vulnerability: DependabotAlertSecurityVulnerability = Field(
-        description="Details pertaining to one vulnerable version range for the advisory."
-    )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    created_at: datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    updated_at: datetime = Field(
-        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_at: Union[datetime, None] = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_by: Union[None, SimpleUser] = Field()
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
-    ] = Field(description="The reason that the alert was dismissed.")
-    dismissed_comment: Union[Annotated[str, Field(max_length=280)], None] = Field(
-        description="An optional comment associated with the alert's dismissal."
-    )
-    fixed_at: Union[datetime, None] = Field(
-        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    auto_dismissed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was auto-dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    content: Union[FileCommitPropContent, None] = Field()
+    commit: FileCommitPropCommit = Field()
+
+
+class FileCommitPropContent(GitHubModel):
+    """FileCommitPropContent"""
+
+    name: Missing[str] = Field(default=UNSET)
+    path: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+    size: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    git_url: Missing[str] = Field(default=UNSET)
+    download_url: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    links: Missing[FileCommitPropContentPropLinks] = Field(
+        default=UNSET, alias="_links"
     )
 
 
-model_rebuild(DependabotAlert)
+class FileCommitPropContentPropLinks(GitHubModel):
+    """FileCommitPropContentPropLinks"""
 
-__all__ = ("DependabotAlert",)
+    self_: Missing[str] = Field(default=UNSET, alias="self")
+    git: Missing[str] = Field(default=UNSET)
+    html: Missing[str] = Field(default=UNSET)
+
+
+class FileCommitPropCommit(GitHubModel):
+    """FileCommitPropCommit"""
+
+    sha: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    author: Missing[FileCommitPropCommitPropAuthor] = Field(default=UNSET)
+    committer: Missing[FileCommitPropCommitPropCommitter] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    tree: Missing[FileCommitPropCommitPropTree] = Field(default=UNSET)
+    parents: Missing[List[FileCommitPropCommitPropParentsItems]] = Field(default=UNSET)
+    verification: Missing[FileCommitPropCommitPropVerification] = Field(default=UNSET)
+
+
+class FileCommitPropCommitPropAuthor(GitHubModel):
+    """FileCommitPropCommitPropAuthor"""
+
+    date: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    email: Missing[str] = Field(default=UNSET)
+
+
+class FileCommitPropCommitPropCommitter(GitHubModel):
+    """FileCommitPropCommitPropCommitter"""
+
+    date: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    email: Missing[str] = Field(default=UNSET)
+
+
+class FileCommitPropCommitPropTree(GitHubModel):
+    """FileCommitPropCommitPropTree"""
+
+    url: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+
+
+class FileCommitPropCommitPropParentsItems(GitHubModel):
+    """FileCommitPropCommitPropParentsItems"""
+
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+
+
+class FileCommitPropCommitPropVerification(GitHubModel):
+    """FileCommitPropCommitPropVerification"""
+
+    verified: Missing[bool] = Field(default=UNSET)
+    reason: Missing[str] = Field(default=UNSET)
+    signature: Missing[Union[str, None]] = Field(default=UNSET)
+    payload: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(FileCommit)
+model_rebuild(FileCommitPropContent)
+model_rebuild(FileCommitPropContentPropLinks)
+model_rebuild(FileCommitPropCommit)
+model_rebuild(FileCommitPropCommitPropAuthor)
+model_rebuild(FileCommitPropCommitPropCommitter)
+model_rebuild(FileCommitPropCommitPropTree)
+model_rebuild(FileCommitPropCommitPropParentsItems)
+model_rebuild(FileCommitPropCommitPropVerification)
+
+__all__ = (
+    "FileCommit",
+    "FileCommitPropContent",
+    "FileCommitPropContentPropLinks",
+    "FileCommitPropCommit",
+    "FileCommitPropCommitPropAuthor",
+    "FileCommitPropCommitPropCommitter",
+    "FileCommitPropCommitPropTree",
+    "FileCommitPropCommitPropParentsItems",
+    "FileCommitPropCommitPropVerification",
+)

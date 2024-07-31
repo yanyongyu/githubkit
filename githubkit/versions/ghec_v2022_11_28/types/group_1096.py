@@ -9,13 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
-
-class ReposOwnerRepoPullsCommentsCommentIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoPullsCommentsCommentIdPatchBody"""
-
-    body: str
+from .group_0120 import CustomPropertyValueType
 
 
-__all__ = ("ReposOwnerRepoPullsCommentsCommentIdPatchBodyType",)
+class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
+
+    properties: List[CustomPropertyValueType]
+
+
+__all__ = ("ReposOwnerRepoPropertiesValuesPatchBodyType",)

@@ -17,21 +17,21 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0155 import RepositoryRuleTagNamePatternPropParameters
+from .group_0155 import RepositoryRuleBranchNamePatternPropParameters
 
 
-class RepositoryRuleTagNamePattern(GitHubModel):
-    """tag_name_pattern
+class RepositoryRuleBranchNamePattern(GitHubModel):
+    """branch_name_pattern
 
-    Parameters to be used for the tag_name_pattern rule
+    Parameters to be used for the branch_name_pattern rule
     """
 
-    type: Literal["tag_name_pattern"] = Field()
-    parameters: Missing[RepositoryRuleTagNamePatternPropParameters] = Field(
+    type: Literal["branch_name_pattern"] = Field()
+    parameters: Missing[RepositoryRuleBranchNamePatternPropParameters] = Field(
         default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleTagNamePattern)
+model_rebuild(RepositoryRuleBranchNamePattern)
 
-__all__ = ("RepositoryRuleTagNamePattern",)
+__all__ = ("RepositoryRuleBranchNamePattern",)

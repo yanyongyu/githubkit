@@ -9,54 +9,103 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksChanges8(GitHubModel):
-    """WebhooksChanges8"""
+class WebhooksSecurityAdvisory(GitHubModel):
+    """WebhooksSecurityAdvisory
 
-    tier: WebhooksChanges8PropTier = Field()
-
-
-class WebhooksChanges8PropTier(GitHubModel):
-    """WebhooksChanges8PropTier"""
-
-    from_: WebhooksChanges8PropTierPropFrom = Field(
-        alias="from",
-        title="Sponsorship Tier",
-        description="The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.",
-    )
-
-
-class WebhooksChanges8PropTierPropFrom(GitHubModel):
-    """Sponsorship Tier
-
-    The `tier_changed` and `pending_tier_change` will include the original tier
-    before the change or pending change. For more information, see the pending tier
-    change payload.
+    The details of the security advisory, including summary, description, and
+    severity.
     """
 
-    created_at: str = Field()
+    cvss: WebhooksSecurityAdvisoryPropCvss = Field()
+    cwes: List[WebhooksSecurityAdvisoryPropCwesItems] = Field()
     description: str = Field()
-    is_custom_ammount: Missing[bool] = Field(default=UNSET)
-    is_custom_amount: Missing[bool] = Field(default=UNSET)
-    is_one_time: bool = Field()
-    monthly_price_in_cents: int = Field()
-    monthly_price_in_dollars: int = Field()
+    ghsa_id: str = Field()
+    identifiers: List[WebhooksSecurityAdvisoryPropIdentifiersItems] = Field()
+    published_at: str = Field()
+    references: List[WebhooksSecurityAdvisoryPropReferencesItems] = Field()
+    severity: str = Field()
+    summary: str = Field()
+    updated_at: str = Field()
+    vulnerabilities: List[WebhooksSecurityAdvisoryPropVulnerabilitiesItems] = Field()
+    withdrawn_at: Union[str, None] = Field()
+
+
+class WebhooksSecurityAdvisoryPropCvss(GitHubModel):
+    """WebhooksSecurityAdvisoryPropCvss"""
+
+    score: float = Field()
+    vector_string: Union[str, None] = Field()
+
+
+class WebhooksSecurityAdvisoryPropCwesItems(GitHubModel):
+    """WebhooksSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str = Field()
     name: str = Field()
-    node_id: str = Field()
 
 
-model_rebuild(WebhooksChanges8)
-model_rebuild(WebhooksChanges8PropTier)
-model_rebuild(WebhooksChanges8PropTierPropFrom)
+class WebhooksSecurityAdvisoryPropIdentifiersItems(GitHubModel):
+    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
+
+    type: str = Field()
+    value: str = Field()
+
+
+class WebhooksSecurityAdvisoryPropReferencesItems(GitHubModel):
+    """WebhooksSecurityAdvisoryPropReferencesItems"""
+
+    url: str = Field()
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItems(GitHubModel):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion, None
+    ] = Field()
+    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage = Field()
+    severity: str = Field()
+    vulnerable_version_range: str = Field()
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion(
+    GitHubModel
+):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
+
+    identifier: str = Field()
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage(GitHubModel):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
+
+    ecosystem: str = Field()
+    name: str = Field()
+
+
+model_rebuild(WebhooksSecurityAdvisory)
+model_rebuild(WebhooksSecurityAdvisoryPropCvss)
+model_rebuild(WebhooksSecurityAdvisoryPropCwesItems)
+model_rebuild(WebhooksSecurityAdvisoryPropIdentifiersItems)
+model_rebuild(WebhooksSecurityAdvisoryPropReferencesItems)
+model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItems)
+model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion)
+model_rebuild(WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage)
 
 __all__ = (
-    "WebhooksChanges8",
-    "WebhooksChanges8PropTier",
-    "WebhooksChanges8PropTierPropFrom",
+    "WebhooksSecurityAdvisory",
+    "WebhooksSecurityAdvisoryPropCvss",
+    "WebhooksSecurityAdvisoryPropCwesItems",
+    "WebhooksSecurityAdvisoryPropIdentifiersItems",
+    "WebhooksSecurityAdvisoryPropReferencesItems",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItems",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage",
 )

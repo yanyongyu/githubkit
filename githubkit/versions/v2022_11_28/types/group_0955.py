@@ -9,31 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoDeploymentsPostBodyType(TypedDict):
-    """ReposOwnerRepoDeploymentsPostBody"""
+class ReposOwnerRepoDependabotSecretsSecretNamePutBodyType(TypedDict):
+    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
 
-    ref: str
-    task: NotRequired[str]
-    auto_merge: NotRequired[bool]
-    required_contexts: NotRequired[List[str]]
-    payload: NotRequired[
-        Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
-    ]
-    environment: NotRequired[str]
-    description: NotRequired[Union[str, None]]
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
 
 
-class ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type(TypedDict):
-    """ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0"""
-
-
-__all__ = (
-    "ReposOwnerRepoDeploymentsPostBodyType",
-    "ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type",
-)
+__all__ = ("ReposOwnerRepoDependabotSecretsSecretNamePutBodyType",)

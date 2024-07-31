@@ -9,99 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ActionsBillingUsage(GitHubModel):
-    """ActionsBillingUsage"""
-
-    total_minutes_used: int = Field(
-        description="The sum of the free and paid GitHub Actions minutes used."
-    )
-    total_paid_minutes_used: int = Field(
-        description="The total paid GitHub Actions minutes used."
-    )
-    included_minutes: int = Field(
-        description="The amount of free GitHub Actions minutes available."
-    )
-    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdown = Field()
+from .group_0001 import SimpleUser
 
 
-class ActionsBillingUsagePropMinutesUsedBreakdown(GitHubModel):
-    """ActionsBillingUsagePropMinutesUsedBreakdown"""
+class RepositoryAdvisoryCredit(GitHubModel):
+    """RepositoryAdvisoryCredit
 
-    ubuntu: Missing[int] = Field(
-        default=UNSET,
-        alias="UBUNTU",
-        description="Total minutes used on Ubuntu runner machines.",
-    )
-    macos: Missing[int] = Field(
-        default=UNSET,
-        alias="MACOS",
-        description="Total minutes used on macOS runner machines.",
-    )
-    windows: Missing[int] = Field(
-        default=UNSET,
-        alias="WINDOWS",
-        description="Total minutes used on Windows runner machines.",
-    )
-    ubuntu_4_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 4 core runner machines.",
-    )
-    ubuntu_8_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 8 core runner machines.",
-    )
-    ubuntu_16_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 16 core runner machines.",
-    )
-    ubuntu_32_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 32 core runner machines.",
-    )
-    ubuntu_64_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 64 core runner machines.",
-    )
-    windows_4_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 4 core runner machines.",
-    )
-    windows_8_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 8 core runner machines.",
-    )
-    windows_16_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 16 core runner machines.",
-    )
-    windows_32_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 32 core runner machines.",
-    )
-    windows_64_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 64 core runner machines.",
-    )
-    macos_12_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on macOS 12 core runner machines.",
-    )
-    total: Missing[int] = Field(
-        default=UNSET, description="Total minutes used on all runner machines."
+    A credit given to a user for a repository security advisory.
+    """
+
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.")
+    state: Literal["accepted", "declined", "pending"] = Field(
+        description="The state of the user's acceptance of the credit."
     )
 
 
-model_rebuild(ActionsBillingUsage)
-model_rebuild(ActionsBillingUsagePropMinutesUsedBreakdown)
+model_rebuild(RepositoryAdvisoryCredit)
 
-__all__ = (
-    "ActionsBillingUsage",
-    "ActionsBillingUsagePropMinutesUsedBreakdown",
-)
+__all__ = ("RepositoryAdvisoryCredit",)

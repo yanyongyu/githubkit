@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List
 
 from pydantic import Field
 
@@ -17,31 +17,30 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
+
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
+
+    total_count: int = Field()
+    devcontainers: List[
+        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems
+    ] = Field()
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200(GitHubModel):
-    """ReposOwnerRepoCodespacesNewGetResponse200"""
+class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems(
+    GitHubModel
+):
+    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
 
-    billable_owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    defaults: Missing[ReposOwnerRepoCodespacesNewGetResponse200PropDefaults] = Field(
-        default=UNSET
-    )
-
-
-class ReposOwnerRepoCodespacesNewGetResponse200PropDefaults(GitHubModel):
-    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
-
-    location: str = Field()
-    devcontainer_path: Union[str, None] = Field()
+    path: str = Field()
+    name: Missing[str] = Field(default=UNSET)
+    display_name: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200)
-model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200PropDefaults)
+model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200)
+model_rebuild(ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems)
 
 __all__ = (
-    "ReposOwnerRepoCodespacesNewGetResponse200",
-    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaults",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200",
+    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems",
 )

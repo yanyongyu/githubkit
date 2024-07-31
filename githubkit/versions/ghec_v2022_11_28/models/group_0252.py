@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
+from datetime import datetime
 
 from pydantic import Field
 
@@ -17,66 +18,49 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0016 import LicenseSimple
+from .group_0122 import CodeOfConductSimple
 
-class ContentTree(GitHubModel):
-    """Content Tree
 
-    Content Tree
+class CommunityProfilePropFiles(GitHubModel):
+    """CommunityProfilePropFiles"""
+
+    code_of_conduct: Union[None, CodeOfConductSimple] = Field()
+    code_of_conduct_file: Union[None, CommunityHealthFile] = Field()
+    license_: Union[None, LicenseSimple] = Field(alias="license")
+    contributing: Union[None, CommunityHealthFile] = Field()
+    readme: Union[None, CommunityHealthFile] = Field()
+    issue_template: Union[None, CommunityHealthFile] = Field()
+    pull_request_template: Union[None, CommunityHealthFile] = Field()
+
+
+class CommunityHealthFile(GitHubModel):
+    """Community Health File"""
+
+    url: str = Field()
+    html_url: str = Field()
+
+
+class CommunityProfile(GitHubModel):
+    """Community Profile
+
+    Community Profile
     """
 
-    type: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    entries: Missing[List[ContentTreePropEntriesItems]] = Field(default=UNSET)
-    links: ContentTreePropLinks = Field(alias="_links")
+    health_percentage: int = Field()
+    description: Union[str, None] = Field()
+    documentation: Union[str, None] = Field()
+    files: CommunityProfilePropFiles = Field()
+    updated_at: Union[datetime, None] = Field()
+    content_reports_enabled: Missing[bool] = Field(default=UNSET)
 
 
-class ContentTreePropLinks(GitHubModel):
-    """ContentTreePropLinks"""
-
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-class ContentTreePropEntriesItems(GitHubModel):
-    """ContentTreePropEntriesItems"""
-
-    type: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    content: Missing[str] = Field(default=UNSET)
-    sha: str = Field()
-    url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentTreePropEntriesItemsPropLinks = Field(alias="_links")
-
-
-class ContentTreePropEntriesItemsPropLinks(GitHubModel):
-    """ContentTreePropEntriesItemsPropLinks"""
-
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(ContentTree)
-model_rebuild(ContentTreePropLinks)
-model_rebuild(ContentTreePropEntriesItems)
-model_rebuild(ContentTreePropEntriesItemsPropLinks)
+model_rebuild(CommunityProfilePropFiles)
+model_rebuild(CommunityHealthFile)
+model_rebuild(CommunityProfile)
 
 __all__ = (
-    "ContentTree",
-    "ContentTreePropLinks",
-    "ContentTreePropEntriesItems",
-    "ContentTreePropEntriesItemsPropLinks",
+    "CommunityProfilePropFiles",
+    "CommunityHealthFile",
+    "CommunityProfile",
 )

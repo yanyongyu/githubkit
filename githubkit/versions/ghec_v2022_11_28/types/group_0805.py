@@ -9,14 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
+class EnterprisesEnterpriseActionsPermissionsPutBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsPermissionsPutBody"""
 
-    selected_organization_ids: List[int]
+    enabled_organizations: Literal["all", "none", "selected"]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
 
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType",)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsPutBodyType",)

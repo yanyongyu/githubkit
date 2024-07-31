@@ -9,27 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoPagesPutBodyPropSourceAnyof1(GitHubModel):
-    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
+class ReposOwnerRepoNotificationsPutBody(GitHubModel):
+    """ReposOwnerRepoNotificationsPutBody"""
 
-    Update the source for the repository. Must include the branch name and path.
-    """
-
-    branch: str = Field(
-        description="The repository branch used to publish your site's source files."
-    )
-    path: Literal["/", "/docs"] = Field(
-        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`."
+    last_read_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.",
     )
 
 
-model_rebuild(ReposOwnerRepoPagesPutBodyPropSourceAnyof1)
+model_rebuild(ReposOwnerRepoNotificationsPutBody)
 
-__all__ = ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1",)
+__all__ = ("ReposOwnerRepoNotificationsPutBody",)

@@ -13,22 +13,18 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0085 import OrganizationCustomRepositoryRole
 
+class OrgsOrgCopilotBillingSelectedUsersDeleteBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-class OrgsOrgCustomRepositoryRolesGetResponse200(GitHubModel):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
-
-    total_count: Missing[int] = Field(
-        default=UNSET, description="The number of custom roles in this organization"
+    selected_usernames: List[str] = Field(
+        min_length=1,
+        description="The usernames of the organization members for which to revoke access to GitHub Copilot.",
     )
-    custom_roles: Missing[List[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCustomRepositoryRolesGetResponse200)
+model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteBody)
 
-__all__ = ("OrgsOrgCustomRepositoryRolesGetResponse200",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",)

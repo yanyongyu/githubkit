@@ -18,21 +18,21 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0015 import Installation
-from .group_0371 import EnterpriseWebhooks
-from .group_0374 import RepositoryWebhooks
-from .group_0375 import SimpleUserWebhooks
-from .group_0388 import WebhooksRepositoriesItems
-from .group_0373 import OrganizationSimpleWebhooks
+from .group_0373 import EnterpriseWebhooks
+from .group_0376 import RepositoryWebhooks
+from .group_0377 import SimpleUserWebhooks
+from .group_0390 import WebhooksRepositoriesItems
+from .group_0375 import OrganizationSimpleWebhooks
 
 
-class WebhookInstallationUnsuspend(GitHubModel):
-    """installation unsuspend event"""
+class WebhookInstallationSuspend(GitHubModel):
+    """installation suspend event"""
 
-    action: Literal["unsuspend"] = Field()
+    action: Literal["suspend"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."\n',
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
     )
     installation: Installation = Field(title="Installation", description="Installation")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
@@ -56,6 +56,6 @@ class WebhookInstallationUnsuspend(GitHubModel):
     )
 
 
-model_rebuild(WebhookInstallationUnsuspend)
+model_rebuild(WebhookInstallationSuspend)
 
-__all__ = ("WebhookInstallationUnsuspend",)
+__all__ = ("WebhookInstallationSuspend",)

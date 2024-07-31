@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,17 +17,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0406 import ProjectsV2
-from .group_0372 import SimpleInstallation
-from .group_0375 import SimpleUserWebhooks
-from .group_0373 import OrganizationSimpleWebhooks
+from .group_0408 import ProjectsV2
+from .group_0374 import SimpleInstallation
+from .group_0377 import SimpleUserWebhooks
+from .group_0375 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ProjectEdited(GitHubModel):
-    """Projects v2 Project Edited Event"""
+class WebhookProjectsV2ProjectCreated(GitHubModel):
+    """WebhookProjectsV2ProjectCreated
 
-    action: Literal["edited"] = Field()
-    changes: WebhookProjectsV2ProjectEditedPropChanges = Field()
+    A project was created
+    """
+
+    action: Literal["created"] = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -46,63 +48,6 @@ class WebhookProjectsV2ProjectEdited(GitHubModel):
     )
 
 
-class WebhookProjectsV2ProjectEditedPropChanges(GitHubModel):
-    """WebhookProjectsV2ProjectEditedPropChanges"""
+model_rebuild(WebhookProjectsV2ProjectCreated)
 
-    description: Missing[WebhookProjectsV2ProjectEditedPropChangesPropDescription] = (
-        Field(default=UNSET)
-    )
-    public: Missing[WebhookProjectsV2ProjectEditedPropChangesPropPublic] = Field(
-        default=UNSET
-    )
-    short_description: Missing[
-        WebhookProjectsV2ProjectEditedPropChangesPropShortDescription
-    ] = Field(default=UNSET)
-    title: Missing[WebhookProjectsV2ProjectEditedPropChangesPropTitle] = Field(
-        default=UNSET
-    )
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropDescription(GitHubModel):
-    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropPublic(GitHubModel):
-    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
-
-    from_: Missing[bool] = Field(default=UNSET, alias="from")
-    to: Missing[bool] = Field(default=UNSET)
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropShortDescription(GitHubModel):
-    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropTitle(GitHubModel):
-    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
-
-    from_: Missing[str] = Field(default=UNSET, alias="from")
-    to: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookProjectsV2ProjectEdited)
-model_rebuild(WebhookProjectsV2ProjectEditedPropChanges)
-model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropDescription)
-model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropPublic)
-model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropShortDescription)
-model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropTitle)
-
-__all__ = (
-    "WebhookProjectsV2ProjectEdited",
-    "WebhookProjectsV2ProjectEditedPropChanges",
-    "WebhookProjectsV2ProjectEditedPropChangesPropDescription",
-    "WebhookProjectsV2ProjectEditedPropChangesPropPublic",
-    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescription",
-    "WebhookProjectsV2ProjectEditedPropChangesPropTitle",
-)
+__all__ = ("WebhookProjectsV2ProjectCreated",)

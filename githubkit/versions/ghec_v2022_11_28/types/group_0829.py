@@ -9,34 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class GistsGistIdPatchBodyType(TypedDict):
-    """GistsGistIdPatchBody"""
+class GistsPostBodyType(TypedDict):
+    """GistsPostBody"""
 
     description: NotRequired[str]
-    files: NotRequired[GistsGistIdPatchBodyPropFilesType]
+    files: GistsPostBodyPropFilesType
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
 
 
-class GistsGistIdPatchBodyPropFilesType(TypedDict):
-    """GistsGistIdPatchBodyPropFiles
+class GistsPostBodyPropFilesType(TypedDict):
+    """GistsPostBodyPropFiles
 
-    The gist files to be updated, renamed, or deleted. Each `key` must match the
-    current filename
-    (including extension) of the targeted gist file. For example: `hello.py`.
-
-    To delete a file, set the whole file to null. For example: `hello.py : null`.
-    The file will also be
-    deleted if the specified object does not contain at least one of `content` or
-    `filename`.
+    Names and content for the files that make up the gist
 
     Examples:
-        {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
+        {'hello.rb': {'content': 'puts "Hello, World!"'}}
     """
 
 
 __all__ = (
-    "GistsGistIdPatchBodyType",
-    "GistsGistIdPatchBodyPropFilesType",
+    "GistsPostBodyType",
+    "GistsPostBodyPropFilesType",
 )

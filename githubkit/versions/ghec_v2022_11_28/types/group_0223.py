@@ -10,29 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0001 import SimpleUserType
 from .group_0041 import CodeScanningAnalysisToolType
+from .group_0042 import CodeScanningAlertInstanceType
+from .group_0040 import CodeScanningAlertRuleSummaryType
 
 
-class CodeScanningAnalysisType(TypedDict):
-    """CodeScanningAnalysis"""
+class CodeScanningAlertItemsType(TypedDict):
+    """CodeScanningAlertItems"""
 
-    ref: str
-    commit_sha: str
-    analysis_key: str
-    environment: str
-    category: NotRequired[str]
-    error: str
+    number: int
     created_at: datetime
-    results_count: int
-    rules_count: int
-    id: int
+    updated_at: NotRequired[datetime]
     url: str
-    sarif_id: str
+    html_url: str
+    instances_url: str
+    state: Literal["open", "dismissed", "fixed"]
+    fixed_at: NotRequired[Union[datetime, None]]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_at: Union[datetime, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleSummaryType
     tool: CodeScanningAnalysisToolType
-    deletable: bool
-    warning: str
+    most_recent_instance: CodeScanningAlertInstanceType
 
 
-__all__ = ("CodeScanningAnalysisType",)
+__all__ = ("CodeScanningAlertItemsType",)

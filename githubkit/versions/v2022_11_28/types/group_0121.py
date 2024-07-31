@@ -12,18 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0122 import RepositoryRuleRequiredStatusChecksPropParametersType
+from .group_0122 import RepositoryRulePullRequestPropParametersType
 
 
-class RepositoryRuleRequiredStatusChecksType(TypedDict):
-    """required_status_checks
+class RepositoryRulePullRequestType(TypedDict):
+    """pull_request
 
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
     """
 
-    type: Literal["required_status_checks"]
-    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
+    type: Literal["pull_request"]
+    parameters: NotRequired[RepositoryRulePullRequestPropParametersType]
 
 
-__all__ = ("RepositoryRuleRequiredStatusChecksType",)
+__all__ = ("RepositoryRulePullRequestType",)

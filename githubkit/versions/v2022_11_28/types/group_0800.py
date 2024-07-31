@@ -13,12 +13,27 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType(TypedDict):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody"""
 
-    default_for_new_repos: NotRequired[
-        Literal["all", "none", "private_and_internal", "public"]
+    name: NotRequired[str]
+    description: NotRequired[str]
+    advanced_security: NotRequired[Literal["enabled", "disabled"]]
+    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    secret_scanning_push_protection: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
     ]
+    secret_scanning_validity_checks: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    private_vulnerability_reporting: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    enforcement: NotRequired[Literal["enforced", "unenforced"]]
 
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType",)

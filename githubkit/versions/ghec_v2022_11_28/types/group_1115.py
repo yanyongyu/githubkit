@@ -12,12 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type(TypedDict):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    name: NotRequired[str]
-    label: NotRequired[str]
-    state: NotRequired[str]
+    message: NotRequired[str]
+    url: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType",)
+__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type",)

@@ -10,35 +10,41 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
-from typing_extensions import TypedDict
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0528 import (
-    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType,
+from .group_0532 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+    WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
 )
 
 
-class WebhookIssueCommentEditedPropIssueMergedMilestoneType(TypedDict):
-    """WebhookIssueCommentEditedPropIssueMergedMilestone"""
+class WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
+    """App
 
-    closed_at: Union[datetime, None]
-    closed_issues: int
-    created_at: datetime
-    creator: Union[
-        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType, None
-    ]
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[datetime, None]
     description: Union[str, None]
-    due_on: Union[datetime, None]
+    events: NotRequired[List[str]]
+    external_url: Union[str, None]
     html_url: str
-    id: int
-    labels_url: str
+    id: Union[int, None]
+    name: str
     node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: datetime
-    url: str
+    owner: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
+        None,
+    ]
+    permissions: NotRequired[
+        WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[datetime, None]
 
 
-__all__ = ("WebhookIssueCommentEditedPropIssueMergedMilestoneType",)
+__all__ = ("WebhookIssueCommentEditedPropIssueAllof0PropPerformedViaGithubAppType",)

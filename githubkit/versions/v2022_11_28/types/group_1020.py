@@ -9,16 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
-from .group_0097 import CustomPropertyValueType
+
+class ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type(TypedDict):
+    """ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200"""
+
+    enabled: bool
 
 
-class ReposOwnerRepoPropertiesValuesPatchBodyType(TypedDict):
-    """ReposOwnerRepoPropertiesValuesPatchBody"""
-
-    properties: List[CustomPropertyValueType]
-
-
-__all__ = ("ReposOwnerRepoPropertiesValuesPatchBodyType",)
+__all__ = ("ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type",)

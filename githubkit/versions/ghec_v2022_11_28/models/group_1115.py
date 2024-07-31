@@ -16,17 +16,13 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoReleasesAssetsAssetIdPatchBody(GitHubModel):
-    """ReposOwnerRepoReleasesAssetsAssetIdPatchBody"""
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
 
-    name: Missing[str] = Field(default=UNSET, description="The file name of the asset.")
-    label: Missing[str] = Field(
-        default=UNSET,
-        description="An alternate short description of the asset. Used in place of the filename.",
-    )
-    state: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ReposOwnerRepoReleasesAssetsAssetIdPatchBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202)
 
-__all__ = ("ReposOwnerRepoReleasesAssetsAssetIdPatchBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202",)

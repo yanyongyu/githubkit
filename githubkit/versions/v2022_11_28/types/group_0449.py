@@ -13,21 +13,21 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0096 import OrgCustomPropertyType
-from .group_0371 import EnterpriseWebhooksType
-from .group_0372 import SimpleInstallationType
-from .group_0375 import SimpleUserWebhooksType
-from .group_0373 import OrganizationSimpleWebhooksType
+from .group_0373 import EnterpriseWebhooksType
+from .group_0374 import SimpleInstallationType
+from .group_0377 import SimpleUserWebhooksType
+from .group_0375 import OrganizationSimpleWebhooksType
 
 
-class WebhookCustomPropertyUpdatedType(TypedDict):
-    """custom property updated event"""
+class WebhookCustomPropertyCreatedType(TypedDict):
+    """custom property created event"""
 
-    action: Literal["updated"]
+    action: Literal["created"]
     definition: OrgCustomPropertyType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
     sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookCustomPropertyUpdatedType",)
+__all__ = ("WebhookCustomPropertyCreatedType",)
