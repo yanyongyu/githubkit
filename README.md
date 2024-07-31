@@ -83,6 +83,8 @@ githubkit supports **both pydantic v1 and v2**, but pydantic v2 is recommended. 
 
 Here is some common use cases to help you get started quickly. For more detailed usage, please refer to the [Usage](#usage) section.
 
+> APIs are fully typed. Type hints in the following examples are just for reference only.
+
 ### Use personal access token (PAT) to call GitHub API
 
 ```python
@@ -345,7 +347,7 @@ The `auto_retry` option enables request retrying when rate limit exceeded and se
 
 ### Calling Rest API
 
-> APIs are fully typed. Typing in the following examples is just for reference only.
+> APIs are fully typed. Type hints in the following examples are just for reference only.
 
 Simple sync call:
 
