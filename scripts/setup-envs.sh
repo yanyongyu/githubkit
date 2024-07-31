@@ -1,4 +1,6 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
+
+set -e
 
 # config poetry to install env in project
 poetry config virtualenvs.in-project true

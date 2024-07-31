@@ -1,4 +1,6 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
+
+set -e
 
 # update test env
 echo "Updating test env..."

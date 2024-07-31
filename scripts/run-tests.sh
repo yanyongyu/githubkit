@@ -1,4 +1,6 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
+
+set -e
 
 # cd to the root of the project
 cd "$(dirname "$0")/.."
