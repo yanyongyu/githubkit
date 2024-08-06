@@ -101,7 +101,7 @@ user: PublicUser | PrivateUser = resp.parsed_data
 data: dict = github.graphql("{ viewer { login } }")
 ```
 
-### Develop a OAuth APP with web flow
+### Develop an OAuth APP with web flow
 
 ```python
 from githubkit.versions.latest.models import PublicUser, PrivateUser
@@ -130,7 +130,7 @@ resp = user_github.rest.users.get_authenticated()
 user: PublicUser | PrivateUser = resp.parsed_data
 ```
 
-### Develop a OAuth APP with device flow
+### Develop an OAuth APP with device flow
 
 ```python
 from githubkit import GitHub, OAuthDeviceAuthStrategy, OAuthTokenAuthStrategy
