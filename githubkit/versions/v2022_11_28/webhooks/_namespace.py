@@ -600,8 +600,14 @@ class WebhookNamespace:
     @staticmethod
     def parse(name: EventNameType, payload: Union[str, bytes]) -> "WebhookEvent": ...
 
+    @overload
     @staticmethod
-    def parse(name: EventNameType, payload: Union[str, bytes]) -> "WebhookEvent":
+    def parse(name: str, payload: Union[str, bytes]) -> "WebhookEvent": ...
+
+    @staticmethod
+    def parse(
+        name: Union[EventNameType, str], payload: Union[str, bytes]
+    ) -> "WebhookEvent":
         """Parse the webhook payload with event name.
 
         Args:
@@ -981,8 +987,14 @@ class WebhookNamespace:
     @staticmethod
     def parse_obj(name: EventNameType, payload: Dict[str, Any]) -> "WebhookEvent": ...
 
+    @overload
     @staticmethod
-    def parse_obj(name: EventNameType, payload: Dict[str, Any]) -> "WebhookEvent":
+    def parse_obj(name: str, payload: Dict[str, Any]) -> "WebhookEvent": ...
+
+    @staticmethod
+    def parse_obj(
+        name: Union[EventNameType, str], payload: Dict[str, Any]
+    ) -> "WebhookEvent":
         """Parse the webhook payload dict with event name.
 
         Args:
