@@ -123,7 +123,7 @@ refresh_token = auth.refresh_token
 # when using OAuth APP or GitHub APP without user-to-server token expiration
 user_github = github.with_auth(
     OAuthTokenAuthStrategy(
-        "<client_id>", "<client_secret>", token=access_token 
+        "<client_id>", "<client_secret>", token=access_token
     )
 )
 # OR when using GitHub APP with user-to-server token expiration
