@@ -101,7 +101,7 @@ user: PublicUser | PrivateUser = resp.parsed_data
 data: dict = github.graphql("{ viewer { login } }")
 ```
 
-### Develop an OAuth APP/GitHub APP  with web flow
+### Develop an OAuth APP (GitHub APP) with web flow
 
 ```python
 from githubkit.versions.latest.models import PublicUser, PrivateUser
@@ -120,13 +120,14 @@ access_token = auth.token
 refresh_token = auth.refresh_token
 # restore the user token from database
 
-# With  OAuthAPP
+# when using OAuth APP or GitHub APP without user-to-server token expiration
 user_github = github.with_auth(
     OAuthTokenAuthStrategy(
         "<client_id>", "<client_secret>", token=access_token 
     )
 )
-# OR  with  GithubAPP
+# OR when using GitHub APP with user-to-server token expiration
+# you can use the refresh_token to generate a new token
 user_github = github.with_auth(
     OAuthTokenAuthStrategy(
         "<client_id>", "<client_secret>", refresh_token=refresh_token 
@@ -137,8 +138,8 @@ user_github = github.with_auth(
 resp = user_github.rest.users.get_authenticated()
 user: PublicUser | PrivateUser = resp.parsed_data
 
-# you can get public email as
-email = user.email
+# you can get the user login id now
+login_id = user.login
 
 ```
 
