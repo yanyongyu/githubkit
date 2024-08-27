@@ -140,7 +140,6 @@ user: PublicUser | PrivateUser = resp.parsed_data
 
 # you can get the user login id now
 login_id = user.login
-
 ```
 
 ### Develop an OAuth APP with device flow
