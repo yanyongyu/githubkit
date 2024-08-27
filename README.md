@@ -130,7 +130,7 @@ user_github = github.with_auth(
 # you can use the refresh_token to generate a new token
 user_github = github.with_auth(
     OAuthTokenAuthStrategy(
-        "<client_id>", "<client_secret>", refresh_token=refresh_token 
+        "<client_id>", "<client_secret>", refresh_token=refresh_token
     )
 )
 
