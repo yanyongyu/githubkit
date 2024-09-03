@@ -9,23 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
 
 
-class UserEmailsDeleteBodyOneof0Type(TypedDict):
-    """UserEmailsDeleteBodyOneof0
+class UserCodespacesSecretsSecretNamePutBodyType(TypedDict):
+    """UserCodespacesSecretsSecretNamePutBody"""
 
-    Deletes one or more email addresses from your GitHub account. Must contain at
-    least one email address. **Note:** Alternatively, you can pass a single email
-    address or an `array` of emails addresses directly, but we recommend that you
-    pass an object using the `emails` key.
-
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: List[str]
+    encrypted_value: NotRequired[str]
+    key_id: str
+    selected_repository_ids: NotRequired[List[Union[int, str]]]
 
 
-__all__ = ("UserEmailsDeleteBodyOneof0Type",)
+__all__ = ("UserCodespacesSecretsSecretNamePutBodyType",)

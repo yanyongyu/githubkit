@@ -12,11 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgProjectsPostBodyType(TypedDict):
-    """OrgsOrgProjectsPostBody"""
+class OrgsOrgOutsideCollaboratorsUsernamePutBodyType(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
 
-    name: str
-    body: NotRequired[str]
+    async_: NotRequired[bool]
 
 
-__all__ = ("OrgsOrgProjectsPostBodyType",)
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBodyType",)

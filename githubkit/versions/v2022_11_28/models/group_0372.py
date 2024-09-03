@@ -9,21 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class KeySimple(GitHubModel):
-    """Key Simple
+class SshSigningKey(GitHubModel):
+    """SSH Signing Key
 
-    Key Simple
+    A public SSH key used to sign Git commits
     """
 
-    id: int = Field()
     key: str = Field()
+    id: int = Field()
+    title: str = Field()
+    created_at: datetime = Field()
 
 
-model_rebuild(KeySimple)
+model_rebuild(SshSigningKey)
 
-__all__ = ("KeySimple",)
+__all__ = ("SshSigningKey",)

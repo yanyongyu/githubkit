@@ -9,20 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsColumnIdMovesPostBody(GitHubModel):
-    """ProjectsColumnsColumnIdMovesPostBody"""
-
-    position: str = Field(
-        pattern="^(?:first|last|after:\\d+)$",
-        description="The position of the column in a project. Can be one of: `first`, `last`, or `after:<column_id>` to place after the specified column.",
-    )
+class ProjectsColumnsCardsCardIdMovesPostResponse201(GitHubModel):
+    """ProjectsColumnsCardsCardIdMovesPostResponse201"""
 
 
-model_rebuild(ProjectsColumnsColumnIdMovesPostBody)
+model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse201)
 
-__all__ = ("ProjectsColumnsColumnIdMovesPostBody",)
+__all__ = ("ProjectsColumnsCardsCardIdMovesPostResponse201",)

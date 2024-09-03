@@ -9,16 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0381 import WebhooksRuleType
+from .group_0376 import EnterpriseWebhooksType
+from .group_0377 import SimpleInstallationType
+from .group_0379 import RepositoryWebhooksType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0378 import OrganizationSimpleWebhooksType
 
 
-class WebhookCheckRunCompletedFormEncodedType(TypedDict):
-    """Check Run Completed Event
+class WebhookBranchProtectionRuleDeletedType(TypedDict):
+    """branch protection rule deleted event"""
 
-    The check_run.completed webhook encoded with URL encoding
-    """
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    rule: WebhooksRuleType
+    sender: SimpleUserWebhooksType
 
-    payload: str
 
-
-__all__ = ("WebhookCheckRunCompletedFormEncodedType",)
+__all__ = ("WebhookBranchProtectionRuleDeletedType",)

@@ -9,17 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0066 import RunnerType
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgActionsRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnersGetResponse200"""
+class NotificationsPutResponse202Type(TypedDict):
+    """NotificationsPutResponse202"""
 
-    total_count: int
-    runners: List[RunnerType]
+    message: NotRequired[str]
 
 
-__all__ = ("OrgsOrgActionsRunnersGetResponse200Type",)
+__all__ = ("NotificationsPutResponse202Type",)

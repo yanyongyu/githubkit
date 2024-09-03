@@ -9,15 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookStatusPropCommitPropCommitPropAuthorAllof1Type(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
-
-    date: str
-    email: NotRequired[str]
-    name: NotRequired[str]
+from .group_0376 import EnterpriseWebhooksType
+from .group_0377 import SimpleInstallationType
+from .group_0379 import RepositoryWebhooksType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0378 import OrganizationSimpleWebhooksType
 
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof1Type",)
+class WebhookStarDeletedType(TypedDict):
+    """star deleted event"""
+
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+    starred_at: None
+
+
+__all__ = ("WebhookStarDeletedType",)

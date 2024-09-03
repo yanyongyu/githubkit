@@ -13,18 +13,22 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0082 import MinimalRepository
+from .group_0085 import OrganizationCustomRepositoryRole
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200"""
+class OrganizationsOrganizationIdCustomRolesGetResponse200(GitHubModel):
+    """OrganizationsOrganizationIdCustomRolesGetResponse200"""
 
-    total_count: float = Field()
-    repositories: List[MinimalRepository] = Field()
+    total_count: Missing[int] = Field(
+        default=UNSET, description="The number of custom roles in this organization"
+    )
+    custom_roles: Missing[List[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200)
+model_rebuild(OrganizationsOrganizationIdCustomRolesGetResponse200)
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200",)
+__all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200",)

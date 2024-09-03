@@ -9,22 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0252 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType
+from typing_extensions import TypedDict
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class DeploymentBranchPolicySettingsType(TypedDict):
+    """DeploymentBranchPolicySettings
 
-    id: int
-    node_id: str
-    prevent_self_review: NotRequired[bool]
-    type: str
-    reviewers: NotRequired[
-        List[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
-    ]
+    The type of deployment branch policy for this environment. To allow all branches
+    to deploy, set to `null`.
+    """
+
+    protected_branches: bool
+    custom_branch_policies: bool
 
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1Type",)
+__all__ = ("DeploymentBranchPolicySettingsType",)

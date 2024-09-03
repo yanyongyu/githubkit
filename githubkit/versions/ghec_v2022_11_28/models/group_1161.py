@@ -17,17 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0017 import Repository
+
+class UserCodespacesCodespaceNamePatchBody(GitHubModel):
+    """UserCodespacesCodespaceNamePatchBody"""
+
+    machine: Missing[str] = Field(
+        default=UNSET, description="A valid machine to transition this codespace to."
+    )
+    display_name: Missing[str] = Field(
+        default=UNSET, description="Display name for this codespace"
+    )
+    recent_folders: Missing[List[str]] = Field(
+        default=UNSET,
+        description="Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in.",
+    )
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200(GitHubModel):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
+model_rebuild(UserCodespacesCodespaceNamePatchBody)
 
-    total_count: int = Field()
-    repository_selection: Missing[str] = Field(default=UNSET)
-    repositories: List[Repository] = Field()
-
-
-model_rebuild(UserInstallationsInstallationIdRepositoriesGetResponse200)
-
-__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200",)
+__all__ = ("UserCodespacesCodespaceNamePatchBody",)

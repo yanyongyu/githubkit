@@ -9,46 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserCodespacesSecretsGetResponse200(GitHubModel):
-    """UserCodespacesSecretsGetResponse200"""
+class TeamsTeamIdProjectsProjectIdPutBody(GitHubModel):
+    """TeamsTeamIdProjectsProjectIdPutBody"""
 
-    total_count: int = Field()
-    secrets: List[CodespacesSecret] = Field()
-
-
-class CodespacesSecret(GitHubModel):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str = Field(description="The name of the secret")
-    created_at: datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    updated_at: datetime = Field(
-        description="The date and time at which the secret was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that the secret is visible to"
-    )
-    selected_repositories_url: str = Field(
-        description="The API URL at which the list of repositories this secret is visible to can be retrieved"
+    permission: Missing[Literal["read", "write", "admin"]] = Field(
+        default=UNSET,
+        description="The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see \"[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method).\"",
     )
 
 
-model_rebuild(UserCodespacesSecretsGetResponse200)
-model_rebuild(CodespacesSecret)
+model_rebuild(TeamsTeamIdProjectsProjectIdPutBody)
 
-__all__ = (
-    "UserCodespacesSecretsGetResponse200",
-    "CodespacesSecret",
-)
+__all__ = ("TeamsTeamIdProjectsProjectIdPutBody",)

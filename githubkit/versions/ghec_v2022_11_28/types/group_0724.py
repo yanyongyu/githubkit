@@ -12,24 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0455 import WebhooksRelease1Type
-from .group_0408 import EnterpriseWebhooksType
-from .group_0409 import SimpleInstallationType
-from .group_0411 import RepositoryWebhooksType
-from .group_0412 import SimpleUserWebhooksType
-from .group_0410 import OrganizationSimpleWebhooksType
+from .group_0459 import WebhooksReleaseType
+from .group_0413 import EnterpriseWebhooksType
+from .group_0414 import SimpleInstallationType
+from .group_0416 import RepositoryWebhooksType
+from .group_0417 import SimpleUserWebhooksType
+from .group_0415 import OrganizationSimpleWebhooksType
 
 
-class WebhookReleaseUnpublishedType(TypedDict):
-    """release unpublished event"""
+class WebhookReleaseDeletedType(TypedDict):
+    """release deleted event"""
 
-    action: Literal["unpublished"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    release: WebhooksRelease1Type
+    release: WebhooksReleaseType
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookReleaseUnpublishedType",)
+__all__ = ("WebhookReleaseDeletedType",)

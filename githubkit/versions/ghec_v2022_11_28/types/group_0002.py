@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import List, Union, Literal
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
 
@@ -60,6 +60,7 @@ class GlobalAdvisoryType(TypedDict):
     vulnerabilities: Union[List[VulnerabilityType], None]
     cvss: Union[GlobalAdvisoryPropCvssType, None]
     cwes: Union[List[GlobalAdvisoryPropCwesItemsType], None]
+    epss: NotRequired[Union[GlobalAdvisoryPropEpssType, None]]
     credits_: Union[List[GlobalAdvisoryPropCreditsItemsType], None]
 
 
@@ -82,6 +83,13 @@ class GlobalAdvisoryPropCwesItemsType(TypedDict):
 
     cwe_id: str
     name: str
+
+
+class GlobalAdvisoryPropEpssType(TypedDict):
+    """GlobalAdvisoryPropEpss"""
+
+    percentage: NotRequired[float]
+    percentile: NotRequired[float]
 
 
 class VulnerabilityType(TypedDict):
@@ -127,6 +135,7 @@ __all__ = (
     "GlobalAdvisoryPropIdentifiersItemsType",
     "GlobalAdvisoryPropCvssType",
     "GlobalAdvisoryPropCwesItemsType",
+    "GlobalAdvisoryPropEpssType",
     "VulnerabilityType",
     "VulnerabilityPropPackageType",
 )

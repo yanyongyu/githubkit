@@ -9,54 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
 
-from .group_0188 import GitUserType
-from .group_0001 import SimpleUserType
-from .group_0055 import MinimalRepositoryType
-from .group_0351 import SearchResultTextMatchesItemsType
-from .group_0354 import CommitSearchResultItemPropCommitType
+from .group_0349 import TrafficType
 
 
-class CommitSearchResultItemType(TypedDict):
-    """Commit Search Result Item
+class ViewTrafficType(TypedDict):
+    """View Traffic
 
-    Commit Search Result Item
+    View Traffic
     """
 
-    url: str
-    sha: str
-    html_url: str
-    comments_url: str
-    commit: CommitSearchResultItemPropCommitType
-    author: Union[None, SimpleUserType]
-    committer: Union[None, GitUserType]
-    parents: List[CommitSearchResultItemPropParentsItemsType]
-    repository: MinimalRepositoryType
-    score: float
-    node_id: str
-    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
+    count: int
+    uniques: int
+    views: List[TrafficType]
 
 
-class CommitSearchResultItemPropParentsItemsType(TypedDict):
-    """CommitSearchResultItemPropParentsItems"""
-
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    sha: NotRequired[str]
-
-
-class SearchCommitsGetResponse200Type(TypedDict):
-    """SearchCommitsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: List[CommitSearchResultItemType]
-
-
-__all__ = (
-    "CommitSearchResultItemType",
-    "CommitSearchResultItemPropParentsItemsType",
-    "SearchCommitsGetResponse200Type",
-)
+__all__ = ("ViewTrafficType",)

@@ -13,25 +13,23 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503Type(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503"""
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody"""
 
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
-    errors: NotRequired[
-        List[ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType]
+    groups: NotRequired[
+        List[OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType]
     ]
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType(TypedDict):
-    """ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems"""
+class OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType(TypedDict):
+    """OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
 
-    code: NotRequired[str]
-    message: NotRequired[str]
+    group_id: str
+    group_name: str
+    group_description: str
 
 
 __all__ = (
-    "ProjectsColumnsCardsCardIdMovesPostResponse503Type",
-    "ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItemsType",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyType",
+    "OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBodyPropGroupsItemsType",
 )

@@ -12,18 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0373 import EnterpriseWebhooksType
-from .group_0374 import SimpleInstallationType
-from .group_0376 import RepositoryWebhooksType
-from .group_0377 import SimpleUserWebhooksType
-from .group_0375 import OrganizationSimpleWebhooksType
-from .group_0420 import SecretScanningAlertWebhookType
+from .group_0376 import EnterpriseWebhooksType
+from .group_0377 import SimpleInstallationType
+from .group_0379 import RepositoryWebhooksType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0378 import OrganizationSimpleWebhooksType
+from .group_0423 import SecretScanningAlertWebhookType
 
 
-class WebhookSecretScanningAlertReopenedType(TypedDict):
-    """secret_scanning_alert reopened event"""
+class WebhookSecretScanningAlertCreatedType(TypedDict):
+    """secret_scanning_alert created event"""
 
-    action: Literal["reopened"]
+    action: Literal["created"]
     alert: SecretScanningAlertWebhookType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -32,4 +32,4 @@ class WebhookSecretScanningAlertReopenedType(TypedDict):
     sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookSecretScanningAlertReopenedType",)
+__all__ = ("WebhookSecretScanningAlertCreatedType",)

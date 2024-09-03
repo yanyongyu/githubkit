@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -19,60 +18,48 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksMilestone3(GitHubModel):
-    """Milestone
+class WebhooksPreviousMarketplacePurchase(GitHubModel):
+    """Marketplace Purchase"""
 
-    A collection of related issues and pull requests.
-    """
-
-    closed_at: Union[datetime, None] = Field()
-    closed_issues: int = Field()
-    created_at: datetime = Field()
-    creator: Union[WebhooksMilestone3PropCreator, None] = Field(title="User")
-    description: Union[str, None] = Field()
-    due_on: Union[datetime, None] = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels_url: str = Field()
-    node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    open_issues: int = Field()
-    state: Literal["open", "closed"] = Field(description="The state of the milestone.")
-    title: str = Field(description="The title of the milestone.")
-    updated_at: datetime = Field()
-    url: str = Field()
+    account: WebhooksPreviousMarketplacePurchasePropAccount = Field()
+    billing_cycle: str = Field()
+    free_trial_ends_on: None = Field()
+    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
+    on_free_trial: bool = Field()
+    plan: WebhooksPreviousMarketplacePurchasePropPlan = Field()
+    unit_count: int = Field()
 
 
-class WebhooksMilestone3PropCreator(GitHubModel):
-    """User"""
+class WebhooksPreviousMarketplacePurchasePropAccount(GitHubModel):
+    """WebhooksPreviousMarketplacePurchasePropAccount"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
     id: int = Field()
     login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    node_id: str = Field()
+    organization_billing_email: Union[str, None] = Field()
+    type: str = Field()
 
 
-model_rebuild(WebhooksMilestone3)
-model_rebuild(WebhooksMilestone3PropCreator)
+class WebhooksPreviousMarketplacePurchasePropPlan(GitHubModel):
+    """WebhooksPreviousMarketplacePurchasePropPlan"""
+
+    bullets: List[str] = Field()
+    description: str = Field()
+    has_free_trial: bool = Field()
+    id: int = Field()
+    monthly_price_in_cents: int = Field()
+    name: str = Field()
+    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
+    unit_name: Union[str, None] = Field()
+    yearly_price_in_cents: int = Field()
+
+
+model_rebuild(WebhooksPreviousMarketplacePurchase)
+model_rebuild(WebhooksPreviousMarketplacePurchasePropAccount)
+model_rebuild(WebhooksPreviousMarketplacePurchasePropPlan)
 
 __all__ = (
-    "WebhooksMilestone3",
-    "WebhooksMilestone3PropCreator",
+    "WebhooksPreviousMarketplacePurchase",
+    "WebhooksPreviousMarketplacePurchasePropAccount",
+    "WebhooksPreviousMarketplacePurchasePropPlan",
 )

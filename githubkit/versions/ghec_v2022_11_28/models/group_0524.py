@@ -17,20 +17,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0424 import Discussion
-from .group_0408 import EnterpriseWebhooks
-from .group_0409 import SimpleInstallation
-from .group_0411 import RepositoryWebhooks
-from .group_0412 import SimpleUserWebhooks
-from .group_0410 import OrganizationSimpleWebhooks
-from .group_0525 import WebhookDiscussionTransferredPropChanges
+from .group_0429 import Discussion
+from .group_0413 import EnterpriseWebhooks
+from .group_0414 import SimpleInstallation
+from .group_0416 import RepositoryWebhooks
+from .group_0417 import SimpleUserWebhooks
+from .group_0415 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionTransferred(GitHubModel):
-    """discussion transferred event"""
+class WebhookDiscussionEdited(GitHubModel):
+    """discussion edited event"""
 
-    action: Literal["transferred"] = Field()
-    changes: WebhookDiscussionTransferredPropChanges = Field()
+    action: Literal["edited"] = Field()
+    changes: Missing[WebhookDiscussionEditedPropChanges] = Field(default=UNSET)
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -59,6 +58,33 @@ class WebhookDiscussionTransferred(GitHubModel):
     )
 
 
-model_rebuild(WebhookDiscussionTransferred)
+class WebhookDiscussionEditedPropChanges(GitHubModel):
+    """WebhookDiscussionEditedPropChanges"""
 
-__all__ = ("WebhookDiscussionTransferred",)
+    body: Missing[WebhookDiscussionEditedPropChangesPropBody] = Field(default=UNSET)
+    title: Missing[WebhookDiscussionEditedPropChangesPropTitle] = Field(default=UNSET)
+
+
+class WebhookDiscussionEditedPropChangesPropBody(GitHubModel):
+    """WebhookDiscussionEditedPropChangesPropBody"""
+
+    from_: str = Field(alias="from")
+
+
+class WebhookDiscussionEditedPropChangesPropTitle(GitHubModel):
+    """WebhookDiscussionEditedPropChangesPropTitle"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookDiscussionEdited)
+model_rebuild(WebhookDiscussionEditedPropChanges)
+model_rebuild(WebhookDiscussionEditedPropChangesPropBody)
+model_rebuild(WebhookDiscussionEditedPropChangesPropTitle)
+
+__all__ = (
+    "WebhookDiscussionEdited",
+    "WebhookDiscussionEditedPropChanges",
+    "WebhookDiscussionEditedPropChangesPropBody",
+    "WebhookDiscussionEditedPropChangesPropTitle",
+)

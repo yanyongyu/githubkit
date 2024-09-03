@@ -13,34 +13,38 @@ from typing import Union
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0675 import (
-    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion,
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion,
 )
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackage(GitHubModel):
-    """WebhookRegistryPackageUpdatedPropRegistryPackage"""
+class WebhookRegistryPackagePublishedPropRegistryPackage(GitHubModel):
+    """WebhookRegistryPackagePublishedPropRegistryPackage"""
 
-    created_at: str = Field()
-    description: None = Field()
+    created_at: Union[str, None] = Field()
+    description: Union[str, None] = Field()
     ecosystem: str = Field()
     html_url: str = Field()
     id: int = Field()
     name: str = Field()
     namespace: str = Field()
-    owner: WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner = Field()
+    owner: WebhookRegistryPackagePublishedPropRegistryPackagePropOwner = Field()
     package_type: str = Field()
-    package_version: WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion = Field()
-    registry: Union[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry, None
+    package_version: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion, None
     ] = Field()
-    updated_at: str = Field()
+    registry: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry, None
+    ] = Field()
+    updated_at: Union[str, None] = Field()
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner(GitHubModel):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner"""
+class WebhookRegistryPackagePublishedPropRegistryPackagePropOwner(GitHubModel):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropOwner"""
 
     avatar_url: str = Field()
     events_url: str = Field()
@@ -62,16 +66,22 @@ class WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner(GitHubModel):
     url: str = Field()
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry(GitHubModel):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry"""
+class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry(GitHubModel):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry"""
+
+    about_url: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    vendor: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookRegistryPackageUpdatedPropRegistryPackage)
-model_rebuild(WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner)
-model_rebuild(WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry)
+model_rebuild(WebhookRegistryPackagePublishedPropRegistryPackage)
+model_rebuild(WebhookRegistryPackagePublishedPropRegistryPackagePropOwner)
+model_rebuild(WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry)
 
 __all__ = (
-    "WebhookRegistryPackageUpdatedPropRegistryPackage",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry",
+    "WebhookRegistryPackagePublishedPropRegistryPackage",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropOwner",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry",
 )

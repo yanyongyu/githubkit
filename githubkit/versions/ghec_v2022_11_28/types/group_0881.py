@@ -9,17 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0049 import CopilotSeatDetailsType
+from .group_0090 import CodeSecurityConfigurationType
 
 
-class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[List[CopilotSeatDetailsType]]
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200Type",)
+__all__ = (
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
+)

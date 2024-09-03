@@ -11,15 +11,26 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookForkPropForkeeAllof0PropPermissionsType(TypedDict):
-    """WebhookForkPropForkeeAllof0PropPermissions"""
-
-    admin: bool
-    maintain: NotRequired[bool]
-    pull: bool
-    push: bool
-    triage: NotRequired[bool]
+from .group_0376 import EnterpriseWebhooksType
+from .group_0377 import SimpleInstallationType
+from .group_0379 import RepositoryWebhooksType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0492 import WebhookForkPropForkeeType
+from .group_0378 import OrganizationSimpleWebhooksType
 
 
-__all__ = ("WebhookForkPropForkeeAllof0PropPermissionsType",)
+class WebhookForkType(TypedDict):
+    """fork event
+
+    A user forks a repository.
+    """
+
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    forkee: WebhookForkPropForkeeType
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+
+
+__all__ = ("WebhookForkType",)

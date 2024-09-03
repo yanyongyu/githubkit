@@ -9,46 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
 from .group_0006 import IntegrationType
-from .group_0065 import ReactionRollupType
 
 
-class TimelineCommentEventType(TypedDict):
-    """Timeline Comment Event
+class AddedToProjectIssueEventType(TypedDict):
+    """Added to Project Issue Event
 
-    Timeline Comment Event
+    Added to Project Issue Event
     """
 
-    event: Literal["commented"]
-    actor: SimpleUserType
     id: int
     node_id: str
     url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: SimpleUserType
-    created_at: datetime
-    updated_at: datetime
-    issue_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    reactions: NotRequired[ReactionRollupType]
+    actor: SimpleUserType
+    event: Literal["added_to_project"]
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    project_card: NotRequired[AddedToProjectIssueEventPropProjectCardType]
 
 
-__all__ = ("TimelineCommentEventType",)
+class AddedToProjectIssueEventPropProjectCardType(TypedDict):
+    """AddedToProjectIssueEventPropProjectCard"""
+
+    id: int
+    url: str
+    project_id: int
+    project_url: str
+    column_name: str
+    previous_column_name: NotRequired[str]
+
+
+__all__ = (
+    "AddedToProjectIssueEventType",
+    "AddedToProjectIssueEventPropProjectCardType",
+)

@@ -26,6 +26,12 @@ class CodeSecurityConfigurationType(TypedDict):
     description: NotRequired[str]
     advanced_security: NotRequired[Literal["enabled", "disabled"]]
     dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
+    dependency_graph_autosubmit_action: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
+    dependency_graph_autosubmit_action_options: NotRequired[
+        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType
+    ]
     dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
     dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
     code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
@@ -46,4 +52,18 @@ class CodeSecurityConfigurationType(TypedDict):
     updated_at: NotRequired[datetime]
 
 
-__all__ = ("CodeSecurityConfigurationType",)
+class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType(
+    TypedDict
+):
+    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
+
+    Feature options for Automatic dependency submission
+    """
+
+    labeled_runners: NotRequired[bool]
+
+
+__all__ = (
+    "CodeSecurityConfigurationType",
+    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType",
+)

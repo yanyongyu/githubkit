@@ -7416,10 +7416,13 @@ class ReposClient:
     ) -> Response[FileCommit]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#create-or-update-file-contents"""
 
+        from typing import Union
+
         from ..models import (
             BasicError,
             FileCommit,
             ValidationError,
+            RepositoryRuleViolationError,
             ReposOwnerRepoContentsPathPutBody,
         )
 
@@ -7443,7 +7446,7 @@ class ReposClient:
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
-                "409": BasicError,
+                "409": Union[BasicError, RepositoryRuleViolationError],
             },
         )
 
@@ -7487,10 +7490,13 @@ class ReposClient:
     ) -> Response[FileCommit]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#create-or-update-file-contents"""
 
+        from typing import Union
+
         from ..models import (
             BasicError,
             FileCommit,
             ValidationError,
+            RepositoryRuleViolationError,
             ReposOwnerRepoContentsPathPutBody,
         )
 
@@ -7514,7 +7520,7 @@ class ReposClient:
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
-                "409": BasicError,
+                "409": Union[BasicError, RepositoryRuleViolationError],
             },
         )
 

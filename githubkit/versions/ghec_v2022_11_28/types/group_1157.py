@@ -9,18 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Literal
 from typing_extensions import TypedDict
 
 
-class UserEmailsPostBodyOneof0Type(TypedDict):
-    """UserEmailsPostBodyOneof0
+class UserCodespacesSecretsGetResponse200Type(TypedDict):
+    """UserCodespacesSecretsGetResponse200"""
 
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
+    total_count: int
+    secrets: List[CodespacesSecretType]
+
+
+class CodespacesSecretType(TypedDict):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
     """
 
-    emails: List[str]
+    name: str
+    created_at: datetime
+    updated_at: datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: str
 
 
-__all__ = ("UserEmailsPostBodyOneof0Type",)
+__all__ = (
+    "UserCodespacesSecretsGetResponse200Type",
+    "CodespacesSecretType",
+)

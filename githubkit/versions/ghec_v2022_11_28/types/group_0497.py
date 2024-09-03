@@ -12,24 +12,30 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0261 import DependabotAlertType
-from .group_0408 import EnterpriseWebhooksType
-from .group_0409 import SimpleInstallationType
-from .group_0411 import RepositoryWebhooksType
-from .group_0412 import SimpleUserWebhooksType
-from .group_0410 import OrganizationSimpleWebhooksType
+from .group_0413 import EnterpriseWebhooksType
+from .group_0414 import SimpleInstallationType
+from .group_0417 import SimpleUserWebhooksType
+from .group_0415 import OrganizationSimpleWebhooksType
 
 
-class WebhookDependabotAlertAutoReopenedType(TypedDict):
-    """Dependabot alert auto-reopened event"""
+class WebhookCustomPropertyDeletedType(TypedDict):
+    """custom property deleted event"""
 
-    action: Literal["auto_reopened"]
-    alert: DependabotAlertType
+    action: Literal["deleted"]
+    definition: WebhookCustomPropertyDeletedPropDefinitionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookDependabotAlertAutoReopenedType",)
+class WebhookCustomPropertyDeletedPropDefinitionType(TypedDict):
+    """WebhookCustomPropertyDeletedPropDefinition"""
+
+    property_name: str
+
+
+__all__ = (
+    "WebhookCustomPropertyDeletedType",
+    "WebhookCustomPropertyDeletedPropDefinitionType",
+)

@@ -13,17 +13,18 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0245 import Link
+
+class PullRequestMergeResult(GitHubModel):
+    """Pull Request Merge Result
+
+    Pull Request Merge Result
+    """
+
+    sha: str = Field()
+    merged: bool = Field()
+    message: str = Field()
 
 
-class ReviewCommentPropLinks(GitHubModel):
-    """ReviewCommentPropLinks"""
+model_rebuild(PullRequestMergeResult)
 
-    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
-    html: Link = Field(title="Link", description="Hypermedia Link")
-    pull_request: Link = Field(title="Link", description="Hypermedia Link")
-
-
-model_rebuild(ReviewCommentPropLinks)
-
-__all__ = ("ReviewCommentPropLinks",)
+__all__ = ("PullRequestMergeResult",)

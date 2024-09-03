@@ -9,22 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
 
-from .group_0228 import CodeScanningVariantAnalysisRepositoryType
-
-
-class CodeScanningVariantAnalysisPropScannedRepositoriesItemsType(TypedDict):
-    """CodeScanningVariantAnalysisPropScannedRepositoriesItems"""
-
-    repository: CodeScanningVariantAnalysisRepositoryType
-    analysis_status: Literal[
-        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
-    ]
-    result_count: NotRequired[int]
-    artifact_size_in_bytes: NotRequired[int]
-    failure_message: NotRequired[str]
+from .group_0230 import CodeScanningVariantAnalysisRepositoryType
 
 
-__all__ = ("CodeScanningVariantAnalysisPropScannedRepositoriesItemsType",)
+class CodeScanningVariantAnalysisSkippedRepoGroupType(TypedDict):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
+
+    repository_count: int
+    repositories: List[CodeScanningVariantAnalysisRepositoryType]
+
+
+__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroupType",)

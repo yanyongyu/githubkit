@@ -9,34 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import List, Union
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
+from .group_0055 import MinimalRepository
 
 
-class Status(GitHubModel):
-    """Status
+class CombinedCommitStatus(GitHubModel):
+    """Combined Commit Status
 
-    The status of a commit.
+    Combined Commit Status
     """
 
+    state: str = Field()
+    statuses: List[SimpleCommitStatus] = Field()
+    sha: str = Field()
+    total_count: int = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    commit_url: str = Field()
     url: str = Field()
-    avatar_url: Union[str, None] = Field()
+
+
+class SimpleCommitStatus(GitHubModel):
+    """Simple Commit Status"""
+
+    description: Union[str, None] = Field()
     id: int = Field()
     node_id: str = Field()
     state: str = Field()
-    description: Union[str, None] = Field()
-    target_url: Union[str, None] = Field()
     context: str = Field()
-    created_at: str = Field()
-    updated_at: str = Field()
-    creator: Union[None, SimpleUser] = Field()
+    target_url: Union[str, None] = Field()
+    required: Missing[Union[bool, None]] = Field(default=UNSET)
+    avatar_url: Union[str, None] = Field()
+    url: str = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(Status)
+model_rebuild(CombinedCommitStatus)
+model_rebuild(SimpleCommitStatus)
 
-__all__ = ("Status",)
+__all__ = (
+    "CombinedCommitStatus",
+    "SimpleCommitStatus",
+)

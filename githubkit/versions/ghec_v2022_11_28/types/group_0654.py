@@ -9,53 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookProjectCardMovedPropProjectCardAllof1Type(TypedDict):
-    """WebhookProjectCardMovedPropProjectCardAllof1"""
-
-    after_id: Union[int, None]
-    archived: NotRequired[bool]
-    column_id: NotRequired[int]
-    column_url: NotRequired[str]
-    created_at: NotRequired[str]
-    creator: NotRequired[
-        Union[WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType, None]
-    ]
-    id: NotRequired[int]
-    node_id: NotRequired[str]
-    note: NotRequired[Union[str, None]]
-    project_url: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
+from .group_0413 import EnterpriseWebhooksType
+from .group_0414 import SimpleInstallationType
+from .group_0416 import RepositoryWebhooksType
+from .group_0417 import SimpleUserWebhooksType
+from .group_0447 import WebhooksProjectCardType
+from .group_0415 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType(TypedDict):
-    """WebhookProjectCardMovedPropProjectCardAllof1PropCreator"""
+class WebhookProjectCardCreatedType(TypedDict):
+    """project_card created event"""
 
-    avatar_url: NotRequired[str]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    login: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    url: NotRequired[str]
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_card: WebhooksProjectCardType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserWebhooksType
 
 
-__all__ = (
-    "WebhookProjectCardMovedPropProjectCardAllof1Type",
-    "WebhookProjectCardMovedPropProjectCardAllof1PropCreatorType",
-)
+__all__ = ("WebhookProjectCardCreatedType",)

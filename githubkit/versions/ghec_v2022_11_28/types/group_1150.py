@@ -9,16 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 
-class UserCodespacesSecretsSecretNamePutBodyType(TypedDict):
-    """UserCodespacesSecretsSecretNamePutBody"""
+class TeamsTeamIdProjectsProjectIdPutResponse403Type(TypedDict):
+    """TeamsTeamIdProjectsProjectIdPutResponse403"""
 
-    encrypted_value: NotRequired[str]
-    key_id: str
-    selected_repository_ids: NotRequired[List[Union[int, str]]]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-__all__ = ("UserCodespacesSecretsSecretNamePutBodyType",)
+__all__ = ("TeamsTeamIdProjectsProjectIdPutResponse403Type",)

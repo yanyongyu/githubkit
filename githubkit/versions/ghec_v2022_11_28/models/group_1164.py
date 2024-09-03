@@ -16,14 +16,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserMembershipsOrgsOrgPatchBody(GitHubModel):
-    """UserMembershipsOrgsOrgPatchBody"""
+class UserEmailVisibilityPatchBody(GitHubModel):
+    """UserEmailVisibilityPatchBody"""
 
-    state: Literal["active"] = Field(
-        description='The state that the membership should be in. Only `"active"` will be accepted.'
+    visibility: Literal["public", "private"] = Field(
+        description="Denotes whether an email is publicly visible."
     )
 
 
-model_rebuild(UserMembershipsOrgsOrgPatchBody)
+model_rebuild(UserEmailVisibilityPatchBody)
 
-__all__ = ("UserMembershipsOrgsOrgPatchBody",)
+__all__ = ("UserEmailVisibilityPatchBody",)

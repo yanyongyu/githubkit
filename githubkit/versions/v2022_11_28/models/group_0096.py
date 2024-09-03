@@ -19,13 +19,17 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgCustomProperty(GitHubModel):
+class CustomProperty(GitHubModel):
     """Organization Custom Property
 
     Custom property defined on an organization
     """
 
     property_name: str = Field(description="The name of the property")
+    url: Missing[str] = Field(
+        default=UNSET,
+        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
+    )
     value_type: Literal["string", "single_select", "multi_select", "true_false"] = (
         Field(description="The type of the value for the property")
     )
@@ -54,6 +58,6 @@ class OrgCustomProperty(GitHubModel):
     ] = Field(default=UNSET, description="Who can edit the values of the property")
 
 
-model_rebuild(OrgCustomProperty)
+model_rebuild(CustomProperty)
 
-__all__ = ("OrgCustomProperty",)
+__all__ = ("CustomProperty",)

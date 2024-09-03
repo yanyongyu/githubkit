@@ -13,17 +13,35 @@ from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0376 import EnterpriseWebhooksType
+from .group_0377 import SimpleInstallationType
+from .group_0379 import RepositoryWebhooksType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0378 import OrganizationSimpleWebhooksType
 
-class WebhookProjectCardMovedPropProjectCardAllof0Type(TypedDict):
+
+class WebhookProjectCardDeletedType(TypedDict):
+    """project_card deleted event"""
+
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project_card: WebhookProjectCardDeletedPropProjectCardType
+    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    sender: SimpleUserWebhooksType
+
+
+class WebhookProjectCardDeletedPropProjectCardType(TypedDict):
     """Project Card"""
 
     after_id: NotRequired[Union[int, None]]
     archived: bool
-    column_id: int
+    column_id: Union[int, None]
     column_url: str
     content_url: NotRequired[str]
     created_at: datetime
-    creator: Union[WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType, None]
+    creator: Union[WebhookProjectCardDeletedPropProjectCardPropCreatorType, None]
     id: int
     node_id: str
     note: Union[str, None]
@@ -32,7 +50,7 @@ class WebhookProjectCardMovedPropProjectCardAllof0Type(TypedDict):
     url: str
 
 
-class WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType(TypedDict):
+class WebhookProjectCardDeletedPropProjectCardPropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -59,6 +77,7 @@ class WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType(TypedDict):
 
 
 __all__ = (
-    "WebhookProjectCardMovedPropProjectCardAllof0Type",
-    "WebhookProjectCardMovedPropProjectCardAllof0PropCreatorType",
+    "WebhookProjectCardDeletedType",
+    "WebhookProjectCardDeletedPropProjectCardType",
+    "WebhookProjectCardDeletedPropProjectCardPropCreatorType",
 )

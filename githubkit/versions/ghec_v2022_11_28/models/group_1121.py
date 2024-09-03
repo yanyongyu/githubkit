@@ -9,89 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0137 import RepositoryRuleUpdate
-from .group_0163 import RepositoryRuleOneof18
-from .group_0159 import RepositoryRuleWorkflows
-from .group_0140 import RepositoryRuleMergeQueue
-from .group_0144 import RepositoryRulePullRequest
-from .group_0161 import RepositoryRuleCodeScanning
-from .group_0125 import RepositoryRulesetConditions
-from .group_0124 import RepositoryRulesetBypassActor
-from .group_0156 import RepositoryRuleTagNamePattern
-from .group_0154 import RepositoryRuleBranchNamePattern
-from .group_0142 import RepositoryRuleRequiredDeployments
-from .group_0146 import RepositoryRuleRequiredStatusChecks
-from .group_0148 import RepositoryRuleCommitMessagePattern
-from .group_0152 import RepositoryRuleCommitterEmailPattern
-from .group_0150 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0139 import RepositoryRuleOneof16, RepositoryRuleRequiredLinearHistory
-from .group_0136 import (
-    RepositoryRuleOneof15,
-    RepositoryRuleOneof17,
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
 
+class ReposOwnerRepoPullsPullNumberUpdateBranchPutBody(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberUpdateBranchPutBody"""
 
-class ReposOwnerRepoRulesetsPostBody(GitHubModel):
-    """ReposOwnerRepoRulesetsPostBody"""
-
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
+    expected_head_sha: Missing[str] = Field(
         default=UNSET,
-        description="The target of the ruleset\n\n> [!NOTE]\n> The `push` target is in beta and is subject to change.",
+        description="The expected SHA of the pull request's HEAD ref. This is the most recent commit on the pull request's branch. If the expected SHA does not match the pull request's HEAD, you will receive a `422 Unprocessable Entity` status. You can use the \"[List commits](https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-commits)\" endpoint to find the most recent commit SHA. Default: SHA of the pull request's current HEAD ref.",
     )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page."
-    )
-    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
-        default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
-    )
-    conditions: Missing[RepositoryRulesetConditions] = Field(
-        default=UNSET,
-        title="Repository ruleset conditions for ref names",
-        description="Parameters for a repository ruleset ref name condition",
-    )
-    rules: Missing[
-        List[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleOneof15,
-                RepositoryRuleOneof16,
-                RepositoryRuleOneof17,
-                RepositoryRuleOneof18,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoRulesetsPostBody)
+model_rebuild(ReposOwnerRepoPullsPullNumberUpdateBranchPutBody)
 
-__all__ = ("ReposOwnerRepoRulesetsPostBody",)
+__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutBody",)

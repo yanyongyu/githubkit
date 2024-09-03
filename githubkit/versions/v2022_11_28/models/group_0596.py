@@ -17,30 +17,34 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0597 import WebhookPackageUpdatedPropPackagePropPackageVersion
+from .group_0597 import WebhookPackagePublishedPropPackagePropPackageVersion
 
 
-class WebhookPackageUpdatedPropPackage(GitHubModel):
-    """WebhookPackageUpdatedPropPackage
+class WebhookPackagePublishedPropPackage(GitHubModel):
+    """WebhookPackagePublishedPropPackage
 
     Information about the package.
     """
 
-    created_at: str = Field()
+    created_at: Union[str, None] = Field()
     description: Union[str, None] = Field()
     ecosystem: str = Field()
     html_url: str = Field()
     id: int = Field()
     name: str = Field()
     namespace: str = Field()
-    owner: Union[WebhookPackageUpdatedPropPackagePropOwner, None] = Field(title="User")
+    owner: Union[WebhookPackagePublishedPropPackagePropOwner, None] = Field(
+        title="User"
+    )
     package_type: str = Field()
-    package_version: WebhookPackageUpdatedPropPackagePropPackageVersion = Field()
-    registry: Union[WebhookPackageUpdatedPropPackagePropRegistry, None] = Field()
-    updated_at: str = Field()
+    package_version: Union[
+        WebhookPackagePublishedPropPackagePropPackageVersion, None
+    ] = Field()
+    registry: Union[WebhookPackagePublishedPropPackagePropRegistry, None] = Field()
+    updated_at: Union[str, None] = Field()
 
 
-class WebhookPackageUpdatedPropPackagePropOwner(GitHubModel):
+class WebhookPackagePublishedPropPackagePropOwner(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -66,8 +70,8 @@ class WebhookPackageUpdatedPropPackagePropOwner(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPackageUpdatedPropPackagePropRegistry(GitHubModel):
-    """WebhookPackageUpdatedPropPackagePropRegistry"""
+class WebhookPackagePublishedPropPackagePropRegistry(GitHubModel):
+    """WebhookPackagePublishedPropPackagePropRegistry"""
 
     about_url: str = Field()
     name: str = Field()
@@ -76,12 +80,12 @@ class WebhookPackageUpdatedPropPackagePropRegistry(GitHubModel):
     vendor: str = Field()
 
 
-model_rebuild(WebhookPackageUpdatedPropPackage)
-model_rebuild(WebhookPackageUpdatedPropPackagePropOwner)
-model_rebuild(WebhookPackageUpdatedPropPackagePropRegistry)
+model_rebuild(WebhookPackagePublishedPropPackage)
+model_rebuild(WebhookPackagePublishedPropPackagePropOwner)
+model_rebuild(WebhookPackagePublishedPropPackagePropRegistry)
 
 __all__ = (
-    "WebhookPackageUpdatedPropPackage",
-    "WebhookPackageUpdatedPropPackagePropOwner",
-    "WebhookPackageUpdatedPropPackagePropRegistry",
+    "WebhookPackagePublishedPropPackage",
+    "WebhookPackagePublishedPropPackagePropOwner",
+    "WebhookPackagePublishedPropPackagePropRegistry",
 )

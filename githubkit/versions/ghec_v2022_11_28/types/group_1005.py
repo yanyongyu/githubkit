@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoCheckSuitesPostBodyType(TypedDict):
-    """ReposOwnerRepoCheckSuitesPostBody"""
+class ReposOwnerRepoBranchesBranchRenamePostBodyType(TypedDict):
+    """ReposOwnerRepoBranchesBranchRenamePostBody"""
 
-    head_sha: str
+    new_name: str
 
 
-__all__ = ("ReposOwnerRepoCheckSuitesPostBodyType",)
+__all__ = ("ReposOwnerRepoBranchesBranchRenamePostBodyType",)

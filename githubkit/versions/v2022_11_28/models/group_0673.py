@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0373 import EnterpriseWebhooks
-from .group_0374 import SimpleInstallation
-from .group_0376 import RepositoryWebhooks
-from .group_0377 import SimpleUserWebhooks
-from .group_0375 import OrganizationSimpleWebhooks
-from .group_0674 import WebhookRegistryPackageUpdatedPropRegistryPackage
+from .group_0376 import EnterpriseWebhooks
+from .group_0377 import SimpleInstallation
+from .group_0379 import RepositoryWebhooks
+from .group_0380 import SimpleUserWebhooks
+from .group_0378 import OrganizationSimpleWebhooks
+from .group_0674 import WebhookRegistryPackagePublishedPropRegistryPackage
 
 
-class WebhookRegistryPackageUpdated(GitHubModel):
-    """WebhookRegistryPackageUpdated"""
+class WebhookRegistryPackagePublished(GitHubModel):
+    """WebhookRegistryPackagePublished"""
 
-    action: Literal["updated"] = Field()
+    action: Literal["published"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,7 +44,7 @@ class WebhookRegistryPackageUpdated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackage = Field()
+    registry_package: WebhookRegistryPackagePublishedPropRegistryPackage = Field()
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
@@ -56,6 +56,6 @@ class WebhookRegistryPackageUpdated(GitHubModel):
     )
 
 
-model_rebuild(WebhookRegistryPackageUpdated)
+model_rebuild(WebhookRegistryPackagePublished)
 
-__all__ = ("WebhookRegistryPackageUpdated",)
+__all__ = ("WebhookRegistryPackagePublished",)

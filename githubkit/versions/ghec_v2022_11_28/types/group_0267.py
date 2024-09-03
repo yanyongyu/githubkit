@@ -9,35 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import List, Union, Literal
+from typing_extensions import TypedDict
 
-from .group_0265 import MetadataType
 
+class DependencyGraphDiffItemsType(TypedDict):
+    """DependencyGraphDiffItems"""
 
-class ManifestType(TypedDict):
-    """Manifest"""
-
+    change_type: Literal["added", "removed"]
+    manifest: str
+    ecosystem: str
     name: str
-    file: NotRequired[ManifestPropFileType]
-    metadata: NotRequired[MetadataType]
-    resolved: NotRequired[ManifestPropResolvedType]
+    version: str
+    package_url: Union[str, None]
+    license_: Union[str, None]
+    source_repository_url: Union[str, None]
+    vulnerabilities: List[DependencyGraphDiffItemsPropVulnerabilitiesItemsType]
+    scope: Literal["unknown", "runtime", "development"]
 
 
-class ManifestPropFileType(TypedDict):
-    """ManifestPropFile"""
+class DependencyGraphDiffItemsPropVulnerabilitiesItemsType(TypedDict):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
 
-    source_location: NotRequired[str]
-
-
-class ManifestPropResolvedType(TypedDict):
-    """ManifestPropResolved
-
-    A collection of resolved package dependencies.
-    """
+    severity: str
+    advisory_ghsa_id: str
+    advisory_summary: str
+    advisory_url: str
 
 
 __all__ = (
-    "ManifestType",
-    "ManifestPropFileType",
-    "ManifestPropResolvedType",
+    "DependencyGraphDiffItemsType",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItemsType",
 )

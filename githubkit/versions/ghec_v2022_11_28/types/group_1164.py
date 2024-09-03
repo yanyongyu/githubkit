@@ -13,10 +13,10 @@ from typing import Literal
 from typing_extensions import TypedDict
 
 
-class UserMembershipsOrgsOrgPatchBodyType(TypedDict):
-    """UserMembershipsOrgsOrgPatchBody"""
+class UserEmailVisibilityPatchBodyType(TypedDict):
+    """UserEmailVisibilityPatchBody"""
 
-    state: Literal["active"]
+    visibility: Literal["public", "private"]
 
 
-__all__ = ("UserMembershipsOrgsOrgPatchBodyType",)
+__all__ = ("UserEmailVisibilityPatchBodyType",)

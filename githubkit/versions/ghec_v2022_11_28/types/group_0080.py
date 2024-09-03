@@ -33,6 +33,7 @@ class ApiOverviewType(TypedDict):
     actions: NotRequired[List[str]]
     actions_macos: NotRequired[List[str]]
     dependabot: NotRequired[List[str]]
+    copilot: NotRequired[List[str]]
     domains: NotRequired[ApiOverviewPropDomainsType]
 
 
@@ -53,10 +54,21 @@ class ApiOverviewPropDomainsType(TypedDict):
     copilot: NotRequired[List[str]]
     packages: NotRequired[List[str]]
     actions: NotRequired[List[str]]
+    artifact_attestations: NotRequired[
+        ApiOverviewPropDomainsPropArtifactAttestationsType
+    ]
+
+
+class ApiOverviewPropDomainsPropArtifactAttestationsType(TypedDict):
+    """ApiOverviewPropDomainsPropArtifactAttestations"""
+
+    trust_domain: NotRequired[str]
+    services: NotRequired[List[str]]
 
 
 __all__ = (
     "ApiOverviewType",
     "ApiOverviewPropSshKeyFingerprintsType",
     "ApiOverviewPropDomainsType",
+    "ApiOverviewPropDomainsPropArtifactAttestationsType",
 )

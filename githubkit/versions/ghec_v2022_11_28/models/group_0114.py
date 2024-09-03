@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -18,35 +18,28 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserRoleAssignment(GitHubModel):
-    """A Role Assignment for a User
+class OrganizationCustomOrganizationRoleUpdateSchema(GitHubModel):
+    """OrganizationCustomOrganizationRoleUpdateSchema"""
 
-    The Relationship a User has with a role.
-    """
-
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the custom role."
+    )
+    description: Missing[str] = Field(
+        default=UNSET,
+        description="A short description about the intended use of this role or the permissions it grants.",
+    )
+    permissions: Missing[List[str]] = Field(
+        default=UNSET,
+        description="A list of additional permissions included in this role.",
+    )
+    base_role: Missing[
+        Literal["none", "read", "triage", "write", "maintain", "admin"]
+    ] = Field(
+        default=UNSET,
+        description="The system role from which this role can inherit permissions.",
+    )
 
 
-model_rebuild(UserRoleAssignment)
+model_rebuild(OrganizationCustomOrganizationRoleUpdateSchema)
 
-__all__ = ("UserRoleAssignment",)
+__all__ = ("OrganizationCustomOrganizationRoleUpdateSchema",)

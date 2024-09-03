@@ -26,11 +26,15 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..types import ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
     from ..models import (
         SecretScanningAlert,
         SecretScanningLocation,
         OrganizationSecretScanningAlert,
+        SecretScanningPushProtectionBypass,
+    )
+    from ..types import (
+        ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
+        ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
     )
 
 
@@ -650,6 +654,136 @@ class SecretScanningClient:
             params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=List[SecretScanningLocation],
+            error_models={
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    def create_push_protection_bypass(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
+    ) -> Response[SecretScanningPushProtectionBypass]: ...
+
+    @overload
+    def create_push_protection_bypass(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        reason: Literal["false_positive", "used_in_tests", "will_fix_later"],
+        placeholder_id: str,
+    ) -> Response[SecretScanningPushProtectionBypass]: ...
+
+    def create_push_protection_bypass(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[
+            ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[SecretScanningPushProtectionBypass]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#create-a-push-protection-bypass"""
+
+        from ..models import (
+            SecretScanningPushProtectionBypass,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody,
+        )
+
+        url = f"/repos/{owner}/{repo}/secret-scanning/push-protection-bypasses"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = type_validate_python(
+            ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody, json
+        )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=SecretScanningPushProtectionBypass,
+            error_models={
+                "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            },
+        )
+
+    @overload
+    async def async_create_push_protection_bypass(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
+    ) -> Response[SecretScanningPushProtectionBypass]: ...
+
+    @overload
+    async def async_create_push_protection_bypass(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        reason: Literal["false_positive", "used_in_tests", "will_fix_later"],
+        placeholder_id: str,
+    ) -> Response[SecretScanningPushProtectionBypass]: ...
+
+    async def async_create_push_protection_bypass(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[
+            ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response[SecretScanningPushProtectionBypass]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/secret-scanning/secret-scanning#create-a-push-protection-bypass"""
+
+        from ..models import (
+            SecretScanningPushProtectionBypass,
+            EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
+            ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody,
+        )
+
+        url = f"/repos/{owner}/{repo}/secret-scanning/push-protection-bypasses"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        if not kwargs:
+            kwargs = UNSET
+
+        json = kwargs if data is UNSET else data
+        json = type_validate_python(
+            ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody, json
+        )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=SecretScanningPushProtectionBypass,
             error_models={
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },

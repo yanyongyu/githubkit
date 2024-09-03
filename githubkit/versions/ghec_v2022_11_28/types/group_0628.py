@@ -12,24 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0408 import EnterpriseWebhooksType
-from .group_0409 import SimpleInstallationType
-from .group_0411 import RepositoryWebhooksType
-from .group_0412 import SimpleUserWebhooksType
-from .group_0440 import WebhooksMembershipType
-from .group_0410 import OrganizationSimpleWebhooksType
+from .group_0437 import WebhooksMilestoneType
+from .group_0413 import EnterpriseWebhooksType
+from .group_0414 import SimpleInstallationType
+from .group_0416 import RepositoryWebhooksType
+from .group_0417 import SimpleUserWebhooksType
+from .group_0415 import OrganizationSimpleWebhooksType
 
 
-class WebhookOrganizationDeletedType(TypedDict):
-    """organization deleted event"""
+class WebhookMilestoneDeletedType(TypedDict):
+    """milestone deleted event"""
 
     action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    membership: NotRequired[WebhooksMembershipType]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
+    milestone: WebhooksMilestoneType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookOrganizationDeletedType",)
+__all__ = ("WebhookMilestoneDeletedType",)

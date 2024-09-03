@@ -9,17 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union
+from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class TopicType(TypedDict):
-    """Topic
+class RepositorySubscriptionType(TypedDict):
+    """Repository Invitation
 
-    A topic aggregates entities that are related to a subject.
+    Repository invitations let you manage who you collaborate with.
     """
 
-    names: List[str]
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: datetime
+    url: str
+    repository_url: str
 
 
-__all__ = ("TopicType",)
+__all__ = ("RepositorySubscriptionType",)

@@ -10,16 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_1090 import ReposOwnerRepoPagesPostBodyPropSourceType
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPagesPostBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoPagesPostBodyAnyof0"""
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: ReposOwnerRepoPagesPostBodyPropSourceType
+    Update the source for the repository. Must include the branch name and path.
+    """
+
+    branch: str
+    path: Literal["/", "/docs"]
 
 
-__all__ = ("ReposOwnerRepoPagesPostBodyAnyof0Type",)
+__all__ = ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",)

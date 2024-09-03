@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,19 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0385 import WebhooksUser
-from .group_0373 import EnterpriseWebhooks
-from .group_0374 import SimpleInstallation
-from .group_0376 import RepositoryWebhooks
-from .group_0377 import SimpleUserWebhooks
-from .group_0375 import OrganizationSimpleWebhooks
+from .group_0398 import WebhooksMilestone
+from .group_0376 import EnterpriseWebhooks
+from .group_0377 import SimpleInstallation
+from .group_0379 import RepositoryWebhooks
+from .group_0380 import SimpleUserWebhooks
+from .group_0378 import OrganizationSimpleWebhooks
 
 
-class WebhookOrgBlockBlocked(GitHubModel):
-    """org_block blocked event"""
+class WebhookMilestoneDeleted(GitHubModel):
+    """milestone deleted event"""
 
-    action: Literal["blocked"] = Field()
-    blocked_user: Union[WebhooksUser, None] = Field(title="User")
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,12 +39,16 @@ class WebhookOrgBlockBlocked(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    organization: OrganizationSimpleWebhooks = Field(
+    milestone: WebhooksMilestone = Field(
+        title="Milestone",
+        description="A collection of related issues and pull requests.",
+    )
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
@@ -55,6 +58,6 @@ class WebhookOrgBlockBlocked(GitHubModel):
     )
 
 
-model_rebuild(WebhookOrgBlockBlocked)
+model_rebuild(WebhookMilestoneDeleted)
 
-__all__ = ("WebhookOrgBlockBlocked",)
+__all__ = ("WebhookMilestoneDeleted",)

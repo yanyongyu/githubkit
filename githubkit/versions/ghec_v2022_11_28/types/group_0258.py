@@ -10,30 +10,27 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union, Literal
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class ContentSubmoduleType(TypedDict):
-    """Submodule Content
+class ContentDirectoryItemsType(TypedDict):
+    """ContentDirectoryItems"""
 
-    An object describing a submodule
-    """
-
-    type: Literal["submodule"]
-    submodule_git_url: str
+    type: Literal["dir", "file", "submodule", "symlink"]
     size: int
     name: str
     path: str
+    content: NotRequired[str]
     sha: str
     url: str
     git_url: Union[str, None]
     html_url: Union[str, None]
     download_url: Union[str, None]
-    links: ContentSubmodulePropLinksType
+    links: ContentDirectoryItemsPropLinksType
 
 
-class ContentSubmodulePropLinksType(TypedDict):
-    """ContentSubmodulePropLinks"""
+class ContentDirectoryItemsPropLinksType(TypedDict):
+    """ContentDirectoryItemsPropLinks"""
 
     git: Union[str, None]
     html: Union[str, None]
@@ -41,6 +38,6 @@ class ContentSubmodulePropLinksType(TypedDict):
 
 
 __all__ = (
-    "ContentSubmoduleType",
-    "ContentSubmodulePropLinksType",
+    "ContentDirectoryItemsType",
+    "ContentDirectoryItemsPropLinksType",
 )

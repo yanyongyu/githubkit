@@ -9,34 +9,90 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union, Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0139 import RepositoryRuleUpdate
+from .group_0165 import RepositoryRuleOneof18
+from .group_0161 import RepositoryRuleWorkflows
+from .group_0142 import RepositoryRuleMergeQueue
+from .group_0146 import RepositoryRulePullRequest
+from .group_0163 import RepositoryRuleCodeScanning
+from .group_0127 import RepositoryRulesetConditions
+from .group_0126 import RepositoryRulesetBypassActor
+from .group_0158 import RepositoryRuleTagNamePattern
+from .group_0156 import RepositoryRuleBranchNamePattern
+from .group_0144 import RepositoryRuleRequiredDeployments
+from .group_0148 import RepositoryRuleRequiredStatusChecks
+from .group_0150 import RepositoryRuleCommitMessagePattern
+from .group_0154 import RepositoryRuleCommitterEmailPattern
+from .group_0152 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0141 import RepositoryRuleOneof16, RepositoryRuleRequiredLinearHistory
+from .group_0138 import (
+    RepositoryRuleOneof15,
+    RepositoryRuleOneof17,
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
 
-class ReposTemplateOwnerTemplateRepoGeneratePostBody(GitHubModel):
-    """ReposTemplateOwnerTemplateRepoGeneratePostBody"""
 
-    owner: Missing[str] = Field(
+class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
+
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
         default=UNSET,
-        description="The organization or person who will own the new repository. To create a new repository in an organization, the authenticated user must be a member of the specified organization.",
+        description="The target of the ruleset\n\n> [!NOTE]\n> The `push` target is in beta and is subject to change.",
     )
-    name: str = Field(description="The name of the new repository.")
-    description: Missing[str] = Field(
-        default=UNSET, description="A short description of the new repository."
-    )
-    include_all_branches: Missing[bool] = Field(
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
         default=UNSET,
-        description="Set to `true` to include the directory structure and files from all branches in the template repository, and not just the default branch. Default: `false`.",
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page.",
     )
-    private: Missing[bool] = Field(
+    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
-        description="Either `true` to create a new private repository or `false` to create a new public one.",
+        description="The actors that can bypass the rules in this ruleset",
     )
+    conditions: Missing[RepositoryRulesetConditions] = Field(
+        default=UNSET,
+        title="Repository ruleset conditions for ref names",
+        description="Parameters for a repository ruleset ref name condition",
+    )
+    rules: Missing[
+        List[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleOneof15,
+                RepositoryRuleOneof16,
+                RepositoryRuleOneof17,
+                RepositoryRuleOneof18,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposTemplateOwnerTemplateRepoGeneratePostBody)
+model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
 
-__all__ = ("ReposTemplateOwnerTemplateRepoGeneratePostBody",)
+__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)

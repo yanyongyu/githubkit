@@ -9,35 +9,49 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Union
+from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0016 import LicenseSimpleType
+from .group_0124 import CodeOfConductSimpleType
 
-class ContentDirectoryItemsType(TypedDict):
-    """ContentDirectoryItems"""
 
-    type: Literal["dir", "file", "submodule", "symlink"]
-    size: int
-    name: str
-    path: str
-    content: NotRequired[str]
-    sha: str
+class CommunityProfilePropFilesType(TypedDict):
+    """CommunityProfilePropFiles"""
+
+    code_of_conduct: Union[None, CodeOfConductSimpleType]
+    code_of_conduct_file: Union[None, CommunityHealthFileType]
+    license_: Union[None, LicenseSimpleType]
+    contributing: Union[None, CommunityHealthFileType]
+    readme: Union[None, CommunityHealthFileType]
+    issue_template: Union[None, CommunityHealthFileType]
+    pull_request_template: Union[None, CommunityHealthFileType]
+
+
+class CommunityHealthFileType(TypedDict):
+    """Community Health File"""
+
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentDirectoryItemsPropLinksType
+    html_url: str
 
 
-class ContentDirectoryItemsPropLinksType(TypedDict):
-    """ContentDirectoryItemsPropLinks"""
+class CommunityProfileType(TypedDict):
+    """Community Profile
 
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
+    Community Profile
+    """
+
+    health_percentage: int
+    description: Union[str, None]
+    documentation: Union[str, None]
+    files: CommunityProfilePropFilesType
+    updated_at: Union[datetime, None]
+    content_reports_enabled: NotRequired[bool]
 
 
 __all__ = (
-    "ContentDirectoryItemsType",
-    "ContentDirectoryItemsPropLinksType",
+    "CommunityProfilePropFilesType",
+    "CommunityHealthFileType",
+    "CommunityProfileType",
 )

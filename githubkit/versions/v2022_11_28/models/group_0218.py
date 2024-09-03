@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,39 +17,35 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0074 import CodeSecurityConfiguration
 
-class CodeownersErrors(GitHubModel):
-    """CODEOWNERS errors
 
-    A list of errors found in a repo's CODEOWNERS file
+class CodeSecurityConfigurationForRepository(GitHubModel):
+    """CodeSecurityConfigurationForRepository
+
+    Code security configuration associated with a repository and attachment status
     """
 
-    errors: List[CodeownersErrorsPropErrorsItems] = Field()
-
-
-class CodeownersErrorsPropErrorsItems(GitHubModel):
-    """CodeownersErrorsPropErrorsItems"""
-
-    line: int = Field(description="The line number where this errors occurs.")
-    column: int = Field(description="The column number where this errors occurs.")
-    source: Missing[str] = Field(
-        default=UNSET, description="The contents of the line where the error occurs."
-    )
-    kind: str = Field(description="The type of error.")
-    suggestion: Missing[Union[str, None]] = Field(
+    status: Missing[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ] = Field(
         default=UNSET,
-        description="Suggested action to fix the error. This will usually be `null`, but is provided for some common errors.",
+        description="The attachment status of the code security configuration on the repository.",
     )
-    message: str = Field(
-        description="A human-readable description of the error, combining information from multiple fields, laid out for display in a monospaced typeface (for example, a command-line setting)."
+    configuration: Missing[CodeSecurityConfiguration] = Field(
+        default=UNSET, description="A code security configuration"
     )
-    path: str = Field(description="The path of the file where the error occured.")
 
 
-model_rebuild(CodeownersErrors)
-model_rebuild(CodeownersErrorsPropErrorsItems)
+model_rebuild(CodeSecurityConfigurationForRepository)
 
-__all__ = (
-    "CodeownersErrors",
-    "CodeownersErrorsPropErrorsItems",
-)
+__all__ = ("CodeSecurityConfigurationForRepository",)

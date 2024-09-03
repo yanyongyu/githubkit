@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0373 import EnterpriseWebhooks
-from .group_0374 import SimpleInstallation
-from .group_0376 import RepositoryWebhooks
-from .group_0377 import SimpleUserWebhooks
-from .group_0403 import WebhooksMembership
-from .group_0375 import OrganizationSimpleWebhooks
+from .group_0376 import EnterpriseWebhooks
+from .group_0377 import SimpleInstallation
+from .group_0379 import RepositoryWebhooks
+from .group_0380 import SimpleUserWebhooks
+from .group_0406 import WebhooksMembership
+from .group_0378 import OrganizationSimpleWebhooks
 
 
-class WebhookOrganizationMemberRemoved(GitHubModel):
-    """organization member_removed event"""
+class WebhookOrganizationDeleted(GitHubModel):
+    """organization deleted event"""
 
-    action: Literal["member_removed"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +39,8 @@ class WebhookOrganizationMemberRemoved(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    membership: WebhooksMembership = Field(
+    membership: Missing[WebhooksMembership] = Field(
+        default=UNSET,
         title="Membership",
         description="The membership between the user and the organization. Not present when the action is `member_invited`.",
     )
@@ -58,6 +59,6 @@ class WebhookOrganizationMemberRemoved(GitHubModel):
     )
 
 
-model_rebuild(WebhookOrganizationMemberRemoved)
+model_rebuild(WebhookOrganizationDeleted)
 
-__all__ = ("WebhookOrganizationMemberRemoved",)
+__all__ = ("WebhookOrganizationDeleted",)

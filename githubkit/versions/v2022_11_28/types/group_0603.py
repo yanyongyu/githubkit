@@ -9,23 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0376 import RepositoryWebhooksType
-from .group_0377 import SimpleUserWebhooksType
-from .group_0604 import WebhookPingPropHookType
-from .group_0375 import OrganizationSimpleWebhooksType
+from .group_0376 import EnterpriseWebhooksType
+from .group_0377 import SimpleInstallationType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0378 import OrganizationSimpleWebhooksType
+from .group_0407 import PersonalAccessTokenRequestType
 
 
-class WebhookPingType(TypedDict):
-    """WebhookPing"""
+class WebhookPersonalAccessTokenRequestCancelledType(TypedDict):
+    """personal_access_token_request cancelled event"""
 
-    hook: NotRequired[WebhookPingPropHookType]
-    hook_id: NotRequired[int]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserWebhooksType]
-    zen: NotRequired[str]
+    action: Literal["cancelled"]
+    personal_access_token_request: PersonalAccessTokenRequestType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    organization: OrganizationSimpleWebhooksType
+    sender: SimpleUserWebhooksType
+    installation: SimpleInstallationType
 
 
-__all__ = ("WebhookPingType",)
+__all__ = ("WebhookPersonalAccessTokenRequestCancelledType",)

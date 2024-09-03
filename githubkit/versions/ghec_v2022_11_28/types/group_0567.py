@@ -10,35 +10,38 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union
-from typing_extensions import TypedDict, NotRequired
+from typing import Union, Literal
+from typing_extensions import TypedDict
 
-from .group_0563 import (
-    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-    WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
+from .group_0566 import (
+    WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType,
 )
 
 
-class WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubAppType(TypedDict):
-    """WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubApp"""
+class WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneType(TypedDict):
+    """Milestone
 
-    created_at: Union[datetime, None]
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[datetime, None]
+    closed_issues: int
+    created_at: datetime
+    creator: Union[
+        WebhookIssueCommentDeletedPropIssueAllof0PropMilestonePropCreatorType, None
+    ]
     description: Union[str, None]
-    events: NotRequired[List[str]]
-    external_url: Union[str, None]
+    due_on: Union[datetime, None]
     html_url: str
-    id: Union[int, None]
-    name: str
+    id: int
+    labels_url: str
     node_id: str
-    owner: Union[
-        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
-        None,
-    ]
-    permissions: NotRequired[
-        WebhookIssueCommentDeletedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType
-    ]
-    slug: NotRequired[str]
-    updated_at: Union[datetime, None]
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: datetime
+    url: str
 
 
-__all__ = ("WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubAppType",)
+__all__ = ("WebhookIssueCommentDeletedPropIssueAllof0PropMilestoneType",)

@@ -9,27 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 from typing_extensions import TypedDict
 
-
-class GroupType(TypedDict):
-    """Group"""
-
-    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
-    external_id: str
-    display_name: str
-    members: List[GroupPropMembersItemsType]
+from .group_0372 import TrafficType
 
 
-class GroupPropMembersItemsType(TypedDict):
-    """GroupPropMembersItems"""
+class ViewTrafficType(TypedDict):
+    """View Traffic
 
-    value: str
-    display_name: str
+    View Traffic
+    """
+
+    count: int
+    uniques: int
+    views: List[TrafficType]
 
 
-__all__ = (
-    "GroupType",
-    "GroupPropMembersItemsType",
-)
+__all__ = ("ViewTrafficType",)

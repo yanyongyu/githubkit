@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,93 +18,72 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
 
-class PrivateVulnerabilityReportCreate(GitHubModel):
-    """PrivateVulnerabilityReportCreate"""
 
-    summary: str = Field(
-        max_length=1024, description="A short summary of the advisory."
+class SecretScanningAlert(GitHubModel):
+    """SecretScanningAlert"""
+
+    number: Missing[int] = Field(
+        default=UNSET, description="The security alert number."
     )
-    description: str = Field(
-        max_length=65535,
-        description="A detailed description of what the advisory impacts.",
+    created_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    vulnerabilities: Missing[
-        Union[List[PrivateVulnerabilityReportCreatePropVulnerabilitiesItems], None]
+    updated_at: Missing[Union[None, datetime]] = Field(default=UNSET)
+    url: Missing[str] = Field(
+        default=UNSET, description="The REST API URL of the alert resource."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The GitHub URL of the alert resource."
+    )
+    locations_url: Missing[str] = Field(
+        default=UNSET,
+        description="The REST API URL of the code locations for this alert.",
+    )
+    state: Missing[Literal["open", "resolved"]] = Field(
+        default=UNSET,
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
+    )
+    resolution: Missing[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
     ] = Field(
         default=UNSET,
-        description="An array of products affected by the vulnerability detailed in a repository security advisory.",
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
     )
-    cwe_ids: Missing[Union[List[str], None]] = Field(
-        default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
-    )
-    severity: Missing[Union[None, Literal["critical", "high", "medium", "low"]]] = (
-        Field(
-            default=UNSET,
-            description="The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.",
-        )
-    )
-    cvss_vector_string: Missing[Union[str, None]] = Field(
+    resolved_at: Missing[Union[datetime, None]] = Field(
         default=UNSET,
-        description="The CVSS vector that calculates the severity of the advisory. You must choose between setting this field or `severity`.",
+        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    start_private_fork: Missing[bool] = Field(
+    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET, description="An optional comment to resolve an alert."
+    )
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that secret scanning detected."
+    )
+    secret_type_display_name: Missing[str] = Field(
         default=UNSET,
-        description="Whether to create a temporary private fork of the repository to collaborate on a fix.",
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
     )
-
-
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItems(GitHubModel):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItems"""
-
-    package: PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage = (
-        Field(description="The name of the package affected by the vulnerability.")
+    secret: Missing[str] = Field(
+        default=UNSET, description="The secret that was detected."
     )
-    vulnerable_version_range: Missing[Union[str, None]] = Field(
+    push_protection_bypassed: Missing[Union[bool, None]] = Field(
         default=UNSET,
-        description="The range of the package versions affected by the vulnerability.",
+        description="Whether push protection was bypassed for the detected secret.",
     )
-    patched_versions: Missing[Union[str, None]] = Field(
+    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
         default=UNSET,
-        description="The package version(s) that resolve the vulnerability.",
+        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    vulnerable_functions: Missing[Union[List[str], None]] = Field(
-        default=UNSET, description="The functions in the package that are affected."
-    )
-
-
-class PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage(GitHubModel):
-    """PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage
-
-    The name of the package affected by the vulnerability.
-    """
-
-    ecosystem: Literal[
-        "rubygems",
-        "npm",
-        "pip",
-        "maven",
-        "nuget",
-        "composer",
-        "go",
-        "rust",
-        "erlang",
-        "actions",
-        "pub",
-        "other",
-        "swift",
-    ] = Field(description="The package's language or package management ecosystem.")
-    name: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The unique package name within its ecosystem."
+    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
+        default=UNSET, description="The token status as of the latest validity check."
     )
 
 
-model_rebuild(PrivateVulnerabilityReportCreate)
-model_rebuild(PrivateVulnerabilityReportCreatePropVulnerabilitiesItems)
-model_rebuild(PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage)
+model_rebuild(SecretScanningAlert)
 
-__all__ = (
-    "PrivateVulnerabilityReportCreate",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItems",
-    "PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsPropPackage",
-)
+__all__ = ("SecretScanningAlert",)

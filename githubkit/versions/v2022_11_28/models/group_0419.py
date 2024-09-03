@@ -19,34 +19,38 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksAlert(GitHubModel):
-    """Repository Vulnerability Alert Alert
+class WebhooksReview(GitHubModel):
+    """WebhooksReview
 
-    The security alert of the vulnerable dependency.
+    The review that was affected.
     """
 
-    affected_package_name: str = Field()
-    affected_range: str = Field()
-    created_at: str = Field()
-    dismiss_reason: Missing[str] = Field(default=UNSET)
-    dismissed_at: Missing[str] = Field(default=UNSET)
-    dismisser: Missing[Union[WebhooksAlertPropDismisser, None]] = Field(
-        default=UNSET, title="User"
+    links: WebhooksReviewPropLinks = Field(alias="_links")
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="AuthorAssociation",
+        description="How the author is associated with the repository.",
     )
-    external_identifier: str = Field()
-    external_reference: Union[str, None] = Field()
-    fix_reason: Missing[str] = Field(default=UNSET)
-    fixed_at: Missing[datetime] = Field(default=UNSET)
-    fixed_in: Missing[str] = Field(default=UNSET)
-    ghsa_id: str = Field()
-    id: int = Field()
+    body: Union[str, None] = Field(description="The text of the review.")
+    commit_id: str = Field(description="A commit SHA for the review.")
+    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the review")
     node_id: str = Field()
-    number: int = Field()
-    severity: str = Field()
-    state: Literal["open"] = Field()
+    pull_request_url: str = Field()
+    state: str = Field()
+    submitted_at: Union[datetime, None] = Field()
+    user: Union[WebhooksReviewPropUser, None] = Field(title="User")
 
 
-class WebhooksAlertPropDismisser(GitHubModel):
+class WebhooksReviewPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -72,10 +76,35 @@ class WebhooksAlertPropDismisser(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksAlert)
-model_rebuild(WebhooksAlertPropDismisser)
+class WebhooksReviewPropLinks(GitHubModel):
+    """WebhooksReviewPropLinks"""
+
+    html: WebhooksReviewPropLinksPropHtml = Field(title="Link")
+    pull_request: WebhooksReviewPropLinksPropPullRequest = Field(title="Link")
+
+
+class WebhooksReviewPropLinksPropHtml(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+class WebhooksReviewPropLinksPropPullRequest(GitHubModel):
+    """Link"""
+
+    href: str = Field()
+
+
+model_rebuild(WebhooksReview)
+model_rebuild(WebhooksReviewPropUser)
+model_rebuild(WebhooksReviewPropLinks)
+model_rebuild(WebhooksReviewPropLinksPropHtml)
+model_rebuild(WebhooksReviewPropLinksPropPullRequest)
 
 __all__ = (
-    "WebhooksAlert",
-    "WebhooksAlertPropDismisser",
+    "WebhooksReview",
+    "WebhooksReviewPropUser",
+    "WebhooksReviewPropLinks",
+    "WebhooksReviewPropLinksPropHtml",
+    "WebhooksReviewPropLinksPropPullRequest",
 )

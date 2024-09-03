@@ -12,14 +12,11 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0082 import MinimalRepositoryType
+
+class OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
+
+    selected_teams: List[str]
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: List[MinimalRepositoryType]
-
-
-__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType",)

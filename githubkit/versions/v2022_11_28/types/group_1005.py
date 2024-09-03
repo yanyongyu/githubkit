@@ -9,15 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoMergesPostBodyType(TypedDict):
-    """ReposOwnerRepoMergesPostBody"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items"""
 
-    base: str
-    head: str
-    commit_message: NotRequired[str]
+    name: str
 
 
-__all__ = ("ReposOwnerRepoMergesPostBodyType",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType",)

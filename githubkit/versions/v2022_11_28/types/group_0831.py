@@ -12,14 +12,11 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0078 import CodespaceType
+
+class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
+
+    selected_repository_ids: List[int]
 
 
-class OrgsOrgMembersUsernameCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: List[CodespaceType]
-
-
-__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200Type",)
+__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBodyType",)

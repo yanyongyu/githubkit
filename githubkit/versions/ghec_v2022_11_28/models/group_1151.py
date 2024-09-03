@@ -9,22 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0082 import MinimalRepository
+
+class TeamsTeamIdReposOwnerRepoPutBody(GitHubModel):
+    """TeamsTeamIdReposOwnerRepoPutBody"""
+
+    permission: Missing[Literal["pull", "push", "admin"]] = Field(
+        default=UNSET,
+        description="The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
+    )
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+model_rebuild(TeamsTeamIdReposOwnerRepoPutBody)
 
-    total_count: int = Field()
-    repositories: List[MinimalRepository] = Field()
-
-
-model_rebuild(UserCodespacesSecretsSecretNameRepositoriesGetResponse200)
-
-__all__ = ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200",)
+__all__ = ("TeamsTeamIdReposOwnerRepoPutBody",)

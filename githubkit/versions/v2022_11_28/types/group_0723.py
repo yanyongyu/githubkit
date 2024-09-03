@@ -12,19 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0373 import EnterpriseWebhooksType
-from .group_0374 import SimpleInstallationType
-from .group_0376 import RepositoryWebhooksType
-from .group_0377 import SimpleUserWebhooksType
-from .group_0422 import WebhooksSponsorshipType
-from .group_0375 import OrganizationSimpleWebhooksType
+from .group_0376 import EnterpriseWebhooksType
+from .group_0377 import SimpleInstallationType
+from .group_0379 import RepositoryWebhooksType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0425 import WebhooksSponsorshipType
+from .group_0378 import OrganizationSimpleWebhooksType
 
 
-class WebhookSponsorshipPendingCancellationType(TypedDict):
-    """sponsorship pending_cancellation event"""
+class WebhookSponsorshipCancelledType(TypedDict):
+    """sponsorship cancelled event"""
 
-    action: Literal["pending_cancellation"]
-    effective_date: NotRequired[str]
+    action: Literal["cancelled"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -33,4 +32,4 @@ class WebhookSponsorshipPendingCancellationType(TypedDict):
     sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("WebhookSponsorshipPendingCancellationType",)
+__all__ = ("WebhookSponsorshipCancelledType",)

@@ -12,55 +12,61 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0385 import WebhooksUserType
-from .group_0400 import WebhooksTeamType
-from .group_0373 import EnterpriseWebhooksType
-from .group_0374 import SimpleInstallationType
-from .group_0376 import RepositoryWebhooksType
-from .group_0375 import OrganizationSimpleWebhooksType
+from .group_0388 import WebhooksUserType
+from .group_0376 import EnterpriseWebhooksType
+from .group_0377 import SimpleInstallationType
+from .group_0379 import RepositoryWebhooksType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0378 import OrganizationSimpleWebhooksType
 
 
-class WebhookMembershipAddedType(TypedDict):
-    """membership added event"""
+class WebhookMemberAddedType(TypedDict):
+    """member added event"""
 
     action: Literal["added"]
+    changes: NotRequired[WebhookMemberAddedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     member: Union[WebhooksUserType, None]
-    organization: OrganizationSimpleWebhooksType
-    repository: NotRequired[RepositoryWebhooksType]
-    scope: Literal["team"]
-    sender: Union[WebhookMembershipAddedPropSenderType, None]
-    team: WebhooksTeamType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-class WebhookMembershipAddedPropSenderType(TypedDict):
-    """User"""
+class WebhookMemberAddedPropChangesType(TypedDict):
+    """WebhookMemberAddedPropChanges"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    permission: NotRequired[WebhookMemberAddedPropChangesPropPermissionType]
+    role_name: NotRequired[WebhookMemberAddedPropChangesPropRoleNameType]
+
+
+class WebhookMemberAddedPropChangesPropPermissionType(TypedDict):
+    """WebhookMemberAddedPropChangesPropPermission
+
+    This field is included for legacy purposes; use the `role_name` field instead.
+    The `maintain`
+    role is mapped to `write` and the `triage` role is mapped to `read`. To
+    determine the role
+    assigned to the collaborator, use the `role_name` field instead, which will
+    provide the full
+    role name, including custom roles.
+    """
+
+    to: Literal["write", "admin", "read"]
+
+
+class WebhookMemberAddedPropChangesPropRoleNameType(TypedDict):
+    """WebhookMemberAddedPropChangesPropRoleName
+
+    The role assigned to the collaborator.
+    """
+
+    to: str
 
 
 __all__ = (
-    "WebhookMembershipAddedType",
-    "WebhookMembershipAddedPropSenderType",
+    "WebhookMemberAddedType",
+    "WebhookMemberAddedPropChangesType",
+    "WebhookMemberAddedPropChangesPropPermissionType",
+    "WebhookMemberAddedPropChangesPropRoleNameType",
 )

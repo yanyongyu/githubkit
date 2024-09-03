@@ -17,16 +17,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0373 import EnterpriseWebhooks
-from .group_0374 import SimpleInstallation
-from .group_0376 import RepositoryWebhooks
-from .group_0377 import SimpleUserWebhooks
-from .group_0375 import OrganizationSimpleWebhooks
+from .group_0376 import EnterpriseWebhooks
+from .group_0377 import SimpleInstallation
+from .group_0379 import RepositoryWebhooks
+from .group_0380 import SimpleUserWebhooks
+from .group_0378 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryImport(GitHubModel):
-    """repository_import event"""
+class WebhookRepositoryDeleted(GitHubModel):
+    """repository deleted event"""
 
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -50,9 +51,8 @@ class WebhookRepositoryImport(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    status: Literal["success", "cancelled", "failure"] = Field()
 
 
-model_rebuild(WebhookRepositoryImport)
+model_rebuild(WebhookRepositoryDeleted)
 
-__all__ = ("WebhookRepositoryImport",)
+__all__ = ("WebhookRepositoryDeleted",)

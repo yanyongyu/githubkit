@@ -12,22 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0409 import SimpleInstallationType
-from .group_0411 import RepositoryWebhooksType
-from .group_0412 import SimpleUserWebhooksType
-from .group_0410 import OrganizationSimpleWebhooksType
-from .group_0417 import CheckRunWithSimpleCheckSuiteType
+from .group_0420 import ExemptionRequestType
+from .group_0413 import EnterpriseWebhooksType
+from .group_0414 import SimpleInstallationType
+from .group_0416 import RepositoryWebhooksType
+from .group_0417 import SimpleUserWebhooksType
+from .group_0415 import OrganizationSimpleWebhooksType
 
 
-class WebhookCheckRunCreatedType(TypedDict):
-    """Check Run Created Event"""
+class WebhookExemptionRequestCreatedType(TypedDict):
+    """Exemption request created event"""
 
     action: Literal["created"]
-    check_run: CheckRunWithSimpleCheckSuiteType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    exemption_request: ExemptionRequestType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookCheckRunCreatedType",)
+__all__ = ("WebhookExemptionRequestCreatedType",)

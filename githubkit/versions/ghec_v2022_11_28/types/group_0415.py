@@ -9,89 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0414 import ExemptionResponseType
+from typing import Union
+from typing_extensions import TypedDict
 
 
-class ExemptionRequestType(TypedDict):
-    """Exemption Request
+class OrganizationSimpleWebhooksType(TypedDict):
+    """Organization Simple
 
-    A request from a user to be exempted from a set of rules.
+    A GitHub organization. Webhook payloads contain the `organization` property when
+    the webhook is configured for an
+    organization, or when the event occurs from activity in a repository owned by an
+    organization.
     """
 
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository_id: NotRequired[int]
-    requester_id: NotRequired[int]
-    requester_login: NotRequired[str]
-    request_type: NotRequired[Literal["push_ruleset_bypass", "secret_scanning"]]
-    exemption_request_data: NotRequired[
-        Union[ExemptionRequestPushRulesetBypassType, ExemptionRequestSecretScanningType]
-    ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "rejected", "cancelled", "completed"]]
-    requester_comment: NotRequired[Union[str, None]]
-    metadata: NotRequired[Union[ExemptionRequestSecretScanningMetadataType, None]]
-    expires_at: NotRequired[datetime]
-    created_at: NotRequired[datetime]
-    responses: NotRequired[Union[List[ExemptionResponseType], None]]
-    html_url: NotRequired[str]
+    login: str
+    id: int
+    node_id: str
+    url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
+    members_url: str
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
 
 
-class ExemptionRequestSecretScanningMetadataType(TypedDict):
-    """Secret Scanning Push Protection Exemption Request Metadata
-
-    Metadata for a secret scanning push protection exemption request.
-    """
-
-    label: NotRequired[str]
-    reason: NotRequired[Literal["fixed_later", "false_positive", "tests"]]
-
-
-class ExemptionRequestPushRulesetBypassType(TypedDict):
-    """Push ruleset bypass exemption request data
-
-    Push rules that are being requested to be bypassed.
-    """
-
-    type: NotRequired[Literal["push_ruleset_bypass"]]
-    data: NotRequired[List[ExemptionRequestPushRulesetBypassPropDataItemsType]]
-
-
-class ExemptionRequestPushRulesetBypassPropDataItemsType(TypedDict):
-    """ExemptionRequestPushRulesetBypassPropDataItems"""
-
-    ruleset_id: NotRequired[int]
-    ruleset_name: NotRequired[str]
-    total_violations: NotRequired[int]
-    rule_type: NotRequired[str]
-
-
-class ExemptionRequestSecretScanningType(TypedDict):
-    """Secret scanning push protection exemption request data
-
-    Secret scanning push protections that are being requested to be bypassed.
-    """
-
-    type: NotRequired[Literal["secret_scanning"]]
-    data: NotRequired[List[ExemptionRequestSecretScanningPropDataItemsType]]
-
-
-class ExemptionRequestSecretScanningPropDataItemsType(TypedDict):
-    """ExemptionRequestSecretScanningPropDataItems"""
-
-    secret_type: NotRequired[str]
-    commits: NotRequired[List[str]]
-
-
-__all__ = (
-    "ExemptionRequestType",
-    "ExemptionRequestSecretScanningMetadataType",
-    "ExemptionRequestPushRulesetBypassType",
-    "ExemptionRequestPushRulesetBypassPropDataItemsType",
-    "ExemptionRequestSecretScanningType",
-    "ExemptionRequestSecretScanningPropDataItemsType",
-)
+__all__ = ("OrganizationSimpleWebhooksType",)

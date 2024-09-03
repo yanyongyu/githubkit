@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -18,15 +18,32 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class TeamsTeamIdProjectsProjectIdPutBody(GitHubModel):
-    """TeamsTeamIdProjectsProjectIdPutBody"""
+class TeamsTeamIdPatchBody(GitHubModel):
+    """TeamsTeamIdPatchBody"""
 
-    permission: Missing[Literal["read", "write", "admin"]] = Field(
+    name: str = Field(description="The name of the team.")
+    description: Missing[str] = Field(
+        default=UNSET, description="The description of the team."
+    )
+    privacy: Missing[Literal["secret", "closed"]] = Field(
         default=UNSET,
-        description="The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see \"[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method).\"",
+        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
+    )
+    notification_setting: Missing[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ] = Field(
+        default=UNSET,
+        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
+    )
+    permission: Missing[Literal["pull", "push", "admin"]] = Field(
+        default=UNSET,
+        description="**Deprecated**. The permission that new repositories will be added to the team with when none is specified.",
+    )
+    parent_team_id: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The ID of a team to set as the parent team."
     )
 
 
-model_rebuild(TeamsTeamIdProjectsProjectIdPutBody)
+model_rebuild(TeamsTeamIdPatchBody)
 
-__all__ = ("TeamsTeamIdProjectsProjectIdPutBody",)
+__all__ = ("TeamsTeamIdPatchBody",)

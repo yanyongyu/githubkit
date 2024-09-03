@@ -12,14 +12,15 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0028 import CopilotSeatDetailsType
+from .group_0014 import AppPermissionsType
 
 
-class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
+class AppInstallationsInstallationIdAccessTokensPostBodyType(TypedDict):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[List[CopilotSeatDetailsType]]
+    repositories: NotRequired[List[str]]
+    repository_ids: NotRequired[List[int]]
+    permissions: NotRequired[AppPermissionsType]
 
 
-__all__ = ("EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",)
+__all__ = ("AppInstallationsInstallationIdAccessTokensPostBodyType",)

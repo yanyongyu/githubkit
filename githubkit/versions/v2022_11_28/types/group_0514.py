@@ -13,14 +13,20 @@ from datetime import datetime
 from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0510 import (
+from .group_0513 import (
     WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropOwnerType,
     WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppPropPermissionsType,
 )
 
 
-class WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubAppType(TypedDict):
-    """WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubApp"""
+class WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppType(TypedDict):
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
 
     created_at: Union[datetime, None]
     description: Union[str, None]
@@ -41,4 +47,4 @@ class WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubAppType(TypedDi
     updated_at: Union[datetime, None]
 
 
-__all__ = ("WebhookIssueCommentCreatedPropIssueMergedPerformedViaGithubAppType",)
+__all__ = ("WebhookIssueCommentCreatedPropIssueAllof0PropPerformedViaGithubAppType",)

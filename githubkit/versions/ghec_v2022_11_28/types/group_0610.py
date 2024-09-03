@@ -9,80 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0408 import EnterpriseWebhooksType
-from .group_0409 import SimpleInstallationType
-from .group_0411 import RepositoryWebhooksType
-from .group_0412 import SimpleUserWebhooksType
-from .group_0410 import OrganizationSimpleWebhooksType
-from .group_0435 import WebhooksMarketplacePurchaseType
+from .group_0431 import WebhooksLabelType
+from .group_0413 import EnterpriseWebhooksType
+from .group_0414 import SimpleInstallationType
+from .group_0416 import RepositoryWebhooksType
+from .group_0417 import SimpleUserWebhooksType
+from .group_0415 import OrganizationSimpleWebhooksType
 
 
-class WebhookMarketplacePurchasePendingChangeType(TypedDict):
-    """marketplace_purchase pending_change event"""
+class WebhookLabelCreatedType(TypedDict):
+    """label created event"""
 
-    action: Literal["pending_change"]
-    effective_date: str
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhooksMarketplacePurchaseType
+    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[
-        WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType
-    ]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserWebhooksType
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType(
-    TypedDict
-):
-    """Marketplace Purchase"""
-
-    account: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType
-    billing_cycle: str
-    free_trial_ends_on: Union[str, None]
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: bool
-    plan: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType
-    unit_count: int
-
-
-class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccoun
-    t
-    """
-
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
-
-
-class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan"""
-
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
-
-
-__all__ = (
-    "WebhookMarketplacePurchasePendingChangeType",
-    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchaseType",
-    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccountType",
-    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlanType",
-)
+__all__ = ("WebhookLabelCreatedType",)

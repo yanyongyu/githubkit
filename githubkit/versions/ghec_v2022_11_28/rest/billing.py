@@ -289,6 +289,7 @@ class BillingClient:
             error_models={
                 "400": BasicError,
                 "403": BasicError,
+                "409": BasicError,
                 "500": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },
@@ -364,6 +365,7 @@ class BillingClient:
             error_models={
                 "400": BasicError,
                 "403": BasicError,
+                "409": BasicError,
                 "500": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
             },

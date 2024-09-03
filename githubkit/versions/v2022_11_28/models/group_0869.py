@@ -9,22 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsColumnIdCardsPostBodyOneof1(GitHubModel):
-    """ProjectsColumnsColumnIdCardsPostBodyOneof1"""
+class ProjectsColumnsCardsCardIdPatchBody(GitHubModel):
+    """ProjectsColumnsCardsCardIdPatchBody"""
 
-    content_id: int = Field(
-        description="The unique identifier of the content associated with the card"
+    note: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The project card's note"
     )
-    content_type: str = Field(
-        description="The piece of content associated with the card"
+    archived: Missing[bool] = Field(
+        default=UNSET, description="Whether or not the card is archived"
     )
 
 
-model_rebuild(ProjectsColumnsColumnIdCardsPostBodyOneof1)
+model_rebuild(ProjectsColumnsCardsCardIdPatchBody)
 
-__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof1",)
+__all__ = ("ProjectsColumnsCardsCardIdPatchBody",)

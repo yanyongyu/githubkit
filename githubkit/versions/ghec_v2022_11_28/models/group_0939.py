@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,29 +16,15 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse403(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostResponse403"""
+class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[
-        List[ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems]
-    ] = Field(default=UNSET)
-
-
-class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"""
-
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    resource: Missing[str] = Field(default=UNSET)
-    field: Missing[str] = Field(default=UNSET)
+    permission: Missing[str] = Field(
+        default=UNSET,
+        description="The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
+    )
 
 
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse403)
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems)
+model_rebuild(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody)
 
-__all__ = (
-    "ProjectsColumnsCardsCardIdMovesPostResponse403",
-    "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems",
-)
+__all__ = ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",)

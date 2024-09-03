@@ -9,16 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0376 import EnterpriseWebhooksType
+from .group_0377 import SimpleInstallationType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0378 import OrganizationSimpleWebhooksType
+from .group_0407 import PersonalAccessTokenRequestType
 
 
-class WebhookPingFormEncodedType(TypedDict):
-    """WebhookPingFormEncoded
+class WebhookPersonalAccessTokenRequestDeniedType(TypedDict):
+    """personal_access_token_request denied event"""
 
-    The webhooks ping payload encoded with URL encoding.
-    """
+    action: Literal["denied"]
+    personal_access_token_request: PersonalAccessTokenRequestType
+    organization: OrganizationSimpleWebhooksType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    sender: SimpleUserWebhooksType
+    installation: SimpleInstallationType
 
-    payload: str
 
-
-__all__ = ("WebhookPingFormEncodedType",)
+__all__ = ("WebhookPersonalAccessTokenRequestDeniedType",)

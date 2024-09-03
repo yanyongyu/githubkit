@@ -9,26 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhooksDeployKeyType(TypedDict):
-    """WebhooksDeployKey
+class WebhooksRuleType(TypedDict):
+    """branch protection rule
 
-    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
-    deploy-key) resource.
+    The branch protection rule. Includes a `name` and all the [branch protection
+    settings](https://docs.github.com/github/administering-a-repository/defining-
+    the-mergeability-of-pull-requests/about-protected-branches#about-branch-
+    protection-settings) applied to branches that match the name. Binary settings
+    are boolean. Multi-level configurations are one of `off`, `non_admins`, or
+    `everyone`. Actor and build lists are arrays of strings.
     """
 
-    added_by: NotRequired[Union[str, None]]
-    created_at: str
+    admin_enforced: bool
+    allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
+    allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
+    authorized_actor_names: List[str]
+    authorized_actors_only: bool
+    authorized_dismissal_actors_only: bool
+    create_protected: NotRequired[bool]
+    created_at: datetime
+    dismiss_stale_reviews_on_push: bool
     id: int
-    key: str
-    last_used: NotRequired[Union[str, None]]
-    read_only: bool
-    title: str
-    url: str
-    verified: bool
+    ignore_approvals_from_contributors: bool
+    linear_history_requirement_enforcement_level: Literal[
+        "off", "non_admins", "everyone"
+    ]
+    lock_branch_enforcement_level: Literal["off", "non_admins", "everyone"]
+    lock_allows_fork_sync: NotRequired[bool]
+    merge_queue_enforcement_level: Literal["off", "non_admins", "everyone"]
+    name: str
+    pull_request_reviews_enforcement_level: Literal["off", "non_admins", "everyone"]
+    repository_id: int
+    require_code_owner_review: bool
+    require_last_push_approval: NotRequired[bool]
+    required_approving_review_count: int
+    required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
+    required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
+    required_status_checks: List[str]
+    required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
+    signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
+    strict_required_status_checks_policy: bool
+    updated_at: datetime
 
 
-__all__ = ("WebhooksDeployKeyType",)
+__all__ = ("WebhooksRuleType",)

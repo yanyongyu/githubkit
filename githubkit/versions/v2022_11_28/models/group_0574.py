@@ -17,18 +17,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0385 import WebhooksUser
-from .group_0400 import WebhooksTeam
-from .group_0373 import EnterpriseWebhooks
-from .group_0374 import SimpleInstallation
-from .group_0376 import RepositoryWebhooks
-from .group_0375 import OrganizationSimpleWebhooks
+from .group_0388 import WebhooksUser
+from .group_0376 import EnterpriseWebhooks
+from .group_0377 import SimpleInstallation
+from .group_0379 import RepositoryWebhooks
+from .group_0380 import SimpleUserWebhooks
+from .group_0378 import OrganizationSimpleWebhooks
 
 
-class WebhookMembershipAdded(GitHubModel):
-    """membership added event"""
+class WebhookMemberAdded(GitHubModel):
+    """member added event"""
 
     action: Literal["added"] = Field()
+    changes: Missing[WebhookMemberAddedPropChanges] = Field(default=UNSET)
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,55 +41,65 @@ class WebhookMembershipAdded(GitHubModel):
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
     member: Union[WebhooksUser, None] = Field(title="User")
-    organization: OrganizationSimpleWebhooks = Field(
+    organization: Missing[OrganizationSimpleWebhooks] = Field(
+        default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    scope: Literal["team"] = Field(
-        description="The scope of the membership. Currently, can only be `team`."
-    )
-    sender: Union[WebhookMembershipAddedPropSender, None] = Field(title="User")
-    team: WebhooksTeam = Field(
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
+    sender: SimpleUserWebhooks = Field(
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookMembershipAddedPropSender(GitHubModel):
-    """User"""
+class WebhookMemberAddedPropChanges(GitHubModel):
+    """WebhookMemberAddedPropChanges"""
 
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    permission: Missing[WebhookMemberAddedPropChangesPropPermission] = Field(
+        default=UNSET,
+        description="This field is included for legacy purposes; use the `role_name` field instead. The `maintain`\nrole is mapped to `write` and the `triage` role is mapped to `read`. To determine the role\nassigned to the collaborator, use the `role_name` field instead, which will provide the full\nrole name, including custom roles.",
+    )
+    role_name: Missing[WebhookMemberAddedPropChangesPropRoleName] = Field(
+        default=UNSET, description="The role assigned to the collaborator."
+    )
 
 
-model_rebuild(WebhookMembershipAdded)
-model_rebuild(WebhookMembershipAddedPropSender)
+class WebhookMemberAddedPropChangesPropPermission(GitHubModel):
+    """WebhookMemberAddedPropChangesPropPermission
+
+    This field is included for legacy purposes; use the `role_name` field instead.
+    The `maintain`
+    role is mapped to `write` and the `triage` role is mapped to `read`. To
+    determine the role
+    assigned to the collaborator, use the `role_name` field instead, which will
+    provide the full
+    role name, including custom roles.
+    """
+
+    to: Literal["write", "admin", "read"] = Field()
+
+
+class WebhookMemberAddedPropChangesPropRoleName(GitHubModel):
+    """WebhookMemberAddedPropChangesPropRoleName
+
+    The role assigned to the collaborator.
+    """
+
+    to: str = Field()
+
+
+model_rebuild(WebhookMemberAdded)
+model_rebuild(WebhookMemberAddedPropChanges)
+model_rebuild(WebhookMemberAddedPropChangesPropPermission)
+model_rebuild(WebhookMemberAddedPropChangesPropRoleName)
 
 __all__ = (
-    "WebhookMembershipAdded",
-    "WebhookMembershipAddedPropSender",
+    "WebhookMemberAdded",
+    "WebhookMemberAddedPropChanges",
+    "WebhookMemberAddedPropChangesPropPermission",
+    "WebhookMemberAddedPropChangesPropRoleName",
 )

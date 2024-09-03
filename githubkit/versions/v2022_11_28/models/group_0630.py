@@ -17,25 +17,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0410 import ProjectsV2Item
-from .group_0374 import SimpleInstallation
-from .group_0377 import SimpleUserWebhooks
-from .group_0375 import OrganizationSimpleWebhooks
+from .group_0413 import ProjectsV2Item
+from .group_0377 import SimpleInstallation
+from .group_0380 import SimpleUserWebhooks
+from .group_0378 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ItemEdited(GitHubModel):
-    """Projects v2 Item Edited Event"""
+class WebhookProjectsV2ItemConverted(GitHubModel):
+    """Projects v2 Item Converted Event"""
 
-    action: Literal["edited"] = Field()
-    changes: Missing[
-        Union[
-            WebhookProjectsV2ItemEditedPropChangesOneof0,
-            WebhookProjectsV2ItemEditedPropChangesOneof1,
-        ]
-    ] = Field(
-        default=UNSET,
-        description="The changes made to the item may involve modifications in the item's fields and draft issue body.\nIt includes altered values for text, number, date, single select, and iteration fields, along with the GraphQL node ID of the changed field.",
-    )
+    action: Literal["converted"] = Field()
+    changes: WebhookProjectsV2ItemConvertedPropChanges = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -54,78 +46,27 @@ class WebhookProjectsV2ItemEdited(GitHubModel):
     )
 
 
-class WebhookProjectsV2ItemEditedPropChangesOneof0(GitHubModel):
-    """WebhookProjectsV2ItemEditedPropChangesOneof0"""
+class WebhookProjectsV2ItemConvertedPropChanges(GitHubModel):
+    """WebhookProjectsV2ItemConvertedPropChanges"""
 
-    field_value: WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue = Field()
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue(GitHubModel):
-    """WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue"""
-
-    field_node_id: Missing[str] = Field(default=UNSET)
-    field_type: Missing[str] = Field(default=UNSET)
-    field_name: Missing[str] = Field(default=UNSET)
-    project_number: Missing[int] = Field(default=UNSET)
-    from_: Missing[
-        Union[str, int, ProjectsV2SingleSelectOption, ProjectsV2IterationSetting, None]
-    ] = Field(default=UNSET, alias="from")
-    to: Missing[
-        Union[str, int, ProjectsV2SingleSelectOption, ProjectsV2IterationSetting, None]
-    ] = Field(default=UNSET)
+    content_type: Missing[WebhookProjectsV2ItemConvertedPropChangesPropContentType] = (
+        Field(default=UNSET)
+    )
 
 
-class ProjectsV2SingleSelectOption(GitHubModel):
-    """Projects v2 Single Select Option
-
-    An option for a single select field
-    """
-
-    id: str = Field()
-    name: str = Field()
-    color: Missing[Union[str, None]] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class ProjectsV2IterationSetting(GitHubModel):
-    """Projects v2 Iteration Setting
-
-    An iteration setting for an iteration field
-    """
-
-    id: str = Field()
-    title: str = Field()
-    duration: Missing[Union[float, None]] = Field(default=UNSET)
-    start_date: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof1(GitHubModel):
-    """WebhookProjectsV2ItemEditedPropChangesOneof1"""
-
-    body: WebhookProjectsV2ItemEditedPropChangesOneof1PropBody = Field()
-
-
-class WebhookProjectsV2ItemEditedPropChangesOneof1PropBody(GitHubModel):
-    """WebhookProjectsV2ItemEditedPropChangesOneof1PropBody"""
+class WebhookProjectsV2ItemConvertedPropChangesPropContentType(GitHubModel):
+    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
 
     from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[str, None]] = Field(default=UNSET)
+    to: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookProjectsV2ItemEdited)
-model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof0)
-model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue)
-model_rebuild(ProjectsV2SingleSelectOption)
-model_rebuild(ProjectsV2IterationSetting)
-model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof1)
-model_rebuild(WebhookProjectsV2ItemEditedPropChangesOneof1PropBody)
+model_rebuild(WebhookProjectsV2ItemConverted)
+model_rebuild(WebhookProjectsV2ItemConvertedPropChanges)
+model_rebuild(WebhookProjectsV2ItemConvertedPropChangesPropContentType)
 
 __all__ = (
-    "WebhookProjectsV2ItemEdited",
-    "WebhookProjectsV2ItemEditedPropChangesOneof0",
-    "WebhookProjectsV2ItemEditedPropChangesOneof0PropFieldValue",
-    "ProjectsV2SingleSelectOption",
-    "ProjectsV2IterationSetting",
-    "WebhookProjectsV2ItemEditedPropChangesOneof1",
-    "WebhookProjectsV2ItemEditedPropChangesOneof1PropBody",
+    "WebhookProjectsV2ItemConverted",
+    "WebhookProjectsV2ItemConvertedPropChanges",
+    "WebhookProjectsV2ItemConvertedPropChangesPropContentType",
 )

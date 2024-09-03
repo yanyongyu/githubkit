@@ -13,128 +13,85 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0064 import MilestoneType
+from .group_0249 import AutoMergeType
+from .group_0001 import SimpleUserType
+from .group_0047 import TeamSimpleType
+from .group_0330 import PullRequestPropBaseType
+from .group_0332 import PullRequestPropLinksType
+from .group_0329 import PullRequestPropHeadType, PullRequestPropLabelsItemsType
 
-class WebhooksReleaseType(TypedDict):
-    """Release
 
-    The [release](https://docs.github.com/enterprise-
-    cloud@latest//rest/releases/releases/#get-a-release) object.
-    """
+class PullRequestWebhookType(TypedDict):
+    """PullRequestWebhook"""
 
-    assets: List[WebhooksReleasePropAssetsItemsType]
-    assets_url: str
-    author: Union[WebhooksReleasePropAuthorType, None]
-    body: Union[str, None]
-    created_at: Union[datetime, None]
-    discussion_url: NotRequired[str]
-    draft: bool
+    url: str
+    id: int
+    node_id: str
     html_url: str
-    id: int
-    name: Union[str, None]
-    node_id: str
-    prerelease: bool
-    published_at: Union[datetime, None]
-    reactions: NotRequired[WebhooksReleasePropReactionsType]
-    tag_name: str
-    tarball_url: Union[str, None]
-    target_commitish: str
-    upload_url: str
-    url: str
-    zipball_url: Union[str, None]
-
-
-class WebhooksReleasePropAuthorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhooksReleasePropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksReleasePropAssetsItemsType(TypedDict):
-    """Release Asset
-
-    Data related to a release.
-    """
-
-    browser_download_url: str
-    content_type: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: Literal["open", "closed"]
+    locked: bool
+    title: str
+    user: SimpleUserType
+    body: Union[str, None]
+    labels: List[PullRequestPropLabelsItemsType]
+    milestone: Union[None, MilestoneType]
+    active_lock_reason: NotRequired[Union[str, None]]
     created_at: datetime
-    download_count: int
-    id: int
-    label: Union[str, None]
-    name: str
-    node_id: str
-    size: int
-    state: Literal["uploaded"]
     updated_at: datetime
-    uploader: NotRequired[Union[WebhooksReleasePropAssetsItemsPropUploaderType, None]]
-    url: str
+    closed_at: Union[datetime, None]
+    merged_at: Union[datetime, None]
+    merge_commit_sha: Union[str, None]
+    assignee: Union[None, SimpleUserType]
+    assignees: NotRequired[Union[List[SimpleUserType], None]]
+    requested_reviewers: NotRequired[Union[List[SimpleUserType], None]]
+    requested_teams: NotRequired[Union[List[TeamSimpleType], None]]
+    head: PullRequestPropHeadType
+    base: PullRequestPropBaseType
+    links: PullRequestPropLinksType
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    auto_merge: Union[AutoMergeType, None]
+    draft: NotRequired[bool]
+    merged: bool
+    mergeable: Union[bool, None]
+    rebaseable: NotRequired[Union[bool, None]]
+    mergeable_state: str
+    merged_by: Union[None, SimpleUserType]
+    comments: int
+    review_comments: int
+    maintainer_can_modify: bool
+    commits: int
+    additions: int
+    deletions: int
+    changed_files: int
+    allow_auto_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    use_squash_pr_title_as_default: NotRequired[bool]
 
 
-class WebhooksReleasePropAssetsItemsPropUploaderType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-__all__ = (
-    "WebhooksReleaseType",
-    "WebhooksReleasePropAuthorType",
-    "WebhooksReleasePropReactionsType",
-    "WebhooksReleasePropAssetsItemsType",
-    "WebhooksReleasePropAssetsItemsPropUploaderType",
-)
+__all__ = ("PullRequestWebhookType",)

@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Union
+from datetime import datetime
 
 from pydantic import Field
 
@@ -17,35 +18,49 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0016 import LicenseSimple
+from .group_0124 import CodeOfConductSimple
 
-class ContentDirectoryItems(GitHubModel):
-    """ContentDirectoryItems"""
 
-    type: Literal["dir", "file", "submodule", "symlink"] = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    content: Missing[str] = Field(default=UNSET)
-    sha: str = Field()
+class CommunityProfilePropFiles(GitHubModel):
+    """CommunityProfilePropFiles"""
+
+    code_of_conduct: Union[None, CodeOfConductSimple] = Field()
+    code_of_conduct_file: Union[None, CommunityHealthFile] = Field()
+    license_: Union[None, LicenseSimple] = Field(alias="license")
+    contributing: Union[None, CommunityHealthFile] = Field()
+    readme: Union[None, CommunityHealthFile] = Field()
+    issue_template: Union[None, CommunityHealthFile] = Field()
+    pull_request_template: Union[None, CommunityHealthFile] = Field()
+
+
+class CommunityHealthFile(GitHubModel):
+    """Community Health File"""
+
     url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentDirectoryItemsPropLinks = Field(alias="_links")
+    html_url: str = Field()
 
 
-class ContentDirectoryItemsPropLinks(GitHubModel):
-    """ContentDirectoryItemsPropLinks"""
+class CommunityProfile(GitHubModel):
+    """Community Profile
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
+    Community Profile
+    """
+
+    health_percentage: int = Field()
+    description: Union[str, None] = Field()
+    documentation: Union[str, None] = Field()
+    files: CommunityProfilePropFiles = Field()
+    updated_at: Union[datetime, None] = Field()
+    content_reports_enabled: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(ContentDirectoryItems)
-model_rebuild(ContentDirectoryItemsPropLinks)
+model_rebuild(CommunityProfilePropFiles)
+model_rebuild(CommunityHealthFile)
+model_rebuild(CommunityProfile)
 
 __all__ = (
-    "ContentDirectoryItems",
-    "ContentDirectoryItemsPropLinks",
+    "CommunityProfilePropFiles",
+    "CommunityHealthFile",
+    "CommunityProfile",
 )

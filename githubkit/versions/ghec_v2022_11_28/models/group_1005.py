@@ -14,12 +14,12 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoCheckSuitesPostBody(GitHubModel):
-    """ReposOwnerRepoCheckSuitesPostBody"""
+class ReposOwnerRepoBranchesBranchRenamePostBody(GitHubModel):
+    """ReposOwnerRepoBranchesBranchRenamePostBody"""
 
-    head_sha: str = Field(description="The sha of the head commit.")
+    new_name: str = Field(description="The new name of the branch.")
 
 
-model_rebuild(ReposOwnerRepoCheckSuitesPostBody)
+model_rebuild(ReposOwnerRepoBranchesBranchRenamePostBody)
 
-__all__ = ("ReposOwnerRepoCheckSuitesPostBody",)
+__all__ = ("ReposOwnerRepoBranchesBranchRenamePostBody",)

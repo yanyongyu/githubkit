@@ -9,30 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
-from .group_0082 import MinimalRepositoryType
+from .group_0090 import CodeSecurityConfigurationType
 
 
-class RepositoryInvitationType(TypedDict):
-    """Repository Invitation
+class CodeSecurityConfigurationForRepositoryType(TypedDict):
+    """CodeSecurityConfigurationForRepository
 
-    Repository invitations let you manage who you collaborate with.
+    Code security configuration associated with a repository and attachment status
     """
 
-    id: int
-    repository: MinimalRepositoryType
-    invitee: Union[None, SimpleUserType]
-    inviter: Union[None, SimpleUserType]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
-    created_at: datetime
-    expired: NotRequired[bool]
-    url: str
-    html_url: str
-    node_id: str
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-__all__ = ("RepositoryInvitationType",)
+__all__ = ("CodeSecurityConfigurationForRepositoryType",)

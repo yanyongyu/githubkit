@@ -17,17 +17,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0408 import EnterpriseWebhooks
-from .group_0409 import SimpleInstallation
-from .group_0411 import RepositoryWebhooks
-from .group_0412 import SimpleUserWebhooks
-from .group_0410 import OrganizationSimpleWebhooks
+from .group_0413 import EnterpriseWebhooks
+from .group_0414 import SimpleInstallation
+from .group_0416 import RepositoryWebhooks
+from .group_0417 import SimpleUserWebhooks
+from .group_0415 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryPublicized(GitHubModel):
-    """repository publicized event"""
+class WebhookRepositoryDeleted(GitHubModel):
+    """repository deleted event"""
 
-    action: Literal["publicized"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,6 +53,6 @@ class WebhookRepositoryPublicized(GitHubModel):
     )
 
 
-model_rebuild(WebhookRepositoryPublicized)
+model_rebuild(WebhookRepositoryDeleted)
 
-__all__ = ("WebhookRepositoryPublicized",)
+__all__ = ("WebhookRepositoryDeleted",)

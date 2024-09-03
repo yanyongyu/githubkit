@@ -9,11 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
-
-class OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type(TypedDict):
-    """OrgsOrgOutsideCollaboratorsUsernamePutResponse202"""
+from .group_0015 import InstallationType
 
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutResponse202Type",)
+class OrgsOrgInstallationsGetResponse200Type(TypedDict):
+    """OrgsOrgInstallationsGetResponse200"""
+
+    total_count: int
+    installations: List[InstallationType]
+
+
+__all__ = ("OrgsOrgInstallationsGetResponse200Type",)

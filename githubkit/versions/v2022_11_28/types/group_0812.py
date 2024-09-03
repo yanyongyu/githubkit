@@ -9,17 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0028 import CopilotSeatDetailsType
+
+class OrgsOrgCodespacesAccessPutBodyType(TypedDict):
+    """OrgsOrgCodespacesAccessPutBody"""
+
+    visibility: Literal[
+        "disabled",
+        "selected_members",
+        "all_members",
+        "all_members_and_outside_collaborators",
+    ]
+    selected_usernames: NotRequired[List[str]]
 
 
-class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
-
-    total_seats: NotRequired[int]
-    seats: NotRequired[List[CopilotSeatDetailsType]]
-
-
-__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200Type",)
+__all__ = ("OrgsOrgCodespacesAccessPutBodyType",)

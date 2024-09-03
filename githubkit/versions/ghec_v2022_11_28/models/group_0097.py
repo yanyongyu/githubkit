@@ -26,7 +26,9 @@ class CredentialAuthorization(GitHubModel):
     """
 
     login: str = Field(description="User login that owns the underlying credential.")
-    credential_id: int = Field(description="Unique identifier for the credential.")
+    credential_id: int = Field(
+        description="Unique identifier for the authorization of the credential. Use this to revoke authorization of the underlying token or key."
+    )
     credential_type: str = Field(
         description="Human-readable description of the credential type."
     )
@@ -47,7 +49,9 @@ class CredentialAuthorization(GitHubModel):
     credential_accessed_at: Union[datetime, None] = Field(
         description="Date when the credential was last accessed. May be null if it was never accessed"
     )
-    authorized_credential_id: Union[int, None] = Field()
+    authorized_credential_id: Union[int, None] = Field(
+        description="The ID of the underlying token that was authorized by the user. This will remain unchanged across authorizations of the token."
+    )
     authorized_credential_title: Missing[Union[str, None]] = Field(
         default=UNSET,
         description="The title given to the ssh key. This will only be present when the credential is an ssh key.",

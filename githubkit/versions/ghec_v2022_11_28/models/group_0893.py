@@ -15,16 +15,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0082 import MinimalRepository
+
+class OrgsOrgCopilotBillingSelectedTeamsDeleteBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
+
+    selected_teams: List[str] = Field(
+        min_length=1,
+        description="The names of teams from which to revoke access to GitHub Copilot.",
+    )
 
 
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsDeleteBody)
 
-    total_count: int = Field()
-    repositories: List[MinimalRepository] = Field()
-
-
-model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200)
-
-__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteBody",)

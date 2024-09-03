@@ -9,17 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleDetailedOneof2Type(TypedDict):
-    """RepositoryRuleDetailedOneof2"""
+class ReleaseNotesContentType(TypedDict):
+    """Generated Release Notes Content
 
-    type: Literal["deletion"]
-    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
-    ruleset_source: NotRequired[str]
-    ruleset_id: NotRequired[int]
+    Generated name and body describing a release
+    """
+
+    name: str
+    body: str
 
 
-__all__ = ("RepositoryRuleDetailedOneof2Type",)
+__all__ = ("ReleaseNotesContentType",)

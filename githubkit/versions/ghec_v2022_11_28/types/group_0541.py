@@ -12,43 +12,36 @@ from __future__ import annotations
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0015 import InstallationType
-from .group_0422 import WebhooksUserType
-from .group_0408 import EnterpriseWebhooksType
-from .group_0411 import RepositoryWebhooksType
-from .group_0412 import SimpleUserWebhooksType
-from .group_0410 import OrganizationSimpleWebhooksType
-from .group_0428 import WebhooksRepositoriesAddedItemsType
+from .group_0413 import EnterpriseWebhooksType
+from .group_0414 import SimpleInstallationType
+from .group_0416 import RepositoryWebhooksType
+from .group_0417 import SimpleUserWebhooksType
+from .group_0415 import OrganizationSimpleWebhooksType
 
 
-class WebhookInstallationRepositoriesRemovedType(TypedDict):
-    """installation_repositories removed event"""
+class WebhookGollumType(TypedDict):
+    """gollum event"""
 
-    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
+    installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories_added: List[WebhooksRepositoriesAddedItemsType]
-    repositories_removed: List[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType
-    ]
-    repository: NotRequired[RepositoryWebhooksType]
-    repository_selection: Literal["all", "selected"]
-    requester: Union[WebhooksUserType, None]
+    pages: List[WebhookGollumPropPagesItemsType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType(TypedDict):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
+class WebhookGollumPropPagesItemsType(TypedDict):
+    """WebhookGollumPropPagesItems"""
 
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
+    action: Literal["created", "edited"]
+    html_url: str
+    page_name: str
+    sha: str
+    summary: Union[str, None]
+    title: str
 
 
 __all__ = (
-    "WebhookInstallationRepositoriesRemovedType",
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType",
+    "WebhookGollumType",
+    "WebhookGollumPropPagesItemsType",
 )

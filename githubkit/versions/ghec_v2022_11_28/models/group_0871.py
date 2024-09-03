@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -18,17 +18,20 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
+class OrgsOrgActionsVariablesPostBody(GitHubModel):
+    """OrgsOrgActionsVariablesPostBody"""
 
-    default_for_new_repos: Missing[
-        Literal["all", "none", "private_and_internal", "public"]
-    ] = Field(
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable."
+    )
+    selected_repository_ids: Missing[List[int]] = Field(
         default=UNSET,
-        description="Specify which types of repository this security configuration should be applied to by default.",
+        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody)
+model_rebuild(OrgsOrgActionsVariablesPostBody)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",)
+__all__ = ("OrgsOrgActionsVariablesPostBody",)

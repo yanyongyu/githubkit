@@ -9,22 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0078 import Codespace
+
+class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody(GitHubModel):
+    """TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody"""
+
+    body: str = Field(description="The discussion comment's body text.")
 
 
-class UserCodespacesGetResponse200(GitHubModel):
-    """UserCodespacesGetResponse200"""
+model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody)
 
-    total_count: int = Field()
-    codespaces: List[Codespace] = Field()
-
-
-model_rebuild(UserCodespacesGetResponse200)
-
-__all__ = ("UserCodespacesGetResponse200",)
+__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody",)

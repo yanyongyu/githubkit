@@ -12,16 +12,14 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-
-class UserSocialAccountsPostBodyType(TypedDict):
-    """UserSocialAccountsPostBody
-
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: List[str]
+from .group_0015 import InstallationType
 
 
-__all__ = ("UserSocialAccountsPostBodyType",)
+class UserInstallationsGetResponse200Type(TypedDict):
+    """UserInstallationsGetResponse200"""
+
+    total_count: int
+    installations: List[InstallationType]
+
+
+__all__ = ("UserInstallationsGetResponse200Type",)

@@ -11,18 +11,15 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoPullsPullNumberMergePutResponse405(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberMergePutResponse405"""
+class ReposOwnerRepoPullsCommentsCommentIdPatchBody(GitHubModel):
+    """ReposOwnerRepoPullsCommentsCommentIdPatchBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+    body: str = Field(description="The text of the reply to the review comment.")
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberMergePutResponse405)
+model_rebuild(ReposOwnerRepoPullsCommentsCommentIdPatchBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberMergePutResponse405",)
+__all__ = ("ReposOwnerRepoPullsCommentsCommentIdPatchBody",)

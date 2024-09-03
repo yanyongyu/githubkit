@@ -17,14 +17,14 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0126 import RepositoryRuleCommitMessagePatternPropParameters
+from .group_0124 import RepositoryRuleRequiredStatusChecksPropParameters
 
 
-class RepositoryRuleDetailedOneof10(GitHubModel):
-    """RepositoryRuleDetailedOneof10"""
+class RepositoryRuleDetailedOneof8(GitHubModel):
+    """RepositoryRuleDetailedOneof8"""
 
-    type: Literal["commit_message_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitMessagePatternPropParameters] = Field(
+    type: Literal["required_status_checks"] = Field()
+    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
         default=UNSET
     )
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
@@ -40,6 +40,6 @@ class RepositoryRuleDetailedOneof10(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof10)
+model_rebuild(RepositoryRuleDetailedOneof8)
 
-__all__ = ("RepositoryRuleDetailedOneof10",)
+__all__ = ("RepositoryRuleDetailedOneof8",)

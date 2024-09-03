@@ -18,12 +18,12 @@ class CodeScanningAlertRuleSummaryType(TypedDict):
 
     id: NotRequired[Union[str, None]]
     name: NotRequired[str]
-    tags: NotRequired[Union[List[str], None]]
     severity: NotRequired[Union[None, Literal["none", "note", "warning", "error"]]]
     security_severity_level: NotRequired[
         Union[None, Literal["low", "medium", "high", "critical"]]
     ]
     description: NotRequired[str]
+    tags: NotRequired[Union[List[str], None]]
 
 
 __all__ = ("CodeScanningAlertRuleSummaryType",)

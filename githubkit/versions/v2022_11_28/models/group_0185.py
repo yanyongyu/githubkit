@@ -82,6 +82,7 @@ class BranchRestrictionPolicyPropAppsItems(GitHubModel):
     node_id: Missing[str] = Field(default=UNSET)
     owner: Missing[BranchRestrictionPolicyPropAppsItemsPropOwner] = Field(default=UNSET)
     name: Missing[str] = Field(default=UNSET)
+    client_id: Missing[str] = Field(default=UNSET)
     description: Missing[str] = Field(default=UNSET)
     external_url: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)

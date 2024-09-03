@@ -9,50 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof1Type(TypedDict):
-    """WebhookWorkflowJobInProgressPropWorkflowJobAllof1"""
-
-    check_run_url: NotRequired[str]
-    completed_at: NotRequired[Union[str, None]]
-    conclusion: NotRequired[Union[str, None]]
-    created_at: NotRequired[str]
-    head_sha: NotRequired[str]
-    html_url: NotRequired[str]
-    id: NotRequired[int]
-    labels: NotRequired[List[str]]
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    run_attempt: NotRequired[int]
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
-    runner_group_id: NotRequired[Union[int, None]]
-    runner_group_name: NotRequired[Union[str, None]]
-    runner_id: NotRequired[Union[int, None]]
-    runner_name: NotRequired[Union[str, None]]
-    started_at: NotRequired[str]
-    status: Literal["in_progress", "completed", "queued"]
-    head_branch: NotRequired[Union[str, None]]
-    workflow_name: NotRequired[Union[str, None]]
-    steps: List[WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType]
-    url: NotRequired[str]
+from .group_0376 import EnterpriseWebhooksType
+from .group_0377 import SimpleInstallationType
+from .group_0379 import RepositoryWebhooksType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0378 import OrganizationSimpleWebhooksType
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType(TypedDict):
-    """Workflow Step"""
+class WebhookWatchStartedType(TypedDict):
+    """watch started event"""
 
-    completed_at: Union[str, None]
-    conclusion: Union[str, None]
-    name: str
-    number: int
-    started_at: Union[str, None]
-    status: Literal["in_progress", "completed", "pending", "queued"]
+    action: Literal["started"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-__all__ = (
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1Type",
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItemsType",
-)
+__all__ = ("WebhookWatchStartedType",)

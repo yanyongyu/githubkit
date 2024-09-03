@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0408 import EnterpriseWebhooks
-from .group_0409 import SimpleInstallation
-from .group_0411 import RepositoryWebhooks
-from .group_0412 import SimpleUserWebhooks
-from .group_0410 import OrganizationSimpleWebhooks
+from .group_0170 import RepositoryAdvisory
+from .group_0413 import EnterpriseWebhooks
+from .group_0414 import SimpleInstallation
+from .group_0416 import RepositoryWebhooks
+from .group_0417 import SimpleUserWebhooks
+from .group_0415 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryEdited(GitHubModel):
-    """repository edited event"""
+class WebhookRepositoryAdvisoryReported(GitHubModel):
+    """Repository advisory reported event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookRepositoryEditedPropChanges = Field()
+    action: Literal["reported"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -48,63 +48,16 @@ class WebhookRepositoryEdited(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
+    repository_advisory: RepositoryAdvisory = Field(
+        description="A repository security advisory."
+    )
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookRepositoryEditedPropChanges(GitHubModel):
-    """WebhookRepositoryEditedPropChanges"""
+model_rebuild(WebhookRepositoryAdvisoryReported)
 
-    default_branch: Missing[WebhookRepositoryEditedPropChangesPropDefaultBranch] = (
-        Field(default=UNSET)
-    )
-    description: Missing[WebhookRepositoryEditedPropChangesPropDescription] = Field(
-        default=UNSET
-    )
-    homepage: Missing[WebhookRepositoryEditedPropChangesPropHomepage] = Field(
-        default=UNSET
-    )
-    topics: Missing[WebhookRepositoryEditedPropChangesPropTopics] = Field(default=UNSET)
-
-
-class WebhookRepositoryEditedPropChangesPropDefaultBranch(GitHubModel):
-    """WebhookRepositoryEditedPropChangesPropDefaultBranch"""
-
-    from_: str = Field(alias="from")
-
-
-class WebhookRepositoryEditedPropChangesPropDescription(GitHubModel):
-    """WebhookRepositoryEditedPropChangesPropDescription"""
-
-    from_: Union[str, None] = Field(alias="from")
-
-
-class WebhookRepositoryEditedPropChangesPropHomepage(GitHubModel):
-    """WebhookRepositoryEditedPropChangesPropHomepage"""
-
-    from_: Union[str, None] = Field(alias="from")
-
-
-class WebhookRepositoryEditedPropChangesPropTopics(GitHubModel):
-    """WebhookRepositoryEditedPropChangesPropTopics"""
-
-    from_: Missing[Union[List[str], None]] = Field(default=UNSET, alias="from")
-
-
-model_rebuild(WebhookRepositoryEdited)
-model_rebuild(WebhookRepositoryEditedPropChanges)
-model_rebuild(WebhookRepositoryEditedPropChangesPropDefaultBranch)
-model_rebuild(WebhookRepositoryEditedPropChangesPropDescription)
-model_rebuild(WebhookRepositoryEditedPropChangesPropHomepage)
-model_rebuild(WebhookRepositoryEditedPropChangesPropTopics)
-
-__all__ = (
-    "WebhookRepositoryEdited",
-    "WebhookRepositoryEditedPropChanges",
-    "WebhookRepositoryEditedPropChangesPropDefaultBranch",
-    "WebhookRepositoryEditedPropChangesPropDescription",
-    "WebhookRepositoryEditedPropChangesPropHomepage",
-    "WebhookRepositoryEditedPropChangesPropTopics",
-)
+__all__ = ("WebhookRepositoryAdvisoryReported",)

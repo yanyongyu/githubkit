@@ -9,30 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0408 import EnterpriseWebhooks
-from .group_0409 import SimpleInstallation
-from .group_0411 import RepositoryWebhooks
-from .group_0412 import SimpleUserWebhooks
-from .group_0410 import OrganizationSimpleWebhooks
+from .group_0066 import Issue
+from .group_0017 import Repository
+from .group_0414 import SimpleInstallation
+from .group_0416 import RepositoryWebhooks
+from .group_0417 import SimpleUserWebhooks
+from .group_0415 import OrganizationSimpleWebhooks
 
 
-class WebhookWorkflowDispatch(GitHubModel):
-    """workflow_dispatch event"""
+class WebhookSubIssuesSubIssueAdded(GitHubModel):
+    """sub-issue added event"""
 
-    enterprise: Missing[EnterpriseWebhooks] = Field(
-        default=UNSET,
-        title="Enterprise",
-        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+    action: Literal["sub_issue_added"] = Field()
+    sub_issue_id: float = Field(description="The ID of the sub-issue.")
+    sub_issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
-    inputs: Union[WebhookWorkflowDispatchPropInputs, None] = Field()
+    sub_issue_repo: Repository = Field(
+        title="Repository", description="A repository on GitHub."
+    )
+    parent_issue_id: float = Field(description="The ID of the parent issue.")
+    parent_issue: Issue = Field(
+        title="Issue",
+        description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
+    )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -43,26 +52,18 @@ class WebhookWorkflowDispatch(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    ref: str = Field()
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    workflow: str = Field()
 
 
-class WebhookWorkflowDispatchPropInputs(ExtraGitHubModel):
-    """WebhookWorkflowDispatchPropInputs"""
+model_rebuild(WebhookSubIssuesSubIssueAdded)
 
-
-model_rebuild(WebhookWorkflowDispatch)
-model_rebuild(WebhookWorkflowDispatchPropInputs)
-
-__all__ = (
-    "WebhookWorkflowDispatch",
-    "WebhookWorkflowDispatchPropInputs",
-)
+__all__ = ("WebhookSubIssuesSubIssueAdded",)

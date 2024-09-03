@@ -15,6 +15,8 @@ from typing_extensions import Annotated
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0001 import SimpleUser
@@ -90,6 +92,7 @@ class GlobalAdvisory(GitHubModel):
     )
     cvss: Union[GlobalAdvisoryPropCvss, None] = Field()
     cwes: Union[List[GlobalAdvisoryPropCwesItems], None] = Field()
+    epss: Missing[Union[GlobalAdvisoryPropEpss, None]] = Field(default=UNSET)
     credits_: Union[List[GlobalAdvisoryPropCreditsItems], None] = Field(
         alias="credits", description="The users who contributed to the advisory."
     )
@@ -116,6 +119,13 @@ class GlobalAdvisoryPropCwesItems(GitHubModel):
 
     cwe_id: str = Field(description="The Common Weakness Enumeration (CWE) identifier.")
     name: str = Field(description="The name of the CWE.")
+
+
+class GlobalAdvisoryPropEpss(GitHubModel):
+    """GlobalAdvisoryPropEpss"""
+
+    percentage: Missing[float] = Field(default=UNSET)
+    percentile: Missing[float] = Field(default=UNSET)
 
 
 class Vulnerability(GitHubModel):
@@ -170,6 +180,7 @@ model_rebuild(GlobalAdvisory)
 model_rebuild(GlobalAdvisoryPropIdentifiersItems)
 model_rebuild(GlobalAdvisoryPropCvss)
 model_rebuild(GlobalAdvisoryPropCwesItems)
+model_rebuild(GlobalAdvisoryPropEpss)
 model_rebuild(Vulnerability)
 model_rebuild(VulnerabilityPropPackage)
 
@@ -179,6 +190,7 @@ __all__ = (
     "GlobalAdvisoryPropIdentifiersItems",
     "GlobalAdvisoryPropCvss",
     "GlobalAdvisoryPropCwesItems",
+    "GlobalAdvisoryPropEpss",
     "Vulnerability",
     "VulnerabilityPropPackage",
 )

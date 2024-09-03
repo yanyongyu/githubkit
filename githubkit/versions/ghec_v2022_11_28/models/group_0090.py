@@ -44,6 +44,17 @@ class CodeSecurityConfiguration(GitHubModel):
     dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
         default=UNSET, description="The enablement status of Dependency Graph"
     )
+    dependency_graph_autosubmit_action: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of Automatic dependency submission",
+    )
+    dependency_graph_autosubmit_action_options: Missing[
+        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
+    ] = Field(
+        default=UNSET, description="Feature options for Automatic dependency submission"
+    )
     dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
         default=UNSET, description="The enablement status of Dependabot alerts"
     )
@@ -91,6 +102,22 @@ class CodeSecurityConfiguration(GitHubModel):
     updated_at: Missing[datetime] = Field(default=UNSET)
 
 
-model_rebuild(CodeSecurityConfiguration)
+class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions(GitHubModel):
+    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
 
-__all__ = ("CodeSecurityConfiguration",)
+    Feature options for Automatic dependency submission
+    """
+
+    labeled_runners: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
+    )
+
+
+model_rebuild(CodeSecurityConfiguration)
+model_rebuild(CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions)
+
+__all__ = (
+    "CodeSecurityConfiguration",
+    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions",
+)

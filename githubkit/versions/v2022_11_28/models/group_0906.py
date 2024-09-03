@@ -9,19 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoAttestationsPostResponse201(GitHubModel):
-    """ReposOwnerRepoAttestationsPostResponse201"""
-
-    id: Missing[int] = Field(default=UNSET, description="The ID of the attestation.")
+from .group_0167 import ActionsVariable
 
 
-model_rebuild(ReposOwnerRepoAttestationsPostResponse201)
+class ReposOwnerRepoActionsVariablesGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsVariablesGetResponse200"""
 
-__all__ = ("ReposOwnerRepoAttestationsPostResponse201",)
+    total_count: int = Field()
+    variables: List[ActionsVariable] = Field()
+
+
+model_rebuild(ReposOwnerRepoActionsVariablesGetResponse200)
+
+__all__ = ("ReposOwnerRepoActionsVariablesGetResponse200",)

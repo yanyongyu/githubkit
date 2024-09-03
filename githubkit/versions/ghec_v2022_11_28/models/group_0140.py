@@ -9,27 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0141 import RepositoryRuleMergeQueuePropParameters
+
+class RepositoryRuleUpdatePropParameters(GitHubModel):
+    """RepositoryRuleUpdatePropParameters"""
+
+    update_allows_fetch_and_merge: bool = Field(
+        description="Branch can pull changes from its upstream repository"
+    )
 
 
-class RepositoryRuleMergeQueue(GitHubModel):
-    """merge_queue
+model_rebuild(RepositoryRuleUpdatePropParameters)
 
-    Merges must be performed via a merge queue.
-    """
-
-    type: Literal["merge_queue"] = Field()
-    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
-
-
-model_rebuild(RepositoryRuleMergeQueue)
-
-__all__ = ("RepositoryRuleMergeQueue",)
+__all__ = ("RepositoryRuleUpdatePropParameters",)

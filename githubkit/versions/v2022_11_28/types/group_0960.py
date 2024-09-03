@@ -9,25 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoDispatchesPostBodyType(TypedDict):
-    """ReposOwnerRepoDispatchesPostBody"""
+class ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoDependabotAlertsAlertNumberPatchBody"""
 
-    event_type: str
-    client_payload: NotRequired[ReposOwnerRepoDispatchesPostBodyPropClientPayloadType]
-
-
-class ReposOwnerRepoDispatchesPostBodyPropClientPayloadType(TypedDict):
-    """ReposOwnerRepoDispatchesPostBodyPropClientPayload
-
-    JSON payload with extra information about the webhook event that your action or
-    workflow may use. The maximum number of top-level properties is 10.
-    """
+    state: Literal["dismissed", "open"]
+    dismissed_reason: NotRequired[
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ]
+    ]
+    dismissed_comment: NotRequired[str]
 
 
-__all__ = (
-    "ReposOwnerRepoDispatchesPostBodyType",
-    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadType",
-)
+__all__ = ("ReposOwnerRepoDependabotAlertsAlertNumberPatchBodyType",)

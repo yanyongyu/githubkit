@@ -9,21 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0391 import SearchResultTextMatchesItems
 
-class CodespacesUserPublicKey(GitHubModel):
-    """CodespacesUserPublicKey
 
-    The public key used for setting user Codespaces' Secrets.
+class LabelSearchResultItem(GitHubModel):
+    """Label Search Result Item
+
+    Label Search Result Item
     """
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    name: str = Field()
+    color: str = Field()
+    default: bool = Field()
+    description: Union[str, None] = Field()
+    score: float = Field()
+    text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
+        default=UNSET, title="Search Result Text Matches"
+    )
 
 
-model_rebuild(CodespacesUserPublicKey)
+class SearchLabelsGetResponse200(GitHubModel):
+    """SearchLabelsGetResponse200"""
 
-__all__ = ("CodespacesUserPublicKey",)
+    total_count: int = Field()
+    incomplete_results: bool = Field()
+    items: List[LabelSearchResultItem] = Field()
+
+
+model_rebuild(LabelSearchResultItem)
+model_rebuild(SearchLabelsGetResponse200)
+
+__all__ = (
+    "LabelSearchResultItem",
+    "SearchLabelsGetResponse200",
+)

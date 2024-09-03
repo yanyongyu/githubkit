@@ -9,17 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0187 import ActionsSecretType
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsOrganizationSecretsGetResponse200"""
+class ProjectsProjectIdCollaboratorsUsernamePutBodyType(TypedDict):
+    """ProjectsProjectIdCollaboratorsUsernamePutBody"""
 
-    total_count: int
-    secrets: List[ActionsSecretType]
+    permission: NotRequired[Literal["read", "write", "admin"]]
 
 
-__all__ = ("ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type",)
+__all__ = ("ProjectsProjectIdCollaboratorsUsernamePutBodyType",)

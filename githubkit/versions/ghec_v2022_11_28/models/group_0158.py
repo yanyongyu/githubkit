@@ -9,23 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0159 import RepositoryRuleTagNamePatternPropParameters
 
-class RepositoryRuleParamsRestrictedCommits(GitHubModel):
-    """RestrictedCommits
 
-    Restricted commit
+class RepositoryRuleTagNamePattern(GitHubModel):
+    """tag_name_pattern
+
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    oid: str = Field(description="Full or abbreviated commit hash to reject")
-    reason: Missing[str] = Field(default=UNSET, description="Reason for restriction")
+    type: Literal["tag_name_pattern"] = Field()
+    parameters: Missing[RepositoryRuleTagNamePatternPropParameters] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(RepositoryRuleParamsRestrictedCommits)
+model_rebuild(RepositoryRuleTagNamePattern)
 
-__all__ = ("RepositoryRuleParamsRestrictedCommits",)
+__all__ = ("RepositoryRuleTagNamePattern",)

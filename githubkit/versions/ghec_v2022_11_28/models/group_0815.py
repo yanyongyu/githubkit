@@ -13,20 +13,18 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0034 import Runner
+from .group_0029 import OrganizationSimple
 
 
-class EnterprisesEnterpriseActionsRunnersGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
+class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
 
-    total_count: Missing[float] = Field(default=UNSET)
-    runners: Missing[List[Runner]] = Field(default=UNSET)
+    total_count: float = Field()
+    organizations: List[OrganizationSimple] = Field()
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnersGetResponse200)
+model_rebuild(EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200",)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200",)

@@ -9,22 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
-from pydantic import Field
-
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0029 import OrganizationSimple
+
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202(GitHubModel):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
+model_rebuild(AppHookDeliveriesDeliveryIdAttemptsPostResponse202)
 
-    total_count: float = Field()
-    organizations: List[OrganizationSimple] = Field()
-
-
-model_rebuild(EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200)
-
-__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200",)
+__all__ = ("AppHookDeliveriesDeliveryIdAttemptsPostResponse202",)

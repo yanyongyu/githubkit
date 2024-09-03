@@ -12,23 +12,41 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0408 import EnterpriseWebhooksType
-from .group_0409 import SimpleInstallationType
-from .group_0411 import RepositoryWebhooksType
-from .group_0412 import SimpleUserWebhooksType
-from .group_0410 import OrganizationSimpleWebhooksType
+from .group_0413 import EnterpriseWebhooksType
+from .group_0414 import SimpleInstallationType
+from .group_0416 import RepositoryWebhooksType
+from .group_0417 import SimpleUserWebhooksType
+from .group_0464 import WebhooksSponsorshipType
+from .group_0415 import OrganizationSimpleWebhooksType
 
 
-class WebhookStarDeletedType(TypedDict):
-    """star deleted event"""
+class WebhookSponsorshipEditedType(TypedDict):
+    """sponsorship edited event"""
 
-    action: Literal["deleted"]
+    action: Literal["edited"]
+    changes: WebhookSponsorshipEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
     sender: SimpleUserWebhooksType
-    starred_at: None
+    sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("WebhookStarDeletedType",)
+class WebhookSponsorshipEditedPropChangesType(TypedDict):
+    """WebhookSponsorshipEditedPropChanges"""
+
+    privacy_level: NotRequired[WebhookSponsorshipEditedPropChangesPropPrivacyLevelType]
+
+
+class WebhookSponsorshipEditedPropChangesPropPrivacyLevelType(TypedDict):
+    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookSponsorshipEditedType",
+    "WebhookSponsorshipEditedPropChangesType",
+    "WebhookSponsorshipEditedPropChangesPropPrivacyLevelType",
+)

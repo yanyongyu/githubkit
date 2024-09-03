@@ -17,21 +17,31 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0591 import WebhookRubygemsMetadata
+from .group_0594 import WebhookRubygemsMetadata
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersion(GitHubModel):
-    """WebhookPackageUpdatedPropPackagePropPackageVersion"""
+class WebhookPackagePublishedPropPackagePropPackageVersion(GitHubModel):
+    """WebhookPackagePublishedPropPackagePropPackageVersion"""
 
-    author: Union[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor, None
-    ] = Field(title="User")
-    body: str = Field()
-    body_html: str = Field()
-    created_at: str = Field()
+    author: Missing[
+        Union[WebhookPackagePublishedPropPackagePropPackageVersionPropAuthor, None]
+    ] = Field(default=UNSET, title="User")
+    body: Missing[
+        Union[str, WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1]
+    ] = Field(default=UNSET)
+    body_html: Missing[str] = Field(default=UNSET)
+    container_metadata: Missing[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadata,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
     description: str = Field()
     docker_metadata: Missing[
-        List[WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems]
+        List[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItems
+        ]
     ] = Field(default=UNSET)
     draft: Missing[bool] = Field(default=UNSET)
     html_url: str = Field()
@@ -39,28 +49,39 @@ class WebhookPackageUpdatedPropPackagePropPackageVersion(GitHubModel):
     installation_command: str = Field()
     manifest: Missing[str] = Field(default=UNSET)
     metadata: List[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems
+        WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItems
     ] = Field()
     name: str = Field()
+    npm_metadata: Missing[
+        Union[WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadata, None]
+    ] = Field(default=UNSET)
+    nuget_metadata: Missing[
+        Union[
+            List[
+                WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItems
+            ],
+            None,
+        ]
+    ] = Field(default=UNSET)
     package_files: List[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems
+        WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItems
     ] = Field()
     package_url: Missing[str] = Field(default=UNSET)
     prerelease: Missing[bool] = Field(default=UNSET)
-    release: Missing[WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease] = (
-        Field(default=UNSET)
-    )
+    release: Missing[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropRelease
+    ] = Field(default=UNSET)
     rubygems_metadata: Missing[List[WebhookRubygemsMetadata]] = Field(default=UNSET)
     source_url: Missing[str] = Field(default=UNSET)
     summary: str = Field()
     tag_name: Missing[str] = Field(default=UNSET)
-    target_commitish: str = Field()
-    target_oid: str = Field()
-    updated_at: str = Field()
+    target_commitish: Missing[str] = Field(default=UNSET)
+    target_oid: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
     version: str = Field()
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor(GitHubModel):
+class WebhookPackagePublishedPropPackagePropPackageVersionPropAuthor(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -86,24 +107,272 @@ class WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems(
+class WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1(GitHubModel):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadata(
     GitHubModel
 ):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems"""
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadata"""
+
+    labels: Missing[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLabels,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    manifest: Missing[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifest,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    tag: Missing[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTag
+    ] = Field(default=UNSET)
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLabels(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLab
+    els
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifest(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropMan
+    ifest
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTag(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTag"""
+
+    digest: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItems(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItems"""
 
     tags: Missing[List[str]] = Field(default=UNSET)
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems(
+class WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItems(
     ExtraGitHubModel
 ):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems"""
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItems"""
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems(
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadata(GitHubModel):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadata"""
+
+    name: Missing[str] = Field(default=UNSET)
+    version: Missing[str] = Field(default=UNSET)
+    npm_user: Missing[str] = Field(default=UNSET)
+    author: Missing[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthor,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    bugs: Missing[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugs,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    dependencies: Missing[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependencies
+    ] = Field(default=UNSET)
+    dev_dependencies: Missing[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependencies
+    ] = Field(default=UNSET)
+    peer_dependencies: Missing[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependencies
+    ] = Field(default=UNSET)
+    optional_dependencies: Missing[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies
+    ] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+    dist: Missing[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDist,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    git_head: Missing[str] = Field(default=UNSET)
+    homepage: Missing[str] = Field(default=UNSET)
+    license_: Missing[str] = Field(default=UNSET, alias="license")
+    main: Missing[str] = Field(default=UNSET)
+    repository: Missing[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepository,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    scripts: Missing[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScripts
+    ] = Field(default=UNSET)
+    id: Missing[str] = Field(default=UNSET)
+    node_version: Missing[str] = Field(default=UNSET)
+    npm_version: Missing[str] = Field(default=UNSET)
+    has_shrinkwrap: Missing[bool] = Field(default=UNSET)
+    maintainers: Missing[
+        List[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItems
+        ]
+    ] = Field(default=UNSET)
+    contributors: Missing[
+        List[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItems
+        ]
+    ] = Field(default=UNSET)
+    engines: Missing[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEngines
+    ] = Field(default=UNSET)
+    keywords: Missing[List[str]] = Field(default=UNSET)
+    files: Missing[List[str]] = Field(default=UNSET)
+    bin_: Missing[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBin
+    ] = Field(default=UNSET, alias="bin")
+    man: Missing[
+        WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMan
+    ] = Field(default=UNSET)
+    directories: Missing[
+        Union[
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectories,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    os: Missing[List[str]] = Field(default=UNSET)
+    cpu: Missing[List[str]] = Field(default=UNSET)
+    readme: Missing[str] = Field(default=UNSET)
+    installation_command: Missing[str] = Field(default=UNSET)
+    release_id: Missing[int] = Field(default=UNSET)
+    commit_oid: Missing[str] = Field(default=UNSET)
+    published_via_actions: Missing[bool] = Field(default=UNSET)
+    deleted_by_id: Missing[int] = Field(default=UNSET)
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthor(
     GitHubModel
 ):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems"""
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthor"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugs(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugs"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependencies(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependenc
+    ies
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependencies(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDepend
+    encies
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependencies(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDepen
+    dencies
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalD
+    ependencies
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDist(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDist"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepository(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepositor
+    y
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScripts(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScripts"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItems(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintaine
+    rsItems
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItems(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContribut
+    orsItems
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEngines(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEngines"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBin(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBin"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMan(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMan"""
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectories(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectori
+    es
+    """
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItems(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItems"""
 
     content_type: str = Field()
     created_at: str = Field()
@@ -112,23 +381,53 @@ class WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems(
     md5: Union[str, None] = Field()
     name: str = Field()
     sha1: Union[str, None] = Field()
-    sha256: str = Field()
+    sha256: Union[str, None] = Field()
     size: int = Field()
-    state: str = Field()
+    state: Union[str, None] = Field()
     updated_at: str = Field()
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease(GitHubModel):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease"""
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItems(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItems"""
+
+    id: Missing[Union[int, str]] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    value: Missing[
+        Union[
+            bool,
+            str,
+            int,
+            WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3,
+        ]
+    ] = Field(default=UNSET)
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3(
+    GitHubModel
+):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropVa
+    lueOneof3
+    """
+
+    url: Missing[str] = Field(default=UNSET)
+    branch: Missing[str] = Field(default=UNSET)
+    commit: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+
+
+class WebhookPackagePublishedPropPackagePropPackageVersionPropRelease(GitHubModel):
+    """WebhookPackagePublishedPropPackagePropPackageVersionPropRelease"""
 
     author: Union[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor, None
+        WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthor, None
     ] = Field(title="User")
     created_at: str = Field()
     draft: bool = Field()
     html_url: str = Field()
     id: int = Field()
-    name: str = Field()
+    name: Union[str, None] = Field()
     prerelease: bool = Field()
     published_at: str = Field()
     tag_name: str = Field()
@@ -136,7 +435,7 @@ class WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease(GitHubModel)
     url: str = Field()
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor(
+class WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthor(
     GitHubModel
 ):
     """User"""
@@ -164,20 +463,108 @@ class WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor(
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersion)
-model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor)
-model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems)
-model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems)
-model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems)
-model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease)
-model_rebuild(WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor)
+model_rebuild(WebhookPackagePublishedPropPackagePropPackageVersion)
+model_rebuild(WebhookPackagePublishedPropPackagePropPackageVersionPropAuthor)
+model_rebuild(WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1)
+model_rebuild(WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadata)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLabels
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifest
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTag
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItems
+)
+model_rebuild(WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItems)
+model_rebuild(WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadata)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthor
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugs
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependencies
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependencies
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependencies
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDist
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepository
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScripts
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItems
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItems
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEngines
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBin
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMan
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectories
+)
+model_rebuild(WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItems)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItems
+)
+model_rebuild(
+    WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3
+)
+model_rebuild(WebhookPackagePublishedPropPackagePropPackageVersionPropRelease)
+model_rebuild(WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthor)
 
 __all__ = (
-    "WebhookPackageUpdatedPropPackagePropPackageVersion",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthor",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthor",
+    "WebhookPackagePublishedPropPackagePropPackageVersion",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropAuthor",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropBodyOneof1",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadata",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropLabels",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifest",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropTag",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItems",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItems",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadata",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropAuthor",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBugs",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDependencies",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDevDependencies",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropPeerDependencies",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropOptionalDependencies",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDist",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropRepository",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropScripts",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItems",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItems",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEngines",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBin",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMan",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropDirectories",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItems",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItems",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsPropValueOneof3",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropRelease",
+    "WebhookPackagePublishedPropPackagePropPackageVersionPropReleasePropAuthor",
 )

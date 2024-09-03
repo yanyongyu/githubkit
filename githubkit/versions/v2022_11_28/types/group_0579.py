@@ -12,24 +12,22 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0395 import WebhooksMilestoneType
-from .group_0373 import EnterpriseWebhooksType
-from .group_0374 import SimpleInstallationType
-from .group_0376 import RepositoryWebhooksType
-from .group_0377 import SimpleUserWebhooksType
-from .group_0375 import OrganizationSimpleWebhooksType
+from .group_0404 import MergeGroupType
+from .group_0377 import SimpleInstallationType
+from .group_0379 import RepositoryWebhooksType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0378 import OrganizationSimpleWebhooksType
 
 
-class WebhookMilestoneClosedType(TypedDict):
-    """milestone closed event"""
+class WebhookMergeGroupChecksRequestedType(TypedDict):
+    """WebhookMergeGroupChecksRequested"""
 
-    action: Literal["closed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["checks_requested"]
     installation: NotRequired[SimpleInstallationType]
-    milestone: WebhooksMilestoneType
+    merge_group: MergeGroupType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookMilestoneClosedType",)
+__all__ = ("WebhookMergeGroupChecksRequestedType",)

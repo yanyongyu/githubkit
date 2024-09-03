@@ -9,26 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PorterAuthor(GitHubModel):
-    """Porter Author
+class GitTree(GitHubModel):
+    """Git Tree
 
-    Porter Author
+    The hierarchy between files in a Git repository.
     """
 
-    id: int = Field()
-    remote_id: str = Field()
-    remote_name: str = Field()
-    email: str = Field()
-    name: str = Field()
+    sha: str = Field()
     url: str = Field()
-    import_url: str = Field()
+    truncated: bool = Field()
+    tree: List[GitTreePropTreeItems] = Field(
+        description="Objects specifying a tree structure"
+    )
 
 
-model_rebuild(PorterAuthor)
+class GitTreePropTreeItems(GitHubModel):
+    """GitTreePropTreeItems"""
 
-__all__ = ("PorterAuthor",)
+    path: Missing[str] = Field(default=UNSET)
+    mode: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+    size: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(GitTree)
+model_rebuild(GitTreePropTreeItems)
+
+__all__ = (
+    "GitTree",
+    "GitTreePropTreeItems",
+)

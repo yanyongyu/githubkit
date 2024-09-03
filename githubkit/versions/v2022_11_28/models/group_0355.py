@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import List, Union
 
 from pydantic import Field
 
@@ -18,113 +18,47 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0037 import Milestone
-from .group_0001 import SimpleUser
-from .group_0017 import Repository
-from .group_0006 import Integration
-from .group_0038 import ReactionRollup
-from .group_0351 import SearchResultTextMatchesItems
+from .group_0055 import MinimalRepository
+from .group_0354 import SearchResultTextMatchesItems
 
 
-class IssueSearchResultItem(GitHubModel):
-    """Issue Search Result Item
+class CodeSearchResultItem(GitHubModel):
+    """Code Search Result Item
 
-    Issue Search Result Item
+    Code Search Result Item
     """
 
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
     url: str = Field()
-    repository_url: str = Field()
-    labels_url: str = Field()
-    comments_url: str = Field()
-    events_url: str = Field()
+    git_url: str = Field()
     html_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    number: int = Field()
-    title: str = Field()
-    locked: bool = Field()
-    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    assignees: Missing[Union[List[SimpleUser], None]] = Field(default=UNSET)
-    user: Union[None, SimpleUser] = Field()
-    labels: List[IssueSearchResultItemPropLabelsItems] = Field()
-    state: str = Field()
-    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    assignee: Union[None, SimpleUser] = Field()
-    milestone: Union[None, Milestone] = Field()
-    comments: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    closed_at: Union[datetime, None] = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    score: float = Field()
+    file_size: Missing[int] = Field(default=UNSET)
+    language: Missing[Union[str, None]] = Field(default=UNSET)
+    last_modified_at: Missing[datetime] = Field(default=UNSET)
+    line_numbers: Missing[List[str]] = Field(default=UNSET)
     text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
         default=UNSET, title="Search Result Text Matches"
     )
-    pull_request: Missing[IssueSearchResultItemPropPullRequest] = Field(default=UNSET)
-    body: Missing[str] = Field(default=UNSET)
-    score: float = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    draft: Missing[bool] = Field(default=UNSET)
-    repository: Missing[Repository] = Field(
-        default=UNSET, title="Repository", description="A repository on GitHub."
-    )
-    body_html: Missing[str] = Field(default=UNSET)
-    body_text: Missing[str] = Field(default=UNSET)
-    timeline_url: Missing[str] = Field(default=UNSET)
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
-    )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-class IssueSearchResultItemPropLabelsItems(GitHubModel):
-    """IssueSearchResultItemPropLabelsItems"""
-
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    color: Missing[str] = Field(default=UNSET)
-    default: Missing[bool] = Field(default=UNSET)
-    description: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-class IssueSearchResultItemPropPullRequest(GitHubModel):
-    """IssueSearchResultItemPropPullRequest"""
-
-    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
-    diff_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    patch_url: Union[str, None] = Field()
-    url: Union[str, None] = Field()
-
-
-class SearchIssuesGetResponse200(GitHubModel):
-    """SearchIssuesGetResponse200"""
+class SearchCodeGetResponse200(GitHubModel):
+    """SearchCodeGetResponse200"""
 
     total_count: int = Field()
     incomplete_results: bool = Field()
-    items: List[IssueSearchResultItem] = Field()
+    items: List[CodeSearchResultItem] = Field()
 
 
-model_rebuild(IssueSearchResultItem)
-model_rebuild(IssueSearchResultItemPropLabelsItems)
-model_rebuild(IssueSearchResultItemPropPullRequest)
-model_rebuild(SearchIssuesGetResponse200)
+model_rebuild(CodeSearchResultItem)
+model_rebuild(SearchCodeGetResponse200)
 
 __all__ = (
-    "IssueSearchResultItem",
-    "IssueSearchResultItemPropLabelsItems",
-    "IssueSearchResultItemPropPullRequest",
-    "SearchIssuesGetResponse200",
+    "CodeSearchResultItem",
+    "SearchCodeGetResponse200",
 )

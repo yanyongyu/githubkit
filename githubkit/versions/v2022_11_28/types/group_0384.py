@@ -9,20 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union
+from typing_extensions import TypedDict, NotRequired
 
 
-class WebhooksWorkflowJobRunType(TypedDict):
-    """WebhooksWorkflowJobRun"""
+class WebhooksDeployKeyType(TypedDict):
+    """WebhooksDeployKey
 
-    conclusion: None
+    The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-
+    deploy-key) resource.
+    """
+
+    added_by: NotRequired[Union[str, None]]
     created_at: str
-    environment: str
-    html_url: str
     id: int
-    name: None
-    status: str
-    updated_at: str
+    key: str
+    last_used: NotRequired[Union[str, None]]
+    read_only: bool
+    title: str
+    url: str
+    verified: bool
 
 
-__all__ = ("WebhooksWorkflowJobRunType",)
+__all__ = ("WebhooksDeployKeyType",)

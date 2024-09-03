@@ -12,30 +12,32 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0597 import WebhookPackageUpdatedPropPackagePropPackageVersionType
+from .group_0597 import WebhookPackagePublishedPropPackagePropPackageVersionType
 
 
-class WebhookPackageUpdatedPropPackageType(TypedDict):
-    """WebhookPackageUpdatedPropPackage
+class WebhookPackagePublishedPropPackageType(TypedDict):
+    """WebhookPackagePublishedPropPackage
 
     Information about the package.
     """
 
-    created_at: str
+    created_at: Union[str, None]
     description: Union[str, None]
     ecosystem: str
     html_url: str
     id: int
     name: str
     namespace: str
-    owner: Union[WebhookPackageUpdatedPropPackagePropOwnerType, None]
+    owner: Union[WebhookPackagePublishedPropPackagePropOwnerType, None]
     package_type: str
-    package_version: WebhookPackageUpdatedPropPackagePropPackageVersionType
-    registry: Union[WebhookPackageUpdatedPropPackagePropRegistryType, None]
-    updated_at: str
+    package_version: Union[
+        WebhookPackagePublishedPropPackagePropPackageVersionType, None
+    ]
+    registry: Union[WebhookPackagePublishedPropPackagePropRegistryType, None]
+    updated_at: Union[str, None]
 
 
-class WebhookPackageUpdatedPropPackagePropOwnerType(TypedDict):
+class WebhookPackagePublishedPropPackagePropOwnerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -61,8 +63,8 @@ class WebhookPackageUpdatedPropPackagePropOwnerType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookPackageUpdatedPropPackagePropRegistryType(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropRegistry"""
+class WebhookPackagePublishedPropPackagePropRegistryType(TypedDict):
+    """WebhookPackagePublishedPropPackagePropRegistry"""
 
     about_url: str
     name: str
@@ -72,7 +74,7 @@ class WebhookPackageUpdatedPropPackagePropRegistryType(TypedDict):
 
 
 __all__ = (
-    "WebhookPackageUpdatedPropPackageType",
-    "WebhookPackageUpdatedPropPackagePropOwnerType",
-    "WebhookPackageUpdatedPropPackagePropRegistryType",
+    "WebhookPackagePublishedPropPackageType",
+    "WebhookPackagePublishedPropPackagePropOwnerType",
+    "WebhookPackagePublishedPropPackagePropRegistryType",
 )

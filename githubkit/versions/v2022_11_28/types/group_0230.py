@@ -9,29 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
+from .group_0055 import MinimalRepositoryType
 
 
-class StatusType(TypedDict):
-    """Status
+class CombinedCommitStatusType(TypedDict):
+    """Combined Commit Status
 
-    The status of a commit.
+    Combined Commit Status
     """
 
+    state: str
+    statuses: List[SimpleCommitStatusType]
+    sha: str
+    total_count: int
+    repository: MinimalRepositoryType
+    commit_url: str
     url: str
-    avatar_url: Union[str, None]
+
+
+class SimpleCommitStatusType(TypedDict):
+    """Simple Commit Status"""
+
+    description: Union[str, None]
     id: int
     node_id: str
     state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
     context: str
-    created_at: str
-    updated_at: str
-    creator: Union[None, SimpleUserType]
+    target_url: Union[str, None]
+    required: NotRequired[Union[bool, None]]
+    avatar_url: Union[str, None]
+    url: str
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("StatusType",)
+__all__ = (
+    "CombinedCommitStatusType",
+    "SimpleCommitStatusType",
+)

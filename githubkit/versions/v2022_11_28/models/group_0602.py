@@ -17,29 +17,29 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0373 import EnterpriseWebhooks
-from .group_0374 import SimpleInstallation
-from .group_0377 import SimpleUserWebhooks
-from .group_0375 import OrganizationSimpleWebhooks
-from .group_0404 import PersonalAccessTokenRequest
+from .group_0376 import EnterpriseWebhooks
+from .group_0377 import SimpleInstallation
+from .group_0380 import SimpleUserWebhooks
+from .group_0378 import OrganizationSimpleWebhooks
+from .group_0407 import PersonalAccessTokenRequest
 
 
-class WebhookPersonalAccessTokenRequestDenied(GitHubModel):
-    """personal_access_token_request denied event"""
+class WebhookPersonalAccessTokenRequestApproved(GitHubModel):
+    """personal_access_token_request approved event"""
 
-    action: Literal["denied"] = Field()
+    action: Literal["approved"] = Field()
     personal_access_token_request: PersonalAccessTokenRequest = Field(
         title="Personal Access Token Request",
         description="Details of a Personal Access Token Request.",
-    )
-    organization: OrganizationSimpleWebhooks = Field(
-        title="Organization Simple",
-        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
         description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."',
+    )
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -51,6 +51,6 @@ class WebhookPersonalAccessTokenRequestDenied(GitHubModel):
     )
 
 
-model_rebuild(WebhookPersonalAccessTokenRequestDenied)
+model_rebuild(WebhookPersonalAccessTokenRequestApproved)
 
-__all__ = ("WebhookPersonalAccessTokenRequestDenied",)
+__all__ = ("WebhookPersonalAccessTokenRequestApproved",)

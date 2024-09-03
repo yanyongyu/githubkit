@@ -9,33 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+class ReposOwnerRepoIssuesCommentsCommentIdPatchBody(GitHubModel):
+    """ReposOwnerRepoIssuesCommentsCommentIdPatchBody"""
 
-    labels: Missing[
-        List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems]
-    ] = Field(min_length=1, default=UNSET)
+    body: str = Field(description="The contents of the comment.")
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
+model_rebuild(ReposOwnerRepoIssuesCommentsCommentIdPatchBody)
 
-    name: str = Field()
-
-
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems)
-
-__all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems",
-)
+__all__ = ("ReposOwnerRepoIssuesCommentsCommentIdPatchBody",)

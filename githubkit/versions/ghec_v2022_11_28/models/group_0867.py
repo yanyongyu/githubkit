@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -18,62 +18,26 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCodeSecurityConfigurationsPostBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsPostBody"""
+class OrgsOrgActionsSecretsSecretNamePutBody(GitHubModel):
+    """OrgsOrgActionsSecretsSecretNamePutBody"""
 
-    name: str = Field(
-        description="The name of the code security configuration. Must be unique within the organization."
-    )
-    description: str = Field(
-        max_length=255, description="A description of the code security configuration"
-    )
-    advanced_security: Missing[Literal["enabled", "disabled"]] = Field(
-        default=UNSET, description="The enablement status of GitHub Advanced Security"
-    )
-    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependency Graph"
-    )
-    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependabot alerts"
-    )
-    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of Dependabot security updates",
-        )
-    )
-    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of code scanning default setup",
-        )
-    )
-    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of secret scanning"
-    )
-    secret_scanning_push_protection: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
-        description="The enablement status of secret scanning push protection",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-organization-public-key) endpoint.",
     )
-    secret_scanning_validity_checks: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
+    key_id: Missing[str] = Field(
+        default=UNSET, description="ID of the key you used to encrypt the secret."
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret."
+    )
+    selected_repository_ids: Missing[List[int]] = Field(
         default=UNSET,
-        description="The enablement status of secret scanning validity checks",
-    )
-    private_vulnerability_reporting: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of private vulnerability reporting",
-    )
-    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
-        default=UNSET, description="The enforcement status for a security configuration"
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints.",
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsPostBody)
+model_rebuild(OrgsOrgActionsSecretsSecretNamePutBody)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsPostBody",)
+__all__ = ("OrgsOrgActionsSecretsSecretNamePutBody",)

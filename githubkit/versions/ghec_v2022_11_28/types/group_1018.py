@@ -9,30 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing import List, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoCodespacesSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesSecretsGetResponse200"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type(TypedDict):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
 
-    total_count: int
-    secrets: List[RepoCodespacesSecretType]
-
-
-class RepoCodespacesSecretType(TypedDict):
-    """Codespaces Secret
-
-    Set repository secrets for GitHub Codespaces.
-    """
-
-    name: str
-    created_at: datetime
-    updated_at: datetime
+    language: Literal[
+        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
+    ]
+    query_pack: str
+    repositories: NotRequired[List[str]]
+    repository_lists: NotRequired[List[str]]
+    repository_owners: List[str]
 
 
-__all__ = (
-    "ReposOwnerRepoCodespacesSecretsGetResponse200Type",
-    "RepoCodespacesSecretType",
-)
+__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type",)

@@ -13,25 +13,30 @@ from typing import Union
 from typing_extensions import TypedDict
 
 from .group_0001 import SimpleUserType
+from .group_0017 import RepositoryType
 
 
-class StatusType(TypedDict):
-    """Status
+class PullRequestSimplePropHeadType(TypedDict):
+    """PullRequestSimplePropHead"""
 
-    The status of a commit.
-    """
-
-    url: str
-    avatar_url: Union[str, None]
-    id: int
-    node_id: str
-    state: str
-    description: Union[str, None]
-    target_url: Union[str, None]
-    context: str
-    created_at: str
-    updated_at: str
-    creator: Union[None, SimpleUserType]
+    label: Union[str, None]
+    ref: str
+    repo: Union[None, RepositoryType]
+    sha: str
+    user: Union[None, SimpleUserType]
 
 
-__all__ = ("StatusType",)
+class PullRequestSimplePropBaseType(TypedDict):
+    """PullRequestSimplePropBase"""
+
+    label: str
+    ref: str
+    repo: RepositoryType
+    sha: str
+    user: Union[None, SimpleUserType]
+
+
+__all__ = (
+    "PullRequestSimplePropHeadType",
+    "PullRequestSimplePropBaseType",
+)

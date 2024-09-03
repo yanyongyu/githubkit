@@ -9,14 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsPostBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
 
-    role: NotRequired[Literal["member", "maintainer"]]
+    title: str
+    body: str
+    private: NotRequired[bool]
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType",)
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsPostBodyType",)

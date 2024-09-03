@@ -9,54 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhooksAnswerType(TypedDict):
-    """WebhooksAnswer"""
+class WebhooksApproverType(TypedDict):
+    """WebhooksApprover"""
 
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    child_comment_count: int
-    created_at: datetime
-    discussion_id: int
-    html_url: str
-    id: int
-    node_id: str
-    parent_id: None
-    reactions: NotRequired[WebhooksAnswerPropReactionsType]
-    repository_url: str
-    updated_at: datetime
-    user: Union[WebhooksAnswerPropUserType, None]
+    avatar_url: NotRequired[str]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: NotRequired[int]
+    login: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
 
 
-class WebhooksAnswerPropReactionsType(TypedDict):
-    """Reactions"""
+class WebhooksReviewersItemsType(TypedDict):
+    """WebhooksReviewersItems"""
 
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
+    reviewer: NotRequired[Union[WebhooksReviewersItemsPropReviewerType, None]]
+    type: NotRequired[Literal["User"]]
 
 
-class WebhooksAnswerPropUserType(TypedDict):
+class WebhooksReviewersItemsPropReviewerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -83,7 +70,7 @@ class WebhooksAnswerPropUserType(TypedDict):
 
 
 __all__ = (
-    "WebhooksAnswerType",
-    "WebhooksAnswerPropReactionsType",
-    "WebhooksAnswerPropUserType",
+    "WebhooksApproverType",
+    "WebhooksReviewersItemsType",
+    "WebhooksReviewersItemsPropReviewerType",
 )

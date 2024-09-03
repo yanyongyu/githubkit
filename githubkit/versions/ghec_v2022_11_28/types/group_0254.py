@@ -9,64 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-from typing_extensions import TypedDict, NotRequired
+from typing import Union
+from typing_extensions import TypedDict
+
+from .group_0001 import SimpleUserType
 
 
-class ContentTreeType(TypedDict):
-    """Content Tree
+class StatusType(TypedDict):
+    """Status
 
-    Content Tree
+    The status of a commit.
     """
 
-    type: str
-    size: int
-    name: str
-    path: str
-    sha: str
     url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    entries: NotRequired[List[ContentTreePropEntriesItemsType]]
-    links: ContentTreePropLinksType
+    avatar_url: Union[str, None]
+    id: int
+    node_id: str
+    state: str
+    description: Union[str, None]
+    target_url: Union[str, None]
+    context: str
+    created_at: str
+    updated_at: str
+    creator: Union[None, SimpleUserType]
 
 
-class ContentTreePropLinksType(TypedDict):
-    """ContentTreePropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-class ContentTreePropEntriesItemsType(TypedDict):
-    """ContentTreePropEntriesItems"""
-
-    type: str
-    size: int
-    name: str
-    path: str
-    content: NotRequired[str]
-    sha: str
-    url: str
-    git_url: Union[str, None]
-    html_url: Union[str, None]
-    download_url: Union[str, None]
-    links: ContentTreePropEntriesItemsPropLinksType
-
-
-class ContentTreePropEntriesItemsPropLinksType(TypedDict):
-    """ContentTreePropEntriesItemsPropLinks"""
-
-    git: Union[str, None]
-    html: Union[str, None]
-    self_: str
-
-
-__all__ = (
-    "ContentTreeType",
-    "ContentTreePropLinksType",
-    "ContentTreePropEntriesItemsType",
-    "ContentTreePropEntriesItemsPropLinksType",
-)
+__all__ = ("StatusType",)

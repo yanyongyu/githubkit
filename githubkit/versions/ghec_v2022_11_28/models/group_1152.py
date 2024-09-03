@@ -13,17 +13,35 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
-    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+class TeamsTeamIdTeamSyncGroupMappingsPatchBody(GitHubModel):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBody"""
 
-    selected_repository_ids: List[int] = Field(
-        description="An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints."
+    groups: List[TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems] = Field(
+        description="The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will replace the original one. You must include any existing groups that you don't want to remove."
     )
+    synced_at: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(UserCodespacesSecretsSecretNameRepositoriesPutBody)
+class TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems(GitHubModel):
+    """TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems"""
 
-__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBody",)
+    group_id: str = Field(description="ID of the IdP group.")
+    group_name: str = Field(description="Name of the IdP group.")
+    group_description: str = Field(description="Description of the IdP group.")
+    id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(TeamsTeamIdTeamSyncGroupMappingsPatchBody)
+model_rebuild(TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems)
+
+__all__ = (
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBody",
+    "TeamsTeamIdTeamSyncGroupMappingsPatchBodyPropGroupsItems",
+)

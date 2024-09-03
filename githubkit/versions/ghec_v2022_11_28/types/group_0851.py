@@ -12,14 +12,26 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0034 import RunnerType
+
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+
+    total_count: int
+    repository_cache_usages: List[ActionsCacheUsageByRepositoryType]
 
 
-class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(TypedDict):
-    """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
+class ActionsCacheUsageByRepositoryType(TypedDict):
+    """Actions Cache Usage by repository
 
-    total_count: float
-    runners: List[RunnerType]
+    GitHub Actions Cache Usage by repository.
+    """
+
+    full_name: str
+    active_caches_size_in_bytes: int
+    active_caches_count: int
 
 
-__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",)
+__all__ = (
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
+    "ActionsCacheUsageByRepositoryType",
+)

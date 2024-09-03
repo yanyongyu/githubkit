@@ -16,31 +16,32 @@ from .group_0001 import SimpleUserType
 from .group_0006 import IntegrationType
 
 
-class MilestonedIssueEventType(TypedDict):
-    """Milestoned Issue Event
+class LabeledIssueEventType(TypedDict):
+    """Labeled Issue Event
 
-    Milestoned Issue Event
+    Labeled Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["milestoned"]
+    event: Literal["labeled"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
     performed_via_github_app: Union[None, IntegrationType, None]
-    milestone: MilestonedIssueEventPropMilestoneType
+    label: LabeledIssueEventPropLabelType
 
 
-class MilestonedIssueEventPropMilestoneType(TypedDict):
-    """MilestonedIssueEventPropMilestone"""
+class LabeledIssueEventPropLabelType(TypedDict):
+    """LabeledIssueEventPropLabel"""
 
-    title: str
+    name: str
+    color: str
 
 
 __all__ = (
-    "MilestonedIssueEventType",
-    "MilestonedIssueEventPropMilestoneType",
+    "LabeledIssueEventType",
+    "LabeledIssueEventPropLabelType",
 )

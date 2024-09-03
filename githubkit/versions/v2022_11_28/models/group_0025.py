@@ -13,41 +13,29 @@ from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class TeamSimple(GitHubModel):
-    """Team Simple
+class OrganizationSimple(GitHubModel):
+    """Organization Simple
 
-    Groups of organization members that gives permissions on specified repositories.
+    A GitHub organization.
     """
 
-    id: int = Field(description="Unique identifier of the team")
+    login: str = Field()
+    id: int = Field()
     node_id: str = Field()
-    url: str = Field(description="URL for the team")
+    url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    hooks_url: str = Field()
+    issues_url: str = Field()
     members_url: str = Field()
-    name: str = Field(description="Name of the team")
-    description: Union[str, None] = Field(description="Description of the team")
-    permission: str = Field(
-        description="Permission that the team will have for its repositories"
-    )
-    privacy: Missing[str] = Field(
-        default=UNSET, description="The level of privacy this team should have"
-    )
-    notification_setting: Missing[str] = Field(
-        default=UNSET, description="The notification setting the team has set"
-    )
-    html_url: str = Field()
-    repositories_url: str = Field()
-    slug: str = Field()
-    ldap_dn: Missing[str] = Field(
-        default=UNSET,
-        description="Distinguished Name (DN) that team maps to within LDAP environment",
-    )
+    public_members_url: str = Field()
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
 
 
-model_rebuild(TeamSimple)
+model_rebuild(OrganizationSimple)
 
-__all__ = ("TeamSimple",)
+__all__ = ("OrganizationSimple",)

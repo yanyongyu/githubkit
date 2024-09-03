@@ -9,30 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200"""
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType(TypedDict):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody"""
 
-    total_count: int
-    devcontainers: List[
-        ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType
+    state: Literal["open", "dismissed"]
+    dismissed_reason: NotRequired[
+        Union[None, Literal["false positive", "won't fix", "used in tests"]]
     ]
+    dismissed_comment: NotRequired[Union[str, None]]
 
 
-class ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType(
-    TypedDict
-):
-    """ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItems"""
-
-    path: str
-    name: NotRequired[str]
-    display_name: NotRequired[str]
-
-
-__all__ = (
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200Type",
-    "ReposOwnerRepoCodespacesDevcontainersGetResponse200PropDevcontainersItemsType",
-)
+__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType",)

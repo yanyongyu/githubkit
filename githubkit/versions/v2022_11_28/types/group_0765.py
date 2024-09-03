@@ -9,29 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class GistsPostBodyType(TypedDict):
-    """GistsPostBody"""
+class ApplicationsClientIdTokenPostBodyType(TypedDict):
+    """ApplicationsClientIdTokenPostBody"""
 
-    description: NotRequired[str]
-    files: GistsPostBodyPropFilesType
-    public: NotRequired[Union[bool, Literal["true", "false"]]]
+    access_token: str
 
 
-class GistsPostBodyPropFilesType(TypedDict):
-    """GistsPostBodyPropFiles
-
-    Names and content for the files that make up the gist
-
-    Examples:
-        {'hello.rb': {'content': 'puts "Hello, World!"'}}
-    """
-
-
-__all__ = (
-    "GistsPostBodyType",
-    "GistsPostBodyPropFilesType",
-)
+__all__ = ("ApplicationsClientIdTokenPostBodyType",)

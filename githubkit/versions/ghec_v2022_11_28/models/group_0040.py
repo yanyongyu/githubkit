@@ -28,9 +28,6 @@ class CodeScanningAlertRuleSummary(GitHubModel):
     name: Missing[str] = Field(
         default=UNSET, description="The name of the rule used to detect the alert."
     )
-    tags: Missing[Union[List[str], None]] = Field(
-        default=UNSET, description="A set of tags applicable for the rule."
-    )
     severity: Missing[Union[None, Literal["none", "note", "warning", "error"]]] = Field(
         default=UNSET, description="The severity of the alert."
     )
@@ -40,6 +37,9 @@ class CodeScanningAlertRuleSummary(GitHubModel):
     description: Missing[str] = Field(
         default=UNSET,
         description="A short description of the rule used to detect the alert.",
+    )
+    tags: Missing[Union[List[str], None]] = Field(
+        default=UNSET, description="A set of tags applicable for the rule."
     )
 
 

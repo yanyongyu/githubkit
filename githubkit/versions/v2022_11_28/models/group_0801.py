@@ -18,18 +18,21 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+class OrgsOrgActionsVariablesNamePatchBody(GitHubModel):
+    """OrgsOrgActionsVariablesNamePatchBody"""
 
-    scope: Literal["all", "public", "private_or_internal", "selected"] = Field(
-        description="The type of repositories to attach the configuration to. `selected` means the configuration will be attached to only the repositories specified by `selected_repository_ids`"
+    name: Missing[str] = Field(default=UNSET, description="The name of the variable.")
+    value: Missing[str] = Field(default=UNSET, description="The value of the variable.")
+    visibility: Missing[Literal["all", "private", "selected"]] = Field(
+        default=UNSET,
+        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.",
     )
     selected_repository_ids: Missing[List[int]] = Field(
         default=UNSET,
-        description="An array of repository IDs to attach the configuration to. You can only provide a list of repository ids when the `scope` is set to `selected`.",
+        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody)
+model_rebuild(OrgsOrgActionsVariablesNamePatchBody)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody",)
+__all__ = ("OrgsOrgActionsVariablesNamePatchBody",)

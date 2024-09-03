@@ -13,18 +13,20 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCodespacesAccessSelectedUsersPostBody(GitHubModel):
-    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
+class OrgsOrgCodeSecurityConfigurationsDetachDeleteBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
 
-    selected_usernames: List[str] = Field(
-        max_length=100,
-        description="The usernames of the organization members whose codespaces be billed to the organization.",
+    selected_repository_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="An array of repository IDs to detach from configurations.",
     )
 
 
-model_rebuild(OrgsOrgCodespacesAccessSelectedUsersPostBody)
+model_rebuild(OrgsOrgCodeSecurityConfigurationsDetachDeleteBody)
 
-__all__ = ("OrgsOrgCodespacesAccessSelectedUsersPostBody",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",)

@@ -9,24 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class TeamsTeamIdDiscussionsPostBody(GitHubModel):
-    """TeamsTeamIdDiscussionsPostBody"""
+class ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody(GitHubModel):
+    """ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody"""
 
-    title: str = Field(description="The discussion post's title.")
-    body: str = Field(description="The discussion post's body text.")
-    private: Missing[bool] = Field(
-        default=UNSET,
-        description="Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to `true` to create a private post.",
+    reason: Literal["false_positive", "used_in_tests", "will_fix_later"] = Field(
+        description="The reason for bypassing push protection."
+    )
+    placeholder_id: str = Field(
+        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes."
     )
 
 
-model_rebuild(TeamsTeamIdDiscussionsPostBody)
+model_rebuild(ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody)
 
-__all__ = ("TeamsTeamIdDiscussionsPostBody",)
+__all__ = ("ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",)

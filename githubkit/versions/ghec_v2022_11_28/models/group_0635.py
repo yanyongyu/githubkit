@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union, Literal
 
 from pydantic import Field
@@ -17,34 +18,70 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0636 import WebhookPackagePublishedPropPackagePropPackageVersion
+from .group_0427 import WebhooksUser
+from .group_0413 import EnterpriseWebhooks
+from .group_0414 import SimpleInstallation
+from .group_0416 import RepositoryWebhooks
+from .group_0417 import SimpleUserWebhooks
+from .group_0415 import OrganizationSimpleWebhooks
 
 
-class WebhookPackagePublishedPropPackage(GitHubModel):
-    """WebhookPackagePublishedPropPackage
+class WebhookOrganizationMemberInvited(GitHubModel):
+    """organization member_invited event"""
 
-    Information about the package.
+    action: Literal["member_invited"] = Field()
+    enterprise: Missing[EnterpriseWebhooks] = Field(
+        default=UNSET,
+        title="Enterprise",
+        description='An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured\non an enterprise account or an organization that\'s part of an enterprise account. For more information,\nsee "[About enterprise accounts](https://docs.github.com/enterprise-cloud@latest//admin/overview/about-enterprise-accounts)."',
+    )
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
+        title="Simple Installation",
+        description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
+    )
+    invitation: WebhookOrganizationMemberInvitedPropInvitation = Field(
+        description="The invitation for the user or email if the action is `member_invited`."
+    )
+    organization: OrganizationSimpleWebhooks = Field(
+        title="Organization Simple",
+        description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
+    )
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: SimpleUserWebhooks = Field(
+        title="Simple User",
+        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    )
+    user: Missing[Union[WebhooksUser, None]] = Field(default=UNSET, title="User")
+
+
+class WebhookOrganizationMemberInvitedPropInvitation(GitHubModel):
+    """WebhookOrganizationMemberInvitedPropInvitation
+
+    The invitation for the user or email if the action is `member_invited`.
     """
 
-    created_at: Union[str, None] = Field()
-    description: Union[str, None] = Field()
-    ecosystem: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field()
-    namespace: str = Field()
-    owner: Union[WebhookPackagePublishedPropPackagePropOwner, None] = Field(
-        title="User"
+    created_at: datetime = Field()
+    email: Union[str, None] = Field()
+    failed_at: Union[datetime, None] = Field()
+    failed_reason: Union[str, None] = Field()
+    id: float = Field()
+    invitation_teams_url: str = Field()
+    inviter: Union[WebhookOrganizationMemberInvitedPropInvitationPropInviter, None] = (
+        Field(title="User")
     )
-    package_type: str = Field()
-    package_version: Union[
-        WebhookPackagePublishedPropPackagePropPackageVersion, None
-    ] = Field()
-    registry: Union[WebhookPackagePublishedPropPackagePropRegistry, None] = Field()
-    updated_at: Union[str, None] = Field()
+    login: Union[str, None] = Field()
+    node_id: str = Field()
+    role: str = Field()
+    team_count: float = Field()
+    invitation_source: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPackagePublishedPropPackagePropOwner(GitHubModel):
+class WebhookOrganizationMemberInvitedPropInvitationPropInviter(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -70,22 +107,12 @@ class WebhookPackagePublishedPropPackagePropOwner(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPackagePublishedPropPackagePropRegistry(GitHubModel):
-    """WebhookPackagePublishedPropPackagePropRegistry"""
-
-    about_url: str = Field()
-    name: str = Field()
-    type: str = Field()
-    url: str = Field()
-    vendor: str = Field()
-
-
-model_rebuild(WebhookPackagePublishedPropPackage)
-model_rebuild(WebhookPackagePublishedPropPackagePropOwner)
-model_rebuild(WebhookPackagePublishedPropPackagePropRegistry)
+model_rebuild(WebhookOrganizationMemberInvited)
+model_rebuild(WebhookOrganizationMemberInvitedPropInvitation)
+model_rebuild(WebhookOrganizationMemberInvitedPropInvitationPropInviter)
 
 __all__ = (
-    "WebhookPackagePublishedPropPackage",
-    "WebhookPackagePublishedPropPackagePropOwner",
-    "WebhookPackagePublishedPropPackagePropRegistry",
+    "WebhookOrganizationMemberInvited",
+    "WebhookOrganizationMemberInvitedPropInvitation",
+    "WebhookOrganizationMemberInvitedPropInvitationPropInviter",
 )

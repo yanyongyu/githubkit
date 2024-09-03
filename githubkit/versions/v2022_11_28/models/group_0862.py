@@ -9,26 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsCardsCardIdPatchBody(GitHubModel):
-    """ProjectsColumnsCardsCardIdPatchBody"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody"""
 
-    note: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The project card's note"
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ] = Field(
+        description="The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion."
     )
-    archived: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the card is archived"
-    )
 
 
-model_rebuild(ProjectsColumnsCardsCardIdPatchBody)
+model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody)
 
-__all__ = ("ProjectsColumnsCardsCardIdPatchBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody",)

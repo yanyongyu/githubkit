@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,16 +17,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0410 import ProjectsV2Item
-from .group_0374 import SimpleInstallation
-from .group_0377 import SimpleUserWebhooks
-from .group_0375 import OrganizationSimpleWebhooks
+from .group_0411 import ProjectsV2
+from .group_0377 import SimpleInstallation
+from .group_0380 import SimpleUserWebhooks
+from .group_0378 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ItemCreated(GitHubModel):
-    """Projects v2 Item Created Event"""
+class WebhookProjectsV2ProjectEdited(GitHubModel):
+    """Projects v2 Project Edited Event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookProjectsV2ProjectEditedPropChanges = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -36,8 +37,8 @@ class WebhookProjectsV2ItemCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    projects_v2_item: ProjectsV2Item = Field(
-        title="Projects v2 Item", description="An item belonging to a project"
+    projects_v2: ProjectsV2 = Field(
+        title="Projects v2 Project", description="A projects v2 project"
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -45,6 +46,63 @@ class WebhookProjectsV2ItemCreated(GitHubModel):
     )
 
 
-model_rebuild(WebhookProjectsV2ItemCreated)
+class WebhookProjectsV2ProjectEditedPropChanges(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChanges"""
 
-__all__ = ("WebhookProjectsV2ItemCreated",)
+    description: Missing[WebhookProjectsV2ProjectEditedPropChangesPropDescription] = (
+        Field(default=UNSET)
+    )
+    public: Missing[WebhookProjectsV2ProjectEditedPropChangesPropPublic] = Field(
+        default=UNSET
+    )
+    short_description: Missing[
+        WebhookProjectsV2ProjectEditedPropChangesPropShortDescription
+    ] = Field(default=UNSET)
+    title: Missing[WebhookProjectsV2ProjectEditedPropChangesPropTitle] = Field(
+        default=UNSET
+    )
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropDescription(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
+
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropPublic(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
+
+    from_: Missing[bool] = Field(default=UNSET, alias="from")
+    to: Missing[bool] = Field(default=UNSET)
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropShortDescription(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
+
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+class WebhookProjectsV2ProjectEditedPropChangesPropTitle(GitHubModel):
+    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
+
+    from_: Missing[str] = Field(default=UNSET, alias="from")
+    to: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(WebhookProjectsV2ProjectEdited)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChanges)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropDescription)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropPublic)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropShortDescription)
+model_rebuild(WebhookProjectsV2ProjectEditedPropChangesPropTitle)
+
+__all__ = (
+    "WebhookProjectsV2ProjectEdited",
+    "WebhookProjectsV2ProjectEditedPropChanges",
+    "WebhookProjectsV2ProjectEditedPropChangesPropDescription",
+    "WebhookProjectsV2ProjectEditedPropChangesPropPublic",
+    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescription",
+    "WebhookProjectsV2ProjectEditedPropChangesPropTitle",
+)

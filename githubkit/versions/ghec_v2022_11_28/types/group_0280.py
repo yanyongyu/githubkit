@@ -9,80 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
 from typing_extensions import TypedDict
 
 
-class GitCommitType(TypedDict):
-    """Git Commit
+class CustomDeploymentRuleAppType(TypedDict):
+    """Custom deployment protection rule app
 
-    Low-level Git commit operations within a repository
+    A GitHub App that is providing a custom deployment protection rule.
     """
 
-    sha: str
+    id: int
+    slug: str
+    integration_url: str
     node_id: str
-    url: str
-    author: GitCommitPropAuthorType
-    committer: GitCommitPropCommitterType
-    message: str
-    tree: GitCommitPropTreeType
-    parents: List[GitCommitPropParentsItemsType]
-    verification: GitCommitPropVerificationType
-    html_url: str
 
 
-class GitCommitPropAuthorType(TypedDict):
-    """GitCommitPropAuthor
-
-    Identifying information for the git-user
-    """
-
-    date: datetime
-    email: str
-    name: str
-
-
-class GitCommitPropCommitterType(TypedDict):
-    """GitCommitPropCommitter
-
-    Identifying information for the git-user
-    """
-
-    date: datetime
-    email: str
-    name: str
-
-
-class GitCommitPropTreeType(TypedDict):
-    """GitCommitPropTree"""
-
-    sha: str
-    url: str
-
-
-class GitCommitPropParentsItemsType(TypedDict):
-    """GitCommitPropParentsItems"""
-
-    sha: str
-    url: str
-    html_url: str
-
-
-class GitCommitPropVerificationType(TypedDict):
-    """GitCommitPropVerification"""
-
-    verified: bool
-    reason: str
-    signature: Union[str, None]
-    payload: Union[str, None]
-
-
-__all__ = (
-    "GitCommitType",
-    "GitCommitPropAuthorType",
-    "GitCommitPropCommitterType",
-    "GitCommitPropTreeType",
-    "GitCommitPropParentsItemsType",
-    "GitCommitPropVerificationType",
-)
+__all__ = ("CustomDeploymentRuleAppType",)

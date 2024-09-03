@@ -9,21 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0346 import TrafficType
+from typing_extensions import TypedDict, NotRequired
 
 
-class CloneTrafficType(TypedDict):
-    """Clone Traffic
+class TagProtectionType(TypedDict):
+    """Tag protection
 
-    Clone Traffic
+    Tag protection
     """
 
-    count: int
-    uniques: int
-    clones: List[TrafficType]
+    id: NotRequired[int]
+    created_at: NotRequired[str]
+    updated_at: NotRequired[str]
+    enabled: NotRequired[bool]
+    pattern: str
 
 
-__all__ = ("CloneTrafficType",)
+__all__ = ("TagProtectionType",)

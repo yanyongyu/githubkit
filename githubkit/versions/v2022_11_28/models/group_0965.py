@@ -9,22 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0166 import ActionsSecret
+
+class ReposOwnerRepoDeploymentsPostResponse202(GitHubModel):
+    """ReposOwnerRepoDeploymentsPostResponse202"""
+
+    message: Missing[str] = Field(default=UNSET)
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
+model_rebuild(ReposOwnerRepoDeploymentsPostResponse202)
 
-    total_count: int = Field()
-    secrets: List[ActionsSecret] = Field()
-
-
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200)
-
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200",)
+__all__ = ("ReposOwnerRepoDeploymentsPostResponse202",)

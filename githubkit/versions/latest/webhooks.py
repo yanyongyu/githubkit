@@ -34,6 +34,7 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.webhooks import DeployKeyEvent as DeployKeyEvent
     from githubkit.versions.v2022_11_28.webhooks import MilestoneEvent as MilestoneEvent
     from githubkit.versions.v2022_11_28.webhooks import PageBuildEvent as PageBuildEvent
+    from githubkit.versions.v2022_11_28.webhooks import SubIssuesEvent as SubIssuesEvent
     from githubkit.versions.v2022_11_28.webhooks import (
         CheckSuiteEvent as CheckSuiteEvent,
     )
@@ -231,6 +232,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.webhooks import (
         repository_action_types as repository_action_types,
+    )
+    from githubkit.versions.v2022_11_28.webhooks import (
+        sub_issues_action_types as sub_issues_action_types,
     )
     from githubkit.versions.v2022_11_28.webhooks._types import (
         webhook_action_types as webhook_action_types,
@@ -677,6 +681,10 @@ else:
         "githubkit.versions.v2022_11_28.webhooks.status": (
             "StatusEvent",
             "status_action_types",
+        ),
+        "githubkit.versions.v2022_11_28.webhooks.sub_issues": (
+            "SubIssuesEvent",
+            "sub_issues_action_types",
         ),
         "githubkit.versions.v2022_11_28.webhooks.team_add": (
             "TeamAddEvent",

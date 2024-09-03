@@ -9,17 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgInvitationsPostBodyType(TypedDict):
-    """OrgsOrgInvitationsPostBody"""
+class OrgsOrgDependabotSecretsGetResponse200Type(TypedDict):
+    """OrgsOrgDependabotSecretsGetResponse200"""
 
-    invitee_id: NotRequired[int]
-    email: NotRequired[str]
-    role: NotRequired[Literal["admin", "direct_member", "billing_manager", "reinstate"]]
-    team_ids: NotRequired[List[int]]
+    total_count: int
+    secrets: List[OrganizationDependabotSecretType]
 
 
-__all__ = ("OrgsOrgInvitationsPostBodyType",)
+class OrganizationDependabotSecretType(TypedDict):
+    """Dependabot Secret for an Organization
+
+    Secrets for GitHub Dependabot for an organization.
+    """
+
+    name: str
+    created_at: datetime
+    updated_at: datetime
+    visibility: Literal["all", "private", "selected"]
+    selected_repositories_url: NotRequired[str]
+
+
+__all__ = (
+    "OrgsOrgDependabotSecretsGetResponse200Type",
+    "OrganizationDependabotSecretType",
+)

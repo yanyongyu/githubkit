@@ -9,23 +9,97 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union, Literal
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody(
-    GitHubModel
-):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody"""
-
-    body: str = Field(description="The discussion comment's body text.")
-
-
-model_rebuild(
-    OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody
+from .group_0139 import RepositoryRuleUpdate
+from .group_0165 import RepositoryRuleOneof18
+from .group_0161 import RepositoryRuleWorkflows
+from .group_0142 import RepositoryRuleMergeQueue
+from .group_0146 import RepositoryRulePullRequest
+from .group_0135 import OrgRulesetConditionsOneof0
+from .group_0136 import OrgRulesetConditionsOneof1
+from .group_0137 import OrgRulesetConditionsOneof2
+from .group_0163 import RepositoryRuleCodeScanning
+from .group_0126 import RepositoryRulesetBypassActor
+from .group_0158 import RepositoryRuleTagNamePattern
+from .group_0156 import RepositoryRuleBranchNamePattern
+from .group_0144 import RepositoryRuleRequiredDeployments
+from .group_0148 import RepositoryRuleRequiredStatusChecks
+from .group_0150 import RepositoryRuleCommitMessagePattern
+from .group_0154 import RepositoryRuleCommitterEmailPattern
+from .group_0152 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0141 import RepositoryRuleOneof16, RepositoryRuleRequiredLinearHistory
+from .group_0138 import (
+    RepositoryRuleOneof15,
+    RepositoryRuleOneof17,
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
 )
 
-__all__ = (
-    "OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody",
-)
+
+class OrgsOrgRulesetsPostBody(GitHubModel):
+    """OrgsOrgRulesetsPostBody"""
+
+    name: str = Field(description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
+        default=UNSET,
+        description="The target of the ruleset\n\n> [!NOTE]\n> The `push` target is in beta and is subject to change.",
+    )
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page."
+    )
+    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
+        default=UNSET,
+        description="The actors that can bypass the rules in this ruleset",
+    )
+    conditions: Missing[
+        Union[
+            OrgRulesetConditionsOneof0,
+            OrgRulesetConditionsOneof1,
+            OrgRulesetConditionsOneof2,
+        ]
+    ] = Field(
+        default=UNSET,
+        title="Organization ruleset conditions",
+        description="Conditions for an organization ruleset. The conditions object should contain both `repository_name` and `ref_name` properties or both `repository_id` and `ref_name` properties.\n",
+    )
+    rules: Missing[
+        List[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleOneof15,
+                RepositoryRuleOneof16,
+                RepositoryRuleOneof17,
+                RepositoryRuleOneof18,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
+
+
+model_rebuild(OrgsOrgRulesetsPostBody)
+
+__all__ = ("OrgsOrgRulesetsPostBody",)

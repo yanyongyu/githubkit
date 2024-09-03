@@ -9,47 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0048 import Team
 from .group_0001 import SimpleUser
 from .group_0006 import Integration
 
 
-class ReviewRequestedIssueEvent(GitHubModel):
-    """Review Requested Issue Event
+class UnassignedIssueEvent(GitHubModel):
+    """Unassigned Issue Event
 
-    Review Requested Issue Event
+    Unassigned Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["review_requested"] = Field()
+    event: str = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    review_requester: SimpleUser = Field(
-        title="Simple User", description="A GitHub user."
-    )
-    requested_team: Missing[Team] = Field(
-        default=UNSET,
-        title="Team",
-        description="Groups of organization members that gives permissions on specified repositories.",
-    )
-    requested_reviewer: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
+    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(ReviewRequestedIssueEvent)
+model_rebuild(UnassignedIssueEvent)
 
-__all__ = ("ReviewRequestedIssueEvent",)
+__all__ = ("UnassignedIssueEvent",)

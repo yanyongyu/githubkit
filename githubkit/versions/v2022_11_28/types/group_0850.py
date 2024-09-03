@@ -9,15 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgTeamsTeamSlugDiscussionsPostBodyType(TypedDict):
-    """OrgsOrgTeamsTeamSlugDiscussionsPostBody"""
+class OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType(TypedDict):
+    """OrgsOrgPropertiesSchemaCustomPropertyNamePutBody"""
 
-    title: str
-    body: str
-    private: NotRequired[bool]
+    value_type: Literal["string", "single_select", "multi_select", "true_false"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, List[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[List[str], None]]
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsPostBodyType",)
+__all__ = ("OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType",)

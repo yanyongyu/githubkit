@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,19 +18,15 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsCardsCardIdMovesPostBody(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostBody"""
+class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody"""
 
-    position: str = Field(
-        pattern="^(?:top|bottom|after:\\d+)$",
-        description="The position of the card in a column. Can be one of: `top`, `bottom`, or `after:<card_id>` to place after the specified card.",
-    )
-    column_id: Missing[int] = Field(
+    permission: Missing[Literal["read", "write", "admin"]] = Field(
         default=UNSET,
-        description="The unique identifier of the column the card should be moved to",
+        description="The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see \"[HTTP method](https://docs.github.com/enterprise-cloud@latest//rest/guides/getting-started-with-the-rest-api#http-method).\"",
     )
 
 
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostBody)
+model_rebuild(OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody)
 
-__all__ = ("ProjectsColumnsCardsCardIdMovesPostBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody",)

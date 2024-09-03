@@ -90,11 +90,15 @@ class SecurityAdvisoriesClient:
         published: Missing[str] = UNSET,
         updated: Missing[str] = UNSET,
         modified: Missing[str] = UNSET,
+        epss_percentage: Missing[str] = UNSET,
+        epss_percentile: Missing[str] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
-        sort: Missing[Literal["updated", "published"]] = UNSET,
+        sort: Missing[
+            Literal["updated", "published", "epss_percentage", "epss_percentile"]
+        ] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GlobalAdvisory]]:
@@ -118,6 +122,8 @@ class SecurityAdvisoriesClient:
             "published": published,
             "updated": updated,
             "modified": modified,
+            "epss_percentage": epss_percentage,
+            "epss_percentile": epss_percentile,
             "before": before,
             "after": after,
             "direction": direction,
@@ -170,11 +176,15 @@ class SecurityAdvisoriesClient:
         published: Missing[str] = UNSET,
         updated: Missing[str] = UNSET,
         modified: Missing[str] = UNSET,
+        epss_percentage: Missing[str] = UNSET,
+        epss_percentile: Missing[str] = UNSET,
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         per_page: Missing[int] = UNSET,
-        sort: Missing[Literal["updated", "published"]] = UNSET,
+        sort: Missing[
+            Literal["updated", "published", "epss_percentage", "epss_percentile"]
+        ] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[GlobalAdvisory]]:
@@ -198,6 +208,8 @@ class SecurityAdvisoriesClient:
             "published": published,
             "updated": updated,
             "modified": modified,
+            "epss_percentage": epss_percentage,
+            "epss_percentile": epss_percentile,
             "before": before,
             "after": after,
             "direction": direction,

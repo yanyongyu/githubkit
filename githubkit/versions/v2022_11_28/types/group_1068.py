@@ -9,17 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
-from .group_0078 import CodespaceType
+
+class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType(
+    TypedDict
+):
+    """TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody"""
+
+    body: str
 
 
-class UserCodespacesGetResponse200Type(TypedDict):
-    """UserCodespacesGetResponse200"""
-
-    total_count: int
-    codespaces: List[CodespaceType]
-
-
-__all__ = ("UserCodespacesGetResponse200Type",)
+__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType",)

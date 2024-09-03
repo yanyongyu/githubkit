@@ -12,19 +12,21 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0387 import DiscussionType
-from .group_0373 import EnterpriseWebhooksType
-from .group_0374 import SimpleInstallationType
-from .group_0376 import RepositoryWebhooksType
-from .group_0377 import SimpleUserWebhooksType
-from .group_0375 import OrganizationSimpleWebhooksType
+from .group_0390 import DiscussionType
+from .group_0391 import WebhooksCommentType
+from .group_0376 import EnterpriseWebhooksType
+from .group_0377 import SimpleInstallationType
+from .group_0379 import RepositoryWebhooksType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0378 import OrganizationSimpleWebhooksType
 
 
-class WebhookDiscussionEditedType(TypedDict):
-    """discussion edited event"""
+class WebhookDiscussionCommentEditedType(TypedDict):
+    """discussion_comment edited event"""
 
     action: Literal["edited"]
-    changes: NotRequired[WebhookDiscussionEditedPropChangesType]
+    changes: WebhookDiscussionCommentEditedPropChangesType
+    comment: WebhooksCommentType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -33,28 +35,20 @@ class WebhookDiscussionEditedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-class WebhookDiscussionEditedPropChangesType(TypedDict):
-    """WebhookDiscussionEditedPropChanges"""
+class WebhookDiscussionCommentEditedPropChangesType(TypedDict):
+    """WebhookDiscussionCommentEditedPropChanges"""
 
-    body: NotRequired[WebhookDiscussionEditedPropChangesPropBodyType]
-    title: NotRequired[WebhookDiscussionEditedPropChangesPropTitleType]
-
-
-class WebhookDiscussionEditedPropChangesPropBodyType(TypedDict):
-    """WebhookDiscussionEditedPropChangesPropBody"""
-
-    from_: str
+    body: WebhookDiscussionCommentEditedPropChangesPropBodyType
 
 
-class WebhookDiscussionEditedPropChangesPropTitleType(TypedDict):
-    """WebhookDiscussionEditedPropChangesPropTitle"""
+class WebhookDiscussionCommentEditedPropChangesPropBodyType(TypedDict):
+    """WebhookDiscussionCommentEditedPropChangesPropBody"""
 
     from_: str
 
 
 __all__ = (
-    "WebhookDiscussionEditedType",
-    "WebhookDiscussionEditedPropChangesType",
-    "WebhookDiscussionEditedPropChangesPropBodyType",
-    "WebhookDiscussionEditedPropChangesPropTitleType",
+    "WebhookDiscussionCommentEditedType",
+    "WebhookDiscussionCommentEditedPropChangesType",
+    "WebhookDiscussionCommentEditedPropChangesPropBodyType",
 )

@@ -9,88 +9,138 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
+from typing import List
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
-
-from .group_0265 import Metadata
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Snapshot(GitHubModel):
-    """snapshot
+class DependencyGraphSpdxSbom(GitHubModel):
+    """Dependency Graph SPDX SBOM
 
-    Create a new snapshot of a repository's dependencies.
+    A schema for the SPDX JSON format returned by the Dependency Graph.
     """
 
-    version: int = Field(
-        description="The version of the repository snapshot submission."
+    sbom: DependencyGraphSpdxSbomPropSbom = Field()
+
+
+class DependencyGraphSpdxSbomPropSbom(GitHubModel):
+    """DependencyGraphSpdxSbomPropSbom"""
+
+    spdxid: str = Field(
+        alias="SPDXID", description="The SPDX identifier for the SPDX document."
     )
-    job: SnapshotPropJob = Field()
-    sha: str = Field(
-        min_length=40,
-        max_length=40,
-        description="The commit SHA associated with this dependency snapshot. Maximum length: 40 characters.",
+    spdx_version: str = Field(
+        alias="spdxVersion",
+        description="The version of the SPDX specification that this document conforms to.",
     )
-    ref: str = Field(
-        pattern="^refs/",
-        description="The repository branch that triggered this snapshot.",
+    creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfo = Field(
+        alias="creationInfo"
     )
-    detector: SnapshotPropDetector = Field(
-        description="A description of the detector used."
+    name: str = Field(description="The name of the SPDX document.")
+    data_license: str = Field(
+        alias="dataLicense",
+        description="The license under which the SPDX document is licensed.",
     )
-    metadata: Missing[Metadata] = Field(
+    document_describes: List[str] = Field(
+        alias="documentDescribes",
+        description="The name of the repository that the SPDX document describes.",
+    )
+    document_namespace: str = Field(
+        alias="documentNamespace", description="The namespace for the SPDX document."
+    )
+    packages: List[DependencyGraphSpdxSbomPropSbomPropPackagesItems] = Field()
+
+
+class DependencyGraphSpdxSbomPropSbomPropCreationInfo(GitHubModel):
+    """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
+
+    created: str = Field(description="The date and time the SPDX document was created.")
+    creators: List[str] = Field(
+        description="The tools that were used to generate the SPDX document."
+    )
+
+
+class DependencyGraphSpdxSbomPropSbomPropPackagesItems(GitHubModel):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItems"""
+
+    spdxid: Missing[str] = Field(
         default=UNSET,
-        title="metadata",
-        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
+        alias="SPDXID",
+        description="A unique SPDX identifier for the package.",
     )
-    manifests: Missing[SnapshotPropManifests] = Field(
+    name: Missing[str] = Field(default=UNSET, description="The name of the package.")
+    version_info: Missing[str] = Field(
         default=UNSET,
-        description="A collection of package manifests, which are a collection of related dependencies declared in a file or representing a logical group of dependencies.",
+        alias="versionInfo",
+        description="The version of the package. If the package does not have an exact version specified,\na version range is given.",
     )
-    scanned: datetime = Field(description="The time at which the snapshot was scanned.")
-
-
-class SnapshotPropJob(GitHubModel):
-    """SnapshotPropJob"""
-
-    id: str = Field(description="The external ID of the job.")
-    correlator: str = Field(
-        description="Correlator provides a key that is used to group snapshots submitted over time. Only the \"latest\" submitted snapshot for a given combination of `job.correlator` and `detector.name` will be considered when calculating a repository's current dependencies. Correlator should be as unique as it takes to distinguish all detection runs for a given \"wave\" of CI workflow you run. If you're using GitHub Actions, a good default value for this could be the environment variables GITHUB_WORKFLOW and GITHUB_JOB concatenated together. If you're using a build matrix, then you'll also need to add additional key(s) to distinguish between each submission inside a matrix variation."
+    download_location: Missing[str] = Field(
+        default=UNSET,
+        alias="downloadLocation",
+        description="The location where the package can be downloaded,\nor NOASSERTION if this has not been determined.",
     )
-    html_url: Missing[str] = Field(default=UNSET, description="The url for the job.")
+    files_analyzed: Missing[bool] = Field(
+        default=UNSET,
+        alias="filesAnalyzed",
+        description="Whether the package's file content has been subjected to\nanalysis during the creation of the SPDX document.",
+    )
+    license_concluded: Missing[str] = Field(
+        default=UNSET,
+        alias="licenseConcluded",
+        description="The license of the package as determined while creating the SPDX document.",
+    )
+    license_declared: Missing[str] = Field(
+        default=UNSET,
+        alias="licenseDeclared",
+        description="The license of the package as declared by its author, or NOASSERTION if this information\nwas not available when the SPDX document was created.",
+    )
+    supplier: Missing[str] = Field(
+        default=UNSET,
+        description="The distribution source of this package, or NOASSERTION if this was not determined.",
+    )
+    copyright_text: Missing[str] = Field(
+        default=UNSET,
+        alias="copyrightText",
+        description="The copyright holders of the package, and any dates present with those notices, if available.",
+    )
+    external_refs: Missing[
+        List[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems]
+    ] = Field(default=UNSET, alias="externalRefs")
 
 
-class SnapshotPropDetector(GitHubModel):
-    """SnapshotPropDetector
+class DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems(
+    GitHubModel
+):
+    """DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems"""
 
-    A description of the detector used.
-    """
-
-    name: str = Field(description="The name of the detector used.")
-    version: str = Field(description="The version of the detector used.")
-    url: str = Field(description="The url of the detector used.")
-
-
-class SnapshotPropManifests(ExtraGitHubModel):
-    """SnapshotPropManifests
-
-    A collection of package manifests, which are a collection of related
-    dependencies declared in a file or representing a logical group of dependencies.
-    """
+    reference_category: str = Field(
+        alias="referenceCategory",
+        description="The category of reference to an external resource this reference refers to.",
+    )
+    reference_locator: str = Field(
+        alias="referenceLocator",
+        description="A locator for the particular external resource this reference refers to.",
+    )
+    reference_type: str = Field(
+        alias="referenceType",
+        description="The category of reference to an external resource this reference refers to.",
+    )
 
 
-model_rebuild(Snapshot)
-model_rebuild(SnapshotPropJob)
-model_rebuild(SnapshotPropDetector)
-model_rebuild(SnapshotPropManifests)
+model_rebuild(DependencyGraphSpdxSbom)
+model_rebuild(DependencyGraphSpdxSbomPropSbom)
+model_rebuild(DependencyGraphSpdxSbomPropSbomPropCreationInfo)
+model_rebuild(DependencyGraphSpdxSbomPropSbomPropPackagesItems)
+model_rebuild(DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems)
 
 __all__ = (
-    "Snapshot",
-    "SnapshotPropJob",
-    "SnapshotPropDetector",
-    "SnapshotPropManifests",
+    "DependencyGraphSpdxSbom",
+    "DependencyGraphSpdxSbomPropSbom",
+    "DependencyGraphSpdxSbomPropSbomPropCreationInfo",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItems",
+    "DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems",
 )

@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,38 +18,28 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserNameResponse(GitHubModel):
-    """UserNameResponse"""
+class Meta(GitHubModel):
+    """Meta
 
-    formatted: Missing[str] = Field(
+    The metadata associated with the creation/updates to the user.
+    """
+
+    resource_type: Literal["User", "Group"] = Field(
+        alias="resourceType", description="A type of a resource"
+    )
+    created: Missing[str] = Field(
+        default=UNSET, description="A date and time when the user was created."
+    )
+    last_modified: Missing[str] = Field(
         default=UNSET,
-        description="The full name, including all middle names, titles, and suffixes as appropriate, formatted for display.",
+        alias="lastModified",
+        description="A data and time when the user was last modified.",
     )
-    family_name: Missing[str] = Field(
-        default=UNSET, alias="familyName", description="The family name of the user."
-    )
-    given_name: Missing[str] = Field(
-        default=UNSET, alias="givenName", description="The given name of the user."
-    )
-    middle_name: Missing[str] = Field(
-        default=UNSET, alias="middleName", description="The middle name(s) of the user."
+    location: Missing[str] = Field(
+        default=UNSET, description="A URL location of an object"
     )
 
 
-class UserEmailsResponseItems(GitHubModel):
-    """UserEmailsResponseItems"""
+model_rebuild(Meta)
 
-    value: str = Field(description="The email address.")
-    type: Missing[str] = Field(default=UNSET, description="The type of email address.")
-    primary: Missing[bool] = Field(
-        default=UNSET, description="Whether this email address is the primary address."
-    )
-
-
-model_rebuild(UserNameResponse)
-model_rebuild(UserEmailsResponseItems)
-
-__all__ = (
-    "UserNameResponse",
-    "UserEmailsResponseItems",
-)
+__all__ = ("Meta",)

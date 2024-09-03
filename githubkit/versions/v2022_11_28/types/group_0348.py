@@ -9,19 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
 
-class ContentTrafficType(TypedDict):
-    """Content Traffic
+class TopicType(TypedDict):
+    """Topic
 
-    Content Traffic
+    A topic aggregates entities that are related to a subject.
     """
 
-    path: str
-    title: str
-    count: int
-    uniques: int
+    names: List[str]
 
 
-__all__ = ("ContentTrafficType",)
+__all__ = ("TopicType",)

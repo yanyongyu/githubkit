@@ -9,85 +9,99 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0408 import EnterpriseWebhooksType
-from .group_0409 import SimpleInstallationType
-from .group_0411 import RepositoryWebhooksType
-from .group_0412 import SimpleUserWebhooksType
-from .group_0410 import OrganizationSimpleWebhooksType
-
-
-class WebhookRepositoryVulnerabilityAlertDismissType(TypedDict):
-    """repository_vulnerability_alert dismiss event"""
-
-    action: Literal["dismiss"]
-    alert: WebhookRepositoryVulnerabilityAlertDismissPropAlertType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
-
-
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertType(TypedDict):
-    """Repository Vulnerability Alert Alert
-
-    The security alert of the vulnerable dependency.
-    """
-
-    affected_package_name: str
-    affected_range: str
-    created_at: str
-    dismiss_comment: NotRequired[Union[str, None]]
-    dismiss_reason: str
-    dismissed_at: str
-    dismisser: Union[
-        WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserType, None
-    ]
-    external_identifier: str
-    external_reference: Union[str, None]
-    fix_reason: NotRequired[str]
-    fixed_at: NotRequired[datetime]
-    fixed_in: NotRequired[str]
-    ghsa_id: str
-    id: int
-    node_id: str
-    number: int
-    severity: str
-    state: Literal["dismissed"]
-
-
-class WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-__all__ = (
-    "WebhookRepositoryVulnerabilityAlertDismissType",
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlertType",
-    "WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserType",
+from .group_0139 import RepositoryRuleUpdateType
+from .group_0165 import RepositoryRuleOneof18Type
+from .group_0161 import RepositoryRuleWorkflowsType
+from .group_0142 import RepositoryRuleMergeQueueType
+from .group_0146 import RepositoryRulePullRequestType
+from .group_0163 import RepositoryRuleCodeScanningType
+from .group_0158 import RepositoryRuleTagNamePatternType
+from .group_0156 import RepositoryRuleBranchNamePatternType
+from .group_0144 import RepositoryRuleRequiredDeploymentsType
+from .group_0148 import RepositoryRuleRequiredStatusChecksType
+from .group_0150 import RepositoryRuleCommitMessagePatternType
+from .group_0154 import RepositoryRuleCommitterEmailPatternType
+from .group_0152 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0141 import (
+    RepositoryRuleOneof16Type,
+    RepositoryRuleRequiredLinearHistoryType,
 )
+from .group_0748 import (
+    WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType,
+)
+from .group_0138 import (
+    RepositoryRuleOneof15Type,
+    RepositoryRuleOneof17Type,
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
+)
+
+
+class WebhookRepositoryRulesetEditedPropChangesPropRulesType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropRules"""
+
+    added: NotRequired[
+        List[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleMergeQueueType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleOneof15Type,
+                RepositoryRuleOneof16Type,
+                RepositoryRuleOneof17Type,
+                RepositoryRuleOneof18Type,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+            ]
+        ]
+    ]
+    deleted: NotRequired[
+        List[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleMergeQueueType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleOneof15Type,
+                RepositoryRuleOneof16Type,
+                RepositoryRuleOneof17Type,
+                RepositoryRuleOneof18Type,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+            ]
+        ]
+    ]
+    updated: NotRequired[
+        List[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType]
+    ]
+
+
+__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropRulesType",)

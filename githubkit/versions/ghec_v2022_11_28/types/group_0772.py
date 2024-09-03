@@ -9,15 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0465 import WebhooksChanges8Type
+from .group_0413 import EnterpriseWebhooksType
+from .group_0414 import SimpleInstallationType
+from .group_0416 import RepositoryWebhooksType
+from .group_0417 import SimpleUserWebhooksType
+from .group_0464 import WebhooksSponsorshipType
+from .group_0415 import OrganizationSimpleWebhooksType
 
-class WebhookStatusPropCommitPropCommitPropAuthorAllof1Type(TypedDict):
-    """WebhookStatusPropCommitPropCommitPropAuthorAllof1"""
 
-    date: str
-    email: NotRequired[str]
-    name: NotRequired[str]
+class WebhookSponsorshipTierChangedType(TypedDict):
+    """sponsorship tier_changed event"""
+
+    action: Literal["tier_changed"]
+    changes: WebhooksChanges8Type
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserWebhooksType
+    sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof1Type",)
+__all__ = ("WebhookSponsorshipTierChangedType",)

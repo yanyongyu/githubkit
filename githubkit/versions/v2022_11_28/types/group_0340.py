@@ -9,33 +9,84 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
+
+class RepositoryAdvisoryUpdateType(TypedDict):
+    """RepositoryAdvisoryUpdate"""
+
+    summary: NotRequired[str]
+    description: NotRequired[str]
+    cve_id: NotRequired[Union[str, None]]
+    vulnerabilities: NotRequired[
+        List[RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType]
+    ]
+    cwe_ids: NotRequired[Union[List[str], None]]
+    credits_: NotRequired[
+        Union[List[RepositoryAdvisoryUpdatePropCreditsItemsType], None]
+    ]
+    severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
+    cvss_vector_string: NotRequired[Union[str, None]]
+    state: NotRequired[Literal["published", "closed", "draft"]]
+    collaborating_users: NotRequired[Union[List[str], None]]
+    collaborating_teams: NotRequired[Union[List[str], None]]
 
 
-class ContributorActivityType(TypedDict):
-    """Contributor Activity
+class RepositoryAdvisoryUpdatePropCreditsItemsType(TypedDict):
+    """RepositoryAdvisoryUpdatePropCreditsItems"""
 
-    Contributor Activity
+    login: str
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
+
+
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType(TypedDict):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItems"""
+
+    package: RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType
+    vulnerable_version_range: NotRequired[Union[str, None]]
+    patched_versions: NotRequired[Union[str, None]]
+    vulnerable_functions: NotRequired[Union[List[str], None]]
+
+
+class RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType(TypedDict):
+    """RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackage
+
+    The name of the package affected by the vulnerability.
     """
 
-    author: Union[None, SimpleUserType]
-    total: int
-    weeks: List[ContributorActivityPropWeeksItemsType]
-
-
-class ContributorActivityPropWeeksItemsType(TypedDict):
-    """ContributorActivityPropWeeksItems"""
-
-    w: NotRequired[int]
-    a: NotRequired[int]
-    d: NotRequired[int]
-    c: NotRequired[int]
+    ecosystem: Literal[
+        "rubygems",
+        "npm",
+        "pip",
+        "maven",
+        "nuget",
+        "composer",
+        "go",
+        "rust",
+        "erlang",
+        "actions",
+        "pub",
+        "other",
+        "swift",
+    ]
+    name: NotRequired[Union[str, None]]
 
 
 __all__ = (
-    "ContributorActivityType",
-    "ContributorActivityPropWeeksItemsType",
+    "RepositoryAdvisoryUpdateType",
+    "RepositoryAdvisoryUpdatePropCreditsItemsType",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType",
+    "RepositoryAdvisoryUpdatePropVulnerabilitiesItemsPropPackageType",
 )

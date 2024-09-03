@@ -13,10 +13,10 @@ from typing import List
 from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType(TypedDict):
-    """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
+class OrgsOrgCodespacesAccessSelectedUsersPostBodyType(TypedDict):
+    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
 
-    selected_teams: List[str]
+    selected_usernames: List[str]
 
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType",)
+__all__ = ("OrgsOrgCodespacesAccessSelectedUsersPostBodyType",)

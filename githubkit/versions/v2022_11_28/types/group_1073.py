@@ -9,17 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0055 import MinimalRepositoryType
+from typing_extensions import TypedDict, NotRequired
 
 
-class UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class TeamsTeamIdProjectsProjectIdPutResponse403Type(TypedDict):
+    """TeamsTeamIdProjectsProjectIdPutResponse403"""
 
-    total_count: int
-    repositories: List[MinimalRepositoryType]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-__all__ = ("UserCodespacesSecretsSecretNameRepositoriesGetResponse200Type",)
+__all__ = ("TeamsTeamIdProjectsProjectIdPutResponse403Type",)

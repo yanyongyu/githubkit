@@ -77,6 +77,7 @@ class BranchRestrictionPolicyPropAppsItemsType(TypedDict):
     node_id: NotRequired[str]
     owner: NotRequired[BranchRestrictionPolicyPropAppsItemsPropOwnerType]
     name: NotRequired[str]
+    client_id: NotRequired[str]
     description: NotRequired[str]
     external_url: NotRequired[str]
     html_url: NotRequired[str]

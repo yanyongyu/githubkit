@@ -13,7 +13,7 @@ from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import SimpleUserType
-from .group_0027 import OrganizationSimpleType
+from .group_0025 import OrganizationSimpleType
 
 
 class OrgMembershipType(TypedDict):

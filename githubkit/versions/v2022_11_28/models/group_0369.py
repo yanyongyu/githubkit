@@ -16,18 +16,21 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class SshSigningKey(GitHubModel):
-    """SSH Signing Key
+class Key(GitHubModel):
+    """Key
 
-    A public SSH key used to sign Git commits
+    Key
     """
 
     key: str = Field()
     id: int = Field()
+    url: str = Field()
     title: str = Field()
     created_at: datetime = Field()
+    verified: bool = Field()
+    read_only: bool = Field()
 
 
-model_rebuild(SshSigningKey)
+model_rebuild(Key)
 
-__all__ = ("SshSigningKey",)
+__all__ = ("Key",)

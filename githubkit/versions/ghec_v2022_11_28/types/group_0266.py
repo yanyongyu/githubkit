@@ -9,20 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0265 import MetadataType
+from .group_0051 import DependabotAlertPackageType
 
 
-class DependencyType(TypedDict):
-    """Dependency"""
+class DependabotAlertPropDependencyType(TypedDict):
+    """DependabotAlertPropDependency
 
-    package_url: NotRequired[str]
-    metadata: NotRequired[MetadataType]
-    relationship: NotRequired[Literal["direct", "indirect"]]
-    scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[List[str]]
+    Details for the vulnerable dependency.
+    """
+
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
 
 
-__all__ = ("DependencyType",)
+__all__ = ("DependabotAlertPropDependencyType",)

@@ -9,67 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0188 import GitUser
-from .group_0001 import SimpleUser
-from .group_0055 import MinimalRepository
-from .group_0351 import SearchResultTextMatchesItems
-from .group_0354 import CommitSearchResultItemPropCommit
+from .group_0349 import Traffic
 
 
-class CommitSearchResultItem(GitHubModel):
-    """Commit Search Result Item
+class ViewTraffic(GitHubModel):
+    """View Traffic
 
-    Commit Search Result Item
+    View Traffic
     """
 
-    url: str = Field()
-    sha: str = Field()
-    html_url: str = Field()
-    comments_url: str = Field()
-    commit: CommitSearchResultItemPropCommit = Field()
-    author: Union[None, SimpleUser] = Field()
-    committer: Union[None, GitUser] = Field()
-    parents: List[CommitSearchResultItemPropParentsItems] = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
-    )
-    score: float = Field()
-    node_id: str = Field()
-    text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
-    )
+    count: int = Field()
+    uniques: int = Field()
+    views: List[Traffic] = Field()
 
 
-class CommitSearchResultItemPropParentsItems(GitHubModel):
-    """CommitSearchResultItemPropParentsItems"""
+model_rebuild(ViewTraffic)
 
-    url: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    sha: Missing[str] = Field(default=UNSET)
-
-
-class SearchCommitsGetResponse200(GitHubModel):
-    """SearchCommitsGetResponse200"""
-
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: List[CommitSearchResultItem] = Field()
-
-
-model_rebuild(CommitSearchResultItem)
-model_rebuild(CommitSearchResultItemPropParentsItems)
-model_rebuild(SearchCommitsGetResponse200)
-
-__all__ = (
-    "CommitSearchResultItem",
-    "CommitSearchResultItemPropParentsItems",
-    "SearchCommitsGetResponse200",
-)
+__all__ = ("ViewTraffic",)

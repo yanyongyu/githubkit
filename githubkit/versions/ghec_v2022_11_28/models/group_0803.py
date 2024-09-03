@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Union
 
 from pydantic import Field
 
@@ -17,38 +18,39 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0014 import AppPermissions
+from .group_0001 import SimpleUser
+from .group_0005 import IntegrationPropPermissions
 
 
-class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
-    """ApplicationsClientIdTokenScopedPostBody"""
+class AppManifestsCodeConversionsPostResponse201(GitHubModel):
+    """AppManifestsCodeConversionsPostResponse201"""
 
-    access_token: str = Field(
-        description="The access token used to authenticate to the GitHub API."
+    id: int = Field(description="Unique identifier of the GitHub app")
+    slug: Missing[str] = Field(
+        default=UNSET, description="The slug name of the GitHub app"
     )
-    target: Missing[str] = Field(
+    node_id: str = Field()
+    client_id: str = Field()
+    owner: Union[None, SimpleUser] = Field()
+    name: str = Field(description="The name of the GitHub app")
+    description: Union[str, None] = Field()
+    external_url: str = Field()
+    html_url: str = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    permissions: IntegrationPropPermissions = Field(
+        description="The set of permissions for the GitHub app"
+    )
+    events: List[str] = Field(description="The list of events for the GitHub app")
+    installations_count: Missing[int] = Field(
         default=UNSET,
-        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
+        description="The number of installations associated with the GitHub app",
     )
-    target_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
-    )
-    repositories: Missing[List[str]] = Field(
-        default=UNSET,
-        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
-    )
-    repository_ids: Missing[List[int]] = Field(
-        default=UNSET,
-        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
-    )
-    permissions: Missing[AppPermissions] = Field(
-        default=UNSET,
-        title="App Permissions",
-        description="The permissions granted to the user access token.",
-    )
+    client_secret: str = Field()
+    webhook_secret: Union[Union[str, None], None] = Field()
+    pem: str = Field()
 
 
-model_rebuild(ApplicationsClientIdTokenScopedPostBody)
+model_rebuild(AppManifestsCodeConversionsPostResponse201)
 
-__all__ = ("ApplicationsClientIdTokenScopedPostBody",)
+__all__ = ("AppManifestsCodeConversionsPostResponse201",)

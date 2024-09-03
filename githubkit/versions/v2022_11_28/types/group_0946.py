@@ -9,13 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
+
+from .group_0078 import CodespaceType
 
 
-class ReposOwnerRepoCollaboratorsUsernamePutBodyType(TypedDict):
-    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
+class ReposOwnerRepoCodespacesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesGetResponse200"""
 
-    permission: NotRequired[str]
+    total_count: int
+    codespaces: List[CodespaceType]
 
 
-__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBodyType",)
+__all__ = ("ReposOwnerRepoCodespacesGetResponse200Type",)

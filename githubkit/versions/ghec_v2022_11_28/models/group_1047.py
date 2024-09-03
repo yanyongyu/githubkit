@@ -14,15 +14,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoGitRefsPostBody(GitHubModel):
-    """ReposOwnerRepoGitRefsPostBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody(GitHubModel):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
 
-    ref: str = Field(
-        description="The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected."
+    encrypted_value: str = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an environment public key](https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-environment-public-key) endpoint.",
     )
-    sha: str = Field(description="The SHA1 value for this reference.")
+    key_id: str = Field(description="ID of the key you used to encrypt the secret.")
 
 
-model_rebuild(ReposOwnerRepoGitRefsPostBody)
+model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody)
 
-__all__ = ("ReposOwnerRepoGitRefsPostBody",)
+__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody",)

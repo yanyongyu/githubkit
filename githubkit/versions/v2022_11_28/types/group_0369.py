@@ -13,16 +13,19 @@ from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class SshSigningKeyType(TypedDict):
-    """SSH Signing Key
+class KeyType(TypedDict):
+    """Key
 
-    A public SSH key used to sign Git commits
+    Key
     """
 
     key: str
     id: int
+    url: str
     title: str
     created_at: datetime
+    verified: bool
+    read_only: bool
 
 
-__all__ = ("SshSigningKeyType",)
+__all__ = ("KeyType",)

@@ -19,7 +19,7 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0026 import Team
+from .group_0027 import Team
 from .group_0001 import SimpleUser
 from .group_0144 import RepositoryAdvisoryCredit
 

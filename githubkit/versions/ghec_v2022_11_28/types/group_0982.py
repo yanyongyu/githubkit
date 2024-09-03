@@ -12,12 +12,11 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoAutolinksPostBodyType(TypedDict):
-    """ReposOwnerRepoAutolinksPostBody"""
+class ReposOwnerRepoActionsVariablesNamePatchBodyType(TypedDict):
+    """ReposOwnerRepoActionsVariablesNamePatchBody"""
 
-    key_prefix: str
-    url_template: str
-    is_alphanumeric: NotRequired[bool]
+    name: NotRequired[str]
+    value: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoAutolinksPostBodyType",)
+__all__ = ("ReposOwnerRepoActionsVariablesNamePatchBodyType",)

@@ -9,57 +9,189 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0427 import WebhooksTeam1Type
+from .group_0376 import EnterpriseWebhooksType
+from .group_0377 import SimpleInstallationType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0378 import OrganizationSimpleWebhooksType
 
-class WebhookWorkflowJobCompletedPropWorkflowJobAllof1Type(TypedDict):
-    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1"""
 
-    check_run_url: NotRequired[str]
-    completed_at: NotRequired[str]
-    conclusion: Literal[
-        "success",
-        "failure",
-        "skipped",
-        "cancelled",
-        "action_required",
-        "neutral",
-        "timed_out",
+class WebhookTeamDeletedType(TypedDict):
+    """team deleted event"""
+
+    action: Literal["deleted"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[WebhookTeamDeletedPropRepositoryType]
+    sender: NotRequired[SimpleUserWebhooksType]
+    team: WebhooksTeam1Type
+
+
+class WebhookTeamDeletedPropRepositoryType(TypedDict):
+    """Repository
+
+    A git repository
+    """
+
+    allow_auto_merge: NotRequired[bool]
+    allow_forking: NotRequired[bool]
+    allow_merge_commit: NotRequired[bool]
+    allow_rebase_merge: NotRequired[bool]
+    allow_squash_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    archive_url: str
+    archived: bool
+    assignees_url: str
+    blobs_url: str
+    branches_url: str
+    clone_url: str
+    collaborators_url: str
+    comments_url: str
+    commits_url: str
+    compare_url: str
+    contents_url: str
+    contributors_url: str
+    created_at: Union[int, datetime]
+    custom_properties: NotRequired[
+        WebhookTeamDeletedPropRepositoryPropCustomPropertiesType
     ]
-    created_at: NotRequired[str]
-    head_sha: NotRequired[str]
+    default_branch: str
+    delete_branch_on_merge: NotRequired[bool]
+    deployments_url: str
+    description: Union[str, None]
+    disabled: NotRequired[bool]
+    downloads_url: str
+    events_url: str
+    fork: bool
+    forks: int
+    forks_count: int
+    forks_url: str
+    full_name: str
+    git_commits_url: str
+    git_refs_url: str
+    git_tags_url: str
+    git_url: str
+    has_downloads: bool
+    has_issues: bool
+    has_pages: bool
+    has_projects: bool
+    has_wiki: bool
+    homepage: Union[str, None]
+    hooks_url: str
+    html_url: str
+    id: int
+    is_template: NotRequired[bool]
+    issue_comment_url: str
+    issue_events_url: str
+    issues_url: str
+    keys_url: str
+    labels_url: str
+    language: Union[str, None]
+    languages_url: str
+    license_: Union[WebhookTeamDeletedPropRepositoryPropLicenseType, None]
+    master_branch: NotRequired[str]
+    merges_url: str
+    milestones_url: str
+    mirror_url: Union[str, None]
+    name: str
+    node_id: str
+    notifications_url: str
+    open_issues: int
+    open_issues_count: int
+    organization: NotRequired[str]
+    owner: Union[WebhookTeamDeletedPropRepositoryPropOwnerType, None]
+    permissions: NotRequired[WebhookTeamDeletedPropRepositoryPropPermissionsType]
+    private: bool
+    public: NotRequired[bool]
+    pulls_url: str
+    pushed_at: Union[int, datetime, None]
+    releases_url: str
+    role_name: NotRequired[Union[str, None]]
+    size: int
+    ssh_url: str
+    stargazers: NotRequired[int]
+    stargazers_count: int
+    stargazers_url: str
+    statuses_url: str
+    subscribers_url: str
+    subscription_url: str
+    svn_url: str
+    tags_url: str
+    teams_url: str
+    topics: List[str]
+    trees_url: str
+    updated_at: datetime
+    url: str
+    visibility: Literal["public", "private", "internal"]
+    watchers: int
+    watchers_count: int
+
+
+class WebhookTeamDeletedPropRepositoryPropCustomPropertiesType(TypedDict):
+    """WebhookTeamDeletedPropRepositoryPropCustomProperties
+
+    The custom properties that were defined for the repository. The keys are the
+    custom property names, and the values are the corresponding custom property
+    values.
+    """
+
+
+class WebhookTeamDeletedPropRepositoryPropLicenseType(TypedDict):
+    """License"""
+
+    key: str
+    name: str
+    node_id: str
+    spdx_id: str
+    url: Union[str, None]
+
+
+class WebhookTeamDeletedPropRepositoryPropOwnerType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
     html_url: NotRequired[str]
-    id: NotRequired[int]
-    labels: NotRequired[List[Union[str, None]]]
+    id: int
+    login: str
     name: NotRequired[str]
     node_id: NotRequired[str]
-    run_attempt: NotRequired[int]
-    run_id: NotRequired[int]
-    run_url: NotRequired[str]
-    runner_group_id: NotRequired[Union[int, None]]
-    runner_group_name: NotRequired[Union[str, None]]
-    runner_id: NotRequired[Union[int, None]]
-    runner_name: NotRequired[Union[str, None]]
-    started_at: NotRequired[str]
-    status: NotRequired[str]
-    head_branch: NotRequired[Union[str, None]]
-    workflow_name: NotRequired[Union[str, None]]
-    steps: NotRequired[
-        List[
-            Union[
-                WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsType, None
-            ]
-        ]
-    ]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
     url: NotRequired[str]
 
 
-class WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsType(TypedDict):
-    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems"""
+class WebhookTeamDeletedPropRepositoryPropPermissionsType(TypedDict):
+    """WebhookTeamDeletedPropRepositoryPropPermissions"""
+
+    admin: bool
+    maintain: NotRequired[bool]
+    pull: bool
+    push: bool
+    triage: NotRequired[bool]
 
 
 __all__ = (
-    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1Type",
-    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItemsType",
+    "WebhookTeamDeletedType",
+    "WebhookTeamDeletedPropRepositoryType",
+    "WebhookTeamDeletedPropRepositoryPropCustomPropertiesType",
+    "WebhookTeamDeletedPropRepositoryPropLicenseType",
+    "WebhookTeamDeletedPropRepositoryPropOwnerType",
+    "WebhookTeamDeletedPropRepositoryPropPermissionsType",
 )

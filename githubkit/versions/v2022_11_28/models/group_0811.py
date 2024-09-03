@@ -15,15 +15,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
-    """OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody"""
-
-    selected_repository_ids: List[int] = Field(
-        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints."
-    )
+from .group_0078 import Codespace
 
 
-model_rebuild(OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody)
+class OrgsOrgCodespacesGetResponse200(GitHubModel):
+    """OrgsOrgCodespacesGetResponse200"""
 
-__all__ = ("OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody",)
+    total_count: int = Field()
+    codespaces: List[Codespace] = Field()
+
+
+model_rebuild(OrgsOrgCodespacesGetResponse200)
+
+__all__ = ("OrgsOrgCodespacesGetResponse200",)

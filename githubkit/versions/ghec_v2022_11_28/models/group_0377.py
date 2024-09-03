@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -18,30 +18,46 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PatchSchema(GitHubModel):
-    """PatchSchema"""
+class GroupResponse(GitHubModel):
+    """GroupResponse"""
 
-    operations: List[PatchSchemaPropOperationsItems] = Field(
-        alias="Operations", description="patch operations list"
+    schemas: List[
+        Literal[
+            "urn:ietf:params:scim:schemas:core:2.0:Group",
+            "urn:ietf:params:scim:api:messages:2.0:ListResponse",
+        ]
+    ] = Field(
+        description="The URIs that are used to indicate the namespaces of the SCIM schemas."
     )
-    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]] = Field()
-
-
-class PatchSchemaPropOperationsItems(GitHubModel):
-    """PatchSchemaPropOperationsItems"""
-
-    op: Literal["add", "replace", "remove"] = Field()
-    path: Missing[str] = Field(default=UNSET)
-    value: Missing[str] = Field(
+    external_id: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="Corresponding 'value' of that field specified by 'path'",
+        alias="externalId",
+        description="A unique identifier for the resource as defined by the provisioning client.",
+    )
+    display_name: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="displayName",
+        description="A human-readable name for a security group.",
+    )
+    members: Missing[List[GroupResponsePropMembersItems]] = Field(
+        default=UNSET, description="The group members."
     )
 
 
-model_rebuild(PatchSchema)
-model_rebuild(PatchSchemaPropOperationsItems)
+class GroupResponsePropMembersItems(GitHubModel):
+    """GroupResponsePropMembersItems"""
+
+    value: str = Field(description="The local unique identifier for the member")
+    ref: str = Field(alias="$ref")
+    display: Missing[str] = Field(
+        default=UNSET, description="The display name associated with the member"
+    )
+
+
+model_rebuild(GroupResponse)
+model_rebuild(GroupResponsePropMembersItems)
 
 __all__ = (
-    "PatchSchema",
-    "PatchSchemaPropOperationsItems",
+    "GroupResponse",
+    "GroupResponsePropMembersItems",
 )

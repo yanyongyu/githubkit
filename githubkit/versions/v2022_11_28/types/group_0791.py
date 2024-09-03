@@ -12,11 +12,14 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-
-class OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesPutBody"""
-
-    selected_repository_ids: List[int]
+from .group_0065 import RunnerLabelType
 
 
-__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType",)
+class OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200"""
+
+    total_count: int
+    labels: List[RunnerLabelType]
+
+
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type",)

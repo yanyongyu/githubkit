@@ -13,20 +13,18 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgCodeSecurityConfigurationsDetachDeleteBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
-
-    selected_repository_ids: Missing[List[int]] = Field(
-        default=UNSET,
-        description="An array of repository IDs to detach from configurations.",
-    )
+from .group_0082 import MinimalRepository
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsDetachDeleteBody)
+class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",)
+    total_count: int = Field()
+    repositories: List[MinimalRepository] = Field()
+
+
+model_rebuild(OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200)
+
+__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200",)

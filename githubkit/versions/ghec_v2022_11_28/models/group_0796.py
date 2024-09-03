@@ -9,32 +9,78 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class AppHookConfigPatchBody(GitHubModel):
-    """AppHookConfigPatchBody"""
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof0(GitHubModel):
+    """Workflow Job
 
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
+    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
+    and `started_at` are the same as those in a [`check_run`](#check_run) object.
+    """
+
+    check_run_url: str = Field()
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[None, Literal["success", "failure", "cancelled", "neutral"]] = (
+        Field()
     )
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
+    created_at: str = Field(description="The time that the job created.")
+    head_sha: str = Field()
+    html_url: str = Field()
+    id: int = Field()
+    labels: List[str] = Field(
+        description='Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/enterprise-cloud@latest//actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML.'
     )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
+    name: str = Field()
+    node_id: str = Field()
+    run_attempt: int = Field()
+    run_id: int = Field()
+    run_url: str = Field()
+    runner_group_id: Union[int, None] = Field(
+        description="The ID of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
+    runner_group_name: Union[str, None] = Field(
+        description="The name of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
+    )
+    runner_id: Union[int, None] = Field(
+        description="The ID of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
+    )
+    runner_name: Union[str, None] = Field(
+        description="The name of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
+    )
+    started_at: str = Field()
+    status: Literal["queued", "in_progress", "completed"] = Field(
+        description="The current status of the job. Can be `queued`, `in_progress`, or `completed`."
+    )
+    head_branch: Union[str, None] = Field(description="The name of the current branch.")
+    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
+    steps: List[WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems] = (
+        Field()
+    )
+    url: str = Field()
 
 
-model_rebuild(AppHookConfigPatchBody)
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems(GitHubModel):
+    """Workflow Step"""
 
-__all__ = ("AppHookConfigPatchBody",)
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
+        Field()
+    )
+    name: str = Field()
+    number: int = Field()
+    started_at: Union[str, None] = Field()
+    status: Literal["in_progress", "completed", "queued", "pending"] = Field()
+
+
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof0)
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems)
+
+__all__ = (
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems",
+)

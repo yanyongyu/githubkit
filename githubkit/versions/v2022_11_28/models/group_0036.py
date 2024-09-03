@@ -63,7 +63,7 @@ class OrganizationSecretScanningAlert(GitHubModel):
     )
     secret_type_display_name: Missing[str] = Field(
         default=UNSET,
-        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Secret scanning patterns](https://docs.github.com/code-security/secret-scanning/secret-scanning-patterns#supported-secrets-for-advanced-security)."',
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
     )
     secret: Missing[str] = Field(
         default=UNSET, description="The secret that was detected."

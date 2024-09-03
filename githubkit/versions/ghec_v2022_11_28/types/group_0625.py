@@ -9,27 +9,57 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0408 import EnterpriseWebhooksType
-from .group_0409 import SimpleInstallationType
-from .group_0411 import RepositoryWebhooksType
-from .group_0412 import SimpleUserWebhooksType
-from .group_0439 import WebhooksMilestone3Type
-from .group_0410 import OrganizationSimpleWebhooksType
+from .group_0413 import EnterpriseWebhooksType
+from .group_0414 import SimpleInstallationType
+from .group_0416 import RepositoryWebhooksType
+from .group_0417 import SimpleUserWebhooksType
+from .group_0415 import OrganizationSimpleWebhooksType
 
 
-class WebhookMilestoneOpenedType(TypedDict):
-    """milestone opened event"""
+class WebhookMetaDeletedType(TypedDict):
+    """meta deleted event"""
 
-    action: Literal["opened"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
+    hook: WebhookMetaDeletedPropHookType
+    hook_id: int
     installation: NotRequired[SimpleInstallationType]
-    milestone: WebhooksMilestone3Type
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    repository: NotRequired[Union[None, RepositoryWebhooksType]]
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookMilestoneOpenedType",)
+class WebhookMetaDeletedPropHookType(TypedDict):
+    """WebhookMetaDeletedPropHook
+
+    The modified webhook. This will contain different keys based on the type of
+    webhook it is: repository, organization, business, app, or GitHub Marketplace.
+    """
+
+    active: bool
+    config: WebhookMetaDeletedPropHookPropConfigType
+    created_at: str
+    events: List[str]
+    id: int
+    name: str
+    type: str
+    updated_at: str
+
+
+class WebhookMetaDeletedPropHookPropConfigType(TypedDict):
+    """WebhookMetaDeletedPropHookPropConfig"""
+
+    content_type: Literal["json", "form"]
+    insecure_ssl: str
+    secret: NotRequired[str]
+    url: str
+
+
+__all__ = (
+    "WebhookMetaDeletedType",
+    "WebhookMetaDeletedPropHookType",
+    "WebhookMetaDeletedPropHookPropConfigType",
+)

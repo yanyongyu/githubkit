@@ -13,35 +13,348 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0396 import WebhooksIssue2Type
-from .group_0373 import EnterpriseWebhooksType
-from .group_0374 import SimpleInstallationType
-from .group_0376 import RepositoryWebhooksType
-from .group_0377 import SimpleUserWebhooksType
-from .group_0375 import OrganizationSimpleWebhooksType
+from .group_0376 import EnterpriseWebhooksType
+from .group_0377 import SimpleInstallationType
+from .group_0379 import RepositoryWebhooksType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0378 import OrganizationSimpleWebhooksType
 
 
-class WebhookIssuesTransferredType(TypedDict):
-    """issues transferred event"""
+class WebhookIssuesOpenedType(TypedDict):
+    """issues opened event"""
 
-    action: Literal["transferred"]
-    changes: WebhookIssuesTransferredPropChangesType
+    action: Literal["opened"]
+    changes: NotRequired[WebhookIssuesOpenedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    issue: WebhooksIssue2Type
+    issue: WebhookIssuesOpenedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookIssuesTransferredPropChangesType(TypedDict):
-    """WebhookIssuesTransferredPropChanges"""
+class WebhookIssuesOpenedPropIssueType(TypedDict):
+    """Issue
 
-    new_issue: WebhookIssuesTransferredPropChangesPropNewIssueType
-    new_repository: WebhookIssuesTransferredPropChangesPropNewRepositoryType
+    The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
+    """
+
+    active_lock_reason: Union[
+        None, Literal["resolved", "off-topic", "too heated", "spam"]
+    ]
+    assignee: NotRequired[Union[WebhookIssuesOpenedPropIssuePropAssigneeType, None]]
+    assignees: List[Union[WebhookIssuesOpenedPropIssuePropAssigneesItemsType, None]]
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: Union[str, None]
+    closed_at: Union[datetime, None]
+    comments: int
+    comments_url: str
+    created_at: datetime
+    draft: NotRequired[bool]
+    events_url: str
+    html_url: str
+    id: int
+    labels: NotRequired[List[WebhookIssuesOpenedPropIssuePropLabelsItemsType]]
+    labels_url: str
+    locked: NotRequired[bool]
+    milestone: Union[WebhookIssuesOpenedPropIssuePropMilestoneType, None]
+    node_id: str
+    number: int
+    performed_via_github_app: NotRequired[
+        Union[WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppType, None]
+    ]
+    pull_request: NotRequired[WebhookIssuesOpenedPropIssuePropPullRequestType]
+    reactions: WebhookIssuesOpenedPropIssuePropReactionsType
+    repository_url: str
+    state: NotRequired[Literal["open", "closed"]]
+    state_reason: NotRequired[Union[str, None]]
+    timeline_url: NotRequired[str]
+    title: str
+    updated_at: datetime
+    url: str
+    user: Union[WebhookIssuesOpenedPropIssuePropUserType, None]
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssueType(TypedDict):
+class WebhookIssuesOpenedPropIssuePropAssigneeType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookIssuesOpenedPropIssuePropAssigneesItemsType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookIssuesOpenedPropIssuePropLabelsItemsType(TypedDict):
+    """Label"""
+
+    color: str
+    default: bool
+    description: Union[str, None]
+    id: int
+    name: str
+    node_id: str
+    url: str
+
+
+class WebhookIssuesOpenedPropIssuePropMilestoneType(TypedDict):
+    """Milestone
+
+    A collection of related issues and pull requests.
+    """
+
+    closed_at: Union[datetime, None]
+    closed_issues: int
+    created_at: datetime
+    creator: Union[WebhookIssuesOpenedPropIssuePropMilestonePropCreatorType, None]
+    description: Union[str, None]
+    due_on: Union[datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: datetime
+    url: str
+
+
+class WebhookIssuesOpenedPropIssuePropMilestonePropCreatorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization", "Mannequin"]]
+    url: NotRequired[str]
+
+
+class WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppType(TypedDict):
+    """App
+
+    GitHub apps are a new way to extend GitHub. They can be installed directly on
+    organizations and user accounts and granted access to specific repositories.
+    They come with granular permissions and built-in webhooks. GitHub apps are first
+    class actors within GitHub.
+    """
+
+    created_at: Union[datetime, None]
+    description: Union[str, None]
+    events: NotRequired[List[str]]
+    external_url: Union[str, None]
+    html_url: str
+    id: Union[int, None]
+    name: str
+    node_id: str
+    owner: Union[
+        WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropOwnerType, None
+    ]
+    permissions: NotRequired[
+        WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissionsType
+    ]
+    slug: NotRequired[str]
+    updated_at: Union[datetime, None]
+
+
+class WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropOwnerType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissionsType(
+    TypedDict
+):
+    """WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissions
+
+    The set of permissions for the GitHub app
+    """
+
+    actions: NotRequired[Literal["read", "write"]]
+    administration: NotRequired[Literal["read", "write"]]
+    checks: NotRequired[Literal["read", "write"]]
+    content_references: NotRequired[Literal["read", "write"]]
+    contents: NotRequired[Literal["read", "write"]]
+    deployments: NotRequired[Literal["read", "write"]]
+    discussions: NotRequired[Literal["read", "write"]]
+    emails: NotRequired[Literal["read", "write"]]
+    environments: NotRequired[Literal["read", "write"]]
+    issues: NotRequired[Literal["read", "write"]]
+    keys: NotRequired[Literal["read", "write"]]
+    members: NotRequired[Literal["read", "write"]]
+    metadata: NotRequired[Literal["read", "write"]]
+    organization_administration: NotRequired[Literal["read", "write"]]
+    organization_hooks: NotRequired[Literal["read", "write"]]
+    organization_packages: NotRequired[Literal["read", "write"]]
+    organization_plan: NotRequired[Literal["read", "write"]]
+    organization_projects: NotRequired[Literal["read", "write", "admin"]]
+    organization_secrets: NotRequired[Literal["read", "write"]]
+    organization_self_hosted_runners: NotRequired[Literal["read", "write"]]
+    organization_user_blocking: NotRequired[Literal["read", "write"]]
+    packages: NotRequired[Literal["read", "write"]]
+    pages: NotRequired[Literal["read", "write"]]
+    pull_requests: NotRequired[Literal["read", "write"]]
+    repository_hooks: NotRequired[Literal["read", "write"]]
+    repository_projects: NotRequired[Literal["read", "write"]]
+    secret_scanning_alerts: NotRequired[Literal["read", "write"]]
+    secrets: NotRequired[Literal["read", "write"]]
+    security_events: NotRequired[Literal["read", "write"]]
+    security_scanning_alert: NotRequired[Literal["read", "write"]]
+    single_file: NotRequired[Literal["read", "write"]]
+    statuses: NotRequired[Literal["read", "write"]]
+    team_discussions: NotRequired[Literal["read", "write"]]
+    vulnerability_alerts: NotRequired[Literal["read", "write"]]
+    workflows: NotRequired[Literal["read", "write"]]
+
+
+class WebhookIssuesOpenedPropIssuePropPullRequestType(TypedDict):
+    """WebhookIssuesOpenedPropIssuePropPullRequest"""
+
+    diff_url: NotRequired[str]
+    html_url: NotRequired[str]
+    merged_at: NotRequired[Union[datetime, None]]
+    patch_url: NotRequired[str]
+    url: NotRequired[str]
+
+
+class WebhookIssuesOpenedPropIssuePropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookIssuesOpenedPropIssuePropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+class WebhookIssuesOpenedPropChangesType(TypedDict):
+    """WebhookIssuesOpenedPropChanges"""
+
+    old_issue: Union[WebhookIssuesOpenedPropChangesPropOldIssueType, None]
+    old_repository: WebhookIssuesOpenedPropChangesPropOldRepositoryType
+
+
+class WebhookIssuesOpenedPropChangesPropOldIssueType(TypedDict):
     """Issue
 
     The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
@@ -51,12 +364,10 @@ class WebhookIssuesTransferredPropChangesPropNewIssueType(TypedDict):
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ]
     assignee: NotRequired[
-        Union[WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneeType, None]
+        Union[WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneeType, None]
     ]
     assignees: List[
-        Union[
-            WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItemsType, None
-        ]
+        Union[WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneesItemsType, None]
     ]
     author_association: Literal[
         "COLLABORATOR",
@@ -78,25 +389,23 @@ class WebhookIssuesTransferredPropChangesPropNewIssueType(TypedDict):
     html_url: str
     id: int
     labels: NotRequired[
-        List[WebhookIssuesTransferredPropChangesPropNewIssuePropLabelsItemsType]
+        List[WebhookIssuesOpenedPropChangesPropOldIssuePropLabelsItemsType]
     ]
     labels_url: str
     locked: NotRequired[bool]
-    milestone: Union[
-        WebhookIssuesTransferredPropChangesPropNewIssuePropMilestoneType, None
-    ]
+    milestone: Union[WebhookIssuesOpenedPropChangesPropOldIssuePropMilestoneType, None]
     node_id: str
     number: int
     performed_via_github_app: NotRequired[
         Union[
-            WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppType,
+            WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppType,
             None,
         ]
     ]
     pull_request: NotRequired[
-        WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequestType
+        WebhookIssuesOpenedPropChangesPropOldIssuePropPullRequestType
     ]
-    reactions: WebhookIssuesTransferredPropChangesPropNewIssuePropReactionsType
+    reactions: WebhookIssuesOpenedPropChangesPropOldIssuePropReactionsType
     repository_url: str
     state: NotRequired[Literal["open", "closed"]]
     state_reason: NotRequired[Union[str, None]]
@@ -104,10 +413,10 @@ class WebhookIssuesTransferredPropChangesPropNewIssueType(TypedDict):
     title: str
     updated_at: datetime
     url: str
-    user: Union[WebhookIssuesTransferredPropChangesPropNewIssuePropUserType, None]
+    user: Union[WebhookIssuesOpenedPropChangesPropOldIssuePropUserType, None]
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneeType(TypedDict):
+class WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneeType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -133,7 +442,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneeType(TypedDict)
     url: NotRequired[str]
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItemsType(TypedDict):
+class WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneesItemsType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -159,7 +468,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItemsType(Type
     url: NotRequired[str]
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropLabelsItemsType(TypedDict):
+class WebhookIssuesOpenedPropChangesPropOldIssuePropLabelsItemsType(TypedDict):
     """Label"""
 
     color: str
@@ -171,7 +480,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropLabelsItemsType(TypedDi
     url: str
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropMilestoneType(TypedDict):
+class WebhookIssuesOpenedPropChangesPropOldIssuePropMilestoneType(TypedDict):
     """Milestone
 
     A collection of related issues and pull requests.
@@ -181,8 +490,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropMilestoneType(TypedDict
     closed_issues: int
     created_at: datetime
     creator: Union[
-        WebhookIssuesTransferredPropChangesPropNewIssuePropMilestonePropCreatorType,
-        None,
+        WebhookIssuesOpenedPropChangesPropOldIssuePropMilestonePropCreatorType, None
     ]
     description: Union[str, None]
     due_on: Union[datetime, None]
@@ -198,9 +506,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropMilestoneType(TypedDict
     url: str
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropMilestonePropCreatorType(
-    TypedDict
-):
+class WebhookIssuesOpenedPropChangesPropOldIssuePropMilestonePropCreatorType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -226,7 +532,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropMilestonePropCreatorTyp
     url: NotRequired[str]
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppType(
+class WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppType(
     TypedDict
 ):
     """App
@@ -246,17 +552,17 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppTy
     name: str
     node_id: str
     owner: Union[
-        WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropOwnerType,
+        WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropOwnerType,
         None,
     ]
     permissions: NotRequired[
-        WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPermissionsType
+        WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropPermissionsType
     ]
     slug: NotRequired[str]
     updated_at: Union[datetime, None]
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropOwnerType(
+class WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropOwnerType(
     TypedDict
 ):
     """User"""
@@ -284,11 +590,11 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPr
     url: NotRequired[str]
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPermissionsType(
+class WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropPermissionsType(
     TypedDict
 ):
-    """WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPerm
-    issions
+    """WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropPermissio
+    ns
 
     The set of permissions for the GitHub app
     """
@@ -330,8 +636,8 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPr
     workflows: NotRequired[Literal["read", "write"]]
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequestType(TypedDict):
-    """WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequest"""
+class WebhookIssuesOpenedPropChangesPropOldIssuePropPullRequestType(TypedDict):
+    """WebhookIssuesOpenedPropChangesPropOldIssuePropPullRequest"""
 
     diff_url: NotRequired[str]
     html_url: NotRequired[str]
@@ -340,7 +646,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequestType(TypedDi
     url: NotRequired[str]
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropReactionsType(TypedDict):
+class WebhookIssuesOpenedPropChangesPropOldIssuePropReactionsType(TypedDict):
     """Reactions"""
 
     plus_one: int
@@ -355,7 +661,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropReactionsType(TypedDict
     url: str
 
 
-class WebhookIssuesTransferredPropChangesPropNewIssuePropUserType(TypedDict):
+class WebhookIssuesOpenedPropChangesPropOldIssuePropUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -381,7 +687,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropUserType(TypedDict):
     url: NotRequired[str]
 
 
-class WebhookIssuesTransferredPropChangesPropNewRepositoryType(TypedDict):
+class WebhookIssuesOpenedPropChangesPropOldRepositoryType(TypedDict):
     """Repository
 
     A git repository
@@ -407,7 +713,7 @@ class WebhookIssuesTransferredPropChangesPropNewRepositoryType(TypedDict):
     contributors_url: str
     created_at: Union[int, datetime]
     custom_properties: NotRequired[
-        WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesType
+        WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesType
     ]
     default_branch: str
     delete_branch_on_merge: NotRequired[bool]
@@ -425,12 +731,12 @@ class WebhookIssuesTransferredPropChangesPropNewRepositoryType(TypedDict):
     git_refs_url: str
     git_tags_url: str
     git_url: str
+    has_discussions: NotRequired[bool]
     has_downloads: bool
     has_issues: bool
     has_pages: bool
     has_projects: bool
     has_wiki: bool
-    has_discussions: bool
     homepage: Union[str, None]
     hooks_url: str
     html_url: str
@@ -444,7 +750,7 @@ class WebhookIssuesTransferredPropChangesPropNewRepositoryType(TypedDict):
     language: Union[str, None]
     languages_url: str
     license_: Union[
-        WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseType, None
+        WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseType, None
     ]
     master_branch: NotRequired[str]
     merges_url: str
@@ -456,11 +762,9 @@ class WebhookIssuesTransferredPropChangesPropNewRepositoryType(TypedDict):
     open_issues: int
     open_issues_count: int
     organization: NotRequired[str]
-    owner: Union[
-        WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerType, None
-    ]
+    owner: Union[WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerType, None]
     permissions: NotRequired[
-        WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsType
+        WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType
     ]
     private: bool
     public: NotRequired[bool]
@@ -489,10 +793,10 @@ class WebhookIssuesTransferredPropChangesPropNewRepositoryType(TypedDict):
     web_commit_signoff_required: NotRequired[bool]
 
 
-class WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesType(
+class WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesType(
     TypedDict
 ):
-    """WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomProperties
+    """WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomProperties
 
     The custom properties that were defined for the repository. The keys are the
     custom property names, and the values are the corresponding custom property
@@ -500,7 +804,7 @@ class WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesTy
     """
 
 
-class WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseType(TypedDict):
+class WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseType(TypedDict):
     """License"""
 
     key: str
@@ -510,7 +814,7 @@ class WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseType(TypedD
     url: Union[str, None]
 
 
-class WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerType(TypedDict):
+class WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -536,10 +840,8 @@ class WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerType(TypedDic
     url: NotRequired[str]
 
 
-class WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsType(
-    TypedDict
-):
-    """WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissions"""
+class WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType(TypedDict):
+    """WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissions"""
 
     admin: bool
     maintain: NotRequired[bool]
@@ -549,23 +851,35 @@ class WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsType(
 
 
 __all__ = (
-    "WebhookIssuesTransferredType",
-    "WebhookIssuesTransferredPropChangesType",
-    "WebhookIssuesTransferredPropChangesPropNewIssueType",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneeType",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItemsType",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropLabelsItemsType",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropMilestoneType",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropMilestonePropCreatorType",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppType",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropOwnerType",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppPropPermissionsType",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropPullRequestType",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropReactionsType",
-    "WebhookIssuesTransferredPropChangesPropNewIssuePropUserType",
-    "WebhookIssuesTransferredPropChangesPropNewRepositoryType",
-    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropCustomPropertiesType",
-    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropLicenseType",
-    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropOwnerType",
-    "WebhookIssuesTransferredPropChangesPropNewRepositoryPropPermissionsType",
+    "WebhookIssuesOpenedType",
+    "WebhookIssuesOpenedPropIssueType",
+    "WebhookIssuesOpenedPropIssuePropAssigneeType",
+    "WebhookIssuesOpenedPropIssuePropAssigneesItemsType",
+    "WebhookIssuesOpenedPropIssuePropLabelsItemsType",
+    "WebhookIssuesOpenedPropIssuePropMilestoneType",
+    "WebhookIssuesOpenedPropIssuePropMilestonePropCreatorType",
+    "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppType",
+    "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropOwnerType",
+    "WebhookIssuesOpenedPropIssuePropPerformedViaGithubAppPropPermissionsType",
+    "WebhookIssuesOpenedPropIssuePropPullRequestType",
+    "WebhookIssuesOpenedPropIssuePropReactionsType",
+    "WebhookIssuesOpenedPropIssuePropUserType",
+    "WebhookIssuesOpenedPropChangesType",
+    "WebhookIssuesOpenedPropChangesPropOldIssueType",
+    "WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneeType",
+    "WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneesItemsType",
+    "WebhookIssuesOpenedPropChangesPropOldIssuePropLabelsItemsType",
+    "WebhookIssuesOpenedPropChangesPropOldIssuePropMilestoneType",
+    "WebhookIssuesOpenedPropChangesPropOldIssuePropMilestonePropCreatorType",
+    "WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppType",
+    "WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropOwnerType",
+    "WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubAppPropPermissionsType",
+    "WebhookIssuesOpenedPropChangesPropOldIssuePropPullRequestType",
+    "WebhookIssuesOpenedPropChangesPropOldIssuePropReactionsType",
+    "WebhookIssuesOpenedPropChangesPropOldIssuePropUserType",
+    "WebhookIssuesOpenedPropChangesPropOldRepositoryType",
+    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropCustomPropertiesType",
+    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropLicenseType",
+    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropOwnerType",
+    "WebhookIssuesOpenedPropChangesPropOldRepositoryPropPermissionsType",
 )

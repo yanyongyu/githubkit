@@ -13,19 +13,26 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody"""
+class ReposOwnerRepoActionsOidcCustomizationSubPutBody(GitHubModel):
+    """Actions OIDC subject customization for a repository
 
-    labels: List[str] = Field(
-        max_length=100,
-        min_length=1,
-        description="The names of the custom labels to add to the runner.",
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool = Field(
+        description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
+    )
+    include_claim_keys: Missing[List[str]] = Field(
+        default=UNSET,
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
     )
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody)
+model_rebuild(ReposOwnerRepoActionsOidcCustomizationSubPutBody)
 
-__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody",)
+__all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBody",)

@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0049 import CopilotSeatDetailsType
+from .group_0034 import RunnerType
 
 
-class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
+class EnterprisesEnterpriseActionsRunnersGetResponse200Type(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[List[CopilotSeatDetailsType]]
+    total_count: NotRequired[float]
+    runners: NotRequired[List[RunnerType]]
 
 
-__all__ = ("EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200Type",)

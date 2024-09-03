@@ -13,9 +13,9 @@ from typing import Union
 from datetime import date, datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0026 import TeamType
+from .group_0027 import TeamType
 from .group_0001 import SimpleUserType
-from .group_0027 import OrganizationSimpleType
+from .group_0025 import OrganizationSimpleType
 
 
 class CopilotSeatDetailsType(TypedDict):
@@ -25,7 +25,7 @@ class CopilotSeatDetailsType(TypedDict):
     organization.
     """
 
-    assignee: Union[SimpleUserType, TeamType, OrganizationType]
+    assignee: SimpleUserType
     organization: NotRequired[Union[OrganizationSimpleType, None]]
     assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
     pending_cancellation_date: NotRequired[Union[date, None]]
@@ -53,56 +53,7 @@ class EnterpriseTeamType(TypedDict):
     updated_at: datetime
 
 
-class OrganizationType(TypedDict):
-    """Organization
-
-    GitHub account for managing multiple users, teams, and repositories
-    """
-
-    login: str
-    url: str
-    id: int
-    node_id: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
-    blog: NotRequired[str]
-    html_url: str
-    name: NotRequired[str]
-    company: NotRequired[str]
-    location: NotRequired[str]
-    email: NotRequired[str]
-    has_organization_projects: bool
-    has_repository_projects: bool
-    is_verified: NotRequired[bool]
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    type: str
-    created_at: datetime
-    updated_at: datetime
-    plan: NotRequired[OrganizationPropPlanType]
-
-
-class OrganizationPropPlanType(TypedDict):
-    """OrganizationPropPlan"""
-
-    name: NotRequired[str]
-    space: NotRequired[int]
-    private_repos: NotRequired[int]
-    filled_seats: NotRequired[int]
-    seats: NotRequired[int]
-
-
 __all__ = (
     "CopilotSeatDetailsType",
     "EnterpriseTeamType",
-    "OrganizationType",
-    "OrganizationPropPlanType",
 )

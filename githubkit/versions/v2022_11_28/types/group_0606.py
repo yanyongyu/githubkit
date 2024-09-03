@@ -9,44 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0373 import EnterpriseWebhooksType
-from .group_0374 import SimpleInstallationType
-from .group_0376 import RepositoryWebhooksType
-from .group_0377 import SimpleUserWebhooksType
-from .group_0405 import WebhooksProjectCardType
-from .group_0375 import OrganizationSimpleWebhooksType
+from .group_0379 import RepositoryWebhooksType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0607 import WebhookPingPropHookType
+from .group_0378 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectCardConvertedType(TypedDict):
-    """project_card converted event"""
+class WebhookPingType(TypedDict):
+    """WebhookPing"""
 
-    action: Literal["converted"]
-    changes: WebhookProjectCardConvertedPropChangesType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    hook: NotRequired[WebhookPingPropHookType]
+    hook_id: NotRequired[int]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    project_card: WebhooksProjectCardType
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
+    zen: NotRequired[str]
 
 
-class WebhookProjectCardConvertedPropChangesType(TypedDict):
-    """WebhookProjectCardConvertedPropChanges"""
-
-    note: WebhookProjectCardConvertedPropChangesPropNoteType
-
-
-class WebhookProjectCardConvertedPropChangesPropNoteType(TypedDict):
-    """WebhookProjectCardConvertedPropChangesPropNote"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookProjectCardConvertedType",
-    "WebhookProjectCardConvertedPropChangesType",
-    "WebhookProjectCardConvertedPropChangesPropNoteType",
-)
+__all__ = ("WebhookPingType",)

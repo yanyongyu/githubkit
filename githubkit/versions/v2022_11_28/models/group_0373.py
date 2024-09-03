@@ -9,43 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0017 import Repository
 
-class EnterpriseWebhooks(GitHubModel):
-    """Enterprise
 
-    An enterprise on GitHub. Webhook payloads contain the `enterprise` property when
-    the webhook is configured
-    on an enterprise account or an organization that's part of an enterprise
-    account. For more information,
-    see "[About enterprise accounts](https://docs.github.com/admin/overview/about-
-    enterprise-accounts)."
+class StarredRepository(GitHubModel):
+    """Starred Repository
+
+    Starred Repository
     """
 
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A short description of the enterprise."
-    )
-    html_url: str = Field()
-    website_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The enterprise's website URL."
-    )
-    id: int = Field(description="Unique identifier of the enterprise")
-    node_id: str = Field()
-    name: str = Field(description="The name of the enterprise.")
-    slug: str = Field(description="The slug url identifier for the enterprise.")
-    created_at: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
-    avatar_url: str = Field()
+    starred_at: datetime = Field()
+    repo: Repository = Field(title="Repository", description="A repository on GitHub.")
 
 
-model_rebuild(EnterpriseWebhooks)
+model_rebuild(StarredRepository)
 
-__all__ = ("EnterpriseWebhooks",)
+__all__ = ("StarredRepository",)

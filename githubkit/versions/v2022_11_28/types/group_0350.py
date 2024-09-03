@@ -12,18 +12,18 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0346 import TrafficType
+from .group_0349 import TrafficType
 
 
-class ViewTrafficType(TypedDict):
-    """View Traffic
+class CloneTrafficType(TypedDict):
+    """Clone Traffic
 
-    View Traffic
+    Clone Traffic
     """
 
     count: int
     uniques: int
-    views: List[TrafficType]
+    clones: List[TrafficType]
 
 
-__all__ = ("ViewTrafficType",)
+__all__ = ("CloneTrafficType",)

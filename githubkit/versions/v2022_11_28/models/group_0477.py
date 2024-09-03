@@ -17,19 +17,21 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0387 import Discussion
-from .group_0373 import EnterpriseWebhooks
-from .group_0374 import SimpleInstallation
-from .group_0376 import RepositoryWebhooks
-from .group_0377 import SimpleUserWebhooks
-from .group_0375 import OrganizationSimpleWebhooks
+from .group_0390 import Discussion
+from .group_0391 import WebhooksComment
+from .group_0376 import EnterpriseWebhooks
+from .group_0377 import SimpleInstallation
+from .group_0379 import RepositoryWebhooks
+from .group_0380 import SimpleUserWebhooks
+from .group_0378 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionEdited(GitHubModel):
-    """discussion edited event"""
+class WebhookDiscussionCommentEdited(GitHubModel):
+    """discussion_comment edited event"""
 
     action: Literal["edited"] = Field()
-    changes: Missing[WebhookDiscussionEditedPropChanges] = Field(default=UNSET)
+    changes: WebhookDiscussionCommentEditedPropChanges = Field()
+    comment: WebhooksComment = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -58,33 +60,24 @@ class WebhookDiscussionEdited(GitHubModel):
     )
 
 
-class WebhookDiscussionEditedPropChanges(GitHubModel):
-    """WebhookDiscussionEditedPropChanges"""
+class WebhookDiscussionCommentEditedPropChanges(GitHubModel):
+    """WebhookDiscussionCommentEditedPropChanges"""
 
-    body: Missing[WebhookDiscussionEditedPropChangesPropBody] = Field(default=UNSET)
-    title: Missing[WebhookDiscussionEditedPropChangesPropTitle] = Field(default=UNSET)
-
-
-class WebhookDiscussionEditedPropChangesPropBody(GitHubModel):
-    """WebhookDiscussionEditedPropChangesPropBody"""
-
-    from_: str = Field(alias="from")
+    body: WebhookDiscussionCommentEditedPropChangesPropBody = Field()
 
 
-class WebhookDiscussionEditedPropChangesPropTitle(GitHubModel):
-    """WebhookDiscussionEditedPropChangesPropTitle"""
+class WebhookDiscussionCommentEditedPropChangesPropBody(GitHubModel):
+    """WebhookDiscussionCommentEditedPropChangesPropBody"""
 
     from_: str = Field(alias="from")
 
 
-model_rebuild(WebhookDiscussionEdited)
-model_rebuild(WebhookDiscussionEditedPropChanges)
-model_rebuild(WebhookDiscussionEditedPropChangesPropBody)
-model_rebuild(WebhookDiscussionEditedPropChangesPropTitle)
+model_rebuild(WebhookDiscussionCommentEdited)
+model_rebuild(WebhookDiscussionCommentEditedPropChanges)
+model_rebuild(WebhookDiscussionCommentEditedPropChangesPropBody)
 
 __all__ = (
-    "WebhookDiscussionEdited",
-    "WebhookDiscussionEditedPropChanges",
-    "WebhookDiscussionEditedPropChangesPropBody",
-    "WebhookDiscussionEditedPropChangesPropTitle",
+    "WebhookDiscussionCommentEdited",
+    "WebhookDiscussionCommentEditedPropChanges",
+    "WebhookDiscussionCommentEditedPropChangesPropBody",
 )

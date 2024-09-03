@@ -9,34 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Union, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0001 import SimpleUser
-from .group_0006 import Integration
 
 
-class TimelineAssignedIssueEvent(GitHubModel):
-    """Timeline Assigned Issue Event
+class TimelineReviewedEvent(GitHubModel):
+    """Timeline Reviewed Event
 
-    Timeline Assigned Issue Event
+    Timeline Reviewed Event
     """
 
-    id: int = Field()
+    event: Literal["reviewed"] = Field()
+    id: int = Field(description="Unique identifier of the review")
     node_id: str = Field()
-    url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["assigned"] = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    body: Union[str, None] = Field(description="The text of the review.")
+    state: str = Field()
+    html_url: str = Field()
+    pull_request_url: str = Field()
+    links: TimelineReviewedEventPropLinks = Field(alias="_links")
+    submitted_at: Missing[datetime] = Field(default=UNSET)
+    commit_id: str = Field(description="A commit SHA for the review.")
+    body_html: Missing[Union[str, None]] = Field(default=UNSET)
+    body_text: Missing[Union[str, None]] = Field(default=UNSET)
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
 
 
-model_rebuild(TimelineAssignedIssueEvent)
+class TimelineReviewedEventPropLinks(GitHubModel):
+    """TimelineReviewedEventPropLinks"""
 
-__all__ = ("TimelineAssignedIssueEvent",)
+    html: TimelineReviewedEventPropLinksPropHtml = Field()
+    pull_request: TimelineReviewedEventPropLinksPropPullRequest = Field()
+
+
+class TimelineReviewedEventPropLinksPropHtml(GitHubModel):
+    """TimelineReviewedEventPropLinksPropHtml"""
+
+    href: str = Field()
+
+
+class TimelineReviewedEventPropLinksPropPullRequest(GitHubModel):
+    """TimelineReviewedEventPropLinksPropPullRequest"""
+
+    href: str = Field()
+
+
+model_rebuild(TimelineReviewedEvent)
+model_rebuild(TimelineReviewedEventPropLinks)
+model_rebuild(TimelineReviewedEventPropLinksPropHtml)
+model_rebuild(TimelineReviewedEventPropLinksPropPullRequest)
+
+__all__ = (
+    "TimelineReviewedEvent",
+    "TimelineReviewedEventPropLinks",
+    "TimelineReviewedEventPropLinksPropHtml",
+    "TimelineReviewedEventPropLinksPropPullRequest",
+)

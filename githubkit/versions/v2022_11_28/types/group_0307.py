@@ -9,22 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
-from .group_0224 import LinkType
+from .group_0308 import PullRequestPropBasePropRepoType
 
 
-class PullRequestPropLinksType(TypedDict):
-    """PullRequestPropLinks"""
+class PullRequestPropBaseType(TypedDict):
+    """PullRequestPropBase"""
 
-    comments: LinkType
-    commits: LinkType
-    statuses: LinkType
-    html: LinkType
-    issue: LinkType
-    review_comments: LinkType
-    review_comment: LinkType
-    self_: LinkType
+    label: str
+    ref: str
+    repo: PullRequestPropBasePropRepoType
+    sha: str
+    user: PullRequestPropBasePropUserType
 
 
-__all__ = ("PullRequestPropLinksType",)
+class PullRequestPropBasePropUserType(TypedDict):
+    """PullRequestPropBasePropUser"""
+
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: Union[str, None]
+    html_url: str
+    id: int
+    node_id: str
+    login: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
+
+
+__all__ = (
+    "PullRequestPropBaseType",
+    "PullRequestPropBasePropUserType",
+)

@@ -9,28 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class SearchResultTextMatchesItemsType(TypedDict):
-    """SearchResultTextMatchesItems"""
-
-    object_url: NotRequired[str]
-    object_type: NotRequired[Union[str, None]]
-    property_: NotRequired[str]
-    fragment: NotRequired[str]
-    matches: NotRequired[List[SearchResultTextMatchesItemsPropMatchesItemsType]]
+from .group_0378 import MetaType
+from .group_0384 import UserRoleItemsType
+from .group_0383 import UserNameResponseType, UserEmailsResponseItemsType
+from .group_0388 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
 
 
-class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
+class ScimEnterpriseUserResponseType(TypedDict):
+    """ScimEnterpriseUserResponse"""
 
-    text: NotRequired[str]
-    indices: NotRequired[List[int]]
+    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    external_id: NotRequired[Union[str, None]]
+    active: bool
+    user_name: NotRequired[str]
+    name: NotRequired[UserNameResponseType]
+    display_name: NotRequired[Union[str, None]]
+    emails: List[UserEmailsResponseItemsType]
+    roles: NotRequired[List[UserRoleItemsType]]
+    id: str
+    groups: NotRequired[List[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    meta: MetaType
+
+
+class ScimEnterpriseUserListType(TypedDict):
+    """ScimEnterpriseUserList"""
+
+    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    total_results: int
+    resources: List[ScimEnterpriseUserResponseType]
+    start_index: int
+    items_per_page: int
 
 
 __all__ = (
-    "SearchResultTextMatchesItemsType",
-    "SearchResultTextMatchesItemsPropMatchesItemsType",
+    "ScimEnterpriseUserResponseType",
+    "ScimEnterpriseUserListType",
 )

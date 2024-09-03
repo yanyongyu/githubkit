@@ -9,29 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
-    """RepositoryRuleRequiredStatusChecksPropParameters"""
+class RepositoryRulePullRequestPropParametersType(TypedDict):
+    """RepositoryRulePullRequestPropParameters"""
 
-    do_not_enforce_on_create: NotRequired[bool]
-    required_status_checks: List[RepositoryRuleParamsStatusCheckConfigurationType]
-    strict_required_status_checks_policy: bool
-
-
-class RepositoryRuleParamsStatusCheckConfigurationType(TypedDict):
-    """StatusCheckConfiguration
-
-    Required status check
-    """
-
-    context: str
-    integration_id: NotRequired[int]
+    dismiss_stale_reviews_on_push: bool
+    require_code_owner_review: bool
+    require_last_push_approval: bool
+    required_approving_review_count: int
+    required_review_thread_resolution: bool
 
 
-__all__ = (
-    "RepositoryRuleRequiredStatusChecksPropParametersType",
-    "RepositoryRuleParamsStatusCheckConfigurationType",
-)
+__all__ = ("RepositoryRulePullRequestPropParametersType",)

@@ -9,27 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0408 import EnterpriseWebhooks
-from .group_0409 import SimpleInstallation
-from .group_0411 import RepositoryWebhooks
-from .group_0412 import SimpleUserWebhooks
-from .group_0459 import WebhooksSponsorship
-from .group_0410 import OrganizationSimpleWebhooks
+from .group_0125 import FullRepository
+from .group_0413 import EnterpriseWebhooks
+from .group_0414 import SimpleInstallation
+from .group_0417 import SimpleUserWebhooks
+from .group_0415 import OrganizationSimpleWebhooks
+from .group_0765 import WebhookSecurityAndAnalysisPropChanges
 
 
-class WebhookSponsorshipEdited(GitHubModel):
-    """sponsorship edited event"""
+class WebhookSecurityAndAnalysis(GitHubModel):
+    """security_and_analysis event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookSponsorshipEditedPropChanges = Field()
+    changes: WebhookSecurityAndAnalysisPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,41 +42,16 @@ class WebhookSponsorshipEdited(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
-        title="Repository",
-        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    repository: FullRepository = Field(
+        title="Full Repository", description="Full Repository"
     )
-    sender: SimpleUserWebhooks = Field(
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    sponsorship: WebhooksSponsorship = Field()
 
 
-class WebhookSponsorshipEditedPropChanges(GitHubModel):
-    """WebhookSponsorshipEditedPropChanges"""
+model_rebuild(WebhookSecurityAndAnalysis)
 
-    privacy_level: Missing[WebhookSponsorshipEditedPropChangesPropPrivacyLevel] = Field(
-        default=UNSET
-    )
-
-
-class WebhookSponsorshipEditedPropChangesPropPrivacyLevel(GitHubModel):
-    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
-
-    from_: str = Field(
-        alias="from",
-        description="The `edited` event types include the details about the change when someone edits a sponsorship to change the privacy.",
-    )
-
-
-model_rebuild(WebhookSponsorshipEdited)
-model_rebuild(WebhookSponsorshipEditedPropChanges)
-model_rebuild(WebhookSponsorshipEditedPropChangesPropPrivacyLevel)
-
-__all__ = (
-    "WebhookSponsorshipEdited",
-    "WebhookSponsorshipEditedPropChanges",
-    "WebhookSponsorshipEditedPropChangesPropPrivacyLevel",
-)
+__all__ = ("WebhookSecurityAndAnalysis",)

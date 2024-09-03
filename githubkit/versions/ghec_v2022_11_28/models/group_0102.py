@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Union
 
 from pydantic import Field
 
@@ -49,7 +49,9 @@ class ExternalGroupPropMembersItems(GitHubModel):
 
     member_id: int = Field(description="The internal user ID of the identity")
     member_login: str = Field(description="The handle/login for the user")
-    member_name: str = Field(description="The user display name/profile name")
+    member_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The user display name/profile name"
+    )
     member_email: str = Field(description="An email attached to a user")
 
 

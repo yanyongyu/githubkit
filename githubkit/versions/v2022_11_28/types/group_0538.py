@@ -9,27 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from datetime import datetime
+from typing import Union, Literal
+from typing_extensions import TypedDict
 
-from .group_0373 import EnterpriseWebhooksType
-from .group_0374 import SimpleInstallationType
-from .group_0376 import RepositoryWebhooksType
-from .group_0377 import SimpleUserWebhooksType
-from .group_0375 import OrganizationSimpleWebhooksType
-from .group_0539 import WebhookIssuesClosedPropIssueType
+from .group_0533 import (
+    WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType,
+)
 
 
-class WebhookIssuesClosedType(TypedDict):
-    """issues closed event"""
+class WebhookIssueCommentEditedPropIssueMergedMilestoneType(TypedDict):
+    """WebhookIssueCommentEditedPropIssueMergedMilestone"""
 
-    action: Literal["closed"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssuesClosedPropIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    closed_at: Union[datetime, None]
+    closed_issues: int
+    created_at: datetime
+    creator: Union[
+        WebhookIssueCommentEditedPropIssueAllof0PropMilestonePropCreatorType, None
+    ]
+    description: Union[str, None]
+    due_on: Union[datetime, None]
+    html_url: str
+    id: int
+    labels_url: str
+    node_id: str
+    number: int
+    open_issues: int
+    state: Literal["open", "closed"]
+    title: str
+    updated_at: datetime
+    url: str
 
 
-__all__ = ("WebhookIssuesClosedType",)
+__all__ = ("WebhookIssueCommentEditedPropIssueMergedMilestoneType",)

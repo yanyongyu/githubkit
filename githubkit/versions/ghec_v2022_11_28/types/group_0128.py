@@ -13,12 +13,11 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType(TypedDict):
-    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
+class RepositoryRulesetConditionsPropRefNameType(TypedDict):
+    """RepositoryRulesetConditionsPropRefName"""
 
     include: NotRequired[List[str]]
     exclude: NotRequired[List[str]]
-    protected: NotRequired[bool]
 
 
-__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryNameType",)
+__all__ = ("RepositoryRulesetConditionsPropRefNameType",)

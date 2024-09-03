@@ -9,33 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from datetime import datetime
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0284 import HookResponseType
-from .group_0007 import WebhookConfigType
+from typing_extensions import TypedDict
 
 
-class HookType(TypedDict):
-    """Webhook
+class GitRefType(TypedDict):
+    """Git Reference
 
-    Webhooks for repositories.
+    Git references within a repository
     """
 
-    type: str
-    id: int
-    name: str
-    active: bool
-    events: List[str]
-    config: WebhookConfigType
-    updated_at: datetime
-    created_at: datetime
+    ref: str
+    node_id: str
     url: str
-    test_url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    last_response: HookResponseType
+    object_: GitRefPropObjectType
 
 
-__all__ = ("HookType",)
+class GitRefPropObjectType(TypedDict):
+    """GitRefPropObject"""
+
+    type: str
+    sha: str
+    url: str
+
+
+__all__ = (
+    "GitRefType",
+    "GitRefPropObjectType",
+)

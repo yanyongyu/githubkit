@@ -12,22 +12,27 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0373 import EnterpriseWebhooksType
-from .group_0374 import SimpleInstallationType
-from .group_0376 import RepositoryWebhooksType
-from .group_0377 import SimpleUserWebhooksType
-from .group_0375 import OrganizationSimpleWebhooksType
+from .group_0039 import IssueType
+from .group_0017 import RepositoryType
+from .group_0377 import SimpleInstallationType
+from .group_0379 import RepositoryWebhooksType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0378 import OrganizationSimpleWebhooksType
 
 
-class WebhookWatchStartedType(TypedDict):
-    """watch started event"""
+class WebhookSubIssuesSubIssueRemovedType(TypedDict):
+    """sub-issue removed event"""
 
-    action: Literal["started"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["sub_issue_removed"]
+    sub_issue_id: float
+    sub_issue: IssueType
+    sub_issue_repo: RepositoryType
+    parent_issue_id: float
+    parent_issue: IssueType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookWatchStartedType",)
+__all__ = ("WebhookSubIssuesSubIssueRemovedType",)

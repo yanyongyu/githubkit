@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -18,65 +18,20 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody"""
+class OrgsOrgActionsVariablesPostBody(GitHubModel):
+    """OrgsOrgActionsVariablesPostBody"""
 
-    name: Missing[str] = Field(
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable."
+    )
+    selected_repository_ids: Missing[List[int]] = Field(
         default=UNSET,
-        description="The name of the code security configuration. Must be unique within the organization.",
-    )
-    description: Missing[str] = Field(
-        max_length=255,
-        default=UNSET,
-        description="A description of the code security configuration",
-    )
-    advanced_security: Missing[Literal["enabled", "disabled"]] = Field(
-        default=UNSET, description="The enablement status of GitHub Advanced Security"
-    )
-    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependency Graph"
-    )
-    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of Dependabot alerts"
-    )
-    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of Dependabot security updates",
-        )
-    )
-    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
-        Field(
-            default=UNSET,
-            description="The enablement status of code scanning default setup",
-        )
-    )
-    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
-        default=UNSET, description="The enablement status of secret scanning"
-    )
-    secret_scanning_push_protection: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning push protection",
-    )
-    secret_scanning_validity_checks: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of secret scanning validity checks",
-    )
-    private_vulnerability_reporting: Missing[
-        Literal["enabled", "disabled", "not_set"]
-    ] = Field(
-        default=UNSET,
-        description="The enablement status of private vulnerability reporting",
-    )
-    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
-        default=UNSET, description="The enforcement status for a security configuration"
+        description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody)
+model_rebuild(OrgsOrgActionsVariablesPostBody)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody",)
+__all__ = ("OrgsOrgActionsVariablesPostBody",)

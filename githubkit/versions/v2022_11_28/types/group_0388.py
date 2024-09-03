@@ -13,49 +13,7 @@ from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhooksCommentType(TypedDict):
-    """WebhooksComment"""
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    body: str
-    child_comment_count: int
-    created_at: str
-    discussion_id: int
-    html_url: str
-    id: int
-    node_id: str
-    parent_id: Union[int, None]
-    reactions: WebhooksCommentPropReactionsType
-    repository_url: str
-    updated_at: str
-    user: Union[WebhooksCommentPropUserType, None]
-
-
-class WebhooksCommentPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksCommentPropUserType(TypedDict):
+class WebhooksUserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -81,8 +39,4 @@ class WebhooksCommentPropUserType(TypedDict):
     url: NotRequired[str]
 
 
-__all__ = (
-    "WebhooksCommentType",
-    "WebhooksCommentPropReactionsType",
-    "WebhooksCommentPropUserType",
-)
+__all__ = ("WebhooksUserType",)

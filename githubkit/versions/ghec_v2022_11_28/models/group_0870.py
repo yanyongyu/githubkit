@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Literal
 
 from pydantic import Field
@@ -18,18 +19,37 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+class OrgsOrgActionsVariablesGetResponse200(GitHubModel):
+    """OrgsOrgActionsVariablesGetResponse200"""
 
-    scope: Literal["all", "public", "private_or_internal", "selected"] = Field(
-        description="The type of repositories to attach the configuration to. `selected` means the configuration will be attached to only the repositories specified by `selected_repository_ids`"
+    total_count: int = Field()
+    variables: List[OrganizationActionsVariable] = Field()
+
+
+class OrganizationActionsVariable(GitHubModel):
+    """Actions Variable for an Organization
+
+    Organization variable for GitHub Actions.
+    """
+
+    name: str = Field(description="The name of the variable.")
+    value: str = Field(description="The value of the variable.")
+    created_at: datetime = Field(
+        description="The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    selected_repository_ids: Missing[List[int]] = Field(
-        default=UNSET,
-        description="An array of repository IDs to attach the configuration to. You can only provide a list of repository ids when the `scope` is set to `selected`.",
+    updated_at: datetime = Field(
+        description="The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="Visibility of a variable"
+    )
+    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody)
+model_rebuild(OrgsOrgActionsVariablesGetResponse200)
+model_rebuild(OrganizationActionsVariable)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody",)
+__all__ = (
+    "OrgsOrgActionsVariablesGetResponse200",
+    "OrganizationActionsVariable",
+)

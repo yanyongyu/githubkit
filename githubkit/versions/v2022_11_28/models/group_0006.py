@@ -36,6 +36,7 @@ class Integration(GitHubModel):
         default=UNSET, description="The slug name of the GitHub app"
     )
     node_id: str = Field()
+    client_id: Missing[str] = Field(default=UNSET)
     owner: Union[None, SimpleUser] = Field()
     name: str = Field(description="The name of the GitHub app")
     description: Union[str, None] = Field()
@@ -51,7 +52,6 @@ class Integration(GitHubModel):
         default=UNSET,
         description="The number of installations associated with the GitHub app",
     )
-    client_id: Missing[str] = Field(default=UNSET)
     client_secret: Missing[str] = Field(default=UNSET)
     webhook_secret: Missing[Union[str, None]] = Field(default=UNSET)
     pem: Missing[str] = Field(default=UNSET)

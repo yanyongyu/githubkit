@@ -17,21 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0387 import Discussion
-from .group_0388 import WebhooksComment
-from .group_0373 import EnterpriseWebhooks
-from .group_0374 import SimpleInstallation
-from .group_0376 import RepositoryWebhooks
-from .group_0377 import SimpleUserWebhooks
-from .group_0375 import OrganizationSimpleWebhooks
+from .group_0390 import Discussion
+from .group_0376 import EnterpriseWebhooks
+from .group_0377 import SimpleInstallation
+from .group_0379 import RepositoryWebhooks
+from .group_0380 import SimpleUserWebhooks
+from .group_0378 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionCommentEdited(GitHubModel):
-    """discussion_comment edited event"""
+class WebhookDiscussionClosed(GitHubModel):
+    """discussion closed event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookDiscussionCommentEditedPropChanges = Field()
-    comment: WebhooksComment = Field()
+    action: Literal["closed"] = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -60,24 +57,6 @@ class WebhookDiscussionCommentEdited(GitHubModel):
     )
 
 
-class WebhookDiscussionCommentEditedPropChanges(GitHubModel):
-    """WebhookDiscussionCommentEditedPropChanges"""
+model_rebuild(WebhookDiscussionClosed)
 
-    body: WebhookDiscussionCommentEditedPropChangesPropBody = Field()
-
-
-class WebhookDiscussionCommentEditedPropChangesPropBody(GitHubModel):
-    """WebhookDiscussionCommentEditedPropChangesPropBody"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookDiscussionCommentEdited)
-model_rebuild(WebhookDiscussionCommentEditedPropChanges)
-model_rebuild(WebhookDiscussionCommentEditedPropChangesPropBody)
-
-__all__ = (
-    "WebhookDiscussionCommentEdited",
-    "WebhookDiscussionCommentEditedPropChanges",
-    "WebhookDiscussionCommentEditedPropChangesPropBody",
-)
+__all__ = ("WebhookDiscussionClosed",)

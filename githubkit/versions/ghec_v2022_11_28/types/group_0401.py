@@ -9,23 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class KeyType(TypedDict):
-    """Key
+class CodespacesUserPublicKeyType(TypedDict):
+    """CodespacesUserPublicKey
 
-    Key
+    The public key used for setting user Codespaces' Secrets.
     """
 
+    key_id: str
     key: str
-    id: int
-    url: str
-    title: str
-    created_at: datetime
-    verified: bool
-    read_only: bool
 
 
-__all__ = ("KeyType",)
+__all__ = ("CodespacesUserPublicKeyType",)

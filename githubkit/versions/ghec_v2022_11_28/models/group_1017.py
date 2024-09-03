@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -17,31 +17,31 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
 
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1(GitHubModel):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1"""
 
-class ReposOwnerRepoCodespacesNewGetResponse200(GitHubModel):
-    """ReposOwnerRepoCodespacesNewGetResponse200"""
-
-    billable_owner: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    language: Literal[
+        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
+    ] = Field(description="The language targeted by the CodeQL query")
+    query_pack: str = Field(
+        description="A Base64-encoded tarball containing a CodeQL query and all its dependencies"
     )
-    defaults: Missing[ReposOwnerRepoCodespacesNewGetResponse200PropDefaults] = Field(
-        default=UNSET
+    repositories: Missing[List[str]] = Field(
+        default=UNSET,
+        description="List of repository names (in the form `owner/repo-name`) to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
+    )
+    repository_lists: List[str] = Field(
+        max_length=1,
+        description="List of repository lists to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
+    )
+    repository_owners: Missing[List[str]] = Field(
+        max_length=1,
+        default=UNSET,
+        description="List of organization or user names whose repositories the query should be run against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
     )
 
 
-class ReposOwnerRepoCodespacesNewGetResponse200PropDefaults(GitHubModel):
-    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
+model_rebuild(ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1)
 
-    location: str = Field()
-    devcontainer_path: Union[str, None] = Field()
-
-
-model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200)
-model_rebuild(ReposOwnerRepoCodespacesNewGetResponse200PropDefaults)
-
-__all__ = (
-    "ReposOwnerRepoCodespacesNewGetResponse200",
-    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaults",
-)
+__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1",)

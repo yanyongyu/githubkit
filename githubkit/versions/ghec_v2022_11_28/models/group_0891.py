@@ -9,42 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Literal
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgDependabotSecretsGetResponse200(GitHubModel):
-    """OrgsOrgDependabotSecretsGetResponse200"""
+class OrgsOrgCopilotBillingSelectedTeamsPostBody(GitHubModel):
+    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
 
-    total_count: int = Field()
-    secrets: List[OrganizationDependabotSecret] = Field()
-
-
-class OrganizationDependabotSecret(GitHubModel):
-    """Dependabot Secret for an Organization
-
-    Secrets for GitHub Dependabot for an organization.
-    """
-
-    name: str = Field(description="The name of the secret.")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a secret"
+    selected_teams: List[str] = Field(
+        min_length=1,
+        description="List of team names within the organization to which to grant access to GitHub Copilot.",
     )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgDependabotSecretsGetResponse200)
-model_rebuild(OrganizationDependabotSecret)
+model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostBody)
 
-__all__ = (
-    "OrgsOrgDependabotSecretsGetResponse200",
-    "OrganizationDependabotSecret",
-)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostBody",)

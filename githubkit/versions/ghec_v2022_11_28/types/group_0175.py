@@ -9,45 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict, NotRequired
+from datetime import datetime
+from typing import Union, Literal
+from typing_extensions import TypedDict
 
 from .group_0001 import SimpleUserType
 
 
-class TeamProjectType(TypedDict):
-    """Team Project
+class ReactionType(TypedDict):
+    """Reaction
 
-    A team's access to a project.
+    Reactions to conversations provide a way to help people express their feelings
+    more simply and effectively.
     """
 
-    owner_url: str
-    url: str
-    html_url: str
-    columns_url: str
     id: int
     node_id: str
-    name: str
-    body: Union[str, None]
-    number: int
-    state: str
-    creator: SimpleUserType
-    created_at: str
-    updated_at: str
-    organization_permission: NotRequired[str]
-    private: NotRequired[bool]
-    permissions: TeamProjectPropPermissionsType
+    user: Union[None, SimpleUserType]
+    content: Literal[
+        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    ]
+    created_at: datetime
 
 
-class TeamProjectPropPermissionsType(TypedDict):
-    """TeamProjectPropPermissions"""
-
-    read: bool
-    write: bool
-    admin: bool
-
-
-__all__ = (
-    "TeamProjectType",
-    "TeamProjectPropPermissionsType",
-)
+__all__ = ("ReactionType",)

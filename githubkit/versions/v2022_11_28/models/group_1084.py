@@ -9,13 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
+from pydantic import Field
+
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class UserInteractionLimitsGetResponse200Anyof1(GitHubModel):
-    """UserInteractionLimitsGetResponse200Anyof1"""
+from .group_0077 import CodespaceMachine
 
 
-model_rebuild(UserInteractionLimitsGetResponse200Anyof1)
+class UserCodespacesCodespaceNameMachinesGetResponse200(GitHubModel):
+    """UserCodespacesCodespaceNameMachinesGetResponse200"""
 
-__all__ = ("UserInteractionLimitsGetResponse200Anyof1",)
+    total_count: int = Field()
+    machines: List[CodespaceMachine] = Field()
+
+
+model_rebuild(UserCodespacesCodespaceNameMachinesGetResponse200)
+
+__all__ = ("UserCodespacesCodespaceNameMachinesGetResponse200",)

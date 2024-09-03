@@ -9,17 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0387 import DiscussionType
-from .group_0376 import RepositoryWebhooksType
-
-
-class WebhookDiscussionTransferredPropChangesType(TypedDict):
-    """WebhookDiscussionTransferredPropChanges"""
-
-    new_discussion: DiscussionType
-    new_repository: RepositoryWebhooksType
+from .group_0390 import DiscussionType
+from .group_0376 import EnterpriseWebhooksType
+from .group_0377 import SimpleInstallationType
+from .group_0379 import RepositoryWebhooksType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0378 import OrganizationSimpleWebhooksType
 
 
-__all__ = ("WebhookDiscussionTransferredPropChangesType",)
+class WebhookDiscussionPinnedType(TypedDict):
+    """discussion pinned event"""
+
+    action: Literal["pinned"]
+    discussion: DiscussionType
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+
+
+__all__ = ("WebhookDiscussionPinnedType",)

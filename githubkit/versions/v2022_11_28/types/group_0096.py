@@ -13,13 +13,14 @@ from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgCustomPropertyType(TypedDict):
+class CustomPropertyType(TypedDict):
     """Organization Custom Property
 
     Custom property defined on an organization
     """
 
     property_name: str
+    url: NotRequired[str]
     value_type: Literal["string", "single_select", "multi_select", "true_false"]
     required: NotRequired[bool]
     default_value: NotRequired[Union[str, List[str], None]]
@@ -30,4 +31,4 @@ class OrgCustomPropertyType(TypedDict):
     ]
 
 
-__all__ = ("OrgCustomPropertyType",)
+__all__ = ("CustomPropertyType",)

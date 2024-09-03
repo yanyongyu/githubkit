@@ -9,18 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0269 import MetadataType
 
 
-class DeploymentBranchPolicySettingsType(TypedDict):
-    """DeploymentBranchPolicySettings
+class DependencyType(TypedDict):
+    """Dependency"""
 
-    The type of deployment branch policy for this environment. To allow all branches
-    to deploy, set to `null`.
-    """
+    package_url: NotRequired[str]
+    metadata: NotRequired[MetadataType]
+    relationship: NotRequired[Literal["direct", "indirect"]]
+    scope: NotRequired[Literal["runtime", "development"]]
+    dependencies: NotRequired[List[str]]
 
-    protected_branches: bool
-    custom_branch_policies: bool
 
-
-__all__ = ("DeploymentBranchPolicySettingsType",)
+__all__ = ("DependencyType",)

@@ -10,32 +10,41 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
+from datetime import datetime
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0001 import SimpleUser
 
-class PageDeployment(GitHubModel):
-    """GitHub Pages
 
-    The GitHub Pages deployment status.
+class PageBuild(GitHubModel):
+    """Page Build
+
+    Page Build
     """
 
-    id: Union[int, str] = Field(
-        description="The ID of the GitHub Pages deployment. This is the Git SHA of the deployed commit."
-    )
-    status_url: str = Field(
-        description="The URI to monitor GitHub Pages deployment status."
-    )
-    page_url: str = Field(description="The URI to the deployed GitHub Pages.")
-    preview_url: Missing[str] = Field(
-        default=UNSET, description="The URI to the deployed GitHub Pages preview."
-    )
+    url: str = Field()
+    status: str = Field()
+    error: PageBuildPropError = Field()
+    pusher: Union[None, SimpleUser] = Field()
+    commit: str = Field()
+    duration: int = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(PageDeployment)
+class PageBuildPropError(GitHubModel):
+    """PageBuildPropError"""
 
-__all__ = ("PageDeployment",)
+    message: Union[str, None] = Field()
+
+
+model_rebuild(PageBuild)
+model_rebuild(PageBuildPropError)
+
+__all__ = (
+    "PageBuild",
+    "PageBuildPropError",
+)

@@ -114,7 +114,6 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.models import Installation as Installation
     from githubkit.versions.v2022_11_28.models import IssueComment as IssueComment
     from githubkit.versions.v2022_11_28.models import LinkWithType as LinkWithType
-    from githubkit.versions.v2022_11_28.models import Organization as Organization
     from githubkit.versions.v2022_11_28.models import PorterAuthor as PorterAuthor
     from githubkit.versions.v2022_11_28.models import ReleaseAsset as ReleaseAsset
     from githubkit.versions.v2022_11_28.models import SimpleCommit as SimpleCommit
@@ -155,6 +154,7 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.models import CommitActivity as CommitActivity
     from githubkit.versions.v2022_11_28.models import ContentSymlink as ContentSymlink
     from githubkit.versions.v2022_11_28.models import ContentTraffic as ContentTraffic
+    from githubkit.versions.v2022_11_28.models import CustomProperty as CustomProperty
     from githubkit.versions.v2022_11_28.models import EnterpriseTeam as EnterpriseTeam
     from githubkit.versions.v2022_11_28.models import FullRepository as FullRepository
     from githubkit.versions.v2022_11_28.models import GlobalAdvisory as GlobalAdvisory
@@ -328,9 +328,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         OidcCustomSubRepo as OidcCustomSubRepo,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        OrgCustomProperty as OrgCustomProperty,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgHookPropConfig as OrgHookPropConfig,
@@ -642,9 +639,6 @@ if TYPE_CHECKING:
         NotificationsPutBody as NotificationsPutBody,
     )
     from githubkit.versions.v2022_11_28.models import (
-        OrganizationPropPlan as OrganizationPropPlan,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         OrgsOrgHooksPostBody as OrgsOrgHooksPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -865,6 +859,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         GlobalAdvisoryPropCvss as GlobalAdvisoryPropCvss,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        GlobalAdvisoryPropEpss as GlobalAdvisoryPropEpss,
     )
     from githubkit.versions.v2022_11_28.models import (
         GpgKeyPropSubkeysItems as GpgKeyPropSubkeysItems,
@@ -1752,6 +1749,9 @@ if TYPE_CHECKING:
         RepositoryRuleTagNamePattern as RepositoryRuleTagNamePattern,
     )
     from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleViolationError as RepositoryRuleViolationError,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         RepositoryRulesetBypassActor as RepositoryRulesetBypassActor,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -1981,6 +1981,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookSponsorshipTierChanged as WebhookSponsorshipTierChanged,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookSubIssuesSubIssueAdded as WebhookSubIssuesSubIssueAdded,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhooksIssue2PropLabelsItems as WebhooksIssue2PropLabelsItems,
@@ -2250,6 +2253,9 @@ if TYPE_CHECKING:
         WebhookRepositoryRulesetDeleted as WebhookRepositoryRulesetDeleted,
     )
     from githubkit.versions.v2022_11_28.models import (
+        WebhookSubIssuesSubIssueRemoved as WebhookSubIssuesSubIssueRemoved,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookTeamEditedPropRepository as WebhookTeamEditedPropRepository,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2401,6 +2407,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookSecurityAdvisoryWithdrawn as WebhookSecurityAdvisoryWithdrawn,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookSubIssuesParentIssueAdded as WebhookSubIssuesParentIssueAdded,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookTeamCreatedPropRepository as WebhookTeamCreatedPropRepository,
@@ -2628,6 +2637,9 @@ if TYPE_CHECKING:
         SecretScanningLocationIssueComment as SecretScanningLocationIssueComment,
     )
     from githubkit.versions.v2022_11_28.models import (
+        SecretScanningPushProtectionBypass as SecretScanningPushProtectionBypass,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookBranchProtectionRuleCreated as WebhookBranchProtectionRuleCreated,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -2692,6 +2704,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookSecretScanningAlertResolved as WebhookSecretScanningAlertResolved,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        WebhookSubIssuesParentIssueRemoved as WebhookSubIssuesParentIssueRemoved,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhooksReviewCommentPropReactions as WebhooksReviewCommentPropReactions,
@@ -3102,6 +3117,9 @@ if TYPE_CHECKING:
         CodeScanningDefaultSetupUpdateResponse as CodeScanningDefaultSetupUpdateResponse,
     )
     from githubkit.versions.v2022_11_28.models import (
+        CodeSecurityConfigurationForRepository as CodeSecurityConfigurationForRepository,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         CodeSecurityDefaultConfigurationsItems as CodeSecurityDefaultConfigurationsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -3406,6 +3424,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         RepositoryRuleCodeScanningPropParameters as RepositoryRuleCodeScanningPropParameters,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleViolationErrorPropMetadata as RepositoryRuleViolationErrorPropMetadata,
     )
     from githubkit.versions.v2022_11_28.models import (
         RepositoryWebhooksPropTemplateRepository as RepositoryWebhooksPropTemplateRepository,
@@ -4186,6 +4207,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhooksReviewCommentPropLinksPropPullRequest as WebhooksReviewCommentPropLinksPropPullRequest,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ApiOverviewPropDomainsPropArtifactAttestations as ApiOverviewPropDomainsPropArtifactAttestations,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgActionsRunnersGenerateJitconfigPostBody as OrgsOrgActionsRunnersGenerateJitconfigPostBody,
@@ -5853,6 +5877,12 @@ if TYPE_CHECKING:
         ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody as ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody as ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanning as RepositoryRuleViolationErrorPropMetadataPropSecretScanning,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwner as WebhookCheckSuiteRerequestedPropCheckSuitePropAppPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -7072,6 +7102,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos as CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions as CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions,
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems as OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItems,
@@ -8862,6 +8895,9 @@ if TYPE_CHECKING:
         WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges as WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChanges,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions as OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns as ReposOwnerRepoPatchBodyPropSecurityAndAnalysisPropSecretScanningNonProviderPatterns,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -8992,6 +9028,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems as RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems,
     )
     from githubkit.versions.v2022_11_28.models import (
         WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifest as WebhookPackagePublishedPropPackagePropPackageVersionPropContainerMetadataPropManifest,
@@ -9291,6 +9330,9 @@ if TYPE_CHECKING:
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParent as WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1PropParent,
     )
     from githubkit.versions.v2022_11_28.models import (
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions as OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropLabels as WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropContainerMetadataPropLabels,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -9363,6 +9405,7 @@ else:
             "GlobalAdvisoryPropIdentifiersItems",
             "GlobalAdvisoryPropCvss",
             "GlobalAdvisoryPropCwesItems",
+            "GlobalAdvisoryPropEpss",
             "Vulnerability",
             "VulnerabilityPropPackage",
             "BasicError",
@@ -9400,14 +9443,12 @@ else:
             "SimpleClassroomAssignment",
             "SimpleClassroom",
             "ClassroomAssignmentGrade",
+            "OrganizationSimple",
             "TeamSimple",
             "Team",
             "TeamPropPermissions",
-            "OrganizationSimple",
             "CopilotSeatDetails",
             "EnterpriseTeam",
-            "Organization",
-            "OrganizationPropPlan",
             "CopilotUsageMetrics",
             "CopilotUsageMetricsPropBreakdownItems",
             "DependabotAlertPackage",
@@ -9459,6 +9500,7 @@ else:
             "ApiOverview",
             "ApiOverviewPropSshKeyFingerprints",
             "ApiOverviewPropDomains",
+            "ApiOverviewPropDomainsPropArtifactAttestations",
             "SecurityAndAnalysis",
             "SecurityAndAnalysisPropAdvancedSecurity",
             "SecurityAndAnalysisPropDependabotSecurityUpdates",
@@ -9493,6 +9535,7 @@ else:
             "CodeScanningAlertInstancePropMessage",
             "CodeScanningOrganizationAlertItems",
             "CodeSecurityConfiguration",
+            "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions",
             "CodeSecurityDefaultConfigurationsItems",
             "CodeSecurityConfigurationRepositories",
             "CodespaceMachine",
@@ -9532,7 +9575,7 @@ else:
             "OrganizationProgrammaticAccessGrantPropPermissionsPropRepository",
             "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
             "Project",
-            "OrgCustomProperty",
+            "CustomProperty",
             "CustomPropertyValue",
             "OrgRepoCustomPropertyValues",
             "CodeOfConductSimple",
@@ -9754,6 +9797,7 @@ else:
             "CodeScanningDefaultSetupUpdateResponse",
             "CodeScanningSarifsReceipt",
             "CodeScanningSarifsStatus",
+            "CodeSecurityConfigurationForRepository",
             "CodeownersErrors",
             "CodeownersErrorsPropErrorsItems",
             "CodespacesPermissionsCheckForDevcontainer",
@@ -9800,6 +9844,10 @@ else:
             "FileCommitPropCommitPropTree",
             "FileCommitPropCommitPropParentsItems",
             "FileCommitPropCommitPropVerification",
+            "RepositoryRuleViolationError",
+            "RepositoryRuleViolationErrorPropMetadata",
+            "RepositoryRuleViolationErrorPropMetadataPropSecretScanning",
+            "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems",
             "Contributor",
             "DependabotAlert",
             "DependabotAlertPropDependency",
@@ -9966,6 +10014,7 @@ else:
             "RepositoryRuleDetailedOneof15",
             "RepositoryRuleDetailedOneof16",
             "SecretScanningAlert",
+            "SecretScanningPushProtectionBypass",
             "RepositoryAdvisoryCreate",
             "RepositoryAdvisoryCreatePropCreditsItems",
             "RepositoryAdvisoryCreatePropVulnerabilitiesItems",
@@ -12053,6 +12102,10 @@ else:
             "WebhookStatusPropCommitPropCommitPropAuthorAllof1",
             "WebhookStatusPropCommitPropCommitPropCommitterAllof0",
             "WebhookStatusPropCommitPropCommitPropCommitterAllof1",
+            "WebhookSubIssuesParentIssueAdded",
+            "WebhookSubIssuesParentIssueRemoved",
+            "WebhookSubIssuesSubIssueAdded",
+            "WebhookSubIssuesSubIssueRemoved",
             "WebhookTeamAdd",
             "WebhookTeamAddedToRepository",
             "WebhookTeamAddedToRepositoryPropRepository",
@@ -12223,8 +12276,10 @@ else:
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropVerificationMaterial",
             "OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsPropBundlePropDsseEnvelope",
             "OrgsOrgCodeSecurityConfigurationsPostBody",
+            "OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptions",
             "OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody",
+            "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions",
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody",
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody",
             "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",
@@ -12534,6 +12589,7 @@ else:
             "ReposOwnerRepoRulesetsPostBody",
             "ReposOwnerRepoRulesetsRulesetIdPutBody",
             "ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody",
+            "ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody",
             "ReposOwnerRepoStatusesShaPostBody",
             "ReposOwnerRepoSubscriptionPutBody",
             "ReposOwnerRepoTagsProtectionPostBody",

@@ -12,15 +12,13 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0017 import RepositoryType
+
+class UserCodespacesCodespaceNamePatchBodyType(TypedDict):
+    """UserCodespacesCodespaceNamePatchBody"""
+
+    machine: NotRequired[str]
+    display_name: NotRequired[str]
+    recent_folders: NotRequired[List[str]]
 
 
-class UserInstallationsInstallationIdRepositoriesGetResponse200Type(TypedDict):
-    """UserInstallationsInstallationIdRepositoriesGetResponse200"""
-
-    total_count: int
-    repository_selection: NotRequired[str]
-    repositories: List[RepositoryType]
-
-
-__all__ = ("UserInstallationsInstallationIdRepositoriesGetResponse200Type",)
+__all__ = ("UserCodespacesCodespaceNamePatchBodyType",)

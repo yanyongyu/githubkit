@@ -12,26 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0415 import ExemptionRequestType
-from .group_0414 import ExemptionResponseType
-from .group_0408 import EnterpriseWebhooksType
-from .group_0409 import SimpleInstallationType
-from .group_0411 import RepositoryWebhooksType
-from .group_0412 import SimpleUserWebhooksType
-from .group_0410 import OrganizationSimpleWebhooksType
+from .group_0418 import WebhooksRuleType
+from .group_0413 import EnterpriseWebhooksType
+from .group_0414 import SimpleInstallationType
+from .group_0416 import RepositoryWebhooksType
+from .group_0417 import SimpleUserWebhooksType
+from .group_0415 import OrganizationSimpleWebhooksType
 
 
-class WebhookExemptionRequestResponseDismissedType(TypedDict):
-    """Exemption response dismissed event"""
+class WebhookBranchProtectionRuleDeletedType(TypedDict):
+    """branch protection rule deleted event"""
 
-    action: Literal["response_dismissed"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    exemption_request: ExemptionRequestType
-    exemption_response: ExemptionResponseType
+    repository: RepositoryWebhooksType
+    rule: WebhooksRuleType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookExemptionRequestResponseDismissedType",)
+__all__ = ("WebhookBranchProtectionRuleDeletedType",)

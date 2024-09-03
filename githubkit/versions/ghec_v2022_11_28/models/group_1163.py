@@ -16,18 +16,17 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserKeysPostBody(GitHubModel):
-    """UserKeysPostBody"""
+class UserCodespacesCodespaceNamePublishPostBody(GitHubModel):
+    """UserCodespacesCodespaceNamePublishPostBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
+    name: Missing[str] = Field(
+        default=UNSET, description="A name for the new repository."
     )
-    key: str = Field(
-        pattern="^ssh-(rsa|dss|ed25519) |^ecdsa-sha2-nistp(256|384|521) ",
-        description="The public SSH key to add to your GitHub account.",
+    private: Missing[bool] = Field(
+        default=UNSET, description="Whether the new repository should be private."
     )
 
 
-model_rebuild(UserKeysPostBody)
+model_rebuild(UserCodespacesCodespaceNamePublishPostBody)
 
-__all__ = ("UserKeysPostBody",)
+__all__ = ("UserCodespacesCodespaceNamePublishPostBody",)

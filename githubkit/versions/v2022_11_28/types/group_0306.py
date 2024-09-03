@@ -13,11 +13,31 @@ from datetime import datetime
 from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0016 import LicenseSimpleType
+
+class PullRequestPropLabelsItemsType(TypedDict):
+    """PullRequestPropLabelsItems"""
+
+    id: int
+    node_id: str
+    url: str
+    name: str
+    description: Union[str, None]
+    color: str
+    default: bool
 
 
-class PullRequestPropBasePropRepoType(TypedDict):
-    """PullRequestPropBasePropRepo"""
+class PullRequestPropHeadType(TypedDict):
+    """PullRequestPropHead"""
+
+    label: Union[str, None]
+    ref: str
+    repo: Union[PullRequestPropHeadPropRepoType, None]
+    sha: str
+    user: Union[PullRequestPropHeadPropUserType, None]
+
+
+class PullRequestPropHeadPropRepoType(TypedDict):
+    """PullRequestPropHeadPropRepo"""
 
     archive_url: str
     assignees_url: str
@@ -42,7 +62,6 @@ class PullRequestPropBasePropRepoType(TypedDict):
     hooks_url: str
     html_url: str
     id: int
-    is_template: NotRequired[bool]
     node_id: str
     issue_comment_url: str
     issue_events_url: str
@@ -54,7 +73,7 @@ class PullRequestPropBasePropRepoType(TypedDict):
     milestones_url: str
     name: str
     notifications_url: str
-    owner: PullRequestPropBasePropRepoPropOwnerType
+    owner: PullRequestPropHeadPropRepoPropOwnerType
     private: bool
     pulls_url: str
     releases_url: str
@@ -86,12 +105,12 @@ class PullRequestPropBasePropRepoType(TypedDict):
     mirror_url: Union[str, None]
     open_issues: int
     open_issues_count: int
-    permissions: NotRequired[PullRequestPropBasePropRepoPropPermissionsType]
+    permissions: NotRequired[PullRequestPropHeadPropRepoPropPermissionsType]
     temp_clone_token: NotRequired[Union[str, None]]
     allow_merge_commit: NotRequired[bool]
     allow_squash_merge: NotRequired[bool]
     allow_rebase_merge: NotRequired[bool]
-    license_: Union[None, LicenseSimpleType]
+    license_: Union[PullRequestPropHeadPropRepoPropLicenseType, None]
     pushed_at: datetime
     size: int
     ssh_url: str
@@ -103,11 +122,12 @@ class PullRequestPropBasePropRepoType(TypedDict):
     created_at: datetime
     updated_at: datetime
     allow_forking: NotRequired[bool]
+    is_template: NotRequired[bool]
     web_commit_signoff_required: NotRequired[bool]
 
 
-class PullRequestPropBasePropRepoPropOwnerType(TypedDict):
-    """PullRequestPropBasePropRepoPropOwner"""
+class PullRequestPropHeadPropRepoPropOwnerType(TypedDict):
+    """PullRequestPropHeadPropRepoPropOwner"""
 
     avatar_url: str
     events_url: str
@@ -129,8 +149,8 @@ class PullRequestPropBasePropRepoPropOwnerType(TypedDict):
     url: str
 
 
-class PullRequestPropBasePropRepoPropPermissionsType(TypedDict):
-    """PullRequestPropBasePropRepoPropPermissions"""
+class PullRequestPropHeadPropRepoPropPermissionsType(TypedDict):
+    """PullRequestPropHeadPropRepoPropPermissions"""
 
     admin: bool
     maintain: NotRequired[bool]
@@ -139,8 +159,45 @@ class PullRequestPropBasePropRepoPropPermissionsType(TypedDict):
     pull: bool
 
 
+class PullRequestPropHeadPropRepoPropLicenseType(TypedDict):
+    """PullRequestPropHeadPropRepoPropLicense"""
+
+    key: str
+    name: str
+    url: Union[str, None]
+    spdx_id: Union[str, None]
+    node_id: str
+
+
+class PullRequestPropHeadPropUserType(TypedDict):
+    """PullRequestPropHeadPropUser"""
+
+    avatar_url: str
+    events_url: str
+    followers_url: str
+    following_url: str
+    gists_url: str
+    gravatar_id: Union[str, None]
+    html_url: str
+    id: int
+    node_id: str
+    login: str
+    organizations_url: str
+    received_events_url: str
+    repos_url: str
+    site_admin: bool
+    starred_url: str
+    subscriptions_url: str
+    type: str
+    url: str
+
+
 __all__ = (
-    "PullRequestPropBasePropRepoType",
-    "PullRequestPropBasePropRepoPropOwnerType",
-    "PullRequestPropBasePropRepoPropPermissionsType",
+    "PullRequestPropLabelsItemsType",
+    "PullRequestPropHeadType",
+    "PullRequestPropHeadPropRepoType",
+    "PullRequestPropHeadPropRepoPropOwnerType",
+    "PullRequestPropHeadPropRepoPropPermissionsType",
+    "PullRequestPropHeadPropRepoPropLicenseType",
+    "PullRequestPropHeadPropUserType",
 )

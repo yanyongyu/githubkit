@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0417 import WebhooksRelease
-from .group_0373 import EnterpriseWebhooks
-from .group_0374 import SimpleInstallation
-from .group_0376 import RepositoryWebhooks
-from .group_0377 import SimpleUserWebhooks
-from .group_0375 import OrganizationSimpleWebhooks
+from .group_0376 import EnterpriseWebhooks
+from .group_0377 import SimpleInstallation
+from .group_0379 import RepositoryWebhooks
+from .group_0380 import SimpleUserWebhooks
+from .group_0378 import OrganizationSimpleWebhooks
+from .group_0677 import WebhookRegistryPackageUpdatedPropRegistryPackage
 
 
-class WebhookReleaseCreated(GitHubModel):
-    """release created event"""
+class WebhookRegistryPackageUpdated(GitHubModel):
+    """WebhookRegistryPackageUpdated"""
 
-    action: Literal["created"] = Field()
+    action: Literal["updated"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,11 +44,9 @@ class WebhookReleaseCreated(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    release: WebhooksRelease = Field(
-        title="Release",
-        description="The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.",
-    )
-    repository: RepositoryWebhooks = Field(
+    registry_package: WebhookRegistryPackageUpdatedPropRegistryPackage = Field()
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
@@ -58,6 +56,6 @@ class WebhookReleaseCreated(GitHubModel):
     )
 
 
-model_rebuild(WebhookReleaseCreated)
+model_rebuild(WebhookRegistryPackageUpdated)
 
-__all__ = ("WebhookReleaseCreated",)
+__all__ = ("WebhookRegistryPackageUpdated",)

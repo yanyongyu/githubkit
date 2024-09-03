@@ -13,18 +13,23 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0028 import CopilotSeatDetails
 
-class OrgsOrgCopilotBillingSelectedUsersDeleteBody(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
-    selected_usernames: List[str] = Field(
-        min_length=1,
-        description="The usernames of the organization members for which to revoke access to GitHub Copilot.",
+class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+
+    total_seats: Missing[int] = Field(
+        default=UNSET,
+        description="Total number of Copilot seats for the organization currently being billed.",
     )
+    seats: Missing[List[CopilotSeatDetails]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedUsersDeleteBody)
+model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)
 
-__all__ = ("OrgsOrgCopilotBillingSelectedUsersDeleteBody",)
+__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200",)

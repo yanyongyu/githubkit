@@ -47,6 +47,7 @@ if TYPE_CHECKING:
     from .milestone import MilestoneEvent
     from .deploy_key import DeployKeyEvent
     from .page_build import PageBuildEvent
+    from .sub_issues import SubIssuesEvent
     from .deployment import DeploymentEvent
     from .discussion import DiscussionEvent
     from .membership import MembershipEvent
@@ -168,6 +169,7 @@ EventNameType: TypeAlias = Literal[
     "sponsorship",
     "star",
     "status",
+    "sub_issues",
     "team_add",
     "team",
     "watch",
@@ -244,6 +246,7 @@ VALID_EVENT_NAMES: Set[EventNameType] = {
     "sponsorship",
     "star",
     "status",
+    "sub_issues",
     "team_add",
     "team",
     "watch",
@@ -585,6 +588,11 @@ class WebhookNamespace:
     @overload
     @staticmethod
     def parse(name: Literal["status"], payload: Union[str, bytes]) -> "StatusEvent": ...
+    @overload
+    @staticmethod
+    def parse(
+        name: Literal["sub_issues"], payload: Union[str, bytes]
+    ) -> "SubIssuesEvent": ...
     @overload
     @staticmethod
     def parse(
@@ -982,6 +990,11 @@ class WebhookNamespace:
     def parse_obj(
         name: Literal["status"], payload: Dict[str, Any]
     ) -> "StatusEvent": ...
+    @overload
+    @staticmethod
+    def parse_obj(
+        name: Literal["sub_issues"], payload: Dict[str, Any]
+    ) -> "SubIssuesEvent": ...
     @overload
     @staticmethod
     def parse_obj(

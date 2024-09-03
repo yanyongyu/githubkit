@@ -17,21 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0395 import WebhooksMilestone
-from .group_0373 import EnterpriseWebhooks
-from .group_0374 import SimpleInstallation
-from .group_0376 import RepositoryWebhooks
-from .group_0377 import SimpleUserWebhooks
-from .group_0375 import OrganizationSimpleWebhooks
+from .group_0398 import WebhooksMilestone
+from .group_0376 import EnterpriseWebhooks
+from .group_0377 import SimpleInstallation
+from .group_0379 import RepositoryWebhooks
+from .group_0380 import SimpleUserWebhooks
+from .group_0378 import OrganizationSimpleWebhooks
 
 
-class WebhookMilestoneEdited(GitHubModel):
-    """milestone edited event"""
+class WebhookMilestoneClosed(GitHubModel):
+    """milestone closed event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookMilestoneEditedPropChanges = Field(
-        description="The changes to the milestone if the action was `edited`."
-    )
+    action: Literal["closed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -61,56 +58,6 @@ class WebhookMilestoneEdited(GitHubModel):
     )
 
 
-class WebhookMilestoneEditedPropChanges(GitHubModel):
-    """WebhookMilestoneEditedPropChanges
+model_rebuild(WebhookMilestoneClosed)
 
-    The changes to the milestone if the action was `edited`.
-    """
-
-    description: Missing[WebhookMilestoneEditedPropChangesPropDescription] = Field(
-        default=UNSET
-    )
-    due_on: Missing[WebhookMilestoneEditedPropChangesPropDueOn] = Field(default=UNSET)
-    title: Missing[WebhookMilestoneEditedPropChangesPropTitle] = Field(default=UNSET)
-
-
-class WebhookMilestoneEditedPropChangesPropDescription(GitHubModel):
-    """WebhookMilestoneEditedPropChangesPropDescription"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the description if the action was `edited`.",
-    )
-
-
-class WebhookMilestoneEditedPropChangesPropDueOn(GitHubModel):
-    """WebhookMilestoneEditedPropChangesPropDueOn"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the due date if the action was `edited`.",
-    )
-
-
-class WebhookMilestoneEditedPropChangesPropTitle(GitHubModel):
-    """WebhookMilestoneEditedPropChangesPropTitle"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the title if the action was `edited`.",
-    )
-
-
-model_rebuild(WebhookMilestoneEdited)
-model_rebuild(WebhookMilestoneEditedPropChanges)
-model_rebuild(WebhookMilestoneEditedPropChangesPropDescription)
-model_rebuild(WebhookMilestoneEditedPropChangesPropDueOn)
-model_rebuild(WebhookMilestoneEditedPropChangesPropTitle)
-
-__all__ = (
-    "WebhookMilestoneEdited",
-    "WebhookMilestoneEditedPropChanges",
-    "WebhookMilestoneEditedPropChangesPropDescription",
-    "WebhookMilestoneEditedPropChangesPropDueOn",
-    "WebhookMilestoneEditedPropChangesPropTitle",
-)
+__all__ = ("WebhookMilestoneClosed",)

@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
 
 from pydantic import Field
@@ -19,27 +18,21 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksProject(GitHubModel):
-    """Project"""
+class WebhooksMembership(GitHubModel):
+    """Membership
 
-    body: Union[str, None] = Field(description="Body of the project")
-    columns_url: str = Field()
-    created_at: datetime = Field()
-    creator: Union[WebhooksProjectPropCreator, None] = Field(title="User")
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field(description="Name of the project")
-    node_id: str = Field()
-    number: int = Field()
-    owner_url: str = Field()
-    state: Literal["open", "closed"] = Field(
-        description="State of the project; either 'open' or 'closed'"
-    )
-    updated_at: datetime = Field()
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
+    """
+
+    organization_url: str = Field()
+    role: str = Field()
+    state: str = Field()
     url: str = Field()
+    user: Union[WebhooksMembershipPropUser, None] = Field(title="User")
 
 
-class WebhooksProjectPropCreator(GitHubModel):
+class WebhooksMembershipPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -65,10 +58,10 @@ class WebhooksProjectPropCreator(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksProject)
-model_rebuild(WebhooksProjectPropCreator)
+model_rebuild(WebhooksMembership)
+model_rebuild(WebhooksMembershipPropUser)
 
 __all__ = (
-    "WebhooksProject",
-    "WebhooksProjectPropCreator",
+    "WebhooksMembership",
+    "WebhooksMembershipPropUser",
 )

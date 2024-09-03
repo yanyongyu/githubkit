@@ -12,10 +12,8 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class GistsGistIdCommentsCommentIdPatchBodyType(TypedDict):
-    """GistsGistIdCommentsCommentIdPatchBody"""
-
-    body: str
+class EmojisGetResponse200Type(TypedDict):
+    """EmojisGetResponse200"""
 
 
-__all__ = ("GistsGistIdCommentsCommentIdPatchBodyType",)
+__all__ = ("EmojisGetResponse200Type",)

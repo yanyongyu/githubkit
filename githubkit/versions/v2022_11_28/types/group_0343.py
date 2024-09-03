@@ -9,30 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
 
 
-class TagType(TypedDict):
-    """Tag
+class ContributorActivityType(TypedDict):
+    """Contributor Activity
 
-    Tag
+    Contributor Activity
     """
 
-    name: str
-    commit: TagPropCommitType
-    zipball_url: str
-    tarball_url: str
-    node_id: str
+    author: Union[None, SimpleUserType]
+    total: int
+    weeks: List[ContributorActivityPropWeeksItemsType]
 
 
-class TagPropCommitType(TypedDict):
-    """TagPropCommit"""
+class ContributorActivityPropWeeksItemsType(TypedDict):
+    """ContributorActivityPropWeeksItems"""
 
-    sha: str
-    url: str
+    w: NotRequired[int]
+    a: NotRequired[int]
+    d: NotRequired[int]
+    c: NotRequired[int]
 
 
 __all__ = (
-    "TagType",
-    "TagPropCommitType",
+    "ContributorActivityType",
+    "ContributorActivityPropWeeksItemsType",
 )

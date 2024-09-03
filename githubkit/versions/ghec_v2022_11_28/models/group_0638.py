@@ -9,79 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0639 import WebhookPackageUpdatedPropPackagePropPackageVersion
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 
-class WebhookPackageUpdatedPropPackage(GitHubModel):
-    """WebhookPackageUpdatedPropPackage
+class WebhookRubygemsMetadata(GitHubModel):
+    """Ruby Gems metadata"""
 
-    Information about the package.
-    """
-
-    created_at: str = Field()
-    description: Union[str, None] = Field()
-    ecosystem: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field()
-    namespace: str = Field()
-    owner: Union[WebhookPackageUpdatedPropPackagePropOwner, None] = Field(title="User")
-    package_type: str = Field()
-    package_version: WebhookPackageUpdatedPropPackagePropPackageVersion = Field()
-    registry: Union[WebhookPackageUpdatedPropPackagePropRegistry, None] = Field()
-    updated_at: str = Field()
-
-
-class WebhookPackageUpdatedPropPackagePropOwner(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
     name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    description: Missing[str] = Field(default=UNSET)
+    readme: Missing[str] = Field(default=UNSET)
+    homepage: Missing[str] = Field(default=UNSET)
+    version_info: Missing[WebhookRubygemsMetadataPropVersionInfo] = Field(default=UNSET)
+    platform: Missing[str] = Field(default=UNSET)
+    metadata: Missing[WebhookRubygemsMetadataPropMetadata] = Field(default=UNSET)
+    repo: Missing[str] = Field(default=UNSET)
+    dependencies: Missing[List[WebhookRubygemsMetadataPropDependenciesItems]] = Field(
+        default=UNSET
+    )
+    commit_oid: Missing[str] = Field(default=UNSET)
 
 
-class WebhookPackageUpdatedPropPackagePropRegistry(GitHubModel):
-    """WebhookPackageUpdatedPropPackagePropRegistry"""
+class WebhookRubygemsMetadataPropVersionInfo(GitHubModel):
+    """WebhookRubygemsMetadataPropVersionInfo"""
 
-    about_url: str = Field()
-    name: str = Field()
-    type: str = Field()
-    url: str = Field()
-    vendor: str = Field()
+    version: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookPackageUpdatedPropPackage)
-model_rebuild(WebhookPackageUpdatedPropPackagePropOwner)
-model_rebuild(WebhookPackageUpdatedPropPackagePropRegistry)
+class WebhookRubygemsMetadataPropMetadata(ExtraGitHubModel):
+    """WebhookRubygemsMetadataPropMetadata"""
+
+
+class WebhookRubygemsMetadataPropDependenciesItems(ExtraGitHubModel):
+    """WebhookRubygemsMetadataPropDependenciesItems"""
+
+
+model_rebuild(WebhookRubygemsMetadata)
+model_rebuild(WebhookRubygemsMetadataPropVersionInfo)
+model_rebuild(WebhookRubygemsMetadataPropMetadata)
+model_rebuild(WebhookRubygemsMetadataPropDependenciesItems)
 
 __all__ = (
-    "WebhookPackageUpdatedPropPackage",
-    "WebhookPackageUpdatedPropPackagePropOwner",
-    "WebhookPackageUpdatedPropPackagePropRegistry",
+    "WebhookRubygemsMetadata",
+    "WebhookRubygemsMetadataPropVersionInfo",
+    "WebhookRubygemsMetadataPropMetadata",
+    "WebhookRubygemsMetadataPropDependenciesItems",
 )

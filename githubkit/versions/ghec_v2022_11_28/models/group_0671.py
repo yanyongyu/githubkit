@@ -17,14 +17,14 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0447 import ProjectsV2Item
-from .group_0409 import SimpleInstallation
-from .group_0412 import SimpleUserWebhooks
-from .group_0410 import OrganizationSimpleWebhooks
+from .group_0450 import ProjectsV2
+from .group_0414 import SimpleInstallation
+from .group_0417 import SimpleUserWebhooks
+from .group_0415 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ItemDeleted(GitHubModel):
-    """Projects v2 Item Deleted Event"""
+class WebhookProjectsV2ProjectDeleted(GitHubModel):
+    """Projects v2 Project Deleted Event"""
 
     action: Literal["deleted"] = Field()
     installation: Missing[SimpleInstallation] = Field(
@@ -36,8 +36,8 @@ class WebhookProjectsV2ItemDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    projects_v2_item: ProjectsV2Item = Field(
-        title="Projects v2 Item", description="An item belonging to a project"
+    projects_v2: ProjectsV2 = Field(
+        title="Projects v2 Project", description="A projects v2 project"
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -45,6 +45,6 @@ class WebhookProjectsV2ItemDeleted(GitHubModel):
     )
 
 
-model_rebuild(WebhookProjectsV2ItemDeleted)
+model_rebuild(WebhookProjectsV2ProjectDeleted)
 
-__all__ = ("WebhookProjectsV2ItemDeleted",)
+__all__ = ("WebhookProjectsV2ProjectDeleted",)

@@ -12,25 +12,76 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0408 import EnterpriseWebhooksType
-from .group_0409 import SimpleInstallationType
-from .group_0411 import RepositoryWebhooksType
-from .group_0412 import SimpleUserWebhooksType
-from .group_0449 import PullRequestWebhookType
-from .group_0410 import OrganizationSimpleWebhooksType
+from .group_0413 import EnterpriseWebhooksType
+from .group_0414 import SimpleInstallationType
+from .group_0416 import RepositoryWebhooksType
+from .group_0417 import SimpleUserWebhooksType
+from .group_0454 import PullRequestWebhookType
+from .group_0415 import OrganizationSimpleWebhooksType
 
 
-class WebhookPullRequestOpenedType(TypedDict):
-    """pull_request opened event"""
+class WebhookPullRequestEditedType(TypedDict):
+    """pull_request edited event"""
 
-    action: Literal["opened"]
+    action: Literal["edited"]
+    changes: WebhookPullRequestEditedPropChangesType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
     pull_request: PullRequestWebhookType
     repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookPullRequestOpenedType",)
+class WebhookPullRequestEditedPropChangesType(TypedDict):
+    """WebhookPullRequestEditedPropChanges
+
+    The changes to the comment if the action was `edited`.
+    """
+
+    base: NotRequired[WebhookPullRequestEditedPropChangesPropBaseType]
+    body: NotRequired[WebhookPullRequestEditedPropChangesPropBodyType]
+    title: NotRequired[WebhookPullRequestEditedPropChangesPropTitleType]
+
+
+class WebhookPullRequestEditedPropChangesPropBodyType(TypedDict):
+    """WebhookPullRequestEditedPropChangesPropBody"""
+
+    from_: str
+
+
+class WebhookPullRequestEditedPropChangesPropTitleType(TypedDict):
+    """WebhookPullRequestEditedPropChangesPropTitle"""
+
+    from_: str
+
+
+class WebhookPullRequestEditedPropChangesPropBaseType(TypedDict):
+    """WebhookPullRequestEditedPropChangesPropBase"""
+
+    ref: WebhookPullRequestEditedPropChangesPropBasePropRefType
+    sha: WebhookPullRequestEditedPropChangesPropBasePropShaType
+
+
+class WebhookPullRequestEditedPropChangesPropBasePropRefType(TypedDict):
+    """WebhookPullRequestEditedPropChangesPropBasePropRef"""
+
+    from_: str
+
+
+class WebhookPullRequestEditedPropChangesPropBasePropShaType(TypedDict):
+    """WebhookPullRequestEditedPropChangesPropBasePropSha"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookPullRequestEditedType",
+    "WebhookPullRequestEditedPropChangesType",
+    "WebhookPullRequestEditedPropChangesPropBodyType",
+    "WebhookPullRequestEditedPropChangesPropTitleType",
+    "WebhookPullRequestEditedPropChangesPropBaseType",
+    "WebhookPullRequestEditedPropChangesPropBasePropRefType",
+    "WebhookPullRequestEditedPropChangesPropBasePropShaType",
+)

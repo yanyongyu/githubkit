@@ -9,23 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0408 import EnterpriseWebhooksType
-from .group_0409 import SimpleInstallationType
-from .group_0411 import RepositoryWebhooksType
-from .group_0412 import SimpleUserWebhooksType
-from .group_0410 import OrganizationSimpleWebhooksType
+from .group_0452 import ProjectsV2ItemType
+from .group_0414 import SimpleInstallationType
+from .group_0417 import SimpleUserWebhooksType
+from .group_0451 import WebhooksProjectChangesType
+from .group_0415 import OrganizationSimpleWebhooksType
 
 
-class WebhookPublicType(TypedDict):
-    """public event"""
+class WebhookProjectsV2ItemRestoredType(TypedDict):
+    """Projects v2 Item Restored Event"""
 
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["restored"]
+    changes: WebhooksProjectChangesType
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookPublicType",)
+__all__ = ("WebhookProjectsV2ItemRestoredType",)

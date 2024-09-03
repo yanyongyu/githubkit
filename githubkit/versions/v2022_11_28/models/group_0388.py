@@ -18,52 +18,7 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksComment(GitHubModel):
-    """WebhooksComment"""
-
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="AuthorAssociation",
-        description="How the author is associated with the repository.",
-    )
-    body: str = Field()
-    child_comment_count: int = Field()
-    created_at: str = Field()
-    discussion_id: int = Field()
-    html_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    parent_id: Union[int, None] = Field()
-    reactions: WebhooksCommentPropReactions = Field(title="Reactions")
-    repository_url: str = Field()
-    updated_at: str = Field()
-    user: Union[WebhooksCommentPropUser, None] = Field(title="User")
-
-
-class WebhooksCommentPropReactions(GitHubModel):
-    """Reactions"""
-
-    plus_one: int = Field(alias="+1")
-    minus_one: int = Field(alias="-1")
-    confused: int = Field()
-    eyes: int = Field()
-    heart: int = Field()
-    hooray: int = Field()
-    laugh: int = Field()
-    rocket: int = Field()
-    total_count: int = Field()
-    url: str = Field()
-
-
-class WebhooksCommentPropUser(GitHubModel):
+class WebhooksUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -89,12 +44,6 @@ class WebhooksCommentPropUser(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksComment)
-model_rebuild(WebhooksCommentPropReactions)
-model_rebuild(WebhooksCommentPropUser)
+model_rebuild(WebhooksUser)
 
-__all__ = (
-    "WebhooksComment",
-    "WebhooksCommentPropReactions",
-    "WebhooksCommentPropUser",
-)
+__all__ = ("WebhooksUser",)

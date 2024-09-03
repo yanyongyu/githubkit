@@ -29,6 +29,7 @@ if TYPE_CHECKING:
     from ..models import (
         CodeSecurityConfiguration,
         CodeSecurityConfigurationRepositories,
+        CodeSecurityConfigurationForRepository,
         CodeSecurityDefaultConfigurationsItems,
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200,
@@ -39,6 +40,8 @@ if TYPE_CHECKING:
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
+        OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType,
     )
 
 
@@ -155,6 +158,12 @@ class CodeSecurityClient:
         description: str,
         advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependency_graph_autosubmit_action: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        dependency_graph_autosubmit_action_options: Missing[
+            OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType
+        ] = UNSET,
         dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -229,6 +238,12 @@ class CodeSecurityClient:
         description: str,
         advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependency_graph_autosubmit_action: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        dependency_graph_autosubmit_action_options: Missing[
+            OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType
+        ] = UNSET,
         dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -585,6 +600,12 @@ class CodeSecurityClient:
         description: Missing[str] = UNSET,
         advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependency_graph_autosubmit_action: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        dependency_graph_autosubmit_action_options: Missing[
+            OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType
+        ] = UNSET,
         dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -666,6 +687,12 @@ class CodeSecurityClient:
         description: Missing[str] = UNSET,
         advanced_security: Missing[Literal["enabled", "disabled"]] = UNSET,
         dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
+        dependency_graph_autosubmit_action: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        dependency_graph_autosubmit_action_options: Missing[
+            OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType
+        ] = UNSET,
         dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         dependabot_security_updates: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -1071,6 +1098,58 @@ class CodeSecurityClient:
             params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=List[CodeSecurityConfigurationRepositories],
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def get_configuration_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[CodeSecurityConfigurationForRepository]:
+        """See also: https://docs.github.com/rest/code-security/configurations#get-the-code-security-configuration-associated-with-a-repository"""
+
+        from ..models import BasicError, CodeSecurityConfigurationForRepository
+
+        url = f"/repos/{owner}/{repo}/code-security-configuration"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CodeSecurityConfigurationForRepository,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_get_configuration_for_repository(
+        self,
+        owner: str,
+        repo: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[CodeSecurityConfigurationForRepository]:
+        """See also: https://docs.github.com/rest/code-security/configurations#get-the-code-security-configuration-associated-with-a-repository"""
+
+        from ..models import BasicError, CodeSecurityConfigurationForRepository
+
+        url = f"/repos/{owner}/{repo}/code-security-configuration"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=CodeSecurityConfigurationForRepository,
             error_models={
                 "403": BasicError,
                 "404": BasicError,

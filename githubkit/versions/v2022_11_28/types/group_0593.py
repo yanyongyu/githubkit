@@ -9,72 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0594 import WebhookPackagePublishedPropPackagePropPackageVersionType
+from .group_0376 import EnterpriseWebhooksType
+from .group_0377 import SimpleInstallationType
+from .group_0379 import RepositoryWebhooksType
+from .group_0380 import SimpleUserWebhooksType
+from .group_0406 import WebhooksMembershipType
+from .group_0378 import OrganizationSimpleWebhooksType
 
 
-class WebhookPackagePublishedPropPackageType(TypedDict):
-    """WebhookPackagePublishedPropPackage
+class WebhookOrganizationRenamedType(TypedDict):
+    """organization renamed event"""
 
-    Information about the package.
-    """
-
-    created_at: Union[str, None]
-    description: Union[str, None]
-    ecosystem: str
-    html_url: str
-    id: int
-    name: str
-    namespace: str
-    owner: Union[WebhookPackagePublishedPropPackagePropOwnerType, None]
-    package_type: str
-    package_version: Union[
-        WebhookPackagePublishedPropPackagePropPackageVersionType, None
-    ]
-    registry: Union[WebhookPackagePublishedPropPackagePropRegistryType, None]
-    updated_at: Union[str, None]
+    action: Literal["renamed"]
+    changes: NotRequired[WebhookOrganizationRenamedPropChangesType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    membership: NotRequired[WebhooksMembershipType]
+    organization: OrganizationSimpleWebhooksType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserWebhooksType
 
 
-class WebhookPackagePublishedPropPackagePropOwnerType(TypedDict):
-    """User"""
+class WebhookOrganizationRenamedPropChangesType(TypedDict):
+    """WebhookOrganizationRenamedPropChanges"""
 
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
+    login: NotRequired[WebhookOrganizationRenamedPropChangesPropLoginType]
 
 
-class WebhookPackagePublishedPropPackagePropRegistryType(TypedDict):
-    """WebhookPackagePublishedPropPackagePropRegistry"""
+class WebhookOrganizationRenamedPropChangesPropLoginType(TypedDict):
+    """WebhookOrganizationRenamedPropChangesPropLogin"""
 
-    about_url: str
-    name: str
-    type: str
-    url: str
-    vendor: str
+    from_: NotRequired[str]
 
 
 __all__ = (
-    "WebhookPackagePublishedPropPackageType",
-    "WebhookPackagePublishedPropPackagePropOwnerType",
-    "WebhookPackagePublishedPropPackagePropRegistryType",
+    "WebhookOrganizationRenamedType",
+    "WebhookOrganizationRenamedPropChangesType",
+    "WebhookOrganizationRenamedPropChangesPropLoginType",
 )

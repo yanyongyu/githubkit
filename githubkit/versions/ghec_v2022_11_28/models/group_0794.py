@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -18,39 +17,61 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0005 import IntegrationPropPermissions
 
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof1(GitHubModel):
+    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1"""
 
-class AppManifestsCodeConversionsPostResponse201(GitHubModel):
-    """AppManifestsCodeConversionsPostResponse201"""
-
-    id: int = Field(description="Unique identifier of the GitHub app")
-    slug: Missing[str] = Field(
-        default=UNSET, description="The slug name of the GitHub app"
+    check_run_url: Missing[str] = Field(default=UNSET)
+    completed_at: Missing[str] = Field(default=UNSET)
+    conclusion: Literal[
+        "success",
+        "failure",
+        "skipped",
+        "cancelled",
+        "action_required",
+        "neutral",
+        "timed_out",
+    ] = Field()
+    created_at: Missing[str] = Field(
+        default=UNSET, description="The time that the job created."
     )
-    node_id: str = Field()
-    owner: Union[None, SimpleUser] = Field()
-    name: str = Field(description="The name of the GitHub app")
-    description: Union[str, None] = Field()
-    external_url: str = Field()
-    html_url: str = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    permissions: IntegrationPropPermissions = Field(
-        description="The set of permissions for the GitHub app"
+    head_sha: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    labels: Missing[List[Union[str, None]]] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    run_attempt: Missing[int] = Field(default=UNSET)
+    run_id: Missing[int] = Field(default=UNSET)
+    run_url: Missing[str] = Field(default=UNSET)
+    runner_group_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_group_name: Missing[Union[str, None]] = Field(default=UNSET)
+    runner_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_name: Missing[Union[str, None]] = Field(default=UNSET)
+    started_at: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    head_branch: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the current branch."
     )
-    events: List[str] = Field(description="The list of events for the GitHub app")
-    installations_count: Missing[int] = Field(
-        default=UNSET,
-        description="The number of installations associated with the GitHub app",
+    workflow_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the workflow."
     )
-    client_id: str = Field()
-    client_secret: str = Field()
-    webhook_secret: Union[Union[str, None], None] = Field()
-    pem: str = Field()
+    steps: Missing[
+        List[
+            Union[WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems, None]
+        ]
+    ] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(AppManifestsCodeConversionsPostResponse201)
+class WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems(GitHubModel):
+    """WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems"""
 
-__all__ = ("AppManifestsCodeConversionsPostResponse201",)
+
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobAllof1)
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems)
+
+__all__ = (
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1",
+    "WebhookWorkflowJobCompletedPropWorkflowJobAllof1PropStepsItems",
+)

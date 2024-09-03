@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,42 +16,19 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+class ReposOwnerRepoDependabotSecretsSecretNamePutBody(GitHubModel):
+    """ReposOwnerRepoDependabotSecretsSecretNamePutBody"""
 
-    total_count: int = Field(
-        description="The number of deployment branch policies for the environment."
-    )
-    branch_policies: List[DeploymentBranchPolicy] = Field()
-
-
-class DeploymentBranchPolicy(GitHubModel):
-    """Deployment branch policy
-
-    Details of a deployment branch or tag policy.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the branch or tag policy."
-    )
-    node_id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(
+    encrypted_value: Missing[str] = Field(
+        pattern="^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$",
         default=UNSET,
-        description="The name pattern that branches or tags must match in order to deploy to the environment.",
+        description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/enterprise-cloud@latest//rest/dependabot/secrets#get-a-repository-public-key) endpoint.",
     )
-    type: Missing[Literal["branch", "tag"]] = Field(
-        default=UNSET, description="Whether this rule targets a branch or tag."
+    key_id: Missing[str] = Field(
+        default=UNSET, description="ID of the key you used to encrypt the secret."
     )
 
 
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
-)
-model_rebuild(DeploymentBranchPolicy)
+model_rebuild(ReposOwnerRepoDependabotSecretsSecretNamePutBody)
 
-__all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200",
-    "DeploymentBranchPolicy",
-)
+__all__ = ("ReposOwnerRepoDependabotSecretsSecretNamePutBody",)

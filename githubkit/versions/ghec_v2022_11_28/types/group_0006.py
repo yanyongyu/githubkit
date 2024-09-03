@@ -29,6 +29,7 @@ class IntegrationType(TypedDict):
     id: int
     slug: NotRequired[str]
     node_id: str
+    client_id: NotRequired[str]
     owner: Union[None, SimpleUserType]
     name: str
     description: Union[str, None]
@@ -39,7 +40,6 @@ class IntegrationType(TypedDict):
     permissions: IntegrationPropPermissionsType
     events: List[str]
     installations_count: NotRequired[int]
-    client_id: NotRequired[str]
     client_secret: NotRequired[str]
     webhook_secret: NotRequired[Union[str, None]]
     pem: NotRequired[str]

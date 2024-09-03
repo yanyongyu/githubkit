@@ -41,6 +41,7 @@ if TYPE_CHECKING:
     from .ping import ping_action_types as ping_action_types
     from .push import push_action_types as push_action_types
     from .star import star_action_types as star_action_types
+    from .sub_issues import SubIssuesEvent as SubIssuesEvent
     from .team import team_action_types as team_action_types
     from .deployment import DeploymentEvent as DeploymentEvent
     from .discussion import DiscussionEvent as DiscussionEvent
@@ -89,6 +90,7 @@ if TYPE_CHECKING:
     from .page_build import page_build_action_types as page_build_action_types
     from .registry_package import RegistryPackageEvent as RegistryPackageEvent
     from .repository import repository_action_types as repository_action_types
+    from .sub_issues import sub_issues_action_types as sub_issues_action_types
     from .check_suite import check_suite_action_types as check_suite_action_types
     from .deployment_review import DeploymentReviewEvent as DeploymentReviewEvent
     from .deployment_status import DeploymentStatusEvent as DeploymentStatusEvent
@@ -402,6 +404,7 @@ else:
         ".sponsorship": ("SponsorshipEvent", "sponsorship_action_types"),
         ".star": ("StarEvent", "star_action_types"),
         ".status": ("StatusEvent", "status_action_types"),
+        ".sub_issues": ("SubIssuesEvent", "sub_issues_action_types"),
         ".team_add": ("TeamAddEvent", "team_add_action_types"),
         ".team": ("TeamEvent", "team_action_types"),
         ".watch": ("WatchEvent", "watch_action_types"),

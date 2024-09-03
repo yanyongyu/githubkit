@@ -89,10 +89,13 @@ class GitClient:
     ) -> Response[ShortBlob]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#create-a-blob"""
 
+        from typing import Union
+
         from ..models import (
             ShortBlob,
             BasicError,
             ValidationError,
+            RepositoryRuleViolationError,
             ReposOwnerRepoGitBlobsPostBody,
         )
 
@@ -117,7 +120,7 @@ class GitClient:
                 "404": BasicError,
                 "409": BasicError,
                 "403": BasicError,
-                "422": ValidationError,
+                "422": Union[ValidationError, RepositoryRuleViolationError],
             },
         )
 
@@ -154,10 +157,13 @@ class GitClient:
     ) -> Response[ShortBlob]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/git/blobs#create-a-blob"""
 
+        from typing import Union
+
         from ..models import (
             ShortBlob,
             BasicError,
             ValidationError,
+            RepositoryRuleViolationError,
             ReposOwnerRepoGitBlobsPostBody,
         )
 
@@ -182,7 +188,7 @@ class GitClient:
                 "404": BasicError,
                 "409": BasicError,
                 "403": BasicError,
-                "422": ValidationError,
+                "422": Union[ValidationError, RepositoryRuleViolationError],
             },
         )
 

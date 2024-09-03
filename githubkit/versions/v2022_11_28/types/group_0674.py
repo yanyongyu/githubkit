@@ -10,36 +10,36 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 from .group_0675 import (
-    WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType,
+    WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType,
 )
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackageType(TypedDict):
-    """WebhookRegistryPackageUpdatedPropRegistryPackage"""
+class WebhookRegistryPackagePublishedPropRegistryPackageType(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackage"""
 
-    created_at: str
-    description: None
+    created_at: Union[str, None]
+    description: Union[str, None]
     ecosystem: str
     html_url: str
     id: int
     name: str
     namespace: str
-    owner: WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType
+    owner: WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType
     package_type: str
-    package_version: (
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType
-    )
-    registry: Union[
-        WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType, None
+    package_version: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType, None
     ]
-    updated_at: str
+    registry: Union[
+        WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType, None
+    ]
+    updated_at: Union[str, None]
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType(TypedDict):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropOwner"""
+class WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropOwner"""
 
     avatar_url: str
     events_url: str
@@ -61,12 +61,18 @@ class WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType(TypedDict):
     url: str
 
 
-class WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType(TypedDict):
-    """WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistry"""
+class WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType(TypedDict):
+    """WebhookRegistryPackagePublishedPropRegistryPackagePropRegistry"""
+
+    about_url: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[str]
+    url: NotRequired[str]
+    vendor: NotRequired[str]
 
 
 __all__ = (
-    "WebhookRegistryPackageUpdatedPropRegistryPackageType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropOwnerType",
-    "WebhookRegistryPackageUpdatedPropRegistryPackagePropRegistryType",
+    "WebhookRegistryPackagePublishedPropRegistryPackageType",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropOwnerType",
+    "WebhookRegistryPackagePublishedPropRegistryPackagePropRegistryType",
 )

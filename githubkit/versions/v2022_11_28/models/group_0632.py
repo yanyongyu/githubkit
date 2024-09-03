@@ -17,18 +17,16 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0410 import ProjectsV2Item
-from .group_0374 import SimpleInstallation
-from .group_0377 import SimpleUserWebhooks
-from .group_0409 import WebhooksProjectChanges
-from .group_0375 import OrganizationSimpleWebhooks
+from .group_0413 import ProjectsV2Item
+from .group_0377 import SimpleInstallation
+from .group_0380 import SimpleUserWebhooks
+from .group_0378 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ItemRestored(GitHubModel):
-    """Projects v2 Item Restored Event"""
+class WebhookProjectsV2ItemDeleted(GitHubModel):
+    """Projects v2 Item Deleted Event"""
 
-    action: Literal["restored"] = Field()
-    changes: WebhooksProjectChanges = Field()
+    action: Literal["deleted"] = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -47,6 +45,6 @@ class WebhookProjectsV2ItemRestored(GitHubModel):
     )
 
 
-model_rebuild(WebhookProjectsV2ItemRestored)
+model_rebuild(WebhookProjectsV2ItemDeleted)
 
-__all__ = ("WebhookProjectsV2ItemRestored",)
+__all__ = ("WebhookProjectsV2ItemDeleted",)

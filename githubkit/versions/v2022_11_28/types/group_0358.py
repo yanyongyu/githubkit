@@ -10,83 +10,102 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0351 import SearchResultTextMatchesItemsType
+from .group_0037 import MilestoneType
+from .group_0001 import SimpleUserType
+from .group_0017 import RepositoryType
+from .group_0006 import IntegrationType
+from .group_0038 import ReactionRollupType
+from .group_0354 import SearchResultTextMatchesItemsType
 
 
-class TopicSearchResultItemType(TypedDict):
-    """Topic Search Result Item
+class IssueSearchResultItemType(TypedDict):
+    """Issue Search Result Item
 
-    Topic Search Result Item
+    Issue Search Result Item
     """
 
-    name: str
-    display_name: Union[str, None]
-    short_description: Union[str, None]
-    description: Union[str, None]
-    created_by: Union[str, None]
-    released: Union[str, None]
+    url: str
+    repository_url: str
+    labels_url: str
+    comments_url: str
+    events_url: str
+    html_url: str
+    id: int
+    node_id: str
+    number: int
+    title: str
+    locked: bool
+    active_lock_reason: NotRequired[Union[str, None]]
+    assignees: NotRequired[Union[List[SimpleUserType], None]]
+    user: Union[None, SimpleUserType]
+    labels: List[IssueSearchResultItemPropLabelsItemsType]
+    state: str
+    state_reason: NotRequired[Union[str, None]]
+    assignee: Union[None, SimpleUserType]
+    milestone: Union[None, MilestoneType]
+    comments: int
     created_at: datetime
     updated_at: datetime
-    featured: bool
-    curated: bool
-    score: float
-    repository_count: NotRequired[Union[int, None]]
-    logo_url: NotRequired[Union[str, None]]
+    closed_at: Union[datetime, None]
     text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
-    related: NotRequired[Union[List[TopicSearchResultItemPropRelatedItemsType], None]]
-    aliases: NotRequired[Union[List[TopicSearchResultItemPropAliasesItemsType], None]]
-
-
-class TopicSearchResultItemPropRelatedItemsType(TypedDict):
-    """TopicSearchResultItemPropRelatedItems"""
-
-    topic_relation: NotRequired[
-        TopicSearchResultItemPropRelatedItemsPropTopicRelationType
+    pull_request: NotRequired[IssueSearchResultItemPropPullRequestType]
+    body: NotRequired[str]
+    score: float
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
     ]
+    draft: NotRequired[bool]
+    repository: NotRequired[RepositoryType]
+    body_html: NotRequired[str]
+    body_text: NotRequired[str]
+    timeline_url: NotRequired[str]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class TopicSearchResultItemPropRelatedItemsPropTopicRelationType(TypedDict):
-    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
+class IssueSearchResultItemPropLabelsItemsType(TypedDict):
+    """IssueSearchResultItemPropLabelsItems"""
 
     id: NotRequired[int]
+    node_id: NotRequired[str]
+    url: NotRequired[str]
     name: NotRequired[str]
-    topic_id: NotRequired[int]
-    relation_type: NotRequired[str]
+    color: NotRequired[str]
+    default: NotRequired[bool]
+    description: NotRequired[Union[str, None]]
 
 
-class TopicSearchResultItemPropAliasesItemsType(TypedDict):
-    """TopicSearchResultItemPropAliasesItems"""
+class IssueSearchResultItemPropPullRequestType(TypedDict):
+    """IssueSearchResultItemPropPullRequest"""
 
-    topic_relation: NotRequired[
-        TopicSearchResultItemPropAliasesItemsPropTopicRelationType
-    ]
-
-
-class TopicSearchResultItemPropAliasesItemsPropTopicRelationType(TypedDict):
-    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    topic_id: NotRequired[int]
-    relation_type: NotRequired[str]
+    merged_at: NotRequired[Union[datetime, None]]
+    diff_url: Union[str, None]
+    html_url: Union[str, None]
+    patch_url: Union[str, None]
+    url: Union[str, None]
 
 
-class SearchTopicsGetResponse200Type(TypedDict):
-    """SearchTopicsGetResponse200"""
+class SearchIssuesGetResponse200Type(TypedDict):
+    """SearchIssuesGetResponse200"""
 
     total_count: int
     incomplete_results: bool
-    items: List[TopicSearchResultItemType]
+    items: List[IssueSearchResultItemType]
 
 
 __all__ = (
-    "TopicSearchResultItemType",
-    "TopicSearchResultItemPropRelatedItemsType",
-    "TopicSearchResultItemPropRelatedItemsPropTopicRelationType",
-    "TopicSearchResultItemPropAliasesItemsType",
-    "TopicSearchResultItemPropAliasesItemsPropTopicRelationType",
-    "SearchTopicsGetResponse200Type",
+    "IssueSearchResultItemType",
+    "IssueSearchResultItemPropLabelsItemsType",
+    "IssueSearchResultItemPropPullRequestType",
+    "SearchIssuesGetResponse200Type",
 )

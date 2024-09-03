@@ -40,6 +40,7 @@ class ApiOverview(GitHubModel):
     actions: Missing[List[str]] = Field(default=UNSET)
     actions_macos: Missing[List[str]] = Field(default=UNSET)
     dependabot: Missing[List[str]] = Field(default=UNSET)
+    copilot: Missing[List[str]] = Field(default=UNSET)
     domains: Missing[ApiOverviewPropDomains] = Field(default=UNSET)
 
 
@@ -60,14 +61,26 @@ class ApiOverviewPropDomains(GitHubModel):
     copilot: Missing[List[str]] = Field(default=UNSET)
     packages: Missing[List[str]] = Field(default=UNSET)
     actions: Missing[List[str]] = Field(default=UNSET)
+    artifact_attestations: Missing[ApiOverviewPropDomainsPropArtifactAttestations] = (
+        Field(default=UNSET)
+    )
+
+
+class ApiOverviewPropDomainsPropArtifactAttestations(GitHubModel):
+    """ApiOverviewPropDomainsPropArtifactAttestations"""
+
+    trust_domain: Missing[str] = Field(default=UNSET)
+    services: Missing[List[str]] = Field(default=UNSET)
 
 
 model_rebuild(ApiOverview)
 model_rebuild(ApiOverviewPropSshKeyFingerprints)
 model_rebuild(ApiOverviewPropDomains)
+model_rebuild(ApiOverviewPropDomainsPropArtifactAttestations)
 
 __all__ = (
     "ApiOverview",
     "ApiOverviewPropSshKeyFingerprints",
     "ApiOverviewPropDomains",
+    "ApiOverviewPropDomainsPropArtifactAttestations",
 )

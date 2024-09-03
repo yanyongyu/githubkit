@@ -9,43 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0188 import GitUserType
-from .group_0189 import VerificationType
+
+class SearchResultTextMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItems"""
+
+    object_url: NotRequired[str]
+    object_type: NotRequired[Union[str, None]]
+    property_: NotRequired[str]
+    fragment: NotRequired[str]
+    matches: NotRequired[List[SearchResultTextMatchesItemsPropMatchesItemsType]]
 
 
-class CommitSearchResultItemPropCommitType(TypedDict):
-    """CommitSearchResultItemPropCommit"""
+class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
 
-    author: CommitSearchResultItemPropCommitPropAuthorType
-    committer: Union[None, GitUserType]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeType
-    url: str
-    verification: NotRequired[VerificationType]
-
-
-class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
-
-    name: str
-    email: str
-    date: datetime
-
-
-class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
-
-    sha: str
-    url: str
+    text: NotRequired[str]
+    indices: NotRequired[List[int]]
 
 
 __all__ = (
-    "CommitSearchResultItemPropCommitType",
-    "CommitSearchResultItemPropCommitPropAuthorType",
-    "CommitSearchResultItemPropCommitPropTreeType",
+    "SearchResultTextMatchesItemsType",
+    "SearchResultTextMatchesItemsPropMatchesItemsType",
 )

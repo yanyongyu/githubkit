@@ -9,25 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0408 import EnterpriseWebhooksType
-from .group_0409 import SimpleInstallationType
-from .group_0411 import RepositoryWebhooksType
-from .group_0412 import SimpleUserWebhooksType
-from .group_0410 import OrganizationSimpleWebhooksType
+from .group_0127 import RepositoryRulesetConditionsType
+from .group_0746 import (
+    WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType,
+)
 
 
-class WebhookRepositoryUnarchivedType(TypedDict):
-    """repository unarchived event"""
+class WebhookRepositoryRulesetEditedPropChangesPropConditionsType(TypedDict):
+    """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
 
-    action: Literal["unarchived"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    added: NotRequired[List[RepositoryRulesetConditionsType]]
+    deleted: NotRequired[List[RepositoryRulesetConditionsType]]
+    updated: NotRequired[
+        List[
+            WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType
+        ]
+    ]
 
 
-__all__ = ("WebhookRepositoryUnarchivedType",)
+__all__ = ("WebhookRepositoryRulesetEditedPropChangesPropConditionsType",)

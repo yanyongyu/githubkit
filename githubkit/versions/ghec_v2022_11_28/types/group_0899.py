@@ -9,11 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0085 import OrganizationCustomRepositoryRoleType
 
 
-class OrgsOrgInteractionLimitsGetResponse200Anyof1Type(TypedDict):
-    """OrgsOrgInteractionLimitsGetResponse200Anyof1"""
+class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[List[OrganizationCustomRepositoryRoleType]]
 
 
-__all__ = ("OrgsOrgInteractionLimitsGetResponse200Anyof1Type",)
+__all__ = ("OrgsOrgCustomRepositoryRolesGetResponse200Type",)

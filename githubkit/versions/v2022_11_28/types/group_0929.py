@@ -9,39 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0928 import (
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
-)
+from typing import List
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0
 
-    name: NotRequired[str]
-    details_url: NotRequired[str]
-    external_id: NotRequired[str]
-    started_at: NotRequired[datetime]
-    status: NotRequired[Literal["completed"]]
-    conclusion: Literal[
-        "action_required",
-        "cancelled",
-        "failure",
-        "neutral",
-        "success",
-        "skipped",
-        "stale",
-        "timed_out",
-    ]
-    completed_at: NotRequired[datetime]
-    output: NotRequired[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType]
-    actions: NotRequired[
-        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
-    ]
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: List[str]
 
 
-__all__ = ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type",)

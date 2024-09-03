@@ -9,17 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0166 import ActionsSecretType
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
+class ReposOwnerRepoDeploymentsPostResponse202Type(TypedDict):
+    """ReposOwnerRepoDeploymentsPostResponse202"""
 
-    total_count: int
-    secrets: List[ActionsSecretType]
+    message: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type",)
+__all__ = ("ReposOwnerRepoDeploymentsPostResponse202Type",)

@@ -12,11 +12,18 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-
-class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
-
-    labels: List[str]
+from .group_0029 import OrganizationSimpleType
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType",)
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type(
+    TypedDict
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200"""
+
+    total_count: float
+    organizations: List[OrganizationSimpleType]
+
+
+__all__ = (
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsGetResponse200Type",
+)

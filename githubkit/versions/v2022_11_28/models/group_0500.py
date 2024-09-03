@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0015 import Installation
-from .group_0373 import EnterpriseWebhooks
-from .group_0376 import RepositoryWebhooks
-from .group_0377 import SimpleUserWebhooks
-from .group_0390 import WebhooksRepositoriesItems
-from .group_0375 import OrganizationSimpleWebhooks
+from .group_0376 import EnterpriseWebhooks
+from .group_0379 import RepositoryWebhooks
+from .group_0380 import SimpleUserWebhooks
+from .group_0393 import WebhooksRepositoriesItems
+from .group_0378 import OrganizationSimpleWebhooks
 
 
-class WebhookInstallationSuspend(GitHubModel):
-    """installation suspend event"""
+class WebhookInstallationNewPermissionsAccepted(GitHubModel):
+    """installation new_permissions_accepted event"""
 
-    action: Literal["suspend"] = Field()
+    action: Literal["new_permissions_accepted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -56,6 +56,6 @@ class WebhookInstallationSuspend(GitHubModel):
     )
 
 
-model_rebuild(WebhookInstallationSuspend)
+model_rebuild(WebhookInstallationNewPermissionsAccepted)
 
-__all__ = ("WebhookInstallationSuspend",)
+__all__ = ("WebhookInstallationNewPermissionsAccepted",)

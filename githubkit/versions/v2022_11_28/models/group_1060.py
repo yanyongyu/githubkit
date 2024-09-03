@@ -14,12 +14,14 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody(GitHubModel):
-    """TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody"""
+class ReposOwnerRepoTagsProtectionPostBody(GitHubModel):
+    """ReposOwnerRepoTagsProtectionPostBody"""
 
-    body: str = Field(description="The discussion comment's body text.")
+    pattern: str = Field(
+        description="An optional glob pattern to match against when enforcing tag protection."
+    )
 
 
-model_rebuild(TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody)
+model_rebuild(ReposOwnerRepoTagsProtectionPostBody)
 
-__all__ = ("TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody",)
+__all__ = ("ReposOwnerRepoTagsProtectionPostBody",)

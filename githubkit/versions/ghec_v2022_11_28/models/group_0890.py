@@ -17,18 +17,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0085 import OrganizationCustomRepositoryRole
+from .group_0049 import CopilotSeatDetails
 
 
-class OrgsOrgCustomRepositoryRolesGetResponse200(GitHubModel):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-    total_count: Missing[int] = Field(
-        default=UNSET, description="The number of custom roles in this organization"
+    total_seats: Missing[int] = Field(
+        default=UNSET,
+        description="Total number of Copilot seats for the organization currently being billed.",
     )
-    custom_roles: Missing[List[OrganizationCustomRepositoryRole]] = Field(default=UNSET)
+    seats: Missing[List[CopilotSeatDetails]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgCustomRepositoryRolesGetResponse200)
+model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)
 
-__all__ = ("OrgsOrgCustomRepositoryRolesGetResponse200",)
+__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200",)

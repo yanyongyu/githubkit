@@ -17,19 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0141 import RepositoryRuleset
-from .group_0373 import EnterpriseWebhooks
-from .group_0374 import SimpleInstallation
-from .group_0376 import RepositoryWebhooks
-from .group_0377 import SimpleUserWebhooks
-from .group_0375 import OrganizationSimpleWebhooks
-from .group_0697 import WebhookRepositoryRulesetEditedPropChanges
+from .group_0376 import EnterpriseWebhooks
+from .group_0377 import SimpleInstallation
+from .group_0379 import RepositoryWebhooks
+from .group_0380 import SimpleUserWebhooks
+from .group_0378 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryRulesetEdited(GitHubModel):
-    """repository ruleset edited event"""
+class WebhookRepositoryRenamed(GitHubModel):
+    """repository renamed event"""
 
-    action: Literal["edited"] = Field()
+    action: Literal["renamed"] = Field()
+    changes: WebhookRepositoryRenamedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,22 +44,42 @@ class WebhookRepositoryRulesetEdited(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    repository_ruleset: RepositoryRuleset = Field(
-        title="Repository ruleset",
-        description="A set of rules to apply when specified conditions are met.",
-    )
-    changes: Missing[WebhookRepositoryRulesetEditedPropChanges] = Field(default=UNSET)
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-model_rebuild(WebhookRepositoryRulesetEdited)
+class WebhookRepositoryRenamedPropChanges(GitHubModel):
+    """WebhookRepositoryRenamedPropChanges"""
 
-__all__ = ("WebhookRepositoryRulesetEdited",)
+    repository: WebhookRepositoryRenamedPropChangesPropRepository = Field()
+
+
+class WebhookRepositoryRenamedPropChangesPropRepository(GitHubModel):
+    """WebhookRepositoryRenamedPropChangesPropRepository"""
+
+    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropName = Field()
+
+
+class WebhookRepositoryRenamedPropChangesPropRepositoryPropName(GitHubModel):
+    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookRepositoryRenamed)
+model_rebuild(WebhookRepositoryRenamedPropChanges)
+model_rebuild(WebhookRepositoryRenamedPropChangesPropRepository)
+model_rebuild(WebhookRepositoryRenamedPropChangesPropRepositoryPropName)
+
+__all__ = (
+    "WebhookRepositoryRenamed",
+    "WebhookRepositoryRenamedPropChanges",
+    "WebhookRepositoryRenamedPropChangesPropRepository",
+    "WebhookRepositoryRenamedPropChangesPropRepositoryPropName",
+)

@@ -9,24 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0097 import CustomPropertyValue
 
-class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody"""
 
-    title: Missing[str] = Field(
-        default=UNSET, description="The discussion post's title."
+class OrgsOrgPropertiesValuesPatchBody(GitHubModel):
+    """OrgsOrgPropertiesValuesPatchBody"""
+
+    repository_names: List[str] = Field(
+        max_length=30,
+        min_length=1,
+        description="The names of repositories that the custom property values will be applied to.",
     )
-    body: Missing[str] = Field(
-        default=UNSET, description="The discussion post's body text."
+    properties: List[CustomPropertyValue] = Field(
+        description="List of custom property names and associated values to apply to the repositories."
     )
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody)
+model_rebuild(OrgsOrgPropertiesValuesPatchBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody",)
+__all__ = ("OrgsOrgPropertiesValuesPatchBody",)

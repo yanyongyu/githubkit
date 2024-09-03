@@ -9,86 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0065 import ReactionRollup
-from .group_0333 import ReviewCommentPropLinks
+from .group_0248 import Link
 
 
-class ReviewComment(GitHubModel):
-    """Legacy Review Comment
+class PullRequestPropLinks(GitHubModel):
+    """PullRequestPropLinks"""
 
-    Legacy Review Comment
-    """
-
-    url: str = Field()
-    pull_request_review_id: Union[int, None] = Field()
-    id: int = Field()
-    node_id: str = Field()
-    diff_hunk: str = Field()
-    path: str = Field()
-    position: Union[int, None] = Field()
-    original_position: int = Field()
-    commit_id: str = Field()
-    original_commit_id: str = Field()
-    in_reply_to_id: Missing[int] = Field(default=UNSET)
-    user: Union[None, SimpleUser] = Field()
-    body: str = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    html_url: str = Field()
-    pull_request_url: str = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    links: ReviewCommentPropLinks = Field(alias="_links")
-    body_text: Missing[str] = Field(default=UNSET)
-    body_html: Missing[str] = Field(default=UNSET)
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
-    side: Missing[Literal["LEFT", "RIGHT"]] = Field(
-        default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
-    )
-    start_side: Missing[Union[None, Literal["LEFT", "RIGHT"]]] = Field(
-        default=UNSET,
-        description="The side of the first line of the range for a multi-line comment.",
-    )
-    line: Missing[int] = Field(
-        default=UNSET,
-        description="The line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    original_line: Missing[int] = Field(
-        default=UNSET,
-        description="The original line of the blob to which the comment applies. The last line of the range for a multi-line comment",
-    )
-    start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The first line of the range for a multi-line comment.",
-    )
-    original_start_line: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The original first line of the range for a multi-line comment.",
-    )
+    comments: Link = Field(title="Link", description="Hypermedia Link")
+    commits: Link = Field(title="Link", description="Hypermedia Link")
+    statuses: Link = Field(title="Link", description="Hypermedia Link")
+    html: Link = Field(title="Link", description="Hypermedia Link")
+    issue: Link = Field(title="Link", description="Hypermedia Link")
+    review_comments: Link = Field(title="Link", description="Hypermedia Link")
+    review_comment: Link = Field(title="Link", description="Hypermedia Link")
+    self_: Link = Field(alias="self", title="Link", description="Hypermedia Link")
 
 
-model_rebuild(ReviewComment)
+model_rebuild(PullRequestPropLinks)
 
-__all__ = ("ReviewComment",)
+__all__ = ("PullRequestPropLinks",)

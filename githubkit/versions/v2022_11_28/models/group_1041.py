@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,13 +18,17 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202"""
+class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1(GitHubModel):
+    """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1"""
 
-    message: Missing[str] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    reviewers: Missing[List[str]] = Field(
+        default=UNSET, description="An array of user `login`s that will be requested."
+    )
+    team_reviewers: List[str] = Field(
+        description="An array of team `slug`s that will be requested."
+    )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202)
+model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202",)
+__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1",)

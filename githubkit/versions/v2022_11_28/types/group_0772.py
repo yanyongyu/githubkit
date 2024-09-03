@@ -9,16 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class MarkdownPostBodyType(TypedDict):
-    """MarkdownPostBody"""
+class GistsPostBodyType(TypedDict):
+    """GistsPostBody"""
 
-    text: str
-    mode: NotRequired[Literal["markdown", "gfm"]]
-    context: NotRequired[str]
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesType
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
 
 
-__all__ = ("MarkdownPostBodyType",)
+class GistsPostBodyPropFilesType(TypedDict):
+    """GistsPostBodyPropFiles
+
+    Names and content for the files that make up the gist
+
+    Examples:
+        {'hello.rb': {'content': 'puts "Hello, World!"'}}
+    """
+
+
+__all__ = (
+    "GistsPostBodyType",
+    "GistsPostBodyPropFilesType",
+)

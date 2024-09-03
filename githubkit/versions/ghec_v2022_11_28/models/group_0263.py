@@ -9,43 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class DependencyGraphDiffItems(GitHubModel):
-    """DependencyGraphDiffItems"""
+class RepositoryRuleViolationError(GitHubModel):
+    """RepositoryRuleViolationError
 
-    change_type: Literal["added", "removed"] = Field()
-    manifest: str = Field()
-    ecosystem: str = Field()
-    name: str = Field()
-    version: str = Field()
-    package_url: Union[str, None] = Field()
-    license_: Union[str, None] = Field(alias="license")
-    source_repository_url: Union[str, None] = Field()
-    vulnerabilities: List[DependencyGraphDiffItemsPropVulnerabilitiesItems] = Field()
-    scope: Literal["unknown", "runtime", "development"] = Field(
-        description="Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment."
+    Repository rule violation was detected
+    """
+
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    metadata: Missing[RepositoryRuleViolationErrorPropMetadata] = Field(default=UNSET)
+
+
+class RepositoryRuleViolationErrorPropMetadata(GitHubModel):
+    """RepositoryRuleViolationErrorPropMetadata"""
+
+    secret_scanning: Missing[
+        RepositoryRuleViolationErrorPropMetadataPropSecretScanning
+    ] = Field(default=UNSET)
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanning(GitHubModel):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
+
+    bypass_placeholders: Missing[
+        List[
+            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
+        ]
+    ] = Field(default=UNSET)
+
+
+class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems(
+    GitHubModel
+):
+    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
+    Items
+    """
+
+    placeholder_id: Missing[str] = Field(
+        default=UNSET,
+        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes.",
     )
+    token_type: Missing[str] = Field(default=UNSET)
 
 
-class DependencyGraphDiffItemsPropVulnerabilitiesItems(GitHubModel):
-    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
-
-    severity: str = Field()
-    advisory_ghsa_id: str = Field()
-    advisory_summary: str = Field()
-    advisory_url: str = Field()
-
-
-model_rebuild(DependencyGraphDiffItems)
-model_rebuild(DependencyGraphDiffItemsPropVulnerabilitiesItems)
+model_rebuild(RepositoryRuleViolationError)
+model_rebuild(RepositoryRuleViolationErrorPropMetadata)
+model_rebuild(RepositoryRuleViolationErrorPropMetadataPropSecretScanning)
+model_rebuild(
+    RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
+)
 
 __all__ = (
-    "DependencyGraphDiffItems",
-    "DependencyGraphDiffItemsPropVulnerabilitiesItems",
+    "RepositoryRuleViolationError",
+    "RepositoryRuleViolationErrorPropMetadata",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanning",
+    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems",
 )

@@ -17,19 +17,27 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0028 import CopilotSeatDetails
+from .group_0014 import AppPermissions
 
 
-class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
+class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-    total_seats: Missing[int] = Field(
+    repositories: Missing[List[str]] = Field(
         default=UNSET,
-        description="The total number of Copilot seats the enterprise is being billed for. Users with access through multiple organizations or enterprise teams are only counted once.",
+        description="List of repository names that the token should have access to",
     )
-    seats: Missing[List[CopilotSeatDetails]] = Field(default=UNSET)
+    repository_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="List of repository IDs that the token should have access to",
+    )
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseCopilotBillingSeatsGetResponse200)
+model_rebuild(AppInstallationsInstallationIdAccessTokensPostBody)
 
-__all__ = ("EnterprisesEnterpriseCopilotBillingSeatsGetResponse200",)
+__all__ = ("AppInstallationsInstallationIdAccessTokensPostBody",)

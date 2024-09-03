@@ -9,19 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class MergedUpstreamType(TypedDict):
-    """Merged upstream
+class LanguageType(TypedDict):
+    """Language
 
-    Results of a successful merge upstream request
+    Language
     """
 
-    message: NotRequired[str]
-    merge_type: NotRequired[Literal["merge", "fast-forward", "none"]]
-    base_branch: NotRequired[str]
 
-
-__all__ = ("MergedUpstreamType",)
+__all__ = ("LanguageType",)

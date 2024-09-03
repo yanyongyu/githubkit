@@ -17,14 +17,14 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0115 import RepositoryRuleUpdatePropParameters
 
+class RepositoryRuleRulesetInfo(GitHubModel):
+    """repository ruleset data for rule
 
-class RepositoryRuleDetailedOneof1(GitHubModel):
-    """RepositoryRuleDetailedOneof1"""
+    User-defined metadata to store domain-specific information limited to 8 keys
+    with scalar values.
+    """
 
-    type: Literal["update"] = Field()
-    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
     ruleset_source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET,
         description="The type of source for the ruleset that includes this rule.",
@@ -38,6 +38,6 @@ class RepositoryRuleDetailedOneof1(GitHubModel):
     )
 
 
-model_rebuild(RepositoryRuleDetailedOneof1)
+model_rebuild(RepositoryRuleRulesetInfo)
 
-__all__ = ("RepositoryRuleDetailedOneof1",)
+__all__ = ("RepositoryRuleRulesetInfo",)

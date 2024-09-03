@@ -11,26 +11,34 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0217 import (
-    ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType,
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType,
-)
+from .group_0214 import CommitType
+from .group_0209 import BranchProtectionType
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsType(TypedDict):
-    """ProtectedBranchPropRequiredPullRequestReviews"""
+class BranchWithProtectionType(TypedDict):
+    """Branch With Protection
 
-    url: str
-    dismiss_stale_reviews: NotRequired[bool]
-    require_code_owner_reviews: NotRequired[bool]
+    Branch With Protection
+    """
+
+    name: str
+    commit: CommitType
+    links: BranchWithProtectionPropLinksType
+    protected: bool
+    protection: BranchProtectionType
+    protection_url: str
+    pattern: NotRequired[str]
     required_approving_review_count: NotRequired[int]
-    require_last_push_approval: NotRequired[bool]
-    dismissal_restrictions: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType
-    ]
-    bypass_pull_request_allowances: NotRequired[
-        ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType
-    ]
 
 
-__all__ = ("ProtectedBranchPropRequiredPullRequestReviewsType",)
+class BranchWithProtectionPropLinksType(TypedDict):
+    """BranchWithProtectionPropLinks"""
+
+    html: str
+    self_: str
+
+
+__all__ = (
+    "BranchWithProtectionType",
+    "BranchWithProtectionPropLinksType",
+)

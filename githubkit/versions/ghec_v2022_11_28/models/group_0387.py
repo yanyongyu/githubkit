@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import List
 
 from pydantic import Field
 
@@ -18,47 +17,23 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0082 import MinimalRepository
-from .group_0386 import SearchResultTextMatchesItems
+from .group_0378 import Meta
+from .group_0388 import ScimEnterpriseUserResponseAllof1PropGroupsItems
 
 
-class CodeSearchResultItem(GitHubModel):
-    """Code Search Result Item
+class ScimEnterpriseUserResponseAllof1(GitHubModel):
+    """ScimEnterpriseUserResponseAllof1"""
 
-    Code Search Result Item
-    """
-
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    url: str = Field()
-    git_url: str = Field()
-    html_url: str = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    id: str = Field(description="The internally generated id for the user object.")
+    groups: Missing[List[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
+        default=UNSET,
+        description="Provisioned SCIM groups that the user is a member of.",
     )
-    score: float = Field()
-    file_size: Missing[int] = Field(default=UNSET)
-    language: Missing[Union[str, None]] = Field(default=UNSET)
-    last_modified_at: Missing[datetime] = Field(default=UNSET)
-    line_numbers: Missing[List[str]] = Field(default=UNSET)
-    text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
-        default=UNSET, title="Search Result Text Matches"
+    meta: Meta = Field(
+        description="The metadata associated with the creation/updates to the user."
     )
 
 
-class SearchCodeGetResponse200(GitHubModel):
-    """SearchCodeGetResponse200"""
+model_rebuild(ScimEnterpriseUserResponseAllof1)
 
-    total_count: int = Field()
-    incomplete_results: bool = Field()
-    items: List[CodeSearchResultItem] = Field()
-
-
-model_rebuild(CodeSearchResultItem)
-model_rebuild(SearchCodeGetResponse200)
-
-__all__ = (
-    "CodeSearchResultItem",
-    "SearchCodeGetResponse200",
-)
+__all__ = ("ScimEnterpriseUserResponseAllof1",)

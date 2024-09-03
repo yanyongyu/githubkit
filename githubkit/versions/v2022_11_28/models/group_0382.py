@@ -10,27 +10,66 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class WebhooksWorkflow(GitHubModel):
-    """Workflow"""
-
-    badge_url: str = Field()
-    created_at: datetime = Field()
-    html_url: str = Field()
-    id: int = Field()
-    name: str = Field()
-    node_id: str = Field()
-    path: str = Field()
-    state: str = Field()
-    updated_at: datetime = Field()
-    url: str = Field()
+from .group_0006 import Integration
+from .group_0055 import MinimalRepository
+from .group_0170 import PullRequestMinimal
 
 
-model_rebuild(WebhooksWorkflow)
+class SimpleCheckSuite(GitHubModel):
+    """SimpleCheckSuite
 
-__all__ = ("WebhooksWorkflow",)
+    A suite of checks performed on the code of a given code change
+    """
+
+    after: Missing[Union[str, None]] = Field(default=UNSET)
+    app: Missing[Union[Integration, None]] = Field(
+        default=UNSET,
+        title="GitHub app",
+        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+    )
+    before: Missing[Union[str, None]] = Field(default=UNSET)
+    conclusion: Missing[
+        Union[
+            None,
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+        ]
+    ] = Field(default=UNSET)
+    created_at: Missing[datetime] = Field(default=UNSET)
+    head_branch: Missing[Union[str, None]] = Field(default=UNSET)
+    head_sha: Missing[str] = Field(
+        default=UNSET, description="The SHA of the head commit that is being checked."
+    )
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    pull_requests: Missing[List[PullRequestMinimal]] = Field(default=UNSET)
+    repository: Missing[MinimalRepository] = Field(
+        default=UNSET, title="Minimal Repository", description="Minimal Repository"
+    )
+    status: Missing[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    ] = Field(default=UNSET)
+    updated_at: Missing[datetime] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(SimpleCheckSuite)
+
+__all__ = ("SimpleCheckSuite",)

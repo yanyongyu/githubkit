@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,19 +17,25 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0049 import CopilotSeatDetails
+from .group_0090 import CodeSecurityConfiguration
 
 
-class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200(
+    GitHubModel
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
 
-    total_seats: Missing[int] = Field(
+    default_for_new_repos: Missing[
+        Literal["all", "none", "private_and_internal", "public"]
+    ] = Field(
         default=UNSET,
-        description="Total number of Copilot seats for the organization currently being billed.",
+        description="Specifies which types of repository this security configuration is applied to by default.",
     )
-    seats: Missing[List[CopilotSeatDetails]] = Field(default=UNSET)
+    configuration: Missing[CodeSecurityConfiguration] = Field(
+        default=UNSET, description="A code security configuration"
+    )
 
 
-model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)
+model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200)
 
-__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",)

@@ -218,6 +218,90 @@ class CopilotClient:
             },
         )
 
+    def usage_metrics_for_enterprise_team(
+        self,
+        enterprise: str,
+        team_slug: str,
+        since: Missing[str] = UNSET,
+        until: Missing[str] = UNSET,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[List[CopilotUsageMetrics]]:
+        """See also: https://docs.github.com/rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-an-enterprise-team"""
+
+        from typing import List
+
+        from ..models import BasicError, CopilotUsageMetrics
+
+        url = f"/enterprises/{enterprise}/team/{team_slug}/copilot/usage"
+
+        params = {
+            "since": since,
+            "until": until,
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[CopilotUsageMetrics],
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_usage_metrics_for_enterprise_team(
+        self,
+        enterprise: str,
+        team_slug: str,
+        since: Missing[str] = UNSET,
+        until: Missing[str] = UNSET,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[List[CopilotUsageMetrics]]:
+        """See also: https://docs.github.com/rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-an-enterprise-team"""
+
+        from typing import List
+
+        from ..models import BasicError, CopilotUsageMetrics
+
+        url = f"/enterprises/{enterprise}/team/{team_slug}/copilot/usage"
+
+        params = {
+            "since": since,
+            "until": until,
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[CopilotUsageMetrics],
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
     def get_copilot_organization_details(
         self,
         org: str,
@@ -952,6 +1036,90 @@ class CopilotClient:
             url,
             headers=exclude_unset(headers),
             response_model=CopilotSeatDetails,
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    def usage_metrics_for_team(
+        self,
+        org: str,
+        team_slug: str,
+        since: Missing[str] = UNSET,
+        until: Missing[str] = UNSET,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[List[CopilotUsageMetrics]]:
+        """See also: https://docs.github.com/rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-a-team"""
+
+        from typing import List
+
+        from ..models import BasicError, CopilotUsageMetrics
+
+        url = f"/orgs/{org}/team/{team_slug}/copilot/usage"
+
+        params = {
+            "since": since,
+            "until": until,
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[CopilotUsageMetrics],
+            error_models={
+                "500": BasicError,
+                "401": BasicError,
+                "403": BasicError,
+                "404": BasicError,
+            },
+        )
+
+    async def async_usage_metrics_for_team(
+        self,
+        org: str,
+        team_slug: str,
+        since: Missing[str] = UNSET,
+        until: Missing[str] = UNSET,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[List[CopilotUsageMetrics]]:
+        """See also: https://docs.github.com/rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-a-team"""
+
+        from typing import List
+
+        from ..models import BasicError, CopilotUsageMetrics
+
+        url = f"/orgs/{org}/team/{team_slug}/copilot/usage"
+
+        params = {
+            "since": since,
+            "until": until,
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[CopilotUsageMetrics],
             error_models={
                 "500": BasicError,
                 "401": BasicError,

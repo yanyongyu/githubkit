@@ -12,22 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0408 import EnterpriseWebhooksType
-from .group_0409 import SimpleInstallationType
-from .group_0412 import SimpleUserWebhooksType
-from .group_0410 import OrganizationSimpleWebhooksType
-from .group_0441 import PersonalAccessTokenRequestType
+from .group_0413 import EnterpriseWebhooksType
+from .group_0414 import SimpleInstallationType
+from .group_0416 import RepositoryWebhooksType
+from .group_0417 import SimpleUserWebhooksType
+from .group_0415 import OrganizationSimpleWebhooksType
+from .group_0643 import WebhookPackageUpdatedPropPackageType
 
 
-class WebhookPersonalAccessTokenRequestCancelledType(TypedDict):
-    """personal_access_token_request cancelled event"""
+class WebhookPackageUpdatedType(TypedDict):
+    """package updated event"""
 
-    action: Literal["cancelled"]
-    personal_access_token_request: PersonalAccessTokenRequestType
+    action: Literal["updated"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    organization: OrganizationSimpleWebhooksType
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    package: WebhookPackageUpdatedPropPackageType
+    repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
-    installation: SimpleInstallationType
 
 
-__all__ = ("WebhookPersonalAccessTokenRequestCancelledType",)
+__all__ = ("WebhookPackageUpdatedType",)

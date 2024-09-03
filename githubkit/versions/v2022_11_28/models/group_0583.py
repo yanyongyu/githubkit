@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0373 import EnterpriseWebhooks
-from .group_0374 import SimpleInstallation
-from .group_0376 import RepositoryWebhooks
-from .group_0377 import SimpleUserWebhooks
-from .group_0402 import WebhooksMilestone3
-from .group_0375 import OrganizationSimpleWebhooks
+from .group_0376 import EnterpriseWebhooks
+from .group_0377 import SimpleInstallation
+from .group_0379 import RepositoryWebhooks
+from .group_0380 import SimpleUserWebhooks
+from .group_0405 import WebhooksMilestone3
+from .group_0378 import OrganizationSimpleWebhooks
 
 
-class WebhookMilestoneOpened(GitHubModel):
-    """milestone opened event"""
+class WebhookMilestoneCreated(GitHubModel):
+    """milestone created event"""
 
-    action: Literal["opened"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -58,6 +58,6 @@ class WebhookMilestoneOpened(GitHubModel):
     )
 
 
-model_rebuild(WebhookMilestoneOpened)
+model_rebuild(WebhookMilestoneCreated)
 
-__all__ = ("WebhookMilestoneOpened",)
+__all__ = ("WebhookMilestoneCreated",)

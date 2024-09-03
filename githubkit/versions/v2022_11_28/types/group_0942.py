@@ -9,17 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0077 import CodespaceMachineType
+from typing import List, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoCodespacesMachinesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoCodespacesMachinesGetResponse200"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type(TypedDict):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0"""
 
-    total_count: int
-    machines: List[CodespaceMachineType]
+    language: Literal[
+        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
+    ]
+    query_pack: str
+    repositories: List[str]
+    repository_lists: NotRequired[List[str]]
+    repository_owners: NotRequired[List[str]]
 
 
-__all__ = ("ReposOwnerRepoCodespacesMachinesGetResponse200Type",)
+__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type",)

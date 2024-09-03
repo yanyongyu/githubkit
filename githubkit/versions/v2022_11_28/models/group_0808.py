@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Literal
 
 from pydantic import Field
@@ -19,39 +18,18 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCodespacesSecretsGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
 
-    total_count: int = Field()
-    secrets: List[CodespacesOrgSecret] = Field()
-
-
-class CodespacesOrgSecret(GitHubModel):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str = Field(description="The name of the secret")
-    created_at: datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    scope: Literal["all", "public", "private_or_internal", "selected"] = Field(
+        description="The type of repositories to attach the configuration to. `selected` means the configuration will be attached to only the repositories specified by `selected_repository_ids`"
     )
-    updated_at: datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that the secret is visible to"
-    )
-    selected_repositories_url: Missing[str] = Field(
+    selected_repository_ids: Missing[List[int]] = Field(
         default=UNSET,
-        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
+        description="An array of repository IDs to attach the configuration to. You can only provide a list of repository ids when the `scope` is set to `selected`.",
     )
 
 
-model_rebuild(OrgsOrgCodespacesSecretsGetResponse200)
-model_rebuild(CodespacesOrgSecret)
+model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody)
 
-__all__ = (
-    "OrgsOrgCodespacesSecretsGetResponse200",
-    "CodespacesOrgSecret",
-)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody",)

@@ -36,11 +36,11 @@ if TYPE_CHECKING:
         AuditLogEvent,
         OrgMembership,
         WebhookConfig,
+        CustomProperty,
         HookDeliveryItem,
         OrganizationFull,
         OrganizationRole,
         MinimalRepository,
-        OrgCustomProperty,
         AnnouncementBanner,
         OrganizationSimple,
         TeamRoleAssignment,
@@ -63,28 +63,28 @@ if TYPE_CHECKING:
     )
     from ..types import (
         AnnouncementType,
+        CustomPropertyType,
         OrgsOrgPatchBodyType,
-        OrgCustomPropertyType,
         CustomPropertyValueType,
         OrgsOrgHooksPostBodyType,
         OrgsOrgInvitationsPostBodyType,
         OrgsOrgHooksHookIdPatchBodyType,
         OrgsOrgHooksPostBodyPropConfigType,
         UserMembershipsOrgsOrgPatchBodyType,
-        OrgsOrgOrganizationRolesPostBodyType,
         OrgsOrgPropertiesSchemaPatchBodyType,
         OrgsOrgPropertiesValuesPatchBodyType,
         OrgsOrgHooksHookIdConfigPatchBodyType,
         OrgsOrgMembershipsUsernamePutBodyType,
         OrgsOrgPersonalAccessTokensPostBodyType,
         OrgsOrgHooksHookIdPatchBodyPropConfigType,
-        OrgsOrgOrganizationRolesRoleIdPatchBodyType,
         OrgsOrgPersonalAccessTokensPatIdPostBodyType,
         OrgsOrgSecurityProductEnablementPostBodyType,
         OrgsOrgOutsideCollaboratorsUsernamePutBodyType,
         OrgsOrgPersonalAccessTokenRequestsPostBodyType,
         OrganizationCustomRepositoryRoleCreateSchemaType,
         OrganizationCustomRepositoryRoleUpdateSchemaType,
+        OrganizationCustomOrganizationRoleCreateSchemaType,
+        OrganizationCustomOrganizationRoleUpdateSchemaType,
         OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
         OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
     )
@@ -3689,7 +3689,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: OrgsOrgOrganizationRolesPostBodyType,
+        data: OrganizationCustomOrganizationRoleCreateSchemaType,
     ) -> Response[OrganizationRole]: ...
 
     @overload
@@ -3702,6 +3702,9 @@ class OrgsClient:
         name: str,
         description: Missing[str] = UNSET,
         permissions: List[str],
+        base_role: Missing[
+            Literal["read", "triage", "write", "maintain", "admin"]
+        ] = UNSET,
     ) -> Response[OrganizationRole]: ...
 
     def create_custom_organization_role(
@@ -3709,7 +3712,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrgsOrgOrganizationRolesPostBodyType] = UNSET,
+        data: Missing[OrganizationCustomOrganizationRoleCreateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationRole]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#create-a-custom-organization-role"""
@@ -3718,7 +3721,7 @@ class OrgsClient:
             BasicError,
             ValidationError,
             OrganizationRole,
-            OrgsOrgOrganizationRolesPostBody,
+            OrganizationCustomOrganizationRoleCreateSchema,
         )
 
         url = f"/orgs/{org}/organization-roles"
@@ -3729,7 +3732,9 @@ class OrgsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgOrganizationRolesPostBody, json)
+        json = type_validate_python(
+            OrganizationCustomOrganizationRoleCreateSchema, json
+        )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -3751,7 +3756,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: OrgsOrgOrganizationRolesPostBodyType,
+        data: OrganizationCustomOrganizationRoleCreateSchemaType,
     ) -> Response[OrganizationRole]: ...
 
     @overload
@@ -3764,6 +3769,9 @@ class OrgsClient:
         name: str,
         description: Missing[str] = UNSET,
         permissions: List[str],
+        base_role: Missing[
+            Literal["read", "triage", "write", "maintain", "admin"]
+        ] = UNSET,
     ) -> Response[OrganizationRole]: ...
 
     async def async_create_custom_organization_role(
@@ -3771,7 +3779,7 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrgsOrgOrganizationRolesPostBodyType] = UNSET,
+        data: Missing[OrganizationCustomOrganizationRoleCreateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationRole]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#create-a-custom-organization-role"""
@@ -3780,7 +3788,7 @@ class OrgsClient:
             BasicError,
             ValidationError,
             OrganizationRole,
-            OrgsOrgOrganizationRolesPostBody,
+            OrganizationCustomOrganizationRoleCreateSchema,
         )
 
         url = f"/orgs/{org}/organization-roles"
@@ -3791,7 +3799,9 @@ class OrgsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgOrganizationRolesPostBody, json)
+        json = type_validate_python(
+            OrganizationCustomOrganizationRoleCreateSchema, json
+        )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -4144,7 +4154,7 @@ class OrgsClient:
         role_id: int,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: OrgsOrgOrganizationRolesRoleIdPatchBodyType,
+        data: OrganizationCustomOrganizationRoleUpdateSchemaType,
     ) -> Response[OrganizationRole]: ...
 
     @overload
@@ -4158,6 +4168,9 @@ class OrgsClient:
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         permissions: Missing[List[str]] = UNSET,
+        base_role: Missing[
+            Literal["none", "read", "triage", "write", "maintain", "admin"]
+        ] = UNSET,
     ) -> Response[OrganizationRole]: ...
 
     def patch_custom_organization_role(
@@ -4166,7 +4179,7 @@ class OrgsClient:
         role_id: int,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrgsOrgOrganizationRolesRoleIdPatchBodyType] = UNSET,
+        data: Missing[OrganizationCustomOrganizationRoleUpdateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationRole]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#update-a-custom-organization-role"""
@@ -4175,7 +4188,7 @@ class OrgsClient:
             BasicError,
             ValidationError,
             OrganizationRole,
-            OrgsOrgOrganizationRolesRoleIdPatchBody,
+            OrganizationCustomOrganizationRoleUpdateSchema,
         )
 
         url = f"/orgs/{org}/organization-roles/{role_id}"
@@ -4186,7 +4199,9 @@ class OrgsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgOrganizationRolesRoleIdPatchBody, json)
+        json = type_validate_python(
+            OrganizationCustomOrganizationRoleUpdateSchema, json
+        )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -4209,7 +4224,7 @@ class OrgsClient:
         role_id: int,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: OrgsOrgOrganizationRolesRoleIdPatchBodyType,
+        data: OrganizationCustomOrganizationRoleUpdateSchemaType,
     ) -> Response[OrganizationRole]: ...
 
     @overload
@@ -4223,6 +4238,9 @@ class OrgsClient:
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         permissions: Missing[List[str]] = UNSET,
+        base_role: Missing[
+            Literal["none", "read", "triage", "write", "maintain", "admin"]
+        ] = UNSET,
     ) -> Response[OrganizationRole]: ...
 
     async def async_patch_custom_organization_role(
@@ -4231,7 +4249,7 @@ class OrgsClient:
         role_id: int,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[OrgsOrgOrganizationRolesRoleIdPatchBodyType] = UNSET,
+        data: Missing[OrganizationCustomOrganizationRoleUpdateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationRole]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#update-a-custom-organization-role"""
@@ -4240,7 +4258,7 @@ class OrgsClient:
             BasicError,
             ValidationError,
             OrganizationRole,
-            OrgsOrgOrganizationRolesRoleIdPatchBody,
+            OrganizationCustomOrganizationRoleUpdateSchema,
         )
 
         url = f"/orgs/{org}/organization-roles/{role_id}"
@@ -4251,7 +4269,9 @@ class OrgsClient:
             kwargs = UNSET
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgOrganizationRolesRoleIdPatchBody, json)
+        json = type_validate_python(
+            OrganizationCustomOrganizationRoleUpdateSchema, json
+        )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -5518,12 +5538,12 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrgCustomProperty]]:
+    ) -> Response[List[CustomProperty]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#get-all-custom-properties-for-an-organization"""
 
         from typing import List
 
-        from ..models import BasicError, OrgCustomProperty
+        from ..models import BasicError, CustomProperty
 
         url = f"/orgs/{org}/properties/schema"
 
@@ -5533,7 +5553,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[OrgCustomProperty],
+            response_model=List[CustomProperty],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -5545,12 +5565,12 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrgCustomProperty]]:
+    ) -> Response[List[CustomProperty]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#get-all-custom-properties-for-an-organization"""
 
         from typing import List
 
-        from ..models import BasicError, OrgCustomProperty
+        from ..models import BasicError, CustomProperty
 
         url = f"/orgs/{org}/properties/schema"
 
@@ -5560,7 +5580,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[OrgCustomProperty],
+            response_model=List[CustomProperty],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -5574,7 +5594,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
-    ) -> Response[List[OrgCustomProperty]]: ...
+    ) -> Response[List[CustomProperty]]: ...
 
     @overload
     def create_or_update_custom_properties(
@@ -5583,8 +5603,8 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
-        properties: List[OrgCustomPropertyType],
-    ) -> Response[List[OrgCustomProperty]]: ...
+        properties: List[CustomPropertyType],
+    ) -> Response[List[CustomProperty]]: ...
 
     def create_or_update_custom_properties(
         self,
@@ -5593,14 +5613,14 @@ class OrgsClient:
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[List[OrgCustomProperty]]:
+    ) -> Response[List[CustomProperty]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#create-or-update-custom-properties-for-an-organization"""
 
         from typing import List
 
         from ..models import (
             BasicError,
-            OrgCustomProperty,
+            CustomProperty,
             OrgsOrgPropertiesSchemaPatchBody,
         )
 
@@ -5620,7 +5640,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[OrgCustomProperty],
+            response_model=List[CustomProperty],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -5634,7 +5654,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
-    ) -> Response[List[OrgCustomProperty]]: ...
+    ) -> Response[List[CustomProperty]]: ...
 
     @overload
     async def async_create_or_update_custom_properties(
@@ -5643,8 +5663,8 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
-        properties: List[OrgCustomPropertyType],
-    ) -> Response[List[OrgCustomProperty]]: ...
+        properties: List[CustomPropertyType],
+    ) -> Response[List[CustomProperty]]: ...
 
     async def async_create_or_update_custom_properties(
         self,
@@ -5653,14 +5673,14 @@ class OrgsClient:
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[List[OrgCustomProperty]]:
+    ) -> Response[List[CustomProperty]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#create-or-update-custom-properties-for-an-organization"""
 
         from typing import List
 
         from ..models import (
             BasicError,
-            OrgCustomProperty,
+            CustomProperty,
             OrgsOrgPropertiesSchemaPatchBody,
         )
 
@@ -5680,7 +5700,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[OrgCustomProperty],
+            response_model=List[CustomProperty],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -5693,10 +5713,10 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[OrgCustomProperty]:
+    ) -> Response[CustomProperty]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#get-a-custom-property-for-an-organization"""
 
-        from ..models import BasicError, OrgCustomProperty
+        from ..models import BasicError, CustomProperty
 
         url = f"/orgs/{org}/properties/schema/{custom_property_name}"
 
@@ -5706,7 +5726,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=OrgCustomProperty,
+            response_model=CustomProperty,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -5719,10 +5739,10 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[OrgCustomProperty]:
+    ) -> Response[CustomProperty]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#get-a-custom-property-for-an-organization"""
 
-        from ..models import BasicError, OrgCustomProperty
+        from ..models import BasicError, CustomProperty
 
         url = f"/orgs/{org}/properties/schema/{custom_property_name}"
 
@@ -5732,7 +5752,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=OrgCustomProperty,
+            response_model=CustomProperty,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -5747,7 +5767,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
-    ) -> Response[OrgCustomProperty]: ...
+    ) -> Response[CustomProperty]: ...
 
     @overload
     def create_or_update_custom_property(
@@ -5762,7 +5782,7 @@ class OrgsClient:
         default_value: Missing[Union[str, List[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[List[str], None]] = UNSET,
-    ) -> Response[OrgCustomProperty]: ...
+    ) -> Response[CustomProperty]: ...
 
     def create_or_update_custom_property(
         self,
@@ -5772,12 +5792,12 @@ class OrgsClient:
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgCustomProperty]:
+    ) -> Response[CustomProperty]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#create-or-update-a-custom-property-for-an-organization"""
 
         from ..models import (
             BasicError,
-            OrgCustomProperty,
+            CustomProperty,
             OrgsOrgPropertiesSchemaCustomPropertyNamePutBody,
         )
 
@@ -5799,7 +5819,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=OrgCustomProperty,
+            response_model=CustomProperty,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -5814,7 +5834,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
-    ) -> Response[OrgCustomProperty]: ...
+    ) -> Response[CustomProperty]: ...
 
     @overload
     async def async_create_or_update_custom_property(
@@ -5829,7 +5849,7 @@ class OrgsClient:
         default_value: Missing[Union[str, List[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[List[str], None]] = UNSET,
-    ) -> Response[OrgCustomProperty]: ...
+    ) -> Response[CustomProperty]: ...
 
     async def async_create_or_update_custom_property(
         self,
@@ -5839,12 +5859,12 @@ class OrgsClient:
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgCustomProperty]:
+    ) -> Response[CustomProperty]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#create-or-update-a-custom-property-for-an-organization"""
 
         from ..models import (
             BasicError,
-            OrgCustomProperty,
+            CustomProperty,
             OrgsOrgPropertiesSchemaCustomPropertyNamePutBody,
         )
 
@@ -5866,7 +5886,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=OrgCustomProperty,
+            response_model=CustomProperty,
             error_models={
                 "403": BasicError,
                 "404": BasicError,

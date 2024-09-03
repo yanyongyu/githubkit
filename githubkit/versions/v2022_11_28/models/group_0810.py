@@ -9,22 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0055 import MinimalRepository
+from .group_0074 import CodeSecurityConfiguration
 
 
-class OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200(
+    GitHubModel
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
 
-    total_count: int = Field()
-    repositories: List[MinimalRepository] = Field()
+    default_for_new_repos: Missing[
+        Literal["all", "none", "private_and_internal", "public"]
+    ] = Field(
+        default=UNSET,
+        description="Specifies which types of repository this security configuration is applied to by default.",
+    )
+    configuration: Missing[CodeSecurityConfiguration] = Field(
+        default=UNSET, description="A code security configuration"
+    )
 
 
-model_rebuild(OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200)
+model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200)
 
-__all__ = ("OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",)

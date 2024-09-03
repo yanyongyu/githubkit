@@ -9,52 +9,92 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import List, Union
+from typing_extensions import TypedDict
 
 
-class WebhooksTeam1Type(TypedDict):
-    """Team
+class WebhooksSecurityAdvisoryType(TypedDict):
+    """WebhooksSecurityAdvisory
 
-    Groups of organization members that gives permissions on specified repositories.
+    The details of the security advisory, including summary, description, and
+    severity.
     """
 
-    deleted: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
-    html_url: NotRequired[str]
-    id: int
-    members_url: NotRequired[str]
+    cvss: WebhooksSecurityAdvisoryPropCvssType
+    cwes: List[WebhooksSecurityAdvisoryPropCwesItemsType]
+    description: str
+    ghsa_id: str
+    identifiers: List[WebhooksSecurityAdvisoryPropIdentifiersItemsType]
+    published_at: str
+    references: List[WebhooksSecurityAdvisoryPropReferencesItemsType]
+    severity: str
+    summary: str
+    updated_at: str
+    vulnerabilities: List[WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType]
+    withdrawn_at: Union[str, None]
+
+
+class WebhooksSecurityAdvisoryPropCvssType(TypedDict):
+    """WebhooksSecurityAdvisoryPropCvss"""
+
+    score: float
+    vector_string: Union[str, None]
+
+
+class WebhooksSecurityAdvisoryPropCwesItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropCwesItems"""
+
+    cwe_id: str
     name: str
-    node_id: NotRequired[str]
-    parent: NotRequired[Union[WebhooksTeam1PropParentType, None]]
-    permission: NotRequired[str]
-    privacy: NotRequired[Literal["open", "closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    repositories_url: NotRequired[str]
-    slug: NotRequired[str]
-    url: NotRequired[str]
 
 
-class WebhooksTeam1PropParentType(TypedDict):
-    """WebhooksTeam1PropParent"""
+class WebhooksSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropIdentifiersItems"""
 
-    description: Union[str, None]
-    html_url: str
-    id: int
-    members_url: str
-    name: str
-    node_id: str
-    permission: str
-    privacy: Literal["open", "closed", "secret"]
-    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
-    repositories_url: str
-    slug: str
+    type: str
+    value: str
+
+
+class WebhooksSecurityAdvisoryPropReferencesItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropReferencesItems"""
+
     url: str
 
 
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType(TypedDict):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItems"""
+
+    first_patched_version: Union[
+        WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType,
+        None,
+    ]
+    package: WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType
+    severity: str
+    vulnerable_version_range: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType(
+    TypedDict
+):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersion"""
+
+    identifier: str
+
+
+class WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType(TypedDict):
+    """WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackage"""
+
+    ecosystem: str
+    name: str
+
+
 __all__ = (
-    "WebhooksTeam1Type",
-    "WebhooksTeam1PropParentType",
+    "WebhooksSecurityAdvisoryType",
+    "WebhooksSecurityAdvisoryPropCvssType",
+    "WebhooksSecurityAdvisoryPropCwesItemsType",
+    "WebhooksSecurityAdvisoryPropIdentifiersItemsType",
+    "WebhooksSecurityAdvisoryPropReferencesItemsType",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsType",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropFirstPatchedVersionType",
+    "WebhooksSecurityAdvisoryPropVulnerabilitiesItemsPropPackageType",
 )

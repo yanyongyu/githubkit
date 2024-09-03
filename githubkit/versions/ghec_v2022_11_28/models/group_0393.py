@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Union
 
 from pydantic import Field
@@ -18,93 +17,59 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0386 import SearchResultTextMatchesItems
+from .group_0211 import GitUser
+from .group_0001 import SimpleUser
+from .group_0082 import MinimalRepository
+from .group_0391 import SearchResultTextMatchesItems
+from .group_0394 import CommitSearchResultItemPropCommit
 
 
-class TopicSearchResultItem(GitHubModel):
-    """Topic Search Result Item
+class CommitSearchResultItem(GitHubModel):
+    """Commit Search Result Item
 
-    Topic Search Result Item
+    Commit Search Result Item
     """
 
-    name: str = Field()
-    display_name: Union[str, None] = Field()
-    short_description: Union[str, None] = Field()
-    description: Union[str, None] = Field()
-    created_by: Union[str, None] = Field()
-    released: Union[str, None] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    featured: bool = Field()
-    curated: bool = Field()
+    url: str = Field()
+    sha: str = Field()
+    html_url: str = Field()
+    comments_url: str = Field()
+    commit: CommitSearchResultItemPropCommit = Field()
+    author: Union[None, SimpleUser] = Field()
+    committer: Union[None, GitUser] = Field()
+    parents: List[CommitSearchResultItemPropParentsItems] = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
     score: float = Field()
-    repository_count: Missing[Union[int, None]] = Field(default=UNSET)
-    logo_url: Missing[Union[str, None]] = Field(default=UNSET)
+    node_id: str = Field()
     text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
         default=UNSET, title="Search Result Text Matches"
     )
-    related: Missing[Union[List[TopicSearchResultItemPropRelatedItems], None]] = Field(
-        default=UNSET
-    )
-    aliases: Missing[Union[List[TopicSearchResultItemPropAliasesItems], None]] = Field(
-        default=UNSET
-    )
 
 
-class TopicSearchResultItemPropRelatedItems(GitHubModel):
-    """TopicSearchResultItemPropRelatedItems"""
+class CommitSearchResultItemPropParentsItems(GitHubModel):
+    """CommitSearchResultItemPropParentsItems"""
 
-    topic_relation: Missing[TopicSearchResultItemPropRelatedItemsPropTopicRelation] = (
-        Field(default=UNSET)
-    )
-
-
-class TopicSearchResultItemPropRelatedItemsPropTopicRelation(GitHubModel):
-    """TopicSearchResultItemPropRelatedItemsPropTopicRelation"""
-
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    topic_id: Missing[int] = Field(default=UNSET)
-    relation_type: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
 
 
-class TopicSearchResultItemPropAliasesItems(GitHubModel):
-    """TopicSearchResultItemPropAliasesItems"""
-
-    topic_relation: Missing[TopicSearchResultItemPropAliasesItemsPropTopicRelation] = (
-        Field(default=UNSET)
-    )
-
-
-class TopicSearchResultItemPropAliasesItemsPropTopicRelation(GitHubModel):
-    """TopicSearchResultItemPropAliasesItemsPropTopicRelation"""
-
-    id: Missing[int] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    topic_id: Missing[int] = Field(default=UNSET)
-    relation_type: Missing[str] = Field(default=UNSET)
-
-
-class SearchTopicsGetResponse200(GitHubModel):
-    """SearchTopicsGetResponse200"""
+class SearchCommitsGetResponse200(GitHubModel):
+    """SearchCommitsGetResponse200"""
 
     total_count: int = Field()
     incomplete_results: bool = Field()
-    items: List[TopicSearchResultItem] = Field()
+    items: List[CommitSearchResultItem] = Field()
 
 
-model_rebuild(TopicSearchResultItem)
-model_rebuild(TopicSearchResultItemPropRelatedItems)
-model_rebuild(TopicSearchResultItemPropRelatedItemsPropTopicRelation)
-model_rebuild(TopicSearchResultItemPropAliasesItems)
-model_rebuild(TopicSearchResultItemPropAliasesItemsPropTopicRelation)
-model_rebuild(SearchTopicsGetResponse200)
+model_rebuild(CommitSearchResultItem)
+model_rebuild(CommitSearchResultItemPropParentsItems)
+model_rebuild(SearchCommitsGetResponse200)
 
 __all__ = (
-    "TopicSearchResultItem",
-    "TopicSearchResultItemPropRelatedItems",
-    "TopicSearchResultItemPropRelatedItemsPropTopicRelation",
-    "TopicSearchResultItemPropAliasesItems",
-    "TopicSearchResultItemPropAliasesItemsPropTopicRelation",
-    "SearchTopicsGetResponse200",
+    "CommitSearchResultItem",
+    "CommitSearchResultItemPropParentsItems",
+    "SearchCommitsGetResponse200",
 )

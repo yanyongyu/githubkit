@@ -9,21 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class TeamsTeamIdPatchBodyType(TypedDict):
-    """TeamsTeamIdPatchBody"""
+class ReposOwnerRepoSubscriptionPutBodyType(TypedDict):
+    """ReposOwnerRepoSubscriptionPutBody"""
 
-    name: str
-    description: NotRequired[str]
-    privacy: NotRequired[Literal["secret", "closed"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ]
-    permission: NotRequired[Literal["pull", "push", "admin"]]
-    parent_team_id: NotRequired[Union[int, None]]
+    subscribed: NotRequired[bool]
+    ignored: NotRequired[bool]
 
 
-__all__ = ("TeamsTeamIdPatchBodyType",)
+__all__ = ("ReposOwnerRepoSubscriptionPutBodyType",)

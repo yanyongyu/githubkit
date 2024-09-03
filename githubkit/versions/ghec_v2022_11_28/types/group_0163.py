@@ -12,28 +12,19 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0164 import RepositoryRuleCodeScanningPropParametersType
 
-class RepositoryRuleOneof18Type(TypedDict):
-    """max_file_size
 
-    > [!NOTE]
-    > `max_file_size` is in beta and subject to change.
+class RepositoryRuleCodeScanningType(TypedDict):
+    """code_scanning
 
-    Prevent commits that exceed a specified file size limit from being pushed to the
-    commit.
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
     """
 
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleOneof18PropParametersType]
+    type: Literal["code_scanning"]
+    parameters: NotRequired[RepositoryRuleCodeScanningPropParametersType]
 
 
-class RepositoryRuleOneof18PropParametersType(TypedDict):
-    """RepositoryRuleOneof18PropParameters"""
-
-    max_file_size: int
-
-
-__all__ = (
-    "RepositoryRuleOneof18Type",
-    "RepositoryRuleOneof18PropParametersType",
-)
+__all__ = ("RepositoryRuleCodeScanningType",)

@@ -17,18 +17,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0415 import ExemptionRequest
-from .group_0408 import EnterpriseWebhooks
-from .group_0409 import SimpleInstallation
-from .group_0411 import RepositoryWebhooks
-from .group_0412 import SimpleUserWebhooks
-from .group_0410 import OrganizationSimpleWebhooks
+from .group_0413 import EnterpriseWebhooks
+from .group_0414 import SimpleInstallation
+from .group_0416 import RepositoryWebhooks
+from .group_0417 import SimpleUserWebhooks
+from .group_0415 import OrganizationSimpleWebhooks
 
 
-class WebhookExemptionRequestCancelled(GitHubModel):
-    """Exemption request cancellation event"""
+class WebhookBranchProtectionConfigurationDisabled(GitHubModel):
+    """branch protection configuration disabled event"""
 
-    action: Literal["cancelled"] = Field()
+    action: Literal["disabled"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,14 +43,9 @@ class WebhookExemptionRequestCancelled(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    exemption_request: ExemptionRequest = Field(
-        title="Exemption Request",
-        description="A request from a user to be exempted from a set of rules.",
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -59,6 +53,6 @@ class WebhookExemptionRequestCancelled(GitHubModel):
     )
 
 
-model_rebuild(WebhookExemptionRequestCancelled)
+model_rebuild(WebhookBranchProtectionConfigurationDisabled)
 
-__all__ = ("WebhookExemptionRequestCancelled",)
+__all__ = ("WebhookBranchProtectionConfigurationDisabled",)

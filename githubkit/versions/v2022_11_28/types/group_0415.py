@@ -10,18 +10,54 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0037 import MilestoneType
+from .group_0226 import AutoMergeType
+from .group_0001 import SimpleUserType
+from .group_0026 import TeamSimpleType
+from .group_0307 import PullRequestPropBaseType
+from .group_0309 import PullRequestPropLinksType
+from .group_0306 import PullRequestPropHeadType, PullRequestPropLabelsItemsType
 
-class WebhooksReviewCommentType(TypedDict):
-    """Pull Request Review Comment
 
-    The [comment](https://docs.github.com/rest/pulls/comments#get-a-review-comment-
-    for-a-pull-request) itself.
-    """
+class PullRequestWebhookType(TypedDict):
+    """PullRequestWebhook"""
 
-    links: WebhooksReviewCommentPropLinksType
+    url: str
+    id: int
+    node_id: str
+    html_url: str
+    diff_url: str
+    patch_url: str
+    issue_url: str
+    commits_url: str
+    review_comments_url: str
+    review_comment_url: str
+    comments_url: str
+    statuses_url: str
+    number: int
+    state: Literal["open", "closed"]
+    locked: bool
+    title: str
+    user: SimpleUserType
+    body: Union[str, None]
+    labels: List[PullRequestPropLabelsItemsType]
+    milestone: Union[None, MilestoneType]
+    active_lock_reason: NotRequired[Union[str, None]]
+    created_at: datetime
+    updated_at: datetime
+    closed_at: Union[datetime, None]
+    merged_at: Union[datetime, None]
+    merge_commit_sha: Union[str, None]
+    assignee: Union[None, SimpleUserType]
+    assignees: NotRequired[Union[List[SimpleUserType], None]]
+    requested_reviewers: NotRequired[Union[List[SimpleUserType], None]]
+    requested_teams: NotRequired[Union[List[TeamSimpleType], None]]
+    head: PullRequestPropHeadType
+    base: PullRequestPropBaseType
+    links: PullRequestPropLinksType
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -32,106 +68,30 @@ class WebhooksReviewCommentType(TypedDict):
         "NONE",
         "OWNER",
     ]
-    body: str
-    commit_id: str
-    created_at: datetime
-    diff_hunk: str
-    html_url: str
-    id: int
-    in_reply_to_id: NotRequired[int]
-    line: Union[int, None]
-    node_id: str
-    original_commit_id: str
-    original_line: int
-    original_position: int
-    original_start_line: Union[int, None]
-    path: str
-    position: Union[int, None]
-    pull_request_review_id: Union[int, None]
-    pull_request_url: str
-    reactions: WebhooksReviewCommentPropReactionsType
-    side: Literal["LEFT", "RIGHT"]
-    start_line: Union[int, None]
-    start_side: Union[None, Literal["LEFT", "RIGHT"]]
-    subject_type: NotRequired[Literal["line", "file"]]
-    updated_at: datetime
-    url: str
-    user: Union[WebhooksReviewCommentPropUserType, None]
+    auto_merge: Union[AutoMergeType, None]
+    draft: NotRequired[bool]
+    merged: bool
+    mergeable: Union[bool, None]
+    rebaseable: NotRequired[Union[bool, None]]
+    mergeable_state: str
+    merged_by: Union[None, SimpleUserType]
+    comments: int
+    review_comments: int
+    maintainer_can_modify: bool
+    commits: int
+    additions: int
+    deletions: int
+    changed_files: int
+    allow_auto_merge: NotRequired[bool]
+    allow_update_branch: NotRequired[bool]
+    delete_branch_on_merge: NotRequired[bool]
+    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
+    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
+    squash_merge_commit_message: NotRequired[
+        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
+    ]
+    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
+    use_squash_pr_title_as_default: NotRequired[bool]
 
 
-class WebhooksReviewCommentPropReactionsType(TypedDict):
-    """Reactions"""
-
-    plus_one: int
-    minus_one: int
-    confused: int
-    eyes: int
-    heart: int
-    hooray: int
-    laugh: int
-    rocket: int
-    total_count: int
-    url: str
-
-
-class WebhooksReviewCommentPropUserType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhooksReviewCommentPropLinksType(TypedDict):
-    """WebhooksReviewCommentPropLinks"""
-
-    html: WebhooksReviewCommentPropLinksPropHtmlType
-    pull_request: WebhooksReviewCommentPropLinksPropPullRequestType
-    self_: WebhooksReviewCommentPropLinksPropSelfType
-
-
-class WebhooksReviewCommentPropLinksPropHtmlType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewCommentPropLinksPropPullRequestType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-class WebhooksReviewCommentPropLinksPropSelfType(TypedDict):
-    """Link"""
-
-    href: str
-
-
-__all__ = (
-    "WebhooksReviewCommentType",
-    "WebhooksReviewCommentPropReactionsType",
-    "WebhooksReviewCommentPropUserType",
-    "WebhooksReviewCommentPropLinksType",
-    "WebhooksReviewCommentPropLinksPropHtmlType",
-    "WebhooksReviewCommentPropLinksPropPullRequestType",
-    "WebhooksReviewCommentPropLinksPropSelfType",
-)
+__all__ = ("PullRequestWebhookType",)

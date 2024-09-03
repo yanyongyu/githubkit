@@ -35,11 +35,11 @@ if TYPE_CHECKING:
         HookDelivery,
         OrgMembership,
         WebhookConfig,
+        CustomProperty,
         HookDeliveryItem,
         OrganizationFull,
         OrganizationRole,
         MinimalRepository,
-        OrgCustomProperty,
         OrganizationSimple,
         TeamRoleAssignment,
         UserRoleAssignment,
@@ -54,8 +54,8 @@ if TYPE_CHECKING:
         AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
     )
     from ..types import (
+        CustomPropertyType,
         OrgsOrgPatchBodyType,
-        OrgCustomPropertyType,
         CustomPropertyValueType,
         OrgsOrgHooksPostBodyType,
         OrgsOrgInvitationsPostBodyType,
@@ -3963,12 +3963,12 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrgCustomProperty]]:
+    ) -> Response[List[CustomProperty]]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#get-all-custom-properties-for-an-organization"""
 
         from typing import List
 
-        from ..models import BasicError, OrgCustomProperty
+        from ..models import BasicError, CustomProperty
 
         url = f"/orgs/{org}/properties/schema"
 
@@ -3978,7 +3978,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[OrgCustomProperty],
+            response_model=List[CustomProperty],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -3990,12 +3990,12 @@ class OrgsClient:
         org: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrgCustomProperty]]:
+    ) -> Response[List[CustomProperty]]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#get-all-custom-properties-for-an-organization"""
 
         from typing import List
 
-        from ..models import BasicError, OrgCustomProperty
+        from ..models import BasicError, CustomProperty
 
         url = f"/orgs/{org}/properties/schema"
 
@@ -4005,7 +4005,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[OrgCustomProperty],
+            response_model=List[CustomProperty],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -4019,7 +4019,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
-    ) -> Response[List[OrgCustomProperty]]: ...
+    ) -> Response[List[CustomProperty]]: ...
 
     @overload
     def create_or_update_custom_properties(
@@ -4028,8 +4028,8 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
-        properties: List[OrgCustomPropertyType],
-    ) -> Response[List[OrgCustomProperty]]: ...
+        properties: List[CustomPropertyType],
+    ) -> Response[List[CustomProperty]]: ...
 
     def create_or_update_custom_properties(
         self,
@@ -4038,14 +4038,14 @@ class OrgsClient:
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[List[OrgCustomProperty]]:
+    ) -> Response[List[CustomProperty]]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-custom-properties-for-an-organization"""
 
         from typing import List
 
         from ..models import (
             BasicError,
-            OrgCustomProperty,
+            CustomProperty,
             OrgsOrgPropertiesSchemaPatchBody,
         )
 
@@ -4065,7 +4065,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[OrgCustomProperty],
+            response_model=List[CustomProperty],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -4079,7 +4079,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
-    ) -> Response[List[OrgCustomProperty]]: ...
+    ) -> Response[List[CustomProperty]]: ...
 
     @overload
     async def async_create_or_update_custom_properties(
@@ -4088,8 +4088,8 @@ class OrgsClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
-        properties: List[OrgCustomPropertyType],
-    ) -> Response[List[OrgCustomProperty]]: ...
+        properties: List[CustomPropertyType],
+    ) -> Response[List[CustomProperty]]: ...
 
     async def async_create_or_update_custom_properties(
         self,
@@ -4098,14 +4098,14 @@ class OrgsClient:
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[List[OrgCustomProperty]]:
+    ) -> Response[List[CustomProperty]]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-custom-properties-for-an-organization"""
 
         from typing import List
 
         from ..models import (
             BasicError,
-            OrgCustomProperty,
+            CustomProperty,
             OrgsOrgPropertiesSchemaPatchBody,
         )
 
@@ -4125,7 +4125,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[OrgCustomProperty],
+            response_model=List[CustomProperty],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -4138,10 +4138,10 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[OrgCustomProperty]:
+    ) -> Response[CustomProperty]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#get-a-custom-property-for-an-organization"""
 
-        from ..models import BasicError, OrgCustomProperty
+        from ..models import BasicError, CustomProperty
 
         url = f"/orgs/{org}/properties/schema/{custom_property_name}"
 
@@ -4151,7 +4151,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=OrgCustomProperty,
+            response_model=CustomProperty,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -4164,10 +4164,10 @@ class OrgsClient:
         custom_property_name: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[OrgCustomProperty]:
+    ) -> Response[CustomProperty]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#get-a-custom-property-for-an-organization"""
 
-        from ..models import BasicError, OrgCustomProperty
+        from ..models import BasicError, CustomProperty
 
         url = f"/orgs/{org}/properties/schema/{custom_property_name}"
 
@@ -4177,7 +4177,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=OrgCustomProperty,
+            response_model=CustomProperty,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -4192,7 +4192,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
-    ) -> Response[OrgCustomProperty]: ...
+    ) -> Response[CustomProperty]: ...
 
     @overload
     def create_or_update_custom_property(
@@ -4207,7 +4207,7 @@ class OrgsClient:
         default_value: Missing[Union[str, List[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[List[str], None]] = UNSET,
-    ) -> Response[OrgCustomProperty]: ...
+    ) -> Response[CustomProperty]: ...
 
     def create_or_update_custom_property(
         self,
@@ -4217,12 +4217,12 @@ class OrgsClient:
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgCustomProperty]:
+    ) -> Response[CustomProperty]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-a-custom-property-for-an-organization"""
 
         from ..models import (
             BasicError,
-            OrgCustomProperty,
+            CustomProperty,
             OrgsOrgPropertiesSchemaCustomPropertyNamePutBody,
         )
 
@@ -4244,7 +4244,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=OrgCustomProperty,
+            response_model=CustomProperty,
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -4259,7 +4259,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
-    ) -> Response[OrgCustomProperty]: ...
+    ) -> Response[CustomProperty]: ...
 
     @overload
     async def async_create_or_update_custom_property(
@@ -4274,7 +4274,7 @@ class OrgsClient:
         default_value: Missing[Union[str, List[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         allowed_values: Missing[Union[List[str], None]] = UNSET,
-    ) -> Response[OrgCustomProperty]: ...
+    ) -> Response[CustomProperty]: ...
 
     async def async_create_or_update_custom_property(
         self,
@@ -4284,12 +4284,12 @@ class OrgsClient:
         headers: Optional[Dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[OrgCustomProperty]:
+    ) -> Response[CustomProperty]:
         """See also: https://docs.github.com/rest/orgs/custom-properties#create-or-update-a-custom-property-for-an-organization"""
 
         from ..models import (
             BasicError,
-            OrgCustomProperty,
+            CustomProperty,
             OrgsOrgPropertiesSchemaCustomPropertyNamePutBody,
         )
 
@@ -4311,7 +4311,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=OrgCustomProperty,
+            response_model=CustomProperty,
             error_models={
                 "403": BasicError,
                 "404": BasicError,

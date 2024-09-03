@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -19,49 +19,70 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0001 import SimpleUser
-from .group_0334 import ReleaseAsset
-from .group_0065 import ReactionRollup
 
 
-class Release(GitHubModel):
-    """Release
+class PullRequestReview(GitHubModel):
+    """Pull Request Review
 
-    A release.
+    Pull Request Reviews are reviews on pull requests.
     """
 
-    url: str = Field()
-    html_url: str = Field()
-    assets_url: str = Field()
-    upload_url: str = Field()
-    tarball_url: Union[str, None] = Field()
-    zipball_url: Union[str, None] = Field()
-    id: int = Field()
+    id: int = Field(description="Unique identifier of the review")
     node_id: str = Field()
-    tag_name: str = Field(description="The name of the tag.")
-    target_commitish: str = Field(
-        description="Specifies the commitish value that determines where the Git tag is created from."
+    user: Union[None, SimpleUser] = Field()
+    body: str = Field(description="The text of the review.")
+    state: str = Field()
+    html_url: str = Field()
+    pull_request_url: str = Field()
+    links: PullRequestReviewPropLinks = Field(alias="_links")
+    submitted_at: Missing[datetime] = Field(default=UNSET)
+    commit_id: Union[str, None] = Field(
+        description="A commit SHA for the review. If the commit object was garbage collected or forcibly deleted, then it no longer exists in Git and this value will be `null`."
     )
-    name: Union[str, None] = Field()
-    body: Missing[Union[str, None]] = Field(default=UNSET)
-    draft: bool = Field(
-        description="true to create a draft (unpublished) release, false to create a published one."
+    body_html: Missing[str] = Field(default=UNSET)
+    body_text: Missing[str] = Field(default=UNSET)
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
     )
-    prerelease: bool = Field(
-        description="Whether to identify the release as a prerelease or a full release."
-    )
-    created_at: datetime = Field()
-    published_at: Union[datetime, None] = Field()
-    author: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    assets: List[ReleaseAsset] = Field()
-    body_html: Missing[Union[str, None]] = Field(default=UNSET)
-    body_text: Missing[Union[str, None]] = Field(default=UNSET)
-    mentions_count: Missing[int] = Field(default=UNSET)
-    discussion_url: Missing[str] = Field(
-        default=UNSET, description="The URL of the release discussion."
-    )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(Release)
+class PullRequestReviewPropLinks(GitHubModel):
+    """PullRequestReviewPropLinks"""
 
-__all__ = ("Release",)
+    html: PullRequestReviewPropLinksPropHtml = Field()
+    pull_request: PullRequestReviewPropLinksPropPullRequest = Field()
+
+
+class PullRequestReviewPropLinksPropHtml(GitHubModel):
+    """PullRequestReviewPropLinksPropHtml"""
+
+    href: str = Field()
+
+
+class PullRequestReviewPropLinksPropPullRequest(GitHubModel):
+    """PullRequestReviewPropLinksPropPullRequest"""
+
+    href: str = Field()
+
+
+model_rebuild(PullRequestReview)
+model_rebuild(PullRequestReviewPropLinks)
+model_rebuild(PullRequestReviewPropLinksPropHtml)
+model_rebuild(PullRequestReviewPropLinksPropPullRequest)
+
+__all__ = (
+    "PullRequestReview",
+    "PullRequestReviewPropLinks",
+    "PullRequestReviewPropLinksPropHtml",
+    "PullRequestReviewPropLinksPropPullRequest",
+)

@@ -15,16 +15,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgCopilotBillingSelectedTeamsPostBody(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
-
-    selected_teams: List[str] = Field(
-        min_length=1,
-        description="List of team names within the organization to which to grant access to GitHub Copilot.",
-    )
+from .group_0094 import Codespace
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostBody)
+class OrgsOrgCodespacesGetResponse200(GitHubModel):
+    """OrgsOrgCodespacesGetResponse200"""
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostBody",)
+    total_count: int = Field()
+    codespaces: List[Codespace] = Field()
+
+
+model_rebuild(OrgsOrgCodespacesGetResponse200)
+
+__all__ = ("OrgsOrgCodespacesGetResponse200",)

@@ -15,20 +15,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class UserSocialAccountsPostBody(GitHubModel):
-    """UserSocialAccountsPostBody
-
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: List[str] = Field(
-        description="Full URLs for the social media profiles to add."
-    )
+from .group_0015 import Installation
 
 
-model_rebuild(UserSocialAccountsPostBody)
+class UserInstallationsGetResponse200(GitHubModel):
+    """UserInstallationsGetResponse200"""
 
-__all__ = ("UserSocialAccountsPostBody",)
+    total_count: int = Field()
+    installations: List[Installation] = Field()
+
+
+model_rebuild(UserInstallationsGetResponse200)
+
+__all__ = ("UserInstallationsGetResponse200",)

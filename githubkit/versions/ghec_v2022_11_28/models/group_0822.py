@@ -9,21 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class EnterprisesEnterpriseCodeScanningAlertsGetResponse503(GitHubModel):
-    """EnterprisesEnterpriseCodeScanningAlertsGetResponse503"""
-
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
+from .group_0034 import Runner
 
 
-model_rebuild(EnterprisesEnterpriseCodeScanningAlertsGetResponse503)
+class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200(
+    GitHubModel
+):
+    """EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
 
-__all__ = ("EnterprisesEnterpriseCodeScanningAlertsGetResponse503",)
+    total_count: float = Field()
+    runners: List[Runner] = Field()
+
+
+model_rebuild(
+    EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200
+)
+
+__all__ = (
+    "EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200",
+)

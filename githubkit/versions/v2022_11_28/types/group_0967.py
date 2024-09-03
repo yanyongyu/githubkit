@@ -9,17 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0167 import ActionsVariableType
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
+class ReposOwnerRepoDispatchesPostBodyType(TypedDict):
+    """ReposOwnerRepoDispatchesPostBody"""
 
-    total_count: int
-    variables: List[ActionsVariableType]
+    event_type: str
+    client_payload: NotRequired[ReposOwnerRepoDispatchesPostBodyPropClientPayloadType]
 
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type",)
+class ReposOwnerRepoDispatchesPostBodyPropClientPayloadType(TypedDict):
+    """ReposOwnerRepoDispatchesPostBodyPropClientPayload
+
+    JSON payload with extra information about the webhook event that your action or
+    workflow may use. The maximum number of top-level properties is 10.
+    """
+
+
+__all__ = (
+    "ReposOwnerRepoDispatchesPostBodyType",
+    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadType",
+)

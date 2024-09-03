@@ -30,7 +30,7 @@ class CopilotSeatDetails(GitHubModel):
     organization.
     """
 
-    assignee: Union[SimpleUser, Team, Organization] = Field(
+    assignee: SimpleUser = Field(
         description="The assignee that has been granted access to GitHub Copilot."
     )
     organization: Missing[Union[OrganizationSimple, None]] = Field(
@@ -79,75 +79,10 @@ class EnterpriseTeam(GitHubModel):
     updated_at: datetime = Field()
 
 
-class Organization(GitHubModel):
-    """Organization
-
-    GitHub account for managing multiple users, teams, and repositories
-    """
-
-    login: str = Field(description="Unique login name of the organization")
-    url: str = Field(description="URL for the organization")
-    id: int = Field()
-    node_id: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
-    blog: Missing[str] = Field(
-        default=UNSET, description="Display blog url for the organization"
-    )
-    html_url: str = Field()
-    name: Missing[str] = Field(
-        default=UNSET, description="Display name for the organization"
-    )
-    company: Missing[str] = Field(
-        default=UNSET, description="Display company name for the organization"
-    )
-    location: Missing[str] = Field(
-        default=UNSET, description="Display location for the organization"
-    )
-    email: Missing[str] = Field(
-        default=UNSET, description="Display email for the organization"
-    )
-    has_organization_projects: bool = Field(
-        description="Specifies if organization projects are enabled for this org"
-    )
-    has_repository_projects: bool = Field(
-        description="Specifies if repository projects are enabled for repositories that belong to this org"
-    )
-    is_verified: Missing[bool] = Field(default=UNSET)
-    public_repos: int = Field()
-    public_gists: int = Field()
-    followers: int = Field()
-    following: int = Field()
-    type: str = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    plan: Missing[OrganizationPropPlan] = Field(default=UNSET)
-
-
-class OrganizationPropPlan(GitHubModel):
-    """OrganizationPropPlan"""
-
-    name: Missing[str] = Field(default=UNSET)
-    space: Missing[int] = Field(default=UNSET)
-    private_repos: Missing[int] = Field(default=UNSET)
-    filled_seats: Missing[int] = Field(default=UNSET)
-    seats: Missing[int] = Field(default=UNSET)
-
-
 model_rebuild(CopilotSeatDetails)
 model_rebuild(EnterpriseTeam)
-model_rebuild(Organization)
-model_rebuild(OrganizationPropPlan)
 
 __all__ = (
     "CopilotSeatDetails",
     "EnterpriseTeam",
-    "Organization",
-    "OrganizationPropPlan",
 )

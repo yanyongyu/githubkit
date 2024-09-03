@@ -17,19 +17,16 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0049 import CopilotSeatDetails
+from .group_0034 import Runner
 
 
-class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
+class EnterprisesEnterpriseActionsRunnersGetResponse200(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnersGetResponse200"""
 
-    total_seats: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of Copilot seats the enterprise is being billed for. Users with access through multiple organizations or enterprise teams are only counted once.",
-    )
-    seats: Missing[List[CopilotSeatDetails]] = Field(default=UNSET)
+    total_count: Missing[float] = Field(default=UNSET)
+    runners: Missing[List[Runner]] = Field(default=UNSET)
 
 
-model_rebuild(EnterprisesEnterpriseCopilotBillingSeatsGetResponse200)
+model_rebuild(EnterprisesEnterpriseActionsRunnersGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseCopilotBillingSeatsGetResponse200",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersGetResponse200",)

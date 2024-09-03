@@ -9,18 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType(TypedDict):
-    """OrgsOrgPropertiesSchemaCustomPropertyNamePutBody"""
+class OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type(TypedDict):
+    """OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422"""
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, List[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[List[str], None]]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-__all__ = ("OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType",)
+__all__ = ("OrgsOrgOutsideCollaboratorsUsernameDeleteResponse422Type",)

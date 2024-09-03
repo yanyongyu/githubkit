@@ -33,6 +33,7 @@ from .org_block import Event as OrgBlockEvent
 from .milestone import Event as MilestoneEvent
 from .deploy_key import Event as DeployKeyEvent
 from .page_build import Event as PageBuildEvent
+from .sub_issues import Event as SubIssuesEvent
 from .deployment import Event as DeploymentEvent
 from .discussion import Event as DiscussionEvent
 from .membership import Event as MembershipEvent
@@ -89,6 +90,7 @@ from .membership import action_types as membership_action_types
 from .page_build import action_types as page_build_action_types
 from .repository import action_types as repository_action_types
 from .repository_ruleset import Event as RepositoryRulesetEvent
+from .sub_issues import action_types as sub_issues_action_types
 from .code_scanning_alert import Event as CodeScanningAlertEvent
 from .pull_request_review import Event as PullRequestReviewEvent
 from .check_suite import action_types as check_suite_action_types
@@ -241,6 +243,7 @@ WebhookEvent = Union[
     SponsorshipEvent,
     StarEvent,
     StatusEvent,
+    SubIssuesEvent,
     TeamAddEvent,
     TeamEvent,
     WatchEvent,
@@ -316,6 +319,7 @@ webhook_action_types = {
     "sponsorship": sponsorship_action_types,
     "star": star_action_types,
     "status": status_action_types,
+    "sub_issues": sub_issues_action_types,
     "team_add": team_add_action_types,
     "team": team_action_types,
     "watch": watch_action_types,
@@ -391,6 +395,7 @@ webhook_event_types = {
     "sponsorship": SponsorshipEvent,
     "star": StarEvent,
     "status": StatusEvent,
+    "sub_issues": SubIssuesEvent,
     "team_add": TeamAddEvent,
     "team": TeamEvent,
     "watch": WatchEvent,

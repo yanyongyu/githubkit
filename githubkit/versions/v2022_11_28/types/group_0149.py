@@ -13,7 +13,7 @@ from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0025 import TeamSimpleType
+from .group_0026 import TeamSimpleType
 
 
 class TeamFullType(TypedDict):

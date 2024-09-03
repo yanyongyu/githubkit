@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody"""
+class ReposOwnerRepoActionsJobsJobIdRerunPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
 
-    labels: List[str]
+    enable_debug_logging: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType",)
+__all__ = ("ReposOwnerRepoActionsJobsJobIdRerunPostBodyType",)

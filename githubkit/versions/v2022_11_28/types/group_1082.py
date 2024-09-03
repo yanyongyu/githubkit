@@ -12,14 +12,11 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0015 import InstallationType
+
+class UserCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+
+    selected_repository_ids: List[int]
 
 
-class UserInstallationsGetResponse200Type(TypedDict):
-    """UserInstallationsGetResponse200"""
-
-    total_count: int
-    installations: List[InstallationType]
-
-
-__all__ = ("UserInstallationsGetResponse200Type",)
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBodyType",)

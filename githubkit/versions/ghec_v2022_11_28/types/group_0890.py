@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0085 import OrganizationCustomRepositoryRoleType
+from .group_0049 import CopilotSeatDetailsType
 
 
-class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
+    """OrgsOrgCopilotBillingSeatsGetResponse200"""
 
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[List[OrganizationCustomRepositoryRoleType]]
+    total_seats: NotRequired[int]
+    seats: NotRequired[List[CopilotSeatDetailsType]]
 
 
-__all__ = ("OrgsOrgCustomRepositoryRolesGetResponse200Type",)
+__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200Type",)

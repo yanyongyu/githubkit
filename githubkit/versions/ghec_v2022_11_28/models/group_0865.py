@@ -16,14 +16,16 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsVariablesNameRepositoriesPutBody(GitHubModel):
-    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
+class OrgsOrgActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
+    """OrgsOrgActionsRunnersRunnerIdLabelsPostBody"""
 
-    selected_repository_ids: List[int] = Field(
-        description="The IDs of the repositories that can access the organization variable."
+    labels: List[str] = Field(
+        max_length=100,
+        min_length=1,
+        description="The names of the custom labels to add to the runner.",
     )
 
 
-model_rebuild(OrgsOrgActionsVariablesNameRepositoriesPutBody)
+model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPostBody)
 
-__all__ = ("OrgsOrgActionsVariablesNameRepositoriesPutBody",)
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPostBody",)

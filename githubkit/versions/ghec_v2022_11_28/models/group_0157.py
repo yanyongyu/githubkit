@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleTagNamePatternPropParameters(GitHubModel):
-    """RepositoryRuleTagNamePatternPropParameters"""
+class RepositoryRuleBranchNamePatternPropParameters(GitHubModel):
+    """RepositoryRuleBranchNamePatternPropParameters"""
 
     name: Missing[str] = Field(
         default=UNSET, description="How this rule will appear to users."
@@ -33,6 +33,6 @@ class RepositoryRuleTagNamePatternPropParameters(GitHubModel):
     pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRuleTagNamePatternPropParameters)
+model_rebuild(RepositoryRuleBranchNamePatternPropParameters)
 
-__all__ = ("RepositoryRuleTagNamePatternPropParameters",)
+__all__ = ("RepositoryRuleBranchNamePatternPropParameters",)

@@ -9,22 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0167 import ActionsVariable
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
-
-    total_count: int = Field()
-    variables: List[ActionsVariable] = Field()
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 
-model_rebuild(ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200)
+class ReposOwnerRepoDispatchesPostBody(GitHubModel):
+    """ReposOwnerRepoDispatchesPostBody"""
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200",)
+    event_type: str = Field(
+        min_length=1,
+        max_length=100,
+        description="A custom webhook event name. Must be 100 characters or fewer.",
+    )
+    client_payload: Missing[ReposOwnerRepoDispatchesPostBodyPropClientPayload] = Field(
+        default=UNSET,
+        description="JSON payload with extra information about the webhook event that your action or workflow may use. The maximum number of top-level properties is 10.",
+    )
+
+
+class ReposOwnerRepoDispatchesPostBodyPropClientPayload(ExtraGitHubModel):
+    """ReposOwnerRepoDispatchesPostBodyPropClientPayload
+
+    JSON payload with extra information about the webhook event that your action or
+    workflow may use. The maximum number of top-level properties is 10.
+    """
+
+
+model_rebuild(ReposOwnerRepoDispatchesPostBody)
+model_rebuild(ReposOwnerRepoDispatchesPostBodyPropClientPayload)
+
+__all__ = (
+    "ReposOwnerRepoDispatchesPostBody",
+    "ReposOwnerRepoDispatchesPostBodyPropClientPayload",
+)

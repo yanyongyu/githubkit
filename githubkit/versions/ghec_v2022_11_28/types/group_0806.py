@@ -9,17 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
-from .group_0029 import OrganizationSimpleType
+
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type(TypedDict):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
-
-    total_count: float
-    organizations: List[OrganizationSimpleType]
-
-
-__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type",)
+__all__ = ("AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type",)

@@ -9,15 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0001 import SimpleUserType
+from .group_0266 import DependabotAlertPropDependencyType
+from .group_0053 import DependabotAlertSecurityAdvisoryType
+from .group_0052 import DependabotAlertSecurityVulnerabilityType
 
 
-class MetadataType(TypedDict):
-    """metadata
+class DependabotAlertType(TypedDict):
+    """DependabotAlert
 
-    User-defined metadata to store domain-specific information limited to 8 keys
-    with scalar values.
+    A Dependabot alert.
     """
 
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    dismissed_at: Union[datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[datetime, None]
+    auto_dismissed_at: NotRequired[Union[datetime, None]]
 
-__all__ = ("MetadataType",)
+
+__all__ = ("DependabotAlertType",)

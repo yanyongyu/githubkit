@@ -17,17 +17,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0408 import EnterpriseWebhooks
-from .group_0409 import SimpleInstallation
-from .group_0411 import RepositoryWebhooks
-from .group_0412 import SimpleUserWebhooks
-from .group_0410 import OrganizationSimpleWebhooks
+from .group_0413 import EnterpriseWebhooks
+from .group_0414 import SimpleInstallation
+from .group_0416 import RepositoryWebhooks
+from .group_0417 import SimpleUserWebhooks
+from .group_0464 import WebhooksSponsorship
+from .group_0415 import OrganizationSimpleWebhooks
 
 
-class WebhookStarDeleted(GitHubModel):
-    """star deleted event"""
+class WebhookSponsorshipEdited(GitHubModel):
+    """sponsorship edited event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookSponsorshipEditedPropChanges = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -43,7 +45,8 @@ class WebhookStarDeleted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: RepositoryWebhooks = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
+        default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
@@ -51,11 +54,32 @@ class WebhookStarDeleted(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    starred_at: None = Field(
-        description="The time the star was created. This is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. Will be `null` for the `deleted` action."
+    sponsorship: WebhooksSponsorship = Field()
+
+
+class WebhookSponsorshipEditedPropChanges(GitHubModel):
+    """WebhookSponsorshipEditedPropChanges"""
+
+    privacy_level: Missing[WebhookSponsorshipEditedPropChangesPropPrivacyLevel] = Field(
+        default=UNSET
     )
 
 
-model_rebuild(WebhookStarDeleted)
+class WebhookSponsorshipEditedPropChangesPropPrivacyLevel(GitHubModel):
+    """WebhookSponsorshipEditedPropChangesPropPrivacyLevel"""
 
-__all__ = ("WebhookStarDeleted",)
+    from_: str = Field(
+        alias="from",
+        description="The `edited` event types include the details about the change when someone edits a sponsorship to change the privacy.",
+    )
+
+
+model_rebuild(WebhookSponsorshipEdited)
+model_rebuild(WebhookSponsorshipEditedPropChanges)
+model_rebuild(WebhookSponsorshipEditedPropChangesPropPrivacyLevel)
+
+__all__ = (
+    "WebhookSponsorshipEdited",
+    "WebhookSponsorshipEditedPropChanges",
+    "WebhookSponsorshipEditedPropChangesPropPrivacyLevel",
+)

@@ -9,22 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ReposOwnerRepoCollaboratorsUsernamePutBody(GitHubModel):
-    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
-
-    permission: Missing[str] = Field(
-        default=UNSET,
-        description="The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any.",
-    )
+from .group_0078 import Codespace
 
 
-model_rebuild(ReposOwnerRepoCollaboratorsUsernamePutBody)
+class ReposOwnerRepoCodespacesGetResponse200(GitHubModel):
+    """ReposOwnerRepoCodespacesGetResponse200"""
 
-__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBody",)
+    total_count: int = Field()
+    codespaces: List[Codespace] = Field()
+
+
+model_rebuild(ReposOwnerRepoCodespacesGetResponse200)
+
+__all__ = ("ReposOwnerRepoCodespacesGetResponse200",)

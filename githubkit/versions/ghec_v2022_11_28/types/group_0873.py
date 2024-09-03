@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0094 import CodespaceType
+from .group_0082 import MinimalRepositoryType
 
 
-class OrgsOrgCodespacesGetResponse200Type(TypedDict):
-    """OrgsOrgCodespacesGetResponse200"""
+class OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgActionsVariablesNameRepositoriesGetResponse200"""
 
     total_count: int
-    codespaces: List[CodespaceType]
+    repositories: List[MinimalRepositoryType]
 
 
-__all__ = ("OrgsOrgCodespacesGetResponse200Type",)
+__all__ = ("OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type",)

@@ -9,29 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0373 import MetaType
+from typing_extensions import TypedDict
 
 
-class ScimEnterpriseGroupResponseAllof1Type(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1"""
+class ReferrerTrafficType(TypedDict):
+    """Referrer Traffic
 
-    id: NotRequired[str]
-    members: NotRequired[List[ScimEnterpriseGroupResponseAllof1PropMembersItemsType]]
-    meta: NotRequired[MetaType]
+    Referrer Traffic
+    """
 
-
-class ScimEnterpriseGroupResponseAllof1PropMembersItemsType(TypedDict):
-    """ScimEnterpriseGroupResponseAllof1PropMembersItems"""
-
-    value: NotRequired[str]
-    ref: NotRequired[str]
-    display: NotRequired[str]
+    referrer: str
+    count: int
+    uniques: int
 
 
-__all__ = (
-    "ScimEnterpriseGroupResponseAllof1Type",
-    "ScimEnterpriseGroupResponseAllof1PropMembersItemsType",
-)
+__all__ = ("ReferrerTrafficType",)

@@ -13,29 +13,49 @@ from typing import Union
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0026 import TeamSimple
 
-class OrganizationSimple(GitHubModel):
-    """Organization Simple
 
-    A GitHub organization.
+class Team(GitHubModel):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    login: str = Field()
     id: int = Field()
     node_id: str = Field()
-    url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
+    name: str = Field()
+    slug: str = Field()
     description: Union[str, None] = Field()
+    privacy: Missing[str] = Field(default=UNSET)
+    notification_setting: Missing[str] = Field(default=UNSET)
+    permission: str = Field()
+    permissions: Missing[TeamPropPermissions] = Field(default=UNSET)
+    url: str = Field()
+    html_url: str = Field()
+    members_url: str = Field()
+    repositories_url: str = Field()
+    parent: Union[None, TeamSimple] = Field()
 
 
-model_rebuild(OrganizationSimple)
+class TeamPropPermissions(GitHubModel):
+    """TeamPropPermissions"""
 
-__all__ = ("OrganizationSimple",)
+    pull: bool = Field()
+    triage: bool = Field()
+    push: bool = Field()
+    maintain: bool = Field()
+    admin: bool = Field()
+
+
+model_rebuild(Team)
+model_rebuild(TeamPropPermissions)
+
+__all__ = (
+    "Team",
+    "TeamPropPermissions",
+)
