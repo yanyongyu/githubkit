@@ -81,7 +81,7 @@ githubkit supports **both pydantic v1 and v2**, but pydantic v2 is recommended. 
 
 ## Quick Start
 
-Here is some common use cases to help you get started quickly. For more detailed usage, please refer to the [Usage](#usage) section.
+Here is some common use cases to help you get started quickly. The following examples are written in sync style, you can also use async style by using functions with `async_` prefix. For more detailed usage, please refer to the [Usage](#usage) section.
 
 > APIs are fully typed. Type hints in the following examples are just for reference only.
 
@@ -103,6 +103,12 @@ data: dict = github.graphql("{ viewer { login } }")
 
 ### Develop an OAuth APP (GitHub APP) with web flow
 
+OAuth web flow allows you to authenticate as a user and act on behalf of the user.
+
+Note that if you are developing a GitHub APP, you may opt-in / opt-out of the user-to-server token expiration feature. If you opt-in, the user-to-server token will expire after a certain period of time, and you need to use the refresh token to generate a new token. In this case, you need to do more work to handle the token refresh. See [GitHub Docs - Refreshing user access tokens](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/refreshing-user-access-tokens) for more information.
+
+If you are developing an OAuth APP or a GitHub APP without user-to-server token expiration:
+
 ```python
 from githubkit.versions.latest.models import PublicUser, PrivateUser
 from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
@@ -114,23 +120,16 @@ github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
 # one time usage
 user_github = github.with_auth(github.auth.as_web_user("<code>"))
 
-# or, store the user token in a database
+# or, store the user token in a database for later use
 auth: OAuthTokenAuthStrategy = github.auth.as_web_user("<code>").exchange_token(github)
+# store the user token to database
 access_token = auth.token
-refresh_token = auth.refresh_token
+
 # restore the user token from database
 
-# when using OAuth APP or GitHub APP without user-to-server token expiration
 user_github = github.with_auth(
     OAuthTokenAuthStrategy(
         "<client_id>", "<client_secret>", token=access_token
-    )
-)
-# OR when using GitHub APP with user-to-server token expiration
-# you can use the refresh_token to generate a new token
-user_github = github.with_auth(
-    OAuthTokenAuthStrategy(
-        "<client_id>", "<client_secret>", refresh_token=refresh_token
     )
 )
 
@@ -138,11 +137,51 @@ user_github = github.with_auth(
 resp = user_github.rest.users.get_authenticated()
 user: PublicUser | PrivateUser = resp.parsed_data
 
-# you can get the user login id now
-login_id = user.login
+# you can get the user name and id now
+username = user.login
+user_id = user.id
 ```
 
-### Develop an OAuth APP with device flow
+If you are developing a GitHub APP with user-to-server token expiration:
+
+```python
+from githubkit.versions.latest.models import PublicUser, PrivateUser
+from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
+
+github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
+
+# redirect user to github oauth page and get the code from callback
+
+# one time usage
+user_github = github.with_auth(github.auth.as_web_user("<code>"))
+
+# or, store the user refresh token in a database for later use
+auth: OAuthTokenAuthStrategy = github.auth.as_web_user("<code>").exchange_token(github)
+refresh_token = auth.refresh_token
+
+# restore the user refresh token from database
+
+# you can use the refresh_token to generate a new token
+auth = OAuthTokenAuthStrategy(
+    "<client_id>", "<client_secret>", refresh_token=refresh_token
+)
+# refresh the token manually if you want to store the new refresh token
+# otherwise, the token will be refreshed automatically when you make a request
+auth.refresh(github)
+refresh_token = auth.refresh_token
+
+user_github = github.with_auth(auth)
+
+# now you can act as the user
+resp = user_github.rest.users.get_authenticated()
+user: PublicUser | PrivateUser = resp.parsed_data
+
+# you can get the user name and id now
+username = user.login
+user_id = user.id
+```
+
+### Develop an OAuth APP (GitHub APP) with device flow
 
 ```python
 from githubkit import GitHub, OAuthDeviceAuthStrategy, OAuthTokenAuthStrategy
@@ -167,7 +206,7 @@ user_github = user_github.with_auth(
 
 ### Develop a GitHub APP
 
-Authenticating as a repository installation to do something with the repository:
+Authenticating as a installation by repository name:
 
 ```python
 from githubkit import GitHub, AppAuthStrategy
@@ -184,11 +223,12 @@ installation_github = github.with_auth(
     github.auth.as_installation(repo_installation.id)
 )
 
-resp = installation_github.rest.issues.get("owner", "repo", 1)
-issue: Issue = resp.parsed_data
+# create a comment on an issue
+resp = installation_github.rest.issues.create_comment("owner", "repo", 1, body="Hello")
+issue: IssueComment = resp.parsed_data
 ```
 
-Authenticating as a user installation to do something on behalf of the user:
+Authenticating as a installation by username:
 
 ```python
 from githubkit import GitHub, AppAuthStrategy
@@ -205,6 +245,7 @@ installation_github = github.with_auth(
     github.auth.as_installation(user_installation.id)
 )
 
+# create a comment on an issue
 resp = installation_github.rest.issues.create_comment("owner", "repo", 1, body="Hello")
 issue: IssueComment = resp.parsed_data
 ```
