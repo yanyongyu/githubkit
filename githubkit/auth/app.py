@@ -29,7 +29,7 @@ class AppAuth(httpx.Auth):
     """GitHub App or Installation Authentication Hook"""
 
     github: "GitHubCore"
-    app_id: Union[str, int]
+    app_id: Union[str, int, None]
     private_key: str
     client_id: Optional[str] = None
     client_secret: Optional[str] = None
@@ -39,11 +39,21 @@ class AppAuth(httpx.Auth):
     permissions: Union[Unset, "AppPermissionsType"] = UNSET
     cache: "BaseCache" = DEFAULT_CACHE
 
-    JWT_CACHE_KEY = "githubkit:auth:app:{app_id}:jwt"
+    JWT_CACHE_KEY = "githubkit:auth:app:{issuer}:jwt"
     INSTALLATION_CACHE_KEY = (
-        "githubkit:auth:app:{app_id}:installation:"
+        "githubkit:auth:app:{issuer}:installation:"
         "{installation_id}:{permissions}:{repositories}:{repository_ids}"
     )
+
+    @property
+    def issuer(self) -> str:
+        # issuer can be either app_id or client_id
+        issuer = self.client_id if self.app_id is None else self.app_id
+        if issuer is None:
+            raise AuthCredentialError(
+                "Either app_id or client_id must be provided for GitHub APP"
+            )
+        return str(issuer)
 
     def _get_api_route(self, url: httpx.URL) -> httpx.URL:
         """Get the api route (path only) for the given url."""
@@ -65,16 +75,17 @@ class AppAuth(httpx.Auth):
                 "JWT support for GitHub APP should be installed "
                 "with `pip install githubkit[auth-app]`"
             )
+
         time = datetime.now(timezone.utc) - timedelta(minutes=1)
         expire_time = time + timedelta(minutes=10)
         return jwt.encode(
-            {"iss": str(self.app_id), "iat": time, "exp": expire_time},
+            {"iss": self.issuer, "iat": time, "exp": expire_time},
             self.private_key,
             algorithm="RS256",
         )
 
     def _get_jwt_cache_key(self) -> str:
-        return self.JWT_CACHE_KEY.format(app_id=self.app_id)
+        return self.JWT_CACHE_KEY.format(issuer=self.issuer)
 
     def get_jwt(self) -> str:
         cache_key = self._get_jwt_cache_key()
@@ -159,7 +170,7 @@ class AppAuth(httpx.Auth):
             [] if isinstance(self.repository_ids, Unset) else self.repository_ids
         )
         return self.INSTALLATION_CACHE_KEY.format(
-            app_id=self.app_id,
+            issuer=self.issuer,
             installation_id=self.installation_id,
             permissions=",".join(
                 name if value == "read" else f"{name}!"
@@ -247,11 +258,18 @@ class AppAuth(httpx.Auth):
 class AppAuthStrategy(BaseAuthStrategy):
     """GitHub App Authentication"""
 
-    app_id: Union[str, int]
+    app_id: Union[str, int, None]
     private_key: str
     client_id: Optional[str] = None
     client_secret: Optional[str] = None
     cache: "BaseCache" = DEFAULT_CACHE
+
+    def __post_init__(self):
+        # either app_id or client_id must be provided
+        if self.app_id is None and self.client_id is None:
+            raise AuthCredentialError(
+                "Either app_id or client_id must be provided for GitHub APP"
+            )
 
     def as_installation(
         self,
@@ -294,7 +312,7 @@ class AppAuthStrategy(BaseAuthStrategy):
 class AppInstallationAuthStrategy(BaseAuthStrategy):
     """GitHub App Installation Authentication"""
 
-    app_id: Union[str, int]
+    app_id: Union[str, int, None]
     private_key: str
     installation_id: int
     client_id: Optional[str] = None
@@ -303,6 +321,13 @@ class AppInstallationAuthStrategy(BaseAuthStrategy):
     repository_ids: Union[Unset, List[int]] = UNSET
     permissions: Union[Unset, "AppPermissionsType"] = UNSET
     cache: "BaseCache" = DEFAULT_CACHE
+
+    def __post_init__(self):
+        # either app_id or client_id must be provided
+        if self.app_id is None and self.client_id is None:
+            raise AuthCredentialError(
+                "Either app_id or client_id must be provided for GitHub APP"
+            )
 
     def as_app(self) -> AppAuthStrategy:
         return AppAuthStrategy(
