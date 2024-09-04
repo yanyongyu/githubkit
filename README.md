@@ -81,8 +81,7 @@ githubkit supports **both pydantic v1 and v2**, but pydantic v2 is recommended. 
 
 ## Quick Start
 
-Here is some common use cases to help you get started quickly. The following examples are written in sync style, you can also use async style by using function with `async_` prefix.
-For more detailed usage, please refer to the [Usage](#usage) section.
+Here is some common use cases to help you get started quickly. The following examples are written in sync style, you can also use async style by using functions with `async_` prefix. For more detailed usage, please refer to the [Usage](#usage) section.
 
 > APIs are fully typed. Type hints in the following examples are just for reference only.
 
@@ -138,8 +137,9 @@ user_github = github.with_auth(
 resp = user_github.rest.users.get_authenticated()
 user: PublicUser | PrivateUser = resp.parsed_data
 
-# you can get the user login id now
-login_id = user.login
+# you can get the user name and id now
+username = user.login
+user_id = user.id
 ```
 
 If you are developing a GitHub APP with user-to-server token expiration:
@@ -176,11 +176,12 @@ user_github = github.with_auth(auth)
 resp = user_github.rest.users.get_authenticated()
 user: PublicUser | PrivateUser = resp.parsed_data
 
-# you can get the user login id now
-login_id = user.login
+# you can get the user name and id now
+username = user.login
+user_id = user.id
 ```
 
-### Develop an OAuth APP with device flow
+### Develop an OAuth APP (GitHub APP) with device flow
 
 ```python
 from githubkit import GitHub, OAuthDeviceAuthStrategy, OAuthTokenAuthStrategy
