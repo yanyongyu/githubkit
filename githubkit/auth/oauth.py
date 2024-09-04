@@ -712,6 +712,8 @@ class OAuthWebAuthStrategy(BaseAuthStrategy):
         return self._token_auth.refresh_token_expire_time
 
     def exchange_token(self, github: "GitHubCore") -> OAuthTokenAuthStrategy:
+        """Exchange token using code and return the new token auth strategy."""
+
         if self._token_auth is not None:
             return self._token_auth
 
@@ -738,6 +740,8 @@ class OAuthWebAuthStrategy(BaseAuthStrategy):
     async def async_exchange_token(
         self, github: "GitHubCore"
     ) -> OAuthTokenAuthStrategy:
+        """Exchange token using code and return the new token auth strategy."""
+
         if self._token_auth is not None:
             return self._token_auth
 
@@ -813,6 +817,8 @@ class OAuthDeviceAuthStrategy(BaseAuthStrategy):
         return self._token_auth.refresh_token_expire_time
 
     def exchange_token(self, github: "GitHubCore") -> OAuthTokenAuthStrategy:
+        """Exchange token using device code and return the new token auth strategy."""
+
         if self._token_auth is not None:
             return self._token_auth
 
@@ -860,6 +866,8 @@ class OAuthDeviceAuthStrategy(BaseAuthStrategy):
     async def async_exchange_token(
         self, github: "GitHubCore"
     ) -> OAuthTokenAuthStrategy:
+        """Exchange token using device code and return the new token auth strategy."""
+
         if self._token_auth is not None:
             return self._token_auth
 
