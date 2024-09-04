@@ -1,4 +1,5 @@
 from time import sleep
+from typing_extensions import Self
 from dataclasses import field, dataclass
 from datetime import datetime, timezone, timedelta
 from typing import (
@@ -608,6 +609,62 @@ class OAuthTokenAuthStrategy(BaseAuthStrategy):
                 "expire_time should be provided "
                 "when both token and refresh_token are provided."
             )
+
+    def refresh(self, github: "GitHubCore") -> Self:
+        """Refresh access token with refresh token in place and return self."""
+
+        if self.refresh_token is None:
+            raise AuthCredentialError("Refresh token is not provided.")
+
+        flow = refresh_token(
+            github, self.client_id, self.client_secret, self.refresh_token
+        )
+        with github:
+            with github.get_sync_client() as client:
+                refresh_request = next(flow)
+                while True:
+                    response = client.send(refresh_request)
+                    response.read()
+                    try:
+                        refresh_request = flow.send(response)
+                    except StopIteration as e:
+                        data = e.value
+                        break
+
+        result = _parse_token_exchange_response(data)
+        self.token = result["token"]
+        self.expire_time = result["expire_time"]
+        self.refresh_token = result["refresh_token"]
+        self.refresh_token_expire_time = result["refresh_token_expire_time"]
+        return self
+
+    async def async_refresh(self, github: "GitHubCore") -> Self:
+        """Refresh access token with refresh token in place and return self."""
+
+        if self.refresh_token is None:
+            raise AuthCredentialError("Refresh token is not provided.")
+
+        flow = refresh_token(
+            github, self.client_id, self.client_secret, self.refresh_token
+        )
+        async with github:
+            async with github.get_async_client() as client:
+                refresh_request = next(flow)
+                while True:
+                    response = await client.send(refresh_request)
+                    await response.aread()
+                    try:
+                        refresh_request = flow.send(response)
+                    except StopIteration as e:
+                        data = e.value
+                        break
+
+        result = _parse_token_exchange_response(data)
+        self.token = result["token"]
+        self.expire_time = result["expire_time"]
+        self.refresh_token = result["refresh_token"]
+        self.refresh_token_expire_time = result["refresh_token_expire_time"]
+        return self
 
     def get_auth_flow(self, github: "GitHubCore") -> httpx.Auth:
         return OAuthTokenAuth(github, self)
