@@ -405,7 +405,7 @@ class OAuthWebAuth(httpx.Auth):
 
         auth = token_auth_strategy.get_auth_flow(self.github)
         flow = auth.async_auth_flow(request)
-        request = await anext(flow)
+        request = await flow.__anext__()
         while True:
             response = yield request
             try:
@@ -558,7 +558,7 @@ class OAuthDeviceAuth(httpx.Auth):
 
         auth = auth_strategy.get_auth_flow(self.github)
         flow = auth.async_auth_flow(request)
-        request = await anext(flow)
+        request = await flow.__anext__()
         while True:
             response = yield request
             await response.aread()
