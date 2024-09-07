@@ -39,7 +39,7 @@ class WebhookMergeGroupDestroyed(GitHubModel):
     )
     merge_group: MergeGroup = Field(
         title="Merge Group",
-        description="A group of pull requests that the merge queue has grouped together to be merged.\n",
+        description="A group of pull requests that the merge queue has grouped together to be merged.",
     )
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,

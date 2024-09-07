@@ -10,9 +10,10 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
+from typing_extensions import Annotated
 from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
-from pydantic import BaseModel
+from pydantic import Field, BaseModel
 
 from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
@@ -695,7 +696,10 @@ class UsersClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[UserEmailsPostBodyOneof0, List[str], str], json
+            Union[
+                UserEmailsPostBodyOneof0, Annotated[List[str], Field(min_length=1)], str
+            ],
+            json,
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -757,7 +761,10 @@ class UsersClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[UserEmailsPostBodyOneof0, List[str], str], json
+            Union[
+                UserEmailsPostBodyOneof0, Annotated[List[str], Field(min_length=1)], str
+            ],
+            json,
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -814,7 +821,12 @@ class UsersClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[UserEmailsDeleteBodyOneof0, List[str], str], json
+            Union[
+                UserEmailsDeleteBodyOneof0,
+                Annotated[List[str], Field(min_length=1)],
+                str,
+            ],
+            json,
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -870,7 +882,12 @@ class UsersClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[UserEmailsDeleteBodyOneof0, List[str], str], json
+            Union[
+                UserEmailsDeleteBodyOneof0,
+                Annotated[List[str], Field(min_length=1)],
+                str,
+            ],
+            json,
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

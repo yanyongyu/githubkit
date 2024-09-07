@@ -86,6 +86,8 @@ class TeamsClient:
         self,
         org: str,
         group_id: int,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ExternalGroup]:
@@ -95,11 +97,17 @@ class TeamsClient:
 
         url = f"/orgs/{org}/external-group/{group_id}"
 
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return self._github.request(
             "GET",
             url,
+            params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=ExternalGroup,
         )
@@ -108,6 +116,8 @@ class TeamsClient:
         self,
         org: str,
         group_id: int,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[ExternalGroup]:
@@ -117,11 +127,17 @@ class TeamsClient:
 
         url = f"/orgs/{org}/external-group/{group_id}"
 
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         return await self._github.arequest(
             "GET",
             url,
+            params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=ExternalGroup,
         )

@@ -69,7 +69,7 @@ class OrgsOrgRulesetsPostBody(GitHubModel):
     ] = Field(
         default=UNSET,
         title="Organization ruleset conditions",
-        description="Conditions for an organization ruleset. The conditions object should contain both `repository_name` and `ref_name` properties or both `repository_id` and `ref_name` properties.\n",
+        description="Conditions for an organization ruleset. The conditions object should contain both `repository_name` and `ref_name` properties or both `repository_id` and `ref_name` properties.",
     )
     rules: Missing[
         List[

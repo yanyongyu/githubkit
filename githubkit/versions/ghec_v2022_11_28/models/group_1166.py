@@ -29,7 +29,8 @@ class UserEmailsDeleteBodyOneof0(GitHubModel):
     """
 
     emails: List[str] = Field(
-        description="Email addresses associated with the GitHub user account."
+        min_length=1,
+        description="Email addresses associated with the GitHub user account.",
     )
 
 
