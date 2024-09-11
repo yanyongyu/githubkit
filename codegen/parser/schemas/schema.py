@@ -370,27 +370,37 @@ class ListSchema(SchemaData):
     def get_model_imports(self) -> set[str]:
         imports = super().get_model_imports()
         imports.add("from typing import List")
+        imports.add("from githubkit.compat import PYDANTIC_V2")
         imports.update(self.item_schema.get_model_imports())
         return imports
 
     @override
     def get_type_imports(self) -> set[str]:
         imports = super().get_type_imports()
-        imports = {"from typing import List"}
+        imports = {
+            "from typing import List",
+            "from githubkit.compat import PYDANTIC_V2",
+        }
         imports.update(self.item_schema.get_type_imports())
         return imports
 
     @override
     def get_param_imports(self) -> set[str]:
         imports = super().get_param_imports()
-        imports = {"from typing import List"}
+        imports = {
+            "from typing import List",
+            "from githubkit.compat import PYDANTIC_V2",
+        }
         imports.update(self.item_schema.get_param_imports())
         return imports
 
     @override
     def get_using_imports(self) -> set[str]:
         imports = super().get_using_imports()
-        imports = {"from typing import List"}
+        imports = {
+            "from typing import List",
+            "from githubkit.compat import PYDANTIC_V2",
+        }
         imports.update(self.item_schema.get_using_imports())
         return imports
 
@@ -403,9 +413,9 @@ class ListSchema(SchemaData):
         # if isinstance(self.item_schema, ModelSchema | UnionSchema):
         #     return args
         if self.max_length is not None:
-            args["max_length"] = repr(self.max_length)
+            args["max_length"] = repr(self.max_length) + " if PYDANTIC_V2 else None"
         if self.min_length is not None:
-            args["min_length"] = repr(self.min_length)
+            args["min_length"] = repr(self.min_length) + " if PYDANTIC_V2 else None"
         return args
 
     @override
@@ -438,27 +448,37 @@ class UniqueListSchema(SchemaData):
     def get_model_imports(self) -> set[str]:
         imports = super().get_model_imports()
         imports.add("from githubkit.typing import UniqueList")
+        imports.add("from githubkit.compat import PYDANTIC_V2")
         imports.update(self.item_schema.get_model_imports())
         return imports
 
     @override
     def get_type_imports(self) -> set[str]:
         imports = super().get_type_imports()
-        imports = {"from githubkit.typing import UniqueList"}
+        imports = {
+            "from githubkit.typing import UniqueList",
+            "from githubkit.compat import PYDANTIC_V2",
+        }
         imports.update(self.item_schema.get_type_imports())
         return imports
 
     @override
     def get_param_imports(self) -> set[str]:
         imports = super().get_param_imports()
-        imports = {"from githubkit.typing import UniqueList"}
+        imports = {
+            "from githubkit.typing import UniqueList",
+            "from githubkit.compat import PYDANTIC_V2",
+        }
         imports.update(self.item_schema.get_param_imports())
         return imports
 
     @override
     def get_using_imports(self) -> set[str]:
         imports = super().get_using_imports()
-        imports = {"from githubkit.typing import UniqueList"}
+        imports = {
+            "from githubkit.typing import UniqueList",
+            "from githubkit.compat import PYDANTIC_V2",
+        }
         imports.update(self.item_schema.get_using_imports())
         return imports
 
@@ -471,9 +491,9 @@ class UniqueListSchema(SchemaData):
         # if isinstance(self.item_schema, ModelSchema | UnionSchema):
         #     return args
         if self.max_length is not None:
-            args["max_length"] = repr(self.max_length)
+            args["max_length"] = repr(self.max_length) + " if PYDANTIC_V2 else None"
         if self.min_length is not None:
-            args["min_length"] = repr(self.min_length)
+            args["min_length"] = repr(self.min_length) + " if PYDANTIC_V2 else None"
         return args
 
     @override
