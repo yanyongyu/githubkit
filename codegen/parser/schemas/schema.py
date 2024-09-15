@@ -403,11 +403,11 @@ class ListSchema(SchemaData):
         # See https://github.com/samuelcolvin/pydantic/issues/3745
         # So remove constraints when using pydantic v1
         if self.max_length is not None:
-            # args["max_items"] = repr(self.max_length) + " if not PYDANTIC_V2 else None"
-            args["max_length"] = repr(self.max_length) + " if PYDANTIC_V2 else None"
+            # args["max_items"] = f"{self.max_length!r} if not PYDANTIC_V2 else None"
+            args["max_length"] = f"{self.max_length!r} if PYDANTIC_V2 else None"
         if self.min_length is not None:
-            # args["min_items"] = repr(self.min_length) + " if not PYDANTIC_V2 else None"
-            args["min_length"] = repr(self.min_length) + " if PYDANTIC_V2 else None"
+            # args["min_items"] = f"{self.min_length!r} if not PYDANTIC_V2 else None"
+            args["min_length"] = f"{self.min_length!r} if PYDANTIC_V2 else None"
         return args
 
     @override
@@ -473,11 +473,11 @@ class UniqueListSchema(SchemaData):
         # See https://github.com/samuelcolvin/pydantic/issues/3745
         # So remove constraints when using pydantic v1
         if self.max_length is not None:
-            # args["max_items"] = repr(self.max_length) + " if not PYDANTIC_V2 else None"
-            args["max_length"] = repr(self.max_length) + " if PYDANTIC_V2 else None"
+            # args["max_items"] = f"{self.max_length!r} if not PYDANTIC_V2 else None"
+            args["max_length"] = f"{self.max_length!r} if PYDANTIC_V2 else None"
         if self.min_length is not None:
-            # args["min_items"] = repr(self.min_length) + " if not PYDANTIC_V2 else None"
-            args["min_length"] = repr(self.min_length) + " if PYDANTIC_V2 else None"
+            # args["min_items"] = f"{self.min_length!r} if not PYDANTIC_V2 else None"
+            args["min_length"] = f"{self.min_length!r} if PYDANTIC_V2 else None"
         return args
 
     @override
