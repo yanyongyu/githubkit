@@ -399,7 +399,7 @@ class ListSchema(SchemaData):
     def _get_field_args(self) -> dict[str, str]:
         args = super()._get_field_args()
         # pydantic v1 uses min_items/max_items list constraints
-        # but this will cause error when using forwardref 
+        # but this will cause error when using forwardref
         # See https://github.com/samuelcolvin/pydantic/issues/3745
         # So remove constraints when using pydantic v1
         if self.max_length is not None:
