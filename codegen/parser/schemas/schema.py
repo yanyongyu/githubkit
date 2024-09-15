@@ -446,22 +446,22 @@ class UniqueListSchema(SchemaData):
 
     @override
     def get_type_imports(self) -> set[str]:
-        imports = super().get_type_imports()
-        imports.add("from typing import List")
+        # imports = super().get_type_imports()
+        imports = {"from githubkit.typing import UniqueList"}
         imports.update(self.item_schema.get_type_imports())
         return imports
 
     @override
     def get_param_imports(self) -> set[str]:
-        imports = super().get_param_imports()
-        imports.add("from typing import List")
+        # imports = super().get_param_imports()
+        imports = {"from githubkit.typing import UniqueList"}
         imports.update(self.item_schema.get_param_imports())
         return imports
 
     @override
     def get_using_imports(self) -> set[str]:
-        imports = super().get_using_imports()
-        imports.add("from typing import List")
+        # imports = super().get_using_imports()
+        imports = {"from githubkit.typing import UniqueList"}
         imports.update(self.item_schema.get_using_imports())
         return imports
 
