@@ -377,44 +377,36 @@ class ListSchema(SchemaData):
     @override
     def get_type_imports(self) -> set[str]:
         imports = super().get_type_imports()
-        imports = {
-            "from typing import List",
-            "from githubkit.compat import PYDANTIC_V2",
-        }
+        imports.add("from typing import List")
         imports.update(self.item_schema.get_type_imports())
         return imports
 
     @override
     def get_param_imports(self) -> set[str]:
         imports = super().get_param_imports()
-        imports = {
-            "from typing import List",
-            "from githubkit.compat import PYDANTIC_V2",
-        }
+        imports.add("from typing import List")
         imports.update(self.item_schema.get_param_imports())
         return imports
 
     @override
     def get_using_imports(self) -> set[str]:
         imports = super().get_using_imports()
-        imports = {
-            "from typing import List",
-            "from githubkit.compat import PYDANTIC_V2",
-        }
+        imports.add("from typing import List")
         imports.update(self.item_schema.get_using_imports())
         return imports
 
     @override
     def _get_field_args(self) -> dict[str, str]:
         args = super()._get_field_args()
-        # [FIXED] in pydantic v2:
-        # remove list constraints due to forwardref not supported
+        # pydantic v1 uses min_items/max_items list constraints
+        # but this will cause error when using forwardref 
         # See https://github.com/samuelcolvin/pydantic/issues/3745
-        # if isinstance(self.item_schema, ModelSchema | UnionSchema):
-        #     return args
+        # So remove constraints when using pydantic v1
         if self.max_length is not None:
+            # args["max_items"] = repr(self.max_length) + " if not PYDANTIC_V2 else None"
             args["max_length"] = repr(self.max_length) + " if PYDANTIC_V2 else None"
         if self.min_length is not None:
+            # args["min_items"] = repr(self.min_length) + " if not PYDANTIC_V2 else None"
             args["min_length"] = repr(self.min_length) + " if PYDANTIC_V2 else None"
         return args
 
@@ -455,44 +447,36 @@ class UniqueListSchema(SchemaData):
     @override
     def get_type_imports(self) -> set[str]:
         imports = super().get_type_imports()
-        imports = {
-            "from githubkit.typing import UniqueList",
-            "from githubkit.compat import PYDANTIC_V2",
-        }
+        imports.add("from typing import List")
         imports.update(self.item_schema.get_type_imports())
         return imports
 
     @override
     def get_param_imports(self) -> set[str]:
         imports = super().get_param_imports()
-        imports = {
-            "from githubkit.typing import UniqueList",
-            "from githubkit.compat import PYDANTIC_V2",
-        }
+        imports.add("from typing import List")
         imports.update(self.item_schema.get_param_imports())
         return imports
 
     @override
     def get_using_imports(self) -> set[str]:
         imports = super().get_using_imports()
-        imports = {
-            "from githubkit.typing import UniqueList",
-            "from githubkit.compat import PYDANTIC_V2",
-        }
+        imports.add("from typing import List")
         imports.update(self.item_schema.get_using_imports())
         return imports
 
     @override
     def _get_field_args(self) -> dict[str, str]:
         args = super()._get_field_args()
-        # [FIXED] in pydantic v2:
-        # remove list constraints due to forwardref not supported
+        # pydantic v1 uses min_items/max_items list constraints
+        # but this will cause error when using forwardref
         # See https://github.com/samuelcolvin/pydantic/issues/3745
-        # if isinstance(self.item_schema, ModelSchema | UnionSchema):
-        #     return args
+        # So remove constraints when using pydantic v1
         if self.max_length is not None:
+            # args["max_items"] = repr(self.max_length) + " if not PYDANTIC_V2 else None"
             args["max_length"] = repr(self.max_length) + " if PYDANTIC_V2 else None"
         if self.min_length is not None:
+            # args["min_items"] = repr(self.min_length) + " if not PYDANTIC_V2 else None"
             args["min_length"] = repr(self.min_length) + " if PYDANTIC_V2 else None"
         return args
 
