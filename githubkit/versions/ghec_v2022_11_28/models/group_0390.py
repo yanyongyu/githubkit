@@ -16,7 +16,7 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
 class ScimUserList(GitHubModel):
@@ -25,7 +25,9 @@ class ScimUserList(GitHubModel):
     SCIM User List
     """
 
-    schemas: List[str] = Field(min_length=1, description="SCIM schema used.")
+    schemas: List[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None, description="SCIM schema used."
+    )
     total_results: int = Field(alias="totalResults")
     items_per_page: int = Field(alias="itemsPerPage")
     start_index: int = Field(alias="startIndex")
@@ -38,7 +40,9 @@ class ScimUser(GitHubModel):
     SCIM /Users provisioning endpoints
     """
 
-    schemas: List[str] = Field(min_length=1, description="SCIM schema used.")
+    schemas: List[str] = Field(
+        min_length=1 if PYDANTIC_V2 else None, description="SCIM schema used."
+    )
     id: str = Field(description="Unique identifier of an external identity")
     external_id: Missing[Union[str, None]] = Field(
         default=UNSET, alias="externalId", description="The ID of the User."
@@ -61,7 +65,9 @@ class ScimUser(GitHubModel):
         default=UNSET, description="The ID of the organization."
     )
     operations: Missing[List[ScimUserPropOperationsItems]] = Field(
-        min_length=1, default=UNSET, description="Set of operations to be performed"
+        min_length=1 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description="Set of operations to be performed",
     )
     groups: Missing[List[ScimUserPropGroupsItems]] = Field(
         default=UNSET, description="associated groups"

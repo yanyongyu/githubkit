@@ -77,6 +77,12 @@ class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody(GitHubModel):
         default=UNSET,
         description="The enablement status of secret scanning validity checks",
     )
+    secret_scanning_non_provider_patterns: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning non-provider patterns",
+    )
     private_vulnerability_reporting: Missing[
         Literal["enabled", "disabled", "not_set"]
     ] = Field(

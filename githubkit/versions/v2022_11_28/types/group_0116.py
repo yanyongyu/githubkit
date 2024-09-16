@@ -25,9 +25,6 @@ class RepositoryRuleRequiredLinearHistoryType(TypedDict):
 class RepositoryRuleOneof16Type(TypedDict):
     """max_file_path_length
 
-    > [!NOTE]
-    > `max_file_path_length` is in beta and subject to change.
-
     Prevent commits that include file paths that exceed a specified character limit
     from being pushed to the commit graph.
     """

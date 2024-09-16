@@ -38,8 +38,20 @@ class CodeScanningAlertRuleSummary(GitHubModel):
         default=UNSET,
         description="A short description of the rule used to detect the alert.",
     )
+    full_description: Missing[str] = Field(
+        default=UNSET, description="A description of the rule used to detect the alert."
+    )
     tags: Missing[Union[List[str], None]] = Field(
         default=UNSET, description="A set of tags applicable for the rule."
+    )
+    help_: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        alias="help",
+        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
+    )
+    help_uri: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A link to the documentation for the rule used to detect the alert.",
     )
 
 

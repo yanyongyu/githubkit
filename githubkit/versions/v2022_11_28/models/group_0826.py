@@ -13,14 +13,14 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
 class OrgsOrgCopilotBillingSelectedUsersDeleteBody(GitHubModel):
     """OrgsOrgCopilotBillingSelectedUsersDeleteBody"""
 
     selected_usernames: List[str] = Field(
-        min_length=1,
+        min_length=1 if PYDANTIC_V2 else None,
         description="The usernames of the organization members for which to revoke access to GitHub Copilot.",
     )
 

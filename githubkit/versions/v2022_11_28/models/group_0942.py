@@ -15,7 +15,7 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
 class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0(GitHubModel):
@@ -31,12 +31,12 @@ class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0(GitHubModel)
         description="List of repository names (in the form `owner/repo-name`) to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required."
     )
     repository_lists: Missing[List[str]] = Field(
-        max_length=1,
+        max_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
         description="List of repository lists to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
     )
     repository_owners: Missing[List[str]] = Field(
-        max_length=1,
+        max_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
         description="List of organization or user names whose repositories the query should be run against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
     )

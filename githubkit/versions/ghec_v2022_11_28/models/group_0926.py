@@ -50,8 +50,7 @@ class OrgsOrgRulesetsRulesetIdPutBody(GitHubModel):
 
     name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
     target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET,
-        description="The target of the ruleset\n\n> [!NOTE]\n> The `push` target is in beta and is subject to change.",
+        default=UNSET, description="The target of the ruleset"
     )
     enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
         default=UNSET,

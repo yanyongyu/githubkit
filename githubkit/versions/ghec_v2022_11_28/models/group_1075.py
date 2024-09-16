@@ -15,7 +15,7 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
 class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2(GitHubModel):
@@ -23,7 +23,7 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2(GitHubModel):
 
     labels: Missing[
         List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems]
-    ] = Field(min_length=1, default=UNSET)
+    ] = Field(min_length=1 if PYDANTIC_V2 else None, default=UNSET)
 
 
 class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems(GitHubModel):

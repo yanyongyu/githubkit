@@ -16,15 +16,15 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
 class OrgsOrgPersonalAccessTokenRequestsPostBody(GitHubModel):
     """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
     pat_request_ids: Missing[List[int]] = Field(
-        max_length=100,
-        min_length=1,
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
         description="Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values.",
     )

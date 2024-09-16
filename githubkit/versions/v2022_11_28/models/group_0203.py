@@ -88,7 +88,7 @@ class CodeScanningAlertRule(GitHubModel):
         description="A short description of the rule used to detect the alert.",
     )
     full_description: Missing[str] = Field(
-        default=UNSET, description="description of the rule used to detect the alert."
+        default=UNSET, description="A description of the rule used to detect the alert."
     )
     tags: Missing[Union[List[str], None]] = Field(
         default=UNSET, description="A set of tags applicable for the rule."

@@ -52,9 +52,6 @@ class RepositoryRuleNonFastForwardType(TypedDict):
 class RepositoryRuleOneof15Type(TypedDict):
     """file_path_restriction
 
-    > [!NOTE]
-    > `file_path_restriction` is in beta and subject to change.
-
     Prevent commits that include changes in specified file paths from being pushed
     to the commit graph.
     """
@@ -71,9 +68,6 @@ class RepositoryRuleOneof15PropParametersType(TypedDict):
 
 class RepositoryRuleOneof17Type(TypedDict):
     """file_extension_restriction
-
-    > [!NOTE]
-    > `file_extension_restriction` is in beta and subject to change.
 
     Prevent commits that include files with specified file extensions from being
     pushed to the commit graph.

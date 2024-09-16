@@ -56,8 +56,7 @@ class RepositoryRuleset(GitHubModel):
     id: int = Field(description="The ID of the ruleset")
     name: str = Field(description="The name of the ruleset")
     target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET,
-        description="The target of the ruleset\n\n> [!NOTE]\n> The `push` target is in beta and is subject to change.",
+        default=UNSET, description="The target of the ruleset"
     )
     source_type: Missing[Literal["Repository", "Organization"]] = Field(
         default=UNSET, description="The type of the source of the ruleset"

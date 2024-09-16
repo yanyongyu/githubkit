@@ -50,8 +50,7 @@ class OrgsOrgRulesetsPostBody(GitHubModel):
 
     name: str = Field(description="The name of the ruleset.")
     target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET,
-        description="The target of the ruleset\n\n> [!NOTE]\n> The `push` target is in beta and is subject to change.",
+        default=UNSET, description="The target of the ruleset"
     )
     enforcement: Literal["disabled", "active", "evaluate"] = Field(
         description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."

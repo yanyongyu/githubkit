@@ -392,6 +392,7 @@ class ListSchema(SchemaData):
     def get_using_imports(self) -> set[str]:
         imports = super().get_using_imports()
         imports.add("from typing import List")
+        imports.add("from githubkit.compat import PYDANTIC_V2")
         imports.update(self.item_schema.get_using_imports())
         return imports
 

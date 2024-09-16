@@ -23,7 +23,10 @@ class CodeScanningAlertRuleSummaryType(TypedDict):
         Union[None, Literal["low", "medium", "high", "critical"]]
     ]
     description: NotRequired[str]
+    full_description: NotRequired[str]
     tags: NotRequired[Union[List[str], None]]
+    help_: NotRequired[Union[str, None]]
+    help_uri: NotRequired[Union[str, None]]
 
 
 __all__ = ("CodeScanningAlertRuleSummaryType",)

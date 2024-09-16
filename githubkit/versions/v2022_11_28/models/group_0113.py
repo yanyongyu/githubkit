@@ -57,9 +57,6 @@ class RepositoryRuleNonFastForward(GitHubModel):
 class RepositoryRuleOneof15(GitHubModel):
     """file_path_restriction
 
-    > [!NOTE]
-    > `file_path_restriction` is in beta and subject to change.
-
     Prevent commits that include changes in specified file paths from being pushed
     to the commit graph.
     """
@@ -78,9 +75,6 @@ class RepositoryRuleOneof15PropParameters(GitHubModel):
 
 class RepositoryRuleOneof17(GitHubModel):
     """file_extension_restriction
-
-    > [!NOTE]
-    > `file_extension_restriction` is in beta and subject to change.
 
     Prevent commits that include files with specified file extensions from being
     pushed to the commit graph.

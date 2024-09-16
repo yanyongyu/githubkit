@@ -15,7 +15,7 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
 class ScimV2OrganizationsOrgUsersPostBody(GitHubModel):
@@ -32,7 +32,7 @@ class ScimV2OrganizationsOrgUsersPostBody(GitHubModel):
     )
     name: ScimV2OrganizationsOrgUsersPostBodyPropName = Field()
     emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems] = Field(
-        min_length=1, description="user emails"
+        min_length=1 if PYDANTIC_V2 else None, description="user emails"
     )
     schemas: Missing[List[str]] = Field(default=UNSET)
     external_id: Missing[str] = Field(default=UNSET, alias="externalId")

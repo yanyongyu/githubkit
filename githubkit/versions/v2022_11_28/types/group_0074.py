@@ -42,6 +42,9 @@ class CodeSecurityConfigurationType(TypedDict):
     secret_scanning_validity_checks: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]
+    secret_scanning_non_provider_patterns: NotRequired[
+        Literal["enabled", "disabled", "not_set"]
+    ]
     private_vulnerability_reporting: NotRequired[
         Literal["enabled", "disabled", "not_set"]
     ]

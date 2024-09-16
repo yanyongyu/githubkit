@@ -13,14 +13,14 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
 class OrgsOrgCodespacesAccessSelectedUsersPostBody(GitHubModel):
     """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
 
     selected_usernames: List[str] = Field(
-        max_length=100,
+        max_length=100 if PYDANTIC_V2 else None,
         description="The usernames of the organization members whose codespaces be billed to the organization.",
     )
 

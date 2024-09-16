@@ -15,7 +15,7 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
 class OrgsOrgActionsRunnersGenerateJitconfigPostBody(GitHubModel):
@@ -26,8 +26,8 @@ class OrgsOrgActionsRunnersGenerateJitconfigPostBody(GitHubModel):
         description="The ID of the runner group to register the runner to."
     )
     labels: List[str] = Field(
-        max_length=100,
-        min_length=1,
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
         description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
     )
     work_folder: Missing[str] = Field(

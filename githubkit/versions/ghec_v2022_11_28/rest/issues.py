@@ -2163,6 +2163,8 @@ class IssuesClient:
 
         from typing import List, Union
 
+        from githubkit.compat import PYDANTIC_V2
+
         from ..models import (
             Label,
             BasicError,
@@ -2183,11 +2185,11 @@ class IssuesClient:
         json = type_validate_python(
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0,
-                Annotated[List[str], Field(min_length=1)],
+                Annotated[List[str], Field(min_length=1 if PYDANTIC_V2 else None)],
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2,
                 Annotated[
                     List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items],
-                    Field(min_length=1),
+                    Field(min_length=1 if PYDANTIC_V2 else None),
                 ],
                 str,
             ],
@@ -2275,6 +2277,8 @@ class IssuesClient:
 
         from typing import List, Union
 
+        from githubkit.compat import PYDANTIC_V2
+
         from ..models import (
             Label,
             BasicError,
@@ -2295,11 +2299,11 @@ class IssuesClient:
         json = type_validate_python(
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0,
-                Annotated[List[str], Field(min_length=1)],
+                Annotated[List[str], Field(min_length=1 if PYDANTIC_V2 else None)],
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2,
                 Annotated[
                     List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items],
-                    Field(min_length=1),
+                    Field(min_length=1 if PYDANTIC_V2 else None),
                 ],
                 str,
             ],
@@ -2387,6 +2391,8 @@ class IssuesClient:
 
         from typing import List, Union
 
+        from githubkit.compat import PYDANTIC_V2
+
         from ..models import (
             Label,
             BasicError,
@@ -2407,11 +2413,11 @@ class IssuesClient:
         json = type_validate_python(
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
-                Annotated[List[str], Field(min_length=1)],
+                Annotated[List[str], Field(min_length=1 if PYDANTIC_V2 else None)],
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
                 Annotated[
                     List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items],
-                    Field(min_length=1),
+                    Field(min_length=1 if PYDANTIC_V2 else None),
                 ],
                 str,
             ],
@@ -2499,6 +2505,8 @@ class IssuesClient:
 
         from typing import List, Union
 
+        from githubkit.compat import PYDANTIC_V2
+
         from ..models import (
             Label,
             BasicError,
@@ -2519,11 +2527,11 @@ class IssuesClient:
         json = type_validate_python(
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
-                Annotated[List[str], Field(min_length=1)],
+                Annotated[List[str], Field(min_length=1 if PYDANTIC_V2 else None)],
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
                 Annotated[
                     List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items],
-                    Field(min_length=1),
+                    Field(min_length=1 if PYDANTIC_V2 else None),
                 ],
                 str,
             ],

@@ -15,7 +15,7 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
 class OrgsOrgCodespacesAccessPutBody(GitHubModel):
@@ -30,7 +30,7 @@ class OrgsOrgCodespacesAccessPutBody(GitHubModel):
         description="Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization."
     )
     selected_usernames: Missing[List[str]] = Field(
-        max_length=100,
+        max_length=100 if PYDANTIC_V2 else None,
         default=UNSET,
         description="The usernames of the organization members who should have access to codespaces in the organization. Required when `visibility` is `selected_members`. The provided list of usernames will replace any existing value.",
     )

@@ -13,7 +13,7 @@ from typing import List, Literal
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
 class OrgsOrgPersonalAccessTokensPostBody(GitHubModel):
@@ -23,8 +23,8 @@ class OrgsOrgPersonalAccessTokensPostBody(GitHubModel):
         description="Action to apply to the fine-grained personal access token."
     )
     pat_ids: List[int] = Field(
-        max_length=100,
-        min_length=1,
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
         description="The IDs of the fine-grained personal access tokens.",
     )
 

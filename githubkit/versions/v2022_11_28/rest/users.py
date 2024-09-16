@@ -680,6 +680,8 @@ class UsersClient:
 
         from typing import List, Union
 
+        from githubkit.compat import PYDANTIC_V2
+
         from ..models import (
             Email,
             BasicError,
@@ -697,7 +699,9 @@ class UsersClient:
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[
-                UserEmailsPostBodyOneof0, Annotated[List[str], Field(min_length=1)], str
+                UserEmailsPostBodyOneof0,
+                Annotated[List[str], Field(min_length=1 if PYDANTIC_V2 else None)],
+                str,
             ],
             json,
         )
@@ -745,6 +749,8 @@ class UsersClient:
 
         from typing import List, Union
 
+        from githubkit.compat import PYDANTIC_V2
+
         from ..models import (
             Email,
             BasicError,
@@ -762,7 +768,9 @@ class UsersClient:
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[
-                UserEmailsPostBodyOneof0, Annotated[List[str], Field(min_length=1)], str
+                UserEmailsPostBodyOneof0,
+                Annotated[List[str], Field(min_length=1 if PYDANTIC_V2 else None)],
+                str,
             ],
             json,
         )
@@ -810,6 +818,8 @@ class UsersClient:
 
         from typing import List, Union
 
+        from githubkit.compat import PYDANTIC_V2
+
         from ..models import BasicError, ValidationError, UserEmailsDeleteBodyOneof0
 
         url = "/user/emails"
@@ -823,7 +833,7 @@ class UsersClient:
         json = type_validate_python(
             Union[
                 UserEmailsDeleteBodyOneof0,
-                Annotated[List[str], Field(min_length=1)],
+                Annotated[List[str], Field(min_length=1 if PYDANTIC_V2 else None)],
                 str,
             ],
             json,
@@ -871,6 +881,8 @@ class UsersClient:
 
         from typing import List, Union
 
+        from githubkit.compat import PYDANTIC_V2
+
         from ..models import BasicError, ValidationError, UserEmailsDeleteBodyOneof0
 
         url = "/user/emails"
@@ -884,7 +896,7 @@ class UsersClient:
         json = type_validate_python(
             Union[
                 UserEmailsDeleteBodyOneof0,
-                Annotated[List[str], Field(min_length=1)],
+                Annotated[List[str], Field(min_length=1 if PYDANTIC_V2 else None)],
                 str,
             ],
             json,

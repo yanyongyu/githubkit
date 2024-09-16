@@ -21,9 +21,6 @@ from githubkit.compat import GitHubModel, model_rebuild
 class RepositoryRuleOneof18(GitHubModel):
     """max_file_size
 
-    > [!NOTE]
-    > `max_file_size` is in beta and subject to change.
-
     Prevent commits that exceed a specified file size limit from being pushed to the
     commit.
     """

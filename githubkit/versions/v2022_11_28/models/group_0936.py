@@ -16,7 +16,7 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, model_rebuild
 
 from .group_0935 import (
     ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput,
@@ -66,7 +66,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0(ExtraGitHubModel):
     actions: Missing[
         List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems]
     ] = Field(
-        max_length=3,
+        max_length=3 if PYDANTIC_V2 else None,
         default=UNSET,
         description='Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)."',
     )

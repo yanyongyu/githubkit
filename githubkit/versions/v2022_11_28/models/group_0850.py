@@ -16,7 +16,7 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
 class OrgsOrgPropertiesSchemaCustomPropertyNamePutBody(GitHubModel):
@@ -37,7 +37,8 @@ class OrgsOrgPropertiesSchemaCustomPropertyNamePutBody(GitHubModel):
     allowed_values: Missing[
         Union[
             Annotated[
-                List[Annotated[str, Field(max_length=75)]], Field(max_length=200)
+                List[Annotated[str, Field(max_length=75)]],
+                Field(max_length=200 if PYDANTIC_V2 else None),
             ],
             None,
         ]

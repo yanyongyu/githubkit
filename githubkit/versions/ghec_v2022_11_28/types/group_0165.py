@@ -16,9 +16,6 @@ from typing_extensions import TypedDict, NotRequired
 class RepositoryRuleOneof18Type(TypedDict):
     """max_file_size
 
-    > [!NOTE]
-    > `max_file_size` is in beta and subject to change.
-
     Prevent commits that exceed a specified file size limit from being pushed to the
     commit.
     """
