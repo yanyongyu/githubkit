@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -27,8 +27,8 @@ class DiffEntryType(TypedDict):
     additions: int
     deletions: int
     changes: int
-    blob_url: str
-    raw_url: str
+    blob_url: Union[str, None]
+    raw_url: Union[str, None]
     contents_url: str
     patch: NotRequired[str]
     previous_filename: NotRequired[str]
