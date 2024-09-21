@@ -331,6 +331,17 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
   "null",
 ] }
 
+# https://github.com/yanyongyu/githubkit/pull/134
+# blob_url and raw_url may be null when the diff file is submodule's file
+"/components/schemas/diff-entry/properties/blob_url" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/diff-entry/properties/raw_url" = { type = [
+  "string",
+  "null",
+] }
+
 # [FIXED] copilot-seat-details/assignee is not valid
 # "/components/schemas/copilot-seat-details/properties/assignee" = { enum = "<unset>", oneOf = [
 #   { "$ref" = "#/components/schemas/simple-user" },

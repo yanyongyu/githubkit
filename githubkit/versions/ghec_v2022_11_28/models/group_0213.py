@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -32,8 +32,8 @@ class DiffEntry(GitHubModel):
     additions: int = Field()
     deletions: int = Field()
     changes: int = Field()
-    blob_url: str = Field()
-    raw_url: str = Field()
+    blob_url: Union[str, None] = Field()
+    raw_url: Union[str, None] = Field()
     contents_url: str = Field()
     patch: Missing[str] = Field(default=UNSET)
     previous_filename: Missing[str] = Field(default=UNSET)
