@@ -1,3 +1,4 @@
+import re
 from weakref import ref
 from typing import TYPE_CHECKING, Any, Dict, Optional, cast
 
@@ -35,6 +36,18 @@ class GraphQLNamespace:
             json["variables"] = variables
         return json
 
+    def _get_graphql_endpoint(self) -> str:
+        base_url = self._github.config.base_url
+        path = base_url.path
+        # workaround for GitHub Enterprise baseUrl set with /api/v3 suffix
+        # https://github.com/octokit/graphql.js/pull/186
+        # https://github.com/octokit/graphql.js/blob/dae781b027c19bcd458577cd9ac6ca888b2fdfeb/src/graphql.ts#L67-L72
+        path, n = re.subn(r"/api/v3/?$", "/api/graphql", path, count=1)
+        # if replaced, return the new path
+        if n:
+            return str(base_url.copy_with(path=path))
+        return "/graphql"
+
     def parse_graphql_response(
         self, response: "Response[GraphQLResponse]"
     ) -> Dict[str, Any]:
@@ -57,7 +70,10 @@ class GraphQLNamespace:
         json = self.build_graphql_request(query, variables)
 
         return self._github.request(
-            "POST", "/graphql", json=json, response_model=GraphQLResponse
+            "POST",
+            self._get_graphql_endpoint(),
+            json=json,
+            response_model=GraphQLResponse,
         )
 
     def request(
@@ -71,7 +87,10 @@ class GraphQLNamespace:
         json = self.build_graphql_request(query, variables)
 
         return await self._github.arequest(
-            "POST", "/graphql", json=json, response_model=GraphQLResponse
+            "POST",
+            self._get_graphql_endpoint(),
+            json=json,
+            response_model=GraphQLResponse,
         )
 
     async def arequest(
