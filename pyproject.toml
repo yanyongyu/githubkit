@@ -349,6 +349,10 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
 #   { "$ref" = "#/components/schemas/organization" },
 # ] }
 
+# date-time search syntax should be string
+# https://docs.github.com/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax#query-for-dates
+"/components/parameters/created/schema" = { format = "<unset>" }
+
 # Webhook schema overrides
 # webhook check run action is required
 "/components/schemas/webhook-check-run-completed" = { required = [
