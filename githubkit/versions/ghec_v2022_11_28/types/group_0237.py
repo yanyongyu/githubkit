@@ -9,32 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0045 import SimpleRepositoryType
 
-class CodeScanningDefaultSetupUpdateType(TypedDict):
-    """CodeScanningDefaultSetupUpdate
 
-    Configuration for code scanning default setup.
-    """
+class CodeScanningVariantAnalysisRepoTaskType(TypedDict):
+    """CodeScanningVariantAnalysisRepoTask"""
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    languages: NotRequired[
-        List[
-            Literal[
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "swift",
-            ]
-        ]
+    repository: SimpleRepositoryType
+    analysis_status: Literal[
+        "pending", "in_progress", "succeeded", "failed", "canceled", "timed_out"
     ]
+    artifact_size_in_bytes: NotRequired[int]
+    result_count: NotRequired[int]
+    failure_message: NotRequired[str]
+    database_commit_sha: NotRequired[str]
+    source_location_prefix: NotRequired[str]
+    artifact_url: NotRequired[str]
 
 
-__all__ = ("CodeScanningDefaultSetupUpdateType",)
+__all__ = ("CodeScanningVariantAnalysisRepoTaskType",)

@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from datetime import datetime
-from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -18,58 +18,33 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0006 import Integration
-from .group_0082 import MinimalRepository
-from .group_0193 import PullRequestMinimal
 
+class ExemptionResponse(GitHubModel):
+    """Exemption response
 
-class SimpleCheckSuite(GitHubModel):
-    """SimpleCheckSuite
-
-    A suite of checks performed on the code of a given code change
+    A response to an exemption request by a delegated bypasser.
     """
 
-    after: Missing[Union[str, None]] = Field(default=UNSET)
-    app: Missing[Union[Integration, None]] = Field(
+    id: Missing[int] = Field(
+        default=UNSET, description="The ID of the exemption response."
+    )
+    reviewer_id: Missing[int] = Field(
         default=UNSET,
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
+        description="The ID of the user who reviewed the exemption request.",
     )
-    before: Missing[Union[str, None]] = Field(default=UNSET)
-    conclusion: Missing[
-        Union[
-            None,
-            Literal[
-                "success",
-                "failure",
-                "neutral",
-                "cancelled",
-                "skipped",
-                "timed_out",
-                "action_required",
-                "stale",
-                "startup_failure",
-            ],
-        ]
-    ] = Field(default=UNSET)
-    created_at: Missing[datetime] = Field(default=UNSET)
-    head_branch: Missing[Union[str, None]] = Field(default=UNSET)
-    head_sha: Missing[str] = Field(
-        default=UNSET, description="The SHA of the head commit that is being checked."
+    reviewer_login: Missing[str] = Field(
+        default=UNSET,
+        description="The login of the user who reviewed the exemption request.",
     )
-    id: Missing[int] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    pull_requests: Missing[List[PullRequestMinimal]] = Field(default=UNSET)
-    repository: Missing[MinimalRepository] = Field(
-        default=UNSET, title="Minimal Repository", description="Minimal Repository"
+    status: Missing[Literal["approved", "rejected", "dismissed"]] = Field(
+        default=UNSET, description="The status of the exemption response."
     )
-    status: Missing[
-        Literal["queued", "in_progress", "completed", "pending", "waiting"]
-    ] = Field(default=UNSET)
-    updated_at: Missing[datetime] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
+    created_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The date and time the exemption request was created.",
+    )
 
 
-model_rebuild(SimpleCheckSuite)
+model_rebuild(ExemptionResponse)
 
-__all__ = ("SimpleCheckSuite",)
+__all__ = ("ExemptionResponse",)

@@ -10,16 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict
-
-from .group_0172 import WorkflowRunType
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoActionsRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunsGetResponse200"""
+class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
+    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
 
-    total_count: int
-    workflow_runs: List[WorkflowRunType]
+    name: str
+    runner_group_id: int
+    labels: List[str]
+    work_folder: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoActionsRunsGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",)

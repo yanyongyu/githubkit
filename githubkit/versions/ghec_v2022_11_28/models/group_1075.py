@@ -15,27 +15,18 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody"""
 
-    labels: Missing[
-        List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems]
-    ] = Field(min_length=1 if PYDANTIC_V2 else None, default=UNSET)
-
-
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
-
-    name: str = Field()
+    assignees: Missing[List[str]] = Field(
+        default=UNSET,
+        description="Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove assignees from an issue. Assignees are silently ignored otherwise._",
+    )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2)
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody)
 
-__all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems",
-)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody",)

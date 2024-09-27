@@ -13,13 +13,13 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class RepositoryRuleDetailedOneof2Type(TypedDict):
-    """RepositoryRuleDetailedOneof2"""
+class RepositoryRuleDetailedOneof0Type(TypedDict):
+    """RepositoryRuleDetailedOneof0"""
 
-    type: Literal["deletion"]
+    type: Literal["creation"]
     ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
     ruleset_source: NotRequired[str]
     ruleset_id: NotRequired[int]
 
 
-__all__ = ("RepositoryRuleDetailedOneof2Type",)
+__all__ = ("RepositoryRuleDetailedOneof0Type",)

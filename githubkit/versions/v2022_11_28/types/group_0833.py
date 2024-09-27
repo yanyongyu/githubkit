@@ -9,32 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
+
+from .group_0057 import MinimalRepositoryType
 
 
-class OrgsOrgHooksHookIdPatchBodyType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBody"""
+class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
 
-    config: NotRequired[OrgsOrgHooksHookIdPatchBodyPropConfigType]
-    events: NotRequired[List[str]]
-    active: NotRequired[bool]
-    name: NotRequired[str]
+    total_count: int
+    repositories: List[MinimalRepositoryType]
 
 
-class OrgsOrgHooksHookIdPatchBodyPropConfigType(TypedDict):
-    """OrgsOrgHooksHookIdPatchBodyPropConfig
-
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-
-
-__all__ = (
-    "OrgsOrgHooksHookIdPatchBodyType",
-    "OrgsOrgHooksHookIdPatchBodyPropConfigType",
-)
+__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",)

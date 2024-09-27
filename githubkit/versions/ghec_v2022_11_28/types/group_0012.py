@@ -9,27 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 
-class EnterpriseType(TypedDict):
-    """Enterprise
+class ValidationErrorType(TypedDict):
+    """Validation Error
 
-    An enterprise on GitHub.
+    Validation Error
     """
 
-    description: NotRequired[Union[str, None]]
-    html_url: str
-    website_url: NotRequired[Union[str, None]]
-    id: int
-    node_id: str
-    name: str
-    slug: str
-    created_at: Union[datetime, None]
-    updated_at: Union[datetime, None]
-    avatar_url: str
+    message: str
+    documentation_url: str
+    errors: NotRequired[List[ValidationErrorPropErrorsItemsType]]
 
 
-__all__ = ("EnterpriseType",)
+class ValidationErrorPropErrorsItemsType(TypedDict):
+    """ValidationErrorPropErrorsItems"""
+
+    resource: NotRequired[str]
+    field: NotRequired[str]
+    message: NotRequired[str]
+    code: str
+    index: NotRequired[int]
+    value: NotRequired[Union[str, None, int, None, List[str], None]]
+
+
+__all__ = (
+    "ValidationErrorType",
+    "ValidationErrorPropErrorsItemsType",
+)

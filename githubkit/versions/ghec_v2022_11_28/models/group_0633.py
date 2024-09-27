@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,18 +17,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0413 import EnterpriseWebhooks
-from .group_0414 import SimpleInstallation
-from .group_0416 import RepositoryWebhooks
-from .group_0417 import SimpleUserWebhooks
-from .group_0445 import WebhooksMembership
-from .group_0415 import OrganizationSimpleWebhooks
+from .group_0429 import WebhooksUser
+from .group_0415 import EnterpriseWebhooks
+from .group_0416 import SimpleInstallation
+from .group_0418 import RepositoryWebhooks
+from .group_0419 import SimpleUserWebhooks
+from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookOrganizationDeleted(GitHubModel):
-    """organization deleted event"""
+class WebhookOrgBlockBlocked(GitHubModel):
+    """org_block blocked event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["blocked"] = Field()
+    blocked_user: Union[WebhooksUser, None] = Field(title="User")
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -38,11 +39,6 @@ class WebhookOrganizationDeleted(GitHubModel):
         default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
-    )
-    membership: Missing[WebhooksMembership] = Field(
-        default=UNSET,
-        title="Membership",
-        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
     )
     organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
@@ -59,6 +55,6 @@ class WebhookOrganizationDeleted(GitHubModel):
     )
 
 
-model_rebuild(WebhookOrganizationDeleted)
+model_rebuild(WebhookOrgBlockBlocked)
 
-__all__ = ("WebhookOrganizationDeleted",)
+__all__ = ("WebhookOrgBlockBlocked",)

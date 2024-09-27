@@ -13,18 +13,18 @@ from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0376 import EnterpriseWebhooksType
-from .group_0377 import SimpleInstallationType
-from .group_0379 import RepositoryWebhooksType
-from .group_0380 import SimpleUserWebhooksType
-from .group_0378 import OrganizationSimpleWebhooksType
+from .group_0378 import EnterpriseWebhooksType
+from .group_0379 import SimpleInstallationType
+from .group_0381 import RepositoryWebhooksType
+from .group_0382 import SimpleUserWebhooksType
+from .group_0380 import OrganizationSimpleWebhooksType
 
 
-class WebhookRepositoryVulnerabilityAlertResolveType(TypedDict):
-    """repository_vulnerability_alert resolve event"""
+class WebhookRepositoryVulnerabilityAlertDismissType(TypedDict):
+    """repository_vulnerability_alert dismiss event"""
 
-    action: Literal["resolve"]
-    alert: WebhookRepositoryVulnerabilityAlertResolvePropAlertType
+    action: Literal["dismiss"]
+    alert: WebhookRepositoryVulnerabilityAlertDismissPropAlertType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -32,7 +32,7 @@ class WebhookRepositoryVulnerabilityAlertResolveType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-class WebhookRepositoryVulnerabilityAlertResolvePropAlertType(TypedDict):
+class WebhookRepositoryVulnerabilityAlertDismissPropAlertType(TypedDict):
     """Repository Vulnerability Alert Alert
 
     The security alert of the vulnerable dependency.
@@ -41,12 +41,11 @@ class WebhookRepositoryVulnerabilityAlertResolvePropAlertType(TypedDict):
     affected_package_name: str
     affected_range: str
     created_at: str
-    dismiss_reason: NotRequired[str]
-    dismissed_at: NotRequired[str]
-    dismisser: NotRequired[
-        Union[
-            WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType, None
-        ]
+    dismiss_comment: NotRequired[Union[str, None]]
+    dismiss_reason: str
+    dismissed_at: str
+    dismisser: Union[
+        WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserType, None
     ]
     external_identifier: str
     external_reference: Union[str, None]
@@ -58,10 +57,10 @@ class WebhookRepositoryVulnerabilityAlertResolvePropAlertType(TypedDict):
     node_id: str
     number: int
     severity: str
-    state: Literal["fixed", "open"]
+    state: Literal["dismissed"]
 
 
-class WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType(TypedDict):
+class WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -88,7 +87,7 @@ class WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType(Typed
 
 
 __all__ = (
-    "WebhookRepositoryVulnerabilityAlertResolveType",
-    "WebhookRepositoryVulnerabilityAlertResolvePropAlertType",
-    "WebhookRepositoryVulnerabilityAlertResolvePropAlertPropDismisserType",
+    "WebhookRepositoryVulnerabilityAlertDismissType",
+    "WebhookRepositoryVulnerabilityAlertDismissPropAlertType",
+    "WebhookRepositoryVulnerabilityAlertDismissPropAlertPropDismisserType",
 )

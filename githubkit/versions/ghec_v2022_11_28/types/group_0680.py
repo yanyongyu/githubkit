@@ -9,23 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0450 import ProjectsV2Type
-from .group_0414 import SimpleInstallationType
-from .group_0417 import SimpleUserWebhooksType
-from .group_0415 import OrganizationSimpleWebhooksType
+from .group_0454 import ProjectsV2ItemType
+from .group_0416 import SimpleInstallationType
+from .group_0419 import SimpleUserWebhooksType
+from .group_0417 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ProjectReopenedType(TypedDict):
-    """Projects v2 Project Reopened Event"""
+class WebhookProjectsV2ItemReorderedType(TypedDict):
+    """Projects v2 Item Reordered Event"""
 
-    action: Literal["reopened"]
+    action: Literal["reordered"]
+    changes: WebhookProjectsV2ItemReorderedPropChangesType
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
+    projects_v2_item: ProjectsV2ItemType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookProjectsV2ProjectReopenedType",)
+class WebhookProjectsV2ItemReorderedPropChangesType(TypedDict):
+    """WebhookProjectsV2ItemReorderedPropChanges"""
+
+    previous_projects_v2_item_node_id: NotRequired[
+        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType
+    ]
+
+
+class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType(
+    TypedDict
+):
+    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[Union[str, None]]
+
+
+__all__ = (
+    "WebhookProjectsV2ItemReorderedType",
+    "WebhookProjectsV2ItemReorderedPropChangesType",
+    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeIdType",
+)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -18,29 +18,23 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgInvitationsPostBody(GitHubModel):
-    """OrgsOrgInvitationsPostBody"""
+class OrgsOrgHooksHookIdConfigPatchBody(GitHubModel):
+    """OrgsOrgHooksHookIdConfigPatchBody"""
 
-    invitee_id: Missing[int] = Field(
+    url: Missing[str] = Field(
+        default=UNSET, description="The URL to which the payloads will be delivered."
+    )
+    content_type: Missing[str] = Field(
         default=UNSET,
-        description="**Required unless you provide `email`**. GitHub user ID for the person you are inviting.",
+        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
     )
-    email: Missing[str] = Field(
+    secret: Missing[str] = Field(
         default=UNSET,
-        description="**Required unless you provide `invitee_id`**. Email address of the person you are inviting, which can be an existing GitHub user.",
+        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads/#delivery-headers).",
     )
-    role: Missing[Literal["admin", "direct_member", "billing_manager", "reinstate"]] = (
-        Field(
-            default=UNSET,
-            description="The role for the new member. \n * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  \n * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  \n * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization. \n * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization.",
-        )
-    )
-    team_ids: Missing[List[int]] = Field(
-        default=UNSET,
-        description="Specify IDs for the teams you want to invite new members to.",
-    )
+    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgInvitationsPostBody)
+model_rebuild(OrgsOrgHooksHookIdConfigPatchBody)
 
-__all__ = ("OrgsOrgInvitationsPostBody",)
+__all__ = ("OrgsOrgHooksHookIdConfigPatchBody",)

@@ -17,28 +17,28 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0039 import Issue
-from .group_0017 import Repository
-from .group_0377 import SimpleInstallation
-from .group_0379 import RepositoryWebhooks
-from .group_0380 import SimpleUserWebhooks
-from .group_0378 import OrganizationSimpleWebhooks
+from .group_0041 import Issue
+from .group_0019 import Repository
+from .group_0379 import SimpleInstallation
+from .group_0381 import RepositoryWebhooks
+from .group_0382 import SimpleUserWebhooks
+from .group_0380 import OrganizationSimpleWebhooks
 
 
-class WebhookSubIssuesSubIssueRemoved(GitHubModel):
-    """sub-issue removed event"""
+class WebhookSubIssuesParentIssueAdded(GitHubModel):
+    """parent issue added event"""
 
-    action: Literal["sub_issue_removed"] = Field()
-    sub_issue_id: float = Field(description="The ID of the sub-issue.")
-    sub_issue: Issue = Field(
+    action: Literal["parent_issue_added"] = Field()
+    parent_issue_id: float = Field(description="The ID of the parent issue.")
+    parent_issue: Issue = Field(
         title="Issue",
         description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
-    sub_issue_repo: Repository = Field(
+    parent_issue_repo: Repository = Field(
         title="Repository", description="A repository on GitHub."
     )
-    parent_issue_id: float = Field(description="The ID of the parent issue.")
-    parent_issue: Issue = Field(
+    sub_issue_id: float = Field(description="The ID of the sub-issue.")
+    sub_issue: Issue = Field(
         title="Issue",
         description="Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.",
     )
@@ -64,6 +64,6 @@ class WebhookSubIssuesSubIssueRemoved(GitHubModel):
     )
 
 
-model_rebuild(WebhookSubIssuesSubIssueRemoved)
+model_rebuild(WebhookSubIssuesParentIssueAdded)
 
-__all__ = ("WebhookSubIssuesSubIssueRemoved",)
+__all__ = ("WebhookSubIssuesParentIssueAdded",)

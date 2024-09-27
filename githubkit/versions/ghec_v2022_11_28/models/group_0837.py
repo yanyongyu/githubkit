@@ -9,27 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200(
+class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody(
     GitHubModel
 ):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
-    e200
-    """
+    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
 
-    message: Missing[str] = Field(default=UNSET)
+    users: List[str] = Field(
+        description="The usernames of the users to add to the cost center."
+    )
 
 
 model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200
+    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody
 )
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200",
+    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody",
 )

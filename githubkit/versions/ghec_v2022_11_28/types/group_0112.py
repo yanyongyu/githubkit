@@ -13,32 +13,34 @@ from datetime import datetime
 from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
+from .group_0002 import SimpleUserType
+from .group_0019 import RepositoryType
 
 
-class OrganizationRoleType(TypedDict):
-    """Organization Role
+class MigrationType(TypedDict):
+    """Migration
 
-    Organization roles
+    A migration.
     """
 
     id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    permissions: List[str]
-    organization: Union[None, SimpleUserType]
+    owner: Union[None, SimpleUserType]
+    guid: str
+    state: str
+    lock_repositories: bool
+    exclude_metadata: bool
+    exclude_git_data: bool
+    exclude_attachments: bool
+    exclude_releases: bool
+    exclude_owner_projects: bool
+    org_metadata_only: bool
+    repositories: List[RepositoryType]
+    url: str
     created_at: datetime
     updated_at: datetime
+    node_id: str
+    archive_url: NotRequired[str]
+    exclude: NotRequired[List[str]]
 
 
-class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
-    """OrgsOrgOrganizationRolesGetResponse200"""
-
-    total_count: NotRequired[int]
-    roles: NotRequired[List[OrganizationRoleType]]
-
-
-__all__ = (
-    "OrganizationRoleType",
-    "OrgsOrgOrganizationRolesGetResponse200Type",
-)
+__all__ = ("MigrationType",)

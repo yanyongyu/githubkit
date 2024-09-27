@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0121 import CustomPropertyType
-from .group_0413 import EnterpriseWebhooksType
-from .group_0414 import SimpleInstallationType
-from .group_0417 import SimpleUserWebhooksType
-from .group_0415 import OrganizationSimpleWebhooksType
+from .group_0123 import CustomPropertyType
+from .group_0415 import EnterpriseWebhooksType
+from .group_0416 import SimpleInstallationType
+from .group_0419 import SimpleUserWebhooksType
+from .group_0417 import OrganizationSimpleWebhooksType
 
 
-class WebhookCustomPropertyUpdatedType(TypedDict):
-    """custom property updated event"""
+class WebhookCustomPropertyCreatedType(TypedDict):
+    """custom property created event"""
 
-    action: Literal["updated"]
+    action: Literal["created"]
     definition: CustomPropertyType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -30,4 +30,4 @@ class WebhookCustomPropertyUpdatedType(TypedDict):
     sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookCustomPropertyUpdatedType",)
+__all__ = ("WebhookCustomPropertyCreatedType",)

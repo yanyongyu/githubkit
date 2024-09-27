@@ -9,14 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import TypedDict, NotRequired
 
 
-class ProjectsColumnsColumnIdCardsPostBodyOneof0Type(TypedDict):
-    """ProjectsColumnsColumnIdCardsPostBodyOneof0"""
+class ProjectsColumnsCardsCardIdMovesPostResponse403Type(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403"""
 
-    note: Union[str, None]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
+    errors: NotRequired[
+        List[ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType]
+    ]
 
 
-__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof0Type",)
+class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType(TypedDict):
+    """ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"""
+
+    code: NotRequired[str]
+    message: NotRequired[str]
+    resource: NotRequired[str]
+    field: NotRequired[str]
+
+
+__all__ = (
+    "ProjectsColumnsCardsCardIdMovesPostResponse403Type",
+    "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType",
+)

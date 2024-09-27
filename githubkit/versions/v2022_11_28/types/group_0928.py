@@ -13,16 +13,16 @@ from typing import List
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type(
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type(
     TypedDict
 ):
-    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0
 
     Examples:
-        {'users': ['mona']}
+        {'teams': ['justice-league']}
     """
 
-    users: List[str]
+    teams: List[str]
 
 
-__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type",)

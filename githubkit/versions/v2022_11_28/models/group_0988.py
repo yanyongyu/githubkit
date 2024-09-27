@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 
 from pydantic import Field
 
@@ -17,28 +17,35 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0009 import WebhookConfig
 
-class ReposOwnerRepoImportPatchBody(GitHubModel):
-    """ReposOwnerRepoImportPatchBody"""
 
-    vcs_username: Missing[str] = Field(
+class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
+
+    config: Missing[WebhookConfig] = Field(
         default=UNSET,
-        description="The username to provide to the originating repository.",
+        title="Webhook Configuration",
+        description="Configuration object of the webhook",
     )
-    vcs_password: Missing[str] = Field(
+    events: Missing[List[str]] = Field(
         default=UNSET,
-        description="The password to provide to the originating repository.",
+        description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.",
     )
-    vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = Field(
+    add_events: Missing[List[str]] = Field(
         default=UNSET,
-        description="The type of version control system you are migrating from.",
+        description="Determines a list of events to be added to the list of events that the Hook triggers for.",
     )
-    tfvc_project: Missing[str] = Field(
+    remove_events: Missing[List[str]] = Field(
         default=UNSET,
-        description="For a tfvc import, the name of the project that is being imported.",
+        description="Determines a list of events to be removed from the list of events that the Hook triggers for.",
+    )
+    active: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.",
     )
 
 
-model_rebuild(ReposOwnerRepoImportPatchBody)
+model_rebuild(ReposOwnerRepoHooksHookIdPatchBody)
 
-__all__ = ("ReposOwnerRepoImportPatchBody",)
+__all__ = ("ReposOwnerRepoHooksHookIdPatchBody",)

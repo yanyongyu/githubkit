@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,22 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0418 import WebhooksRule
-from .group_0413 import EnterpriseWebhooks
-from .group_0414 import SimpleInstallation
-from .group_0416 import RepositoryWebhooks
-from .group_0417 import SimpleUserWebhooks
-from .group_0415 import OrganizationSimpleWebhooks
+from .group_0420 import WebhooksRule
+from .group_0415 import EnterpriseWebhooks
+from .group_0416 import SimpleInstallation
+from .group_0418 import RepositoryWebhooks
+from .group_0419 import SimpleUserWebhooks
+from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookBranchProtectionRuleEdited(GitHubModel):
-    """branch protection rule edited event"""
+class WebhookBranchProtectionRuleCreated(GitHubModel):
+    """branch protection rule created event"""
 
-    action: Literal["edited"] = Field()
-    changes: Missing[WebhookBranchProtectionRuleEditedPropChanges] = Field(
-        default=UNSET,
-        description="If the action was `edited`, the changes to the rule.",
-    )
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -62,167 +58,6 @@ class WebhookBranchProtectionRuleEdited(GitHubModel):
     )
 
 
-class WebhookBranchProtectionRuleEditedPropChanges(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChanges
+model_rebuild(WebhookBranchProtectionRuleCreated)
 
-    If the action was `edited`, the changes to the rule.
-    """
-
-    admin_enforced: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced
-    ] = Field(default=UNSET)
-    authorized_actor_names: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames
-    ] = Field(default=UNSET)
-    authorized_actors_only: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly
-    ] = Field(default=UNSET)
-    authorized_dismissal_actors_only: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly
-    ] = Field(default=UNSET)
-    linear_history_requirement_enforcement_level: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel
-    ] = Field(default=UNSET)
-    lock_branch_enforcement_level: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel
-    ] = Field(default=UNSET)
-    lock_allows_fork_sync: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync
-    ] = Field(default=UNSET)
-    pull_request_reviews_enforcement_level: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel
-    ] = Field(default=UNSET)
-    require_last_push_approval: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval
-    ] = Field(default=UNSET)
-    required_status_checks: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks
-    ] = Field(default=UNSET)
-    required_status_checks_enforcement_level: Missing[
-        WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel
-    ] = Field(default=UNSET)
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced"""
-
-    from_: Union[bool, None] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
-
-    from_: List[str] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly"""
-
-    from_: Union[bool, None] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly"""
-
-    from_: Union[bool, None] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcem
-    entLevel
-    """
-
-    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel"""
-
-    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync"""
-
-    from_: Union[bool, None] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLev
-    el
-    """
-
-    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval"""
-
-    from_: Union[bool, None] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks(GitHubModel):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
-
-    from_: List[str] = Field(alias="from")
-
-
-class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel(
-    GitHubModel
-):
-    """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementL
-    evel
-    """
-
-    from_: Literal["off", "non_admins", "everyone"] = Field(alias="from")
-
-
-model_rebuild(WebhookBranchProtectionRuleEdited)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChanges)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly)
-model_rebuild(
-    WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly
-)
-model_rebuild(
-    WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel
-)
-model_rebuild(
-    WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel
-)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync)
-model_rebuild(
-    WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel
-)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval)
-model_rebuild(WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks)
-model_rebuild(
-    WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel
-)
-
-__all__ = (
-    "WebhookBranchProtectionRuleEdited",
-    "WebhookBranchProtectionRuleEditedPropChanges",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly",
-    "WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedDismissalActorsOnly",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLinearHistoryRequirementEnforcementLevel",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLockBranchEnforcementLevel",
-    "WebhookBranchProtectionRuleEditedPropChangesPropLockAllowsForkSync",
-    "WebhookBranchProtectionRuleEditedPropChangesPropPullRequestReviewsEnforcementLevel",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks",
-    "WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel",
-)
+__all__ = ("WebhookBranchProtectionRuleCreated",)

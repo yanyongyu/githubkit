@@ -12,24 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0423 import WebhooksDeployKeyType
-from .group_0413 import EnterpriseWebhooksType
-from .group_0414 import SimpleInstallationType
-from .group_0416 import RepositoryWebhooksType
-from .group_0417 import SimpleUserWebhooksType
-from .group_0415 import OrganizationSimpleWebhooksType
+from .group_0267 import DependabotAlertType
+from .group_0415 import EnterpriseWebhooksType
+from .group_0416 import SimpleInstallationType
+from .group_0418 import RepositoryWebhooksType
+from .group_0419 import SimpleUserWebhooksType
+from .group_0417 import OrganizationSimpleWebhooksType
 
 
-class WebhookDeployKeyCreatedType(TypedDict):
-    """deploy_key created event"""
+class WebhookDependabotAlertReintroducedType(TypedDict):
+    """Dependabot alert reintroduced event"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["reintroduced"]
+    alert: DependabotAlertType
     installation: NotRequired[SimpleInstallationType]
-    key: WebhooksDeployKeyType
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookDeployKeyCreatedType",)
+__all__ = ("WebhookDependabotAlertReintroducedType",)

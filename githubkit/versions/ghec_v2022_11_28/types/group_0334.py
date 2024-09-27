@@ -9,21 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
-from .group_0048 import TeamType
-from .group_0001 import SimpleUserType
+from .group_0250 import LinkType
 
 
-class PullRequestReviewRequestType(TypedDict):
-    """Pull Request Review Request
+class PullRequestPropLinksType(TypedDict):
+    """PullRequestPropLinks"""
 
-    Pull Request Review Request
-    """
+    comments: LinkType
+    commits: LinkType
+    statuses: LinkType
+    html: LinkType
+    issue: LinkType
+    review_comments: LinkType
+    review_comment: LinkType
+    self_: LinkType
 
-    users: List[SimpleUserType]
-    teams: List[TeamType]
 
-
-__all__ = ("PullRequestReviewRequestType",)
+__all__ = ("PullRequestPropLinksType",)

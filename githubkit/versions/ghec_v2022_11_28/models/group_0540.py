@@ -9,25 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0417 import SimpleUserWebhooks
+
+class WebhookForkPropForkeeAllof0PropPermissions(GitHubModel):
+    """WebhookForkPropForkeeAllof0PropPermissions"""
+
+    admin: bool = Field()
+    maintain: Missing[bool] = Field(default=UNSET)
+    pull: bool = Field()
+    push: bool = Field()
+    triage: Missing[bool] = Field(default=UNSET)
 
 
-class WebhookGithubAppAuthorizationRevoked(GitHubModel):
-    """github_app_authorization revoked event"""
+model_rebuild(WebhookForkPropForkeeAllof0PropPermissions)
 
-    action: Literal["revoked"] = Field()
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
-
-
-model_rebuild(WebhookGithubAppAuthorizationRevoked)
-
-__all__ = ("WebhookGithubAppAuthorizationRevoked",)
+__all__ = ("WebhookForkPropForkeeAllof0PropPermissions",)

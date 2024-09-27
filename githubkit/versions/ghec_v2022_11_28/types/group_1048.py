@@ -10,16 +10,24 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0190 import ActionsVariableType
-
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
-
-    total_count: int
-    variables: List[ActionsVariableType]
+from .group_0282 import CustomDeploymentRuleAppType
 
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type",)
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetRespons
+    e200
+    """
+
+    total_count: NotRequired[int]
+    available_custom_deployment_protection_rule_integrations: NotRequired[
+        List[CustomDeploymentRuleAppType]
+    ]
+
+
+__all__ = (
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type",
+)

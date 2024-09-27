@@ -9,17 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class ActionsOrganizationPermissionsType(TypedDict):
-    """ActionsOrganizationPermissions"""
+class ActionsCacheUsageOrgEnterpriseType(TypedDict):
+    """ActionsCacheUsageOrgEnterprise"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    selected_repositories_url: NotRequired[str]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
-    selected_actions_url: NotRequired[str]
+    total_active_caches_count: int
+    total_active_caches_size_in_bytes: int
 
 
-__all__ = ("ActionsOrganizationPermissionsType",)
+__all__ = ("ActionsCacheUsageOrgEnterpriseType",)

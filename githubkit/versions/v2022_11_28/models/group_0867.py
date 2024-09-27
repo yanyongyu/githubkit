@@ -18,15 +18,15 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgSecurityProductEnablementPostBody(GitHubModel):
-    """OrgsOrgSecurityProductEnablementPostBody"""
+class OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody"""
 
-    query_suite: Missing[Literal["default", "extended"]] = Field(
+    permission: Missing[Literal["read", "write", "admin"]] = Field(
         default=UNSET,
-        description="CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured.\nIf you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.",
+        description="The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see \"[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method).\"",
     )
 
 
-model_rebuild(OrgsOrgSecurityProductEnablementPostBody)
+model_rebuild(OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody)
 
-__all__ = ("OrgsOrgSecurityProductEnablementPostBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody",)

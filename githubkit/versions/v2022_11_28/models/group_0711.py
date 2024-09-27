@@ -17,19 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0376 import EnterpriseWebhooks
-from .group_0377 import SimpleInstallation
-from .group_0379 import RepositoryWebhooks
-from .group_0380 import SimpleUserWebhooks
-from .group_0378 import OrganizationSimpleWebhooks
-from .group_0423 import SecretScanningAlertWebhook
+from .group_0424 import WebhooksAlert
+from .group_0378 import EnterpriseWebhooks
+from .group_0379 import SimpleInstallation
+from .group_0381 import RepositoryWebhooks
+from .group_0382 import SimpleUserWebhooks
+from .group_0380 import OrganizationSimpleWebhooks
 
 
-class WebhookSecretScanningAlertCreated(GitHubModel):
-    """secret_scanning_alert created event"""
+class WebhookRepositoryVulnerabilityAlertReopen(GitHubModel):
+    """repository_vulnerability_alert reopen event"""
 
-    action: Literal["created"] = Field()
-    alert: SecretScanningAlertWebhook = Field()
+    action: Literal["reopen"] = Field()
+    alert: WebhooksAlert = Field(
+        title="Repository Vulnerability Alert Alert",
+        description="The security alert of the vulnerable dependency.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,13 +52,12 @@ class WebhookSecretScanningAlertCreated(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUserWebhooks] = Field(
-        default=UNSET,
+    sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-model_rebuild(WebhookSecretScanningAlertCreated)
+model_rebuild(WebhookRepositoryVulnerabilityAlertReopen)
 
-__all__ = ("WebhookSecretScanningAlertCreated",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertReopen",)

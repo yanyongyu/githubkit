@@ -9,22 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReactionRollupType(TypedDict):
-    """Reaction Rollup"""
+class BillingUsageReportType(TypedDict):
+    """BillingUsageReport"""
 
-    url: str
-    total_count: int
-    plus_one: int
-    minus_one: int
-    laugh: int
-    confused: int
-    heart: int
-    hooray: int
-    eyes: int
-    rocket: int
+    usage_items: NotRequired[List[BillingUsageReportPropUsageItemsItemsType]]
 
 
-__all__ = ("ReactionRollupType",)
+class BillingUsageReportPropUsageItemsItemsType(TypedDict):
+    """BillingUsageReportPropUsageItemsItems"""
+
+    date: str
+    product: str
+    sku: str
+    quantity: int
+    unit_type: str
+    price_per_unit: float
+    gross_amount: float
+    discount_amount: float
+    net_amount: float
+    organization_name: str
+    repository_name: NotRequired[str]
+
+
+__all__ = (
+    "BillingUsageReportType",
+    "BillingUsageReportPropUsageItemsItemsType",
+)

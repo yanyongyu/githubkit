@@ -9,17 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0085 import OrganizationCustomRepositoryRoleType
+from typing_extensions import TypedDict
 
 
-class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
-    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+class OrgsOrgCopilotBillingSelectedUsersPostResponse201Type(TypedDict):
+    """OrgsOrgCopilotBillingSelectedUsersPostResponse201
 
-    total_count: NotRequired[int]
-    custom_roles: NotRequired[List[OrganizationCustomRepositoryRoleType]]
+    The total number of seat assignments created.
+    """
+
+    seats_created: int
 
 
-__all__ = ("OrgsOrgCustomRepositoryRolesGetResponse200Type",)
+__all__ = ("OrgsOrgCopilotBillingSelectedUsersPostResponse201Type",)

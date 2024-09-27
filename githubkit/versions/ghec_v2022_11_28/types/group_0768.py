@@ -9,27 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0413 import EnterpriseWebhooksType
-from .group_0414 import SimpleInstallationType
-from .group_0416 import RepositoryWebhooksType
-from .group_0417 import SimpleUserWebhooksType
-from .group_0464 import WebhooksSponsorshipType
-from .group_0415 import OrganizationSimpleWebhooksType
+from .group_0769 import WebhookSecurityAndAnalysisPropChangesPropFromType
 
 
-class WebhookSponsorshipCreatedType(TypedDict):
-    """sponsorship created event"""
+class WebhookSecurityAndAnalysisPropChangesType(TypedDict):
+    """WebhookSecurityAndAnalysisPropChanges"""
 
-    action: Literal["created"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserWebhooksType
-    sponsorship: WebhooksSponsorshipType
+    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromType]
 
 
-__all__ = ("WebhookSponsorshipCreatedType",)
+__all__ = ("WebhookSecurityAndAnalysisPropChangesType",)

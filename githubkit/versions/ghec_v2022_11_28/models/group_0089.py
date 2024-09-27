@@ -9,27 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsPublicKey(GitHubModel):
-    """ActionsPublicKey
+class OidcCustomSub(GitHubModel):
+    """Actions OIDC Subject customization
 
-    The public key used for setting Actions Secrets.
+    Actions OIDC Subject customization
     """
 
-    key_id: str = Field(description="The identifier for the key.")
-    key: str = Field(description="The Base64 encoded public key.")
-    id: Missing[int] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-    title: Missing[str] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
+    include_claim_keys: List[str] = Field(
+        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
+    )
 
 
-model_rebuild(ActionsPublicKey)
+model_rebuild(OidcCustomSub)
 
-__all__ = ("ActionsPublicKey",)
+__all__ = ("OidcCustomSub",)

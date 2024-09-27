@@ -17,43 +17,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0117 import RepositoryRuleUpdatePropParameters
 
-class RepositoryRuleRequiredLinearHistory(GitHubModel):
-    """required_linear_history
 
-    Prevent merge commits from being pushed to matching refs.
+class RepositoryRuleUpdate(GitHubModel):
+    """update
+
+    Only allow users with bypass permission to update matching refs.
     """
 
-    type: Literal["required_linear_history"] = Field()
+    type: Literal["update"] = Field()
+    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
 
 
-class RepositoryRuleOneof16(GitHubModel):
-    """max_file_path_length
+model_rebuild(RepositoryRuleUpdate)
 
-    Prevent commits that include file paths that exceed a specified character limit
-    from being pushed to the commit graph.
-    """
-
-    type: Literal["max_file_path_length"] = Field()
-    parameters: Missing[RepositoryRuleOneof16PropParameters] = Field(default=UNSET)
-
-
-class RepositoryRuleOneof16PropParameters(GitHubModel):
-    """RepositoryRuleOneof16PropParameters"""
-
-    max_file_path_length: int = Field(
-        le=256.0,
-        ge=1.0,
-        description="The maximum amount of characters allowed in file paths",
-    )
-
-
-model_rebuild(RepositoryRuleRequiredLinearHistory)
-model_rebuild(RepositoryRuleOneof16)
-model_rebuild(RepositoryRuleOneof16PropParameters)
-
-__all__ = (
-    "RepositoryRuleRequiredLinearHistory",
-    "RepositoryRuleOneof16",
-    "RepositoryRuleOneof16PropParameters",
-)
+__all__ = ("RepositoryRuleUpdate",)

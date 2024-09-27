@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,33 +18,21 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoPagesDeploymentsPostBody(GitHubModel):
-    """ReposOwnerRepoPagesDeploymentsPostBody
+class ReposOwnerRepoPagesPostBodyPropSource(GitHubModel):
+    """ReposOwnerRepoPagesPostBodyPropSource
 
-    The object used to create GitHub Pages deployment
+    The source branch and directory used to publish your Pages site.
     """
 
-    artifact_id: Missing[float] = Field(
+    branch: str = Field(
+        description="The repository branch used to publish your site's source files."
+    )
+    path: Missing[Literal["/", "/docs"]] = Field(
         default=UNSET,
-        description="The ID of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
-    )
-    artifact_url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.",
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="The target environment for this GitHub Pages deployment.",
-    )
-    pages_build_version: str = Field(
-        default="GITHUB_SHA",
-        description="A unique string that represents the version of the build for this deployment.",
-    )
-    oidc_token: str = Field(
-        description="The OIDC token issued by GitHub Actions certifying the origin of the deployment."
+        description="The repository directory that includes the source files for the Pages site. Allowed paths are `/` or `/docs`. Default: `/`",
     )
 
 
-model_rebuild(ReposOwnerRepoPagesDeploymentsPostBody)
+model_rebuild(ReposOwnerRepoPagesPostBodyPropSource)
 
-__all__ = ("ReposOwnerRepoPagesDeploymentsPostBody",)
+__all__ = ("ReposOwnerRepoPagesPostBodyPropSource",)

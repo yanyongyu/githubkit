@@ -9,97 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Union
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
-
-from .group_0001 import SimpleUser
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrganizationProgrammaticAccessGrantRequest(GitHubModel):
-    """Simple Organization Programmatic Access Grant Request
+class UserRoleAssignment(GitHubModel):
+    """A Role Assignment for a User
 
-    Minimal representation of an organization programmatic access grant request for
-    enumerations
+    The Relationship a User has with a role.
     """
 
-    id: int = Field(
-        description="Unique identifier of the request for access via fine-grained personal access token. The `pat_request_id` used to review PAT requests."
-    )
-    reason: Union[str, None] = Field(description="Reason for requesting access.")
-    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    repository_selection: Literal["none", "all", "subset"] = Field(
-        description="Type of repository selection requested."
-    )
-    repositories_url: str = Field(
-        description="URL to the list of repositories requested to be accessed via fine-grained personal access token. Should only be followed when `repository_selection` is `subset`."
-    )
-    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissions = Field(
-        description="Permissions requested, categorized by type of permission."
-    )
-    created_at: str = Field(
-        description="Date and time when the request for access was created."
-    )
-    token_expired: bool = Field(
-        description="Whether the associated fine-grained personal access token has expired."
-    )
-    token_expires_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token expires."
-    )
-    token_last_used_at: Union[str, None] = Field(
-        description="Date and time when the associated fine-grained personal access token was last used for authentication."
-    )
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    email: Missing[Union[str, None]] = Field(default=UNSET)
+    login: str = Field()
+    id: int = Field()
+    node_id: str = Field()
+    avatar_url: str = Field()
+    gravatar_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    followers_url: str = Field()
+    following_url: str = Field()
+    gists_url: str = Field()
+    starred_url: str = Field()
+    subscriptions_url: str = Field()
+    organizations_url: str = Field()
+    repos_url: str = Field()
+    events_url: str = Field()
+    received_events_url: str = Field()
+    type: str = Field()
+    site_admin: bool = Field()
+    starred_at: Missing[str] = Field(default=UNSET)
 
 
-class OrganizationProgrammaticAccessGrantRequestPropPermissions(GitHubModel):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissions
+model_rebuild(UserRoleAssignment)
 
-    Permissions requested, categorized by type of permission.
-    """
-
-    organization: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization
-    ] = Field(default=UNSET)
-    repository: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository
-    ] = Field(default=UNSET)
-    other: Missing[
-        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther
-    ] = Field(default=UNSET)
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization"""
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository"""
-
-
-class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther(
-    ExtraGitHubModel
-):
-    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther"""
-
-
-model_rebuild(OrganizationProgrammaticAccessGrantRequest)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissions)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository)
-model_rebuild(OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther)
-
-__all__ = (
-    "OrganizationProgrammaticAccessGrantRequest",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissions",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository",
-    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther",
-)
+__all__ = ("UserRoleAssignment",)

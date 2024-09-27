@@ -12,14 +12,22 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType(
-    TypedDict
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
+class ReposOwnerRepoDispatchesPostBodyType(TypedDict):
+    """ReposOwnerRepoDispatchesPostBody"""
 
-    integration_id: NotRequired[int]
+    event_type: str
+    client_payload: NotRequired[ReposOwnerRepoDispatchesPostBodyPropClientPayloadType]
+
+
+class ReposOwnerRepoDispatchesPostBodyPropClientPayloadType(TypedDict):
+    """ReposOwnerRepoDispatchesPostBodyPropClientPayload
+
+    JSON payload with extra information about the webhook event that your action or
+    workflow may use. The maximum number of top-level properties is 10.
+    """
 
 
 __all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType",
+    "ReposOwnerRepoDispatchesPostBodyType",
+    "ReposOwnerRepoDispatchesPostBodyPropClientPayloadType",
 )

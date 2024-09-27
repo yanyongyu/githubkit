@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,30 +17,21 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0017 import Repository
-from .group_0014 import AppPermissions
 
+class LicenseSimple(GitHubModel):
+    """License Simple
 
-class InstallationToken(GitHubModel):
-    """Installation Token
-
-    Authentication token for a GitHub App installed on a user or org.
+    License Simple
     """
 
-    token: str = Field()
-    expires_at: str = Field()
-    permissions: Missing[AppPermissions] = Field(
-        default=UNSET,
-        title="App Permissions",
-        description="The permissions granted to the user access token.",
-    )
-    repository_selection: Missing[Literal["all", "selected"]] = Field(default=UNSET)
-    repositories: Missing[List[Repository]] = Field(default=UNSET)
-    single_file: Missing[str] = Field(default=UNSET)
-    has_multiple_single_files: Missing[bool] = Field(default=UNSET)
-    single_file_paths: Missing[List[str]] = Field(default=UNSET)
+    key: str = Field()
+    name: str = Field()
+    url: Union[str, None] = Field()
+    spdx_id: Union[str, None] = Field()
+    node_id: str = Field()
+    html_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(InstallationToken)
+model_rebuild(LicenseSimple)
 
-__all__ = ("InstallationToken",)
+__all__ = ("LicenseSimple",)

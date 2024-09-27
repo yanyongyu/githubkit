@@ -9,38 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0052 import (
-    MarketplacePurchasePropMarketplacePurchase,
-    MarketplacePurchasePropMarketplacePendingChange,
-)
 
+class License(GitHubModel):
+    """License
 
-class MarketplacePurchase(GitHubModel):
-    """Marketplace Purchase
-
-    Marketplace Purchase
+    License
     """
 
-    url: str = Field()
-    type: str = Field()
-    id: int = Field()
-    login: str = Field()
-    organization_billing_email: Missing[str] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    marketplace_pending_change: Missing[
-        Union[MarketplacePurchasePropMarketplacePendingChange, None]
-    ] = Field(default=UNSET)
-    marketplace_purchase: MarketplacePurchasePropMarketplacePurchase = Field()
+    key: str = Field()
+    name: str = Field()
+    spdx_id: Union[str, None] = Field()
+    url: Union[str, None] = Field()
+    node_id: str = Field()
+    html_url: str = Field()
+    description: str = Field()
+    implementation: str = Field()
+    permissions: List[str] = Field()
+    conditions: List[str] = Field()
+    limitations: List[str] = Field()
+    body: str = Field()
+    featured: bool = Field()
 
 
-model_rebuild(MarketplacePurchase)
+model_rebuild(License)
 
-__all__ = ("MarketplacePurchase",)
+__all__ = ("License",)

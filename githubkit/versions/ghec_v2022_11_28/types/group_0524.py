@@ -12,19 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0429 import DiscussionType
-from .group_0413 import EnterpriseWebhooksType
-from .group_0414 import SimpleInstallationType
-from .group_0416 import RepositoryWebhooksType
-from .group_0417 import SimpleUserWebhooksType
-from .group_0415 import OrganizationSimpleWebhooksType
+from .group_0431 import DiscussionType
+from .group_0415 import EnterpriseWebhooksType
+from .group_0416 import SimpleInstallationType
+from .group_0418 import RepositoryWebhooksType
+from .group_0419 import SimpleUserWebhooksType
+from .group_0417 import OrganizationSimpleWebhooksType
 
 
-class WebhookDiscussionEditedType(TypedDict):
-    """discussion edited event"""
+class WebhookDiscussionCreatedType(TypedDict):
+    """discussion created event"""
 
-    action: Literal["edited"]
-    changes: NotRequired[WebhookDiscussionEditedPropChangesType]
+    action: Literal["created"]
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -33,28 +32,4 @@ class WebhookDiscussionEditedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-class WebhookDiscussionEditedPropChangesType(TypedDict):
-    """WebhookDiscussionEditedPropChanges"""
-
-    body: NotRequired[WebhookDiscussionEditedPropChangesPropBodyType]
-    title: NotRequired[WebhookDiscussionEditedPropChangesPropTitleType]
-
-
-class WebhookDiscussionEditedPropChangesPropBodyType(TypedDict):
-    """WebhookDiscussionEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookDiscussionEditedPropChangesPropTitleType(TypedDict):
-    """WebhookDiscussionEditedPropChangesPropTitle"""
-
-    from_: str
-
-
-__all__ = (
-    "WebhookDiscussionEditedType",
-    "WebhookDiscussionEditedPropChangesType",
-    "WebhookDiscussionEditedPropChangesPropBodyType",
-    "WebhookDiscussionEditedPropChangesPropTitleType",
-)
+__all__ = ("WebhookDiscussionCreatedType",)

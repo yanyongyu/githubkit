@@ -17,18 +17,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0413 import EnterpriseWebhooks
-from .group_0414 import SimpleInstallation
-from .group_0416 import RepositoryWebhooks
-from .group_0417 import SimpleUserWebhooks
-from .group_0415 import OrganizationSimpleWebhooks
+from .group_0415 import EnterpriseWebhooks
+from .group_0416 import SimpleInstallation
+from .group_0418 import RepositoryWebhooks
+from .group_0419 import SimpleUserWebhooks
+from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryRenamed(GitHubModel):
-    """repository renamed event"""
+class WebhookRepositoryPrivatized(GitHubModel):
+    """repository privatized event"""
 
-    action: Literal["renamed"] = Field()
-    changes: WebhookRepositoryRenamedPropChanges = Field()
+    action: Literal["privatized"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -54,32 +53,6 @@ class WebhookRepositoryRenamed(GitHubModel):
     )
 
 
-class WebhookRepositoryRenamedPropChanges(GitHubModel):
-    """WebhookRepositoryRenamedPropChanges"""
+model_rebuild(WebhookRepositoryPrivatized)
 
-    repository: WebhookRepositoryRenamedPropChangesPropRepository = Field()
-
-
-class WebhookRepositoryRenamedPropChangesPropRepository(GitHubModel):
-    """WebhookRepositoryRenamedPropChangesPropRepository"""
-
-    name: WebhookRepositoryRenamedPropChangesPropRepositoryPropName = Field()
-
-
-class WebhookRepositoryRenamedPropChangesPropRepositoryPropName(GitHubModel):
-    """WebhookRepositoryRenamedPropChangesPropRepositoryPropName"""
-
-    from_: str = Field(alias="from")
-
-
-model_rebuild(WebhookRepositoryRenamed)
-model_rebuild(WebhookRepositoryRenamedPropChanges)
-model_rebuild(WebhookRepositoryRenamedPropChangesPropRepository)
-model_rebuild(WebhookRepositoryRenamedPropChangesPropRepositoryPropName)
-
-__all__ = (
-    "WebhookRepositoryRenamed",
-    "WebhookRepositoryRenamedPropChanges",
-    "WebhookRepositoryRenamedPropChangesPropRepository",
-    "WebhookRepositoryRenamedPropChangesPropRepositoryPropName",
-)
+__all__ = ("WebhookRepositoryPrivatized",)

@@ -9,14 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0092 import CodeSecurityConfigurationType
 
 
-class OrgsOrgCodespacesAccessSelectedUsersPostBodyType(TypedDict):
-    """OrgsOrgCodespacesAccessSelectedUsersPostBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type(
+    TypedDict
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
 
-    selected_usernames: List[str]
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-__all__ = ("OrgsOrgCodespacesAccessSelectedUsersPostBodyType",)
+__all__ = (
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200Type",
+)

@@ -18,20 +18,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0466 import WebhooksTeam1
-from .group_0413 import EnterpriseWebhooks
-from .group_0414 import SimpleInstallation
-from .group_0417 import SimpleUserWebhooks
-from .group_0415 import OrganizationSimpleWebhooks
+from .group_0468 import WebhooksTeam1
+from .group_0415 import EnterpriseWebhooks
+from .group_0416 import SimpleInstallation
+from .group_0419 import SimpleUserWebhooks
+from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookTeamEdited(GitHubModel):
-    """team edited event"""
+class WebhookTeamAddedToRepository(GitHubModel):
+    """team added_to_repository event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookTeamEditedPropChanges = Field(
-        description="The changes to the team if the action was `edited`."
-    )
+    action: Literal["added_to_repository"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -46,10 +43,11 @@ class WebhookTeamEdited(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[WebhookTeamEditedPropRepository] = Field(
+    repository: Missing[WebhookTeamAddedToRepositoryPropRepository] = Field(
         default=UNSET, title="Repository", description="A git repository"
     )
-    sender: SimpleUserWebhooks = Field(
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
@@ -59,7 +57,7 @@ class WebhookTeamEdited(GitHubModel):
     )
 
 
-class WebhookTeamEditedPropRepository(GitHubModel):
+class WebhookTeamAddedToRepositoryPropRepository(GitHubModel):
     """Repository
 
     A git repository
@@ -96,11 +94,11 @@ class WebhookTeamEditedPropRepository(GitHubModel):
     contents_url: str = Field()
     contributors_url: str = Field()
     created_at: Union[int, datetime] = Field()
-    custom_properties: Missing[WebhookTeamEditedPropRepositoryPropCustomProperties] = (
-        Field(
-            default=UNSET,
-            description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
-        )
+    custom_properties: Missing[
+        WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties
+    ] = Field(
+        default=UNSET,
+        description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
     )
     default_branch: str = Field(description="The default branch of the repository.")
     delete_branch_on_merge: Missing[bool] = Field(
@@ -144,8 +142,8 @@ class WebhookTeamEditedPropRepository(GitHubModel):
     labels_url: str = Field()
     language: Union[str, None] = Field()
     languages_url: str = Field()
-    license_: Union[WebhookTeamEditedPropRepositoryPropLicense, None] = Field(
-        alias="license", title="License"
+    license_: Union[WebhookTeamAddedToRepositoryPropRepositoryPropLicense, None] = (
+        Field(alias="license", title="License")
     )
     master_branch: Missing[str] = Field(default=UNSET)
     merges_url: str = Field()
@@ -157,9 +155,11 @@ class WebhookTeamEditedPropRepository(GitHubModel):
     open_issues: int = Field()
     open_issues_count: int = Field()
     organization: Missing[str] = Field(default=UNSET)
-    owner: Union[WebhookTeamEditedPropRepositoryPropOwner, None] = Field(title="User")
-    permissions: Missing[WebhookTeamEditedPropRepositoryPropPermissions] = Field(
-        default=UNSET
+    owner: Union[WebhookTeamAddedToRepositoryPropRepositoryPropOwner, None] = Field(
+        title="User"
+    )
+    permissions: Missing[WebhookTeamAddedToRepositoryPropRepositoryPropPermissions] = (
+        Field(default=UNSET)
     )
     private: bool = Field(description="Whether the repository is private or public.")
     public: Missing[bool] = Field(default=UNSET)
@@ -187,8 +187,8 @@ class WebhookTeamEditedPropRepository(GitHubModel):
     watchers_count: int = Field()
 
 
-class WebhookTeamEditedPropRepositoryPropCustomProperties(ExtraGitHubModel):
-    """WebhookTeamEditedPropRepositoryPropCustomProperties
+class WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties(ExtraGitHubModel):
+    """WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties
 
     The custom properties that were defined for the repository. The keys are the
     custom property names, and the values are the corresponding custom property
@@ -196,7 +196,7 @@ class WebhookTeamEditedPropRepositoryPropCustomProperties(ExtraGitHubModel):
     """
 
 
-class WebhookTeamEditedPropRepositoryPropLicense(GitHubModel):
+class WebhookTeamAddedToRepositoryPropRepositoryPropLicense(GitHubModel):
     """License"""
 
     key: str = Field()
@@ -206,7 +206,7 @@ class WebhookTeamEditedPropRepositoryPropLicense(GitHubModel):
     url: Union[str, None] = Field()
 
 
-class WebhookTeamEditedPropRepositoryPropOwner(GitHubModel):
+class WebhookTeamAddedToRepositoryPropRepositoryPropOwner(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -232,8 +232,8 @@ class WebhookTeamEditedPropRepositoryPropOwner(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookTeamEditedPropRepositoryPropPermissions(GitHubModel):
-    """WebhookTeamEditedPropRepositoryPropPermissions"""
+class WebhookTeamAddedToRepositoryPropRepositoryPropPermissions(GitHubModel):
+    """WebhookTeamAddedToRepositoryPropRepositoryPropPermissions"""
 
     admin: bool = Field()
     maintain: Missing[bool] = Field(default=UNSET)
@@ -242,120 +242,18 @@ class WebhookTeamEditedPropRepositoryPropPermissions(GitHubModel):
     triage: Missing[bool] = Field(default=UNSET)
 
 
-class WebhookTeamEditedPropChanges(GitHubModel):
-    """WebhookTeamEditedPropChanges
-
-    The changes to the team if the action was `edited`.
-    """
-
-    description: Missing[WebhookTeamEditedPropChangesPropDescription] = Field(
-        default=UNSET
-    )
-    name: Missing[WebhookTeamEditedPropChangesPropName] = Field(default=UNSET)
-    privacy: Missing[WebhookTeamEditedPropChangesPropPrivacy] = Field(default=UNSET)
-    notification_setting: Missing[
-        WebhookTeamEditedPropChangesPropNotificationSetting
-    ] = Field(default=UNSET)
-    repository: Missing[WebhookTeamEditedPropChangesPropRepository] = Field(
-        default=UNSET
-    )
-
-
-class WebhookTeamEditedPropChangesPropDescription(GitHubModel):
-    """WebhookTeamEditedPropChangesPropDescription"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the description if the action was `edited`.",
-    )
-
-
-class WebhookTeamEditedPropChangesPropName(GitHubModel):
-    """WebhookTeamEditedPropChangesPropName"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the name if the action was `edited`.",
-    )
-
-
-class WebhookTeamEditedPropChangesPropPrivacy(GitHubModel):
-    """WebhookTeamEditedPropChangesPropPrivacy"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the team's privacy if the action was `edited`.",
-    )
-
-
-class WebhookTeamEditedPropChangesPropNotificationSetting(GitHubModel):
-    """WebhookTeamEditedPropChangesPropNotificationSetting"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the team's notification setting if the action was `edited`.",
-    )
-
-
-class WebhookTeamEditedPropChangesPropRepository(GitHubModel):
-    """WebhookTeamEditedPropChangesPropRepository"""
-
-    permissions: WebhookTeamEditedPropChangesPropRepositoryPropPermissions = Field()
-
-
-class WebhookTeamEditedPropChangesPropRepositoryPropPermissions(GitHubModel):
-    """WebhookTeamEditedPropChangesPropRepositoryPropPermissions"""
-
-    from_: WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom = Field(
-        alias="from"
-    )
-
-
-class WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom(GitHubModel):
-    """WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom"""
-
-    admin: Missing[bool] = Field(
-        default=UNSET,
-        description="The previous version of the team member's `admin` permission on a repository, if the action was `edited`.",
-    )
-    pull: Missing[bool] = Field(
-        default=UNSET,
-        description="The previous version of the team member's `pull` permission on a repository, if the action was `edited`.",
-    )
-    push: Missing[bool] = Field(
-        default=UNSET,
-        description="The previous version of the team member's `push` permission on a repository, if the action was `edited`.",
-    )
-
-
-model_rebuild(WebhookTeamEdited)
-model_rebuild(WebhookTeamEditedPropRepository)
-model_rebuild(WebhookTeamEditedPropRepositoryPropCustomProperties)
-model_rebuild(WebhookTeamEditedPropRepositoryPropLicense)
-model_rebuild(WebhookTeamEditedPropRepositoryPropOwner)
-model_rebuild(WebhookTeamEditedPropRepositoryPropPermissions)
-model_rebuild(WebhookTeamEditedPropChanges)
-model_rebuild(WebhookTeamEditedPropChangesPropDescription)
-model_rebuild(WebhookTeamEditedPropChangesPropName)
-model_rebuild(WebhookTeamEditedPropChangesPropPrivacy)
-model_rebuild(WebhookTeamEditedPropChangesPropNotificationSetting)
-model_rebuild(WebhookTeamEditedPropChangesPropRepository)
-model_rebuild(WebhookTeamEditedPropChangesPropRepositoryPropPermissions)
-model_rebuild(WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom)
+model_rebuild(WebhookTeamAddedToRepository)
+model_rebuild(WebhookTeamAddedToRepositoryPropRepository)
+model_rebuild(WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties)
+model_rebuild(WebhookTeamAddedToRepositoryPropRepositoryPropLicense)
+model_rebuild(WebhookTeamAddedToRepositoryPropRepositoryPropOwner)
+model_rebuild(WebhookTeamAddedToRepositoryPropRepositoryPropPermissions)
 
 __all__ = (
-    "WebhookTeamEdited",
-    "WebhookTeamEditedPropRepository",
-    "WebhookTeamEditedPropRepositoryPropCustomProperties",
-    "WebhookTeamEditedPropRepositoryPropLicense",
-    "WebhookTeamEditedPropRepositoryPropOwner",
-    "WebhookTeamEditedPropRepositoryPropPermissions",
-    "WebhookTeamEditedPropChanges",
-    "WebhookTeamEditedPropChangesPropDescription",
-    "WebhookTeamEditedPropChangesPropName",
-    "WebhookTeamEditedPropChangesPropPrivacy",
-    "WebhookTeamEditedPropChangesPropNotificationSetting",
-    "WebhookTeamEditedPropChangesPropRepository",
-    "WebhookTeamEditedPropChangesPropRepositoryPropPermissions",
-    "WebhookTeamEditedPropChangesPropRepositoryPropPermissionsPropFrom",
+    "WebhookTeamAddedToRepository",
+    "WebhookTeamAddedToRepositoryPropRepository",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropCustomProperties",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropLicense",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropOwner",
+    "WebhookTeamAddedToRepositoryPropRepositoryPropPermissions",
 )

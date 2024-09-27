@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -17,19 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0015 import Installation
-from .group_0427 import WebhooksUser
-from .group_0413 import EnterpriseWebhooks
-from .group_0416 import RepositoryWebhooks
-from .group_0417 import SimpleUserWebhooks
-from .group_0415 import OrganizationSimpleWebhooks
-from .group_0433 import WebhooksRepositoriesAddedItems
+from .group_0017 import Installation
+from .group_0415 import EnterpriseWebhooks
+from .group_0418 import RepositoryWebhooks
+from .group_0419 import SimpleUserWebhooks
+from .group_0434 import WebhooksRepositoriesItems
+from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookInstallationRepositoriesRemoved(GitHubModel):
-    """installation_repositories removed event"""
+class WebhookInstallationNewPermissionsAccepted(GitHubModel):
+    """installation new_permissions_accepted event"""
 
-    action: Literal["removed"] = Field()
+    action: Literal["new_permissions_accepted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -41,43 +40,22 @@ class WebhookInstallationRepositoriesRemoved(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repositories_added: List[WebhooksRepositoriesAddedItems] = Field(
-        description="An array of repository objects, which were added to the installation."
-    )
-    repositories_removed: List[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems
-    ] = Field(
-        description="An array of repository objects, which were removed from the installation."
+    repositories: Missing[List[WebhooksRepositoriesItems]] = Field(
+        default=UNSET,
+        description="An array of repository objects that the installation can access.",
     )
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    repository_selection: Literal["all", "selected"] = Field(
-        description="Describe whether all repositories have been selected or there's a selection involved"
-    )
-    requester: Union[WebhooksUser, None] = Field(title="User")
+    requester: Missing[None] = Field(default=UNSET)
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems(GitHubModel):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
+model_rebuild(WebhookInstallationNewPermissionsAccepted)
 
-    full_name: str = Field()
-    id: int = Field(description="Unique identifier of the repository")
-    name: str = Field(description="The name of the repository.")
-    node_id: str = Field()
-    private: bool = Field(description="Whether the repository is private or public.")
-
-
-model_rebuild(WebhookInstallationRepositoriesRemoved)
-model_rebuild(WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems)
-
-__all__ = (
-    "WebhookInstallationRepositoriesRemoved",
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems",
-)
+__all__ = ("WebhookInstallationNewPermissionsAccepted",)

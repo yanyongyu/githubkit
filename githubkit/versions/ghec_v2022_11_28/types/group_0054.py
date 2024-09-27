@@ -9,44 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
-from .group_0001 import SimpleUserType
-from .group_0043 import SimpleRepositoryType
-from .group_0053 import DependabotAlertSecurityAdvisoryType
-from .group_0052 import DependabotAlertSecurityVulnerabilityType
-from .group_0055 import DependabotAlertWithRepositoryPropDependencyType
+from .group_0053 import DependabotAlertPackageType
 
 
-class DependabotAlertWithRepositoryType(TypedDict):
-    """DependabotAlertWithRepository
+class DependabotAlertSecurityVulnerabilityType(TypedDict):
+    """DependabotAlertSecurityVulnerability
 
-    A Dependabot alert.
+    Details pertaining to one vulnerable version range for the advisory.
     """
 
-    number: int
-    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
-    dependency: DependabotAlertWithRepositoryPropDependencyType
-    security_advisory: DependabotAlertSecurityAdvisoryType
-    security_vulnerability: DependabotAlertSecurityVulnerabilityType
-    url: str
-    html_url: str
-    created_at: datetime
-    updated_at: datetime
-    dismissed_at: Union[datetime, None]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_reason: Union[
-        None,
-        Literal[
-            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
-        ],
+    package: DependabotAlertPackageType
+    severity: Literal["low", "medium", "high", "critical"]
+    vulnerable_version_range: str
+    first_patched_version: Union[
+        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
     ]
-    dismissed_comment: Union[str, None]
-    fixed_at: Union[datetime, None]
-    auto_dismissed_at: NotRequired[Union[datetime, None]]
-    repository: SimpleRepositoryType
 
 
-__all__ = ("DependabotAlertWithRepositoryType",)
+class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
+    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+
+    Details pertaining to the package version that patches this vulnerability.
+    """
+
+    identifier: str
+
+
+__all__ = (
+    "DependabotAlertSecurityVulnerabilityType",
+    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
+)

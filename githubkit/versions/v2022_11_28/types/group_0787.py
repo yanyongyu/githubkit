@@ -13,10 +13,25 @@ from typing import List
 from typing_extensions import TypedDict
 
 
-class OrgsOrgActionsPermissionsRepositoriesPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsRepositoriesPutBody"""
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
 
-    selected_repository_ids: List[int]
+    total_count: int
+    repository_cache_usages: List[ActionsCacheUsageByRepositoryType]
 
 
-__all__ = ("OrgsOrgActionsPermissionsRepositoriesPutBodyType",)
+class ActionsCacheUsageByRepositoryType(TypedDict):
+    """Actions Cache Usage by repository
+
+    GitHub Actions Cache Usage by repository.
+    """
+
+    full_name: str
+    active_caches_size_in_bytes: int
+    active_caches_count: int
+
+
+__all__ = (
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
+    "ActionsCacheUsageByRepositoryType",
+)

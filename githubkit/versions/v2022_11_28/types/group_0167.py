@@ -9,17 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import TypedDict, NotRequired
 
 
-class ActionsVariableType(TypedDict):
-    """Actions Variable"""
+class OidcCustomSubRepoType(TypedDict):
+    """Actions OIDC subject customization for a repository
 
-    name: str
-    value: str
-    created_at: datetime
-    updated_at: datetime
+    Actions OIDC subject customization for a repository
+    """
+
+    use_default: bool
+    include_claim_keys: NotRequired[List[str]]
 
 
-__all__ = ("ActionsVariableType",)
+__all__ = ("OidcCustomSubRepoType",)

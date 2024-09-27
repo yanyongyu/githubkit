@@ -9,17 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict
 
+from .group_0002 import SimpleUserType
 
-class ReleaseNotesContentType(TypedDict):
-    """Generated Release Notes Content
 
-    Generated name and body describing a release
+class ReleaseAssetType(TypedDict):
+    """Release Asset
+
+    Data related to a release.
     """
 
+    url: str
+    browser_download_url: str
+    id: int
+    node_id: str
     name: str
-    body: str
+    label: Union[str, None]
+    state: Literal["uploaded", "open"]
+    content_type: str
+    size: int
+    download_count: int
+    created_at: datetime
+    updated_at: datetime
+    uploader: Union[None, SimpleUserType]
 
 
-__all__ = ("ReleaseNotesContentType",)
+__all__ = ("ReleaseAssetType",)

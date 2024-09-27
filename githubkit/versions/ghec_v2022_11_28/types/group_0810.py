@@ -9,13 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0016 import AppPermissionsType
 
 
-class ApplicationsClientIdTokenDeleteBodyType(TypedDict):
-    """ApplicationsClientIdTokenDeleteBody"""
+class AppInstallationsInstallationIdAccessTokensPostBodyType(TypedDict):
+    """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-    access_token: str
+    repositories: NotRequired[List[str]]
+    repository_ids: NotRequired[List[int]]
+    permissions: NotRequired[AppPermissionsType]
 
 
-__all__ = ("ApplicationsClientIdTokenDeleteBodyType",)
+__all__ = ("AppInstallationsInstallationIdAccessTokensPostBodyType",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -17,33 +17,88 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0116 import RepositoryRuleUpdate
+from .group_0142 import RepositoryRuleOneof18
+from .group_0138 import RepositoryRuleWorkflows
+from .group_0119 import RepositoryRuleMergeQueue
+from .group_0123 import RepositoryRulePullRequest
+from .group_0112 import OrgRulesetConditionsOneof0
+from .group_0113 import OrgRulesetConditionsOneof1
+from .group_0114 import OrgRulesetConditionsOneof2
+from .group_0140 import RepositoryRuleCodeScanning
+from .group_0103 import RepositoryRulesetBypassActor
+from .group_0135 import RepositoryRuleTagNamePattern
+from .group_0133 import RepositoryRuleBranchNamePattern
+from .group_0121 import RepositoryRuleRequiredDeployments
+from .group_0125 import RepositoryRuleRequiredStatusChecks
+from .group_0127 import RepositoryRuleCommitMessagePattern
+from .group_0131 import RepositoryRuleCommitterEmailPattern
+from .group_0129 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0118 import RepositoryRuleOneof16, RepositoryRuleRequiredLinearHistory
+from .group_0115 import (
+    RepositoryRuleOneof15,
+    RepositoryRuleOneof17,
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
 
-class OrgsOrgTeamsTeamSlugPatchBody(GitHubModel):
-    """OrgsOrgTeamsTeamSlugPatchBody"""
 
-    name: Missing[str] = Field(default=UNSET, description="The name of the team.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the team."
+class OrgsOrgRulesetsPostBody(GitHubModel):
+    """OrgsOrgRulesetsPostBody"""
+
+    name: str = Field(description="The name of the ruleset.")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
-    privacy: Missing[Literal["secret", "closed"]] = Field(
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
+    )
+    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
-        description="The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.",
+        description="The actors that can bypass the rules in this ruleset",
     )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
+    conditions: Missing[
+        Union[
+            OrgRulesetConditionsOneof0,
+            OrgRulesetConditionsOneof1,
+            OrgRulesetConditionsOneof2,
+        ]
     ] = Field(
         default=UNSET,
-        description="The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are: \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.",
+        title="Organization ruleset conditions",
+        description="Conditions for an organization ruleset. The conditions object should contain both `repository_name` and `ref_name` properties or both `repository_id` and `ref_name` properties.",
     )
-    permission: Missing[Literal["pull", "push", "admin"]] = Field(
-        default=UNSET,
-        description="**Deprecated**. The permission that new repositories will be added to the team with when none is specified.",
-    )
-    parent_team_id: Missing[Union[int, None]] = Field(
-        default=UNSET, description="The ID of a team to set as the parent team."
-    )
+    rules: Missing[
+        List[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleOneof15,
+                RepositoryRuleOneof16,
+                RepositoryRuleOneof17,
+                RepositoryRuleOneof18,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+            ]
+        ]
+    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(OrgsOrgTeamsTeamSlugPatchBody)
+model_rebuild(OrgsOrgRulesetsPostBody)
 
-__all__ = ("OrgsOrgTeamsTeamSlugPatchBody",)
+__all__ = ("OrgsOrgRulesetsPostBody",)

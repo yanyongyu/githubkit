@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0064 import MilestoneType
-from .group_0413 import EnterpriseWebhooksType
-from .group_0416 import RepositoryWebhooksType
-from .group_0417 import SimpleUserWebhooksType
-from .group_0456 import WebhooksPullRequest5Type
-from .group_0415 import OrganizationSimpleWebhooksType
+from .group_0415 import EnterpriseWebhooksType
+from .group_0416 import SimpleInstallationType
+from .group_0418 import RepositoryWebhooksType
+from .group_0419 import SimpleUserWebhooksType
+from .group_0456 import PullRequestWebhookType
+from .group_0417 import OrganizationSimpleWebhooksType
 
 
-class WebhookPullRequestDemilestonedType(TypedDict):
-    """pull_request demilestoned event"""
+class WebhookPullRequestClosedType(TypedDict):
+    """pull_request closed event"""
 
-    action: Literal["demilestoned"]
+    action: Literal["closed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    milestone: NotRequired[MilestoneType]
+    installation: NotRequired[SimpleInstallationType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: WebhooksPullRequest5Type
+    pull_request: PullRequestWebhookType
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
+    sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookPullRequestDemilestonedType",)
+__all__ = ("WebhookPullRequestClosedType",)

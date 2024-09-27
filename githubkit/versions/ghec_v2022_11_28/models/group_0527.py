@@ -17,18 +17,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0429 import Discussion
-from .group_0413 import EnterpriseWebhooks
-from .group_0414 import SimpleInstallation
-from .group_0416 import RepositoryWebhooks
-from .group_0417 import SimpleUserWebhooks
-from .group_0415 import OrganizationSimpleWebhooks
+from .group_0431 import Discussion
+from .group_0433 import WebhooksLabel
+from .group_0415 import EnterpriseWebhooks
+from .group_0416 import SimpleInstallation
+from .group_0418 import RepositoryWebhooks
+from .group_0419 import SimpleUserWebhooks
+from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionPinned(GitHubModel):
-    """discussion pinned event"""
+class WebhookDiscussionLabeled(GitHubModel):
+    """discussion labeled event"""
 
-    action: Literal["pinned"] = Field()
+    action: Literal["labeled"] = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -42,6 +43,7 @@ class WebhookDiscussionPinned(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
+    label: WebhooksLabel = Field(title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
@@ -57,6 +59,6 @@ class WebhookDiscussionPinned(GitHubModel):
     )
 
 
-model_rebuild(WebhookDiscussionPinned)
+model_rebuild(WebhookDiscussionLabeled)
 
-__all__ = ("WebhookDiscussionPinned",)
+__all__ = ("WebhookDiscussionLabeled",)

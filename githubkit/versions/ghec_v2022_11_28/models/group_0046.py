@@ -9,7 +9,9 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from datetime import datetime
+from typing import Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -17,47 +19,59 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class GetConsumedLicenses(GitHubModel):
-    """Enterprise Consumed Licenses
-
-    A breakdown of the licenses consumed by an enterprise.
-    """
-
-    total_seats_consumed: Missing[int] = Field(default=UNSET)
-    total_seats_purchased: Missing[int] = Field(default=UNSET)
-    users: Missing[List[GetConsumedLicensesPropUsersItems]] = Field(default=UNSET)
+from .group_0002 import SimpleUser
+from .group_0045 import SimpleRepository
+from .group_0043 import CodeScanningAnalysisTool
+from .group_0044 import CodeScanningAlertInstance
+from .group_0042 import CodeScanningAlertRuleSummary
 
 
-class GetConsumedLicensesPropUsersItems(GitHubModel):
-    """GetConsumedLicensesPropUsersItems"""
+class CodeScanningOrganizationAlertItems(GitHubModel):
+    """CodeScanningOrganizationAlertItems"""
 
-    github_com_login: Missing[str] = Field(default=UNSET)
-    github_com_name: Missing[Union[str, None]] = Field(default=UNSET)
-    enterprise_server_user_ids: Missing[List[str]] = Field(default=UNSET)
-    github_com_user: Missing[bool] = Field(default=UNSET)
-    enterprise_server_user: Missing[Union[bool, None]] = Field(default=UNSET)
-    visual_studio_subscription_user: Missing[bool] = Field(default=UNSET)
-    license_type: Missing[str] = Field(default=UNSET)
-    github_com_profile: Missing[Union[str, None]] = Field(default=UNSET)
-    github_com_member_roles: Missing[List[str]] = Field(default=UNSET)
-    github_com_enterprise_roles: Missing[List[str]] = Field(
-        default=UNSET, description="All enterprise roles for a user."
+    number: int = Field(description="The security alert number.")
+    created_at: datetime = Field(
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
     )
-    github_com_verified_domain_emails: Missing[List[str]] = Field(default=UNSET)
-    github_com_saml_name_id: Missing[Union[str, None]] = Field(default=UNSET)
-    github_com_orgs_with_pending_invites: Missing[List[str]] = Field(default=UNSET)
-    github_com_two_factor_auth: Missing[Union[bool, None]] = Field(default=UNSET)
-    enterprise_server_emails: Missing[List[str]] = Field(default=UNSET)
-    visual_studio_license_status: Missing[Union[str, None]] = Field(default=UNSET)
-    visual_studio_subscription_email: Missing[Union[str, None]] = Field(default=UNSET)
-    total_user_accounts: Missing[int] = Field(default=UNSET)
+    updated_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    url: str = Field(description="The REST API URL of the alert resource.")
+    html_url: str = Field(description="The GitHub URL of the alert resource.")
+    instances_url: str = Field(
+        description="The REST API URL for fetching the list of instances for an alert."
+    )
+    state: Literal["open", "dismissed", "fixed"] = Field(
+        description="State of a code scanning alert."
+    )
+    fixed_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    dismissed_by: Union[None, SimpleUser] = Field()
+    dismissed_at: Union[datetime, None] = Field(
+        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    )
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ] = Field(
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
+    )
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
+    )
+    rule: CodeScanningAlertRuleSummary = Field()
+    tool: CodeScanningAnalysisTool = Field()
+    most_recent_instance: CodeScanningAlertInstance = Field()
+    repository: SimpleRepository = Field(
+        title="Simple Repository", description="A GitHub repository."
+    )
 
 
-model_rebuild(GetConsumedLicenses)
-model_rebuild(GetConsumedLicensesPropUsersItems)
+model_rebuild(CodeScanningOrganizationAlertItems)
 
-__all__ = (
-    "GetConsumedLicenses",
-    "GetConsumedLicensesPropUsersItems",
-)
+__all__ = ("CodeScanningOrganizationAlertItems",)

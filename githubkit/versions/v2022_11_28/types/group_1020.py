@@ -9,24 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_1017 import ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type
+from typing import Literal
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPagesPutBodyAnyof2Type(TypedDict):
-    """ReposOwnerRepoPagesPutBodyAnyof2"""
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    cname: Union[str, None]
-    https_enforced: NotRequired[bool]
-    build_type: NotRequired[Literal["legacy", "workflow"]]
-    source: NotRequired[
-        Union[
-            Literal["gh-pages", "master", "master /docs"],
-            ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
-        ]
-    ]
+    Update the source for the repository. Must include the branch name and path.
+    """
+
+    branch: str
+    path: Literal["/", "/docs"]
 
 
-__all__ = ("ReposOwnerRepoPagesPutBodyAnyof2Type",)
+__all__ = ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",)

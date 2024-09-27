@@ -13,21 +13,70 @@ from typing import Union
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
-from .group_0012 import EnterpriseType
 
+class HookDeliveryType(TypedDict):
+    """Webhook delivery
 
-class IntegrationInstallationRequestType(TypedDict):
-    """Integration Installation Request
-
-    Request to install an integration on a target
+    Delivery made by a webhook.
     """
 
     id: int
-    node_id: NotRequired[str]
-    account: Union[SimpleUserType, EnterpriseType]
-    requester: SimpleUserType
-    created_at: datetime
+    guid: str
+    delivered_at: datetime
+    redelivery: bool
+    duration: float
+    status: str
+    status_code: int
+    event: str
+    action: Union[str, None]
+    installation_id: Union[int, None]
+    repository_id: Union[int, None]
+    throttled_at: NotRequired[Union[datetime, None]]
+    url: NotRequired[str]
+    request: HookDeliveryPropRequestType
+    response: HookDeliveryPropResponseType
 
 
-__all__ = ("IntegrationInstallationRequestType",)
+class HookDeliveryPropRequestType(TypedDict):
+    """HookDeliveryPropRequest"""
+
+    headers: Union[HookDeliveryPropRequestPropHeadersType, None]
+    payload: Union[HookDeliveryPropRequestPropPayloadType, None]
+
+
+class HookDeliveryPropRequestPropHeadersType(TypedDict):
+    """HookDeliveryPropRequestPropHeaders
+
+    The request headers sent with the webhook delivery.
+    """
+
+
+class HookDeliveryPropRequestPropPayloadType(TypedDict):
+    """HookDeliveryPropRequestPropPayload
+
+    The webhook payload.
+    """
+
+
+class HookDeliveryPropResponseType(TypedDict):
+    """HookDeliveryPropResponse"""
+
+    headers: Union[HookDeliveryPropResponsePropHeadersType, None]
+    payload: Union[str, None]
+
+
+class HookDeliveryPropResponsePropHeadersType(TypedDict):
+    """HookDeliveryPropResponsePropHeaders
+
+    The response headers received when the delivery was made.
+    """
+
+
+__all__ = (
+    "HookDeliveryType",
+    "HookDeliveryPropRequestType",
+    "HookDeliveryPropRequestPropHeadersType",
+    "HookDeliveryPropRequestPropPayloadType",
+    "HookDeliveryPropResponseType",
+    "HookDeliveryPropResponsePropHeadersType",
+)

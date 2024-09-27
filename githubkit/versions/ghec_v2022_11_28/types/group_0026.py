@@ -9,14 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class ActionsCacheUsageOrgEnterpriseType(TypedDict):
-    """ActionsCacheUsageOrgEnterprise"""
+class ClassroomAssignmentGradeType(TypedDict):
+    """Classroom Assignment Grade
 
-    total_active_caches_count: int
-    total_active_caches_size_in_bytes: int
+    Grade for a student or groups GitHub Classroom assignment
+    """
+
+    assignment_name: str
+    assignment_url: str
+    starter_code_url: str
+    github_username: str
+    roster_identifier: str
+    student_repository_name: str
+    student_repository_url: str
+    submission_timestamp: str
+    points_awarded: int
+    points_available: int
+    group_name: NotRequired[str]
 
 
-__all__ = ("ActionsCacheUsageOrgEnterpriseType",)
+__all__ = ("ClassroomAssignmentGradeType",)

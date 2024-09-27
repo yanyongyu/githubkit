@@ -9,62 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhooksMilestone3Type(TypedDict):
-    """Milestone
+class WebhooksTeamType(TypedDict):
+    """Team
 
-    A collection of related issues and pull requests.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    closed_at: Union[datetime, None]
-    closed_issues: int
-    created_at: datetime
-    creator: Union[WebhooksMilestone3PropCreatorType, None]
-    description: Union[str, None]
-    due_on: Union[datetime, None]
-    html_url: str
-    id: int
-    labels_url: str
-    node_id: str
-    number: int
-    open_issues: int
-    state: Literal["open", "closed"]
-    title: str
-    updated_at: datetime
-    url: str
-
-
-class WebhooksMilestone3PropCreatorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
+    description: NotRequired[Union[str, None]]
     html_url: NotRequired[str]
     id: int
-    login: str
-    name: NotRequired[str]
+    members_url: NotRequired[str]
+    name: str
     node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    parent: NotRequired[Union[WebhooksTeamPropParentType, None]]
+    permission: NotRequired[str]
+    privacy: NotRequired[Literal["open", "closed", "secret"]]
+    notification_setting: NotRequired[
+        Literal["notifications_enabled", "notifications_disabled"]
+    ]
+    repositories_url: NotRequired[str]
+    slug: NotRequired[str]
     url: NotRequired[str]
 
 
+class WebhooksTeamPropParentType(TypedDict):
+    """WebhooksTeamPropParent"""
+
+    description: Union[str, None]
+    html_url: str
+    id: int
+    members_url: str
+    name: str
+    node_id: str
+    permission: str
+    privacy: Literal["open", "closed", "secret"]
+    notification_setting: Literal["notifications_enabled", "notifications_disabled"]
+    repositories_url: str
+    slug: str
+    url: str
+
+
 __all__ = (
-    "WebhooksMilestone3Type",
-    "WebhooksMilestone3PropCreatorType",
+    "WebhooksTeamType",
+    "WebhooksTeamPropParentType",
 )

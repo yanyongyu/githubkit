@@ -19,7 +19,6 @@ from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
-    from datetime import datetime
     from typing import List, Union, Literal
 
     from githubkit import GitHubCore
@@ -5330,7 +5329,7 @@ class ActionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        created: Missing[datetime] = UNSET,
+        created: Missing[str] = UNSET,
         exclude_pull_requests: Missing[bool] = UNSET,
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
@@ -5393,7 +5392,7 @@ class ActionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        created: Missing[datetime] = UNSET,
+        created: Missing[str] = UNSET,
         exclude_pull_requests: Missing[bool] = UNSET,
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
@@ -7807,7 +7806,7 @@ class ActionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        created: Missing[datetime] = UNSET,
+        created: Missing[str] = UNSET,
         exclude_pull_requests: Missing[bool] = UNSET,
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
@@ -7871,7 +7870,7 @@ class ActionsClient:
         ] = UNSET,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        created: Missing[datetime] = UNSET,
+        created: Missing[str] = UNSET,
         exclude_pull_requests: Missing[bool] = UNSET,
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,

@@ -17,25 +17,104 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0090 import CodeSecurityConfiguration
 
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody"""
 
-class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200(
-    GitHubModel
-):
-    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200"""
-
-    default_for_new_repos: Missing[
-        Literal["all", "none", "private_and_internal", "public"]
+    name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the code security configuration. Must be unique within the organization.",
+    )
+    description: Missing[str] = Field(
+        max_length=255,
+        default=UNSET,
+        description="A description of the code security configuration",
+    )
+    advanced_security: Missing[Literal["enabled", "disabled"]] = Field(
+        default=UNSET, description="The enablement status of GitHub Advanced Security"
+    )
+    dependency_graph: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of Dependency Graph"
+    )
+    dependency_graph_autosubmit_action: Missing[
+        Literal["enabled", "disabled", "not_set"]
     ] = Field(
         default=UNSET,
-        description="Specifies which types of repository this security configuration is applied to by default.",
+        description="The enablement status of Automatic dependency submission",
     )
-    configuration: Missing[CodeSecurityConfiguration] = Field(
-        default=UNSET, description="A code security configuration"
+    dependency_graph_autosubmit_action_options: Missing[
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
+    ] = Field(
+        default=UNSET, description="Feature options for Automatic dependency submission"
+    )
+    dependabot_alerts: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of Dependabot alerts"
+    )
+    dependabot_security_updates: Missing[Literal["enabled", "disabled", "not_set"]] = (
+        Field(
+            default=UNSET,
+            description="The enablement status of Dependabot security updates",
+        )
+    )
+    code_scanning_default_setup: Missing[Literal["enabled", "disabled", "not_set"]] = (
+        Field(
+            default=UNSET,
+            description="The enablement status of code scanning default setup",
+        )
+    )
+    secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = Field(
+        default=UNSET, description="The enablement status of secret scanning"
+    )
+    secret_scanning_push_protection: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning push protection",
+    )
+    secret_scanning_validity_checks: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning validity checks",
+    )
+    secret_scanning_non_provider_patterns: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of secret scanning non-provider patterns",
+    )
+    private_vulnerability_reporting: Missing[
+        Literal["enabled", "disabled", "not_set"]
+    ] = Field(
+        default=UNSET,
+        description="The enablement status of private vulnerability reporting",
+    )
+    enforcement: Missing[Literal["enforced", "unenforced"]] = Field(
+        default=UNSET, description="The enforcement status for a security configuration"
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200)
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions(
+    GitHubModel
+):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAuto
+    submitActionOptions
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutResponse200",)
+    Feature options for Automatic dependency submission
+    """
+
+    labeled_runners: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether to use runners labeled with 'dependency-submission' or standard GitHub runners.",
+    )
+
+
+model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody)
+model_rebuild(
+    OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions
+)
+
+__all__ = (
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody",
+    "OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptions",
+)

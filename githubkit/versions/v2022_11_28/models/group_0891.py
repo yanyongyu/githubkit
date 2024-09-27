@@ -9,22 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0167 import ActionsVariable
+
+class ReposOwnerRepoActionsJobsJobIdRerunPostBody(GitHubModel):
+    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
+
+    enable_debug_logging: Missing[bool] = Field(
+        default=UNSET, description="Whether to enable debug logging for the re-run."
+    )
 
 
-class ReposOwnerRepoActionsOrganizationVariablesGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
+model_rebuild(ReposOwnerRepoActionsJobsJobIdRerunPostBody)
 
-    total_count: int = Field()
-    variables: List[ActionsVariable] = Field()
-
-
-model_rebuild(ReposOwnerRepoActionsOrganizationVariablesGetResponse200)
-
-__all__ = ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200",)
+__all__ = ("ReposOwnerRepoActionsJobsJobIdRerunPostBody",)

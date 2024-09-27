@@ -9,45 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import date
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0028 import TeamSimpleType
 
-class CopilotUsageMetricsType(TypedDict):
-    """Copilot Usage Metrics
 
-    Summary of Copilot usage.
+class TeamType(TypedDict):
+    """Team
+
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    day: date
-    total_suggestions_count: NotRequired[int]
-    total_acceptances_count: NotRequired[int]
-    total_lines_suggested: NotRequired[int]
-    total_lines_accepted: NotRequired[int]
-    total_active_users: NotRequired[int]
-    total_chat_acceptances: NotRequired[int]
-    total_chat_turns: NotRequired[int]
-    total_active_chat_users: NotRequired[int]
-    breakdown: Union[List[CopilotUsageMetricsPropBreakdownItemsType], None]
+    id: int
+    node_id: str
+    name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamPropPermissionsType]
+    url: str
+    html_url: str
+    members_url: str
+    repositories_url: str
+    parent: Union[None, TeamSimpleType]
 
 
-class CopilotUsageMetricsPropBreakdownItemsType(TypedDict):
-    """CopilotUsageMetricsPropBreakdownItems
+class TeamPropPermissionsType(TypedDict):
+    """TeamPropPermissions"""
 
-    Breakdown of Copilot usage by editor for this language
-    """
-
-    language: NotRequired[str]
-    editor: NotRequired[str]
-    suggestions_count: NotRequired[int]
-    acceptances_count: NotRequired[int]
-    lines_suggested: NotRequired[int]
-    lines_accepted: NotRequired[int]
-    active_users: NotRequired[int]
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
 
 
 __all__ = (
-    "CopilotUsageMetricsType",
-    "CopilotUsageMetricsPropBreakdownItemsType",
+    "TeamType",
+    "TeamPropPermissionsType",
 )

@@ -9,21 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0002 import SimpleUserType
+from .group_0016 import AppPermissionsType
 
 
-class SimpleClassroomRepositoryType(TypedDict):
-    """Simple Classroom Repository
+class ScopedInstallationType(TypedDict):
+    """Scoped Installation"""
 
-    A GitHub repository view for Classroom
-    """
-
-    id: int
-    full_name: str
-    html_url: str
-    node_id: str
-    private: bool
-    default_branch: str
+    permissions: AppPermissionsType
+    repository_selection: Literal["all", "selected"]
+    single_file_name: Union[str, None]
+    has_multiple_single_files: NotRequired[bool]
+    single_file_paths: NotRequired[List[str]]
+    repositories_url: str
+    account: SimpleUserType
 
 
-__all__ = ("SimpleClassroomRepositoryType",)
+__all__ = ("ScopedInstallationType",)

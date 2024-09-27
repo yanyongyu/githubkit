@@ -9,30 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
 
+class ExternalGroupType(TypedDict):
+    """ExternalGroup
 
-class OrganizationInvitationType(TypedDict):
-    """Organization Invitation
-
-    Organization Invitation
+    Information about an external group's usage and its members
     """
 
-    id: int
-    login: Union[str, None]
-    email: Union[str, None]
-    role: str
-    created_at: str
-    failed_at: NotRequired[Union[str, None]]
-    failed_reason: NotRequired[Union[str, None]]
-    inviter: SimpleUserType
-    team_count: int
-    node_id: str
-    invitation_teams_url: str
-    invitation_source: NotRequired[str]
+    group_id: int
+    group_name: str
+    updated_at: NotRequired[str]
+    teams: List[ExternalGroupPropTeamsItemsType]
+    members: List[ExternalGroupPropMembersItemsType]
 
 
-__all__ = ("OrganizationInvitationType",)
+class ExternalGroupPropTeamsItemsType(TypedDict):
+    """ExternalGroupPropTeamsItems"""
+
+    team_id: int
+    team_name: str
+
+
+class ExternalGroupPropMembersItemsType(TypedDict):
+    """ExternalGroupPropMembersItems"""
+
+    member_id: int
+    member_login: str
+    member_name: str
+    member_email: str
+
+
+__all__ = (
+    "ExternalGroupType",
+    "ExternalGroupPropTeamsItemsType",
+    "ExternalGroupPropMembersItemsType",
+)

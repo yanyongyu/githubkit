@@ -9,17 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0166 import ActionsSecretType
+from typing import List, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
 
     total_count: int
-    secrets: List[ActionsSecretType]
+    branch_policies: List[DeploymentBranchPolicyType]
 
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type",)
+class DeploymentBranchPolicyType(TypedDict):
+    """Deployment branch policy
+
+    Details of a deployment branch or tag policy.
+    """
+
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    name: NotRequired[str]
+    type: NotRequired[Literal["branch", "tag"]]
+
+
+__all__ = (
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type",
+    "DeploymentBranchPolicyType",
+)

@@ -9,26 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ValidationErrorSimple(GitHubModel):
-    """Validation Error Simple
-
-    Validation Error Simple
-    """
-
-    message: str = Field()
-    documentation_url: str = Field()
-    errors: Missing[List[str]] = Field(default=UNSET)
+from .group_0002 import SimpleUser
 
 
-model_rebuild(ValidationErrorSimple)
+class GlobalAdvisoryPropCreditsItems(GitHubModel):
+    """GlobalAdvisoryPropCreditsItems"""
 
-__all__ = ("ValidationErrorSimple",)
+    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ] = Field(description="The type of credit the user is receiving.")
+
+
+model_rebuild(GlobalAdvisoryPropCreditsItems)
+
+__all__ = ("GlobalAdvisoryPropCreditsItems",)

@@ -9,13 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-
-class NotificationsPutResponse202Type(TypedDict):
-    """NotificationsPutResponse202"""
-
-    message: NotRequired[str]
+from .group_0019 import RepositoryType
 
 
-__all__ = ("NotificationsPutResponse202Type",)
+class InstallationRepositoriesGetResponse200Type(TypedDict):
+    """InstallationRepositoriesGetResponse200"""
+
+    total_count: int
+    repositories: List[RepositoryType]
+    repository_selection: NotRequired[str]
+
+
+__all__ = ("InstallationRepositoriesGetResponse200Type",)

@@ -9,31 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0090 import CodeSecurityConfiguration
+
+class ActionsPublicKey(GitHubModel):
+    """ActionsPublicKey
+
+    The public key used for setting Actions Secrets.
+    """
+
+    key_id: str = Field(description="The identifier for the key.")
+    key: str = Field(description="The Base64 encoded public key.")
+    id: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    title: Missing[str] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
 
 
-class CodeSecurityDefaultConfigurationsItems(GitHubModel):
-    """CodeSecurityDefaultConfigurationsItems"""
+model_rebuild(ActionsPublicKey)
 
-    default_for_new_repos: Missing[Literal["public", "private_and_internal", "all"]] = (
-        Field(
-            default=UNSET,
-            description="The visibility of newly created repositories for which the code security configuration will be applied to by default",
-        )
-    )
-    configuration: Missing[CodeSecurityConfiguration] = Field(
-        default=UNSET, description="A code security configuration"
-    )
-
-
-model_rebuild(CodeSecurityDefaultConfigurationsItems)
-
-__all__ = ("CodeSecurityDefaultConfigurationsItems",)
+__all__ = ("ActionsPublicKey",)

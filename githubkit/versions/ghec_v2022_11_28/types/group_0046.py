@@ -9,45 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class GetConsumedLicensesType(TypedDict):
-    """Enterprise Consumed Licenses
-
-    A breakdown of the licenses consumed by an enterprise.
-    """
-
-    total_seats_consumed: NotRequired[int]
-    total_seats_purchased: NotRequired[int]
-    users: NotRequired[List[GetConsumedLicensesPropUsersItemsType]]
+from .group_0002 import SimpleUserType
+from .group_0045 import SimpleRepositoryType
+from .group_0043 import CodeScanningAnalysisToolType
+from .group_0044 import CodeScanningAlertInstanceType
+from .group_0042 import CodeScanningAlertRuleSummaryType
 
 
-class GetConsumedLicensesPropUsersItemsType(TypedDict):
-    """GetConsumedLicensesPropUsersItems"""
+class CodeScanningOrganizationAlertItemsType(TypedDict):
+    """CodeScanningOrganizationAlertItems"""
 
-    github_com_login: NotRequired[str]
-    github_com_name: NotRequired[Union[str, None]]
-    enterprise_server_user_ids: NotRequired[List[str]]
-    github_com_user: NotRequired[bool]
-    enterprise_server_user: NotRequired[Union[bool, None]]
-    visual_studio_subscription_user: NotRequired[bool]
-    license_type: NotRequired[str]
-    github_com_profile: NotRequired[Union[str, None]]
-    github_com_member_roles: NotRequired[List[str]]
-    github_com_enterprise_roles: NotRequired[List[str]]
-    github_com_verified_domain_emails: NotRequired[List[str]]
-    github_com_saml_name_id: NotRequired[Union[str, None]]
-    github_com_orgs_with_pending_invites: NotRequired[List[str]]
-    github_com_two_factor_auth: NotRequired[Union[bool, None]]
-    enterprise_server_emails: NotRequired[List[str]]
-    visual_studio_license_status: NotRequired[Union[str, None]]
-    visual_studio_subscription_email: NotRequired[Union[str, None]]
-    total_user_accounts: NotRequired[int]
+    number: int
+    created_at: datetime
+    updated_at: NotRequired[datetime]
+    url: str
+    html_url: str
+    instances_url: str
+    state: Literal["open", "dismissed", "fixed"]
+    fixed_at: NotRequired[Union[datetime, None]]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_at: Union[datetime, None]
+    dismissed_reason: Union[
+        None, Literal["false positive", "won't fix", "used in tests"]
+    ]
+    dismissed_comment: NotRequired[Union[str, None]]
+    rule: CodeScanningAlertRuleSummaryType
+    tool: CodeScanningAnalysisToolType
+    most_recent_instance: CodeScanningAlertInstanceType
+    repository: SimpleRepositoryType
 
 
-__all__ = (
-    "GetConsumedLicensesType",
-    "GetConsumedLicensesPropUsersItemsType",
-)
+__all__ = ("CodeScanningOrganizationAlertItemsType",)

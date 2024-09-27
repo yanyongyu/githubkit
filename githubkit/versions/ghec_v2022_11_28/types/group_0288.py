@@ -9,16 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0214 import VerificationType
 
 
-class HookResponseType(TypedDict):
-    """Hook Response"""
+class GitTagType(TypedDict):
+    """Git Tag
 
-    code: Union[int, None]
-    status: Union[str, None]
-    message: Union[str, None]
+    Metadata for a Git tag
+    """
+
+    node_id: str
+    tag: str
+    sha: str
+    url: str
+    message: str
+    tagger: GitTagPropTaggerType
+    object_: GitTagPropObjectType
+    verification: NotRequired[VerificationType]
 
 
-__all__ = ("HookResponseType",)
+class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
+
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropObjectType(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
+
+
+__all__ = (
+    "GitTagType",
+    "GitTagPropTaggerType",
+    "GitTagPropObjectType",
+)

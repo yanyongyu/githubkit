@@ -9,46 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0015 import InstallationType
-from .group_0427 import WebhooksUserType
-from .group_0413 import EnterpriseWebhooksType
-from .group_0416 import RepositoryWebhooksType
-from .group_0417 import SimpleUserWebhooksType
-from .group_0415 import OrganizationSimpleWebhooksType
-from .group_0433 import WebhooksRepositoriesAddedItemsType
+from .group_0017 import InstallationType
+from .group_0415 import EnterpriseWebhooksType
+from .group_0418 import RepositoryWebhooksType
+from .group_0419 import SimpleUserWebhooksType
+from .group_0434 import WebhooksRepositoriesItemsType
+from .group_0417 import OrganizationSimpleWebhooksType
 
 
-class WebhookInstallationRepositoriesRemovedType(TypedDict):
-    """installation_repositories removed event"""
+class WebhookInstallationNewPermissionsAcceptedType(TypedDict):
+    """installation new_permissions_accepted event"""
 
-    action: Literal["removed"]
+    action: Literal["new_permissions_accepted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories_added: List[WebhooksRepositoriesAddedItemsType]
-    repositories_removed: List[
-        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType
-    ]
+    repositories: NotRequired[List[WebhooksRepositoriesItemsType]]
     repository: NotRequired[RepositoryWebhooksType]
-    repository_selection: Literal["all", "selected"]
-    requester: Union[WebhooksUserType, None]
+    requester: NotRequired[None]
     sender: SimpleUserWebhooksType
 
 
-class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType(TypedDict):
-    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
-
-    full_name: str
-    id: int
-    name: str
-    node_id: str
-    private: bool
-
-
-__all__ = (
-    "WebhookInstallationRepositoriesRemovedType",
-    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType",
-)
+__all__ = ("WebhookInstallationNewPermissionsAcceptedType",)

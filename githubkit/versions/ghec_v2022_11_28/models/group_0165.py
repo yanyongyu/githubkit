@@ -17,32 +17,21 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0166 import RepositoryRuleCodeScanningPropParameters
 
-class RepositoryRuleOneof18(GitHubModel):
-    """max_file_size
 
-    Prevent commits that exceed a specified file size limit from being pushed to the
-    commit.
+class RepositoryRuleCodeScanning(GitHubModel):
+    """code_scanning
+
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
     """
 
-    type: Literal["max_file_size"] = Field()
-    parameters: Missing[RepositoryRuleOneof18PropParameters] = Field(default=UNSET)
+    type: Literal["code_scanning"] = Field()
+    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
 
 
-class RepositoryRuleOneof18PropParameters(GitHubModel):
-    """RepositoryRuleOneof18PropParameters"""
+model_rebuild(RepositoryRuleCodeScanning)
 
-    max_file_size: int = Field(
-        le=100.0,
-        ge=1.0,
-        description="The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
-    )
-
-
-model_rebuild(RepositoryRuleOneof18)
-model_rebuild(RepositoryRuleOneof18PropParameters)
-
-__all__ = (
-    "RepositoryRuleOneof18",
-    "RepositoryRuleOneof18PropParameters",
-)
+__all__ = ("RepositoryRuleCodeScanning",)

@@ -18,31 +18,28 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0006 import Integration
-from .group_0171 import SimpleCommit
-from .group_0055 import MinimalRepository
-from .group_0170 import PullRequestMinimal
+from .group_0008 import Integration
+from .group_0199 import DeploymentSimple
+from .group_0172 import PullRequestMinimal
 
 
-class CheckSuite(GitHubModel):
-    """CheckSuite
+class CheckRun(GitHubModel):
+    """CheckRun
 
-    A suite of checks performed on the code of a given code change
+    A check performed on the code of a given code change
     """
 
-    id: int = Field()
+    id: int = Field(description="The id of the check.")
+    head_sha: str = Field(description="The SHA of the commit that is being checked.")
     node_id: str = Field()
-    head_branch: Union[str, None] = Field()
-    head_sha: str = Field(
-        description="The SHA of the head commit that is being checked."
-    )
-    status: Union[
-        None,
-        Literal[
-            "queued", "in_progress", "completed", "waiting", "requested", "pending"
-        ],
+    external_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: Union[str, None] = Field()
+    details_url: Union[str, None] = Field()
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
     ] = Field(
-        description="The phase of the lifecycle that the check suite is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check suites."
+        description="The phase of the lifecycle that the check is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check runs."
     )
     conclusion: Union[
         None,
@@ -54,38 +51,46 @@ class CheckSuite(GitHubModel):
             "skipped",
             "timed_out",
             "action_required",
-            "startup_failure",
-            "stale",
         ],
     ] = Field()
-    url: Union[str, None] = Field()
-    before: Union[str, None] = Field()
-    after: Union[str, None] = Field()
-    pull_requests: Union[List[PullRequestMinimal], None] = Field()
+    started_at: Union[datetime, None] = Field()
+    completed_at: Union[datetime, None] = Field()
+    output: CheckRunPropOutput = Field()
+    name: str = Field(description="The name of the check.")
+    check_suite: Union[CheckRunPropCheckSuite, None] = Field()
     app: Union[None, Integration, None] = Field()
-    repository: MinimalRepository = Field(
-        title="Minimal Repository", description="Minimal Repository"
+    pull_requests: List[PullRequestMinimal] = Field(
+        description="Pull requests that are open with a `head_sha` or `head_branch` that matches the check. The returned pull requests do not necessarily indicate pull requests that triggered the check."
     )
-    created_at: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
-    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
-    latest_check_runs_count: int = Field()
-    check_runs_url: str = Field()
-    rerequestable: Missing[bool] = Field(default=UNSET)
-    runs_rerequestable: Missing[bool] = Field(default=UNSET)
+    deployment: Missing[DeploymentSimple] = Field(
+        default=UNSET,
+        title="Deployment",
+        description="A deployment created as the result of an Actions check run from a workflow that references an environment",
+    )
 
 
-class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200(GitHubModel):
-    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+class CheckRunPropOutput(GitHubModel):
+    """CheckRunPropOutput"""
 
-    total_count: int = Field()
-    check_suites: List[CheckSuite] = Field()
+    title: Union[str, None] = Field()
+    summary: Union[str, None] = Field()
+    text: Union[str, None] = Field()
+    annotations_count: int = Field()
+    annotations_url: str = Field()
 
 
-model_rebuild(CheckSuite)
-model_rebuild(ReposOwnerRepoCommitsRefCheckSuitesGetResponse200)
+class CheckRunPropCheckSuite(GitHubModel):
+    """CheckRunPropCheckSuite"""
+
+    id: int = Field()
+
+
+model_rebuild(CheckRun)
+model_rebuild(CheckRunPropOutput)
+model_rebuild(CheckRunPropCheckSuite)
 
 __all__ = (
-    "CheckSuite",
-    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200",
+    "CheckRun",
+    "CheckRunPropOutput",
+    "CheckRunPropCheckSuite",
 )

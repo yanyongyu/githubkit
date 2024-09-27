@@ -10,88 +10,27 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0037 import MilestoneType
-from .group_0226 import AutoMergeType
-from .group_0001 import SimpleUserType
-from .group_0026 import TeamSimpleType
-from .group_0307 import PullRequestPropBaseType
-from .group_0309 import PullRequestPropLinksType
-from .group_0306 import PullRequestPropHeadType, PullRequestPropLabelsItemsType
+from .group_0002 import SimpleUserType
 
 
-class PullRequestWebhookType(TypedDict):
-    """PullRequestWebhook"""
+class ProjectsV2ItemType(TypedDict):
+    """Projects v2 Item
 
-    url: str
-    id: int
-    node_id: str
-    html_url: str
-    diff_url: str
-    patch_url: str
-    issue_url: str
-    commits_url: str
-    review_comments_url: str
-    review_comment_url: str
-    comments_url: str
-    statuses_url: str
-    number: int
-    state: Literal["open", "closed"]
-    locked: bool
-    title: str
-    user: SimpleUserType
-    body: Union[str, None]
-    labels: List[PullRequestPropLabelsItemsType]
-    milestone: Union[None, MilestoneType]
-    active_lock_reason: NotRequired[Union[str, None]]
+    An item belonging to a project
+    """
+
+    id: float
+    node_id: NotRequired[str]
+    project_node_id: NotRequired[str]
+    content_node_id: str
+    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
+    creator: NotRequired[SimpleUserType]
     created_at: datetime
     updated_at: datetime
-    closed_at: Union[datetime, None]
-    merged_at: Union[datetime, None]
-    merge_commit_sha: Union[str, None]
-    assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[Union[List[SimpleUserType], None]]
-    requested_reviewers: NotRequired[Union[List[SimpleUserType], None]]
-    requested_teams: NotRequired[Union[List[TeamSimpleType], None]]
-    head: PullRequestPropHeadType
-    base: PullRequestPropBaseType
-    links: PullRequestPropLinksType
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    auto_merge: Union[AutoMergeType, None]
-    draft: NotRequired[bool]
-    merged: bool
-    mergeable: Union[bool, None]
-    rebaseable: NotRequired[Union[bool, None]]
-    mergeable_state: str
-    merged_by: Union[None, SimpleUserType]
-    comments: int
-    review_comments: int
-    maintainer_can_modify: bool
-    commits: int
-    additions: int
-    deletions: int
-    changed_files: int
-    allow_auto_merge: NotRequired[bool]
-    allow_update_branch: NotRequired[bool]
-    delete_branch_on_merge: NotRequired[bool]
-    merge_commit_message: NotRequired[Literal["PR_BODY", "PR_TITLE", "BLANK"]]
-    merge_commit_title: NotRequired[Literal["PR_TITLE", "MERGE_MESSAGE"]]
-    squash_merge_commit_message: NotRequired[
-        Literal["PR_BODY", "COMMIT_MESSAGES", "BLANK"]
-    ]
-    squash_merge_commit_title: NotRequired[Literal["PR_TITLE", "COMMIT_OR_PR_TITLE"]]
-    use_squash_pr_title_as_default: NotRequired[bool]
+    archived_at: Union[datetime, None]
 
 
-__all__ = ("PullRequestWebhookType",)
+__all__ = ("ProjectsV2ItemType",)

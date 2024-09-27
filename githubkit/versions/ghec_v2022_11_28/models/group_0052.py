@@ -9,52 +9,102 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from datetime import date
+from typing import List, Union
 
 from pydantic import Field
 
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
-from .group_0051 import DependabotAlertPackage
 
+class CopilotUsageMetrics(GitHubModel):
+    """Copilot Usage Metrics
 
-class DependabotAlertSecurityVulnerability(GitHubModel):
-    """DependabotAlertSecurityVulnerability
-
-    Details pertaining to one vulnerable version range for the advisory.
+    Summary of Copilot usage.
     """
 
-    package: DependabotAlertPackage = Field(
-        description="Details for the vulnerable package."
+    day: date = Field(
+        description="The date for which the usage metrics are reported, in `YYYY-MM-DD` format."
     )
-    severity: Literal["low", "medium", "high", "critical"] = Field(
-        description="The severity of the vulnerability."
+    total_suggestions_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of Copilot code completion suggestions shown to users.",
     )
-    vulnerable_version_range: str = Field(
-        description="Conditions that identify vulnerable versions of this vulnerability's package."
+    total_acceptances_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of Copilot code completion suggestions accepted by users.",
     )
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion, None
-    ] = Field(
-        description="Details pertaining to the package version that patches this vulnerability."
+    total_lines_suggested: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of lines of code completions suggested by Copilot.",
+    )
+    total_lines_accepted: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of lines of code completions accepted by users.",
+    )
+    total_active_users: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of users who were shown Copilot code completion suggestions during the day specified.",
+    )
+    total_chat_acceptances: Missing[int] = Field(
+        default=UNSET,
+        description="The total instances of users who accepted code suggested by Copilot Chat in the IDE (panel and inline).",
+    )
+    total_chat_turns: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of chat turns (prompt and response pairs) sent between users and Copilot Chat in the IDE.",
+    )
+    total_active_chat_users: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of users who interacted with Copilot Chat in the IDE during the day specified.",
+    )
+    breakdown: Union[List[CopilotUsageMetricsPropBreakdownItems], None] = Field(
+        description="Breakdown of Copilot code completions usage by language and editor"
     )
 
 
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion(GitHubModel):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+class CopilotUsageMetricsPropBreakdownItems(ExtraGitHubModel):
+    """CopilotUsageMetricsPropBreakdownItems
 
-    Details pertaining to the package version that patches this vulnerability.
+    Breakdown of Copilot usage by editor for this language
     """
 
-    identifier: str = Field(
-        description="The package version that patches this vulnerability."
+    language: Missing[str] = Field(
+        default=UNSET,
+        description="The language in which Copilot suggestions were shown to users in the specified editor.",
+    )
+    editor: Missing[str] = Field(
+        default=UNSET,
+        description="The editor in which Copilot suggestions were shown to users for the specified language.",
+    )
+    suggestions_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of Copilot suggestions shown to users in the editor specified during the day specified.",
+    )
+    acceptances_count: Missing[int] = Field(
+        default=UNSET,
+        description="The number of Copilot suggestions accepted by users in the editor specified during the day specified.",
+    )
+    lines_suggested: Missing[int] = Field(
+        default=UNSET,
+        description="The number of lines of code suggested by Copilot in the editor specified during the day specified.",
+    )
+    lines_accepted: Missing[int] = Field(
+        default=UNSET,
+        description="The number of lines of code accepted by users in the editor specified during the day specified.",
+    )
+    active_users: Missing[int] = Field(
+        default=UNSET,
+        description="The number of users who were shown Copilot completion suggestions in the editor specified during the day specified.",
     )
 
 
-model_rebuild(DependabotAlertSecurityVulnerability)
-model_rebuild(DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion)
+model_rebuild(CopilotUsageMetrics)
+model_rebuild(CopilotUsageMetricsPropBreakdownItems)
 
 __all__ = (
-    "DependabotAlertSecurityVulnerability",
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion",
+    "CopilotUsageMetrics",
+    "CopilotUsageMetricsPropBreakdownItems",
 )

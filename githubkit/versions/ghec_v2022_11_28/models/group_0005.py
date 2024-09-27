@@ -13,25 +13,21 @@ from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class IntegrationPropPermissions(ExtraGitHubModel):
-    """IntegrationPropPermissions
+class BasicError(GitHubModel):
+    """Basic Error
 
-    The set of permissions for the GitHub app
-
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
+    Basic Error
     """
 
-    issues: Missing[str] = Field(default=UNSET)
-    checks: Missing[str] = Field(default=UNSET)
-    metadata: Missing[str] = Field(default=UNSET)
-    contents: Missing[str] = Field(default=UNSET)
-    deployments: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(IntegrationPropPermissions)
+model_rebuild(BasicError)
 
-__all__ = ("IntegrationPropPermissions",)
+__all__ = ("BasicError",)

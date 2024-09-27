@@ -9,45 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0026 import TeamSimpleType
+from .group_0002 import SimpleUserType
+from .group_0019 import RepositoryType
 
 
-class TeamRoleAssignmentType(TypedDict):
-    """A Role Assignment for a Team
+class MigrationType(TypedDict):
+    """Migration
 
-    The Relationship a Team has with a role.
+    A migration.
     """
 
     id: int
-    node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
+    owner: Union[None, SimpleUserType]
+    guid: str
+    state: str
+    lock_repositories: bool
+    exclude_metadata: bool
+    exclude_git_data: bool
+    exclude_attachments: bool
+    exclude_releases: bool
+    exclude_owner_projects: bool
+    org_metadata_only: bool
+    repositories: List[RepositoryType]
     url: str
-    html_url: str
-    members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleType]
+    created_at: datetime
+    updated_at: datetime
+    node_id: str
+    archive_url: NotRequired[str]
+    exclude: NotRequired[List[str]]
 
 
-class TeamRoleAssignmentPropPermissionsType(TypedDict):
-    """TeamRoleAssignmentPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
-
-
-__all__ = (
-    "TeamRoleAssignmentType",
-    "TeamRoleAssignmentPropPermissionsType",
-)
+__all__ = ("MigrationType",)

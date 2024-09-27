@@ -9,18 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
+from .group_0351 import TrafficType
 
-class ReferrerTrafficType(TypedDict):
-    """Referrer Traffic
 
-    Referrer Traffic
+class CloneTrafficType(TypedDict):
+    """Clone Traffic
+
+    Clone Traffic
     """
 
-    referrer: str
     count: int
     uniques: int
+    clones: List[TrafficType]
 
 
-__all__ = ("ReferrerTrafficType",)
+__all__ = ("CloneTrafficType",)

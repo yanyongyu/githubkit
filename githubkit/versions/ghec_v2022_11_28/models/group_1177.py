@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserSocialAccountsDeleteBody(GitHubModel):
-    """UserSocialAccountsDeleteBody
+class UserProjectsPostBody(GitHubModel):
+    """UserProjectsPostBody"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: List[str] = Field(
-        description="Full URLs for the social media profiles to delete."
+    name: str = Field(description="Name of the project")
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Body of the project"
     )
 
 
-model_rebuild(UserSocialAccountsDeleteBody)
+model_rebuild(UserProjectsPostBody)
 
-__all__ = ("UserSocialAccountsDeleteBody",)
+__all__ = ("UserProjectsPostBody",)

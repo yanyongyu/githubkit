@@ -9,78 +9,63 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0376 import EnterpriseWebhooksType
-from .group_0377 import SimpleInstallationType
-from .group_0379 import RepositoryWebhooksType
-from .group_0380 import SimpleUserWebhooksType
-from .group_0378 import OrganizationSimpleWebhooksType
-from .group_0401 import WebhooksMarketplacePurchaseType
+from .group_0394 import WebhooksLabelType
+from .group_0378 import EnterpriseWebhooksType
+from .group_0379 import SimpleInstallationType
+from .group_0381 import RepositoryWebhooksType
+from .group_0382 import SimpleUserWebhooksType
+from .group_0380 import OrganizationSimpleWebhooksType
 
 
-class WebhookMarketplacePurchaseChangedType(TypedDict):
-    """marketplace_purchase changed event"""
+class WebhookLabelEditedType(TypedDict):
+    """label edited event"""
 
-    action: Literal["changed"]
-    effective_date: str
+    action: Literal["edited"]
+    changes: NotRequired[WebhookLabelEditedPropChangesType]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    marketplace_purchase: WebhooksMarketplacePurchaseType
+    label: WebhooksLabelType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    previous_marketplace_purchase: NotRequired[
-        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType
-    ]
-    repository: NotRequired[RepositoryWebhooksType]
+    repository: RepositoryWebhooksType
     sender: SimpleUserWebhooksType
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType(TypedDict):
-    """Marketplace Purchase"""
+class WebhookLabelEditedPropChangesType(TypedDict):
+    """WebhookLabelEditedPropChanges
 
-    account: (
-        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType
-    )
-    billing_cycle: str
-    free_trial_ends_on: Union[str, None]
-    next_billing_date: NotRequired[Union[str, None]]
-    on_free_trial: Union[bool, None]
-    plan: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType
-    unit_count: int
+    The changes to the label if the action was `edited`.
+    """
+
+    color: NotRequired[WebhookLabelEditedPropChangesPropColorType]
+    description: NotRequired[WebhookLabelEditedPropChangesPropDescriptionType]
+    name: NotRequired[WebhookLabelEditedPropChangesPropNameType]
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType(
-    TypedDict
-):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount"""
+class WebhookLabelEditedPropChangesPropColorType(TypedDict):
+    """WebhookLabelEditedPropChangesPropColor"""
 
-    id: int
-    login: str
-    node_id: str
-    organization_billing_email: Union[str, None]
-    type: str
+    from_: str
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType(
-    TypedDict
-):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan"""
+class WebhookLabelEditedPropChangesPropDescriptionType(TypedDict):
+    """WebhookLabelEditedPropChangesPropDescription"""
 
-    bullets: List[str]
-    description: str
-    has_free_trial: bool
-    id: int
-    monthly_price_in_cents: int
-    name: str
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"]
-    unit_name: Union[str, None]
-    yearly_price_in_cents: int
+    from_: str
+
+
+class WebhookLabelEditedPropChangesPropNameType(TypedDict):
+    """WebhookLabelEditedPropChangesPropName"""
+
+    from_: str
 
 
 __all__ = (
-    "WebhookMarketplacePurchaseChangedType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchaseType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccountType",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlanType",
+    "WebhookLabelEditedType",
+    "WebhookLabelEditedPropChangesType",
+    "WebhookLabelEditedPropChangesPropColorType",
+    "WebhookLabelEditedPropChangesPropDescriptionType",
+    "WebhookLabelEditedPropChangesPropNameType",
 )

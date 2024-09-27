@@ -9,32 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgHooksHookIdConfigPatchBody(GitHubModel):
-    """OrgsOrgHooksHookIdConfigPatchBody"""
+class OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody"""
 
-    url: Missing[str] = Field(
-        default=UNSET, description="The URL to which the payloads will be delivered."
+    selected_repository_ids: List[int] = Field(
+        description="An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints."
     )
-    content_type: Missing[str] = Field(
-        default=UNSET,
-        description="The media type used to serialize the payloads. Supported values include `json` and `form`. The default is `form`.",
-    )
-    secret: Missing[str] = Field(
-        default=UNSET,
-        description="If provided, the `secret` will be used as the `key` to generate the HMAC hex digest value for [delivery signature headers](https://docs.github.com/webhooks/event-payloads/#delivery-headers).",
-    )
-    insecure_ssl: Missing[Union[str, float]] = Field(default=UNSET)
 
 
-model_rebuild(OrgsOrgHooksHookIdConfigPatchBody)
+model_rebuild(OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody)
 
-__all__ = ("OrgsOrgHooksHookIdConfigPatchBody",)
+__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody",)

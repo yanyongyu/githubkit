@@ -9,25 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0033 import RunnerLabelType
+
+class ActionsSetDefaultWorkflowPermissionsType(TypedDict):
+    """ActionsSetDefaultWorkflowPermissions"""
+
+    default_workflow_permissions: NotRequired[Literal["read", "write"]]
+    can_approve_pull_request_reviews: NotRequired[bool]
 
 
-class RunnerType(TypedDict):
-    """Self hosted runners
-
-    A self hosted runner
-    """
-
-    id: int
-    runner_group_id: NotRequired[int]
-    name: str
-    os: str
-    status: str
-    busy: bool
-    labels: List[RunnerLabelType]
-
-
-__all__ = ("RunnerType",)
+__all__ = ("ActionsSetDefaultWorkflowPermissionsType",)

@@ -9,32 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrganizationCustomOrganizationRoleCreateSchema(GitHubModel):
-    """OrganizationCustomOrganizationRoleCreateSchema"""
+class OrganizationFineGrainedPermission(GitHubModel):
+    """Organization Fine-Grained Permission
 
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description about the intended usage of this role or what permissions it grants.",
-    )
-    permissions: List[str] = Field(
-        description="A list of additional permissions included in this role."
-    )
-    base_role: Missing[Literal["read", "triage", "write", "maintain", "admin"]] = Field(
-        default=UNSET,
-        description="The system role from which this role can inherit permissions.",
-    )
+    A fine-grained permission that protects organization resources.
+    """
+
+    name: str = Field()
+    description: str = Field()
 
 
-model_rebuild(OrganizationCustomOrganizationRoleCreateSchema)
+model_rebuild(OrganizationFineGrainedPermission)
 
-__all__ = ("OrganizationCustomOrganizationRoleCreateSchema",)
+__all__ = ("OrganizationFineGrainedPermission",)

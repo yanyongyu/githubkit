@@ -10,35 +10,68 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
-from .group_0041 import CodeScanningAnalysisToolType
-from .group_0042 import CodeScanningAlertInstanceType
-from .group_0040 import CodeScanningAlertRuleSummaryType
+from .group_0008 import IntegrationType
+from .group_0196 import SimpleCommitType
+from .group_0084 import MinimalRepositoryType
+from .group_0195 import PullRequestMinimalType
 
 
-class CodeScanningAlertItemsType(TypedDict):
-    """CodeScanningAlertItems"""
+class CheckSuiteType(TypedDict):
+    """CheckSuite
 
-    number: int
-    created_at: datetime
-    updated_at: NotRequired[datetime]
-    url: str
-    html_url: str
-    instances_url: str
-    state: Literal["open", "dismissed", "fixed"]
-    fixed_at: NotRequired[Union[datetime, None]]
-    dismissed_by: Union[None, SimpleUserType]
-    dismissed_at: Union[datetime, None]
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+    A suite of checks performed on the code of a given code change
+    """
+
+    id: int
+    node_id: str
+    head_branch: Union[str, None]
+    head_sha: str
+    status: Union[
+        None,
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
     ]
-    dismissed_comment: NotRequired[Union[str, None]]
-    rule: CodeScanningAlertRuleSummaryType
-    tool: CodeScanningAnalysisToolType
-    most_recent_instance: CodeScanningAlertInstanceType
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
+    ]
+    url: Union[str, None]
+    before: Union[str, None]
+    after: Union[str, None]
+    pull_requests: Union[List[PullRequestMinimalType], None]
+    app: Union[None, IntegrationType, None]
+    repository: MinimalRepositoryType
+    created_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    head_commit: SimpleCommitType
+    latest_check_runs_count: int
+    check_runs_url: str
+    rerequestable: NotRequired[bool]
+    runs_rerequestable: NotRequired[bool]
 
 
-__all__ = ("CodeScanningAlertItemsType",)
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
+
+    total_count: int
+    check_suites: List[CheckSuiteType]
+
+
+__all__ = (
+    "CheckSuiteType",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200Type",
+)

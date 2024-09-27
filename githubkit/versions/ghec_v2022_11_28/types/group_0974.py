@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0187 import JobType
+from .group_0197 import WorkflowRunType
 
 
-class ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunsRunIdJobsGetResponse200"""
+class ReposOwnerRepoActionsRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsRunsGetResponse200"""
 
     total_count: int
-    jobs: List[JobType]
+    workflow_runs: List[WorkflowRunType]
 
 
-__all__ = ("ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type",)
+__all__ = ("ReposOwnerRepoActionsRunsGetResponse200Type",)

@@ -10,68 +10,45 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
-from typing_extensions import TypedDict
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0021 import SimpleClassroomRepositoryType
+from .group_0002 import SimpleUserType
+from .group_0021 import ScopedInstallationType
 
 
-class ClassroomAssignmentType(TypedDict):
-    """Classroom Assignment
+class AuthorizationType(TypedDict):
+    """Authorization
 
-    A GitHub Classroom assignment
+    The authorization for an OAuth app, GitHub App, or a Personal Access Token.
     """
 
     id: int
-    public_repo: bool
-    title: str
-    type: Literal["individual", "group"]
-    invite_link: str
-    invitations_enabled: bool
-    slug: str
-    students_are_repo_admins: bool
-    feedback_pull_requests_enabled: bool
-    max_teams: Union[int, None]
-    max_members: Union[int, None]
-    editor: str
-    accepted: int
-    submitted: int
-    passing: int
-    language: str
-    deadline: Union[datetime, None]
-    starter_code_repository: SimpleClassroomRepositoryType
-    classroom: ClassroomType
+    url: str
+    scopes: Union[List[str], None]
+    token: str
+    token_last_eight: Union[str, None]
+    hashed_token: Union[str, None]
+    app: AuthorizationPropAppType
+    note: Union[str, None]
+    note_url: Union[str, None]
+    updated_at: datetime
+    created_at: datetime
+    fingerprint: Union[str, None]
+    user: NotRequired[Union[None, SimpleUserType]]
+    installation: NotRequired[Union[None, ScopedInstallationType]]
+    expires_at: Union[datetime, None]
 
 
-class ClassroomType(TypedDict):
-    """Classroom
+class AuthorizationPropAppType(TypedDict):
+    """AuthorizationPropApp"""
 
-    A GitHub Classroom classroom
-    """
-
-    id: int
+    client_id: str
     name: str
-    archived: bool
-    organization: SimpleClassroomOrganizationType
     url: str
 
 
-class SimpleClassroomOrganizationType(TypedDict):
-    """Organization Simple for Classroom
-
-    A GitHub organization.
-    """
-
-    id: int
-    login: str
-    node_id: str
-    html_url: str
-    name: Union[str, None]
-    avatar_url: str
-
-
 __all__ = (
-    "ClassroomAssignmentType",
-    "ClassroomType",
-    "SimpleClassroomOrganizationType",
+    "AuthorizationType",
+    "AuthorizationPropAppType",
 )

@@ -9,20 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
+
+from .group_0223 import CheckRunType
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type(TypedDict):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1"""
+class ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200"""
 
-    language: Literal[
-        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
-    ]
-    query_pack: str
-    repositories: NotRequired[List[str]]
-    repository_lists: List[str]
-    repository_owners: NotRequired[List[str]]
+    total_count: int
+    check_runs: List[CheckRunType]
 
 
-__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type",)
+__all__ = ("ReposOwnerRepoCheckSuitesCheckSuiteIdCheckRunsGetResponse200Type",)

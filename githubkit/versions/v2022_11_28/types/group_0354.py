@@ -9,28 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class SearchResultTextMatchesItemsType(TypedDict):
-    """SearchResultTextMatchesItems"""
+class ReferrerTrafficType(TypedDict):
+    """Referrer Traffic
 
-    object_url: NotRequired[str]
-    object_type: NotRequired[Union[str, None]]
-    property_: NotRequired[str]
-    fragment: NotRequired[str]
-    matches: NotRequired[List[SearchResultTextMatchesItemsPropMatchesItemsType]]
+    Referrer Traffic
+    """
 
-
-class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
-    """SearchResultTextMatchesItemsPropMatchesItems"""
-
-    text: NotRequired[str]
-    indices: NotRequired[List[int]]
+    referrer: str
+    count: int
+    uniques: int
 
 
-__all__ = (
-    "SearchResultTextMatchesItemsType",
-    "SearchResultTextMatchesItemsPropMatchesItemsType",
-)
+__all__ = ("ReferrerTrafficType",)

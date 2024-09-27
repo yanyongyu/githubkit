@@ -10,8 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
-from typing_extensions import Annotated
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -19,55 +18,74 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0041 import CodeScanningAnalysisTool
-from .group_0042 import CodeScanningAlertInstance
-from .group_0040 import CodeScanningAlertRuleSummary
+from .group_0008 import Integration
+from .group_0196 import SimpleCommit
+from .group_0084 import MinimalRepository
+from .group_0195 import PullRequestMinimal
 
 
-class CodeScanningAlertItems(GitHubModel):
-    """CodeScanningAlertItems"""
+class CheckSuite(GitHubModel):
+    """CheckSuite
 
-    number: int = Field(description="The security alert number.")
-    created_at: datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
+    A suite of checks performed on the code of a given code change
+    """
+
+    id: int = Field()
+    node_id: str = Field()
+    head_branch: Union[str, None] = Field()
+    head_sha: str = Field(
+        description="The SHA of the head commit that is being checked."
     )
-    updated_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    instances_url: str = Field(
-        description="The REST API URL for fetching the list of instances for an alert."
-    )
-    state: Literal["open", "dismissed", "fixed"] = Field(
-        description="State of a code scanning alert."
-    )
-    fixed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    dismissed_by: Union[None, SimpleUser] = Field()
-    dismissed_at: Union[datetime, None] = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
+    status: Union[
+        None,
+        Literal[
+            "queued", "in_progress", "completed", "waiting", "requested", "pending"
+        ],
     ] = Field(
-        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
+        description="The phase of the lifecycle that the check suite is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check suites."
     )
-    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
-        Field(
-            default=UNSET,
-            description="The dismissal comment associated with the dismissal of the alert.",
-        )
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+            "startup_failure",
+            "stale",
+        ],
+    ] = Field()
+    url: Union[str, None] = Field()
+    before: Union[str, None] = Field()
+    after: Union[str, None] = Field()
+    pull_requests: Union[List[PullRequestMinimal], None] = Field()
+    app: Union[None, Integration, None] = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    rule: CodeScanningAlertRuleSummary = Field()
-    tool: CodeScanningAnalysisTool = Field()
-    most_recent_instance: CodeScanningAlertInstance = Field()
+    created_at: Union[datetime, None] = Field()
+    updated_at: Union[datetime, None] = Field()
+    head_commit: SimpleCommit = Field(title="Simple Commit", description="A commit.")
+    latest_check_runs_count: int = Field()
+    check_runs_url: str = Field()
+    rerequestable: Missing[bool] = Field(default=UNSET)
+    runs_rerequestable: Missing[bool] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAlertItems)
+class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200(GitHubModel):
+    """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
 
-__all__ = ("CodeScanningAlertItems",)
+    total_count: int = Field()
+    check_suites: List[CheckSuite] = Field()
+
+
+model_rebuild(CheckSuite)
+model_rebuild(ReposOwnerRepoCommitsRefCheckSuitesGetResponse200)
+
+__all__ = (
+    "CheckSuite",
+    "ReposOwnerRepoCommitsRefCheckSuitesGetResponse200",
+)

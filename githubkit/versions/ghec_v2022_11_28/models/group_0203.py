@@ -9,41 +9,106 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
 
+class WorkflowRunUsage(GitHubModel):
+    """Workflow Run Usage
 
-class Activity(GitHubModel):
-    """Activity
-
-    Activity
+    Workflow Run Usage
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    before: str = Field(description="The SHA of the commit before the activity.")
-    after: str = Field(description="The SHA of the commit after the activity.")
-    ref: str = Field(
-        description="The full Git reference, formatted as `refs/heads/<branch name>`."
+    billable: WorkflowRunUsagePropBillable = Field()
+    run_duration_ms: Missing[int] = Field(default=UNSET)
+
+
+class WorkflowRunUsagePropBillable(GitHubModel):
+    """WorkflowRunUsagePropBillable"""
+
+    ubuntu: Missing[WorkflowRunUsagePropBillablePropUbuntu] = Field(
+        default=UNSET, alias="UBUNTU"
     )
-    timestamp: datetime = Field(description="The time when the activity occurred.")
-    activity_type: Literal[
-        "push",
-        "force_push",
-        "branch_deletion",
-        "branch_creation",
-        "pr_merge",
-        "merge_queue_merge",
-    ] = Field(description="The type of the activity that was performed.")
-    actor: Union[None, SimpleUser] = Field()
+    macos: Missing[WorkflowRunUsagePropBillablePropMacos] = Field(
+        default=UNSET, alias="MACOS"
+    )
+    windows: Missing[WorkflowRunUsagePropBillablePropWindows] = Field(
+        default=UNSET, alias="WINDOWS"
+    )
 
 
-model_rebuild(Activity)
+class WorkflowRunUsagePropBillablePropUbuntu(GitHubModel):
+    """WorkflowRunUsagePropBillablePropUbuntu"""
 
-__all__ = ("Activity",)
+    total_ms: int = Field()
+    jobs: int = Field()
+    job_runs: Missing[List[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems]] = (
+        Field(default=UNSET)
+    )
+
+
+class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems(GitHubModel):
+    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
+
+    job_id: int = Field()
+    duration_ms: int = Field()
+
+
+class WorkflowRunUsagePropBillablePropMacos(GitHubModel):
+    """WorkflowRunUsagePropBillablePropMacos"""
+
+    total_ms: int = Field()
+    jobs: int = Field()
+    job_runs: Missing[List[WorkflowRunUsagePropBillablePropMacosPropJobRunsItems]] = (
+        Field(default=UNSET)
+    )
+
+
+class WorkflowRunUsagePropBillablePropMacosPropJobRunsItems(GitHubModel):
+    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
+
+    job_id: int = Field()
+    duration_ms: int = Field()
+
+
+class WorkflowRunUsagePropBillablePropWindows(GitHubModel):
+    """WorkflowRunUsagePropBillablePropWindows"""
+
+    total_ms: int = Field()
+    jobs: int = Field()
+    job_runs: Missing[List[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems]] = (
+        Field(default=UNSET)
+    )
+
+
+class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems(GitHubModel):
+    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
+
+    job_id: int = Field()
+    duration_ms: int = Field()
+
+
+model_rebuild(WorkflowRunUsage)
+model_rebuild(WorkflowRunUsagePropBillable)
+model_rebuild(WorkflowRunUsagePropBillablePropUbuntu)
+model_rebuild(WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems)
+model_rebuild(WorkflowRunUsagePropBillablePropMacos)
+model_rebuild(WorkflowRunUsagePropBillablePropMacosPropJobRunsItems)
+model_rebuild(WorkflowRunUsagePropBillablePropWindows)
+model_rebuild(WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems)
+
+__all__ = (
+    "WorkflowRunUsage",
+    "WorkflowRunUsagePropBillable",
+    "WorkflowRunUsagePropBillablePropUbuntu",
+    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems",
+    "WorkflowRunUsagePropBillablePropMacos",
+    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItems",
+    "WorkflowRunUsagePropBillablePropWindows",
+    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems",
+)

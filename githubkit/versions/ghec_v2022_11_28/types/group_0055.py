@@ -9,21 +9,79 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0051 import DependabotAlertPackageType
+from .group_0001 import CvssSeveritiesType
+from .group_0054 import DependabotAlertSecurityVulnerabilityType
 
 
-class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
-    """DependabotAlertWithRepositoryPropDependency
+class DependabotAlertSecurityAdvisoryType(TypedDict):
+    """DependabotAlertSecurityAdvisory
 
-    Details for the vulnerable dependency.
+    Details for the GitHub Security Advisory.
     """
 
-    package: NotRequired[DependabotAlertPackageType]
-    manifest_path: NotRequired[str]
-    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
+    ghsa_id: str
+    cve_id: Union[str, None]
+    summary: str
+    description: str
+    vulnerabilities: List[DependabotAlertSecurityVulnerabilityType]
+    severity: Literal["low", "medium", "high", "critical"]
+    cvss: DependabotAlertSecurityAdvisoryPropCvssType
+    cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
+    cwes: List[DependabotAlertSecurityAdvisoryPropCwesItemsType]
+    identifiers: List[DependabotAlertSecurityAdvisoryPropIdentifiersItemsType]
+    references: List[DependabotAlertSecurityAdvisoryPropReferencesItemsType]
+    published_at: datetime
+    updated_at: datetime
+    withdrawn_at: Union[datetime, None]
 
 
-__all__ = ("DependabotAlertWithRepositoryPropDependencyType",)
+class DependabotAlertSecurityAdvisoryPropCvssType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropCvss
+
+    Details for the advisory pertaining to the Common Vulnerability Scoring System.
+    """
+
+    score: float
+    vector_string: Union[str, None]
+
+
+class DependabotAlertSecurityAdvisoryPropCwesItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropCwesItems
+
+    A CWE weakness assigned to the advisory.
+    """
+
+    cwe_id: str
+    name: str
+
+
+class DependabotAlertSecurityAdvisoryPropIdentifiersItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropIdentifiersItems
+
+    An advisory identifier.
+    """
+
+    type: Literal["CVE", "GHSA"]
+    value: str
+
+
+class DependabotAlertSecurityAdvisoryPropReferencesItemsType(TypedDict):
+    """DependabotAlertSecurityAdvisoryPropReferencesItems
+
+    A link to additional advisory information.
+    """
+
+    url: str
+
+
+__all__ = (
+    "DependabotAlertSecurityAdvisoryType",
+    "DependabotAlertSecurityAdvisoryPropCvssType",
+    "DependabotAlertSecurityAdvisoryPropCwesItemsType",
+    "DependabotAlertSecurityAdvisoryPropIdentifiersItemsType",
+    "DependabotAlertSecurityAdvisoryPropReferencesItemsType",
+)

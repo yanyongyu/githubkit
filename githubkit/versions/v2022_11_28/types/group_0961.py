@@ -9,30 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoDependabotSecretsGetResponse200"""
+class ReposOwnerRepoContentsPathPutBodyType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBody"""
 
-    total_count: int
-    secrets: List[DependabotSecretType]
+    message: str
+    content: str
+    sha: NotRequired[str]
+    branch: NotRequired[str]
+    committer: NotRequired[ReposOwnerRepoContentsPathPutBodyPropCommitterType]
+    author: NotRequired[ReposOwnerRepoContentsPathPutBodyPropAuthorType]
 
 
-class DependabotSecretType(TypedDict):
-    """Dependabot Secret
+class ReposOwnerRepoContentsPathPutBodyPropCommitterType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropCommitter
 
-    Set secrets for Dependabot.
+    The person that committed the file. Default: the authenticated user.
     """
 
     name: str
-    created_at: datetime
-    updated_at: datetime
+    email: str
+    date: NotRequired[str]
+
+
+class ReposOwnerRepoContentsPathPutBodyPropAuthorType(TypedDict):
+    """ReposOwnerRepoContentsPathPutBodyPropAuthor
+
+    The author of the file. Default: The `committer` or the authenticated user if
+    you omit `committer`.
+    """
+
+    name: str
+    email: str
+    date: NotRequired[str]
 
 
 __all__ = (
-    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
-    "DependabotSecretType",
+    "ReposOwnerRepoContentsPathPutBodyType",
+    "ReposOwnerRepoContentsPathPutBodyPropCommitterType",
+    "ReposOwnerRepoContentsPathPutBodyPropAuthorType",
 )

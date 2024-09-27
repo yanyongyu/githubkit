@@ -9,20 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgCodespacesAccessPutBodyType(TypedDict):
-    """OrgsOrgCodespacesAccessPutBody"""
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType(TypedDict):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody"""
 
-    visibility: Literal[
-        "disabled",
-        "selected_members",
-        "all_members",
-        "all_members_and_outside_collaborators",
+    default_for_new_repos: NotRequired[
+        Literal["all", "none", "private_and_internal", "public"]
     ]
-    selected_usernames: NotRequired[List[str]]
 
 
-__all__ = ("OrgsOrgCodespacesAccessPutBodyType",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType",)

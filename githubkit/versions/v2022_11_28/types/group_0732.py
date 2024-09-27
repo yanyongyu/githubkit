@@ -9,21 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookStatusPropCommitPropCommitPropAuthorAllof0Type(TypedDict):
-    """Committer
-
-    Metaproperties for Git author/committer information.
-    """
-
-    date: NotRequired[datetime]
-    email: Union[str, None]
-    name: str
-    username: NotRequired[str]
+from .group_0378 import EnterpriseWebhooksType
+from .group_0379 import SimpleInstallationType
+from .group_0381 import RepositoryWebhooksType
+from .group_0382 import SimpleUserWebhooksType
+from .group_0380 import OrganizationSimpleWebhooksType
 
 
-__all__ = ("WebhookStatusPropCommitPropCommitPropAuthorAllof0Type",)
+class WebhookStarCreatedType(TypedDict):
+    """star created event"""
+
+    action: Literal["created"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
+    starred_at: Union[str, None]
+
+
+__all__ = ("WebhookStarCreatedType",)

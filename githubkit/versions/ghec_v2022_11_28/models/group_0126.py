@@ -9,33 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRulesetBypassActor(GitHubModel):
-    """Repository Ruleset Bypass Actor
+class CodeOfConductSimple(GitHubModel):
+    """Code Of Conduct Simple
 
-    An actor that can bypass rules in a ruleset
+    Code of Conduct Simple
     """
 
-    actor_id: Missing[Union[int, None]] = Field(
-        default=UNSET,
-        description="The ID of the actor that can bypass a ruleset. If `actor_type` is `OrganizationAdmin`, this should be `1`. If `actor_type` is `DeployKey`, this should be null. `OrganizationAdmin` is not applicable for personal repositories.",
-    )
-    actor_type: Literal[
-        "Integration", "OrganizationAdmin", "RepositoryRole", "Team", "DeployKey"
-    ] = Field(description="The type of actor that can bypass a ruleset.")
-    bypass_mode: Literal["always", "pull_request"] = Field(
-        description="When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests. `pull_request` is not applicable for the `DeployKey` actor type."
-    )
+    url: str = Field()
+    key: str = Field()
+    name: str = Field()
+    html_url: Union[str, None] = Field()
 
 
-model_rebuild(RepositoryRulesetBypassActor)
+model_rebuild(CodeOfConductSimple)
 
-__all__ = ("RepositoryRulesetBypassActor",)
+__all__ = ("CodeOfConductSimple",)

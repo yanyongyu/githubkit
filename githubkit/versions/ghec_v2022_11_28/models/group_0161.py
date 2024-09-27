@@ -17,20 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0162 import RepositoryRuleWorkflowsPropParameters
+
+class RepositoryRuleTagNamePatternPropParameters(GitHubModel):
+    """RepositoryRuleTagNamePatternPropParameters"""
+
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
+    )
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-class RepositoryRuleWorkflows(GitHubModel):
-    """workflows
+model_rebuild(RepositoryRuleTagNamePatternPropParameters)
 
-    Require all changes made to a targeted branch to pass the specified workflows
-    before they can be merged.
-    """
-
-    type: Literal["workflows"] = Field()
-    parameters: Missing[RepositoryRuleWorkflowsPropParameters] = Field(default=UNSET)
-
-
-model_rebuild(RepositoryRuleWorkflows)
-
-__all__ = ("RepositoryRuleWorkflows",)
+__all__ = ("RepositoryRuleTagNamePatternPropParameters",)

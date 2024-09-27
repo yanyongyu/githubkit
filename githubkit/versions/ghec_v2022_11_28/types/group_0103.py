@@ -9,28 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0002 import SimpleUserType
+from .group_0084 import MinimalRepositoryType
 
-class ExternalGroupsType(TypedDict):
-    """ExternalGroups
 
-    A list of external groups available to be connected to a team
+class PackageType(TypedDict):
+    """Package
+
+    A software package
     """
 
-    groups: NotRequired[List[ExternalGroupsPropGroupsItemsType]]
+    id: int
+    name: str
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    url: str
+    html_url: str
+    version_count: int
+    visibility: Literal["private", "public"]
+    owner: NotRequired[Union[None, SimpleUserType]]
+    repository: NotRequired[Union[None, MinimalRepositoryType]]
+    created_at: datetime
+    updated_at: datetime
 
 
-class ExternalGroupsPropGroupsItemsType(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
-
-    group_id: int
-    group_name: str
-    updated_at: str
-
-
-__all__ = (
-    "ExternalGroupsType",
-    "ExternalGroupsPropGroupsItemsType",
-)
+__all__ = ("PackageType",)

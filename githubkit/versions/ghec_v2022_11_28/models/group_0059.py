@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,47 +18,77 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0002 import SimpleUser
+from .group_0045 import SimpleRepository
 
-class AdvancedSecurityActiveCommitters(GitHubModel):
-    """AdvancedSecurityActiveCommitters"""
 
-    total_advanced_security_committers: Missing[int] = Field(default=UNSET)
-    total_count: Missing[int] = Field(default=UNSET)
-    maximum_advanced_security_committers: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of GitHub Advanced Security licences required if all repositories were to enable GitHub Advanced Security",
+class OrganizationSecretScanningAlert(GitHubModel):
+    """OrganizationSecretScanningAlert"""
+
+    number: Missing[int] = Field(
+        default=UNSET, description="The security alert number."
     )
-    purchased_advanced_security_committers: Missing[int] = Field(
+    created_at: Missing[datetime] = Field(
         default=UNSET,
-        description="The total number of GitHub Advanced Security licences purchased",
+        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    repositories: List[AdvancedSecurityActiveCommittersRepository] = Field()
+    updated_at: Missing[Union[None, datetime]] = Field(default=UNSET)
+    url: Missing[str] = Field(
+        default=UNSET, description="The REST API URL of the alert resource."
+    )
+    html_url: Missing[str] = Field(
+        default=UNSET, description="The GitHub URL of the alert resource."
+    )
+    locations_url: Missing[str] = Field(
+        default=UNSET,
+        description="The REST API URL of the code locations for this alert.",
+    )
+    state: Missing[Literal["open", "resolved"]] = Field(
+        default=UNSET,
+        description="Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.",
+    )
+    resolution: Missing[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
+    ] = Field(
+        default=UNSET,
+        description="**Required when the `state` is `resolved`.** The reason for resolving the alert.",
+    )
+    resolved_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time that the alert was resolved in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    resolved_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    secret_type: Missing[str] = Field(
+        default=UNSET, description="The type of secret that secret scanning detected."
+    )
+    secret_type_display_name: Missing[str] = Field(
+        default=UNSET,
+        description='User-friendly name for the detected secret, matching the `secret_type`.\nFor a list of built-in patterns, see "[Supported secret scanning patterns](https://docs.github.com/enterprise-cloud@latest//code-security/secret-scanning/introduction/supported-secret-scanning-patterns#supported-secrets)."',
+    )
+    secret: Missing[str] = Field(
+        default=UNSET, description="The secret that was detected."
+    )
+    repository: Missing[SimpleRepository] = Field(
+        default=UNSET, title="Simple Repository", description="A GitHub repository."
+    )
+    push_protection_bypassed: Missing[Union[bool, None]] = Field(
+        default=UNSET,
+        description="Whether push protection was bypassed for the detected secret.",
+    )
+    push_protection_bypassed_by: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    push_protection_bypassed_at: Missing[Union[datetime, None]] = Field(
+        default=UNSET,
+        description="The time that push protection was bypassed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    resolution_comment: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="The comment that was optionally added when this alert was closed",
+    )
+    validity: Missing[Literal["active", "inactive", "unknown"]] = Field(
+        default=UNSET, description="The token status as of the latest validity check."
+    )
 
 
-class AdvancedSecurityActiveCommittersRepository(GitHubModel):
-    """AdvancedSecurityActiveCommittersRepository"""
+model_rebuild(OrganizationSecretScanningAlert)
 
-    name: str = Field()
-    advanced_security_committers: int = Field()
-    advanced_security_committers_breakdown: List[
-        AdvancedSecurityActiveCommittersUser
-    ] = Field()
-
-
-class AdvancedSecurityActiveCommittersUser(GitHubModel):
-    """AdvancedSecurityActiveCommittersUser"""
-
-    user_login: str = Field()
-    last_pushed_date: str = Field()
-    last_pushed_email: str = Field()
-
-
-model_rebuild(AdvancedSecurityActiveCommitters)
-model_rebuild(AdvancedSecurityActiveCommittersRepository)
-model_rebuild(AdvancedSecurityActiveCommittersUser)
-
-__all__ = (
-    "AdvancedSecurityActiveCommitters",
-    "AdvancedSecurityActiveCommittersRepository",
-    "AdvancedSecurityActiveCommittersUser",
-)
+__all__ = ("OrganizationSecretScanningAlert",)

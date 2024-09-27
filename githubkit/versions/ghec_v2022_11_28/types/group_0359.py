@@ -9,36 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
+from .group_0164 import RepositoryRuleWorkflowsPropParametersType
 
 
-class SecretScanningAlertType(TypedDict):
-    """SecretScanningAlert"""
+class RepositoryRuleDetailedOneof15Type(TypedDict):
+    """RepositoryRuleDetailedOneof15"""
 
-    number: NotRequired[int]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[Union[None, datetime]]
-    url: NotRequired[str]
-    html_url: NotRequired[str]
-    locations_url: NotRequired[str]
-    state: NotRequired[Literal["open", "resolved"]]
-    resolution: NotRequired[
-        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
-    ]
-    resolved_at: NotRequired[Union[datetime, None]]
-    resolved_by: NotRequired[Union[None, SimpleUserType]]
-    resolution_comment: NotRequired[Union[str, None]]
-    secret_type: NotRequired[str]
-    secret_type_display_name: NotRequired[str]
-    secret: NotRequired[str]
-    push_protection_bypassed: NotRequired[Union[bool, None]]
-    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
-    push_protection_bypassed_at: NotRequired[Union[datetime, None]]
-    validity: NotRequired[Literal["active", "inactive", "unknown"]]
+    type: Literal["workflows"]
+    parameters: NotRequired[RepositoryRuleWorkflowsPropParametersType]
+    ruleset_source_type: NotRequired[Literal["Repository", "Organization"]]
+    ruleset_source: NotRequired[str]
+    ruleset_id: NotRequired[int]
 
 
-__all__ = ("SecretScanningAlertType",)
+__all__ = ("RepositoryRuleDetailedOneof15Type",)

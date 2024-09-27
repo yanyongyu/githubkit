@@ -9,27 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List, Union, Literal
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0002 import SimpleUser
+from .group_0016 import AppPermissions
 
-class SimpleClassroomRepository(GitHubModel):
-    """Simple Classroom Repository
 
-    A GitHub repository view for Classroom
-    """
+class ScopedInstallation(GitHubModel):
+    """Scoped Installation"""
 
-    id: int = Field(description="A unique identifier of the repository.")
-    full_name: str = Field(
-        description="The full, globally unique name of the repository."
+    permissions: AppPermissions = Field(
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
     )
-    html_url: str = Field(description="The URL to view the repository on GitHub.com.")
-    node_id: str = Field(description="The GraphQL identifier of the repository.")
-    private: bool = Field(description="Whether the repository is private.")
-    default_branch: str = Field(description="The default branch for the repository.")
+    repository_selection: Literal["all", "selected"] = Field(
+        description="Describe whether all repositories have been selected or there's a selection involved"
+    )
+    single_file_name: Union[str, None] = Field()
+    has_multiple_single_files: Missing[bool] = Field(default=UNSET)
+    single_file_paths: Missing[List[str]] = Field(default=UNSET)
+    repositories_url: str = Field()
+    account: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(SimpleClassroomRepository)
+model_rebuild(ScopedInstallation)
 
-__all__ = ("SimpleClassroomRepository",)
+__all__ = ("ScopedInstallation",)

@@ -17,18 +17,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0413 import EnterpriseWebhooks
-from .group_0414 import SimpleInstallation
-from .group_0416 import RepositoryWebhooks
-from .group_0417 import SimpleUserWebhooks
-from .group_0463 import WebhooksSecurityAdvisory
-from .group_0415 import OrganizationSimpleWebhooks
+from .group_0415 import EnterpriseWebhooks
+from .group_0416 import SimpleInstallation
+from .group_0418 import RepositoryWebhooks
+from .group_0419 import SimpleUserWebhooks
+from .group_0417 import OrganizationSimpleWebhooks
+from .group_0464 import SecretScanningAlertWebhook
 
 
-class WebhookSecurityAdvisoryPublished(GitHubModel):
-    """security_advisory published event"""
+class WebhookSecretScanningAlertResolved(GitHubModel):
+    """secret_scanning_alert resolved event"""
 
-    action: Literal["published"] = Field()
+    action: Literal["resolved"] = Field()
+    alert: SecretScanningAlertWebhook = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -44,13 +45,9 @@ class WebhookSecurityAdvisoryPublished(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
-    )
-    security_advisory: WebhooksSecurityAdvisory = Field(
-        description="The details of the security advisory, including summary, description, and severity."
     )
     sender: Missing[SimpleUserWebhooks] = Field(
         default=UNSET,
@@ -59,6 +56,6 @@ class WebhookSecurityAdvisoryPublished(GitHubModel):
     )
 
 
-model_rebuild(WebhookSecurityAdvisoryPublished)
+model_rebuild(WebhookSecretScanningAlertResolved)
 
-__all__ = ("WebhookSecurityAdvisoryPublished",)
+__all__ = ("WebhookSecretScanningAlertResolved",)

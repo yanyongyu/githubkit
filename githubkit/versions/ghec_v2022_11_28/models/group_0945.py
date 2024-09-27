@@ -9,13 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
+from pydantic import Field
+
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse201(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostResponse201"""
+class ProjectsColumnsCardsCardIdDeleteResponse403(GitHubModel):
+    """ProjectsColumnsCardsCardIdDeleteResponse403"""
+
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
+    errors: Missing[List[str]] = Field(default=UNSET)
 
 
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse201)
+model_rebuild(ProjectsColumnsCardsCardIdDeleteResponse403)
 
-__all__ = ("ProjectsColumnsCardsCardIdMovesPostResponse201",)
+__all__ = ("ProjectsColumnsCardsCardIdDeleteResponse403",)

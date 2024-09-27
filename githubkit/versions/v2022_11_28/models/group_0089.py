@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -18,48 +17,41 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
+from .group_0002 import SimpleUser
+from .group_0027 import OrganizationSimple
 
 
-class OrganizationRole(GitHubModel):
-    """Organization Role
+class OrgMembership(GitHubModel):
+    """Org Membership
 
-    Organization roles
+    Org Membership
     """
 
-    id: int = Field(description="The unique identifier of the role.")
-    name: str = Field(description="The name of the role.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+    url: str = Field()
+    state: Literal["active", "pending"] = Field(
+        description="The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation."
     )
-    permissions: List[str] = Field(
-        description="A list of permissions included in this role."
+    role: Literal["admin", "member", "billing_manager"] = Field(
+        description="The user's membership type in the organization."
     )
-    organization: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field(description="The date and time the role was created.")
-    updated_at: datetime = Field(
-        description="The date and time the role was last updated."
+    organization_url: str = Field()
+    organization: OrganizationSimple = Field(
+        title="Organization Simple", description="A GitHub organization."
     )
+    user: Union[None, SimpleUser] = Field()
+    permissions: Missing[OrgMembershipPropPermissions] = Field(default=UNSET)
 
 
-class OrgsOrgOrganizationRolesGetResponse200(GitHubModel):
-    """OrgsOrgOrganizationRolesGetResponse200"""
+class OrgMembershipPropPermissions(GitHubModel):
+    """OrgMembershipPropPermissions"""
 
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of organization roles available to the organization.",
-    )
-    roles: Missing[List[OrganizationRole]] = Field(
-        default=UNSET,
-        description="The list of organization roles available to the organization.",
-    )
+    can_create_repository: bool = Field()
 
 
-model_rebuild(OrganizationRole)
-model_rebuild(OrgsOrgOrganizationRolesGetResponse200)
+model_rebuild(OrgMembership)
+model_rebuild(OrgMembershipPropPermissions)
 
 __all__ = (
-    "OrganizationRole",
-    "OrgsOrgOrganizationRolesGetResponse200",
+    "OrgMembership",
+    "OrgMembershipPropPermissions",
 )

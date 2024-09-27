@@ -17,19 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0166 import RepositoryRuleset
-from .group_0413 import EnterpriseWebhooks
-from .group_0414 import SimpleInstallation
-from .group_0416 import RepositoryWebhooks
-from .group_0417 import SimpleUserWebhooks
-from .group_0415 import OrganizationSimpleWebhooks
-from .group_0744 import WebhookRepositoryRulesetEditedPropChanges
+from .group_0168 import RepositoryRuleset
+from .group_0415 import EnterpriseWebhooks
+from .group_0416 import SimpleInstallation
+from .group_0418 import RepositoryWebhooks
+from .group_0419 import SimpleUserWebhooks
+from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryRulesetEdited(GitHubModel):
-    """repository ruleset edited event"""
+class WebhookRepositoryRulesetCreated(GitHubModel):
+    """repository ruleset created event"""
 
-    action: Literal["edited"] = Field()
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -54,13 +53,12 @@ class WebhookRepositoryRulesetEdited(GitHubModel):
         title="Repository ruleset",
         description="A set of rules to apply when specified conditions are met.",
     )
-    changes: Missing[WebhookRepositoryRulesetEditedPropChanges] = Field(default=UNSET)
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-model_rebuild(WebhookRepositoryRulesetEdited)
+model_rebuild(WebhookRepositoryRulesetCreated)
 
-__all__ = ("WebhookRepositoryRulesetEdited",)
+__all__ = ("WebhookRepositoryRulesetCreated",)

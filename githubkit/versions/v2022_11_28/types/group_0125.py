@@ -12,17 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0126 import RepositoryRuleCommitMessagePatternPropParametersType
+from .group_0126 import RepositoryRuleRequiredStatusChecksPropParametersType
 
 
-class RepositoryRuleCommitMessagePatternType(TypedDict):
-    """commit_message_pattern
+class RepositoryRuleRequiredStatusChecksType(TypedDict):
+    """required_status_checks
 
-    Parameters to be used for the commit_message_pattern rule
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
     """
 
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
+    type: Literal["required_status_checks"]
+    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
 
 
-__all__ = ("RepositoryRuleCommitMessagePatternType",)
+__all__ = ("RepositoryRuleRequiredStatusChecksType",)

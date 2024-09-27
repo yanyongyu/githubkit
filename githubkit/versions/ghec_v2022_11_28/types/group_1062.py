@@ -9,17 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-
-class ReposOwnerRepoImportPatchBodyType(TypedDict):
-    """ReposOwnerRepoImportPatchBody"""
-
-    vcs_username: NotRequired[str]
-    vcs_password: NotRequired[str]
-    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
-    tfvc_project: NotRequired[str]
+from .group_0009 import WebhookConfigType
 
 
-__all__ = ("ReposOwnerRepoImportPatchBodyType",)
+class ReposOwnerRepoHooksHookIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoHooksHookIdPatchBody"""
+
+    config: NotRequired[WebhookConfigType]
+    events: NotRequired[List[str]]
+    add_events: NotRequired[List[str]]
+    remove_events: NotRequired[List[str]]
+    active: NotRequired[bool]
+
+
+__all__ = ("ReposOwnerRepoHooksHookIdPatchBodyType",)

@@ -9,43 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0188 import GitUserType
-from .group_0189 import VerificationType
+from .group_0057 import MinimalRepositoryType
+from .group_0356 import SearchResultTextMatchesItemsType
 
 
-class CommitSearchResultItemPropCommitType(TypedDict):
-    """CommitSearchResultItemPropCommit"""
+class CodeSearchResultItemType(TypedDict):
+    """Code Search Result Item
 
-    author: CommitSearchResultItemPropCommitPropAuthorType
-    committer: Union[None, GitUserType]
-    comment_count: int
-    message: str
-    tree: CommitSearchResultItemPropCommitPropTreeType
-    url: str
-    verification: NotRequired[VerificationType]
-
-
-class CommitSearchResultItemPropCommitPropAuthorType(TypedDict):
-    """CommitSearchResultItemPropCommitPropAuthor"""
+    Code Search Result Item
+    """
 
     name: str
-    email: str
-    date: datetime
-
-
-class CommitSearchResultItemPropCommitPropTreeType(TypedDict):
-    """CommitSearchResultItemPropCommitPropTree"""
-
+    path: str
     sha: str
     url: str
+    git_url: str
+    html_url: str
+    repository: MinimalRepositoryType
+    score: float
+    file_size: NotRequired[int]
+    language: NotRequired[Union[str, None]]
+    last_modified_at: NotRequired[datetime]
+    line_numbers: NotRequired[List[str]]
+    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
+
+
+class SearchCodeGetResponse200Type(TypedDict):
+    """SearchCodeGetResponse200"""
+
+    total_count: int
+    incomplete_results: bool
+    items: List[CodeSearchResultItemType]
 
 
 __all__ = (
-    "CommitSearchResultItemPropCommitType",
-    "CommitSearchResultItemPropCommitPropAuthorType",
-    "CommitSearchResultItemPropCommitPropTreeType",
+    "CodeSearchResultItemType",
+    "SearchCodeGetResponse200Type",
 )

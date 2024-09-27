@@ -9,15 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0766 import WebhookSecurityAndAnalysisPropChangesPropFromType
+from .group_0415 import EnterpriseWebhooksType
+from .group_0416 import SimpleInstallationType
+from .group_0418 import RepositoryWebhooksType
+from .group_0419 import SimpleUserWebhooksType
+from .group_0417 import OrganizationSimpleWebhooksType
+from .group_0766 import WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType
 
 
-class WebhookSecurityAndAnalysisPropChangesType(TypedDict):
-    """WebhookSecurityAndAnalysisPropChanges"""
+class WebhookSecurityAdvisoryWithdrawnType(TypedDict):
+    """security_advisory withdrawn event"""
 
-    from_: NotRequired[WebhookSecurityAndAnalysisPropChangesPropFromType]
+    action: Literal["withdrawn"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: NotRequired[RepositoryWebhooksType]
+    security_advisory: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookSecurityAndAnalysisPropChangesType",)
+__all__ = ("WebhookSecurityAdvisoryWithdrawnType",)

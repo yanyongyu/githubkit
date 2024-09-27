@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type(TypedDict):
-    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403"""
+class OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType(TypedDict):
+    """OrgsOrgTeamsTeamSlugExternalGroupsPatchBody"""
 
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    group_id: int
 
 
-__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403Type",)
+__all__ = ("OrgsOrgTeamsTeamSlugExternalGroupsPatchBodyType",)

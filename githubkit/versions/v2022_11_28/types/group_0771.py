@@ -9,15 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-
-class EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type(TypedDict):
-    """EnterprisesEnterpriseSecretScanningAlertsGetResponse503"""
-
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+from .group_0016 import AppPermissionsType
 
 
-__all__ = ("EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type",)
+class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
+    """ApplicationsClientIdTokenScopedPostBody"""
+
+    access_token: str
+    target: NotRequired[str]
+    target_id: NotRequired[int]
+    repositories: NotRequired[List[str]]
+    repository_ids: NotRequired[List[int]]
+    permissions: NotRequired[AppPermissionsType]
+
+
+__all__ = ("ApplicationsClientIdTokenScopedPostBodyType",)

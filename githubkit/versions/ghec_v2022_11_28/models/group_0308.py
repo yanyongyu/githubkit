@@ -17,35 +17,32 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0006 import Integration
+from .group_0002 import SimpleUser
+from .group_0008 import Integration
 
 
-class ConvertedNoteToIssueIssueEvent(GitHubModel):
-    """Converted Note to Issue Issue Event
+class MovedColumnInProjectIssueEvent(GitHubModel):
+    """Moved Column in Project Issue Event
 
-    Converted Note to Issue Issue Event
+    Moved Column in Project Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["converted_note_to_issue"] = Field()
+    event: Literal["moved_columns_in_project"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
-    performed_via_github_app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
-    )
-    project_card: Missing[ConvertedNoteToIssueIssueEventPropProjectCard] = Field(
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    project_card: Missing[MovedColumnInProjectIssueEventPropProjectCard] = Field(
         default=UNSET
     )
 
 
-class ConvertedNoteToIssueIssueEventPropProjectCard(GitHubModel):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
+class MovedColumnInProjectIssueEventPropProjectCard(GitHubModel):
+    """MovedColumnInProjectIssueEventPropProjectCard"""
 
     id: int = Field()
     url: str = Field()
@@ -55,10 +52,10 @@ class ConvertedNoteToIssueIssueEventPropProjectCard(GitHubModel):
     previous_column_name: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ConvertedNoteToIssueIssueEvent)
-model_rebuild(ConvertedNoteToIssueIssueEventPropProjectCard)
+model_rebuild(MovedColumnInProjectIssueEvent)
+model_rebuild(MovedColumnInProjectIssueEventPropProjectCard)
 
 __all__ = (
-    "ConvertedNoteToIssueIssueEvent",
-    "ConvertedNoteToIssueIssueEventPropProjectCard",
+    "MovedColumnInProjectIssueEvent",
+    "MovedColumnInProjectIssueEventPropProjectCard",
 )

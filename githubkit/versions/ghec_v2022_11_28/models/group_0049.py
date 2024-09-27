@@ -10,7 +10,6 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from datetime import date, datetime
 
 from pydantic import Field
 
@@ -18,71 +17,37 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0048 import Team
-from .group_0001 import SimpleUser
-from .group_0029 import OrganizationSimple
 
+class TeamSimple(GitHubModel):
+    """Team Simple
 
-class CopilotSeatDetails(GitHubModel):
-    """Copilot Business Seat Detail
-
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
+    Groups of organization members that gives permissions on specified repositories.
     """
 
-    assignee: SimpleUser = Field(
-        description="The assignee that has been granted access to GitHub Copilot."
-    )
-    organization: Missing[Union[OrganizationSimple, None]] = Field(
-        default=UNSET, description="The organization to which this seat belongs."
-    )
-    assigning_team: Missing[Union[Team, EnterpriseTeam, None]] = Field(
-        default=UNSET,
-        description="The team through which the assignee is granted access to GitHub Copilot, if applicable.",
-    )
-    pending_cancellation_date: Missing[Union[date, None]] = Field(
-        default=UNSET,
-        description="The pending cancellation date for the seat, in `YYYY-MM-DD` format. This will be null unless the assignee's Copilot access has been canceled during the current billing cycle. If the seat has been cancelled, this corresponds to the start of the organization's next billing cycle.",
-    )
-    last_activity_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="Timestamp of user's last GitHub Copilot activity, in ISO 8601 format.",
-    )
-    last_activity_editor: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="Last editor that was used by the user for a GitHub Copilot completion.",
-    )
-    created_at: datetime = Field(
-        description="Timestamp of when the assignee was last granted access to GitHub Copilot, in ISO 8601 format."
-    )
-    updated_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="Timestamp of when the assignee's GitHub Copilot access was last updated, in ISO 8601 format.",
-    )
-
-
-class EnterpriseTeam(GitHubModel):
-    """Enterprise Team
-
-    Group of enterprise owners and/or members
-    """
-
-    id: int = Field()
-    name: str = Field()
-    slug: str = Field()
-    url: str = Field()
-    sync_to_organizations: str = Field()
-    group_id: Missing[Union[int, None]] = Field(default=UNSET)
-    html_url: str = Field()
+    id: int = Field(description="Unique identifier of the team")
+    node_id: str = Field()
+    url: str = Field(description="URL for the team")
     members_url: str = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    name: str = Field(description="Name of the team")
+    description: Union[str, None] = Field(description="Description of the team")
+    permission: str = Field(
+        description="Permission that the team will have for its repositories"
+    )
+    privacy: Missing[str] = Field(
+        default=UNSET, description="The level of privacy this team should have"
+    )
+    notification_setting: Missing[str] = Field(
+        default=UNSET, description="The notification setting the team has set"
+    )
+    html_url: str = Field()
+    repositories_url: str = Field()
+    slug: str = Field()
+    ldap_dn: Missing[str] = Field(
+        default=UNSET,
+        description="Distinguished Name (DN) that team maps to within LDAP environment",
+    )
 
 
-model_rebuild(CopilotSeatDetails)
-model_rebuild(EnterpriseTeam)
+model_rebuild(TeamSimple)
 
-__all__ = (
-    "CopilotSeatDetails",
-    "EnterpriseTeam",
-)
+__all__ = ("TeamSimple",)

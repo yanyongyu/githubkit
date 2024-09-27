@@ -12,24 +12,22 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0413 import EnterpriseWebhooksType
-from .group_0414 import SimpleInstallationType
-from .group_0416 import RepositoryWebhooksType
-from .group_0417 import SimpleUserWebhooksType
-from .group_0415 import OrganizationSimpleWebhooksType
+from .group_0123 import CustomPropertyType
+from .group_0415 import EnterpriseWebhooksType
+from .group_0416 import SimpleInstallationType
+from .group_0419 import SimpleUserWebhooksType
+from .group_0417 import OrganizationSimpleWebhooksType
 
 
-class WebhookDeleteType(TypedDict):
-    """delete event"""
+class WebhookCustomPropertyUpdatedType(TypedDict):
+    """custom property updated event"""
 
+    action: Literal["updated"]
+    definition: CustomPropertyType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pusher_type: str
-    ref: str
-    ref_type: Literal["tag", "branch"]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookDeleteType",)
+__all__ = ("WebhookCustomPropertyUpdatedType",)

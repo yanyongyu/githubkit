@@ -13,10 +13,10 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0"""
+class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0"""
 
     labels: NotRequired[List[str]]
 
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type",)

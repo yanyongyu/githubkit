@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0413 import EnterpriseWebhooksType
-from .group_0414 import SimpleInstallationType
-from .group_0416 import RepositoryWebhooksType
-from .group_0417 import SimpleUserWebhooksType
-from .group_0454 import PullRequestWebhookType
-from .group_0415 import OrganizationSimpleWebhooksType
+from .group_0066 import MilestoneType
+from .group_0415 import EnterpriseWebhooksType
+from .group_0418 import RepositoryWebhooksType
+from .group_0419 import SimpleUserWebhooksType
+from .group_0458 import WebhooksPullRequest5Type
+from .group_0417 import OrganizationSimpleWebhooksType
 
 
-class WebhookPullRequestReadyForReviewType(TypedDict):
-    """pull_request ready_for_review event"""
+class WebhookPullRequestMilestonedType(TypedDict):
+    """pull_request milestoned event"""
 
-    action: Literal["ready_for_review"]
+    action: Literal["milestoned"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    milestone: NotRequired[MilestoneType]
     number: int
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pull_request: PullRequestWebhookType
+    pull_request: WebhooksPullRequest5Type
     repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookPullRequestReadyForReviewType",)
+__all__ = ("WebhookPullRequestMilestonedType",)

@@ -9,32 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Literal
+from typing import List
 from typing_extensions import TypedDict
 
+from .group_0080 import CodespaceType
 
-class UserCodespacesSecretsGetResponse200Type(TypedDict):
-    """UserCodespacesSecretsGetResponse200"""
+
+class UserCodespacesGetResponse200Type(TypedDict):
+    """UserCodespacesGetResponse200"""
 
     total_count: int
-    secrets: List[CodespacesSecretType]
+    codespaces: List[CodespaceType]
 
 
-class CodespacesSecretType(TypedDict):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str
-    created_at: datetime
-    updated_at: datetime
-    visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: str
-
-
-__all__ = (
-    "UserCodespacesSecretsGetResponse200Type",
-    "CodespacesSecretType",
-)
+__all__ = ("UserCodespacesGetResponse200Type",)

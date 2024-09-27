@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0377 import SimpleInstallationType
-from .group_0379 import RepositoryWebhooksType
-from .group_0380 import SimpleUserWebhooksType
-from .group_0378 import OrganizationSimpleWebhooksType
-from .group_0383 import CheckRunWithSimpleCheckSuiteType
+from .group_0379 import SimpleInstallationType
+from .group_0381 import RepositoryWebhooksType
+from .group_0382 import SimpleUserWebhooksType
+from .group_0380 import OrganizationSimpleWebhooksType
+from .group_0385 import CheckRunWithSimpleCheckSuiteType
 
 
-class WebhookCheckRunCreatedType(TypedDict):
-    """Check Run Created Event"""
+class WebhookCheckRunCompletedType(TypedDict):
+    """Check Run Completed Event"""
 
-    action: Literal["created"]
+    action: Literal["completed"]
     check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -30,4 +30,4 @@ class WebhookCheckRunCreatedType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookCheckRunCreatedType",)
+__all__ = ("WebhookCheckRunCompletedType",)

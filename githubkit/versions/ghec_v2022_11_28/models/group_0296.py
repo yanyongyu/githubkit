@@ -9,38 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0006 import Integration
+from .group_0002 import SimpleUser
+from .group_0008 import Integration
 
 
-class AssignedIssueEvent(GitHubModel):
-    """Assigned Issue Event
+class LabeledIssueEvent(GitHubModel):
+    """Labeled Issue Event
 
-    Assigned Issue Event
+    Labeled Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
+    event: Literal["labeled"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
-    performed_via_github_app: Union[Integration, None] = Field(
-        title="GitHub app",
-        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
-    )
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    label: LabeledIssueEventPropLabel = Field()
 
 
-model_rebuild(AssignedIssueEvent)
+class LabeledIssueEventPropLabel(GitHubModel):
+    """LabeledIssueEventPropLabel"""
 
-__all__ = ("AssignedIssueEvent",)
+    name: str = Field()
+    color: str = Field()
+
+
+model_rebuild(LabeledIssueEvent)
+model_rebuild(LabeledIssueEventPropLabel)
+
+__all__ = (
+    "LabeledIssueEvent",
+    "LabeledIssueEventPropLabel",
+)

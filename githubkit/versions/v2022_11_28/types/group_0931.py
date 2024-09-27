@@ -9,13 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoBranchesBranchRenamePostBodyType(TypedDict):
-    """ReposOwnerRepoBranchesBranchRenamePostBody"""
+class ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type(
+    TypedDict
+):
+    """ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0
 
-    new_name: str
+    Examples:
+        {'users': ['mona']}
+    """
+
+    users: List[str]
 
 
-__all__ = ("ReposOwnerRepoBranchesBranchRenamePostBodyType",)
+__all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type",)

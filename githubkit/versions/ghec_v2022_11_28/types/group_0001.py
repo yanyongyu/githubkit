@@ -13,33 +13,29 @@ from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 
-class SimpleUserType(TypedDict):
-    """Simple User
+class CvssSeveritiesType(TypedDict):
+    """CvssSeverities"""
 
-    A GitHub user.
-    """
-
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
-    id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
+    cvss_v3: NotRequired[Union[CvssSeveritiesPropCvssV3Type, None]]
+    cvss_v4: NotRequired[Union[CvssSeveritiesPropCvssV4Type, None]]
 
 
-__all__ = ("SimpleUserType",)
+class CvssSeveritiesPropCvssV3Type(TypedDict):
+    """CvssSeveritiesPropCvssV3"""
+
+    vector_string: Union[str, None]
+    score: Union[float, None]
+
+
+class CvssSeveritiesPropCvssV4Type(TypedDict):
+    """CvssSeveritiesPropCvssV4"""
+
+    vector_string: Union[str, None]
+    score: Union[float, None]
+
+
+__all__ = (
+    "CvssSeveritiesType",
+    "CvssSeveritiesPropCvssV3Type",
+    "CvssSeveritiesPropCvssV4Type",
+)

@@ -12,38 +12,13 @@ from __future__ import annotations
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoContentsPathDeleteBodyType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBody"""
+class ReposOwnerRepoCommitsCommitShaCommentsPostBodyType(TypedDict):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
-    message: str
-    sha: str
-    branch: NotRequired[str]
-    committer: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropCommitterType]
-    author: NotRequired[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType]
-
-
-class ReposOwnerRepoContentsPathDeleteBodyPropCommitterType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropCommitter
-
-    object containing information about the committer.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
+    body: str
+    path: NotRequired[str]
+    position: NotRequired[int]
+    line: NotRequired[int]
 
 
-class ReposOwnerRepoContentsPathDeleteBodyPropAuthorType(TypedDict):
-    """ReposOwnerRepoContentsPathDeleteBodyPropAuthor
-
-    object containing information about the author.
-    """
-
-    name: NotRequired[str]
-    email: NotRequired[str]
-
-
-__all__ = (
-    "ReposOwnerRepoContentsPathDeleteBodyType",
-    "ReposOwnerRepoContentsPathDeleteBodyPropCommitterType",
-    "ReposOwnerRepoContentsPathDeleteBodyPropAuthorType",
-)
+__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBodyType",)

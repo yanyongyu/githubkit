@@ -9,19 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict, NotRequired
+from typing import Literal
+from typing_extensions import TypedDict
+
+from .group_0002 import SimpleUserType
 
 
-class ValidationErrorSimpleType(TypedDict):
-    """Validation Error Simple
+class GlobalAdvisoryPropCreditsItemsType(TypedDict):
+    """GlobalAdvisoryPropCreditsItems"""
 
-    Validation Error Simple
-    """
+    user: SimpleUserType
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
+    ]
 
-    message: str
-    documentation_url: str
-    errors: NotRequired[List[str]]
 
-
-__all__ = ("ValidationErrorSimpleType",)
+__all__ = ("GlobalAdvisoryPropCreditsItemsType",)

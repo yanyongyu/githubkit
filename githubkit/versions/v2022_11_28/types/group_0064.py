@@ -9,15 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ActionsSetDefaultWorkflowPermissionsType(TypedDict):
-    """ActionsSetDefaultWorkflowPermissions"""
+class SelectedActionsType(TypedDict):
+    """SelectedActions"""
 
-    default_workflow_permissions: NotRequired[Literal["read", "write"]]
-    can_approve_pull_request_reviews: NotRequired[bool]
+    github_owned_allowed: NotRequired[bool]
+    verified_allowed: NotRequired[bool]
+    patterns_allowed: NotRequired[List[str]]
 
 
-__all__ = ("ActionsSetDefaultWorkflowPermissionsType",)
+__all__ = ("SelectedActionsType",)

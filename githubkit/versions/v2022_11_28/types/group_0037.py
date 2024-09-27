@@ -9,35 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
+from .group_0032 import DependabotAlertPackageType
 
 
-class MilestoneType(TypedDict):
-    """Milestone
+class DependabotAlertWithRepositoryPropDependencyType(TypedDict):
+    """DependabotAlertWithRepositoryPropDependency
 
-    A collection of related issues and pull requests.
+    Details for the vulnerable dependency.
     """
 
-    url: str
-    html_url: str
-    labels_url: str
-    id: int
-    node_id: str
-    number: int
-    state: Literal["open", "closed"]
-    title: str
-    description: Union[str, None]
-    creator: Union[None, SimpleUserType]
-    open_issues: int
-    closed_issues: int
-    created_at: datetime
-    updated_at: datetime
-    closed_at: Union[datetime, None]
-    due_on: Union[datetime, None]
+    package: NotRequired[DependabotAlertPackageType]
+    manifest_path: NotRequired[str]
+    scope: NotRequired[Union[None, Literal["development", "runtime"]]]
 
 
-__all__ = ("MilestoneType",)
+__all__ = ("DependabotAlertWithRepositoryPropDependencyType",)

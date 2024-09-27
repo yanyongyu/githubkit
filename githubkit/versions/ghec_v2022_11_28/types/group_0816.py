@@ -9,14 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
-
-    selected_organization_ids: List[int]
+class EmojisGetResponse200Type(TypedDict):
+    """EmojisGetResponse200"""
 
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsPutBodyType",)
+__all__ = ("EmojisGetResponse200Type",)

@@ -17,18 +17,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0388 import WebhooksUser
-from .group_0376 import EnterpriseWebhooks
-from .group_0377 import SimpleInstallation
-from .group_0379 import RepositoryWebhooks
-from .group_0380 import SimpleUserWebhooks
-from .group_0378 import OrganizationSimpleWebhooks
+from .group_0390 import WebhooksUser
+from .group_0378 import EnterpriseWebhooks
+from .group_0379 import SimpleInstallation
+from .group_0381 import RepositoryWebhooks
+from .group_0382 import SimpleUserWebhooks
+from .group_0380 import OrganizationSimpleWebhooks
 
 
-class WebhookMemberRemoved(GitHubModel):
-    """member removed event"""
+class WebhookMemberAdded(GitHubModel):
+    """member added event"""
 
-    action: Literal["removed"] = Field()
+    action: Literal["added"] = Field()
+    changes: Missing[WebhookMemberAddedPropChanges] = Field(default=UNSET)
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -55,6 +56,50 @@ class WebhookMemberRemoved(GitHubModel):
     )
 
 
-model_rebuild(WebhookMemberRemoved)
+class WebhookMemberAddedPropChanges(GitHubModel):
+    """WebhookMemberAddedPropChanges"""
 
-__all__ = ("WebhookMemberRemoved",)
+    permission: Missing[WebhookMemberAddedPropChangesPropPermission] = Field(
+        default=UNSET,
+        description="This field is included for legacy purposes; use the `role_name` field instead. The `maintain`\nrole is mapped to `write` and the `triage` role is mapped to `read`. To determine the role\nassigned to the collaborator, use the `role_name` field instead, which will provide the full\nrole name, including custom roles.",
+    )
+    role_name: Missing[WebhookMemberAddedPropChangesPropRoleName] = Field(
+        default=UNSET, description="The role assigned to the collaborator."
+    )
+
+
+class WebhookMemberAddedPropChangesPropPermission(GitHubModel):
+    """WebhookMemberAddedPropChangesPropPermission
+
+    This field is included for legacy purposes; use the `role_name` field instead.
+    The `maintain`
+    role is mapped to `write` and the `triage` role is mapped to `read`. To
+    determine the role
+    assigned to the collaborator, use the `role_name` field instead, which will
+    provide the full
+    role name, including custom roles.
+    """
+
+    to: Literal["write", "admin", "read"] = Field()
+
+
+class WebhookMemberAddedPropChangesPropRoleName(GitHubModel):
+    """WebhookMemberAddedPropChangesPropRoleName
+
+    The role assigned to the collaborator.
+    """
+
+    to: str = Field()
+
+
+model_rebuild(WebhookMemberAdded)
+model_rebuild(WebhookMemberAddedPropChanges)
+model_rebuild(WebhookMemberAddedPropChangesPropPermission)
+model_rebuild(WebhookMemberAddedPropChangesPropRoleName)
+
+__all__ = (
+    "WebhookMemberAdded",
+    "WebhookMemberAddedPropChanges",
+    "WebhookMemberAddedPropChangesPropPermission",
+    "WebhookMemberAddedPropChangesPropRoleName",
+)

@@ -9,34 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgHooksPostBodyType(TypedDict):
-    """OrgsOrgHooksPostBody"""
+class OrgsOrgDependabotSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNamePutBody"""
 
-    name: str
-    config: OrgsOrgHooksPostBodyPropConfigType
-    events: NotRequired[List[str]]
-    active: NotRequired[bool]
-
-
-class OrgsOrgHooksPostBodyPropConfigType(TypedDict):
-    """OrgsOrgHooksPostBodyPropConfig
-
-    Key/value pairs to provide settings for this webhook.
-    """
-
-    url: str
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
-    username: NotRequired[str]
-    password: NotRequired[str]
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
+    visibility: Literal["all", "private", "selected"]
+    selected_repository_ids: NotRequired[List[str]]
 
 
-__all__ = (
-    "OrgsOrgHooksPostBodyType",
-    "OrgsOrgHooksPostBodyPropConfigType",
-)
+__all__ = ("OrgsOrgDependabotSecretsSecretNamePutBodyType",)

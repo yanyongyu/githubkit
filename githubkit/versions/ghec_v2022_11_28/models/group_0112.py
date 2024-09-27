@@ -18,48 +18,41 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
+from .group_0002 import SimpleUser
+from .group_0019 import Repository
 
 
-class OrganizationRole(GitHubModel):
-    """Organization Role
+class Migration(GitHubModel):
+    """Migration
 
-    Organization roles
+    A migration.
     """
 
-    id: int = Field(description="The unique identifier of the role.")
-    name: str = Field(description="The name of the role.")
-    description: Missing[Union[str, None]] = Field(
+    id: int = Field()
+    owner: Union[None, SimpleUser] = Field()
+    guid: str = Field()
+    state: str = Field()
+    lock_repositories: bool = Field()
+    exclude_metadata: bool = Field()
+    exclude_git_data: bool = Field()
+    exclude_attachments: bool = Field()
+    exclude_releases: bool = Field()
+    exclude_owner_projects: bool = Field()
+    org_metadata_only: bool = Field()
+    repositories: List[Repository] = Field(
+        description="The repositories included in the migration. Only returned for export migrations."
+    )
+    url: str = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
+    node_id: str = Field()
+    archive_url: Missing[str] = Field(default=UNSET)
+    exclude: Missing[List[str]] = Field(
         default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
-    )
-    permissions: List[str] = Field(
-        description="A list of permissions included in this role."
-    )
-    organization: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field(description="The date and time the role was created.")
-    updated_at: datetime = Field(
-        description="The date and time the role was last updated."
+        description='Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`.',
     )
 
 
-class OrgsOrgOrganizationRolesGetResponse200(GitHubModel):
-    """OrgsOrgOrganizationRolesGetResponse200"""
+model_rebuild(Migration)
 
-    total_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of organization roles available to the organization.",
-    )
-    roles: Missing[List[OrganizationRole]] = Field(
-        default=UNSET,
-        description="The list of organization roles available to the organization.",
-    )
-
-
-model_rebuild(OrganizationRole)
-model_rebuild(OrgsOrgOrganizationRolesGetResponse200)
-
-__all__ = (
-    "OrganizationRole",
-    "OrgsOrgOrganizationRolesGetResponse200",
-)
+__all__ = ("Migration",)

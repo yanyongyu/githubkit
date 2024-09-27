@@ -9,17 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
 
-class RepositoryRulePullRequestPropParametersType(TypedDict):
-    """RepositoryRulePullRequestPropParameters"""
+class RepositoryRuleRequiredDeploymentsPropParametersType(TypedDict):
+    """RepositoryRuleRequiredDeploymentsPropParameters"""
 
-    dismiss_stale_reviews_on_push: bool
-    require_code_owner_review: bool
-    require_last_push_approval: bool
-    required_approving_review_count: int
-    required_review_thread_resolution: bool
+    required_deployment_environments: List[str]
 
 
-__all__ = ("RepositoryRulePullRequestPropParametersType",)
+__all__ = ("RepositoryRuleRequiredDeploymentsPropParametersType",)

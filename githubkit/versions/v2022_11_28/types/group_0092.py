@@ -9,53 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Literal
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0028 import TeamSimpleType
 
-class PackageVersionType(TypedDict):
-    """Package Version
 
-    A version of a software package
+class TeamRoleAssignmentType(TypedDict):
+    """A Role Assignment for a Team
+
+    The Relationship a Team has with a role.
     """
 
     id: int
+    node_id: str
     name: str
+    slug: str
+    description: Union[str, None]
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    permission: str
+    permissions: NotRequired[TeamRoleAssignmentPropPermissionsType]
     url: str
-    package_html_url: str
-    html_url: NotRequired[str]
-    license_: NotRequired[str]
-    description: NotRequired[str]
-    created_at: datetime
-    updated_at: datetime
-    deleted_at: NotRequired[datetime]
-    metadata: NotRequired[PackageVersionPropMetadataType]
+    html_url: str
+    members_url: str
+    repositories_url: str
+    parent: Union[None, TeamSimpleType]
 
 
-class PackageVersionPropMetadataType(TypedDict):
-    """Package Version Metadata"""
+class TeamRoleAssignmentPropPermissionsType(TypedDict):
+    """TeamRoleAssignmentPropPermissions"""
 
-    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
-    container: NotRequired[PackageVersionPropMetadataPropContainerType]
-    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
-
-
-class PackageVersionPropMetadataPropContainerType(TypedDict):
-    """Container Metadata"""
-
-    tags: List[str]
-
-
-class PackageVersionPropMetadataPropDockerType(TypedDict):
-    """Docker Metadata"""
-
-    tag: NotRequired[List[str]]
+    pull: bool
+    triage: bool
+    push: bool
+    maintain: bool
+    admin: bool
 
 
 __all__ = (
-    "PackageVersionType",
-    "PackageVersionPropMetadataType",
-    "PackageVersionPropMetadataPropContainerType",
-    "PackageVersionPropMetadataPropDockerType",
+    "TeamRoleAssignmentType",
+    "TeamRoleAssignmentPropPermissionsType",
 )

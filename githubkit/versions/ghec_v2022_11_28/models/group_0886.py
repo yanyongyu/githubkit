@@ -9,49 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgCodespacesSecretsGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesSecretsGetResponse200"""
+class OrgsOrgCodespacesAccessPutBody(GitHubModel):
+    """OrgsOrgCodespacesAccessPutBody"""
 
-    total_count: int = Field()
-    secrets: List[CodespacesOrgSecret] = Field()
-
-
-class CodespacesOrgSecret(GitHubModel):
-    """Codespaces Secret
-
-    Secrets for a GitHub Codespace.
-    """
-
-    name: str = Field(description="The name of the secret")
-    created_at: datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    visibility: Literal[
+        "disabled",
+        "selected_members",
+        "all_members",
+        "all_members_and_outside_collaborators",
+    ] = Field(
+        description="Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization."
     )
-    updated_at: datetime = Field(
-        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
-    )
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="The type of repositories in the organization that the secret is visible to"
-    )
-    selected_repositories_url: Missing[str] = Field(
+    selected_usernames: Missing[List[str]] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
         default=UNSET,
-        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
+        description="The usernames of the organization members who should have access to codespaces in the organization. Required when `visibility` is `selected_members`. The provided list of usernames will replace any existing value.",
     )
 
 
-model_rebuild(OrgsOrgCodespacesSecretsGetResponse200)
-model_rebuild(CodespacesOrgSecret)
+model_rebuild(OrgsOrgCodespacesAccessPutBody)
 
-__all__ = (
-    "OrgsOrgCodespacesSecretsGetResponse200",
-    "CodespacesOrgSecret",
-)
+__all__ = ("OrgsOrgCodespacesAccessPutBody",)

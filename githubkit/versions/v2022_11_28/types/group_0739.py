@@ -12,27 +12,27 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0039 import IssueType
-from .group_0017 import RepositoryType
-from .group_0377 import SimpleInstallationType
-from .group_0379 import RepositoryWebhooksType
-from .group_0380 import SimpleUserWebhooksType
-from .group_0378 import OrganizationSimpleWebhooksType
+from .group_0041 import IssueType
+from .group_0019 import RepositoryType
+from .group_0379 import SimpleInstallationType
+from .group_0381 import RepositoryWebhooksType
+from .group_0382 import SimpleUserWebhooksType
+from .group_0380 import OrganizationSimpleWebhooksType
 
 
-class WebhookSubIssuesSubIssueRemovedType(TypedDict):
-    """sub-issue removed event"""
+class WebhookSubIssuesParentIssueAddedType(TypedDict):
+    """parent issue added event"""
 
-    action: Literal["sub_issue_removed"]
-    sub_issue_id: float
-    sub_issue: IssueType
-    sub_issue_repo: RepositoryType
+    action: Literal["parent_issue_added"]
     parent_issue_id: float
     parent_issue: IssueType
+    parent_issue_repo: RepositoryType
+    sub_issue_id: float
+    sub_issue: IssueType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
     sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookSubIssuesSubIssueRemovedType",)
+__all__ = ("WebhookSubIssuesParentIssueAddedType",)

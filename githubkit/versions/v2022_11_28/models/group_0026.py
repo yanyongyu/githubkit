@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,36 +16,38 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class TeamSimple(GitHubModel):
-    """Team Simple
+class ClassroomAssignmentGrade(GitHubModel):
+    """Classroom Assignment Grade
 
-    Groups of organization members that gives permissions on specified repositories.
+    Grade for a student or groups GitHub Classroom assignment
     """
 
-    id: int = Field(description="Unique identifier of the team")
-    node_id: str = Field()
-    url: str = Field(description="URL for the team")
-    members_url: str = Field()
-    name: str = Field(description="Name of the team")
-    description: Union[str, None] = Field(description="Description of the team")
-    permission: str = Field(
-        description="Permission that the team will have for its repositories"
+    assignment_name: str = Field(description="Name of the assignment")
+    assignment_url: str = Field(description="URL of the assignment")
+    starter_code_url: str = Field(
+        description="URL of the starter code for the assignment"
     )
-    privacy: Missing[str] = Field(
-        default=UNSET, description="The level of privacy this team should have"
+    github_username: str = Field(description="GitHub username of the student")
+    roster_identifier: str = Field(description="Roster identifier of the student")
+    student_repository_name: str = Field(
+        description="Name of the student's assignment repository"
     )
-    notification_setting: Missing[str] = Field(
-        default=UNSET, description="The notification setting the team has set"
+    student_repository_url: str = Field(
+        description="URL of the student's assignment repository"
     )
-    html_url: str = Field()
-    repositories_url: str = Field()
-    slug: str = Field()
-    ldap_dn: Missing[str] = Field(
+    submission_timestamp: str = Field(
+        description="Timestamp of the student's assignment submission"
+    )
+    points_awarded: int = Field(description="Number of points awarded to the student")
+    points_available: int = Field(
+        description="Number of points available for the assignment"
+    )
+    group_name: Missing[str] = Field(
         default=UNSET,
-        description="Distinguished Name (DN) that team maps to within LDAP environment",
+        description="If a group assignment, name of the group the student is in",
     )
 
 
-model_rebuild(TeamSimple)
+model_rebuild(ClassroomAssignmentGrade)
 
-__all__ = ("TeamSimple",)
+__all__ = ("ClassroomAssignmentGrade",)

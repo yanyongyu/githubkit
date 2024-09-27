@@ -12,57 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0420 import WebhooksReleaseType
-from .group_0376 import EnterpriseWebhooksType
-from .group_0377 import SimpleInstallationType
-from .group_0379 import RepositoryWebhooksType
-from .group_0380 import SimpleUserWebhooksType
-from .group_0378 import OrganizationSimpleWebhooksType
+from .group_0422 import WebhooksReleaseType
+from .group_0378 import EnterpriseWebhooksType
+from .group_0379 import SimpleInstallationType
+from .group_0381 import RepositoryWebhooksType
+from .group_0382 import SimpleUserWebhooksType
+from .group_0380 import OrganizationSimpleWebhooksType
 
 
-class WebhookReleaseEditedType(TypedDict):
-    """release edited event"""
+class WebhookReleaseCreatedType(TypedDict):
+    """release created event"""
 
-    action: Literal["edited"]
-    changes: WebhookReleaseEditedPropChangesType
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     release: WebhooksReleaseType
     repository: RepositoryWebhooksType
-    sender: NotRequired[SimpleUserWebhooksType]
+    sender: SimpleUserWebhooksType
 
 
-class WebhookReleaseEditedPropChangesType(TypedDict):
-    """WebhookReleaseEditedPropChanges"""
-
-    body: NotRequired[WebhookReleaseEditedPropChangesPropBodyType]
-    name: NotRequired[WebhookReleaseEditedPropChangesPropNameType]
-    make_latest: NotRequired[WebhookReleaseEditedPropChangesPropMakeLatestType]
-
-
-class WebhookReleaseEditedPropChangesPropBodyType(TypedDict):
-    """WebhookReleaseEditedPropChangesPropBody"""
-
-    from_: str
-
-
-class WebhookReleaseEditedPropChangesPropNameType(TypedDict):
-    """WebhookReleaseEditedPropChangesPropName"""
-
-    from_: str
-
-
-class WebhookReleaseEditedPropChangesPropMakeLatestType(TypedDict):
-    """WebhookReleaseEditedPropChangesPropMakeLatest"""
-
-    to: bool
-
-
-__all__ = (
-    "WebhookReleaseEditedType",
-    "WebhookReleaseEditedPropChangesType",
-    "WebhookReleaseEditedPropChangesPropBodyType",
-    "WebhookReleaseEditedPropChangesPropNameType",
-    "WebhookReleaseEditedPropChangesPropMakeLatestType",
-)
+__all__ = ("WebhookReleaseCreatedType",)

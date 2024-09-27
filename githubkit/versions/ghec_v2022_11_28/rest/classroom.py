@@ -96,7 +96,7 @@ class ClassroomClient:
             },
         )
 
-    def list_accepted_assigments_for_an_assignment(
+    def list_accepted_assignments_for_an_assignment(
         self,
         assignment_id: int,
         page: Missing[int] = UNSET,
@@ -127,7 +127,7 @@ class ClassroomClient:
             response_model=List[ClassroomAcceptedAssignment],
         )
 
-    async def async_list_accepted_assigments_for_an_assignment(
+    async def async_list_accepted_assignments_for_an_assignment(
         self,
         assignment_id: int,
         page: Missing[int] = UNSET,

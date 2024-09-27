@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0422 import WebhooksAlert
-from .group_0376 import EnterpriseWebhooks
-from .group_0377 import SimpleInstallation
-from .group_0379 import RepositoryWebhooks
-from .group_0380 import SimpleUserWebhooks
-from .group_0378 import OrganizationSimpleWebhooks
+from .group_0424 import WebhooksAlert
+from .group_0378 import EnterpriseWebhooks
+from .group_0379 import SimpleInstallation
+from .group_0381 import RepositoryWebhooks
+from .group_0382 import SimpleUserWebhooks
+from .group_0380 import OrganizationSimpleWebhooks
 
 
-class WebhookRepositoryVulnerabilityAlertReopen(GitHubModel):
-    """repository_vulnerability_alert reopen event"""
+class WebhookRepositoryVulnerabilityAlertCreate(GitHubModel):
+    """repository_vulnerability_alert create event"""
 
-    action: Literal["reopen"] = Field()
+    action: Literal["create"] = Field()
     alert: WebhooksAlert = Field(
         title="Repository Vulnerability Alert Alert",
         description="The security alert of the vulnerable dependency.",
@@ -58,6 +58,6 @@ class WebhookRepositoryVulnerabilityAlertReopen(GitHubModel):
     )
 
 
-model_rebuild(WebhookRepositoryVulnerabilityAlertReopen)
+model_rebuild(WebhookRepositoryVulnerabilityAlertCreate)
 
-__all__ = ("WebhookRepositoryVulnerabilityAlertReopen",)
+__all__ = ("WebhookRepositoryVulnerabilityAlertCreate",)

@@ -17,32 +17,32 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0006 import Integration
+from .group_0002 import SimpleUser
+from .group_0008 import Integration
 
 
-class RemovedFromProjectIssueEvent(GitHubModel):
-    """Removed from Project Issue Event
+class AddedToProjectIssueEvent(GitHubModel):
+    """Added to Project Issue Event
 
-    Removed from Project Issue Event
+    Added to Project Issue Event
     """
 
     id: int = Field()
     node_id: str = Field()
     url: str = Field()
     actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: Literal["removed_from_project"] = Field()
+    event: Literal["added_to_project"] = Field()
     commit_id: Union[str, None] = Field()
     commit_url: Union[str, None] = Field()
     created_at: str = Field()
     performed_via_github_app: Union[None, Integration, None] = Field()
-    project_card: Missing[RemovedFromProjectIssueEventPropProjectCard] = Field(
+    project_card: Missing[AddedToProjectIssueEventPropProjectCard] = Field(
         default=UNSET
     )
 
 
-class RemovedFromProjectIssueEventPropProjectCard(GitHubModel):
-    """RemovedFromProjectIssueEventPropProjectCard"""
+class AddedToProjectIssueEventPropProjectCard(GitHubModel):
+    """AddedToProjectIssueEventPropProjectCard"""
 
     id: int = Field()
     url: str = Field()
@@ -52,10 +52,10 @@ class RemovedFromProjectIssueEventPropProjectCard(GitHubModel):
     previous_column_name: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(RemovedFromProjectIssueEvent)
-model_rebuild(RemovedFromProjectIssueEventPropProjectCard)
+model_rebuild(AddedToProjectIssueEvent)
+model_rebuild(AddedToProjectIssueEventPropProjectCard)
 
 __all__ = (
-    "RemovedFromProjectIssueEvent",
-    "RemovedFromProjectIssueEventPropProjectCard",
+    "AddedToProjectIssueEvent",
+    "AddedToProjectIssueEventPropProjectCard",
 )

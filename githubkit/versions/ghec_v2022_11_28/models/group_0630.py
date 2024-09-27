@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0413 import EnterpriseWebhooks
-from .group_0414 import SimpleInstallation
-from .group_0416 import RepositoryWebhooks
-from .group_0417 import SimpleUserWebhooks
-from .group_0444 import WebhooksMilestone3
-from .group_0415 import OrganizationSimpleWebhooks
+from .group_0439 import WebhooksMilestone
+from .group_0415 import EnterpriseWebhooks
+from .group_0416 import SimpleInstallation
+from .group_0418 import RepositoryWebhooks
+from .group_0419 import SimpleUserWebhooks
+from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookMilestoneOpened(GitHubModel):
-    """milestone opened event"""
+class WebhookMilestoneDeleted(GitHubModel):
+    """milestone deleted event"""
 
-    action: Literal["opened"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -39,7 +39,7 @@ class WebhookMilestoneOpened(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    milestone: WebhooksMilestone3 = Field(
+    milestone: WebhooksMilestone = Field(
         title="Milestone",
         description="A collection of related issues and pull requests.",
     )
@@ -58,6 +58,6 @@ class WebhookMilestoneOpened(GitHubModel):
     )
 
 
-model_rebuild(WebhookMilestoneOpened)
+model_rebuild(WebhookMilestoneDeleted)
 
-__all__ = ("WebhookMilestoneOpened",)
+__all__ = ("WebhookMilestoneDeleted",)

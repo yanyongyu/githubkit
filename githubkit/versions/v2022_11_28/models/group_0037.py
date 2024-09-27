@@ -9,42 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
+from .group_0032 import DependabotAlertPackage
 
 
-class Milestone(GitHubModel):
-    """Milestone
+class DependabotAlertWithRepositoryPropDependency(GitHubModel):
+    """DependabotAlertWithRepositoryPropDependency
 
-    A collection of related issues and pull requests.
+    Details for the vulnerable dependency.
     """
 
-    url: str = Field()
-    html_url: str = Field()
-    labels_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    number: int = Field(description="The number of the milestone.")
-    state: Literal["open", "closed"] = Field(
-        default="open", description="The state of the milestone."
+    package: Missing[DependabotAlertPackage] = Field(
+        default=UNSET, description="Details for the vulnerable package."
     )
-    title: str = Field(description="The title of the milestone.")
-    description: Union[str, None] = Field()
-    creator: Union[None, SimpleUser] = Field()
-    open_issues: int = Field()
-    closed_issues: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    closed_at: Union[datetime, None] = Field()
-    due_on: Union[datetime, None] = Field()
+    manifest_path: Missing[str] = Field(
+        default=UNSET,
+        description="The full path to the dependency manifest file, relative to the root of the repository.",
+    )
+    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
+        default=UNSET, description="The execution scope of the vulnerable dependency."
+    )
 
 
-model_rebuild(Milestone)
+model_rebuild(DependabotAlertWithRepositoryPropDependency)
 
-__all__ = ("Milestone",)
+__all__ = ("DependabotAlertWithRepositoryPropDependency",)

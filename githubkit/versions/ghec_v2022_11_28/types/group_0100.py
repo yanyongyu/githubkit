@@ -9,17 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class DependabotPublicKeyType(TypedDict):
-    """DependabotPublicKey
+class OrganizationCustomRepositoryRoleCreateSchemaType(TypedDict):
+    """OrganizationCustomRepositoryRoleCreateSchema"""
 
-    The public key used for setting Dependabot Secrets.
-    """
+    name: str
+    description: NotRequired[Union[str, None]]
+    base_role: Literal["read", "triage", "write", "maintain"]
+    permissions: List[str]
 
-    key_id: str
-    key: str
 
-
-__all__ = ("DependabotPublicKeyType",)
+__all__ = ("OrganizationCustomRepositoryRoleCreateSchemaType",)

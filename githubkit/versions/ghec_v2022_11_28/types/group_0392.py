@@ -10,43 +10,111 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union
+from typing import Any, List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0082 import MinimalRepositoryType
-from .group_0391 import SearchResultTextMatchesItemsType
 
+class ScimUserListType(TypedDict):
+    """SCIM User List
 
-class CodeSearchResultItemType(TypedDict):
-    """Code Search Result Item
-
-    Code Search Result Item
+    SCIM User List
     """
 
-    name: str
-    path: str
-    sha: str
-    url: str
-    git_url: str
-    html_url: str
-    repository: MinimalRepositoryType
-    score: float
-    file_size: NotRequired[int]
-    language: NotRequired[Union[str, None]]
-    last_modified_at: NotRequired[datetime]
-    line_numbers: NotRequired[List[str]]
-    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
+    schemas: List[str]
+    total_results: int
+    items_per_page: int
+    start_index: int
+    resources: List[ScimUserType]
 
 
-class SearchCodeGetResponse200Type(TypedDict):
-    """SearchCodeGetResponse200"""
+class ScimUserType(TypedDict):
+    """SCIM /Users
 
-    total_count: int
-    incomplete_results: bool
-    items: List[CodeSearchResultItemType]
+    SCIM /Users provisioning endpoints
+    """
+
+    schemas: List[str]
+    id: str
+    external_id: NotRequired[Union[str, None]]
+    user_name: NotRequired[Union[str, None]]
+    display_name: NotRequired[Union[str, None]]
+    name: NotRequired[ScimUserPropNameType]
+    emails: List[ScimUserPropEmailsItemsType]
+    active: bool
+    meta: ScimUserPropMetaType
+    organization_id: NotRequired[int]
+    operations: NotRequired[List[ScimUserPropOperationsItemsType]]
+    groups: NotRequired[List[ScimUserPropGroupsItemsType]]
+    roles: NotRequired[List[ScimUserPropRolesItemsType]]
+
+
+class ScimUserPropNameType(TypedDict):
+    """ScimUserPropName
+
+    Examples:
+        {'givenName': 'Jane', 'familyName': 'User'}
+    """
+
+    given_name: NotRequired[Union[str, None]]
+    family_name: NotRequired[Union[str, None]]
+    formatted: NotRequired[Union[str, None]]
+
+
+class ScimUserPropEmailsItemsType(TypedDict):
+    """ScimUserPropEmailsItems"""
+
+    value: str
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+
+
+class ScimUserPropMetaType(TypedDict):
+    """ScimUserPropMeta"""
+
+    resource_type: NotRequired[str]
+    created: NotRequired[datetime]
+    last_modified: NotRequired[datetime]
+    location: NotRequired[str]
+
+
+class ScimUserPropGroupsItemsType(TypedDict):
+    """ScimUserPropGroupsItems"""
+
+    value: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimUserPropRolesItemsType(TypedDict):
+    """ScimUserPropRolesItems"""
+
+    value: NotRequired[str]
+    primary: NotRequired[bool]
+    type: NotRequired[str]
+    display: NotRequired[str]
+
+
+class ScimUserPropOperationsItemsType(TypedDict):
+    """ScimUserPropOperationsItems"""
+
+    op: Literal["add", "remove", "replace"]
+    path: NotRequired[str]
+    value: NotRequired[
+        Union[str, ScimUserPropOperationsItemsPropValueOneof1Type, List[Any]]
+    ]
+
+
+class ScimUserPropOperationsItemsPropValueOneof1Type(TypedDict):
+    """ScimUserPropOperationsItemsPropValueOneof1"""
 
 
 __all__ = (
-    "CodeSearchResultItemType",
-    "SearchCodeGetResponse200Type",
+    "ScimUserListType",
+    "ScimUserType",
+    "ScimUserPropNameType",
+    "ScimUserPropEmailsItemsType",
+    "ScimUserPropMetaType",
+    "ScimUserPropGroupsItemsType",
+    "ScimUserPropRolesItemsType",
+    "ScimUserPropOperationsItemsType",
+    "ScimUserPropOperationsItemsPropValueOneof1Type",
 )

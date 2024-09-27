@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
+from typing import Any, List, Union
 
 from pydantic import Field
 
@@ -18,43 +18,71 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0050 import MarketplaceListingPlan
 
+class GpgKey(GitHubModel):
+    """GPG Key
 
-class UserMarketplacePurchase(GitHubModel):
-    """User Marketplace Purchase
-
-    User Marketplace Purchase
+    A unique encryption key
     """
 
-    billing_cycle: str = Field()
-    next_billing_date: Union[datetime, None] = Field()
-    unit_count: Union[int, None] = Field()
-    on_free_trial: bool = Field()
-    free_trial_ends_on: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
-    account: MarketplaceAccount = Field(title="Marketplace Account")
-    plan: MarketplaceListingPlan = Field(
-        title="Marketplace Listing Plan", description="Marketplace Listing Plan"
-    )
-
-
-class MarketplaceAccount(GitHubModel):
-    """Marketplace Account"""
-
-    url: str = Field()
     id: int = Field()
-    type: str = Field()
-    node_id: Missing[str] = Field(default=UNSET)
-    login: str = Field()
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    organization_billing_email: Missing[Union[str, None]] = Field(default=UNSET)
+    name: Missing[Union[str, None]] = Field(default=UNSET)
+    primary_key_id: Union[int, None] = Field()
+    key_id: str = Field()
+    public_key: str = Field()
+    emails: List[GpgKeyPropEmailsItems] = Field()
+    subkeys: List[GpgKeyPropSubkeysItems] = Field()
+    can_sign: bool = Field()
+    can_encrypt_comms: bool = Field()
+    can_encrypt_storage: bool = Field()
+    can_certify: bool = Field()
+    created_at: datetime = Field()
+    expires_at: Union[datetime, None] = Field()
+    revoked: bool = Field()
+    raw_key: Union[str, None] = Field()
 
 
-model_rebuild(UserMarketplacePurchase)
-model_rebuild(MarketplaceAccount)
+class GpgKeyPropEmailsItems(GitHubModel):
+    """GpgKeyPropEmailsItems"""
+
+    email: Missing[str] = Field(default=UNSET)
+    verified: Missing[bool] = Field(default=UNSET)
+
+
+class GpgKeyPropSubkeysItems(GitHubModel):
+    """GpgKeyPropSubkeysItems"""
+
+    id: Missing[int] = Field(default=UNSET)
+    primary_key_id: Missing[int] = Field(default=UNSET)
+    key_id: Missing[str] = Field(default=UNSET)
+    public_key: Missing[str] = Field(default=UNSET)
+    emails: Missing[List[GpgKeyPropSubkeysItemsPropEmailsItems]] = Field(default=UNSET)
+    subkeys: Missing[List[Any]] = Field(default=UNSET)
+    can_sign: Missing[bool] = Field(default=UNSET)
+    can_encrypt_comms: Missing[bool] = Field(default=UNSET)
+    can_encrypt_storage: Missing[bool] = Field(default=UNSET)
+    can_certify: Missing[bool] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    expires_at: Missing[Union[str, None]] = Field(default=UNSET)
+    raw_key: Missing[Union[str, None]] = Field(default=UNSET)
+    revoked: Missing[bool] = Field(default=UNSET)
+
+
+class GpgKeyPropSubkeysItemsPropEmailsItems(GitHubModel):
+    """GpgKeyPropSubkeysItemsPropEmailsItems"""
+
+    email: Missing[str] = Field(default=UNSET)
+    verified: Missing[bool] = Field(default=UNSET)
+
+
+model_rebuild(GpgKey)
+model_rebuild(GpgKeyPropEmailsItems)
+model_rebuild(GpgKeyPropSubkeysItems)
+model_rebuild(GpgKeyPropSubkeysItemsPropEmailsItems)
 
 __all__ = (
-    "UserMarketplacePurchase",
-    "MarketplaceAccount",
+    "GpgKey",
+    "GpgKeyPropEmailsItems",
+    "GpgKeyPropSubkeysItems",
+    "GpgKeyPropSubkeysItemsPropEmailsItems",
 )

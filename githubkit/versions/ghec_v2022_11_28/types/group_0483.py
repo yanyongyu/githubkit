@@ -12,22 +12,35 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0414 import SimpleInstallationType
-from .group_0416 import RepositoryWebhooksType
-from .group_0417 import SimpleUserWebhooksType
-from .group_0415 import OrganizationSimpleWebhooksType
-from .group_0422 import CheckRunWithSimpleCheckSuiteType
+from .group_0416 import SimpleInstallationType
+from .group_0418 import RepositoryWebhooksType
+from .group_0419 import SimpleUserWebhooksType
+from .group_0417 import OrganizationSimpleWebhooksType
+from .group_0424 import CheckRunWithSimpleCheckSuiteType
 
 
-class WebhookCheckRunRerequestedType(TypedDict):
-    """Check Run Re-Requested Event"""
+class WebhookCheckRunRequestedActionType(TypedDict):
+    """Check Run Requested Action Event"""
 
-    action: Literal["rerequested"]
+    action: Literal["requested_action"]
     check_run: CheckRunWithSimpleCheckSuiteType
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
+    requested_action: NotRequired[WebhookCheckRunRequestedActionPropRequestedActionType]
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookCheckRunRerequestedType",)
+class WebhookCheckRunRequestedActionPropRequestedActionType(TypedDict):
+    """WebhookCheckRunRequestedActionPropRequestedAction
+
+    The action requested by the user.
+    """
+
+    identifier: NotRequired[str]
+
+
+__all__ = (
+    "WebhookCheckRunRequestedActionType",
+    "WebhookCheckRunRequestedActionPropRequestedActionType",
+)

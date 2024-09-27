@@ -9,6 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Union, Literal
 
 from pydantic import Field
@@ -17,44 +18,40 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0019 import Repository
 
-class CodeScanningAlertRuleSummary(GitHubModel):
-    """CodeScanningAlertRuleSummary"""
 
-    id: Missing[Union[str, None]] = Field(
+class AuthenticationToken(GitHubModel):
+    """Authentication Token
+
+    Authentication Token
+    """
+
+    token: str = Field(description="The token used for authentication")
+    expires_at: datetime = Field(description="The time this token expires")
+    permissions: Missing[AuthenticationTokenPropPermissions] = Field(default=UNSET)
+    repositories: Missing[List[Repository]] = Field(
+        default=UNSET, description="The repositories this token has access to"
+    )
+    single_file: Missing[Union[str, None]] = Field(default=UNSET)
+    repository_selection: Missing[Literal["all", "selected"]] = Field(
         default=UNSET,
-        description="A unique identifier for the rule used to detect the alert.",
-    )
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the rule used to detect the alert."
-    )
-    severity: Missing[Union[None, Literal["none", "note", "warning", "error"]]] = Field(
-        default=UNSET, description="The severity of the alert."
-    )
-    security_severity_level: Missing[
-        Union[None, Literal["low", "medium", "high", "critical"]]
-    ] = Field(default=UNSET, description="The security severity of the alert.")
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description of the rule used to detect the alert.",
-    )
-    full_description: Missing[str] = Field(
-        default=UNSET, description="A description of the rule used to detect the alert."
-    )
-    tags: Missing[Union[List[str], None]] = Field(
-        default=UNSET, description="A set of tags applicable for the rule."
-    )
-    help_: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        alias="help",
-        description="Detailed documentation for the rule as GitHub Flavored Markdown.",
-    )
-    help_uri: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A link to the documentation for the rule used to detect the alert.",
+        description="Describe whether all repositories have been selected or there's a selection involved",
     )
 
 
-model_rebuild(CodeScanningAlertRuleSummary)
+class AuthenticationTokenPropPermissions(GitHubModel):
+    """AuthenticationTokenPropPermissions
 
-__all__ = ("CodeScanningAlertRuleSummary",)
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
+    """
+
+
+model_rebuild(AuthenticationToken)
+model_rebuild(AuthenticationTokenPropPermissions)
+
+__all__ = (
+    "AuthenticationToken",
+    "AuthenticationTokenPropPermissions",
+)

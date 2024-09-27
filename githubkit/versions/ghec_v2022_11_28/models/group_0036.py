@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List
 
 from pydantic import Field
 
@@ -18,40 +17,26 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0017 import Repository
+from .group_0035 import RunnerLabel
 
 
-class AuthenticationToken(GitHubModel):
-    """Authentication Token
+class Runner(GitHubModel):
+    """Self hosted runners
 
-    Authentication Token
+    A self hosted runner
     """
 
-    token: str = Field(description="The token used for authentication")
-    expires_at: datetime = Field(description="The time this token expires")
-    permissions: Missing[AuthenticationTokenPropPermissions] = Field(default=UNSET)
-    repositories: Missing[List[Repository]] = Field(
-        default=UNSET, description="The repositories this token has access to"
+    id: int = Field(description="The id of the runner.")
+    runner_group_id: Missing[int] = Field(
+        default=UNSET, description="The id of the runner group."
     )
-    single_file: Missing[Union[str, None]] = Field(default=UNSET)
-    repository_selection: Missing[Literal["all", "selected"]] = Field(
-        default=UNSET,
-        description="Describe whether all repositories have been selected or there's a selection involved",
-    )
+    name: str = Field(description="The name of the runner.")
+    os: str = Field(description="The Operating System of the runner.")
+    status: str = Field(description="The status of the runner.")
+    busy: bool = Field()
+    labels: List[RunnerLabel] = Field()
 
 
-class AuthenticationTokenPropPermissions(GitHubModel):
-    """AuthenticationTokenPropPermissions
+model_rebuild(Runner)
 
-    Examples:
-        {'issues': 'read', 'deployments': 'write'}
-    """
-
-
-model_rebuild(AuthenticationToken)
-model_rebuild(AuthenticationTokenPropPermissions)
-
-__all__ = (
-    "AuthenticationToken",
-    "AuthenticationTokenPropPermissions",
-)
+__all__ = ("Runner",)

@@ -9,16 +9,90 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class CodeScanningAnalysisToolType(TypedDict):
-    """CodeScanningAnalysisTool"""
+class AuditLogEventType(TypedDict):
+    """AuditLogEvent"""
 
+    timestamp: NotRequired[int]
+    action: NotRequired[str]
+    active: NotRequired[bool]
+    active_was: NotRequired[bool]
+    actor: NotRequired[str]
+    actor_id: NotRequired[int]
+    actor_location: NotRequired[AuditLogEventPropActorLocationType]
+    data: NotRequired[AuditLogEventPropDataType]
+    org_id: NotRequired[int]
+    user_id: NotRequired[int]
+    business_id: NotRequired[int]
+    blocked_user: NotRequired[str]
+    business: NotRequired[str]
+    config: NotRequired[List[AuditLogEventPropConfigItemsType]]
+    config_was: NotRequired[List[AuditLogEventPropConfigWasItemsType]]
+    content_type: NotRequired[str]
+    operation_type: NotRequired[str]
+    created_at: NotRequired[int]
+    deploy_key_fingerprint: NotRequired[str]
+    document_id: NotRequired[str]
+    emoji: NotRequired[str]
+    events: NotRequired[List[AuditLogEventPropEventsItemsType]]
+    events_were: NotRequired[List[AuditLogEventPropEventsWereItemsType]]
+    explanation: NotRequired[str]
+    fingerprint: NotRequired[str]
+    hook_id: NotRequired[int]
+    limited_availability: NotRequired[bool]
+    message: NotRequired[str]
     name: NotRequired[str]
-    version: NotRequired[Union[str, None]]
-    guid: NotRequired[Union[str, None]]
+    old_user: NotRequired[str]
+    openssh_public_key: NotRequired[str]
+    org: NotRequired[str]
+    previous_visibility: NotRequired[str]
+    read_only: NotRequired[bool]
+    repo: NotRequired[str]
+    repository: NotRequired[str]
+    repository_public: NotRequired[bool]
+    target_login: NotRequired[str]
+    team: NotRequired[str]
+    transport_protocol: NotRequired[int]
+    transport_protocol_name: NotRequired[str]
+    user: NotRequired[str]
+    visibility: NotRequired[str]
 
 
-__all__ = ("CodeScanningAnalysisToolType",)
+class AuditLogEventPropActorLocationType(TypedDict):
+    """AuditLogEventPropActorLocation"""
+
+    country_name: NotRequired[str]
+
+
+class AuditLogEventPropDataType(TypedDict):
+    """AuditLogEventPropData"""
+
+
+class AuditLogEventPropConfigItemsType(TypedDict):
+    """AuditLogEventPropConfigItems"""
+
+
+class AuditLogEventPropConfigWasItemsType(TypedDict):
+    """AuditLogEventPropConfigWasItems"""
+
+
+class AuditLogEventPropEventsItemsType(TypedDict):
+    """AuditLogEventPropEventsItems"""
+
+
+class AuditLogEventPropEventsWereItemsType(TypedDict):
+    """AuditLogEventPropEventsWereItems"""
+
+
+__all__ = (
+    "AuditLogEventType",
+    "AuditLogEventPropActorLocationType",
+    "AuditLogEventPropDataType",
+    "AuditLogEventPropConfigItemsType",
+    "AuditLogEventPropConfigWasItemsType",
+    "AuditLogEventPropEventsItemsType",
+    "AuditLogEventPropEventsWereItemsType",
+)

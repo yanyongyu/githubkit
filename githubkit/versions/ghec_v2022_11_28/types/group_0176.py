@@ -9,19 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import Union
+from datetime import datetime
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0002 import SimpleUserType
+from .group_0067 import ReactionRollupType
 
 
-class TeamMembershipType(TypedDict):
-    """Team Membership
+class TeamDiscussionCommentType(TypedDict):
+    """Team Discussion Comment
 
-    Team Membership
+    A reply to a discussion within a team.
     """
 
+    author: Union[None, SimpleUserType]
+    body: str
+    body_html: str
+    body_version: str
+    created_at: datetime
+    last_edited_at: Union[datetime, None]
+    discussion_url: str
+    html_url: str
+    node_id: str
+    number: int
+    updated_at: datetime
     url: str
-    role: Literal["member", "maintainer"]
-    state: Literal["active", "pending"]
+    reactions: NotRequired[ReactionRollupType]
 
 
-__all__ = ("TeamMembershipType",)
+__all__ = ("TeamDiscussionCommentType",)

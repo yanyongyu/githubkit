@@ -9,103 +9,54 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0037 import MilestoneType
-from .group_0001 import SimpleUserType
-from .group_0017 import RepositoryType
-from .group_0006 import IntegrationType
-from .group_0038 import ReactionRollupType
-from .group_0354 import SearchResultTextMatchesItemsType
+from .group_0190 import GitUserType
+from .group_0002 import SimpleUserType
+from .group_0057 import MinimalRepositoryType
+from .group_0356 import SearchResultTextMatchesItemsType
+from .group_0359 import CommitSearchResultItemPropCommitType
 
 
-class IssueSearchResultItemType(TypedDict):
-    """Issue Search Result Item
+class CommitSearchResultItemType(TypedDict):
+    """Commit Search Result Item
 
-    Issue Search Result Item
+    Commit Search Result Item
     """
 
     url: str
-    repository_url: str
-    labels_url: str
-    comments_url: str
-    events_url: str
+    sha: str
     html_url: str
-    id: int
-    node_id: str
-    number: int
-    title: str
-    locked: bool
-    active_lock_reason: NotRequired[Union[str, None]]
-    assignees: NotRequired[Union[List[SimpleUserType], None]]
-    user: Union[None, SimpleUserType]
-    labels: List[IssueSearchResultItemPropLabelsItemsType]
-    state: str
-    state_reason: NotRequired[Union[str, None]]
-    assignee: Union[None, SimpleUserType]
-    milestone: Union[None, MilestoneType]
-    comments: int
-    created_at: datetime
-    updated_at: datetime
-    closed_at: Union[datetime, None]
-    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
-    pull_request: NotRequired[IssueSearchResultItemPropPullRequestType]
-    body: NotRequired[str]
+    comments_url: str
+    commit: CommitSearchResultItemPropCommitType
+    author: Union[None, SimpleUserType]
+    committer: Union[None, GitUserType]
+    parents: List[CommitSearchResultItemPropParentsItemsType]
+    repository: MinimalRepositoryType
     score: float
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    draft: NotRequired[bool]
-    repository: NotRequired[RepositoryType]
-    body_html: NotRequired[str]
-    body_text: NotRequired[str]
-    timeline_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    reactions: NotRequired[ReactionRollupType]
+    node_id: str
+    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
 
 
-class IssueSearchResultItemPropLabelsItemsType(TypedDict):
-    """IssueSearchResultItemPropLabelsItems"""
+class CommitSearchResultItemPropParentsItemsType(TypedDict):
+    """CommitSearchResultItemPropParentsItems"""
 
-    id: NotRequired[int]
-    node_id: NotRequired[str]
     url: NotRequired[str]
-    name: NotRequired[str]
-    color: NotRequired[str]
-    default: NotRequired[bool]
-    description: NotRequired[Union[str, None]]
+    html_url: NotRequired[str]
+    sha: NotRequired[str]
 
 
-class IssueSearchResultItemPropPullRequestType(TypedDict):
-    """IssueSearchResultItemPropPullRequest"""
-
-    merged_at: NotRequired[Union[datetime, None]]
-    diff_url: Union[str, None]
-    html_url: Union[str, None]
-    patch_url: Union[str, None]
-    url: Union[str, None]
-
-
-class SearchIssuesGetResponse200Type(TypedDict):
-    """SearchIssuesGetResponse200"""
+class SearchCommitsGetResponse200Type(TypedDict):
+    """SearchCommitsGetResponse200"""
 
     total_count: int
     incomplete_results: bool
-    items: List[IssueSearchResultItemType]
+    items: List[CommitSearchResultItemType]
 
 
 __all__ = (
-    "IssueSearchResultItemType",
-    "IssueSearchResultItemPropLabelsItemsType",
-    "IssueSearchResultItemPropPullRequestType",
-    "SearchIssuesGetResponse200Type",
+    "CommitSearchResultItemType",
+    "CommitSearchResultItemPropParentsItemsType",
+    "SearchCommitsGetResponse200Type",
 )

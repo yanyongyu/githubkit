@@ -9,22 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0094 import Codespace
+
+class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody(GitHubModel):
+    """OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody"""
+
+    scope: Literal["all", "public", "private_or_internal", "selected"] = Field(
+        description="The type of repositories to attach the configuration to. `selected` means the configuration will be attached to only the repositories specified by `selected_repository_ids`"
+    )
+    selected_repository_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="An array of repository IDs to attach the configuration to. You can only provide a list of repository ids when the `scope` is set to `selected`.",
+    )
 
 
-class OrgsOrgCodespacesGetResponse200(GitHubModel):
-    """OrgsOrgCodespacesGetResponse200"""
+model_rebuild(OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody)
 
-    total_count: int = Field()
-    codespaces: List[Codespace] = Field()
-
-
-model_rebuild(OrgsOrgCodespacesGetResponse200)
-
-__all__ = ("OrgsOrgCodespacesGetResponse200",)
+__all__ = ("OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody",)

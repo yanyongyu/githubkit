@@ -12,24 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0170 import RepositoryAdvisoryType
-from .group_0413 import EnterpriseWebhooksType
-from .group_0414 import SimpleInstallationType
-from .group_0416 import RepositoryWebhooksType
-from .group_0417 import SimpleUserWebhooksType
-from .group_0415 import OrganizationSimpleWebhooksType
+from .group_0462 import WebhooksRelease1Type
+from .group_0415 import EnterpriseWebhooksType
+from .group_0416 import SimpleInstallationType
+from .group_0418 import RepositoryWebhooksType
+from .group_0419 import SimpleUserWebhooksType
+from .group_0417 import OrganizationSimpleWebhooksType
 
 
-class WebhookRepositoryAdvisoryReportedType(TypedDict):
-    """Repository advisory reported event"""
+class WebhookReleaseUnpublishedType(TypedDict):
+    """release unpublished event"""
 
-    action: Literal["reported"]
+    action: Literal["unpublished"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    release: WebhooksRelease1Type
     repository: RepositoryWebhooksType
-    repository_advisory: RepositoryAdvisoryType
     sender: NotRequired[SimpleUserWebhooksType]
 
 
-__all__ = ("WebhookRepositoryAdvisoryReportedType",)
+__all__ = ("WebhookReleaseUnpublishedType",)

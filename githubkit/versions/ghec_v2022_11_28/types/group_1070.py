@@ -9,33 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBody"""
+class ReposOwnerRepoIssuesPostBodyType(TypedDict):
+    """ReposOwnerRepoIssuesPostBody"""
 
-    title: NotRequired[Union[str, int, None]]
-    body: NotRequired[Union[str, None]]
+    title: Union[str, int]
+    body: NotRequired[str]
     assignee: NotRequired[Union[str, None]]
-    state: NotRequired[Literal["open", "closed"]]
-    state_reason: NotRequired[
-        Union[None, Literal["completed", "not_planned", "reopened"]]
-    ]
     milestone: NotRequired[Union[str, int, None]]
     labels: NotRequired[
-        List[
-            Union[
-                str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type
-            ]
-        ]
+        List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
     ]
     assignees: NotRequired[List[str]]
 
 
-class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1"""
+class ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type(TypedDict):
+    """ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1"""
 
     id: NotRequired[int]
     name: NotRequired[str]
@@ -44,6 +36,6 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type(TypedDic
 
 
 __all__ = (
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyType",
-    "ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type",
+    "ReposOwnerRepoIssuesPostBodyType",
+    "ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type",
 )

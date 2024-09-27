@@ -9,14 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody"""
 
-    encrypted_value: str
-    key_id: str
+    integration_id: NotRequired[int]
 
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType",)
+__all__ = (
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType",
+)

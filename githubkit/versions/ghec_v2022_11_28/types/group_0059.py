@@ -9,40 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class AdvancedSecurityActiveCommittersType(TypedDict):
-    """AdvancedSecurityActiveCommitters"""
-
-    total_advanced_security_committers: NotRequired[int]
-    total_count: NotRequired[int]
-    maximum_advanced_security_committers: NotRequired[int]
-    purchased_advanced_security_committers: NotRequired[int]
-    repositories: List[AdvancedSecurityActiveCommittersRepositoryType]
+from .group_0002 import SimpleUserType
+from .group_0045 import SimpleRepositoryType
 
 
-class AdvancedSecurityActiveCommittersRepositoryType(TypedDict):
-    """AdvancedSecurityActiveCommittersRepository"""
+class OrganizationSecretScanningAlertType(TypedDict):
+    """OrganizationSecretScanningAlert"""
 
-    name: str
-    advanced_security_committers: int
-    advanced_security_committers_breakdown: List[
-        AdvancedSecurityActiveCommittersUserType
+    number: NotRequired[int]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[Union[None, datetime]]
+    url: NotRequired[str]
+    html_url: NotRequired[str]
+    locations_url: NotRequired[str]
+    state: NotRequired[Literal["open", "resolved"]]
+    resolution: NotRequired[
+        Union[None, Literal["false_positive", "wont_fix", "revoked", "used_in_tests"]]
     ]
+    resolved_at: NotRequired[Union[datetime, None]]
+    resolved_by: NotRequired[Union[None, SimpleUserType]]
+    secret_type: NotRequired[str]
+    secret_type_display_name: NotRequired[str]
+    secret: NotRequired[str]
+    repository: NotRequired[SimpleRepositoryType]
+    push_protection_bypassed: NotRequired[Union[bool, None]]
+    push_protection_bypassed_by: NotRequired[Union[None, SimpleUserType]]
+    push_protection_bypassed_at: NotRequired[Union[datetime, None]]
+    resolution_comment: NotRequired[Union[str, None]]
+    validity: NotRequired[Literal["active", "inactive", "unknown"]]
 
 
-class AdvancedSecurityActiveCommittersUserType(TypedDict):
-    """AdvancedSecurityActiveCommittersUser"""
-
-    user_login: str
-    last_pushed_date: str
-    last_pushed_email: str
-
-
-__all__ = (
-    "AdvancedSecurityActiveCommittersType",
-    "AdvancedSecurityActiveCommittersRepositoryType",
-    "AdvancedSecurityActiveCommittersUserType",
-)
+__all__ = ("OrganizationSecretScanningAlertType",)

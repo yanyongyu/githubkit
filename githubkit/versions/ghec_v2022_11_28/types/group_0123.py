@@ -9,22 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0122 import CustomPropertyValueType
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class OrgRepoCustomPropertyValuesType(TypedDict):
-    """Organization Repository Custom Property Values
+class CustomPropertyType(TypedDict):
+    """Organization Custom Property
 
-    List of custom property values for a repository
+    Custom property defined on an organization
     """
 
-    repository_id: int
-    repository_name: str
-    repository_full_name: str
-    properties: List[CustomPropertyValueType]
+    property_name: str
+    url: NotRequired[str]
+    value_type: Literal["string", "single_select", "multi_select", "true_false"]
+    required: NotRequired[bool]
+    default_value: NotRequired[Union[str, List[str], None]]
+    description: NotRequired[Union[str, None]]
+    allowed_values: NotRequired[Union[List[str], None]]
+    values_editable_by: NotRequired[
+        Union[None, Literal["org_actors", "org_and_repo_actors"]]
+    ]
 
 
-__all__ = ("OrgRepoCustomPropertyValuesType",)
+__all__ = ("CustomPropertyType",)

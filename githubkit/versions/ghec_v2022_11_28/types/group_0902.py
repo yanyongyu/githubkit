@@ -10,16 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0082 import MinimalRepositoryType
-
-
-class OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200"""
-
-    total_count: int
-    repositories: List[MinimalRepositoryType]
+from .group_0087 import OrganizationCustomRepositoryRoleType
 
 
-__all__ = ("OrgsOrgDependabotSecretsSecretNameRepositoriesGetResponse200Type",)
+class OrgsOrgCustomRepositoryRolesGetResponse200Type(TypedDict):
+    """OrgsOrgCustomRepositoryRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    custom_roles: NotRequired[List[OrganizationCustomRepositoryRoleType]]
+
+
+__all__ = ("OrgsOrgCustomRepositoryRolesGetResponse200Type",)

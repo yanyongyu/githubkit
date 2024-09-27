@@ -11,25 +11,62 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Autolink(GitHubModel):
-    """Autolink reference
+class WorkflowUsage(GitHubModel):
+    """Workflow Usage
 
-    An autolink reference.
+    Workflow Usage
     """
 
-    id: int = Field()
-    key_prefix: str = Field(description="The prefix of a key that is linkified.")
-    url_template: str = Field(
-        description="A template for the target URL that is generated if a key was found."
+    billable: WorkflowUsagePropBillable = Field()
+
+
+class WorkflowUsagePropBillable(GitHubModel):
+    """WorkflowUsagePropBillable"""
+
+    ubuntu: Missing[WorkflowUsagePropBillablePropUbuntu] = Field(
+        default=UNSET, alias="UBUNTU"
     )
-    is_alphanumeric: bool = Field(
-        description="Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters."
+    macos: Missing[WorkflowUsagePropBillablePropMacos] = Field(
+        default=UNSET, alias="MACOS"
+    )
+    windows: Missing[WorkflowUsagePropBillablePropWindows] = Field(
+        default=UNSET, alias="WINDOWS"
     )
 
 
-model_rebuild(Autolink)
+class WorkflowUsagePropBillablePropUbuntu(GitHubModel):
+    """WorkflowUsagePropBillablePropUbuntu"""
 
-__all__ = ("Autolink",)
+    total_ms: Missing[int] = Field(default=UNSET)
+
+
+class WorkflowUsagePropBillablePropMacos(GitHubModel):
+    """WorkflowUsagePropBillablePropMacos"""
+
+    total_ms: Missing[int] = Field(default=UNSET)
+
+
+class WorkflowUsagePropBillablePropWindows(GitHubModel):
+    """WorkflowUsagePropBillablePropWindows"""
+
+    total_ms: Missing[int] = Field(default=UNSET)
+
+
+model_rebuild(WorkflowUsage)
+model_rebuild(WorkflowUsagePropBillable)
+model_rebuild(WorkflowUsagePropBillablePropUbuntu)
+model_rebuild(WorkflowUsagePropBillablePropMacos)
+model_rebuild(WorkflowUsagePropBillablePropWindows)
+
+__all__ = (
+    "WorkflowUsage",
+    "WorkflowUsagePropBillable",
+    "WorkflowUsagePropBillablePropUbuntu",
+    "WorkflowUsagePropBillablePropMacos",
+    "WorkflowUsagePropBillablePropWindows",
+)

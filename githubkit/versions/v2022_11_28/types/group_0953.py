@@ -9,13 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
-
-class ReposOwnerRepoCollaboratorsUsernamePutBodyType(TypedDict):
-    """ReposOwnerRepoCollaboratorsUsernamePutBody"""
-
-    permission: NotRequired[str]
+from .group_0002 import SimpleUserType
 
 
-__all__ = ("ReposOwnerRepoCollaboratorsUsernamePutBodyType",)
+class ReposOwnerRepoCodespacesNewGetResponse200Type(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200"""
+
+    billable_owner: NotRequired[SimpleUserType]
+    defaults: NotRequired[ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType]
+
+
+class ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType(TypedDict):
+    """ReposOwnerRepoCodespacesNewGetResponse200PropDefaults"""
+
+    location: str
+    devcontainer_path: Union[str, None]
+
+
+__all__ = (
+    "ReposOwnerRepoCodespacesNewGetResponse200Type",
+    "ReposOwnerRepoCodespacesNewGetResponse200PropDefaultsType",
+)

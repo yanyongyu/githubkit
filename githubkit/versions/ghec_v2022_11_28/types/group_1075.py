@@ -13,21 +13,10 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2"""
+class ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType(TypedDict):
+    """ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody"""
 
-    labels: NotRequired[
-        List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
-    ]
+    assignees: NotRequired[List[str]]
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType(TypedDict):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItems"""
-
-    name: str
-
-
-__all__ = (
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type",
-    "ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType",
-)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType",)

@@ -2611,6 +2611,9 @@ class EnterpriseAdminClient:
             bool
         ] = UNSET,
         secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = UNSET,
+        secret_scanning_non_provider_patterns_enabled_for_new_repositories: Missing[
+            Union[bool, None]
+        ] = UNSET,
     ) -> Response: ...
 
     def patch_security_analysis_settings_for_enterprise(
@@ -2679,6 +2682,9 @@ class EnterpriseAdminClient:
             bool
         ] = UNSET,
         secret_scanning_push_protection_custom_link: Missing[Union[str, None]] = UNSET,
+        secret_scanning_non_provider_patterns_enabled_for_new_repositories: Missing[
+            Union[bool, None]
+        ] = UNSET,
     ) -> Response: ...
 
     async def async_patch_security_analysis_settings_for_enterprise(
@@ -2830,6 +2836,7 @@ class EnterpriseAdminClient:
             "dependabot_alerts",
             "secret_scanning",
             "secret_scanning_push_protection",
+            "secret_scanning_non_provider_patterns",
         ],
         enablement: Literal["enable_all", "disable_all"],
         *,
@@ -2861,6 +2868,7 @@ class EnterpriseAdminClient:
             "dependabot_alerts",
             "secret_scanning",
             "secret_scanning_push_protection",
+            "secret_scanning_non_provider_patterns",
         ],
         enablement: Literal["enable_all", "disable_all"],
         *,

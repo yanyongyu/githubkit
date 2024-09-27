@@ -9,44 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0001 import SimpleUserType
-from .group_0006 import IntegrationType
-from .group_0065 import ReactionRollupType
+from typing_extensions import TypedDict
 
 
-class IssueCommentType(TypedDict):
-    """Issue Comment
+class ReactionRollupType(TypedDict):
+    """Reaction Rollup"""
 
-    Comments provide a way for people to collaborate on an issue.
-    """
-
-    id: int
-    node_id: str
     url: str
-    body: NotRequired[str]
-    body_text: NotRequired[str]
-    body_html: NotRequired[str]
-    html_url: str
-    user: Union[None, SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    issue_url: str
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
-    reactions: NotRequired[ReactionRollupType]
+    total_count: int
+    plus_one: int
+    minus_one: int
+    laugh: int
+    confused: int
+    heart: int
+    hooray: int
+    eyes: int
+    rocket: int
 
 
-__all__ = ("IssueCommentType",)
+__all__ = ("ReactionRollupType",)

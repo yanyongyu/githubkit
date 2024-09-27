@@ -9,21 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import Union, Literal
+from typing_extensions import TypedDict
 
 
-class CodespacesPublicKeyType(TypedDict):
-    """CodespacesPublicKey
+class CodespaceMachineType(TypedDict):
+    """Codespace machine
 
-    The public key used for setting Codespaces secrets.
+    A description of the machine powering a codespace.
     """
 
-    key_id: str
-    key: str
-    id: NotRequired[int]
-    url: NotRequired[str]
-    title: NotRequired[str]
-    created_at: NotRequired[str]
+    name: str
+    display_name: str
+    operating_system: str
+    storage_in_bytes: int
+    memory_in_bytes: int
+    cpus: int
+    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
 
 
-__all__ = ("CodespacesPublicKeyType",)
+__all__ = ("CodespaceMachineType",)

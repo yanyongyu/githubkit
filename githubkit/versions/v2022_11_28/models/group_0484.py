@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0390 import Discussion
-from .group_0376 import EnterpriseWebhooks
-from .group_0377 import SimpleInstallation
-from .group_0379 import RepositoryWebhooks
-from .group_0380 import SimpleUserWebhooks
-from .group_0378 import OrganizationSimpleWebhooks
+from .group_0392 import Discussion
+from .group_0378 import EnterpriseWebhooks
+from .group_0379 import SimpleInstallation
+from .group_0381 import RepositoryWebhooks
+from .group_0382 import SimpleUserWebhooks
+from .group_0380 import OrganizationSimpleWebhooks
 
 
-class WebhookDiscussionReopened(GitHubModel):
-    """discussion reopened event"""
+class WebhookDiscussionLocked(GitHubModel):
+    """discussion locked event"""
 
-    action: Literal["reopened"] = Field()
+    action: Literal["locked"] = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -57,6 +57,6 @@ class WebhookDiscussionReopened(GitHubModel):
     )
 
 
-model_rebuild(WebhookDiscussionReopened)
+model_rebuild(WebhookDiscussionLocked)
 
-__all__ = ("WebhookDiscussionReopened",)
+__all__ = ("WebhookDiscussionLocked",)

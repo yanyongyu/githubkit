@@ -9,14 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict
+from typing import List
+from typing_extensions import TypedDict, NotRequired
 
 
-class UserEmailVisibilityPatchBodyType(TypedDict):
-    """UserEmailVisibilityPatchBody"""
+class UserCodespacesCodespaceNamePatchBodyType(TypedDict):
+    """UserCodespacesCodespaceNamePatchBody"""
 
-    visibility: Literal["public", "private"]
+    machine: NotRequired[str]
+    display_name: NotRequired[str]
+    recent_folders: NotRequired[List[str]]
 
 
-__all__ = ("UserEmailVisibilityPatchBodyType",)
+__all__ = ("UserCodespacesCodespaceNamePatchBodyType",)
