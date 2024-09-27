@@ -9,22 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Topic(GitHubModel):
-    """Topic
+class Tag(GitHubModel):
+    """Tag
 
-    A topic aggregates entities that are related to a subject.
+    Tag
     """
 
-    names: List[str] = Field()
+    name: str = Field()
+    commit: TagPropCommit = Field()
+    zipball_url: str = Field()
+    tarball_url: str = Field()
+    node_id: str = Field()
 
 
-model_rebuild(Topic)
+class TagPropCommit(GitHubModel):
+    """TagPropCommit"""
 
-__all__ = ("Topic",)
+    sha: str = Field()
+    url: str = Field()
+
+
+model_rebuild(Tag)
+model_rebuild(TagPropCommit)
+
+__all__ = (
+    "Tag",
+    "TagPropCommit",
+)

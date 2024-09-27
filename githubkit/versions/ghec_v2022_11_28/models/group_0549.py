@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0015 import Installation
-from .group_0413 import EnterpriseWebhooks
-from .group_0416 import RepositoryWebhooks
-from .group_0417 import SimpleUserWebhooks
-from .group_0432 import WebhooksRepositoriesItems
-from .group_0415 import OrganizationSimpleWebhooks
+from .group_0017 import Installation
+from .group_0415 import EnterpriseWebhooks
+from .group_0418 import RepositoryWebhooks
+from .group_0419 import SimpleUserWebhooks
+from .group_0434 import WebhooksRepositoriesItems
+from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookInstallationUnsuspend(GitHubModel):
-    """installation unsuspend event"""
+class WebhookInstallationSuspend(GitHubModel):
+    """installation suspend event"""
 
-    action: Literal["unsuspend"] = Field()
+    action: Literal["suspend"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -56,6 +56,6 @@ class WebhookInstallationUnsuspend(GitHubModel):
     )
 
 
-model_rebuild(WebhookInstallationUnsuspend)
+model_rebuild(WebhookInstallationSuspend)
 
-__all__ = ("WebhookInstallationUnsuspend",)
+__all__ = ("WebhookInstallationSuspend",)

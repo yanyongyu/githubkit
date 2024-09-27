@@ -13,20 +13,17 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgCodeSecurityConfigurationsDetachDeleteBody(GitHubModel):
-    """OrgsOrgCodeSecurityConfigurationsDetachDeleteBody"""
+class OrgsOrgActionsVariablesNameRepositoriesPutBody(GitHubModel):
+    """OrgsOrgActionsVariablesNameRepositoriesPutBody"""
 
-    selected_repository_ids: Missing[List[int]] = Field(
-        default=UNSET,
-        description="An array of repository IDs to detach from configurations.",
+    selected_repository_ids: List[int] = Field(
+        description="The IDs of the repositories that can access the organization variable."
     )
 
 
-model_rebuild(OrgsOrgCodeSecurityConfigurationsDetachDeleteBody)
+model_rebuild(OrgsOrgActionsVariablesNameRepositoriesPutBody)
 
-__all__ = ("OrgsOrgCodeSecurityConfigurationsDetachDeleteBody",)
+__all__ = ("OrgsOrgActionsVariablesNameRepositoriesPutBody",)

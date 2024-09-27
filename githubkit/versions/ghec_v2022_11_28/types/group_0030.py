@@ -9,16 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class SelectedActionsType(TypedDict):
-    """SelectedActions"""
+class ActionsEnterprisePermissionsType(TypedDict):
+    """ActionsEnterprisePermissions"""
 
-    github_owned_allowed: NotRequired[bool]
-    verified_allowed: NotRequired[bool]
-    patterns_allowed: NotRequired[List[str]]
+    enabled_organizations: Literal["all", "none", "selected"]
+    selected_organizations_url: NotRequired[str]
+    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    selected_actions_url: NotRequired[str]
 
 
-__all__ = ("SelectedActionsType",)
+__all__ = ("ActionsEnterprisePermissionsType",)

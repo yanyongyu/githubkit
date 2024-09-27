@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
+from datetime import datetime
 
 from pydantic import Field
 
@@ -18,23 +19,38 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class InteractionLimit(GitHubModel):
-    """Interaction Restrictions
+class OrgHook(GitHubModel):
+    """Org Hook
 
-    Limit interactions to a specific type of user for a specified duration
+    Org Hook
     """
 
-    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
-        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
-    )
-    expiry: Missing[
-        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
-    ] = Field(
-        default=UNSET,
-        description="The duration of the interaction restriction. Default: `one_day`.",
-    )
+    id: int = Field()
+    url: str = Field()
+    ping_url: str = Field()
+    deliveries_url: Missing[str] = Field(default=UNSET)
+    name: str = Field()
+    events: List[str] = Field()
+    active: bool = Field()
+    config: OrgHookPropConfig = Field()
+    updated_at: datetime = Field()
+    created_at: datetime = Field()
+    type: str = Field()
 
 
-model_rebuild(InteractionLimit)
+class OrgHookPropConfig(GitHubModel):
+    """OrgHookPropConfig"""
 
-__all__ = ("InteractionLimit",)
+    url: Missing[str] = Field(default=UNSET)
+    insecure_ssl: Missing[str] = Field(default=UNSET)
+    content_type: Missing[str] = Field(default=UNSET)
+    secret: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(OrgHook)
+model_rebuild(OrgHookPropConfig)
+
+__all__ = (
+    "OrgHook",
+    "OrgHookPropConfig",
+)

@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,23 +18,22 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RunnerApplication(GitHubModel):
-    """Runner Application
+class RunnerLabel(GitHubModel):
+    """Self hosted runner label
 
-    Runner Application
+    A label for a self hosted runner
     """
 
-    os: str = Field()
-    architecture: str = Field()
-    download_url: str = Field()
-    filename: str = Field()
-    temp_download_token: Missing[str] = Field(
-        default=UNSET,
-        description="A short lived bearer token used to download the runner, if needed.",
+    id: Missing[int] = Field(
+        default=UNSET, description="Unique identifier of the label."
     )
-    sha256_checksum: Missing[str] = Field(default=UNSET)
+    name: str = Field(description="Name of the label.")
+    type: Missing[Literal["read-only", "custom"]] = Field(
+        default=UNSET,
+        description="The type of label. Read-only labels are applied automatically when the runner is configured.",
+    )
 
 
-model_rebuild(RunnerApplication)
+model_rebuild(RunnerLabel)
 
-__all__ = ("RunnerApplication",)
+__all__ = ("RunnerLabel",)

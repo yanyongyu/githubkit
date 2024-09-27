@@ -9,74 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 
-class HookDeliveryType(TypedDict):
-    """Webhook delivery
+class ScimErrorType(TypedDict):
+    """Scim Error
 
-    Delivery made by a webhook.
+    Scim Error
     """
 
-    id: int
-    guid: str
-    delivered_at: datetime
-    redelivery: bool
-    duration: float
-    status: str
-    status_code: int
-    event: str
-    action: Union[str, None]
-    installation_id: Union[int, None]
-    repository_id: Union[int, None]
-    throttled_at: NotRequired[Union[datetime, None]]
-    url: NotRequired[str]
-    request: HookDeliveryPropRequestType
-    response: HookDeliveryPropResponseType
+    message: NotRequired[Union[str, None]]
+    documentation_url: NotRequired[Union[str, None]]
+    detail: NotRequired[Union[str, None]]
+    status: NotRequired[int]
+    scim_type: NotRequired[Union[str, None]]
+    schemas: NotRequired[List[str]]
 
 
-class HookDeliveryPropRequestType(TypedDict):
-    """HookDeliveryPropRequest"""
-
-    headers: Union[HookDeliveryPropRequestPropHeadersType, None]
-    payload: Union[HookDeliveryPropRequestPropPayloadType, None]
-
-
-class HookDeliveryPropRequestPropHeadersType(TypedDict):
-    """HookDeliveryPropRequestPropHeaders
-
-    The request headers sent with the webhook delivery.
-    """
-
-
-class HookDeliveryPropRequestPropPayloadType(TypedDict):
-    """HookDeliveryPropRequestPropPayload
-
-    The webhook payload.
-    """
-
-
-class HookDeliveryPropResponseType(TypedDict):
-    """HookDeliveryPropResponse"""
-
-    headers: Union[HookDeliveryPropResponsePropHeadersType, None]
-    payload: Union[str, None]
-
-
-class HookDeliveryPropResponsePropHeadersType(TypedDict):
-    """HookDeliveryPropResponsePropHeaders
-
-    The response headers received when the delivery was made.
-    """
-
-
-__all__ = (
-    "HookDeliveryType",
-    "HookDeliveryPropRequestType",
-    "HookDeliveryPropRequestPropHeadersType",
-    "HookDeliveryPropRequestPropPayloadType",
-    "HookDeliveryPropResponseType",
-    "HookDeliveryPropResponsePropHeadersType",
-)
+__all__ = ("ScimErrorType",)

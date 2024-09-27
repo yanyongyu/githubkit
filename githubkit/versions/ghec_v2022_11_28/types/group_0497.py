@@ -9,33 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0413 import EnterpriseWebhooksType
-from .group_0414 import SimpleInstallationType
-from .group_0417 import SimpleUserWebhooksType
-from .group_0415 import OrganizationSimpleWebhooksType
+from .group_0415 import EnterpriseWebhooksType
+from .group_0416 import SimpleInstallationType
+from .group_0418 import RepositoryWebhooksType
+from .group_0419 import SimpleUserWebhooksType
+from .group_0417 import OrganizationSimpleWebhooksType
 
 
-class WebhookCustomPropertyDeletedType(TypedDict):
-    """custom property deleted event"""
+class WebhookCreateType(TypedDict):
+    """create event"""
 
-    action: Literal["deleted"]
-    definition: WebhookCustomPropertyDeletedPropDefinitionType
+    description: Union[str, None]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
+    master_branch: str
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    sender: NotRequired[SimpleUserWebhooksType]
+    pusher_type: str
+    ref: str
+    ref_type: Literal["tag", "branch"]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserWebhooksType
 
 
-class WebhookCustomPropertyDeletedPropDefinitionType(TypedDict):
-    """WebhookCustomPropertyDeletedPropDefinition"""
-
-    property_name: str
-
-
-__all__ = (
-    "WebhookCustomPropertyDeletedType",
-    "WebhookCustomPropertyDeletedPropDefinitionType",
-)
+__all__ = ("WebhookCreateType",)

@@ -12,10 +12,8 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 
-class ApplicationsClientIdTokenPostBodyType(TypedDict):
-    """ApplicationsClientIdTokenPostBody"""
-
-    access_token: str
+class AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type(TypedDict):
+    """AppHookDeliveriesDeliveryIdAttemptsPostResponse202"""
 
 
-__all__ = ("ApplicationsClientIdTokenPostBodyType",)
+__all__ = ("AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type",)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,19 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0413 import EnterpriseWebhooks
-from .group_0414 import SimpleInstallation
-from .group_0416 import RepositoryWebhooks
-from .group_0417 import SimpleUserWebhooks
-from .group_0415 import OrganizationSimpleWebhooks
-from .group_0440 import WebhooksMarketplacePurchase
+from .group_0433 import WebhooksLabel
+from .group_0415 import EnterpriseWebhooks
+from .group_0416 import SimpleInstallation
+from .group_0418 import RepositoryWebhooks
+from .group_0419 import SimpleUserWebhooks
+from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookMarketplacePurchaseChanged(GitHubModel):
-    """marketplace_purchase changed event"""
+class WebhookLabelEdited(GitHubModel):
+    """label edited event"""
 
-    action: Literal["changed"] = Field()
-    effective_date: str = Field()
+    action: Literal["edited"] = Field()
+    changes: Missing[WebhookLabelEditedPropChanges] = Field(
+        default=UNSET,
+        description="The changes to the label if the action was `edited`.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,19 +43,13 @@ class WebhookMarketplacePurchaseChanged(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    marketplace_purchase: WebhooksMarketplacePurchase = Field(
-        title="Marketplace Purchase"
-    )
+    label: WebhooksLabel = Field(title="Label")
     organization: Missing[OrganizationSimpleWebhooks] = Field(
         default=UNSET,
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    previous_marketplace_purchase: Missing[
-        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase
-    ] = Field(default=UNSET, title="Marketplace Purchase")
-    repository: Missing[RepositoryWebhooks] = Field(
-        default=UNSET,
+    repository: RepositoryWebhooks = Field(
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
@@ -62,58 +59,56 @@ class WebhookMarketplacePurchaseChanged(GitHubModel):
     )
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase(GitHubModel):
-    """Marketplace Purchase"""
+class WebhookLabelEditedPropChanges(GitHubModel):
+    """WebhookLabelEditedPropChanges
 
-    account: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount = Field()
-    billing_cycle: str = Field()
-    free_trial_ends_on: Union[str, None] = Field()
-    next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
-    on_free_trial: Union[bool, None] = Field()
-    plan: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan = (
-        Field()
+    The changes to the label if the action was `edited`.
+    """
+
+    color: Missing[WebhookLabelEditedPropChangesPropColor] = Field(default=UNSET)
+    description: Missing[WebhookLabelEditedPropChangesPropDescription] = Field(
+        default=UNSET
     )
-    unit_count: int = Field()
+    name: Missing[WebhookLabelEditedPropChangesPropName] = Field(default=UNSET)
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount(
-    GitHubModel
-):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount"""
+class WebhookLabelEditedPropChangesPropColor(GitHubModel):
+    """WebhookLabelEditedPropChangesPropColor"""
 
-    id: int = Field()
-    login: str = Field()
-    node_id: str = Field()
-    organization_billing_email: Union[str, None] = Field()
-    type: str = Field()
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the color if the action was `edited`.",
+    )
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan(
-    GitHubModel
-):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan"""
+class WebhookLabelEditedPropChangesPropDescription(GitHubModel):
+    """WebhookLabelEditedPropChangesPropDescription"""
 
-    bullets: List[str] = Field()
-    description: str = Field()
-    has_free_trial: bool = Field()
-    id: int = Field()
-    monthly_price_in_cents: int = Field()
-    name: str = Field()
-    price_model: Literal["FREE", "FLAT_RATE", "PER_UNIT"] = Field()
-    unit_name: Union[str, None] = Field()
-    yearly_price_in_cents: int = Field()
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the description if the action was `edited`.",
+    )
 
 
-model_rebuild(WebhookMarketplacePurchaseChanged)
-model_rebuild(WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase)
-model_rebuild(
-    WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount
-)
-model_rebuild(WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan)
+class WebhookLabelEditedPropChangesPropName(GitHubModel):
+    """WebhookLabelEditedPropChangesPropName"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the name if the action was `edited`.",
+    )
+
+
+model_rebuild(WebhookLabelEdited)
+model_rebuild(WebhookLabelEditedPropChanges)
+model_rebuild(WebhookLabelEditedPropChangesPropColor)
+model_rebuild(WebhookLabelEditedPropChangesPropDescription)
+model_rebuild(WebhookLabelEditedPropChangesPropName)
 
 __all__ = (
-    "WebhookMarketplacePurchaseChanged",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan",
+    "WebhookLabelEdited",
+    "WebhookLabelEditedPropChanges",
+    "WebhookLabelEditedPropChangesPropColor",
+    "WebhookLabelEditedPropChangesPropDescription",
+    "WebhookLabelEditedPropChangesPropName",
 )

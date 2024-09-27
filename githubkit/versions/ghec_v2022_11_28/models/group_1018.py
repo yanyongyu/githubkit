@@ -9,39 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2(GitHubModel):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2"""
+class ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody(GitHubModel):
+    """ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody"""
 
-    language: Literal[
-        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
-    ] = Field(description="The language targeted by the CodeQL query")
-    query_pack: str = Field(
-        description="A Base64-encoded tarball containing a CodeQL query and all its dependencies"
+    state: Literal["open", "dismissed"] = Field(
+        description="Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`."
     )
-    repositories: Missing[List[str]] = Field(
+    dismissed_reason: Missing[
+        Union[None, Literal["false positive", "won't fix", "used in tests"]]
+    ] = Field(
         default=UNSET,
-        description="List of repository names (in the form `owner/repo-name`) to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
+        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert.",
     )
-    repository_lists: Missing[List[str]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        default=UNSET,
-        description="List of repository lists to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
-    )
-    repository_owners: List[str] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
-        description="List of organization or user names whose repositories the query should be run against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
+    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
+        Field(
+            default=UNSET,
+            description="The dismissal comment associated with the dismissal of the alert.",
+        )
     )
 
 
-model_rebuild(ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2)
+model_rebuild(ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody)
 
-__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2",)
+__all__ = ("ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody",)

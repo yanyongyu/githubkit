@@ -9,19 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing_extensions import TypedDict
 
 
-class ContentTrafficType(TypedDict):
-    """Content Traffic
+class TrafficType(TypedDict):
+    """Traffic"""
 
-    Content Traffic
-    """
-
-    path: str
-    title: str
-    count: int
+    timestamp: datetime
     uniques: int
+    count: int
 
 
-__all__ = ("ContentTrafficType",)
+__all__ = ("TrafficType",)

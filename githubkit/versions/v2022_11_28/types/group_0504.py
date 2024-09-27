@@ -9,94 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0376 import EnterpriseWebhooksType
-from .group_0377 import SimpleInstallationType
-from .group_0379 import RepositoryWebhooksType
-from .group_0380 import SimpleUserWebhooksType
-from .group_0378 import OrganizationSimpleWebhooksType
+from .group_0017 import InstallationType
+from .group_0390 import WebhooksUserType
+from .group_0378 import EnterpriseWebhooksType
+from .group_0381 import RepositoryWebhooksType
+from .group_0382 import SimpleUserWebhooksType
+from .group_0380 import OrganizationSimpleWebhooksType
+from .group_0396 import WebhooksRepositoriesAddedItemsType
 
 
-class WebhookInstallationTargetRenamedType(TypedDict):
-    """WebhookInstallationTargetRenamed"""
+class WebhookInstallationRepositoriesRemovedType(TypedDict):
+    """installation_repositories removed event"""
 
-    account: WebhookInstallationTargetRenamedPropAccountType
-    action: Literal["renamed"]
-    changes: WebhookInstallationTargetRenamedPropChangesType
+    action: Literal["removed"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: SimpleInstallationType
+    installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
+    repositories_added: List[WebhooksRepositoriesAddedItemsType]
+    repositories_removed: List[
+        WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType
+    ]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserWebhooksType]
-    target_type: str
+    repository_selection: Literal["all", "selected"]
+    requester: Union[WebhooksUserType, None]
+    sender: SimpleUserWebhooksType
 
 
-class WebhookInstallationTargetRenamedPropAccountType(TypedDict):
-    """WebhookInstallationTargetRenamedPropAccount"""
+class WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType(TypedDict):
+    """WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItems"""
 
-    archived_at: NotRequired[Union[str, None]]
-    avatar_url: str
-    created_at: NotRequired[str]
-    description: NotRequired[None]
-    events_url: NotRequired[str]
-    followers: NotRequired[int]
-    followers_url: NotRequired[str]
-    following: NotRequired[int]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    has_organization_projects: NotRequired[bool]
-    has_repository_projects: NotRequired[bool]
-    hooks_url: NotRequired[str]
-    html_url: str
+    full_name: str
     id: int
-    is_verified: NotRequired[bool]
-    issues_url: NotRequired[str]
-    login: NotRequired[str]
-    members_url: NotRequired[str]
-    name: NotRequired[str]
+    name: str
     node_id: str
-    organizations_url: NotRequired[str]
-    public_gists: NotRequired[int]
-    public_members_url: NotRequired[str]
-    public_repos: NotRequired[int]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    slug: NotRequired[str]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[str]
-    updated_at: NotRequired[str]
-    url: NotRequired[str]
-    website_url: NotRequired[None]
-
-
-class WebhookInstallationTargetRenamedPropChangesType(TypedDict):
-    """WebhookInstallationTargetRenamedPropChanges"""
-
-    login: NotRequired[WebhookInstallationTargetRenamedPropChangesPropLoginType]
-    slug: NotRequired[WebhookInstallationTargetRenamedPropChangesPropSlugType]
-
-
-class WebhookInstallationTargetRenamedPropChangesPropLoginType(TypedDict):
-    """WebhookInstallationTargetRenamedPropChangesPropLogin"""
-
-    from_: str
-
-
-class WebhookInstallationTargetRenamedPropChangesPropSlugType(TypedDict):
-    """WebhookInstallationTargetRenamedPropChangesPropSlug"""
-
-    from_: str
+    private: bool
 
 
 __all__ = (
-    "WebhookInstallationTargetRenamedType",
-    "WebhookInstallationTargetRenamedPropAccountType",
-    "WebhookInstallationTargetRenamedPropChangesType",
-    "WebhookInstallationTargetRenamedPropChangesPropLoginType",
-    "WebhookInstallationTargetRenamedPropChangesPropSlugType",
+    "WebhookInstallationRepositoriesRemovedType",
+    "WebhookInstallationRepositoriesRemovedPropRepositoriesRemovedItemsType",
 )

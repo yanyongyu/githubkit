@@ -9,21 +9,46 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Literal
 
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserCodespacesSecretsSecretNameRepositoriesPutBody(GitHubModel):
-    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
+class UserCodespacesSecretsGetResponse200(GitHubModel):
+    """UserCodespacesSecretsGetResponse200"""
 
-    selected_repository_ids: List[int] = Field(
-        description="An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints."
+    total_count: int = Field()
+    secrets: List[CodespacesSecret] = Field()
+
+
+class CodespacesSecret(GitHubModel):
+    """Codespaces Secret
+
+    Secrets for a GitHub Codespace.
+    """
+
+    name: str = Field(description="The name of the secret")
+    created_at: datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    updated_at: datetime = Field(
+        description="The date and time at which the secret was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that the secret is visible to"
+    )
+    selected_repositories_url: str = Field(
+        description="The API URL at which the list of repositories this secret is visible to can be retrieved"
     )
 
 
-model_rebuild(UserCodespacesSecretsSecretNameRepositoriesPutBody)
+model_rebuild(UserCodespacesSecretsGetResponse200)
+model_rebuild(CodespacesSecret)
 
-__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBody",)
+__all__ = (
+    "UserCodespacesSecretsGetResponse200",
+    "CodespacesSecret",
+)

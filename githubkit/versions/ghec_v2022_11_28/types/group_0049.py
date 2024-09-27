@@ -10,50 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from datetime import date, datetime
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0048 import TeamType
-from .group_0001 import SimpleUserType
-from .group_0029 import OrganizationSimpleType
 
+class TeamSimpleType(TypedDict):
+    """Team Simple
 
-class CopilotSeatDetailsType(TypedDict):
-    """Copilot Business Seat Detail
-
-    Information about a Copilot Business seat assignment for a user, team, or
-    organization.
-    """
-
-    assignee: SimpleUserType
-    organization: NotRequired[Union[OrganizationSimpleType, None]]
-    assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
-    pending_cancellation_date: NotRequired[Union[date, None]]
-    last_activity_at: NotRequired[Union[datetime, None]]
-    last_activity_editor: NotRequired[Union[str, None]]
-    created_at: datetime
-    updated_at: NotRequired[datetime]
-
-
-class EnterpriseTeamType(TypedDict):
-    """Enterprise Team
-
-    Group of enterprise owners and/or members
+    Groups of organization members that gives permissions on specified repositories.
     """
 
     id: int
-    name: str
-    slug: str
+    node_id: str
     url: str
-    sync_to_organizations: str
-    group_id: NotRequired[Union[int, None]]
-    html_url: str
     members_url: str
-    created_at: datetime
-    updated_at: datetime
+    name: str
+    description: Union[str, None]
+    permission: str
+    privacy: NotRequired[str]
+    notification_setting: NotRequired[str]
+    html_url: str
+    repositories_url: str
+    slug: str
+    ldap_dn: NotRequired[str]
 
 
-__all__ = (
-    "CopilotSeatDetailsType",
-    "EnterpriseTeamType",
-)
+__all__ = ("TeamSimpleType",)

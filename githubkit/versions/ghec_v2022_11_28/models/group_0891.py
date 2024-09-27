@@ -13,18 +13,18 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0084 import MinimalRepository
 
 
-class OrgsOrgCopilotBillingSelectedTeamsPostBody(GitHubModel):
-    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
+class OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200(GitHubModel):
+    """OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200"""
 
-    selected_teams: List[str] = Field(
-        min_length=1 if PYDANTIC_V2 else None,
-        description="List of team names within the organization to which to grant access to GitHub Copilot.",
-    )
+    total_count: int = Field()
+    repositories: List[MinimalRepository] = Field()
 
 
-model_rebuild(OrgsOrgCopilotBillingSelectedTeamsPostBody)
+model_rebuild(OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200)
 
-__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostBody",)
+__all__ = ("OrgsOrgCodespacesSecretsSecretNameRepositoriesGetResponse200",)

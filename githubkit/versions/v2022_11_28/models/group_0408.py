@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
 
 from pydantic import Field
@@ -19,25 +18,21 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksProjectCard(GitHubModel):
-    """Project Card"""
+class WebhooksMembership(GitHubModel):
+    """Membership
 
-    after_id: Missing[Union[int, None]] = Field(default=UNSET)
-    archived: bool = Field(description="Whether or not the card is archived")
-    column_id: int = Field()
-    column_url: str = Field()
-    content_url: Missing[str] = Field(default=UNSET)
-    created_at: datetime = Field()
-    creator: Union[WebhooksProjectCardPropCreator, None] = Field(title="User")
-    id: int = Field(description="The project card's ID")
-    node_id: str = Field()
-    note: Union[str, None] = Field()
-    project_url: str = Field()
-    updated_at: datetime = Field()
+    The membership between the user and the organization. Not present when the
+    action is `member_invited`.
+    """
+
+    organization_url: str = Field()
+    role: str = Field()
+    state: str = Field()
     url: str = Field()
+    user: Union[WebhooksMembershipPropUser, None] = Field(title="User")
 
 
-class WebhooksProjectCardPropCreator(GitHubModel):
+class WebhooksMembershipPropUser(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -63,10 +58,10 @@ class WebhooksProjectCardPropCreator(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhooksProjectCard)
-model_rebuild(WebhooksProjectCardPropCreator)
+model_rebuild(WebhooksMembership)
+model_rebuild(WebhooksMembershipPropUser)
 
 __all__ = (
-    "WebhooksProjectCard",
-    "WebhooksProjectCardPropCreator",
+    "WebhooksMembership",
+    "WebhooksMembershipPropUser",
 )

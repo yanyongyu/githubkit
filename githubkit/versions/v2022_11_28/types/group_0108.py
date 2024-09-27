@@ -12,19 +12,17 @@ from __future__ import annotations
 from typing_extensions import TypedDict
 
 from .group_0109 import (
-    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType,
+    RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType,
 )
 
 
-class RepositoryRulesetConditionsRepositoryPropertyTargetType(TypedDict):
-    """Repository ruleset conditions for repository properties
+class RepositoryRulesetConditionsRepositoryIdTargetType(TypedDict):
+    """Repository ruleset conditions for repository IDs
 
-    Parameters for a repository property condition
+    Parameters for a repository ID condition
     """
 
-    repository_property: (
-        RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType
-    )
+    repository_id: RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryIdType
 
 
-__all__ = ("RepositoryRulesetConditionsRepositoryPropertyTargetType",)
+__all__ = ("RepositoryRulesetConditionsRepositoryIdTargetType",)

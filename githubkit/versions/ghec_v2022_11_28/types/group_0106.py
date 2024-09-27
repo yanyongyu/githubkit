@@ -9,40 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from datetime import datetime
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0002 import SimpleUserType
 
-class OrgHookType(TypedDict):
-    """Org Hook
 
-    Org Hook
+class OrganizationInvitationType(TypedDict):
+    """Organization Invitation
+
+    Organization Invitation
     """
 
     id: int
-    url: str
-    ping_url: str
-    deliveries_url: NotRequired[str]
-    name: str
-    events: List[str]
-    active: bool
-    config: OrgHookPropConfigType
-    updated_at: datetime
-    created_at: datetime
-    type: str
+    login: Union[str, None]
+    email: Union[str, None]
+    role: str
+    created_at: str
+    failed_at: NotRequired[Union[str, None]]
+    failed_reason: NotRequired[Union[str, None]]
+    inviter: SimpleUserType
+    team_count: int
+    node_id: str
+    invitation_teams_url: str
+    invitation_source: NotRequired[str]
 
 
-class OrgHookPropConfigType(TypedDict):
-    """OrgHookPropConfig"""
-
-    url: NotRequired[str]
-    insecure_ssl: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-
-
-__all__ = (
-    "OrgHookType",
-    "OrgHookPropConfigType",
-)
+__all__ = ("OrganizationInvitationType",)

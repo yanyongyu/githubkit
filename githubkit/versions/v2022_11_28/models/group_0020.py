@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -18,47 +17,30 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0019 import ScopedInstallation
+from .group_0019 import Repository
+from .group_0016 import AppPermissions
 
 
-class Authorization(GitHubModel):
-    """Authorization
+class InstallationToken(GitHubModel):
+    """Installation Token
 
-    The authorization for an OAuth app, GitHub App, or a Personal Access Token.
+    Authentication token for a GitHub App installed on a user or org.
     """
 
-    id: int = Field()
-    url: str = Field()
-    scopes: Union[List[str], None] = Field(
-        description="A list of scopes that this authorization is in."
-    )
     token: str = Field()
-    token_last_eight: Union[str, None] = Field()
-    hashed_token: Union[str, None] = Field()
-    app: AuthorizationPropApp = Field()
-    note: Union[str, None] = Field()
-    note_url: Union[str, None] = Field()
-    updated_at: datetime = Field()
-    created_at: datetime = Field()
-    fingerprint: Union[str, None] = Field()
-    user: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
-    installation: Missing[Union[None, ScopedInstallation]] = Field(default=UNSET)
-    expires_at: Union[datetime, None] = Field()
+    expires_at: str = Field()
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
+    )
+    repository_selection: Missing[Literal["all", "selected"]] = Field(default=UNSET)
+    repositories: Missing[List[Repository]] = Field(default=UNSET)
+    single_file: Missing[str] = Field(default=UNSET)
+    has_multiple_single_files: Missing[bool] = Field(default=UNSET)
+    single_file_paths: Missing[List[str]] = Field(default=UNSET)
 
 
-class AuthorizationPropApp(GitHubModel):
-    """AuthorizationPropApp"""
+model_rebuild(InstallationToken)
 
-    client_id: str = Field()
-    name: str = Field()
-    url: str = Field()
-
-
-model_rebuild(Authorization)
-model_rebuild(AuthorizationPropApp)
-
-__all__ = (
-    "Authorization",
-    "AuthorizationPropApp",
-)
+__all__ = ("InstallationToken",)

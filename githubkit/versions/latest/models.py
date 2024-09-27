@@ -155,6 +155,7 @@ if TYPE_CHECKING:
     from githubkit.versions.v2022_11_28.models import ContentSymlink as ContentSymlink
     from githubkit.versions.v2022_11_28.models import ContentTraffic as ContentTraffic
     from githubkit.versions.v2022_11_28.models import CustomProperty as CustomProperty
+    from githubkit.versions.v2022_11_28.models import CvssSeverities as CvssSeverities
     from githubkit.versions.v2022_11_28.models import EnterpriseTeam as EnterpriseTeam
     from githubkit.versions.v2022_11_28.models import FullRepository as FullRepository
     from githubkit.versions.v2022_11_28.models import GlobalAdvisory as GlobalAdvisory
@@ -1078,6 +1079,12 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         CommitPropCommitPropTree as CommitPropCommitPropTree,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        CvssSeveritiesPropCvssV3 as CvssSeveritiesPropCvssV3,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        CvssSeveritiesPropCvssV4 as CvssSeveritiesPropCvssV4,
     )
     from githubkit.versions.v2022_11_28.models import (
         DependencyGraphDiffItems as DependencyGraphDiffItems,
@@ -9399,8 +9406,10 @@ else:
     __lazy_vars__ = {
         "githubkit.versions.v2022_11_28.models": (
             "Root",
+            "CvssSeverities",
+            "CvssSeveritiesPropCvssV3",
+            "CvssSeveritiesPropCvssV4",
             "SimpleUser",
-            "GlobalAdvisoryPropCreditsItems",
             "GlobalAdvisory",
             "GlobalAdvisoryPropIdentifiersItems",
             "GlobalAdvisoryPropCvss",
@@ -9408,6 +9417,7 @@ else:
             "GlobalAdvisoryPropEpss",
             "Vulnerability",
             "VulnerabilityPropPackage",
+            "GlobalAdvisoryPropCreditsItems",
             "BasicError",
             "ValidationErrorSimple",
             "IntegrationPropPermissions",

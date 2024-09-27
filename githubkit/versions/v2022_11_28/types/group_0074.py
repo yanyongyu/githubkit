@@ -9,64 +9,48 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class CodeSecurityConfigurationType(TypedDict):
-    """CodeSecurityConfiguration
+class CodeScanningAlertInstanceType(TypedDict):
+    """CodeScanningAlertInstance"""
 
-    A code security configuration
-    """
-
-    id: NotRequired[int]
-    name: NotRequired[str]
-    target_type: NotRequired[Literal["global", "organization"]]
-    description: NotRequired[str]
-    advanced_security: NotRequired[Literal["enabled", "disabled"]]
-    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph_autosubmit_action: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    dependency_graph_autosubmit_action_options: NotRequired[
-        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType
-    ]
-    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning_push_protection: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_validity_checks: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    private_vulnerability_reporting: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    enforcement: NotRequired[Literal["enforced", "unenforced"]]
-    url: NotRequired[str]
+    ref: NotRequired[str]
+    analysis_key: NotRequired[str]
+    environment: NotRequired[str]
+    category: NotRequired[str]
+    state: NotRequired[Literal["open", "dismissed", "fixed"]]
+    commit_sha: NotRequired[str]
+    message: NotRequired[CodeScanningAlertInstancePropMessageType]
+    location: NotRequired[CodeScanningAlertLocationType]
     html_url: NotRequired[str]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
+    classifications: NotRequired[
+        List[Union[None, Literal["source", "generated", "test", "library"]]]
+    ]
 
 
-class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
+class CodeScanningAlertLocationType(TypedDict):
+    """CodeScanningAlertLocation
 
-    Feature options for Automatic dependency submission
+    Describe a region within a file for the alert.
     """
 
-    labeled_runners: NotRequired[bool]
+    path: NotRequired[str]
+    start_line: NotRequired[int]
+    end_line: NotRequired[int]
+    start_column: NotRequired[int]
+    end_column: NotRequired[int]
+
+
+class CodeScanningAlertInstancePropMessageType(TypedDict):
+    """CodeScanningAlertInstancePropMessage"""
+
+    text: NotRequired[str]
 
 
 __all__ = (
-    "CodeSecurityConfigurationType",
-    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType",
+    "CodeScanningAlertInstanceType",
+    "CodeScanningAlertLocationType",
+    "CodeScanningAlertInstancePropMessageType",
 )

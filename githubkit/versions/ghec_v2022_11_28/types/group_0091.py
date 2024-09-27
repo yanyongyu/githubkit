@@ -9,17 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0090 import CodeSecurityConfigurationType
+
+class ActionsPublicKeyType(TypedDict):
+    """ActionsPublicKey
+
+    The public key used for setting Actions Secrets.
+    """
+
+    key_id: str
+    key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-class CodeSecurityDefaultConfigurationsItemsType(TypedDict):
-    """CodeSecurityDefaultConfigurationsItems"""
-
-    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
-    configuration: NotRequired[CodeSecurityConfigurationType]
-
-
-__all__ = ("CodeSecurityDefaultConfigurationsItemsType",)
+__all__ = ("ActionsPublicKeyType",)

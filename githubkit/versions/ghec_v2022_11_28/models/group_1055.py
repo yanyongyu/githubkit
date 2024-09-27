@@ -16,16 +16,16 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoGitRefsRefPatchBody(GitHubModel):
-    """ReposOwnerRepoGitRefsRefPatchBody"""
+class ReposOwnerRepoGitBlobsPostBody(GitHubModel):
+    """ReposOwnerRepoGitBlobsPostBody"""
 
-    sha: str = Field(description="The SHA1 value to set this reference to")
-    force: Missing[bool] = Field(
+    content: str = Field(description="The new blob's content.")
+    encoding: Missing[str] = Field(
         default=UNSET,
-        description="Indicates whether to force the update or to make sure the update is a fast-forward update. Leaving this out or setting it to `false` will make sure you're not overwriting work.",
+        description='The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported.',
     )
 
 
-model_rebuild(ReposOwnerRepoGitRefsRefPatchBody)
+model_rebuild(ReposOwnerRepoGitBlobsPostBody)
 
-__all__ = ("ReposOwnerRepoGitRefsRefPatchBody",)
+__all__ = ("ReposOwnerRepoGitBlobsPostBody",)

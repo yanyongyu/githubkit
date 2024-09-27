@@ -12,30 +12,30 @@ from __future__ import annotations
 from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
-from .group_0006 import IntegrationType
+from .group_0002 import SimpleUserType
+from .group_0008 import IntegrationType
 
 
-class ConvertedNoteToIssueIssueEventType(TypedDict):
-    """Converted Note to Issue Issue Event
+class MovedColumnInProjectIssueEventType(TypedDict):
+    """Moved Column in Project Issue Event
 
-    Converted Note to Issue Issue Event
+    Moved Column in Project Issue Event
     """
 
     id: int
     node_id: str
     url: str
     actor: SimpleUserType
-    event: Literal["converted_note_to_issue"]
+    event: Literal["moved_columns_in_project"]
     commit_id: Union[str, None]
     commit_url: Union[str, None]
     created_at: str
-    performed_via_github_app: Union[IntegrationType, None]
-    project_card: NotRequired[ConvertedNoteToIssueIssueEventPropProjectCardType]
+    performed_via_github_app: Union[None, IntegrationType, None]
+    project_card: NotRequired[MovedColumnInProjectIssueEventPropProjectCardType]
 
 
-class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
-    """ConvertedNoteToIssueIssueEventPropProjectCard"""
+class MovedColumnInProjectIssueEventPropProjectCardType(TypedDict):
+    """MovedColumnInProjectIssueEventPropProjectCard"""
 
     id: int
     url: str
@@ -46,6 +46,6 @@ class ConvertedNoteToIssueIssueEventPropProjectCardType(TypedDict):
 
 
 __all__ = (
-    "ConvertedNoteToIssueIssueEventType",
-    "ConvertedNoteToIssueIssueEventPropProjectCardType",
+    "MovedColumnInProjectIssueEventType",
+    "MovedColumnInProjectIssueEventPropProjectCardType",
 )

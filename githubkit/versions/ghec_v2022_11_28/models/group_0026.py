@@ -11,20 +11,43 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsCacheUsageOrgEnterprise(GitHubModel):
-    """ActionsCacheUsageOrgEnterprise"""
+class ClassroomAssignmentGrade(GitHubModel):
+    """Classroom Assignment Grade
 
-    total_active_caches_count: int = Field(
-        description="The count of active caches across all repositories of an enterprise or an organization."
+    Grade for a student or groups GitHub Classroom assignment
+    """
+
+    assignment_name: str = Field(description="Name of the assignment")
+    assignment_url: str = Field(description="URL of the assignment")
+    starter_code_url: str = Field(
+        description="URL of the starter code for the assignment"
     )
-    total_active_caches_size_in_bytes: int = Field(
-        description="The total size in bytes of all active cache items across all repositories of an enterprise or an organization."
+    github_username: str = Field(description="GitHub username of the student")
+    roster_identifier: str = Field(description="Roster identifier of the student")
+    student_repository_name: str = Field(
+        description="Name of the student's assignment repository"
+    )
+    student_repository_url: str = Field(
+        description="URL of the student's assignment repository"
+    )
+    submission_timestamp: str = Field(
+        description="Timestamp of the student's assignment submission"
+    )
+    points_awarded: int = Field(description="Number of points awarded to the student")
+    points_available: int = Field(
+        description="Number of points available for the assignment"
+    )
+    group_name: Missing[str] = Field(
+        default=UNSET,
+        description="If a group assignment, name of the group the student is in",
     )
 
 
-model_rebuild(ActionsCacheUsageOrgEnterprise)
+model_rebuild(ClassroomAssignmentGrade)
 
-__all__ = ("ActionsCacheUsageOrgEnterprise",)
+__all__ = ("ClassroomAssignmentGrade",)

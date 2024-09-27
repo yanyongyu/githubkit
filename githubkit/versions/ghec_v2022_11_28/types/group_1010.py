@@ -14,19 +14,20 @@ from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_1009 import (
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType,
-    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType,
+    ReposOwnerRepoCheckRunsPostBodyPropOutputType,
+    ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType,
 )
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type(TypedDict):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
+class ReposOwnerRepoCheckRunsPostBodyOneof0Type(TypedDict):
+    """ReposOwnerRepoCheckRunsPostBodyOneof0"""
 
-    name: NotRequired[str]
+    name: str
+    head_sha: str
     details_url: NotRequired[str]
     external_id: NotRequired[str]
+    status: Literal["completed"]
     started_at: NotRequired[datetime]
-    status: NotRequired[Literal["completed"]]
     conclusion: Literal[
         "action_required",
         "cancelled",
@@ -38,10 +39,8 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type(TypedDict):
         "timed_out",
     ]
     completed_at: NotRequired[datetime]
-    output: NotRequired[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType]
-    actions: NotRequired[
-        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItemsType]
-    ]
+    output: NotRequired[ReposOwnerRepoCheckRunsPostBodyPropOutputType]
+    actions: NotRequired[List[ReposOwnerRepoCheckRunsPostBodyPropActionsItemsType]]
 
 
-__all__ = ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0Type",)
+__all__ = ("ReposOwnerRepoCheckRunsPostBodyOneof0Type",)

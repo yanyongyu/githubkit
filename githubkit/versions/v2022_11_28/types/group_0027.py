@@ -10,44 +10,27 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0026 import TeamSimpleType
+from typing_extensions import TypedDict
 
 
-class TeamType(TypedDict):
-    """Team
+class OrganizationSimpleType(TypedDict):
+    """Organization Simple
 
-    Groups of organization members that gives permissions on specified repositories.
+    A GitHub organization.
     """
 
+    login: str
     id: int
     node_id: str
-    name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    permission: str
-    permissions: NotRequired[TeamPropPermissionsType]
     url: str
-    html_url: str
+    repos_url: str
+    events_url: str
+    hooks_url: str
+    issues_url: str
     members_url: str
-    repositories_url: str
-    parent: Union[None, TeamSimpleType]
+    public_members_url: str
+    avatar_url: str
+    description: Union[str, None]
 
 
-class TeamPropPermissionsType(TypedDict):
-    """TeamPropPermissions"""
-
-    pull: bool
-    triage: bool
-    push: bool
-    maintain: bool
-    admin: bool
-
-
-__all__ = (
-    "TeamType",
-    "TeamPropPermissionsType",
-)
+__all__ = ("OrganizationSimpleType",)

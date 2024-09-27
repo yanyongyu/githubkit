@@ -9,28 +9,82 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import List, Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0023 import SimpleClassroomRepositoryType
 
 
-class OrganizationSimpleType(TypedDict):
-    """Organization Simple
+class ClassroomAcceptedAssignmentType(TypedDict):
+    """Classroom Accepted Assignment
 
-    A GitHub organization.
+    A GitHub Classroom accepted assignment
     """
 
-    login: str
     id: int
-    node_id: str
-    url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
+    submitted: bool
+    passing: bool
+    commit_count: int
+    grade: str
+    students: List[SimpleClassroomUserType]
+    repository: SimpleClassroomRepositoryType
+    assignment: SimpleClassroomAssignmentType
+
+
+class SimpleClassroomUserType(TypedDict):
+    """Simple Classroom User
+
+    A GitHub user simplified for Classroom.
+    """
+
+    id: int
+    login: str
     avatar_url: str
-    description: Union[str, None]
+    html_url: str
 
 
-__all__ = ("OrganizationSimpleType",)
+class SimpleClassroomAssignmentType(TypedDict):
+    """Simple Classroom Assignment
+
+    A GitHub Classroom assignment
+    """
+
+    id: int
+    public_repo: bool
+    title: str
+    type: Literal["individual", "group"]
+    invite_link: str
+    invitations_enabled: bool
+    slug: str
+    students_are_repo_admins: bool
+    feedback_pull_requests_enabled: bool
+    max_teams: NotRequired[Union[int, None]]
+    max_members: NotRequired[Union[int, None]]
+    editor: str
+    accepted: int
+    submitted: int
+    passing: int
+    language: str
+    deadline: Union[datetime, None]
+    classroom: SimpleClassroomType
+
+
+class SimpleClassroomType(TypedDict):
+    """Simple Classroom
+
+    A GitHub Classroom classroom
+    """
+
+    id: int
+    name: str
+    archived: bool
+    url: str
+
+
+__all__ = (
+    "ClassroomAcceptedAssignmentType",
+    "SimpleClassroomUserType",
+    "SimpleClassroomAssignmentType",
+    "SimpleClassroomType",
+)

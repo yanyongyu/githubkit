@@ -9,29 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 
-class TeamSimpleType(TypedDict):
-    """Team Simple
+class ClassroomAssignmentGradeType(TypedDict):
+    """Classroom Assignment Grade
 
-    Groups of organization members that gives permissions on specified repositories.
+    Grade for a student or groups GitHub Classroom assignment
     """
 
-    id: int
-    node_id: str
-    url: str
-    members_url: str
-    name: str
-    description: Union[str, None]
-    permission: str
-    privacy: NotRequired[str]
-    notification_setting: NotRequired[str]
-    html_url: str
-    repositories_url: str
-    slug: str
-    ldap_dn: NotRequired[str]
+    assignment_name: str
+    assignment_url: str
+    starter_code_url: str
+    github_username: str
+    roster_identifier: str
+    student_repository_name: str
+    student_repository_url: str
+    submission_timestamp: str
+    points_awarded: int
+    points_available: int
+    group_name: NotRequired[str]
 
 
-__all__ = ("TeamSimpleType",)
+__all__ = ("ClassroomAssignmentGradeType",)

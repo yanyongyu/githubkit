@@ -10,6 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
+from typing_extensions import Annotated
 
 from pydantic import Field
 
@@ -18,35 +19,37 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class SimpleUser(GitHubModel):
-    """Simple User
+class CvssSeverities(GitHubModel):
+    """CvssSeverities"""
 
-    A GitHub user.
-    """
-
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
-    url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
+    cvss_v3: Missing[Union[CvssSeveritiesPropCvssV3, None]] = Field(default=UNSET)
+    cvss_v4: Missing[Union[CvssSeveritiesPropCvssV4, None]] = Field(default=UNSET)
 
 
-model_rebuild(SimpleUser)
+class CvssSeveritiesPropCvssV3(GitHubModel):
+    """CvssSeveritiesPropCvssV3"""
 
-__all__ = ("SimpleUser",)
+    vector_string: Union[str, None] = Field(description="The CVSS 3 vector string.")
+    score: Union[Annotated[float, Field(le=10.0)], None] = Field(
+        description="The CVSS 3 score."
+    )
+
+
+class CvssSeveritiesPropCvssV4(GitHubModel):
+    """CvssSeveritiesPropCvssV4"""
+
+    vector_string: Union[str, None] = Field(description="The CVSS 4 vector string.")
+    score: Union[Annotated[float, Field(le=10.0)], None] = Field(
+        description="The CVSS 4 score."
+    )
+
+
+model_rebuild(CvssSeverities)
+model_rebuild(CvssSeveritiesPropCvssV3)
+model_rebuild(CvssSeveritiesPropCvssV4)
+
+__all__ = (
+    "CvssSeverities",
+    "CvssSeveritiesPropCvssV3",
+    "CvssSeveritiesPropCvssV4",
+)

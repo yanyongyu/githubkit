@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import List, Union
 
 from pydantic import Field
 
@@ -19,28 +18,32 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Enterprise(GitHubModel):
-    """Enterprise
+class ValidationError(GitHubModel):
+    """Validation Error
 
-    An enterprise on GitHub.
+    Validation Error
     """
 
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="A short description of the enterprise."
-    )
-    html_url: str = Field()
-    website_url: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The enterprise's website URL."
-    )
-    id: int = Field(description="Unique identifier of the enterprise")
-    node_id: str = Field()
-    name: str = Field(description="The name of the enterprise.")
-    slug: str = Field(description="The slug url identifier for the enterprise.")
-    created_at: Union[datetime, None] = Field()
-    updated_at: Union[datetime, None] = Field()
-    avatar_url: str = Field()
+    message: str = Field()
+    documentation_url: str = Field()
+    errors: Missing[List[ValidationErrorPropErrorsItems]] = Field(default=UNSET)
 
 
-model_rebuild(Enterprise)
+class ValidationErrorPropErrorsItems(GitHubModel):
+    """ValidationErrorPropErrorsItems"""
 
-__all__ = ("Enterprise",)
+    resource: Missing[str] = Field(default=UNSET)
+    field: Missing[str] = Field(default=UNSET)
+    message: Missing[str] = Field(default=UNSET)
+    code: str = Field()
+    index: Missing[int] = Field(default=UNSET)
+    value: Missing[Union[str, None, int, None, List[str], None]] = Field(default=UNSET)
+
+
+model_rebuild(ValidationError)
+model_rebuild(ValidationErrorPropErrorsItems)
+
+__all__ = (
+    "ValidationError",
+    "ValidationErrorPropErrorsItems",
+)

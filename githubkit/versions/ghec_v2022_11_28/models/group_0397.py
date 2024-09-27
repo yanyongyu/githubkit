@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -18,139 +18,113 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0016 import LicenseSimple
-from .group_0391 import SearchResultTextMatchesItems
+from .group_0066 import Milestone
+from .group_0002 import SimpleUser
+from .group_0019 import Repository
+from .group_0008 import Integration
+from .group_0067 import ReactionRollup
+from .group_0393 import SearchResultTextMatchesItems
 
 
-class RepoSearchResultItem(GitHubModel):
-    """Repo Search Result Item
+class IssueSearchResultItem(GitHubModel):
+    """Issue Search Result Item
 
-    Repo Search Result Item
+    Issue Search Result Item
     """
 
+    url: str = Field()
+    repository_url: str = Field()
+    labels_url: str = Field()
+    comments_url: str = Field()
+    events_url: str = Field()
+    html_url: str = Field()
     id: int = Field()
     node_id: str = Field()
-    name: str = Field()
-    full_name: str = Field()
-    owner: Union[None, SimpleUser] = Field()
-    private: bool = Field()
-    html_url: str = Field()
-    description: Union[str, None] = Field()
-    fork: bool = Field()
-    url: str = Field()
+    number: int = Field()
+    title: str = Field()
+    locked: bool = Field()
+    active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    assignees: Missing[Union[List[SimpleUser], None]] = Field(default=UNSET)
+    user: Union[None, SimpleUser] = Field()
+    labels: List[IssueSearchResultItemPropLabelsItems] = Field()
+    state: str = Field()
+    state_reason: Missing[Union[str, None]] = Field(default=UNSET)
+    assignee: Union[None, SimpleUser] = Field()
+    milestone: Union[None, Milestone] = Field()
+    comments: int = Field()
     created_at: datetime = Field()
     updated_at: datetime = Field()
-    pushed_at: datetime = Field()
-    homepage: Union[str, None] = Field()
-    size: int = Field()
-    stargazers_count: int = Field()
-    watchers_count: int = Field()
-    language: Union[str, None] = Field()
-    forks_count: int = Field()
-    open_issues_count: int = Field()
-    master_branch: Missing[str] = Field(default=UNSET)
-    default_branch: str = Field()
-    score: float = Field()
-    forks_url: str = Field()
-    keys_url: str = Field()
-    collaborators_url: str = Field()
-    teams_url: str = Field()
-    hooks_url: str = Field()
-    issue_events_url: str = Field()
-    events_url: str = Field()
-    assignees_url: str = Field()
-    branches_url: str = Field()
-    tags_url: str = Field()
-    blobs_url: str = Field()
-    git_tags_url: str = Field()
-    git_refs_url: str = Field()
-    trees_url: str = Field()
-    statuses_url: str = Field()
-    languages_url: str = Field()
-    stargazers_url: str = Field()
-    contributors_url: str = Field()
-    subscribers_url: str = Field()
-    subscription_url: str = Field()
-    commits_url: str = Field()
-    git_commits_url: str = Field()
-    comments_url: str = Field()
-    issue_comment_url: str = Field()
-    contents_url: str = Field()
-    compare_url: str = Field()
-    merges_url: str = Field()
-    archive_url: str = Field()
-    downloads_url: str = Field()
-    issues_url: str = Field()
-    pulls_url: str = Field()
-    milestones_url: str = Field()
-    notifications_url: str = Field()
-    labels_url: str = Field()
-    releases_url: str = Field()
-    deployments_url: str = Field()
-    git_url: str = Field()
-    ssh_url: str = Field()
-    clone_url: str = Field()
-    svn_url: str = Field()
-    forks: int = Field()
-    open_issues: int = Field()
-    watchers: int = Field()
-    topics: Missing[List[str]] = Field(default=UNSET)
-    mirror_url: Union[str, None] = Field()
-    has_issues: bool = Field()
-    has_projects: bool = Field()
-    has_pages: bool = Field()
-    has_wiki: bool = Field()
-    has_downloads: bool = Field()
-    has_discussions: Missing[bool] = Field(default=UNSET)
-    archived: bool = Field()
-    disabled: bool = Field(
-        description="Returns whether or not this repository disabled."
-    )
-    visibility: Missing[str] = Field(
-        default=UNSET,
-        description="The repository visibility: public, private, or internal.",
-    )
-    license_: Union[None, LicenseSimple] = Field(alias="license")
-    permissions: Missing[RepoSearchResultItemPropPermissions] = Field(default=UNSET)
+    closed_at: Union[datetime, None] = Field()
     text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
         default=UNSET, title="Search Result Text Matches"
     )
-    temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
-    allow_merge_commit: Missing[bool] = Field(default=UNSET)
-    allow_squash_merge: Missing[bool] = Field(default=UNSET)
-    allow_rebase_merge: Missing[bool] = Field(default=UNSET)
-    allow_auto_merge: Missing[bool] = Field(default=UNSET)
-    delete_branch_on_merge: Missing[bool] = Field(default=UNSET)
-    allow_forking: Missing[bool] = Field(default=UNSET)
-    is_template: Missing[bool] = Field(default=UNSET)
-    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
+    pull_request: Missing[IssueSearchResultItemPropPullRequest] = Field(default=UNSET)
+    body: Missing[str] = Field(default=UNSET)
+    score: float = Field()
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ] = Field(
+        title="author_association",
+        description="How the author is associated with the repository.",
+    )
+    draft: Missing[bool] = Field(default=UNSET)
+    repository: Missing[Repository] = Field(
+        default=UNSET, title="Repository", description="A repository on GitHub."
+    )
+    body_html: Missing[str] = Field(default=UNSET)
+    body_text: Missing[str] = Field(default=UNSET)
+    timeline_url: Missing[str] = Field(default=UNSET)
+    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+        default=UNSET
+    )
+    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-class RepoSearchResultItemPropPermissions(GitHubModel):
-    """RepoSearchResultItemPropPermissions"""
+class IssueSearchResultItemPropLabelsItems(GitHubModel):
+    """IssueSearchResultItemPropLabelsItems"""
 
-    admin: bool = Field()
-    maintain: Missing[bool] = Field(default=UNSET)
-    push: bool = Field()
-    triage: Missing[bool] = Field(default=UNSET)
-    pull: bool = Field()
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    color: Missing[str] = Field(default=UNSET)
+    default: Missing[bool] = Field(default=UNSET)
+    description: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class SearchRepositoriesGetResponse200(GitHubModel):
-    """SearchRepositoriesGetResponse200"""
+class IssueSearchResultItemPropPullRequest(GitHubModel):
+    """IssueSearchResultItemPropPullRequest"""
+
+    merged_at: Missing[Union[datetime, None]] = Field(default=UNSET)
+    diff_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    patch_url: Union[str, None] = Field()
+    url: Union[str, None] = Field()
+
+
+class SearchIssuesGetResponse200(GitHubModel):
+    """SearchIssuesGetResponse200"""
 
     total_count: int = Field()
     incomplete_results: bool = Field()
-    items: List[RepoSearchResultItem] = Field()
+    items: List[IssueSearchResultItem] = Field()
 
 
-model_rebuild(RepoSearchResultItem)
-model_rebuild(RepoSearchResultItemPropPermissions)
-model_rebuild(SearchRepositoriesGetResponse200)
+model_rebuild(IssueSearchResultItem)
+model_rebuild(IssueSearchResultItemPropLabelsItems)
+model_rebuild(IssueSearchResultItemPropPullRequest)
+model_rebuild(SearchIssuesGetResponse200)
 
 __all__ = (
-    "RepoSearchResultItem",
-    "RepoSearchResultItemPropPermissions",
-    "SearchRepositoriesGetResponse200",
+    "IssueSearchResultItem",
+    "IssueSearchResultItemPropLabelsItems",
+    "IssueSearchResultItemPropPullRequest",
+    "SearchIssuesGetResponse200",
 )

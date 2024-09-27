@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0413 import EnterpriseWebhooks
-from .group_0414 import SimpleInstallation
-from .group_0416 import RepositoryWebhooks
-from .group_0417 import SimpleUserWebhooks
-from .group_0445 import WebhooksMembership
-from .group_0415 import OrganizationSimpleWebhooks
+from .group_0415 import EnterpriseWebhooks
+from .group_0416 import SimpleInstallation
+from .group_0418 import RepositoryWebhooks
+from .group_0419 import SimpleUserWebhooks
+from .group_0447 import WebhooksMembership
+from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookOrganizationMemberRemoved(GitHubModel):
-    """organization member_removed event"""
+class WebhookOrganizationMemberAdded(GitHubModel):
+    """organization member_added event"""
 
-    action: Literal["member_removed"] = Field()
+    action: Literal["member_added"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -58,6 +58,6 @@ class WebhookOrganizationMemberRemoved(GitHubModel):
     )
 
 
-model_rebuild(WebhookOrganizationMemberRemoved)
+model_rebuild(WebhookOrganizationMemberAdded)
 
-__all__ = ("WebhookOrganizationMemberRemoved",)
+__all__ = ("WebhookOrganizationMemberAdded",)

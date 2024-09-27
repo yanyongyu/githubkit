@@ -9,23 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0092 import CodeSecurityConfigurationType
 
 
-class CodespaceMachineType(TypedDict):
-    """Codespace machine
+class CodeSecurityDefaultConfigurationsItemsType(TypedDict):
+    """CodeSecurityDefaultConfigurationsItems"""
 
-    A description of the machine powering a codespace.
-    """
-
-    name: str
-    display_name: str
-    operating_system: str
-    storage_in_bytes: int
-    memory_in_bytes: int
-    cpus: int
-    prebuild_availability: Union[None, Literal["none", "ready", "in_progress"]]
+    default_for_new_repos: NotRequired[Literal["public", "private_and_internal", "all"]]
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-__all__ = ("CodespaceMachineType",)
+__all__ = ("CodeSecurityDefaultConfigurationsItemsType",)

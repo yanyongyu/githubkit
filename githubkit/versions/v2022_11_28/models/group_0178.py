@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -17,98 +18,56 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0029 import Team
+from .group_0002 import SimpleUser
 
-class WorkflowRunUsage(GitHubModel):
-    """Workflow Run Usage
 
-    Workflow Run Usage
+class PendingDeploymentPropReviewersItems(GitHubModel):
+    """PendingDeploymentPropReviewersItems"""
+
+    type: Missing[Literal["User", "Team"]] = Field(
+        default=UNSET, description="The type of reviewer."
+    )
+    reviewer: Missing[Union[SimpleUser, Team]] = Field(default=UNSET)
+
+
+class PendingDeployment(GitHubModel):
+    """Pending Deployment
+
+    Details of a deployment that is waiting for protection rules to pass
     """
 
-    billable: WorkflowRunUsagePropBillable = Field()
-    run_duration_ms: Missing[int] = Field(default=UNSET)
-
-
-class WorkflowRunUsagePropBillable(GitHubModel):
-    """WorkflowRunUsagePropBillable"""
-
-    ubuntu: Missing[WorkflowRunUsagePropBillablePropUbuntu] = Field(
-        default=UNSET, alias="UBUNTU"
+    environment: PendingDeploymentPropEnvironment = Field()
+    wait_timer: int = Field(description="The set duration of the wait timer")
+    wait_timer_started_at: Union[datetime, None] = Field(
+        description="The time that the wait timer began."
     )
-    macos: Missing[WorkflowRunUsagePropBillablePropMacos] = Field(
-        default=UNSET, alias="MACOS"
+    current_user_can_approve: bool = Field(
+        description="Whether the currently authenticated user can approve the deployment"
     )
-    windows: Missing[WorkflowRunUsagePropBillablePropWindows] = Field(
-        default=UNSET, alias="WINDOWS"
+    reviewers: List[PendingDeploymentPropReviewersItems] = Field(
+        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed."
     )
 
 
-class WorkflowRunUsagePropBillablePropUbuntu(GitHubModel):
-    """WorkflowRunUsagePropBillablePropUbuntu"""
+class PendingDeploymentPropEnvironment(GitHubModel):
+    """PendingDeploymentPropEnvironment"""
 
-    total_ms: int = Field()
-    jobs: int = Field()
-    job_runs: Missing[List[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems]] = (
-        Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET, description="The id of the environment.")
+    node_id: Missing[str] = Field(default=UNSET)
+    name: Missing[str] = Field(
+        default=UNSET, description="The name of the environment."
     )
+    url: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
 
 
-class WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems(GitHubModel):
-    """WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems"""
-
-    job_id: int = Field()
-    duration_ms: int = Field()
-
-
-class WorkflowRunUsagePropBillablePropMacos(GitHubModel):
-    """WorkflowRunUsagePropBillablePropMacos"""
-
-    total_ms: int = Field()
-    jobs: int = Field()
-    job_runs: Missing[List[WorkflowRunUsagePropBillablePropMacosPropJobRunsItems]] = (
-        Field(default=UNSET)
-    )
-
-
-class WorkflowRunUsagePropBillablePropMacosPropJobRunsItems(GitHubModel):
-    """WorkflowRunUsagePropBillablePropMacosPropJobRunsItems"""
-
-    job_id: int = Field()
-    duration_ms: int = Field()
-
-
-class WorkflowRunUsagePropBillablePropWindows(GitHubModel):
-    """WorkflowRunUsagePropBillablePropWindows"""
-
-    total_ms: int = Field()
-    jobs: int = Field()
-    job_runs: Missing[List[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems]] = (
-        Field(default=UNSET)
-    )
-
-
-class WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems(GitHubModel):
-    """WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems"""
-
-    job_id: int = Field()
-    duration_ms: int = Field()
-
-
-model_rebuild(WorkflowRunUsage)
-model_rebuild(WorkflowRunUsagePropBillable)
-model_rebuild(WorkflowRunUsagePropBillablePropUbuntu)
-model_rebuild(WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems)
-model_rebuild(WorkflowRunUsagePropBillablePropMacos)
-model_rebuild(WorkflowRunUsagePropBillablePropMacosPropJobRunsItems)
-model_rebuild(WorkflowRunUsagePropBillablePropWindows)
-model_rebuild(WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems)
+model_rebuild(PendingDeploymentPropReviewersItems)
+model_rebuild(PendingDeployment)
+model_rebuild(PendingDeploymentPropEnvironment)
 
 __all__ = (
-    "WorkflowRunUsage",
-    "WorkflowRunUsagePropBillable",
-    "WorkflowRunUsagePropBillablePropUbuntu",
-    "WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems",
-    "WorkflowRunUsagePropBillablePropMacos",
-    "WorkflowRunUsagePropBillablePropMacosPropJobRunsItems",
-    "WorkflowRunUsagePropBillablePropWindows",
-    "WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems",
+    "PendingDeploymentPropReviewersItems",
+    "PendingDeployment",
+    "PendingDeploymentPropEnvironment",
 )

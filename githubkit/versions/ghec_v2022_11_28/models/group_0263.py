@@ -9,69 +9,44 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleViolationError(GitHubModel):
-    """RepositoryRuleViolationError
+class ContentSubmodule(GitHubModel):
+    """Submodule Content
 
-    Repository rule violation was detected
+    An object describing a submodule
     """
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    status: Missing[str] = Field(default=UNSET)
-    metadata: Missing[RepositoryRuleViolationErrorPropMetadata] = Field(default=UNSET)
+    type: Literal["submodule"] = Field()
+    submodule_git_url: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentSubmodulePropLinks = Field(alias="_links")
 
 
-class RepositoryRuleViolationErrorPropMetadata(GitHubModel):
-    """RepositoryRuleViolationErrorPropMetadata"""
+class ContentSubmodulePropLinks(GitHubModel):
+    """ContentSubmodulePropLinks"""
 
-    secret_scanning: Missing[
-        RepositoryRuleViolationErrorPropMetadataPropSecretScanning
-    ] = Field(default=UNSET)
-
-
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanning(GitHubModel):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanning"""
-
-    bypass_placeholders: Missing[
-        List[
-            RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
-        ]
-    ] = Field(default=UNSET)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
 
 
-class RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems(
-    GitHubModel
-):
-    """RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholders
-    Items
-    """
-
-    placeholder_id: Missing[str] = Field(
-        default=UNSET,
-        description="The ID of the push protection bypass placeholder. This value is returned on any push protected routes.",
-    )
-    token_type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(RepositoryRuleViolationError)
-model_rebuild(RepositoryRuleViolationErrorPropMetadata)
-model_rebuild(RepositoryRuleViolationErrorPropMetadataPropSecretScanning)
-model_rebuild(
-    RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems
-)
+model_rebuild(ContentSubmodule)
+model_rebuild(ContentSubmodulePropLinks)
 
 __all__ = (
-    "RepositoryRuleViolationError",
-    "RepositoryRuleViolationErrorPropMetadata",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanning",
-    "RepositoryRuleViolationErrorPropMetadataPropSecretScanningPropBypassPlaceholdersItems",
+    "ContentSubmodule",
+    "ContentSubmodulePropLinks",
 )

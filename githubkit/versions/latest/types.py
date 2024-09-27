@@ -252,6 +252,9 @@ if TYPE_CHECKING:
         CustomPropertyType as CustomPropertyType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        CvssSeveritiesType as CvssSeveritiesType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         EnterpriseTeamType as EnterpriseTeamType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -1246,6 +1249,12 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         CommitPropCommitPropTreeType as CommitPropCommitPropTreeType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        CvssSeveritiesPropCvssV3Type as CvssSeveritiesPropCvssV3Type,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        CvssSeveritiesPropCvssV4Type as CvssSeveritiesPropCvssV4Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         DependencyGraphDiffItemsType as DependencyGraphDiffItemsType,
@@ -9567,8 +9576,10 @@ else:
     __lazy_vars__ = {
         "githubkit.versions.v2022_11_28.types": (
             "RootType",
+            "CvssSeveritiesType",
+            "CvssSeveritiesPropCvssV3Type",
+            "CvssSeveritiesPropCvssV4Type",
             "SimpleUserType",
-            "GlobalAdvisoryPropCreditsItemsType",
             "GlobalAdvisoryType",
             "GlobalAdvisoryPropIdentifiersItemsType",
             "GlobalAdvisoryPropCvssType",
@@ -9576,6 +9587,7 @@ else:
             "GlobalAdvisoryPropEpssType",
             "VulnerabilityType",
             "VulnerabilityPropPackageType",
+            "GlobalAdvisoryPropCreditsItemsType",
             "BasicErrorType",
             "ValidationErrorSimpleType",
             "IntegrationPropPermissionsType",

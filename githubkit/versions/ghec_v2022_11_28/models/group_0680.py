@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,16 +17,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0450 import ProjectsV2
-from .group_0414 import SimpleInstallation
-from .group_0417 import SimpleUserWebhooks
-from .group_0415 import OrganizationSimpleWebhooks
+from .group_0454 import ProjectsV2Item
+from .group_0416 import SimpleInstallation
+from .group_0419 import SimpleUserWebhooks
+from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ProjectReopened(GitHubModel):
-    """Projects v2 Project Reopened Event"""
+class WebhookProjectsV2ItemReordered(GitHubModel):
+    """Projects v2 Item Reordered Event"""
 
-    action: Literal["reopened"] = Field()
+    action: Literal["reordered"] = Field()
+    changes: WebhookProjectsV2ItemReorderedPropChanges = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -36,8 +37,8 @@ class WebhookProjectsV2ProjectReopened(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    projects_v2: ProjectsV2 = Field(
-        title="Projects v2 Project", description="A projects v2 project"
+    projects_v2_item: ProjectsV2Item = Field(
+        title="Projects v2 Item", description="An item belonging to a project"
     )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
@@ -45,6 +46,29 @@ class WebhookProjectsV2ProjectReopened(GitHubModel):
     )
 
 
-model_rebuild(WebhookProjectsV2ProjectReopened)
+class WebhookProjectsV2ItemReorderedPropChanges(GitHubModel):
+    """WebhookProjectsV2ItemReorderedPropChanges"""
 
-__all__ = ("WebhookProjectsV2ProjectReopened",)
+    previous_projects_v2_item_node_id: Missing[
+        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId
+    ] = Field(default=UNSET)
+
+
+class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId(
+    GitHubModel
+):
+    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
+
+    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
+    to: Missing[Union[str, None]] = Field(default=UNSET)
+
+
+model_rebuild(WebhookProjectsV2ItemReordered)
+model_rebuild(WebhookProjectsV2ItemReorderedPropChanges)
+model_rebuild(WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId)
+
+__all__ = (
+    "WebhookProjectsV2ItemReordered",
+    "WebhookProjectsV2ItemReorderedPropChanges",
+    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId",
+)

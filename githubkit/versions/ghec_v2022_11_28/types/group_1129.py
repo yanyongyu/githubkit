@@ -9,73 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0139 import RepositoryRuleUpdateType
-from .group_0165 import RepositoryRuleOneof18Type
-from .group_0161 import RepositoryRuleWorkflowsType
-from .group_0142 import RepositoryRuleMergeQueueType
-from .group_0146 import RepositoryRulePullRequestType
-from .group_0163 import RepositoryRuleCodeScanningType
-from .group_0127 import RepositoryRulesetConditionsType
-from .group_0126 import RepositoryRulesetBypassActorType
-from .group_0158 import RepositoryRuleTagNamePatternType
-from .group_0156 import RepositoryRuleBranchNamePatternType
-from .group_0144 import RepositoryRuleRequiredDeploymentsType
-from .group_0148 import RepositoryRuleRequiredStatusChecksType
-from .group_0150 import RepositoryRuleCommitMessagePatternType
-from .group_0154 import RepositoryRuleCommitterEmailPatternType
-from .group_0152 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0141 import (
-    RepositoryRuleOneof16Type,
-    RepositoryRuleRequiredLinearHistoryType,
-)
-from .group_0138 import (
-    RepositoryRuleOneof15Type,
-    RepositoryRuleOneof17Type,
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
 
+class ReposOwnerRepoReleasesReleaseIdPatchBodyType(TypedDict):
+    """ReposOwnerRepoReleasesReleaseIdPatchBody"""
 
-class ReposOwnerRepoRulesetsRulesetIdPutBodyType(TypedDict):
-    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
-
+    tag_name: NotRequired[str]
+    target_commitish: NotRequired[str]
     name: NotRequired[str]
-    target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
-    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[RepositoryRulesetConditionsType]
-    rules: NotRequired[
-        List[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleOneof15Type,
-                RepositoryRuleOneof16Type,
-                RepositoryRuleOneof17Type,
-                RepositoryRuleOneof18Type,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
+    body: NotRequired[str]
+    draft: NotRequired[bool]
+    prerelease: NotRequired[bool]
+    make_latest: NotRequired[Literal["true", "false", "legacy"]]
+    discussion_category_name: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBodyType",)
+__all__ = ("ReposOwnerRepoReleasesReleaseIdPatchBodyType",)

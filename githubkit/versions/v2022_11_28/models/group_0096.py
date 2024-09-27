@@ -9,56 +9,94 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
-from typing_extensions import Annotated
+from typing import Union, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+
+from .group_0002 import SimpleUser
 
 
-class CustomProperty(GitHubModel):
-    """Organization Custom Property
+class OrganizationProgrammaticAccessGrant(GitHubModel):
+    """Organization Programmatic Access Grant
 
-    Custom property defined on an organization
+    Minimal representation of an organization programmatic access grant for
+    enumerations
     """
 
-    property_name: str = Field(description="The name of the property")
-    url: Missing[str] = Field(
-        default=UNSET,
-        description="The URL that can be used to fetch, update, or delete info about this property via the API.",
+    id: int = Field(
+        description="Unique identifier of the fine-grained personal access token. The `pat_id` used to get details about an approved fine-grained personal access token."
     )
-    value_type: Literal["string", "single_select", "multi_select", "true_false"] = (
-        Field(description="The type of the value for the property")
+    owner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    repository_selection: Literal["none", "all", "subset"] = Field(
+        description="Type of repository selection requested."
     )
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
+    repositories_url: str = Field(
+        description="URL to the list of repositories the fine-grained personal access token can access. Only follow when `repository_selection` is `subset`."
     )
-    default_value: Missing[Union[str, List[str], None]] = Field(
-        default=UNSET, description="Default value of the property"
+    permissions: OrganizationProgrammaticAccessGrantPropPermissions = Field(
+        description="Permissions requested, categorized by type of permission."
     )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
+    access_granted_at: str = Field(
+        description="Date and time when the fine-grained personal access token was approved to access the organization."
     )
-    allowed_values: Missing[
-        Union[
-            Annotated[
-                List[Annotated[str, Field(max_length=75)]],
-                Field(max_length=200 if PYDANTIC_V2 else None),
-            ],
-            None,
-        ]
-    ] = Field(
-        default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+    token_expired: bool = Field(
+        description="Whether the associated fine-grained personal access token has expired."
     )
-    values_editable_by: Missing[
-        Union[None, Literal["org_actors", "org_and_repo_actors"]]
-    ] = Field(default=UNSET, description="Who can edit the values of the property")
+    token_expires_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token expires."
+    )
+    token_last_used_at: Union[str, None] = Field(
+        description="Date and time when the associated fine-grained personal access token was last used for authentication."
+    )
 
 
-model_rebuild(CustomProperty)
+class OrganizationProgrammaticAccessGrantPropPermissions(GitHubModel):
+    """OrganizationProgrammaticAccessGrantPropPermissions
 
-__all__ = ("CustomProperty",)
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: Missing[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization
+    ] = Field(default=UNSET)
+    repository: Missing[
+        OrganizationProgrammaticAccessGrantPropPermissionsPropRepository
+    ] = Field(default=UNSET)
+    other: Missing[OrganizationProgrammaticAccessGrantPropPermissionsPropOther] = Field(
+        default=UNSET
+    )
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization(
+    ExtraGitHubModel
+):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization"""
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropRepository(
+    ExtraGitHubModel
+):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropRepository"""
+
+
+class OrganizationProgrammaticAccessGrantPropPermissionsPropOther(ExtraGitHubModel):
+    """OrganizationProgrammaticAccessGrantPropPermissionsPropOther"""
+
+
+model_rebuild(OrganizationProgrammaticAccessGrant)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissions)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropRepository)
+model_rebuild(OrganizationProgrammaticAccessGrantPropPermissionsPropOther)
+
+__all__ = (
+    "OrganizationProgrammaticAccessGrant",
+    "OrganizationProgrammaticAccessGrantPropPermissions",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOrganization",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropRepository",
+    "OrganizationProgrammaticAccessGrantPropPermissionsPropOther",
+)

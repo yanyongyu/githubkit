@@ -13,20 +13,31 @@ from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsGetDefaultWorkflowPermissions(GitHubModel):
-    """ActionsGetDefaultWorkflowPermissions"""
+class ActionsOrganizationPermissions(GitHubModel):
+    """ActionsOrganizationPermissions"""
 
-    default_workflow_permissions: Literal["read", "write"] = Field(
-        description="The default workflow permissions granted to the GITHUB_TOKEN when running workflows."
+    enabled_repositories: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls the repositories in the organization that are allowed to run GitHub Actions."
     )
-    can_approve_pull_request_reviews: bool = Field(
-        description="Whether GitHub Actions can approve pull requests. Enabling this can be a security risk."
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the selected repositories that are allowed to run GitHub Actions, when `enabled_repositories` is set to `selected`.",
+    )
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+        default=UNSET,
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+    )
+    selected_actions_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
     )
 
 
-model_rebuild(ActionsGetDefaultWorkflowPermissions)
+model_rebuild(ActionsOrganizationPermissions)
 
-__all__ = ("ActionsGetDefaultWorkflowPermissions",)
+__all__ = ("ActionsOrganizationPermissions",)

@@ -9,24 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0002 import SimpleUser
 
-class OidcCustomSub(GitHubModel):
-    """Actions OIDC Subject customization
 
-    Actions OIDC Subject customization
+class OrganizationCustomRepositoryRole(GitHubModel):
+    """Organization Custom Repository Role
+
+    Custom repository roles created by organization owners
     """
 
-    include_claim_keys: List[str] = Field(
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
+    id: int = Field(description="The unique identifier of the custom role.")
+    name: str = Field(description="The name of the custom role.")
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET,
+        description="A short description about who this role is for or what permissions it grants.",
     )
+    base_role: Literal["read", "triage", "write", "maintain"] = Field(
+        description="The system role from which this role inherits permissions."
+    )
+    permissions: List[str] = Field(
+        description="A list of additional permissions included in this role."
+    )
+    organization: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(OidcCustomSub)
+model_rebuild(OrganizationCustomRepositoryRole)
 
-__all__ = ("OidcCustomSub",)
+__all__ = ("OrganizationCustomRepositoryRole",)

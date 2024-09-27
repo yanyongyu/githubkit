@@ -9,21 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
-from pydantic import Field
-
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import ExtraGitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody(GitHubModel):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody"""
-
-    selected_organization_ids: List[int] = Field(
-        description="List of organization IDs to enable for GitHub Actions."
-    )
+class EmojisGetResponse200(ExtraGitHubModel):
+    """EmojisGetResponse200"""
 
 
-model_rebuild(EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody)
+model_rebuild(EmojisGetResponse200)
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody",)
+__all__ = ("EmojisGetResponse200",)

@@ -13,11 +13,15 @@ from typing import List
 from typing_extensions import TypedDict
 
 
-class ParticipationStatsType(TypedDict):
-    """Participation Stats"""
+class CommitActivityType(TypedDict):
+    """Commit Activity
 
-    all_: List[int]
-    owner: List[int]
+    Commit Activity
+    """
+
+    days: List[int]
+    total: int
+    week: int
 
 
-__all__ = ("ParticipationStatsType",)
+__all__ = ("CommitActivityType",)

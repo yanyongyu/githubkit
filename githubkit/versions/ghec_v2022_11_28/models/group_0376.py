@@ -9,26 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0372 import Traffic
 
+class ContentTraffic(GitHubModel):
+    """Content Traffic
 
-class ViewTraffic(GitHubModel):
-    """View Traffic
-
-    View Traffic
+    Content Traffic
     """
 
+    path: str = Field()
+    title: str = Field()
     count: int = Field()
     uniques: int = Field()
-    views: List[Traffic] = Field()
 
 
-model_rebuild(ViewTraffic)
+model_rebuild(ContentTraffic)
 
-__all__ = ("ViewTraffic",)
+__all__ = ("ContentTraffic",)

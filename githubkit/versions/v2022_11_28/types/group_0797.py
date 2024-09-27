@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .group_0055 import MinimalRepositoryType
+from .group_0067 import RunnerLabelType
 
 
-class OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type(TypedDict):
-    """OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200"""
+class OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type(TypedDict):
+    """OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200"""
 
     total_count: int
-    repositories: List[MinimalRepositoryType]
+    labels: List[RunnerLabelType]
 
 
-__all__ = ("OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type",)
+__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsDeleteResponse200Type",)

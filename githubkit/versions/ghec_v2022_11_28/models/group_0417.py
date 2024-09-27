@@ -13,41 +13,32 @@ from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class SimpleUserWebhooks(GitHubModel):
-    """Simple User
+class OrganizationSimpleWebhooks(GitHubModel):
+    """Organization Simple
 
-    The GitHub user that triggered the event. This property is included in every
-    webhook payload.
+    A GitHub organization. Webhook payloads contain the `organization` property when
+    the webhook is configured for an
+    organization, or when the event occurs from activity in a repository owned by an
+    organization.
     """
 
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
     login: str = Field()
     id: int = Field()
     node_id: str = Field()
-    avatar_url: str = Field()
-    gravatar_id: Union[str, None] = Field()
     url: str = Field()
-    html_url: str = Field()
-    followers_url: str = Field()
-    following_url: str = Field()
-    gists_url: str = Field()
-    starred_url: str = Field()
-    subscriptions_url: str = Field()
-    organizations_url: str = Field()
     repos_url: str = Field()
     events_url: str = Field()
-    received_events_url: str = Field()
-    type: str = Field()
-    site_admin: bool = Field()
-    starred_at: Missing[str] = Field(default=UNSET)
+    hooks_url: str = Field()
+    issues_url: str = Field()
+    members_url: str = Field()
+    public_members_url: str = Field()
+    avatar_url: str = Field()
+    description: Union[str, None] = Field()
 
 
-model_rebuild(SimpleUserWebhooks)
+model_rebuild(OrganizationSimpleWebhooks)
 
-__all__ = ("SimpleUserWebhooks",)
+__all__ = ("OrganizationSimpleWebhooks",)

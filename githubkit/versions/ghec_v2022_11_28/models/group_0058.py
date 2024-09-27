@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,92 +18,41 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsBillingUsage(GitHubModel):
-    """ActionsBillingUsage"""
+class GetLicenseSyncStatus(GitHubModel):
+    """License Sync Status
 
-    total_minutes_used: int = Field(
-        description="The sum of the free and paid GitHub Actions minutes used."
-    )
-    total_paid_minutes_used: int = Field(
-        description="The total paid GitHub Actions minutes used."
-    )
-    included_minutes: int = Field(
-        description="The amount of free GitHub Actions minutes available."
-    )
-    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdown = Field()
+    Information about the status of a license sync job for an enterprise.
+    """
 
-
-class ActionsBillingUsagePropMinutesUsedBreakdown(GitHubModel):
-    """ActionsBillingUsagePropMinutesUsedBreakdown"""
-
-    ubuntu: Missing[int] = Field(
-        default=UNSET,
-        alias="UBUNTU",
-        description="Total minutes used on Ubuntu runner machines.",
-    )
-    macos: Missing[int] = Field(
-        default=UNSET,
-        alias="MACOS",
-        description="Total minutes used on macOS runner machines.",
-    )
-    windows: Missing[int] = Field(
-        default=UNSET,
-        alias="WINDOWS",
-        description="Total minutes used on Windows runner machines.",
-    )
-    ubuntu_4_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 4 core runner machines.",
-    )
-    ubuntu_8_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 8 core runner machines.",
-    )
-    ubuntu_16_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 16 core runner machines.",
-    )
-    ubuntu_32_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 32 core runner machines.",
-    )
-    ubuntu_64_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Ubuntu 64 core runner machines.",
-    )
-    windows_4_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 4 core runner machines.",
-    )
-    windows_8_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 8 core runner machines.",
-    )
-    windows_16_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 16 core runner machines.",
-    )
-    windows_32_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 32 core runner machines.",
-    )
-    windows_64_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on Windows 64 core runner machines.",
-    )
-    macos_12_core: Missing[int] = Field(
-        default=UNSET,
-        description="Total minutes used on macOS 12 core runner machines.",
-    )
-    total: Missing[int] = Field(
-        default=UNSET, description="Total minutes used on all runner machines."
+    server_instances: Missing[List[GetLicenseSyncStatusPropServerInstancesItems]] = (
+        Field(default=UNSET)
     )
 
 
-model_rebuild(ActionsBillingUsage)
-model_rebuild(ActionsBillingUsagePropMinutesUsedBreakdown)
+class GetLicenseSyncStatusPropServerInstancesItems(GitHubModel):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
+
+    server_id: Missing[str] = Field(default=UNSET)
+    hostname: Missing[str] = Field(default=UNSET)
+    last_sync: Missing[GetLicenseSyncStatusPropServerInstancesItemsPropLastSync] = (
+        Field(default=UNSET)
+    )
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSync(GitHubModel):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: Missing[str] = Field(default=UNSET)
+    status: Missing[str] = Field(default=UNSET)
+    error: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(GetLicenseSyncStatus)
+model_rebuild(GetLicenseSyncStatusPropServerInstancesItems)
+model_rebuild(GetLicenseSyncStatusPropServerInstancesItemsPropLastSync)
 
 __all__ = (
-    "ActionsBillingUsage",
-    "ActionsBillingUsagePropMinutesUsedBreakdown",
+    "GetLicenseSyncStatus",
+    "GetLicenseSyncStatusPropServerInstancesItems",
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSync",
 )

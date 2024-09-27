@@ -9,137 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union
+from datetime import datetime
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class AuditLogEvent(GitHubModel):
-    """AuditLogEvent"""
+class AnnouncementBanner(GitHubModel):
+    """Announcement Banner
 
-    timestamp: Missing[int] = Field(
-        default=UNSET,
-        alias="@timestamp",
-        description="The time the audit log event occurred, given as a [Unix timestamp](http://en.wikipedia.org/wiki/Unix_time).",
+    Announcement at either the repository, organization, or enterprise level
+    """
+
+    announcement: Union[str, None] = Field(
+        description='The announcement text in GitHub Flavored Markdown. For more information about GitHub Flavored Markdown, see "[Basic writing and formatting syntax](https://docs.github.com/enterprise-cloud@latest//github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)."'
     )
-    action: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the action that was performed, for example `user.login` or `repo.create`.",
+    expires_at: Union[datetime, None] = Field(
+        description="The time at which the announcement expires. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. To set an announcement that never expires, omit this parameter, set it to `null`, or set it to an empty string."
     )
-    active: Missing[bool] = Field(default=UNSET)
-    active_was: Missing[bool] = Field(default=UNSET)
-    actor: Missing[str] = Field(
-        default=UNSET, description="The actor who performed the action."
-    )
-    actor_id: Missing[int] = Field(
-        default=UNSET, description="The id of the actor who performed the action."
-    )
-    actor_location: Missing[AuditLogEventPropActorLocation] = Field(default=UNSET)
-    data: Missing[AuditLogEventPropData] = Field(default=UNSET)
-    org_id: Missing[int] = Field(default=UNSET)
-    user_id: Missing[int] = Field(default=UNSET)
-    business_id: Missing[int] = Field(default=UNSET)
-    blocked_user: Missing[str] = Field(
-        default=UNSET, description="The username of the account being blocked."
-    )
-    business: Missing[str] = Field(default=UNSET)
-    config: Missing[List[AuditLogEventPropConfigItems]] = Field(default=UNSET)
-    config_was: Missing[List[AuditLogEventPropConfigWasItems]] = Field(default=UNSET)
-    content_type: Missing[str] = Field(default=UNSET)
-    operation_type: Missing[str] = Field(default=UNSET)
-    created_at: Missing[int] = Field(
-        default=UNSET,
-        description="The time the audit log event was recorded, given as a [Unix timestamp](http://en.wikipedia.org/wiki/Unix_time).",
-    )
-    deploy_key_fingerprint: Missing[str] = Field(default=UNSET)
-    document_id: Missing[str] = Field(
-        default=UNSET,
-        alias="_document_id",
-        description="A unique identifier for an audit event.",
-    )
-    emoji: Missing[str] = Field(default=UNSET)
-    events: Missing[List[AuditLogEventPropEventsItems]] = Field(default=UNSET)
-    events_were: Missing[List[AuditLogEventPropEventsWereItems]] = Field(default=UNSET)
-    explanation: Missing[str] = Field(default=UNSET)
-    fingerprint: Missing[str] = Field(default=UNSET)
-    hook_id: Missing[int] = Field(default=UNSET)
-    limited_availability: Missing[bool] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(default=UNSET)
-    old_user: Missing[str] = Field(default=UNSET)
-    openssh_public_key: Missing[str] = Field(default=UNSET)
-    org: Missing[str] = Field(default=UNSET)
-    previous_visibility: Missing[str] = Field(default=UNSET)
-    read_only: Missing[bool] = Field(default=UNSET)
-    repo: Missing[str] = Field(default=UNSET, description="The name of the repository.")
-    repository: Missing[str] = Field(
-        default=UNSET, description="The name of the repository."
-    )
-    repository_public: Missing[bool] = Field(default=UNSET)
-    target_login: Missing[str] = Field(default=UNSET)
-    team: Missing[str] = Field(default=UNSET)
-    transport_protocol: Missing[int] = Field(
-        default=UNSET,
-        description="The type of protocol (for example, HTTP or SSH) used to transfer Git data.",
-    )
-    transport_protocol_name: Missing[str] = Field(
-        default=UNSET,
-        description="A human readable name for the protocol (for example, HTTP or SSH) used to transfer Git data.",
-    )
-    user: Missing[str] = Field(
-        default=UNSET,
-        description="The user that was affected by the action performed (if available).",
-    )
-    visibility: Missing[str] = Field(
-        default=UNSET,
-        description="The repository visibility, for example `public` or `private`.",
+    user_dismissible: Union[bool, None] = Field(
+        default=False,
+        description="Whether an announcement can be dismissed by the user.",
     )
 
 
-class AuditLogEventPropActorLocation(GitHubModel):
-    """AuditLogEventPropActorLocation"""
+model_rebuild(AnnouncementBanner)
 
-    country_name: Missing[str] = Field(default=UNSET)
-
-
-class AuditLogEventPropData(ExtraGitHubModel):
-    """AuditLogEventPropData"""
-
-
-class AuditLogEventPropConfigItems(GitHubModel):
-    """AuditLogEventPropConfigItems"""
-
-
-class AuditLogEventPropConfigWasItems(GitHubModel):
-    """AuditLogEventPropConfigWasItems"""
-
-
-class AuditLogEventPropEventsItems(GitHubModel):
-    """AuditLogEventPropEventsItems"""
-
-
-class AuditLogEventPropEventsWereItems(GitHubModel):
-    """AuditLogEventPropEventsWereItems"""
-
-
-model_rebuild(AuditLogEvent)
-model_rebuild(AuditLogEventPropActorLocation)
-model_rebuild(AuditLogEventPropData)
-model_rebuild(AuditLogEventPropConfigItems)
-model_rebuild(AuditLogEventPropConfigWasItems)
-model_rebuild(AuditLogEventPropEventsItems)
-model_rebuild(AuditLogEventPropEventsWereItems)
-
-__all__ = (
-    "AuditLogEvent",
-    "AuditLogEventPropActorLocation",
-    "AuditLogEventPropData",
-    "AuditLogEventPropConfigItems",
-    "AuditLogEventPropConfigWasItems",
-    "AuditLogEventPropEventsItems",
-    "AuditLogEventPropEventsWereItems",
-)
+__all__ = ("AnnouncementBanner",)

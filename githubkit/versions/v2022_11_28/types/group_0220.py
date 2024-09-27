@@ -9,16 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0076 import CodeSecurityConfigurationType
 
 
-class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
-    """Codespaces Permissions Check
+class CodeSecurityConfigurationForRepositoryType(TypedDict):
+    """CodeSecurityConfigurationForRepository
 
-    Permission check result for a given devcontainer config.
+    Code security configuration associated with a repository and attachment status
     """
 
-    accepted: bool
+    status: NotRequired[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ]
+    configuration: NotRequired[CodeSecurityConfigurationType]
 
 
-__all__ = ("CodespacesPermissionsCheckForDevcontainerType",)
+__all__ = ("CodeSecurityConfigurationForRepositoryType",)

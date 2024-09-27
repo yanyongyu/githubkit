@@ -9,36 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import TypedDict
+from datetime import date
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0051 import DependabotAlertPackageType
 
+class CopilotUsageMetricsType(TypedDict):
+    """Copilot Usage Metrics
 
-class DependabotAlertSecurityVulnerabilityType(TypedDict):
-    """DependabotAlertSecurityVulnerability
-
-    Details pertaining to one vulnerable version range for the advisory.
+    Summary of Copilot usage.
     """
 
-    package: DependabotAlertPackageType
-    severity: Literal["low", "medium", "high", "critical"]
-    vulnerable_version_range: str
-    first_patched_version: Union[
-        DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType, None
-    ]
+    day: date
+    total_suggestions_count: NotRequired[int]
+    total_acceptances_count: NotRequired[int]
+    total_lines_suggested: NotRequired[int]
+    total_lines_accepted: NotRequired[int]
+    total_active_users: NotRequired[int]
+    total_chat_acceptances: NotRequired[int]
+    total_chat_turns: NotRequired[int]
+    total_active_chat_users: NotRequired[int]
+    breakdown: Union[List[CopilotUsageMetricsPropBreakdownItemsType], None]
 
 
-class DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType(TypedDict):
-    """DependabotAlertSecurityVulnerabilityPropFirstPatchedVersion
+class CopilotUsageMetricsPropBreakdownItemsType(TypedDict):
+    """CopilotUsageMetricsPropBreakdownItems
 
-    Details pertaining to the package version that patches this vulnerability.
+    Breakdown of Copilot usage by editor for this language
     """
 
-    identifier: str
+    language: NotRequired[str]
+    editor: NotRequired[str]
+    suggestions_count: NotRequired[int]
+    acceptances_count: NotRequired[int]
+    lines_suggested: NotRequired[int]
+    lines_accepted: NotRequired[int]
+    active_users: NotRequired[int]
 
 
 __all__ = (
-    "DependabotAlertSecurityVulnerabilityType",
-    "DependabotAlertSecurityVulnerabilityPropFirstPatchedVersionType",
+    "CopilotUsageMetricsType",
+    "CopilotUsageMetricsPropBreakdownItemsType",
 )

@@ -9,41 +9,47 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
+from .group_0084 import MinimalRepository
 
 
-class OrganizationCustomRepositoryRole(GitHubModel):
-    """Organization Custom Repository Role
+class Thread(GitHubModel):
+    """Thread
 
-    Custom repository roles created by organization owners
+    Thread
     """
 
-    id: int = Field(description="The unique identifier of the custom role.")
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="A short description about who this role is for or what permissions it grants.",
+    id: str = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
     )
-    base_role: Literal["read", "triage", "write", "maintain"] = Field(
-        description="The system role from which this role inherits permissions."
-    )
-    permissions: List[str] = Field(
-        description="A list of additional permissions included in this role."
-    )
-    organization: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
+    subject: ThreadPropSubject = Field()
+    reason: str = Field()
+    unread: bool = Field()
+    updated_at: str = Field()
+    last_read_at: Union[str, None] = Field()
+    url: str = Field()
+    subscription_url: str = Field()
 
 
-model_rebuild(OrganizationCustomRepositoryRole)
+class ThreadPropSubject(GitHubModel):
+    """ThreadPropSubject"""
 
-__all__ = ("OrganizationCustomRepositoryRole",)
+    title: str = Field()
+    url: str = Field()
+    latest_comment_url: str = Field()
+    type: str = Field()
+
+
+model_rebuild(Thread)
+model_rebuild(ThreadPropSubject)
+
+__all__ = (
+    "Thread",
+    "ThreadPropSubject",
+)

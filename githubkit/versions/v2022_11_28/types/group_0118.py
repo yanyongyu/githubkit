@@ -10,19 +10,37 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class RepositoryRuleMergeQueuePropParametersType(TypedDict):
-    """RepositoryRuleMergeQueuePropParameters"""
+class RepositoryRuleRequiredLinearHistoryType(TypedDict):
+    """required_linear_history
 
-    check_response_timeout_minutes: int
-    grouping_strategy: Literal["ALLGREEN", "HEADGREEN"]
-    max_entries_to_build: int
-    max_entries_to_merge: int
-    merge_method: Literal["MERGE", "SQUASH", "REBASE"]
-    min_entries_to_merge: int
-    min_entries_to_merge_wait_minutes: int
+    Prevent merge commits from being pushed to matching refs.
+    """
+
+    type: Literal["required_linear_history"]
 
 
-__all__ = ("RepositoryRuleMergeQueuePropParametersType",)
+class RepositoryRuleOneof16Type(TypedDict):
+    """max_file_path_length
+
+    Prevent commits that include file paths that exceed a specified character limit
+    from being pushed to the commit graph.
+    """
+
+    type: Literal["max_file_path_length"]
+    parameters: NotRequired[RepositoryRuleOneof16PropParametersType]
+
+
+class RepositoryRuleOneof16PropParametersType(TypedDict):
+    """RepositoryRuleOneof16PropParameters"""
+
+    max_file_path_length: int
+
+
+__all__ = (
+    "RepositoryRuleRequiredLinearHistoryType",
+    "RepositoryRuleOneof16Type",
+    "RepositoryRuleOneof16PropParametersType",
+)

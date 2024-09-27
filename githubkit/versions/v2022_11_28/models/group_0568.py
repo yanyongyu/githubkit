@@ -17,22 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0392 import WebhooksLabel
-from .group_0376 import EnterpriseWebhooks
-from .group_0377 import SimpleInstallation
-from .group_0379 import RepositoryWebhooks
-from .group_0380 import SimpleUserWebhooks
-from .group_0378 import OrganizationSimpleWebhooks
+from .group_0394 import WebhooksLabel
+from .group_0378 import EnterpriseWebhooks
+from .group_0379 import SimpleInstallation
+from .group_0381 import RepositoryWebhooks
+from .group_0382 import SimpleUserWebhooks
+from .group_0380 import OrganizationSimpleWebhooks
 
 
-class WebhookLabelEdited(GitHubModel):
-    """label edited event"""
+class WebhookLabelCreated(GitHubModel):
+    """label created event"""
 
-    action: Literal["edited"] = Field()
-    changes: Missing[WebhookLabelEditedPropChanges] = Field(
-        default=UNSET,
-        description="The changes to the label if the action was `edited`.",
-    )
+    action: Literal["created"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -53,62 +49,13 @@ class WebhookLabelEdited(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
+    sender: Missing[SimpleUserWebhooks] = Field(
+        default=UNSET,
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-class WebhookLabelEditedPropChanges(GitHubModel):
-    """WebhookLabelEditedPropChanges
+model_rebuild(WebhookLabelCreated)
 
-    The changes to the label if the action was `edited`.
-    """
-
-    color: Missing[WebhookLabelEditedPropChangesPropColor] = Field(default=UNSET)
-    description: Missing[WebhookLabelEditedPropChangesPropDescription] = Field(
-        default=UNSET
-    )
-    name: Missing[WebhookLabelEditedPropChangesPropName] = Field(default=UNSET)
-
-
-class WebhookLabelEditedPropChangesPropColor(GitHubModel):
-    """WebhookLabelEditedPropChangesPropColor"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the color if the action was `edited`.",
-    )
-
-
-class WebhookLabelEditedPropChangesPropDescription(GitHubModel):
-    """WebhookLabelEditedPropChangesPropDescription"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the description if the action was `edited`.",
-    )
-
-
-class WebhookLabelEditedPropChangesPropName(GitHubModel):
-    """WebhookLabelEditedPropChangesPropName"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous version of the name if the action was `edited`.",
-    )
-
-
-model_rebuild(WebhookLabelEdited)
-model_rebuild(WebhookLabelEditedPropChanges)
-model_rebuild(WebhookLabelEditedPropChangesPropColor)
-model_rebuild(WebhookLabelEditedPropChangesPropDescription)
-model_rebuild(WebhookLabelEditedPropChangesPropName)
-
-__all__ = (
-    "WebhookLabelEdited",
-    "WebhookLabelEditedPropChanges",
-    "WebhookLabelEditedPropChangesPropColor",
-    "WebhookLabelEditedPropChangesPropDescription",
-    "WebhookLabelEditedPropChangesPropName",
-)
+__all__ = ("WebhookLabelCreated",)

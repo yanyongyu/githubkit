@@ -9,42 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Literal
+from typing import List
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgActionsSecretsGetResponse200(GitHubModel):
-    """OrgsOrgActionsSecretsGetResponse200"""
+class OrgsOrgActionsRunnersGenerateJitconfigPostBody(GitHubModel):
+    """OrgsOrgActionsRunnersGenerateJitconfigPostBody"""
 
-    total_count: int = Field()
-    secrets: List[OrganizationActionsSecret] = Field()
-
-
-class OrganizationActionsSecret(GitHubModel):
-    """Actions Secret for an Organization
-
-    Secrets for GitHub Actions for an organization.
-    """
-
-    name: str = Field(description="The name of the secret.")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a secret"
+    name: str = Field(description="The name of the new runner.")
+    runner_group_id: int = Field(
+        description="The ID of the runner group to register the runner to."
     )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
+    labels: List[str] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
+    )
+    work_folder: Missing[str] = Field(
+        default=UNSET,
+        description="The working directory to be used for job execution, relative to the runner install directory.",
+    )
 
 
-model_rebuild(OrgsOrgActionsSecretsGetResponse200)
-model_rebuild(OrganizationActionsSecret)
+model_rebuild(OrgsOrgActionsRunnersGenerateJitconfigPostBody)
 
-__all__ = (
-    "OrgsOrgActionsSecretsGetResponse200",
-    "OrganizationActionsSecret",
-)
+__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostBody",)

@@ -9,63 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PullRequestMinimal(GitHubModel):
-    """Pull Request Minimal"""
+class ActionsRepositoryPermissions(GitHubModel):
+    """ActionsRepositoryPermissions"""
 
-    id: int = Field()
-    number: int = Field()
-    url: str = Field()
-    head: PullRequestMinimalPropHead = Field()
-    base: PullRequestMinimalPropBase = Field()
-
-
-class PullRequestMinimalPropHead(GitHubModel):
-    """PullRequestMinimalPropHead"""
-
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropHeadPropRepo = Field()
+    enabled: bool = Field(
+        description="Whether GitHub Actions is enabled on the repository."
+    )
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+        default=UNSET,
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+    )
+    selected_actions_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL to use to get or set the actions and reusable workflows that are allowed to run, when `allowed_actions` is set to `selected`.",
+    )
 
 
-class PullRequestMinimalPropHeadPropRepo(GitHubModel):
-    """PullRequestMinimalPropHeadPropRepo"""
+model_rebuild(ActionsRepositoryPermissions)
 
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
-
-
-class PullRequestMinimalPropBase(GitHubModel):
-    """PullRequestMinimalPropBase"""
-
-    ref: str = Field()
-    sha: str = Field()
-    repo: PullRequestMinimalPropBasePropRepo = Field()
-
-
-class PullRequestMinimalPropBasePropRepo(GitHubModel):
-    """PullRequestMinimalPropBasePropRepo"""
-
-    id: int = Field()
-    url: str = Field()
-    name: str = Field()
-
-
-model_rebuild(PullRequestMinimal)
-model_rebuild(PullRequestMinimalPropHead)
-model_rebuild(PullRequestMinimalPropHeadPropRepo)
-model_rebuild(PullRequestMinimalPropBase)
-model_rebuild(PullRequestMinimalPropBasePropRepo)
-
-__all__ = (
-    "PullRequestMinimal",
-    "PullRequestMinimalPropHead",
-    "PullRequestMinimalPropHeadPropRepo",
-    "PullRequestMinimalPropBase",
-    "PullRequestMinimalPropBasePropRepo",
-)
+__all__ = ("ActionsRepositoryPermissions",)

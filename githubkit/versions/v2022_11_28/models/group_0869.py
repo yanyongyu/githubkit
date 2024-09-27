@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,17 +16,15 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsCardsCardIdPatchBody(GitHubModel):
-    """ProjectsColumnsCardsCardIdPatchBody"""
+class OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody"""
 
-    note: Missing[Union[str, None]] = Field(
-        default=UNSET, description="The project card's note"
-    )
-    archived: Missing[bool] = Field(
-        default=UNSET, description="Whether or not the card is archived"
+    permission: Missing[str] = Field(
+        default=UNSET,
+        description="The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
     )
 
 
-model_rebuild(ProjectsColumnsCardsCardIdPatchBody)
+model_rebuild(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody)
 
-__all__ = ("ProjectsColumnsCardsCardIdPatchBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody",)

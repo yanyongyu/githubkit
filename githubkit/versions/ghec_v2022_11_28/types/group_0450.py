@@ -9,33 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from datetime import datetime
-from typing_extensions import TypedDict
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
 
+class WebhooksProjectType(TypedDict):
+    """Project"""
 
-class ProjectsV2Type(TypedDict):
-    """Projects v2 Project
-
-    A projects v2 project
-    """
-
-    id: float
-    node_id: str
-    owner: SimpleUserType
-    creator: SimpleUserType
-    title: str
-    description: Union[str, None]
-    public: bool
-    closed_at: Union[datetime, None]
+    body: Union[str, None]
+    columns_url: str
     created_at: datetime
-    updated_at: datetime
+    creator: Union[WebhooksProjectPropCreatorType, None]
+    html_url: str
+    id: int
+    name: str
+    node_id: str
     number: int
-    short_description: Union[str, None]
-    deleted_at: Union[datetime, None]
-    deleted_by: Union[None, SimpleUserType]
+    owner_url: str
+    state: Literal["open", "closed"]
+    updated_at: datetime
+    url: str
 
 
-__all__ = ("ProjectsV2Type",)
+class WebhooksProjectPropCreatorType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "WebhooksProjectType",
+    "WebhooksProjectPropCreatorType",
+)

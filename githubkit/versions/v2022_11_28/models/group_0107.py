@@ -18,15 +18,23 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId(GitHubModel):
-    """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
+class RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName(GitHubModel):
+    """RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName"""
 
-    repository_ids: Missing[List[int]] = Field(
+    include: Missing[List[str]] = Field(
         default=UNSET,
-        description="The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass.",
+        description="Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories.",
+    )
+    exclude: Missing[List[str]] = Field(
+        default=UNSET,
+        description="Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match.",
+    )
+    protected: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether renaming of target repositories is prevented.",
     )
 
 
-model_rebuild(RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId)
+model_rebuild(RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName)
 
-__all__ = ("RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId",)
+__all__ = ("RepositoryRulesetConditionsRepositoryNameTargetPropRepositoryName",)

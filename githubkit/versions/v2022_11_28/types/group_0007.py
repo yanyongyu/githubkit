@@ -9,20 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 
-class WebhookConfigType(TypedDict):
-    """Webhook Configuration
+class IntegrationPropPermissionsType(TypedDict):
+    """IntegrationPropPermissions
 
-    Configuration object of the webhook
+    The set of permissions for the GitHub app
+
+    Examples:
+        {'issues': 'read', 'deployments': 'write'}
     """
 
-    url: NotRequired[str]
-    content_type: NotRequired[str]
-    secret: NotRequired[str]
-    insecure_ssl: NotRequired[Union[str, float]]
+    issues: NotRequired[str]
+    checks: NotRequired[str]
+    metadata: NotRequired[str]
+    contents: NotRequired[str]
+    deployments: NotRequired[str]
 
 
-__all__ = ("WebhookConfigType",)
+__all__ = ("IntegrationPropPermissionsType",)

@@ -17,19 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0420 import ExemptionRequest
-from .group_0419 import ExemptionResponse
-from .group_0413 import EnterpriseWebhooks
-from .group_0414 import SimpleInstallation
-from .group_0416 import RepositoryWebhooks
-from .group_0417 import SimpleUserWebhooks
-from .group_0415 import OrganizationSimpleWebhooks
+from .group_0422 import ExemptionRequest
+from .group_0415 import EnterpriseWebhooks
+from .group_0416 import SimpleInstallation
+from .group_0418 import RepositoryWebhooks
+from .group_0419 import SimpleUserWebhooks
+from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookExemptionRequestResponseDismissed(GitHubModel):
-    """Exemption response dismissed event"""
+class WebhookExemptionRequestCompleted(GitHubModel):
+    """Exemption request completed event"""
 
-    action: Literal["response_dismissed"] = Field()
+    action: Literal["completed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -54,16 +53,12 @@ class WebhookExemptionRequestResponseDismissed(GitHubModel):
         title="Exemption Request",
         description="A request from a user to be exempted from a set of rules.",
     )
-    exemption_response: ExemptionResponse = Field(
-        title="Exemption response",
-        description="A response to an exemption request by a delegated bypasser.",
-    )
     sender: SimpleUserWebhooks = Field(
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
 
 
-model_rebuild(WebhookExemptionRequestResponseDismissed)
+model_rebuild(WebhookExemptionRequestCompleted)
 
-__all__ = ("WebhookExemptionRequestResponseDismissed",)
+__all__ = ("WebhookExemptionRequestCompleted",)

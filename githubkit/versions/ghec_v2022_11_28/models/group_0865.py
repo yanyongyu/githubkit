@@ -13,19 +13,18 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
+
+from .group_0036 import Runner
 
 
-class OrgsOrgActionsRunnersRunnerIdLabelsPostBody(GitHubModel):
-    """OrgsOrgActionsRunnersRunnerIdLabelsPostBody"""
+class OrgsOrgActionsRunnersGetResponse200(GitHubModel):
+    """OrgsOrgActionsRunnersGetResponse200"""
 
-    labels: List[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to add to the runner.",
-    )
+    total_count: int = Field()
+    runners: List[Runner] = Field()
 
 
-model_rebuild(OrgsOrgActionsRunnersRunnerIdLabelsPostBody)
+model_rebuild(OrgsOrgActionsRunnersGetResponse200)
 
-__all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsPostBody",)
+__all__ = ("OrgsOrgActionsRunnersGetResponse200",)

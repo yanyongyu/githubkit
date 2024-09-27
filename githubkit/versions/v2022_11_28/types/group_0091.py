@@ -9,37 +9,36 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0002 import SimpleUserType
 
-class UserRoleAssignmentType(TypedDict):
-    """A Role Assignment for a User
 
-    The Relationship a User has with a role.
+class OrganizationRoleType(TypedDict):
+    """Organization Role
+
+    Organization roles
     """
 
-    name: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    login: str
     id: int
-    node_id: str
-    avatar_url: str
-    gravatar_id: Union[str, None]
-    url: str
-    html_url: str
-    followers_url: str
-    following_url: str
-    gists_url: str
-    starred_url: str
-    subscriptions_url: str
-    organizations_url: str
-    repos_url: str
-    events_url: str
-    received_events_url: str
-    type: str
-    site_admin: bool
-    starred_at: NotRequired[str]
+    name: str
+    description: NotRequired[Union[str, None]]
+    permissions: List[str]
+    organization: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
 
 
-__all__ = ("UserRoleAssignmentType",)
+class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[List[OrganizationRoleType]]
+
+
+__all__ = (
+    "OrganizationRoleType",
+    "OrgsOrgOrganizationRolesGetResponse200Type",
+)

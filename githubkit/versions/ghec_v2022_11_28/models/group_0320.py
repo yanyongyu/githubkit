@@ -13,44 +13,28 @@ from typing import Union
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0016 import LicenseSimple
 
+class DeployKey(GitHubModel):
+    """Deploy Key
 
-class LicenseContent(GitHubModel):
-    """License Content
-
-    License Content
+    An SSH key granting access to a single repository.
     """
 
-    name: str = Field()
-    path: str = Field()
-    sha: str = Field()
-    size: int = Field()
+    id: int = Field()
+    key: str = Field()
     url: str = Field()
-    html_url: Union[str, None] = Field()
-    git_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    type: str = Field()
-    content: str = Field()
-    encoding: str = Field()
-    links: LicenseContentPropLinks = Field(alias="_links")
-    license_: Union[None, LicenseSimple] = Field(alias="license")
+    title: str = Field()
+    verified: bool = Field()
+    created_at: str = Field()
+    read_only: bool = Field()
+    added_by: Missing[Union[str, None]] = Field(default=UNSET)
+    last_used: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-class LicenseContentPropLinks(GitHubModel):
-    """LicenseContentPropLinks"""
+model_rebuild(DeployKey)
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
-
-
-model_rebuild(LicenseContent)
-model_rebuild(LicenseContentPropLinks)
-
-__all__ = (
-    "LicenseContent",
-    "LicenseContentPropLinks",
-)
+__all__ = ("DeployKey",)

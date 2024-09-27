@@ -12,18 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0145 import RepositoryRuleRequiredDeploymentsPropParametersType
+from .group_0145 import RepositoryRuleMergeQueuePropParametersType
 
 
-class RepositoryRuleRequiredDeploymentsType(TypedDict):
-    """required_deployments
+class RepositoryRuleMergeQueueType(TypedDict):
+    """merge_queue
 
-    Choose which environments must be successfully deployed to before refs can be
-    pushed into a ref that matches this rule.
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["required_deployments"]
-    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
+    type: Literal["merge_queue"]
+    parameters: NotRequired[RepositoryRuleMergeQueuePropParametersType]
 
 
-__all__ = ("RepositoryRuleRequiredDeploymentsType",)
+__all__ = ("RepositoryRuleMergeQueueType",)

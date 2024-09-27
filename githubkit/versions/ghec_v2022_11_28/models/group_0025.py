@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -17,270 +18,118 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class ServerStatisticsItems(GitHubModel):
-    """ServerStatisticsItems"""
-
-    server_id: Missing[str] = Field(default=UNSET)
-    collection_date: Missing[str] = Field(default=UNSET)
-    schema_version: Missing[str] = Field(default=UNSET)
-    ghes_version: Missing[str] = Field(default=UNSET)
-    host_name: Missing[str] = Field(default=UNSET)
-    github_connect: Missing[ServerStatisticsItemsPropGithubConnect] = Field(
-        default=UNSET
-    )
-    ghe_stats: Missing[ServerStatisticsItemsPropGheStats] = Field(default=UNSET)
-    dormant_users: Missing[ServerStatisticsItemsPropDormantUsers] = Field(default=UNSET)
-    actions_stats: Missing[ServerStatisticsActions] = Field(
-        default=UNSET,
-        description="Actions metrics that are included in the Server Statistics payload/export from GHES",
-    )
-    packages_stats: Missing[ServerStatisticsPackages] = Field(
-        default=UNSET,
-        description="Packages metrics that are included in the Server Statistics payload/export from GHES",
-    )
+from .group_0023 import SimpleClassroomRepository
 
 
-class ServerStatisticsActions(GitHubModel):
-    """ServerStatisticsActions
+class ClassroomAcceptedAssignment(GitHubModel):
+    """Classroom Accepted Assignment
 
-    Actions metrics that are included in the Server Statistics payload/export from
-    GHES
+    A GitHub Classroom accepted assignment
     """
 
-    number_of_repos_using_actions: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of repositories in a GHES installation that have Actions enabled",
+    id: int = Field(description="Unique identifier of the repository.")
+    submitted: bool = Field(
+        description="Whether an accepted assignment has been submitted."
     )
-    percentage_of_repos_using_actions: Missing[str] = Field(
-        default=UNSET,
-        description="The percentage of repositories in a GHES installation that have Actions enabled",
+    passing: bool = Field(description="Whether a submission passed.")
+    commit_count: int = Field(description="Count of student commits.")
+    grade: str = Field(description="Most recent grade.")
+    students: List[SimpleClassroomUser] = Field()
+    repository: SimpleClassroomRepository = Field(
+        title="Simple Classroom Repository",
+        description="A GitHub repository view for Classroom",
+    )
+    assignment: SimpleClassroomAssignment = Field(
+        title="Simple Classroom Assignment", description="A GitHub Classroom assignment"
     )
 
 
-class ServerStatisticsItemsPropGithubConnect(GitHubModel):
-    """ServerStatisticsItemsPropGithubConnect"""
+class SimpleClassroomUser(GitHubModel):
+    """Simple Classroom User
 
-    features_enabled: Missing[List[str]] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropDormantUsers(GitHubModel):
-    """ServerStatisticsItemsPropDormantUsers"""
-
-    total_dormant_users: Missing[int] = Field(default=UNSET)
-    dormancy_threshold: Missing[str] = Field(default=UNSET)
-
-
-class ServerStatisticsPackages(GitHubModel):
-    """ServerStatisticsPackages
-
-    Packages metrics that are included in the Server Statistics payload/export from
-    GHES
+    A GitHub user simplified for Classroom.
     """
 
-    registry_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether GitHub Packages is enabled globally in a GHES installation",
-    )
-    registry_v2_enabled: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether a beta registry is enabled in a GHES installation",
-    )
-    ecosystems: Missing[List[ServerStatisticsPackagesPropEcosystemsItems]] = Field(
-        default=UNSET,
-        description="The details of the package ecosystems that are enabled in a GHES installation",
-    )
+    id: int = Field()
+    login: str = Field()
+    avatar_url: str = Field()
+    html_url: str = Field()
 
 
-class ServerStatisticsPackagesPropEcosystemsItems(GitHubModel):
-    """ServerStatisticsPackagesPropEcosystemsItems"""
+class SimpleClassroomAssignment(GitHubModel):
+    """Simple Classroom Assignment
 
-    name: Missing[
-        Literal["npm", "maven", "docker", "nuget", "rubygems", "containers"]
-    ] = Field(default=UNSET, description="The name of the package ecosystem")
-    enabled: Missing[Literal["TRUE", "FALSE", "READONLY"]] = Field(
-        default=UNSET,
-        description="Shows if a package system is enabled, disabled, or read-only in a GHES installation",
+    A GitHub Classroom assignment
+    """
+
+    id: int = Field(description="Unique identifier of the repository.")
+    public_repo: bool = Field(
+        description="Whether an accepted assignment creates a public repository."
     )
-    published_packages_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of published packages in a package ecosystem in a GHES installation",
+    title: str = Field(description="Assignment title.")
+    type: Literal["individual", "group"] = Field(
+        description="Whether it's a Group Assignment or Individual Assignment."
     )
-    private_packages_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of private packages in a package ecosystem in a GHES installation",
+    invite_link: str = Field(
+        description="The link that a student can use to accept the assignment."
     )
-    public_packages_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of public packages in a package ecosystem in a GHES installation",
+    invitations_enabled: bool = Field(
+        description="Whether the invitation link is enabled. Visiting an enabled invitation link will accept the assignment."
     )
-    internal_packages_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of internal packages in a package ecosystem in a GHES installation",
+    slug: str = Field(description="Sluggified name of the assignment.")
+    students_are_repo_admins: bool = Field(
+        description="Whether students are admins on created repository on accepted assignment."
     )
-    user_packages_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of user packages in a package ecosystem in a GHES installation",
+    feedback_pull_requests_enabled: bool = Field(
+        description="Whether feedback pull request will be created on assignment acceptance."
     )
-    organization_packages_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of organization packages in a package ecosystem in a GHES installation",
+    max_teams: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The maximum allowable teams for the assignment."
     )
-    daily_download_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of packages in an ecosystem that have been downloaded in the 24 hours prior to `collection_date` for a GHES installation",
+    max_members: Missing[Union[int, None]] = Field(
+        default=UNSET, description="The maximum allowable members per team."
     )
-    daily_update_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of packages in an ecosystem that have been updated in the 24 hours prior to `collection_date` for a GHES installation",
+    editor: str = Field(description="The selected editor for the assignment.")
+    accepted: int = Field(
+        description="The number of students that have accepted the assignment."
     )
-    daily_delete_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of packages in an ecosystem that have been deleted in the 24 hours prior to `collection_date` for a GHES installation",
+    submitted: int = Field(
+        description="The number of students that have submitted the assignment."
     )
-    daily_create_count: Missing[int] = Field(
-        default=UNSET,
-        description="The total number of packages in an ecosystem that have been created in the 24 hours prior to `collection_date` for a GHES installation",
+    passing: int = Field(
+        description="The number of students that have passed the assignment."
+    )
+    language: str = Field(
+        description="The programming language used in the assignment."
+    )
+    deadline: Union[datetime, None] = Field(
+        description="The time at which the assignment is due."
+    )
+    classroom: SimpleClassroom = Field(
+        title="Simple Classroom", description="A GitHub Classroom classroom"
     )
 
 
-class ServerStatisticsItemsPropGheStats(GitHubModel):
-    """ServerStatisticsItemsPropGheStats"""
+class SimpleClassroom(GitHubModel):
+    """Simple Classroom
 
-    comments: Missing[ServerStatisticsItemsPropGheStatsPropComments] = Field(
-        default=UNSET
-    )
-    gists: Missing[ServerStatisticsItemsPropGheStatsPropGists] = Field(default=UNSET)
-    hooks: Missing[ServerStatisticsItemsPropGheStatsPropHooks] = Field(default=UNSET)
-    issues: Missing[ServerStatisticsItemsPropGheStatsPropIssues] = Field(default=UNSET)
-    milestones: Missing[ServerStatisticsItemsPropGheStatsPropMilestones] = Field(
-        default=UNSET
-    )
-    orgs: Missing[ServerStatisticsItemsPropGheStatsPropOrgs] = Field(default=UNSET)
-    pages: Missing[ServerStatisticsItemsPropGheStatsPropPages] = Field(default=UNSET)
-    pulls: Missing[ServerStatisticsItemsPropGheStatsPropPulls] = Field(default=UNSET)
-    repos: Missing[ServerStatisticsItemsPropGheStatsPropRepos] = Field(default=UNSET)
-    users: Missing[ServerStatisticsItemsPropGheStatsPropUsers] = Field(default=UNSET)
+    A GitHub Classroom classroom
+    """
+
+    id: int = Field(description="Unique identifier of the classroom.")
+    name: str = Field(description="The name of the classroom.")
+    archived: bool = Field(description="Returns whether classroom is archived or not.")
+    url: str = Field(description="The url of the classroom on GitHub Classroom.")
 
 
-class ServerStatisticsItemsPropGheStatsPropComments(GitHubModel):
-    """ServerStatisticsItemsPropGheStatsPropComments"""
-
-    total_commit_comments: Missing[int] = Field(default=UNSET)
-    total_gist_comments: Missing[int] = Field(default=UNSET)
-    total_issue_comments: Missing[int] = Field(default=UNSET)
-    total_pull_request_comments: Missing[int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropGists(GitHubModel):
-    """ServerStatisticsItemsPropGheStatsPropGists"""
-
-    total_gists: Missing[int] = Field(default=UNSET)
-    private_gists: Missing[int] = Field(default=UNSET)
-    public_gists: Missing[int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropHooks(GitHubModel):
-    """ServerStatisticsItemsPropGheStatsPropHooks"""
-
-    total_hooks: Missing[int] = Field(default=UNSET)
-    active_hooks: Missing[int] = Field(default=UNSET)
-    inactive_hooks: Missing[int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropIssues(GitHubModel):
-    """ServerStatisticsItemsPropGheStatsPropIssues"""
-
-    total_issues: Missing[int] = Field(default=UNSET)
-    open_issues: Missing[int] = Field(default=UNSET)
-    closed_issues: Missing[int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropMilestones(GitHubModel):
-    """ServerStatisticsItemsPropGheStatsPropMilestones"""
-
-    total_milestones: Missing[int] = Field(default=UNSET)
-    open_milestones: Missing[int] = Field(default=UNSET)
-    closed_milestones: Missing[int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropOrgs(GitHubModel):
-    """ServerStatisticsItemsPropGheStatsPropOrgs"""
-
-    total_orgs: Missing[int] = Field(default=UNSET)
-    disabled_orgs: Missing[int] = Field(default=UNSET)
-    total_teams: Missing[int] = Field(default=UNSET)
-    total_team_members: Missing[int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropPages(GitHubModel):
-    """ServerStatisticsItemsPropGheStatsPropPages"""
-
-    total_pages: Missing[int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropPulls(GitHubModel):
-    """ServerStatisticsItemsPropGheStatsPropPulls"""
-
-    total_pulls: Missing[int] = Field(default=UNSET)
-    merged_pulls: Missing[int] = Field(default=UNSET)
-    mergeable_pulls: Missing[int] = Field(default=UNSET)
-    unmergeable_pulls: Missing[int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropRepos(GitHubModel):
-    """ServerStatisticsItemsPropGheStatsPropRepos"""
-
-    total_repos: Missing[int] = Field(default=UNSET)
-    root_repos: Missing[int] = Field(default=UNSET)
-    fork_repos: Missing[int] = Field(default=UNSET)
-    org_repos: Missing[int] = Field(default=UNSET)
-    total_pushes: Missing[int] = Field(default=UNSET)
-    total_wikis: Missing[int] = Field(default=UNSET)
-
-
-class ServerStatisticsItemsPropGheStatsPropUsers(GitHubModel):
-    """ServerStatisticsItemsPropGheStatsPropUsers"""
-
-    total_users: Missing[int] = Field(default=UNSET)
-    admin_users: Missing[int] = Field(default=UNSET)
-    suspended_users: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(ServerStatisticsItems)
-model_rebuild(ServerStatisticsActions)
-model_rebuild(ServerStatisticsItemsPropGithubConnect)
-model_rebuild(ServerStatisticsItemsPropDormantUsers)
-model_rebuild(ServerStatisticsPackages)
-model_rebuild(ServerStatisticsPackagesPropEcosystemsItems)
-model_rebuild(ServerStatisticsItemsPropGheStats)
-model_rebuild(ServerStatisticsItemsPropGheStatsPropComments)
-model_rebuild(ServerStatisticsItemsPropGheStatsPropGists)
-model_rebuild(ServerStatisticsItemsPropGheStatsPropHooks)
-model_rebuild(ServerStatisticsItemsPropGheStatsPropIssues)
-model_rebuild(ServerStatisticsItemsPropGheStatsPropMilestones)
-model_rebuild(ServerStatisticsItemsPropGheStatsPropOrgs)
-model_rebuild(ServerStatisticsItemsPropGheStatsPropPages)
-model_rebuild(ServerStatisticsItemsPropGheStatsPropPulls)
-model_rebuild(ServerStatisticsItemsPropGheStatsPropRepos)
-model_rebuild(ServerStatisticsItemsPropGheStatsPropUsers)
+model_rebuild(ClassroomAcceptedAssignment)
+model_rebuild(SimpleClassroomUser)
+model_rebuild(SimpleClassroomAssignment)
+model_rebuild(SimpleClassroom)
 
 __all__ = (
-    "ServerStatisticsItems",
-    "ServerStatisticsActions",
-    "ServerStatisticsItemsPropGithubConnect",
-    "ServerStatisticsItemsPropDormantUsers",
-    "ServerStatisticsPackages",
-    "ServerStatisticsPackagesPropEcosystemsItems",
-    "ServerStatisticsItemsPropGheStats",
-    "ServerStatisticsItemsPropGheStatsPropComments",
-    "ServerStatisticsItemsPropGheStatsPropGists",
-    "ServerStatisticsItemsPropGheStatsPropHooks",
-    "ServerStatisticsItemsPropGheStatsPropIssues",
-    "ServerStatisticsItemsPropGheStatsPropMilestones",
-    "ServerStatisticsItemsPropGheStatsPropOrgs",
-    "ServerStatisticsItemsPropGheStatsPropPages",
-    "ServerStatisticsItemsPropGheStatsPropPulls",
-    "ServerStatisticsItemsPropGheStatsPropRepos",
-    "ServerStatisticsItemsPropGheStatsPropUsers",
+    "ClassroomAcceptedAssignment",
+    "SimpleClassroomUser",
+    "SimpleClassroomAssignment",
+    "SimpleClassroom",
 )

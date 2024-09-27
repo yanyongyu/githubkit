@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from datetime import datetime
+from typing import List, Union
 
 from pydantic import Field
 
@@ -17,29 +18,48 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0002 import SimpleUser
 
-class OrganizationCustomOrganizationRoleUpdateSchema(GitHubModel):
-    """OrganizationCustomOrganizationRoleUpdateSchema"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the custom role."
-    )
-    description: Missing[str] = Field(
+class OrganizationRole(GitHubModel):
+    """Organization Role
+
+    Organization roles
+    """
+
+    id: int = Field(description="The unique identifier of the role.")
+    name: str = Field(description="The name of the role.")
+    description: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="A short description about the intended use of this role or the permissions it grants.",
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    permissions: Missing[List[str]] = Field(
+    permissions: List[str] = Field(
+        description="A list of permissions included in this role."
+    )
+    organization: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field(description="The date and time the role was created.")
+    updated_at: datetime = Field(
+        description="The date and time the role was last updated."
+    )
+
+
+class OrgsOrgOrganizationRolesGetResponse200(GitHubModel):
+    """OrgsOrgOrganizationRolesGetResponse200"""
+
+    total_count: Missing[int] = Field(
         default=UNSET,
-        description="A list of additional permissions included in this role.",
+        description="The total number of organization roles available to the organization.",
     )
-    base_role: Missing[
-        Literal["none", "read", "triage", "write", "maintain", "admin"]
-    ] = Field(
+    roles: Missing[List[OrganizationRole]] = Field(
         default=UNSET,
-        description="The system role from which this role can inherit permissions.",
+        description="The list of organization roles available to the organization.",
     )
 
 
-model_rebuild(OrganizationCustomOrganizationRoleUpdateSchema)
+model_rebuild(OrganizationRole)
+model_rebuild(OrgsOrgOrganizationRolesGetResponse200)
 
-__all__ = ("OrganizationCustomOrganizationRoleUpdateSchema",)
+__all__ = (
+    "OrganizationRole",
+    "OrgsOrgOrganizationRolesGetResponse200",
+)

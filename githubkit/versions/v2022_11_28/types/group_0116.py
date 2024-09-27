@@ -12,35 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0117 import RepositoryRuleUpdatePropParametersType
 
-class RepositoryRuleRequiredLinearHistoryType(TypedDict):
-    """required_linear_history
 
-    Prevent merge commits from being pushed to matching refs.
+class RepositoryRuleUpdateType(TypedDict):
+    """update
+
+    Only allow users with bypass permission to update matching refs.
     """
 
-    type: Literal["required_linear_history"]
+    type: Literal["update"]
+    parameters: NotRequired[RepositoryRuleUpdatePropParametersType]
 
 
-class RepositoryRuleOneof16Type(TypedDict):
-    """max_file_path_length
-
-    Prevent commits that include file paths that exceed a specified character limit
-    from being pushed to the commit graph.
-    """
-
-    type: Literal["max_file_path_length"]
-    parameters: NotRequired[RepositoryRuleOneof16PropParametersType]
-
-
-class RepositoryRuleOneof16PropParametersType(TypedDict):
-    """RepositoryRuleOneof16PropParameters"""
-
-    max_file_path_length: int
-
-
-__all__ = (
-    "RepositoryRuleRequiredLinearHistoryType",
-    "RepositoryRuleOneof16Type",
-    "RepositoryRuleOneof16PropParametersType",
-)
+__all__ = ("RepositoryRuleUpdateType",)

@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0177 import Deployment
-from .group_0376 import EnterpriseWebhooks
-from .group_0377 import SimpleInstallation
-from .group_0379 import RepositoryWebhooks
-from .group_0380 import SimpleUserWebhooks
-from .group_0378 import OrganizationSimpleWebhooks
+from .group_0179 import Deployment
+from .group_0378 import EnterpriseWebhooks
+from .group_0379 import SimpleInstallation
+from .group_0381 import RepositoryWebhooks
+from .group_0382 import SimpleUserWebhooks
+from .group_0380 import OrganizationSimpleWebhooks
 
 
-class WebhookWorkflowJobInProgress(GitHubModel):
-    """workflow_job in_progress event"""
+class WebhookWorkflowJobCompleted(GitHubModel):
+    """workflow_job completed event"""
 
-    action: Literal["in_progress"] = Field()
+    action: Literal["completed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -52,7 +52,7 @@ class WebhookWorkflowJobInProgress(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    workflow_job: WebhookWorkflowJobInProgressPropWorkflowJob = Field()
+    workflow_job: WebhookWorkflowJobCompletedPropWorkflowJob = Field()
     deployment: Missing[Deployment] = Field(
         default=UNSET,
         title="Deployment",
@@ -60,14 +60,20 @@ class WebhookWorkflowJobInProgress(GitHubModel):
     )
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJob(GitHubModel):
-    """WebhookWorkflowJobInProgressPropWorkflowJob"""
+class WebhookWorkflowJobCompletedPropWorkflowJob(GitHubModel):
+    """WebhookWorkflowJobCompletedPropWorkflowJob"""
 
     check_run_url: str = Field()
-    completed_at: Union[Union[str, None], None] = Field()
-    conclusion: Union[Literal["success", "failure", "cancelled", "neutral"], None] = (
-        Field()
-    )
+    completed_at: str = Field()
+    conclusion: Literal[
+        "success",
+        "failure",
+        "skipped",
+        "cancelled",
+        "action_required",
+        "neutral",
+        "timed_out",
+    ] = Field()
     created_at: str = Field(description="The time that the job created.")
     head_sha: str = Field()
     html_url: str = Field()
@@ -93,8 +99,8 @@ class WebhookWorkflowJobInProgressPropWorkflowJob(GitHubModel):
         description="The name of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
     )
     started_at: str = Field()
-    status: Literal["queued", "in_progress", "completed"] = Field(
-        description="The current status of the job. Can be `queued`, `in_progress`, or `completed`."
+    status: Literal["queued", "in_progress", "completed", "waiting"] = Field(
+        description="The current status of the job. Can be `queued`, `in_progress`, `waiting`, or `completed`."
     )
     head_branch: Union[Union[str, None], None] = Field(
         description="The name of the current branch."
@@ -102,29 +108,29 @@ class WebhookWorkflowJobInProgressPropWorkflowJob(GitHubModel):
     workflow_name: Union[Union[str, None], None] = Field(
         description="The name of the workflow."
     )
-    steps: List[WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps] = Field()
+    steps: List[WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps] = Field()
     url: str = Field()
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps(GitHubModel):
-    """WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps"""
+class WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps(GitHubModel):
+    """WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps"""
 
-    completed_at: Union[Union[str, None], None] = Field()
-    conclusion: Union[Literal["failure", "skipped", "success", "cancelled"], None] = (
+    completed_at: Union[str, None] = Field()
+    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
         Field()
     )
     name: str = Field()
     number: int = Field()
-    started_at: Union[Union[str, None], None] = Field()
-    status: Literal["in_progress", "completed", "queued", "pending"] = Field()
+    started_at: Union[str, None] = Field()
+    status: Literal["in_progress", "completed", "queued"] = Field()
 
 
-model_rebuild(WebhookWorkflowJobInProgress)
-model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJob)
-model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps)
+model_rebuild(WebhookWorkflowJobCompleted)
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJob)
+model_rebuild(WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps)
 
 __all__ = (
-    "WebhookWorkflowJobInProgress",
-    "WebhookWorkflowJobInProgressPropWorkflowJob",
-    "WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps",
+    "WebhookWorkflowJobCompleted",
+    "WebhookWorkflowJobCompletedPropWorkflowJob",
+    "WebhookWorkflowJobCompletedPropWorkflowJobMergedSteps",
 )

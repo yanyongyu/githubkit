@@ -9,37 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0001 import SimpleUserType
-from .group_0006 import IntegrationType
+from .group_0271 import MetadataType
 
 
-class DeploymentStatusType(TypedDict):
-    """Deployment Status
+class ManifestType(TypedDict):
+    """Manifest"""
 
-    The status of a deployment.
+    name: str
+    file: NotRequired[ManifestPropFileType]
+    metadata: NotRequired[MetadataType]
+    resolved: NotRequired[ManifestPropResolvedType]
+
+
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+class ManifestPropResolvedType(TypedDict):
+    """ManifestPropResolved
+
+    A collection of resolved package dependencies.
     """
 
-    url: str
-    id: int
-    node_id: str
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ]
-    creator: Union[None, SimpleUserType]
-    description: str
-    environment: NotRequired[str]
-    target_url: str
-    created_at: datetime
-    updated_at: datetime
-    deployment_url: str
-    repository_url: str
-    environment_url: NotRequired[str]
-    log_url: NotRequired[str]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
 
-
-__all__ = ("DeploymentStatusType",)
+__all__ = (
+    "ManifestType",
+    "ManifestPropFileType",
+    "ManifestPropResolvedType",
+)

@@ -9,17 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class DependabotPublicKeyType(TypedDict):
-    """DependabotPublicKey
+class CodespacesPublicKeyType(TypedDict):
+    """CodespacesPublicKey
 
-    The public key used for setting Dependabot Secrets.
+    The public key used for setting Codespaces secrets.
     """
 
     key_id: str
     key: str
+    id: NotRequired[int]
+    url: NotRequired[str]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-__all__ = ("DependabotPublicKeyType",)
+__all__ = ("CodespacesPublicKeyType",)

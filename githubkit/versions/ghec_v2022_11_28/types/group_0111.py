@@ -9,17 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0002 import SimpleUserType
+from .group_0031 import OrganizationSimpleType
 
 
-class OrganizationFineGrainedPermissionType(TypedDict):
-    """Organization Fine-Grained Permission
+class OrgMembershipType(TypedDict):
+    """Org Membership
 
-    A fine-grained permission that protects organization resources.
+    Org Membership
     """
 
-    name: str
-    description: str
+    url: str
+    state: Literal["active", "pending"]
+    role: Literal["admin", "member", "billing_manager"]
+    organization_url: str
+    organization: OrganizationSimpleType
+    user: Union[None, SimpleUserType]
+    permissions: NotRequired[OrgMembershipPropPermissionsType]
 
 
-__all__ = ("OrganizationFineGrainedPermissionType",)
+class OrgMembershipPropPermissionsType(TypedDict):
+    """OrgMembershipPropPermissions"""
+
+    can_create_repository: bool
+
+
+__all__ = (
+    "OrgMembershipType",
+    "OrgMembershipPropPermissionsType",
+)

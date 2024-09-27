@@ -9,22 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import datetime
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsCacheUsageOrgEnterprise(GitHubModel):
-    """ActionsCacheUsageOrgEnterprise"""
+class ThreadSubscription(GitHubModel):
+    """Thread Subscription
 
-    total_active_caches_count: int = Field(
-        description="The count of active caches across all repositories of an enterprise or an organization."
-    )
-    total_active_caches_size_in_bytes: int = Field(
-        description="The total size in bytes of all active cache items across all repositories of an enterprise or an organization."
-    )
+    Thread Subscription
+    """
+
+    subscribed: bool = Field()
+    ignored: bool = Field()
+    reason: Union[str, None] = Field()
+    created_at: Union[datetime, None] = Field()
+    url: str = Field()
+    thread_url: Missing[str] = Field(default=UNSET)
+    repository_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ActionsCacheUsageOrgEnterprise)
+model_rebuild(ThreadSubscription)
 
-__all__ = ("ActionsCacheUsageOrgEnterprise",)
+__all__ = ("ThreadSubscription",)

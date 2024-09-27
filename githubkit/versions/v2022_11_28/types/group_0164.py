@@ -9,67 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class JobType(TypedDict):
-    """Job
+class ArtifactType(TypedDict):
+    """Artifact
 
-    Information of a job execution in a workflow run
+    An artifact
     """
 
     id: int
-    run_id: int
-    run_url: str
-    run_attempt: NotRequired[int]
     node_id: str
-    head_sha: str
+    name: str
+    size_in_bytes: int
     url: str
-    html_url: Union[str, None]
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ]
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    created_at: datetime
-    started_at: datetime
-    completed_at: Union[datetime, None]
-    name: str
-    steps: NotRequired[List[JobPropStepsItemsType]]
-    check_run_url: str
-    labels: List[str]
-    runner_id: Union[int, None]
-    runner_name: Union[str, None]
-    runner_group_id: Union[int, None]
-    runner_group_name: Union[str, None]
-    workflow_name: Union[str, None]
-    head_branch: Union[str, None]
+    archive_download_url: str
+    expired: bool
+    created_at: Union[datetime, None]
+    expires_at: Union[datetime, None]
+    updated_at: Union[datetime, None]
+    workflow_run: NotRequired[Union[ArtifactPropWorkflowRunType, None]]
 
 
-class JobPropStepsItemsType(TypedDict):
-    """JobPropStepsItems"""
+class ArtifactPropWorkflowRunType(TypedDict):
+    """ArtifactPropWorkflowRun"""
 
-    status: Literal["queued", "in_progress", "completed"]
-    conclusion: Union[str, None]
-    name: str
-    number: int
-    started_at: NotRequired[Union[datetime, None]]
-    completed_at: NotRequired[Union[datetime, None]]
+    id: NotRequired[int]
+    repository_id: NotRequired[int]
+    head_repository_id: NotRequired[int]
+    head_branch: NotRequired[str]
+    head_sha: NotRequired[str]
 
 
 __all__ = (
-    "JobType",
-    "JobPropStepsItemsType",
+    "ArtifactType",
+    "ArtifactPropWorkflowRunType",
 )

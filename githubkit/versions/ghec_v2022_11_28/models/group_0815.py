@@ -13,18 +13,42 @@ from typing import List
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0029 import OrganizationSimple
+from .group_0016 import AppPermissions
 
 
-class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
+class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
+    """ApplicationsClientIdTokenScopedPostBody"""
 
-    total_count: float = Field()
-    organizations: List[OrganizationSimple] = Field()
+    access_token: str = Field(
+        description="The access token used to authenticate to the GitHub API."
+    )
+    target: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
+    )
+    target_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
+    )
+    repositories: Missing[List[str]] = Field(
+        default=UNSET,
+        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
+    )
+    repository_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
+    )
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
+    )
 
 
-model_rebuild(EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200)
+model_rebuild(ApplicationsClientIdTokenScopedPostBody)
 
-__all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200",)
+__all__ = ("ApplicationsClientIdTokenScopedPostBody",)

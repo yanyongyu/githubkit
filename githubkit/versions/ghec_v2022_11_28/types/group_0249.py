@@ -9,22 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
 from typing_extensions import TypedDict
 
-from .group_0001 import SimpleUserType
 
+class BranchShortType(TypedDict):
+    """Branch Short
 
-class AutoMergeType(TypedDict):
-    """Auto merge
-
-    The status of auto merging a pull request.
+    Branch Short
     """
 
-    enabled_by: SimpleUserType
-    merge_method: Literal["merge", "squash", "rebase"]
-    commit_title: Union[str, None]
-    commit_message: Union[str, None]
+    name: str
+    commit: BranchShortPropCommitType
+    protected: bool
 
 
-__all__ = ("AutoMergeType",)
+class BranchShortPropCommitType(TypedDict):
+    """BranchShortPropCommit"""
+
+    sha: str
+    url: str
+
+
+__all__ = (
+    "BranchShortType",
+    "BranchShortPropCommitType",
+)

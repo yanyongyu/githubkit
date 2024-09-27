@@ -9,25 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0017 import Repository
+
+class GistsGistIdCommentsPostBody(GitHubModel):
+    """GistsGistIdCommentsPostBody"""
+
+    body: str = Field(max_length=65535, description="The comment text.")
 
 
-class InstallationRepositoriesGetResponse200(GitHubModel):
-    """InstallationRepositoriesGetResponse200"""
+model_rebuild(GistsGistIdCommentsPostBody)
 
-    total_count: int = Field()
-    repositories: List[Repository] = Field()
-    repository_selection: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(InstallationRepositoriesGetResponse200)
-
-__all__ = ("InstallationRepositoriesGetResponse200",)
+__all__ = ("GistsGistIdCommentsPostBody",)

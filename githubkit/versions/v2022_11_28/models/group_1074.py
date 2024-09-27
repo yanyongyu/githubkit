@@ -18,15 +18,14 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class TeamsTeamIdReposOwnerRepoPutBody(GitHubModel):
-    """TeamsTeamIdReposOwnerRepoPutBody"""
+class TeamsTeamIdMembershipsUsernamePutBody(GitHubModel):
+    """TeamsTeamIdMembershipsUsernamePutBody"""
 
-    permission: Missing[Literal["pull", "push", "admin"]] = Field(
-        default=UNSET,
-        description="The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.",
+    role: Missing[Literal["member", "maintainer"]] = Field(
+        default=UNSET, description="The role that this user should have in the team."
     )
 
 
-model_rebuild(TeamsTeamIdReposOwnerRepoPutBody)
+model_rebuild(TeamsTeamIdMembershipsUsernamePutBody)
 
-__all__ = ("TeamsTeamIdReposOwnerRepoPutBody",)
+__all__ = ("TeamsTeamIdMembershipsUsernamePutBody",)

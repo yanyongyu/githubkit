@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -18,46 +18,23 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0012 import Enterprise
-from .group_0014 import AppPermissions
+from .group_0002 import SimpleUser
+from .group_0014 import Enterprise
 
 
-class Installation(GitHubModel):
-    """Installation
+class IntegrationInstallationRequest(GitHubModel):
+    """Integration Installation Request
 
-    Installation
+    Request to install an integration on a target
     """
 
-    id: int = Field(description="The ID of the installation.")
-    account: Union[SimpleUser, Enterprise, None] = Field()
-    repository_selection: Literal["all", "selected"] = Field(
-        description="Describe whether all repositories have been selected or there's a selection involved"
-    )
-    access_tokens_url: str = Field()
-    repositories_url: str = Field()
-    html_url: str = Field()
-    app_id: int = Field()
-    target_id: int = Field(
-        description="The ID of the user or organization this token is being scoped to."
-    )
-    target_type: str = Field()
-    permissions: AppPermissions = Field(
-        title="App Permissions",
-        description="The permissions granted to the user access token.",
-    )
-    events: List[str] = Field()
+    id: int = Field(description="Unique identifier of the request installation.")
+    node_id: Missing[str] = Field(default=UNSET)
+    account: Union[SimpleUser, Enterprise] = Field()
+    requester: SimpleUser = Field(title="Simple User", description="A GitHub user.")
     created_at: datetime = Field()
-    updated_at: datetime = Field()
-    single_file_name: Union[str, None] = Field()
-    has_multiple_single_files: Missing[bool] = Field(default=UNSET)
-    single_file_paths: Missing[List[str]] = Field(default=UNSET)
-    app_slug: str = Field()
-    suspended_by: Union[None, SimpleUser] = Field()
-    suspended_at: Union[datetime, None] = Field()
-    contact_email: Missing[Union[str, None]] = Field(default=UNSET)
 
 
-model_rebuild(Installation)
+model_rebuild(IntegrationInstallationRequest)
 
-__all__ = ("Installation",)
+__all__ = ("IntegrationInstallationRequest",)

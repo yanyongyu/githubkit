@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -19,92 +19,39 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class Job(GitHubModel):
-    """Job
+class Artifact(GitHubModel):
+    """Artifact
 
-    Information of a job execution in a workflow run
+    An artifact
     """
 
-    id: int = Field(description="The id of the job.")
-    run_id: int = Field(description="The id of the associated workflow run.")
-    run_url: str = Field()
-    run_attempt: Missing[int] = Field(
-        default=UNSET,
-        description="Attempt number of the associated workflow run, 1 for first attempt and higher if the workflow was re-run.",
-    )
+    id: int = Field()
     node_id: str = Field()
-    head_sha: str = Field(description="The SHA of the commit that is being run.")
+    name: str = Field(description="The name of the artifact.")
+    size_in_bytes: int = Field(description="The size in bytes of the artifact.")
     url: str = Field()
-    html_url: Union[str, None] = Field()
-    status: Literal[
-        "queued", "in_progress", "completed", "waiting", "requested", "pending"
-    ] = Field(description="The phase of the lifecycle that the job is currently in.")
-    conclusion: Union[
-        None,
-        Literal[
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ] = Field(description="The outcome of the job.")
-    created_at: datetime = Field(
-        description="The time that the job created, in ISO 8601 format."
-    )
-    started_at: datetime = Field(
-        description="The time that the job started, in ISO 8601 format."
-    )
-    completed_at: Union[datetime, None] = Field(
-        description="The time that the job finished, in ISO 8601 format."
-    )
-    name: str = Field(description="The name of the job.")
-    steps: Missing[List[JobPropStepsItems]] = Field(
-        default=UNSET, description="Steps in this job."
-    )
-    check_run_url: str = Field()
-    labels: List[str] = Field(
-        description='Labels for the workflow job. Specified by the "runs_on" attribute in the action\'s workflow file.'
-    )
-    runner_id: Union[int, None] = Field(
-        description="The ID of the runner to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
-    )
-    runner_name: Union[str, None] = Field(
-        description="The name of the runner to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
-    )
-    runner_group_id: Union[int, None] = Field(
-        description="The ID of the runner group to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
-    )
-    runner_group_name: Union[str, None] = Field(
-        description="The name of the runner group to which this job has been assigned. (If a runner hasn't yet been assigned, this will be null.)"
-    )
-    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
-    head_branch: Union[str, None] = Field(description="The name of the current branch.")
+    archive_download_url: str = Field()
+    expired: bool = Field(description="Whether or not the artifact has expired.")
+    created_at: Union[datetime, None] = Field()
+    expires_at: Union[datetime, None] = Field()
+    updated_at: Union[datetime, None] = Field()
+    workflow_run: Missing[Union[ArtifactPropWorkflowRun, None]] = Field(default=UNSET)
 
 
-class JobPropStepsItems(GitHubModel):
-    """JobPropStepsItems"""
+class ArtifactPropWorkflowRun(GitHubModel):
+    """ArtifactPropWorkflowRun"""
 
-    status: Literal["queued", "in_progress", "completed"] = Field(
-        description="The phase of the lifecycle that the job is currently in."
-    )
-    conclusion: Union[str, None] = Field(description="The outcome of the job.")
-    name: str = Field(description="The name of the job.")
-    number: int = Field()
-    started_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET, description="The time that the step started, in ISO 8601 format."
-    )
-    completed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET, description="The time that the job finished, in ISO 8601 format."
-    )
+    id: Missing[int] = Field(default=UNSET)
+    repository_id: Missing[int] = Field(default=UNSET)
+    head_repository_id: Missing[int] = Field(default=UNSET)
+    head_branch: Missing[str] = Field(default=UNSET)
+    head_sha: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(Job)
-model_rebuild(JobPropStepsItems)
+model_rebuild(Artifact)
+model_rebuild(ArtifactPropWorkflowRun)
 
 __all__ = (
-    "Job",
-    "JobPropStepsItems",
+    "Artifact",
+    "ArtifactPropWorkflowRun",
 )

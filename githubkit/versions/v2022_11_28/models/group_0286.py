@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
 
 from pydantic import Field
@@ -18,51 +17,45 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0006 import Integration
-from .group_0038 import ReactionRollup
+from .group_0002 import SimpleUser
+from .group_0008 import Integration
 
 
-class TimelineCommentEvent(GitHubModel):
-    """Timeline Comment Event
+class RemovedFromProjectIssueEvent(GitHubModel):
+    """Removed from Project Issue Event
 
-    Timeline Comment Event
+    Removed from Project Issue Event
     """
 
-    event: Literal["commented"] = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    id: int = Field(description="Unique identifier of the issue comment")
+    id: int = Field()
     node_id: str = Field()
-    url: str = Field(description="URL for the issue comment")
-    body: Missing[str] = Field(
-        default=UNSET, description="Contents of the issue comment"
-    )
-    body_text: Missing[str] = Field(default=UNSET)
-    body_html: Missing[str] = Field(default=UNSET)
-    html_url: str = Field()
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    issue_url: str = Field()
-    author_association: Literal[
-        "COLLABORATOR",
-        "CONTRIBUTOR",
-        "FIRST_TIMER",
-        "FIRST_TIME_CONTRIBUTOR",
-        "MANNEQUIN",
-        "MEMBER",
-        "NONE",
-        "OWNER",
-    ] = Field(
-        title="author_association",
-        description="How the author is associated with the repository.",
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["removed_from_project"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    project_card: Missing[RemovedFromProjectIssueEventPropProjectCard] = Field(
         default=UNSET
     )
-    reactions: Missing[ReactionRollup] = Field(default=UNSET, title="Reaction Rollup")
 
 
-model_rebuild(TimelineCommentEvent)
+class RemovedFromProjectIssueEventPropProjectCard(GitHubModel):
+    """RemovedFromProjectIssueEventPropProjectCard"""
 
-__all__ = ("TimelineCommentEvent",)
+    id: int = Field()
+    url: str = Field()
+    project_id: int = Field()
+    project_url: str = Field()
+    column_name: str = Field()
+    previous_column_name: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(RemovedFromProjectIssueEvent)
+model_rebuild(RemovedFromProjectIssueEventPropProjectCard)
+
+__all__ = (
+    "RemovedFromProjectIssueEvent",
+    "RemovedFromProjectIssueEventPropProjectCard",
+)

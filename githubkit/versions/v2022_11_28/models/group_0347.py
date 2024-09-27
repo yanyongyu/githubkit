@@ -9,26 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import datetime
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class TagProtection(GitHubModel):
-    """Tag protection
+class RepositorySubscription(GitHubModel):
+    """Repository Invitation
 
-    Tag protection
+    Repository invitations let you manage who you collaborate with.
     """
 
-    id: Missing[int] = Field(default=UNSET)
-    created_at: Missing[str] = Field(default=UNSET)
-    updated_at: Missing[str] = Field(default=UNSET)
-    enabled: Missing[bool] = Field(default=UNSET)
-    pattern: str = Field()
+    subscribed: bool = Field(
+        description="Determines if notifications should be received from this repository."
+    )
+    ignored: bool = Field(
+        description="Determines if all notifications should be blocked from this repository."
+    )
+    reason: Union[str, None] = Field()
+    created_at: datetime = Field()
+    url: str = Field()
+    repository_url: str = Field()
 
 
-model_rebuild(TagProtection)
+model_rebuild(RepositorySubscription)
 
-__all__ = ("TagProtection",)
+__all__ = ("RepositorySubscription",)

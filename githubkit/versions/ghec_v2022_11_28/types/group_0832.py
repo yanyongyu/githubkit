@@ -9,19 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
 
 
-class EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType(TypedDict):
-    """EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody"""
+class EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType(TypedDict):
+    """EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody"""
 
-    advanced_security_enabled_for_new_repositories: NotRequired[bool]
-    advanced_security_enabled_new_user_namespace_repos: NotRequired[bool]
-    dependabot_alerts_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_enabled_for_new_repositories: NotRequired[bool]
-    secret_scanning_push_protection_custom_link: NotRequired[Union[str, None]]
+    labels: List[str]
 
 
-__all__ = ("EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBodyType",)
+__all__ = ("EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBodyType",)

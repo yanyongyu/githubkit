@@ -10,7 +10,6 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from datetime import datetime
 
 from pydantic import Field
 
@@ -18,39 +17,36 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0265 import HookResponse
-from .group_0007 import WebhookConfig
 
+class GitTree(GitHubModel):
+    """Git Tree
 
-class Hook(GitHubModel):
-    """Webhook
-
-    Webhooks for repositories.
+    The hierarchy between files in a Git repository.
     """
 
-    type: str = Field()
-    id: int = Field(description="Unique identifier of the webhook.")
-    name: str = Field(
-        description="The name of a valid service, use 'web' for a webhook."
-    )
-    active: bool = Field(
-        description="Determines whether the hook is actually triggered on pushes."
-    )
-    events: List[str] = Field(
-        description="Determines what events the hook is triggered for. Default: ['push']."
-    )
-    config: WebhookConfig = Field(
-        title="Webhook Configuration", description="Configuration object of the webhook"
-    )
-    updated_at: datetime = Field()
-    created_at: datetime = Field()
+    sha: str = Field()
     url: str = Field()
-    test_url: str = Field()
-    ping_url: str = Field()
-    deliveries_url: Missing[str] = Field(default=UNSET)
-    last_response: HookResponse = Field(title="Hook Response")
+    truncated: bool = Field()
+    tree: List[GitTreePropTreeItems] = Field(
+        description="Objects specifying a tree structure"
+    )
 
 
-model_rebuild(Hook)
+class GitTreePropTreeItems(GitHubModel):
+    """GitTreePropTreeItems"""
 
-__all__ = ("Hook",)
+    path: Missing[str] = Field(default=UNSET)
+    mode: Missing[str] = Field(default=UNSET)
+    type: Missing[str] = Field(default=UNSET)
+    sha: Missing[str] = Field(default=UNSET)
+    size: Missing[int] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(GitTree)
+model_rebuild(GitTreePropTreeItems)
+
+__all__ = (
+    "GitTree",
+    "GitTreePropTreeItems",
+)

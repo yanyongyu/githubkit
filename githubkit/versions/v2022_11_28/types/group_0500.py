@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0015 import InstallationType
-from .group_0376 import EnterpriseWebhooksType
-from .group_0379 import RepositoryWebhooksType
-from .group_0380 import SimpleUserWebhooksType
-from .group_0393 import WebhooksRepositoriesItemsType
-from .group_0378 import OrganizationSimpleWebhooksType
+from .group_0017 import InstallationType
+from .group_0390 import WebhooksUserType
+from .group_0378 import EnterpriseWebhooksType
+from .group_0381 import RepositoryWebhooksType
+from .group_0382 import SimpleUserWebhooksType
+from .group_0395 import WebhooksRepositoriesItemsType
+from .group_0380 import OrganizationSimpleWebhooksType
 
 
-class WebhookInstallationNewPermissionsAcceptedType(TypedDict):
-    """installation new_permissions_accepted event"""
+class WebhookInstallationCreatedType(TypedDict):
+    """installation created event"""
 
-    action: Literal["new_permissions_accepted"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repositories: NotRequired[List[WebhooksRepositoriesItemsType]]
     repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
+    requester: NotRequired[Union[WebhooksUserType, None]]
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookInstallationNewPermissionsAcceptedType",)
+__all__ = ("WebhookInstallationCreatedType",)

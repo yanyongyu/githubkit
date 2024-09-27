@@ -9,23 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class OrgsOrgOutsideCollaboratorsUsernamePutBody(GitHubModel):
-    """OrgsOrgOutsideCollaboratorsUsernamePutBody"""
-
-    async_: Missing[bool] = Field(
-        default=UNSET,
-        alias="async",
-        description="When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued.",
-    )
+from .group_0080 import Codespace
 
 
-model_rebuild(OrgsOrgOutsideCollaboratorsUsernamePutBody)
+class OrgsOrgMembersUsernameCodespacesGetResponse200(GitHubModel):
+    """OrgsOrgMembersUsernameCodespacesGetResponse200"""
 
-__all__ = ("OrgsOrgOutsideCollaboratorsUsernamePutBody",)
+    total_count: int = Field()
+    codespaces: List[Codespace] = Field()
+
+
+model_rebuild(OrgsOrgMembersUsernameCodespacesGetResponse200)
+
+__all__ = ("OrgsOrgMembersUsernameCodespacesGetResponse200",)

@@ -12,18 +12,18 @@ from __future__ import annotations
 from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0015 import InstallationType
-from .group_0376 import EnterpriseWebhooksType
-from .group_0379 import RepositoryWebhooksType
-from .group_0380 import SimpleUserWebhooksType
-from .group_0393 import WebhooksRepositoriesItemsType
-from .group_0378 import OrganizationSimpleWebhooksType
+from .group_0017 import InstallationType
+from .group_0378 import EnterpriseWebhooksType
+from .group_0381 import RepositoryWebhooksType
+from .group_0382 import SimpleUserWebhooksType
+from .group_0395 import WebhooksRepositoriesItemsType
+from .group_0380 import OrganizationSimpleWebhooksType
 
 
-class WebhookInstallationUnsuspendType(TypedDict):
-    """installation unsuspend event"""
+class WebhookInstallationSuspendType(TypedDict):
+    """installation suspend event"""
 
-    action: Literal["unsuspend"]
+    action: Literal["suspend"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -33,4 +33,4 @@ class WebhookInstallationUnsuspendType(TypedDict):
     sender: SimpleUserWebhooksType
 
 
-__all__ = ("WebhookInstallationUnsuspendType",)
+__all__ = ("WebhookInstallationSuspendType",)

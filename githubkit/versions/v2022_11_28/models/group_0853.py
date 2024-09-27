@@ -10,95 +10,44 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List, Union, Literal
+from typing_extensions import Annotated
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
-
-from .group_0114 import RepositoryRuleUpdate
-from .group_0140 import RepositoryRuleOneof18
-from .group_0136 import RepositoryRuleWorkflows
-from .group_0117 import RepositoryRuleMergeQueue
-from .group_0121 import RepositoryRulePullRequest
-from .group_0110 import OrgRulesetConditionsOneof0
-from .group_0111 import OrgRulesetConditionsOneof1
-from .group_0112 import OrgRulesetConditionsOneof2
-from .group_0138 import RepositoryRuleCodeScanning
-from .group_0101 import RepositoryRulesetBypassActor
-from .group_0133 import RepositoryRuleTagNamePattern
-from .group_0131 import RepositoryRuleBranchNamePattern
-from .group_0119 import RepositoryRuleRequiredDeployments
-from .group_0123 import RepositoryRuleRequiredStatusChecks
-from .group_0125 import RepositoryRuleCommitMessagePattern
-from .group_0129 import RepositoryRuleCommitterEmailPattern
-from .group_0127 import RepositoryRuleCommitAuthorEmailPattern
-from .group_0116 import RepositoryRuleOneof16, RepositoryRuleRequiredLinearHistory
-from .group_0113 import (
-    RepositoryRuleOneof15,
-    RepositoryRuleOneof17,
-    RepositoryRuleCreation,
-    RepositoryRuleDeletion,
-    RepositoryRuleNonFastForward,
-    RepositoryRuleRequiredSignatures,
-)
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class OrgsOrgRulesetsPostBody(GitHubModel):
-    """OrgsOrgRulesetsPostBody"""
+class OrgsOrgPropertiesSchemaCustomPropertyNamePutBody(GitHubModel):
+    """OrgsOrgPropertiesSchemaCustomPropertyNamePutBody"""
 
-    name: str = Field(description="The name of the ruleset.")
-    target: Missing[Literal["branch", "tag", "push"]] = Field(
-        default=UNSET, description="The target of the ruleset"
+    value_type: Literal["string", "single_select", "multi_select", "true_false"] = (
+        Field(description="The type of the value for the property")
     )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
+    required: Missing[bool] = Field(
+        default=UNSET, description="Whether the property is required."
     )
-    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
-        default=UNSET,
-        description="The actors that can bypass the rules in this ruleset",
+    default_value: Missing[Union[str, List[str], None]] = Field(
+        default=UNSET, description="Default value of the property"
     )
-    conditions: Missing[
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Short description of the property"
+    )
+    allowed_values: Missing[
         Union[
-            OrgRulesetConditionsOneof0,
-            OrgRulesetConditionsOneof1,
-            OrgRulesetConditionsOneof2,
+            Annotated[
+                List[Annotated[str, Field(max_length=75)]],
+                Field(max_length=200 if PYDANTIC_V2 else None),
+            ],
+            None,
         ]
     ] = Field(
         default=UNSET,
-        title="Organization ruleset conditions",
-        description="Conditions for an organization ruleset. The conditions object should contain both `repository_name` and `ref_name` properties or both `repository_id` and `ref_name` properties.",
+        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
     )
-    rules: Missing[
-        List[
-            Union[
-                RepositoryRuleCreation,
-                RepositoryRuleUpdate,
-                RepositoryRuleDeletion,
-                RepositoryRuleRequiredLinearHistory,
-                RepositoryRuleMergeQueue,
-                RepositoryRuleRequiredDeployments,
-                RepositoryRuleRequiredSignatures,
-                RepositoryRulePullRequest,
-                RepositoryRuleRequiredStatusChecks,
-                RepositoryRuleNonFastForward,
-                RepositoryRuleCommitMessagePattern,
-                RepositoryRuleCommitAuthorEmailPattern,
-                RepositoryRuleCommitterEmailPattern,
-                RepositoryRuleBranchNamePattern,
-                RepositoryRuleTagNamePattern,
-                RepositoryRuleOneof15,
-                RepositoryRuleOneof16,
-                RepositoryRuleOneof17,
-                RepositoryRuleOneof18,
-                RepositoryRuleWorkflows,
-                RepositoryRuleCodeScanning,
-            ]
-        ]
-    ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(OrgsOrgRulesetsPostBody)
+model_rebuild(OrgsOrgPropertiesSchemaCustomPropertyNamePutBody)
 
-__all__ = ("OrgsOrgRulesetsPostBody",)
+__all__ = ("OrgsOrgPropertiesSchemaCustomPropertyNamePutBody",)

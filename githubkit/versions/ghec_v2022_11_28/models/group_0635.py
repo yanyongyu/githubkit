@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0427 import WebhooksUser
-from .group_0413 import EnterpriseWebhooks
-from .group_0414 import SimpleInstallation
-from .group_0416 import RepositoryWebhooks
-from .group_0417 import SimpleUserWebhooks
-from .group_0415 import OrganizationSimpleWebhooks
+from .group_0415 import EnterpriseWebhooks
+from .group_0416 import SimpleInstallation
+from .group_0418 import RepositoryWebhooks
+from .group_0419 import SimpleUserWebhooks
+from .group_0447 import WebhooksMembership
+from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookOrganizationMemberInvited(GitHubModel):
-    """organization member_invited event"""
+class WebhookOrganizationDeleted(GitHubModel):
+    """organization deleted event"""
 
-    action: Literal["member_invited"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -40,8 +39,10 @@ class WebhookOrganizationMemberInvited(GitHubModel):
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/enterprise-cloud@latest//apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
-    invitation: WebhookOrganizationMemberInvitedPropInvitation = Field(
-        description="The invitation for the user or email if the action is `member_invited`."
+    membership: Missing[WebhooksMembership] = Field(
+        default=UNSET,
+        title="Membership",
+        description="The membership between the user and the organization. Not present when the action is `member_invited`.",
     )
     organization: OrganizationSimpleWebhooks = Field(
         title="Organization Simple",
@@ -56,63 +57,8 @@ class WebhookOrganizationMemberInvited(GitHubModel):
         title="Simple User",
         description="The GitHub user that triggered the event. This property is included in every webhook payload.",
     )
-    user: Missing[Union[WebhooksUser, None]] = Field(default=UNSET, title="User")
 
 
-class WebhookOrganizationMemberInvitedPropInvitation(GitHubModel):
-    """WebhookOrganizationMemberInvitedPropInvitation
+model_rebuild(WebhookOrganizationDeleted)
 
-    The invitation for the user or email if the action is `member_invited`.
-    """
-
-    created_at: datetime = Field()
-    email: Union[str, None] = Field()
-    failed_at: Union[datetime, None] = Field()
-    failed_reason: Union[str, None] = Field()
-    id: float = Field()
-    invitation_teams_url: str = Field()
-    inviter: Union[WebhookOrganizationMemberInvitedPropInvitationPropInviter, None] = (
-        Field(title="User")
-    )
-    login: Union[str, None] = Field()
-    node_id: str = Field()
-    role: str = Field()
-    team_count: float = Field()
-    invitation_source: Missing[str] = Field(default=UNSET)
-
-
-class WebhookOrganizationMemberInvitedPropInvitationPropInviter(GitHubModel):
-    """User"""
-
-    avatar_url: Missing[str] = Field(default=UNSET)
-    deleted: Missing[bool] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    events_url: Missing[str] = Field(default=UNSET)
-    followers_url: Missing[str] = Field(default=UNSET)
-    following_url: Missing[str] = Field(default=UNSET)
-    gists_url: Missing[str] = Field(default=UNSET)
-    gravatar_id: Missing[str] = Field(default=UNSET)
-    html_url: Missing[str] = Field(default=UNSET)
-    id: int = Field()
-    login: str = Field()
-    name: Missing[str] = Field(default=UNSET)
-    node_id: Missing[str] = Field(default=UNSET)
-    organizations_url: Missing[str] = Field(default=UNSET)
-    received_events_url: Missing[str] = Field(default=UNSET)
-    repos_url: Missing[str] = Field(default=UNSET)
-    site_admin: Missing[bool] = Field(default=UNSET)
-    starred_url: Missing[str] = Field(default=UNSET)
-    subscriptions_url: Missing[str] = Field(default=UNSET)
-    type: Missing[Literal["Bot", "User", "Organization"]] = Field(default=UNSET)
-    url: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookOrganizationMemberInvited)
-model_rebuild(WebhookOrganizationMemberInvitedPropInvitation)
-model_rebuild(WebhookOrganizationMemberInvitedPropInvitationPropInviter)
-
-__all__ = (
-    "WebhookOrganizationMemberInvited",
-    "WebhookOrganizationMemberInvitedPropInvitation",
-    "WebhookOrganizationMemberInvitedPropInvitationPropInviter",
-)
+__all__ = ("WebhookOrganizationDeleted",)

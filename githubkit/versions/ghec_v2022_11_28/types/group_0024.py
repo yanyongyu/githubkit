@@ -9,26 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from datetime import datetime
+from typing import Union, Literal
+from typing_extensions import TypedDict
+
+from .group_0023 import SimpleClassroomRepositoryType
 
 
-class ClassroomAssignmentGradeType(TypedDict):
-    """Classroom Assignment Grade
+class ClassroomAssignmentType(TypedDict):
+    """Classroom Assignment
 
-    Grade for a student or groups GitHub Classroom assignment
+    A GitHub Classroom assignment
     """
 
-    assignment_name: str
-    assignment_url: str
-    starter_code_url: str
-    github_username: str
-    roster_identifier: str
-    student_repository_name: str
-    student_repository_url: str
-    submission_timestamp: str
-    points_awarded: int
-    points_available: int
-    group_name: NotRequired[str]
+    id: int
+    public_repo: bool
+    title: str
+    type: Literal["individual", "group"]
+    invite_link: str
+    invitations_enabled: bool
+    slug: str
+    students_are_repo_admins: bool
+    feedback_pull_requests_enabled: bool
+    max_teams: Union[int, None]
+    max_members: Union[int, None]
+    editor: str
+    accepted: int
+    submitted: int
+    passing: int
+    language: str
+    deadline: Union[datetime, None]
+    starter_code_repository: SimpleClassroomRepositoryType
+    classroom: ClassroomType
 
 
-__all__ = ("ClassroomAssignmentGradeType",)
+class ClassroomType(TypedDict):
+    """Classroom
+
+    A GitHub Classroom classroom
+    """
+
+    id: int
+    name: str
+    archived: bool
+    organization: SimpleClassroomOrganizationType
+    url: str
+
+
+class SimpleClassroomOrganizationType(TypedDict):
+    """Organization Simple for Classroom
+
+    A GitHub organization.
+    """
+
+    id: int
+    login: str
+    node_id: str
+    html_url: str
+    name: Union[str, None]
+    avatar_url: str
+
+
+__all__ = (
+    "ClassroomAssignmentType",
+    "ClassroomType",
+    "SimpleClassroomOrganizationType",
+)

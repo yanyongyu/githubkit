@@ -9,39 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ActionsBillingUsageType(TypedDict):
-    """ActionsBillingUsage"""
+class GetLicenseSyncStatusType(TypedDict):
+    """License Sync Status
 
-    total_minutes_used: int
-    total_paid_minutes_used: int
-    included_minutes: int
-    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdownType
+    Information about the status of a license sync job for an enterprise.
+    """
+
+    server_instances: NotRequired[
+        List[GetLicenseSyncStatusPropServerInstancesItemsType]
+    ]
 
 
-class ActionsBillingUsagePropMinutesUsedBreakdownType(TypedDict):
-    """ActionsBillingUsagePropMinutesUsedBreakdown"""
+class GetLicenseSyncStatusPropServerInstancesItemsType(TypedDict):
+    """GetLicenseSyncStatusPropServerInstancesItems"""
 
-    ubuntu: NotRequired[int]
-    macos: NotRequired[int]
-    windows: NotRequired[int]
-    ubuntu_4_core: NotRequired[int]
-    ubuntu_8_core: NotRequired[int]
-    ubuntu_16_core: NotRequired[int]
-    ubuntu_32_core: NotRequired[int]
-    ubuntu_64_core: NotRequired[int]
-    windows_4_core: NotRequired[int]
-    windows_8_core: NotRequired[int]
-    windows_16_core: NotRequired[int]
-    windows_32_core: NotRequired[int]
-    windows_64_core: NotRequired[int]
-    macos_12_core: NotRequired[int]
-    total: NotRequired[int]
+    server_id: NotRequired[str]
+    hostname: NotRequired[str]
+    last_sync: NotRequired[GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType]
+
+
+class GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType(TypedDict):
+    """GetLicenseSyncStatusPropServerInstancesItemsPropLastSync"""
+
+    date: NotRequired[str]
+    status: NotRequired[str]
+    error: NotRequired[str]
 
 
 __all__ = (
-    "ActionsBillingUsageType",
-    "ActionsBillingUsagePropMinutesUsedBreakdownType",
+    "GetLicenseSyncStatusType",
+    "GetLicenseSyncStatusPropServerInstancesItemsType",
+    "GetLicenseSyncStatusPropServerInstancesItemsPropLastSyncType",
 )

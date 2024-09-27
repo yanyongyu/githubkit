@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -18,25 +17,48 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0001 import SimpleUser
-from .group_0311 import TimelineCrossReferencedEventPropSource
+from .group_0002 import SimpleUser
+from .group_0008 import Integration
 
 
-class TimelineCrossReferencedEvent(GitHubModel):
-    """Timeline Cross Referenced Event
+class ConvertedNoteToIssueIssueEvent(GitHubModel):
+    """Converted Note to Issue Issue Event
 
-    Timeline Cross Referenced Event
+    Converted Note to Issue Issue Event
     """
 
-    event: Literal["cross-referenced"] = Field()
-    actor: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["converted_note_to_issue"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[Integration, None] = Field(
+        title="GitHub app",
+        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
     )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    source: TimelineCrossReferencedEventPropSource = Field()
+    project_card: Missing[ConvertedNoteToIssueIssueEventPropProjectCard] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(TimelineCrossReferencedEvent)
+class ConvertedNoteToIssueIssueEventPropProjectCard(GitHubModel):
+    """ConvertedNoteToIssueIssueEventPropProjectCard"""
 
-__all__ = ("TimelineCrossReferencedEvent",)
+    id: int = Field()
+    url: str = Field()
+    project_id: int = Field()
+    project_url: str = Field()
+    column_name: str = Field()
+    previous_column_name: Missing[str] = Field(default=UNSET)
+
+
+model_rebuild(ConvertedNoteToIssueIssueEvent)
+model_rebuild(ConvertedNoteToIssueIssueEventPropProjectCard)
+
+__all__ = (
+    "ConvertedNoteToIssueIssueEvent",
+    "ConvertedNoteToIssueIssueEventPropProjectCard",
+)

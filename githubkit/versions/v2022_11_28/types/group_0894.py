@@ -10,16 +10,16 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
+
+from .group_0169 import ActionsVariableType
 
 
-class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType(TypedDict):
-    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+class ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type(TypedDict):
+    """ReposOwnerRepoActionsOrganizationVariablesGetResponse200"""
 
-    name: str
-    runner_group_id: int
-    labels: List[str]
-    work_folder: NotRequired[str]
+    total_count: int
+    variables: List[ActionsVariableType]
 
 
-__all__ = ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType",)
+__all__ = ("ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type",)

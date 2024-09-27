@@ -9,27 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0140 import RepositoryRuleUpdatePropParameters
+from .group_0130 import RepositoryRulesetConditionsPropRefName
+from .group_0136 import (
+    RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty,
+)
 
 
-class RepositoryRuleUpdate(GitHubModel):
-    """update
+class OrgRulesetConditionsOneof2(GitHubModel):
+    """repository_property_and_ref_name
 
-    Only allow users with bypass permission to update matching refs.
+    Conditions to target repositories by property and refs by name
     """
 
-    type: Literal["update"] = Field()
-    parameters: Missing[RepositoryRuleUpdatePropParameters] = Field(default=UNSET)
+    ref_name: Missing[RepositoryRulesetConditionsPropRefName] = Field(default=UNSET)
+    repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty = Field()
 
 
-model_rebuild(RepositoryRuleUpdate)
+model_rebuild(OrgRulesetConditionsOneof2)
 
-__all__ = ("RepositoryRuleUpdate",)
+__all__ = ("OrgRulesetConditionsOneof2",)
