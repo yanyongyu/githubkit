@@ -400,6 +400,8 @@ github = GitHub(
 )
 ```
 
+The `base_url` option is used to set the base URL of the GitHub API. If you are using GitHub Enterprise Server, you need to include the `/api/v3` path in the base URL.
+
 The `accept_format` and `previews` are used to set the default `Accept` header, you can find more details in [GitHub API docs](https://docs.github.com/en/rest/overview/media-types).
 
 The `http_cache` option enables the http caching feature powered by [Hishel](https://hishel.com/) for HTTPX. GitHub API limits the number of requests that you can make within a specific amount of time. This feature is useful to reduce the number of requests to GitHub API and avoid hitting the rate limit.
