@@ -907,7 +907,7 @@ def mock_request(
     url: URLTypes,
     *,
     response_model: Union[Type[Any], UnsetType] = UNSET,
-    **kwargs: Any,  # other request parameters including headers, data, etc.
+    **kwargs: Any,  # other request parameters including headers, json, etc.
 ) -> Response[Any]:
     # When the request is made, return a fake response
     if method == "GET" and url == "/repos/owner/repo":
