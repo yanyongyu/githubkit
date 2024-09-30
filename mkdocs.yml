@@ -1,0 +1,104 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+
+site_name: GitHubKit Documentation
+site_url: https://yanyongyu.github.io/githubkit
+
+repo_name: yanyongyu/githubkit
+repo_url: https://github.com/yanyongyu/githubkit
+edit_uri: edit/master/docs/
+
+copyright: Copyright &copy; 2022 - 2024 GitHubKit Developers
+
+theme:
+  name: material
+  language: en
+
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    # - navigation.sections
+    # - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    # - content.action.edit
+    # - content.action.view
+
+  icon:
+    edit: material/pencil
+    view: material/eye
+
+  palette:
+    - media: "(prefers-color-scheme)"
+      primary: black
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to Light Mode
+
+    - scheme: default
+      media: "(prefers-color-scheme: light)"
+      primary: black
+      toggle:
+        icon: material/brightness-7
+        name: Switch to Dark Mode
+
+    - scheme: slate
+      media: "(prefers-color-scheme: dark)"
+      primary: black
+      toggle:
+        icon: material/brightness-4
+        name: Switch to System Preference
+
+extra_css:
+  - css/custom.css
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yanyongyu/githubkit
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/githubkit
+
+plugins:
+  - search
+  - git-revision-date-localized
+  - git-authors
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - tables
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.details
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.smartsymbols
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.magiclink:
+      repo_url_shortener: true
+      repo_url_shorthand: true
+      social_url_shorthand: true
+      user: yanyongyu
+      repo: githubkit
+
+nav:
+  - Home:
+      - Introduction: index.md
+      - Installation: installation.md
+  - Quick Start: quickstart.md
