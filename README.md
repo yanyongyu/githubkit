@@ -872,6 +872,62 @@ refresh_token_expire_time = auth.refresh_token_expire_time
 user_github = github.with_auth(auth)
 ```
 
+## Unit Testing
+
+If you are using githubkit in your business logic, you may want to mock the github API in your unit tests. You can custom the response by mocking the `request`/`arequest` method of the `GitHub` class. Here is an example of how to mock githubkit's API calls:
+
+```python
+import json
+from pathlib import Path
+from typing import Any, Type, Union
+
+import httpx
+import pytest
+
+from githubkit import GitHub
+from githubkit.utils import UNSET
+from githubkit.response import Response
+from githubkit.typing import URLTypes, UnsetType
+from githubkit.versions.latest.models import FullRepository
+
+
+FAKE_RESPONSE = json.loads(Path("fake_response.json").read_text())
+
+
+# Example function you want to test, which calls the GitHub API
+def target_sync_func() -> FullRepository:
+    github = GitHub("xxxxx")
+    resp = github.rest.repos.get("owner", "repo")
+    return resp.parsed_data
+
+
+def mock_request(
+    g: GitHub,
+    method: str,
+    url: URLTypes,
+    *,
+    response_model: Union[Type[Any], UnsetType] = UNSET,
+    **kwargs: Any,  # other request parameters including headers, data, etc.
+) -> Response[Any]:
+    # When the request is made, return a fake response
+    if method == "GET" and url == "/repos/owner/repo":
+        return Response[T](
+            httpx.Response(status_code=200, json=FAKE_RESPONSE),
+            Any if response_model is UNSET else response_model,
+        )
+    raise RuntimeError(f"Unexpected request: {method} {url}")
+
+
+# Test the target function
+def test_sync_mock():
+    with pytest.MonkeyPatch.context() as m:
+        # Patch the request method with the mock
+        m.setattr(GitHub, "request", mock_request)
+
+        repo = target_sync_func()
+        assert isinstance(repo, FullRepository)
+```
+
 ## Development
 
 Open in Codespaces (Dev Container):
