@@ -1,0 +1,35 @@
+name: Docs CI/CD
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Poetry
+        uses: ./.github/actions/setup-poetry
+
+      - name: Configure Building
+        id: config
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          echo "CACHE_ID=$(date --utc '+%V')" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v4
+        with:
+          key: mkdocs-material-${{ steps.config.outputs.CACHE_ID }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+
+      - name: Build and Deploy Docs
+        run: |
+          poetry run mkdocs gh-deploy --force
