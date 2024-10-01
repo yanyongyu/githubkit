@@ -40,3 +40,25 @@ _✨ Always up to date, like octokit ✨_
 <!-- markdownlint-restore -->
 
 </div>
+
+GitHubKit aims to be an easy-to-use, fully typed, and always up-to-date GitHub SDK for Python. It is inspired by [octokit](https://github.com/octokit).
+
+GitHubKit provides several features including:
+
+- 👤 Multiple authentication ways and OAuth flow support
+- 🌐 Calling REST API and GraphQL easily
+- 🏷️ REST API versioning, including GHEC
+- ↻ Built-in pagination support
+- 🤓 Optional data validation with [pydantic](https://docs.pydantic.dev/latest/), for both Webhook events and REST API responses
+- 🚨 Built-in http cache (powered by [Hishel](https://hishel.com/) for HTTPX) and auto retry
+- 📦 Fully typed APIs
+
+## Version Changes
+
+GitHubKit is currently not stable and may have breaking changes in the future. GitHubKit uses the **minor** version number for breaking changes and the **patch** version number for bug fixes or enhancements.
+
+Note that GitHubKit uses [GitHub's official openapi schema](https://github.com/github/rest-api-description) to generate apis and models. This aims to keep the APIs and models up-to-date. You may occasionally encounter **breaking changes** like model names or model field types changing when upgrading githubkit. This is due to **upstream github schema changes** and githubkit can not control this.
+
+!!! warning
+
+    githubkit recommends using a python dependency manager (like poetry / pdm / uv) to lock the version of githubkit to avoid unexpected changes.
