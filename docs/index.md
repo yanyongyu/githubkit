@@ -2,7 +2,7 @@
 
 # GitHubKit {: .hidden }
 
-<div align="center" markdown="1">
+<div align="center" markdown>
 
 [![githubkit](https://socialify.git.ci/yanyongyu/githubkit/image?description=1&descriptionEditable=%E2%9C%A8%20GitHub%20SDK%20for%20Python%20%E2%9C%A8&font=Bitter&language=1&pattern=Circuit%20Board&theme=Light)](https://github.com/yanyongyu/githubkit)
 
@@ -45,13 +45,13 @@ GitHubKit aims to be an easy-to-use, fully typed, and always up-to-date GitHub S
 
 GitHubKit provides several features including:
 
-- 👤 Multiple authentication ways and OAuth flow support
-- 🌐 Calling REST API and GraphQL easily
-- 🏷️ REST API versioning, including GHEC
-- ↻ Built-in pagination support
-- 🤓 Optional data validation with [pydantic](https://docs.pydantic.dev/latest/), for both Webhook events and REST API responses
-- 🚨 Built-in http cache (powered by [Hishel](https://hishel.com/) for HTTPX) and auto retry
-- 📦 Fully typed APIs
+- :material-account-key: Multiple authentication ways and OAuth flow support
+- :material-api: Calling REST API and GraphQL easily
+- :material-tag-multiple: REST API versioning, including GHEC
+- :material-page-next: Built-in pagination support
+- :material-database-check: Optional data validation with [pydantic](https://docs.pydantic.dev/latest/), for both Webhook events and REST API responses
+- :material-cached: Built-in http cache (powered by [Hishel](https://hishel.com/) for HTTPX) and auto retry
+- :material-check-circle: Fully typed APIs
 
 ## Version Changes
 

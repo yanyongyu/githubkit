@@ -21,6 +21,7 @@ theme:
     - navigation.tabs.sticky
     # - navigation.sections
     # - navigation.expand
+    - navigation.indexes
     - navigation.top
     - navigation.footer
     - toc.follow
@@ -82,6 +83,9 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
   - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:
       use_pygments: true
   - pymdownx.superfences
@@ -104,4 +108,11 @@ nav:
   - Home:
       - Introduction: index.md
       - Installation: installation.md
-  - Quick Start: quickstart.md
+  - Quick Start:
+      - quickstart/index.md
+      - Call API with PAT: quickstart/call-api-with-pat.md
+      - OAuth APP Web Flow: quickstart/oauth-web-flow.md
+      - OAuth APP Device Flow: quickstart/oauth-device-flow.md
+      - GitHub APP: quickstart/github-app.md
+  - Usage:
+      - Authentication: usage/authentication.md
