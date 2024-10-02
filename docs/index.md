@@ -62,3 +62,7 @@ Note that GitHubKit uses [GitHub's official openapi schema](https://github.com/g
 !!! warning
 
     githubkit recommends using a python dependency manager (like poetry / pdm / uv) to lock the version of githubkit to avoid unexpected changes.
+
+## Reporting Issues
+
+If you encounter any issues (including schema errors), please report them on the [GitHub issue tracker](https://github.com/yanyongyu/githubkit/issues).

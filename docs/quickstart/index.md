@@ -2,7 +2,7 @@
 
 # Quick Start
 
-Here are some common use cases to help you get started quickly. For more detailed usage, please refer to the [Usage](./usage/authentication.md) section.
+Here are some common use cases to help you get started quickly. For more detailed usage, please refer to the [Usage](../usage/authentication.md) section.
 
 !!! note
 

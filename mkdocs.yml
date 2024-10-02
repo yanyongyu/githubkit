@@ -108,6 +108,7 @@ nav:
   - Home:
       - Introduction: index.md
       - Installation: installation.md
+      - Contributing: contributing.md
   - Quick Start:
       - quickstart/index.md
       - Call API with PAT: quickstart/call-api-with-pat.md
