@@ -67,4 +67,6 @@ Note that githubkit uses [GitHub's official openapi schema](https://github.com/g
 
 ## Reporting Issues
 
-If you encounter any issues (including schema errors), please report them on the [GitHub issue tracker](https://github.com/yanyongyu/githubkit/issues).
+If you encounter any issues or have some questions, please report them on the [GitHub issue tracker](https://github.com/yanyongyu/githubkit/issues).
+
+If you encounter any schema errors, please provide the reproducible code and the raw response data when reporting the issue. Optionally, you can also report the schema error to upstream [GitHub's official openapi schema](https://github.com/github/rest-api-description) repository.
