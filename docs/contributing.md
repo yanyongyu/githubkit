@@ -1,6 +1,6 @@
 # Contributing
 
-We welcome contributions to the project. Thank you in advance for your contribution to GitHubKit!
+We welcome contributions to the project. Thank you in advance for your contribution to githubkit!
 
 ## Development Environment
 

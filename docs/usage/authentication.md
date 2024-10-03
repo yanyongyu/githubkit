@@ -1,6 +1,6 @@
 # Authentication
 
-GitHubKit supports multiple authentication strategies to access the GitHub API. You can also switch between them easily when doing auth flow.
+githubkit supports multiple authentication strategies to access the GitHub API. You can also switch between them easily when doing auth flow.
 
 ## Without Authentication
 
@@ -140,7 +140,7 @@ This will update the access token and refresh token inplace. You can now store t
 
 ## OAuth Web Flow Authentication
 
-GitHub OAuth web flow allows you to exchange the user access token with the web flow code. GitHubKit has built-in support for OAuth web flow token exchanging. See [GitHub Docs - Using the web application flow](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app#using-the-web-application-flow-to-generate-a-user-access-token) for more information.
+GitHub OAuth web flow allows you to exchange the user access token with the web flow code. githubkit has built-in support for OAuth web flow token exchanging. See [GitHub Docs - Using the web application flow](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app#using-the-web-application-flow-to-generate-a-user-access-token) for more information.
 
 ```python
 from githubkit import GitHub, OAuthWebAuthStrategy
@@ -176,9 +176,9 @@ See [Switch between AuthStrategy](#switch-between-authstrategy) for more detail 
 
 ## OAuth Device Flow Authentication
 
-OAuth device flow allows you to authenticate as a user without a web browser (e.g., cli tools, desktop apps). GitHubKit has built-in support for OAuth device flow. See [GitHub Docs - Using the device flow](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app#using-the-device-flow-to-generate-a-user-access-token) for more information.
+OAuth device flow allows you to authenticate as a user without a web browser (e.g., cli tools, desktop apps). githubkit has built-in support for OAuth device flow. See [GitHub Docs - Using the device flow](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-a-user-access-token-for-a-github-app#using-the-device-flow-to-generate-a-user-access-token) for more information.
 
-Before you start the device flow, you need to create a callback function to display the user code to the user. The callback function will be called when the user code is generated, and GitHubKit will poll the server until the user successfully authenticated or code expired.
+Before you start the device flow, you need to create a callback function to display the user code to the user. The callback function will be called when the user code is generated, and githubkit will poll the server until the user successfully authenticated or code expired.
 
 ```python
 from githubkit import GitHub, OAuthDeviceAuthStrategy
@@ -218,7 +218,7 @@ refresh_token = auth.refresh_token
 
 ## GitHub Action Authentication
 
-GitHubKit provides a built-in auth strategy for GitHub Actions. You can use the `ActionAuthStrategy` to automatically authenticate to the GitHub API.
+githubkit provides a built-in auth strategy for GitHub Actions. You can use the `ActionAuthStrategy` to automatically authenticate to the GitHub API.
 
 ```python
 from githubkit import GitHub, ActionAuthStrategy

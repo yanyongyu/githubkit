@@ -1,6 +1,6 @@
 <!-- markdownlint-disable MD033 MD041 -->
 
-# GitHubKit {: .hidden }
+# githubkit {: .hidden }
 
 <div align="center" markdown>
 
@@ -41,9 +41,9 @@ _✨ Always up to date, like octokit ✨_
 
 </div>
 
-GitHubKit aims to be an easy-to-use, fully typed, and always up-to-date GitHub SDK for Python. It is inspired by [octokit](https://github.com/octokit).
+githubkit aims to be an easy-to-use, fully typed, and always up-to-date GitHub SDK for Python. It is inspired by [octokit](https://github.com/octokit).
 
-GitHubKit provides several features including:
+githubkit provides several features including:
 
 - :material-account-key: Multiple authentication ways and OAuth flow support
 - :material-api: Calling REST API and GraphQL easily
@@ -55,9 +55,9 @@ GitHubKit provides several features including:
 
 ## Version Changes
 
-GitHubKit is currently not stable and may have breaking changes in the future. GitHubKit uses the **minor** version number for breaking changes and the **patch** version number for bug fixes or enhancements.
+githubkit is currently not stable and may have breaking changes in the future. githubkit uses the **minor** version number for breaking changes and the **patch** version number for bug fixes or enhancements.
 
-Note that GitHubKit uses [GitHub's official openapi schema](https://github.com/github/rest-api-description) to generate apis and models. This aims to keep the APIs and models up-to-date. You may occasionally encounter **breaking changes** like model names or model field types changing when upgrading githubkit. This is due to **upstream github schema changes** and githubkit can not control this.
+Note that githubkit uses [GitHub's official openapi schema](https://github.com/github/rest-api-description) to generate apis and models. This aims to keep the APIs and models up-to-date. You may occasionally encounter **breaking changes** like model names or model field types changing when upgrading githubkit. This is due to **upstream github schema changes** and githubkit can not control this.
 
 !!! warning
 
