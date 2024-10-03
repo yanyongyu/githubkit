@@ -16,21 +16,17 @@ github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
 
 # redirect user to github oauth page and get the code from callback
 
-# one time usage
-user_github = github.with_auth(github.auth.as_web_user("<code>"))
+user_github = github.with_auth(github.auth.as_web_user("<code>"))  # (1)!
 
-# or, store the user token in a database for later use
-auth: OAuthTokenAuthStrategy = github.auth.as_web_user("<code>").exchange_token(github)
-# store the user token to database
+# === or ===
+auth: OAuthTokenAuthStrategy = github.auth.as_web_user("<code>").exchange_token(
+    github
+)  # (2)!
 access_token = auth.token
 
-# restore the user token from database
-
 user_github = github.with_auth(
-    OAuthTokenAuthStrategy(
-        "<client_id>", "<client_secret>", token=access_token
-    )
-)
+    OAuthTokenAuthStrategy("<client_id>", "<client_secret>", token=access_token)
+)  # (3)!
 
 # now you can act as the user
 resp = user_github.rest.users.get_authenticated()
@@ -40,6 +36,10 @@ user: PublicUser | PrivateUser = resp.parsed_data
 username = user.login
 user_id = user.id
 ```
+
+1. If you just want to use the user token once, simply switch to OAuth Web Auth Strategy.
+2. exchange the user token manually and store it in a database.
+3. restore the user token from database
 
 If you are developing a GitHub APP with user-to-server token expiration:
 
@@ -51,22 +51,18 @@ github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
 
 # redirect user to github oauth page and get the code from callback
 
-# one time usage
-user_github = github.with_auth(github.auth.as_web_user("<code>"))
+user_github = github.with_auth(github.auth.as_web_user("<code>"))  # (1)!
 
-# or, store the user refresh token in a database for later use
-auth: OAuthTokenAuthStrategy = github.auth.as_web_user("<code>").exchange_token(github)
+# === or ===
+auth: OAuthTokenAuthStrategy = github.auth.as_web_user("<code>").exchange_token(
+    github
+)  # (2)!
 refresh_token = auth.refresh_token
 
-# restore the user refresh token from database
-
-# you can use the refresh_token to generate a new token
 auth = OAuthTokenAuthStrategy(
     "<client_id>", "<client_secret>", refresh_token=refresh_token
-)
-# refresh the token manually if you want to store the new refresh token
-# otherwise, the token will be refreshed automatically when you make a request
-auth.refresh(github)
+)  # (3)!
+auth.refresh(github)  # (4)!
 refresh_token = auth.refresh_token
 
 user_github = github.with_auth(auth)
@@ -79,6 +75,11 @@ user: PublicUser | PrivateUser = resp.parsed_data
 username = user.login
 user_id = user.id
 ```
+
+1. If you just want to use the user token once, simply switch to OAuth Web Auth Strategy.
+2. exchange the user token manually and store it in a database.
+3. restore the user refresh token from database and generate a new token.
+4. refresh the token manually and store the new one. otherwise, the token will be refreshed automatically when you make a request.
 
 ## Async Example
 
@@ -92,21 +93,17 @@ github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
 
 # redirect user to github oauth page and get the code from callback
 
-# one time usage
-user_github = github.with_auth(github.auth.as_web_user("<code>"))
+user_github = github.with_auth(github.auth.as_web_user("<code>"))  # (1)!
 
-# or, store the user token in a database for later use
-auth: OAuthTokenAuthStrategy = await github.auth.as_web_user("<code>").async_exchange_token(github)
-# store the user token to database
+# === or ===
+auth: OAuthTokenAuthStrategy = await github.auth.as_web_user(
+    "<code>"
+).async_exchange_token(github)  # (2)!
 access_token = auth.token
 
-# restore the user token from database
-
 user_github = github.with_auth(
-    OAuthTokenAuthStrategy(
-        "<client_id>", "<client_secret>", token=access_token
-    )
-)
+    OAuthTokenAuthStrategy("<client_id>", "<client_secret>", token=access_token)
+)  # (3)!
 
 # now you can act as the user
 resp = await user_github.rest.users.async_get_authenticated()
@@ -116,6 +113,10 @@ user: PublicUser | PrivateUser = resp.parsed_data
 username = user.login
 user_id = user.id
 ```
+
+1. If you just want to use the user token once, simply switch to OAuth Web Auth Strategy.
+2. exchange the user token manually and store it in a database.
+3. restore the user token from database
 
 If you are developing a GitHub APP with user-to-server token expiration:
 
@@ -127,22 +128,18 @@ github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
 
 # redirect user to github oauth page and get the code from callback
 
-# one time usage
-user_github = github.with_auth(github.auth.as_web_user("<code>"))
+user_github = github.with_auth(github.auth.as_web_user("<code>"))  # (1)!
 
-# or, store the user refresh token in a database for later use
-auth: OAuthTokenAuthStrategy = await github.auth.as_web_user("<code>").async_exchange_token(github)
+# === or ===
+auth: OAuthTokenAuthStrategy = await github.auth.as_web_user(
+    "<code>"
+).async_exchange_token(github)  # (2)!
 refresh_token = auth.refresh_token
 
-# restore the user refresh token from database
-
-# you can use the refresh_token to generate a new token
 auth = OAuthTokenAuthStrategy(
     "<client_id>", "<client_secret>", refresh_token=refresh_token
-)
-# refresh the token manually if you want to store the new refresh token
-# otherwise, the token will be refreshed automatically when you make a request
-await auth.async_refresh(github)
+)  # (3)!
+await auth.async_refresh(github)  # (4)!
 refresh_token = auth.refresh_token
 
 user_github = github.with_auth(auth)
@@ -155,3 +152,8 @@ user: PublicUser | PrivateUser = resp.parsed_data
 username = user.login
 user_id = user.id
 ```
+
+1. If you just want to use the user token once, simply switch to OAuth Web Auth Strategy.
+2. exchange the user token manually and store it in a database.
+3. restore the user refresh token from database and generate a new token.
+4. refresh the token manually and store the new one. otherwise, the token will be refreshed automatically when you make a request.
