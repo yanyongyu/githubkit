@@ -69,4 +69,4 @@ The `http_cache` option enables the http caching feature powered by [Hishel](htt
 
 ### `auto_retry`
 
-The `auto_retry` option enables request retrying when rate limit exceeded and server error encountered. See [Auto Retry](#auto-retry) for more infomation.
+The `auto_retry` option enables request retrying when rate limit exceeded and server error encountered. See [Auto Retry](./auto-retry.md) for more infomation.

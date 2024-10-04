@@ -130,6 +130,8 @@ nav:
       - Configuration: usage/configuration.md
       - REST API: usage/rest-api.md
       - GraphQL: usage/graphql.md
+      - Auto Retry: usage/auto-retry.md
+      - Webhooks: usage/webhooks.md
 
 validation:
   omitted_files: warn

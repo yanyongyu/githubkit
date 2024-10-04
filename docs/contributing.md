@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD046 -->
+
 # Contributing
 
 We welcome contributions to the project. Thank you in advance for your contribution to githubkit!
@@ -29,13 +31,9 @@ done
 
 Generate latest models and apis from GitHub's OpenAPI schema:
 
-<!-- markdownlint-disable MD046 -->
-
 !!! warning
 
     This may use about **400M** memory and take a long time.
-
-<!-- markdownlint-enable MD046 -->
 
 Please make sure you have activated the virtual environment.
 
