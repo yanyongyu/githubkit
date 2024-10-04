@@ -69,7 +69,9 @@ extra:
 
 plugins:
   - search
-  - git-revision-date-localized
+  - git-revision-date-localized:
+      enable_creation_date: true
+      fallback_to_build_date: true
   - git-committers:
       repository: yanyongyu/githubkit
       branch: master
