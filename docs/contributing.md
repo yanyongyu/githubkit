@@ -41,6 +41,14 @@ Please make sure you have activated the virtual environment.
 ./scripts/run-codegen.sh
 ```
 
+### Patch Schema
+
+If you encounter an schema error, you can patch the schema by modifying the `pyproject.toml` file.
+
+In the `[tool.codegen.overrides.schema_overrides]` section, you can modify the schema using json pointer. The value will override the original schema. Specially, if the value is `<unset>`, the original one will be removed.
+
+Please add a comment to explain the reason for the patch if you want to submit a PR.
+
 ## Testing
 
 Run tests in dev env:

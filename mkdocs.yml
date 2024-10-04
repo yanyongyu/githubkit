@@ -132,6 +132,8 @@ nav:
       - GraphQL: usage/graphql.md
       - Auto Retry: usage/auto-retry.md
       - Webhooks: usage/webhooks.md
+      - Unit Test: usage/unit-test.md
+      - Error Handling: usage/error-handling.md
 
 validation:
   omitted_files: warn
