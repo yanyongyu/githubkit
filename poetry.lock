@@ -883,18 +883,20 @@ platformdirs = ">=2.2.0"
 pyyaml = ">=5.1"
 
 [[package]]
-name = "mkdocs-git-authors-plugin"
-version = "0.9.0"
-description = "Mkdocs plugin to display git authors of a page"
+name = "mkdocs-git-committers-plugin-2"
+version = "2.4.0"
+description = "An MkDocs plugin to create a list of contributors on the page. The git-committers plugin will seed the template context with a list of GitHub or GitLab committers and other useful GIT info such as last modified date"
 optional = false
-python-versions = ">=3.7"
+python-versions = "<4,>=3.8"
 files = [
-    {file = "mkdocs_git_authors_plugin-0.9.0-py3-none-any.whl", hash = "sha256:380730a05eeb947a7e84be05fdb1c5ae2a7bc70fd9f6eda941f187c87ae37052"},
-    {file = "mkdocs_git_authors_plugin-0.9.0.tar.gz", hash = "sha256:6161f63b87064481a48d9ad01c23e43c3e758930c3a9cc167fe482909ceb9eac"},
+    {file = "mkdocs_git_committers_plugin_2-2.4.0-py3-none-any.whl", hash = "sha256:4ca97c06e6b0f651db878afbdb1fec24c0eb841d9b8985161c2fb7837c87f0a3"},
+    {file = "mkdocs_git_committers_plugin_2-2.4.0.tar.gz", hash = "sha256:b4d21f64f9f135c8c1bbb353e374a61f48b195497e83ba695d96f3211e3d0518"},
 ]
 
 [package.dependencies]
-mkdocs = ">=1.0"
+gitpython = "*"
+mkdocs = ">=1.0.3"
+requests = "*"
 
 [[package]]
 name = "mkdocs-git-revision-date-localized-plugin"
@@ -1789,4 +1791,4 @@ jwt = ["PyJWT"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "ee12519c4eef3c7bc683d77e1404f1b50f57e603e1965e4f77637334e6b2644c"
+content-hash = "b4342b7b1b1c2fcae2ce7fa61ce0f466e145a7e57b28e1c9c0e0f8be8ec6f94f"

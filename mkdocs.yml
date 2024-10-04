@@ -70,7 +70,9 @@ extra:
 plugins:
   - search
   - git-revision-date-localized
-  - git-authors
+  - git-committers:
+      repository: yanyongyu/githubkit
+      branch: master
 
 markdown_extensions:
   - admonition
