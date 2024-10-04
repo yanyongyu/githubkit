@@ -48,6 +48,20 @@ _✨ Always up to date, like octokit ✨_
   <a href="https://docs.github.com/"><b>GitHub Docs</b></a>
 </p>
 
+githubkit aims to be an easy-to-use, fully typed, and always up-to-date GitHub SDK for Python. It is inspired by [octokit](https://github.com/octokit).
+
+githubkit provides several features including:
+
+- Support both sync and async calls
+- Multiple authentication ways and OAuth flow support
+- Calling REST API and GraphQL easily
+- REST API versioning, including GHEC
+- Built-in pagination support
+- Optional data validation with [pydantic](https://docs.pydantic.dev/latest/), for both Webhook events and REST API responses
+- Built-in http cache (powered by [Hishel](https://hishel.com/) for HTTPX) and auto retry
+- Lazy loading of APIs and models
+- Fully typed APIs
+
 ## Getting Started
 
 For more, see the [documentation](https://yanyongyu.github.io/githubkit).
