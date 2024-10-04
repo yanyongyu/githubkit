@@ -57,7 +57,7 @@ githubkit provides several features including:
 - Calling REST API and GraphQL easily
 - REST API versioning, including GHEC
 - Built-in pagination support
-- Optional data validation with [pydantic](https://docs.pydantic.dev/latest/), for both Webhook events and REST API responses
+- Optional data validation with [Pydantic](https://docs.pydantic.dev/latest/), for both webhook events and REST API responses
 - Built-in http cache (powered by [Hishel](https://hishel.com/) for HTTPX) and auto retry
 - Lazy loading of APIs and models
 - Fully typed APIs

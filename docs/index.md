@@ -50,7 +50,7 @@ githubkit provides several features including:
 - :material-api: Calling REST API and GraphQL easily
 - :material-tag-multiple: REST API versioning, including GHEC
 - :material-page-next: Built-in pagination support
-- :material-database-check: Optional data validation with [pydantic](https://docs.pydantic.dev/latest/), for both Webhook events and REST API responses
+- :material-database-check: Optional data validation with [Pydantic](https://docs.pydantic.dev/latest/), for both webhook events and REST API responses
 - :material-cached: Built-in http cache (powered by [Hishel](https://hishel.com/) for HTTPX) and auto retry
 - :material-lightning-bolt: Lazy loading of APIs and models
 - :material-check-circle: Fully typed APIs
