@@ -13,6 +13,9 @@ inputs:
     description: Do not install package in the environment
     required: false
     default: "false"
+  args:
+    description: Additional arguments to pass to the install command
+    required: false
 
 runs:
   using: "composite"
@@ -31,8 +34,8 @@ runs:
     - run: |
         cd ${{ inputs.env-dir }}
         if [ "${{ inputs.no-root }}" = "true" ]; then
-          poetry install --all-extras --no-root
+          poetry install --all-extras --no-root ${{ inputs.args }}
         else
-          poetry install --all-extras
+          poetry install --all-extras ${{ inputs.args }}
         fi
       shell: bash

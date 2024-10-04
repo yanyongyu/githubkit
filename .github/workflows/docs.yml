@@ -16,6 +16,12 @@ jobs:
       - name: Setup Poetry
         uses: ./.github/actions/setup-poetry
 
+      - name: Setup Python environment
+        uses: ./.github/actions/setup-python
+        with:
+          env-dir: .
+          args: "--with docs"
+
       - uses: actions/cache@v4
         with:
           key: mkdocs-material-${{ hashfiles('.cache/**') }}
