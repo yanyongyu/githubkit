@@ -1,0 +1,144 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+
+site_name: GitHubKit Documentation
+site_url: https://yanyongyu.github.io/githubkit
+
+repo_name: yanyongyu/githubkit
+repo_url: https://github.com/yanyongyu/githubkit
+edit_uri: edit/master/docs/
+
+copyright: Copyright &copy; 2022 - 2024 GitHubKit Developers
+
+theme:
+  name: material
+  language: en
+
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    # - navigation.sections
+    # - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    # - content.action.edit
+    # - content.action.view
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+
+  icon:
+    edit: material/pencil
+    view: material/eye
+
+  palette:
+    - media: "(prefers-color-scheme)"
+      primary: black
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to Light Mode
+
+    - scheme: default
+      media: "(prefers-color-scheme: light)"
+      primary: black
+      toggle:
+        icon: material/brightness-7
+        name: Switch to Dark Mode
+
+    - scheme: slate
+      media: "(prefers-color-scheme: dark)"
+      primary: black
+      toggle:
+        icon: material/brightness-4
+        name: Switch to System Preference
+
+extra_css:
+  - css/custom.css
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yanyongyu/githubkit
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/githubkit
+
+plugins:
+  - search
+  - git-revision-date-localized
+  - git-committers:
+      repository: yanyongyu/githubkit
+      branch: master
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - tables
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.smartsymbols
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.magiclink:
+      repo_url_shortener: true
+      repo_url_shorthand: true
+      social_url_shorthand: true
+      user: yanyongyu
+      repo: githubkit
+
+nav:
+  - Home:
+      - Introduction: index.md
+      - Installation: installation.md
+      - Contributing: contributing.md
+  - Quick Start:
+      - quickstart/index.md
+      - Call API with PAT: quickstart/call-api-with-pat.md
+      - OAuth APP Web Flow: quickstart/oauth-web-flow.md
+      - OAuth APP Device Flow: quickstart/oauth-device-flow.md
+      - GitHub APP: quickstart/github-app.md
+  - Usage:
+      - Authentication: usage/authentication.md
+      - Configuration: usage/configuration.md
+      - REST API: usage/rest-api.md
+      - GraphQL: usage/graphql.md
+      - Auto Retry: usage/auto-retry.md
+      - Webhooks: usage/webhooks.md
+      - Unit Test: usage/unit-test.md
+      - Error Handling: usage/error-handling.md
+
+validation:
+  omitted_files: warn
+  absolute_links: warn
+  unrecognized_links: warn
+  anchors: warn

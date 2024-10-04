@@ -1,0 +1,42 @@
+name: Docs CI/CD
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Poetry
+        uses: ./.github/actions/setup-poetry
+
+      - uses: actions/cache@v4
+        with:
+          key: mkdocs-material-${{ hashfiles('.cache/**') }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+
+      - name: Build Docs
+        run: |
+          poetry run mkdocs --version
+          poetry run mkdocs build --clean
+          chmod -c -R +rX "site/" | while read line; do
+            echo "::warning title=Invalid file permissions automatically fixed::$line"
+          done
+        env:
+          MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
