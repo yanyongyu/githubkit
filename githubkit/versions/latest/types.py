@@ -600,9 +600,6 @@ if TYPE_CHECKING:
         SimpleInstallationType as SimpleInstallationType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        SimpleUserWebhooksType as SimpleUserWebhooksType,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         TeamRoleAssignmentType as TeamRoleAssignmentType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -6396,6 +6393,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType as ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -6573,6 +6573,12 @@ if TYPE_CHECKING:
         PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType as PersonalAccessTokenRequestPropPermissionsAddedPropOrganizationType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -6732,6 +6738,9 @@ if TYPE_CHECKING:
         ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType as ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType,
     )
     from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -6835,6 +6844,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type,
@@ -6955,6 +6967,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType as PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganizationType,
+    )
+    from githubkit.versions.v2022_11_28.types import (
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
@@ -7293,9 +7308,6 @@ if TYPE_CHECKING:
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -7440,13 +7452,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType as ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterialType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogIdType,
@@ -7605,9 +7611,6 @@ if TYPE_CHECKING:
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
     )
     from githubkit.versions.v2022_11_28.types import (
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseType as WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBaseType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -7749,9 +7752,6 @@ if TYPE_CHECKING:
         ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType as ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType,
     )
     from githubkit.versions.v2022_11_28.types import (
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropRepositoryPropOwnerType as WebhookDeploymentReviewRequestedPropWorkflowRunPropRepositoryPropOwnerType,
     )
     from githubkit.versions.v2022_11_28.types import (
@@ -7867,9 +7867,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
-    )
-    from githubkit.versions.v2022_11_28.types import (
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
     )
     from githubkit.versions.v2022_11_28.types import (
         ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType as ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItemsType,
@@ -10278,7 +10275,6 @@ else:
             "RepositoryWebhooksPropTemplateRepositoryType",
             "RepositoryWebhooksPropTemplateRepositoryPropOwnerType",
             "RepositoryWebhooksPropTemplateRepositoryPropPermissionsType",
-            "SimpleUserWebhooksType",
             "WebhooksRuleType",
             "SimpleCheckSuiteType",
             "CheckRunWithSimpleCheckSuiteType",
@@ -12605,15 +12601,15 @@ else:
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type",
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type",
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type",
-            "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type",
-            "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type",
-            "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type",
+            "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType",
+            "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType",
+            "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType",
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type",
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type",
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type",
-            "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type",
-            "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type",
-            "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type",
+            "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType",
+            "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType",
+            "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType",
             "ReposOwnerRepoBranchesBranchRenamePostBodyType",
             "ReposOwnerRepoCheckRunsPostBodyPropOutputType",
             "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItemsType",

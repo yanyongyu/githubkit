@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,17 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0415 import ProjectsV2Item
+from .group_0002 import SimpleUser
+from .group_0414 import ProjectsV2Item
 from .group_0379 import SimpleInstallation
-from .group_0382 import SimpleUserWebhooks
+from .group_0413 import WebhooksProjectChanges
 from .group_0380 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ItemReordered(GitHubModel):
-    """Projects v2 Item Reordered Event"""
+class WebhookProjectsV2ItemRestored(GitHubModel):
+    """Projects v2 Item Restored Event"""
 
-    action: Literal["reordered"] = Field()
-    changes: WebhookProjectsV2ItemReorderedPropChanges = Field()
+    action: Literal["restored"] = Field()
+    changes: WebhooksProjectChanges = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -40,35 +41,9 @@ class WebhookProjectsV2ItemReordered(GitHubModel):
     projects_v2_item: ProjectsV2Item = Field(
         title="Projects v2 Item", description="An item belonging to a project"
     )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookProjectsV2ItemReorderedPropChanges(GitHubModel):
-    """WebhookProjectsV2ItemReorderedPropChanges"""
+model_rebuild(WebhookProjectsV2ItemRestored)
 
-    previous_projects_v2_item_node_id: Missing[
-        WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId
-    ] = Field(default=UNSET)
-
-
-class WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId(
-    GitHubModel
-):
-    """WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(WebhookProjectsV2ItemReordered)
-model_rebuild(WebhookProjectsV2ItemReorderedPropChanges)
-model_rebuild(WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId)
-
-__all__ = (
-    "WebhookProjectsV2ItemReordered",
-    "WebhookProjectsV2ItemReorderedPropChanges",
-    "WebhookProjectsV2ItemReorderedPropChangesPropPreviousProjectsV2ItemNodeId",
-)
+__all__ = ("WebhookProjectsV2ItemRestored",)

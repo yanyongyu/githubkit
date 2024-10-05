@@ -9,27 +9,41 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union, Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, ExtraGitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200(
-    GitHubModel
-):
-    """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteRespons
-    e200
+class GistsPostBody(GitHubModel):
+    """GistsPostBody"""
+
+    description: Missing[str] = Field(
+        default=UNSET, description="Description of the gist"
+    )
+    files: GistsPostBodyPropFiles = Field(
+        description="Names and content for the files that make up the gist"
+    )
+    public: Missing[Union[bool, Literal["true", "false"]]] = Field(default=UNSET)
+
+
+class GistsPostBodyPropFiles(ExtraGitHubModel):
+    """GistsPostBodyPropFiles
+
+    Names and content for the files that make up the gist
+
+    Examples:
+        {'hello.rb': {'content': 'puts "Hello, World!"'}}
     """
 
-    message: Missing[str] = Field(default=UNSET)
 
-
-model_rebuild(
-    EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200
-)
+model_rebuild(GistsPostBody)
+model_rebuild(GistsPostBodyPropFiles)
 
 __all__ = (
-    "EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteResponse200",
+    "GistsPostBody",
+    "GistsPostBodyPropFiles",
 )

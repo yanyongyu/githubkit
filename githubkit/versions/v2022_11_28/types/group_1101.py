@@ -13,8 +13,8 @@ from typing import List
 from typing_extensions import TypedDict
 
 
-class UserSocialAccountsPostBodyType(TypedDict):
-    """UserSocialAccountsPostBody
+class UserSocialAccountsDeleteBodyType(TypedDict):
+    """UserSocialAccountsDeleteBody
 
     Examples:
         {'account_urls': ['https://www.linkedin.com/company/github/',
@@ -24,4 +24,4 @@ class UserSocialAccountsPostBodyType(TypedDict):
     account_urls: List[str]
 
 
-__all__ = ("UserSocialAccountsPostBodyType",)
+__all__ = ("UserSocialAccountsDeleteBodyType",)

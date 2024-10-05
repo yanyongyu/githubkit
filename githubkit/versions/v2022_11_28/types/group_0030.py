@@ -26,7 +26,7 @@ class CopilotSeatDetailsType(TypedDict):
     """
 
     assignee: SimpleUserType
-    organization: NotRequired[Union[OrganizationSimpleType, None]]
+    organization: NotRequired[Union[None, OrganizationSimpleType]]
     assigning_team: NotRequired[Union[TeamType, EnterpriseTeamType, None]]
     pending_cancellation_date: NotRequired[Union[date, None]]
     last_activity_at: NotRequired[Union[datetime, None]]

@@ -12,22 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0002 import SimpleUserType
+from .group_0419 import WebhooksRuleType
 from .group_0415 import EnterpriseWebhooksType
 from .group_0416 import SimpleInstallationType
 from .group_0418 import RepositoryWebhooksType
-from .group_0419 import SimpleUserWebhooksType
 from .group_0417 import OrganizationSimpleWebhooksType
 
 
-class WebhookBranchProtectionConfigurationEnabledType(TypedDict):
-    """branch protection configuration enabled event"""
+class WebhookBranchProtectionRuleCreatedType(TypedDict):
+    """branch protection rule created event"""
 
-    action: Literal["enabled"]
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    rule: WebhooksRuleType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookBranchProtectionConfigurationEnabledType",)
+__all__ = ("WebhookBranchProtectionRuleCreatedType",)

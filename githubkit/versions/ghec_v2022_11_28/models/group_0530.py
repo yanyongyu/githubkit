@@ -17,18 +17,20 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0431 import Discussion
+from .group_0002 import SimpleUser
+from .group_0430 import Discussion
 from .group_0415 import EnterpriseWebhooks
 from .group_0416 import SimpleInstallation
 from .group_0418 import RepositoryWebhooks
-from .group_0419 import SimpleUserWebhooks
 from .group_0417 import OrganizationSimpleWebhooks
+from .group_0531 import WebhookDiscussionTransferredPropChanges
 
 
-class WebhookDiscussionReopened(GitHubModel):
-    """discussion reopened event"""
+class WebhookDiscussionTransferred(GitHubModel):
+    """discussion transferred event"""
 
-    action: Literal["reopened"] = Field()
+    action: Literal["transferred"] = Field()
+    changes: WebhookDiscussionTransferredPropChanges = Field()
     discussion: Discussion = Field(
         title="Discussion", description="A Discussion in a repository."
     )
@@ -51,12 +53,9 @@ class WebhookDiscussionReopened(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDiscussionReopened)
+model_rebuild(WebhookDiscussionTransferred)
 
-__all__ = ("WebhookDiscussionReopened",)
+__all__ = ("WebhookDiscussionTransferred",)

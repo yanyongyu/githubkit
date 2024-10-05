@@ -10,16 +10,13 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0051 import CopilotSeatDetailsType
+from typing_extensions import TypedDict
 
 
-class OrgsOrgCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """OrgsOrgCopilotBillingSeatsGetResponse200"""
+class OrgsOrgCopilotBillingSelectedTeamsPostBodyType(TypedDict):
+    """OrgsOrgCopilotBillingSelectedTeamsPostBody"""
 
-    total_seats: NotRequired[int]
-    seats: NotRequired[List[CopilotSeatDetailsType]]
+    selected_teams: List[str]
 
 
-__all__ = ("OrgsOrgCopilotBillingSeatsGetResponse200Type",)
+__all__ = ("OrgsOrgCopilotBillingSelectedTeamsPostBodyType",)

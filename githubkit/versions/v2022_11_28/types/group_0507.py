@@ -9,28 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0017 import InstallationType
+from .group_0002 import SimpleUserType
 from .group_0378 import EnterpriseWebhooksType
+from .group_0379 import SimpleInstallationType
 from .group_0381 import RepositoryWebhooksType
-from .group_0382 import SimpleUserWebhooksType
-from .group_0395 import WebhooksRepositoriesItemsType
 from .group_0380 import OrganizationSimpleWebhooksType
+from .group_0509 import WebhookIssueCommentCreatedPropIssueType
+from .group_0508 import WebhookIssueCommentCreatedPropCommentType
 
 
-class WebhookInstallationUnsuspendType(TypedDict):
-    """installation unsuspend event"""
+class WebhookIssueCommentCreatedType(TypedDict):
+    """issue_comment created event"""
 
-    action: Literal["unsuspend"]
+    action: Literal["created"]
+    comment: WebhookIssueCommentCreatedPropCommentType
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
+    installation: NotRequired[SimpleInstallationType]
+    issue: WebhookIssueCommentCreatedPropIssueType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[List[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
-    sender: SimpleUserWebhooksType
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookInstallationUnsuspendType",)
+__all__ = ("WebhookIssueCommentCreatedType",)

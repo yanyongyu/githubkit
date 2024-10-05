@@ -9,17 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0392 import DiscussionType
+from .group_0002 import SimpleUserType
+from .group_0391 import DiscussionType
+from .group_0390 import WebhooksAnswerType
 from .group_0381 import RepositoryWebhooksType
+from .group_0380 import OrganizationSimpleWebhooksType
 
 
-class WebhookDiscussionTransferredPropChangesType(TypedDict):
-    """WebhookDiscussionTransferredPropChanges"""
+class WebhookDiscussionUnansweredType(TypedDict):
+    """discussion unanswered event"""
 
-    new_discussion: DiscussionType
-    new_repository: RepositoryWebhooksType
+    action: Literal["unanswered"]
+    discussion: DiscussionType
+    old_answer: WebhooksAnswerType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookDiscussionTransferredPropChangesType",)
+__all__ = ("WebhookDiscussionUnansweredType",)

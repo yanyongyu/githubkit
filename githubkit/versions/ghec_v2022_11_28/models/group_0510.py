@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0425 import WebhooksDeployKey
+from .group_0002 import SimpleUser
+from .group_0424 import WebhooksDeployKey
 from .group_0415 import EnterpriseWebhooks
 from .group_0416 import SimpleInstallation
 from .group_0418 import RepositoryWebhooks
-from .group_0419 import SimpleUserWebhooks
 from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookDeployKeyCreated(GitHubModel):
-    """deploy_key created event"""
+class WebhookDeployKeyDeleted(GitHubModel):
+    """deploy_key deleted event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -51,12 +51,9 @@ class WebhookDeployKeyCreated(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookDeployKeyCreated)
+model_rebuild(WebhookDeployKeyDeleted)
 
-__all__ = ("WebhookDeployKeyCreated",)
+__all__ = ("WebhookDeployKeyDeleted",)

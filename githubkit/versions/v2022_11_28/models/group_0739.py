@@ -18,17 +18,17 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0041 import Issue
+from .group_0002 import SimpleUser
 from .group_0019 import Repository
 from .group_0379 import SimpleInstallation
 from .group_0381 import RepositoryWebhooks
-from .group_0382 import SimpleUserWebhooks
 from .group_0380 import OrganizationSimpleWebhooks
 
 
-class WebhookSubIssuesParentIssueAdded(GitHubModel):
-    """parent issue added event"""
+class WebhookSubIssuesParentIssueRemoved(GitHubModel):
+    """parent issue removed event"""
 
-    action: Literal["parent_issue_added"] = Field()
+    action: Literal["parent_issue_removed"] = Field()
     parent_issue_id: float = Field(description="The ID of the parent issue.")
     parent_issue: Issue = Field(
         title="Issue",
@@ -57,13 +57,11 @@ class WebhookSubIssuesParentIssueAdded(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUserWebhooks] = Field(
-        default=UNSET,
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-model_rebuild(WebhookSubIssuesParentIssueAdded)
+model_rebuild(WebhookSubIssuesParentIssueRemoved)
 
-__all__ = ("WebhookSubIssuesParentIssueAdded",)
+__all__ = ("WebhookSubIssuesParentIssueRemoved",)

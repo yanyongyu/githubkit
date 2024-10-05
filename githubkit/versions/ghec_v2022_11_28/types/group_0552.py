@@ -9,29 +9,86 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0415 import EnterpriseWebhooksType
-from .group_0416 import SimpleInstallationType
-from .group_0418 import RepositoryWebhooksType
-from .group_0419 import SimpleUserWebhooksType
-from .group_0417 import OrganizationSimpleWebhooksType
-from .group_0554 import WebhookIssueCommentCreatedPropIssueType
-from .group_0553 import WebhookIssueCommentCreatedPropCommentType
+from .group_0008 import IntegrationType
 
 
-class WebhookIssueCommentCreatedType(TypedDict):
-    """issue_comment created event"""
+class WebhookIssueCommentCreatedPropCommentType(TypedDict):
+    """issue comment
 
-    action: Literal["created"]
-    comment: WebhookIssueCommentCreatedPropCommentType
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
-    issue: WebhookIssueCommentCreatedPropIssueType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    The [comment](https://docs.github.com/enterprise-
+    cloud@latest//rest/issues/comments#get-an-issue-comment) itself.
+    """
+
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    body: str
+    created_at: datetime
+    html_url: str
+    id: int
+    issue_url: str
+    node_id: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    reactions: WebhookIssueCommentCreatedPropCommentPropReactionsType
+    updated_at: datetime
+    url: str
+    user: Union[WebhookIssueCommentCreatedPropCommentPropUserType, None]
 
 
-__all__ = ("WebhookIssueCommentCreatedType",)
+class WebhookIssueCommentCreatedPropCommentPropReactionsType(TypedDict):
+    """Reactions"""
+
+    plus_one: int
+    minus_one: int
+    confused: int
+    eyes: int
+    heart: int
+    hooray: int
+    laugh: int
+    rocket: int
+    total_count: int
+    url: str
+
+
+class WebhookIssueCommentCreatedPropCommentPropUserType(TypedDict):
+    """User"""
+
+    avatar_url: NotRequired[str]
+    deleted: NotRequired[bool]
+    email: NotRequired[Union[str, None]]
+    events_url: NotRequired[str]
+    followers_url: NotRequired[str]
+    following_url: NotRequired[str]
+    gists_url: NotRequired[str]
+    gravatar_id: NotRequired[str]
+    html_url: NotRequired[str]
+    id: int
+    login: str
+    name: NotRequired[str]
+    node_id: NotRequired[str]
+    organizations_url: NotRequired[str]
+    received_events_url: NotRequired[str]
+    repos_url: NotRequired[str]
+    site_admin: NotRequired[bool]
+    starred_url: NotRequired[str]
+    subscriptions_url: NotRequired[str]
+    type: NotRequired[Literal["Bot", "User", "Organization"]]
+    url: NotRequired[str]
+
+
+__all__ = (
+    "WebhookIssueCommentCreatedPropCommentType",
+    "WebhookIssueCommentCreatedPropCommentPropReactionsType",
+    "WebhookIssueCommentCreatedPropCommentPropUserType",
+)

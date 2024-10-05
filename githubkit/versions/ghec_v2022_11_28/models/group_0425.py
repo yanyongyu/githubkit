@@ -9,33 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksDeployKey(GitHubModel):
-    """WebhooksDeployKey
+class WebhooksWorkflow(GitHubModel):
+    """Workflow"""
 
-    The [`deploy key`](https://docs.github.com/enterprise-cloud@latest//rest/deploy-
-    keys/deploy-keys#get-a-deploy-key) resource.
-    """
-
-    added_by: Missing[Union[str, None]] = Field(default=UNSET)
-    created_at: str = Field()
+    badge_url: str = Field()
+    created_at: datetime = Field()
+    html_url: str = Field()
     id: int = Field()
-    key: str = Field()
-    last_used: Missing[Union[str, None]] = Field(default=UNSET)
-    read_only: bool = Field()
-    title: str = Field()
+    name: str = Field()
+    node_id: str = Field()
+    path: str = Field()
+    state: str = Field()
+    updated_at: datetime = Field()
     url: str = Field()
-    verified: bool = Field()
 
 
-model_rebuild(WebhooksDeployKey)
+model_rebuild(WebhooksWorkflow)
 
-__all__ = ("WebhooksDeployKey",)
+__all__ = ("WebhooksWorkflow",)

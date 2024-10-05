@@ -12,24 +12,24 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0002 import SimpleUserType
 from .group_0143 import RepositoryRulesetType
 from .group_0378 import EnterpriseWebhooksType
 from .group_0379 import SimpleInstallationType
 from .group_0381 import RepositoryWebhooksType
-from .group_0382 import SimpleUserWebhooksType
 from .group_0380 import OrganizationSimpleWebhooksType
 
 
-class WebhookRepositoryRulesetCreatedType(TypedDict):
-    """repository ruleset created event"""
+class WebhookRepositoryRulesetDeletedType(TypedDict):
+    """repository ruleset deleted event"""
 
-    action: Literal["created"]
+    action: Literal["deleted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
     repository_ruleset: RepositoryRulesetType
-    sender: SimpleUserWebhooksType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookRepositoryRulesetCreatedType",)
+__all__ = ("WebhookRepositoryRulesetDeletedType",)

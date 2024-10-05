@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0002 import SimpleUserType
 from .group_0378 import EnterpriseWebhooksType
 from .group_0379 import SimpleInstallationType
-from .group_0382 import SimpleUserWebhooksType
 from .group_0380 import OrganizationSimpleWebhooksType
-from .group_0409 import PersonalAccessTokenRequestType
+from .group_0408 import PersonalAccessTokenRequestType
 
 
-class WebhookPersonalAccessTokenRequestCreatedType(TypedDict):
-    """personal_access_token_request created event"""
+class WebhookPersonalAccessTokenRequestDeniedType(TypedDict):
+    """personal_access_token_request denied event"""
 
-    action: Literal["created"]
+    action: Literal["denied"]
     personal_access_token_request: PersonalAccessTokenRequestType
-    enterprise: NotRequired[EnterpriseWebhooksType]
     organization: OrganizationSimpleWebhooksType
-    sender: SimpleUserWebhooksType
-    installation: NotRequired[SimpleInstallationType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    sender: SimpleUserType
+    installation: SimpleInstallationType
 
 
-__all__ = ("WebhookPersonalAccessTokenRequestCreatedType",)
+__all__ = ("WebhookPersonalAccessTokenRequestDeniedType",)

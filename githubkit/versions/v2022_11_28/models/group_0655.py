@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0002 import SimpleUser
 from .group_0378 import EnterpriseWebhooks
 from .group_0379 import SimpleInstallation
 from .group_0381 import RepositoryWebhooks
-from .group_0382 import SimpleUserWebhooks
-from .group_0417 import PullRequestWebhook
+from .group_0416 import PullRequestWebhook
 from .group_0380 import OrganizationSimpleWebhooks
 
 
-class WebhookPullRequestOpened(GitHubModel):
-    """pull_request opened event"""
+class WebhookPullRequestReadyForReview(GitHubModel):
+    """pull_request ready_for_review event"""
 
-    action: Literal["opened"] = Field()
+    action: Literal["ready_for_review"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -50,12 +50,9 @@ class WebhookPullRequestOpened(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookPullRequestOpened)
+model_rebuild(WebhookPullRequestReadyForReview)
 
-__all__ = ("WebhookPullRequestOpened",)
+__all__ = ("WebhookPullRequestReadyForReview",)

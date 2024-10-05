@@ -17,17 +17,21 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0445 import MergeGroup
+from .group_0002 import SimpleUser
+from .group_0444 import MergeGroup
 from .group_0416 import SimpleInstallation
 from .group_0418 import RepositoryWebhooks
-from .group_0419 import SimpleUserWebhooks
 from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookMergeGroupChecksRequested(GitHubModel):
-    """WebhookMergeGroupChecksRequested"""
+class WebhookMergeGroupDestroyed(GitHubModel):
+    """WebhookMergeGroupDestroyed"""
 
-    action: Literal["checks_requested"] = Field()
+    action: Literal["destroyed"] = Field()
+    reason: Missing[Literal["merged", "invalidated", "dequeued"]] = Field(
+        default=UNSET,
+        description="Explains why the merge group is being destroyed. The group could have been merged, removed from the queue (dequeued), or invalidated by an earlier queue entry being dequeued (invalidated).",
+    )
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -47,13 +51,11 @@ class WebhookMergeGroupChecksRequested(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: Missing[SimpleUserWebhooks] = Field(
-        default=UNSET,
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-model_rebuild(WebhookMergeGroupChecksRequested)
+model_rebuild(WebhookMergeGroupDestroyed)
 
-__all__ = ("WebhookMergeGroupChecksRequested",)
+__all__ = ("WebhookMergeGroupDestroyed",)

@@ -13,14 +13,13 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoImportPutBodyType(TypedDict):
-    """ReposOwnerRepoImportPutBody"""
+class ReposOwnerRepoImportPatchBodyType(TypedDict):
+    """ReposOwnerRepoImportPatchBody"""
 
-    vcs_url: str
-    vcs: NotRequired[Literal["subversion", "git", "mercurial", "tfvc"]]
     vcs_username: NotRequired[str]
     vcs_password: NotRequired[str]
+    vcs: NotRequired[Literal["subversion", "tfvc", "git", "mercurial"]]
     tfvc_project: NotRequired[str]
 
 
-__all__ = ("ReposOwnerRepoImportPutBodyType",)
+__all__ = ("ReposOwnerRepoImportPatchBodyType",)

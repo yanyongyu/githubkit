@@ -10,9 +10,10 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
+from typing_extensions import Annotated
 from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
-from pydantic import BaseModel
+from pydantic import Field, BaseModel
 
 from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
@@ -215,18 +216,18 @@ if TYPE_CHECKING:
         ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type,
         ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType,
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
         ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType,
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType,
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType,
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType,
@@ -4094,12 +4095,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
-                List[str],
-            ]
-        ] = UNSET,
+        data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
     ) -> Response[List[Union[Integration, None]]]: ...
 
     @overload
@@ -4122,10 +4118,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
-                List[str],
-            ]
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Union[Integration, None]]]:
@@ -4136,7 +4129,7 @@ class ReposClient:
         from ..models import (
             Integration,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
@@ -4148,11 +4141,7 @@ class ReposClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0,
-                List[str],
-            ],
-            json,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4175,12 +4164,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
-                List[str],
-            ]
-        ] = UNSET,
+        data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
     ) -> Response[List[Union[Integration, None]]]: ...
 
     @overload
@@ -4203,10 +4187,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0Type,
-                List[str],
-            ]
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Union[Integration, None]]]:
@@ -4217,7 +4198,7 @@ class ReposClient:
         from ..models import (
             Integration,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
@@ -4229,11 +4210,7 @@ class ReposClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0,
-                List[str],
-            ],
-            json,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4256,12 +4233,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
-                List[str],
-            ]
-        ] = UNSET,
+        data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
     ) -> Response[List[Union[Integration, None]]]: ...
 
     @overload
@@ -4284,10 +4256,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
-                List[str],
-            ]
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Union[Integration, None]]]:
@@ -4298,7 +4267,7 @@ class ReposClient:
         from ..models import (
             Integration,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
@@ -4310,11 +4279,7 @@ class ReposClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
-                List[str],
-            ],
-            json,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4337,12 +4302,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
-                List[str],
-            ]
-        ] = UNSET,
+        data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
     ) -> Response[List[Union[Integration, None]]]: ...
 
     @overload
@@ -4365,10 +4325,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0Type,
-                List[str],
-            ]
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Union[Integration, None]]]:
@@ -4379,7 +4336,7 @@ class ReposClient:
         from ..models import (
             Integration,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
@@ -4391,11 +4348,7 @@ class ReposClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
-                List[str],
-            ],
-            json,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4418,12 +4371,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
-                List[str],
-            ]
-        ] = UNSET,
+        data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
     ) -> Response[List[Union[Integration, None]]]: ...
 
     @overload
@@ -4446,10 +4394,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
-                List[str],
-            ]
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Union[Integration, None]]]:
@@ -4460,7 +4405,7 @@ class ReposClient:
         from ..models import (
             Integration,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
@@ -4472,11 +4417,7 @@ class ReposClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0,
-                List[str],
-            ],
-            json,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4499,12 +4440,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
-                List[str],
-            ]
-        ] = UNSET,
+        data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
     ) -> Response[List[Union[Integration, None]]]: ...
 
     @overload
@@ -4527,10 +4463,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0Type,
-                List[str],
-            ]
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[List[Union[Integration, None]]]:
@@ -4541,7 +4474,7 @@ class ReposClient:
         from ..models import (
             Integration,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps"
@@ -4553,11 +4486,7 @@ class ReposClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0,
-                List[str],
-            ],
-            json,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -5178,12 +5107,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
-                List[str],
-            ]
-        ] = UNSET,
+        data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
     ) -> Response[List[SimpleUser]]: ...
 
     @overload
@@ -5206,21 +5130,18 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
-                List[str],
-            ]
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[List[SimpleUser]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-user-access-restrictions"""
 
-        from typing import List, Union
+        from typing import List
 
         from ..models import (
             SimpleUser,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
@@ -5232,11 +5153,7 @@ class ReposClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0,
-                List[str],
-            ],
-            json,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -5259,12 +5176,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
-                List[str],
-            ]
-        ] = UNSET,
+        data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
     ) -> Response[List[SimpleUser]]: ...
 
     @overload
@@ -5287,21 +5199,18 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0Type,
-                List[str],
-            ]
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[List[SimpleUser]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-user-access-restrictions"""
 
-        from typing import List, Union
+        from typing import List
 
         from ..models import (
             SimpleUser,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
@@ -5313,11 +5222,7 @@ class ReposClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0,
-                List[str],
-            ],
-            json,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -5340,12 +5245,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
-                List[str],
-            ]
-        ] = UNSET,
+        data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
     ) -> Response[List[SimpleUser]]: ...
 
     @overload
@@ -5368,21 +5268,18 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
-                List[str],
-            ]
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[List[SimpleUser]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#add-user-access-restrictions"""
 
-        from typing import List, Union
+        from typing import List
 
         from ..models import (
             SimpleUser,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
@@ -5394,11 +5291,7 @@ class ReposClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0,
-                List[str],
-            ],
-            json,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -5421,12 +5314,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
-                List[str],
-            ]
-        ] = UNSET,
+        data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
     ) -> Response[List[SimpleUser]]: ...
 
     @overload
@@ -5449,21 +5337,18 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0Type,
-                List[str],
-            ]
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[List[SimpleUser]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#add-user-access-restrictions"""
 
-        from typing import List, Union
+        from typing import List
 
         from ..models import (
             SimpleUser,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
@@ -5475,11 +5360,7 @@ class ReposClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0,
-                List[str],
-            ],
-            json,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -5502,12 +5383,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
-                List[str],
-            ]
-        ] = UNSET,
+        data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
     ) -> Response[List[SimpleUser]]: ...
 
     @overload
@@ -5530,21 +5406,18 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
-                List[str],
-            ]
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[List[SimpleUser]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#remove-user-access-restrictions"""
 
-        from typing import List, Union
+        from typing import List
 
         from ..models import (
             SimpleUser,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
@@ -5556,11 +5429,7 @@ class ReposClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
-                List[str],
-            ],
-            json,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -5583,12 +5452,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-        data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
-                List[str],
-            ]
-        ] = UNSET,
+        data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
     ) -> Response[List[SimpleUser]]: ...
 
     @overload
@@ -5611,21 +5475,18 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
         data: Missing[
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0Type,
-                List[str],
-            ]
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType
         ] = UNSET,
         **kwargs,
     ) -> Response[List[SimpleUser]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#remove-user-access-restrictions"""
 
-        from typing import List, Union
+        from typing import List
 
         from ..models import (
             SimpleUser,
             ValidationError,
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody,
         )
 
         url = f"/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users"
@@ -5637,11 +5498,7 @@ class ReposClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
-                List[str],
-            ],
-            json,
+            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody, json
         )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -7285,8 +7142,14 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[
-        Union[
-            List[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
+        Annotated[
+            Union[
+                List[ContentDirectoryItems],
+                ContentFile,
+                ContentSymlink,
+                ContentSubmodule,
+            ],
+            Field(discriminator="type"),
         ]
     ]:
         """See also: https://docs.github.com/rest/repos/contents#get-repository-content"""
@@ -7314,11 +7177,14 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=Union[
-                List[ContentDirectoryItems],
-                ContentFile,
-                ContentSymlink,
-                ContentSubmodule,
+            response_model=Annotated[
+                Union[
+                    List[ContentDirectoryItems],
+                    ContentFile,
+                    ContentSymlink,
+                    ContentSubmodule,
+                ],
+                Field(discriminator="type"),
             ],
             error_models={
                 "404": BasicError,
@@ -7335,8 +7201,14 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[
-        Union[
-            List[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
+        Annotated[
+            Union[
+                List[ContentDirectoryItems],
+                ContentFile,
+                ContentSymlink,
+                ContentSubmodule,
+            ],
+            Field(discriminator="type"),
         ]
     ]:
         """See also: https://docs.github.com/rest/repos/contents#get-repository-content"""
@@ -7364,11 +7236,14 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=Union[
-                List[ContentDirectoryItems],
-                ContentFile,
-                ContentSymlink,
-                ContentSubmodule,
+            response_model=Annotated[
+                Union[
+                    List[ContentDirectoryItems],
+                    ContentFile,
+                    ContentSymlink,
+                    ContentSubmodule,
+                ],
+                Field(discriminator="type"),
             ],
             error_models={
                 "404": BasicError,

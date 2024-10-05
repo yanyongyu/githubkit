@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0390 import WebhooksUser
+from .group_0002 import SimpleUser
+from .group_0389 import WebhooksUser
 from .group_0378 import EnterpriseWebhooks
 from .group_0379 import SimpleInstallation
 from .group_0381 import RepositoryWebhooks
-from .group_0382 import SimpleUserWebhooks
 from .group_0380 import OrganizationSimpleWebhooks
 
 
-class WebhookOrgBlockBlocked(GitHubModel):
-    """org_block blocked event"""
+class WebhookOrgBlockUnblocked(GitHubModel):
+    """org_block unblocked event"""
 
-    action: Literal["blocked"] = Field()
+    action: Literal["unblocked"] = Field()
     blocked_user: Union[WebhooksUser, None] = Field(title="User")
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -49,12 +49,9 @@ class WebhookOrgBlockBlocked(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookOrgBlockBlocked)
+model_rebuild(WebhookOrgBlockUnblocked)
 
-__all__ = ("WebhookOrgBlockBlocked",)
+__all__ = ("WebhookOrgBlockUnblocked",)

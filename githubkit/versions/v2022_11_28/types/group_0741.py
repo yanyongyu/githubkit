@@ -13,17 +13,17 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0041 import IssueType
+from .group_0002 import SimpleUserType
 from .group_0019 import RepositoryType
 from .group_0379 import SimpleInstallationType
 from .group_0381 import RepositoryWebhooksType
-from .group_0382 import SimpleUserWebhooksType
 from .group_0380 import OrganizationSimpleWebhooksType
 
 
-class WebhookSubIssuesSubIssueAddedType(TypedDict):
-    """sub-issue added event"""
+class WebhookSubIssuesSubIssueRemovedType(TypedDict):
+    """sub-issue removed event"""
 
-    action: Literal["sub_issue_added"]
+    action: Literal["sub_issue_removed"]
     sub_issue_id: float
     sub_issue: IssueType
     sub_issue_repo: RepositoryType
@@ -32,7 +32,7 @@ class WebhookSubIssuesSubIssueAddedType(TypedDict):
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: NotRequired[SimpleUserWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookSubIssuesSubIssueAddedType",)
+__all__ = ("WebhookSubIssuesSubIssueRemovedType",)

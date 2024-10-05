@@ -12,36 +12,26 @@ from __future__ import annotations
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0002 import SimpleUserType
+from .group_0017 import InstallationType
+from .group_0389 import WebhooksUserType
 from .group_0378 import EnterpriseWebhooksType
-from .group_0379 import SimpleInstallationType
 from .group_0381 import RepositoryWebhooksType
-from .group_0382 import SimpleUserWebhooksType
+from .group_0394 import WebhooksRepositoriesItemsType
 from .group_0380 import OrganizationSimpleWebhooksType
 
 
-class WebhookGollumType(TypedDict):
-    """gollum event"""
+class WebhookInstallationCreatedType(TypedDict):
+    """installation created event"""
 
+    action: Literal["created"]
     enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: NotRequired[SimpleInstallationType]
+    installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    pages: List[WebhookGollumPropPagesItemsType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    repositories: NotRequired[List[WebhooksRepositoriesItemsType]]
+    repository: NotRequired[RepositoryWebhooksType]
+    requester: NotRequired[Union[WebhooksUserType, None]]
+    sender: SimpleUserType
 
 
-class WebhookGollumPropPagesItemsType(TypedDict):
-    """WebhookGollumPropPagesItems"""
-
-    action: Literal["created", "edited"]
-    html_url: str
-    page_name: str
-    sha: str
-    summary: Union[str, None]
-    title: str
-
-
-__all__ = (
-    "WebhookGollumType",
-    "WebhookGollumPropPagesItemsType",
-)
+__all__ = ("WebhookInstallationCreatedType",)

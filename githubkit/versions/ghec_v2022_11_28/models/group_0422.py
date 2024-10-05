@@ -18,154 +18,58 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0421 import ExemptionResponse
+from .group_0008 import Integration
+from .group_0084 import MinimalRepository
+from .group_0195 import PullRequestMinimal
 
 
-class ExemptionRequest(GitHubModel):
-    """Exemption Request
+class SimpleCheckSuite(GitHubModel):
+    """SimpleCheckSuite
 
-    A request from a user to be exempted from a set of rules.
+    A suite of checks performed on the code of a given code change
     """
 
-    id: Missing[int] = Field(
-        default=UNSET, description="The ID of the exemption request."
-    )
-    number: Missing[int] = Field(
+    after: Missing[Union[str, None]] = Field(default=UNSET)
+    app: Missing[Union[Integration, None]] = Field(
         default=UNSET,
-        description="The number uniquely identifying the exemption request within it's repository.",
+        title="GitHub app",
+        description="GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.",
     )
-    repository_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the repository the exemption request is for.",
-    )
-    requester_id: Missing[int] = Field(
-        default=UNSET, description="The ID of the user who requested the exemption."
-    )
-    requester_login: Missing[str] = Field(
-        default=UNSET, description="The login of the user who requested the exemption."
-    )
-    request_type: Missing[Literal["push_ruleset_bypass", "secret_scanning"]] = Field(
-        default=UNSET, description="The type of request."
-    )
-    exemption_request_data: Missing[
-        Union[ExemptionRequestPushRulesetBypass, ExemptionRequestSecretScanning]
+    before: Missing[Union[str, None]] = Field(default=UNSET)
+    conclusion: Missing[
+        Union[
+            None,
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+        ]
     ] = Field(default=UNSET)
-    resource_identifier: Missing[str] = Field(
-        default=UNSET,
-        description="The unique identifier for the request type of the exemption request. For example, a commit SHA.",
+    created_at: Missing[datetime] = Field(default=UNSET)
+    head_branch: Missing[Union[str, None]] = Field(default=UNSET)
+    head_sha: Missing[str] = Field(
+        default=UNSET, description="The SHA of the head commit that is being checked."
     )
-    status: Missing[Literal["pending", "rejected", "cancelled", "completed"]] = Field(
-        default=UNSET, description="The status of the exemption request."
+    id: Missing[int] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    pull_requests: Missing[List[PullRequestMinimal]] = Field(default=UNSET)
+    repository: Missing[MinimalRepository] = Field(
+        default=UNSET, title="Minimal Repository", description="Minimal Repository"
     )
-    requester_comment: Missing[Union[str, None]] = Field(
-        default=UNSET,
-        description="The comment the requester provided when creating the exemption request.",
-    )
-    metadata: Missing[Union[ExemptionRequestSecretScanningMetadata, None]] = Field(
-        default=UNSET, description="Metadata about the exemption request."
-    )
-    expires_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time the exemption request will expire.",
-    )
-    created_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The date and time the exemption request was created.",
-    )
-    responses: Missing[Union[List[ExemptionResponse], None]] = Field(
-        default=UNSET, description="The responses to the exemption request."
-    )
-    html_url: Missing[str] = Field(
-        default=UNSET, description="The URL to view the exemption request in a browser."
-    )
+    status: Missing[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    ] = Field(default=UNSET)
+    updated_at: Missing[datetime] = Field(default=UNSET)
+    url: Missing[str] = Field(default=UNSET)
 
 
-class ExemptionRequestSecretScanningMetadata(GitHubModel):
-    """Secret Scanning Push Protection Exemption Request Metadata
+model_rebuild(SimpleCheckSuite)
 
-    Metadata for a secret scanning push protection exemption request.
-    """
-
-    label: Missing[str] = Field(
-        default=UNSET, description="The label for the secret type"
-    )
-    reason: Missing[Literal["fixed_later", "false_positive", "tests"]] = Field(
-        default=UNSET, description="The reason for the exemption request"
-    )
-
-
-class ExemptionRequestPushRulesetBypass(GitHubModel):
-    """Push ruleset bypass exemption request data
-
-    Push rules that are being requested to be bypassed.
-    """
-
-    type: Missing[Literal["push_ruleset_bypass"]] = Field(
-        default=UNSET, description="The type of request"
-    )
-    data: Missing[List[ExemptionRequestPushRulesetBypassPropDataItems]] = Field(
-        default=UNSET,
-        description="The data pertaining to the push rules that are being requested to be bypassed.",
-    )
-
-
-class ExemptionRequestPushRulesetBypassPropDataItems(GitHubModel):
-    """ExemptionRequestPushRulesetBypassPropDataItems"""
-
-    ruleset_id: Missing[int] = Field(
-        default=UNSET,
-        description="The ID of the ruleset for the rules that were violated",
-    )
-    ruleset_name: Missing[str] = Field(
-        default=UNSET,
-        description="The name of the ruleset for the rules that were violated",
-    )
-    total_violations: Missing[int] = Field(
-        default=UNSET, description="The number of violations"
-    )
-    rule_type: Missing[str] = Field(
-        default=UNSET, description="The type of rule that was violated"
-    )
-
-
-class ExemptionRequestSecretScanning(GitHubModel):
-    """Secret scanning push protection exemption request data
-
-    Secret scanning push protections that are being requested to be bypassed.
-    """
-
-    type: Missing[Literal["secret_scanning"]] = Field(
-        default=UNSET, description="The type of request"
-    )
-    data: Missing[List[ExemptionRequestSecretScanningPropDataItems]] = Field(
-        default=UNSET,
-        description="The data pertaining to the secret scanning push protections that are being requested to be bypassed.",
-    )
-
-
-class ExemptionRequestSecretScanningPropDataItems(GitHubModel):
-    """ExemptionRequestSecretScanningPropDataItems"""
-
-    secret_type: Missing[str] = Field(
-        default=UNSET, description="The type of secret that was detected"
-    )
-    commits: Missing[List[str]] = Field(
-        default=UNSET, description="The commits that introduced the secret"
-    )
-
-
-model_rebuild(ExemptionRequest)
-model_rebuild(ExemptionRequestSecretScanningMetadata)
-model_rebuild(ExemptionRequestPushRulesetBypass)
-model_rebuild(ExemptionRequestPushRulesetBypassPropDataItems)
-model_rebuild(ExemptionRequestSecretScanning)
-model_rebuild(ExemptionRequestSecretScanningPropDataItems)
-
-__all__ = (
-    "ExemptionRequest",
-    "ExemptionRequestSecretScanningMetadata",
-    "ExemptionRequestPushRulesetBypass",
-    "ExemptionRequestPushRulesetBypassPropDataItems",
-    "ExemptionRequestSecretScanning",
-    "ExemptionRequestSecretScanningPropDataItems",
-)
+__all__ = ("SimpleCheckSuite",)

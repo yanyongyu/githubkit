@@ -17,17 +17,17 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0002 import SimpleUser
 from .group_0378 import EnterpriseWebhooks
 from .group_0379 import SimpleInstallation
-from .group_0382 import SimpleUserWebhooks
 from .group_0380 import OrganizationSimpleWebhooks
-from .group_0409 import PersonalAccessTokenRequest
+from .group_0408 import PersonalAccessTokenRequest
 
 
-class WebhookPersonalAccessTokenRequestCancelled(GitHubModel):
-    """personal_access_token_request cancelled event"""
+class WebhookPersonalAccessTokenRequestCreated(GitHubModel):
+    """personal_access_token_request created event"""
 
-    action: Literal["cancelled"] = Field()
+    action: Literal["created"] = Field()
     personal_access_token_request: PersonalAccessTokenRequest = Field(
         title="Personal Access Token Request",
         description="Details of a Personal Access Token Request.",
@@ -41,16 +41,14 @@ class WebhookPersonalAccessTokenRequestCancelled(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
-    installation: SimpleInstallation = Field(
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    installation: Missing[SimpleInstallation] = Field(
+        default=UNSET,
         title="Simple Installation",
         description='The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured\nfor and sent to a GitHub App. For more information,\nsee "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."',
     )
 
 
-model_rebuild(WebhookPersonalAccessTokenRequestCancelled)
+model_rebuild(WebhookPersonalAccessTokenRequestCreated)
 
-__all__ = ("WebhookPersonalAccessTokenRequestCancelled",)
+__all__ = ("WebhookPersonalAccessTokenRequestCreated",)

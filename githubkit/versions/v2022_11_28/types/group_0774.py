@@ -9,15 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type(TypedDict):
-    """EnterprisesEnterpriseSecretScanningAlertsGetResponse503"""
+class GistsPostBodyType(TypedDict):
+    """GistsPostBody"""
 
-    code: NotRequired[str]
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesType
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
 
 
-__all__ = ("EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type",)
+class GistsPostBodyPropFilesType(TypedDict):
+    """GistsPostBodyPropFiles
+
+    Names and content for the files that make up the gist
+
+    Examples:
+        {'hello.rb': {'content': 'puts "Hello, World!"'}}
+    """
+
+
+__all__ = (
+    "GistsPostBodyType",
+    "GistsPostBodyPropFilesType",
+)

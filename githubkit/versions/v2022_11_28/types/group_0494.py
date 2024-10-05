@@ -13,14 +13,13 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0496 import WebhookForkPropForkeeAllof0PropPermissionsType
+from .group_0495 import WebhookForkPropForkeeAllof0PropPermissionsType
 
 
-class WebhookForkPropForkeeType(TypedDict):
-    """WebhookForkPropForkee
+class WebhookForkPropForkeeAllof0Type(TypedDict):
+    """Repository
 
-    The created [`repository`](https://docs.github.com/rest/repos/repos#get-a-
-    repository) resource.
+    A git repository
     """
 
     allow_auto_merge: NotRequired[bool]
@@ -41,15 +40,15 @@ class WebhookForkPropForkeeType(TypedDict):
     compare_url: str
     contents_url: str
     contributors_url: str
-    created_at: datetime
+    created_at: Union[int, datetime]
     default_branch: str
     delete_branch_on_merge: NotRequired[bool]
     deployments_url: str
-    description: Union[Union[str, None], None]
+    description: Union[str, None]
     disabled: NotRequired[bool]
     downloads_url: str
     events_url: str
-    fork: Literal[True]
+    fork: bool
     forks: int
     forks_count: int
     forks_url: str
@@ -63,7 +62,7 @@ class WebhookForkPropForkeeType(TypedDict):
     has_pages: bool
     has_projects: bool
     has_wiki: bool
-    homepage: Union[Union[str, None], None]
+    homepage: Union[str, None]
     hooks_url: str
     html_url: str
     id: int
@@ -73,25 +72,25 @@ class WebhookForkPropForkeeType(TypedDict):
     issues_url: str
     keys_url: str
     labels_url: str
-    language: Union[None, None]
+    language: Union[str, None]
     languages_url: str
-    license_: Union[WebhookForkPropForkeeMergedLicenseType, None]
+    license_: Union[WebhookForkPropForkeeAllof0PropLicenseType, None]
     master_branch: NotRequired[str]
     merges_url: str
     milestones_url: str
-    mirror_url: Union[None, None]
+    mirror_url: Union[str, None]
     name: str
     node_id: str
     notifications_url: str
     open_issues: int
     open_issues_count: int
     organization: NotRequired[str]
-    owner: WebhookForkPropForkeeMergedOwnerType
+    owner: Union[WebhookForkPropForkeeAllof0PropOwnerType, None]
     permissions: NotRequired[WebhookForkPropForkeeAllof0PropPermissionsType]
     private: bool
     public: NotRequired[bool]
     pulls_url: str
-    pushed_at: datetime
+    pushed_at: Union[int, datetime, None]
     releases_url: str
     role_name: NotRequired[Union[str, None]]
     size: int
@@ -115,8 +114,8 @@ class WebhookForkPropForkeeType(TypedDict):
     web_commit_signoff_required: NotRequired[bool]
 
 
-class WebhookForkPropForkeeMergedLicenseType(TypedDict):
-    """WebhookForkPropForkeeMergedLicense"""
+class WebhookForkPropForkeeAllof0PropLicenseType(TypedDict):
+    """License"""
 
     key: str
     name: str
@@ -125,8 +124,8 @@ class WebhookForkPropForkeeMergedLicenseType(TypedDict):
     url: Union[str, None]
 
 
-class WebhookForkPropForkeeMergedOwnerType(TypedDict):
-    """WebhookForkPropForkeeMergedOwner"""
+class WebhookForkPropForkeeAllof0PropOwnerType(TypedDict):
+    """User"""
 
     avatar_url: NotRequired[str]
     deleted: NotRequired[bool]
@@ -152,7 +151,7 @@ class WebhookForkPropForkeeMergedOwnerType(TypedDict):
 
 
 __all__ = (
-    "WebhookForkPropForkeeType",
-    "WebhookForkPropForkeeMergedLicenseType",
-    "WebhookForkPropForkeeMergedOwnerType",
+    "WebhookForkPropForkeeAllof0Type",
+    "WebhookForkPropForkeeAllof0PropLicenseType",
+    "WebhookForkPropForkeeAllof0PropOwnerType",
 )

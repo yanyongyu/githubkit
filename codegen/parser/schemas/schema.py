@@ -661,7 +661,7 @@ class UnionSchema(SchemaData):
     def _get_field_args(self) -> dict[str, str]:
         args = super()._get_field_args()
         if self.discriminator:
-            args["discriminator"] = self.discriminator
+            args["discriminator"] = repr(self.discriminator)
         return args
 
     @override

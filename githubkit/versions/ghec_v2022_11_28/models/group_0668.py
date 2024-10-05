@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,18 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0450 import WebhooksProject
+from .group_0002 import SimpleUser
+from .group_0449 import WebhooksProject
 from .group_0415 import EnterpriseWebhooks
 from .group_0416 import SimpleInstallation
 from .group_0418 import RepositoryWebhooks
-from .group_0419 import SimpleUserWebhooks
 from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectDeleted(GitHubModel):
-    """project deleted event"""
+class WebhookProjectEdited(GitHubModel):
+    """project edited event"""
 
-    action: Literal["deleted"] = Field()
+    action: Literal["edited"] = Field()
+    changes: Missing[WebhookProjectEditedPropChanges] = Field(
+        default=UNSET,
+        description="The changes to the project if the action was `edited`.",
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -45,14 +49,52 @@ class WebhookProjectDeleted(GitHubModel):
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
     project: WebhooksProject = Field(title="Project")
-    repository: Missing[Union[None, RepositoryWebhooks]] = Field(default=UNSET)
-    sender: Missing[SimpleUserWebhooks] = Field(
+    repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
+        title="Repository",
+        description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
+    )
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
     )
 
 
-model_rebuild(WebhookProjectDeleted)
+class WebhookProjectEditedPropChanges(GitHubModel):
+    """WebhookProjectEditedPropChanges
 
-__all__ = ("WebhookProjectDeleted",)
+    The changes to the project if the action was `edited`.
+    """
+
+    body: Missing[WebhookProjectEditedPropChangesPropBody] = Field(default=UNSET)
+    name: Missing[WebhookProjectEditedPropChangesPropName] = Field(default=UNSET)
+
+
+class WebhookProjectEditedPropChangesPropBody(GitHubModel):
+    """WebhookProjectEditedPropChangesPropBody"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the body if the action was `edited`.",
+    )
+
+
+class WebhookProjectEditedPropChangesPropName(GitHubModel):
+    """WebhookProjectEditedPropChangesPropName"""
+
+    from_: str = Field(
+        alias="from",
+        description="The changes to the project if the action was `edited`.",
+    )
+
+
+model_rebuild(WebhookProjectEdited)
+model_rebuild(WebhookProjectEditedPropChanges)
+model_rebuild(WebhookProjectEditedPropChangesPropBody)
+model_rebuild(WebhookProjectEditedPropChangesPropName)
+
+__all__ = (
+    "WebhookProjectEdited",
+    "WebhookProjectEditedPropChanges",
+    "WebhookProjectEditedPropChangesPropBody",
+    "WebhookProjectEditedPropChangesPropName",
+)

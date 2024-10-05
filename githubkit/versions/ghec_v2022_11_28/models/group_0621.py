@@ -17,21 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0429 import WebhooksUser
+from .group_0002 import SimpleUser
+from .group_0428 import WebhooksUser
 from .group_0415 import EnterpriseWebhooks
 from .group_0416 import SimpleInstallation
 from .group_0418 import RepositoryWebhooks
-from .group_0419 import SimpleUserWebhooks
 from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookMemberEdited(GitHubModel):
-    """member edited event"""
+class WebhookMemberRemoved(GitHubModel):
+    """member removed event"""
 
-    action: Literal["edited"] = Field()
-    changes: WebhookMemberEditedPropChanges = Field(
-        description="The changes to the collaborator permissions"
-    )
+    action: Literal["removed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -52,50 +49,9 @@ class WebhookMemberEdited(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookMemberEditedPropChanges(GitHubModel):
-    """WebhookMemberEditedPropChanges
+model_rebuild(WebhookMemberRemoved)
 
-    The changes to the collaborator permissions
-    """
-
-    old_permission: Missing[WebhookMemberEditedPropChangesPropOldPermission] = Field(
-        default=UNSET
-    )
-    permission: Missing[WebhookMemberEditedPropChangesPropPermission] = Field(
-        default=UNSET
-    )
-
-
-class WebhookMemberEditedPropChangesPropOldPermission(GitHubModel):
-    """WebhookMemberEditedPropChangesPropOldPermission"""
-
-    from_: str = Field(
-        alias="from",
-        description="The previous permissions of the collaborator if the action was edited.",
-    )
-
-
-class WebhookMemberEditedPropChangesPropPermission(GitHubModel):
-    """WebhookMemberEditedPropChangesPropPermission"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[Union[str, None]] = Field(default=UNSET)
-
-
-model_rebuild(WebhookMemberEdited)
-model_rebuild(WebhookMemberEditedPropChanges)
-model_rebuild(WebhookMemberEditedPropChangesPropOldPermission)
-model_rebuild(WebhookMemberEditedPropChangesPropPermission)
-
-__all__ = (
-    "WebhookMemberEdited",
-    "WebhookMemberEditedPropChanges",
-    "WebhookMemberEditedPropChangesPropOldPermission",
-    "WebhookMemberEditedPropChangesPropPermission",
-)
+__all__ = ("WebhookMemberRemoved",)

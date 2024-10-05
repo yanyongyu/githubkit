@@ -9,13 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from githubkit.compat import ExtraGitHubModel, model_rebuild
+from typing import Literal
+
+from pydantic import Field
+
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EmojisGetResponse200(ExtraGitHubModel):
-    """EmojisGetResponse200"""
+class EnterprisesEnterpriseActionsPermissionsPutBody(GitHubModel):
+    """EnterprisesEnterpriseActionsPermissionsPutBody"""
+
+    enabled_organizations: Literal["all", "none", "selected"] = Field(
+        description="The policy that controls the organizations in the enterprise that are allowed to run GitHub Actions."
+    )
+    allowed_actions: Missing[Literal["all", "local_only", "selected"]] = Field(
+        default=UNSET,
+        description="The permissions policy that controls the actions and reusable workflows that are allowed to run.",
+    )
 
 
-model_rebuild(EmojisGetResponse200)
+model_rebuild(EnterprisesEnterpriseActionsPermissionsPutBody)
 
-__all__ = ("EmojisGetResponse200",)
+__all__ = ("EnterprisesEnterpriseActionsPermissionsPutBody",)

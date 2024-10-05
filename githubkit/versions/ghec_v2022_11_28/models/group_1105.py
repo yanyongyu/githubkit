@@ -9,22 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0124 import CustomPropertyValue
 
-class ReposOwnerRepoProjectsPostBody(GitHubModel):
-    """ReposOwnerRepoProjectsPostBody"""
 
-    name: str = Field(description="The name of the project.")
-    body: Missing[str] = Field(
-        default=UNSET, description="The description of the project."
+class ReposOwnerRepoPropertiesValuesPatchBody(GitHubModel):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
+
+    properties: List[CustomPropertyValue] = Field(
+        description="A list of custom property names and associated values to apply to the repositories."
     )
 
 
-model_rebuild(ReposOwnerRepoProjectsPostBody)
+model_rebuild(ReposOwnerRepoPropertiesValuesPatchBody)
 
-__all__ = ("ReposOwnerRepoProjectsPostBody",)
+__all__ = ("ReposOwnerRepoPropertiesValuesPatchBody",)

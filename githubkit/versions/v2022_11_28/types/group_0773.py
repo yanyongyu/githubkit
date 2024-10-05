@@ -9,17 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0030 import CopilotSeatDetailsType
+
+class EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type(TypedDict):
+    """EnterprisesEnterpriseSecretScanningAlertsGetResponse503"""
+
+    code: NotRequired[str]
+    message: NotRequired[str]
+    documentation_url: NotRequired[str]
 
 
-class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
-    """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
-
-    total_seats: NotRequired[int]
-    seats: NotRequired[List[CopilotSeatDetailsType]]
-
-
-__all__ = ("EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",)
+__all__ = ("EnterprisesEnterpriseSecretScanningAlertsGetResponse503Type",)

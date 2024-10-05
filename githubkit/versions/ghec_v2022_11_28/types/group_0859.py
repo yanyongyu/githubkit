@@ -13,16 +13,14 @@ from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgActionsRunnerGroupsPostBodyType(TypedDict):
-    """OrgsOrgActionsRunnerGroupsPostBody"""
+class OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType(TypedDict):
+    """OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody"""
 
     name: str
     visibility: NotRequired[Literal["selected", "all", "private"]]
-    selected_repository_ids: NotRequired[List[int]]
-    runners: NotRequired[List[int]]
     allows_public_repositories: NotRequired[bool]
     restricted_to_workflows: NotRequired[bool]
     selected_workflows: NotRequired[List[str]]
 
 
-__all__ = ("OrgsOrgActionsRunnerGroupsPostBodyType",)
+__all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType",)

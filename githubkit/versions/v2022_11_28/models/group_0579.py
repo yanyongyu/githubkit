@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0390 import WebhooksUser
-from .group_0405 import WebhooksTeam
+from .group_0389 import WebhooksUser
+from .group_0404 import WebhooksTeam
 from .group_0378 import EnterpriseWebhooks
 from .group_0379 import SimpleInstallation
 from .group_0381 import RepositoryWebhooks
 from .group_0380 import OrganizationSimpleWebhooks
 
 
-class WebhookMembershipAdded(GitHubModel):
-    """membership added event"""
+class WebhookMembershipRemoved(GitHubModel):
+    """membership removed event"""
 
-    action: Literal["added"] = Field()
+    action: Literal["removed"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -49,17 +49,17 @@ class WebhookMembershipAdded(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    scope: Literal["team"] = Field(
+    scope: Literal["team", "organization"] = Field(
         description="The scope of the membership. Currently, can only be `team`."
     )
-    sender: Union[WebhookMembershipAddedPropSender, None] = Field(title="User")
+    sender: Union[WebhookMembershipRemovedPropSender, None] = Field(title="User")
     team: WebhooksTeam = Field(
         title="Team",
         description="Groups of organization members that gives permissions on specified repositories.",
     )
 
 
-class WebhookMembershipAddedPropSender(GitHubModel):
+class WebhookMembershipRemovedPropSender(GitHubModel):
     """User"""
 
     avatar_url: Missing[str] = Field(default=UNSET)
@@ -85,10 +85,10 @@ class WebhookMembershipAddedPropSender(GitHubModel):
     url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(WebhookMembershipAdded)
-model_rebuild(WebhookMembershipAddedPropSender)
+model_rebuild(WebhookMembershipRemoved)
+model_rebuild(WebhookMembershipRemovedPropSender)
 
 __all__ = (
-    "WebhookMembershipAdded",
-    "WebhookMembershipAddedPropSender",
+    "WebhookMembershipRemoved",
+    "WebhookMembershipRemovedPropSender",
 )

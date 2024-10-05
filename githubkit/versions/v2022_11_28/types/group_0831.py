@@ -9,32 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgDependabotSecretsGetResponse200Type(TypedDict):
-    """OrgsOrgDependabotSecretsGetResponse200"""
+class OrgsOrgDependabotSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgDependabotSecretsSecretNamePutBody"""
 
-    total_count: int
-    secrets: List[OrganizationDependabotSecretType]
-
-
-class OrganizationDependabotSecretType(TypedDict):
-    """Dependabot Secret for an Organization
-
-    Secrets for GitHub Dependabot for an organization.
-    """
-
-    name: str
-    created_at: datetime
-    updated_at: datetime
+    encrypted_value: NotRequired[str]
+    key_id: NotRequired[str]
     visibility: Literal["all", "private", "selected"]
-    selected_repositories_url: NotRequired[str]
+    selected_repository_ids: NotRequired[List[str]]
 
 
-__all__ = (
-    "OrgsOrgDependabotSecretsGetResponse200Type",
-    "OrganizationDependabotSecretType",
-)
+__all__ = ("OrgsOrgDependabotSecretsSecretNamePutBodyType",)

@@ -9,28 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
 from typing import Union, Literal
+from datetime import date, datetime
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
 
 
-class ProjectsV2ItemType(TypedDict):
-    """Projects v2 Item
+class ProjectsV2StatusUpdateType(TypedDict):
+    """Projects v2 Status Update
 
-    An item belonging to a project
+    An status update belonging to a project
     """
 
     id: float
-    node_id: NotRequired[str]
+    node_id: str
     project_node_id: NotRequired[str]
-    content_node_id: str
-    content_type: Literal["Issue", "PullRequest", "DraftIssue"]
     creator: NotRequired[SimpleUserType]
     created_at: datetime
     updated_at: datetime
-    archived_at: Union[datetime, None]
+    status: NotRequired[
+        Union[None, Literal["INACTIVE", "ON_TRACK", "AT_RISK", "OFF_TRACK", "COMPLETE"]]
+    ]
+    start_date: NotRequired[date]
+    target_date: NotRequired[date]
+    body: NotRequired[Union[str, None]]
 
 
-__all__ = ("ProjectsV2ItemType",)
+__all__ = ("ProjectsV2StatusUpdateType",)

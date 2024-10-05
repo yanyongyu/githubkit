@@ -13,74 +13,62 @@ from typing import List, Union, Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof0(GitHubModel):
-    """Workflow Job
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1(GitHubModel):
+    """WebhookWorkflowJobInProgressPropWorkflowJobAllof1"""
 
-    The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`,
-    and `started_at` are the same as those in a [`check_run`](#check_run) object.
-    """
-
-    check_run_url: str = Field()
-    completed_at: Union[str, None] = Field()
-    conclusion: Union[None, Literal["success", "failure", "cancelled", "neutral"]] = (
+    check_run_url: Missing[str] = Field(default=UNSET)
+    completed_at: Missing[Union[str, None]] = Field(default=UNSET)
+    conclusion: Missing[Union[str, None]] = Field(default=UNSET)
+    created_at: Missing[str] = Field(
+        default=UNSET, description="The time that the job created."
+    )
+    head_sha: Missing[str] = Field(default=UNSET)
+    html_url: Missing[str] = Field(default=UNSET)
+    id: Missing[int] = Field(default=UNSET)
+    labels: Missing[List[str]] = Field(default=UNSET)
+    name: Missing[str] = Field(default=UNSET)
+    node_id: Missing[str] = Field(default=UNSET)
+    run_attempt: Missing[int] = Field(default=UNSET)
+    run_id: Missing[int] = Field(default=UNSET)
+    run_url: Missing[str] = Field(default=UNSET)
+    runner_group_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_group_name: Missing[Union[str, None]] = Field(default=UNSET)
+    runner_id: Missing[Union[int, None]] = Field(default=UNSET)
+    runner_name: Missing[Union[str, None]] = Field(default=UNSET)
+    started_at: Missing[str] = Field(default=UNSET)
+    status: Literal["in_progress", "completed", "queued"] = Field()
+    head_branch: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the current branch."
+    )
+    workflow_name: Missing[Union[str, None]] = Field(
+        default=UNSET, description="The name of the workflow."
+    )
+    steps: List[WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems] = (
         Field()
     )
-    created_at: str = Field(description="The time that the job created.")
-    head_sha: str = Field()
-    html_url: str = Field()
-    id: int = Field()
-    labels: List[str] = Field(
-        description='Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/enterprise-cloud@latest//actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML.'
-    )
-    name: str = Field()
-    node_id: str = Field()
-    run_attempt: int = Field()
-    run_id: int = Field()
-    run_url: str = Field()
-    runner_group_id: Union[int, None] = Field(
-        description="The ID of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
-    )
-    runner_group_name: Union[str, None] = Field(
-        description="The name of the runner group that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
-    )
-    runner_id: Union[int, None] = Field(
-        description="The ID of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
-    )
-    runner_name: Union[str, None] = Field(
-        description="The name of the runner that is running this job. This will be `null` as long as `workflow_job[status]` is `queued`."
-    )
-    started_at: str = Field()
-    status: Literal["queued", "in_progress", "completed"] = Field(
-        description="The current status of the job. Can be `queued`, `in_progress`, or `completed`."
-    )
-    head_branch: Union[str, None] = Field(description="The name of the current branch.")
-    workflow_name: Union[str, None] = Field(description="The name of the workflow.")
-    steps: List[WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems] = (
-        Field()
-    )
-    url: str = Field()
+    url: Missing[str] = Field(default=UNSET)
 
 
-class WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems(GitHubModel):
+class WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems(GitHubModel):
     """Workflow Step"""
 
     completed_at: Union[str, None] = Field()
-    conclusion: Union[None, Literal["failure", "skipped", "success", "cancelled"]] = (
-        Field()
-    )
+    conclusion: Union[str, None] = Field()
     name: str = Field()
     number: int = Field()
     started_at: Union[str, None] = Field()
-    status: Literal["in_progress", "completed", "queued", "pending"] = Field()
+    status: Literal["in_progress", "completed", "pending", "queued"] = Field()
 
 
-model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof0)
-model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems)
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof1)
+model_rebuild(WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems)
 
 __all__ = (
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0",
-    "WebhookWorkflowJobInProgressPropWorkflowJobAllof0PropStepsItems",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1",
+    "WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems",
 )

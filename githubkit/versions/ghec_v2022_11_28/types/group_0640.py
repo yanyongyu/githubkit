@@ -9,42 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-
-class WebhookRubygemsMetadataType(TypedDict):
-    """Ruby Gems metadata"""
-
-    name: NotRequired[str]
-    description: NotRequired[str]
-    readme: NotRequired[str]
-    homepage: NotRequired[str]
-    version_info: NotRequired[WebhookRubygemsMetadataPropVersionInfoType]
-    platform: NotRequired[str]
-    metadata: NotRequired[WebhookRubygemsMetadataPropMetadataType]
-    repo: NotRequired[str]
-    dependencies: NotRequired[List[WebhookRubygemsMetadataPropDependenciesItemsType]]
-    commit_oid: NotRequired[str]
+from .group_0002 import SimpleUserType
+from .group_0415 import EnterpriseWebhooksType
+from .group_0416 import SimpleInstallationType
+from .group_0418 import RepositoryWebhooksType
+from .group_0417 import OrganizationSimpleWebhooksType
+from .group_0641 import WebhookPackagePublishedPropPackageType
 
 
-class WebhookRubygemsMetadataPropVersionInfoType(TypedDict):
-    """WebhookRubygemsMetadataPropVersionInfo"""
+class WebhookPackagePublishedType(TypedDict):
+    """package published event"""
 
-    version: NotRequired[str]
-
-
-class WebhookRubygemsMetadataPropMetadataType(TypedDict):
-    """WebhookRubygemsMetadataPropMetadata"""
-
-
-class WebhookRubygemsMetadataPropDependenciesItemsType(TypedDict):
-    """WebhookRubygemsMetadataPropDependenciesItems"""
+    action: Literal["published"]
+    enterprise: NotRequired[EnterpriseWebhooksType]
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    package: WebhookPackagePublishedPropPackageType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: SimpleUserType
 
 
-__all__ = (
-    "WebhookRubygemsMetadataType",
-    "WebhookRubygemsMetadataPropVersionInfoType",
-    "WebhookRubygemsMetadataPropMetadataType",
-    "WebhookRubygemsMetadataPropDependenciesItemsType",
-)
+__all__ = ("WebhookPackagePublishedType",)

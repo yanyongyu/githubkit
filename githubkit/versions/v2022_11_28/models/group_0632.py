@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -17,17 +17,16 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0415 import ProjectsV2Item
+from .group_0002 import SimpleUser
+from .group_0414 import ProjectsV2Item
 from .group_0379 import SimpleInstallation
-from .group_0382 import SimpleUserWebhooks
 from .group_0380 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ItemConverted(GitHubModel):
-    """Projects v2 Item Converted Event"""
+class WebhookProjectsV2ItemCreated(GitHubModel):
+    """Projects v2 Item Created Event"""
 
-    action: Literal["converted"] = Field()
-    changes: WebhookProjectsV2ItemConvertedPropChanges = Field()
+    action: Literal["created"] = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -40,33 +39,9 @@ class WebhookProjectsV2ItemConverted(GitHubModel):
     projects_v2_item: ProjectsV2Item = Field(
         title="Projects v2 Item", description="An item belonging to a project"
     )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookProjectsV2ItemConvertedPropChanges(GitHubModel):
-    """WebhookProjectsV2ItemConvertedPropChanges"""
+model_rebuild(WebhookProjectsV2ItemCreated)
 
-    content_type: Missing[WebhookProjectsV2ItemConvertedPropChangesPropContentType] = (
-        Field(default=UNSET)
-    )
-
-
-class WebhookProjectsV2ItemConvertedPropChangesPropContentType(GitHubModel):
-    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
-
-    from_: Missing[Union[str, None]] = Field(default=UNSET, alias="from")
-    to: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(WebhookProjectsV2ItemConverted)
-model_rebuild(WebhookProjectsV2ItemConvertedPropChanges)
-model_rebuild(WebhookProjectsV2ItemConvertedPropChangesPropContentType)
-
-__all__ = (
-    "WebhookProjectsV2ItemConverted",
-    "WebhookProjectsV2ItemConvertedPropChanges",
-    "WebhookProjectsV2ItemConvertedPropChangesPropContentType",
-)
+__all__ = ("WebhookProjectsV2ItemCreated",)

@@ -12,24 +12,20 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0450 import WebhooksProjectType
-from .group_0415 import EnterpriseWebhooksType
+from .group_0002 import SimpleUserType
+from .group_0451 import ProjectsV2Type
 from .group_0416 import SimpleInstallationType
-from .group_0418 import RepositoryWebhooksType
-from .group_0419 import SimpleUserWebhooksType
 from .group_0417 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectReopenedType(TypedDict):
-    """project reopened event"""
+class WebhookProjectsV2ProjectClosedType(TypedDict):
+    """Projects v2 Project Closed Event"""
 
-    action: Literal["reopened"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["closed"]
     installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    project: WebhooksProjectType
-    repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserWebhooksType
+    organization: OrganizationSimpleWebhooksType
+    projects_v2: ProjectsV2Type
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookProjectReopenedType",)
+__all__ = ("WebhookProjectsV2ProjectClosedType",)

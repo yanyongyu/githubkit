@@ -43,15 +43,16 @@ from .group_0115 import (
 )
 
 
-class ReposOwnerRepoRulesetsPostBody(GitHubModel):
-    """ReposOwnerRepoRulesetsPostBody"""
+class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
+    """ReposOwnerRepoRulesetsRulesetIdPutBody"""
 
-    name: str = Field(description="The name of the ruleset.")
+    name: Missing[str] = Field(default=UNSET, description="The name of the ruleset.")
     target: Missing[Literal["branch", "tag", "push"]] = Field(
         default=UNSET, description="The target of the ruleset"
     )
-    enforcement: Literal["disabled", "active", "evaluate"] = Field(
-        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise)."
+    enforcement: Missing[Literal["disabled", "active", "evaluate"]] = Field(
+        default=UNSET,
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
     )
     bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
@@ -91,6 +92,6 @@ class ReposOwnerRepoRulesetsPostBody(GitHubModel):
     ] = Field(default=UNSET, description="An array of rules within the ruleset.")
 
 
-model_rebuild(ReposOwnerRepoRulesetsPostBody)
+model_rebuild(ReposOwnerRepoRulesetsRulesetIdPutBody)
 
-__all__ = ("ReposOwnerRepoRulesetsPostBody",)
+__all__ = ("ReposOwnerRepoRulesetsRulesetIdPutBody",)

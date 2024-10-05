@@ -43,12 +43,12 @@ from .group_0115 import (
 )
 
 
-class OrgsOrgRulesetsPostBodyType(TypedDict):
-    """OrgsOrgRulesetsPostBody"""
+class OrgsOrgRulesetsRulesetIdPutBodyType(TypedDict):
+    """OrgsOrgRulesetsRulesetIdPutBody"""
 
-    name: str
+    name: NotRequired[str]
     target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
+    enforcement: NotRequired[Literal["disabled", "active", "evaluate"]]
     bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
     conditions: NotRequired[
         Union[
@@ -86,4 +86,4 @@ class OrgsOrgRulesetsPostBodyType(TypedDict):
     ]
 
 
-__all__ = ("OrgsOrgRulesetsPostBodyType",)
+__all__ = ("OrgsOrgRulesetsRulesetIdPutBodyType",)

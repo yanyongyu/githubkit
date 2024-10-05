@@ -190,6 +190,7 @@ class CodeScanningClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         ref: Missing[str] = UNSET,
+        pr: Missing[int] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         state: Missing[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
@@ -217,6 +218,7 @@ class CodeScanningClient:
             "page": page,
             "per_page": per_page,
             "ref": ref,
+            "pr": pr,
             "direction": direction,
             "sort": sort,
             "state": state,
@@ -247,6 +249,7 @@ class CodeScanningClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         ref: Missing[str] = UNSET,
+        pr: Missing[int] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         state: Missing[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
@@ -274,6 +277,7 @@ class CodeScanningClient:
             "page": page,
             "per_page": per_page,
             "ref": ref,
+            "pr": pr,
             "direction": direction,
             "sort": sort,
             "state": state,
@@ -511,6 +515,7 @@ class CodeScanningClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         ref: Missing[str] = UNSET,
+        pr: Missing[int] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CodeScanningAlertInstance]]:
@@ -530,6 +535,7 @@ class CodeScanningClient:
             "page": page,
             "per_page": per_page,
             "ref": ref,
+            "pr": pr,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -555,6 +561,7 @@ class CodeScanningClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         ref: Missing[str] = UNSET,
+        pr: Missing[int] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[CodeScanningAlertInstance]]:
@@ -574,6 +581,7 @@ class CodeScanningClient:
             "page": page,
             "per_page": per_page,
             "ref": ref,
+            "pr": pr,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -599,6 +607,7 @@ class CodeScanningClient:
         tool_guid: Missing[Union[str, None]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
+        pr: Missing[int] = UNSET,
         ref: Missing[str] = UNSET,
         sarif_id: Missing[str] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
@@ -623,6 +632,7 @@ class CodeScanningClient:
             "tool_guid": tool_guid,
             "page": page,
             "per_page": per_page,
+            "pr": pr,
             "ref": ref,
             "sarif_id": sarif_id,
             "direction": direction,
@@ -652,6 +662,7 @@ class CodeScanningClient:
         tool_guid: Missing[Union[str, None]] = UNSET,
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
+        pr: Missing[int] = UNSET,
         ref: Missing[str] = UNSET,
         sarif_id: Missing[str] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
@@ -676,6 +687,7 @@ class CodeScanningClient:
             "tool_guid": tool_guid,
             "page": page,
             "per_page": per_page,
+            "pr": pr,
             "ref": ref,
             "sarif_id": sarif_id,
             "direction": direction,

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -18,27 +18,24 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class EnterprisesEnterpriseActionsRunnerGroupsGetResponse200(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnerGroupsGetResponse200"""
+class EnterprisesEnterpriseActionsRunnerGroupsPostBody(GitHubModel):
+    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
 
-    total_count: float = Field()
-    runner_groups: List[RunnerGroupsEnterprise] = Field()
-
-
-class RunnerGroupsEnterprise(GitHubModel):
-    """RunnerGroupsEnterprise"""
-
-    id: float = Field()
-    name: str = Field()
-    visibility: str = Field()
-    default: bool = Field()
-    selected_organizations_url: Missing[str] = Field(default=UNSET)
-    runners_url: str = Field()
-    hosted_runners_url: Missing[str] = Field(default=UNSET)
-    allows_public_repositories: bool = Field()
-    workflow_restrictions_read_only: Missing[bool] = Field(
+    name: str = Field(description="Name of the runner group.")
+    visibility: Missing[Literal["selected", "all"]] = Field(
         default=UNSET,
-        description="If `true`, the `restricted_to_workflows` and `selected_workflows` fields cannot be modified.",
+        description="Visibility of a runner group. You can select all organizations or select individual organization.",
+    )
+    selected_organization_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="List of organization IDs that can access the runner group.",
+    )
+    runners: Missing[List[int]] = Field(
+        default=UNSET, description="List of runner IDs to add to the runner group."
+    )
+    allows_public_repositories: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether the runner group can be used by `public` repositories.",
     )
     restricted_to_workflows: Missing[bool] = Field(
         default=UNSET,
@@ -50,10 +47,6 @@ class RunnerGroupsEnterprise(GitHubModel):
     )
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsGetResponse200)
-model_rebuild(RunnerGroupsEnterprise)
+model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsPostBody)
 
-__all__ = (
-    "EnterprisesEnterpriseActionsRunnerGroupsGetResponse200",
-    "RunnerGroupsEnterprise",
-)
+__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsPostBody",)

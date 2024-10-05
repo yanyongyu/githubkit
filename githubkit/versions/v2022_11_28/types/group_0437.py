@@ -9,25 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0379 import SimpleInstallationType
-from .group_0381 import RepositoryWebhooksType
-from .group_0382 import SimpleUserWebhooksType
-from .group_0380 import OrganizationSimpleWebhooksType
-from .group_0385 import CheckRunWithSimpleCheckSuiteType
+from typing_extensions import TypedDict
 
 
-class WebhookCheckRunCreatedType(TypedDict):
-    """Check Run Created Event"""
+class WebhookCheckRunCreatedFormEncodedType(TypedDict):
+    """Check Run Created Event
 
-    action: Literal["created"]
-    check_run: CheckRunWithSimpleCheckSuiteType
-    installation: NotRequired[SimpleInstallationType]
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserWebhooksType
+    The check_run.created webhook encoded with URL encoding
+    """
+
+    payload: str
 
 
-__all__ = ("WebhookCheckRunCreatedType",)
+__all__ = ("WebhookCheckRunCreatedFormEncodedType",)

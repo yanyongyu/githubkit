@@ -10,9 +10,10 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
+from typing_extensions import Annotated
 from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
-from pydantic import BaseModel
+from pydantic import Field, BaseModel
 
 from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
@@ -177,9 +178,12 @@ class ChecksClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[
-                ReposOwnerRepoCheckRunsPostBodyOneof0,
-                ReposOwnerRepoCheckRunsPostBodyOneof1,
+            Annotated[
+                Union[
+                    ReposOwnerRepoCheckRunsPostBodyOneof0,
+                    ReposOwnerRepoCheckRunsPostBodyOneof1,
+                ],
+                Field(discriminator="status"),
             ],
             json,
         )
@@ -303,9 +307,12 @@ class ChecksClient:
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
-            Union[
-                ReposOwnerRepoCheckRunsPostBodyOneof0,
-                ReposOwnerRepoCheckRunsPostBodyOneof1,
+            Annotated[
+                Union[
+                    ReposOwnerRepoCheckRunsPostBodyOneof0,
+                    ReposOwnerRepoCheckRunsPostBodyOneof1,
+                ],
+                Field(discriminator="status"),
             ],
             json,
         )

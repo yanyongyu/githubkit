@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0002 import SimpleUser
 from .group_0415 import EnterpriseWebhooks
 from .group_0416 import SimpleInstallation
 from .group_0418 import RepositoryWebhooks
-from .group_0419 import SimpleUserWebhooks
 from .group_0417 import OrganizationSimpleWebhooks
-from .group_0442 import WebhooksMarketplacePurchase
+from .group_0441 import WebhooksMarketplacePurchase
 
 
-class WebhookMarketplacePurchaseChanged(GitHubModel):
-    """marketplace_purchase changed event"""
+class WebhookMarketplacePurchasePendingChange(GitHubModel):
+    """marketplace_purchase pending_change event"""
 
-    action: Literal["changed"] = Field()
+    action: Literal["pending_change"] = Field()
     effective_date: str = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
@@ -49,37 +49,36 @@ class WebhookMarketplacePurchaseChanged(GitHubModel):
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
     previous_marketplace_purchase: Missing[
-        WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase
+        WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase
     ] = Field(default=UNSET, title="Marketplace Purchase")
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase(GitHubModel):
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase(
+    GitHubModel
+):
     """Marketplace Purchase"""
 
-    account: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount = Field()
+    account: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount = Field()
     billing_cycle: str = Field()
     free_trial_ends_on: Union[str, None] = Field()
     next_billing_date: Missing[Union[str, None]] = Field(default=UNSET)
-    on_free_trial: Union[bool, None] = Field()
-    plan: WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan = (
-        Field()
-    )
+    on_free_trial: bool = Field()
+    plan: WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan = Field()
     unit_count: int = Field()
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount(
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount(
     GitHubModel
 ):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount"""
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccoun
+    t
+    """
 
     id: int = Field()
     login: str = Field()
@@ -88,10 +87,10 @@ class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccoun
     type: str = Field()
 
 
-class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan(
+class WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan(
     GitHubModel
 ):
-    """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan"""
+    """WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan"""
 
     bullets: List[str] = Field()
     description: str = Field()
@@ -104,16 +103,18 @@ class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan(
     yearly_price_in_cents: int = Field()
 
 
-model_rebuild(WebhookMarketplacePurchaseChanged)
-model_rebuild(WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase)
+model_rebuild(WebhookMarketplacePurchasePendingChange)
+model_rebuild(WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase)
 model_rebuild(
-    WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount
+    WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount
 )
-model_rebuild(WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan)
+model_rebuild(
+    WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan
+)
 
 __all__ = (
-    "WebhookMarketplacePurchaseChanged",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchase",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropAccount",
-    "WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan",
+    "WebhookMarketplacePurchasePendingChange",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchase",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropAccount",
+    "WebhookMarketplacePurchasePendingChangePropPreviousMarketplacePurchasePropPlan",
 )

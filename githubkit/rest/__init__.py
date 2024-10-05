@@ -430,9 +430,6 @@ if TYPE_CHECKING:
         SimpleInstallation as SimpleInstallation,
     )
     from githubkit.versions.v2022_11_28.models import (
-        SimpleUserWebhooks as SimpleUserWebhooks,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         TeamRoleAssignment as TeamRoleAssignment,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -6226,6 +6223,9 @@ if TYPE_CHECKING:
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions as ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems as ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -6403,6 +6403,12 @@ if TYPE_CHECKING:
         PersonalAccessTokenRequestPropPermissionsAddedPropOrganization as PersonalAccessTokenRequestPropPermissionsAddedPropOrganization,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -6562,6 +6568,9 @@ if TYPE_CHECKING:
         ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances as ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances,
     )
     from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -6665,6 +6674,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody as OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200 as ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
@@ -6785,6 +6797,9 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization as PersonalAccessTokenRequestPropPermissionsUpgradedPropOrganization,
+    )
+    from githubkit.versions.v2022_11_28.models import (
+        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody as ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody,
@@ -7123,9 +7138,6 @@ if TYPE_CHECKING:
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody as ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody,
     )
     from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems as ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItems,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -7270,13 +7282,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial as ReposOwnerRepoAttestationsPostBodyPropBundlePropVerificationMaterial,
     )
     from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0,
     )
     from githubkit.versions.v2022_11_28.models import (
         SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId as SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsPropLogId,
@@ -7435,9 +7441,6 @@ if TYPE_CHECKING:
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
     )
     from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase as WebhookCheckSuiteCompletedPropCheckSuitePropPullRequestsItemsPropBase,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -7579,9 +7582,6 @@ if TYPE_CHECKING:
         ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions as ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions,
     )
     from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
         WebhookDeploymentReviewRequestedPropWorkflowRunPropRepositoryPropOwner as WebhookDeploymentReviewRequestedPropWorkflowRunPropRepositoryPropOwner,
     )
     from githubkit.versions.v2022_11_28.models import (
@@ -7697,9 +7697,6 @@ if TYPE_CHECKING:
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
-    )
-    from githubkit.versions.v2022_11_28.models import (
-        ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0 as ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0,
     )
     from githubkit.versions.v2022_11_28.models import (
         ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems as ReposOwnerRepoCheckSuitesPreferencesPatchBodyPropAutoTriggerChecksItems,
@@ -10108,7 +10105,6 @@ else:
             "RepositoryWebhooksPropTemplateRepository",
             "RepositoryWebhooksPropTemplateRepositoryPropOwner",
             "RepositoryWebhooksPropTemplateRepositoryPropPermissions",
-            "SimpleUserWebhooks",
             "WebhooksRule",
             "SimpleCheckSuite",
             "CheckRunWithSimpleCheckSuite",
@@ -12435,15 +12431,15 @@ else:
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0",
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0",
             "ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0",
-            "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyOneof0",
-            "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyOneof0",
-            "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyOneof0",
+            "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody",
+            "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody",
+            "ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody",
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0",
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0",
             "ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0",
-            "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyOneof0",
-            "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyOneof0",
-            "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyOneof0",
+            "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody",
+            "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody",
+            "ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody",
             "ReposOwnerRepoBranchesBranchRenamePostBody",
             "ReposOwnerRepoCheckRunsPostBodyPropOutput",
             "ReposOwnerRepoCheckRunsPostBodyPropOutputPropAnnotationsItems",

@@ -9,134 +9,52 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0596 import WebhookRubygemsMetadataType
+from .group_0002 import SimpleUserType
+from .group_0378 import EnterpriseWebhooksType
+from .group_0379 import SimpleInstallationType
+from .group_0381 import RepositoryWebhooksType
+from .group_0380 import OrganizationSimpleWebhooksType
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionType(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropPackageVersion"""
+class WebhookPageBuildType(TypedDict):
+    """page_build event"""
 
-    author: Union[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthorType, None
-    ]
-    body: str
-    body_html: str
-    created_at: str
-    description: str
-    docker_metadata: NotRequired[
-        List[
-            WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItemsType
-        ]
-    ]
-    draft: NotRequired[bool]
-    html_url: str
+    build: WebhookPageBuildPropBuildType
+    enterprise: NotRequired[EnterpriseWebhooksType]
     id: int
-    installation_command: str
-    manifest: NotRequired[str]
-    metadata: List[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItemsType
-    ]
-    name: str
-    package_files: List[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItemsType
-    ]
-    package_url: NotRequired[str]
-    prerelease: NotRequired[bool]
-    release: NotRequired[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropReleaseType
-    ]
-    rubygems_metadata: NotRequired[List[WebhookRubygemsMetadataType]]
-    source_url: NotRequired[str]
-    summary: str
-    tag_name: NotRequired[str]
-    target_commitish: str
-    target_oid: str
+    installation: NotRequired[SimpleInstallationType]
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    repository: RepositoryWebhooksType
+    sender: SimpleUserType
+
+
+class WebhookPageBuildPropBuildType(TypedDict):
+    """WebhookPageBuildPropBuild
+
+    The [List GitHub Pages builds](https://docs.github.com/rest/pages/pages#list-
+    github-pages-builds) itself.
+    """
+
+    commit: Union[str, None]
+    created_at: str
+    duration: int
+    error: WebhookPageBuildPropBuildPropErrorType
+    pusher: Union[WebhookPageBuildPropBuildPropPusherType, None]
+    status: str
     updated_at: str
-    version: str
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthorType(TypedDict):
-    """User"""
-
-    avatar_url: NotRequired[str]
-    deleted: NotRequired[bool]
-    email: NotRequired[Union[str, None]]
-    events_url: NotRequired[str]
-    followers_url: NotRequired[str]
-    following_url: NotRequired[str]
-    gists_url: NotRequired[str]
-    gravatar_id: NotRequired[str]
-    html_url: NotRequired[str]
-    id: int
-    login: str
-    name: NotRequired[str]
-    node_id: NotRequired[str]
-    organizations_url: NotRequired[str]
-    received_events_url: NotRequired[str]
-    repos_url: NotRequired[str]
-    site_admin: NotRequired[bool]
-    starred_url: NotRequired[str]
-    subscriptions_url: NotRequired[str]
-    type: NotRequired[Literal["Bot", "User", "Organization"]]
-    url: NotRequired[str]
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItemsType(
-    TypedDict
-):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems"""
-
-    tags: NotRequired[List[str]]
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItemsType(
-    TypedDict
-):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems"""
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItemsType(
-    TypedDict
-):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems"""
-
-    content_type: str
-    created_at: str
-    download_url: str
-    id: int
-    md5: Union[str, None]
-    name: str
-    sha1: Union[str, None]
-    sha256: str
-    size: int
-    state: str
-    updated_at: str
-
-
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropReleaseType(TypedDict):
-    """WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease"""
-
-    author: Union[
-        WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthorType,
-        None,
-    ]
-    created_at: str
-    draft: bool
-    html_url: str
-    id: int
-    name: str
-    prerelease: bool
-    published_at: str
-    tag_name: str
-    target_commitish: str
     url: str
 
 
-class WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthorType(
-    TypedDict
-):
+class WebhookPageBuildPropBuildPropErrorType(TypedDict):
+    """WebhookPageBuildPropBuildPropError"""
+
+    message: Union[str, None]
+
+
+class WebhookPageBuildPropBuildPropPusherType(TypedDict):
     """User"""
 
     avatar_url: NotRequired[str]
@@ -163,11 +81,8 @@ class WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthorTyp
 
 
 __all__ = (
-    "WebhookPackageUpdatedPropPackagePropPackageVersionType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropAuthorType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItemsType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItemsType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItemsType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropReleaseType",
-    "WebhookPackageUpdatedPropPackagePropPackageVersionPropReleasePropAuthorType",
+    "WebhookPageBuildType",
+    "WebhookPageBuildPropBuildType",
+    "WebhookPageBuildPropBuildPropErrorType",
+    "WebhookPageBuildPropBuildPropPusherType",
 )

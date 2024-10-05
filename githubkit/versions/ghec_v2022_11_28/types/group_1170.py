@@ -9,14 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing import List
+from typing_extensions import TypedDict
+
+from .group_0017 import InstallationType
 
 
-class UserGpgKeysPostBodyType(TypedDict):
-    """UserGpgKeysPostBody"""
+class UserInstallationsGetResponse200Type(TypedDict):
+    """UserInstallationsGetResponse200"""
 
-    name: NotRequired[str]
-    armored_public_key: str
+    total_count: int
+    installations: List[InstallationType]
 
 
-__all__ = ("UserGpgKeysPostBodyType",)
+__all__ = ("UserInstallationsGetResponse200Type",)

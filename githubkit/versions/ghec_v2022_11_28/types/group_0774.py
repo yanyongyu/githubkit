@@ -12,27 +12,26 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0467 import WebhooksChanges8Type
+from .group_0002 import SimpleUserType
+from .group_0466 import WebhooksChanges8Type
 from .group_0415 import EnterpriseWebhooksType
 from .group_0416 import SimpleInstallationType
 from .group_0418 import RepositoryWebhooksType
-from .group_0419 import SimpleUserWebhooksType
-from .group_0466 import WebhooksSponsorshipType
+from .group_0465 import WebhooksSponsorshipType
 from .group_0417 import OrganizationSimpleWebhooksType
 
 
-class WebhookSponsorshipPendingTierChangeType(TypedDict):
-    """sponsorship pending_tier_change event"""
+class WebhookSponsorshipTierChangedType(TypedDict):
+    """sponsorship tier_changed event"""
 
-    action: Literal["pending_tier_change"]
+    action: Literal["tier_changed"]
     changes: WebhooksChanges8Type
-    effective_date: NotRequired[str]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     repository: NotRequired[RepositoryWebhooksType]
-    sender: SimpleUserWebhooksType
+    sender: SimpleUserType
     sponsorship: WebhooksSponsorshipType
 
 
-__all__ = ("WebhookSponsorshipPendingTierChangeType",)
+__all__ = ("WebhookSponsorshipTierChangedType",)

@@ -18,8 +18,8 @@ from githubkit.typing import Missing
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0(GitHubModel):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0"""
+class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1(GitHubModel):
+    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1"""
 
     language: Literal[
         "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
@@ -27,12 +27,12 @@ class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0(GitHubModel)
     query_pack: str = Field(
         description="A Base64-encoded tarball containing a CodeQL query and all its dependencies"
     )
-    repositories: List[str] = Field(
-        description="List of repository names (in the form `owner/repo-name`) to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required."
-    )
-    repository_lists: Missing[List[str]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
+    repositories: Missing[List[str]] = Field(
         default=UNSET,
+        description="List of repository names (in the form `owner/repo-name`) to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
+    )
+    repository_lists: List[str] = Field(
+        max_length=1 if PYDANTIC_V2 else None,
         description="List of repository lists to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
     )
     repository_owners: Missing[List[str]] = Field(
@@ -42,6 +42,6 @@ class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0(GitHubModel)
     )
 
 
-model_rebuild(ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0)
+model_rebuild(ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1)
 
-__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0",)
+__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1",)

@@ -9,25 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0454 import ProjectsV2ItemType
+from .group_0002 import SimpleUserType
+from .group_0453 import ProjectsV2ItemType
 from .group_0416 import SimpleInstallationType
-from .group_0419 import SimpleUserWebhooksType
-from .group_0453 import WebhooksProjectChangesType
 from .group_0417 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ItemArchivedType(TypedDict):
-    """Projects v2 Item Archived Event"""
+class WebhookProjectsV2ItemConvertedType(TypedDict):
+    """Projects v2 Item Converted Event"""
 
-    action: Literal["archived"]
-    changes: WebhooksProjectChangesType
+    action: Literal["converted"]
+    changes: WebhookProjectsV2ItemConvertedPropChangesType
     installation: NotRequired[SimpleInstallationType]
     organization: OrganizationSimpleWebhooksType
     projects_v2_item: ProjectsV2ItemType
-    sender: SimpleUserWebhooksType
+    sender: SimpleUserType
 
 
-__all__ = ("WebhookProjectsV2ItemArchivedType",)
+class WebhookProjectsV2ItemConvertedPropChangesType(TypedDict):
+    """WebhookProjectsV2ItemConvertedPropChanges"""
+
+    content_type: NotRequired[
+        WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType
+    ]
+
+
+class WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType(TypedDict):
+    """WebhookProjectsV2ItemConvertedPropChangesPropContentType"""
+
+    from_: NotRequired[Union[str, None]]
+    to: NotRequired[str]
+
+
+__all__ = (
+    "WebhookProjectsV2ItemConvertedType",
+    "WebhookProjectsV2ItemConvertedPropChangesType",
+    "WebhookProjectsV2ItemConvertedPropChangesPropContentTypeType",
+)

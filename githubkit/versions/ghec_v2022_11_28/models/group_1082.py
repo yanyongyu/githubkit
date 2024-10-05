@@ -9,17 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items(GitHubModel):
-    """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items"""
+class ReposOwnerRepoIssuesIssueNumberLockPutBody(GitHubModel):
+    """ReposOwnerRepoIssuesIssueNumberLockPutBody"""
 
-    name: str = Field()
+    lock_reason: Missing[Literal["off-topic", "too heated", "resolved", "spam"]] = (
+        Field(
+            default=UNSET,
+            description="The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  \n * `off-topic`  \n * `too heated`  \n * `resolved`  \n * `spam`",
+        )
+    )
 
 
-model_rebuild(ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items)
+model_rebuild(ReposOwnerRepoIssuesIssueNumberLockPutBody)
 
-__all__ = ("ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items",)
+__all__ = ("ReposOwnerRepoIssuesIssueNumberLockPutBody",)

@@ -13,8 +13,13 @@ from typing import List
 from typing_extensions import TypedDict
 
 
-class UserEmailsPostBodyOneof0Type(TypedDict):
-    """UserEmailsPostBodyOneof0
+class UserEmailsDeleteBodyOneof0Type(TypedDict):
+    """UserEmailsDeleteBodyOneof0
+
+    Deletes one or more email addresses from your GitHub account. Must contain at
+    least one email address. **Note:** Alternatively, you can pass a single email
+    address or an `array` of emails addresses directly, but we recommend that you
+    pass an object using the `emails` key.
 
     Examples:
         {'emails': ['octocat@github.com', 'mona@github.com']}
@@ -23,4 +28,4 @@ class UserEmailsPostBodyOneof0Type(TypedDict):
     emails: List[str]
 
 
-__all__ = ("UserEmailsPostBodyOneof0Type",)
+__all__ = ("UserEmailsDeleteBodyOneof0Type",)

@@ -17,18 +17,18 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0383 import WebhooksRule
+from .group_0002 import SimpleUser
+from .group_0382 import WebhooksRule
 from .group_0378 import EnterpriseWebhooks
 from .group_0379 import SimpleInstallation
 from .group_0381 import RepositoryWebhooks
-from .group_0382 import SimpleUserWebhooks
 from .group_0380 import OrganizationSimpleWebhooks
 
 
-class WebhookBranchProtectionRuleCreated(GitHubModel):
-    """branch protection rule created event"""
+class WebhookBranchProtectionRuleDeleted(GitHubModel):
+    """branch protection rule deleted event"""
 
-    action: Literal["created"] = Field()
+    action: Literal["deleted"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -52,12 +52,9 @@ class WebhookBranchProtectionRuleCreated(GitHubModel):
         title="branch protection rule",
         description="The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.",
     )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookBranchProtectionRuleCreated)
+model_rebuild(WebhookBranchProtectionRuleDeleted)
 
-__all__ = ("WebhookBranchProtectionRuleCreated",)
+__all__ = ("WebhookBranchProtectionRuleDeleted",)

@@ -18,14 +18,14 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, model_rebuild
 
-from .group_0938 import (
+from .group_0937 import (
     ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput,
     ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems,
 )
 
 
-class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0(ExtraGitHubModel):
-    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1(ExtraGitHubModel):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1"""
 
     name: Missing[str] = Field(
         default=UNSET,
@@ -42,18 +42,21 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0(ExtraGitHubModel):
         default=UNSET,
         description="This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
     )
-    status: Missing[Literal["completed"]] = Field(default=UNSET)
-    conclusion: Literal[
-        "action_required",
-        "cancelled",
-        "failure",
-        "neutral",
-        "success",
-        "skipped",
-        "stale",
-        "timed_out",
+    status: Missing[Literal["queued", "in_progress"]] = Field(default=UNSET)
+    conclusion: Missing[
+        Literal[
+            "action_required",
+            "cancelled",
+            "failure",
+            "neutral",
+            "success",
+            "skipped",
+            "stale",
+            "timed_out",
+        ]
     ] = Field(
-        description="**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. \n**Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this."
+        default=UNSET,
+        description="**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. \n**Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this.",
     )
     completed_at: Missing[datetime] = Field(
         default=UNSET,
@@ -72,6 +75,6 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0(ExtraGitHubModel):
     )
 
 
-model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0)
+model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1)
 
-__all__ = ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0",)
+__all__ = ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof1",)

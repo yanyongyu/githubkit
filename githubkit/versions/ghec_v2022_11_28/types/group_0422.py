@@ -13,85 +13,48 @@ from datetime import datetime
 from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0421 import ExemptionResponseType
+from .group_0008 import IntegrationType
+from .group_0084 import MinimalRepositoryType
+from .group_0195 import PullRequestMinimalType
 
 
-class ExemptionRequestType(TypedDict):
-    """Exemption Request
+class SimpleCheckSuiteType(TypedDict):
+    """SimpleCheckSuite
 
-    A request from a user to be exempted from a set of rules.
+    A suite of checks performed on the code of a given code change
     """
 
-    id: NotRequired[int]
-    number: NotRequired[int]
-    repository_id: NotRequired[int]
-    requester_id: NotRequired[int]
-    requester_login: NotRequired[str]
-    request_type: NotRequired[Literal["push_ruleset_bypass", "secret_scanning"]]
-    exemption_request_data: NotRequired[
-        Union[ExemptionRequestPushRulesetBypassType, ExemptionRequestSecretScanningType]
+    after: NotRequired[Union[str, None]]
+    app: NotRequired[Union[IntegrationType, None]]
+    before: NotRequired[Union[str, None]]
+    conclusion: NotRequired[
+        Union[
+            None,
+            Literal[
+                "success",
+                "failure",
+                "neutral",
+                "cancelled",
+                "skipped",
+                "timed_out",
+                "action_required",
+                "stale",
+                "startup_failure",
+            ],
+        ]
     ]
-    resource_identifier: NotRequired[str]
-    status: NotRequired[Literal["pending", "rejected", "cancelled", "completed"]]
-    requester_comment: NotRequired[Union[str, None]]
-    metadata: NotRequired[Union[ExemptionRequestSecretScanningMetadataType, None]]
-    expires_at: NotRequired[datetime]
     created_at: NotRequired[datetime]
-    responses: NotRequired[Union[List[ExemptionResponseType], None]]
-    html_url: NotRequired[str]
+    head_branch: NotRequired[Union[str, None]]
+    head_sha: NotRequired[str]
+    id: NotRequired[int]
+    node_id: NotRequired[str]
+    pull_requests: NotRequired[List[PullRequestMinimalType]]
+    repository: NotRequired[MinimalRepositoryType]
+    status: NotRequired[
+        Literal["queued", "in_progress", "completed", "pending", "waiting"]
+    ]
+    updated_at: NotRequired[datetime]
+    url: NotRequired[str]
 
 
-class ExemptionRequestSecretScanningMetadataType(TypedDict):
-    """Secret Scanning Push Protection Exemption Request Metadata
-
-    Metadata for a secret scanning push protection exemption request.
-    """
-
-    label: NotRequired[str]
-    reason: NotRequired[Literal["fixed_later", "false_positive", "tests"]]
-
-
-class ExemptionRequestPushRulesetBypassType(TypedDict):
-    """Push ruleset bypass exemption request data
-
-    Push rules that are being requested to be bypassed.
-    """
-
-    type: NotRequired[Literal["push_ruleset_bypass"]]
-    data: NotRequired[List[ExemptionRequestPushRulesetBypassPropDataItemsType]]
-
-
-class ExemptionRequestPushRulesetBypassPropDataItemsType(TypedDict):
-    """ExemptionRequestPushRulesetBypassPropDataItems"""
-
-    ruleset_id: NotRequired[int]
-    ruleset_name: NotRequired[str]
-    total_violations: NotRequired[int]
-    rule_type: NotRequired[str]
-
-
-class ExemptionRequestSecretScanningType(TypedDict):
-    """Secret scanning push protection exemption request data
-
-    Secret scanning push protections that are being requested to be bypassed.
-    """
-
-    type: NotRequired[Literal["secret_scanning"]]
-    data: NotRequired[List[ExemptionRequestSecretScanningPropDataItemsType]]
-
-
-class ExemptionRequestSecretScanningPropDataItemsType(TypedDict):
-    """ExemptionRequestSecretScanningPropDataItems"""
-
-    secret_type: NotRequired[str]
-    commits: NotRequired[List[str]]
-
-
-__all__ = (
-    "ExemptionRequestType",
-    "ExemptionRequestSecretScanningMetadataType",
-    "ExemptionRequestPushRulesetBypassType",
-    "ExemptionRequestPushRulesetBypassPropDataItemsType",
-    "ExemptionRequestSecretScanningType",
-    "ExemptionRequestSecretScanningPropDataItemsType",
-)
+__all__ = ("SimpleCheckSuiteType",)

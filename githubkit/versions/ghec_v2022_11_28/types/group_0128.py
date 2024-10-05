@@ -21,9 +21,14 @@ class RepositoryRulesetBypassActorType(TypedDict):
 
     actor_id: NotRequired[Union[int, None]]
     actor_type: Literal[
-        "Integration", "OrganizationAdmin", "RepositoryRole", "Team", "DeployKey"
+        "Integration",
+        "OrganizationAdmin",
+        "RepositoryRole",
+        "Team",
+        "DeployKey",
+        "EnterpriseOwner",
     ]
-    bypass_mode: Literal["always", "pull_request"]
+    bypass_mode: NotRequired[Literal["always", "pull_request"]]
 
 
 __all__ = ("RepositoryRulesetBypassActorType",)

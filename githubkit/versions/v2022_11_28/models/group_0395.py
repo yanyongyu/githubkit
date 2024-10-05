@@ -14,8 +14,8 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class WebhooksRepositoriesItems(GitHubModel):
-    """WebhooksRepositoriesItems"""
+class WebhooksRepositoriesAddedItems(GitHubModel):
+    """WebhooksRepositoriesAddedItems"""
 
     full_name: str = Field()
     id: int = Field(description="Unique identifier of the repository")
@@ -24,6 +24,6 @@ class WebhooksRepositoriesItems(GitHubModel):
     private: bool = Field(description="Whether the repository is private or public.")
 
 
-model_rebuild(WebhooksRepositoriesItems)
+model_rebuild(WebhooksRepositoriesAddedItems)
 
-__all__ = ("WebhooksRepositoriesItems",)
+__all__ = ("WebhooksRepositoriesAddedItems",)

@@ -17,18 +17,16 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0454 import ProjectsV2Item
+from .group_0002 import SimpleUser
+from .group_0451 import ProjectsV2
 from .group_0416 import SimpleInstallation
-from .group_0419 import SimpleUserWebhooks
-from .group_0453 import WebhooksProjectChanges
 from .group_0417 import OrganizationSimpleWebhooks
 
 
-class WebhookProjectsV2ItemRestored(GitHubModel):
-    """Projects v2 Item Restored Event"""
+class WebhookProjectsV2ProjectReopened(GitHubModel):
+    """Projects v2 Project Reopened Event"""
 
-    action: Literal["restored"] = Field()
-    changes: WebhooksProjectChanges = Field()
+    action: Literal["reopened"] = Field()
     installation: Missing[SimpleInstallation] = Field(
         default=UNSET,
         title="Simple Installation",
@@ -38,15 +36,12 @@ class WebhookProjectsV2ItemRestored(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    projects_v2_item: ProjectsV2Item = Field(
-        title="Projects v2 Item", description="An item belonging to a project"
+    projects_v2: ProjectsV2 = Field(
+        title="Projects v2 Project", description="A projects v2 project"
     )
-    sender: SimpleUserWebhooks = Field(
-        title="Simple User",
-        description="The GitHub user that triggered the event. This property is included in every webhook payload.",
-    )
+    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 
 
-model_rebuild(WebhookProjectsV2ItemRestored)
+model_rebuild(WebhookProjectsV2ProjectReopened)
 
-__all__ = ("WebhookProjectsV2ItemRestored",)
+__all__ = ("WebhookProjectsV2ProjectReopened",)
