@@ -7,11 +7,11 @@ GitHubException
 ├── AuthCredentialError
 ├── AuthExpiredError
 ├── RequestError
-├── RequestTimeout
-├── RequestFailed
-│   └── RateLimitExceeded
-│       ├── PrimaryRateLimitExceeded
-│       └── SecondaryRateLimitExceeded
+│   ├── RequestTimeout
+│   └── RequestFailed
+│       └── RateLimitExceeded
+│           ├── PrimaryRateLimitExceeded
+│           └── SecondaryRateLimitExceeded
 ├── GraphQLError
 │   ├── GraphQLFailed
 │   └── GraphQLPaginationError
