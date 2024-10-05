@@ -361,25 +361,29 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
 # https://docs.github.com/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax#query-for-dates
 "/components/parameters/created/schema" = { format = "<unset>" }
 
+# https://github.com/yanyongyu/githubkit/issues/144
+"/components/schemas/simple-classroom-assignment/properties/editor" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/simple-classroom-assignment/properties/language" = { type = [
+  "string",
+  "null",
+] }
+"/components/schemas/simple-classroom-assignment/required" = { "<remove>" = [
+  "submitted",
+] }
+
 # Webhook schema overrides
 # webhook check run action is required
-"/components/schemas/webhook-check-run-completed" = { required = [
+"/components/schemas/webhook-check-run-completed/required" = { "<add>" = [
   "action",
-  "check_run",
-  "repository",
-  "sender",
 ] }
-"/components/schemas/webhook-check-run-created" = { required = [
+"/components/schemas/webhook-check-run-created/required" = { "<add>" = [
   "action",
-  "check_run",
-  "repository",
-  "sender",
 ] }
-"/components/schemas/webhook-check-run-rerequested" = { required = [
+"/components/schemas/webhook-check-run-rerequested/required" = { "<add>" = [
   "action",
-  "check_run",
-  "repository",
-  "sender",
 ] }
 
 # webhook github app events enum schema is not always up to date
@@ -414,12 +418,8 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
   "action",
 ] }
 # webhook secret scanning alert location action is required
-"/components/schemas/webhook-secret-scanning-alert-location-created" = { required = [
+"/components/schemas/webhook-secret-scanning-alert-location-created/required" = { "<add>" = [
   "action",
-  "location",
-  "alert",
-  "repository",
-  "sender",
 ] }
 
 # webhook fork topics can be null

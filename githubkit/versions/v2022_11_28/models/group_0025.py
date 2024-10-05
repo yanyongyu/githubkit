@@ -89,17 +89,20 @@ class SimpleClassroomAssignment(GitHubModel):
     max_members: Missing[Union[int, None]] = Field(
         default=UNSET, description="The maximum allowable members per team."
     )
-    editor: str = Field(description="The selected editor for the assignment.")
+    editor: Union[str, None] = Field(
+        description="The selected editor for the assignment."
+    )
     accepted: int = Field(
         description="The number of students that have accepted the assignment."
     )
-    submitted: int = Field(
-        description="The number of students that have submitted the assignment."
+    submitted: Missing[int] = Field(
+        default=UNSET,
+        description="The number of students that have submitted the assignment.",
     )
     passing: int = Field(
         description="The number of students that have passed the assignment."
     )
-    language: str = Field(
+    language: Union[str, None] = Field(
         description="The programming language used in the assignment."
     )
     deadline: Union[datetime, None] = Field(

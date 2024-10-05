@@ -61,11 +61,11 @@ class SimpleClassroomAssignmentType(TypedDict):
     feedback_pull_requests_enabled: bool
     max_teams: NotRequired[Union[int, None]]
     max_members: NotRequired[Union[int, None]]
-    editor: str
+    editor: Union[str, None]
     accepted: int
-    submitted: int
+    submitted: NotRequired[int]
     passing: int
-    language: str
+    language: Union[str, None]
     deadline: Union[datetime, None]
     classroom: SimpleClassroomType
 
