@@ -1,7 +1,7 @@
 import re
 import builtins
 from keyword import iskeyword
-from typing import TYPE_CHECKING, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 import openapi_pydantic as oas
 from pydantic import TypeAdapter
@@ -24,6 +24,8 @@ RESERVED_WORDS = (
 }
 
 UNSET_KEY = "<unset>"
+ADD_KEY = "<add>"
+REMOVE_KEY = "<remove>"
 
 
 def sanitize(value: str) -> str:
@@ -103,16 +105,40 @@ def build_prop_name(name: str) -> str:
 def merge_dict(old: dict, new: dict):
     # make change inplace to make json point correct
     for key, value in new.items():
+        # remove a field
         if value == UNSET_KEY:
             if key not in old:
                 raise ValueError(f"Key {key} not found in {old}")
             del old[key]
         else:
-            old[key] = (
-                merge_dict(old[key], value)
-                if isinstance(value, dict) and isinstance(old[key], dict)
-                else value
-            )
+            if key not in old:
+                old[key] = value
+            else:
+                try:
+                    merge_inplace(old[key], value)
+                except TypeError:
+                    old[key] = value
+
+
+def merge_list(old: list, new: list | dict):
+    if isinstance(new, list):
+        old.clear()
+        old.extend(new)
+    else:
+        if REMOVE_KEY in new:
+            for item in new[REMOVE_KEY]:
+                old.remove(item)
+        if ADD_KEY in new:
+            old.extend(new[ADD_KEY])
+
+
+def merge_inplace(old: Any, new: Any):
+    if isinstance(old, dict) and isinstance(new, dict):
+        merge_dict(old, new)
+    elif isinstance(old, list) and isinstance(new, list | dict):
+        merge_list(old, new)
+    else:
+        raise TypeError(f"Cannot merge type {type(old)} with {type(new)}")
 
 
 def schema_from_source(source: "Source") -> oas.Schema:
