@@ -1,0 +1,7 @@
+coverage:
+  status:
+    project: off
+    patch: false
+    changes: false
+comment: false
+github_checks: false
