@@ -283,9 +283,9 @@ class GitHubCore(Generic[A]):
                     cookies=cookies,
                 )
             except httpx.TimeoutException as e:
-                raise RequestTimeout(e.request) from e
+                raise RequestTimeout(e) from e
             except Exception as e:
-                raise RequestError(repr(e)) from e
+                raise RequestError(e) from e
 
     # async request
     async def _arequest(
@@ -315,9 +315,9 @@ class GitHubCore(Generic[A]):
                     cookies=cookies,
                 )
             except httpx.TimeoutException as e:
-                raise RequestTimeout(e.request) from e
+                raise RequestTimeout(e) from e
             except Exception as e:
-                raise RequestError(repr(e)) from e
+                raise RequestError(e) from e
 
     # check and parse response
     @overload

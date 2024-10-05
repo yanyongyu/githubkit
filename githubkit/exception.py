@@ -1,11 +1,14 @@
 from datetime import timedelta
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Generic, TypeVar
 
 import httpx
 
 if TYPE_CHECKING:
     from .response import Response
     from .graphql import GraphQLResponse
+
+
+E = TypeVar("E", bound=Exception)
 
 
 class GitHubException(Exception): ...
@@ -19,15 +22,22 @@ class AuthExpiredError(GitHubException):
     """Auth Expired Error"""
 
 
-class RequestError(GitHubException):
+class RequestError(GitHubException, Generic[E]):
     """Simple API request failed with unknown error"""
 
+    def __init__(self, exc: E) -> None:
+        self.exc = exc
 
-class RequestTimeout(GitHubException):
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}(origin_exc={self.exc!r})"
+
+
+class RequestTimeout(RequestError[httpx.TimeoutException]):
     """Simple API request timeout"""
 
-    def __init__(self, request: httpx.Request):
-        self.request = request
+    @property
+    def request(self) -> httpx.Request:
+        return self.exc.request
 
     def __repr__(self) -> str:
         return (
@@ -36,10 +46,17 @@ class RequestTimeout(GitHubException):
         )
 
 
-class RequestFailed(GitHubException):
+class RequestFailed(RequestError[httpx.HTTPStatusError]):
     """Simple API request failed with error status code"""
 
     def __init__(self, response: "Response"):
+        super().__init__(
+            httpx.HTTPStatusError(
+                "Request failed",
+                request=response.raw_request,
+                response=response.raw_response,
+            )
+        )
         self.request = response.raw_request
         self.response = response
 
