@@ -10,16 +10,16 @@ repos:
     rev: 5.13.2
     hooks:
       - id: isort
-        stages: [commit]
+        stages: [Nonepre-commitNone]
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.6.4
+    rev: v0.6.9
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
-        stages: [commit]
+        stages: [Nonepre-commitNone]
       - id: ruff-format
-        stages: [commit]
+        stages: [Nonepre-commitNone]
 
   - repo: https://github.com/nonebot/nonemoji
     rev: v0.1.4
