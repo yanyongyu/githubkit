@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD033 MD041 -->
+<!-- markdownlint-disable MD041 -->
 <div align="center">
 
 [![githubkit](https://socialify.git.ci/yanyongyu/githubkit/image?description=1&descriptionEditable=%E2%9C%A8%20GitHub%20SDK%20for%20Python%20%E2%9C%A8&font=Bitter&language=1&pattern=Circuit%20Board&theme=Light)](https://github.com/yanyongyu/githubkit)

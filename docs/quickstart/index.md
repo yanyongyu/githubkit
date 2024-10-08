@@ -1,5 +1,3 @@
-<!-- markdownlint-disable MD033 MD041 -->
-
 # Quick Start
 
 Here are some common use cases to help you get started quickly. For more detailed usage, please refer to the [Usage](../usage/authentication.md) section.
@@ -22,19 +20,19 @@ Here are some common use cases to help you get started quickly. For more detaile
 
     ---
 
-    Develop an [OAuth APP](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app) ([GitHub APP](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app)) with web flow
+    Develop an [OAuth APP](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app) ([GitHub APP](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app)) with web flow and act on behalf of a user
 
 - :octicons-file-code-16: [OAuth APP Device Flow](./oauth-device-flow.md)
 
     ---
 
-    Develop an [OAuth APP](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app) ([GitHub APP](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app)) with device flow
+    Develop an [OAuth APP](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app) ([GitHub APP](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app)) with device flow and act on behalf of a user
 
 - :octicons-file-code-16: [GitHub APP](./github-app.md)
 
     ---
 
-    Develop a [GitHub APP](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app)
+    Develop a [GitHub APP](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/registering-a-github-app) and act on behalf of an installation or a user.
 
 <!-- prettier-ignore-end -->
 

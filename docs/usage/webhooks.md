@@ -1,5 +1,3 @@
-<!-- markdownlint-disable MD046 -->
-
 # Webhooks
 
 Webhooks provide a way for notifications to be delivered to an external web server whenever certain events occur on GitHub. See the [GitHub Webhooks Documentation](https://docs.github.com/en/webhooks) for more information.

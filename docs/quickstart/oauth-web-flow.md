@@ -2,158 +2,196 @@
 
 OAuth web flow allows you to authenticate as a user and act on behalf of the user.
 
-Note that if you are developing a GitHub APP, you may opt-in / opt-out of the user-to-server token expiration feature. If you opt-in, the user-to-server token will expire after a certain period of time, and you need to use the refresh token to generate a new token. In this case, you need to do more work to handle the token refresh. See [GitHub Docs - Refreshing user access tokens](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/refreshing-user-access-tokens) for more information.
+To authenticate as a user, you need to redirect the user to the [GitHub OAuth Authorization Page](https://github.com/login/oauth/authorize) with the `client_id` and `redirect_uri` (See [GitHub Docs - Web application flow](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#web-application-flow) for more information). After the user authorizes your app, GitHub will redirect the user back to your `redirect_uri` with a `code`. You can exchange the `code` for an access token.
 
-## Sync Example
+Note that the `code` is **one-time use** and only valid for a short period of time. If you want to auth as the user later again, you need to store the user token in a database.
 
-If you are developing an OAuth APP or a GitHub APP without user-to-server token expiration:
+If you are developing a GitHub APP, you may opt-in / opt-out of the **user-to-server token expiration** feature. If you opt-in, the user-to-server token will **expire** after a certain period of time, and you need to use the **refresh token** to generate a new token. In this case, you need to do more work to handle the token refresh. See [GitHub Docs - Refreshing user access tokens](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/refreshing-user-access-tokens) for more information.
 
-```python
-from githubkit.versions.latest.models import PublicUser, PrivateUser
-from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
+## One-Time Usage
 
-github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
+To use the `code` once, replace `<code>` with the code you get from the callback:
 
-# redirect user to github oauth page and get the code from callback
+=== "Sync"
 
-user_github = github.with_auth(github.auth.as_web_user("<code>"))  # (1)!
+    ```python hl_lines="8"
+    from githubkit.versions.latest.models import PublicUser, PrivateUser
+    from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
 
-# === or ===
-auth: OAuthTokenAuthStrategy = github.auth.as_web_user("<code>").exchange_token(
-    github
-)  # (2)!
-access_token = auth.token
+    github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
 
-user_github = github.with_auth(
-    OAuthTokenAuthStrategy("<client_id>", "<client_secret>", token=access_token)
-)  # (3)!
+    # redirect user to github oauth page and get the code from callback
 
-# now you can act as the user
-resp = user_github.rest.users.get_authenticated()
-user: PublicUser | PrivateUser = resp.parsed_data
+    user_github = github.with_auth(github.auth.as_web_user("<code>"))
 
-# you can get the user name and id now
-username = user.login
-user_id = user.id
-```
+    # now you can act as the user
+    resp = user_github.rest.users.get_authenticated()
+    user: PublicUser | PrivateUser = resp.parsed_data
 
-1. If you just want to use the user token once, simply switch to OAuth Web Auth Strategy.
-2. exchange the user token manually and store it in a database.
-3. restore the user token from database
+    # you can get the user name and id now
+    username = user.login
+    user_id = user.id
+    ```
 
-If you are developing a GitHub APP with user-to-server token expiration:
+=== "Async"
 
-```python
-from githubkit.versions.latest.models import PublicUser, PrivateUser
-from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
+    ```python hl_lines="8"
+    from githubkit.versions.latest.models import PublicUser, PrivateUser
+    from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
 
-github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
+    github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
 
-# redirect user to github oauth page and get the code from callback
+    # redirect user to github oauth page and get the code from callback
 
-user_github = github.with_auth(github.auth.as_web_user("<code>"))  # (1)!
+    user_github = github.with_auth(github.auth.as_web_user("<code>"))
 
-# === or ===
-auth: OAuthTokenAuthStrategy = github.auth.as_web_user("<code>").exchange_token(
-    github
-)  # (2)!
-refresh_token = auth.refresh_token
+    # now you can act as the user
+    resp = await user_github.rest.users.async_get_authenticated()
+    user: PublicUser | PrivateUser = resp.parsed_data
 
-auth = OAuthTokenAuthStrategy(
-    "<client_id>", "<client_secret>", refresh_token=refresh_token
-)  # (3)!
-auth.refresh(github)  # (4)!
-refresh_token = auth.refresh_token
+    # you can get the user name and id now
+    username = user.login
+    user_id = user.id
+    ```
 
-user_github = github.with_auth(auth)
+## Store token without expiration
 
-# now you can act as the user
-resp = user_github.rest.users.get_authenticated()
-user: PublicUser | PrivateUser = resp.parsed_data
+If you are developing an OAuth APP or a GitHub APP without user-to-server token expiration, you just need to exchange the `code` for an access token.
 
-# you can get the user name and id now
-username = user.login
-user_id = user.id
-```
+=== "Sync"
 
-1. If you just want to use the user token once, simply switch to OAuth Web Auth Strategy.
-2. exchange the user token manually and store it in a database.
-3. restore the user refresh token from database and generate a new token.
-4. refresh the token manually and store the new one. otherwise, the token will be refreshed automatically when you make a request.
+    ```python hl_lines="8-11 13-15"
+    from githubkit.versions.latest.models import PublicUser, PrivateUser
+    from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
 
-## Async Example
+    github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
 
-If you are developing an OAuth APP or a GitHub APP without user-to-server token expiration:
+    # redirect user to github oauth page and get the code from callback
 
-```python
-from githubkit.versions.latest.models import PublicUser, PrivateUser
-from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
+    auth: OAuthTokenAuthStrategy = github.auth.as_web_user("<code>").exchange_token(
+        github
+    )  # (1)!
+    access_token = auth.token
 
-github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
+    user_github = github.with_auth(
+        OAuthTokenAuthStrategy("<client_id>", "<client_secret>", token=access_token)
+    )  # (2)!
 
-# redirect user to github oauth page and get the code from callback
+    # now you can act as the user
+    resp = user_github.rest.users.get_authenticated()
+    user: PublicUser | PrivateUser = resp.parsed_data
 
-user_github = github.with_auth(github.auth.as_web_user("<code>"))  # (1)!
+    # you can get the user name and id now
+    username = user.login
+    user_id = user.id
+    ```
 
-# === or ===
-auth: OAuthTokenAuthStrategy = await github.auth.as_web_user(
-    "<code>"
-).async_exchange_token(github)  # (2)!
-access_token = auth.token
+    1. Exchange the user token manually and store the `access_token` in a database.
+    2. Restore the user token from database.
 
-user_github = github.with_auth(
-    OAuthTokenAuthStrategy("<client_id>", "<client_secret>", token=access_token)
-)  # (3)!
+=== "Async"
 
-# now you can act as the user
-resp = await user_github.rest.users.async_get_authenticated()
-user: PublicUser | PrivateUser = resp.parsed_data
+    ```python hl_lines="8-11 13-15"
+    from githubkit.versions.latest.models import PublicUser, PrivateUser
+    from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
 
-# you can get the user name and id now
-username = user.login
-user_id = user.id
-```
+    github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
 
-1. If you just want to use the user token once, simply switch to OAuth Web Auth Strategy.
-2. exchange the user token manually and store it in a database.
-3. restore the user token from database
+    # redirect user to github oauth page and get the code from callback
 
-If you are developing a GitHub APP with user-to-server token expiration:
+    auth: OAuthTokenAuthStrategy = await github.auth.as_web_user(
+        "<code>"
+    ).async_exchange_token(github)  # (1)!
+    access_token = auth.token
 
-```python
-from githubkit.versions.latest.models import PublicUser, PrivateUser
-from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
+    user_github = github.with_auth(
+        OAuthTokenAuthStrategy("<client_id>", "<client_secret>", token=access_token)
+    )  # (2)!
 
-github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
+    # now you can act as the user
+    resp = await user_github.rest.users.async_get_authenticated()
+    user: PublicUser | PrivateUser = resp.parsed_data
 
-# redirect user to github oauth page and get the code from callback
+    # you can get the user name and id now
+    username = user.login
+    user_id = user.id
+    ```
 
-user_github = github.with_auth(github.auth.as_web_user("<code>"))  # (1)!
+    1. Exchange the user token manually and store the `access_token` in a database.
+    2. Restore the user token from database.
 
-# === or ===
-auth: OAuthTokenAuthStrategy = await github.auth.as_web_user(
-    "<code>"
-).async_exchange_token(github)  # (2)!
-refresh_token = auth.refresh_token
+## Store token with expiration
 
-auth = OAuthTokenAuthStrategy(
-    "<client_id>", "<client_secret>", refresh_token=refresh_token
-)  # (3)!
-await auth.async_refresh(github)  # (4)!
-refresh_token = auth.refresh_token
+If you are developing a GitHub APP with user-to-server token expiration, you need to handle the token refresh with the `refresh_token`.
 
-user_github = github.with_auth(auth)
+=== "Sync"
 
-# now you can act as the user
-resp = await user_github.rest.users.async_get_authenticated()
-user: PublicUser | PrivateUser = resp.parsed_data
+    ```python hl_lines="8-11 13-19"
+    from githubkit.versions.latest.models import PublicUser, PrivateUser
+    from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
 
-# you can get the user name and id now
-username = user.login
-user_id = user.id
-```
+    github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
 
-1. If you just want to use the user token once, simply switch to OAuth Web Auth Strategy.
-2. exchange the user token manually and store it in a database.
-3. restore the user refresh token from database and generate a new token.
-4. refresh the token manually and store the new one. otherwise, the token will be refreshed automatically when you make a request.
+    # redirect user to github oauth page and get the code from callback
+
+    auth: OAuthTokenAuthStrategy = github.auth.as_web_user("<code>").exchange_token(
+        github
+    )  # (1)!
+    refresh_token = auth.refresh_token
+
+    auth = OAuthTokenAuthStrategy(
+        "<client_id>", "<client_secret>", refresh_token=refresh_token
+    )  # (2)!
+    auth.refresh(github)  # (3)!
+    refresh_token = auth.refresh_token
+
+    user_github = github.with_auth(auth)
+
+    # now you can act as the user
+    resp = user_github.rest.users.get_authenticated()
+    user: PublicUser | PrivateUser = resp.parsed_data
+
+    # you can get the user name and id now
+    username = user.login
+    user_id = user.id
+    ```
+
+    1. Exchange the user token manually and store the `refresh_token` in a database.
+    2. Restore the user refresh token from database and generate a new token.
+    3. Refresh the token manually and store the new one.
+
+=== "Async"
+
+    ```python hl_lines="8-11 13-19"
+    from githubkit.versions.latest.models import PublicUser, PrivateUser
+    from githubkit import GitHub, OAuthAppAuthStrategy, OAuthTokenAuthStrategy
+
+    github = GitHub(OAuthAppAuthStrategy("<client_id>", "<client_secret>"))
+
+    # redirect user to github oauth page and get the code from callback
+
+    auth: OAuthTokenAuthStrategy = await github.auth.as_web_user(
+        "<code>"
+    ).async_exchange_token(github)  # (1)!
+    refresh_token = auth.refresh_token
+
+    auth = OAuthTokenAuthStrategy(
+        "<client_id>", "<client_secret>", refresh_token=refresh_token
+    )  # (2)!
+    await auth.async_refresh(github)  # (3)!
+    refresh_token = auth.refresh_token
+
+    user_github = github.with_auth(auth)
+
+    # now you can act as the user
+    resp = await user_github.rest.users.async_get_authenticated()
+    user: PublicUser | PrivateUser = resp.parsed_data
+
+    # you can get the user name and id now
+    username = user.login
+    user_id = user.id
+    ```
+
+    1. Exchange the user token manually and store the `refresh_token` in a database.
+    2. Restore the user refresh token from database and generate a new token.
+    3. Refresh the token manually and store the new one.

@@ -1,5 +1,3 @@
-<!-- markdownlint-disable MD046 -->
-
 # Calling REST API
 
 GitHub's REST API enables you to build automation processes, integrate with GitHub and extend GitHub. See the [GitHub REST API documentation](https://docs.github.com/en/rest) for more information.

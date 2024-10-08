@@ -1,5 +1,3 @@
-<!-- markdownlint-disable MD046 -->
-
 # Calling GraphQL API
 
 The GitHub GraphQL API offers flexibility and the ability to define precisely the data you want to fetch. See the [GitHub GraphQL API documentation](https://docs.github.com/en/graphql) for more information.

@@ -1,0 +1,5 @@
+MD013: false # line-length
+MD024: # no-duplicate-heading
+  siblings_only: true
+MD033: false # no-inline-html
+MD046: false # code-block-style

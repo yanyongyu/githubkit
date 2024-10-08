@@ -1,5 +1,3 @@
-<!-- markdownlint-disable MD033 MD041 -->
-
 # githubkit {: .hidden }
 
 <div align="center" markdown>
