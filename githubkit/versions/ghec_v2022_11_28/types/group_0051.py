@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 from datetime import date, datetime
 from typing_extensions import TypedDict, NotRequired
 
@@ -33,6 +33,7 @@ class CopilotSeatDetailsType(TypedDict):
     last_activity_editor: NotRequired[Union[str, None]]
     created_at: datetime
     updated_at: NotRequired[datetime]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
 
 
 class EnterpriseTeamType(TypedDict):

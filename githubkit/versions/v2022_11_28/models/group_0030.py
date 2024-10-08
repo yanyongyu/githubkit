@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 from datetime import date, datetime
 
 from pydantic import Field
@@ -54,6 +54,10 @@ class CopilotSeatDetails(GitHubModel):
     updated_at: Missing[datetime] = Field(
         default=UNSET,
         description="Timestamp of when the assignee's GitHub Copilot access was last updated, in ISO 8601 format.",
+    )
+    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
+        default=UNSET,
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
     )
 
 

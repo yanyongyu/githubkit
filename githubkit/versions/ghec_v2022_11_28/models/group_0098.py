@@ -49,6 +49,10 @@ class CopilotOrganizationDetails(ExtraGitHubModel):
     seat_management_setting: Literal[
         "assign_all", "assign_selected", "disabled", "unconfigured"
     ] = Field(description="The mode of assigning new seats.")
+    plan_type: Missing[Literal["business", "enterprise", "unknown"]] = Field(
+        default=UNSET,
+        description="The Copilot plan of the organization, or the parent enterprise, when applicable.",
+    )
 
 
 class CopilotSeatBreakdown(GitHubModel):

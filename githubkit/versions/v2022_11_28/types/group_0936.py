@@ -26,7 +26,9 @@ class ReposOwnerRepoCheckRunsPostBodyOneof1Type(TypedDict):
     head_sha: str
     details_url: NotRequired[str]
     external_id: NotRequired[str]
-    status: NotRequired[Literal["queued", "in_progress"]]
+    status: NotRequired[
+        Literal["queued", "in_progress", "waiting", "requested", "pending"]
+    ]
     started_at: NotRequired[datetime]
     conclusion: NotRequired[
         Literal[
