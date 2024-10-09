@@ -38,7 +38,9 @@ class ReposOwnerRepoCheckRunsPostBodyOneof1(ExtraGitHubModel):
     external_id: Missing[str] = Field(
         default=UNSET, description="A reference for the run on the integrator's system."
     )
-    status: Missing[Literal["queued", "in_progress"]] = Field(default=UNSET)
+    status: Missing[
+        Literal["queued", "in_progress", "waiting", "requested", "pending"]
+    ] = Field(default=UNSET)
     started_at: Missing[datetime] = Field(
         default=UNSET,
         description="The time that the check run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",

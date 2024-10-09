@@ -28,6 +28,7 @@ class CopilotOrganizationDetailsType(TypedDict):
     seat_management_setting: Literal[
         "assign_all", "assign_selected", "disabled", "unconfigured"
     ]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
 
 
 class CopilotSeatBreakdownType(TypedDict):

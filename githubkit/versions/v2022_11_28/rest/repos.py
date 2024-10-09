@@ -10,10 +10,9 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing_extensions import Annotated
 from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
 
-from pydantic import Field, BaseModel
+from pydantic import BaseModel
 
 from githubkit.typing import Missing, UnsetType
 from githubkit.utils import UNSET, exclude_unset
@@ -7142,14 +7141,8 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[
-        Annotated[
-            Union[
-                List[ContentDirectoryItems],
-                ContentFile,
-                ContentSymlink,
-                ContentSubmodule,
-            ],
-            Field(discriminator="type"),
+        Union[
+            List[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
         ]
     ]:
         """See also: https://docs.github.com/rest/repos/contents#get-repository-content"""
@@ -7177,14 +7170,11 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=Annotated[
-                Union[
-                    List[ContentDirectoryItems],
-                    ContentFile,
-                    ContentSymlink,
-                    ContentSubmodule,
-                ],
-                Field(discriminator="type"),
+            response_model=Union[
+                List[ContentDirectoryItems],
+                ContentFile,
+                ContentSymlink,
+                ContentSubmodule,
             ],
             error_models={
                 "404": BasicError,
@@ -7201,14 +7191,8 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[
-        Annotated[
-            Union[
-                List[ContentDirectoryItems],
-                ContentFile,
-                ContentSymlink,
-                ContentSubmodule,
-            ],
-            Field(discriminator="type"),
+        Union[
+            List[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
         ]
     ]:
         """See also: https://docs.github.com/rest/repos/contents#get-repository-content"""
@@ -7236,14 +7220,11 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=Annotated[
-                Union[
-                    List[ContentDirectoryItems],
-                    ContentFile,
-                    ContentSymlink,
-                    ContentSubmodule,
-                ],
-                Field(discriminator="type"),
+            response_model=Union[
+                List[ContentDirectoryItems],
+                ContentFile,
+                ContentSymlink,
+                ContentSubmodule,
             ],
             error_models={
                 "404": BasicError,

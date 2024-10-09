@@ -374,6 +374,18 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
   "submitted",
 ] }
 
+# https://github.com/yanyongyu/githubkit/issues/148
+"/paths/~1repos~1{owner}~1{repo}~1check-runs/post/requestBody/content/application~1json/schema" = { discriminator = "<unset>" }
+# repo check runs status enum may have more values (missing in oneOf)
+"/paths/~1repos~1{owner}~1{repo}~1check-runs/post/requestBody/content/application~1json/schema/oneOf/1/properties/status/enum" = { "<add>" = [
+  "waiting",
+  "requested",
+  "pending",
+] }
+
+# get repo content response discriminator not supported
+"/paths/~1repos~1{owner}~1{repo}~1contents~1{path}/get/responses/200/content/application~1json/schema" = { discriminator = "<unset>" }
+
 # Webhook schema overrides
 # webhook check run action is required
 "/components/schemas/webhook-check-run-completed/required" = { "<add>" = [
