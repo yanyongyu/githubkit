@@ -308,9 +308,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgActionsPermissionsPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -357,9 +354,6 @@ class ActionsClient:
         url = f"/orgs/{org}/actions/permissions"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgActionsPermissionsPutBody, json)
@@ -465,9 +459,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgActionsPermissionsRepositoriesPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -513,9 +504,6 @@ class ActionsClient:
         url = f"/orgs/{org}/actions/permissions/repositories"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgActionsPermissionsRepositoriesPutBody, json)
@@ -683,9 +671,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(SelectedActions, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -733,9 +718,6 @@ class ActionsClient:
         url = f"/orgs/{org}/actions/permissions/selected-actions"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(SelectedActions, json)
@@ -826,9 +808,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ActionsSetDefaultWorkflowPermissions, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -875,9 +854,6 @@ class ActionsClient:
         url = f"/orgs/{org}/actions/permissions/workflow"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ActionsSetDefaultWorkflowPermissions, json)
@@ -1041,9 +1017,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             OrgsOrgActionsRunnersGenerateJitconfigPostBody, json
@@ -1104,9 +1077,6 @@ class ActionsClient:
         url = f"/orgs/{org}/actions/runners/generate-jitconfig"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1391,9 +1361,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgActionsRunnersRunnerIdLabelsPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1452,9 +1419,6 @@ class ActionsClient:
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgActionsRunnersRunnerIdLabelsPutBody, json)
@@ -1515,9 +1479,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgActionsRunnersRunnerIdLabelsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1576,9 +1537,6 @@ class ActionsClient:
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgActionsRunnersRunnerIdLabelsPostBody, json)
@@ -1899,9 +1857,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgActionsSecretsSecretNamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1954,9 +1909,6 @@ class ActionsClient:
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgActionsSecretsSecretNamePutBody, json)
@@ -2106,9 +2058,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             OrgsOrgActionsSecretsSecretNameRepositoriesPutBody, json
@@ -2159,9 +2108,6 @@ class ActionsClient:
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -2356,9 +2302,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgActionsVariablesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -2408,9 +2351,6 @@ class ActionsClient:
         url = f"/orgs/{org}/actions/variables"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgActionsVariablesPostBody, json)
@@ -2546,9 +2486,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgActionsVariablesNamePatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -2599,9 +2536,6 @@ class ActionsClient:
         url = f"/orgs/{org}/actions/variables/{name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgActionsVariablesNamePatchBody, json)
@@ -2714,9 +2648,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             OrgsOrgActionsVariablesNameRepositoriesPutBody, json
@@ -2768,9 +2699,6 @@ class ActionsClient:
         url = f"/orgs/{org}/actions/variables/{name}/repositories"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -3433,9 +3361,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBody, None], json
@@ -3503,9 +3428,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/rerun"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -3620,9 +3542,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoActionsOidcCustomizationSubPutBody, json
@@ -3685,9 +3604,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -3911,9 +3827,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoActionsPermissionsPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3963,9 +3876,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/permissions"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoActionsPermissionsPutBody, json)
@@ -4060,9 +3970,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ActionsWorkflowAccessToRepository, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -4111,9 +4018,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/permissions/access"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ActionsWorkflowAccessToRepository, json)
@@ -4210,9 +4114,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(SelectedActions, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -4263,9 +4164,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/permissions/selected-actions"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(SelectedActions, json)
@@ -4361,9 +4259,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ActionsSetDefaultWorkflowPermissions, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -4414,9 +4309,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/permissions/workflow"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ActionsSetDefaultWorkflowPermissions, json)
@@ -4590,9 +4482,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody, json
@@ -4658,9 +4547,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/runners/generate-jitconfig"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -4958,9 +4844,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody, json
@@ -5024,9 +4907,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -5092,9 +4972,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody, json
@@ -5158,9 +5035,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -5997,9 +5871,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[ReviewCustomGatesCommentRequired, ReviewCustomGatesStateRequired],
@@ -6080,9 +5951,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/deployment_protection_rule"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -6408,9 +6276,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody, json
@@ -6475,9 +6340,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody, json
@@ -6539,9 +6401,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBody, None], json
@@ -6602,9 +6461,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -6669,9 +6525,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun-failed-jobs"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -6736,9 +6589,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun-failed-jobs"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -6992,9 +6842,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoActionsSecretsSecretNamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -7048,9 +6895,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoActionsSecretsSecretNamePutBody, json)
@@ -7203,9 +7047,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoActionsVariablesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -7256,9 +7097,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/variables"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoActionsVariablesPostBody, json)
@@ -7399,9 +7237,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoActionsVariablesNamePatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -7453,9 +7288,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/variables/{name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoActionsVariablesNamePatchBody, json)
@@ -7660,9 +7492,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody, json
@@ -7721,9 +7550,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -8166,9 +7992,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody, json
@@ -8232,9 +8055,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -8405,9 +8225,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody, json
@@ -8468,9 +8285,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -8624,9 +8438,6 @@ class ActionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody, json
@@ -8687,9 +8498,6 @@ class ActionsClient:
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables/{name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(

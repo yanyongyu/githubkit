@@ -62,7 +62,6 @@ class OrganizationFull(GitHubModel):
     owned_private_repos: Missing[int] = Field(default=UNSET)
     private_gists: Missing[Union[int, None]] = Field(default=UNSET)
     disk_usage: Missing[Union[int, None]] = Field(default=UNSET)
-    collaborators: Missing[Union[int, None]] = Field(default=UNSET)
     billing_email: Missing[Union[str, None]] = Field(default=UNSET)
     plan: Missing[OrganizationFullPropPlan] = Field(default=UNSET)
     default_repository_permission: Missing[Union[str, None]] = Field(default=UNSET)

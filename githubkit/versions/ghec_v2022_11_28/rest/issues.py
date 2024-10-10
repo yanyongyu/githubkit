@@ -587,9 +587,6 @@ class IssuesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoIssuesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -660,9 +657,6 @@ class IssuesClient:
         url = f"/repos/{owner}/{repo}/issues"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoIssuesPostBody, json)
@@ -905,9 +899,6 @@ class IssuesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoIssuesCommentsCommentIdPatchBody, json
@@ -969,9 +960,6 @@ class IssuesClient:
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1233,9 +1221,6 @@ class IssuesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoIssuesIssueNumberPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1318,9 +1303,6 @@ class IssuesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoIssuesIssueNumberPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1381,9 +1363,6 @@ class IssuesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoIssuesIssueNumberAssigneesPostBody, json
@@ -1438,9 +1417,6 @@ class IssuesClient:
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1497,9 +1473,6 @@ class IssuesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBody, json
@@ -1554,9 +1527,6 @@ class IssuesClient:
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/assignees"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1748,9 +1718,6 @@ class IssuesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoIssuesIssueNumberCommentsPostBody, json
@@ -1816,9 +1783,6 @@ class IssuesClient:
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/comments"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -2178,9 +2142,6 @@ class IssuesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[
@@ -2291,9 +2252,6 @@ class IssuesClient:
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -2406,9 +2364,6 @@ class IssuesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[
@@ -2519,9 +2474,6 @@ class IssuesClient:
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/labels"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -2717,9 +2669,6 @@ class IssuesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBody, None], json
@@ -2791,9 +2740,6 @@ class IssuesClient:
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/lock"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -3207,9 +3153,6 @@ class IssuesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoLabelsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3270,9 +3213,6 @@ class IssuesClient:
         url = f"/repos/{owner}/{repo}/labels"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoLabelsPostBody, json)
@@ -3425,9 +3365,6 @@ class IssuesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoLabelsNamePatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3482,9 +3419,6 @@ class IssuesClient:
         url = f"/repos/{owner}/{repo}/labels/{name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoLabelsNamePatchBody, json)
@@ -3626,9 +3560,6 @@ class IssuesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoMilestonesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3690,9 +3621,6 @@ class IssuesClient:
         url = f"/repos/{owner}/{repo}/milestones"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoMilestonesPostBody, json)
@@ -3856,9 +3784,6 @@ class IssuesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoMilestonesMilestoneNumberPatchBody, json
@@ -3916,9 +3841,6 @@ class IssuesClient:
         url = f"/repos/{owner}/{repo}/milestones/{milestone_number}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(

@@ -170,9 +170,6 @@ class ScimClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ScimV2OrganizationsOrgUsersPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -233,9 +230,6 @@ class ScimClient:
         url = f"/scim/v2/organizations/{org}/Users"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ScimV2OrganizationsOrgUsersPostBody, json)
@@ -357,9 +351,6 @@ class ScimClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ScimV2OrganizationsOrgUsersScimUserIdPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -424,9 +415,6 @@ class ScimClient:
         url = f"/scim/v2/organizations/{org}/Users/{scim_user_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ScimV2OrganizationsOrgUsersScimUserIdPutBody, json)
@@ -540,9 +528,6 @@ class ScimClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ScimV2OrganizationsOrgUsersScimUserIdPatchBody, json
@@ -608,9 +593,6 @@ class ScimClient:
         url = f"/scim/v2/organizations/{org}/Users/{scim_user_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(

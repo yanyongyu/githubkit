@@ -488,9 +488,6 @@ class SecretScanningClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody, json
@@ -560,9 +557,6 @@ class SecretScanningClient:
         url = f"/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -704,9 +698,6 @@ class SecretScanningClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody, json
@@ -768,9 +759,6 @@ class SecretScanningClient:
         url = f"/repos/{owner}/{repo}/secret-scanning/push-protection-bypasses"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(

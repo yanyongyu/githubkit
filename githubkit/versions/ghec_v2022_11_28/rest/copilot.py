@@ -465,9 +465,6 @@ class CopilotClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgCopilotBillingSelectedTeamsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -525,9 +522,6 @@ class CopilotClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgCopilotBillingSelectedTeamsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -585,9 +579,6 @@ class CopilotClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgCopilotBillingSelectedTeamsDeleteBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -645,9 +636,6 @@ class CopilotClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgCopilotBillingSelectedTeamsDeleteBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -705,9 +693,6 @@ class CopilotClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgCopilotBillingSelectedUsersPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -764,9 +749,6 @@ class CopilotClient:
         url = f"/orgs/{org}/copilot/billing/selected_users"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgCopilotBillingSelectedUsersPostBody, json)
@@ -825,9 +807,6 @@ class CopilotClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgCopilotBillingSelectedUsersDeleteBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -884,9 +863,6 @@ class CopilotClient:
         url = f"/orgs/{org}/copilot/billing/selected_users"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgCopilotBillingSelectedUsersDeleteBody, json)

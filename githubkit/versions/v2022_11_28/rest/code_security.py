@@ -206,9 +206,6 @@ class CodeSecurityClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgCodeSecurityConfigurationsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -288,9 +285,6 @@ class CodeSecurityClient:
         url = f"/orgs/{org}/code-security/configurations"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgCodeSecurityConfigurationsPostBody, json)
@@ -396,9 +390,6 @@ class CodeSecurityClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             OrgsOrgCodeSecurityConfigurationsDetachDeleteBody, json
@@ -455,9 +446,6 @@ class CodeSecurityClient:
         url = f"/orgs/{org}/code-security/configurations/detach"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -657,9 +645,6 @@ class CodeSecurityClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody, json
@@ -747,9 +732,6 @@ class CodeSecurityClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody, json
@@ -808,9 +790,6 @@ class CodeSecurityClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody, json
@@ -868,9 +847,6 @@ class CodeSecurityClient:
         url = f"/orgs/{org}/code-security/configurations/{configuration_id}/attach"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -937,9 +913,6 @@ class CodeSecurityClient:
         url = f"/orgs/{org}/code-security/configurations/{configuration_id}/defaults"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1010,9 +983,6 @@ class CodeSecurityClient:
         url = f"/orgs/{org}/code-security/configurations/{configuration_id}/defaults"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(

@@ -375,9 +375,6 @@ class ActivityClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(NotificationsPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -430,9 +427,6 @@ class ActivityClient:
         url = "/notifications"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(NotificationsPutBody, json)
@@ -671,9 +665,6 @@ class ActivityClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             NotificationsThreadsThreadIdSubscriptionPutBody, json
@@ -730,9 +721,6 @@ class ActivityClient:
         url = f"/notifications/threads/{thread_id}/subscription"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1047,9 +1035,6 @@ class ActivityClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoNotificationsPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1102,9 +1087,6 @@ class ActivityClient:
         url = f"/repos/{owner}/{repo}/notifications"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoNotificationsPutBody, json)
@@ -1341,9 +1323,6 @@ class ActivityClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoSubscriptionPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1394,9 +1373,6 @@ class ActivityClient:
         url = f"/repos/{owner}/{repo}/subscription"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoSubscriptionPutBody, json)

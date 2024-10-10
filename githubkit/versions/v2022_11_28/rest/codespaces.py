@@ -197,9 +197,6 @@ class CodespacesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgCodespacesAccessPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -257,9 +254,6 @@ class CodespacesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgCodespacesAccessPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -314,9 +308,6 @@ class CodespacesClient:
         url = f"/orgs/{org}/codespaces/access/selected_users"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgCodespacesAccessSelectedUsersPostBody, json)
@@ -373,9 +364,6 @@ class CodespacesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgCodespacesAccessSelectedUsersPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -430,9 +418,6 @@ class CodespacesClient:
         url = f"/orgs/{org}/codespaces/access/selected_users"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -490,9 +475,6 @@ class CodespacesClient:
         url = f"/orgs/{org}/codespaces/access/selected_users"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -702,9 +684,6 @@ class CodespacesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgCodespacesSecretsSecretNamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -766,9 +745,6 @@ class CodespacesClient:
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgCodespacesSecretsSecretNamePutBody, json)
@@ -949,9 +925,6 @@ class CodespacesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody, json
@@ -1010,9 +983,6 @@ class CodespacesClient:
         url = f"/orgs/{org}/codespaces/secrets/{secret_name}/repositories"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1465,9 +1435,6 @@ class CodespacesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(Union[ReposOwnerRepoCodespacesPostBody, None], json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1543,9 +1510,6 @@ class CodespacesClient:
         url = f"/repos/{owner}/{repo}/codespaces"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(Union[ReposOwnerRepoCodespacesPostBody, None], json)
@@ -2071,9 +2035,6 @@ class CodespacesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoCodespacesSecretsSecretNamePutBody, json
@@ -2132,9 +2093,6 @@ class CodespacesClient:
         url = f"/repos/{owner}/{repo}/codespaces/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -2251,9 +2209,6 @@ class CodespacesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[ReposOwnerRepoPullsPullNumberCodespacesPostBody, None], json
@@ -2334,9 +2289,6 @@ class CodespacesClient:
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/codespaces"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -2502,9 +2454,6 @@ class CodespacesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[UserCodespacesPostBodyOneof0, UserCodespacesPostBodyOneof1], json
@@ -2596,9 +2545,6 @@ class CodespacesClient:
         url = "/user/codespaces"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -2800,9 +2746,6 @@ class CodespacesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserCodespacesSecretsSecretNamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -2860,9 +2803,6 @@ class CodespacesClient:
         url = f"/user/codespaces/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserCodespacesSecretsSecretNamePutBody, json)
@@ -3014,9 +2954,6 @@ class CodespacesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             UserCodespacesSecretsSecretNameRepositoriesPutBody, json
@@ -3073,9 +3010,6 @@ class CodespacesClient:
         url = f"/user/codespaces/secrets/{secret_name}/repositories"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -3355,9 +3289,6 @@ class CodespacesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserCodespacesCodespaceNamePatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3411,9 +3342,6 @@ class CodespacesClient:
         url = f"/user/codespaces/{codespace_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserCodespacesCodespaceNamePatchBody, json)
@@ -3639,9 +3567,6 @@ class CodespacesClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserCodespacesCodespaceNamePublishPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3700,9 +3625,6 @@ class CodespacesClient:
         url = f"/user/codespaces/{codespace_name}/publish"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserCodespacesCodespaceNamePublishPostBody, json)

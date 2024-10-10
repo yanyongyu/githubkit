@@ -487,9 +487,6 @@ class DependabotClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgDependabotSecretsSecretNamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -542,9 +539,6 @@ class DependabotClient:
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgDependabotSecretsSecretNamePutBody, json)
@@ -700,9 +694,6 @@ class DependabotClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody, json
@@ -755,9 +746,6 @@ class DependabotClient:
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1098,9 +1086,6 @@ class DependabotClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoDependabotAlertsAlertNumberPatchBody, json
@@ -1177,9 +1162,6 @@ class DependabotClient:
         url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1397,9 +1379,6 @@ class DependabotClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoDependabotSecretsSecretNamePutBody, json
@@ -1458,9 +1437,6 @@ class DependabotClient:
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(

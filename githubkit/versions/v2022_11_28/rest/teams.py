@@ -186,9 +186,6 @@ class TeamsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgTeamsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -248,9 +245,6 @@ class TeamsClient:
         url = f"/orgs/{org}/teams"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgTeamsPostBody, json)
@@ -406,9 +400,6 @@ class TeamsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgTeamsTeamSlugPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -475,9 +466,6 @@ class TeamsClient:
         url = f"/orgs/{org}/teams/{team_slug}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgTeamsTeamSlugPatchBody, json)
@@ -608,9 +596,6 @@ class TeamsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgTeamsTeamSlugDiscussionsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -662,9 +647,6 @@ class TeamsClient:
         url = f"/orgs/{org}/teams/{team_slug}/discussions"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgTeamsTeamSlugDiscussionsPostBody, json)
@@ -813,9 +795,6 @@ class TeamsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody, json
@@ -878,9 +857,6 @@ class TeamsClient:
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1012,9 +988,6 @@ class TeamsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody, json
@@ -1074,9 +1047,6 @@ class TeamsClient:
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1231,9 +1201,6 @@ class TeamsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
@@ -1297,9 +1264,6 @@ class TeamsClient:
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1540,9 +1504,6 @@ class TeamsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody, json
@@ -1601,9 +1562,6 @@ class TeamsClient:
         url = f"/orgs/{org}/teams/{team_slug}/memberships/{username}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1824,9 +1782,6 @@ class TeamsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody, None], json
@@ -1892,9 +1847,6 @@ class TeamsClient:
         url = f"/orgs/{org}/teams/{team_slug}/projects/{project_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -2110,9 +2062,6 @@ class TeamsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -2167,9 +2116,6 @@ class TeamsClient:
         url = f"/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody, json)
@@ -2426,9 +2372,6 @@ class TeamsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(TeamsTeamIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -2487,9 +2430,6 @@ class TeamsClient:
         url = f"/teams/{team_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(TeamsTeamIdPatchBody, json)
@@ -2611,9 +2551,6 @@ class TeamsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(TeamsTeamIdDiscussionsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -2662,9 +2599,6 @@ class TeamsClient:
         url = f"/teams/{team_id}/discussions"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(TeamsTeamIdDiscussionsPostBody, json)
@@ -2802,9 +2736,6 @@ class TeamsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             TeamsTeamIdDiscussionsDiscussionNumberPatchBody, json
@@ -2860,9 +2791,6 @@ class TeamsClient:
         url = f"/teams/{team_id}/discussions/{discussion_number}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -2989,9 +2917,6 @@ class TeamsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody, json
@@ -3048,9 +2973,6 @@ class TeamsClient:
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -3198,9 +3120,6 @@ class TeamsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody, json
@@ -3260,9 +3179,6 @@ class TeamsClient:
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -3632,9 +3548,6 @@ class TeamsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(TeamsTeamIdMembershipsUsernamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3691,9 +3604,6 @@ class TeamsClient:
         url = f"/teams/{team_id}/memberships/{username}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(TeamsTeamIdMembershipsUsernamePutBody, json)
@@ -3907,9 +3817,6 @@ class TeamsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(TeamsTeamIdProjectsProjectIdPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3968,9 +3875,6 @@ class TeamsClient:
         url = f"/teams/{team_id}/projects/{project_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(TeamsTeamIdProjectsProjectIdPutBody, json)
@@ -4199,9 +4103,6 @@ class TeamsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(TeamsTeamIdReposOwnerRepoPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -4261,9 +4162,6 @@ class TeamsClient:
         url = f"/teams/{team_id}/repos/{owner}/{repo}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(TeamsTeamIdReposOwnerRepoPutBody, json)

@@ -270,9 +270,6 @@ class BillingClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody,
@@ -345,9 +342,6 @@ class BillingClient:
         url = f"/enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}/resource"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -422,9 +416,6 @@ class BillingClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody,
@@ -496,9 +487,6 @@ class BillingClient:
         url = f"/enterprises/{enterprise}/settings/billing/cost-centers/{cost_center_id}/resource"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
