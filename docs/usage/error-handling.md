@@ -2,7 +2,7 @@
 
 githubkit will raise exceptions when it encounters an error. Here shows all the exceptions that githubkit may raise. The most common exception is `RequestFailed`, which is raised when the http response status code is not successful.
 
-```plaintext
+```plaintext title="Exceptions"
 GitHubException
 ├── AuthCredentialError
 ├── AuthExpiredError
@@ -29,6 +29,8 @@ githubkit will raise `AuthCredentialError` when you missing or provide invalid c
 All githubkit requests (including REST API and GraphQL API) may raise `RequestError` when the request failed. `RequestTimeout` will be raised when the request timeout. `RequestFailed` will be raised when the http response status code is not successful.
 
 ```python
+from githubkit.exception import RequestError, RequestFailed, RequestTimeout
+
 try:
     resp = github.rest.repos.get("owner", "repo")
 except RequestFailed as e:
@@ -44,6 +46,15 @@ Specially, `RateLimitExceeded` will be raised when githubkit detects the rate li
 ## GraphQL Error
 
 githubkit may raise `GraphQLFailed` when the query failed. Note that this is not the same as `RequestFailed`.
+
+```python
+from githubkit.exception import GraphQLFailed
+
+try:
+    resp = github.graphql.query(some_query)
+except GraphQLFailed as e:
+    print(e.response.errors)
+```
 
 `GraphQLMissingPageInfo` will be raised when the page info missing in the response data. This usually happens when you miss the `pageInfo` field in the query. `GraphQLMissingCursorChange` will be raised when the cursor is not changed in the response data.
 
