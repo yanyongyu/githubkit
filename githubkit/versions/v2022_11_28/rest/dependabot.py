@@ -488,7 +488,8 @@ class DependabotClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgDependabotSecretsSecretNamePutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgDependabotSecretsSecretNamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -541,7 +542,8 @@ class DependabotClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgDependabotSecretsSecretNamePutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgDependabotSecretsSecretNamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -695,9 +697,10 @@ class DependabotClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -748,9 +751,10 @@ class DependabotClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgDependabotSecretsSecretNameRepositoriesPutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -1087,9 +1091,10 @@ class DependabotClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoDependabotAlertsAlertNumberPatchBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoDependabotAlertsAlertNumberPatchBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -1164,9 +1169,10 @@ class DependabotClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoDependabotAlertsAlertNumberPatchBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoDependabotAlertsAlertNumberPatchBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -1380,9 +1386,10 @@ class DependabotClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoDependabotSecretsSecretNamePutBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoDependabotSecretsSecretNamePutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -1439,9 +1446,10 @@ class DependabotClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoDependabotSecretsSecretNamePutBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoDependabotSecretsSecretNamePutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(

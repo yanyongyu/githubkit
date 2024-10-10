@@ -48,7 +48,8 @@ cookies = {
 {{ name }} = data
 {% endif %}
 {% if request_body.type in ["json", "form"] %}
-{{ name }} = type_validate_python({{ request_body.body_schema.get_type_string() }}, {{ name }})
+if self._github.config.rest_api_body_validation:
+    {{ name }} = type_validate_python({{ request_body.body_schema.get_type_string() }}, {{ name }})
 {{ name }} = model_dump({{ name }}) if isinstance({{ name }}, BaseModel) else {{ name }}
 {% endif %}
 {% endmacro %}
