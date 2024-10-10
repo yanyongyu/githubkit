@@ -28,3 +28,25 @@ def test_versioned_call(g: GitHub):
 async def test_versioned_async_call(g: GitHub):
     resp = await g.rest(LATEST_VERSION).repos.async_get(OWNER, REPO)
     assert isinstance(resp.parsed_data, FullRepository)
+
+
+def test_call_with_body(g: GitHub):
+    resp = g.rest.markdown.render(text="Hello **world**")
+    assert isinstance(resp.parsed_data, str)
+
+
+@pytest.mark.anyio
+async def test_async_call_with_body(g: GitHub):
+    resp = await g.rest.markdown.async_render(text="Hello **world**")
+    assert isinstance(resp.parsed_data, str)
+
+
+def test_call_with_raw_body(g: GitHub):
+    resp = g.rest.markdown.render_raw(data="Hello **world**")
+    assert isinstance(resp.parsed_data, str)
+
+
+@pytest.mark.anyio
+async def test_async_call_with_raw_body(g: GitHub):
+    resp = await g.rest.markdown.async_render_raw(data="Hello **world**")
+    assert isinstance(resp.parsed_data, str)
