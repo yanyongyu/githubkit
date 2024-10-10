@@ -306,7 +306,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/permissions"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -354,7 +358,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/permissions"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -459,7 +467,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/permissions/repositories"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -508,7 +520,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/permissions/repositories"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -677,7 +693,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/permissions/selected-actions"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -726,7 +746,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/permissions/selected-actions"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -816,7 +840,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/permissions/workflow"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -864,7 +892,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/permissions/workflow"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1027,7 +1059,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/runners/generate-jitconfig"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1089,7 +1125,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/runners/generate-jitconfig"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1373,7 +1413,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1435,7 +1479,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1497,7 +1545,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1559,7 +1611,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/runners/{runner_id}/labels"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1881,7 +1937,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1935,7 +1995,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -2084,7 +2148,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -2136,7 +2204,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/secrets/{secret_name}/repositories"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -2330,7 +2402,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/variables"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -2381,7 +2457,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/variables"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -2516,7 +2596,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/variables/{name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -2568,7 +2652,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/variables/{name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -2680,7 +2768,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/variables/{name}/repositories"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -2733,7 +2825,11 @@ class ActionsClient:
 
         url = f"/orgs/{org}/actions/variables/{name}/repositories"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -3395,7 +3491,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/rerun"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -3464,7 +3564,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/jobs/{job_id}/rerun"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -3578,7 +3682,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -3642,7 +3750,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/oidc/customization/sub"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -3865,7 +3977,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/permissions"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -3916,7 +4032,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/permissions"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -4010,7 +4130,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/permissions/access"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -4060,7 +4184,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/permissions/access"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -4156,7 +4284,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/permissions/selected-actions"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -4208,7 +4340,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/permissions/selected-actions"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -4303,7 +4439,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/permissions/workflow"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -4355,7 +4495,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/permissions/workflow"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -4528,7 +4672,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/runners/generate-jitconfig"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -4595,7 +4743,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/runners/generate-jitconfig"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -4892,7 +5044,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -4957,7 +5113,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -5022,7 +5182,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -5087,7 +5251,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/runners/{runner_id}/labels"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -5923,7 +6091,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/deployment_protection_rule"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -6005,7 +6177,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/deployment_protection_rule"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -6330,7 +6506,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -6395,7 +6575,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -6457,7 +6641,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -6519,7 +6707,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -6584,7 +6776,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun-failed-jobs"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -6649,7 +6845,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/runs/{run_id}/rerun-failed-jobs"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -6902,7 +7102,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -6959,7 +7163,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/secrets/{secret_name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -7113,7 +7321,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/variables"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -7165,7 +7377,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/variables"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -7305,7 +7521,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/variables/{name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -7360,7 +7580,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/variables/{name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -7566,7 +7790,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -7626,7 +7854,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -8068,7 +8300,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -8133,7 +8369,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -8303,7 +8543,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -8365,7 +8609,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -8518,7 +8766,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables/{name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -8580,7 +8832,11 @@ class ActionsClient:
 
         url = f"/repos/{owner}/{repo}/environments/{environment_name}/variables/{name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:

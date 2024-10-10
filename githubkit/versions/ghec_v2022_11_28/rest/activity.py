@@ -373,7 +373,11 @@ class ActivityClient:
 
         url = "/notifications"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -427,7 +431,11 @@ class ActivityClient:
 
         url = "/notifications"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -665,7 +673,11 @@ class ActivityClient:
 
         url = f"/notifications/threads/{thread_id}/subscription"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -723,7 +735,11 @@ class ActivityClient:
 
         url = f"/notifications/threads/{thread_id}/subscription"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1037,7 +1053,11 @@ class ActivityClient:
 
         url = f"/repos/{owner}/{repo}/notifications"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1091,7 +1111,11 @@ class ActivityClient:
 
         url = f"/repos/{owner}/{repo}/notifications"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1327,7 +1351,11 @@ class ActivityClient:
 
         url = f"/repos/{owner}/{repo}/subscription"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1379,7 +1407,11 @@ class ActivityClient:
 
         url = f"/repos/{owner}/{repo}/subscription"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:

@@ -485,7 +485,11 @@ class DependabotClient:
 
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -539,7 +543,11 @@ class DependabotClient:
 
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -694,7 +702,11 @@ class DependabotClient:
 
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -748,7 +760,11 @@ class DependabotClient:
 
         url = f"/orgs/{org}/dependabot/secrets/{secret_name}/repositories"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1088,7 +1104,11 @@ class DependabotClient:
 
         url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1166,7 +1186,11 @@ class DependabotClient:
 
         url = f"/repos/{owner}/{repo}/dependabot/alerts/{alert_number}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1383,7 +1407,11 @@ class DependabotClient:
 
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1443,7 +1471,11 @@ class DependabotClient:
 
         url = f"/repos/{owner}/{repo}/dependabot/secrets/{secret_name}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:

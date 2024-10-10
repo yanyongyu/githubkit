@@ -62,6 +62,7 @@ class RequestBodyData:
 
     type: Literal["form", "json", "file", "raw"]
     body_schema: SchemaData
+    content_type: str | None = None
     required: bool = False
 
     @property

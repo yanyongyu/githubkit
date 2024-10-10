@@ -204,7 +204,11 @@ class CodeSecurityClient:
 
         url = f"/orgs/{org}/code-security/configurations"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -285,7 +289,11 @@ class CodeSecurityClient:
 
         url = f"/orgs/{org}/code-security/configurations"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -390,7 +398,11 @@ class CodeSecurityClient:
 
         url = f"/orgs/{org}/code-security/configurations/detach"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -448,7 +460,11 @@ class CodeSecurityClient:
 
         url = f"/orgs/{org}/code-security/configurations/detach"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -647,7 +663,11 @@ class CodeSecurityClient:
 
         url = f"/orgs/{org}/code-security/configurations/{configuration_id}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -735,7 +755,11 @@ class CodeSecurityClient:
 
         url = f"/orgs/{org}/code-security/configurations/{configuration_id}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -794,7 +818,11 @@ class CodeSecurityClient:
 
         url = f"/orgs/{org}/code-security/configurations/{configuration_id}/attach"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -853,7 +881,11 @@ class CodeSecurityClient:
 
         url = f"/orgs/{org}/code-security/configurations/{configuration_id}/attach"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -920,7 +952,11 @@ class CodeSecurityClient:
 
         url = f"/orgs/{org}/code-security/configurations/{configuration_id}/defaults"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -991,7 +1027,11 @@ class CodeSecurityClient:
 
         url = f"/orgs/{org}/code-security/configurations/{configuration_id}/defaults"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:

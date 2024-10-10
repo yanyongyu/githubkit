@@ -215,7 +215,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -282,7 +286,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -521,7 +529,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -580,7 +592,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -711,7 +727,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -778,7 +798,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -928,7 +952,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1002,7 +1030,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1071,7 +1103,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1139,7 +1175,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1408,7 +1448,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1487,7 +1531,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1627,7 +1675,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1721,7 +1773,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1791,7 +1847,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1857,7 +1917,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -1992,7 +2056,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -2062,7 +2130,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -2183,7 +2255,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -2249,7 +2325,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -2451,7 +2531,11 @@ class PullsClient:
             f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals"
         )
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -2524,7 +2608,11 @@ class PullsClient:
             f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals"
         )
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -2595,7 +2683,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -2667,7 +2759,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -2739,7 +2835,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:
@@ -2810,7 +2910,11 @@ class PullsClient:
 
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"
 
-        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
 
         json = kwargs if data is UNSET else data
         if self._github.config.rest_api_body_validation:

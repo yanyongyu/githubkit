@@ -20,11 +20,14 @@ params = {
 {% endif %}
 {% endmacro %}
 
-{% macro build_header(params) %}
+{% macro build_header(params, request_body) %}
 headers = {
     {% for param in params %}
     "{{ param.name }}": {{ param.prop_name }},
     {% endfor %}
+    {% if request_body and request_body.content_type %}
+    "Content-Type": "{{ request_body.content_type }}",
+    {% endif %}
     "X-GitHub-Api-Version": self._REST_API_VERSION,
     **(headers or {})
 }
@@ -79,7 +82,7 @@ if self._github.config.rest_api_body_validation:
 
 {{ build_path(endpoint) }}
 {{ build_query(endpoint.query_params) }}
-{{ build_header(endpoint.header_params) }}
+{{ build_header(endpoint.header_params, endpoint.request_body) }}
 {{ build_cookie(endpoint.cookie_params) }}
 {% if endpoint.request_body %}
 {{ build_body(endpoint.request_body) }}
