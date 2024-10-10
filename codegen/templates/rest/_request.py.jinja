@@ -42,12 +42,15 @@ cookies = {
 
 {% macro build_body(request_body) %}
 {% set name = TYPE_MAPPING[request_body.type] %}
-if not kwargs:
-    kwargs = UNSET
-
+{% if request_body.allowed_models %}
 {{ name }} = kwargs if data is UNSET else data
+{% else %}
+{{ name }} = data
+{% endif %}
+{% if request_body.type in ["json", "form"] %}
 {{ name }} = type_validate_python({{ request_body.body_schema.get_type_string() }}, {{ name }})
 {{ name }} = model_dump({{ name }}) if isinstance({{ name }}, BaseModel) else {{ name }}
+{% endif %}
 {% endmacro %}
 
 {% macro build_request(endpoint) %}

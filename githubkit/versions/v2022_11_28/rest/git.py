@@ -103,9 +103,6 @@ class GitClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoGitBlobsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -170,9 +167,6 @@ class GitClient:
         url = f"/repos/{owner}/{repo}/git/blobs"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoGitBlobsPostBody, json)
@@ -298,9 +292,6 @@ class GitClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoGitCommitsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -365,9 +356,6 @@ class GitClient:
         url = f"/repos/{owner}/{repo}/git/commits"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoGitCommitsPostBody, json)
@@ -594,9 +582,6 @@ class GitClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoGitRefsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -656,9 +641,6 @@ class GitClient:
         url = f"/repos/{owner}/{repo}/git/refs"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoGitRefsPostBody, json)
@@ -775,9 +757,6 @@ class GitClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoGitRefsRefPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -840,9 +819,6 @@ class GitClient:
         url = f"/repos/{owner}/{repo}/git/refs/{ref}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoGitRefsRefPatchBody, json)
@@ -907,9 +883,6 @@ class GitClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoGitTagsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -972,9 +945,6 @@ class GitClient:
         url = f"/repos/{owner}/{repo}/git/tags"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoGitTagsPostBody, json)
@@ -1090,9 +1060,6 @@ class GitClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoGitTreesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1154,9 +1121,6 @@ class GitClient:
         url = f"/repos/{owner}/{repo}/git/trees"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoGitTreesPostBody, json)

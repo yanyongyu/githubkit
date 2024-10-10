@@ -333,9 +333,6 @@ class OrgsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -428,9 +425,6 @@ class OrgsClient:
         url = f"/orgs/{org}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgPatchBody, json)
@@ -882,9 +876,6 @@ class OrgsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgHooksPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -938,9 +929,6 @@ class OrgsClient:
         url = f"/orgs/{org}/hooks"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgHooksPostBody, json)
@@ -1102,9 +1090,6 @@ class OrgsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgHooksHookIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1166,9 +1151,6 @@ class OrgsClient:
         url = f"/orgs/{org}/hooks/{hook_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgHooksHookIdPatchBody, json)
@@ -1271,9 +1253,6 @@ class OrgsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgHooksHookIdConfigPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1326,9 +1305,6 @@ class OrgsClient:
         url = f"/orgs/{org}/hooks/{hook_id}/config"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgHooksHookIdConfigPatchBody, json)
@@ -1769,9 +1745,6 @@ class OrgsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgInvitationsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1832,9 +1805,6 @@ class OrgsClient:
         url = f"/orgs/{org}/invitations"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgInvitationsPostBody, json)
@@ -2231,9 +2201,6 @@ class OrgsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgMembershipsUsernamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -2292,9 +2259,6 @@ class OrgsClient:
         url = f"/orgs/{org}/memberships/{username}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgMembershipsUsernamePutBody, json)
@@ -2952,9 +2916,6 @@ class OrgsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgOutsideCollaboratorsUsernamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3011,9 +2972,6 @@ class OrgsClient:
         url = f"/orgs/{org}/outside_collaborators/{username}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgOutsideCollaboratorsUsernamePutBody, json)
@@ -3230,9 +3188,6 @@ class OrgsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgPersonalAccessTokenRequestsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3292,9 +3247,6 @@ class OrgsClient:
         url = f"/orgs/{org}/personal-access-token-requests"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgPersonalAccessTokenRequestsPostBody, json)
@@ -3359,9 +3311,6 @@ class OrgsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody, json
@@ -3425,9 +3374,6 @@ class OrgsClient:
         url = f"/orgs/{org}/personal-access-token-requests/{pat_request_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -3677,9 +3623,6 @@ class OrgsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgPersonalAccessTokensPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3738,9 +3681,6 @@ class OrgsClient:
         url = f"/orgs/{org}/personal-access-tokens"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgPersonalAccessTokensPostBody, json)
@@ -3802,9 +3742,6 @@ class OrgsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgPersonalAccessTokensPatIdPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3863,9 +3800,6 @@ class OrgsClient:
         url = f"/orgs/{org}/personal-access-tokens/{pat_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgPersonalAccessTokensPatIdPostBody, json)
@@ -4053,9 +3987,6 @@ class OrgsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgPropertiesSchemaPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -4112,9 +4043,6 @@ class OrgsClient:
         url = f"/orgs/{org}/properties/schema"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgPropertiesSchemaPatchBody, json)
@@ -4230,9 +4158,6 @@ class OrgsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             OrgsOrgPropertiesSchemaCustomPropertyNamePutBody, json
@@ -4296,9 +4221,6 @@ class OrgsClient:
         url = f"/orgs/{org}/properties/schema/{custom_property_name}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -4482,9 +4404,6 @@ class OrgsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgPropertiesValuesPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -4540,9 +4459,6 @@ class OrgsClient:
         url = f"/orgs/{org}/properties/values"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgPropertiesValuesPatchBody, json)
@@ -4935,9 +4851,6 @@ class OrgsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgSecurityProductEnablementPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -5014,9 +4927,6 @@ class OrgsClient:
         url = f"/orgs/{org}/{security_product}/{enablement}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgSecurityProductEnablementPostBody, json)
@@ -5194,9 +5104,6 @@ class OrgsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserMembershipsOrgsOrgPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -5253,9 +5160,6 @@ class OrgsClient:
         url = f"/user/memberships/orgs/{org}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserMembershipsOrgsOrgPatchBody, json)

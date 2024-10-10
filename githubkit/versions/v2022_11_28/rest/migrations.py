@@ -172,9 +172,6 @@ class MigrationsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgMigrationsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -238,9 +235,6 @@ class MigrationsClient:
         url = f"/orgs/{org}/migrations"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgMigrationsPostBody, json)
@@ -635,9 +629,6 @@ class MigrationsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoImportPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -701,9 +692,6 @@ class MigrationsClient:
         url = f"/repos/{owner}/{repo}/import"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoImportPutBody, json)
@@ -813,9 +801,6 @@ class MigrationsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(Union[ReposOwnerRepoImportPatchBody, None], json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -873,9 +858,6 @@ class MigrationsClient:
         url = f"/repos/{owner}/{repo}/import"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(Union[ReposOwnerRepoImportPatchBody, None], json)
@@ -1007,9 +989,6 @@ class MigrationsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoImportAuthorsAuthorIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1073,9 +1052,6 @@ class MigrationsClient:
         url = f"/repos/{owner}/{repo}/import/authors/{author_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoImportAuthorsAuthorIdPatchBody, json)
@@ -1191,9 +1167,6 @@ class MigrationsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoImportLfsPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1252,9 +1225,6 @@ class MigrationsClient:
         url = f"/repos/{owner}/{repo}/import/lfs"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoImportLfsPatchBody, json)
@@ -1385,9 +1355,6 @@ class MigrationsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserMigrationsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1449,9 +1416,6 @@ class MigrationsClient:
         url = "/user/migrations"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserMigrationsPostBody, json)

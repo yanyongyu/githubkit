@@ -186,9 +186,6 @@ class ReactionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
@@ -254,9 +251,6 @@ class ReactionsClient:
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -443,9 +437,6 @@ class ReactionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody, json
@@ -507,9 +498,6 @@ class ReactionsClient:
         url = f"/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -698,9 +686,6 @@ class ReactionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoCommentsCommentIdReactionsPostBody, json
@@ -764,9 +749,6 @@ class ReactionsClient:
         url = f"/repos/{owner}/{repo}/comments/{comment_id}/reactions"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -960,9 +942,6 @@ class ReactionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody, json
@@ -1028,9 +1007,6 @@ class ReactionsClient:
         url = f"/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1224,9 +1200,6 @@ class ReactionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoIssuesIssueNumberReactionsPostBody, json
@@ -1290,9 +1263,6 @@ class ReactionsClient:
         url = f"/repos/{owner}/{repo}/issues/{issue_number}/reactions"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1486,9 +1456,6 @@ class ReactionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody, json
@@ -1554,9 +1521,6 @@ class ReactionsClient:
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1746,9 +1710,6 @@ class ReactionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoReleasesReleaseIdReactionsPostBody, json
@@ -1810,9 +1771,6 @@ class ReactionsClient:
         url = f"/repos/{owner}/{repo}/releases/{release_id}/reactions"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1999,9 +1957,6 @@ class ReactionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
@@ -2064,9 +2019,6 @@ class ReactionsClient:
         url = f"/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -2204,9 +2156,6 @@ class ReactionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody, json
@@ -2265,9 +2214,6 @@ class ReactionsClient:
         url = f"/teams/{team_id}/discussions/{discussion_number}/reactions"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(

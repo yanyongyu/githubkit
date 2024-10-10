@@ -179,9 +179,6 @@ class ProjectsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgProjectsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -241,9 +238,6 @@ class ProjectsClient:
         url = f"/orgs/{org}/projects"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OrgsOrgProjectsPostBody, json)
@@ -407,9 +401,6 @@ class ProjectsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ProjectsColumnsCardsCardIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -468,9 +459,6 @@ class ProjectsClient:
         url = f"/projects/columns/cards/{card_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ProjectsColumnsCardsCardIdPatchBody, json)
@@ -533,9 +521,6 @@ class ProjectsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ProjectsColumnsCardsCardIdMovesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -596,9 +581,6 @@ class ProjectsClient:
         url = f"/projects/columns/cards/{card_id}/moves"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ProjectsColumnsCardsCardIdMovesPostBody, json)
@@ -753,9 +735,6 @@ class ProjectsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ProjectsColumnsColumnIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -806,9 +785,6 @@ class ProjectsClient:
         url = f"/projects/columns/{column_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ProjectsColumnsColumnIdPatchBody, json)
@@ -964,9 +940,6 @@ class ProjectsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[
@@ -1055,9 +1028,6 @@ class ProjectsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[
@@ -1122,9 +1092,6 @@ class ProjectsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ProjectsColumnsColumnIdMovesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1181,9 +1148,6 @@ class ProjectsClient:
         url = f"/projects/columns/{column_id}/moves"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ProjectsColumnsColumnIdMovesPostBody, json)
@@ -1351,9 +1315,6 @@ class ProjectsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ProjectsProjectIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1418,9 +1379,6 @@ class ProjectsClient:
         url = f"/projects/{project_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ProjectsProjectIdPatchBody, json)
@@ -1566,9 +1524,6 @@ class ProjectsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[ProjectsProjectIdCollaboratorsUsernamePutBody, None], json
@@ -1635,9 +1590,6 @@ class ProjectsClient:
         url = f"/projects/{project_id}/collaborators/{username}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1878,9 +1830,6 @@ class ProjectsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ProjectsProjectIdColumnsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1937,9 +1886,6 @@ class ProjectsClient:
         url = f"/projects/{project_id}/columns"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ProjectsProjectIdColumnsPostBody, json)
@@ -2084,9 +2030,6 @@ class ProjectsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoProjectsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -2150,9 +2093,6 @@ class ProjectsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoProjectsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -2210,9 +2150,6 @@ class ProjectsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserProjectsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -2267,9 +2204,6 @@ class ProjectsClient:
         url = "/user/projects"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserProjectsPostBody, json)

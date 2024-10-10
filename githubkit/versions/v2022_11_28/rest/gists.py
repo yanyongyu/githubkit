@@ -154,9 +154,6 @@ class GistsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(GistsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -204,9 +201,6 @@ class GistsClient:
         url = "/gists"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(GistsPostBody, json)
@@ -510,9 +504,6 @@ class GistsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(Union[GistsGistIdPatchBody, None], json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -571,9 +562,6 @@ class GistsClient:
         url = f"/gists/{gist_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(Union[GistsGistIdPatchBody, None], json)
@@ -696,9 +684,6 @@ class GistsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(GistsGistIdCommentsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -749,9 +734,6 @@ class GistsClient:
         url = f"/gists/{gist_id}/comments"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(GistsGistIdCommentsPostBody, json)
@@ -913,9 +895,6 @@ class GistsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(GistsGistIdCommentsCommentIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -972,9 +951,6 @@ class GistsClient:
         url = f"/gists/{gist_id}/comments/{comment_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(GistsGistIdCommentsCommentIdPatchBody, json)

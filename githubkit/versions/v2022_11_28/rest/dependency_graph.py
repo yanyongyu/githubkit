@@ -226,9 +226,6 @@ class DependencyGraphClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(Snapshot, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -288,9 +285,6 @@ class DependencyGraphClient:
         url = f"/repos/{owner}/{repo}/dependency-graph/snapshots"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(Snapshot, json)

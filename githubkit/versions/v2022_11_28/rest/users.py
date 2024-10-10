@@ -159,9 +159,6 @@ class UsersClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -218,9 +215,6 @@ class UsersClient:
         url = "/user"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserPatchBody, json)
@@ -501,9 +495,6 @@ class UsersClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserEmailVisibilityPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -560,9 +551,6 @@ class UsersClient:
         url = "/user/email/visibility"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserEmailVisibilityPatchBody, json)
@@ -693,9 +681,6 @@ class UsersClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[
@@ -762,9 +747,6 @@ class UsersClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[
@@ -826,9 +808,6 @@ class UsersClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[
@@ -888,9 +867,6 @@ class UsersClient:
         url = "/user/emails"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1302,9 +1278,6 @@ class UsersClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserGpgKeysPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1352,9 +1325,6 @@ class UsersClient:
         url = "/user/gpg_keys"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserGpgKeysPostBody, json)
@@ -1578,9 +1548,6 @@ class UsersClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserKeysPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1628,9 +1595,6 @@ class UsersClient:
         url = "/user/keys"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserKeysPostBody, json)
@@ -1931,9 +1895,6 @@ class UsersClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserSocialAccountsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1991,9 +1952,6 @@ class UsersClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserSocialAccountsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -2044,9 +2002,6 @@ class UsersClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserSocialAccountsDeleteBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -2095,9 +2050,6 @@ class UsersClient:
         url = "/user/social_accounts"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserSocialAccountsDeleteBody, json)
@@ -2224,9 +2176,6 @@ class UsersClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserSshSigningKeysPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -2282,9 +2231,6 @@ class UsersClient:
         url = "/user/ssh_signing_keys"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(UserSshSigningKeysPostBody, json)

@@ -75,9 +75,6 @@ class MarkdownClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(MarkdownPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -121,9 +118,6 @@ class MarkdownClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(MarkdownPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -137,7 +131,10 @@ class MarkdownClient:
         )
 
     def render_raw(
-        self, *, headers: Optional[Dict[str, str]] = None, data: str, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: str,
     ) -> Response[str]:
         """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document-in-raw-mode"""
 
@@ -145,12 +142,7 @@ class MarkdownClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
-        content = kwargs if data is UNSET else data
-        content = type_validate_python(str, content)
-        content = model_dump(content) if isinstance(content, BaseModel) else content
+        content = data
 
         return self._github.request(
             "POST",
@@ -161,7 +153,10 @@ class MarkdownClient:
         )
 
     async def async_render_raw(
-        self, *, headers: Optional[Dict[str, str]] = None, data: str, **kwargs
+        self,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: str,
     ) -> Response[str]:
         """See also: https://docs.github.com/rest/markdown/markdown#render-a-markdown-document-in-raw-mode"""
 
@@ -169,12 +164,7 @@ class MarkdownClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
-        content = kwargs if data is UNSET else data
-        content = type_validate_python(str, content)
-        content = model_dump(content) if isinstance(content, BaseModel) else content
+        content = data
 
         return await self._github.arequest(
             "POST",

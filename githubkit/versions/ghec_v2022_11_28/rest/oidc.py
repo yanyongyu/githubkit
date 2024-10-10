@@ -120,9 +120,6 @@ class OidcClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(OidcCustomSub, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -173,9 +170,6 @@ class OidcClient:
         url = f"/orgs/{org}/actions/oidc/customization/sub"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(OidcCustomSub, json)

@@ -167,9 +167,6 @@ class EnterpriseAdminClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             EnterprisesEnterpriseActionsPermissionsPutBody, json
@@ -218,9 +215,6 @@ class EnterpriseAdminClient:
         url = f"/enterprises/{enterprise}/actions/permissions"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -334,9 +328,6 @@ class EnterpriseAdminClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody, json
@@ -386,9 +377,6 @@ class EnterpriseAdminClient:
         url = f"/enterprises/{enterprise}/actions/permissions/organizations"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -558,9 +546,6 @@ class EnterpriseAdminClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(SelectedActions, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -608,9 +593,6 @@ class EnterpriseAdminClient:
         url = f"/enterprises/{enterprise}/actions/permissions/selected-actions"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(SelectedActions, json)
@@ -729,9 +711,6 @@ class EnterpriseAdminClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             EnterprisesEnterpriseActionsRunnerGroupsPostBody, json
@@ -789,9 +768,6 @@ class EnterpriseAdminClient:
         url = f"/enterprises/{enterprise}/actions/runner-groups"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -938,9 +914,6 @@ class EnterpriseAdminClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody, json
@@ -1003,9 +976,6 @@ class EnterpriseAdminClient:
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1131,9 +1101,6 @@ class EnterpriseAdminClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody,
@@ -1189,9 +1156,6 @@ class EnterpriseAdminClient:
         url = f"/enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/organizations"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1403,9 +1367,6 @@ class EnterpriseAdminClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody, json
@@ -1462,9 +1423,6 @@ class EnterpriseAdminClient:
         )
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1934,9 +1892,6 @@ class EnterpriseAdminClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody, json
@@ -1999,9 +1954,6 @@ class EnterpriseAdminClient:
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -2066,9 +2018,6 @@ class EnterpriseAdminClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody, json
@@ -2131,9 +2080,6 @@ class EnterpriseAdminClient:
         url = f"/enterprises/{enterprise}/actions/runners/{runner_id}/labels"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -2389,9 +2335,6 @@ class EnterpriseAdminClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(Announcement, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -2439,9 +2382,6 @@ class EnterpriseAdminClient:
         url = f"/enterprises/{enterprise}/announcement"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(Announcement, json)
@@ -2637,9 +2577,6 @@ class EnterpriseAdminClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody, json
@@ -2707,9 +2644,6 @@ class EnterpriseAdminClient:
         url = f"/enterprises/{enterprise}/code_security_and_analysis"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -3005,9 +2939,6 @@ class EnterpriseAdminClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(Group, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3062,9 +2993,6 @@ class EnterpriseAdminClient:
         url = f"/scim/v2/enterprises/{enterprise}/Groups"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(Group, json)
@@ -3192,9 +3120,6 @@ class EnterpriseAdminClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(Group, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3253,9 +3178,6 @@ class EnterpriseAdminClient:
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(Group, json)
@@ -3368,9 +3290,6 @@ class EnterpriseAdminClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(PatchSchema, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3426,9 +3345,6 @@ class EnterpriseAdminClient:
         url = f"/scim/v2/enterprises/{enterprise}/Groups/{scim_group_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(PatchSchema, json)
@@ -3561,9 +3477,6 @@ class EnterpriseAdminClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(User, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3622,9 +3535,6 @@ class EnterpriseAdminClient:
         url = f"/scim/v2/enterprises/{enterprise}/Users"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(User, json)
@@ -3744,9 +3654,6 @@ class EnterpriseAdminClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(User, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3809,9 +3716,6 @@ class EnterpriseAdminClient:
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(User, json)
@@ -3929,9 +3833,6 @@ class EnterpriseAdminClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(PatchSchema, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -3993,9 +3894,6 @@ class EnterpriseAdminClient:
         url = f"/scim/v2/enterprises/{enterprise}/Users/{scim_user_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(PatchSchema, json)

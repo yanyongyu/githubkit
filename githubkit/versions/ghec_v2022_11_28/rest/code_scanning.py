@@ -519,9 +519,6 @@ class CodeScanningClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody, json
@@ -590,9 +587,6 @@ class CodeScanningClient:
         url = f"/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1184,9 +1178,6 @@ class CodeScanningClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[
@@ -1307,9 +1298,6 @@ class CodeScanningClient:
         url = f"/repos/{owner}/{repo}/code-scanning/codeql/variant-analyses"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1583,9 +1571,6 @@ class CodeScanningClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(CodeScanningDefaultSetupUpdate, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1662,9 +1647,6 @@ class CodeScanningClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(CodeScanningDefaultSetupUpdate, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1732,9 +1714,6 @@ class CodeScanningClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoCodeScanningSarifsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1800,9 +1779,6 @@ class CodeScanningClient:
         url = f"/repos/{owner}/{repo}/code-scanning/sarifs"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoCodeScanningSarifsPostBody, json)

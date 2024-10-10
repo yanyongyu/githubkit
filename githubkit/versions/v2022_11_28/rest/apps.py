@@ -249,9 +249,6 @@ class AppsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(AppHookConfigPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -298,9 +295,6 @@ class AppsClient:
         url = "/app/hook/config"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(AppHookConfigPatchBody, json)
@@ -764,9 +758,6 @@ class AppsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             AppInstallationsInstallationIdAccessTokensPostBody, json
@@ -828,9 +819,6 @@ class AppsClient:
         url = f"/app/installations/{installation_id}/access_tokens"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -979,9 +967,6 @@ class AppsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ApplicationsClientIdGrantDeleteBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1031,9 +1016,6 @@ class AppsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ApplicationsClientIdGrantDeleteBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1088,9 +1070,6 @@ class AppsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ApplicationsClientIdTokenPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1147,9 +1126,6 @@ class AppsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ApplicationsClientIdTokenPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1201,9 +1177,6 @@ class AppsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ApplicationsClientIdTokenDeleteBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1252,9 +1225,6 @@ class AppsClient:
         url = f"/applications/{client_id}/token"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ApplicationsClientIdTokenDeleteBody, json)
@@ -1308,9 +1278,6 @@ class AppsClient:
         url = f"/applications/{client_id}/token"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ApplicationsClientIdTokenPatchBody, json)
@@ -1365,9 +1332,6 @@ class AppsClient:
         url = f"/applications/{client_id}/token"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ApplicationsClientIdTokenPatchBody, json)
@@ -1428,9 +1392,6 @@ class AppsClient:
         url = f"/applications/{client_id}/token/scoped"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ApplicationsClientIdTokenScopedPostBody, json)
@@ -1494,9 +1455,6 @@ class AppsClient:
         url = f"/applications/{client_id}/token/scoped"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ApplicationsClientIdTokenScopedPostBody, json)

@@ -217,9 +217,6 @@ class PullsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoPullsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -285,9 +282,6 @@ class PullsClient:
         url = f"/repos/{owner}/{repo}/pulls"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoPullsPostBody, json)
@@ -527,9 +521,6 @@ class PullsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoPullsCommentsCommentIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -585,9 +576,6 @@ class PullsClient:
         url = f"/repos/{owner}/{repo}/pulls/comments/{comment_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoPullsCommentsCommentIdPatchBody, json)
@@ -717,9 +705,6 @@ class PullsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoPullsPullNumberPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -785,9 +770,6 @@ class PullsClient:
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoPullsPullNumberPatchBody, json)
@@ -938,9 +920,6 @@ class PullsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoPullsPullNumberCommentsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1012,9 +991,6 @@ class PullsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoPullsPullNumberCommentsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -1080,9 +1056,6 @@ class PullsClient:
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1150,9 +1123,6 @@ class PullsClient:
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1422,9 +1392,6 @@ class PullsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[ReposOwnerRepoPullsPullNumberMergePutBody, None], json
@@ -1502,9 +1469,6 @@ class PullsClient:
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/merge"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -1645,9 +1609,6 @@ class PullsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[
@@ -1741,9 +1702,6 @@ class PullsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[
@@ -1813,9 +1771,6 @@ class PullsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody, json
@@ -1880,9 +1835,6 @@ class PullsClient:
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -2018,9 +1970,6 @@ class PullsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoPullsPullNumberReviewsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -2087,9 +2036,6 @@ class PullsClient:
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(ReposOwnerRepoPullsPullNumberReviewsPostBody, json)
@@ -2209,9 +2155,6 @@ class PullsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBody, json
@@ -2276,9 +2219,6 @@ class PullsClient:
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -2481,9 +2421,6 @@ class PullsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody, json
@@ -2556,9 +2493,6 @@ class PullsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBody, json
@@ -2629,9 +2563,6 @@ class PullsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBody, json
@@ -2702,9 +2633,6 @@ class PullsClient:
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(
@@ -2777,9 +2705,6 @@ class PullsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBody, None], json
@@ -2849,9 +2774,6 @@ class PullsClient:
         url = f"/repos/{owner}/{repo}/pulls/{pull_number}/update-branch"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(

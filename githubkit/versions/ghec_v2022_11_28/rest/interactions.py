@@ -148,9 +148,6 @@ class InteractionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(InteractionLimit, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -203,9 +200,6 @@ class InteractionsClient:
         url = f"/orgs/{org}/interaction-limits"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(InteractionLimit, json)
@@ -369,9 +363,6 @@ class InteractionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(InteractionLimit, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -425,9 +416,6 @@ class InteractionsClient:
         url = f"/repos/{owner}/{repo}/interaction-limits"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(InteractionLimit, json)
@@ -572,9 +560,6 @@ class InteractionsClient:
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
-        if not kwargs:
-            kwargs = UNSET
-
         json = kwargs if data is UNSET else data
         json = type_validate_python(InteractionLimit, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
@@ -621,9 +606,6 @@ class InteractionsClient:
         url = "/user/interaction-limits"
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
-
-        if not kwargs:
-            kwargs = UNSET
 
         json = kwargs if data is UNSET else data
         json = type_validate_python(InteractionLimit, json)

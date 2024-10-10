@@ -57,7 +57,6 @@ class OrganizationFullType(TypedDict):
     owned_private_repos: NotRequired[int]
     private_gists: NotRequired[Union[int, None]]
     disk_usage: NotRequired[Union[int, None]]
-    collaborators: NotRequired[Union[int, None]]
     billing_email: NotRequired[Union[str, None]]
     plan: NotRequired[OrganizationFullPropPlanType]
     default_repository_permission: NotRequired[Union[str, None]]
