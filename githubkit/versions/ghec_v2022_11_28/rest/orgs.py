@@ -390,7 +390,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -484,7 +485,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -614,7 +616,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(Announcement, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(Announcement, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -662,7 +665,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(Announcement, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(Announcement, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -1211,7 +1215,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrganizationCustomRepositoryRoleCreateSchema, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrganizationCustomRepositoryRoleCreateSchema, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -1270,7 +1277,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrganizationCustomRepositoryRoleCreateSchema, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrganizationCustomRepositoryRoleCreateSchema, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -1420,7 +1430,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrganizationCustomRepositoryRoleUpdateSchema, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrganizationCustomRepositoryRoleUpdateSchema, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -1482,7 +1495,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrganizationCustomRepositoryRoleUpdateSchema, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrganizationCustomRepositoryRoleUpdateSchema, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -1541,7 +1557,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrganizationCustomRepositoryRoleCreateSchema, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrganizationCustomRepositoryRoleCreateSchema, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -1600,7 +1619,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrganizationCustomRepositoryRoleCreateSchema, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrganizationCustomRepositoryRoleCreateSchema, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -1750,7 +1772,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrganizationCustomRepositoryRoleUpdateSchema, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrganizationCustomRepositoryRoleUpdateSchema, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -1812,7 +1837,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrganizationCustomRepositoryRoleUpdateSchema, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrganizationCustomRepositoryRoleUpdateSchema, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -2048,7 +2076,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgHooksPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgHooksPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -2102,7 +2131,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgHooksPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgHooksPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -2262,7 +2292,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgHooksHookIdPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgHooksHookIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -2324,7 +2355,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgHooksHookIdPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgHooksHookIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -2425,7 +2457,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgHooksHookIdConfigPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgHooksHookIdConfigPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -2478,7 +2511,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgHooksHookIdConfigPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgHooksHookIdConfigPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -2917,7 +2951,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgInvitationsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgInvitationsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -2978,7 +3013,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgInvitationsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgInvitationsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -3373,7 +3409,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgMembershipsUsernamePutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgMembershipsUsernamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -3432,7 +3469,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgMembershipsUsernamePutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgMembershipsUsernamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -3663,9 +3701,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrganizationCustomOrganizationRoleCreateSchema, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrganizationCustomOrganizationRoleCreateSchema, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -3727,9 +3766,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrganizationCustomOrganizationRoleCreateSchema, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrganizationCustomOrganizationRoleCreateSchema, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -4124,9 +4164,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrganizationCustomOrganizationRoleUpdateSchema, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrganizationCustomOrganizationRoleUpdateSchema, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -4191,9 +4232,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrganizationCustomOrganizationRoleUpdateSchema, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrganizationCustomOrganizationRoleUpdateSchema, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -4450,7 +4492,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgOutsideCollaboratorsUsernamePutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgOutsideCollaboratorsUsernamePutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -4507,7 +4552,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgOutsideCollaboratorsUsernamePutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgOutsideCollaboratorsUsernamePutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -4722,7 +4770,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgPersonalAccessTokenRequestsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgPersonalAccessTokenRequestsPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -4782,7 +4833,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgPersonalAccessTokenRequestsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgPersonalAccessTokenRequestsPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -4845,9 +4899,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -4909,9 +4964,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -5157,7 +5213,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgPersonalAccessTokensPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgPersonalAccessTokensPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -5216,7 +5273,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgPersonalAccessTokensPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgPersonalAccessTokensPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -5276,7 +5334,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgPersonalAccessTokensPatIdPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgPersonalAccessTokensPatIdPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -5335,7 +5394,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgPersonalAccessTokensPatIdPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgPersonalAccessTokensPatIdPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -5521,7 +5581,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgPropertiesSchemaPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgPropertiesSchemaPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -5578,7 +5639,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgPropertiesSchemaPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgPropertiesSchemaPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -5692,9 +5754,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrgsOrgPropertiesSchemaCustomPropertyNamePutBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgPropertiesSchemaCustomPropertyNamePutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -5756,9 +5819,10 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrgsOrgPropertiesSchemaCustomPropertyNamePutBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgPropertiesSchemaCustomPropertyNamePutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -5938,7 +6002,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgPropertiesValuesPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgPropertiesValuesPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -5994,7 +6059,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgPropertiesValuesPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgPropertiesValuesPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -6431,7 +6497,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgSecurityProductEnablementPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgSecurityProductEnablementPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -6508,7 +6575,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgSecurityProductEnablementPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgSecurityProductEnablementPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -6684,7 +6752,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(UserMembershipsOrgsOrgPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(UserMembershipsOrgsOrgPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -6741,7 +6810,8 @@ class OrgsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(UserMembershipsOrgsOrgPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(UserMembershipsOrgsOrgPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(

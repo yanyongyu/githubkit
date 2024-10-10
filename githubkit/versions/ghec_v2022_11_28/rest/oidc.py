@@ -121,7 +121,8 @@ class OidcClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OidcCustomSub, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OidcCustomSub, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -172,7 +173,8 @@ class OidcClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OidcCustomSub, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OidcCustomSub, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(

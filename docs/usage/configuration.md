@@ -14,6 +14,7 @@ github = GitHub(
     timeout=None,
     http_cache=True,
     auto_retry=True,
+    rest_api_body_validation=True,
 )
 ```
 
@@ -32,6 +33,7 @@ config = Config(
     timeout=httpx.Timeout(None),
     http_cache=True,
     auto_retry=RETRY_DEFAULT,
+    rest_api_body_validation=True,
 )
 
 github = GitHub(config=config)
@@ -70,3 +72,7 @@ The `http_cache` option enables the http caching feature powered by [Hishel](htt
 ### `auto_retry`
 
 The `auto_retry` option enables request retrying when rate limit exceeded and server error encountered. See [Auto Retry](./auto-retry.md) for more infomation.
+
+### `rest_api_body_validation`
+
+The `rest_api_body_validation` option is used to enable or disable the rest API request body validation. By default, githubkit validates the input data against the GitHub API schema. If you do not want to validate the input data, you can set this option to `False`.

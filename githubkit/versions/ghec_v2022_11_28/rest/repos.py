@@ -403,7 +403,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgReposPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgReposPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -489,7 +490,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgReposPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgReposPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -651,7 +653,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgRulesetsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgRulesetsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -739,7 +742,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgRulesetsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgRulesetsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -1028,7 +1032,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgRulesetsRulesetIdPutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgRulesetsRulesetIdPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -1123,7 +1128,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgRulesetsRulesetIdPutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgRulesetsRulesetIdPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -1364,7 +1370,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -1454,7 +1461,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -1630,7 +1638,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoAttestationsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoAttestationsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -1689,7 +1698,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoAttestationsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoAttestationsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -1859,7 +1869,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoAutolinksPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoAutolinksPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -1914,7 +1925,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoAutolinksPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoAutolinksPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -2395,7 +2407,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoBranchesBranchProtectionPutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionPutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -2476,7 +2491,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoBranchesBranchProtectionPutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionPutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -2839,10 +2857,11 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -2915,10 +2934,11 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBody,
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -3245,9 +3265,11 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody,
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -3321,9 +3343,11 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody,
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -3452,13 +3476,14 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
-                List[str],
-            ],
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
+                    List[str],
+                ],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -3531,13 +3556,14 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
-                List[str],
-            ],
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
+                    List[str],
+                ],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -3610,13 +3636,14 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
-                List[str],
-            ],
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
+                    List[str],
+                ],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -3690,13 +3717,14 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
-                List[str],
-            ],
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
+                    List[str],
+                ],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -3770,13 +3798,14 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
-                List[str],
-            ],
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
+                    List[str],
+                ],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -3849,13 +3878,14 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
-                List[str],
-            ],
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
+                    List[str],
+                ],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -4068,9 +4098,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -4134,9 +4165,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -4200,9 +4232,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -4266,9 +4299,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -4332,9 +4366,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -4398,9 +4433,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -4528,13 +4564,14 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
-                List[str],
-            ],
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
+                    List[str],
+                ],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -4606,13 +4643,14 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
-                List[str],
-            ],
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
+                    List[str],
+                ],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -4684,13 +4722,14 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
-                List[str],
-            ],
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
+                    List[str],
+                ],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -4762,13 +4801,14 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
-                List[str],
-            ],
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
+                    List[str],
+                ],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -4840,13 +4880,14 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
-                List[str],
-            ],
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
+                    List[str],
+                ],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -4918,13 +4959,14 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[
-                ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
-                List[str],
-            ],
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
+                    List[str],
+                ],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -5044,9 +5086,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -5110,9 +5153,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -5176,9 +5220,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -5242,9 +5287,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -5308,9 +5354,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -5374,9 +5421,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -5437,7 +5485,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoBranchesBranchRenamePostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchRenamePostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -5500,7 +5551,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoBranchesBranchRenamePostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoBranchesBranchRenamePostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -5745,7 +5799,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoCollaboratorsUsernamePutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoCollaboratorsUsernamePutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -5807,7 +5864,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoCollaboratorsUsernamePutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoCollaboratorsUsernamePutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -6138,7 +6198,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoCommentsCommentIdPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoCommentsCommentIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -6198,7 +6259,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoCommentsCommentIdPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoCommentsCommentIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -6486,9 +6548,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoCommitsCommitShaCommentsPostBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoCommitsCommitShaCommentsPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -6553,9 +6616,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoCommitsCommitShaCommentsPostBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoCommitsCommitShaCommentsPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -7141,7 +7205,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoContentsPathPutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoContentsPathPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -7212,7 +7277,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoContentsPathPutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoContentsPathPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -7282,7 +7348,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoContentsPathDeleteBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoContentsPathDeleteBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -7353,7 +7420,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoContentsPathDeleteBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoContentsPathDeleteBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -7579,7 +7647,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoDeploymentsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoDeploymentsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -7646,7 +7715,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoDeploymentsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoDeploymentsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -7898,9 +7968,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -7976,9 +8047,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -8092,7 +8164,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoDispatchesPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoDispatchesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -8152,7 +8225,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoDispatchesPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoDispatchesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -8336,9 +8410,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBody, None], json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBody, None], json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -8416,9 +8491,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBody, None], json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBody, None], json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -8588,7 +8664,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(DeploymentBranchPolicyNamePatternWithType, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(DeploymentBranchPolicyNamePatternWithType, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -8646,7 +8723,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(DeploymentBranchPolicyNamePatternWithType, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(DeploymentBranchPolicyNamePatternWithType, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -8751,7 +8829,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(DeploymentBranchPolicyNamePattern, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(DeploymentBranchPolicyNamePattern, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -8807,7 +8886,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(DeploymentBranchPolicyNamePattern, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(DeploymentBranchPolicyNamePattern, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -8961,10 +9041,11 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody,
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody,
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -9022,10 +9103,11 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody,
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBody,
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -9318,7 +9400,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(Union[ReposOwnerRepoForksPostBody, None], json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(Union[ReposOwnerRepoForksPostBody, None], json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -9383,7 +9466,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(Union[ReposOwnerRepoForksPostBody, None], json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(Union[ReposOwnerRepoForksPostBody, None], json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -9519,7 +9603,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(Union[ReposOwnerRepoHooksPostBody, None], json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(Union[ReposOwnerRepoHooksPostBody, None], json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -9584,7 +9669,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(Union[ReposOwnerRepoHooksPostBody, None], json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(Union[ReposOwnerRepoHooksPostBody, None], json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -9753,7 +9839,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoHooksHookIdPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoHooksHookIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -9819,7 +9906,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoHooksHookIdPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoHooksHookIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -9925,7 +10013,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoHooksHookIdConfigPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoHooksHookIdConfigPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -9981,7 +10070,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoHooksHookIdConfigPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoHooksHookIdConfigPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -10441,9 +10531,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoInvitationsInvitationIdPatchBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoInvitationsInvitationIdPatchBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -10501,9 +10592,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposOwnerRepoInvitationsInvitationIdPatchBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoInvitationsInvitationIdPatchBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -10619,7 +10711,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoKeysPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoKeysPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -10674,7 +10767,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoKeysPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoKeysPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -10947,7 +11041,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoMergeUpstreamPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoMergeUpstreamPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -10998,7 +11093,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoMergeUpstreamPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoMergeUpstreamPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -11056,7 +11152,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoMergesPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoMergesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -11117,7 +11214,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoMergesPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoMergesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -11332,16 +11430,17 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[
-                ReposOwnerRepoPagesPutBodyAnyof0,
-                ReposOwnerRepoPagesPutBodyAnyof1,
-                ReposOwnerRepoPagesPutBodyAnyof2,
-                ReposOwnerRepoPagesPutBodyAnyof3,
-                ReposOwnerRepoPagesPutBodyAnyof4,
-            ],
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoPagesPutBodyAnyof0,
+                    ReposOwnerRepoPagesPutBodyAnyof1,
+                    ReposOwnerRepoPagesPutBodyAnyof2,
+                    ReposOwnerRepoPagesPutBodyAnyof3,
+                    ReposOwnerRepoPagesPutBodyAnyof4,
+                ],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -11506,16 +11605,17 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[
-                ReposOwnerRepoPagesPutBodyAnyof0,
-                ReposOwnerRepoPagesPutBodyAnyof1,
-                ReposOwnerRepoPagesPutBodyAnyof2,
-                ReposOwnerRepoPagesPutBodyAnyof3,
-                ReposOwnerRepoPagesPutBodyAnyof4,
-            ],
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoPagesPutBodyAnyof0,
+                    ReposOwnerRepoPagesPutBodyAnyof1,
+                    ReposOwnerRepoPagesPutBodyAnyof2,
+                    ReposOwnerRepoPagesPutBodyAnyof3,
+                    ReposOwnerRepoPagesPutBodyAnyof4,
+                ],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -11602,15 +11702,16 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[
-                ReposOwnerRepoPagesPostBodyAnyof0,
-                None,
-                ReposOwnerRepoPagesPostBodyAnyof1,
-                None,
-            ],
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoPagesPostBodyAnyof0,
+                    None,
+                    ReposOwnerRepoPagesPostBodyAnyof1,
+                    None,
+                ],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -11697,15 +11798,16 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[
-                ReposOwnerRepoPagesPostBodyAnyof0,
-                None,
-                ReposOwnerRepoPagesPostBodyAnyof1,
-                None,
-            ],
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[
+                    ReposOwnerRepoPagesPostBodyAnyof0,
+                    None,
+                    ReposOwnerRepoPagesPostBodyAnyof1,
+                    None,
+                ],
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -12018,7 +12120,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoPagesDeploymentsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoPagesDeploymentsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -12082,7 +12185,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoPagesDeploymentsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoPagesDeploymentsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -12501,7 +12605,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoPropertiesValuesPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoPropertiesValuesPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -12559,7 +12664,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoPropertiesValuesPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoPropertiesValuesPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -12826,7 +12932,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoReleasesPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoReleasesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -12893,7 +13000,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoReleasesPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoReleasesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -13044,7 +13152,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoReleasesAssetsAssetIdPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoReleasesAssetsAssetIdPatchBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -13099,7 +13210,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoReleasesAssetsAssetIdPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoReleasesAssetsAssetIdPatchBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -13156,7 +13270,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoReleasesGenerateNotesPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoReleasesGenerateNotesPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -13216,7 +13333,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoReleasesGenerateNotesPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposOwnerRepoReleasesGenerateNotesPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -13467,7 +13587,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoReleasesReleaseIdPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoReleasesReleaseIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -13534,7 +13655,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoReleasesReleaseIdPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoReleasesReleaseIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -14026,7 +14148,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoRulesetsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoRulesetsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -14115,7 +14238,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoRulesetsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoRulesetsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -14415,7 +14539,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoRulesetsRulesetIdPutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoRulesetsRulesetIdPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -14507,7 +14632,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoRulesetsRulesetIdPutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoRulesetsRulesetIdPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -14855,7 +14981,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoStatusesShaPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoStatusesShaPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -14911,7 +15038,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoStatusesShaPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoStatusesShaPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -15085,7 +15213,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoTagsProtectionPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoTagsProtectionPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -15143,7 +15272,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoTagsProtectionPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoTagsProtectionPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -15430,7 +15560,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoTopicsPutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoTopicsPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -15489,7 +15620,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoTopicsPutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoTopicsPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -15777,7 +15909,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoTransferPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoTransferPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -15829,7 +15962,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(ReposOwnerRepoTransferPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(ReposOwnerRepoTransferPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -16042,9 +16176,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposTemplateOwnerTemplateRepoGeneratePostBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposTemplateOwnerTemplateRepoGeneratePostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -16101,9 +16236,10 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            ReposTemplateOwnerTemplateRepoGeneratePostBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                ReposTemplateOwnerTemplateRepoGeneratePostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -16335,7 +16471,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(UserReposPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(UserReposPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -16414,7 +16551,8 @@ class ReposClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(UserReposPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(UserReposPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(

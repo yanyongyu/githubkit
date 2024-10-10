@@ -379,7 +379,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgTeamsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgTeamsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -439,7 +440,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgTeamsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgTeamsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -593,7 +595,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgTeamsTeamSlugPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgTeamsTeamSlugPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -660,7 +663,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgTeamsTeamSlugPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgTeamsTeamSlugPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -789,7 +793,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgTeamsTeamSlugDiscussionsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgTeamsTeamSlugDiscussionsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -841,7 +846,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgTeamsTeamSlugDiscussionsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgTeamsTeamSlugDiscussionsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -988,9 +994,10 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -1051,9 +1058,10 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -1181,9 +1189,10 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -1241,9 +1250,10 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -1394,10 +1404,11 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -1458,10 +1469,11 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
-            json,
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -1593,7 +1605,10 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgTeamsTeamSlugExternalGroupsPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgTeamsTeamSlugExternalGroupsPatchBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -1643,7 +1658,10 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgTeamsTeamSlugExternalGroupsPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgTeamsTeamSlugExternalGroupsPatchBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -1879,9 +1897,10 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -1938,9 +1957,10 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -2157,9 +2177,10 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody, None], json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody, None], json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -2223,9 +2244,10 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody, None], json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody, None], json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -2437,7 +2459,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -2492,7 +2515,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -2632,9 +2656,10 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -2689,9 +2714,10 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                OrgsOrgTeamsTeamSlugTeamSyncGroupMappingsPatchBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -2905,7 +2931,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(TeamsTeamIdPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(TeamsTeamIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -2964,7 +2991,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(TeamsTeamIdPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(TeamsTeamIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -3084,7 +3112,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(TeamsTeamIdDiscussionsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(TeamsTeamIdDiscussionsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -3133,7 +3162,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(TeamsTeamIdDiscussionsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(TeamsTeamIdDiscussionsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -3269,9 +3299,10 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            TeamsTeamIdDiscussionsDiscussionNumberPatchBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                TeamsTeamIdDiscussionsDiscussionNumberPatchBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -3325,9 +3356,10 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            TeamsTeamIdDiscussionsDiscussionNumberPatchBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                TeamsTeamIdDiscussionsDiscussionNumberPatchBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -3450,9 +3482,10 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -3507,9 +3540,10 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody, json
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -3653,9 +3687,11 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -3713,9 +3749,11 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(
-            TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody, json
-        )
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(
+                TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
+                json,
+            )
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -4081,7 +4119,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(TeamsTeamIdMembershipsUsernamePutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(TeamsTeamIdMembershipsUsernamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -4138,7 +4177,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(TeamsTeamIdMembershipsUsernamePutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(TeamsTeamIdMembershipsUsernamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -4350,7 +4390,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(TeamsTeamIdProjectsProjectIdPutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(TeamsTeamIdProjectsProjectIdPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -4409,7 +4450,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(TeamsTeamIdProjectsProjectIdPutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(TeamsTeamIdProjectsProjectIdPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -4636,7 +4678,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(TeamsTeamIdReposOwnerRepoPutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(TeamsTeamIdReposOwnerRepoPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -4696,7 +4739,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(TeamsTeamIdReposOwnerRepoPutBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(TeamsTeamIdReposOwnerRepoPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -4842,7 +4886,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(TeamsTeamIdTeamSyncGroupMappingsPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(TeamsTeamIdTeamSyncGroupMappingsPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -4899,7 +4944,8 @@ class TeamsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(TeamsTeamIdTeamSyncGroupMappingsPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(TeamsTeamIdTeamSyncGroupMappingsPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(

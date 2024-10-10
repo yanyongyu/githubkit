@@ -155,7 +155,8 @@ class GistsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(GistsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(GistsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -203,7 +204,8 @@ class GistsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(GistsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(GistsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -505,7 +507,8 @@ class GistsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(Union[GistsGistIdPatchBody, None], json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(Union[GistsGistIdPatchBody, None], json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -564,7 +567,8 @@ class GistsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(Union[GistsGistIdPatchBody, None], json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(Union[GistsGistIdPatchBody, None], json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -685,7 +689,8 @@ class GistsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(GistsGistIdCommentsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(GistsGistIdCommentsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -736,7 +741,8 @@ class GistsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(GistsGistIdCommentsPostBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(GistsGistIdCommentsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
@@ -896,7 +902,8 @@ class GistsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(GistsGistIdCommentsCommentIdPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(GistsGistIdCommentsCommentIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return self._github.request(
@@ -953,7 +960,8 @@ class GistsClient:
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
 
         json = kwargs if data is UNSET else data
-        json = type_validate_python(GistsGistIdCommentsCommentIdPatchBody, json)
+        if self._github.config.rest_api_body_validation:
+            json = type_validate_python(GistsGistIdCommentsCommentIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
         return await self._github.arequest(
