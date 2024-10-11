@@ -64,7 +64,11 @@ If you are calling an API that requires request body parameters, you can pass th
     issue: Issue = resp.parsed_data
     ```
 
-Or you can pass the request body as a dictionary:
+!!! tip
+
+    By default, githubkit will validate the request body against the API schema. If you want to skip the validation, you can set the client config `rest_api_body_validation` to `False`. See [Configuration](./configuration.md#rest_api_body_validation) for more information.
+
+Or you can pass the json request body as a dictionary:
 
 === "Sync"
 
@@ -96,6 +100,32 @@ Or you can pass the request body as a dictionary:
     issue: Issue = resp.parsed_data
     ```
 
+For some APIs, the request body may be raw data. You can pass the raw data directly to the `data` parameter:
+
+=== "Sync"
+
+    ```python hl_lines="5"
+    from githubkit import GitHub
+
+    github = GitHub("<your_token_here>")
+    resp = github.rest.markdown.render_raw(
+        data="Hello **world**",
+    )
+    rendered_html = resp.text
+    ```
+
+=== "Async"
+
+    ```python hl_lines="5"
+    from githubkit import GitHub
+
+    github = GitHub("<your_token_here>")
+    resp = await github.rest.markdown.async_render_raw(
+        data="Hello **world**",
+    )
+    rendered_html = resp.text
+    ```
+
 !!! danger
 
     Note that you should hold a **strong reference** to the githubkit client instance. Otherwise, githubkit client will fail to call the request.
@@ -113,6 +143,40 @@ Or you can pass the request body as a dictionary:
     # This is ok
     client = get_client()
     client.rest.repos.get("owner", "repo")
+    ```
+
+## Custom Headers
+
+In some cases, you may need to pass additional headers to the API request. You can pass the headers through the `headers` parameter. For example:
+
+=== "Sync"
+
+    ```python hl_lines="8"
+    from githubkit import GitHub
+
+    github = GitHub("<your_token_here>")
+    resp = github.rest.repos.get_content(
+        "owner",
+        "repo",
+        "/path/to/file",
+        headers={"Accept": "application/vnd.github.raw+json"},
+    )
+    content = resp.text
+    ```
+
+=== "Async"
+
+    ```python hl_lines="8"
+    from githubkit import GitHub
+
+    github = GitHub("<your_token_here>")
+    resp = await github.rest.repos.async_get_content(
+        "owner",
+        "repo",
+        "/path/to/file",
+        headers={"Accept": "application/vnd.github.raw+json"},
+    )
+    content = resp.text
     ```
 
 ## Reusing Client
