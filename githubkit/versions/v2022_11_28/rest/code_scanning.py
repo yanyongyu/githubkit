@@ -418,7 +418,7 @@ class CodeScanningClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody, json
             )
@@ -492,7 +492,7 @@ class CodeScanningClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBody, json
             )
@@ -1087,7 +1087,7 @@ class CodeScanningClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0,
@@ -1213,7 +1213,7 @@ class CodeScanningClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0,
@@ -1490,7 +1490,7 @@ class CodeScanningClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(CodeScanningDefaultSetupUpdate, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1571,7 +1571,7 @@ class CodeScanningClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(CodeScanningDefaultSetupUpdate, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1643,7 +1643,7 @@ class CodeScanningClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoCodeScanningSarifsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1714,7 +1714,7 @@ class CodeScanningClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoCodeScanningSarifsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

@@ -177,7 +177,7 @@ class MigrationsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgMigrationsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -246,7 +246,7 @@ class MigrationsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgMigrationsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -644,7 +644,7 @@ class MigrationsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoImportPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -713,7 +713,7 @@ class MigrationsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoImportPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -826,7 +826,7 @@ class MigrationsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[ReposOwnerRepoImportPatchBody, None], json
             )
@@ -891,7 +891,7 @@ class MigrationsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[ReposOwnerRepoImportPatchBody, None], json
             )
@@ -1028,7 +1028,7 @@ class MigrationsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoImportAuthorsAuthorIdPatchBody, json
             )
@@ -1099,7 +1099,7 @@ class MigrationsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoImportAuthorsAuthorIdPatchBody, json
             )
@@ -1220,7 +1220,7 @@ class MigrationsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoImportLfsPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1284,7 +1284,7 @@ class MigrationsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoImportLfsPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1418,7 +1418,7 @@ class MigrationsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserMigrationsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1485,7 +1485,7 @@ class MigrationsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserMigrationsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

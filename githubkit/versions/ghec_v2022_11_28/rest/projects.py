@@ -184,7 +184,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgProjectsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -249,7 +249,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgProjectsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -416,7 +416,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ProjectsColumnsCardsCardIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -480,7 +480,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ProjectsColumnsCardsCardIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -546,7 +546,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ProjectsColumnsCardsCardIdMovesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -612,7 +612,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ProjectsColumnsCardsCardIdMovesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -770,7 +770,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ProjectsColumnsColumnIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -826,7 +826,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ProjectsColumnsColumnIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -985,7 +985,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[
                     ProjectsColumnsColumnIdCardsPostBodyOneof0,
@@ -1078,7 +1078,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[
                     ProjectsColumnsColumnIdCardsPostBodyOneof0,
@@ -1147,7 +1147,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ProjectsColumnsColumnIdMovesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1209,7 +1209,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ProjectsColumnsColumnIdMovesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1380,7 +1380,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ProjectsProjectIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1450,7 +1450,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ProjectsProjectIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1599,7 +1599,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[ProjectsProjectIdCollaboratorsUsernamePutBody, None], json
             )
@@ -1671,7 +1671,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[ProjectsProjectIdCollaboratorsUsernamePutBody, None], json
             )
@@ -1915,7 +1915,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ProjectsProjectIdColumnsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1977,7 +1977,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ProjectsProjectIdColumnsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2125,7 +2125,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoProjectsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2193,7 +2193,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoProjectsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2255,7 +2255,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserProjectsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2315,7 +2315,7 @@ class ProjectsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserProjectsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

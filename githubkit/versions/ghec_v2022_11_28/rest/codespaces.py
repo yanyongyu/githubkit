@@ -202,7 +202,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgCodespacesAccessPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -264,7 +264,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgCodespacesAccessPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -324,7 +324,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCodespacesAccessSelectedUsersPostBody, json
             )
@@ -386,7 +386,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCodespacesAccessSelectedUsersPostBody, json
             )
@@ -448,7 +448,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCodespacesAccessSelectedUsersDeleteBody, json
             )
@@ -510,7 +510,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCodespacesAccessSelectedUsersDeleteBody, json
             )
@@ -723,7 +723,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgCodespacesSecretsSecretNamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -790,7 +790,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgCodespacesSecretsSecretNamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -974,7 +974,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody, json
             )
@@ -1038,7 +1038,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCodespacesSecretsSecretNameRepositoriesPutBody, json
             )
@@ -1494,7 +1494,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[ReposOwnerRepoCodespacesPostBody, None], json
             )
@@ -1577,7 +1577,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[ReposOwnerRepoCodespacesPostBody, None], json
             )
@@ -2108,7 +2108,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoCodespacesSecretsSecretNamePutBody, json
             )
@@ -2172,7 +2172,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoCodespacesSecretsSecretNamePutBody, json
             )
@@ -2292,7 +2292,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[ReposOwnerRepoPullsPullNumberCodespacesPostBody, None], json
             )
@@ -2378,7 +2378,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[ReposOwnerRepoPullsPullNumberCodespacesPostBody, None], json
             )
@@ -2547,7 +2547,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[UserCodespacesPostBodyOneof0, UserCodespacesPostBodyOneof1], json
             )
@@ -2644,7 +2644,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[UserCodespacesPostBodyOneof0, UserCodespacesPostBodyOneof1], json
             )
@@ -2849,7 +2849,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserCodespacesSecretsSecretNamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2912,7 +2912,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserCodespacesSecretsSecretNamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -3067,7 +3067,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 UserCodespacesSecretsSecretNameRepositoriesPutBody, json
             )
@@ -3129,7 +3129,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 UserCodespacesSecretsSecretNameRepositoriesPutBody, json
             )
@@ -3412,7 +3412,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserCodespacesCodespaceNamePatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -3471,7 +3471,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserCodespacesCodespaceNamePatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -3700,7 +3700,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 UserCodespacesCodespaceNamePublishPostBody, json
             )
@@ -3766,7 +3766,7 @@ class CodespacesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 UserCodespacesCodespaceNamePublishPostBody, json
             )

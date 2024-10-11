@@ -493,7 +493,7 @@ class SecretScanningClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody, json
             )
@@ -568,7 +568,7 @@ class SecretScanningClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBody, json
             )
@@ -713,7 +713,7 @@ class SecretScanningClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody, json
             )
@@ -780,7 +780,7 @@ class SecretScanningClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoSecretScanningPushProtectionBypassesPostBody, json
             )

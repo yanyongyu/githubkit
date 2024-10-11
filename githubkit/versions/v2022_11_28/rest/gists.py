@@ -159,7 +159,7 @@ class GistsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(GistsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -212,7 +212,7 @@ class GistsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(GistsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -519,7 +519,7 @@ class GistsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(Union[GistsGistIdPatchBody, None], json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -583,7 +583,7 @@ class GistsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(Union[GistsGistIdPatchBody, None], json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -709,7 +709,7 @@ class GistsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(GistsGistIdCommentsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -765,7 +765,7 @@ class GistsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(GistsGistIdCommentsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -930,7 +930,7 @@ class GistsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(GistsGistIdCommentsCommentIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -992,7 +992,7 @@ class GistsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(GistsGistIdCommentsCommentIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

@@ -254,7 +254,7 @@ class AppsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(AppHookConfigPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -306,7 +306,7 @@ class AppsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(AppHookConfigPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -773,7 +773,7 @@ class AppsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 AppInstallationsInstallationIdAccessTokensPostBody, json
             )
@@ -840,7 +840,7 @@ class AppsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 AppInstallationsInstallationIdAccessTokensPostBody, json
             )
@@ -992,7 +992,7 @@ class AppsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ApplicationsClientIdGrantDeleteBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1046,7 +1046,7 @@ class AppsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ApplicationsClientIdGrantDeleteBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1105,7 +1105,7 @@ class AppsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ApplicationsClientIdTokenPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1166,7 +1166,7 @@ class AppsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ApplicationsClientIdTokenPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1222,7 +1222,7 @@ class AppsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ApplicationsClientIdTokenDeleteBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1276,7 +1276,7 @@ class AppsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ApplicationsClientIdTokenDeleteBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1334,7 +1334,7 @@ class AppsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ApplicationsClientIdTokenPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1393,7 +1393,7 @@ class AppsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ApplicationsClientIdTokenPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1458,7 +1458,7 @@ class AppsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ApplicationsClientIdTokenScopedPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1526,7 +1526,7 @@ class AppsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ApplicationsClientIdTokenScopedPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

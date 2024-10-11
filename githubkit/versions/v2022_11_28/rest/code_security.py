@@ -211,7 +211,7 @@ class CodeSecurityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgCodeSecurityConfigurationsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -296,7 +296,7 @@ class CodeSecurityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgCodeSecurityConfigurationsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -405,7 +405,7 @@ class CodeSecurityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCodeSecurityConfigurationsDetachDeleteBody, json
             )
@@ -467,7 +467,7 @@ class CodeSecurityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCodeSecurityConfigurationsDetachDeleteBody, json
             )
@@ -670,7 +670,7 @@ class CodeSecurityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody, json
             )
@@ -762,7 +762,7 @@ class CodeSecurityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBody, json
             )
@@ -825,7 +825,7 @@ class CodeSecurityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody, json
             )
@@ -888,7 +888,7 @@ class CodeSecurityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody, json
             )
@@ -959,7 +959,7 @@ class CodeSecurityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody, json
             )
@@ -1034,7 +1034,7 @@ class CodeSecurityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBody, json
             )

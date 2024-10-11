@@ -66,7 +66,7 @@ If you are calling an API that requires request body parameters, you can pass th
 
 !!! tip
 
-    By default, githubkit will validate the request body against the API schema. If you want to skip the validation, you can set the client config `rest_api_body_validation` to `False`. See [Configuration](./configuration.md#rest_api_body_validation) for more information.
+    By default, githubkit will validate the request body against the API schema. If you want to skip the validation, you can set the client config `rest_api_validate_body` to `False`. See [Configuration](./configuration.md#rest_api_validate_body) for more information.
 
 Or you can pass the json request body as a dictionary:
 

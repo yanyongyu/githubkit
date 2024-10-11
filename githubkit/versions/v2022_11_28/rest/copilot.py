@@ -470,7 +470,7 @@ class CopilotClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCopilotBillingSelectedTeamsPostBody, json
             )
@@ -534,7 +534,7 @@ class CopilotClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCopilotBillingSelectedTeamsPostBody, json
             )
@@ -598,7 +598,7 @@ class CopilotClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCopilotBillingSelectedTeamsDeleteBody, json
             )
@@ -662,7 +662,7 @@ class CopilotClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCopilotBillingSelectedTeamsDeleteBody, json
             )
@@ -726,7 +726,7 @@ class CopilotClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCopilotBillingSelectedUsersPostBody, json
             )
@@ -790,7 +790,7 @@ class CopilotClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCopilotBillingSelectedUsersPostBody, json
             )
@@ -854,7 +854,7 @@ class CopilotClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCopilotBillingSelectedUsersDeleteBody, json
             )
@@ -918,7 +918,7 @@ class CopilotClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgCopilotBillingSelectedUsersDeleteBody, json
             )
