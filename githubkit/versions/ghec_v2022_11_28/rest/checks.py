@@ -179,7 +179,7 @@ class ChecksClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoCheckRunsPostBodyOneof0,
@@ -309,7 +309,7 @@ class ChecksClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoCheckRunsPostBodyOneof0,
@@ -489,7 +489,7 @@ class ChecksClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0,
@@ -623,7 +623,7 @@ class ChecksClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0,
@@ -806,7 +806,7 @@ class ChecksClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoCheckSuitesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -861,7 +861,7 @@ class ChecksClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoCheckSuitesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -923,7 +923,7 @@ class ChecksClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoCheckSuitesPreferencesPatchBody, json
             )
@@ -987,7 +987,7 @@ class ChecksClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoCheckSuitesPreferencesPatchBody, json
             )

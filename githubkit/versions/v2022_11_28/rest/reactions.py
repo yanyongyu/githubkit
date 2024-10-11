@@ -191,7 +191,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
                 json,
@@ -262,7 +262,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
                 json,
@@ -452,7 +452,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody, json
             )
@@ -519,7 +519,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBody, json
             )
@@ -711,7 +711,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoCommentsCommentIdReactionsPostBody, json
             )
@@ -780,7 +780,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoCommentsCommentIdReactionsPostBody, json
             )
@@ -977,7 +977,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody, json
             )
@@ -1048,7 +1048,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBody, json
             )
@@ -1245,7 +1245,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoIssuesIssueNumberReactionsPostBody, json
             )
@@ -1314,7 +1314,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoIssuesIssueNumberReactionsPostBody, json
             )
@@ -1511,7 +1511,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody, json
             )
@@ -1582,7 +1582,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoPullsCommentsCommentIdReactionsPostBody, json
             )
@@ -1775,7 +1775,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoReleasesReleaseIdReactionsPostBody, json
             )
@@ -1842,7 +1842,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoReleasesReleaseIdReactionsPostBody, json
             )
@@ -2032,7 +2032,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
                 json,
@@ -2100,7 +2100,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBody,
                 json,
@@ -2241,7 +2241,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody, json
             )
@@ -2305,7 +2305,7 @@ class ReactionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBody, json
             )

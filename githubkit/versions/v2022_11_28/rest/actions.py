@@ -313,7 +313,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgActionsPermissionsPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -365,7 +365,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgActionsPermissionsPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -474,7 +474,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgActionsPermissionsRepositoriesPutBody, json
             )
@@ -527,7 +527,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgActionsPermissionsRepositoriesPutBody, json
             )
@@ -700,7 +700,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(SelectedActions, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -753,7 +753,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(SelectedActions, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -847,7 +847,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ActionsSetDefaultWorkflowPermissions, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -899,7 +899,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ActionsSetDefaultWorkflowPermissions, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1066,7 +1066,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgActionsRunnersGenerateJitconfigPostBody, json
             )
@@ -1132,7 +1132,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgActionsRunnersGenerateJitconfigPostBody, json
             )
@@ -1420,7 +1420,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgActionsRunnersRunnerIdLabelsPutBody, json
             )
@@ -1486,7 +1486,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgActionsRunnersRunnerIdLabelsPutBody, json
             )
@@ -1552,7 +1552,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgActionsRunnersRunnerIdLabelsPostBody, json
             )
@@ -1618,7 +1618,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgActionsRunnersRunnerIdLabelsPostBody, json
             )
@@ -1944,7 +1944,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgActionsSecretsSecretNamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2002,7 +2002,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgActionsSecretsSecretNamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2155,7 +2155,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgActionsSecretsSecretNameRepositoriesPutBody, json
             )
@@ -2211,7 +2211,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgActionsSecretsSecretNameRepositoriesPutBody, json
             )
@@ -2409,7 +2409,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgActionsVariablesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2464,7 +2464,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgActionsVariablesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2603,7 +2603,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgActionsVariablesNamePatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2659,7 +2659,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgActionsVariablesNamePatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2775,7 +2775,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgActionsVariablesNameRepositoriesPutBody, json
             )
@@ -2832,7 +2832,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgActionsVariablesNameRepositoriesPutBody, json
             )
@@ -3498,7 +3498,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[ReposOwnerRepoActionsJobsJobIdRerunPostBody, None], json
             )
@@ -3571,7 +3571,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[ReposOwnerRepoActionsJobsJobIdRerunPostBody, None], json
             )
@@ -3689,7 +3689,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoActionsOidcCustomizationSubPutBody, json
             )
@@ -3757,7 +3757,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoActionsOidcCustomizationSubPutBody, json
             )
@@ -3984,7 +3984,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoActionsPermissionsPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4039,7 +4039,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoActionsPermissionsPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4137,7 +4137,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ActionsWorkflowAccessToRepository, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4191,7 +4191,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ActionsWorkflowAccessToRepository, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4291,7 +4291,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(SelectedActions, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4347,7 +4347,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(SelectedActions, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4446,7 +4446,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ActionsSetDefaultWorkflowPermissions, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4502,7 +4502,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ActionsSetDefaultWorkflowPermissions, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4679,7 +4679,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody, json
             )
@@ -4750,7 +4750,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody, json
             )
@@ -5051,7 +5051,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody, json
             )
@@ -5120,7 +5120,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBody, json
             )
@@ -5189,7 +5189,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody, json
             )
@@ -5258,7 +5258,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBody, json
             )
@@ -6098,7 +6098,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[ReviewCustomGatesCommentRequired, ReviewCustomGatesStateRequired],
                 json,
@@ -6184,7 +6184,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[ReviewCustomGatesCommentRequired, ReviewCustomGatesStateRequired],
                 json,
@@ -6513,7 +6513,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody, json
             )
@@ -6582,7 +6582,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBody, json
             )
@@ -6648,7 +6648,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[ReposOwnerRepoActionsRunsRunIdRerunPostBody, None], json
             )
@@ -6714,7 +6714,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[ReposOwnerRepoActionsRunsRunIdRerunPostBody, None], json
             )
@@ -6783,7 +6783,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody, None], json
             )
@@ -6852,7 +6852,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBody, None], json
             )
@@ -7109,7 +7109,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoActionsSecretsSecretNamePutBody, json
             )
@@ -7170,7 +7170,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoActionsSecretsSecretNamePutBody, json
             )
@@ -7328,7 +7328,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoActionsVariablesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -7384,7 +7384,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoActionsVariablesPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -7528,7 +7528,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoActionsVariablesNamePatchBody, json
             )
@@ -7587,7 +7587,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoActionsVariablesNamePatchBody, json
             )
@@ -7797,7 +7797,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody, json
             )
@@ -7861,7 +7861,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBody, json
             )
@@ -8307,7 +8307,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody, json
             )
@@ -8376,7 +8376,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBody, json
             )
@@ -8550,7 +8550,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody, json
             )
@@ -8616,7 +8616,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBody, json
             )
@@ -8773,7 +8773,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody, json
             )
@@ -8839,7 +8839,7 @@ class ActionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBody, json
             )

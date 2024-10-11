@@ -380,7 +380,7 @@ class ActivityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(NotificationsPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -438,7 +438,7 @@ class ActivityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(NotificationsPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -680,7 +680,7 @@ class ActivityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 NotificationsThreadsThreadIdSubscriptionPutBody, json
             )
@@ -742,7 +742,7 @@ class ActivityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 NotificationsThreadsThreadIdSubscriptionPutBody, json
             )
@@ -1060,7 +1060,7 @@ class ActivityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoNotificationsPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1118,7 +1118,7 @@ class ActivityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoNotificationsPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1358,7 +1358,7 @@ class ActivityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoSubscriptionPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1414,7 +1414,7 @@ class ActivityClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ReposOwnerRepoSubscriptionPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

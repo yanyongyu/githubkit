@@ -17,7 +17,7 @@ class Config:
     timeout: httpx.Timeout
     http_cache: bool
     auto_retry: Optional[RetryDecisionFunc]
-    rest_api_body_validation: bool
+    rest_api_validate_body: bool
 
     def dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -84,7 +84,7 @@ def get_config(
     timeout: Optional[Union[float, httpx.Timeout]] = None,
     http_cache: bool = True,
     auto_retry: Union[bool, RetryDecisionFunc] = True,
-    rest_api_body_validation: bool = True,
+    rest_api_validate_body: bool = True,
 ) -> Config:
     return Config(
         build_base_url(base_url),
@@ -94,5 +94,5 @@ def get_config(
         build_timeout(timeout),
         http_cache,
         build_auto_retry(auto_retry),
-        rest_api_body_validation,
+        rest_api_validate_body,
     )

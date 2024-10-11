@@ -164,7 +164,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -226,7 +226,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -510,7 +510,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserEmailVisibilityPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -572,7 +572,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserEmailVisibilityPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -706,7 +706,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[
                     UserEmailsPostBodyOneof0,
@@ -777,7 +777,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[
                     UserEmailsPostBodyOneof0,
@@ -843,7 +843,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[
                     UserEmailsDeleteBodyOneof0,
@@ -908,7 +908,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[
                     UserEmailsDeleteBodyOneof0,
@@ -1323,7 +1323,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserGpgKeysPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1376,7 +1376,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserGpgKeysPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1603,7 +1603,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserKeysPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1656,7 +1656,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserKeysPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -1960,7 +1960,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserSocialAccountsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2022,7 +2022,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserSocialAccountsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2077,7 +2077,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserSocialAccountsDeleteBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2131,7 +2131,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserSocialAccountsDeleteBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2261,7 +2261,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserSshSigningKeysPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2322,7 +2322,7 @@ class UsersClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(UserSshSigningKeysPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

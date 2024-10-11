@@ -153,7 +153,7 @@ class InteractionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(InteractionLimit, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -211,7 +211,7 @@ class InteractionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(InteractionLimit, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -378,7 +378,7 @@ class InteractionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(InteractionLimit, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -437,7 +437,7 @@ class InteractionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(InteractionLimit, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -585,7 +585,7 @@ class InteractionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(InteractionLimit, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -637,7 +637,7 @@ class InteractionsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(InteractionLimit, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

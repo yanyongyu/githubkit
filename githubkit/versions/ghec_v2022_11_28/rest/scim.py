@@ -175,7 +175,7 @@ class ScimClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ScimV2OrganizationsOrgUsersPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -241,7 +241,7 @@ class ScimClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(ScimV2OrganizationsOrgUsersPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -366,7 +366,7 @@ class ScimClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ScimV2OrganizationsOrgUsersScimUserIdPutBody, json
             )
@@ -438,7 +438,7 @@ class ScimClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ScimV2OrganizationsOrgUsersScimUserIdPutBody, json
             )
@@ -557,7 +557,7 @@ class ScimClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ScimV2OrganizationsOrgUsersScimUserIdPatchBody, json
             )
@@ -628,7 +628,7 @@ class ScimClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 ScimV2OrganizationsOrgUsersScimUserIdPatchBody, json
             )

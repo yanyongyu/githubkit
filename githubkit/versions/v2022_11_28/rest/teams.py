@@ -191,7 +191,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgTeamsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -256,7 +256,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgTeamsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -415,7 +415,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgTeamsTeamSlugPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -487,7 +487,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgTeamsTeamSlugPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -621,7 +621,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgTeamsTeamSlugDiscussionsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -678,7 +678,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgTeamsTeamSlugDiscussionsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -830,7 +830,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody, json
             )
@@ -898,7 +898,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBody, json
             )
@@ -1033,7 +1033,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody, json
             )
@@ -1098,7 +1098,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody, json
             )
@@ -1256,7 +1256,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
                 json,
@@ -1325,7 +1325,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
                 json,
@@ -1569,7 +1569,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody, json
             )
@@ -1633,7 +1633,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 OrgsOrgTeamsTeamSlugMembershipsUsernamePutBody, json
             )
@@ -1857,7 +1857,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody, None], json
             )
@@ -1928,7 +1928,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBody, None], json
             )
@@ -2147,7 +2147,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2207,7 +2207,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(OrgsOrgTeamsTeamSlugReposOwnerRepoPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2467,7 +2467,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(TeamsTeamIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2531,7 +2531,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(TeamsTeamIdPatchBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2656,7 +2656,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(TeamsTeamIdDiscussionsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2710,7 +2710,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(TeamsTeamIdDiscussionsPostBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2851,7 +2851,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 TeamsTeamIdDiscussionsDiscussionNumberPatchBody, json
             )
@@ -2912,7 +2912,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 TeamsTeamIdDiscussionsDiscussionNumberPatchBody, json
             )
@@ -3042,7 +3042,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody, json
             )
@@ -3104,7 +3104,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBody, json
             )
@@ -3255,7 +3255,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
                 json,
@@ -3321,7 +3321,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBody,
                 json,
@@ -3695,7 +3695,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(TeamsTeamIdMembershipsUsernamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -3757,7 +3757,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(TeamsTeamIdMembershipsUsernamePutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -3974,7 +3974,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(TeamsTeamIdProjectsProjectIdPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4038,7 +4038,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(TeamsTeamIdProjectsProjectIdPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4270,7 +4270,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(TeamsTeamIdReposOwnerRepoPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4335,7 +4335,7 @@ class TeamsClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(TeamsTeamIdReposOwnerRepoPutBody, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

@@ -84,7 +84,7 @@ class GitHub(GitHubCore[A]):
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             http_cache: bool = True,
             auto_retry: Union[bool, RetryDecisionFunc] = True,
-            rest_api_body_validation: bool = True,
+            rest_api_validate_body: bool = True,
         ): ...
 
         # token auth without config
@@ -101,7 +101,7 @@ class GitHub(GitHubCore[A]):
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             http_cache: bool = True,
             auto_retry: Union[bool, RetryDecisionFunc] = True,
-            rest_api_body_validation: bool = True,
+            rest_api_validate_body: bool = True,
         ): ...
 
         # other auth strategies without config
@@ -118,7 +118,7 @@ class GitHub(GitHubCore[A]):
             timeout: Optional[Union[float, httpx.Timeout]] = None,
             http_cache: bool = True,
             auto_retry: Union[bool, RetryDecisionFunc] = True,
-            rest_api_body_validation: bool = True,
+            rest_api_validate_body: bool = True,
         ): ...
 
         def __init__(self, *args, **kwargs): ...

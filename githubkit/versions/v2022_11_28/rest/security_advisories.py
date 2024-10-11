@@ -513,7 +513,7 @@ class SecurityAdvisoriesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(RepositoryAdvisoryCreate, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -590,7 +590,7 @@ class SecurityAdvisoriesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(RepositoryAdvisoryCreate, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -667,7 +667,7 @@ class SecurityAdvisoriesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(PrivateVulnerabilityReportCreate, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -744,7 +744,7 @@ class SecurityAdvisoriesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(PrivateVulnerabilityReportCreate, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -882,7 +882,7 @@ class SecurityAdvisoriesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(RepositoryAdvisoryUpdate, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -966,7 +966,7 @@ class SecurityAdvisoriesClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(RepositoryAdvisoryUpdate, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

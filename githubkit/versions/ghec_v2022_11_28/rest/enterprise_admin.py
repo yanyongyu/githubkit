@@ -172,7 +172,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseActionsPermissionsPutBody, json
             )
@@ -226,7 +226,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseActionsPermissionsPutBody, json
             )
@@ -343,7 +343,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody, json
             )
@@ -398,7 +398,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseActionsPermissionsOrganizationsPutBody, json
             )
@@ -571,7 +571,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(SelectedActions, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -624,7 +624,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(SelectedActions, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -746,7 +746,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseActionsRunnerGroupsPostBody, json
             )
@@ -809,7 +809,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseActionsRunnerGroupsPostBody, json
             )
@@ -959,7 +959,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody, json
             )
@@ -1027,7 +1027,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody, json
             )
@@ -1156,7 +1156,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody,
                 json,
@@ -1217,7 +1217,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdOrganizationsPutBody,
                 json,
@@ -1432,7 +1432,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody,
                 json,
@@ -1495,7 +1495,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdRunnersPutBody,
                 json,
@@ -1969,7 +1969,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody, json
             )
@@ -2037,7 +2037,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPutBody, json
             )
@@ -2105,7 +2105,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody, json
             )
@@ -2173,7 +2173,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseActionsRunnersRunnerIdLabelsPostBody, json
             )
@@ -2432,7 +2432,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(Announcement, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2485,7 +2485,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(Announcement, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -2684,7 +2684,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody, json
             )
@@ -2757,7 +2757,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseCodeSecurityAndAnalysisPatchBody, json
             )
@@ -3056,7 +3056,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(Group, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -3116,7 +3116,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(Group, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -3247,7 +3247,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(Group, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -3311,7 +3311,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(Group, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -3427,7 +3427,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(PatchSchema, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -3488,7 +3488,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(PatchSchema, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -3624,7 +3624,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(User, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -3688,7 +3688,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(User, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -3811,7 +3811,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(User, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -3879,7 +3879,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(User, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4000,7 +4000,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(PatchSchema, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 
@@ -4067,7 +4067,7 @@ class EnterpriseAdminClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(PatchSchema, json)
         json = model_dump(json) if isinstance(json, BaseModel) else json
 

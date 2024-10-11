@@ -275,7 +275,7 @@ class BillingClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody,
                 json,
@@ -353,7 +353,7 @@ class BillingClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody,
                 json,
@@ -431,7 +431,7 @@ class BillingClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody,
                 json,
@@ -508,7 +508,7 @@ class BillingClient:
         }
 
         json = kwargs if data is UNSET else data
-        if self._github.config.rest_api_body_validation:
+        if self._github.config.rest_api_validate_body:
             json = type_validate_python(
                 EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody,
                 json,
