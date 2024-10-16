@@ -319,3 +319,61 @@ You can also provide a custom map function to handle complex pagination (such as
         accessible_repo: Repository
         print(accessible_repo.full_name)
     ```
+
+## Calling API Directly
+
+In some cases, you may want to call the API directly without using the generated methods. You can use the `github.request` / `github.arequest` method to make a raw request.
+
+For example, to upload a release asset:
+
+=== "Sync"
+
+    ```python hl_lines="11-18"
+    from githubkit import GitHub
+    from githubkit.versions.latest.models import Release, ReleaseAsset
+
+    github = GitHub()
+
+    resp = github.rest.repos.get_release_by_tag(
+        "owner", "repo", "tag_name"
+    )
+    release: Release = resp.parsed_data
+
+    resp = github.request(
+        "POST",
+        release.upload_url.split("{?")[0],  # (1)!
+        params={"name": "test", "label": "description"},
+        content=b"file content",
+        headers={"Content-Type": "application/zip"},
+        response_model=ReleaseAsset,
+    )
+    asset: ReleaseAsset = resp.parsed_data
+    ```
+
+    1. The release `upload_url` is a template URL. In this example, we simply remove the template part.
+
+=== "Async"
+
+    ```python hl_lines="11-18"
+    from githubkit import GitHub
+    from githubkit.versions.latest.models import Release, ReleaseAsset
+
+    github = GitHub()
+
+    resp = await github.rest.repos.async_get_release_by_tag(
+        "owner", "repo", "tag_name"
+    )
+    release: Release = resp.parsed_data
+
+    resp = await github.arequest(
+        "POST",
+        release.upload_url.split("{?")[0],  # (1)!
+        params={"name": "test", "label": "description"},
+        content=b"file content",
+        headers={"Content-Type": "application/zip"},
+        response_model=ReleaseAsset,
+    )
+    asset: ReleaseAsset = resp.parsed_data
+    ```
+
+    1. The release `upload_url` is a template URL. In this example, we simply remove the template part.
