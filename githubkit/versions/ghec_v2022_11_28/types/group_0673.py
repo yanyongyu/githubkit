@@ -9,72 +9,55 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0451 import ProjectsV2Type
-from .group_0416 import SimpleInstallationType
-from .group_0417 import OrganizationSimpleWebhooksType
+from .group_0454 import WebhooksProjectType
+from .group_0420 import EnterpriseWebhooksType
+from .group_0421 import SimpleInstallationType
+from .group_0423 import RepositoryWebhooksType
+from .group_0422 import OrganizationSimpleWebhooksType
 
 
-class WebhookProjectsV2ProjectEditedType(TypedDict):
-    """Projects v2 Project Edited Event"""
+class WebhookProjectEditedType(TypedDict):
+    """project edited event"""
 
     action: Literal["edited"]
-    changes: WebhookProjectsV2ProjectEditedPropChangesType
+    changes: NotRequired[WebhookProjectEditedPropChangesType]
+    enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
-    organization: OrganizationSimpleWebhooksType
-    projects_v2: ProjectsV2Type
-    sender: SimpleUserType
+    organization: NotRequired[OrganizationSimpleWebhooksType]
+    project: WebhooksProjectType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-class WebhookProjectsV2ProjectEditedPropChangesType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChanges"""
+class WebhookProjectEditedPropChangesType(TypedDict):
+    """WebhookProjectEditedPropChanges
 
-    description: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType
-    ]
-    public: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropPublicType]
-    short_description: NotRequired[
-        WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType
-    ]
-    title: NotRequired[WebhookProjectsV2ProjectEditedPropChangesPropTitleType]
+    The changes to the project if the action was `edited`.
+    """
+
+    body: NotRequired[WebhookProjectEditedPropChangesPropBodyType]
+    name: NotRequired[WebhookProjectEditedPropChangesPropNameType]
 
 
-class WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropDescription"""
+class WebhookProjectEditedPropChangesPropBodyType(TypedDict):
+    """WebhookProjectEditedPropChangesPropBody"""
 
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropPublicType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropPublic"""
-
-    from_: NotRequired[bool]
-    to: NotRequired[bool]
+    from_: str
 
 
-class WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropShortDescription"""
+class WebhookProjectEditedPropChangesPropNameType(TypedDict):
+    """WebhookProjectEditedPropChangesPropName"""
 
-    from_: NotRequired[Union[str, None]]
-    to: NotRequired[Union[str, None]]
-
-
-class WebhookProjectsV2ProjectEditedPropChangesPropTitleType(TypedDict):
-    """WebhookProjectsV2ProjectEditedPropChangesPropTitle"""
-
-    from_: NotRequired[str]
-    to: NotRequired[str]
+    from_: str
 
 
 __all__ = (
-    "WebhookProjectsV2ProjectEditedType",
-    "WebhookProjectsV2ProjectEditedPropChangesType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropDescriptionType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropPublicType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropShortDescriptionType",
-    "WebhookProjectsV2ProjectEditedPropChangesPropTitleType",
+    "WebhookProjectEditedType",
+    "WebhookProjectEditedPropChangesType",
+    "WebhookProjectEditedPropChangesPropBodyType",
+    "WebhookProjectEditedPropChangesPropNameType",
 )

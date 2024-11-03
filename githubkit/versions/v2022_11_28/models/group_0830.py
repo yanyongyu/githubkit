@@ -19,32 +19,39 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgDependabotSecretsGetResponse200(GitHubModel):
-    """OrgsOrgDependabotSecretsGetResponse200"""
+class OrgsOrgCodespacesSecretsGetResponse200(GitHubModel):
+    """OrgsOrgCodespacesSecretsGetResponse200"""
 
     total_count: int = Field()
-    secrets: List[OrganizationDependabotSecret] = Field()
+    secrets: List[CodespacesOrgSecret] = Field()
 
 
-class OrganizationDependabotSecret(GitHubModel):
-    """Dependabot Secret for an Organization
+class CodespacesOrgSecret(GitHubModel):
+    """Codespaces Secret
 
-    Secrets for GitHub Dependabot for an organization.
+    Secrets for a GitHub Codespace.
     """
 
-    name: str = Field(description="The name of the secret.")
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    visibility: Literal["all", "private", "selected"] = Field(
-        description="Visibility of a secret"
+    name: str = Field(description="The name of the secret")
+    created_at: datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
     )
-    selected_repositories_url: Missing[str] = Field(default=UNSET)
+    updated_at: datetime = Field(
+        description="The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ."
+    )
+    visibility: Literal["all", "private", "selected"] = Field(
+        description="The type of repositories in the organization that the secret is visible to"
+    )
+    selected_repositories_url: Missing[str] = Field(
+        default=UNSET,
+        description="The API URL at which the list of repositories this secret is visible to can be retrieved",
+    )
 
 
-model_rebuild(OrgsOrgDependabotSecretsGetResponse200)
-model_rebuild(OrganizationDependabotSecret)
+model_rebuild(OrgsOrgCodespacesSecretsGetResponse200)
+model_rebuild(CodespacesOrgSecret)
 
 __all__ = (
-    "OrgsOrgDependabotSecretsGetResponse200",
-    "OrganizationDependabotSecret",
+    "OrgsOrgCodespacesSecretsGetResponse200",
+    "CodespacesOrgSecret",
 )

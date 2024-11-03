@@ -20,7 +20,7 @@ class CodeScanningAlertInstanceType(TypedDict):
     analysis_key: NotRequired[str]
     environment: NotRequired[str]
     category: NotRequired[str]
-    state: NotRequired[Literal["open", "dismissed", "fixed"]]
+    state: NotRequired[Union[None, Literal["open", "dismissed", "fixed"]]]
     commit_sha: NotRequired[str]
     message: NotRequired[CodeScanningAlertInstancePropMessageType]
     location: NotRequired[CodeScanningAlertLocationType]

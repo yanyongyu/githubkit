@@ -9,27 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0002 import SimpleUserType
 
+class ThreadSubscriptionType(TypedDict):
+    """Thread Subscription
 
-class OrganizationCustomRepositoryRoleType(TypedDict):
-    """Organization Custom Repository Role
-
-    Custom repository roles created by organization owners
+    Thread Subscription
     """
 
-    id: int
-    name: str
-    description: NotRequired[Union[str, None]]
-    base_role: Literal["read", "triage", "write", "maintain"]
-    permissions: List[str]
-    organization: SimpleUserType
-    created_at: datetime
-    updated_at: datetime
+    subscribed: bool
+    ignored: bool
+    reason: Union[str, None]
+    created_at: Union[datetime, None]
+    url: str
+    thread_url: NotRequired[str]
+    repository_url: NotRequired[str]
 
 
-__all__ = ("OrganizationCustomRepositoryRoleType",)
+__all__ = ("ThreadSubscriptionType",)

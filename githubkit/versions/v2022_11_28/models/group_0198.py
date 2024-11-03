@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,40 +17,28 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0029 import Team
-from .group_0002 import SimpleUser
-from .group_0008 import Integration
+
+class DiffEntry(GitHubModel):
+    """Diff Entry
+
+    Diff Entry
+    """
+
+    sha: str = Field()
+    filename: str = Field()
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ] = Field()
+    additions: int = Field()
+    deletions: int = Field()
+    changes: int = Field()
+    blob_url: Union[str, None] = Field()
+    raw_url: Union[str, None] = Field()
+    contents_url: str = Field()
+    patch: Missing[str] = Field(default=UNSET)
+    previous_filename: Missing[str] = Field(default=UNSET)
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(
-    GitHubModel
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
+model_rebuild(DiffEntry)
 
-    url: str = Field()
-    users_url: str = Field()
-    teams_url: str = Field()
-    users: List[SimpleUser] = Field()
-    teams: List[Team] = Field()
-    apps: Missing[List[Union[Integration, None]]] = Field(default=UNSET)
-
-
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
-    GitHubModel
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
-
-    users: List[SimpleUser] = Field()
-    teams: List[Team] = Field()
-    apps: Missing[List[Union[Integration, None]]] = Field(default=UNSET)
-
-
-model_rebuild(ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions)
-model_rebuild(
-    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
-)
-
-__all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
-)
+__all__ = ("DiffEntry",)

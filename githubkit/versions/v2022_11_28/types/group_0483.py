@@ -13,17 +13,20 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0391 import DiscussionType
-from .group_0378 import EnterpriseWebhooksType
-from .group_0379 import SimpleInstallationType
-from .group_0381 import RepositoryWebhooksType
-from .group_0380 import OrganizationSimpleWebhooksType
+from .group_0396 import DiscussionType
+from .group_0397 import WebhooksCommentType
+from .group_0383 import EnterpriseWebhooksType
+from .group_0384 import SimpleInstallationType
+from .group_0386 import RepositoryWebhooksType
+from .group_0385 import OrganizationSimpleWebhooksType
 
 
-class WebhookDiscussionLockedType(TypedDict):
-    """discussion locked event"""
+class WebhookDiscussionCommentEditedType(TypedDict):
+    """discussion_comment edited event"""
 
-    action: Literal["locked"]
+    action: Literal["edited"]
+    changes: WebhookDiscussionCommentEditedPropChangesType
+    comment: WebhooksCommentType
     discussion: DiscussionType
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: NotRequired[SimpleInstallationType]
@@ -32,4 +35,20 @@ class WebhookDiscussionLockedType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookDiscussionLockedType",)
+class WebhookDiscussionCommentEditedPropChangesType(TypedDict):
+    """WebhookDiscussionCommentEditedPropChanges"""
+
+    body: WebhookDiscussionCommentEditedPropChangesPropBodyType
+
+
+class WebhookDiscussionCommentEditedPropChangesPropBodyType(TypedDict):
+    """WebhookDiscussionCommentEditedPropChangesPropBody"""
+
+    from_: str
+
+
+__all__ = (
+    "WebhookDiscussionCommentEditedType",
+    "WebhookDiscussionCommentEditedPropChangesType",
+    "WebhookDiscussionCommentEditedPropChangesPropBodyType",
+)

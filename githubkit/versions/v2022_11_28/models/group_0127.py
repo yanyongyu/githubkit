@@ -17,21 +17,22 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0128 import RepositoryRuleCommitMessagePatternPropParameters
+from .group_0128 import RepositoryRuleRequiredDeploymentsPropParameters
 
 
-class RepositoryRuleCommitMessagePattern(GitHubModel):
-    """commit_message_pattern
+class RepositoryRuleRequiredDeployments(GitHubModel):
+    """required_deployments
 
-    Parameters to be used for the commit_message_pattern rule
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["commit_message_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitMessagePatternPropParameters] = Field(
+    type: Literal["required_deployments"] = Field()
+    parameters: Missing[RepositoryRuleRequiredDeploymentsPropParameters] = Field(
         default=UNSET
     )
 
 
-model_rebuild(RepositoryRuleCommitMessagePattern)
+model_rebuild(RepositoryRuleRequiredDeployments)
 
-__all__ = ("RepositoryRuleCommitMessagePattern",)
+__all__ = ("RepositoryRuleRequiredDeployments",)

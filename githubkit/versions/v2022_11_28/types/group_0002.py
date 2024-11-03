@@ -40,6 +40,7 @@ class SimpleUserType(TypedDict):
     type: str
     site_admin: bool
     starred_at: NotRequired[str]
+    user_view_type: NotRequired[str]
 
 
 __all__ = ("SimpleUserType",)

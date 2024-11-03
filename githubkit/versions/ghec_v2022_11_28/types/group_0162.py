@@ -9,17 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0163 import RepositoryRuleCommitterEmailPatternPropParametersType
 
-class RepositoryRuleParamsRestrictedCommitsType(TypedDict):
-    """RestrictedCommits
 
-    Restricted commit
+class RepositoryRuleCommitterEmailPatternType(TypedDict):
+    """committer_email_pattern
+
+    Parameters to be used for the committer_email_pattern rule
     """
 
-    oid: str
-    reason: NotRequired[str]
+    type: Literal["committer_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
 
 
-__all__ = ("RepositoryRuleParamsRestrictedCommitsType",)
+__all__ = ("RepositoryRuleCommitterEmailPatternType",)

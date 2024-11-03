@@ -13,23 +13,21 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
-from .group_0438 import WebhooksMilestoneType
-from .group_0415 import EnterpriseWebhooksType
-from .group_0416 import SimpleInstallationType
-from .group_0418 import RepositoryWebhooksType
-from .group_0417 import OrganizationSimpleWebhooksType
+from .group_0449 import MergeGroupType
+from .group_0421 import SimpleInstallationType
+from .group_0423 import RepositoryWebhooksType
+from .group_0422 import OrganizationSimpleWebhooksType
 
 
-class WebhookMilestoneDeletedType(TypedDict):
-    """milestone deleted event"""
+class WebhookMergeGroupChecksRequestedType(TypedDict):
+    """WebhookMergeGroupChecksRequested"""
 
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
+    action: Literal["checks_requested"]
     installation: NotRequired[SimpleInstallationType]
-    milestone: WebhooksMilestoneType
+    merge_group: MergeGroupType
     organization: NotRequired[OrganizationSimpleWebhooksType]
-    repository: RepositoryWebhooksType
-    sender: SimpleUserType
+    repository: NotRequired[RepositoryWebhooksType]
+    sender: NotRequired[SimpleUserType]
 
 
-__all__ = ("WebhookMilestoneDeletedType",)
+__all__ = ("WebhookMergeGroupChecksRequestedType",)

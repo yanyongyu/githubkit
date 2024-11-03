@@ -13,13 +13,13 @@ from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgDependabotSecretsSecretNamePutBodyType(TypedDict):
-    """OrgsOrgDependabotSecretsSecretNamePutBody"""
+class OrgsOrgCodespacesSecretsSecretNamePutBodyType(TypedDict):
+    """OrgsOrgCodespacesSecretsSecretNamePutBody"""
 
     encrypted_value: NotRequired[str]
     key_id: NotRequired[str]
     visibility: Literal["all", "private", "selected"]
-    selected_repository_ids: NotRequired[List[str]]
+    selected_repository_ids: NotRequired[List[int]]
 
 
-__all__ = ("OrgsOrgDependabotSecretsSecretNamePutBodyType",)
+__all__ = ("OrgsOrgCodespacesSecretsSecretNamePutBodyType",)

@@ -13,31 +13,40 @@ from typing import Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0032 import DependabotAlertPackage
 
+class ContentSymlink(GitHubModel):
+    """Symlink Content
 
-class DependabotAlertPropDependency(GitHubModel):
-    """DependabotAlertPropDependency
-
-    Details for the vulnerable dependency.
+    An object describing a symlink
     """
 
-    package: Missing[DependabotAlertPackage] = Field(
-        default=UNSET, description="Details for the vulnerable package."
-    )
-    manifest_path: Missing[str] = Field(
-        default=UNSET,
-        description="The full path to the dependency manifest file, relative to the root of the repository.",
-    )
-    scope: Missing[Union[None, Literal["development", "runtime"]]] = Field(
-        default=UNSET, description="The execution scope of the vulnerable dependency."
-    )
+    type: Literal["symlink"] = Field()
+    target: str = Field()
+    size: int = Field()
+    name: str = Field()
+    path: str = Field()
+    sha: str = Field()
+    url: str = Field()
+    git_url: Union[str, None] = Field()
+    html_url: Union[str, None] = Field()
+    download_url: Union[str, None] = Field()
+    links: ContentSymlinkPropLinks = Field(alias="_links")
 
 
-model_rebuild(DependabotAlertPropDependency)
+class ContentSymlinkPropLinks(GitHubModel):
+    """ContentSymlinkPropLinks"""
 
-__all__ = ("DependabotAlertPropDependency",)
+    git: Union[str, None] = Field()
+    html: Union[str, None] = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(ContentSymlink)
+model_rebuild(ContentSymlinkPropLinks)
+
+__all__ = (
+    "ContentSymlink",
+    "ContentSymlinkPropLinks",
+)

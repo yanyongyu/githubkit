@@ -13,14 +13,22 @@ from typing import Union
 from typing_extensions import TypedDict
 
 
-class CodeScanningAnalysisDeletionType(TypedDict):
-    """Analysis deletion
+class CheckAnnotationType(TypedDict):
+    """Check Annotation
 
-    Successful deletion of a code scanning analysis
+    Check Annotation
     """
 
-    next_analysis_url: Union[str, None]
-    confirm_delete_url: Union[str, None]
+    path: str
+    start_line: int
+    end_line: int
+    start_column: Union[int, None]
+    end_column: Union[int, None]
+    annotation_level: Union[str, None]
+    title: Union[str, None]
+    message: Union[str, None]
+    raw_details: Union[str, None]
+    blob_href: str
 
 
-__all__ = ("CodeScanningAnalysisDeletionType",)
+__all__ = ("CheckAnnotationType",)

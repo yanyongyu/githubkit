@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Union
 
 from pydantic import Field
 
@@ -17,41 +17,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
-from .group_0027 import OrganizationSimple
+
+class ApiInsightsSubjectStatsItems(GitHubModel):
+    """ApiInsightsSubjectStatsItems"""
+
+    subject_type: Missing[str] = Field(default=UNSET)
+    subject_name: Missing[str] = Field(default=UNSET)
+    subject_id: Missing[int] = Field(default=UNSET)
+    total_request_count: Missing[int] = Field(default=UNSET)
+    rate_limited_request_count: Missing[int] = Field(default=UNSET)
+    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
+    last_request_timestamp: Missing[str] = Field(default=UNSET)
 
 
-class OrgMembership(GitHubModel):
-    """Org Membership
+model_rebuild(ApiInsightsSubjectStatsItems)
 
-    Org Membership
-    """
-
-    url: str = Field()
-    state: Literal["active", "pending"] = Field(
-        description="The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation."
-    )
-    role: Literal["admin", "member", "billing_manager"] = Field(
-        description="The user's membership type in the organization."
-    )
-    organization_url: str = Field()
-    organization: OrganizationSimple = Field(
-        title="Organization Simple", description="A GitHub organization."
-    )
-    user: Union[None, SimpleUser] = Field()
-    permissions: Missing[OrgMembershipPropPermissions] = Field(default=UNSET)
-
-
-class OrgMembershipPropPermissions(GitHubModel):
-    """OrgMembershipPropPermissions"""
-
-    can_create_repository: bool = Field()
-
-
-model_rebuild(OrgMembership)
-model_rebuild(OrgMembershipPropPermissions)
-
-__all__ = (
-    "OrgMembership",
-    "OrgMembershipPropPermissions",
-)
+__all__ = ("ApiInsightsSubjectStatsItems",)

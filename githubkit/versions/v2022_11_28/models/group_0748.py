@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,16 +16,16 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0002 import SimpleUser
-from .group_0378 import EnterpriseWebhooks
-from .group_0379 import SimpleInstallation
-from .group_0381 import RepositoryWebhooks
-from .group_0380 import OrganizationSimpleWebhooks
+from .group_0433 import WebhooksTeam1
+from .group_0383 import EnterpriseWebhooks
+from .group_0384 import SimpleInstallation
+from .group_0386 import RepositoryWebhooks
+from .group_0385 import OrganizationSimpleWebhooks
 
 
-class WebhookWatchStarted(GitHubModel):
-    """watch started event"""
+class WebhookTeamAdd(GitHubModel):
+    """team_add event"""
 
-    action: Literal["started"] = Field()
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -48,8 +46,12 @@ class WebhookWatchStarted(GitHubModel):
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    team: WebhooksTeam1 = Field(
+        title="Team",
+        description="Groups of organization members that gives permissions on specified repositories.",
+    )
 
 
-model_rebuild(WebhookWatchStarted)
+model_rebuild(WebhookTeamAdd)
 
-__all__ = ("WebhookWatchStarted",)
+__all__ = ("WebhookTeamAdd",)

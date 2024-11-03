@@ -9,14 +9,11 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoDeleteResponse403Type(TypedDict):
-    """ReposOwnerRepoDeleteResponse403"""
-
-    message: NotRequired[str]
-    documentation_url: NotRequired[str]
+class ProjectsColumnsColumnIdMovesPostResponse201Type(TypedDict):
+    """ProjectsColumnsColumnIdMovesPostResponse201"""
 
 
-__all__ = ("ReposOwnerRepoDeleteResponse403Type",)
+__all__ = ("ProjectsColumnsColumnIdMovesPostResponse201Type",)

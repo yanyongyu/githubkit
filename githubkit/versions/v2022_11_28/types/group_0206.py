@@ -10,29 +10,70 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0073 import CodeScanningAnalysisToolType
+from .group_0008 import IntegrationType
+from .group_0205 import DeploymentSimpleType
+from .group_0178 import PullRequestMinimalType
 
 
-class CodeScanningAnalysisType(TypedDict):
-    """CodeScanningAnalysis"""
+class CheckRunType(TypedDict):
+    """CheckRun
 
-    ref: str
-    commit_sha: str
-    analysis_key: str
-    environment: str
-    category: NotRequired[str]
-    error: str
-    created_at: datetime
-    results_count: int
-    rules_count: int
+    A check performed on the code of a given code change
+    """
+
     id: int
+    head_sha: str
+    node_id: str
+    external_id: Union[str, None]
     url: str
-    sarif_id: str
-    tool: CodeScanningAnalysisToolType
-    deletable: bool
-    warning: str
+    html_url: Union[str, None]
+    details_url: Union[str, None]
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ]
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ]
+    started_at: Union[datetime, None]
+    completed_at: Union[datetime, None]
+    output: CheckRunPropOutputType
+    name: str
+    check_suite: Union[CheckRunPropCheckSuiteType, None]
+    app: Union[None, IntegrationType, None]
+    pull_requests: List[PullRequestMinimalType]
+    deployment: NotRequired[DeploymentSimpleType]
 
 
-__all__ = ("CodeScanningAnalysisType",)
+class CheckRunPropOutputType(TypedDict):
+    """CheckRunPropOutput"""
+
+    title: Union[str, None]
+    summary: Union[str, None]
+    text: Union[str, None]
+    annotations_count: int
+    annotations_url: str
+
+
+class CheckRunPropCheckSuiteType(TypedDict):
+    """CheckRunPropCheckSuite"""
+
+    id: int
+
+
+__all__ = (
+    "CheckRunType",
+    "CheckRunPropOutputType",
+    "CheckRunPropCheckSuiteType",
+)

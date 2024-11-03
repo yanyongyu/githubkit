@@ -9,38 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse403(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostResponse403"""
+class OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody(GitHubModel):
+    """OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody"""
 
-    message: Missing[str] = Field(default=UNSET)
-    documentation_url: Missing[str] = Field(default=UNSET)
-    errors: Missing[
-        List[ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems]
-    ] = Field(default=UNSET)
+    body: str = Field(description="The discussion comment's body text.")
 
 
-class ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems(GitHubModel):
-    """ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems"""
+model_rebuild(OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody)
 
-    code: Missing[str] = Field(default=UNSET)
-    message: Missing[str] = Field(default=UNSET)
-    resource: Missing[str] = Field(default=UNSET)
-    field: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse403)
-model_rebuild(ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems)
-
-__all__ = (
-    "ProjectsColumnsCardsCardIdMovesPostResponse403",
-    "ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItems",
-)
+__all__ = ("OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBody",)

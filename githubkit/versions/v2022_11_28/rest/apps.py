@@ -322,7 +322,6 @@ class AppsClient:
         self,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
-        redelivery: Missing[bool] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[HookDeliveryItem]]:
@@ -337,7 +336,6 @@ class AppsClient:
         params = {
             "per_page": per_page,
             "cursor": cursor,
-            "redelivery": redelivery,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -358,7 +356,6 @@ class AppsClient:
         self,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
-        redelivery: Missing[bool] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[HookDeliveryItem]]:
@@ -373,7 +370,6 @@ class AppsClient:
         params = {
             "per_page": per_page,
             "cursor": cursor,
-            "redelivery": redelivery,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

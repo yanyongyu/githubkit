@@ -9,38 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0029 import TeamType
-from .group_0002 import SimpleUserType
-from .group_0008 import IntegrationType
+
+class DiffEntryType(TypedDict):
+    """Diff Entry
+
+    Diff Entry
+    """
+
+    sha: str
+    filename: str
+    status: Literal[
+        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
+    ]
+    additions: int
+    deletions: int
+    changes: int
+    blob_url: Union[str, None]
+    raw_url: Union[str, None]
+    contents_url: str
+    patch: NotRequired[str]
+    previous_filename: NotRequired[str]
 
 
-class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
-
-    url: str
-    users_url: str
-    teams_url: str
-    users: List[SimpleUserType]
-    teams: List[TeamType]
-    apps: NotRequired[List[Union[IntegrationType, None]]]
-
-
-class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
-    TypedDict
-):
-    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
-
-    users: List[SimpleUserType]
-    teams: List[TeamType]
-    apps: NotRequired[List[Union[IntegrationType, None]]]
-
-
-__all__ = (
-    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType",
-    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType",
-)
+__all__ = ("DiffEntryType",)

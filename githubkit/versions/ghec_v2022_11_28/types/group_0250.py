@@ -9,16 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
 
 
-class LinkType(TypedDict):
-    """Link
+class CodeownersErrorsType(TypedDict):
+    """CODEOWNERS errors
 
-    Hypermedia Link
+    A list of errors found in a repo's CODEOWNERS file
     """
 
-    href: str
+    errors: List[CodeownersErrorsPropErrorsItemsType]
 
 
-__all__ = ("LinkType",)
+class CodeownersErrorsPropErrorsItemsType(TypedDict):
+    """CodeownersErrorsPropErrorsItems"""
+
+    line: int
+    column: int
+    source: NotRequired[str]
+    kind: str
+    suggestion: NotRequired[Union[str, None]]
+    message: str
+    path: str
+
+
+__all__ = (
+    "CodeownersErrorsType",
+    "CodeownersErrorsPropErrorsItemsType",
+)

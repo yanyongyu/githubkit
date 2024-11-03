@@ -65,6 +65,8 @@ class SecretScanningClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         validity: Missing[str] = UNSET,
+        is_publicly_leaked: Missing[bool] = UNSET,
+        is_multi_repo: Missing[bool] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationSecretScanningAlert]]:
@@ -90,6 +92,8 @@ class SecretScanningClient:
             "before": before,
             "after": after,
             "validity": validity,
+            "is_publicly_leaked": is_publicly_leaked,
+            "is_multi_repo": is_multi_repo,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -118,6 +122,8 @@ class SecretScanningClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         validity: Missing[str] = UNSET,
+        is_publicly_leaked: Missing[bool] = UNSET,
+        is_multi_repo: Missing[bool] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationSecretScanningAlert]]:
@@ -143,6 +149,8 @@ class SecretScanningClient:
             "before": before,
             "after": after,
             "validity": validity,
+            "is_publicly_leaked": is_publicly_leaked,
+            "is_multi_repo": is_multi_repo,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -172,6 +180,8 @@ class SecretScanningClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         validity: Missing[str] = UNSET,
+        is_publicly_leaked: Missing[bool] = UNSET,
+        is_multi_repo: Missing[bool] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationSecretScanningAlert]]:
@@ -198,6 +208,8 @@ class SecretScanningClient:
             "before": before,
             "after": after,
             "validity": validity,
+            "is_publicly_leaked": is_publicly_leaked,
+            "is_multi_repo": is_multi_repo,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -227,6 +239,8 @@ class SecretScanningClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         validity: Missing[str] = UNSET,
+        is_publicly_leaked: Missing[bool] = UNSET,
+        is_multi_repo: Missing[bool] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[OrganizationSecretScanningAlert]]:
@@ -253,6 +267,8 @@ class SecretScanningClient:
             "before": before,
             "after": after,
             "validity": validity,
+            "is_publicly_leaked": is_publicly_leaked,
+            "is_multi_repo": is_multi_repo,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -283,6 +299,8 @@ class SecretScanningClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         validity: Missing[str] = UNSET,
+        is_publicly_leaked: Missing[bool] = UNSET,
+        is_multi_repo: Missing[bool] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SecretScanningAlert]]:
@@ -308,6 +326,8 @@ class SecretScanningClient:
             "before": before,
             "after": after,
             "validity": validity,
+            "is_publicly_leaked": is_publicly_leaked,
+            "is_multi_repo": is_multi_repo,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -337,6 +357,8 @@ class SecretScanningClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         validity: Missing[str] = UNSET,
+        is_publicly_leaked: Missing[bool] = UNSET,
+        is_multi_repo: Missing[bool] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[SecretScanningAlert]]:
@@ -362,6 +384,8 @@ class SecretScanningClient:
             "before": before,
             "after": after,
             "validity": validity,
+            "is_publicly_leaked": is_publicly_leaked,
+            "is_multi_repo": is_multi_repo,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}

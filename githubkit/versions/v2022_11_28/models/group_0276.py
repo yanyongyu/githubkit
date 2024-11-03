@@ -9,35 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
-from .group_0008 import Integration
 
+class PorterAuthor(GitHubModel):
+    """Porter Author
 
-class UnassignedIssueEvent(GitHubModel):
-    """Unassigned Issue Event
-
-    Unassigned Issue Event
+    Porter Author
     """
 
     id: int = Field()
-    node_id: str = Field()
+    remote_id: str = Field()
+    remote_name: str = Field()
+    email: str = Field()
+    name: str = Field()
     url: str = Field()
-    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    event: str = Field()
-    commit_id: Union[str, None] = Field()
-    commit_url: Union[str, None] = Field()
-    created_at: str = Field()
-    performed_via_github_app: Union[None, Integration, None] = Field()
-    assignee: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    assigner: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    import_url: str = Field()
 
 
-model_rebuild(UnassignedIssueEvent)
+model_rebuild(PorterAuthor)
 
-__all__ = ("UnassignedIssueEvent",)
+__all__ = ("PorterAuthor",)

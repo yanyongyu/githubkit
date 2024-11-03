@@ -9,30 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleCommitAuthorEmailPatternPropParameters(GitHubModel):
-    """RepositoryRuleCommitAuthorEmailPatternPropParameters"""
+class RepositoryRulePullRequestPropParameters(GitHubModel):
+    """RepositoryRulePullRequestPropParameters"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="How this rule will appear to users."
+    dismiss_stale_reviews_on_push: bool = Field(
+        description="New, reviewable commits pushed will dismiss previous pull request review approvals."
     )
-    negate: Missing[bool] = Field(
-        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    require_code_owner_review: bool = Field(
+        description="Require an approving review in pull requests that modify files that have a designated code owner."
     )
-    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
-        description="The operator to use for matching."
+    require_last_push_approval: bool = Field(
+        description="Whether the most recent reviewable push must be approved by someone other than the person who pushed it."
     )
-    pattern: str = Field(description="The pattern to match with.")
+    required_approving_review_count: int = Field(
+        le=10.0,
+        description="The number of approving reviews that are required before a pull request can be merged.",
+    )
+    required_review_thread_resolution: bool = Field(
+        description="All conversations on code must be resolved before a pull request can be merged."
+    )
 
 
-model_rebuild(RepositoryRuleCommitAuthorEmailPatternPropParameters)
+model_rebuild(RepositoryRulePullRequestPropParameters)
 
-__all__ = ("RepositoryRuleCommitAuthorEmailPatternPropParameters",)
+__all__ = ("RepositoryRulePullRequestPropParameters",)

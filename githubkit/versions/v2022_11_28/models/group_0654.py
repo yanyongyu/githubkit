@@ -18,17 +18,20 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0002 import SimpleUser
-from .group_0378 import EnterpriseWebhooks
-from .group_0379 import SimpleInstallation
-from .group_0381 import RepositoryWebhooks
-from .group_0416 import PullRequestWebhook
-from .group_0380 import OrganizationSimpleWebhooks
+from .group_0383 import EnterpriseWebhooks
+from .group_0384 import SimpleInstallation
+from .group_0386 import RepositoryWebhooks
+from .group_0421 import PullRequestWebhook
+from .group_0385 import OrganizationSimpleWebhooks
 
 
-class WebhookPullRequestOpened(GitHubModel):
-    """pull_request opened event"""
+class WebhookPullRequestEdited(GitHubModel):
+    """pull_request edited event"""
 
-    action: Literal["opened"] = Field()
+    action: Literal["edited"] = Field()
+    changes: WebhookPullRequestEditedPropChanges = Field(
+        description="The changes to the comment if the action was `edited`."
+    )
     enterprise: Missing[EnterpriseWebhooks] = Field(
         default=UNSET,
         title="Enterprise",
@@ -50,9 +53,73 @@ class WebhookPullRequestOpened(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    sender: Missing[SimpleUser] = Field(
+        default=UNSET, title="Simple User", description="A GitHub user."
+    )
 
 
-model_rebuild(WebhookPullRequestOpened)
+class WebhookPullRequestEditedPropChanges(GitHubModel):
+    """WebhookPullRequestEditedPropChanges
 
-__all__ = ("WebhookPullRequestOpened",)
+    The changes to the comment if the action was `edited`.
+    """
+
+    base: Missing[WebhookPullRequestEditedPropChangesPropBase] = Field(default=UNSET)
+    body: Missing[WebhookPullRequestEditedPropChangesPropBody] = Field(default=UNSET)
+    title: Missing[WebhookPullRequestEditedPropChangesPropTitle] = Field(default=UNSET)
+
+
+class WebhookPullRequestEditedPropChangesPropBody(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropBody"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the body if the action was `edited`.",
+    )
+
+
+class WebhookPullRequestEditedPropChangesPropTitle(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropTitle"""
+
+    from_: str = Field(
+        alias="from",
+        description="The previous version of the title if the action was `edited`.",
+    )
+
+
+class WebhookPullRequestEditedPropChangesPropBase(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropBase"""
+
+    ref: WebhookPullRequestEditedPropChangesPropBasePropRef = Field()
+    sha: WebhookPullRequestEditedPropChangesPropBasePropSha = Field()
+
+
+class WebhookPullRequestEditedPropChangesPropBasePropRef(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropBasePropRef"""
+
+    from_: str = Field(alias="from")
+
+
+class WebhookPullRequestEditedPropChangesPropBasePropSha(GitHubModel):
+    """WebhookPullRequestEditedPropChangesPropBasePropSha"""
+
+    from_: str = Field(alias="from")
+
+
+model_rebuild(WebhookPullRequestEdited)
+model_rebuild(WebhookPullRequestEditedPropChanges)
+model_rebuild(WebhookPullRequestEditedPropChangesPropBody)
+model_rebuild(WebhookPullRequestEditedPropChangesPropTitle)
+model_rebuild(WebhookPullRequestEditedPropChangesPropBase)
+model_rebuild(WebhookPullRequestEditedPropChangesPropBasePropRef)
+model_rebuild(WebhookPullRequestEditedPropChangesPropBasePropSha)
+
+__all__ = (
+    "WebhookPullRequestEdited",
+    "WebhookPullRequestEditedPropChanges",
+    "WebhookPullRequestEditedPropChangesPropBody",
+    "WebhookPullRequestEditedPropChangesPropTitle",
+    "WebhookPullRequestEditedPropChangesPropBase",
+    "WebhookPullRequestEditedPropChangesPropBasePropRef",
+    "WebhookPullRequestEditedPropChangesPropBasePropSha",
+)

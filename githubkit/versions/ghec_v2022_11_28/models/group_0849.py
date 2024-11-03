@@ -11,17 +11,15 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class NotificationsPutResponse202(GitHubModel):
-    """NotificationsPutResponse202"""
+class GistsGistIdCommentsPostBody(GitHubModel):
+    """GistsGistIdCommentsPostBody"""
 
-    message: Missing[str] = Field(default=UNSET)
+    body: str = Field(max_length=65535, description="The comment text.")
 
 
-model_rebuild(NotificationsPutResponse202)
+model_rebuild(GistsGistIdCommentsPostBody)
 
-__all__ = ("NotificationsPutResponse202",)
+__all__ = ("GistsGistIdCommentsPostBody",)

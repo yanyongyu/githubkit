@@ -13,24 +13,13 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class RepositoryRuleOneof18Type(TypedDict):
-    """max_file_size
+class RepositoryRuleTagNamePatternPropParametersType(TypedDict):
+    """RepositoryRuleTagNamePatternPropParameters"""
 
-    Prevent commits that exceed a specified file size limit from being pushed to the
-    commit.
-    """
-
-    type: Literal["max_file_size"]
-    parameters: NotRequired[RepositoryRuleOneof18PropParametersType]
+    name: NotRequired[str]
+    negate: NotRequired[bool]
+    operator: Literal["starts_with", "ends_with", "contains", "regex"]
+    pattern: str
 
 
-class RepositoryRuleOneof18PropParametersType(TypedDict):
-    """RepositoryRuleOneof18PropParameters"""
-
-    max_file_size: int
-
-
-__all__ = (
-    "RepositoryRuleOneof18Type",
-    "RepositoryRuleOneof18PropParametersType",
-)
+__all__ = ("RepositoryRuleTagNamePatternPropParametersType",)

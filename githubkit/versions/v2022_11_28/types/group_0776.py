@@ -9,34 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-
-class GistsGistIdPatchBodyType(TypedDict):
-    """GistsGistIdPatchBody"""
-
-    description: NotRequired[str]
-    files: NotRequired[GistsGistIdPatchBodyPropFilesType]
+from .group_0016 import AppPermissionsType
 
 
-class GistsGistIdPatchBodyPropFilesType(TypedDict):
-    """GistsGistIdPatchBodyPropFiles
+class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
+    """ApplicationsClientIdTokenScopedPostBody"""
 
-    The gist files to be updated, renamed, or deleted. Each `key` must match the
-    current filename
-    (including extension) of the targeted gist file. For example: `hello.py`.
-
-    To delete a file, set the whole file to null. For example: `hello.py : null`.
-    The file will also be
-    deleted if the specified object does not contain at least one of `content` or
-    `filename`.
-
-    Examples:
-        {'hello.rb': {'content': 'blah', 'filename': 'goodbye.rb'}}
-    """
+    access_token: str
+    target: NotRequired[str]
+    target_id: NotRequired[int]
+    repositories: NotRequired[List[str]]
+    repository_ids: NotRequired[List[int]]
+    permissions: NotRequired[AppPermissionsType]
 
 
-__all__ = (
-    "GistsGistIdPatchBodyType",
-    "GistsGistIdPatchBodyPropFilesType",
-)
+__all__ = ("ApplicationsClientIdTokenScopedPostBodyType",)

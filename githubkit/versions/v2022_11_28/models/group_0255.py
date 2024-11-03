@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Literal
 
 from pydantic import Field
 
@@ -17,27 +17,36 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0256 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems
+from .group_0254 import Metadata
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
-    """EnvironmentPropProtectionRulesItemsAnyof1"""
+class Dependency(GitHubModel):
+    """Dependency"""
 
-    id: int = Field()
-    node_id: str = Field()
-    prevent_self_review: Missing[bool] = Field(
+    package_url: Missing[str] = Field(
+        pattern="^pkg",
         default=UNSET,
-        description="Whether deployments to this environment can be approved by the user who created the deployment.",
+        description="Package-url (PURL) of dependency. See https://github.com/package-url/purl-spec for more details.",
     )
-    type: str = Field()
-    reviewers: Missing[
-        List[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
-    ] = Field(
+    metadata: Missing[Metadata] = Field(
         default=UNSET,
-        description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",
+        title="metadata",
+        description="User-defined metadata to store domain-specific information limited to 8 keys with scalar values.",
+    )
+    relationship: Missing[Literal["direct", "indirect"]] = Field(
+        default=UNSET,
+        description="A notation of whether a dependency is requested directly by this manifest or is a dependency of another dependency.",
+    )
+    scope: Missing[Literal["runtime", "development"]] = Field(
+        default=UNSET,
+        description="A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.",
+    )
+    dependencies: Missing[List[str]] = Field(
+        default=UNSET,
+        description="Array of package-url (PURLs) of direct child dependencies.",
     )
 
 
-model_rebuild(EnvironmentPropProtectionRulesItemsAnyof1)
+model_rebuild(Dependency)
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1",)
+__all__ = ("Dependency",)

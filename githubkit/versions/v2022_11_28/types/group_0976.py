@@ -10,16 +10,29 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import List
+from datetime import datetime
 from typing_extensions import TypedDict
 
-from .group_0169 import ActionsVariableType
 
-
-class ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type(TypedDict):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200"""
+class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
+    """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
     total_count: int
-    variables: List[ActionsVariableType]
+    secrets: List[DependabotSecretType]
 
 
-__all__ = ("ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type",)
+class DependabotSecretType(TypedDict):
+    """Dependabot Secret
+
+    Set secrets for Dependabot.
+    """
+
+    name: str
+    created_at: datetime
+    updated_at: datetime
+
+
+__all__ = (
+    "ReposOwnerRepoDependabotSecretsGetResponse200Type",
+    "DependabotSecretType",
+)

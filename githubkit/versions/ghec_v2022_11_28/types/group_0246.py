@@ -9,30 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0002 import SimpleUserType
-from .group_0084 import MinimalRepositoryType
 
+class CodeScanningDefaultSetupUpdateResponseType(TypedDict):
+    """CodeScanningDefaultSetupUpdateResponse
 
-class RepositoryInvitationType(TypedDict):
-    """Repository Invitation
-
-    Repository invitations let you manage who you collaborate with.
+    You can use `run_url` to track the status of the run. This includes a property
+    status and conclusion.
+    You should not rely on this always being an actions workflow run object.
     """
 
-    id: int
-    repository: MinimalRepositoryType
-    invitee: Union[None, SimpleUserType]
-    inviter: Union[None, SimpleUserType]
-    permissions: Literal["read", "write", "admin", "triage", "maintain"]
-    created_at: datetime
-    expired: NotRequired[bool]
-    url: str
-    html_url: str
-    node_id: str
+    run_id: NotRequired[int]
+    run_url: NotRequired[str]
 
 
-__all__ = ("RepositoryInvitationType",)
+__all__ = ("CodeScanningDefaultSetupUpdateResponseType",)

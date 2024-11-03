@@ -9,16 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class CodespacesPermissionsCheckForDevcontainerType(TypedDict):
-    """Codespaces Permissions Check
+class CodeScanningDefaultSetupUpdateType(TypedDict):
+    """CodeScanningDefaultSetupUpdate
 
-    Permission check result for a given devcontainer config.
+    Configuration for code scanning default setup.
     """
 
-    accepted: bool
+    state: NotRequired[Literal["configured", "not-configured"]]
+    query_suite: NotRequired[Literal["default", "extended"]]
+    languages: NotRequired[
+        List[
+            Literal[
+                "c-cpp",
+                "csharp",
+                "go",
+                "java-kotlin",
+                "javascript-typescript",
+                "python",
+                "ruby",
+                "swift",
+            ]
+        ]
+    ]
 
 
-__all__ = ("CodespacesPermissionsCheckForDevcontainerType",)
+__all__ = ("CodeScanningDefaultSetupUpdateType",)

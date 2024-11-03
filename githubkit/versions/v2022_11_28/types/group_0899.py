@@ -9,17 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
-from .group_0174 import WorkflowRunType
+
+class ProjectsProjectIdColumnsPostBodyType(TypedDict):
+    """ProjectsProjectIdColumnsPostBody"""
+
+    name: str
 
 
-class ReposOwnerRepoActionsRunsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsRunsGetResponse200"""
-
-    total_count: int
-    workflow_runs: List[WorkflowRunType]
-
-
-__all__ = ("ReposOwnerRepoActionsRunsGetResponse200Type",)
+__all__ = ("ProjectsProjectIdColumnsPostBodyType",)

@@ -10,110 +10,121 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0049 import TeamSimpleType
+from .group_0147 import RepositoryRuleUpdateType
+from .group_0173 import RepositoryRuleOneof18Type
+from .group_0169 import RepositoryRuleWorkflowsType
+from .group_0150 import RepositoryRuleMergeQueueType
+from .group_0154 import RepositoryRulePullRequestType
+from .group_0143 import OrgRulesetConditionsOneof0Type
+from .group_0144 import OrgRulesetConditionsOneof1Type
+from .group_0145 import OrgRulesetConditionsOneof2Type
+from .group_0171 import RepositoryRuleCodeScanningType
+from .group_0135 import RepositoryRulesetConditionsType
+from .group_0134 import RepositoryRulesetBypassActorType
+from .group_0166 import RepositoryRuleTagNamePatternType
+from .group_0164 import RepositoryRuleBranchNamePatternType
+from .group_0152 import RepositoryRuleRequiredDeploymentsType
+from .group_0156 import RepositoryRuleRequiredStatusChecksType
+from .group_0158 import RepositoryRuleCommitMessagePatternType
+from .group_0162 import RepositoryRuleCommitterEmailPatternType
+from .group_0160 import RepositoryRuleCommitAuthorEmailPatternType
+from .group_0149 import (
+    RepositoryRuleOneof16Type,
+    RepositoryRuleRequiredLinearHistoryType,
+)
+from .group_0146 import (
+    RepositoryRuleOneof15Type,
+    RepositoryRuleOneof17Type,
+    RepositoryRuleCreationType,
+    RepositoryRuleDeletionType,
+    RepositoryRuleNonFastForwardType,
+    RepositoryRuleRequiredSignaturesType,
+)
 
 
-class TeamFullType(TypedDict):
-    """Full Team
+class RepositoryRulesetType(TypedDict):
+    """Repository ruleset
 
-    Groups of organization members that gives permissions on specified repositories.
+    A set of rules to apply when specified conditions are met.
     """
 
     id: int
-    node_id: str
-    url: str
-    html_url: str
     name: str
-    slug: str
-    description: Union[str, None]
-    privacy: NotRequired[Literal["closed", "secret"]]
-    notification_setting: NotRequired[
-        Literal["notifications_enabled", "notifications_disabled"]
+    target: NotRequired[Literal["branch", "tag", "push"]]
+    source_type: NotRequired[Literal["Repository", "Organization"]]
+    source: str
+    enforcement: Literal["disabled", "active", "evaluate"]
+    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
+    current_user_can_bypass: NotRequired[
+        Literal["always", "pull_requests_only", "never"]
     ]
-    permission: str
-    members_url: str
-    repositories_url: str
-    parent: NotRequired[Union[None, TeamSimpleType]]
-    members_count: int
-    repos_count: int
-    created_at: datetime
-    updated_at: datetime
-    organization: TeamOrganizationType
-    ldap_dn: NotRequired[str]
+    node_id: NotRequired[str]
+    links: NotRequired[RepositoryRulesetPropLinksType]
+    conditions: NotRequired[
+        Union[
+            RepositoryRulesetConditionsType,
+            OrgRulesetConditionsOneof0Type,
+            OrgRulesetConditionsOneof1Type,
+            OrgRulesetConditionsOneof2Type,
+            None,
+        ]
+    ]
+    rules: NotRequired[
+        List[
+            Union[
+                RepositoryRuleCreationType,
+                RepositoryRuleUpdateType,
+                RepositoryRuleDeletionType,
+                RepositoryRuleRequiredLinearHistoryType,
+                RepositoryRuleMergeQueueType,
+                RepositoryRuleRequiredDeploymentsType,
+                RepositoryRuleRequiredSignaturesType,
+                RepositoryRulePullRequestType,
+                RepositoryRuleRequiredStatusChecksType,
+                RepositoryRuleNonFastForwardType,
+                RepositoryRuleCommitMessagePatternType,
+                RepositoryRuleCommitAuthorEmailPatternType,
+                RepositoryRuleCommitterEmailPatternType,
+                RepositoryRuleBranchNamePatternType,
+                RepositoryRuleTagNamePatternType,
+                RepositoryRuleOneof15Type,
+                RepositoryRuleOneof16Type,
+                RepositoryRuleOneof17Type,
+                RepositoryRuleOneof18Type,
+                RepositoryRuleWorkflowsType,
+                RepositoryRuleCodeScanningType,
+            ]
+        ]
+    ]
+    created_at: NotRequired[datetime]
+    updated_at: NotRequired[datetime]
 
 
-class TeamOrganizationType(TypedDict):
-    """Team Organization
+class RepositoryRulesetPropLinksType(TypedDict):
+    """RepositoryRulesetPropLinks"""
 
-    Team Organization
-    """
-
-    login: str
-    id: int
-    node_id: str
-    url: str
-    repos_url: str
-    events_url: str
-    hooks_url: str
-    issues_url: str
-    members_url: str
-    public_members_url: str
-    avatar_url: str
-    description: Union[str, None]
-    name: NotRequired[Union[str, None]]
-    company: NotRequired[Union[str, None]]
-    blog: NotRequired[Union[str, None]]
-    location: NotRequired[Union[str, None]]
-    email: NotRequired[Union[str, None]]
-    twitter_username: NotRequired[Union[str, None]]
-    is_verified: NotRequired[bool]
-    has_organization_projects: bool
-    has_repository_projects: bool
-    public_repos: int
-    public_gists: int
-    followers: int
-    following: int
-    html_url: str
-    created_at: datetime
-    type: str
-    total_private_repos: NotRequired[int]
-    owned_private_repos: NotRequired[int]
-    private_gists: NotRequired[Union[int, None]]
-    disk_usage: NotRequired[Union[int, None]]
-    collaborators: NotRequired[Union[int, None]]
-    billing_email: NotRequired[Union[str, None]]
-    plan: NotRequired[TeamOrganizationPropPlanType]
-    default_repository_permission: NotRequired[Union[str, None]]
-    members_can_create_repositories: NotRequired[Union[bool, None]]
-    two_factor_requirement_enabled: NotRequired[Union[bool, None]]
-    members_allowed_repository_creation_type: NotRequired[str]
-    members_can_create_public_repositories: NotRequired[bool]
-    members_can_create_private_repositories: NotRequired[bool]
-    members_can_create_internal_repositories: NotRequired[bool]
-    members_can_create_pages: NotRequired[bool]
-    members_can_create_public_pages: NotRequired[bool]
-    members_can_create_private_pages: NotRequired[bool]
-    members_can_fork_private_repositories: NotRequired[Union[bool, None]]
-    web_commit_signoff_required: NotRequired[bool]
-    updated_at: datetime
-    archived_at: Union[datetime, None]
+    self_: NotRequired[RepositoryRulesetPropLinksPropSelfType]
+    html: NotRequired[Union[RepositoryRulesetPropLinksPropHtmlType, None]]
 
 
-class TeamOrganizationPropPlanType(TypedDict):
-    """TeamOrganizationPropPlan"""
+class RepositoryRulesetPropLinksPropSelfType(TypedDict):
+    """RepositoryRulesetPropLinksPropSelf"""
 
-    name: str
-    space: int
-    private_repos: int
-    filled_seats: NotRequired[int]
-    seats: NotRequired[int]
+    href: NotRequired[str]
+
+
+class RepositoryRulesetPropLinksPropHtmlType(TypedDict):
+    """RepositoryRulesetPropLinksPropHtml"""
+
+    href: NotRequired[str]
 
 
 __all__ = (
-    "TeamFullType",
-    "TeamOrganizationType",
-    "TeamOrganizationPropPlanType",
+    "RepositoryRulesetType",
+    "RepositoryRulesetPropLinksType",
+    "RepositoryRulesetPropLinksPropSelfType",
+    "RepositoryRulesetPropLinksPropHtmlType",
 )

@@ -9,26 +9,24 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserSocialAccountsPostBody(GitHubModel):
-    """UserSocialAccountsPostBody
+class UserCodespacesCodespaceNamePublishPostBody(GitHubModel):
+    """UserCodespacesCodespaceNamePublishPostBody"""
 
-    Examples:
-        {'account_urls': ['https://www.linkedin.com/company/github/',
-    'https://twitter.com/github']}
-    """
-
-    account_urls: List[str] = Field(
-        description="Full URLs for the social media profiles to add."
+    name: Missing[str] = Field(
+        default=UNSET, description="A name for the new repository."
+    )
+    private: Missing[bool] = Field(
+        default=UNSET, description="Whether the new repository should be private."
     )
 
 
-model_rebuild(UserSocialAccountsPostBody)
+model_rebuild(UserCodespacesCodespaceNamePublishPostBody)
 
-__all__ = ("UserSocialAccountsPostBody",)
+__all__ = ("UserCodespacesCodespaceNamePublishPostBody",)

@@ -13,35 +13,25 @@ from typing import Literal
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
+from .group_0147 import RepositoryRuleCodeScanningPropParameters
 
 
-class RepositoryAdvisoryCredit(GitHubModel):
-    """RepositoryAdvisoryCredit
+class RepositoryRuleCodeScanning(GitHubModel):
+    """code_scanning
 
-    A credit given to a user for a repository security advisory.
+    Choose which tools must provide code scanning results before the reference is
+    updated. When configured, code scanning must be enabled and have results for
+    both the commit and the reference being updated.
     """
 
-    user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    type: Literal[
-        "analyst",
-        "finder",
-        "reporter",
-        "coordinator",
-        "remediation_developer",
-        "remediation_reviewer",
-        "remediation_verifier",
-        "tool",
-        "sponsor",
-        "other",
-    ] = Field(description="The type of credit the user is receiving.")
-    state: Literal["accepted", "declined", "pending"] = Field(
-        description="The state of the user's acceptance of the credit."
-    )
+    type: Literal["code_scanning"] = Field()
+    parameters: Missing[RepositoryRuleCodeScanningPropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryAdvisoryCredit)
+model_rebuild(RepositoryRuleCodeScanning)
 
-__all__ = ("RepositoryAdvisoryCredit",)
+__all__ = ("RepositoryRuleCodeScanning",)

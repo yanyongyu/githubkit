@@ -9,34 +9,59 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0008 import IntegrationType
+from .group_0221 import DiffEntryType
+from .group_0002 import SimpleUserType
+from .group_0223 import CommitPropCommitType
 
 
-class DeploymentSimpleType(TypedDict):
-    """Deployment
+class CommitType(TypedDict):
+    """Commit
 
-    A deployment created as the result of an Actions check run from a workflow that
-    references an environment
+    Commit
     """
 
     url: str
-    id: int
+    sha: str
     node_id: str
-    task: str
-    original_environment: NotRequired[str]
-    environment: str
-    description: Union[str, None]
-    created_at: datetime
-    updated_at: datetime
-    statuses_url: str
-    repository_url: str
-    transient_environment: NotRequired[bool]
-    production_environment: NotRequired[bool]
-    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    html_url: str
+    comments_url: str
+    commit: CommitPropCommitType
+    author: Union[SimpleUserType, EmptyObjectType, None]
+    committer: Union[SimpleUserType, EmptyObjectType, None]
+    parents: List[CommitPropParentsItemsType]
+    stats: NotRequired[CommitPropStatsType]
+    files: NotRequired[List[DiffEntryType]]
 
 
-__all__ = ("DeploymentSimpleType",)
+class EmptyObjectType(TypedDict):
+    """Empty Object
+
+    An object without any properties.
+    """
+
+
+class CommitPropParentsItemsType(TypedDict):
+    """CommitPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: NotRequired[str]
+
+
+class CommitPropStatsType(TypedDict):
+    """CommitPropStats"""
+
+    additions: NotRequired[int]
+    deletions: NotRequired[int]
+    total: NotRequired[int]
+
+
+__all__ = (
+    "CommitType",
+    "EmptyObjectType",
+    "CommitPropParentsItemsType",
+    "CommitPropStatsType",
+)

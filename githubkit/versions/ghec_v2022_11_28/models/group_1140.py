@@ -9,63 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ScimV2OrganizationsOrgUsersPostBody(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBody"""
+class ReposOwnerRepoStatusesShaPostBody(GitHubModel):
+    """ReposOwnerRepoStatusesShaPostBody"""
 
-    user_name: str = Field(
-        alias="userName",
-        description="Configured by the admin. Could be an email, login, or username",
+    state: Literal["error", "failure", "pending", "success"] = Field(
+        description="The state of the status."
     )
-    display_name: Missing[str] = Field(
+    target_url: Missing[Union[str, None]] = Field(
         default=UNSET,
-        alias="displayName",
-        description="The name of the user, suitable for display to end-users",
+        description="The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.  \nFor example, if your continuous integration system is posting build status, you would want to provide the deep link for the build output for this specific SHA:  \n`http://ci.example.com/user/repo/build/sha`",
     )
-    name: ScimV2OrganizationsOrgUsersPostBodyPropName = Field()
-    emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems] = Field(
-        min_length=1 if PYDANTIC_V2 else None, description="user emails"
+    description: Missing[Union[str, None]] = Field(
+        default=UNSET, description="A short description of the status."
     )
-    schemas: Missing[List[str]] = Field(default=UNSET)
-    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
-    groups: Missing[List[str]] = Field(default=UNSET)
-    active: Missing[bool] = Field(default=UNSET)
+    context: Missing[str] = Field(
+        default=UNSET,
+        description="A string label to differentiate this status from the status of other systems. This field is case-insensitive.",
+    )
 
 
-class ScimV2OrganizationsOrgUsersPostBodyPropName(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBodyPropName
+model_rebuild(ReposOwnerRepoStatusesShaPostBody)
 
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str = Field(alias="givenName")
-    family_name: str = Field(alias="familyName")
-    formatted: Missing[str] = Field(default=UNSET)
-
-
-class ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems(GitHubModel):
-    """ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems"""
-
-    value: str = Field()
-    primary: Missing[bool] = Field(default=UNSET)
-    type: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ScimV2OrganizationsOrgUsersPostBody)
-model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropName)
-model_rebuild(ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems)
-
-__all__ = (
-    "ScimV2OrganizationsOrgUsersPostBody",
-    "ScimV2OrganizationsOrgUsersPostBodyPropName",
-    "ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems",
-)
+__all__ = ("ReposOwnerRepoStatusesShaPostBody",)

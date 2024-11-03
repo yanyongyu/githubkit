@@ -9,33 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody(GitHubModel):
-    """ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody"""
+class ProjectsProjectIdPatchBody(GitHubModel):
+    """ProjectsProjectIdPatchBody"""
 
-    name: str = Field(description="The name of the new runner.")
-    runner_group_id: int = Field(
-        description="The ID of the runner group to register the runner to."
+    name: Missing[str] = Field(default=UNSET, description="Name of the project")
+    body: Missing[Union[str, None]] = Field(
+        default=UNSET, description="Body of the project"
     )
-    labels: List[str] = Field(
-        max_length=100 if PYDANTIC_V2 else None,
-        min_length=1 if PYDANTIC_V2 else None,
-        description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",
+    state: Missing[str] = Field(
+        default=UNSET, description="State of the project; either 'open' or 'closed'"
     )
-    work_folder: Missing[str] = Field(
+    organization_permission: Missing[Literal["read", "write", "admin", "none"]] = Field(
         default=UNSET,
-        description="The working directory to be used for job execution, relative to the runner install directory.",
+        description="The baseline permission that all organization members have on this project",
+    )
+    private: Missing[bool] = Field(
+        default=UNSET,
+        description="Whether or not this project can be seen by everyone.",
     )
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody)
+model_rebuild(ProjectsProjectIdPatchBody)
 
-__all__ = ("ReposOwnerRepoActionsRunnersGenerateJitconfigPostBody",)
+__all__ = ("ProjectsProjectIdPatchBody",)

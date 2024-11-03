@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Literal
 
 from pydantic import Field
 
@@ -18,35 +18,31 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GroupMapping(GitHubModel):
-    """GroupMapping
+class RepositoryRuleOneof18(GitHubModel):
+    """max_file_size
 
-    External Groups to be mapped to a team for membership
+    Prevent commits that exceed a specified file size limit from being pushed to the
+    commit.
     """
 
-    groups: Missing[List[GroupMappingPropGroupsItems]] = Field(
-        default=UNSET, description="Array of groups to be mapped to this team"
+    type: Literal["max_file_size"] = Field()
+    parameters: Missing[RepositoryRuleOneof18PropParameters] = Field(default=UNSET)
+
+
+class RepositoryRuleOneof18PropParameters(GitHubModel):
+    """RepositoryRuleOneof18PropParameters"""
+
+    max_file_size: int = Field(
+        le=100.0,
+        ge=1.0,
+        description="The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
     )
 
 
-class GroupMappingPropGroupsItems(GitHubModel):
-    """GroupMappingPropGroupsItems"""
-
-    group_id: str = Field(description="The ID of the group")
-    group_name: str = Field(description="The name of the group")
-    group_description: str = Field(description="a description of the group")
-    status: Missing[str] = Field(
-        default=UNSET, description="synchronization status for this group mapping"
-    )
-    synced_at: Missing[Union[str, None]] = Field(
-        default=UNSET, description="the time of the last sync for this group-mapping"
-    )
-
-
-model_rebuild(GroupMapping)
-model_rebuild(GroupMappingPropGroupsItems)
+model_rebuild(RepositoryRuleOneof18)
+model_rebuild(RepositoryRuleOneof18PropParameters)
 
 __all__ = (
-    "GroupMapping",
-    "GroupMappingPropGroupsItems",
+    "RepositoryRuleOneof18",
+    "RepositoryRuleOneof18PropParameters",
 )

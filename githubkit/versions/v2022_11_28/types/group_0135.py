@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0136 import RepositoryRuleTagNamePatternPropParametersType
+from .group_0136 import RepositoryRuleCommitAuthorEmailPatternPropParametersType
 
 
-class RepositoryRuleTagNamePatternType(TypedDict):
-    """tag_name_pattern
+class RepositoryRuleCommitAuthorEmailPatternType(TypedDict):
+    """commit_author_email_pattern
 
-    Parameters to be used for the tag_name_pattern rule
+    Parameters to be used for the commit_author_email_pattern rule
     """
 
-    type: Literal["tag_name_pattern"]
-    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
+    type: Literal["commit_author_email_pattern"]
+    parameters: NotRequired[RepositoryRuleCommitAuthorEmailPatternPropParametersType]
 
 
-__all__ = ("RepositoryRuleTagNamePatternType",)
+__all__ = ("RepositoryRuleCommitAuthorEmailPatternType",)

@@ -9,28 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Union
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRulesetConditionsPropRefName(GitHubModel):
-    """RepositoryRulesetConditionsPropRefName"""
+class CustomPropertyValue(GitHubModel):
+    """Custom Property Value
 
-    include: Missing[List[str]] = Field(
-        default=UNSET,
-        description="Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches.",
+    Custom property name and associated value
+    """
+
+    property_name: str = Field(description="The name of the property")
+    value: Union[str, List[str], None] = Field(
+        description="The value assigned to the property"
     )
-    exclude: Missing[List[str]] = Field(
-        default=UNSET,
-        description="Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match.",
-    )
 
 
-model_rebuild(RepositoryRulesetConditionsPropRefName)
+model_rebuild(CustomPropertyValue)
 
-__all__ = ("RepositoryRulesetConditionsPropRefName",)
+__all__ = ("CustomPropertyValue",)

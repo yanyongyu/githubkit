@@ -9,19 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0220 import VerificationType
 
 
-class PorterLargeFileType(TypedDict):
-    """Porter Large File
+class GitTagType(TypedDict):
+    """Git Tag
 
-    Porter Large File
+    Metadata for a Git tag
     """
 
-    ref_name: str
-    path: str
-    oid: str
-    size: int
+    node_id: str
+    tag: str
+    sha: str
+    url: str
+    message: str
+    tagger: GitTagPropTaggerType
+    object_: GitTagPropObjectType
+    verification: NotRequired[VerificationType]
 
 
-__all__ = ("PorterLargeFileType",)
+class GitTagPropTaggerType(TypedDict):
+    """GitTagPropTagger"""
+
+    date: str
+    email: str
+    name: str
+
+
+class GitTagPropObjectType(TypedDict):
+    """GitTagPropObject"""
+
+    sha: str
+    type: str
+    url: str
+
+
+__all__ = (
+    "GitTagType",
+    "GitTagPropTaggerType",
+    "GitTagPropObjectType",
+)

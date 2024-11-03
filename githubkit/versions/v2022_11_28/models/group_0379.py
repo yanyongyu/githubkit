@@ -9,25 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class SimpleInstallation(GitHubModel):
-    """Simple Installation
+class SshSigningKey(GitHubModel):
+    """SSH Signing Key
 
-    The GitHub App installation. Webhook payloads contain the `installation`
-    property when the event is configured
-    for and sent to a GitHub App. For more information,
-    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
-    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
+    A public SSH key used to sign Git commits
     """
 
-    id: int = Field(description="The ID of the installation.")
-    node_id: str = Field(description="The global node ID of the installation.")
+    key: str = Field()
+    id: int = Field()
+    title: str = Field()
+    created_at: datetime = Field()
 
 
-model_rebuild(SimpleInstallation)
+model_rebuild(SshSigningKey)
 
-__all__ = ("SimpleInstallation",)
+__all__ = ("SshSigningKey",)

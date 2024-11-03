@@ -10,35 +10,28 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Union
-from datetime import datetime
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
+from .group_0008 import IntegrationType
 
 
-class PageBuildType(TypedDict):
-    """Page Build
+class StateChangeIssueEventType(TypedDict):
+    """State Change Issue Event
 
-    Page Build
+    State Change Issue Event
     """
 
+    id: int
+    node_id: str
     url: str
-    status: str
-    error: PageBuildPropErrorType
-    pusher: Union[None, SimpleUserType]
-    commit: str
-    duration: int
-    created_at: datetime
-    updated_at: datetime
+    actor: SimpleUserType
+    event: str
+    commit_id: Union[str, None]
+    commit_url: Union[str, None]
+    created_at: str
+    performed_via_github_app: Union[None, IntegrationType, None]
+    state_reason: NotRequired[Union[str, None]]
 
 
-class PageBuildPropErrorType(TypedDict):
-    """PageBuildPropError"""
-
-    message: Union[str, None]
-
-
-__all__ = (
-    "PageBuildType",
-    "PageBuildPropErrorType",
-)
+__all__ = ("StateChangeIssueEventType",)

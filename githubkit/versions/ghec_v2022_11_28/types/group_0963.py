@@ -9,17 +9,18 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
-
-from .group_0187 import ArtifactType
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoActionsArtifactsGetResponse200Type(TypedDict):
-    """ReposOwnerRepoActionsArtifactsGetResponse200"""
+class ProjectsProjectIdPatchBodyType(TypedDict):
+    """ProjectsProjectIdPatchBody"""
 
-    total_count: int
-    artifacts: List[ArtifactType]
+    name: NotRequired[str]
+    body: NotRequired[Union[str, None]]
+    state: NotRequired[str]
+    organization_permission: NotRequired[Literal["read", "write", "admin", "none"]]
+    private: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoActionsArtifactsGetResponse200Type",)
+__all__ = ("ProjectsProjectIdPatchBodyType",)

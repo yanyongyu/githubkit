@@ -9,22 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0019 import Repository
+
+class NotificationsPutResponse202(GitHubModel):
+    """NotificationsPutResponse202"""
+
+    message: Missing[str] = Field(default=UNSET)
 
 
-class OrgsOrgActionsPermissionsRepositoriesGetResponse200(GitHubModel):
-    """OrgsOrgActionsPermissionsRepositoriesGetResponse200"""
+model_rebuild(NotificationsPutResponse202)
 
-    total_count: float = Field()
-    repositories: List[Repository] = Field()
-
-
-model_rebuild(OrgsOrgActionsPermissionsRepositoriesGetResponse200)
-
-__all__ = ("OrgsOrgActionsPermissionsRepositoriesGetResponse200",)
+__all__ = ("NotificationsPutResponse202",)

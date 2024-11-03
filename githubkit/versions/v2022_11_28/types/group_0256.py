@@ -9,18 +9,35 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0029 import TeamType
-from .group_0002 import SimpleUserType
+from .group_0254 import MetadataType
 
 
-class EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType(TypedDict):
-    """EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems"""
+class ManifestType(TypedDict):
+    """Manifest"""
 
-    type: NotRequired[Literal["User", "Team"]]
-    reviewer: NotRequired[Union[SimpleUserType, TeamType]]
+    name: str
+    file: NotRequired[ManifestPropFileType]
+    metadata: NotRequired[MetadataType]
+    resolved: NotRequired[ManifestPropResolvedType]
 
 
-__all__ = ("EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType",)
+class ManifestPropFileType(TypedDict):
+    """ManifestPropFile"""
+
+    source_location: NotRequired[str]
+
+
+class ManifestPropResolvedType(TypedDict):
+    """ManifestPropResolved
+
+    A collection of resolved package dependencies.
+    """
+
+
+__all__ = (
+    "ManifestType",
+    "ManifestPropFileType",
+    "ManifestPropResolvedType",
+)

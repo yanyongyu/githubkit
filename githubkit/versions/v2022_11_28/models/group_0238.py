@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from datetime import datetime
+from typing import List, Union
 
 from pydantic import Field
 
@@ -17,41 +18,46 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0058 import MinimalRepository
 
-class ContentFile(GitHubModel):
-    """Content File
 
-    Content File
+class CombinedCommitStatus(GitHubModel):
+    """Combined Commit Status
+
+    Combined Commit Status
     """
 
-    type: Literal["file"] = Field()
-    encoding: str = Field()
-    size: int = Field()
-    name: str = Field()
-    path: str = Field()
-    content: str = Field()
+    state: str = Field()
+    statuses: List[SimpleCommitStatus] = Field()
     sha: str = Field()
+    total_count: int = Field()
+    repository: MinimalRepository = Field(
+        title="Minimal Repository", description="Minimal Repository"
+    )
+    commit_url: str = Field()
     url: str = Field()
-    git_url: Union[str, None] = Field()
-    html_url: Union[str, None] = Field()
-    download_url: Union[str, None] = Field()
-    links: ContentFilePropLinks = Field(alias="_links")
-    target: Missing[str] = Field(default=UNSET)
-    submodule_git_url: Missing[str] = Field(default=UNSET)
 
 
-class ContentFilePropLinks(GitHubModel):
-    """ContentFilePropLinks"""
+class SimpleCommitStatus(GitHubModel):
+    """Simple Commit Status"""
 
-    git: Union[str, None] = Field()
-    html: Union[str, None] = Field()
-    self_: str = Field(alias="self")
+    description: Union[str, None] = Field()
+    id: int = Field()
+    node_id: str = Field()
+    state: str = Field()
+    context: str = Field()
+    target_url: Union[str, None] = Field()
+    required: Missing[Union[bool, None]] = Field(default=UNSET)
+    avatar_url: Union[str, None] = Field()
+    url: str = Field()
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(ContentFile)
-model_rebuild(ContentFilePropLinks)
+model_rebuild(CombinedCommitStatus)
+model_rebuild(SimpleCommitStatus)
 
 __all__ = (
-    "ContentFile",
-    "ContentFilePropLinks",
+    "CombinedCommitStatus",
+    "SimpleCommitStatus",
 )

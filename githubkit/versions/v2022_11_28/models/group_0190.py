@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class GitUser(GitHubModel):
-    """Git User
+class CheckAutomatedSecurityFixes(GitHubModel):
+    """Check Automated Security Fixes
 
-    Metaproperties for Git author/committer information.
+    Check Automated Security Fixes
     """
 
-    name: Missing[str] = Field(default=UNSET)
-    email: Missing[str] = Field(default=UNSET)
-    date: Missing[str] = Field(default=UNSET)
+    enabled: bool = Field(
+        description="Whether automated security fixes are enabled for the repository."
+    )
+    paused: bool = Field(
+        description="Whether automated security fixes are paused for the repository."
+    )
 
 
-model_rebuild(GitUser)
+model_rebuild(CheckAutomatedSecurityFixes)
 
-__all__ = ("GitUser",)
+__all__ = ("CheckAutomatedSecurityFixes",)

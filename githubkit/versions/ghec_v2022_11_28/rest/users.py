@@ -72,7 +72,9 @@ class UsersClient:
         self,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[Union[PrivateUser, PublicUser]]:
+    ) -> Response[
+        Annotated[Union[PrivateUser, PublicUser], Field(discriminator="user_view_type")]
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-the-authenticated-user"""
 
         from typing import Union
@@ -87,7 +89,9 @@ class UsersClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=Union[PrivateUser, PublicUser],
+            response_model=Annotated[
+                Union[PrivateUser, PublicUser], Field(discriminator="user_view_type")
+            ],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -98,7 +102,9 @@ class UsersClient:
         self,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[Union[PrivateUser, PublicUser]]:
+    ) -> Response[
+        Annotated[Union[PrivateUser, PublicUser], Field(discriminator="user_view_type")]
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-the-authenticated-user"""
 
         from typing import Union
@@ -113,7 +119,9 @@ class UsersClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=Union[PrivateUser, PublicUser],
+            response_model=Annotated[
+                Union[PrivateUser, PublicUser], Field(discriminator="user_view_type")
+            ],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -2447,7 +2455,9 @@ class UsersClient:
         account_id: int,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[Union[PrivateUser, PublicUser]]:
+    ) -> Response[
+        Annotated[Union[PrivateUser, PublicUser], Field(discriminator="user_view_type")]
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-a-user-using-their-id"""
 
         from typing import Union
@@ -2462,7 +2472,9 @@ class UsersClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=Union[PrivateUser, PublicUser],
+            response_model=Annotated[
+                Union[PrivateUser, PublicUser], Field(discriminator="user_view_type")
+            ],
             error_models={
                 "404": BasicError,
             },
@@ -2473,7 +2485,9 @@ class UsersClient:
         account_id: int,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[Union[PrivateUser, PublicUser]]:
+    ) -> Response[
+        Annotated[Union[PrivateUser, PublicUser], Field(discriminator="user_view_type")]
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-a-user-using-their-id"""
 
         from typing import Union
@@ -2488,7 +2502,9 @@ class UsersClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=Union[PrivateUser, PublicUser],
+            response_model=Annotated[
+                Union[PrivateUser, PublicUser], Field(discriminator="user_view_type")
+            ],
             error_models={
                 "404": BasicError,
             },
@@ -2559,7 +2575,9 @@ class UsersClient:
         username: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[Union[PrivateUser, PublicUser]]:
+    ) -> Response[
+        Annotated[Union[PrivateUser, PublicUser], Field(discriminator="user_view_type")]
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-a-user"""
 
         from typing import Union
@@ -2574,7 +2592,9 @@ class UsersClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=Union[PrivateUser, PublicUser],
+            response_model=Annotated[
+                Union[PrivateUser, PublicUser], Field(discriminator="user_view_type")
+            ],
             error_models={
                 "404": BasicError,
             },
@@ -2585,7 +2605,9 @@ class UsersClient:
         username: str,
         *,
         headers: Optional[Dict[str, str]] = None,
-    ) -> Response[Union[PrivateUser, PublicUser]]:
+    ) -> Response[
+        Annotated[Union[PrivateUser, PublicUser], Field(discriminator="user_view_type")]
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/users/users#get-a-user"""
 
         from typing import Union
@@ -2600,7 +2622,9 @@ class UsersClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=Union[PrivateUser, PublicUser],
+            response_model=Annotated[
+                Union[PrivateUser, PublicUser], Field(discriminator="user_view_type")
+            ],
             error_models={
                 "404": BasicError,
             },

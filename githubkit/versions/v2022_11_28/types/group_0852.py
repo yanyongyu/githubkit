@@ -9,18 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType(TypedDict):
-    """OrgsOrgPropertiesSchemaCustomPropertyNamePutBody"""
+class OrgsOrgInvitationsPostBodyType(TypedDict):
+    """OrgsOrgInvitationsPostBody"""
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, List[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[List[str], None]]
+    invitee_id: NotRequired[int]
+    email: NotRequired[str]
+    role: NotRequired[Literal["admin", "direct_member", "billing_manager", "reinstate"]]
+    team_ids: NotRequired[List[int]]
 
 
-__all__ = ("OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType",)
+__all__ = ("OrgsOrgInvitationsPostBodyType",)

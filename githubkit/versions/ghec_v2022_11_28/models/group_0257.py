@@ -9,58 +9,33 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0018 import LicenseSimple
-from .group_0126 import CodeOfConductSimple
+from .group_0002 import SimpleUser
 
 
-class CommunityProfilePropFiles(GitHubModel):
-    """CommunityProfilePropFiles"""
+class AutoMerge(GitHubModel):
+    """Auto merge
 
-    code_of_conduct: Union[None, CodeOfConductSimple] = Field()
-    code_of_conduct_file: Union[None, CommunityHealthFile] = Field()
-    license_: Union[None, LicenseSimple] = Field(alias="license")
-    contributing: Union[None, CommunityHealthFile] = Field()
-    readme: Union[None, CommunityHealthFile] = Field()
-    issue_template: Union[None, CommunityHealthFile] = Field()
-    pull_request_template: Union[None, CommunityHealthFile] = Field()
-
-
-class CommunityHealthFile(GitHubModel):
-    """Community Health File"""
-
-    url: str = Field()
-    html_url: str = Field()
-
-
-class CommunityProfile(GitHubModel):
-    """Community Profile
-
-    Community Profile
+    The status of auto merging a pull request.
     """
 
-    health_percentage: int = Field()
-    description: Union[str, None] = Field()
-    documentation: Union[str, None] = Field()
-    files: CommunityProfilePropFiles = Field()
-    updated_at: Union[datetime, None] = Field()
-    content_reports_enabled: Missing[bool] = Field(default=UNSET)
+    enabled_by: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    merge_method: Literal["merge", "squash", "rebase"] = Field(
+        description="The merge method to use."
+    )
+    commit_title: Union[str, None] = Field(
+        description="Title for the merge commit message."
+    )
+    commit_message: Union[str, None] = Field(
+        description="Commit message for the merge commit."
+    )
 
 
-model_rebuild(CommunityProfilePropFiles)
-model_rebuild(CommunityHealthFile)
-model_rebuild(CommunityProfile)
+model_rebuild(AutoMerge)
 
-__all__ = (
-    "CommunityProfilePropFiles",
-    "CommunityHealthFile",
-    "CommunityProfile",
-)
+__all__ = ("AutoMerge",)

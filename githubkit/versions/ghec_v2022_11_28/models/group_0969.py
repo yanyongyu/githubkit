@@ -15,16 +15,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0036 import Runner
+from .group_0193 import Artifact
 
 
-class ReposOwnerRepoActionsRunnersGetResponse200(GitHubModel):
-    """ReposOwnerRepoActionsRunnersGetResponse200"""
+class ReposOwnerRepoActionsArtifactsGetResponse200(GitHubModel):
+    """ReposOwnerRepoActionsArtifactsGetResponse200"""
 
     total_count: int = Field()
-    runners: List[Runner] = Field()
+    artifacts: List[Artifact] = Field()
 
 
-model_rebuild(ReposOwnerRepoActionsRunnersGetResponse200)
+model_rebuild(ReposOwnerRepoActionsArtifactsGetResponse200)
 
-__all__ = ("ReposOwnerRepoActionsRunnersGetResponse200",)
+__all__ = ("ReposOwnerRepoActionsArtifactsGetResponse200",)

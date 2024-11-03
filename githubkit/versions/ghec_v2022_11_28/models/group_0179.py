@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List, Union
 
 from pydantic import Field
 
@@ -17,51 +17,36 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
 
+class GroupMapping(GitHubModel):
+    """GroupMapping
 
-class TeamProject(GitHubModel):
-    """Team Project
-
-    A team's access to a project.
+    External Groups to be mapped to a team for membership
     """
 
-    owner_url: str = Field()
-    url: str = Field()
-    html_url: str = Field()
-    columns_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    body: Union[str, None] = Field()
-    number: int = Field()
-    state: str = Field()
-    creator: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    created_at: str = Field()
-    updated_at: str = Field()
-    organization_permission: Missing[str] = Field(
-        default=UNSET,
-        description="The organization permission for this project. Only present when owner is an organization.",
+    groups: Missing[List[GroupMappingPropGroupsItems]] = Field(
+        default=UNSET, description="Array of groups to be mapped to this team"
     )
-    private: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the project is private or not. Only present when owner is an organization.",
+
+
+class GroupMappingPropGroupsItems(GitHubModel):
+    """GroupMappingPropGroupsItems"""
+
+    group_id: str = Field(description="The ID of the group")
+    group_name: str = Field(description="The name of the group")
+    group_description: str = Field(description="a description of the group")
+    status: Missing[str] = Field(
+        default=UNSET, description="synchronization status for this group mapping"
     )
-    permissions: TeamProjectPropPermissions = Field()
+    synced_at: Missing[Union[str, None]] = Field(
+        default=UNSET, description="the time of the last sync for this group-mapping"
+    )
 
 
-class TeamProjectPropPermissions(GitHubModel):
-    """TeamProjectPropPermissions"""
-
-    read: bool = Field()
-    write: bool = Field()
-    admin: bool = Field()
-
-
-model_rebuild(TeamProject)
-model_rebuild(TeamProjectPropPermissions)
+model_rebuild(GroupMapping)
+model_rebuild(GroupMappingPropGroupsItems)
 
 __all__ = (
-    "TeamProject",
-    "TeamProjectPropPermissions",
+    "GroupMapping",
+    "GroupMappingPropGroupsItems",
 )

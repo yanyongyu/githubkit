@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union
 
 from pydantic import Field
 
@@ -21,35 +21,45 @@ from githubkit.compat import GitHubModel, model_rebuild
 from .group_0002 import SimpleUser
 
 
-class Project(GitHubModel):
-    """Project
+class OrganizationRole(GitHubModel):
+    """Organization Role
 
-    Projects are a way to organize columns and cards of work.
+    Organization roles
     """
 
-    owner_url: str = Field()
-    url: str = Field()
-    html_url: str = Field()
-    columns_url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field(description="Name of the project")
-    body: Union[str, None] = Field(description="Body of the project")
-    number: int = Field()
-    state: str = Field(description="State of the project; either 'open' or 'closed'")
-    creator: Union[None, SimpleUser] = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    organization_permission: Missing[Literal["read", "write", "admin", "none"]] = Field(
+    id: int = Field(description="The unique identifier of the role.")
+    name: str = Field(description="The name of the role.")
+    description: Missing[Union[str, None]] = Field(
         default=UNSET,
-        description="The baseline permission that all organization members have on this project. Only present if owner is an organization.",
+        description="A short description about who this role is for or what permissions it grants.",
     )
-    private: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether or not this project can be seen by everyone. Only present if owner is an organization.",
+    permissions: List[str] = Field(
+        description="A list of permissions included in this role."
+    )
+    organization: Union[None, SimpleUser] = Field()
+    created_at: datetime = Field(description="The date and time the role was created.")
+    updated_at: datetime = Field(
+        description="The date and time the role was last updated."
     )
 
 
-model_rebuild(Project)
+class OrgsOrgOrganizationRolesGetResponse200(GitHubModel):
+    """OrgsOrgOrganizationRolesGetResponse200"""
 
-__all__ = ("Project",)
+    total_count: Missing[int] = Field(
+        default=UNSET,
+        description="The total number of organization roles available to the organization.",
+    )
+    roles: Missing[List[OrganizationRole]] = Field(
+        default=UNSET,
+        description="The list of organization roles available to the organization.",
+    )
+
+
+model_rebuild(OrganizationRole)
+model_rebuild(OrgsOrgOrganizationRolesGetResponse200)
+
+__all__ = (
+    "OrganizationRole",
+    "OrgsOrgOrganizationRolesGetResponse200",
+)

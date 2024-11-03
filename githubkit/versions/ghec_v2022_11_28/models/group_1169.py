@@ -9,6 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -16,15 +18,21 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserGpgKeysPostBody(GitHubModel):
-    """UserGpgKeysPostBody"""
+class UserCodespacesCodespaceNamePatchBody(GitHubModel):
+    """UserCodespacesCodespaceNamePatchBody"""
 
-    name: Missing[str] = Field(
-        default=UNSET, description="A descriptive name for the new key."
+    machine: Missing[str] = Field(
+        default=UNSET, description="A valid machine to transition this codespace to."
     )
-    armored_public_key: str = Field(description="A GPG key in ASCII-armored format.")
+    display_name: Missing[str] = Field(
+        default=UNSET, description="Display name for this codespace"
+    )
+    recent_folders: Missing[List[str]] = Field(
+        default=UNSET,
+        description="Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in.",
+    )
 
 
-model_rebuild(UserGpgKeysPostBody)
+model_rebuild(UserCodespacesCodespaceNamePatchBody)
 
-__all__ = ("UserGpgKeysPostBody",)
+__all__ = ("UserCodespacesCodespaceNamePatchBody",)

@@ -10,6 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -17,49 +18,79 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0043 import CodeScanningAnalysisTool
+from .group_0008 import Integration
+from .group_0228 import DeploymentSimple
+from .group_0201 import PullRequestMinimal
 
 
-class CodeScanningAnalysis(GitHubModel):
-    """CodeScanningAnalysis"""
+class CheckRun(GitHubModel):
+    """CheckRun
 
-    ref: str = Field(
-        description="The Git reference, formatted as `refs/pull/<number>/merge`, `refs/pull/<number>/head`,\n`refs/heads/<branch name>` or simply `<branch name>`."
+    A check performed on the code of a given code change
+    """
+
+    id: int = Field(description="The id of the check.")
+    head_sha: str = Field(description="The SHA of the commit that is being checked.")
+    node_id: str = Field()
+    external_id: Union[str, None] = Field()
+    url: str = Field()
+    html_url: Union[str, None] = Field()
+    details_url: Union[str, None] = Field()
+    status: Literal[
+        "queued", "in_progress", "completed", "waiting", "requested", "pending"
+    ] = Field(
+        description="The phase of the lifecycle that the check is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check runs."
     )
-    commit_sha: str = Field(
-        min_length=40,
-        max_length=40,
-        pattern="^[0-9a-fA-F]+$",
-        description="The SHA of the commit to which the analysis you are uploading relates.",
+    conclusion: Union[
+        None,
+        Literal[
+            "success",
+            "failure",
+            "neutral",
+            "cancelled",
+            "skipped",
+            "timed_out",
+            "action_required",
+        ],
+    ] = Field()
+    started_at: Union[datetime, None] = Field()
+    completed_at: Union[datetime, None] = Field()
+    output: CheckRunPropOutput = Field()
+    name: str = Field(description="The name of the check.")
+    check_suite: Union[CheckRunPropCheckSuite, None] = Field()
+    app: Union[None, Integration, None] = Field()
+    pull_requests: List[PullRequestMinimal] = Field(
+        description="Pull requests that are open with a `head_sha` or `head_branch` that matches the check. The returned pull requests do not necessarily indicate pull requests that triggered the check."
     )
-    analysis_key: str = Field(
-        description="Identifies the configuration under which the analysis was executed. For example, in GitHub Actions this includes the workflow filename and job name."
-    )
-    environment: str = Field(
-        description="Identifies the variable values associated with the environment in which this analysis was performed."
-    )
-    category: Missing[str] = Field(
+    deployment: Missing[DeploymentSimple] = Field(
         default=UNSET,
-        description="Identifies the configuration under which the analysis was executed. Used to distinguish between multiple analyses for the same tool and commit, but performed on different languages or different parts of the code.",
+        title="Deployment",
+        description="A deployment created as the result of an Actions check run from a workflow that references an environment",
     )
-    error: str = Field()
-    created_at: datetime = Field(
-        description="The time that the analysis was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    results_count: int = Field(
-        description="The total number of results in the analysis."
-    )
-    rules_count: int = Field(
-        description="The total number of rules used in the analysis."
-    )
-    id: int = Field(description="Unique identifier for this analysis.")
-    url: str = Field(description="The REST API URL of the analysis resource.")
-    sarif_id: str = Field(description="An identifier for the upload.")
-    tool: CodeScanningAnalysisTool = Field()
-    deletable: bool = Field()
-    warning: str = Field(description="Warning generated when processing the analysis")
 
 
-model_rebuild(CodeScanningAnalysis)
+class CheckRunPropOutput(GitHubModel):
+    """CheckRunPropOutput"""
 
-__all__ = ("CodeScanningAnalysis",)
+    title: Union[str, None] = Field()
+    summary: Union[str, None] = Field()
+    text: Union[str, None] = Field()
+    annotations_count: int = Field()
+    annotations_url: str = Field()
+
+
+class CheckRunPropCheckSuite(GitHubModel):
+    """CheckRunPropCheckSuite"""
+
+    id: int = Field()
+
+
+model_rebuild(CheckRun)
+model_rebuild(CheckRunPropOutput)
+model_rebuild(CheckRunPropCheckSuite)
+
+__all__ = (
+    "CheckRun",
+    "CheckRunPropOutput",
+    "CheckRunPropCheckSuite",
+)

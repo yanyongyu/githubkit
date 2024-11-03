@@ -9,29 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class CredentialAuthorizationType(TypedDict):
-    """Credential Authorization
+class CopilotOrganizationDetailsType(TypedDict):
+    """Copilot Organization Details
 
-    Credential Authorization
+    Information about the seat breakdown and policies set for an organization with a
+    Copilot Business or Copilot Enterprise subscription.
     """
 
-    login: str
-    credential_id: int
-    credential_type: str
-    token_last_eight: NotRequired[str]
-    credential_authorized_at: datetime
-    scopes: NotRequired[List[str]]
-    fingerprint: NotRequired[str]
-    credential_accessed_at: Union[datetime, None]
-    authorized_credential_id: Union[int, None]
-    authorized_credential_title: NotRequired[Union[str, None]]
-    authorized_credential_note: NotRequired[Union[str, None]]
-    authorized_credential_expires_at: NotRequired[Union[datetime, None]]
+    seat_breakdown: CopilotSeatBreakdownType
+    public_code_suggestions: Literal["allow", "block", "unconfigured", "unknown"]
+    ide_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    platform_chat: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    cli: NotRequired[Literal["enabled", "disabled", "unconfigured"]]
+    seat_management_setting: Literal[
+        "assign_all", "assign_selected", "disabled", "unconfigured"
+    ]
+    plan_type: NotRequired[Literal["business", "enterprise", "unknown"]]
 
 
-__all__ = ("CredentialAuthorizationType",)
+class CopilotSeatBreakdownType(TypedDict):
+    """Copilot Business Seat Breakdown
+
+    The breakdown of Copilot Business seats for the organization.
+    """
+
+    total: NotRequired[int]
+    added_this_cycle: NotRequired[int]
+    pending_cancellation: NotRequired[int]
+    pending_invitation: NotRequired[int]
+    active_this_cycle: NotRequired[int]
+    inactive_this_cycle: NotRequired[int]
+
+
+__all__ = (
+    "CopilotOrganizationDetailsType",
+    "CopilotSeatBreakdownType",
+)

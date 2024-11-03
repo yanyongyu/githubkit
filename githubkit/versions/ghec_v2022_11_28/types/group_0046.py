@@ -29,7 +29,7 @@ class CodeScanningOrganizationAlertItemsType(TypedDict):
     url: str
     html_url: str
     instances_url: str
-    state: Literal["open", "dismissed", "fixed"]
+    state: Union[None, Literal["open", "dismissed", "fixed"]]
     fixed_at: NotRequired[Union[datetime, None]]
     dismissed_by: Union[None, SimpleUserType]
     dismissed_at: Union[datetime, None]

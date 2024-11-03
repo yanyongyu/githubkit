@@ -9,29 +9,37 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0029 import TeamType
+from .group_0002 import SimpleUserType
+from .group_0008 import IntegrationType
 
-class DiffEntryType(TypedDict):
-    """Diff Entry
 
-    Diff Entry
+class ProtectedBranchPullRequestReviewPropDismissalRestrictionsType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
+
+    users: NotRequired[List[SimpleUserType]]
+    teams: NotRequired[List[TeamType]]
+    apps: NotRequired[List[Union[IntegrationType, None]]]
+    url: NotRequired[str]
+    users_url: NotRequired[str]
+    teams_url: NotRequired[str]
+
+
+class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType(TypedDict):
+    """ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances
+
+    Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    sha: str
-    filename: str
-    status: Literal[
-        "added", "removed", "modified", "renamed", "copied", "changed", "unchanged"
-    ]
-    additions: int
-    deletions: int
-    changes: int
-    blob_url: Union[str, None]
-    raw_url: Union[str, None]
-    contents_url: str
-    patch: NotRequired[str]
-    previous_filename: NotRequired[str]
+    users: NotRequired[List[SimpleUserType]]
+    teams: NotRequired[List[TeamType]]
+    apps: NotRequired[List[Union[IntegrationType, None]]]
 
 
-__all__ = ("DiffEntryType",)
+__all__ = (
+    "ProtectedBranchPullRequestReviewPropDismissalRestrictionsType",
+    "ProtectedBranchPullRequestReviewPropBypassPullRequestAllowancesType",
+)

@@ -9,63 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBody(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
+class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
+    """ReposOwnerRepoSubscriptionPutBody"""
 
-    schemas: Missing[List[str]] = Field(default=UNSET)
-    display_name: Missing[str] = Field(
+    subscribed: Missing[bool] = Field(
         default=UNSET,
-        alias="displayName",
-        description="The name of the user, suitable for display to end-users",
+        description="Determines if notifications should be received from this repository.",
     )
-    external_id: Missing[str] = Field(default=UNSET, alias="externalId")
-    groups: Missing[List[str]] = Field(default=UNSET)
-    active: Missing[bool] = Field(default=UNSET)
-    user_name: str = Field(
-        alias="userName",
-        description="Configured by the admin. Could be an email, login, or username",
-    )
-    name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName = Field()
-    emails: List[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems] = Field(
-        min_length=1 if PYDANTIC_V2 else None, description="user emails"
+    ignored: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if all notifications should be blocked from this repository.",
     )
 
 
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName
+model_rebuild(ReposOwnerRepoSubscriptionPutBody)
 
-    Examples:
-        {'givenName': 'Jane', 'familyName': 'User'}
-    """
-
-    given_name: str = Field(alias="givenName")
-    family_name: str = Field(alias="familyName")
-    formatted: Missing[str] = Field(default=UNSET)
-
-
-class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems(GitHubModel):
-    """ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems"""
-
-    type: Missing[str] = Field(default=UNSET)
-    value: str = Field()
-    primary: Missing[bool] = Field(default=UNSET)
-
-
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBody)
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName)
-model_rebuild(ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems)
-
-__all__ = (
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBody",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropName",
-    "ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItems",
-)
+__all__ = ("ReposOwnerRepoSubscriptionPutBody",)

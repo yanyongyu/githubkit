@@ -9,16 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict
 
-from .group_0068 import RunnerType
+
+class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
+    """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
+
+    total_count: int
+    repository_cache_usages: List[ActionsCacheUsageByRepositoryType]
 
 
-class OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type(TypedDict):
-    """OrgsOrgActionsRunnersGenerateJitconfigPostResponse201"""
+class ActionsCacheUsageByRepositoryType(TypedDict):
+    """Actions Cache Usage by repository
 
-    runner: RunnerType
-    encoded_jit_config: str
+    GitHub Actions Cache Usage by repository.
+    """
+
+    full_name: str
+    active_caches_size_in_bytes: int
+    active_caches_count: int
 
 
-__all__ = ("OrgsOrgActionsRunnersGenerateJitconfigPostResponse201Type",)
+__all__ = (
+    "OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type",
+    "ActionsCacheUsageByRepositoryType",
+)

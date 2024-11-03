@@ -9,39 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class ActionsBillingUsageType(TypedDict):
-    """ActionsBillingUsage"""
+class RepositoryRuleOneof18Type(TypedDict):
+    """max_file_size
 
-    total_minutes_used: int
-    total_paid_minutes_used: int
-    included_minutes: int
-    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdownType
+    Prevent commits that exceed a specified file size limit from being pushed to the
+    commit.
+    """
+
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleOneof18PropParametersType]
 
 
-class ActionsBillingUsagePropMinutesUsedBreakdownType(TypedDict):
-    """ActionsBillingUsagePropMinutesUsedBreakdown"""
+class RepositoryRuleOneof18PropParametersType(TypedDict):
+    """RepositoryRuleOneof18PropParameters"""
 
-    ubuntu: NotRequired[int]
-    macos: NotRequired[int]
-    windows: NotRequired[int]
-    ubuntu_4_core: NotRequired[int]
-    ubuntu_8_core: NotRequired[int]
-    ubuntu_16_core: NotRequired[int]
-    ubuntu_32_core: NotRequired[int]
-    ubuntu_64_core: NotRequired[int]
-    windows_4_core: NotRequired[int]
-    windows_8_core: NotRequired[int]
-    windows_16_core: NotRequired[int]
-    windows_32_core: NotRequired[int]
-    windows_64_core: NotRequired[int]
-    macos_12_core: NotRequired[int]
-    total: NotRequired[int]
+    max_file_size: int
 
 
 __all__ = (
-    "ActionsBillingUsageType",
-    "ActionsBillingUsagePropMinutesUsedBreakdownType",
+    "RepositoryRuleOneof18Type",
+    "RepositoryRuleOneof18PropParametersType",
 )

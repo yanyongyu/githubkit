@@ -13,11 +13,12 @@ from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgActionsPermissionsPutBodyType(TypedDict):
-    """OrgsOrgActionsPermissionsPutBody"""
+class MarkdownPostBodyType(TypedDict):
+    """MarkdownPostBody"""
 
-    enabled_repositories: Literal["all", "none", "selected"]
-    allowed_actions: NotRequired[Literal["all", "local_only", "selected"]]
+    text: str
+    mode: NotRequired[Literal["markdown", "gfm"]]
+    context: NotRequired[str]
 
 
-__all__ = ("OrgsOrgActionsPermissionsPutBodyType",)
+__all__ = ("MarkdownPostBodyType",)

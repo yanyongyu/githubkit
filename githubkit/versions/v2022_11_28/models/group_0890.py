@@ -9,21 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
+
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoActionsJobsJobIdRerunPostBody(GitHubModel):
-    """ReposOwnerRepoActionsJobsJobIdRerunPostBody"""
+class ProjectsColumnsColumnIdCardsPostBodyOneof0(GitHubModel):
+    """ProjectsColumnsColumnIdCardsPostBodyOneof0"""
 
-    enable_debug_logging: Missing[bool] = Field(
-        default=UNSET, description="Whether to enable debug logging for the re-run."
-    )
+    note: Union[str, None] = Field(description="The project card's note")
 
 
-model_rebuild(ReposOwnerRepoActionsJobsJobIdRerunPostBody)
+model_rebuild(ProjectsColumnsColumnIdCardsPostBodyOneof0)
 
-__all__ = ("ReposOwnerRepoActionsJobsJobIdRerunPostBody",)
+__all__ = ("ProjectsColumnsColumnIdCardsPostBodyOneof0",)

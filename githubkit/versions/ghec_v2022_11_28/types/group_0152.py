@@ -12,17 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0153 import RepositoryRuleCommitMessagePatternPropParametersType
+from .group_0153 import RepositoryRuleRequiredDeploymentsPropParametersType
 
 
-class RepositoryRuleCommitMessagePatternType(TypedDict):
-    """commit_message_pattern
+class RepositoryRuleRequiredDeploymentsType(TypedDict):
+    """required_deployments
 
-    Parameters to be used for the commit_message_pattern rule
+    Choose which environments must be successfully deployed to before refs can be
+    pushed into a ref that matches this rule.
     """
 
-    type: Literal["commit_message_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitMessagePatternPropParametersType]
+    type: Literal["required_deployments"]
+    parameters: NotRequired[RepositoryRuleRequiredDeploymentsPropParametersType]
 
 
-__all__ = ("RepositoryRuleCommitMessagePatternType",)
+__all__ = ("RepositoryRuleRequiredDeploymentsType",)

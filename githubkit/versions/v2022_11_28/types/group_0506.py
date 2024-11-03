@@ -14,16 +14,16 @@ from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
 from .group_0017 import InstallationType
-from .group_0378 import EnterpriseWebhooksType
-from .group_0381 import RepositoryWebhooksType
-from .group_0394 import WebhooksRepositoriesItemsType
-from .group_0380 import OrganizationSimpleWebhooksType
+from .group_0383 import EnterpriseWebhooksType
+from .group_0386 import RepositoryWebhooksType
+from .group_0399 import WebhooksRepositoriesItemsType
+from .group_0385 import OrganizationSimpleWebhooksType
 
 
-class WebhookInstallationUnsuspendType(TypedDict):
-    """installation unsuspend event"""
+class WebhookInstallationNewPermissionsAcceptedType(TypedDict):
+    """installation new_permissions_accepted event"""
 
-    action: Literal["unsuspend"]
+    action: Literal["new_permissions_accepted"]
     enterprise: NotRequired[EnterpriseWebhooksType]
     installation: InstallationType
     organization: NotRequired[OrganizationSimpleWebhooksType]
@@ -33,4 +33,4 @@ class WebhookInstallationUnsuspendType(TypedDict):
     sender: SimpleUserType
 
 
-__all__ = ("WebhookInstallationUnsuspendType",)
+__all__ = ("WebhookInstallationNewPermissionsAcceptedType",)

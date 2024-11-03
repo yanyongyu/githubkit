@@ -9,24 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OidcCustomSub(GitHubModel):
-    """Actions OIDC Subject customization
+class ActionsCacheUsageOrgEnterprise(GitHubModel):
+    """ActionsCacheUsageOrgEnterprise"""
 
-    Actions OIDC Subject customization
-    """
-
-    include_claim_keys: List[str] = Field(
-        description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
+    total_active_caches_count: int = Field(
+        description="The count of active caches across all repositories of an enterprise or an organization."
+    )
+    total_active_caches_size_in_bytes: int = Field(
+        description="The total size in bytes of all active cache items across all repositories of an enterprise or an organization."
     )
 
 
-model_rebuild(OidcCustomSub)
+model_rebuild(ActionsCacheUsageOrgEnterprise)
 
-__all__ = ("OidcCustomSub",)
+__all__ = ("ActionsCacheUsageOrgEnterprise",)

@@ -9,64 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
 
-class CodeSecurityConfigurationType(TypedDict):
-    """CodeSecurityConfiguration
+class ActionsPublicKeyType(TypedDict):
+    """ActionsPublicKey
 
-    A code security configuration
+    The public key used for setting Actions Secrets.
     """
 
+    key_id: str
+    key: str
     id: NotRequired[int]
-    name: NotRequired[str]
-    target_type: NotRequired[Literal["global", "organization"]]
-    description: NotRequired[str]
-    advanced_security: NotRequired[Literal["enabled", "disabled"]]
-    dependency_graph: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependency_graph_autosubmit_action: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    dependency_graph_autosubmit_action_options: NotRequired[
-        CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType
-    ]
-    dependabot_alerts: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    dependabot_security_updates: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    code_scanning_default_setup: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning: NotRequired[Literal["enabled", "disabled", "not_set"]]
-    secret_scanning_push_protection: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_validity_checks: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    private_vulnerability_reporting: NotRequired[
-        Literal["enabled", "disabled", "not_set"]
-    ]
-    enforcement: NotRequired[Literal["enforced", "unenforced"]]
     url: NotRequired[str]
-    html_url: NotRequired[str]
-    created_at: NotRequired[datetime]
-    updated_at: NotRequired[datetime]
+    title: NotRequired[str]
+    created_at: NotRequired[str]
 
 
-class CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType(
-    TypedDict
-):
-    """CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptions
-
-    Feature options for Automatic dependency submission
-    """
-
-    labeled_runners: NotRequired[bool]
-
-
-__all__ = (
-    "CodeSecurityConfigurationType",
-    "CodeSecurityConfigurationPropDependencyGraphAutosubmitActionOptionsType",
-)
+__all__ = ("ActionsPublicKeyType",)

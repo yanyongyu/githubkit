@@ -9,32 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
+from datetime import datetime
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrganizationCustomOrganizationRoleCreateSchema(GitHubModel):
-    """OrganizationCustomOrganizationRoleCreateSchema"""
+class InteractionLimitResponse(GitHubModel):
+    """Interaction Limits
 
-    name: str = Field(description="The name of the custom role.")
-    description: Missing[str] = Field(
-        default=UNSET,
-        description="A short description about the intended usage of this role or what permissions it grants.",
+    Interaction limit settings.
+    """
+
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
+        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
     )
-    permissions: List[str] = Field(
-        description="A list of additional permissions included in this role."
-    )
-    base_role: Missing[Literal["read", "triage", "write", "maintain", "admin"]] = Field(
-        default=UNSET,
-        description="The system role from which this role can inherit permissions.",
-    )
+    origin: str = Field()
+    expires_at: datetime = Field()
 
 
-model_rebuild(OrganizationCustomOrganizationRoleCreateSchema)
+model_rebuild(InteractionLimitResponse)
 
-__all__ = ("OrganizationCustomOrganizationRoleCreateSchema",)
+__all__ = ("InteractionLimitResponse",)

@@ -9,34 +9,19 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0002 import SimpleUserType
+
+class OrganizationCustomOrganizationRoleUpdateSchemaType(TypedDict):
+    """OrganizationCustomOrganizationRoleUpdateSchema"""
+
+    name: NotRequired[str]
+    description: NotRequired[str]
+    permissions: NotRequired[List[str]]
+    base_role: NotRequired[
+        Literal["none", "read", "triage", "write", "maintain", "admin"]
+    ]
 
 
-class ProjectType(TypedDict):
-    """Project
-
-    Projects are a way to organize columns and cards of work.
-    """
-
-    owner_url: str
-    url: str
-    html_url: str
-    columns_url: str
-    id: int
-    node_id: str
-    name: str
-    body: Union[str, None]
-    number: int
-    state: str
-    creator: Union[None, SimpleUserType]
-    created_at: datetime
-    updated_at: datetime
-    organization_permission: NotRequired[Literal["read", "write", "admin", "none"]]
-    private: NotRequired[bool]
-
-
-__all__ = ("ProjectType",)
+__all__ = ("OrganizationCustomOrganizationRoleUpdateSchemaType",)

@@ -9,20 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import TypedDict
+from typing import Union, Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0002 import SimpleUserType
 
 
-class CodeOfConductSimpleType(TypedDict):
-    """Code Of Conduct Simple
+class OrganizationProgrammaticAccessGrantRequestType(TypedDict):
+    """Simple Organization Programmatic Access Grant Request
 
-    Code of Conduct Simple
+    Minimal representation of an organization programmatic access grant request for
+    enumerations
     """
 
-    url: str
-    key: str
-    name: str
-    html_url: Union[str, None]
+    id: int
+    reason: Union[str, None]
+    owner: SimpleUserType
+    repository_selection: Literal["none", "all", "subset"]
+    repositories_url: str
+    permissions: OrganizationProgrammaticAccessGrantRequestPropPermissionsType
+    created_at: str
+    token_id: int
+    token_expired: bool
+    token_expires_at: Union[str, None]
+    token_last_used_at: Union[str, None]
 
 
-__all__ = ("CodeOfConductSimpleType",)
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsType(TypedDict):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissions
+
+    Permissions requested, categorized by type of permission.
+    """
+
+    organization: NotRequired[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType
+    ]
+    repository: NotRequired[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType
+    ]
+    other: NotRequired[
+        OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType
+    ]
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType(
+    TypedDict
+):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganization"""
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType(
+    TypedDict
+):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepository"""
+
+
+class OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType(TypedDict):
+    """OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOther"""
+
+
+__all__ = (
+    "OrganizationProgrammaticAccessGrantRequestType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOrganizationType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropRepositoryType",
+    "OrganizationProgrammaticAccessGrantRequestPropPermissionsPropOtherType",
+)

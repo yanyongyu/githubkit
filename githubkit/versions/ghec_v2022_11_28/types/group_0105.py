@@ -13,24 +13,37 @@ from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class ExternalGroupsType(TypedDict):
-    """ExternalGroups
+class ExternalGroupType(TypedDict):
+    """ExternalGroup
 
-    A list of external groups available to be connected to a team
+    Information about an external group's usage and its members
     """
-
-    groups: NotRequired[List[ExternalGroupsPropGroupsItemsType]]
-
-
-class ExternalGroupsPropGroupsItemsType(TypedDict):
-    """ExternalGroupsPropGroupsItems"""
 
     group_id: int
     group_name: str
-    updated_at: str
+    updated_at: NotRequired[str]
+    teams: List[ExternalGroupPropTeamsItemsType]
+    members: List[ExternalGroupPropMembersItemsType]
+
+
+class ExternalGroupPropTeamsItemsType(TypedDict):
+    """ExternalGroupPropTeamsItems"""
+
+    team_id: int
+    team_name: str
+
+
+class ExternalGroupPropMembersItemsType(TypedDict):
+    """ExternalGroupPropMembersItems"""
+
+    member_id: int
+    member_login: str
+    member_name: str
+    member_email: str
 
 
 __all__ = (
-    "ExternalGroupsType",
-    "ExternalGroupsPropGroupsItemsType",
+    "ExternalGroupType",
+    "ExternalGroupPropTeamsItemsType",
+    "ExternalGroupPropMembersItemsType",
 )

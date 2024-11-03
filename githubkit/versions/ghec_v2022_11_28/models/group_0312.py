@@ -9,34 +9,34 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0002 import SimpleUser
-from .group_0313 import TimelineCrossReferencedEventPropSource
+from .group_0008 import Integration
 
 
-class TimelineCrossReferencedEvent(GitHubModel):
-    """Timeline Cross Referenced Event
+class LockedIssueEvent(GitHubModel):
+    """Locked Issue Event
 
-    Timeline Cross Referenced Event
+    Locked Issue Event
     """
 
-    event: Literal["cross-referenced"] = Field()
-    actor: Missing[SimpleUser] = Field(
-        default=UNSET, title="Simple User", description="A GitHub user."
-    )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    source: TimelineCrossReferencedEventPropSource = Field()
+    id: int = Field()
+    node_id: str = Field()
+    url: str = Field()
+    actor: SimpleUser = Field(title="Simple User", description="A GitHub user.")
+    event: Literal["locked"] = Field()
+    commit_id: Union[str, None] = Field()
+    commit_url: Union[str, None] = Field()
+    created_at: str = Field()
+    performed_via_github_app: Union[None, Integration, None] = Field()
+    lock_reason: Union[str, None] = Field()
 
 
-model_rebuild(TimelineCrossReferencedEvent)
+model_rebuild(LockedIssueEvent)
 
-__all__ = ("TimelineCrossReferencedEvent",)
+__all__ = ("LockedIssueEvent",)

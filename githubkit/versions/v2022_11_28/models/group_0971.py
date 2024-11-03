@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,42 +16,22 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200(
-    GitHubModel
-):
-    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
+class ReposOwnerRepoCommitsCommitShaCommentsPostBody(GitHubModel):
+    """ReposOwnerRepoCommitsCommitShaCommentsPostBody"""
 
-    total_count: int = Field(
-        description="The number of deployment branch policies for the environment."
+    body: str = Field(description="The contents of the comment.")
+    path: Missing[str] = Field(
+        default=UNSET, description="Relative path of the file to comment on."
     )
-    branch_policies: List[DeploymentBranchPolicy] = Field()
-
-
-class DeploymentBranchPolicy(GitHubModel):
-    """Deployment branch policy
-
-    Details of a deployment branch or tag policy.
-    """
-
-    id: Missing[int] = Field(
-        default=UNSET, description="The unique identifier of the branch or tag policy."
+    position: Missing[int] = Field(
+        default=UNSET, description="Line index in the diff to comment on."
     )
-    node_id: Missing[str] = Field(default=UNSET)
-    name: Missing[str] = Field(
+    line: Missing[int] = Field(
         default=UNSET,
-        description="The name pattern that branches or tags must match in order to deploy to the environment.",
-    )
-    type: Missing[Literal["branch", "tag"]] = Field(
-        default=UNSET, description="Whether this rule targets a branch or tag."
+        description="**Closing down notice**. Use **position** parameter instead. Line number in the file to comment on.",
     )
 
 
-model_rebuild(
-    ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
-)
-model_rebuild(DeploymentBranchPolicy)
+model_rebuild(ReposOwnerRepoCommitsCommitShaCommentsPostBody)
 
-__all__ = (
-    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200",
-    "DeploymentBranchPolicy",
-)
+__all__ = ("ReposOwnerRepoCommitsCommitShaCommentsPostBody",)

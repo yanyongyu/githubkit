@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -18,122 +18,136 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0049 import TeamSimple
+from .group_0147 import RepositoryRuleUpdate
+from .group_0173 import RepositoryRuleOneof18
+from .group_0169 import RepositoryRuleWorkflows
+from .group_0150 import RepositoryRuleMergeQueue
+from .group_0154 import RepositoryRulePullRequest
+from .group_0143 import OrgRulesetConditionsOneof0
+from .group_0144 import OrgRulesetConditionsOneof1
+from .group_0145 import OrgRulesetConditionsOneof2
+from .group_0171 import RepositoryRuleCodeScanning
+from .group_0135 import RepositoryRulesetConditions
+from .group_0134 import RepositoryRulesetBypassActor
+from .group_0166 import RepositoryRuleTagNamePattern
+from .group_0164 import RepositoryRuleBranchNamePattern
+from .group_0152 import RepositoryRuleRequiredDeployments
+from .group_0156 import RepositoryRuleRequiredStatusChecks
+from .group_0158 import RepositoryRuleCommitMessagePattern
+from .group_0162 import RepositoryRuleCommitterEmailPattern
+from .group_0160 import RepositoryRuleCommitAuthorEmailPattern
+from .group_0149 import RepositoryRuleOneof16, RepositoryRuleRequiredLinearHistory
+from .group_0146 import (
+    RepositoryRuleOneof15,
+    RepositoryRuleOneof17,
+    RepositoryRuleCreation,
+    RepositoryRuleDeletion,
+    RepositoryRuleNonFastForward,
+    RepositoryRuleRequiredSignatures,
+)
 
 
-class TeamFull(GitHubModel):
-    """Full Team
+class RepositoryRuleset(GitHubModel):
+    """Repository ruleset
 
-    Groups of organization members that gives permissions on specified repositories.
+    A set of rules to apply when specified conditions are met.
     """
 
-    id: int = Field(description="Unique identifier of the team")
-    node_id: str = Field()
-    url: str = Field(description="URL for the team")
-    html_url: str = Field()
-    name: str = Field(description="Name of the team")
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[Literal["closed", "secret"]] = Field(
-        default=UNSET, description="The level of privacy this team should have"
+    id: int = Field(description="The ID of the ruleset")
+    name: str = Field(description="The name of the ruleset")
+    target: Missing[Literal["branch", "tag", "push"]] = Field(
+        default=UNSET, description="The target of the ruleset"
     )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(default=UNSET, description="The notification setting the team has set")
-    permission: str = Field(
-        description="Permission that the team will have for its repositories"
+    source_type: Missing[Literal["Repository", "Organization"]] = Field(
+        default=UNSET, description="The type of the source of the ruleset"
     )
-    members_url: str = Field()
-    repositories_url: str = Field()
-    parent: Missing[Union[None, TeamSimple]] = Field(default=UNSET)
-    members_count: int = Field()
-    repos_count: int = Field()
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    organization: TeamOrganization = Field(
-        title="Team Organization", description="Team Organization"
+    source: str = Field(description="The name of the source")
+    enforcement: Literal["disabled", "active", "evaluate"] = Field(
+        description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page."
     )
-    ldap_dn: Missing[str] = Field(
+    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
-        description="Distinguished Name (DN) that team maps to within LDAP environment",
+        description="The actors that can bypass the rules in this ruleset",
     )
+    current_user_can_bypass: Missing[
+        Literal["always", "pull_requests_only", "never"]
+    ] = Field(
+        default=UNSET,
+        description="The bypass type of the user making the API request for this ruleset. This field is only returned when\nquerying the repository-level endpoint.",
+    )
+    node_id: Missing[str] = Field(default=UNSET)
+    links: Missing[RepositoryRulesetPropLinks] = Field(default=UNSET, alias="_links")
+    conditions: Missing[
+        Union[
+            RepositoryRulesetConditions,
+            OrgRulesetConditionsOneof0,
+            OrgRulesetConditionsOneof1,
+            OrgRulesetConditionsOneof2,
+            None,
+        ]
+    ] = Field(default=UNSET)
+    rules: Missing[
+        List[
+            Union[
+                RepositoryRuleCreation,
+                RepositoryRuleUpdate,
+                RepositoryRuleDeletion,
+                RepositoryRuleRequiredLinearHistory,
+                RepositoryRuleMergeQueue,
+                RepositoryRuleRequiredDeployments,
+                RepositoryRuleRequiredSignatures,
+                RepositoryRulePullRequest,
+                RepositoryRuleRequiredStatusChecks,
+                RepositoryRuleNonFastForward,
+                RepositoryRuleCommitMessagePattern,
+                RepositoryRuleCommitAuthorEmailPattern,
+                RepositoryRuleCommitterEmailPattern,
+                RepositoryRuleBranchNamePattern,
+                RepositoryRuleTagNamePattern,
+                RepositoryRuleOneof15,
+                RepositoryRuleOneof16,
+                RepositoryRuleOneof17,
+                RepositoryRuleOneof18,
+                RepositoryRuleWorkflows,
+                RepositoryRuleCodeScanning,
+            ]
+        ]
+    ] = Field(default=UNSET)
+    created_at: Missing[datetime] = Field(default=UNSET)
+    updated_at: Missing[datetime] = Field(default=UNSET)
 
 
-class TeamOrganization(GitHubModel):
-    """Team Organization
+class RepositoryRulesetPropLinks(GitHubModel):
+    """RepositoryRulesetPropLinks"""
 
-    Team Organization
-    """
-
-    login: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    url: str = Field()
-    repos_url: str = Field()
-    events_url: str = Field()
-    hooks_url: str = Field()
-    issues_url: str = Field()
-    members_url: str = Field()
-    public_members_url: str = Field()
-    avatar_url: str = Field()
-    description: Union[str, None] = Field()
-    name: Missing[Union[str, None]] = Field(default=UNSET)
-    company: Missing[Union[str, None]] = Field(default=UNSET)
-    blog: Missing[Union[str, None]] = Field(default=UNSET)
-    location: Missing[Union[str, None]] = Field(default=UNSET)
-    email: Missing[Union[str, None]] = Field(default=UNSET)
-    twitter_username: Missing[Union[str, None]] = Field(default=UNSET)
-    is_verified: Missing[bool] = Field(default=UNSET)
-    has_organization_projects: bool = Field()
-    has_repository_projects: bool = Field()
-    public_repos: int = Field()
-    public_gists: int = Field()
-    followers: int = Field()
-    following: int = Field()
-    html_url: str = Field()
-    created_at: datetime = Field()
-    type: str = Field()
-    total_private_repos: Missing[int] = Field(default=UNSET)
-    owned_private_repos: Missing[int] = Field(default=UNSET)
-    private_gists: Missing[Union[int, None]] = Field(default=UNSET)
-    disk_usage: Missing[Union[int, None]] = Field(default=UNSET)
-    collaborators: Missing[Union[int, None]] = Field(default=UNSET)
-    billing_email: Missing[Union[str, None]] = Field(default=UNSET)
-    plan: Missing[TeamOrganizationPropPlan] = Field(default=UNSET)
-    default_repository_permission: Missing[Union[str, None]] = Field(default=UNSET)
-    members_can_create_repositories: Missing[Union[bool, None]] = Field(default=UNSET)
-    two_factor_requirement_enabled: Missing[Union[bool, None]] = Field(default=UNSET)
-    members_allowed_repository_creation_type: Missing[str] = Field(default=UNSET)
-    members_can_create_public_repositories: Missing[bool] = Field(default=UNSET)
-    members_can_create_private_repositories: Missing[bool] = Field(default=UNSET)
-    members_can_create_internal_repositories: Missing[bool] = Field(default=UNSET)
-    members_can_create_pages: Missing[bool] = Field(default=UNSET)
-    members_can_create_public_pages: Missing[bool] = Field(default=UNSET)
-    members_can_create_private_pages: Missing[bool] = Field(default=UNSET)
-    members_can_fork_private_repositories: Missing[Union[bool, None]] = Field(
+    self_: Missing[RepositoryRulesetPropLinksPropSelf] = Field(
+        default=UNSET, alias="self"
+    )
+    html: Missing[Union[RepositoryRulesetPropLinksPropHtml, None]] = Field(
         default=UNSET
     )
-    web_commit_signoff_required: Missing[bool] = Field(default=UNSET)
-    updated_at: datetime = Field()
-    archived_at: Union[datetime, None] = Field()
 
 
-class TeamOrganizationPropPlan(GitHubModel):
-    """TeamOrganizationPropPlan"""
+class RepositoryRulesetPropLinksPropSelf(GitHubModel):
+    """RepositoryRulesetPropLinksPropSelf"""
 
-    name: str = Field()
-    space: int = Field()
-    private_repos: int = Field()
-    filled_seats: Missing[int] = Field(default=UNSET)
-    seats: Missing[int] = Field(default=UNSET)
+    href: Missing[str] = Field(default=UNSET, description="The URL of the ruleset")
 
 
-model_rebuild(TeamFull)
-model_rebuild(TeamOrganization)
-model_rebuild(TeamOrganizationPropPlan)
+class RepositoryRulesetPropLinksPropHtml(GitHubModel):
+    """RepositoryRulesetPropLinksPropHtml"""
+
+    href: Missing[str] = Field(default=UNSET, description="The html URL of the ruleset")
+
+
+model_rebuild(RepositoryRuleset)
+model_rebuild(RepositoryRulesetPropLinks)
+model_rebuild(RepositoryRulesetPropLinksPropSelf)
+model_rebuild(RepositoryRulesetPropLinksPropHtml)
 
 __all__ = (
-    "TeamFull",
-    "TeamOrganization",
-    "TeamOrganizationPropPlan",
+    "RepositoryRuleset",
+    "RepositoryRulesetPropLinks",
+    "RepositoryRulesetPropLinksPropSelf",
+    "RepositoryRulesetPropLinksPropHtml",
 )

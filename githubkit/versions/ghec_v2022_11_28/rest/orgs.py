@@ -27,40 +27,6 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..models import (
-        Team,
-        OrgHook,
-        SimpleUser,
-        TeamSimple,
-        HookDelivery,
-        AuditLogEvent,
-        OrgMembership,
-        WebhookConfig,
-        CustomProperty,
-        HookDeliveryItem,
-        OrganizationFull,
-        OrganizationRole,
-        MinimalRepository,
-        AnnouncementBanner,
-        OrganizationSimple,
-        TeamRoleAssignment,
-        UserRoleAssignment,
-        OrganizationInvitation,
-        CredentialAuthorization,
-        OrgRepoCustomPropertyValues,
-        RepositoryFineGrainedPermission,
-        OrganizationCustomRepositoryRole,
-        OrganizationFineGrainedPermission,
-        OrgsOrgInstallationsGetResponse200,
-        OrganizationProgrammaticAccessGrant,
-        OrgsOrgOrganizationRolesGetResponse200,
-        OrganizationProgrammaticAccessGrantRequest,
-        OrgsOrgCustomRepositoryRolesGetResponse200,
-        OrgsOrgAttestationsSubjectDigestGetResponse200,
-        OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
-        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
-        OrganizationsOrganizationIdCustomRolesGetResponse200,
-    )
     from ..types import (
         AnnouncementType,
         CustomPropertyType,
@@ -87,6 +53,45 @@ if TYPE_CHECKING:
         OrganizationCustomOrganizationRoleUpdateSchemaType,
         OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
         OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
+    )
+    from ..models import (
+        Team,
+        OrgHook,
+        SimpleUser,
+        TeamSimple,
+        HookDelivery,
+        AuditLogEvent,
+        OrgMembership,
+        WebhookConfig,
+        CustomProperty,
+        HookDeliveryItem,
+        OrganizationFull,
+        OrganizationRole,
+        MinimalRepository,
+        AnnouncementBanner,
+        OrganizationSimple,
+        TeamRoleAssignment,
+        UserRoleAssignment,
+        OrganizationInvitation,
+        ApiInsightsSummaryStats,
+        CredentialAuthorization,
+        ApiInsightsTimeStatsItems,
+        ApiInsightsUserStatsItems,
+        ApiInsightsRouteStatsItems,
+        OrgRepoCustomPropertyValues,
+        ApiInsightsSubjectStatsItems,
+        RepositoryFineGrainedPermission,
+        OrganizationCustomRepositoryRole,
+        OrganizationFineGrainedPermission,
+        OrgsOrgInstallationsGetResponse200,
+        OrganizationProgrammaticAccessGrant,
+        OrgsOrgOrganizationRolesGetResponse200,
+        OrganizationProgrammaticAccessGrantRequest,
+        OrgsOrgCustomRepositoryRolesGetResponse200,
+        OrgsOrgAttestationsSubjectDigestGetResponse200,
+        OrgsOrgOutsideCollaboratorsUsernamePutResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        OrganizationsOrganizationIdCustomRolesGetResponse200,
     )
 
 
@@ -171,7 +176,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrganizationsOrganizationIdCustomRolesGetResponse200]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#deprecated---list-custom-repository-roles-in-an-organization"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---list-custom-repository-roles-in-an-organization"""
 
         from ..models import OrganizationsOrganizationIdCustomRolesGetResponse200
 
@@ -192,7 +197,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrganizationsOrganizationIdCustomRolesGetResponse200]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#deprecated---list-custom-repository-roles-in-an-organization"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---list-custom-repository-roles-in-an-organization"""
 
         from ..models import OrganizationsOrganizationIdCustomRolesGetResponse200
 
@@ -1575,7 +1580,7 @@ class OrgsClient:
         data: Missing[OrganizationCustomRepositoryRoleCreateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationCustomRepositoryRole]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#deprecated---create-a-custom-role"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---create-a-custom-role"""
 
         from ..models import (
             BasicError,
@@ -1641,7 +1646,7 @@ class OrgsClient:
         data: Missing[OrganizationCustomRepositoryRoleCreateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationCustomRepositoryRole]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#deprecated---create-a-custom-role"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---create-a-custom-role"""
 
         from ..models import (
             BasicError,
@@ -1684,7 +1689,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrganizationCustomRepositoryRole]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#deprecated---get-a-custom-role"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---get-a-custom-role"""
 
         from ..models import BasicError, OrganizationCustomRepositoryRole
 
@@ -1709,7 +1714,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[OrganizationCustomRepositoryRole]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#deprecated---get-a-custom-role"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---get-a-custom-role"""
 
         from ..models import BasicError, OrganizationCustomRepositoryRole
 
@@ -1734,7 +1739,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#deprecated---delete-a-custom-role"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---delete-a-custom-role"""
 
         url = f"/orgs/{org}/custom_roles/{role_id}"
 
@@ -1753,7 +1758,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#deprecated---delete-a-custom-role"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---delete-a-custom-role"""
 
         url = f"/orgs/{org}/custom_roles/{role_id}"
 
@@ -1798,7 +1803,7 @@ class OrgsClient:
         data: Missing[OrganizationCustomRepositoryRoleUpdateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationCustomRepositoryRole]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#deprecated---update-a-custom-role"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---update-a-custom-role"""
 
         from ..models import (
             BasicError,
@@ -1867,7 +1872,7 @@ class OrgsClient:
         data: Missing[OrganizationCustomRepositoryRoleUpdateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationCustomRepositoryRole]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#deprecated---update-a-custom-role"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---update-a-custom-role"""
 
         from ..models import (
             BasicError,
@@ -1977,7 +1982,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RepositoryFineGrainedPermission]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#deprecated---list-fine-grained-permissions-for-an-organization"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---list-fine-grained-permissions-for-an-organization"""
 
         from typing import List
 
@@ -2000,7 +2005,7 @@ class OrgsClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[RepositoryFineGrainedPermission]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#deprecated---list-fine-grained-permissions-for-an-organization"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---list-fine-grained-permissions-for-an-organization"""
 
         from typing import List
 
@@ -2601,7 +2606,6 @@ class OrgsClient:
         hook_id: int,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
-        redelivery: Missing[bool] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[HookDeliveryItem]]:
@@ -2616,7 +2620,6 @@ class OrgsClient:
         params = {
             "per_page": per_page,
             "cursor": cursor,
-            "redelivery": redelivery,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -2639,7 +2642,6 @@ class OrgsClient:
         hook_id: int,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
-        redelivery: Missing[bool] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[HookDeliveryItem]]:
@@ -2654,7 +2656,6 @@ class OrgsClient:
         params = {
             "per_page": per_page,
             "cursor": cursor,
-            "redelivery": redelivery,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -2833,6 +2834,728 @@ class OrgsClient:
             error_models={
                 "404": BasicError,
             },
+        )
+
+    def get_route_stats_by_actor(
+        self,
+        org: str,
+        actor_type: Literal[
+            "installations",
+            "classic_pats",
+            "fine_grained_pats",
+            "oauth_apps",
+            "github_apps_user_to_server",
+        ],
+        actor_id: int,
+        min_timestamp: str,
+        max_timestamp: str,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        sort: Missing[
+            List[
+                Literal[
+                    "last_rate_limited_timestamp",
+                    "last_request_timestamp",
+                    "rate_limited_request_count",
+                    "http_method",
+                    "api_route",
+                    "total_request_count",
+                ]
+            ]
+        ] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[List[ApiInsightsRouteStatsItems]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-route-stats-by-actor"""
+
+        from typing import List
+
+        from ..models import ApiInsightsRouteStatsItems
+
+        url = f"/orgs/{org}/insights/api/route-stats/{actor_type}/{actor_id}"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+            "page": page,
+            "per_page": per_page,
+            "direction": direction,
+            "sort": sort,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[ApiInsightsRouteStatsItems],
+        )
+
+    async def async_get_route_stats_by_actor(
+        self,
+        org: str,
+        actor_type: Literal[
+            "installations",
+            "classic_pats",
+            "fine_grained_pats",
+            "oauth_apps",
+            "github_apps_user_to_server",
+        ],
+        actor_id: int,
+        min_timestamp: str,
+        max_timestamp: str,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        sort: Missing[
+            List[
+                Literal[
+                    "last_rate_limited_timestamp",
+                    "last_request_timestamp",
+                    "rate_limited_request_count",
+                    "http_method",
+                    "api_route",
+                    "total_request_count",
+                ]
+            ]
+        ] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[List[ApiInsightsRouteStatsItems]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-route-stats-by-actor"""
+
+        from typing import List
+
+        from ..models import ApiInsightsRouteStatsItems
+
+        url = f"/orgs/{org}/insights/api/route-stats/{actor_type}/{actor_id}"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+            "page": page,
+            "per_page": per_page,
+            "direction": direction,
+            "sort": sort,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[ApiInsightsRouteStatsItems],
+        )
+
+    def get_subject_stats(
+        self,
+        org: str,
+        min_timestamp: str,
+        max_timestamp: str,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        sort: Missing[
+            List[
+                Literal[
+                    "last_rate_limited_timestamp",
+                    "last_request_timestamp",
+                    "rate_limited_request_count",
+                    "subject_name",
+                    "total_request_count",
+                ]
+            ]
+        ] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[List[ApiInsightsSubjectStatsItems]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-subject-stats"""
+
+        from typing import List
+
+        from ..models import ApiInsightsSubjectStatsItems
+
+        url = f"/orgs/{org}/insights/api/subject-stats"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+            "page": page,
+            "per_page": per_page,
+            "direction": direction,
+            "sort": sort,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[ApiInsightsSubjectStatsItems],
+        )
+
+    async def async_get_subject_stats(
+        self,
+        org: str,
+        min_timestamp: str,
+        max_timestamp: str,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        sort: Missing[
+            List[
+                Literal[
+                    "last_rate_limited_timestamp",
+                    "last_request_timestamp",
+                    "rate_limited_request_count",
+                    "subject_name",
+                    "total_request_count",
+                ]
+            ]
+        ] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[List[ApiInsightsSubjectStatsItems]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-subject-stats"""
+
+        from typing import List
+
+        from ..models import ApiInsightsSubjectStatsItems
+
+        url = f"/orgs/{org}/insights/api/subject-stats"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+            "page": page,
+            "per_page": per_page,
+            "direction": direction,
+            "sort": sort,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[ApiInsightsSubjectStatsItems],
+        )
+
+    def get_summary_stats(
+        self,
+        org: str,
+        min_timestamp: str,
+        max_timestamp: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[ApiInsightsSummaryStats]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats"""
+
+        from ..models import ApiInsightsSummaryStats
+
+        url = f"/orgs/{org}/insights/api/summary-stats"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=ApiInsightsSummaryStats,
+        )
+
+    async def async_get_summary_stats(
+        self,
+        org: str,
+        min_timestamp: str,
+        max_timestamp: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[ApiInsightsSummaryStats]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats"""
+
+        from ..models import ApiInsightsSummaryStats
+
+        url = f"/orgs/{org}/insights/api/summary-stats"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=ApiInsightsSummaryStats,
+        )
+
+    def get_summary_stats_by_user(
+        self,
+        org: str,
+        user_id: str,
+        min_timestamp: str,
+        max_timestamp: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[ApiInsightsSummaryStats]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats-by-user"""
+
+        from ..models import ApiInsightsSummaryStats
+
+        url = f"/orgs/{org}/insights/api/summary-stats/users/{user_id}"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=ApiInsightsSummaryStats,
+        )
+
+    async def async_get_summary_stats_by_user(
+        self,
+        org: str,
+        user_id: str,
+        min_timestamp: str,
+        max_timestamp: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[ApiInsightsSummaryStats]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats-by-user"""
+
+        from ..models import ApiInsightsSummaryStats
+
+        url = f"/orgs/{org}/insights/api/summary-stats/users/{user_id}"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=ApiInsightsSummaryStats,
+        )
+
+    def get_summary_stats_by_actor(
+        self,
+        org: str,
+        actor_type: Literal[
+            "installations",
+            "classic_pats",
+            "fine_grained_pats",
+            "oauth_apps",
+            "github_apps_user_to_server",
+        ],
+        actor_id: int,
+        min_timestamp: str,
+        max_timestamp: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[ApiInsightsSummaryStats]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats-by-actor"""
+
+        from ..models import ApiInsightsSummaryStats
+
+        url = f"/orgs/{org}/insights/api/summary-stats/{actor_type}/{actor_id}"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=ApiInsightsSummaryStats,
+        )
+
+    async def async_get_summary_stats_by_actor(
+        self,
+        org: str,
+        actor_type: Literal[
+            "installations",
+            "classic_pats",
+            "fine_grained_pats",
+            "oauth_apps",
+            "github_apps_user_to_server",
+        ],
+        actor_id: int,
+        min_timestamp: str,
+        max_timestamp: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[ApiInsightsSummaryStats]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats-by-actor"""
+
+        from ..models import ApiInsightsSummaryStats
+
+        url = f"/orgs/{org}/insights/api/summary-stats/{actor_type}/{actor_id}"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=ApiInsightsSummaryStats,
+        )
+
+    def get_time_stats(
+        self,
+        org: str,
+        min_timestamp: str,
+        max_timestamp: str,
+        timestamp_increment: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[List[ApiInsightsTimeStatsItems]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats"""
+
+        from typing import List
+
+        from ..models import ApiInsightsTimeStatsItems
+
+        url = f"/orgs/{org}/insights/api/time-stats"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+            "timestamp_increment": timestamp_increment,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[ApiInsightsTimeStatsItems],
+        )
+
+    async def async_get_time_stats(
+        self,
+        org: str,
+        min_timestamp: str,
+        max_timestamp: str,
+        timestamp_increment: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[List[ApiInsightsTimeStatsItems]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats"""
+
+        from typing import List
+
+        from ..models import ApiInsightsTimeStatsItems
+
+        url = f"/orgs/{org}/insights/api/time-stats"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+            "timestamp_increment": timestamp_increment,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[ApiInsightsTimeStatsItems],
+        )
+
+    def get_time_stats_by_user(
+        self,
+        org: str,
+        user_id: str,
+        min_timestamp: str,
+        max_timestamp: str,
+        timestamp_increment: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[List[ApiInsightsTimeStatsItems]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats-by-user"""
+
+        from typing import List
+
+        from ..models import ApiInsightsTimeStatsItems
+
+        url = f"/orgs/{org}/insights/api/time-stats/users/{user_id}"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+            "timestamp_increment": timestamp_increment,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[ApiInsightsTimeStatsItems],
+        )
+
+    async def async_get_time_stats_by_user(
+        self,
+        org: str,
+        user_id: str,
+        min_timestamp: str,
+        max_timestamp: str,
+        timestamp_increment: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[List[ApiInsightsTimeStatsItems]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats-by-user"""
+
+        from typing import List
+
+        from ..models import ApiInsightsTimeStatsItems
+
+        url = f"/orgs/{org}/insights/api/time-stats/users/{user_id}"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+            "timestamp_increment": timestamp_increment,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[ApiInsightsTimeStatsItems],
+        )
+
+    def get_time_stats_by_actor(
+        self,
+        org: str,
+        actor_type: Literal[
+            "installations",
+            "classic_pats",
+            "fine_grained_pats",
+            "oauth_apps",
+            "github_apps_user_to_server",
+        ],
+        actor_id: int,
+        min_timestamp: str,
+        max_timestamp: str,
+        timestamp_increment: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[List[ApiInsightsTimeStatsItems]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats-by-actor"""
+
+        from typing import List
+
+        from ..models import ApiInsightsTimeStatsItems
+
+        url = f"/orgs/{org}/insights/api/time-stats/{actor_type}/{actor_id}"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+            "timestamp_increment": timestamp_increment,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[ApiInsightsTimeStatsItems],
+        )
+
+    async def async_get_time_stats_by_actor(
+        self,
+        org: str,
+        actor_type: Literal[
+            "installations",
+            "classic_pats",
+            "fine_grained_pats",
+            "oauth_apps",
+            "github_apps_user_to_server",
+        ],
+        actor_id: int,
+        min_timestamp: str,
+        max_timestamp: str,
+        timestamp_increment: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[List[ApiInsightsTimeStatsItems]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats-by-actor"""
+
+        from typing import List
+
+        from ..models import ApiInsightsTimeStatsItems
+
+        url = f"/orgs/{org}/insights/api/time-stats/{actor_type}/{actor_id}"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+            "timestamp_increment": timestamp_increment,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[ApiInsightsTimeStatsItems],
+        )
+
+    def get_user_stats(
+        self,
+        org: str,
+        user_id: str,
+        min_timestamp: str,
+        max_timestamp: str,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        sort: Missing[
+            List[
+                Literal[
+                    "last_rate_limited_timestamp",
+                    "last_request_timestamp",
+                    "rate_limited_request_count",
+                    "subject_name",
+                    "total_request_count",
+                ]
+            ]
+        ] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[List[ApiInsightsUserStatsItems]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-user-stats"""
+
+        from typing import List
+
+        from ..models import ApiInsightsUserStatsItems
+
+        url = f"/orgs/{org}/insights/api/user-stats/{user_id}"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+            "page": page,
+            "per_page": per_page,
+            "direction": direction,
+            "sort": sort,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[ApiInsightsUserStatsItems],
+        )
+
+    async def async_get_user_stats(
+        self,
+        org: str,
+        user_id: str,
+        min_timestamp: str,
+        max_timestamp: str,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        direction: Missing[Literal["asc", "desc"]] = UNSET,
+        sort: Missing[
+            List[
+                Literal[
+                    "last_rate_limited_timestamp",
+                    "last_request_timestamp",
+                    "rate_limited_request_count",
+                    "subject_name",
+                    "total_request_count",
+                ]
+            ]
+        ] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[List[ApiInsightsUserStatsItems]]:
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-user-stats"""
+
+        from typing import List
+
+        from ..models import ApiInsightsUserStatsItems
+
+        url = f"/orgs/{org}/insights/api/user-stats/{user_id}"
+
+        params = {
+            "min_timestamp": min_timestamp,
+            "max_timestamp": max_timestamp,
+            "page": page,
+            "per_page": per_page,
+            "direction": direction,
+            "sort": sort,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=List[ApiInsightsUserStatsItems],
         )
 
     def list_app_installations(

@@ -10,17 +10,17 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from typing import Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class ReposOwnerRepoPagesPostBodyPropSourceType(TypedDict):
-    """ReposOwnerRepoPagesPostBodyPropSource
+class ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type(TypedDict):
+    """ReposOwnerRepoPagesPutBodyPropSourceAnyof1
 
-    The source branch and directory used to publish your Pages site.
+    Update the source for the repository. Must include the branch name and path.
     """
 
     branch: str
-    path: NotRequired[Literal["/", "/docs"]]
+    path: Literal["/", "/docs"]
 
 
-__all__ = ("ReposOwnerRepoPagesPostBodyPropSourceType",)
+__all__ = ("ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type",)

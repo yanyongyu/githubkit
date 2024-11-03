@@ -15,20 +15,16 @@ from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0351 import Traffic
 
+class Topic(GitHubModel):
+    """Topic
 
-class ViewTraffic(GitHubModel):
-    """View Traffic
-
-    View Traffic
+    A topic aggregates entities that are related to a subject.
     """
 
-    count: int = Field()
-    uniques: int = Field()
-    views: List[Traffic] = Field()
+    names: List[str] = Field()
 
 
-model_rebuild(ViewTraffic)
+model_rebuild(Topic)
 
-__all__ = ("ViewTraffic",)
+__all__ = ("Topic",)

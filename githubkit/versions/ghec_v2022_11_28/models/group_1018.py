@@ -9,39 +9,69 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import List, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, ExtraGitHubModel, model_rebuild
+
+from .group_1017 import (
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput,
+    ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems,
+)
 
 
-class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0(GitHubModel):
-    """ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0"""
+class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0(ExtraGitHubModel):
+    """ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0"""
 
-    language: Literal[
-        "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
-    ] = Field(description="The language targeted by the CodeQL query")
-    query_pack: str = Field(
-        description="A Base64-encoded tarball containing a CodeQL query and all its dependencies"
-    )
-    repositories: List[str] = Field(
-        description="List of repository names (in the form `owner/repo-name`) to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required."
-    )
-    repository_lists: Missing[List[str]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
+    name: Missing[str] = Field(
         default=UNSET,
-        description="List of repository lists to run the query against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
+        description='The name of the check. For example, "code-coverage".',
     )
-    repository_owners: Missing[List[str]] = Field(
-        max_length=1 if PYDANTIC_V2 else None,
+    details_url: Missing[str] = Field(
         default=UNSET,
-        description="List of organization or user names whose repositories the query should be run against. Precisely one property from `repositories`, `repository_lists` and `repository_owners` is required.",
+        description="The URL of the integrator's site that has the full details of the check.",
+    )
+    external_id: Missing[str] = Field(
+        default=UNSET, description="A reference for the run on the integrator's system."
+    )
+    started_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    status: Missing[Literal["completed"]] = Field(default=UNSET)
+    conclusion: Literal[
+        "action_required",
+        "cancelled",
+        "failure",
+        "neutral",
+        "success",
+        "skipped",
+        "stale",
+        "timed_out",
+    ] = Field(
+        description="**Required if you provide `completed_at` or a `status` of `completed`**. The final conclusion of the check. \n**Note:** Providing `conclusion` will automatically set the `status` parameter to `completed`. You cannot change a check run conclusion to `stale`, only GitHub can set this."
+    )
+    completed_at: Missing[datetime] = Field(
+        default=UNSET,
+        description="The time the check completed. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+    )
+    output: Missing[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutput] = Field(
+        default=UNSET,
+        description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run.",
+    )
+    actions: Missing[
+        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems]
+    ] = Field(
+        max_length=3 if PYDANTIC_V2 else None,
+        default=UNSET,
+        description='Possible further actions the integrator can perform, which a user may trigger. Each action includes a `label`, `identifier` and `description`. A maximum of three actions are accepted. To learn more about check runs and requested actions, see "[Check runs and requested actions](https://docs.github.com/enterprise-cloud@latest//rest/guides/using-the-rest-api-to-interact-with-checks#check-runs-and-requested-actions)."',
     )
 
 
-model_rebuild(ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0)
+model_rebuild(ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0)
 
-__all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0",)
+__all__ = ("ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0",)

@@ -13,14 +13,12 @@ from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType(TypedDict):
-    """OrgsOrgPropertiesSchemaCustomPropertyNamePutBody"""
+class OrgsOrgPersonalAccessTokenRequestsPostBodyType(TypedDict):
+    """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false"]
-    required: NotRequired[bool]
-    default_value: NotRequired[Union[str, List[str], None]]
-    description: NotRequired[Union[str, None]]
-    allowed_values: NotRequired[Union[List[str], None]]
+    pat_request_ids: NotRequired[List[int]]
+    action: Literal["approve", "deny"]
+    reason: NotRequired[Union[str, None]]
 
 
-__all__ = ("OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType",)
+__all__ = ("OrgsOrgPersonalAccessTokenRequestsPostBodyType",)

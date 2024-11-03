@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,50 +16,40 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBody"""
+class ReposOwnerRepoPullsPostBody(GitHubModel):
+    """ReposOwnerRepoPullsPostBody"""
 
-    commit_id: Missing[str] = Field(
+    title: Missing[str] = Field(
         default=UNSET,
-        description="The SHA of the commit that needs a review. Not using the latest commit SHA may render your review comment outdated if a subsequent commit modifies the line you specify as the `position`. Defaults to the most recent commit in the pull request when you do not specify a value.",
+        description="The title of the new pull request. Required unless `issue` is specified.",
+    )
+    head: str = Field(
+        description="The name of the branch where your changes are implemented. For cross-repository pull requests in the same network, namespace `head` with a user like this: `username:branch`."
+    )
+    head_repo: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the repository where the changes in the pull request were made. This field is required for cross-repository pull requests if both repositories are owned by the same organization.",
+    )
+    base: str = Field(
+        description="The name of the branch you want the changes pulled into. This should be an existing branch on the current repository. You cannot submit a pull request to one repository that requests a merge to a base of another repository."
     )
     body: Missing[str] = Field(
+        default=UNSET, description="The contents of the pull request."
+    )
+    maintainer_can_modify: Missing[bool] = Field(
         default=UNSET,
-        description="**Required** when using `REQUEST_CHANGES` or `COMMENT` for the `event` parameter. The body text of the pull request review.",
+        description="Indicates whether [maintainers can modify](https://docs.github.com/articles/allowing-changes-to-a-pull-request-branch-created-from-a-fork/) the pull request.",
     )
-    event: Missing[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]] = Field(
+    draft: Missing[bool] = Field(
         default=UNSET,
-        description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request) when you are ready.",
+        description='Indicates whether the pull request is a draft. See "[Draft Pull Requests](https://docs.github.com/articles/about-pull-requests#draft-pull-requests)" in the GitHub Help documentation to learn more.',
     )
-    comments: Missing[
-        List[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems]
-    ] = Field(
+    issue: Missing[int] = Field(
         default=UNSET,
-        description="Use the following table to specify the location, destination, and contents of the draft review comment.",
+        description="An issue in the repository to convert to a pull request. The issue title, body, and comments will become the title, body, and comments on the new pull request. Required unless `title` is specified.",
     )
 
 
-class ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems"""
+model_rebuild(ReposOwnerRepoPullsPostBody)
 
-    path: str = Field(
-        description="The relative path to the file that necessitates a review comment."
-    )
-    position: Missing[int] = Field(
-        default=UNSET,
-        description='The position in the diff where you want to add a review comment. Note this value is not the same as the line number in the file. The `position` value equals the number of lines down from the first "@@" hunk header in the file you want to add a comment. The line just below the "@@" line is position 1, the next line is position 2, and so on. The position in the diff continues to increase through lines of whitespace and additional hunks until the beginning of a new file.',
-    )
-    body: str = Field(description="Text of the review comment.")
-    line: Missing[int] = Field(default=UNSET)
-    side: Missing[str] = Field(default=UNSET)
-    start_line: Missing[int] = Field(default=UNSET)
-    start_side: Missing[str] = Field(default=UNSET)
-
-
-model_rebuild(ReposOwnerRepoPullsPullNumberReviewsPostBody)
-model_rebuild(ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems)
-
-__all__ = (
-    "ReposOwnerRepoPullsPullNumberReviewsPostBody",
-    "ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems",
-)
+__all__ = ("ReposOwnerRepoPullsPostBody",)

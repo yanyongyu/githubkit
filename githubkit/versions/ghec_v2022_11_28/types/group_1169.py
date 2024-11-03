@@ -9,14 +9,16 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class UserGpgKeysPostBodyType(TypedDict):
-    """UserGpgKeysPostBody"""
+class UserCodespacesCodespaceNamePatchBodyType(TypedDict):
+    """UserCodespacesCodespaceNamePatchBody"""
 
-    name: NotRequired[str]
-    armored_public_key: str
+    machine: NotRequired[str]
+    display_name: NotRequired[str]
+    recent_folders: NotRequired[List[str]]
 
 
-__all__ = ("UserGpgKeysPostBodyType",)
+__all__ = ("UserCodespacesCodespaceNamePatchBodyType",)

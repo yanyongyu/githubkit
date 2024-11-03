@@ -9,22 +9,53 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import TypedDict
+from datetime import datetime
+from typing import List, Literal
+from typing_extensions import TypedDict, NotRequired
 
-from .group_0124 import CustomPropertyValueType
 
+class PackageVersionType(TypedDict):
+    """Package Version
 
-class OrgRepoCustomPropertyValuesType(TypedDict):
-    """Organization Repository Custom Property Values
-
-    List of custom property values for a repository
+    A version of a software package
     """
 
-    repository_id: int
-    repository_name: str
-    repository_full_name: str
-    properties: List[CustomPropertyValueType]
+    id: int
+    name: str
+    url: str
+    package_html_url: str
+    html_url: NotRequired[str]
+    license_: NotRequired[str]
+    description: NotRequired[str]
+    created_at: datetime
+    updated_at: datetime
+    deleted_at: NotRequired[datetime]
+    metadata: NotRequired[PackageVersionPropMetadataType]
 
 
-__all__ = ("OrgRepoCustomPropertyValuesType",)
+class PackageVersionPropMetadataType(TypedDict):
+    """Package Version Metadata"""
+
+    package_type: Literal["npm", "maven", "rubygems", "docker", "nuget", "container"]
+    container: NotRequired[PackageVersionPropMetadataPropContainerType]
+    docker: NotRequired[PackageVersionPropMetadataPropDockerType]
+
+
+class PackageVersionPropMetadataPropContainerType(TypedDict):
+    """Container Metadata"""
+
+    tags: List[str]
+
+
+class PackageVersionPropMetadataPropDockerType(TypedDict):
+    """Docker Metadata"""
+
+    tag: NotRequired[List[str]]
+
+
+__all__ = (
+    "PackageVersionType",
+    "PackageVersionPropMetadataType",
+    "PackageVersionPropMetadataPropContainerType",
+    "PackageVersionPropMetadataPropDockerType",
+)

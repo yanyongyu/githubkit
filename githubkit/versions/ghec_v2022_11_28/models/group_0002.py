@@ -45,6 +45,7 @@ class SimpleUser(GitHubModel):
     type: str = Field()
     site_admin: bool = Field()
     starred_at: Missing[str] = Field(default=UNSET)
+    user_view_type: Missing[str] = Field(default=UNSET)
 
 
 model_rebuild(SimpleUser)

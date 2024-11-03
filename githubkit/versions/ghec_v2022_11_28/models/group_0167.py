@@ -18,31 +18,21 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRuleOneof18(GitHubModel):
-    """max_file_size
+class RepositoryRuleTagNamePatternPropParameters(GitHubModel):
+    """RepositoryRuleTagNamePatternPropParameters"""
 
-    Prevent commits that exceed a specified file size limit from being pushed to the
-    commit.
-    """
-
-    type: Literal["max_file_size"] = Field()
-    parameters: Missing[RepositoryRuleOneof18PropParameters] = Field(default=UNSET)
-
-
-class RepositoryRuleOneof18PropParameters(GitHubModel):
-    """RepositoryRuleOneof18PropParameters"""
-
-    max_file_size: int = Field(
-        le=100.0,
-        ge=1.0,
-        description="The maximum file size allowed in megabytes. This limit does not apply to Git Large File Storage (Git LFS).",
+    name: Missing[str] = Field(
+        default=UNSET, description="How this rule will appear to users."
     )
+    negate: Missing[bool] = Field(
+        default=UNSET, description="If true, the rule will fail if the pattern matches."
+    )
+    operator: Literal["starts_with", "ends_with", "contains", "regex"] = Field(
+        description="The operator to use for matching."
+    )
+    pattern: str = Field(description="The pattern to match with.")
 
 
-model_rebuild(RepositoryRuleOneof18)
-model_rebuild(RepositoryRuleOneof18PropParameters)
+model_rebuild(RepositoryRuleTagNamePatternPropParameters)
 
-__all__ = (
-    "RepositoryRuleOneof18",
-    "RepositoryRuleOneof18PropParameters",
-)
+__all__ = ("RepositoryRuleTagNamePatternPropParameters",)

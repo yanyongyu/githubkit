@@ -9,15 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import Literal
+from datetime import datetime
+from typing_extensions import TypedDict, NotRequired
 
 
-class CombinedBillingUsageType(TypedDict):
-    """CombinedBillingUsage"""
+class RuleSuitesItemsType(TypedDict):
+    """RuleSuitesItems"""
 
-    days_left_in_billing_cycle: int
-    estimated_paid_storage_for_month: int
-    estimated_storage_for_month: int
+    id: NotRequired[int]
+    actor_id: NotRequired[int]
+    actor_name: NotRequired[str]
+    before_sha: NotRequired[str]
+    after_sha: NotRequired[str]
+    ref: NotRequired[str]
+    repository_id: NotRequired[int]
+    repository_name: NotRequired[str]
+    pushed_at: NotRequired[datetime]
+    result: NotRequired[Literal["pass", "fail", "bypass"]]
+    evaluation_result: NotRequired[Literal["pass", "fail", "bypass"]]
 
 
-__all__ = ("CombinedBillingUsageType",)
+__all__ = ("RuleSuitesItemsType",)

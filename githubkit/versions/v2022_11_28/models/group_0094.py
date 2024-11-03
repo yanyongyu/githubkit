@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,61 +18,23 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class PackageVersion(GitHubModel):
-    """Package Version
+class InteractionLimit(GitHubModel):
+    """Interaction Restrictions
 
-    A version of a software package
+    Limit interactions to a specific type of user for a specified duration
     """
 
-    id: int = Field(description="Unique identifier of the package version.")
-    name: str = Field(description="The name of the package version.")
-    url: str = Field()
-    package_html_url: str = Field()
-    html_url: Missing[str] = Field(default=UNSET)
-    license_: Missing[str] = Field(default=UNSET, alias="license")
-    description: Missing[str] = Field(default=UNSET)
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    deleted_at: Missing[datetime] = Field(default=UNSET)
-    metadata: Missing[PackageVersionPropMetadata] = Field(
-        default=UNSET, title="Package Version Metadata"
+    limit: Literal["existing_users", "contributors_only", "collaborators_only"] = Field(
+        description="The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect."
+    )
+    expiry: Missing[
+        Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
+    ] = Field(
+        default=UNSET,
+        description="The duration of the interaction restriction. Default: `one_day`.",
     )
 
 
-class PackageVersionPropMetadata(GitHubModel):
-    """Package Version Metadata"""
+model_rebuild(InteractionLimit)
 
-    package_type: Literal[
-        "npm", "maven", "rubygems", "docker", "nuget", "container"
-    ] = Field()
-    container: Missing[PackageVersionPropMetadataPropContainer] = Field(
-        default=UNSET, title="Container Metadata"
-    )
-    docker: Missing[PackageVersionPropMetadataPropDocker] = Field(
-        default=UNSET, title="Docker Metadata"
-    )
-
-
-class PackageVersionPropMetadataPropContainer(GitHubModel):
-    """Container Metadata"""
-
-    tags: List[str] = Field()
-
-
-class PackageVersionPropMetadataPropDocker(GitHubModel):
-    """Docker Metadata"""
-
-    tag: Missing[List[str]] = Field(default=UNSET)
-
-
-model_rebuild(PackageVersion)
-model_rebuild(PackageVersionPropMetadata)
-model_rebuild(PackageVersionPropMetadataPropContainer)
-model_rebuild(PackageVersionPropMetadataPropDocker)
-
-__all__ = (
-    "PackageVersion",
-    "PackageVersionPropMetadata",
-    "PackageVersionPropMetadataPropContainer",
-    "PackageVersionPropMetadataPropDocker",
-)
+__all__ = ("InteractionLimit",)

@@ -33,6 +33,7 @@ if TYPE_CHECKING:
         OrgsOrgActionsPermissionsPutBodyType,
         ReviewCustomGatesCommentRequiredType,
         ActionsWorkflowAccessToRepositoryType,
+        OrgsOrgActionsRunnerGroupsPostBodyType,
         ActionsSetDefaultWorkflowPermissionsType,
         OrgsOrgActionsVariablesNamePatchBodyType,
         OrgsOrgActionsSecretsSecretNamePutBodyType,
@@ -47,13 +48,16 @@ if TYPE_CHECKING:
         ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
         OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
         OrgsOrgActionsVariablesNameRepositoriesPutBodyType,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
         ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
         ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
         OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
         ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
         ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
         ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType,
         ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
         ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
@@ -71,6 +75,7 @@ if TYPE_CHECKING:
         ActionsSecret,
         WorkflowUsage,
         ActionsVariable,
+        RunnerGroupsOrg,
         SelectedActions,
         ActionsCacheList,
         ActionsPublicKey,
@@ -92,6 +97,7 @@ if TYPE_CHECKING:
         ActionsGetDefaultWorkflowPermissions,
         OrgsOrgActionsVariablesGetResponse200,
         ReposOwnerRepoActionsRunsGetResponse200,
+        OrgsOrgActionsRunnerGroupsGetResponse200,
         ReposOwnerRepoActionsRunnersGetResponse200,
         ReposOwnerRepoActionsSecretsGetResponse200,
         ReposOwnerRepoActionsArtifactsGetResponse200,
@@ -109,8 +115,10 @@ if TYPE_CHECKING:
         ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
         OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
         ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
         ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
     )
 
@@ -907,6 +915,914 @@ class ActionsClient:
             "PUT",
             url,
             json=exclude_unset(json),
+            headers=exclude_unset(headers),
+        )
+
+    def list_self_hosted_runner_groups_for_org(
+        self,
+        org: str,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        visible_to_repository: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[OrgsOrgActionsRunnerGroupsGetResponse200]:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-organization"""
+
+        from ..models import OrgsOrgActionsRunnerGroupsGetResponse200
+
+        url = f"/orgs/{org}/actions/runner-groups"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+            "visible_to_repository": visible_to_repository,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsRunnerGroupsGetResponse200,
+        )
+
+    async def async_list_self_hosted_runner_groups_for_org(
+        self,
+        org: str,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        visible_to_repository: Missing[str] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[OrgsOrgActionsRunnerGroupsGetResponse200]:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-organization"""
+
+        from ..models import OrgsOrgActionsRunnerGroupsGetResponse200
+
+        url = f"/orgs/{org}/actions/runner-groups"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+            "visible_to_repository": visible_to_repository,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsRunnerGroupsGetResponse200,
+        )
+
+    @overload
+    def create_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgActionsRunnerGroupsPostBodyType,
+    ) -> Response[RunnerGroupsOrg]: ...
+
+    @overload
+    def create_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        name: str,
+        visibility: Missing[Literal["selected", "all", "private"]] = UNSET,
+        selected_repository_ids: Missing[List[int]] = UNSET,
+        runners: Missing[List[int]] = UNSET,
+        allows_public_repositories: Missing[bool] = UNSET,
+        restricted_to_workflows: Missing[bool] = UNSET,
+        selected_workflows: Missing[List[str]] = UNSET,
+    ) -> Response[RunnerGroupsOrg]: ...
+
+    def create_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[RunnerGroupsOrg]:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-organization"""
+
+        from ..models import RunnerGroupsOrg, OrgsOrgActionsRunnerGroupsPostBody
+
+        url = f"/orgs/{org}/actions/runner-groups"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgActionsRunnerGroupsPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=RunnerGroupsOrg,
+        )
+
+    @overload
+    async def async_create_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgActionsRunnerGroupsPostBodyType,
+    ) -> Response[RunnerGroupsOrg]: ...
+
+    @overload
+    async def async_create_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        name: str,
+        visibility: Missing[Literal["selected", "all", "private"]] = UNSET,
+        selected_repository_ids: Missing[List[int]] = UNSET,
+        runners: Missing[List[int]] = UNSET,
+        allows_public_repositories: Missing[bool] = UNSET,
+        restricted_to_workflows: Missing[bool] = UNSET,
+        selected_workflows: Missing[List[str]] = UNSET,
+    ) -> Response[RunnerGroupsOrg]: ...
+
+    async def async_create_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[RunnerGroupsOrg]:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-organization"""
+
+        from ..models import RunnerGroupsOrg, OrgsOrgActionsRunnerGroupsPostBody
+
+        url = f"/orgs/{org}/actions/runner-groups"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(OrgsOrgActionsRunnerGroupsPostBody, json)
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "POST",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=RunnerGroupsOrg,
+        )
+
+    def get_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[RunnerGroupsOrg]:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-organization"""
+
+        from ..models import RunnerGroupsOrg
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=RunnerGroupsOrg,
+        )
+
+    async def async_get_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[RunnerGroupsOrg]:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-organization"""
+
+        from ..models import RunnerGroupsOrg
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            headers=exclude_unset(headers),
+            response_model=RunnerGroupsOrg,
+        )
+
+    def delete_self_hosted_runner_group_from_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-organization"""
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    async def async_delete_self_hosted_runner_group_from_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-organization"""
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    @overload
+    def update_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
+    ) -> Response[RunnerGroupsOrg]: ...
+
+    @overload
+    def update_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        name: str,
+        visibility: Missing[Literal["selected", "all", "private"]] = UNSET,
+        allows_public_repositories: Missing[bool] = UNSET,
+        restricted_to_workflows: Missing[bool] = UNSET,
+        selected_workflows: Missing[List[str]] = UNSET,
+    ) -> Response[RunnerGroupsOrg]: ...
+
+    def update_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[RunnerGroupsOrg]:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-organization"""
+
+        from ..models import (
+            RunnerGroupsOrg,
+            OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody,
+        )
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=RunnerGroupsOrg,
+        )
+
+    @overload
+    async def async_update_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
+    ) -> Response[RunnerGroupsOrg]: ...
+
+    @overload
+    async def async_update_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        name: str,
+        visibility: Missing[Literal["selected", "all", "private"]] = UNSET,
+        allows_public_repositories: Missing[bool] = UNSET,
+        restricted_to_workflows: Missing[bool] = UNSET,
+        selected_workflows: Missing[List[str]] = UNSET,
+    ) -> Response[RunnerGroupsOrg]: ...
+
+    async def async_update_self_hosted_runner_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType] = UNSET,
+        **kwargs,
+    ) -> Response[RunnerGroupsOrg]:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-organization"""
+
+        from ..models import (
+            RunnerGroupsOrg,
+            OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody,
+        )
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PATCH",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+            response_model=RunnerGroupsOrg,
+        )
+
+    def list_repo_access_to_self_hosted_runner_group_in_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200]:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
+
+        from ..models import (
+            OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
+        )
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
+        )
+
+    async def async_list_repo_access_to_self_hosted_runner_group_in_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        page: Missing[int] = UNSET,
+        per_page: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200]:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
+
+        from ..models import (
+            OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
+        )
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
+
+        params = {
+            "page": page,
+            "per_page": per_page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
+        )
+
+    @overload
+    def set_repo_access_to_self_hosted_runner_group_in_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_repo_access_to_self_hosted_runner_group_in_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        selected_repository_ids: List[int],
+    ) -> Response: ...
+
+    def set_repo_access_to_self_hosted_runner_group_in_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[
+            OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#set-repository-access-for-a-self-hosted-runner-group-in-an-organization"""
+
+        from ..models import OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+        )
+
+    @overload
+    async def async_set_repo_access_to_self_hosted_runner_group_in_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_repo_access_to_self_hosted_runner_group_in_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        selected_repository_ids: List[int],
+    ) -> Response: ...
+
+    async def async_set_repo_access_to_self_hosted_runner_group_in_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[
+            OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#set-repository-access-for-a-self-hosted-runner-group-in-an-organization"""
+
+        from ..models import OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+        )
+
+    def add_repo_access_to_self_hosted_runner_group_in_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#add-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    async def async_add_repo_access_to_self_hosted_runner_group_in_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#add-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    def remove_repo_access_to_self_hosted_runner_group_in_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#remove-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    async def async_remove_repo_access_to_self_hosted_runner_group_in_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        repository_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#remove-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/repositories/{repository_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    def list_self_hosted_runners_in_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200]:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-organization"""
+
+        from ..models import (
+            OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
+        )
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
+        )
+
+    async def async_list_self_hosted_runners_in_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        per_page: Missing[int] = UNSET,
+        page: Missing[int] = UNSET,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200]:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-organization"""
+
+        from ..models import (
+            OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
+        )
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
+
+        params = {
+            "per_page": per_page,
+            "page": page,
+        }
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "GET",
+            url,
+            params=exclude_unset(params),
+            headers=exclude_unset(headers),
+            response_model=OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
+        )
+
+    @overload
+    def set_self_hosted_runners_in_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    def set_self_hosted_runners_in_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        runners: List[int],
+    ) -> Response: ...
+
+    def set_self_hosted_runners_in_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[
+            OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-organization"""
+
+        from ..models import OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return self._github.request(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+        )
+
+    @overload
+    async def async_set_self_hosted_runners_in_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
+    ) -> Response: ...
+
+    @overload
+    async def async_set_self_hosted_runners_in_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        data: UnsetType = UNSET,
+        headers: Optional[Dict[str, str]] = None,
+        runners: List[int],
+    ) -> Response: ...
+
+    async def async_set_self_hosted_runners_in_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+        data: Missing[
+            OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType
+        ] = UNSET,
+        **kwargs,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#set-self-hosted-runners-in-a-group-for-an-organization"""
+
+        from ..models import OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners"
+
+        headers = {
+            "Content-Type": "application/json",
+            "X-GitHub-Api-Version": self._REST_API_VERSION,
+            **(headers or {}),
+        }
+
+        json = kwargs if data is UNSET else data
+        if self._github.config.rest_api_validate_body:
+            json = type_validate_python(
+                OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBody, json
+            )
+        json = model_dump(json) if isinstance(json, BaseModel) else json
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            json=exclude_unset(json),
+            headers=exclude_unset(headers),
+        )
+
+    def add_self_hosted_runner_to_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        runner_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-organization"""
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    async def async_add_self_hosted_runner_to_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        runner_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-organization"""
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "PUT",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    def remove_self_hosted_runner_from_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        runner_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-organization"""
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+        )
+
+    async def async_remove_self_hosted_runner_from_group_for_org(
+        self,
+        org: str,
+        runner_group_id: int,
+        runner_id: int,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-organization"""
+
+        url = f"/orgs/{org}/actions/runner-groups/{runner_group_id}/runners/{runner_id}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
             headers=exclude_unset(headers),
         )
 

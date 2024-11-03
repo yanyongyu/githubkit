@@ -9,30 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
-from typing_extensions import TypedDict
+from typing import Literal
+from typing_extensions import TypedDict, NotRequired
+
+from .group_0167 import RepositoryRuleTagNamePatternPropParametersType
 
 
-class RepositoryRuleCodeScanningPropParametersType(TypedDict):
-    """RepositoryRuleCodeScanningPropParameters"""
+class RepositoryRuleTagNamePatternType(TypedDict):
+    """tag_name_pattern
 
-    code_scanning_tools: List[RepositoryRuleParamsCodeScanningToolType]
-
-
-class RepositoryRuleParamsCodeScanningToolType(TypedDict):
-    """CodeScanningTool
-
-    A tool that must provide code scanning results for this rule to pass.
+    Parameters to be used for the tag_name_pattern rule
     """
 
-    alerts_threshold: Literal["none", "errors", "errors_and_warnings", "all"]
-    security_alerts_threshold: Literal[
-        "none", "critical", "high_or_higher", "medium_or_higher", "all"
-    ]
-    tool: str
+    type: Literal["tag_name_pattern"]
+    parameters: NotRequired[RepositoryRuleTagNamePatternPropParametersType]
 
 
-__all__ = (
-    "RepositoryRuleCodeScanningPropParametersType",
-    "RepositoryRuleParamsCodeScanningToolType",
-)
+__all__ = ("RepositoryRuleTagNamePatternType",)

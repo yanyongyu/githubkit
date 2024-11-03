@@ -9,40 +9,39 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class AdvancedSecurityActiveCommittersType(TypedDict):
-    """AdvancedSecurityActiveCommitters"""
+class ActionsBillingUsageType(TypedDict):
+    """ActionsBillingUsage"""
 
-    total_advanced_security_committers: NotRequired[int]
-    total_count: NotRequired[int]
-    maximum_advanced_security_committers: NotRequired[int]
-    purchased_advanced_security_committers: NotRequired[int]
-    repositories: List[AdvancedSecurityActiveCommittersRepositoryType]
-
-
-class AdvancedSecurityActiveCommittersRepositoryType(TypedDict):
-    """AdvancedSecurityActiveCommittersRepository"""
-
-    name: str
-    advanced_security_committers: int
-    advanced_security_committers_breakdown: List[
-        AdvancedSecurityActiveCommittersUserType
-    ]
+    total_minutes_used: int
+    total_paid_minutes_used: int
+    included_minutes: int
+    minutes_used_breakdown: ActionsBillingUsagePropMinutesUsedBreakdownType
 
 
-class AdvancedSecurityActiveCommittersUserType(TypedDict):
-    """AdvancedSecurityActiveCommittersUser"""
+class ActionsBillingUsagePropMinutesUsedBreakdownType(TypedDict):
+    """ActionsBillingUsagePropMinutesUsedBreakdown"""
 
-    user_login: str
-    last_pushed_date: str
-    last_pushed_email: str
+    ubuntu: NotRequired[int]
+    macos: NotRequired[int]
+    windows: NotRequired[int]
+    ubuntu_4_core: NotRequired[int]
+    ubuntu_8_core: NotRequired[int]
+    ubuntu_16_core: NotRequired[int]
+    ubuntu_32_core: NotRequired[int]
+    ubuntu_64_core: NotRequired[int]
+    windows_4_core: NotRequired[int]
+    windows_8_core: NotRequired[int]
+    windows_16_core: NotRequired[int]
+    windows_32_core: NotRequired[int]
+    windows_64_core: NotRequired[int]
+    macos_12_core: NotRequired[int]
+    total: NotRequired[int]
 
 
 __all__ = (
-    "AdvancedSecurityActiveCommittersType",
-    "AdvancedSecurityActiveCommittersRepositoryType",
-    "AdvancedSecurityActiveCommittersUserType",
+    "ActionsBillingUsageType",
+    "ActionsBillingUsagePropMinutesUsedBreakdownType",
 )

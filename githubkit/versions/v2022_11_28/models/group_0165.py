@@ -9,44 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from datetime import datetime
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ActionsCacheList(GitHubModel):
-    """Repository actions caches
+class ProjectColumn(GitHubModel):
+    """Project Column
 
-    Repository actions caches
+    Project columns contain cards of work.
     """
 
-    total_count: int = Field(description="Total number of caches")
-    actions_caches: List[ActionsCacheListPropActionsCachesItems] = Field(
-        description="Array of caches"
-    )
+    url: str = Field()
+    project_url: str = Field()
+    cards_url: str = Field()
+    id: int = Field(description="The unique identifier of the project column")
+    node_id: str = Field()
+    name: str = Field(description="Name of the project column")
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-class ActionsCacheListPropActionsCachesItems(GitHubModel):
-    """ActionsCacheListPropActionsCachesItems"""
+model_rebuild(ProjectColumn)
 
-    id: Missing[int] = Field(default=UNSET)
-    ref: Missing[str] = Field(default=UNSET)
-    key: Missing[str] = Field(default=UNSET)
-    version: Missing[str] = Field(default=UNSET)
-    last_accessed_at: Missing[datetime] = Field(default=UNSET)
-    created_at: Missing[datetime] = Field(default=UNSET)
-    size_in_bytes: Missing[int] = Field(default=UNSET)
-
-
-model_rebuild(ActionsCacheList)
-model_rebuild(ActionsCacheListPropActionsCachesItems)
-
-__all__ = (
-    "ActionsCacheList",
-    "ActionsCacheListPropActionsCachesItems",
-)
+__all__ = ("ProjectColumn",)

@@ -9,13 +9,31 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing import List, Literal
+from typing_extensions import TypedDict, NotRequired
 
 
-class RepositoryRuleUpdatePropParametersType(TypedDict):
-    """RepositoryRuleUpdatePropParameters"""
+class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType(
+    TypedDict
+):
+    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
 
-    update_allows_fetch_and_merge: bool
+    include: NotRequired[List[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+    exclude: NotRequired[List[RepositoryRulesetConditionsRepositoryPropertySpecType]]
 
 
-__all__ = ("RepositoryRuleUpdatePropParametersType",)
+class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
+    """Repository ruleset property targeting definition
+
+    Parameters for a targeting a repository property
+    """
+
+    name: str
+    property_values: List[str]
+    source: NotRequired[Literal["custom", "system"]]
+
+
+__all__ = (
+    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyType",
+    "RepositoryRulesetConditionsRepositoryPropertySpecType",
+)

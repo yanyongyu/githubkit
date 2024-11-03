@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -17,45 +17,41 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0049 import TeamSimple
+from .group_0002 import SimpleUser
+from .group_0031 import OrganizationSimple
 
 
-class TeamRoleAssignment(GitHubModel):
-    """A Role Assignment for a Team
+class OrgMembership(GitHubModel):
+    """Org Membership
 
-    The Relationship a Team has with a role.
+    Org Membership
     """
 
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field()
-    permissions: Missing[TeamRoleAssignmentPropPermissions] = Field(default=UNSET)
     url: str = Field()
-    html_url: str = Field()
-    members_url: str = Field()
-    repositories_url: str = Field()
-    parent: Union[None, TeamSimple] = Field()
+    state: Literal["active", "pending"] = Field(
+        description="The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation."
+    )
+    role: Literal["admin", "member", "billing_manager"] = Field(
+        description="The user's membership type in the organization."
+    )
+    organization_url: str = Field()
+    organization: OrganizationSimple = Field(
+        title="Organization Simple", description="A GitHub organization."
+    )
+    user: Union[None, SimpleUser] = Field()
+    permissions: Missing[OrgMembershipPropPermissions] = Field(default=UNSET)
 
 
-class TeamRoleAssignmentPropPermissions(GitHubModel):
-    """TeamRoleAssignmentPropPermissions"""
+class OrgMembershipPropPermissions(GitHubModel):
+    """OrgMembershipPropPermissions"""
 
-    pull: bool = Field()
-    triage: bool = Field()
-    push: bool = Field()
-    maintain: bool = Field()
-    admin: bool = Field()
+    can_create_repository: bool = Field()
 
 
-model_rebuild(TeamRoleAssignment)
-model_rebuild(TeamRoleAssignmentPropPermissions)
+model_rebuild(OrgMembership)
+model_rebuild(OrgMembershipPropPermissions)
 
 __all__ = (
-    "TeamRoleAssignment",
-    "TeamRoleAssignmentPropPermissions",
+    "OrgMembership",
+    "OrgMembershipPropPermissions",
 )

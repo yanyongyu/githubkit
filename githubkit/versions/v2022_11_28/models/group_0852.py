@@ -9,45 +9,38 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
-from typing_extensions import Annotated
+from typing import List, Literal
 
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
-from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+from githubkit.compat import GitHubModel, model_rebuild
 
 
-class OrgsOrgPropertiesSchemaCustomPropertyNamePutBody(GitHubModel):
-    """OrgsOrgPropertiesSchemaCustomPropertyNamePutBody"""
+class OrgsOrgInvitationsPostBody(GitHubModel):
+    """OrgsOrgInvitationsPostBody"""
 
-    value_type: Literal["string", "single_select", "multi_select", "true_false"] = (
-        Field(description="The type of the value for the property")
-    )
-    required: Missing[bool] = Field(
-        default=UNSET, description="Whether the property is required."
-    )
-    default_value: Missing[Union[str, List[str], None]] = Field(
-        default=UNSET, description="Default value of the property"
-    )
-    description: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Short description of the property"
-    )
-    allowed_values: Missing[
-        Union[
-            Annotated[
-                List[Annotated[str, Field(max_length=75)]],
-                Field(max_length=200 if PYDANTIC_V2 else None),
-            ],
-            None,
-        ]
-    ] = Field(
+    invitee_id: Missing[int] = Field(
         default=UNSET,
-        description="An ordered list of the allowed values of the property.\nThe property can have up to 200 allowed values.",
+        description="**Required unless you provide `email`**. GitHub user ID for the person you are inviting.",
+    )
+    email: Missing[str] = Field(
+        default=UNSET,
+        description="**Required unless you provide `invitee_id`**. Email address of the person you are inviting, which can be an existing GitHub user.",
+    )
+    role: Missing[Literal["admin", "direct_member", "billing_manager", "reinstate"]] = (
+        Field(
+            default=UNSET,
+            description="The role for the new member. \n * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  \n * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  \n * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization. \n * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization.",
+        )
+    )
+    team_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="Specify IDs for the teams you want to invite new members to.",
     )
 
 
-model_rebuild(OrgsOrgPropertiesSchemaCustomPropertyNamePutBody)
+model_rebuild(OrgsOrgInvitationsPostBody)
 
-__all__ = ("OrgsOrgPropertiesSchemaCustomPropertyNamePutBody",)
+__all__ = ("OrgsOrgInvitationsPostBody",)

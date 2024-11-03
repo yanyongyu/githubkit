@@ -9,67 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0008 import IntegrationType
-from .group_0199 import DeploymentSimpleType
-from .group_0383 import SimpleCheckSuiteType
-from .group_0172 import PullRequestMinimalType
+from typing_extensions import TypedDict
 
 
-class CheckRunWithSimpleCheckSuiteType(TypedDict):
-    """CheckRun
+class SimpleInstallationType(TypedDict):
+    """Simple Installation
 
-    A check performed on the code of a given code change
+    The GitHub App installation. Webhook payloads contain the `installation`
+    property when the event is configured
+    for and sent to a GitHub App. For more information,
+    see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-
+    github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
     """
 
-    app: Union[None, IntegrationType, None]
-    check_suite: SimpleCheckSuiteType
-    completed_at: Union[datetime, None]
-    conclusion: Union[
-        None,
-        Literal[
-            "waiting",
-            "pending",
-            "startup_failure",
-            "stale",
-            "success",
-            "failure",
-            "neutral",
-            "cancelled",
-            "skipped",
-            "timed_out",
-            "action_required",
-        ],
-    ]
-    deployment: NotRequired[DeploymentSimpleType]
-    details_url: str
-    external_id: str
-    head_sha: str
-    html_url: str
     id: int
-    name: str
     node_id: str
-    output: CheckRunWithSimpleCheckSuitePropOutputType
-    pull_requests: List[PullRequestMinimalType]
-    started_at: datetime
-    status: Literal["queued", "in_progress", "completed", "pending"]
-    url: str
 
 
-class CheckRunWithSimpleCheckSuitePropOutputType(TypedDict):
-    """CheckRunWithSimpleCheckSuitePropOutput"""
-
-    annotations_count: int
-    annotations_url: str
-    summary: Union[str, None]
-    text: Union[str, None]
-    title: Union[str, None]
-
-
-__all__ = (
-    "CheckRunWithSimpleCheckSuiteType",
-    "CheckRunWithSimpleCheckSuitePropOutputType",
-)
+__all__ = ("SimpleInstallationType",)

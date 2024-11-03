@@ -192,6 +192,8 @@ class CodeScanningClient:
         ref: Missing[str] = UNSET,
         pr: Missing[int] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         state: Missing[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
         severity: Missing[
@@ -220,6 +222,8 @@ class CodeScanningClient:
             "ref": ref,
             "pr": pr,
             "direction": direction,
+            "before": before,
+            "after": after,
             "sort": sort,
             "state": state,
             "severity": severity,
@@ -251,6 +255,8 @@ class CodeScanningClient:
         ref: Missing[str] = UNSET,
         pr: Missing[int] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
+        before: Missing[str] = UNSET,
+        after: Missing[str] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         state: Missing[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
         severity: Missing[
@@ -279,6 +285,8 @@ class CodeScanningClient:
             "ref": ref,
             "pr": pr,
             "direction": direction,
+            "before": before,
+            "after": after,
             "sort": sort,
             "state": state,
             "severity": severity,
@@ -978,6 +986,66 @@ class CodeScanningClient:
             url,
             headers=exclude_unset(headers),
             response_model=CodeScanningCodeqlDatabase,
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    def delete_codeql_database(
+        self,
+        owner: str,
+        repo: str,
+        language: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#delete-a-codeql-database"""
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return self._github.request(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
+            error_models={
+                "403": BasicError,
+                "404": BasicError,
+                "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+            },
+        )
+
+    async def async_delete_codeql_database(
+        self,
+        owner: str,
+        repo: str,
+        language: str,
+        *,
+        headers: Optional[Dict[str, str]] = None,
+    ) -> Response:
+        """See also: https://docs.github.com/rest/code-scanning/code-scanning#delete-a-codeql-database"""
+
+        from ..models import (
+            BasicError,
+            EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
+        )
+
+        url = f"/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}"
+
+        headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
+
+        return await self._github.arequest(
+            "DELETE",
+            url,
+            headers=exclude_unset(headers),
             error_models={
                 "403": BasicError,
                 "404": BasicError,

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from typing import List
 
 from pydantic import Field
 
@@ -18,15 +18,21 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class UserProjectsPostBody(GitHubModel):
-    """UserProjectsPostBody"""
+class UserCodespacesCodespaceNamePatchBody(GitHubModel):
+    """UserCodespacesCodespaceNamePatchBody"""
 
-    name: str = Field(description="Name of the project")
-    body: Missing[Union[str, None]] = Field(
-        default=UNSET, description="Body of the project"
+    machine: Missing[str] = Field(
+        default=UNSET, description="A valid machine to transition this codespace to."
+    )
+    display_name: Missing[str] = Field(
+        default=UNSET, description="Display name for this codespace"
+    )
+    recent_folders: Missing[List[str]] = Field(
+        default=UNSET,
+        description="Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in.",
     )
 
 
-model_rebuild(UserProjectsPostBody)
+model_rebuild(UserCodespacesCodespaceNamePatchBody)
 
-__all__ = ("UserProjectsPostBody",)
+__all__ = ("UserCodespacesCodespaceNamePatchBody",)

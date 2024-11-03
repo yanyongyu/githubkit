@@ -40,7 +40,9 @@ if TYPE_CHECKING:
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBodyType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdDefaultsPutBodyType,
+        OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsType,
         OrgsOrgCodeSecurityConfigurationsPostBodyPropDependencyGraphAutosubmitActionOptionsType,
+        OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsType,
         OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropDependencyGraphAutosubmitActionOptionsType,
     )
 
@@ -175,6 +177,12 @@ class CodeSecurityClient:
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        secret_scanning_delegated_bypass: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_delegated_bypass_options: Missing[
+            OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsType
+        ] = UNSET,
         secret_scanning_validity_checks: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -259,6 +267,12 @@ class CodeSecurityClient:
         secret_scanning: Missing[Literal["enabled", "disabled", "not_set"]] = UNSET,
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_delegated_bypass: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_delegated_bypass_options: Missing[
+            OrgsOrgCodeSecurityConfigurationsPostBodyPropSecretScanningDelegatedBypassOptionsType
         ] = UNSET,
         secret_scanning_validity_checks: Missing[
             Literal["enabled", "disabled", "not_set"]
@@ -631,6 +645,12 @@ class CodeSecurityClient:
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        secret_scanning_delegated_bypass: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_delegated_bypass_options: Missing[
+            OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsType
+        ] = UNSET,
         secret_scanning_validity_checks: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -723,6 +743,12 @@ class CodeSecurityClient:
         secret_scanning_push_protection: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
+        secret_scanning_delegated_bypass: Missing[
+            Literal["enabled", "disabled", "not_set"]
+        ] = UNSET,
+        secret_scanning_delegated_bypass_options: Missing[
+            OrgsOrgCodeSecurityConfigurationsConfigurationIdPatchBodyPropSecretScanningDelegatedBypassOptionsType
+        ] = UNSET,
         secret_scanning_validity_checks: Missing[
             Literal["enabled", "disabled", "not_set"]
         ] = UNSET,
@@ -794,7 +820,13 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
-        scope: Literal["all", "public", "private_or_internal", "selected"],
+        scope: Literal[
+            "all",
+            "all_without_configurations",
+            "public",
+            "private_or_internal",
+            "selected",
+        ],
         selected_repository_ids: Missing[List[int]] = UNSET,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
 
@@ -857,7 +889,13 @@ class CodeSecurityClient:
         *,
         data: UnsetType = UNSET,
         headers: Optional[Dict[str, str]] = None,
-        scope: Literal["all", "public", "private_or_internal", "selected"],
+        scope: Literal[
+            "all",
+            "all_without_configurations",
+            "public",
+            "private_or_internal",
+            "selected",
+        ],
         selected_repository_ids: Missing[List[int]] = UNSET,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
 

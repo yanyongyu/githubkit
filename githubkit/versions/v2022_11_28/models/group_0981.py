@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-from datetime import datetime
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,74 +18,40 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReposOwnerRepoGitCommitsPostBody(GitHubModel):
-    """ReposOwnerRepoGitCommitsPostBody"""
+class ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody(GitHubModel):
+    """ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody"""
 
-    message: str = Field(description="The commit message")
-    tree: str = Field(description="The SHA of the tree object this commit points to")
-    parents: Missing[List[str]] = Field(
+    state: Literal[
+        "error", "failure", "inactive", "in_progress", "queued", "pending", "success"
+    ] = Field(
+        description="The state of the status. When you set a transient deployment to `inactive`, the deployment will be shown as `destroyed` in GitHub."
+    )
+    target_url: Missing[str] = Field(
         default=UNSET,
-        description="The full SHAs of the commits that were the parents of this commit. If omitted or empty, the commit will be written as a root commit. For a single parent, an array of one SHA should be provided; for a merge commit, an array of more than one should be provided.",
+        description="The target URL to associate with this status. This URL should contain output to keep the user updated while the task is running or serve as historical information for what happened in the deployment.\n\n> [!NOTE]\n> It's recommended to use the `log_url` parameter, which replaces `target_url`.",
     )
-    author: Missing[ReposOwnerRepoGitCommitsPostBodyPropAuthor] = Field(
+    log_url: Missing[str] = Field(
         default=UNSET,
-        description="Information about the author of the commit. By default, the `author` will be the authenticated user and the current date. See the `author` and `committer` object below for details.",
+        description='The full URL of the deployment\'s output. This parameter replaces `target_url`. We will continue to accept `target_url` to support legacy uses, but we recommend replacing `target_url` with `log_url`. Setting `log_url` will automatically set `target_url` to the same value. Default: `""`',
     )
-    committer: Missing[ReposOwnerRepoGitCommitsPostBodyPropCommitter] = Field(
+    description: Missing[str] = Field(
         default=UNSET,
-        description="Information about the person who is making the commit. By default, `committer` will use the information set in `author`. See the `author` and `committer` object below for details.",
+        description="A short description of the status. The maximum description length is 140 characters.",
     )
-    signature: Missing[str] = Field(
+    environment: Missing[str] = Field(
         default=UNSET,
-        description="The [PGP signature](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) of the commit. GitHub adds the signature to the `gpgsig` header of the created commit. For a commit signature to be verifiable by Git or GitHub, it must be an ASCII-armored detached PGP signature over the string commit as it would be written to the object database. To pass a `signature` parameter, you need to first manually create a valid PGP signature, which can be complicated. You may find it easier to [use the command line](https://git-scm.com/book/id/v2/Git-Tools-Signing-Your-Work) to create signed commits.",
+        description="Name for the target deployment environment, which can be changed when setting a deploy status. For example, `production`, `staging`, or `qa`. If not defined, the environment of the previous status on the deployment will be used, if it exists. Otherwise, the environment of the deployment will be used.",
     )
-
-
-class ReposOwnerRepoGitCommitsPostBodyPropAuthor(GitHubModel):
-    """ReposOwnerRepoGitCommitsPostBodyPropAuthor
-
-    Information about the author of the commit. By default, the `author` will be the
-    authenticated user and the current date. See the `author` and `committer` object
-    below for details.
-    """
-
-    name: str = Field(description="The name of the author (or committer) of the commit")
-    email: str = Field(
-        description="The email of the author (or committer) of the commit"
-    )
-    date: Missing[datetime] = Field(
+    environment_url: Missing[str] = Field(
         default=UNSET,
-        description="Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description='Sets the URL for accessing your environment. Default: `""`',
     )
-
-
-class ReposOwnerRepoGitCommitsPostBodyPropCommitter(GitHubModel):
-    """ReposOwnerRepoGitCommitsPostBodyPropCommitter
-
-    Information about the person who is making the commit. By default, `committer`
-    will use the information set in `author`. See the `author` and `committer`
-    object below for details.
-    """
-
-    name: Missing[str] = Field(
-        default=UNSET, description="The name of the author (or committer) of the commit"
-    )
-    email: Missing[str] = Field(
+    auto_inactive: Missing[bool] = Field(
         default=UNSET,
-        description="The email of the author (or committer) of the commit",
-    )
-    date: Missing[datetime] = Field(
-        default=UNSET,
-        description="Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.",
+        description="Adds a new `inactive` status to all prior non-transient, non-production environment deployments with the same repository and `environment` name as the created status's deployment. An `inactive` status is only added to deployments that had a `success` state. Default: `true`",
     )
 
 
-model_rebuild(ReposOwnerRepoGitCommitsPostBody)
-model_rebuild(ReposOwnerRepoGitCommitsPostBodyPropAuthor)
-model_rebuild(ReposOwnerRepoGitCommitsPostBodyPropCommitter)
+model_rebuild(ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody)
 
-__all__ = (
-    "ReposOwnerRepoGitCommitsPostBody",
-    "ReposOwnerRepoGitCommitsPostBodyPropAuthor",
-    "ReposOwnerRepoGitCommitsPostBodyPropCommitter",
-)
+__all__ = ("ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBody",)

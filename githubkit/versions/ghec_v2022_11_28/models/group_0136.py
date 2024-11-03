@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 
 from pydantic import Field
 
@@ -18,41 +18,19 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty(
-    GitHubModel
-):
-    """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
+class RepositoryRulesetConditionsPropRefName(GitHubModel):
+    """RepositoryRulesetConditionsPropRefName"""
 
-    include: Missing[List[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+    include: Missing[List[str]] = Field(
         default=UNSET,
-        description="The repository properties and values to include. All of these properties must match for the condition to pass.",
+        description="Array of ref names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~DEFAULT_BRANCH` to include the default branch or `~ALL` to include all branches.",
     )
-    exclude: Missing[List[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+    exclude: Missing[List[str]] = Field(
         default=UNSET,
-        description="The repository properties and values to exclude. The condition will not pass if any of these properties match.",
+        description="Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match.",
     )
 
 
-class RepositoryRulesetConditionsRepositoryPropertySpec(GitHubModel):
-    """Repository ruleset property targeting definition
+model_rebuild(RepositoryRulesetConditionsPropRefName)
 
-    Parameters for a targeting a repository property
-    """
-
-    name: str = Field(description="The name of the repository property to target")
-    property_values: List[str] = Field(
-        description="The values to match for the repository property"
-    )
-    source: Missing[Literal["custom", "system"]] = Field(
-        default=UNSET,
-        description="The source of the repository property. Defaults to 'custom' if not specified.",
-    )
-
-
-model_rebuild(RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty)
-model_rebuild(RepositoryRulesetConditionsRepositoryPropertySpec)
-
-__all__ = (
-    "RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty",
-    "RepositoryRulesetConditionsRepositoryPropertySpec",
-)
+__all__ = ("RepositoryRulesetConditionsPropRefName",)

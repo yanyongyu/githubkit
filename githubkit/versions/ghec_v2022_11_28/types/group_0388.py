@@ -9,42 +9,27 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
-
-from .group_0380 import MetaType
-from .group_0386 import UserRoleItemsType
-from .group_0385 import UserNameResponseType, UserEmailsResponseItemsType
-from .group_0390 import ScimEnterpriseUserResponseAllof1PropGroupsItemsType
+from typing import List, Literal
+from typing_extensions import TypedDict
 
 
-class ScimEnterpriseUserResponseType(TypedDict):
-    """ScimEnterpriseUserResponse"""
+class GroupType(TypedDict):
+    """Group"""
 
-    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
-    external_id: NotRequired[Union[str, None]]
-    active: bool
-    user_name: NotRequired[str]
-    name: NotRequired[UserNameResponseType]
-    display_name: NotRequired[Union[str, None]]
-    emails: List[UserEmailsResponseItemsType]
-    roles: NotRequired[List[UserRoleItemsType]]
-    id: str
-    groups: NotRequired[List[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
-    meta: MetaType
+    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]]
+    external_id: str
+    display_name: str
+    members: List[GroupPropMembersItemsType]
 
 
-class ScimEnterpriseUserListType(TypedDict):
-    """ScimEnterpriseUserList"""
+class GroupPropMembersItemsType(TypedDict):
+    """GroupPropMembersItems"""
 
-    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
-    total_results: int
-    resources: List[ScimEnterpriseUserResponseType]
-    start_index: int
-    items_per_page: int
+    value: str
+    display_name: str
 
 
 __all__ = (
-    "ScimEnterpriseUserResponseType",
-    "ScimEnterpriseUserListType",
+    "GroupType",
+    "GroupPropMembersItemsType",
 )

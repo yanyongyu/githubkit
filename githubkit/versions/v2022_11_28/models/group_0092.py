@@ -17,45 +17,21 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0028 import TeamSimple
+
+class ApiInsightsUserStatsItems(GitHubModel):
+    """ApiInsightsUserStatsItems"""
+
+    actor_type: Missing[str] = Field(default=UNSET)
+    actor_name: Missing[str] = Field(default=UNSET)
+    actor_id: Missing[int] = Field(default=UNSET)
+    integration_id: Missing[Union[int, None]] = Field(default=UNSET)
+    oauth_application_id: Missing[Union[int, None]] = Field(default=UNSET)
+    total_request_count: Missing[int] = Field(default=UNSET)
+    rate_limited_request_count: Missing[int] = Field(default=UNSET)
+    last_rate_limited_timestamp: Missing[Union[str, None]] = Field(default=UNSET)
+    last_request_timestamp: Missing[str] = Field(default=UNSET)
 
 
-class TeamRoleAssignment(GitHubModel):
-    """A Role Assignment for a Team
+model_rebuild(ApiInsightsUserStatsItems)
 
-    The Relationship a Team has with a role.
-    """
-
-    id: int = Field()
-    node_id: str = Field()
-    name: str = Field()
-    slug: str = Field()
-    description: Union[str, None] = Field()
-    privacy: Missing[str] = Field(default=UNSET)
-    notification_setting: Missing[str] = Field(default=UNSET)
-    permission: str = Field()
-    permissions: Missing[TeamRoleAssignmentPropPermissions] = Field(default=UNSET)
-    url: str = Field()
-    html_url: str = Field()
-    members_url: str = Field()
-    repositories_url: str = Field()
-    parent: Union[None, TeamSimple] = Field()
-
-
-class TeamRoleAssignmentPropPermissions(GitHubModel):
-    """TeamRoleAssignmentPropPermissions"""
-
-    pull: bool = Field()
-    triage: bool = Field()
-    push: bool = Field()
-    maintain: bool = Field()
-    admin: bool = Field()
-
-
-model_rebuild(TeamRoleAssignment)
-model_rebuild(TeamRoleAssignmentPropPermissions)
-
-__all__ = (
-    "TeamRoleAssignment",
-    "TeamRoleAssignmentPropPermissions",
-)
+__all__ = ("ApiInsightsUserStatsItems",)

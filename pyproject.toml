@@ -261,14 +261,14 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
   "string",
   "null",
 ] }
-"/components/schemas/pull-request/properties/head/properties/repo/properties/temp_clone_token" = { type = [
-  "string",
-  "null",
-] }
-"/components/schemas/pull-request/properties/base/properties/repo/properties/temp_clone_token" = { type = [
-  "string",
-  "null",
-] }
+# "/components/schemas/pull-request/properties/head/properties/repo/properties/temp_clone_token" = { type = [
+#   "string",
+#   "null",
+# ] }
+# "/components/schemas/pull-request/properties/base/properties/repo/properties/temp_clone_token" = { type = [
+#   "string",
+#   "null",
+# ] }
 "/components/schemas/repo-search-result-item/properties/temp_clone_token" = { type = [
   "string",
   "null",

@@ -9,18 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0019 import RepositoryType
+
+class GistsPostBodyType(TypedDict):
+    """GistsPostBody"""
+
+    description: NotRequired[str]
+    files: GistsPostBodyPropFilesType
+    public: NotRequired[Union[bool, Literal["true", "false"]]]
 
 
-class InstallationRepositoriesGetResponse200Type(TypedDict):
-    """InstallationRepositoriesGetResponse200"""
+class GistsPostBodyPropFilesType(TypedDict):
+    """GistsPostBodyPropFiles
 
-    total_count: int
-    repositories: List[RepositoryType]
-    repository_selection: NotRequired[str]
+    Names and content for the files that make up the gist
+
+    Examples:
+        {'hello.rb': {'content': 'puts "Hello, World!"'}}
+    """
 
 
-__all__ = ("InstallationRepositoriesGetResponse200Type",)
+__all__ = (
+    "GistsPostBodyType",
+    "GistsPostBodyPropFilesType",
+)

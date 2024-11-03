@@ -9,25 +9,56 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+from datetime import datetime
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CombinedBillingUsage(GitHubModel):
-    """CombinedBillingUsage"""
+class RuleSuitesItems(GitHubModel):
+    """RuleSuitesItems"""
 
-    days_left_in_billing_cycle: int = Field(
-        description="Numbers of days left in billing cycle."
+    id: Missing[int] = Field(
+        default=UNSET, description="The unique identifier of the rule insight."
     )
-    estimated_paid_storage_for_month: int = Field(
-        description="Estimated storage space (GB) used in billing cycle."
+    actor_id: Missing[int] = Field(
+        default=UNSET, description="The number that identifies the user."
     )
-    estimated_storage_for_month: int = Field(
-        description="Estimated sum of free and paid storage space (GB) used in billing cycle."
+    actor_name: Missing[str] = Field(
+        default=UNSET, description="The handle for the GitHub user account."
+    )
+    before_sha: Missing[str] = Field(
+        default=UNSET, description="The first commit sha before the push evaluation."
+    )
+    after_sha: Missing[str] = Field(
+        default=UNSET, description="The last commit sha in the push evaluation."
+    )
+    ref: Missing[str] = Field(
+        default=UNSET, description="The ref name that the evaluation ran on."
+    )
+    repository_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the repository associated with the rule evaluation.",
+    )
+    repository_name: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the repository without the `.git` extension.",
+    )
+    pushed_at: Missing[datetime] = Field(default=UNSET)
+    result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` enforcement status.",
+    )
+    evaluation_result: Missing[Literal["pass", "fail", "bypass"]] = Field(
+        default=UNSET,
+        description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.",
     )
 
 
-model_rebuild(CombinedBillingUsage)
+model_rebuild(RuleSuitesItems)
 
-__all__ = ("CombinedBillingUsage",)
+__all__ = ("RuleSuitesItems",)

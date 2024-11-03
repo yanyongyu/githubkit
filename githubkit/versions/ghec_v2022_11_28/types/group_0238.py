@@ -9,37 +9,23 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 
-class CodeScanningDefaultSetupType(TypedDict):
-    """CodeScanningDefaultSetup
+class CodeScanningVariantAnalysisRepositoryType(TypedDict):
+    """Repository Identifier
 
-    Configuration for code scanning default setup.
+    Repository Identifier
     """
 
-    state: NotRequired[Literal["configured", "not-configured"]]
-    languages: NotRequired[
-        List[
-            Literal[
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "javascript",
-                "python",
-                "ruby",
-                "typescript",
-                "swift",
-            ]
-        ]
-    ]
-    query_suite: NotRequired[Literal["default", "extended"]]
-    updated_at: NotRequired[Union[datetime, None]]
-    schedule: NotRequired[Union[None, Literal["weekly"]]]
+    id: int
+    name: str
+    full_name: str
+    private: bool
+    stargazers_count: int
+    updated_at: Union[datetime, None]
 
 
-__all__ = ("CodeScanningDefaultSetupType",)
+__all__ = ("CodeScanningVariantAnalysisRepositoryType",)

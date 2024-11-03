@@ -9,53 +9,30 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeScanningDefaultSetup(GitHubModel):
-    """CodeScanningDefaultSetup
+class CodeScanningVariantAnalysisRepository(GitHubModel):
+    """Repository Identifier
 
-    Configuration for code scanning default setup.
+    Repository Identifier
     """
 
-    state: Missing[Literal["configured", "not-configured"]] = Field(
-        default=UNSET,
-        description="Code scanning default setup has been configured or not.",
+    id: int = Field(description="A unique identifier of the repository.")
+    name: str = Field(description="The name of the repository.")
+    full_name: str = Field(
+        description="The full, globally unique, name of the repository."
     )
-    languages: Missing[
-        List[
-            Literal[
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "javascript",
-                "python",
-                "ruby",
-                "typescript",
-                "swift",
-            ]
-        ]
-    ] = Field(default=UNSET, description="Languages to be analyzed.")
-    query_suite: Missing[Literal["default", "extended"]] = Field(
-        default=UNSET, description="CodeQL query suite to be used."
-    )
-    updated_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET, description="Timestamp of latest configuration update."
-    )
-    schedule: Missing[Union[None, Literal["weekly"]]] = Field(
-        default=UNSET, description="The frequency of the periodic analysis."
-    )
+    private: bool = Field(description="Whether the repository is private.")
+    stargazers_count: int = Field()
+    updated_at: Union[datetime, None] = Field()
 
 
-model_rebuild(CodeScanningDefaultSetup)
+model_rebuild(CodeScanningVariantAnalysisRepository)
 
-__all__ = ("CodeScanningDefaultSetup",)
+__all__ = ("CodeScanningVariantAnalysisRepository",)

@@ -16,20 +16,24 @@ from pydantic import Field
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class CodeScanningAnalysisDeletion(GitHubModel):
-    """Analysis deletion
+class CheckAnnotation(GitHubModel):
+    """Check Annotation
 
-    Successful deletion of a code scanning analysis
+    Check Annotation
     """
 
-    next_analysis_url: Union[str, None] = Field(
-        description="Next deletable analysis in chain, without last analysis deletion confirmation"
-    )
-    confirm_delete_url: Union[str, None] = Field(
-        description="Next deletable analysis in chain, with last analysis deletion confirmation"
-    )
+    path: str = Field()
+    start_line: int = Field()
+    end_line: int = Field()
+    start_column: Union[int, None] = Field()
+    end_column: Union[int, None] = Field()
+    annotation_level: Union[str, None] = Field()
+    title: Union[str, None] = Field()
+    message: Union[str, None] = Field()
+    raw_details: Union[str, None] = Field()
+    blob_href: str = Field()
 
 
-model_rebuild(CodeScanningAnalysisDeletion)
+model_rebuild(CheckAnnotation)
 
-__all__ = ("CodeScanningAnalysisDeletion",)
+__all__ = ("CheckAnnotation",)

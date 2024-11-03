@@ -10,75 +10,43 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0068 import IssueType
-from .group_0069 import IssueCommentType
+from .group_0002 import SimpleUserType
+from .group_0008 import IntegrationType
+from .group_0068 import ReactionRollupType
 
 
-class EventPropPayloadType(TypedDict):
-    """EventPropPayload"""
+class IssueCommentType(TypedDict):
+    """Issue Comment
 
-    action: NotRequired[str]
-    issue: NotRequired[IssueType]
-    comment: NotRequired[IssueCommentType]
-    pages: NotRequired[List[EventPropPayloadPropPagesItemsType]]
-
-
-class EventPropPayloadPropPagesItemsType(TypedDict):
-    """EventPropPayloadPropPagesItems"""
-
-    page_name: NotRequired[str]
-    title: NotRequired[str]
-    summary: NotRequired[Union[str, None]]
-    action: NotRequired[str]
-    sha: NotRequired[str]
-    html_url: NotRequired[str]
-
-
-class EventType(TypedDict):
-    """Event
-
-    Event
-    """
-
-    id: str
-    type: Union[str, None]
-    actor: ActorType
-    repo: EventPropRepoType
-    org: NotRequired[ActorType]
-    payload: EventPropPayloadType
-    public: bool
-    created_at: Union[datetime, None]
-
-
-class ActorType(TypedDict):
-    """Actor
-
-    Actor
+    Comments provide a way for people to collaborate on an issue.
     """
 
     id: int
-    login: str
-    display_login: NotRequired[str]
-    gravatar_id: Union[str, None]
+    node_id: str
     url: str
-    avatar_url: str
+    body: NotRequired[str]
+    body_text: NotRequired[str]
+    body_html: NotRequired[str]
+    html_url: str
+    user: Union[None, SimpleUserType]
+    created_at: datetime
+    updated_at: datetime
+    issue_url: str
+    author_association: Literal[
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIMER",
+        "FIRST_TIME_CONTRIBUTOR",
+        "MANNEQUIN",
+        "MEMBER",
+        "NONE",
+        "OWNER",
+    ]
+    performed_via_github_app: NotRequired[Union[None, IntegrationType, None]]
+    reactions: NotRequired[ReactionRollupType]
 
 
-class EventPropRepoType(TypedDict):
-    """EventPropRepo"""
-
-    id: int
-    name: str
-    url: str
-
-
-__all__ = (
-    "EventPropPayloadType",
-    "EventPropPayloadPropPagesItemsType",
-    "EventType",
-    "ActorType",
-    "EventPropRepoType",
-)
+__all__ = ("IssueCommentType",)

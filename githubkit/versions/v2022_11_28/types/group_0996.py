@@ -9,13 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 
-class ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType(TypedDict):
-    """ReposOwnerRepoIssuesCommentsCommentIdPatchBody"""
+class ReposOwnerRepoGitRefsRefPatchBodyType(TypedDict):
+    """ReposOwnerRepoGitRefsRefPatchBody"""
 
-    body: str
+    sha: str
+    force: NotRequired[bool]
 
 
-__all__ = ("ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType",)
+__all__ = ("ReposOwnerRepoGitRefsRefPatchBodyType",)

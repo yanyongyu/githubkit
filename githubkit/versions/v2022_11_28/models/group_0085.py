@@ -9,7 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -18,28 +19,30 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 from .group_0002 import SimpleUser
+from .group_0058 import MinimalRepository
 
 
-class OrganizationInvitation(GitHubModel):
-    """Organization Invitation
+class Package(GitHubModel):
+    """Package
 
-    Organization Invitation
+    A software package
     """
 
-    id: int = Field()
-    login: Union[str, None] = Field()
-    email: Union[str, None] = Field()
-    role: str = Field()
-    created_at: str = Field()
-    failed_at: Missing[Union[str, None]] = Field(default=UNSET)
-    failed_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    inviter: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    team_count: int = Field()
-    node_id: str = Field()
-    invitation_teams_url: str = Field()
-    invitation_source: Missing[str] = Field(default=UNSET)
+    id: int = Field(description="Unique identifier of the package.")
+    name: str = Field(description="The name of the package.")
+    package_type: Literal[
+        "npm", "maven", "rubygems", "docker", "nuget", "container"
+    ] = Field()
+    url: str = Field()
+    html_url: str = Field()
+    version_count: int = Field(description="The number of versions of the package.")
+    visibility: Literal["private", "public"] = Field()
+    owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
+    repository: Missing[Union[None, MinimalRepository]] = Field(default=UNSET)
+    created_at: datetime = Field()
+    updated_at: datetime = Field()
 
 
-model_rebuild(OrganizationInvitation)
+model_rebuild(Package)
 
-__all__ = ("OrganizationInvitation",)
+__all__ = ("Package",)

@@ -10,33 +10,35 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
 
 
-class ProjectType(TypedDict):
-    """Project
+class OrganizationRoleType(TypedDict):
+    """Organization Role
 
-    Projects are a way to organize columns and cards of work.
+    Organization roles
     """
 
-    owner_url: str
-    url: str
-    html_url: str
-    columns_url: str
     id: int
-    node_id: str
     name: str
-    body: Union[str, None]
-    number: int
-    state: str
-    creator: Union[None, SimpleUserType]
+    description: NotRequired[Union[str, None]]
+    permissions: List[str]
+    organization: Union[None, SimpleUserType]
     created_at: datetime
     updated_at: datetime
-    organization_permission: NotRequired[Literal["read", "write", "admin", "none"]]
-    private: NotRequired[bool]
 
 
-__all__ = ("ProjectType",)
+class OrgsOrgOrganizationRolesGetResponse200Type(TypedDict):
+    """OrgsOrgOrganizationRolesGetResponse200"""
+
+    total_count: NotRequired[int]
+    roles: NotRequired[List[OrganizationRoleType]]
+
+
+__all__ = (
+    "OrganizationRoleType",
+    "OrgsOrgOrganizationRolesGetResponse200Type",
+)

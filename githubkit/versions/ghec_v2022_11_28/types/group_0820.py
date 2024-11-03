@@ -9,20 +9,21 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-
-class EnterprisesEnterpriseActionsRunnerGroupsPostBodyType(TypedDict):
-    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
-
-    name: str
-    visibility: NotRequired[Literal["selected", "all"]]
-    selected_organization_ids: NotRequired[List[int]]
-    runners: NotRequired[List[int]]
-    allows_public_repositories: NotRequired[bool]
-    restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[List[str]]
+from .group_0016 import AppPermissionsType
 
 
-__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsPostBodyType",)
+class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
+    """ApplicationsClientIdTokenScopedPostBody"""
+
+    access_token: str
+    target: NotRequired[str]
+    target_id: NotRequired[int]
+    repositories: NotRequired[List[str]]
+    repository_ids: NotRequired[List[int]]
+    permissions: NotRequired[AppPermissionsType]
+
+
+__all__ = ("ApplicationsClientIdTokenScopedPostBodyType",)

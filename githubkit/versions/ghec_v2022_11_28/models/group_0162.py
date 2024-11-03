@@ -9,23 +9,29 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
 from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0163 import RepositoryRuleCommitterEmailPatternPropParameters
 
-class RepositoryRuleParamsRestrictedCommits(GitHubModel):
-    """RestrictedCommits
 
-    Restricted commit
+class RepositoryRuleCommitterEmailPattern(GitHubModel):
+    """committer_email_pattern
+
+    Parameters to be used for the committer_email_pattern rule
     """
 
-    oid: str = Field(description="Full or abbreviated commit hash to reject")
-    reason: Missing[str] = Field(default=UNSET, description="Reason for restriction")
+    type: Literal["committer_email_pattern"] = Field()
+    parameters: Missing[RepositoryRuleCommitterEmailPatternPropParameters] = Field(
+        default=UNSET
+    )
 
 
-model_rebuild(RepositoryRuleParamsRestrictedCommits)
+model_rebuild(RepositoryRuleCommitterEmailPattern)
 
-__all__ = ("RepositoryRuleParamsRestrictedCommits",)
+__all__ = ("RepositoryRuleCommitterEmailPattern",)

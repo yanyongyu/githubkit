@@ -9,49 +9,25 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
-from githubkit.compat import GitHubModel, model_rebuild
+from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
+
+from .group_0129 import CustomProperty
 
 
-class OrgsOrgTeamsPostBody(GitHubModel):
-    """OrgsOrgTeamsPostBody"""
+class OrgsOrgPropertiesSchemaPatchBody(GitHubModel):
+    """OrgsOrgPropertiesSchemaPatchBody"""
 
-    name: str = Field(description="The name of the team.")
-    description: Missing[str] = Field(
-        default=UNSET, description="The description of the team."
-    )
-    maintainers: Missing[List[str]] = Field(
-        default=UNSET,
-        description="List GitHub IDs for organization members who will become team maintainers.",
-    )
-    repo_names: Missing[List[str]] = Field(
-        default=UNSET,
-        description='The full name (e.g., "organization-name/repository-name") of repositories to add the team to.',
-    )
-    privacy: Missing[Literal["secret", "closed"]] = Field(
-        default=UNSET,
-        description="The level of privacy this team should have. The options are:  \n**For a non-nested team:**  \n * `secret` - only visible to organization owners and members of this team.  \n * `closed` - visible to all members of this organization.  \nDefault: `secret`  \n**For a parent or child team:**  \n * `closed` - visible to all members of this organization.  \nDefault for child team: `closed`",
-    )
-    notification_setting: Missing[
-        Literal["notifications_enabled", "notifications_disabled"]
-    ] = Field(
-        default=UNSET,
-        description="The notification setting the team has chosen. The options are:  \n * `notifications_enabled` - team members receive notifications when the team is @mentioned.  \n * `notifications_disabled` - no one receives notifications.  \nDefault: `notifications_enabled`",
-    )
-    permission: Missing[Literal["pull", "push"]] = Field(
-        default=UNSET,
-        description="**Deprecated**. The permission that new repositories will be added to the team with when none is specified.",
-    )
-    parent_team_id: Missing[int] = Field(
-        default=UNSET, description="The ID of a team to set as the parent team."
+    properties: List[CustomProperty] = Field(
+        max_length=100 if PYDANTIC_V2 else None,
+        min_length=1 if PYDANTIC_V2 else None,
+        description="The array of custom properties to create or update.",
     )
 
 
-model_rebuild(OrgsOrgTeamsPostBody)
+model_rebuild(OrgsOrgPropertiesSchemaPatchBody)
 
-__all__ = ("OrgsOrgTeamsPostBody",)
+__all__ = ("OrgsOrgPropertiesSchemaPatchBody",)

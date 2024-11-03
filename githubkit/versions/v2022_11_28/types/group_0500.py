@@ -9,28 +9,17 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0002 import SimpleUserType
-from .group_0017 import InstallationType
-from .group_0378 import EnterpriseWebhooksType
-from .group_0381 import RepositoryWebhooksType
-from .group_0394 import WebhooksRepositoriesItemsType
-from .group_0380 import OrganizationSimpleWebhooksType
+
+class WebhookForkPropForkeeAllof0PropPermissionsType(TypedDict):
+    """WebhookForkPropForkeeAllof0PropPermissions"""
+
+    admin: bool
+    maintain: NotRequired[bool]
+    pull: bool
+    push: bool
+    triage: NotRequired[bool]
 
 
-class WebhookInstallationDeletedType(TypedDict):
-    """installation deleted event"""
-
-    action: Literal["deleted"]
-    enterprise: NotRequired[EnterpriseWebhooksType]
-    installation: InstallationType
-    organization: NotRequired[OrganizationSimpleWebhooksType]
-    repositories: NotRequired[List[WebhooksRepositoriesItemsType]]
-    repository: NotRequired[RepositoryWebhooksType]
-    requester: NotRequired[None]
-    sender: SimpleUserType
-
-
-__all__ = ("WebhookInstallationDeletedType",)
+__all__ = ("WebhookForkPropForkeeAllof0PropPermissionsType",)

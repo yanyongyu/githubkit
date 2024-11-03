@@ -19,11 +19,13 @@ from ..models import (
     WebhookSecretScanningAlertReopened,
     WebhookSecretScanningAlertResolved,
     WebhookSecretScanningAlertValidated,
+    WebhookSecretScanningAlertPubliclyLeaked,
 )
 
 Event: TypeAlias = Annotated[
     Union[
         WebhookSecretScanningAlertCreated,
+        WebhookSecretScanningAlertPubliclyLeaked,
         WebhookSecretScanningAlertReopened,
         WebhookSecretScanningAlertResolved,
         WebhookSecretScanningAlertValidated,
@@ -35,6 +37,7 @@ SecretScanningAlertEvent: TypeAlias = Event
 
 action_types: Dict[str, Type[GitHubModel]] = {
     "created": WebhookSecretScanningAlertCreated,
+    "publicly_leaked": WebhookSecretScanningAlertPubliclyLeaked,
     "reopened": WebhookSecretScanningAlertReopened,
     "resolved": WebhookSecretScanningAlertResolved,
     "validated": WebhookSecretScanningAlertValidated,

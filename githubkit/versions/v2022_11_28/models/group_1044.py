@@ -13,22 +13,19 @@ from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0105 import CustomPropertyValue
 
-class ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody(GitHubModel):
-    """ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody"""
 
-    reviewers: List[str] = Field(
-        description="An array of user `login`s that will be removed."
+class ReposOwnerRepoPropertiesValuesPatchBody(GitHubModel):
+    """ReposOwnerRepoPropertiesValuesPatchBody"""
+
+    properties: List[CustomPropertyValue] = Field(
+        description="A list of custom property names and associated values to apply to the repositories."
     )
-    team_reviewers: Missing[List[str]] = Field(
-        default=UNSET, description="An array of team `slug`s that will be removed."
-    )
 
 
-model_rebuild(ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody)
+model_rebuild(ReposOwnerRepoPropertiesValuesPatchBody)
 
-__all__ = ("ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBody",)
+__all__ = ("ReposOwnerRepoPropertiesValuesPatchBody",)

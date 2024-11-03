@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ProjectsColumnsColumnIdMovesPostBody(GitHubModel):
-    """ProjectsColumnsColumnIdMovesPostBody"""
+class OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403(GitHubModel):
+    """OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403"""
 
-    position: str = Field(
-        pattern="^(?:first|last|after:\\d+)$",
-        description="The position of the column in a project. Can be one of: `first`, `last`, or `after:<column_id>` to place after the specified column.",
-    )
+    message: Missing[str] = Field(default=UNSET)
+    documentation_url: Missing[str] = Field(default=UNSET)
 
 
-model_rebuild(ProjectsColumnsColumnIdMovesPostBody)
+model_rebuild(OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403)
 
-__all__ = ("ProjectsColumnsColumnIdMovesPostBody",)
+__all__ = ("OrgsOrgTeamsTeamSlugProjectsProjectIdPutResponse403",)

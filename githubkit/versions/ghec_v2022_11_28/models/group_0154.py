@@ -17,21 +17,20 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0155 import RepositoryRuleCommitAuthorEmailPatternPropParameters
+from .group_0155 import RepositoryRulePullRequestPropParameters
 
 
-class RepositoryRuleCommitAuthorEmailPattern(GitHubModel):
-    """commit_author_email_pattern
+class RepositoryRulePullRequest(GitHubModel):
+    """pull_request
 
-    Parameters to be used for the commit_author_email_pattern rule
+    Require all commits be made to a non-target branch and submitted via a pull
+    request before they can be merged.
     """
 
-    type: Literal["commit_author_email_pattern"] = Field()
-    parameters: Missing[RepositoryRuleCommitAuthorEmailPatternPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["pull_request"] = Field()
+    parameters: Missing[RepositoryRulePullRequestPropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleCommitAuthorEmailPattern)
+model_rebuild(RepositoryRulePullRequest)
 
-__all__ = ("RepositoryRuleCommitAuthorEmailPattern",)
+__all__ = ("RepositoryRulePullRequest",)

@@ -9,27 +9,32 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import Literal
 from typing_extensions import TypedDict
 
 from .group_0002 import SimpleUserType
 
 
-class ReactionType(TypedDict):
-    """Reaction
+class RepositoryAdvisoryCreditType(TypedDict):
+    """RepositoryAdvisoryCredit
 
-    Reactions to conversations provide a way to help people express their feelings
-    more simply and effectively.
+    A credit given to a user for a repository security advisory.
     """
 
-    id: int
-    node_id: str
-    user: Union[None, SimpleUserType]
-    content: Literal[
-        "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
+    user: SimpleUserType
+    type: Literal[
+        "analyst",
+        "finder",
+        "reporter",
+        "coordinator",
+        "remediation_developer",
+        "remediation_reviewer",
+        "remediation_verifier",
+        "tool",
+        "sponsor",
+        "other",
     ]
-    created_at: datetime
+    state: Literal["accepted", "declined", "pending"]
 
 
-__all__ = ("ReactionType",)
+__all__ = ("RepositoryAdvisoryCreditType",)

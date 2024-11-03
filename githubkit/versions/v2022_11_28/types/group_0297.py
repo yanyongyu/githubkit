@@ -9,25 +9,81 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
+from datetime import datetime
+from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class DeployKeyType(TypedDict):
-    """Deploy Key
+class TimelineCommittedEventType(TypedDict):
+    """Timeline Committed Event
 
-    An SSH key granting access to a single repository.
+    Timeline Committed Event
     """
 
-    id: int
-    key: str
+    event: NotRequired[Literal["committed"]]
+    sha: str
+    node_id: str
     url: str
-    title: str
+    author: TimelineCommittedEventPropAuthorType
+    committer: TimelineCommittedEventPropCommitterType
+    message: str
+    tree: TimelineCommittedEventPropTreeType
+    parents: List[TimelineCommittedEventPropParentsItemsType]
+    verification: TimelineCommittedEventPropVerificationType
+    html_url: str
+
+
+class TimelineCommittedEventPropAuthorType(TypedDict):
+    """TimelineCommittedEventPropAuthor
+
+    Identifying information for the git-user
+    """
+
+    date: datetime
+    email: str
+    name: str
+
+
+class TimelineCommittedEventPropCommitterType(TypedDict):
+    """TimelineCommittedEventPropCommitter
+
+    Identifying information for the git-user
+    """
+
+    date: datetime
+    email: str
+    name: str
+
+
+class TimelineCommittedEventPropTreeType(TypedDict):
+    """TimelineCommittedEventPropTree"""
+
+    sha: str
+    url: str
+
+
+class TimelineCommittedEventPropParentsItemsType(TypedDict):
+    """TimelineCommittedEventPropParentsItems"""
+
+    sha: str
+    url: str
+    html_url: str
+
+
+class TimelineCommittedEventPropVerificationType(TypedDict):
+    """TimelineCommittedEventPropVerification"""
+
     verified: bool
-    created_at: str
-    read_only: bool
-    added_by: NotRequired[Union[str, None]]
-    last_used: NotRequired[Union[str, None]]
+    reason: str
+    signature: Union[str, None]
+    payload: Union[str, None]
 
 
-__all__ = ("DeployKeyType",)
+__all__ = (
+    "TimelineCommittedEventType",
+    "TimelineCommittedEventPropAuthorType",
+    "TimelineCommittedEventPropCommitterType",
+    "TimelineCommittedEventPropTreeType",
+    "TimelineCommittedEventPropParentsItemsType",
+    "TimelineCommittedEventPropVerificationType",
+)

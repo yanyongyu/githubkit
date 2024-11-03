@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -18,15 +16,19 @@ from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class TeamsTeamIdProjectsProjectIdPutBody(GitHubModel):
-    """TeamsTeamIdProjectsProjectIdPutBody"""
+class ReposOwnerRepoSubscriptionPutBody(GitHubModel):
+    """ReposOwnerRepoSubscriptionPutBody"""
 
-    permission: Missing[Literal["read", "write", "admin"]] = Field(
+    subscribed: Missing[bool] = Field(
         default=UNSET,
-        description="The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see \"[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method).\"",
+        description="Determines if notifications should be received from this repository.",
+    )
+    ignored: Missing[bool] = Field(
+        default=UNSET,
+        description="Determines if all notifications should be blocked from this repository.",
     )
 
 
-model_rebuild(TeamsTeamIdProjectsProjectIdPutBody)
+model_rebuild(ReposOwnerRepoSubscriptionPutBody)
 
-__all__ = ("TeamsTeamIdProjectsProjectIdPutBody",)
+__all__ = ("ReposOwnerRepoSubscriptionPutBody",)

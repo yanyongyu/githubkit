@@ -42,7 +42,7 @@ class CodeScanningOrganizationAlertItems(GitHubModel):
     instances_url: str = Field(
         description="The REST API URL for fetching the list of instances for an alert."
     )
-    state: Literal["open", "dismissed", "fixed"] = Field(
+    state: Union[None, Literal["open", "dismissed", "fixed"]] = Field(
         description="State of a code scanning alert."
     )
     fixed_at: Missing[Union[datetime, None]] = Field(

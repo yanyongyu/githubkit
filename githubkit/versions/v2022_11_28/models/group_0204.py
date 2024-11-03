@@ -9,9 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
-from typing_extensions import Annotated
+from typing import List, Union
 
 from pydantic import Field
 
@@ -19,55 +17,40 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0029 import Team
 from .group_0002 import SimpleUser
-from .group_0073 import CodeScanningAnalysisTool
-from .group_0074 import CodeScanningAlertInstance
-from .group_0072 import CodeScanningAlertRuleSummary
+from .group_0008 import Integration
 
 
-class CodeScanningAlertItems(GitHubModel):
-    """CodeScanningAlertItems"""
+class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(
+    GitHubModel
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions"""
 
-    number: int = Field(description="The security alert number.")
-    created_at: datetime = Field(
-        description="The time that the alert was created in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    updated_at: Missing[datetime] = Field(
-        default=UNSET,
-        description="The time that the alert was last updated in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    url: str = Field(description="The REST API URL of the alert resource.")
-    html_url: str = Field(description="The GitHub URL of the alert resource.")
-    instances_url: str = Field(
-        description="The REST API URL for fetching the list of instances for an alert."
-    )
-    state: Literal["open", "dismissed", "fixed"] = Field(
-        description="State of a code scanning alert."
-    )
-    fixed_at: Missing[Union[datetime, None]] = Field(
-        default=UNSET,
-        description="The time that the alert was no longer detected and was considered fixed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.",
-    )
-    dismissed_by: Union[None, SimpleUser] = Field()
-    dismissed_at: Union[datetime, None] = Field(
-        description="The time that the alert was dismissed in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`."
-    )
-    dismissed_reason: Union[
-        None, Literal["false positive", "won't fix", "used in tests"]
-    ] = Field(
-        description="**Required when the state is dismissed.** The reason for dismissing or closing the alert."
-    )
-    dismissed_comment: Missing[Union[Annotated[str, Field(max_length=280)], None]] = (
-        Field(
-            default=UNSET,
-            description="The dismissal comment associated with the dismissal of the alert.",
-        )
-    )
-    rule: CodeScanningAlertRuleSummary = Field()
-    tool: CodeScanningAnalysisTool = Field()
-    most_recent_instance: CodeScanningAlertInstance = Field()
+    url: str = Field()
+    users_url: str = Field()
+    teams_url: str = Field()
+    users: List[SimpleUser] = Field()
+    teams: List[Team] = Field()
+    apps: Missing[List[Union[Integration, None]]] = Field(default=UNSET)
 
 
-model_rebuild(CodeScanningAlertItems)
+class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
+    GitHubModel
+):
+    """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
 
-__all__ = ("CodeScanningAlertItems",)
+    users: List[SimpleUser] = Field()
+    teams: List[Team] = Field()
+    apps: Missing[List[Union[Integration, None]]] = Field(default=UNSET)
+
+
+model_rebuild(ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions)
+model_rebuild(
+    ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances
+)
+
+__all__ = (
+    "ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions",
+    "ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances",
+)

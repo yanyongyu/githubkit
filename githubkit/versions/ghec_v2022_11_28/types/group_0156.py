@@ -12,17 +12,18 @@ from __future__ import annotations
 from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0157 import RepositoryRuleCommitterEmailPatternPropParametersType
+from .group_0157 import RepositoryRuleRequiredStatusChecksPropParametersType
 
 
-class RepositoryRuleCommitterEmailPatternType(TypedDict):
-    """committer_email_pattern
+class RepositoryRuleRequiredStatusChecksType(TypedDict):
+    """required_status_checks
 
-    Parameters to be used for the committer_email_pattern rule
+    Choose which status checks must pass before the ref is updated. When enabled,
+    commits must first be pushed to another ref where the checks pass.
     """
 
-    type: Literal["committer_email_pattern"]
-    parameters: NotRequired[RepositoryRuleCommitterEmailPatternPropParametersType]
+    type: Literal["required_status_checks"]
+    parameters: NotRequired[RepositoryRuleRequiredStatusChecksPropParametersType]
 
 
-__all__ = ("RepositoryRuleCommitterEmailPatternType",)
+__all__ = ("RepositoryRuleRequiredStatusChecksType",)

@@ -12,31 +12,35 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict, NotRequired
 
+from .group_0265 import CustomDeploymentRuleAppType
 
-class GitTreeType(TypedDict):
-    """Git Tree
 
-    The hierarchy between files in a Git repository.
+class DeploymentProtectionRuleType(TypedDict):
+    """Deployment protection rule
+
+    Deployment protection rule
     """
 
-    sha: str
-    url: str
-    truncated: bool
-    tree: List[GitTreePropTreeItemsType]
+    id: int
+    node_id: str
+    enabled: bool
+    app: CustomDeploymentRuleAppType
 
 
-class GitTreePropTreeItemsType(TypedDict):
-    """GitTreePropTreeItems"""
+class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type(
+    TypedDict
+):
+    """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
 
-    path: NotRequired[str]
-    mode: NotRequired[str]
-    type: NotRequired[str]
-    sha: NotRequired[str]
-    size: NotRequired[int]
-    url: NotRequired[str]
+    Examples:
+        {'$ref': '#/components/examples/deployment-protection-rules'}
+    """
+
+    total_count: NotRequired[int]
+    custom_deployment_protection_rules: NotRequired[List[DeploymentProtectionRuleType]]
 
 
 __all__ = (
-    "GitTreeType",
-    "GitTreePropTreeItemsType",
+    "DeploymentProtectionRuleType",
+    "ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type",
 )

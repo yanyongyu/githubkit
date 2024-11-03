@@ -9,30 +9,28 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
-class GroupMappingType(TypedDict):
-    """GroupMapping
+class RepositoryRuleOneof18Type(TypedDict):
+    """max_file_size
 
-    External Groups to be mapped to a team for membership
+    Prevent commits that exceed a specified file size limit from being pushed to the
+    commit.
     """
 
-    groups: NotRequired[List[GroupMappingPropGroupsItemsType]]
+    type: Literal["max_file_size"]
+    parameters: NotRequired[RepositoryRuleOneof18PropParametersType]
 
 
-class GroupMappingPropGroupsItemsType(TypedDict):
-    """GroupMappingPropGroupsItems"""
+class RepositoryRuleOneof18PropParametersType(TypedDict):
+    """RepositoryRuleOneof18PropParameters"""
 
-    group_id: str
-    group_name: str
-    group_description: str
-    status: NotRequired[str]
-    synced_at: NotRequired[Union[str, None]]
+    max_file_size: int
 
 
 __all__ = (
-    "GroupMappingType",
-    "GroupMappingPropGroupsItemsType",
+    "RepositoryRuleOneof18Type",
+    "RepositoryRuleOneof18PropParametersType",
 )

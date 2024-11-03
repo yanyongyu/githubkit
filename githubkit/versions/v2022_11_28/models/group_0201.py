@@ -9,31 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
-
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0199 import Commit
+from .group_0194 import BranchProtection
 
-class CheckAnnotation(GitHubModel):
-    """Check Annotation
 
-    Check Annotation
+class BranchWithProtection(GitHubModel):
+    """Branch With Protection
+
+    Branch With Protection
     """
 
-    path: str = Field()
-    start_line: int = Field()
-    end_line: int = Field()
-    start_column: Union[int, None] = Field()
-    end_column: Union[int, None] = Field()
-    annotation_level: Union[str, None] = Field()
-    title: Union[str, None] = Field()
-    message: Union[str, None] = Field()
-    raw_details: Union[str, None] = Field()
-    blob_href: str = Field()
+    name: str = Field()
+    commit: Commit = Field(title="Commit", description="Commit")
+    links: BranchWithProtectionPropLinks = Field(alias="_links")
+    protected: bool = Field()
+    protection: BranchProtection = Field(
+        title="Branch Protection", description="Branch Protection"
+    )
+    protection_url: str = Field()
+    pattern: Missing[str] = Field(default=UNSET)
+    required_approving_review_count: Missing[int] = Field(default=UNSET)
 
 
-model_rebuild(CheckAnnotation)
+class BranchWithProtectionPropLinks(GitHubModel):
+    """BranchWithProtectionPropLinks"""
 
-__all__ = ("CheckAnnotation",)
+    html: str = Field()
+    self_: str = Field(alias="self")
+
+
+model_rebuild(BranchWithProtection)
+model_rebuild(BranchWithProtectionPropLinks)
+
+__all__ = (
+    "BranchWithProtection",
+    "BranchWithProtectionPropLinks",
+)

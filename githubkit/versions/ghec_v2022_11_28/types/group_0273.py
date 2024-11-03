@@ -9,35 +9,42 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from datetime import datetime
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0271 import MetadataType
+from .group_0002 import SimpleUserType
+from .group_0274 import DependabotAlertPropDependencyType
+from .group_0056 import DependabotAlertSecurityAdvisoryType
+from .group_0055 import DependabotAlertSecurityVulnerabilityType
 
 
-class ManifestType(TypedDict):
-    """Manifest"""
+class DependabotAlertType(TypedDict):
+    """DependabotAlert
 
-    name: str
-    file: NotRequired[ManifestPropFileType]
-    metadata: NotRequired[MetadataType]
-    resolved: NotRequired[ManifestPropResolvedType]
-
-
-class ManifestPropFileType(TypedDict):
-    """ManifestPropFile"""
-
-    source_location: NotRequired[str]
-
-
-class ManifestPropResolvedType(TypedDict):
-    """ManifestPropResolved
-
-    A collection of resolved package dependencies.
+    A Dependabot alert.
     """
 
+    number: int
+    state: Literal["auto_dismissed", "dismissed", "fixed", "open"]
+    dependency: DependabotAlertPropDependencyType
+    security_advisory: DependabotAlertSecurityAdvisoryType
+    security_vulnerability: DependabotAlertSecurityVulnerabilityType
+    url: str
+    html_url: str
+    created_at: datetime
+    updated_at: datetime
+    dismissed_at: Union[datetime, None]
+    dismissed_by: Union[None, SimpleUserType]
+    dismissed_reason: Union[
+        None,
+        Literal[
+            "fix_started", "inaccurate", "no_bandwidth", "not_used", "tolerable_risk"
+        ],
+    ]
+    dismissed_comment: Union[str, None]
+    fixed_at: Union[datetime, None]
+    auto_dismissed_at: NotRequired[Union[datetime, None]]
 
-__all__ = (
-    "ManifestType",
-    "ManifestPropFileType",
-    "ManifestPropResolvedType",
-)
+
+__all__ = ("DependabotAlertType",)

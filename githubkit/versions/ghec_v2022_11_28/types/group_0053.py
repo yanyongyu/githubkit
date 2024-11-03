@@ -9,17 +9,45 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from datetime import date
+from typing import List, Union
+from typing_extensions import TypedDict, NotRequired
 
 
-class DependabotAlertPackageType(TypedDict):
-    """DependabotAlertPackage
+class CopilotUsageMetricsType(TypedDict):
+    """Copilot Usage Metrics
 
-    Details for the vulnerable package.
+    Summary of Copilot usage.
     """
 
-    ecosystem: str
-    name: str
+    day: date
+    total_suggestions_count: NotRequired[int]
+    total_acceptances_count: NotRequired[int]
+    total_lines_suggested: NotRequired[int]
+    total_lines_accepted: NotRequired[int]
+    total_active_users: NotRequired[int]
+    total_chat_acceptances: NotRequired[int]
+    total_chat_turns: NotRequired[int]
+    total_active_chat_users: NotRequired[int]
+    breakdown: Union[List[CopilotUsageMetricsPropBreakdownItemsType], None]
 
 
-__all__ = ("DependabotAlertPackageType",)
+class CopilotUsageMetricsPropBreakdownItemsType(TypedDict):
+    """CopilotUsageMetricsPropBreakdownItems
+
+    Breakdown of Copilot usage by editor for this language
+    """
+
+    language: NotRequired[str]
+    editor: NotRequired[str]
+    suggestions_count: NotRequired[int]
+    acceptances_count: NotRequired[int]
+    lines_suggested: NotRequired[int]
+    lines_accepted: NotRequired[int]
+    active_users: NotRequired[int]
+
+
+__all__ = (
+    "CopilotUsageMetricsType",
+    "CopilotUsageMetricsPropBreakdownItemsType",
+)

@@ -10393,7 +10393,6 @@ class ReposClient:
         hook_id: int,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
-        redelivery: Missing[bool] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[HookDeliveryItem]]:
@@ -10408,7 +10407,6 @@ class ReposClient:
         params = {
             "per_page": per_page,
             "cursor": cursor,
-            "redelivery": redelivery,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -10432,7 +10430,6 @@ class ReposClient:
         hook_id: int,
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
-        redelivery: Missing[bool] = UNSET,
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[HookDeliveryItem]]:
@@ -10447,7 +10444,6 @@ class ReposClient:
         params = {
             "per_page": per_page,
             "cursor": cursor,
-            "redelivery": redelivery,
         }
 
         headers = {"X-GitHub-Api-Version": self._REST_API_VERSION, **(headers or {})}
@@ -15553,7 +15549,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TagProtection]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#deprecated---list-tag-protection-states-for-a-repository"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#closing-down---list-tag-protection-states-for-a-repository"""
 
         from typing import List
 
@@ -15581,7 +15577,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response[List[TagProtection]]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#deprecated---list-tag-protection-states-for-a-repository"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#closing-down---list-tag-protection-states-for-a-repository"""
 
         from typing import List
 
@@ -15632,7 +15628,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TagProtection]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#deprecated---create-a-tag-protection-state-for-a-repository"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#closing-down---create-a-tag-protection-state-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -15695,7 +15691,7 @@ class ReposClient:
         data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TagProtection]:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#deprecated---create-a-tag-protection-state-for-a-repository"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#closing-down---create-a-tag-protection-state-for-a-repository"""
 
         from ..models import (
             BasicError,
@@ -15736,7 +15732,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#deprecated---delete-a-tag-protection-state-for-a-repository"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#closing-down---delete-a-tag-protection-state-for-a-repository"""
 
         from ..models import BasicError
 
@@ -15762,7 +15758,7 @@ class ReposClient:
         *,
         headers: Optional[Dict[str, str]] = None,
     ) -> Response:
-        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#deprecated---delete-a-tag-protection-state-for-a-repository"""
+        """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#closing-down---delete-a-tag-protection-state-for-a-repository"""
 
         from ..models import BasicError
 

@@ -9,33 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
+
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0077 import CodeSecurityConfiguration
 
-class BranchShort(GitHubModel):
-    """Branch Short
 
-    Branch Short
+class CodeSecurityConfigurationForRepository(GitHubModel):
+    """CodeSecurityConfigurationForRepository
+
+    Code security configuration associated with a repository and attachment status
     """
 
-    name: str = Field()
-    commit: BranchShortPropCommit = Field()
-    protected: bool = Field()
+    status: Missing[
+        Literal[
+            "attached",
+            "attaching",
+            "detached",
+            "removed",
+            "enforced",
+            "failed",
+            "updating",
+            "removed_by_enterprise",
+        ]
+    ] = Field(
+        default=UNSET,
+        description="The attachment status of the code security configuration on the repository.",
+    )
+    configuration: Missing[CodeSecurityConfiguration] = Field(
+        default=UNSET, description="A code security configuration"
+    )
 
 
-class BranchShortPropCommit(GitHubModel):
-    """BranchShortPropCommit"""
+model_rebuild(CodeSecurityConfigurationForRepository)
 
-    sha: str = Field()
-    url: str = Field()
-
-
-model_rebuild(BranchShort)
-model_rebuild(BranchShortPropCommit)
-
-__all__ = (
-    "BranchShort",
-    "BranchShortPropCommit",
-)
+__all__ = ("CodeSecurityConfigurationForRepository",)

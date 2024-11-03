@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 
 from pydantic import Field
 
@@ -17,36 +17,38 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-
-class EnterprisesEnterpriseActionsRunnerGroupsPostBody(GitHubModel):
-    """EnterprisesEnterpriseActionsRunnerGroupsPostBody"""
-
-    name: str = Field(description="Name of the runner group.")
-    visibility: Missing[Literal["selected", "all"]] = Field(
-        default=UNSET,
-        description="Visibility of a runner group. You can select all organizations or select individual organization.",
-    )
-    selected_organization_ids: Missing[List[int]] = Field(
-        default=UNSET,
-        description="List of organization IDs that can access the runner group.",
-    )
-    runners: Missing[List[int]] = Field(
-        default=UNSET, description="List of runner IDs to add to the runner group."
-    )
-    allows_public_repositories: Missing[bool] = Field(
-        default=UNSET,
-        description="Whether the runner group can be used by `public` repositories.",
-    )
-    restricted_to_workflows: Missing[bool] = Field(
-        default=UNSET,
-        description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
-    )
-    selected_workflows: Missing[List[str]] = Field(
-        default=UNSET,
-        description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
-    )
+from .group_0016 import AppPermissions
 
 
-model_rebuild(EnterprisesEnterpriseActionsRunnerGroupsPostBody)
+class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
+    """ApplicationsClientIdTokenScopedPostBody"""
 
-__all__ = ("EnterprisesEnterpriseActionsRunnerGroupsPostBody",)
+    access_token: str = Field(
+        description="The access token used to authenticate to the GitHub API."
+    )
+    target: Missing[str] = Field(
+        default=UNSET,
+        description="The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.",
+    )
+    target_id: Missing[int] = Field(
+        default=UNSET,
+        description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
+    )
+    repositories: Missing[List[str]] = Field(
+        default=UNSET,
+        description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
+    )
+    repository_ids: Missing[List[int]] = Field(
+        default=UNSET,
+        description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
+    )
+    permissions: Missing[AppPermissions] = Field(
+        default=UNSET,
+        title="App Permissions",
+        description="The permissions granted to the user access token.",
+    )
+
+
+model_rebuild(ApplicationsClientIdTokenScopedPostBody)
+
+__all__ = ("ApplicationsClientIdTokenScopedPostBody",)

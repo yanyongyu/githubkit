@@ -9,81 +9,22 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0116 import RepositoryRuleUpdateType
-from .group_0142 import RepositoryRuleOneof18Type
-from .group_0138 import RepositoryRuleWorkflowsType
-from .group_0119 import RepositoryRuleMergeQueueType
-from .group_0123 import RepositoryRulePullRequestType
-from .group_0112 import OrgRulesetConditionsOneof0Type
-from .group_0113 import OrgRulesetConditionsOneof1Type
-from .group_0114 import OrgRulesetConditionsOneof2Type
-from .group_0140 import RepositoryRuleCodeScanningType
-from .group_0103 import RepositoryRulesetBypassActorType
-from .group_0135 import RepositoryRuleTagNamePatternType
-from .group_0133 import RepositoryRuleBranchNamePatternType
-from .group_0121 import RepositoryRuleRequiredDeploymentsType
-from .group_0125 import RepositoryRuleRequiredStatusChecksType
-from .group_0127 import RepositoryRuleCommitMessagePatternType
-from .group_0131 import RepositoryRuleCommitterEmailPatternType
-from .group_0129 import RepositoryRuleCommitAuthorEmailPatternType
-from .group_0118 import (
-    RepositoryRuleOneof16Type,
-    RepositoryRuleRequiredLinearHistoryType,
-)
-from .group_0115 import (
-    RepositoryRuleOneof15Type,
-    RepositoryRuleOneof17Type,
-    RepositoryRuleCreationType,
-    RepositoryRuleDeletionType,
-    RepositoryRuleNonFastForwardType,
-    RepositoryRuleRequiredSignaturesType,
-)
+
+class OrgsOrgMigrationsPostBodyType(TypedDict):
+    """OrgsOrgMigrationsPostBody"""
+
+    repositories: List[str]
+    lock_repositories: NotRequired[bool]
+    exclude_metadata: NotRequired[bool]
+    exclude_git_data: NotRequired[bool]
+    exclude_attachments: NotRequired[bool]
+    exclude_releases: NotRequired[bool]
+    exclude_owner_projects: NotRequired[bool]
+    org_metadata_only: NotRequired[bool]
+    exclude: NotRequired[List[Literal["repositories"]]]
 
 
-class OrgsOrgRulesetsPostBodyType(TypedDict):
-    """OrgsOrgRulesetsPostBody"""
-
-    name: str
-    target: NotRequired[Literal["branch", "tag", "push"]]
-    enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
-    conditions: NotRequired[
-        Union[
-            OrgRulesetConditionsOneof0Type,
-            OrgRulesetConditionsOneof1Type,
-            OrgRulesetConditionsOneof2Type,
-        ]
-    ]
-    rules: NotRequired[
-        List[
-            Union[
-                RepositoryRuleCreationType,
-                RepositoryRuleUpdateType,
-                RepositoryRuleDeletionType,
-                RepositoryRuleRequiredLinearHistoryType,
-                RepositoryRuleMergeQueueType,
-                RepositoryRuleRequiredDeploymentsType,
-                RepositoryRuleRequiredSignaturesType,
-                RepositoryRulePullRequestType,
-                RepositoryRuleRequiredStatusChecksType,
-                RepositoryRuleNonFastForwardType,
-                RepositoryRuleCommitMessagePatternType,
-                RepositoryRuleCommitAuthorEmailPatternType,
-                RepositoryRuleCommitterEmailPatternType,
-                RepositoryRuleBranchNamePatternType,
-                RepositoryRuleTagNamePatternType,
-                RepositoryRuleOneof15Type,
-                RepositoryRuleOneof16Type,
-                RepositoryRuleOneof17Type,
-                RepositoryRuleOneof18Type,
-                RepositoryRuleWorkflowsType,
-                RepositoryRuleCodeScanningType,
-            ]
-        ]
-    ]
-
-
-__all__ = ("OrgsOrgRulesetsPostBodyType",)
+__all__ = ("OrgsOrgMigrationsPostBodyType",)

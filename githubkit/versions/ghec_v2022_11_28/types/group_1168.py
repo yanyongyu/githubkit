@@ -13,19 +13,10 @@ from typing import List
 from typing_extensions import TypedDict
 
 
-class UserEmailsDeleteBodyOneof0Type(TypedDict):
-    """UserEmailsDeleteBodyOneof0
+class UserCodespacesSecretsSecretNameRepositoriesPutBodyType(TypedDict):
+    """UserCodespacesSecretsSecretNameRepositoriesPutBody"""
 
-    Deletes one or more email addresses from your GitHub account. Must contain at
-    least one email address. **Note:** Alternatively, you can pass a single email
-    address or an `array` of emails addresses directly, but we recommend that you
-    pass an object using the `emails` key.
-
-    Examples:
-        {'emails': ['octocat@github.com', 'mona@github.com']}
-    """
-
-    emails: List[str]
+    selected_repository_ids: List[int]
 
 
-__all__ = ("UserEmailsDeleteBodyOneof0Type",)
+__all__ = ("UserCodespacesSecretsSecretNameRepositoriesPutBodyType",)

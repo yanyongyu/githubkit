@@ -12,35 +12,25 @@ from __future__ import annotations
 from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
-from .group_0393 import SearchResultTextMatchesItemsType
+
+class SearchResultTextMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItems"""
+
+    object_url: NotRequired[str]
+    object_type: NotRequired[Union[str, None]]
+    property_: NotRequired[str]
+    fragment: NotRequired[str]
+    matches: NotRequired[List[SearchResultTextMatchesItemsPropMatchesItemsType]]
 
 
-class LabelSearchResultItemType(TypedDict):
-    """Label Search Result Item
+class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
+    """SearchResultTextMatchesItemsPropMatchesItems"""
 
-    Label Search Result Item
-    """
-
-    id: int
-    node_id: str
-    url: str
-    name: str
-    color: str
-    default: bool
-    description: Union[str, None]
-    score: float
-    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
-
-
-class SearchLabelsGetResponse200Type(TypedDict):
-    """SearchLabelsGetResponse200"""
-
-    total_count: int
-    incomplete_results: bool
-    items: List[LabelSearchResultItemType]
+    text: NotRequired[str]
+    indices: NotRequired[List[int]]
 
 
 __all__ = (
-    "LabelSearchResultItemType",
-    "SearchLabelsGetResponse200Type",
+    "SearchResultTextMatchesItemsType",
+    "SearchResultTextMatchesItemsPropMatchesItemsType",
 )

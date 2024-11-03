@@ -9,64 +9,67 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Literal
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
-class SecurityAndAnalysisType(TypedDict):
-    """SecurityAndAnalysis"""
+class ApiOverviewType(TypedDict):
+    """Api Overview
 
-    advanced_security: NotRequired[SecurityAndAnalysisPropAdvancedSecurityType]
-    dependabot_security_updates: NotRequired[
-        SecurityAndAnalysisPropDependabotSecurityUpdatesType
-    ]
-    secret_scanning: NotRequired[SecurityAndAnalysisPropSecretScanningType]
-    secret_scanning_push_protection: NotRequired[
-        SecurityAndAnalysisPropSecretScanningPushProtectionType
-    ]
-    secret_scanning_non_provider_patterns: NotRequired[
-        SecurityAndAnalysisPropSecretScanningNonProviderPatternsType
-    ]
-
-
-class SecurityAndAnalysisPropAdvancedSecurityType(TypedDict):
-    """SecurityAndAnalysisPropAdvancedSecurity"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropDependabotSecurityUpdatesType(TypedDict):
-    """SecurityAndAnalysisPropDependabotSecurityUpdates
-
-    Enable or disable Dependabot security updates for the repository.
+    Api Overview
     """
 
-    status: NotRequired[Literal["enabled", "disabled"]]
+    verifiable_password_authentication: bool
+    ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsType]
+    ssh_keys: NotRequired[List[str]]
+    hooks: NotRequired[List[str]]
+    github_enterprise_importer: NotRequired[List[str]]
+    web: NotRequired[List[str]]
+    api: NotRequired[List[str]]
+    git: NotRequired[List[str]]
+    packages: NotRequired[List[str]]
+    pages: NotRequired[List[str]]
+    importer: NotRequired[List[str]]
+    actions: NotRequired[List[str]]
+    actions_macos: NotRequired[List[str]]
+    codespaces: NotRequired[List[str]]
+    dependabot: NotRequired[List[str]]
+    copilot: NotRequired[List[str]]
+    domains: NotRequired[ApiOverviewPropDomainsType]
 
 
-class SecurityAndAnalysisPropSecretScanningType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanning"""
+class ApiOverviewPropSshKeyFingerprintsType(TypedDict):
+    """ApiOverviewPropSshKeyFingerprints"""
 
-    status: NotRequired[Literal["enabled", "disabled"]]
-
-
-class SecurityAndAnalysisPropSecretScanningPushProtectionType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningPushProtection"""
-
-    status: NotRequired[Literal["enabled", "disabled"]]
+    sha256_rsa: NotRequired[str]
+    sha256_dsa: NotRequired[str]
+    sha256_ecdsa: NotRequired[str]
+    sha256_ed25519: NotRequired[str]
 
 
-class SecurityAndAnalysisPropSecretScanningNonProviderPatternsType(TypedDict):
-    """SecurityAndAnalysisPropSecretScanningNonProviderPatterns"""
+class ApiOverviewPropDomainsType(TypedDict):
+    """ApiOverviewPropDomains"""
 
-    status: NotRequired[Literal["enabled", "disabled"]]
+    website: NotRequired[List[str]]
+    codespaces: NotRequired[List[str]]
+    copilot: NotRequired[List[str]]
+    packages: NotRequired[List[str]]
+    actions: NotRequired[List[str]]
+    artifact_attestations: NotRequired[
+        ApiOverviewPropDomainsPropArtifactAttestationsType
+    ]
+
+
+class ApiOverviewPropDomainsPropArtifactAttestationsType(TypedDict):
+    """ApiOverviewPropDomainsPropArtifactAttestations"""
+
+    trust_domain: NotRequired[str]
+    services: NotRequired[List[str]]
 
 
 __all__ = (
-    "SecurityAndAnalysisType",
-    "SecurityAndAnalysisPropAdvancedSecurityType",
-    "SecurityAndAnalysisPropDependabotSecurityUpdatesType",
-    "SecurityAndAnalysisPropSecretScanningType",
-    "SecurityAndAnalysisPropSecretScanningPushProtectionType",
-    "SecurityAndAnalysisPropSecretScanningNonProviderPatternsType",
+    "ApiOverviewType",
+    "ApiOverviewPropSshKeyFingerprintsType",
+    "ApiOverviewPropDomainsType",
+    "ApiOverviewPropDomainsPropArtifactAttestationsType",
 )

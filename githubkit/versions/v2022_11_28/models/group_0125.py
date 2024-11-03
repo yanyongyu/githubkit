@@ -17,22 +17,19 @@ from githubkit.utils import UNSET
 from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0126 import RepositoryRuleRequiredStatusChecksPropParameters
+from .group_0126 import RepositoryRuleMergeQueuePropParameters
 
 
-class RepositoryRuleRequiredStatusChecks(GitHubModel):
-    """required_status_checks
+class RepositoryRuleMergeQueue(GitHubModel):
+    """merge_queue
 
-    Choose which status checks must pass before the ref is updated. When enabled,
-    commits must first be pushed to another ref where the checks pass.
+    Merges must be performed via a merge queue.
     """
 
-    type: Literal["required_status_checks"] = Field()
-    parameters: Missing[RepositoryRuleRequiredStatusChecksPropParameters] = Field(
-        default=UNSET
-    )
+    type: Literal["merge_queue"] = Field()
+    parameters: Missing[RepositoryRuleMergeQueuePropParameters] = Field(default=UNSET)
 
 
-model_rebuild(RepositoryRuleRequiredStatusChecks)
+model_rebuild(RepositoryRuleMergeQueue)
 
-__all__ = ("RepositoryRuleRequiredStatusChecks",)
+__all__ = ("RepositoryRuleMergeQueue",)

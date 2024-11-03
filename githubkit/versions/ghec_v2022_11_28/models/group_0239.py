@@ -9,43 +9,26 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import List
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
+from .group_0238 import CodeScanningVariantAnalysisRepository
 
-class CodeScanningDefaultSetupUpdate(GitHubModel):
-    """CodeScanningDefaultSetupUpdate
 
-    Configuration for code scanning default setup.
-    """
+class CodeScanningVariantAnalysisSkippedRepoGroup(GitHubModel):
+    """CodeScanningVariantAnalysisSkippedRepoGroup"""
 
-    state: Missing[Literal["configured", "not-configured"]] = Field(
-        default=UNSET, description="The desired state of code scanning default setup."
+    repository_count: int = Field(
+        description="The total number of repositories that were skipped for this reason."
     )
-    query_suite: Missing[Literal["default", "extended"]] = Field(
-        default=UNSET, description="CodeQL query suite to be used."
+    repositories: List[CodeScanningVariantAnalysisRepository] = Field(
+        description="A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it."
     )
-    languages: Missing[
-        List[
-            Literal[
-                "c-cpp",
-                "csharp",
-                "go",
-                "java-kotlin",
-                "javascript-typescript",
-                "python",
-                "ruby",
-                "swift",
-            ]
-        ]
-    ] = Field(default=UNSET, description="CodeQL languages to be analyzed.")
 
 
-model_rebuild(CodeScanningDefaultSetupUpdate)
+model_rebuild(CodeScanningVariantAnalysisSkippedRepoGroup)
 
-__all__ = ("CodeScanningDefaultSetupUpdate",)
+__all__ = ("CodeScanningVariantAnalysisSkippedRepoGroup",)

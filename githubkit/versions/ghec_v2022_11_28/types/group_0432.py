@@ -9,20 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union
 from typing_extensions import TypedDict
 
 
-class WebhooksLabelType(TypedDict):
-    """Label"""
+class WebhooksWorkflowJobRunType(TypedDict):
+    """WebhooksWorkflowJobRun"""
 
-    color: str
-    default: bool
-    description: Union[str, None]
+    conclusion: None
+    created_at: str
+    environment: str
+    html_url: str
     id: int
-    name: str
-    node_id: str
-    url: str
+    name: None
+    status: str
+    updated_at: str
 
 
-__all__ = ("WebhooksLabelType",)
+__all__ = ("WebhooksWorkflowJobRunType",)

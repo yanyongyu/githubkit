@@ -9,57 +9,43 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from datetime import datetime
-from typing import Union, Literal
+from typing import List, Union, Literal
 
 from pydantic import Field
 
-from githubkit.utils import UNSET
-from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
-from .group_0002 import SimpleUser
-from .group_0008 import Integration
 
+class DependencyGraphDiffItems(GitHubModel):
+    """DependencyGraphDiffItems"""
 
-class DeploymentStatus(GitHubModel):
-    """Deployment Status
-
-    The status of a deployment.
-    """
-
-    url: str = Field()
-    id: int = Field()
-    node_id: str = Field()
-    state: Literal[
-        "error", "failure", "inactive", "pending", "success", "queued", "in_progress"
-    ] = Field(description="The state of the status.")
-    creator: Union[None, SimpleUser] = Field()
-    description: str = Field(
-        max_length=140, default="", description="A short description of the status."
-    )
-    environment: Missing[str] = Field(
-        default=UNSET,
-        description="The environment of the deployment that the status is for.",
-    )
-    target_url: str = Field(
-        default="", description="Deprecated: the URL to associate with this status."
-    )
-    created_at: datetime = Field()
-    updated_at: datetime = Field()
-    deployment_url: str = Field()
-    repository_url: str = Field()
-    environment_url: Missing[str] = Field(
-        default=UNSET, description="The URL for accessing your environment."
-    )
-    log_url: Missing[str] = Field(
-        default=UNSET, description="The URL to associate with this status."
-    )
-    performed_via_github_app: Missing[Union[None, Integration, None]] = Field(
-        default=UNSET
+    change_type: Literal["added", "removed"] = Field()
+    manifest: str = Field()
+    ecosystem: str = Field()
+    name: str = Field()
+    version: str = Field()
+    package_url: Union[str, None] = Field()
+    license_: Union[str, None] = Field(alias="license")
+    source_repository_url: Union[str, None] = Field()
+    vulnerabilities: List[DependencyGraphDiffItemsPropVulnerabilitiesItems] = Field()
+    scope: Literal["unknown", "runtime", "development"] = Field(
+        description="Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment."
     )
 
 
-model_rebuild(DeploymentStatus)
+class DependencyGraphDiffItemsPropVulnerabilitiesItems(GitHubModel):
+    """DependencyGraphDiffItemsPropVulnerabilitiesItems"""
 
-__all__ = ("DeploymentStatus",)
+    severity: str = Field()
+    advisory_ghsa_id: str = Field()
+    advisory_summary: str = Field()
+    advisory_url: str = Field()
+
+
+model_rebuild(DependencyGraphDiffItems)
+model_rebuild(DependencyGraphDiffItemsPropVulnerabilitiesItems)
+
+__all__ = (
+    "DependencyGraphDiffItems",
+    "DependencyGraphDiffItemsPropVulnerabilitiesItems",
+)

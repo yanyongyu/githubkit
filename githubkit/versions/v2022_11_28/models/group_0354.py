@@ -11,20 +11,24 @@ from __future__ import annotations
 
 from pydantic import Field
 
+from githubkit.utils import UNSET
+from githubkit.typing import Missing
 from githubkit.compat import GitHubModel, model_rebuild
 
 
-class ReferrerTraffic(GitHubModel):
-    """Referrer Traffic
+class TagProtection(GitHubModel):
+    """Tag protection
 
-    Referrer Traffic
+    Tag protection
     """
 
-    referrer: str = Field()
-    count: int = Field()
-    uniques: int = Field()
+    id: Missing[int] = Field(default=UNSET)
+    created_at: Missing[str] = Field(default=UNSET)
+    updated_at: Missing[str] = Field(default=UNSET)
+    enabled: Missing[bool] = Field(default=UNSET)
+    pattern: str = Field()
 
 
-model_rebuild(ReferrerTraffic)
+model_rebuild(TagProtection)
 
-__all__ = ("ReferrerTraffic",)
+__all__ = ("TagProtection",)
