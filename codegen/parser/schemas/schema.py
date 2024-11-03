@@ -574,7 +574,6 @@ class ModelSchema(SchemaData):
 
     @override
     def get_param_imports(self) -> set[str]:
-        # TODO: import only when TYPE_CHECKING
         return {f"from ..types import {self.get_param_type_string()}"}
 
     @override
