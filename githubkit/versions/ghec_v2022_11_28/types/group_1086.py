@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -17,7 +16,7 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type(TypedDict):
     """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2"""
 
     labels: NotRequired[
-        List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
+        list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
     ]
 
 

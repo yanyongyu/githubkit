@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -31,7 +31,7 @@ class CodeScanningDefaultSetupUpdate(GitHubModel):
         default=UNSET, description="CodeQL query suite to be used."
     )
     languages: Missing[
-        List[
+        list[
             Literal[
                 "c-cpp",
                 "csharp",

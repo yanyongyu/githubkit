@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -93,7 +93,7 @@ class FullRepository(GitHubModel):
     default_branch: str = Field()
     open_issues_count: int = Field()
     is_template: Missing[bool] = Field(default=UNSET)
-    topics: Missing[List[str]] = Field(default=UNSET)
+    topics: Missing[list[str]] = Field(default=UNSET)
     has_issues: bool = Field()
     has_projects: bool = Field()
     has_wiki: bool = Field()

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -29,7 +29,7 @@ class ContentTreeType(TypedDict):
     git_url: Union[str, None]
     html_url: Union[str, None]
     download_url: Union[str, None]
-    entries: NotRequired[List[ContentTreePropEntriesItemsType]]
+    entries: NotRequired[list[ContentTreePropEntriesItemsType]]
     links: ContentTreePropLinksType
 
 

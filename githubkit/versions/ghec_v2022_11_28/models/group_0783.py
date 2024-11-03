@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -29,7 +29,7 @@ class WebhookStatus(GitHubModel):
     """status event"""
 
     avatar_url: Missing[Union[str, None]] = Field(default=UNSET)
-    branches: List[WebhookStatusPropBranchesItems] = Field(
+    branches: list[WebhookStatusPropBranchesItems] = Field(
         description="An array of branch objects containing the status' SHA. Each branch contains the given SHA, but the SHA may or may not be the head of the branch. The array includes a maximum of 10 branches."
     )
     commit: WebhookStatusPropCommit = Field()
@@ -94,7 +94,7 @@ class WebhookStatusPropCommit(GitHubModel):
     committer: Union[WebhookStatusPropCommitPropCommitter, None] = Field(title="User")
     html_url: str = Field()
     node_id: str = Field()
-    parents: List[WebhookStatusPropCommitPropParentsItems] = Field()
+    parents: list[WebhookStatusPropCommitPropParentsItems] = Field()
     sha: str = Field()
     url: str = Field()
 

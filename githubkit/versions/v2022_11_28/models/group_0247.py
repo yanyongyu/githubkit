@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -64,7 +64,7 @@ class FileCommitPropCommit(GitHubModel):
     committer: Missing[FileCommitPropCommitPropCommitter] = Field(default=UNSET)
     message: Missing[str] = Field(default=UNSET)
     tree: Missing[FileCommitPropCommitPropTree] = Field(default=UNSET)
-    parents: Missing[List[FileCommitPropCommitPropParentsItems]] = Field(default=UNSET)
+    parents: Missing[list[FileCommitPropCommitPropParentsItems]] = Field(default=UNSET)
     verification: Missing[FileCommitPropCommitPropVerification] = Field(default=UNSET)
 
 

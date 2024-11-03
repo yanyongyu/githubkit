@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -46,7 +46,7 @@ class WebhookPullRequestReviewCommentEditedPropPullRequestType(TypedDict):
     assignee: Union[
         WebhookPullRequestReviewCommentEditedPropPullRequestPropAssigneeType, None
     ]
-    assignees: List[
+    assignees: list[
         Union[
             WebhookPullRequestReviewCommentEditedPropPullRequestPropAssigneesItemsType,
             None,
@@ -79,7 +79,7 @@ class WebhookPullRequestReviewCommentEditedPropPullRequestType(TypedDict):
     html_url: str
     id: int
     issue_url: str
-    labels: List[
+    labels: list[
         WebhookPullRequestReviewCommentEditedPropPullRequestPropLabelsItemsType
     ]
     locked: bool
@@ -91,14 +91,14 @@ class WebhookPullRequestReviewCommentEditedPropPullRequestType(TypedDict):
     node_id: str
     number: int
     patch_url: str
-    requested_reviewers: List[
+    requested_reviewers: list[
         Union[
             WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedReviewersItemsOneof0Type,
             None,
             WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedReviewersItemsOneof1Type,
         ]
     ]
-    requested_teams: List[
+    requested_teams: list[
         WebhookPullRequestReviewCommentEditedPropPullRequestPropRequestedTeamsItemsType
     ]
     review_comment_url: str
@@ -566,7 +566,7 @@ class WebhookPullRequestReviewCommentEditedPropPullRequestPropBasePropRepoType(
     svn_url: str
     tags_url: str
     teams_url: str
-    topics: List[str]
+    topics: list[str]
     trees_url: str
     updated_at: datetime
     url: str
@@ -751,7 +751,7 @@ class WebhookPullRequestReviewCommentEditedPropPullRequestPropHeadPropRepoType(
     svn_url: str
     tags_url: str
     teams_url: str
-    topics: List[str]
+    topics: list[str]
     trees_url: str
     updated_at: datetime
     url: str

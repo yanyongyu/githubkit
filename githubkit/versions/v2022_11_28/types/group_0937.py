@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
@@ -20,7 +19,7 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType(TypedDic
         {'apps': ['my-app']}
     """
 
-    apps: List[str]
+    apps: list[str]
 
 
 __all__ = ("ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType",)

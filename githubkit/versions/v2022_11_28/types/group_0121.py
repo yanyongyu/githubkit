@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -63,7 +63,7 @@ class RepositoryRuleOneof15Type(TypedDict):
 class RepositoryRuleOneof15PropParametersType(TypedDict):
     """RepositoryRuleOneof15PropParameters"""
 
-    restricted_file_paths: List[str]
+    restricted_file_paths: list[str]
 
 
 class RepositoryRuleOneof17Type(TypedDict):
@@ -80,7 +80,7 @@ class RepositoryRuleOneof17Type(TypedDict):
 class RepositoryRuleOneof17PropParametersType(TypedDict):
     """RepositoryRuleOneof17PropParameters"""
 
-    restricted_file_extensions: List[str]
+    restricted_file_extensions: list[str]
 
 
 __all__ = (

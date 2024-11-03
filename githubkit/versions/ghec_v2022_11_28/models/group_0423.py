@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -101,7 +101,7 @@ class RepositoryWebhooks(GitHubModel):
         default=UNSET,
         description="Whether this repository acts as a template that can be used to generate new repositories.",
     )
-    topics: Missing[List[str]] = Field(default=UNSET)
+    topics: Missing[list[str]] = Field(default=UNSET)
     custom_properties: Missing[RepositoryWebhooksPropCustomProperties] = Field(
         default=UNSET,
         description="The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values.",
@@ -283,7 +283,7 @@ class RepositoryWebhooksPropTemplateRepository(GitHubModel):
     default_branch: Missing[str] = Field(default=UNSET)
     open_issues_count: Missing[int] = Field(default=UNSET)
     is_template: Missing[bool] = Field(default=UNSET)
-    topics: Missing[List[str]] = Field(default=UNSET)
+    topics: Missing[list[str]] = Field(default=UNSET)
     has_issues: Missing[bool] = Field(default=UNSET)
     has_projects: Missing[bool] = Field(default=UNSET)
     has_wiki: Missing[bool] = Field(default=UNSET)

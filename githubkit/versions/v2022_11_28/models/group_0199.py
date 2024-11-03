@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -36,9 +36,9 @@ class Commit(GitHubModel):
     commit: CommitPropCommit = Field()
     author: Union[SimpleUser, EmptyObject, None] = Field()
     committer: Union[SimpleUser, EmptyObject, None] = Field()
-    parents: List[CommitPropParentsItems] = Field()
+    parents: list[CommitPropParentsItems] = Field()
     stats: Missing[CommitPropStats] = Field(default=UNSET)
-    files: Missing[List[DiffEntry]] = Field(default=UNSET)
+    files: Missing[list[DiffEntry]] = Field(default=UNSET)
 
 
 class EmptyObject(GitHubModel):

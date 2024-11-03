@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import date
-from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -29,7 +29,7 @@ class CopilotUsageMetricsType(TypedDict):
     total_chat_acceptances: NotRequired[int]
     total_chat_turns: NotRequired[int]
     total_active_chat_users: NotRequired[int]
-    breakdown: Union[List[CopilotUsageMetricsPropBreakdownItemsType], None]
+    breakdown: Union[list[CopilotUsageMetricsPropBreakdownItemsType], None]
 
 
 class CopilotUsageMetricsPropBreakdownItemsType(TypedDict):

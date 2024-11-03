@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -184,7 +184,7 @@ class WebhookDeploymentStatusCreatedPropDeploymentPropPerformedViaGithubApp(
 
     created_at: Union[datetime, None] = Field()
     description: Union[str, None] = Field()
-    events: Missing[List[str]] = Field(
+    events: Missing[list[str]] = Field(
         default=UNSET, description="The list of events for the GitHub app"
     )
     external_url: Union[str, None] = Field()
@@ -363,7 +363,7 @@ class WebhookDeploymentStatusCreatedPropDeploymentStatusPropPerformedViaGithubAp
 
     created_at: Union[datetime, None] = Field()
     description: Union[str, None] = Field()
-    events: Missing[List[str]] = Field(
+    events: Missing[list[str]] = Field(
         default=UNSET, description="The list of events for the GitHub app"
     )
     external_url: Union[str, None] = Field()
@@ -504,12 +504,12 @@ class WebhookDeploymentStatusCreatedPropWorkflowRun(GitHubModel):
     node_id: str = Field()
     path: str = Field()
     previous_attempt_url: Missing[None] = Field(default=UNSET)
-    pull_requests: List[
+    pull_requests: list[
         WebhookDeploymentStatusCreatedPropWorkflowRunPropPullRequestsItems
     ] = Field()
     referenced_workflows: Missing[
         Union[
-            List[
+            list[
                 WebhookDeploymentStatusCreatedPropWorkflowRunPropReferencedWorkflowsItems
             ],
             None,

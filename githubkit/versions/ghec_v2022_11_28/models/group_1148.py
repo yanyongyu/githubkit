@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -21,8 +21,8 @@ from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 class ScimV2OrganizationsOrgUsersScimUserIdPatchBody(GitHubModel):
     """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
 
-    schemas: Missing[List[str]] = Field(default=UNSET)
-    operations: List[
+    schemas: Missing[list[str]] = Field(default=UNSET)
+    operations: list[
         ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems
     ] = Field(
         min_length=1 if PYDANTIC_V2 else None,
@@ -39,7 +39,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItems(GitHubMo
     value: Missing[
         Union[
             ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0,
-            List[
+            list[
                 ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1Items
             ],
             str,

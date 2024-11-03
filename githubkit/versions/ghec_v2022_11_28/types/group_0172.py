@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict
 
 
 class RepositoryRuleCodeScanningPropParametersType(TypedDict):
     """RepositoryRuleCodeScanningPropParameters"""
 
-    code_scanning_tools: List[RepositoryRuleParamsCodeScanningToolType]
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningToolType]
 
 
 class RepositoryRuleParamsCodeScanningToolType(TypedDict):

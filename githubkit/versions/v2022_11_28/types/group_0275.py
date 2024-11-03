@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -51,7 +51,7 @@ class ImportType(TypedDict):
     has_large_files: NotRequired[bool]
     large_files_size: NotRequired[int]
     large_files_count: NotRequired[int]
-    project_choices: NotRequired[List[ImportPropProjectChoicesItemsType]]
+    project_choices: NotRequired[list[ImportPropProjectChoicesItemsType]]
     message: NotRequired[str]
     authors_count: NotRequired[Union[int, None]]
     url: str

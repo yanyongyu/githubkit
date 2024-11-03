@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0058 import MinimalRepositoryType
@@ -23,7 +23,7 @@ class CombinedCommitStatusType(TypedDict):
     """
 
     state: str
-    statuses: List[SimpleCommitStatusType]
+    statuses: list[SimpleCommitStatusType]
     sha: str
     total_count: int
     repository: MinimalRepositoryType

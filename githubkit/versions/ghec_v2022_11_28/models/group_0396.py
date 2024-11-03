@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -23,7 +23,7 @@ from .group_0391 import UserRoleItems
 class User(GitHubModel):
     """User"""
 
-    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
         description="The URIs that are used to indicate the namespaces of the SCIM schemas."
     )
     external_id: str = Field(
@@ -36,8 +36,8 @@ class User(GitHubModel):
     display_name: str = Field(
         alias="displayName", description="A human-readable name for the user."
     )
-    emails: List[UserEmailsItems] = Field(description="The emails for the user.")
-    roles: Missing[List[UserRoleItems]] = Field(
+    emails: list[UserEmailsItems] = Field(description="The emails for the user.")
+    roles: Missing[list[UserRoleItems]] = Field(
         default=UNSET, description="The roles assigned to the user."
     )
 

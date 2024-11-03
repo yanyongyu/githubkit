@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, Optional, overload
 
 from pydantic import BaseModel
 
@@ -20,7 +20,7 @@ from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
     from datetime import datetime
-    from typing import List, Union, Literal
+    from typing import Union, Literal
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
@@ -115,11 +115,9 @@ class OrgsClient:
         since: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationSimple]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationSimple]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-organizations"""
-
-        from typing import List
 
         from ..models import OrganizationSimple
 
@@ -137,7 +135,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationSimple],
+            response_model=list[OrganizationSimple],
         )
 
     async def async_list(
@@ -145,11 +143,9 @@ class OrgsClient:
         since: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationSimple]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationSimple]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-organizations"""
-
-        from typing import List
 
         from ..models import OrganizationSimple
 
@@ -167,14 +163,14 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationSimple],
+            response_model=list[OrganizationSimple],
         )
 
     def list_custom_roles(
         self,
         organization_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrganizationsOrganizationIdCustomRolesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---list-custom-repository-roles-in-an-organization"""
 
@@ -195,7 +191,7 @@ class OrgsClient:
         self,
         organization_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrganizationsOrganizationIdCustomRolesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---list-custom-repository-roles-in-an-organization"""
 
@@ -216,7 +212,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrganizationFull]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#get-an-organization"""
 
@@ -240,7 +236,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrganizationFull]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#get-an-organization"""
 
@@ -264,7 +260,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#delete-an-organization"""
 
@@ -292,7 +288,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#delete-an-organization"""
 
@@ -321,7 +317,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
     ) -> Response[OrganizationFull]: ...
 
@@ -331,7 +327,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         billing_email: Missing[str] = UNSET,
         company: Missing[str] = UNSET,
         email: Missing[str] = UNSET,
@@ -374,7 +370,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationFull]:
@@ -420,7 +416,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
     ) -> Response[OrganizationFull]: ...
 
@@ -430,7 +426,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         billing_email: Missing[str] = UNSET,
         company: Missing[str] = UNSET,
         email: Missing[str] = UNSET,
@@ -473,7 +469,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationFull]:
@@ -518,7 +514,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AnnouncementBanner]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/organizations#get-announcement-banner-for-organization"""
 
@@ -539,7 +535,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AnnouncementBanner]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/organizations#get-announcement-banner-for-organization"""
 
@@ -560,7 +556,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/organizations#remove-announcement-banner-from-organization"""
 
@@ -578,7 +574,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/announcement-banners/organizations#remove-announcement-banner-from-organization"""
 
@@ -597,7 +593,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: AnnouncementType,
     ) -> Response[AnnouncementBanner]: ...
 
@@ -607,7 +603,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         announcement: Union[str, None],
         expires_at: Missing[Union[datetime, None]] = UNSET,
     ) -> Response[AnnouncementBanner]: ...
@@ -616,7 +612,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[AnnouncementType] = UNSET,
         **kwargs,
     ) -> Response[AnnouncementBanner]:
@@ -650,7 +646,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: AnnouncementType,
     ) -> Response[AnnouncementBanner]: ...
 
@@ -660,7 +656,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         announcement: Union[str, None],
         expires_at: Missing[Union[datetime, None]] = UNSET,
     ) -> Response[AnnouncementBanner]: ...
@@ -669,7 +665,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[AnnouncementType] = UNSET,
         **kwargs,
     ) -> Response[AnnouncementBanner]:
@@ -706,7 +702,7 @@ class OrgsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgAttestationsSubjectDigestGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-attestations"""
 
@@ -738,7 +734,7 @@ class OrgsClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgAttestationsSubjectDigestGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-attestations"""
 
@@ -772,11 +768,9 @@ class OrgsClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[AuditLogEvent]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[AuditLogEvent]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#get-the-audit-log-for-an-organization"""
-
-        from typing import List
 
         from ..models import AuditLogEvent
 
@@ -798,7 +792,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[AuditLogEvent],
+            response_model=list[AuditLogEvent],
         )
 
     async def async_get_audit_log(
@@ -811,11 +805,9 @@ class OrgsClient:
         order: Missing[Literal["desc", "asc"]] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[AuditLogEvent]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[AuditLogEvent]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#get-the-audit-log-for-an-organization"""
-
-        from typing import List
 
         from ..models import AuditLogEvent
 
@@ -837,7 +829,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[AuditLogEvent],
+            response_model=list[AuditLogEvent],
         )
 
     def list_blocked_users(
@@ -846,11 +838,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/blocking#list-users-blocked-by-an-organization"""
-
-        from typing import List
 
         from ..models import SimpleUser
 
@@ -868,7 +858,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
         )
 
     async def async_list_blocked_users(
@@ -877,11 +867,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/blocking#list-users-blocked-by-an-organization"""
-
-        from typing import List
 
         from ..models import SimpleUser
 
@@ -899,7 +887,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
         )
 
     def check_blocked_user(
@@ -907,7 +895,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/blocking#check-if-a-user-is-blocked-by-an-organization"""
 
@@ -931,7 +919,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/blocking#check-if-a-user-is-blocked-by-an-organization"""
 
@@ -955,7 +943,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/blocking#block-a-user-from-an-organization"""
 
@@ -979,7 +967,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/blocking#block-a-user-from-an-organization"""
 
@@ -1003,7 +991,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/blocking#unblock-a-user-from-an-organization"""
 
@@ -1022,7 +1010,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/blocking#unblock-a-user-from-an-organization"""
 
@@ -1043,11 +1031,9 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         login: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CredentialAuthorization]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CredentialAuthorization]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-saml-sso-authorizations-for-an-organization"""
-
-        from typing import List
 
         from ..models import CredentialAuthorization
 
@@ -1066,7 +1052,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CredentialAuthorization],
+            response_model=list[CredentialAuthorization],
         )
 
     async def async_list_saml_sso_authorizations(
@@ -1076,11 +1062,9 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         login: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CredentialAuthorization]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CredentialAuthorization]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-saml-sso-authorizations-for-an-organization"""
-
-        from typing import List
 
         from ..models import CredentialAuthorization
 
@@ -1099,7 +1083,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CredentialAuthorization],
+            response_model=list[CredentialAuthorization],
         )
 
     def remove_saml_sso_authorization(
@@ -1107,7 +1091,7 @@ class OrgsClient:
         org: str,
         credential_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#remove-a-saml-sso-authorization-for-an-organization"""
 
@@ -1131,7 +1115,7 @@ class OrgsClient:
         org: str,
         credential_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#remove-a-saml-sso-authorization-for-an-organization"""
 
@@ -1154,7 +1138,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgCustomRepositoryRolesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#list-custom-repository-roles-in-an-organization"""
 
@@ -1175,7 +1159,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgCustomRepositoryRolesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#list-custom-repository-roles-in-an-organization"""
 
@@ -1197,7 +1181,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrganizationCustomRepositoryRoleCreateSchemaType,
     ) -> Response[OrganizationCustomRepositoryRole]: ...
 
@@ -1207,18 +1191,18 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         description: Missing[Union[str, None]] = UNSET,
         base_role: Literal["read", "triage", "write", "maintain"],
-        permissions: List[str],
+        permissions: list[str],
     ) -> Response[OrganizationCustomRepositoryRole]: ...
 
     def create_custom_repo_role(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrganizationCustomRepositoryRoleCreateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationCustomRepositoryRole]:
@@ -1263,7 +1247,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrganizationCustomRepositoryRoleCreateSchemaType,
     ) -> Response[OrganizationCustomRepositoryRole]: ...
 
@@ -1273,18 +1257,18 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         description: Missing[Union[str, None]] = UNSET,
         base_role: Literal["read", "triage", "write", "maintain"],
-        permissions: List[str],
+        permissions: list[str],
     ) -> Response[OrganizationCustomRepositoryRole]: ...
 
     async def async_create_custom_repo_role(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrganizationCustomRepositoryRoleCreateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationCustomRepositoryRole]:
@@ -1329,7 +1313,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrganizationCustomRepositoryRole]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#get-a-custom-repository-role"""
 
@@ -1354,7 +1338,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrganizationCustomRepositoryRole]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#get-a-custom-repository-role"""
 
@@ -1379,7 +1363,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#delete-a-custom-repository-role"""
 
@@ -1398,7 +1382,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#delete-a-custom-repository-role"""
 
@@ -1418,7 +1402,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrganizationCustomRepositoryRoleUpdateSchemaType,
     ) -> Response[OrganizationCustomRepositoryRole]: ...
 
@@ -1429,11 +1413,11 @@ class OrgsClient:
         role_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         base_role: Missing[Literal["read", "triage", "write", "maintain"]] = UNSET,
-        permissions: Missing[List[str]] = UNSET,
+        permissions: Missing[list[str]] = UNSET,
     ) -> Response[OrganizationCustomRepositoryRole]: ...
 
     def update_custom_repo_role(
@@ -1441,7 +1425,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrganizationCustomRepositoryRoleUpdateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationCustomRepositoryRole]:
@@ -1487,7 +1471,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrganizationCustomRepositoryRoleUpdateSchemaType,
     ) -> Response[OrganizationCustomRepositoryRole]: ...
 
@@ -1498,11 +1482,11 @@ class OrgsClient:
         role_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         base_role: Missing[Literal["read", "triage", "write", "maintain"]] = UNSET,
-        permissions: Missing[List[str]] = UNSET,
+        permissions: Missing[list[str]] = UNSET,
     ) -> Response[OrganizationCustomRepositoryRole]: ...
 
     async def async_update_custom_repo_role(
@@ -1510,7 +1494,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrganizationCustomRepositoryRoleUpdateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationCustomRepositoryRole]:
@@ -1555,7 +1539,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrganizationCustomRepositoryRoleCreateSchemaType,
     ) -> Response[OrganizationCustomRepositoryRole]: ...
 
@@ -1565,18 +1549,18 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         description: Missing[Union[str, None]] = UNSET,
         base_role: Literal["read", "triage", "write", "maintain"],
-        permissions: List[str],
+        permissions: list[str],
     ) -> Response[OrganizationCustomRepositoryRole]: ...
 
     def create_custom_role(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrganizationCustomRepositoryRoleCreateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationCustomRepositoryRole]:
@@ -1621,7 +1605,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrganizationCustomRepositoryRoleCreateSchemaType,
     ) -> Response[OrganizationCustomRepositoryRole]: ...
 
@@ -1631,18 +1615,18 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         description: Missing[Union[str, None]] = UNSET,
         base_role: Literal["read", "triage", "write", "maintain"],
-        permissions: List[str],
+        permissions: list[str],
     ) -> Response[OrganizationCustomRepositoryRole]: ...
 
     async def async_create_custom_role(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrganizationCustomRepositoryRoleCreateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationCustomRepositoryRole]:
@@ -1687,7 +1671,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrganizationCustomRepositoryRole]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---get-a-custom-role"""
 
@@ -1712,7 +1696,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrganizationCustomRepositoryRole]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---get-a-custom-role"""
 
@@ -1737,7 +1721,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---delete-a-custom-role"""
 
@@ -1756,7 +1740,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---delete-a-custom-role"""
 
@@ -1776,7 +1760,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrganizationCustomRepositoryRoleUpdateSchemaType,
     ) -> Response[OrganizationCustomRepositoryRole]: ...
 
@@ -1787,11 +1771,11 @@ class OrgsClient:
         role_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         base_role: Missing[Literal["read", "triage", "write", "maintain"]] = UNSET,
-        permissions: Missing[List[str]] = UNSET,
+        permissions: Missing[list[str]] = UNSET,
     ) -> Response[OrganizationCustomRepositoryRole]: ...
 
     def update_custom_role(
@@ -1799,7 +1783,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrganizationCustomRepositoryRoleUpdateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationCustomRepositoryRole]:
@@ -1845,7 +1829,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrganizationCustomRepositoryRoleUpdateSchemaType,
     ) -> Response[OrganizationCustomRepositoryRole]: ...
 
@@ -1856,11 +1840,11 @@ class OrgsClient:
         role_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         base_role: Missing[Literal["read", "triage", "write", "maintain"]] = UNSET,
-        permissions: Missing[List[str]] = UNSET,
+        permissions: Missing[list[str]] = UNSET,
     ) -> Response[OrganizationCustomRepositoryRole]: ...
 
     async def async_update_custom_role(
@@ -1868,7 +1852,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrganizationCustomRepositoryRoleUpdateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationCustomRepositoryRole]:
@@ -1914,11 +1898,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationInvitation]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationInvitation]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-failed-organization-invitations"""
-
-        from typing import List
 
         from ..models import BasicError, OrganizationInvitation
 
@@ -1936,7 +1918,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationInvitation],
+            response_model=list[OrganizationInvitation],
             error_models={
                 "404": BasicError,
             },
@@ -1948,11 +1930,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationInvitation]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationInvitation]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-failed-organization-invitations"""
-
-        from typing import List
 
         from ..models import BasicError, OrganizationInvitation
 
@@ -1970,7 +1950,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationInvitation],
+            response_model=list[OrganizationInvitation],
             error_models={
                 "404": BasicError,
             },
@@ -1980,11 +1960,9 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RepositoryFineGrainedPermission]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RepositoryFineGrainedPermission]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---list-fine-grained-permissions-for-an-organization"""
-
-        from typing import List
 
         from ..models import RepositoryFineGrainedPermission
 
@@ -1996,18 +1974,16 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[RepositoryFineGrainedPermission],
+            response_model=list[RepositoryFineGrainedPermission],
         )
 
     async def async_list_fine_grained_permissions(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RepositoryFineGrainedPermission]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RepositoryFineGrainedPermission]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#closing-down---list-fine-grained-permissions-for-an-organization"""
-
-        from typing import List
 
         from ..models import RepositoryFineGrainedPermission
 
@@ -2019,7 +1995,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[RepositoryFineGrainedPermission],
+            response_model=list[RepositoryFineGrainedPermission],
         )
 
     def list_webhooks(
@@ -2028,11 +2004,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrgHook]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrgHook]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#list-organization-webhooks"""
-
-        from typing import List
 
         from ..models import OrgHook, BasicError
 
@@ -2050,7 +2024,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrgHook],
+            response_model=list[OrgHook],
             error_models={
                 "404": BasicError,
             },
@@ -2062,11 +2036,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrgHook]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrgHook]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#list-organization-webhooks"""
-
-        from typing import List
 
         from ..models import OrgHook, BasicError
 
@@ -2084,7 +2056,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrgHook],
+            response_model=list[OrgHook],
             error_models={
                 "404": BasicError,
             },
@@ -2095,7 +2067,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgHooksPostBodyType,
     ) -> Response[OrgHook]: ...
 
@@ -2105,10 +2077,10 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         config: OrgsOrgHooksPostBodyPropConfigType,
-        events: Missing[List[str]] = UNSET,
+        events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
     ) -> Response[OrgHook]: ...
 
@@ -2116,7 +2088,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgHook]:
@@ -2154,7 +2126,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgHooksPostBodyType,
     ) -> Response[OrgHook]: ...
 
@@ -2164,10 +2136,10 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         config: OrgsOrgHooksPostBodyPropConfigType,
-        events: Missing[List[str]] = UNSET,
+        events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
     ) -> Response[OrgHook]: ...
 
@@ -2175,7 +2147,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgHook]:
@@ -2213,7 +2185,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgHook]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#get-an-organization-webhook"""
 
@@ -2238,7 +2210,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgHook]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#get-an-organization-webhook"""
 
@@ -2263,7 +2235,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#delete-an-organization-webhook"""
 
@@ -2287,7 +2259,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#delete-an-organization-webhook"""
 
@@ -2312,7 +2284,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
     ) -> Response[OrgHook]: ...
 
@@ -2323,9 +2295,9 @@ class OrgsClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
-        events: Missing[List[str]] = UNSET,
+        events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
         name: Missing[str] = UNSET,
     ) -> Response[OrgHook]: ...
@@ -2335,7 +2307,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgHook]:
@@ -2379,7 +2351,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
     ) -> Response[OrgHook]: ...
 
@@ -2390,9 +2362,9 @@ class OrgsClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         config: Missing[OrgsOrgHooksHookIdPatchBodyPropConfigType] = UNSET,
-        events: Missing[List[str]] = UNSET,
+        events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
         name: Missing[str] = UNSET,
     ) -> Response[OrgHook]: ...
@@ -2402,7 +2374,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgHook]:
@@ -2445,7 +2417,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[WebhookConfig]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization"""
 
@@ -2467,7 +2439,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[WebhookConfig]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization"""
 
@@ -2490,7 +2462,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> Response[WebhookConfig]: ...
 
@@ -2501,7 +2473,7 @@ class OrgsClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -2513,7 +2485,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig]:
@@ -2548,7 +2520,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> Response[WebhookConfig]: ...
 
@@ -2559,7 +2531,7 @@ class OrgsClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -2571,7 +2543,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig]:
@@ -2607,11 +2579,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[HookDeliveryItem]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[HookDeliveryItem]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#list-deliveries-for-an-organization-webhook"""
-
-        from typing import List
 
         from ..models import BasicError, ValidationError, HookDeliveryItem
 
@@ -2629,7 +2599,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[HookDeliveryItem],
+            response_model=list[HookDeliveryItem],
             error_models={
                 "400": BasicError,
                 "422": ValidationError,
@@ -2643,11 +2613,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[HookDeliveryItem]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[HookDeliveryItem]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#list-deliveries-for-an-organization-webhook"""
-
-        from typing import List
 
         from ..models import BasicError, ValidationError, HookDeliveryItem
 
@@ -2665,7 +2633,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[HookDeliveryItem],
+            response_model=list[HookDeliveryItem],
             error_models={
                 "400": BasicError,
                 "422": ValidationError,
@@ -2678,7 +2646,7 @@ class OrgsClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[HookDelivery]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#get-a-webhook-delivery-for-an-organization-webhook"""
 
@@ -2705,7 +2673,7 @@ class OrgsClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[HookDelivery]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#get-a-webhook-delivery-for-an-organization-webhook"""
 
@@ -2732,7 +2700,7 @@ class OrgsClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#redeliver-a-delivery-for-an-organization-webhook"""
 
@@ -2763,7 +2731,7 @@ class OrgsClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#redeliver-a-delivery-for-an-organization-webhook"""
 
@@ -2793,7 +2761,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#ping-an-organization-webhook"""
 
@@ -2817,7 +2785,7 @@ class OrgsClient:
         org: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/webhooks#ping-an-organization-webhook"""
 
@@ -2853,7 +2821,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[
-            List[
+            list[
                 Literal[
                     "last_rate_limited_timestamp",
                     "last_request_timestamp",
@@ -2865,11 +2833,9 @@ class OrgsClient:
             ]
         ] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ApiInsightsRouteStatsItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ApiInsightsRouteStatsItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-route-stats-by-actor"""
-
-        from typing import List
 
         from ..models import ApiInsightsRouteStatsItems
 
@@ -2891,7 +2857,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ApiInsightsRouteStatsItems],
+            response_model=list[ApiInsightsRouteStatsItems],
         )
 
     async def async_get_route_stats_by_actor(
@@ -2911,7 +2877,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[
-            List[
+            list[
                 Literal[
                     "last_rate_limited_timestamp",
                     "last_request_timestamp",
@@ -2923,11 +2889,9 @@ class OrgsClient:
             ]
         ] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ApiInsightsRouteStatsItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ApiInsightsRouteStatsItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-route-stats-by-actor"""
-
-        from typing import List
 
         from ..models import ApiInsightsRouteStatsItems
 
@@ -2949,7 +2913,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ApiInsightsRouteStatsItems],
+            response_model=list[ApiInsightsRouteStatsItems],
         )
 
     def get_subject_stats(
@@ -2961,7 +2925,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[
-            List[
+            list[
                 Literal[
                     "last_rate_limited_timestamp",
                     "last_request_timestamp",
@@ -2972,11 +2936,9 @@ class OrgsClient:
             ]
         ] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ApiInsightsSubjectStatsItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ApiInsightsSubjectStatsItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-subject-stats"""
-
-        from typing import List
 
         from ..models import ApiInsightsSubjectStatsItems
 
@@ -2998,7 +2960,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ApiInsightsSubjectStatsItems],
+            response_model=list[ApiInsightsSubjectStatsItems],
         )
 
     async def async_get_subject_stats(
@@ -3010,7 +2972,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[
-            List[
+            list[
                 Literal[
                     "last_rate_limited_timestamp",
                     "last_request_timestamp",
@@ -3021,11 +2983,9 @@ class OrgsClient:
             ]
         ] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ApiInsightsSubjectStatsItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ApiInsightsSubjectStatsItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-subject-stats"""
-
-        from typing import List
 
         from ..models import ApiInsightsSubjectStatsItems
 
@@ -3047,7 +3007,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ApiInsightsSubjectStatsItems],
+            response_model=list[ApiInsightsSubjectStatsItems],
         )
 
     def get_summary_stats(
@@ -3056,7 +3016,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ApiInsightsSummaryStats]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats"""
 
@@ -3085,7 +3045,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ApiInsightsSummaryStats]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats"""
 
@@ -3115,7 +3075,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ApiInsightsSummaryStats]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats-by-user"""
 
@@ -3145,7 +3105,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ApiInsightsSummaryStats]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats-by-user"""
 
@@ -3182,7 +3142,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ApiInsightsSummaryStats]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats-by-actor"""
 
@@ -3219,7 +3179,7 @@ class OrgsClient:
         min_timestamp: str,
         max_timestamp: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ApiInsightsSummaryStats]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-summary-stats-by-actor"""
 
@@ -3249,11 +3209,9 @@ class OrgsClient:
         max_timestamp: str,
         timestamp_increment: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ApiInsightsTimeStatsItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ApiInsightsTimeStatsItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats"""
-
-        from typing import List
 
         from ..models import ApiInsightsTimeStatsItems
 
@@ -3272,7 +3230,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ApiInsightsTimeStatsItems],
+            response_model=list[ApiInsightsTimeStatsItems],
         )
 
     async def async_get_time_stats(
@@ -3282,11 +3240,9 @@ class OrgsClient:
         max_timestamp: str,
         timestamp_increment: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ApiInsightsTimeStatsItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ApiInsightsTimeStatsItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats"""
-
-        from typing import List
 
         from ..models import ApiInsightsTimeStatsItems
 
@@ -3305,7 +3261,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ApiInsightsTimeStatsItems],
+            response_model=list[ApiInsightsTimeStatsItems],
         )
 
     def get_time_stats_by_user(
@@ -3316,11 +3272,9 @@ class OrgsClient:
         max_timestamp: str,
         timestamp_increment: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ApiInsightsTimeStatsItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ApiInsightsTimeStatsItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats-by-user"""
-
-        from typing import List
 
         from ..models import ApiInsightsTimeStatsItems
 
@@ -3339,7 +3293,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ApiInsightsTimeStatsItems],
+            response_model=list[ApiInsightsTimeStatsItems],
         )
 
     async def async_get_time_stats_by_user(
@@ -3350,11 +3304,9 @@ class OrgsClient:
         max_timestamp: str,
         timestamp_increment: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ApiInsightsTimeStatsItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ApiInsightsTimeStatsItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats-by-user"""
-
-        from typing import List
 
         from ..models import ApiInsightsTimeStatsItems
 
@@ -3373,7 +3325,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ApiInsightsTimeStatsItems],
+            response_model=list[ApiInsightsTimeStatsItems],
         )
 
     def get_time_stats_by_actor(
@@ -3391,11 +3343,9 @@ class OrgsClient:
         max_timestamp: str,
         timestamp_increment: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ApiInsightsTimeStatsItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ApiInsightsTimeStatsItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats-by-actor"""
-
-        from typing import List
 
         from ..models import ApiInsightsTimeStatsItems
 
@@ -3414,7 +3364,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ApiInsightsTimeStatsItems],
+            response_model=list[ApiInsightsTimeStatsItems],
         )
 
     async def async_get_time_stats_by_actor(
@@ -3432,11 +3382,9 @@ class OrgsClient:
         max_timestamp: str,
         timestamp_increment: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ApiInsightsTimeStatsItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ApiInsightsTimeStatsItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-time-stats-by-actor"""
-
-        from typing import List
 
         from ..models import ApiInsightsTimeStatsItems
 
@@ -3455,7 +3403,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ApiInsightsTimeStatsItems],
+            response_model=list[ApiInsightsTimeStatsItems],
         )
 
     def get_user_stats(
@@ -3468,7 +3416,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[
-            List[
+            list[
                 Literal[
                     "last_rate_limited_timestamp",
                     "last_request_timestamp",
@@ -3479,11 +3427,9 @@ class OrgsClient:
             ]
         ] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ApiInsightsUserStatsItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ApiInsightsUserStatsItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-user-stats"""
-
-        from typing import List
 
         from ..models import ApiInsightsUserStatsItems
 
@@ -3505,7 +3451,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ApiInsightsUserStatsItems],
+            response_model=list[ApiInsightsUserStatsItems],
         )
 
     async def async_get_user_stats(
@@ -3518,7 +3464,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[
-            List[
+            list[
                 Literal[
                     "last_rate_limited_timestamp",
                     "last_request_timestamp",
@@ -3529,11 +3475,9 @@ class OrgsClient:
             ]
         ] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ApiInsightsUserStatsItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ApiInsightsUserStatsItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/api-insights#get-user-stats"""
-
-        from typing import List
 
         from ..models import ApiInsightsUserStatsItems
 
@@ -3555,7 +3499,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ApiInsightsUserStatsItems],
+            response_model=list[ApiInsightsUserStatsItems],
         )
 
     def list_app_installations(
@@ -3564,7 +3508,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgInstallationsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-app-installations-for-an-organization"""
 
@@ -3593,7 +3537,7 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgInstallationsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-app-installations-for-an-organization"""
 
@@ -3628,11 +3572,9 @@ class OrgsClient:
         ] = UNSET,
         invitation_source: Missing[Literal["all", "member", "scim"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationInvitation]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationInvitation]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-pending-organization-invitations"""
-
-        from typing import List
 
         from ..models import BasicError, OrganizationInvitation
 
@@ -3652,7 +3594,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationInvitation],
+            response_model=list[OrganizationInvitation],
             error_models={
                 "404": BasicError,
             },
@@ -3670,11 +3612,9 @@ class OrgsClient:
         ] = UNSET,
         invitation_source: Missing[Literal["all", "member", "scim"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationInvitation]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationInvitation]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-pending-organization-invitations"""
-
-        from typing import List
 
         from ..models import BasicError, OrganizationInvitation
 
@@ -3694,7 +3634,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationInvitation],
+            response_model=list[OrganizationInvitation],
             error_models={
                 "404": BasicError,
             },
@@ -3705,7 +3645,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
     ) -> Response[OrganizationInvitation]: ...
 
@@ -3715,20 +3655,20 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         invitee_id: Missing[int] = UNSET,
         email: Missing[str] = UNSET,
         role: Missing[
             Literal["admin", "direct_member", "billing_manager", "reinstate"]
         ] = UNSET,
-        team_ids: Missing[List[int]] = UNSET,
+        team_ids: Missing[list[int]] = UNSET,
     ) -> Response[OrganizationInvitation]: ...
 
     def create_invitation(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationInvitation]:
@@ -3771,7 +3711,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
     ) -> Response[OrganizationInvitation]: ...
 
@@ -3781,20 +3721,20 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         invitee_id: Missing[int] = UNSET,
         email: Missing[str] = UNSET,
         role: Missing[
             Literal["admin", "direct_member", "billing_manager", "reinstate"]
         ] = UNSET,
-        team_ids: Missing[List[int]] = UNSET,
+        team_ids: Missing[list[int]] = UNSET,
     ) -> Response[OrganizationInvitation]: ...
 
     async def async_create_invitation(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgInvitationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationInvitation]:
@@ -3837,7 +3777,7 @@ class OrgsClient:
         org: str,
         invitation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#cancel-an-organization-invitation"""
 
@@ -3862,7 +3802,7 @@ class OrgsClient:
         org: str,
         invitation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#cancel-an-organization-invitation"""
 
@@ -3889,11 +3829,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Team]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-organization-invitation-teams"""
-
-        from typing import List
 
         from ..models import Team, BasicError
 
@@ -3911,7 +3849,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
             error_models={
                 "404": BasicError,
             },
@@ -3924,11 +3862,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Team]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-organization-invitation-teams"""
-
-        from typing import List
 
         from ..models import Team, BasicError
 
@@ -3946,7 +3882,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
             error_models={
                 "404": BasicError,
             },
@@ -3960,11 +3896,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-organization-members"""
-
-        from typing import List
 
         from ..models import SimpleUser, ValidationError
 
@@ -3984,7 +3918,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
             error_models={
                 "422": ValidationError,
             },
@@ -3998,11 +3932,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-organization-members"""
-
-        from typing import List
 
         from ..models import SimpleUser, ValidationError
 
@@ -4022,7 +3954,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
             error_models={
                 "422": ValidationError,
             },
@@ -4033,7 +3965,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#check-organization-membership-for-a-user"""
 
@@ -4053,7 +3985,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#check-organization-membership-for-a-user"""
 
@@ -4073,7 +4005,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#remove-an-organization-member"""
 
@@ -4097,7 +4029,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#remove-an-organization-member"""
 
@@ -4121,7 +4053,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgMembership]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#get-organization-membership-for-a-user"""
 
@@ -4147,7 +4079,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgMembership]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#get-organization-membership-for-a-user"""
 
@@ -4174,7 +4106,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
     ) -> Response[OrgMembership]: ...
 
@@ -4185,7 +4117,7 @@ class OrgsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         role: Missing[Literal["admin", "member"]] = UNSET,
     ) -> Response[OrgMembership]: ...
 
@@ -4194,7 +4126,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgMembership]:
@@ -4238,7 +4170,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
     ) -> Response[OrgMembership]: ...
 
@@ -4249,7 +4181,7 @@ class OrgsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         role: Missing[Literal["admin", "member"]] = UNSET,
     ) -> Response[OrgMembership]: ...
 
@@ -4258,7 +4190,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgMembership]:
@@ -4301,7 +4233,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#remove-organization-membership-for-a-user"""
 
@@ -4326,7 +4258,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#remove-organization-membership-for-a-user"""
 
@@ -4350,11 +4282,9 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationFineGrainedPermission]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationFineGrainedPermission]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#list-organization-fine-grained-permissions-for-an-organization"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -4370,7 +4300,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[OrganizationFineGrainedPermission],
+            response_model=list[OrganizationFineGrainedPermission],
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -4381,11 +4311,9 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationFineGrainedPermission]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationFineGrainedPermission]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#list-organization-fine-grained-permissions-for-an-organization"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -4401,7 +4329,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[OrganizationFineGrainedPermission],
+            response_model=list[OrganizationFineGrainedPermission],
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -4412,7 +4340,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgOrganizationRolesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#get-all-organization-roles-for-an-organization"""
 
@@ -4441,7 +4369,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgOrganizationRolesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#get-all-organization-roles-for-an-organization"""
 
@@ -4471,7 +4399,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrganizationCustomOrganizationRoleCreateSchemaType,
     ) -> Response[OrganizationRole]: ...
 
@@ -4481,10 +4409,10 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
-        permissions: List[str],
+        permissions: list[str],
         base_role: Missing[
             Literal["read", "triage", "write", "maintain", "admin"]
         ] = UNSET,
@@ -4494,7 +4422,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrganizationCustomOrganizationRoleCreateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationRole]:
@@ -4540,7 +4468,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrganizationCustomOrganizationRoleCreateSchemaType,
     ) -> Response[OrganizationRole]: ...
 
@@ -4550,10 +4478,10 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
-        permissions: List[str],
+        permissions: list[str],
         base_role: Missing[
             Literal["read", "triage", "write", "maintain", "admin"]
         ] = UNSET,
@@ -4563,7 +4491,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrganizationCustomOrganizationRoleCreateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationRole]:
@@ -4609,7 +4537,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#remove-all-organization-roles-for-a-team"""
 
@@ -4628,7 +4556,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#remove-all-organization-roles-for-a-team"""
 
@@ -4648,7 +4576,7 @@ class OrgsClient:
         team_slug: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#assign-an-organization-role-to-a-team"""
 
@@ -4669,7 +4597,7 @@ class OrgsClient:
         team_slug: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#assign-an-organization-role-to-a-team"""
 
@@ -4690,7 +4618,7 @@ class OrgsClient:
         team_slug: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#remove-an-organization-role-from-a-team"""
 
@@ -4710,7 +4638,7 @@ class OrgsClient:
         team_slug: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#remove-an-organization-role-from-a-team"""
 
@@ -4729,7 +4657,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#remove-all-organization-roles-for-a-user"""
 
@@ -4748,7 +4676,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#remove-all-organization-roles-for-a-user"""
 
@@ -4768,7 +4696,7 @@ class OrgsClient:
         username: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#assign-an-organization-role-to-a-user"""
 
@@ -4789,7 +4717,7 @@ class OrgsClient:
         username: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#assign-an-organization-role-to-a-user"""
 
@@ -4810,7 +4738,7 @@ class OrgsClient:
         username: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#remove-an-organization-role-from-a-user"""
 
@@ -4830,7 +4758,7 @@ class OrgsClient:
         username: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#remove-an-organization-role-from-a-user"""
 
@@ -4849,7 +4777,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrganizationRole]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#get-an-organization-role"""
 
@@ -4875,7 +4803,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrganizationRole]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#get-an-organization-role"""
 
@@ -4901,7 +4829,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#delete-a-custom-organization-role"""
 
@@ -4920,7 +4848,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#delete-a-custom-organization-role"""
 
@@ -4940,7 +4868,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrganizationCustomOrganizationRoleUpdateSchemaType,
     ) -> Response[OrganizationRole]: ...
 
@@ -4951,10 +4879,10 @@ class OrgsClient:
         role_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-        permissions: Missing[List[str]] = UNSET,
+        permissions: Missing[list[str]] = UNSET,
         base_role: Missing[
             Literal["none", "read", "triage", "write", "maintain", "admin"]
         ] = UNSET,
@@ -4965,7 +4893,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrganizationCustomOrganizationRoleUpdateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationRole]:
@@ -5012,7 +4940,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrganizationCustomOrganizationRoleUpdateSchemaType,
     ) -> Response[OrganizationRole]: ...
 
@@ -5023,10 +4951,10 @@ class OrgsClient:
         role_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
-        permissions: Missing[List[str]] = UNSET,
+        permissions: Missing[list[str]] = UNSET,
         base_role: Missing[
             Literal["none", "read", "triage", "write", "maintain", "admin"]
         ] = UNSET,
@@ -5037,7 +4965,7 @@ class OrgsClient:
         org: str,
         role_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrganizationCustomOrganizationRoleUpdateSchemaType] = UNSET,
         **kwargs,
     ) -> Response[OrganizationRole]:
@@ -5085,11 +5013,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamRoleAssignment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamRoleAssignment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role"""
-
-        from typing import List
 
         from ..models import TeamRoleAssignment
 
@@ -5107,7 +5033,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[TeamRoleAssignment],
+            response_model=list[TeamRoleAssignment],
             error_models={},
         )
 
@@ -5118,11 +5044,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamRoleAssignment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamRoleAssignment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role"""
-
-        from typing import List
 
         from ..models import TeamRoleAssignment
 
@@ -5140,7 +5064,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[TeamRoleAssignment],
+            response_model=list[TeamRoleAssignment],
             error_models={},
         )
 
@@ -5151,11 +5075,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[UserRoleAssignment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[UserRoleAssignment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role"""
-
-        from typing import List
 
         from ..models import UserRoleAssignment
 
@@ -5173,7 +5095,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[UserRoleAssignment],
+            response_model=list[UserRoleAssignment],
             error_models={},
         )
 
@@ -5184,11 +5106,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[UserRoleAssignment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[UserRoleAssignment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role"""
-
-        from typing import List
 
         from ..models import UserRoleAssignment
 
@@ -5206,7 +5126,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[UserRoleAssignment],
+            response_model=list[UserRoleAssignment],
             error_models={},
         )
 
@@ -5217,11 +5137,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/outside-collaborators#list-outside-collaborators-for-an-organization"""
-
-        from typing import List
 
         from ..models import SimpleUser
 
@@ -5240,7 +5158,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
         )
 
     async def async_list_outside_collaborators(
@@ -5250,11 +5168,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/outside-collaborators#list-outside-collaborators-for-an-organization"""
-
-        from typing import List
 
         from ..models import SimpleUser
 
@@ -5273,7 +5189,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
         )
 
     @overload
@@ -5282,7 +5198,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]: ...
 
@@ -5293,7 +5209,7 @@ class OrgsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         async_: Missing[bool] = UNSET,
     ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]: ...
 
@@ -5302,7 +5218,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]:
@@ -5346,7 +5262,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]: ...
 
@@ -5357,7 +5273,7 @@ class OrgsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         async_: Missing[bool] = UNSET,
     ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]: ...
 
@@ -5366,7 +5282,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgOutsideCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgOutsideCollaboratorsUsernamePutResponse202]:
@@ -5409,7 +5325,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/outside-collaborators#remove-outside-collaborator-from-an-organization"""
 
@@ -5433,7 +5349,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/outside-collaborators#remove-outside-collaborator-from-an-organization"""
 
@@ -5459,17 +5375,15 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         sort: Missing[Literal["created_at"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        owner: Missing[List[str]] = UNSET,
+        owner: Missing[list[str]] = UNSET,
         repository: Missing[str] = UNSET,
         permission: Missing[str] = UNSET,
         last_used_before: Missing[datetime] = UNSET,
         last_used_after: Missing[datetime] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationProgrammaticAccessGrantRequest]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationProgrammaticAccessGrantRequest]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#list-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -5498,7 +5412,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationProgrammaticAccessGrantRequest],
+            response_model=list[OrganizationProgrammaticAccessGrantRequest],
             error_models={
                 "500": BasicError,
                 "422": ValidationError,
@@ -5514,17 +5428,15 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         sort: Missing[Literal["created_at"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        owner: Missing[List[str]] = UNSET,
+        owner: Missing[list[str]] = UNSET,
         repository: Missing[str] = UNSET,
         permission: Missing[str] = UNSET,
         last_used_before: Missing[datetime] = UNSET,
         last_used_after: Missing[datetime] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationProgrammaticAccessGrantRequest]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationProgrammaticAccessGrantRequest]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#list-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -5553,7 +5465,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationProgrammaticAccessGrantRequest],
+            response_model=list[OrganizationProgrammaticAccessGrantRequest],
             error_models={
                 "500": BasicError,
                 "422": ValidationError,
@@ -5567,7 +5479,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
 
@@ -5577,8 +5489,8 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        pat_request_ids: Missing[List[int]] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        pat_request_ids: Missing[list[int]] = UNSET,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
@@ -5587,7 +5499,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
@@ -5634,7 +5546,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokenRequestsPostBodyType,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
 
@@ -5644,8 +5556,8 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        pat_request_ids: Missing[List[int]] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        pat_request_ids: Missing[list[int]] = UNSET,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
@@ -5654,7 +5566,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPersonalAccessTokenRequestsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
@@ -5702,7 +5614,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
     ) -> Response: ...
 
@@ -5713,7 +5625,7 @@ class OrgsClient:
         pat_request_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
     ) -> Response: ...
@@ -5723,7 +5635,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
         ] = UNSET,
@@ -5771,7 +5683,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType,
     ) -> Response: ...
 
@@ -5782,7 +5694,7 @@ class OrgsClient:
         pat_request_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         action: Literal["approve", "deny"],
         reason: Missing[Union[str, None]] = UNSET,
     ) -> Response: ...
@@ -5792,7 +5704,7 @@ class OrgsClient:
         org: str,
         pat_request_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgPersonalAccessTokenRequestsPatRequestIdPostBodyType
         ] = UNSET,
@@ -5841,11 +5753,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#list-repositories-requested-to-be-accessed-by-a-fine-grained-personal-access-token"""
-
-        from typing import List
 
         from ..models import BasicError, MinimalRepository
 
@@ -5865,7 +5775,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
             error_models={
                 "500": BasicError,
                 "404": BasicError,
@@ -5880,11 +5790,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#list-repositories-requested-to-be-accessed-by-a-fine-grained-personal-access-token"""
-
-        from typing import List
 
         from ..models import BasicError, MinimalRepository
 
@@ -5904,7 +5812,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
             error_models={
                 "500": BasicError,
                 "404": BasicError,
@@ -5919,17 +5827,15 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         sort: Missing[Literal["created_at"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        owner: Missing[List[str]] = UNSET,
+        owner: Missing[list[str]] = UNSET,
         repository: Missing[str] = UNSET,
         permission: Missing[str] = UNSET,
         last_used_before: Missing[datetime] = UNSET,
         last_used_after: Missing[datetime] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationProgrammaticAccessGrant]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationProgrammaticAccessGrant]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#list-fine-grained-personal-access-tokens-with-access-to-organization-resources"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -5958,7 +5864,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationProgrammaticAccessGrant],
+            response_model=list[OrganizationProgrammaticAccessGrant],
             error_models={
                 "500": BasicError,
                 "422": ValidationError,
@@ -5974,17 +5880,15 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         sort: Missing[Literal["created_at"]] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
-        owner: Missing[List[str]] = UNSET,
+        owner: Missing[list[str]] = UNSET,
         repository: Missing[str] = UNSET,
         permission: Missing[str] = UNSET,
         last_used_before: Missing[datetime] = UNSET,
         last_used_after: Missing[datetime] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationProgrammaticAccessGrant]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationProgrammaticAccessGrant]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#list-fine-grained-personal-access-tokens-with-access-to-organization-resources"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -6013,7 +5917,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationProgrammaticAccessGrant],
+            response_model=list[OrganizationProgrammaticAccessGrant],
             error_models={
                 "500": BasicError,
                 "422": ValidationError,
@@ -6027,7 +5931,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokensPostBodyType,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
 
@@ -6037,16 +5941,16 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         action: Literal["revoke"],
-        pat_ids: List[int],
+        pat_ids: list[int],
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
 
     def update_pat_accesses(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
@@ -6091,7 +5995,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokensPostBodyType,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
 
@@ -6101,16 +6005,16 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         action: Literal["revoke"],
-        pat_ids: List[int],
+        pat_ids: list[int],
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]: ...
 
     async def async_update_pat_accesses(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPersonalAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
@@ -6156,7 +6060,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokensPatIdPostBodyType,
     ) -> Response: ...
 
@@ -6167,7 +6071,7 @@ class OrgsClient:
         pat_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         action: Literal["revoke"],
     ) -> Response: ...
 
@@ -6176,7 +6080,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -6220,7 +6124,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPersonalAccessTokensPatIdPostBodyType,
     ) -> Response: ...
 
@@ -6231,7 +6135,7 @@ class OrgsClient:
         pat_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         action: Literal["revoke"],
     ) -> Response: ...
 
@@ -6240,7 +6144,7 @@ class OrgsClient:
         org: str,
         pat_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPersonalAccessTokensPatIdPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -6285,11 +6189,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#list-repositories-a-fine-grained-personal-access-token-has-access-to"""
-
-        from typing import List
 
         from ..models import BasicError, MinimalRepository
 
@@ -6307,7 +6209,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
             error_models={
                 "500": BasicError,
                 "404": BasicError,
@@ -6322,11 +6224,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/personal-access-tokens#list-repositories-a-fine-grained-personal-access-token-has-access-to"""
-
-        from typing import List
 
         from ..models import BasicError, MinimalRepository
 
@@ -6344,7 +6244,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
             error_models={
                 "500": BasicError,
                 "404": BasicError,
@@ -6356,11 +6256,9 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CustomProperty]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CustomProperty]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#get-all-custom-properties-for-an-organization"""
-
-        from typing import List
 
         from ..models import BasicError, CustomProperty
 
@@ -6372,7 +6270,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[CustomProperty],
+            response_model=list[CustomProperty],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -6383,11 +6281,9 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CustomProperty]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CustomProperty]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#get-all-custom-properties-for-an-organization"""
-
-        from typing import List
 
         from ..models import BasicError, CustomProperty
 
@@ -6399,7 +6295,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[CustomProperty],
+            response_model=list[CustomProperty],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -6411,9 +6307,9 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
-    ) -> Response[List[CustomProperty]]: ...
+    ) -> Response[list[CustomProperty]]: ...
 
     @overload
     def create_or_update_custom_properties(
@@ -6421,21 +6317,19 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        properties: List[CustomPropertyType],
-    ) -> Response[List[CustomProperty]]: ...
+        headers: Optional[dict[str, str]] = None,
+        properties: list[CustomPropertyType],
+    ) -> Response[list[CustomProperty]]: ...
 
     def create_or_update_custom_properties(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[List[CustomProperty]]:
+    ) -> Response[list[CustomProperty]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#create-or-update-custom-properties-for-an-organization"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -6461,7 +6355,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[CustomProperty],
+            response_model=list[CustomProperty],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -6473,9 +6367,9 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaPatchBodyType,
-    ) -> Response[List[CustomProperty]]: ...
+    ) -> Response[list[CustomProperty]]: ...
 
     @overload
     async def async_create_or_update_custom_properties(
@@ -6483,21 +6377,19 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        properties: List[CustomPropertyType],
-    ) -> Response[List[CustomProperty]]: ...
+        headers: Optional[dict[str, str]] = None,
+        properties: list[CustomPropertyType],
+    ) -> Response[list[CustomProperty]]: ...
 
     async def async_create_or_update_custom_properties(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[List[CustomProperty]]:
+    ) -> Response[list[CustomProperty]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#create-or-update-custom-properties-for-an-organization"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -6523,7 +6415,7 @@ class OrgsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[CustomProperty],
+            response_model=list[CustomProperty],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -6535,7 +6427,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CustomProperty]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#get-a-custom-property-for-an-organization"""
 
@@ -6561,7 +6453,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CustomProperty]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#get-a-custom-property-for-an-organization"""
 
@@ -6588,7 +6480,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
     ) -> Response[CustomProperty]: ...
 
@@ -6599,12 +6491,12 @@ class OrgsClient:
         custom_property_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         value_type: Literal["string", "single_select", "multi_select", "true_false"],
         required: Missing[bool] = UNSET,
-        default_value: Missing[Union[str, List[str], None]] = UNSET,
+        default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
-        allowed_values: Missing[Union[List[str], None]] = UNSET,
+        allowed_values: Missing[Union[list[str], None]] = UNSET,
     ) -> Response[CustomProperty]: ...
 
     def create_or_update_custom_property(
@@ -6612,7 +6504,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[CustomProperty]:
@@ -6657,7 +6549,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType,
     ) -> Response[CustomProperty]: ...
 
@@ -6668,12 +6560,12 @@ class OrgsClient:
         custom_property_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         value_type: Literal["string", "single_select", "multi_select", "true_false"],
         required: Missing[bool] = UNSET,
-        default_value: Missing[Union[str, List[str], None]] = UNSET,
+        default_value: Missing[Union[str, list[str], None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
-        allowed_values: Missing[Union[List[str], None]] = UNSET,
+        allowed_values: Missing[Union[list[str], None]] = UNSET,
     ) -> Response[CustomProperty]: ...
 
     async def async_create_or_update_custom_property(
@@ -6681,7 +6573,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesSchemaCustomPropertyNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[CustomProperty]:
@@ -6725,7 +6617,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#remove-a-custom-property-for-an-organization"""
 
@@ -6750,7 +6642,7 @@ class OrgsClient:
         org: str,
         custom_property_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#remove-a-custom-property-for-an-organization"""
 
@@ -6777,11 +6669,9 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         repository_query: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrgRepoCustomPropertyValues]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrgRepoCustomPropertyValues]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#list-custom-property-values-for-organization-repositories"""
-
-        from typing import List
 
         from ..models import BasicError, OrgRepoCustomPropertyValues
 
@@ -6800,7 +6690,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrgRepoCustomPropertyValues],
+            response_model=list[OrgRepoCustomPropertyValues],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -6814,11 +6704,9 @@ class OrgsClient:
         page: Missing[int] = UNSET,
         repository_query: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrgRepoCustomPropertyValues]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrgRepoCustomPropertyValues]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-properties#list-custom-property-values-for-organization-repositories"""
-
-        from typing import List
 
         from ..models import BasicError, OrgRepoCustomPropertyValues
 
@@ -6837,7 +6725,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrgRepoCustomPropertyValues],
+            response_model=list[OrgRepoCustomPropertyValues],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -6849,7 +6737,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPropertiesValuesPatchBodyType,
     ) -> Response: ...
 
@@ -6859,16 +6747,16 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        repository_names: List[str],
-        properties: List[CustomPropertyValueType],
+        headers: Optional[dict[str, str]] = None,
+        repository_names: list[str],
+        properties: list[CustomPropertyValueType],
     ) -> Response: ...
 
     def create_or_update_custom_properties_values_for_repos(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -6910,7 +6798,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgPropertiesValuesPatchBodyType,
     ) -> Response: ...
 
@@ -6920,16 +6808,16 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        repository_names: List[str],
-        properties: List[CustomPropertyValueType],
+        headers: Optional[dict[str, str]] = None,
+        repository_names: list[str],
+        properties: list[CustomPropertyValueType],
     ) -> Response: ...
 
     async def async_create_or_update_custom_properties_values_for_repos(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -6972,11 +6860,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-public-organization-members"""
-
-        from typing import List
 
         from ..models import SimpleUser
 
@@ -6994,7 +6880,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
         )
 
     async def async_list_public_members(
@@ -7003,11 +6889,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-public-organization-members"""
-
-        from typing import List
 
         from ..models import SimpleUser
 
@@ -7025,7 +6909,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
         )
 
     def check_public_membership_for_user(
@@ -7033,7 +6917,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#check-public-organization-membership-for-a-user"""
 
@@ -7053,7 +6937,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#check-public-organization-membership-for-a-user"""
 
@@ -7073,7 +6957,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#set-public-organization-membership-for-the-authenticated-user"""
 
@@ -7097,7 +6981,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#set-public-organization-membership-for-the-authenticated-user"""
 
@@ -7121,7 +7005,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#remove-public-organization-membership-for-the-authenticated-user"""
 
@@ -7140,7 +7024,7 @@ class OrgsClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#remove-public-organization-membership-for-the-authenticated-user"""
 
@@ -7158,11 +7042,9 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RepositoryFineGrainedPermission]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RepositoryFineGrainedPermission]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#list-repository-fine-grained-permissions-for-an-organization"""
-
-        from typing import List
 
         from ..models import RepositoryFineGrainedPermission
 
@@ -7174,18 +7056,16 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[RepositoryFineGrainedPermission],
+            response_model=list[RepositoryFineGrainedPermission],
         )
 
     async def async_list_repo_fine_grained_permissions(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RepositoryFineGrainedPermission]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RepositoryFineGrainedPermission]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/custom-roles#list-repository-fine-grained-permissions-for-an-organization"""
-
-        from typing import List
 
         from ..models import RepositoryFineGrainedPermission
 
@@ -7197,18 +7077,16 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[RepositoryFineGrainedPermission],
+            response_model=list[RepositoryFineGrainedPermission],
         )
 
     def list_security_manager_teams(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamSimple]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamSimple]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/security-managers#list-security-manager-teams"""
-
-        from typing import List
 
         from ..models import TeamSimple
 
@@ -7220,18 +7098,16 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[TeamSimple],
+            response_model=list[TeamSimple],
         )
 
     async def async_list_security_manager_teams(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamSimple]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamSimple]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/security-managers#list-security-manager-teams"""
-
-        from typing import List
 
         from ..models import TeamSimple
 
@@ -7243,7 +7119,7 @@ class OrgsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[TeamSimple],
+            response_model=list[TeamSimple],
         )
 
     def add_security_manager_team(
@@ -7251,7 +7127,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/security-managers#add-a-security-manager-team"""
 
@@ -7270,7 +7146,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/security-managers#add-a-security-manager-team"""
 
@@ -7289,7 +7165,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/security-managers#remove-a-security-manager-team"""
 
@@ -7308,7 +7184,7 @@ class OrgsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/security-managers#remove-a-security-manager-team"""
 
@@ -7337,7 +7213,7 @@ class OrgsClient:
         ],
         enablement: Literal["enable_all", "disable_all"],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
     ) -> Response: ...
 
@@ -7357,7 +7233,7 @@ class OrgsClient:
         enablement: Literal["enable_all", "disable_all"],
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> Response: ...
 
@@ -7375,7 +7251,7 @@ class OrgsClient:
         ],
         enablement: Literal["enable_all", "disable_all"],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -7419,7 +7295,7 @@ class OrgsClient:
         ],
         enablement: Literal["enable_all", "disable_all"],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
     ) -> Response: ...
 
@@ -7439,7 +7315,7 @@ class OrgsClient:
         enablement: Literal["enable_all", "disable_all"],
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
     ) -> Response: ...
 
@@ -7457,7 +7333,7 @@ class OrgsClient:
         ],
         enablement: Literal["enable_all", "disable_all"],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgSecurityProductEnablementPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -7492,11 +7368,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrgMembership]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrgMembership]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-organization-memberships-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BasicError, OrgMembership, ValidationError
 
@@ -7515,7 +7389,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrgMembership],
+            response_model=list[OrgMembership],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -7529,11 +7403,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrgMembership]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrgMembership]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#list-organization-memberships-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BasicError, OrgMembership, ValidationError
 
@@ -7552,7 +7424,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrgMembership],
+            response_model=list[OrgMembership],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -7564,7 +7436,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgMembership]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#get-an-organization-membership-for-the-authenticated-user"""
 
@@ -7589,7 +7461,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgMembership]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/members#get-an-organization-membership-for-the-authenticated-user"""
 
@@ -7615,7 +7487,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: UserMembershipsOrgsOrgPatchBodyType,
     ) -> Response[OrgMembership]: ...
 
@@ -7625,7 +7497,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         state: Literal["active"],
     ) -> Response[OrgMembership]: ...
 
@@ -7633,7 +7505,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgMembership]:
@@ -7677,7 +7549,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: UserMembershipsOrgsOrgPatchBodyType,
     ) -> Response[OrgMembership]: ...
 
@@ -7687,7 +7559,7 @@ class OrgsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         state: Literal["active"],
     ) -> Response[OrgMembership]: ...
 
@@ -7695,7 +7567,7 @@ class OrgsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[UserMembershipsOrgsOrgPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgMembership]:
@@ -7739,11 +7611,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationSimple]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationSimple]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-organizations-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BasicError, OrganizationSimple
 
@@ -7761,7 +7631,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationSimple],
+            response_model=list[OrganizationSimple],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -7773,11 +7643,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationSimple]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationSimple]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-organizations-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BasicError, OrganizationSimple
 
@@ -7795,7 +7663,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationSimple],
+            response_model=list[OrganizationSimple],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -7808,11 +7676,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationSimple]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationSimple]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-organizations-for-a-user"""
-
-        from typing import List
 
         from ..models import OrganizationSimple
 
@@ -7830,7 +7696,7 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationSimple],
+            response_model=list[OrganizationSimple],
         )
 
     async def async_list_for_user(
@@ -7839,11 +7705,9 @@ class OrgsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationSimple]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationSimple]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/orgs#list-organizations-for-a-user"""
-
-        from typing import List
 
         from ..models import OrganizationSimple
 
@@ -7861,5 +7725,5 @@ class OrgsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationSimple],
+            response_model=list[OrganizationSimple],
         )

@@ -1,17 +1,7 @@
+from collections.abc import Awaitable
 from functools import cached_property
 from typing_extensions import ParamSpec
-from typing import (
-    TYPE_CHECKING,
-    Any,
-    Dict,
-    List,
-    Union,
-    TypeVar,
-    Callable,
-    Optional,
-    Awaitable,
-    overload,
-)
+from typing import TYPE_CHECKING, Any, Union, TypeVar, Callable, Optional, overload
 
 from .core import GitHubCore
 from .response import Response
@@ -78,7 +68,7 @@ class GitHub(GitHubCore[A]):
             *,
             base_url: Optional[Union[str, httpx.URL]] = None,
             accept_format: Optional[str] = None,
-            previews: Optional[List[str]] = None,
+            previews: Optional[list[str]] = None,
             user_agent: Optional[str] = None,
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,
@@ -95,7 +85,7 @@ class GitHub(GitHubCore[A]):
             *,
             base_url: Optional[Union[str, httpx.URL]] = None,
             accept_format: Optional[str] = None,
-            previews: Optional[List[str]] = None,
+            previews: Optional[list[str]] = None,
             user_agent: Optional[str] = None,
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,
@@ -112,7 +102,7 @@ class GitHub(GitHubCore[A]):
             *,
             base_url: Optional[Union[str, httpx.URL]] = None,
             accept_format: Optional[str] = None,
-            previews: Optional[List[str]] = None,
+            previews: Optional[list[str]] = None,
             user_agent: Optional[str] = None,
             follow_redirects: bool = True,
             timeout: Optional[Union[float, httpx.Timeout]] = None,
@@ -142,8 +132,8 @@ class GitHub(GitHubCore[A]):
 
     # alias for graphql.arequest
     async def async_graphql(
-        self, query: str, variables: Optional[Dict[str, Any]] = None
-    ) -> Dict[str, Any]:
+        self, query: str, variables: Optional[dict[str, Any]] = None
+    ) -> dict[str, Any]:
         return await self.graphql.arequest(query, variables)
 
     # rest pagination

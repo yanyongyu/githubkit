@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -34,7 +34,7 @@ class WebhookPush(GitHubModel):
     before: str = Field(
         description="The SHA of the most recent commit on `ref` before the push."
     )
-    commits: List[WebhookPushPropCommitsItems] = Field(
+    commits: list[WebhookPushPropCommitsItems] = Field(
         description="An array of commit objects describing the pushed commits. (Pushed commits are all commits that are included in the `compare` between the `before` commit and the `after` commit.) The array includes a maximum of 2048 commits. If necessary, you can use the [Commits API](https://docs.github.com/enterprise-cloud@latest//rest/commits) to fetch additional commits."
     )
     compare: str = Field(
@@ -77,7 +77,7 @@ class WebhookPush(GitHubModel):
 class WebhookPushPropHeadCommit(GitHubModel):
     """Commit"""
 
-    added: Missing[List[str]] = Field(
+    added: Missing[list[str]] = Field(
         default=UNSET, description="An array of files added in the commit."
     )
     author: WebhookPushPropHeadCommitPropAuthor = Field(
@@ -93,10 +93,10 @@ class WebhookPushPropHeadCommit(GitHubModel):
     )
     id: str = Field()
     message: str = Field(description="The commit message.")
-    modified: Missing[List[str]] = Field(
+    modified: Missing[list[str]] = Field(
         default=UNSET, description="An array of files modified by the commit."
     )
-    removed: Missing[List[str]] = Field(
+    removed: Missing[list[str]] = Field(
         default=UNSET, description="An array of files removed in the commit."
     )
     timestamp: datetime = Field(description="The ISO 8601 timestamp of the commit.")
@@ -143,7 +143,7 @@ class WebhookPushPropPusher(GitHubModel):
 class WebhookPushPropCommitsItems(GitHubModel):
     """Commit"""
 
-    added: Missing[List[str]] = Field(
+    added: Missing[list[str]] = Field(
         default=UNSET,
         description="An array of files added in the commit. A maximum of 3000 changed files will be reported per commit.",
     )
@@ -160,11 +160,11 @@ class WebhookPushPropCommitsItems(GitHubModel):
     )
     id: str = Field()
     message: str = Field(description="The commit message.")
-    modified: Missing[List[str]] = Field(
+    modified: Missing[list[str]] = Field(
         default=UNSET,
         description="An array of files modified by the commit. A maximum of 3000 changed files will be reported per commit.",
     )
-    removed: Missing[List[str]] = Field(
+    removed: Missing[list[str]] = Field(
         default=UNSET,
         description="An array of files removed in the commit. A maximum of 3000 changed files will be reported per commit.",
     )
@@ -317,7 +317,7 @@ class WebhookPushPropRepository(GitHubModel):
     svn_url: str = Field()
     tags_url: str = Field()
     teams_url: str = Field()
-    topics: List[str] = Field()
+    topics: list[str] = Field()
     trees_url: str = Field()
     updated_at: datetime = Field()
     url: str = Field()

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import CvssSeveritiesType
@@ -24,20 +24,20 @@ class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryType(TypedDict):
 
     cvss: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvssType
     cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    cwes: List[WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType]
+    cwes: list[WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItemsType]
     description: str
     ghsa_id: str
-    identifiers: List[
+    identifiers: list[
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItemsType
     ]
     published_at: str
-    references: List[
+    references: list[
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItemsType
     ]
     severity: str
     summary: str
     updated_at: str
-    vulnerabilities: List[
+    vulnerabilities: list[
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItemsType
     ]
     withdrawn_at: str

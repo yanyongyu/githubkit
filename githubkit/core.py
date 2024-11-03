@@ -2,21 +2,9 @@ import time
 from types import TracebackType
 from contextvars import ContextVar
 from datetime import datetime, timezone, timedelta
+from collections.abc import Generator, AsyncGenerator
 from contextlib import contextmanager, asynccontextmanager
-from typing import (
-    Any,
-    Dict,
-    List,
-    Type,
-    Union,
-    Generic,
-    TypeVar,
-    Optional,
-    Generator,
-    AsyncGenerator,
-    cast,
-    overload,
-)
+from typing import Any, Union, Generic, TypeVar, Optional, cast, overload
 
 import anyio
 import httpx
@@ -87,7 +75,7 @@ class GitHubCore(Generic[A]):
         *,
         base_url: Optional[Union[str, httpx.URL]] = None,
         accept_format: Optional[str] = None,
-        previews: Optional[List[str]] = None,
+        previews: Optional[list[str]] = None,
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
@@ -104,7 +92,7 @@ class GitHubCore(Generic[A]):
         *,
         base_url: Optional[Union[str, httpx.URL]] = None,
         accept_format: Optional[str] = None,
-        previews: Optional[List[str]] = None,
+        previews: Optional[list[str]] = None,
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
@@ -121,7 +109,7 @@ class GitHubCore(Generic[A]):
         *,
         base_url: Optional[Union[str, httpx.URL]] = None,
         accept_format: Optional[str] = None,
-        previews: Optional[List[str]] = None,
+        previews: Optional[list[str]] = None,
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
@@ -137,7 +125,7 @@ class GitHubCore(Generic[A]):
         config: Optional[Config] = None,
         base_url: Optional[Union[str, httpx.URL]] = None,
         accept_format: Optional[str] = None,
-        previews: Optional[List[str]] = None,
+        previews: Optional[list[str]] = None,
         user_agent: Optional[str] = None,
         follow_redirects: bool = True,
         timeout: Optional[Union[float, httpx.Timeout]] = None,
@@ -178,7 +166,7 @@ class GitHubCore(Generic[A]):
 
     def __exit__(
         self,
-        exc_type: Optional[Type[BaseException]] = None,
+        exc_type: Optional[type[BaseException]] = None,
         exc_value: Optional[BaseException] = None,
         traceback: Optional[TracebackType] = None,
     ):
@@ -194,7 +182,7 @@ class GitHubCore(Generic[A]):
 
     async def __aexit__(
         self,
-        exc_type: Optional[Type[BaseException]] = None,
+        exc_type: Optional[type[BaseException]] = None,
         exc_value: Optional[BaseException] = None,
         traceback: Optional[TracebackType] = None,
     ):
@@ -329,8 +317,8 @@ class GitHubCore(Generic[A]):
     def _check(
         self,
         response: httpx.Response,
-        response_model: Type[T],
-        error_models: Optional[Dict[str, type]] = None,
+        response_model: type[T],
+        error_models: Optional[dict[str, type]] = None,
     ) -> Response[T]: ...
 
     @overload
@@ -338,14 +326,14 @@ class GitHubCore(Generic[A]):
         self,
         response: httpx.Response,
         response_model: UnsetType = UNSET,
-        error_models: Optional[Dict[str, type]] = None,
+        error_models: Optional[dict[str, type]] = None,
     ) -> Response[Any]: ...
 
     def _check(
         self,
         response: httpx.Response,
-        response_model: Union[Type[T], UnsetType] = UNSET,
-        error_models: Optional[Dict[str, type]] = None,
+        response_model: Union[type[T], UnsetType] = UNSET,
+        error_models: Optional[dict[str, type]] = None,
     ) -> Union[Response[T], Response[Any]]:
         if response.is_error:
             error_models = error_models or {}
@@ -434,8 +422,8 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
-        response_model: Type[T],
-        error_models: Optional[Dict[str, type]] = None,
+        response_model: type[T],
+        error_models: Optional[dict[str, type]] = None,
     ) -> Response[T]: ...
 
     @overload
@@ -452,7 +440,7 @@ class GitHubCore(Generic[A]):
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
         response_model: UnsetType = UNSET,
-        error_models: Optional[Dict[str, type]] = None,
+        error_models: Optional[dict[str, type]] = None,
     ) -> Response[Any]: ...
 
     def request(
@@ -467,8 +455,8 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
-        response_model: Union[Type[T], UnsetType] = UNSET,
-        error_models: Optional[Dict[str, type]] = None,
+        response_model: Union[type[T], UnsetType] = UNSET,
+        error_models: Optional[dict[str, type]] = None,
     ) -> Union[Response[T], Response[Any]]:
         retry_count: int = 0
         while True:
@@ -511,8 +499,8 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
-        response_model: Type[T],
-        error_models: Optional[Dict[str, type]] = None,
+        response_model: type[T],
+        error_models: Optional[dict[str, type]] = None,
     ) -> Response[T]: ...
 
     @overload
@@ -529,7 +517,7 @@ class GitHubCore(Generic[A]):
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
         response_model: UnsetType = UNSET,
-        error_models: Optional[Dict[str, type]] = None,
+        error_models: Optional[dict[str, type]] = None,
     ) -> Response[Any]: ...
 
     async def arequest(
@@ -544,8 +532,8 @@ class GitHubCore(Generic[A]):
         json: Optional[Any] = None,
         headers: Optional[HeaderTypes] = None,
         cookies: Optional[CookieTypes] = None,
-        response_model: Union[Type[T], UnsetType] = UNSET,
-        error_models: Optional[Dict[str, type]] = None,
+        response_model: Union[type[T], UnsetType] = UNSET,
+        error_models: Optional[dict[str, type]] = None,
     ) -> Union[Response[T], Response[Any]]:
         retry_count: int = 0
         while True:

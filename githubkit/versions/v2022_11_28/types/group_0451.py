@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -96,7 +96,7 @@ class WebhookCodeScanningAlertClosedByUserPropAlertPropMostRecentInstanceType(
 
     analysis_key: str
     category: NotRequired[str]
-    classifications: NotRequired[List[str]]
+    classifications: NotRequired[list[str]]
     commit_sha: NotRequired[str]
     environment: str
     location: NotRequired[
@@ -139,7 +139,7 @@ class WebhookCodeScanningAlertClosedByUserPropAlertPropRuleType(TypedDict):
     id: str
     name: NotRequired[str]
     severity: Union[None, Literal["none", "note", "warning", "error"]]
-    tags: NotRequired[Union[List[str], None]]
+    tags: NotRequired[Union[list[str], None]]
 
 
 class WebhookCodeScanningAlertClosedByUserPropAlertPropToolType(TypedDict):

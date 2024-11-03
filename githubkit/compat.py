@@ -1,13 +1,5 @@
-from typing import (
-    TYPE_CHECKING,
-    Any,
-    Dict,
-    Type,
-    TypeVar,
-    Callable,
-    Protocol,
-    Generator,
-)
+from collections.abc import Generator
+from typing import TYPE_CHECKING, Any, TypeVar, Callable, Protocol
 
 from pydantic import VERSION
 
@@ -44,23 +36,23 @@ if PYDANTIC_V2:  # pragma: pydantic-v2
     class ExtraGitHubModel(GitHubModel):
         model_config = ConfigDict(extra="allow")
 
-    def type_validate_python(type_: Type[T], data: Any) -> T:
+    def type_validate_python(type_: type[T], data: Any) -> T:
         return TypeAdapter(type_).validate_python(data)
 
-    def type_validate_json(type_: Type[T], data: Any) -> T:
+    def type_validate_json(type_: type[T], data: Any) -> T:
         return TypeAdapter(type_).validate_json(data)
 
-    def model_dump(model: BaseModel, by_alias: bool = True) -> Dict[str, Any]:
+    def model_dump(model: BaseModel, by_alias: bool = True) -> dict[str, Any]:
         return model.model_dump(by_alias=by_alias)
 
-    def model_rebuild(model: Type[BaseModel]):
+    def model_rebuild(model: type[BaseModel]):
         model.model_rebuild()
 
     def model_before_validator(func: "ModelBeforeValidator"):
         return model_validator(mode="before")(func)
 
     def __get_pydantic_core_schema__(
-        cls: Type["CustomValidationClass"],
+        cls: type["CustomValidationClass"],
         source_type: Any,
         handler: GetCoreSchemaHandler,
     ) -> CoreSchema:
@@ -71,7 +63,7 @@ if PYDANTIC_V2:  # pragma: pydantic-v2
             [core_schema.no_info_plain_validator_function(func) for func in validators]
         )
 
-    def custom_validation(class_: Type["CVC"]) -> Type["CVC"]:
+    def custom_validation(class_: type["CVC"]) -> type["CVC"]:
         setattr(
             class_,
             "__get_pydantic_core_schema__",
@@ -91,10 +83,10 @@ else:  # pragma: pydantic-v1
         class Config:
             extra = Extra.allow
 
-    def type_validate_python(type_: Type[T], data: Any) -> T:
+    def type_validate_python(type_: type[T], data: Any) -> T:
         return parse_obj_as(type_, data)
 
-    def type_validate_json(type_: Type[T], data: Any) -> T:
+    def type_validate_json(type_: type[T], data: Any) -> T:
         return parse_raw_as(type_, data)
 
     def to_jsonable_python(obj: Any) -> Any:
@@ -109,14 +101,14 @@ else:  # pragma: pydantic-v1
 
         return pydantic_encoder(obj)
 
-    def model_dump(model: BaseModel, by_alias: bool = True) -> Dict[str, Any]:
+    def model_dump(model: BaseModel, by_alias: bool = True) -> dict[str, Any]:
         return model.dict(by_alias=by_alias)
 
-    def model_rebuild(model: Type[BaseModel]):
+    def model_rebuild(model: type[BaseModel]):
         return model.update_forward_refs()
 
     def model_before_validator(func: "ModelBeforeValidator"):
         return root_validator(pre=True)(func)
 
-    def custom_validation(class_: Type["CVC"]) -> Type["CVC"]:
+    def custom_validation(class_: type["CVC"]) -> type["CVC"]:
         return class_

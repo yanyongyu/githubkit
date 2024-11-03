@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -69,7 +69,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequest(GitHubModel):
     assignee: Union[
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssignee, None
     ] = Field(title="User")
-    assignees: List[
+    assignees: list[
         Union[
             WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneesItems,
             None,
@@ -106,7 +106,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequest(GitHubModel):
     html_url: str = Field()
     id: int = Field()
     issue_url: str = Field()
-    labels: List[
+    labels: list[
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLabelsItems
     ] = Field()
     locked: bool = Field()
@@ -121,14 +121,14 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequest(GitHubModel):
     node_id: str = Field()
     number: int = Field()
     patch_url: str = Field()
-    requested_reviewers: List[
+    requested_reviewers: list[
         Union[
             WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof0,
             None,
             WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1,
         ]
     ] = Field()
-    requested_teams: List[
+    requested_teams: list[
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItems
     ] = Field()
     review_comment_url: str = Field()
@@ -632,7 +632,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepo(
     svn_url: str = Field()
     tags_url: str = Field()
     teams_url: str = Field()
-    topics: List[str] = Field()
+    topics: list[str] = Field()
     trees_url: str = Field()
     updated_at: datetime = Field()
     url: str = Field()
@@ -865,7 +865,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepo(
     svn_url: str = Field()
     tags_url: str = Field()
     teams_url: str = Field()
-    topics: List[str] = Field()
+    topics: list[str] = Field()
     trees_url: str = Field()
     updated_at: datetime = Field()
     url: str = Field()
@@ -1046,7 +1046,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsI
 class WebhookPullRequestReviewThreadUnresolvedPropThread(GitHubModel):
     """WebhookPullRequestReviewThreadUnresolvedPropThread"""
 
-    comments: List[
+    comments: list[
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItems
     ] = Field()
     node_id: str = Field()

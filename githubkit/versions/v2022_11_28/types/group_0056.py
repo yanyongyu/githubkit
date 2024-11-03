@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -21,20 +20,20 @@ class ApiOverviewType(TypedDict):
 
     verifiable_password_authentication: bool
     ssh_key_fingerprints: NotRequired[ApiOverviewPropSshKeyFingerprintsType]
-    ssh_keys: NotRequired[List[str]]
-    hooks: NotRequired[List[str]]
-    github_enterprise_importer: NotRequired[List[str]]
-    web: NotRequired[List[str]]
-    api: NotRequired[List[str]]
-    git: NotRequired[List[str]]
-    packages: NotRequired[List[str]]
-    pages: NotRequired[List[str]]
-    importer: NotRequired[List[str]]
-    actions: NotRequired[List[str]]
-    actions_macos: NotRequired[List[str]]
-    codespaces: NotRequired[List[str]]
-    dependabot: NotRequired[List[str]]
-    copilot: NotRequired[List[str]]
+    ssh_keys: NotRequired[list[str]]
+    hooks: NotRequired[list[str]]
+    github_enterprise_importer: NotRequired[list[str]]
+    web: NotRequired[list[str]]
+    api: NotRequired[list[str]]
+    git: NotRequired[list[str]]
+    packages: NotRequired[list[str]]
+    pages: NotRequired[list[str]]
+    importer: NotRequired[list[str]]
+    actions: NotRequired[list[str]]
+    actions_macos: NotRequired[list[str]]
+    codespaces: NotRequired[list[str]]
+    dependabot: NotRequired[list[str]]
+    copilot: NotRequired[list[str]]
     domains: NotRequired[ApiOverviewPropDomainsType]
 
 
@@ -50,11 +49,11 @@ class ApiOverviewPropSshKeyFingerprintsType(TypedDict):
 class ApiOverviewPropDomainsType(TypedDict):
     """ApiOverviewPropDomains"""
 
-    website: NotRequired[List[str]]
-    codespaces: NotRequired[List[str]]
-    copilot: NotRequired[List[str]]
-    packages: NotRequired[List[str]]
-    actions: NotRequired[List[str]]
+    website: NotRequired[list[str]]
+    codespaces: NotRequired[list[str]]
+    copilot: NotRequired[list[str]]
+    packages: NotRequired[list[str]]
+    actions: NotRequired[list[str]]
     artifact_attestations: NotRequired[
         ApiOverviewPropDomainsPropArtifactAttestationsType
     ]
@@ -64,7 +63,7 @@ class ApiOverviewPropDomainsPropArtifactAttestationsType(TypedDict):
     """ApiOverviewPropDomainsPropArtifactAttestations"""
 
     trust_domain: NotRequired[str]
-    services: NotRequired[List[str]]
+    services: NotRequired[list[str]]
 
 
 __all__ = (

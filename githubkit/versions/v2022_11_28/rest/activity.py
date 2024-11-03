@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, Optional, overload
 
 from pydantic import BaseModel
 
@@ -20,7 +20,7 @@ from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
     from datetime import datetime
-    from typing import List, Union, Literal
+    from typing import Union, Literal
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
@@ -69,11 +69,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-events"""
-
-        from typing import List
 
         from ..models import (
             Event,
@@ -95,7 +93,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
             error_models={
                 "403": BasicError,
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -107,11 +105,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-events"""
-
-        from typing import List
 
         from ..models import (
             Event,
@@ -133,7 +129,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
             error_models={
                 "403": BasicError,
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -143,7 +139,7 @@ class ActivityClient:
     def get_feeds(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Feed]:
         """See also: https://docs.github.com/rest/activity/feeds#get-feeds"""
 
@@ -163,7 +159,7 @@ class ActivityClient:
     async def async_get_feeds(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Feed]:
         """See also: https://docs.github.com/rest/activity/feeds#get-feeds"""
 
@@ -187,11 +183,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-events-for-a-network-of-repositories"""
-
-        from typing import List
 
         from ..models import Event, BasicError
 
@@ -209,7 +203,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -223,11 +217,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-events-for-a-network-of-repositories"""
-
-        from typing import List
 
         from ..models import Event, BasicError
 
@@ -245,7 +237,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -261,11 +253,9 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Thread]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Thread]]:
         """See also: https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import Thread, BasicError, ValidationError
 
@@ -287,7 +277,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Thread],
+            response_model=list[Thread],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -304,11 +294,9 @@ class ActivityClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Thread]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Thread]]:
         """See also: https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import Thread, BasicError, ValidationError
 
@@ -330,7 +318,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Thread],
+            response_model=list[Thread],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -342,7 +330,7 @@ class ActivityClient:
     def mark_notifications_as_read(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[NotificationsPutBodyType] = UNSET,
     ) -> Response[NotificationsPutResponse202]: ...
 
@@ -351,7 +339,7 @@ class ActivityClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
         read: Missing[bool] = UNSET,
     ) -> Response[NotificationsPutResponse202]: ...
@@ -359,7 +347,7 @@ class ActivityClient:
     def mark_notifications_as_read(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[NotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[NotificationsPutResponse202]:
@@ -400,7 +388,7 @@ class ActivityClient:
     async def async_mark_notifications_as_read(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[NotificationsPutBodyType] = UNSET,
     ) -> Response[NotificationsPutResponse202]: ...
 
@@ -409,7 +397,7 @@ class ActivityClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
         read: Missing[bool] = UNSET,
     ) -> Response[NotificationsPutResponse202]: ...
@@ -417,7 +405,7 @@ class ActivityClient:
     async def async_mark_notifications_as_read(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[NotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[NotificationsPutResponse202]:
@@ -458,7 +446,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Thread]:
         """See also: https://docs.github.com/rest/activity/notifications#get-a-thread"""
 
@@ -483,7 +471,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Thread]:
         """See also: https://docs.github.com/rest/activity/notifications#get-a-thread"""
 
@@ -508,7 +496,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/notifications#mark-a-thread-as-done"""
 
@@ -526,7 +514,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/notifications#mark-a-thread-as-done"""
 
@@ -544,7 +532,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/notifications#mark-a-thread-as-read"""
 
@@ -567,7 +555,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/notifications#mark-a-thread-as-read"""
 
@@ -590,7 +578,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ThreadSubscription]:
         """See also: https://docs.github.com/rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user"""
 
@@ -615,7 +603,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ThreadSubscription]:
         """See also: https://docs.github.com/rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user"""
 
@@ -641,7 +629,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
     ) -> Response[ThreadSubscription]: ...
 
@@ -651,7 +639,7 @@ class ActivityClient:
         thread_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         ignored: Missing[bool] = UNSET,
     ) -> Response[ThreadSubscription]: ...
 
@@ -659,7 +647,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ThreadSubscription]:
@@ -703,7 +691,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
     ) -> Response[ThreadSubscription]: ...
 
@@ -713,7 +701,7 @@ class ActivityClient:
         thread_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         ignored: Missing[bool] = UNSET,
     ) -> Response[ThreadSubscription]: ...
 
@@ -721,7 +709,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[NotificationsThreadsThreadIdSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ThreadSubscription]:
@@ -764,7 +752,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/notifications#delete-a-thread-subscription"""
 
@@ -788,7 +776,7 @@ class ActivityClient:
         self,
         thread_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/notifications#delete-a-thread-subscription"""
 
@@ -814,11 +802,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-organization-events"""
-
-        from typing import List
 
         from ..models import Event
 
@@ -836,7 +822,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
         )
 
     async def async_list_public_org_events(
@@ -845,11 +831,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-organization-events"""
-
-        from typing import List
 
         from ..models import Event
 
@@ -867,7 +851,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
         )
 
     def list_repo_events(
@@ -877,11 +861,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-repository-events"""
-
-        from typing import List
 
         from ..models import Event
 
@@ -899,7 +881,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
         )
 
     async def async_list_repo_events(
@@ -909,11 +891,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-repository-events"""
-
-        from typing import List
 
         from ..models import Event
 
@@ -931,7 +911,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
         )
 
     def list_repo_notifications_for_authenticated_user(
@@ -945,11 +925,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Thread]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Thread]]:
         """See also: https://docs.github.com/rest/activity/notifications#list-repository-notifications-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import Thread
 
@@ -971,7 +949,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Thread],
+            response_model=list[Thread],
         )
 
     async def async_list_repo_notifications_for_authenticated_user(
@@ -985,11 +963,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Thread]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Thread]]:
         """See also: https://docs.github.com/rest/activity/notifications#list-repository-notifications-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import Thread
 
@@ -1011,7 +987,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Thread],
+            response_model=list[Thread],
         )
 
     @overload
@@ -1020,7 +996,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
     ) -> Response[ReposOwnerRepoNotificationsPutResponse202]: ...
 
@@ -1031,7 +1007,7 @@ class ActivityClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
     ) -> Response[ReposOwnerRepoNotificationsPutResponse202]: ...
 
@@ -1040,7 +1016,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReposOwnerRepoNotificationsPutResponse202]:
@@ -1078,7 +1054,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
     ) -> Response[ReposOwnerRepoNotificationsPutResponse202]: ...
 
@@ -1089,7 +1065,7 @@ class ActivityClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         last_read_at: Missing[datetime] = UNSET,
     ) -> Response[ReposOwnerRepoNotificationsPutResponse202]: ...
 
@@ -1098,7 +1074,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoNotificationsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReposOwnerRepoNotificationsPutResponse202]:
@@ -1137,11 +1113,11 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[Union[List[SimpleUser], List[Stargazer]]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[Union[list[SimpleUser], list[Stargazer]]]:
         """See also: https://docs.github.com/rest/activity/starring#list-stargazers"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import Stargazer, SimpleUser, ValidationError
 
@@ -1159,7 +1135,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=Union[List[SimpleUser], List[Stargazer]],
+            response_model=Union[list[SimpleUser], list[Stargazer]],
             error_models={
                 "422": ValidationError,
             },
@@ -1172,11 +1148,11 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[Union[List[SimpleUser], List[Stargazer]]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[Union[list[SimpleUser], list[Stargazer]]]:
         """See also: https://docs.github.com/rest/activity/starring#list-stargazers"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import Stargazer, SimpleUser, ValidationError
 
@@ -1194,7 +1170,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=Union[List[SimpleUser], List[Stargazer]],
+            response_model=Union[list[SimpleUser], list[Stargazer]],
             error_models={
                 "422": ValidationError,
             },
@@ -1207,11 +1183,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/rest/activity/watching#list-watchers"""
-
-        from typing import List
 
         from ..models import SimpleUser
 
@@ -1229,7 +1203,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
         )
 
     async def async_list_watchers_for_repo(
@@ -1239,11 +1213,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/rest/activity/watching#list-watchers"""
-
-        from typing import List
 
         from ..models import SimpleUser
 
@@ -1261,7 +1233,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
         )
 
     def get_repo_subscription(
@@ -1269,7 +1241,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[RepositorySubscription]:
         """See also: https://docs.github.com/rest/activity/watching#get-a-repository-subscription"""
 
@@ -1294,7 +1266,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[RepositorySubscription]:
         """See also: https://docs.github.com/rest/activity/watching#get-a-repository-subscription"""
 
@@ -1320,7 +1292,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
     ) -> Response[RepositorySubscription]: ...
 
@@ -1331,7 +1303,7 @@ class ActivityClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
     ) -> Response[RepositorySubscription]: ...
@@ -1341,7 +1313,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositorySubscription]:
@@ -1376,7 +1348,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
     ) -> Response[RepositorySubscription]: ...
 
@@ -1387,7 +1359,7 @@ class ActivityClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         subscribed: Missing[bool] = UNSET,
         ignored: Missing[bool] = UNSET,
     ) -> Response[RepositorySubscription]: ...
@@ -1397,7 +1369,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoSubscriptionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositorySubscription]:
@@ -1431,7 +1403,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/watching#delete-a-repository-subscription"""
 
@@ -1450,7 +1422,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/watching#delete-a-repository-subscription"""
 
@@ -1471,11 +1443,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Repository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Repository]]:
         """See also: https://docs.github.com/rest/activity/starring#list-repositories-starred-by-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BasicError, Repository
 
@@ -1495,7 +1465,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Repository],
+            response_model=list[Repository],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -1509,11 +1479,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Repository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Repository]]:
         """See also: https://docs.github.com/rest/activity/starring#list-repositories-starred-by-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BasicError, Repository
 
@@ -1533,7 +1501,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Repository],
+            response_model=list[Repository],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -1545,7 +1513,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/starring#check-if-a-repository-is-starred-by-the-authenticated-user"""
 
@@ -1571,7 +1539,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/starring#check-if-a-repository-is-starred-by-the-authenticated-user"""
 
@@ -1597,7 +1565,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/starring#star-a-repository-for-the-authenticated-user"""
 
@@ -1623,7 +1591,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/starring#star-a-repository-for-the-authenticated-user"""
 
@@ -1649,7 +1617,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/starring#unstar-a-repository-for-the-authenticated-user"""
 
@@ -1675,7 +1643,7 @@ class ActivityClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/activity/starring#unstar-a-repository-for-the-authenticated-user"""
 
@@ -1701,11 +1669,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/rest/activity/watching#list-repositories-watched-by-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BasicError, MinimalRepository
 
@@ -1723,7 +1689,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -1735,11 +1701,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/rest/activity/watching#list-repositories-watched-by-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BasicError, MinimalRepository
 
@@ -1757,7 +1721,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -1770,11 +1734,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-events-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import Event
 
@@ -1792,7 +1754,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
         )
 
     async def async_list_events_for_authenticated_user(
@@ -1801,11 +1763,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-events-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import Event
 
@@ -1823,7 +1783,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
         )
 
     def list_org_events_for_authenticated_user(
@@ -1833,11 +1793,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-organization-events-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import Event
 
@@ -1855,7 +1813,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
         )
 
     async def async_list_org_events_for_authenticated_user(
@@ -1865,11 +1823,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-organization-events-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import Event
 
@@ -1887,7 +1843,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
         )
 
     def list_public_events_for_user(
@@ -1896,11 +1852,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-events-for-a-user"""
-
-        from typing import List
 
         from ..models import Event
 
@@ -1918,7 +1872,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
         )
 
     async def async_list_public_events_for_user(
@@ -1927,11 +1881,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-events-for-a-user"""
-
-        from typing import List
 
         from ..models import Event
 
@@ -1949,7 +1901,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
         )
 
     def list_received_events_for_user(
@@ -1958,11 +1910,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-events-received-by-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import Event
 
@@ -1980,7 +1930,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
         )
 
     async def async_list_received_events_for_user(
@@ -1989,11 +1939,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-events-received-by-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import Event
 
@@ -2011,7 +1959,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
         )
 
     def list_received_public_events_for_user(
@@ -2020,11 +1968,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-events-received-by-a-user"""
-
-        from typing import List
 
         from ..models import Event
 
@@ -2042,7 +1988,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
         )
 
     async def async_list_received_public_events_for_user(
@@ -2051,11 +1997,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Event]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Event]]:
         """See also: https://docs.github.com/rest/activity/events#list-public-events-received-by-a-user"""
-
-        from typing import List
 
         from ..models import Event
 
@@ -2073,7 +2017,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Event],
+            response_model=list[Event],
         )
 
     def list_repos_starred_by_user(
@@ -2084,11 +2028,11 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[Union[List[StarredRepository], List[Repository]]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[Union[list[StarredRepository], list[Repository]]]:
         """See also: https://docs.github.com/rest/activity/starring#list-repositories-starred-by-a-user"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import Repository, StarredRepository
 
@@ -2108,7 +2052,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=Union[List[StarredRepository], List[Repository]],
+            response_model=Union[list[StarredRepository], list[Repository]],
         )
 
     async def async_list_repos_starred_by_user(
@@ -2119,11 +2063,11 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[Union[List[StarredRepository], List[Repository]]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[Union[list[StarredRepository], list[Repository]]]:
         """See also: https://docs.github.com/rest/activity/starring#list-repositories-starred-by-a-user"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import Repository, StarredRepository
 
@@ -2143,7 +2087,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=Union[List[StarredRepository], List[Repository]],
+            response_model=Union[list[StarredRepository], list[Repository]],
         )
 
     def list_repos_watched_by_user(
@@ -2152,11 +2096,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/rest/activity/watching#list-repositories-watched-by-a-user"""
-
-        from typing import List
 
         from ..models import MinimalRepository
 
@@ -2174,7 +2116,7 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
         )
 
     async def async_list_repos_watched_by_user(
@@ -2183,11 +2125,9 @@ class ActivityClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/rest/activity/watching#list-repositories-watched-by-a-user"""
-
-        from typing import List
 
         from ..models import MinimalRepository
 
@@ -2205,5 +2145,5 @@ class ActivityClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
         )

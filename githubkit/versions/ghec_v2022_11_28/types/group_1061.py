@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
@@ -19,7 +18,7 @@ class ReposOwnerRepoGitCommitsPostBodyType(TypedDict):
 
     message: str
     tree: str
-    parents: NotRequired[List[str]]
+    parents: NotRequired[list[str]]
     author: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropAuthorType]
     committer: NotRequired[ReposOwnerRepoGitCommitsPostBodyPropCommitterType]
     signature: NotRequired[str]

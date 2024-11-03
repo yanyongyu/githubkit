@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -81,11 +81,11 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecks(
     strict: bool = Field(
         description="Require branches to be up to date before merging."
     )
-    contexts: List[str] = Field(
+    contexts: list[str] = Field(
         description="**Closing down notice**: The list of status checks to require in order to merge into this branch. If any of these checks have recently been set by a particular GitHub App, they will be required to come from that app in future for the branch to merge. Use `checks` instead of `contexts` for more fine-grained control."
     )
     checks: Missing[
-        List[
+        list[
             ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItems
         ]
     ] = Field(
@@ -159,13 +159,13 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReview
     Omit this parameter for personal repositories.
     """
 
-    users: Missing[List[str]] = Field(
+    users: Missing[list[str]] = Field(
         default=UNSET, description="The list of user `login`s with dismissal access"
     )
-    teams: Missing[List[str]] = Field(
+    teams: Missing[list[str]] = Field(
         default=UNSET, description="The list of team `slug`s with dismissal access"
     )
-    apps: Missing[List[str]] = Field(
+    apps: Missing[list[str]] = Field(
         default=UNSET, description="The list of app `slug`s with dismissal access"
     )
 
@@ -179,15 +179,15 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReview
     Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    users: Missing[List[str]] = Field(
+    users: Missing[list[str]] = Field(
         default=UNSET,
         description="The list of user `login`s allowed to bypass pull request requirements.",
     )
-    teams: Missing[List[str]] = Field(
+    teams: Missing[list[str]] = Field(
         default=UNSET,
         description="The list of team `slug`s allowed to bypass pull request requirements.",
     )
-    apps: Missing[List[str]] = Field(
+    apps: Missing[list[str]] = Field(
         default=UNSET,
         description="The list of app `slug`s allowed to bypass pull request requirements.",
     )
@@ -201,9 +201,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictions(GitHubModel)
     `null` to disable.
     """
 
-    users: List[str] = Field(description="The list of user `login`s with push access")
-    teams: List[str] = Field(description="The list of team `slug`s with push access")
-    apps: Missing[List[str]] = Field(
+    users: list[str] = Field(description="The list of user `login`s with push access")
+    teams: list[str] = Field(description="The list of team `slug`s with push access")
+    apps: Missing[list[str]] = Field(
         default=UNSET, description="The list of app `slug`s with push access"
     )
 

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -87,7 +87,7 @@ class WebhookRepositoryEditedPropChangesPropHomepage(GitHubModel):
 class WebhookRepositoryEditedPropChangesPropTopics(GitHubModel):
     """WebhookRepositoryEditedPropChangesPropTopics"""
 
-    from_: Missing[Union[List[str], None]] = Field(default=UNSET, alias="from")
+    from_: Missing[Union[list[str], None]] = Field(default=UNSET, alias="from")
 
 
 model_rebuild(WebhookRepositoryEdited)

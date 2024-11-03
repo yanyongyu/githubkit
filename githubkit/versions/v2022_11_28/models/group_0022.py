@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 
 from pydantic import Field
 
@@ -30,7 +30,7 @@ class Authorization(GitHubModel):
 
     id: int = Field()
     url: str = Field()
-    scopes: Union[List[str], None] = Field(
+    scopes: Union[list[str], None] = Field(
         description="A list of scopes that this authorization is in."
     )
     token: str = Field()

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -30,9 +30,9 @@ class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions(
     url: str = Field()
     users_url: str = Field()
     teams_url: str = Field()
-    users: List[SimpleUser] = Field()
-    teams: List[Team] = Field()
-    apps: Missing[List[Union[Integration, None]]] = Field(default=UNSET)
+    users: list[SimpleUser] = Field()
+    teams: list[Team] = Field()
+    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
 
 
 class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances(
@@ -40,9 +40,9 @@ class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowanc
 ):
     """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
 
-    users: List[SimpleUser] = Field()
-    teams: List[Team] = Field()
-    apps: Missing[List[Union[Integration, None]]] = Field(default=UNSET)
+    users: list[SimpleUser] = Field()
+    teams: list[Team] = Field()
+    apps: Missing[list[Union[Integration, None]]] = Field(default=UNSET)
 
 
 model_rebuild(ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictions)

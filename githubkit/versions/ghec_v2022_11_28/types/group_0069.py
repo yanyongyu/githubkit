@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0067 import MilestoneType
@@ -43,9 +43,9 @@ class IssueType(TypedDict):
     title: str
     body: NotRequired[Union[str, None]]
     user: Union[None, SimpleUserType]
-    labels: List[Union[str, IssuePropLabelsItemsOneof1Type]]
+    labels: list[Union[str, IssuePropLabelsItemsOneof1Type]]
     assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[Union[List[SimpleUserType], None]]
+    assignees: NotRequired[Union[list[SimpleUserType], None]]
     milestone: Union[None, MilestoneType]
     locked: bool
     active_lock_reason: NotRequired[Union[str, None]]

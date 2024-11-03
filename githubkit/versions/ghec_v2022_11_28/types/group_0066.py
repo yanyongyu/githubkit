@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
 class BillingUsageReportType(TypedDict):
     """BillingUsageReport"""
 
-    usage_items: NotRequired[List[BillingUsageReportPropUsageItemsItemsType]]
+    usage_items: NotRequired[list[BillingUsageReportPropUsageItemsItemsType]]
 
 
 class BillingUsageReportPropUsageItemsItemsType(TypedDict):

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -24,12 +22,12 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody(GitHub
     strict: Missing[bool] = Field(
         default=UNSET, description="Require branches to be up to date before merging."
     )
-    contexts: Missing[List[str]] = Field(
+    contexts: Missing[list[str]] = Field(
         default=UNSET,
         description="**Closing down notice**: The list of status checks to require in order to merge into this branch. If any of these checks have recently been set by a particular GitHub App, they will be required to come from that app in future for the branch to merge. Use `checks` instead of `contexts` for more fine-grained control.",
     )
     checks: Missing[
-        List[
+        list[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItems
         ]
     ] = Field(

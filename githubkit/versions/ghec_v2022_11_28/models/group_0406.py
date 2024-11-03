@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 
 from pydantic import Field
 
@@ -57,7 +57,7 @@ class UserSearchResultItem(GitHubModel):
     location: Missing[Union[str, None]] = Field(default=UNSET)
     site_admin: bool = Field()
     hireable: Missing[Union[bool, None]] = Field(default=UNSET)
-    text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
         default=UNSET, title="Search Result Text Matches"
     )
     blog: Missing[Union[str, None]] = Field(default=UNSET)
@@ -71,7 +71,7 @@ class SearchUsersGetResponse200(GitHubModel):
 
     total_count: int = Field()
     incomplete_results: bool = Field()
-    items: List[UserSearchResultItem] = Field()
+    items: list[UserSearchResultItem] = Field()
 
 
 model_rebuild(UserSearchResultItem)

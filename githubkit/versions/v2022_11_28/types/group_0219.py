@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 from .group_0216 import CodeScanningVariantAnalysisSkippedRepoGroupType
@@ -36,7 +35,7 @@ class CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundReposType(
     """CodeScanningVariantAnalysisPropSkippedRepositoriesPropNotFoundRepos"""
 
     repository_count: int
-    repository_full_names: List[str]
+    repository_full_names: list[str]
 
 
 __all__ = (

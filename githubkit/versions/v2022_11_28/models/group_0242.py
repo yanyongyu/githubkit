@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -34,7 +34,7 @@ class ContentTree(GitHubModel):
     git_url: Union[str, None] = Field()
     html_url: Union[str, None] = Field()
     download_url: Union[str, None] = Field()
-    entries: Missing[List[ContentTreePropEntriesItems]] = Field(default=UNSET)
+    entries: Missing[list[ContentTreePropEntriesItems]] = Field(default=UNSET)
     links: ContentTreePropLinks = Field(alias="_links")
 
 

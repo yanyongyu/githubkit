@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
 class OrgsOrgPersonalAccessTokenRequestsPostBodyType(TypedDict):
     """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    pat_request_ids: NotRequired[List[int]]
+    pat_request_ids: NotRequired[list[int]]
     action: Literal["approve", "deny"]
     reason: NotRequired[Union[str, None]]
 

@@ -6,7 +6,7 @@ import hmac
 import json
 import importlib
 from typing_extensions import TypeAlias
-from typing import TYPE_CHECKING, Any, Set, Dict, Union, Literal, overload
+from typing import TYPE_CHECKING, Any, Union, Literal, overload
 
 from githubkit.exception import WebhookTypeNotFound
 from githubkit.compat import GitHubModel, model_dump, type_validate_python, type_validate_json
@@ -24,7 +24,7 @@ EventNameType: TypeAlias = Literal[
     "{{ name }}",
     {% endfor %}
 ]
-VALID_EVENT_NAMES: Set[EventNameType] = {
+VALID_EVENT_NAMES: set[EventNameType] = {
     {% for name in event_names %}
     "{{ name }}",
     {% endfor %}
@@ -81,7 +81,7 @@ class WebhookNamespace:
         return type_validate_json(Event, payload)
 
     @staticmethod
-    def parse_obj_without_name(payload: Dict[str, Any]) -> "WebhookEvent":
+    def parse_obj_without_name(payload: dict[str, Any]) -> "WebhookEvent":
         """Parse the webhook payload dict without event name.
 
         Note:
@@ -91,7 +91,7 @@ class WebhookNamespace:
             the result may not be the correct type as expected.
 
         Args:
-            payload (Dict[str, Any]): webhook payload dict.
+            payload (dict[str, Any]): webhook payload dict.
         """
 
         from ._types import WebhookEvent
@@ -101,27 +101,27 @@ class WebhookNamespace:
     {% for name in event_names %}
     @overload
     @staticmethod
-    def parse_obj(name: Literal["{{ name }}"], payload: Dict[str, Any]) -> "{{ pascal_case(name) }}Event":
+    def parse_obj(name: Literal["{{ name }}"], payload: dict[str, Any]) -> "{{ pascal_case(name) }}Event":
         ...
     {% endfor %}
 
     @overload
     @staticmethod
-    def parse_obj(name: EventNameType, payload: Dict[str, Any]) -> "WebhookEvent":
+    def parse_obj(name: EventNameType, payload: dict[str, Any]) -> "WebhookEvent":
         ...
 
     @overload
     @staticmethod
-    def parse_obj(name: str, payload: Dict[str, Any]) -> "WebhookEvent":
+    def parse_obj(name: str, payload: dict[str, Any]) -> "WebhookEvent":
         ...
 
     @staticmethod
-    def parse_obj(name: Union[EventNameType, str], payload: Dict[str, Any]) -> "WebhookEvent":
+    def parse_obj(name: Union[EventNameType, str], payload: dict[str, Any]) -> "WebhookEvent":
         """Parse the webhook payload dict with event name.
 
         Args:
             name (EventNameType): event name.
-            payload (Dict[str, Any]): webhook payload dict.
+            payload (dict[str, Any]): webhook payload dict.
         """
 
         if name not in VALID_EVENT_NAMES:
@@ -131,7 +131,7 @@ class WebhookNamespace:
         return type_validate_python(Event, payload)
 
     @staticmethod
-    def normalize_payload(payload: Union[GitHubModel, Dict[str, Any]]) -> str:
+    def normalize_payload(payload: Union[GitHubModel, dict[str, Any]]) -> str:
         """Normalize the webhook payload to string.
 
         Note:
@@ -140,7 +140,7 @@ class WebhookNamespace:
             Always use raw data posted by GitHub Webhooks.
 
         Args:
-            payload (Union[GitHubModel, Dict[str, Any]]): webhook payload.
+            payload (Union[GitHubModel, dict[str, Any]]): webhook payload.
 
         Returns:
             str: normalized payload string.
@@ -151,14 +151,14 @@ class WebhookNamespace:
     @staticmethod
     def sign(
         secret: str,
-        payload: Union[GitHubModel, Dict[str, Any], str, bytes],
+        payload: Union[GitHubModel, dict[str, Any], str, bytes],
         method: Literal["sha256", "sha1"] = "sha256",
     ) -> str:
         """Sign the webhook payload.
 
         Args:
             secret (str): webhook secret.
-            payload (Union[GitHubModel, Dict[str, Any], str, bytes]): webhook payload.
+            payload (Union[GitHubModel, dict[str, Any], str, bytes]): webhook payload.
             method (str): sha256 or sha1. Defaults to sha256.
 
         Returns:
@@ -177,7 +177,7 @@ class WebhookNamespace:
     @staticmethod
     def verify(
         secret: str,
-        payload: Union[GitHubModel, Dict[str, Any], str, bytes],
+        payload: Union[GitHubModel, dict[str, Any], str, bytes],
         signature: str,
     ) -> bool:
         """Verify the webhook payload.
@@ -189,7 +189,7 @@ class WebhookNamespace:
 
         Args:
             secret (str): webhook secret.
-            payload (Union[GitHubModel, Dict[str, Any], str, bytes]): webhook payload.
+            payload (Union[GitHubModel, dict[str, Any], str, bytes]): webhook payload.
             signature (str): webhook signature.
 
         Returns:

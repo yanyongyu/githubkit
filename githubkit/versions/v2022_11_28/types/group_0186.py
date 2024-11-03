@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -37,7 +36,7 @@ class WorkflowRunUsagePropBillablePropUbuntuType(TypedDict):
     total_ms: int
     jobs: int
     job_runs: NotRequired[
-        List[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType]
+        list[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItemsType]
     ]
 
 
@@ -54,7 +53,7 @@ class WorkflowRunUsagePropBillablePropMacosType(TypedDict):
     total_ms: int
     jobs: int
     job_runs: NotRequired[
-        List[WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType]
+        list[WorkflowRunUsagePropBillablePropMacosPropJobRunsItemsType]
     ]
 
 
@@ -71,7 +70,7 @@ class WorkflowRunUsagePropBillablePropWindowsType(TypedDict):
     total_ms: int
     jobs: int
     job_runs: NotRequired[
-        List[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType]
+        list[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItemsType]
     ]
 
 

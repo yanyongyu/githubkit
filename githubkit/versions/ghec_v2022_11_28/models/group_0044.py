@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -47,7 +47,7 @@ class CodeScanningAlertInstance(GitHubModel):
     )
     html_url: Missing[str] = Field(default=UNSET)
     classifications: Missing[
-        List[Union[None, Literal["source", "generated", "test", "library"]]]
+        list[Union[None, Literal["source", "generated", "test", "library"]]]
     ] = Field(
         default=UNSET,
         description="Classifications that have been applied to the file that triggered the alert.\nFor example identifying it as documentation, or a generated file.",

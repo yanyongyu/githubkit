@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -33,7 +33,7 @@ class ReposOwnerRepoEnvironmentsEnvironmentNamePutBody(GitHubModel):
     )
     reviewers: Missing[
         Union[
-            List[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems],
+            list[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItems],
             None,
         ]
     ] = Field(

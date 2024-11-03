@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -37,7 +37,7 @@ class TimelineCommittedEvent(GitHubModel):
     )
     message: str = Field(description="Message describing the purpose of the commit")
     tree: TimelineCommittedEventPropTree = Field()
-    parents: List[TimelineCommittedEventPropParentsItems] = Field()
+    parents: list[TimelineCommittedEventPropParentsItems] = Field()
     verification: TimelineCommittedEventPropVerification = Field()
     html_url: str = Field()
 

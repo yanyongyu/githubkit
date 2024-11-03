@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -34,7 +34,7 @@ class ClassroomAcceptedAssignment(GitHubModel):
     passing: bool = Field(description="Whether a submission passed.")
     commit_count: int = Field(description="Count of student commits.")
     grade: str = Field(description="Most recent grade.")
-    students: List[SimpleClassroomUser] = Field()
+    students: list[SimpleClassroomUser] = Field()
     repository: SimpleClassroomRepository = Field(
         title="Simple Classroom Repository",
         description="A GitHub repository view for Classroom",

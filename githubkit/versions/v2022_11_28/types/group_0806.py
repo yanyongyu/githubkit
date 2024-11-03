@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 from .group_0068 import RunnerLabelType
@@ -19,7 +18,7 @@ class OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type(TypedDict):
     """OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200"""
 
     total_count: int
-    labels: List[RunnerLabelType]
+    labels: list[RunnerLabelType]
 
 
 __all__ = ("OrgsOrgActionsRunnersRunnerIdLabelsGetResponse200Type",)

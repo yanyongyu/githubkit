@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -21,7 +21,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 class GroupResponse(GitHubModel):
     """GroupResponse"""
 
-    schemas: List[
+    schemas: list[
         Literal[
             "urn:ietf:params:scim:schemas:core:2.0:Group",
             "urn:ietf:params:scim:api:messages:2.0:ListResponse",
@@ -39,7 +39,7 @@ class GroupResponse(GitHubModel):
         alias="displayName",
         description="A human-readable name for a security group.",
     )
-    members: Missing[List[GroupResponsePropMembersItems]] = Field(
+    members: Missing[list[GroupResponsePropMembersItems]] = Field(
         default=UNSET, description="The group members."
     )
 

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -69,7 +69,7 @@ class WebhookWorkflowJobInProgressPropWorkflowJob(GitHubModel):
     head_sha: str = Field()
     html_url: str = Field()
     id: int = Field()
-    labels: List[str] = Field(
+    labels: list[str] = Field(
         description='Custom labels for the job. Specified by the [`"runs-on"` attribute](https://docs.github.com/enterprise-cloud@latest//actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on) in the workflow YAML.'
     )
     name: str = Field()
@@ -99,7 +99,7 @@ class WebhookWorkflowJobInProgressPropWorkflowJob(GitHubModel):
     workflow_name: Union[Union[str, None], None] = Field(
         description="The name of the workflow."
     )
-    steps: List[WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps] = Field()
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobMergedSteps] = Field()
     url: str = Field()
 
 

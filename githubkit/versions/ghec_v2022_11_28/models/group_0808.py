@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -99,12 +99,12 @@ class WebhookWorkflowRunCompletedPropWorkflowRun(GitHubModel):
     node_id: str = Field()
     path: str = Field()
     previous_attempt_url: Union[str, None] = Field()
-    pull_requests: List[
+    pull_requests: list[
         Union[WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItems, None]
     ] = Field()
     referenced_workflows: Missing[
         Union[
-            List[
+            list[
                 WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItems
             ],
             None,

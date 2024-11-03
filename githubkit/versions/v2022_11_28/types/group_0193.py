@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -23,9 +23,9 @@ class BranchRestrictionPolicyType(TypedDict):
     users_url: str
     teams_url: str
     apps_url: str
-    users: List[BranchRestrictionPolicyPropUsersItemsType]
-    teams: List[BranchRestrictionPolicyPropTeamsItemsType]
-    apps: List[BranchRestrictionPolicyPropAppsItemsType]
+    users: list[BranchRestrictionPolicyPropUsersItemsType]
+    teams: list[BranchRestrictionPolicyPropTeamsItemsType]
+    apps: list[BranchRestrictionPolicyPropAppsItemsType]
 
 
 class BranchRestrictionPolicyPropUsersItemsType(TypedDict):
@@ -85,7 +85,7 @@ class BranchRestrictionPolicyPropAppsItemsType(TypedDict):
     created_at: NotRequired[str]
     updated_at: NotRequired[str]
     permissions: NotRequired[BranchRestrictionPolicyPropAppsItemsPropPermissionsType]
-    events: NotRequired[List[str]]
+    events: NotRequired[list[str]]
 
 
 class BranchRestrictionPolicyPropAppsItemsPropOwnerType(TypedDict):

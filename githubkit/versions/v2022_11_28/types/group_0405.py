@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -24,7 +24,7 @@ class WebhooksIssue2Type(TypedDict):
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ]
     assignee: NotRequired[Union[WebhooksIssue2PropAssigneeType, None]]
-    assignees: List[Union[WebhooksIssue2PropAssigneesItemsType, None]]
+    assignees: list[Union[WebhooksIssue2PropAssigneesItemsType, None]]
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -44,7 +44,7 @@ class WebhooksIssue2Type(TypedDict):
     events_url: str
     html_url: str
     id: int
-    labels: NotRequired[List[WebhooksIssue2PropLabelsItemsType]]
+    labels: NotRequired[list[WebhooksIssue2PropLabelsItemsType]]
     labels_url: str
     locked: NotRequired[bool]
     milestone: Union[WebhooksIssue2PropMilestoneType, None]
@@ -193,7 +193,7 @@ class WebhooksIssue2PropPerformedViaGithubAppType(TypedDict):
 
     created_at: Union[datetime, None]
     description: Union[str, None]
-    events: NotRequired[List[str]]
+    events: NotRequired[list[str]]
     external_url: Union[str, None]
     html_url: str
     id: Union[int, None]

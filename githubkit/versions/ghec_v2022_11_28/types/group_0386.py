@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0385 import MetaType
@@ -18,7 +18,7 @@ from .group_0385 import MetaType
 class ScimEnterpriseGroupResponseType(TypedDict):
     """ScimEnterpriseGroupResponse"""
 
-    schemas: List[
+    schemas: list[
         Literal[
             "urn:ietf:params:scim:schemas:core:2.0:Group",
             "urn:ietf:params:scim:api:messages:2.0:ListResponse",
@@ -26,7 +26,7 @@ class ScimEnterpriseGroupResponseType(TypedDict):
     ]
     external_id: NotRequired[Union[str, None]]
     display_name: NotRequired[Union[str, None]]
-    members: NotRequired[List[ScimEnterpriseGroupResponseMergedMembersType]]
+    members: NotRequired[list[ScimEnterpriseGroupResponseMergedMembersType]]
     id: NotRequired[str]
     meta: NotRequired[MetaType]
 
@@ -42,9 +42,9 @@ class ScimEnterpriseGroupResponseMergedMembersType(TypedDict):
 class ScimEnterpriseGroupListType(TypedDict):
     """ScimEnterpriseGroupList"""
 
-    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]]
     total_results: int
-    resources: List[ScimEnterpriseGroupResponseType]
+    resources: list[ScimEnterpriseGroupResponseType]
     start_index: int
     items_per_page: int
 

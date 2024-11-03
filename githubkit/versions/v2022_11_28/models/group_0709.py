@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -48,7 +48,7 @@ class WebhookRepositoryRulesetEditedPropChangesPropRules(GitHubModel):
     """WebhookRepositoryRulesetEditedPropChangesPropRules"""
 
     added: Missing[
-        List[
+        list[
             Union[
                 RepositoryRuleCreation,
                 RepositoryRuleUpdate,
@@ -75,7 +75,7 @@ class WebhookRepositoryRulesetEditedPropChangesPropRules(GitHubModel):
         ]
     ] = Field(default=UNSET)
     deleted: Missing[
-        List[
+        list[
             Union[
                 RepositoryRuleCreation,
                 RepositoryRuleUpdate,
@@ -102,7 +102,7 @@ class WebhookRepositoryRulesetEditedPropChangesPropRules(GitHubModel):
         ]
     ] = Field(default=UNSET)
     updated: Missing[
-        List[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems]
+        list[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItems]
     ] = Field(default=UNSET)
 
 

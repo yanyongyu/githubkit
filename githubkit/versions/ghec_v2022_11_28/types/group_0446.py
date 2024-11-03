@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict
 
 
@@ -38,7 +38,7 @@ class WebhooksMarketplacePurchasePropAccountType(TypedDict):
 class WebhooksMarketplacePurchasePropPlanType(TypedDict):
     """WebhooksMarketplacePurchasePropPlan"""
 
-    bullets: List[Union[str, None]]
+    bullets: list[Union[str, None]]
     description: str
     has_free_trial: bool
     id: int

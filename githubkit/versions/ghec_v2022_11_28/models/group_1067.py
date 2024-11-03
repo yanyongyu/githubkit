@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -28,15 +26,15 @@ class ReposOwnerRepoHooksHookIdPatchBody(GitHubModel):
         title="Webhook Configuration",
         description="Configuration object of the webhook",
     )
-    events: Missing[List[str]] = Field(
+    events: Missing[list[str]] = Field(
         default=UNSET,
         description="Determines what [events](https://docs.github.com/enterprise-cloud@latest//webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.",
     )
-    add_events: Missing[List[str]] = Field(
+    add_events: Missing[list[str]] = Field(
         default=UNSET,
         description="Determines a list of events to be added to the list of events that the Hook triggers for.",
     )
-    remove_events: Missing[List[str]] = Field(
+    remove_events: Missing[list[str]] = Field(
         default=UNSET,
         description="Determines a list of events to be removed from the list of events that the Hook triggers for.",
     )

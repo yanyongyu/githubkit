@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -30,7 +30,7 @@ class WebhookWorkflowJobInProgressPropWorkflowJobAllof1(GitHubModel):
     head_sha: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
     id: Missing[int] = Field(default=UNSET)
-    labels: Missing[List[str]] = Field(default=UNSET)
+    labels: Missing[list[str]] = Field(default=UNSET)
     name: Missing[str] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
     run_attempt: Missing[int] = Field(default=UNSET)
@@ -48,7 +48,7 @@ class WebhookWorkflowJobInProgressPropWorkflowJobAllof1(GitHubModel):
     workflow_name: Missing[Union[str, None]] = Field(
         default=UNSET, description="The name of the workflow."
     )
-    steps: List[WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems] = (
+    steps: list[WebhookWorkflowJobInProgressPropWorkflowJobAllof1PropStepsItems] = (
         Field()
     )
     url: Missing[str] = Field(default=UNSET)

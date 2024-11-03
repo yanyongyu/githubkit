@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -33,7 +33,7 @@ class ScopedInstallation(GitHubModel):
     )
     single_file_name: Union[str, None] = Field()
     has_multiple_single_files: Missing[bool] = Field(default=UNSET)
-    single_file_paths: Missing[List[str]] = Field(default=UNSET)
+    single_file_paths: Missing[list[str]] = Field(default=UNSET)
     repositories_url: str = Field()
     account: SimpleUser = Field(title="Simple User", description="A GitHub user.")
 

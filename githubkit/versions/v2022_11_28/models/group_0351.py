@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,8 +17,8 @@ from githubkit.compat import GitHubModel, model_rebuild
 class ParticipationStats(GitHubModel):
     """Participation Stats"""
 
-    all_: List[int] = Field(alias="all")
-    owner: List[int] = Field()
+    all_: list[int] = Field(alias="all")
+    owner: list[int] = Field()
 
 
 model_rebuild(ParticipationStats)

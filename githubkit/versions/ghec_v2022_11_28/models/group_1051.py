@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -26,7 +26,7 @@ class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetRespon
     total_count: int = Field(
         description="The number of deployment branch policies for the environment."
     )
-    branch_policies: List[DeploymentBranchPolicy] = Field()
+    branch_policies: list[DeploymentBranchPolicy] = Field()
 
 
 class DeploymentBranchPolicy(GitHubModel):

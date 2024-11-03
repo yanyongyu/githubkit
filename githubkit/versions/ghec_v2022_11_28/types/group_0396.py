@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0391 import UserRoleItemsType
@@ -18,14 +18,14 @@ from .group_0391 import UserRoleItemsType
 class UserType(TypedDict):
     """User"""
 
-    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]]
     external_id: str
     active: bool
     user_name: str
     name: NotRequired[UserNameType]
     display_name: str
-    emails: List[UserEmailsItemsType]
-    roles: NotRequired[List[UserRoleItemsType]]
+    emails: list[UserEmailsItemsType]
+    roles: NotRequired[list[UserRoleItemsType]]
 
 
 class UserNameType(TypedDict):

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0196 import GitUserType
@@ -32,11 +32,11 @@ class CommitSearchResultItemType(TypedDict):
     commit: CommitSearchResultItemPropCommitType
     author: Union[None, SimpleUserType]
     committer: Union[None, GitUserType]
-    parents: List[CommitSearchResultItemPropParentsItemsType]
+    parents: list[CommitSearchResultItemPropParentsItemsType]
     repository: MinimalRepositoryType
     score: float
     node_id: str
-    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
 class CommitSearchResultItemPropParentsItemsType(TypedDict):
@@ -52,7 +52,7 @@ class SearchCommitsGetResponse200Type(TypedDict):
 
     total_count: int
     incomplete_results: bool
-    items: List[CommitSearchResultItemType]
+    items: list[CommitSearchResultItemType]
 
 
 __all__ = (

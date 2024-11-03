@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -22,7 +20,7 @@ class Topic(GitHubModel):
     A topic aggregates entities that are related to a subject.
     """
 
-    names: List[str] = Field()
+    names: list[str] = Field()
 
 
 model_rebuild(Topic)

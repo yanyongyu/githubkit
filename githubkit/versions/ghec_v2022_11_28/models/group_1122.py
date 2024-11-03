@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -21,10 +19,10 @@ from githubkit.compat import GitHubModel, model_rebuild
 class ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0(GitHubModel):
     """ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof0"""
 
-    reviewers: List[str] = Field(
+    reviewers: list[str] = Field(
         description="An array of user `login`s that will be requested."
     )
-    team_reviewers: Missing[List[str]] = Field(
+    team_reviewers: Missing[list[str]] = Field(
         default=UNSET, description="An array of team `slug`s that will be requested."
     )
 

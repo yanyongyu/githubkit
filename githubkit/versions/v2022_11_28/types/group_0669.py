@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -74,7 +74,7 @@ class WebhookPullRequestReviewRequestedOneof0PropPullRequestType(TypedDict):
     assignee: Union[
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAssigneeType, None
     ]
-    assignees: List[
+    assignees: list[
         Union[
             WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAssigneesItemsType,
             None,
@@ -109,7 +109,7 @@ class WebhookPullRequestReviewRequestedOneof0PropPullRequestType(TypedDict):
     html_url: str
     id: int
     issue_url: str
-    labels: List[
+    labels: list[
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLabelsItemsType
     ]
     locked: bool
@@ -131,14 +131,14 @@ class WebhookPullRequestReviewRequestedOneof0PropPullRequestType(TypedDict):
     number: int
     patch_url: str
     rebaseable: NotRequired[Union[bool, None]]
-    requested_reviewers: List[
+    requested_reviewers: list[
         Union[
             WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedReviewersItemsOneof0Type,
             None,
             WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedReviewersItemsOneof1Type,
         ]
     ]
-    requested_teams: List[
+    requested_teams: list[
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedTeamsItemsType
     ]
     review_comment_url: str
@@ -640,7 +640,7 @@ class WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepoType
     svn_url: str
     tags_url: str
     teams_url: str
-    topics: List[str]
+    topics: list[str]
     trees_url: str
     updated_at: datetime
     url: str
@@ -852,7 +852,7 @@ class WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepoType
     svn_url: str
     tags_url: str
     teams_url: str
-    topics: List[str]
+    topics: list[str]
     trees_url: str
     updated_at: datetime
     url: str

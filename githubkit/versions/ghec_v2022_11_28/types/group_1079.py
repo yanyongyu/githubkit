@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
 class ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType(TypedDict):
     """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    assignees: NotRequired[List[str]]
+    assignees: NotRequired[list[str]]
 
 
 __all__ = ("ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType",)

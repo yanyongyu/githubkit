@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -69,7 +69,7 @@ class WebhookPullRequestReviewCommentDeletedPropPullRequest(GitHubModel):
     assignee: Union[
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropAssignee, None
     ] = Field(title="User")
-    assignees: List[
+    assignees: list[
         Union[
             WebhookPullRequestReviewCommentDeletedPropPullRequestPropAssigneesItems,
             None,
@@ -107,7 +107,7 @@ class WebhookPullRequestReviewCommentDeletedPropPullRequest(GitHubModel):
     html_url: str = Field()
     id: int = Field()
     issue_url: str = Field()
-    labels: List[
+    labels: list[
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropLabelsItems
     ] = Field()
     locked: bool = Field()
@@ -122,14 +122,14 @@ class WebhookPullRequestReviewCommentDeletedPropPullRequest(GitHubModel):
     node_id: str = Field()
     number: int = Field()
     patch_url: str = Field()
-    requested_reviewers: List[
+    requested_reviewers: list[
         Union[
             WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof0,
             None,
             WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedReviewersItemsOneof1,
         ]
     ] = Field()
-    requested_teams: List[
+    requested_teams: list[
         WebhookPullRequestReviewCommentDeletedPropPullRequestPropRequestedTeamsItems
     ] = Field()
     review_comment_url: str = Field()
@@ -655,7 +655,7 @@ class WebhookPullRequestReviewCommentDeletedPropPullRequestPropBasePropRepo(
     svn_url: str = Field()
     tags_url: str = Field()
     teams_url: str = Field()
-    topics: List[str] = Field()
+    topics: list[str] = Field()
     trees_url: str = Field()
     updated_at: datetime = Field()
     url: str = Field()
@@ -883,7 +883,7 @@ class WebhookPullRequestReviewCommentDeletedPropPullRequestPropHeadPropRepo(
     svn_url: str = Field()
     tags_url: str = Field()
     teams_url: str = Field()
-    topics: List[str] = Field()
+    topics: list[str] = Field()
     trees_url: str = Field()
     updated_at: datetime = Field()
     url: str = Field()

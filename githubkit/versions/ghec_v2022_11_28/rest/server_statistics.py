@@ -10,14 +10,12 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Optional
+from typing import TYPE_CHECKING, Optional
 
 from githubkit.typing import Missing
 from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import List
-
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
     from githubkit.typing import Missing
@@ -47,11 +45,9 @@ class ServerStatisticsClient:
         date_start: Missing[str] = UNSET,
         date_end: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ServerStatisticsItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ServerStatisticsItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics"""
-
-        from typing import List
 
         from ..models import ServerStatisticsItems
 
@@ -69,7 +65,7 @@ class ServerStatisticsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ServerStatisticsItems],
+            response_model=list[ServerStatisticsItems],
         )
 
     async def async_get_server_statistics(
@@ -78,11 +74,9 @@ class ServerStatisticsClient:
         date_start: Missing[str] = UNSET,
         date_end: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ServerStatisticsItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ServerStatisticsItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics"""
-
-        from typing import List
 
         from ..models import ServerStatisticsItems
 
@@ -100,5 +94,5 @@ class ServerStatisticsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ServerStatisticsItems],
+            response_model=list[ServerStatisticsItems],
         )

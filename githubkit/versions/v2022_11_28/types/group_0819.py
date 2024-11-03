@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -17,7 +16,7 @@ class OrgsOrgAttestationsSubjectDigestGetResponse200Type(TypedDict):
     """OrgsOrgAttestationsSubjectDigestGetResponse200"""
 
     attestations: NotRequired[
-        List[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType]
+        list[OrgsOrgAttestationsSubjectDigestGetResponse200PropAttestationsItemsType]
     ]
 
 

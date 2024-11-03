@@ -1,5 +1,5 @@
+from typing import Optional
 from dataclasses import dataclass
-from typing import Dict, Optional
 from datetime import datetime, timezone, timedelta
 
 from .base import BaseCache
@@ -15,7 +15,7 @@ class MemCache(BaseCache):
     """Simple Memory Cache with Expiration Support"""
 
     def __init__(self):
-        self._cache: Dict[str, _Item] = {}
+        self._cache: dict[str, _Item] = {}
 
     def expire(self):
         now = datetime.now(timezone.utc)

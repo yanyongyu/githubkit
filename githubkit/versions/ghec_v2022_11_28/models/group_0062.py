@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -31,7 +29,7 @@ class AdvancedSecurityActiveCommitters(GitHubModel):
         default=UNSET,
         description="The total number of GitHub Advanced Security licences purchased",
     )
-    repositories: List[AdvancedSecurityActiveCommittersRepository] = Field()
+    repositories: list[AdvancedSecurityActiveCommittersRepository] = Field()
 
 
 class AdvancedSecurityActiveCommittersRepository(GitHubModel):
@@ -39,7 +37,7 @@ class AdvancedSecurityActiveCommittersRepository(GitHubModel):
 
     name: str = Field()
     advanced_security_committers: int = Field()
-    advanced_security_committers_breakdown: List[
+    advanced_security_committers_breakdown: list[
         AdvancedSecurityActiveCommittersUser
     ] = Field()
 

@@ -10,8 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing_extensions import Annotated
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, Optional, Annotated, overload
 
 from pydantic import Field, BaseModel
 
@@ -21,7 +20,7 @@ from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
     from datetime import datetime
-    from typing import List, Union, Literal
+    from typing import Union, Literal
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
@@ -117,11 +116,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Issue]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Issue]]:
         """See also: https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import Issue, BasicError, ValidationError
 
@@ -149,7 +146,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Issue],
+            response_model=list[Issue],
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -173,11 +170,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Issue]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Issue]]:
         """See also: https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import Issue, BasicError, ValidationError
 
@@ -205,7 +200,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Issue],
+            response_model=list[Issue],
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -226,11 +221,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Issue]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Issue]]:
         """See also: https://docs.github.com/rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import Issue, BasicError
 
@@ -254,7 +247,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Issue],
+            response_model=list[Issue],
             error_models={
                 "404": BasicError,
             },
@@ -274,11 +267,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Issue]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Issue]]:
         """See also: https://docs.github.com/rest/issues/issues#list-organization-issues-assigned-to-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import Issue, BasicError
 
@@ -302,7 +293,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Issue],
+            response_model=list[Issue],
             error_models={
                 "404": BasicError,
             },
@@ -315,11 +306,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/rest/issues/assignees#list-assignees"""
-
-        from typing import List
 
         from ..models import BasicError, SimpleUser
 
@@ -337,7 +326,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
             error_models={
                 "404": BasicError,
             },
@@ -350,11 +339,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/rest/issues/assignees#list-assignees"""
-
-        from typing import List
 
         from ..models import BasicError, SimpleUser
 
@@ -372,7 +359,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
             error_models={
                 "404": BasicError,
             },
@@ -384,7 +371,7 @@ class IssuesClient:
         repo: str,
         assignee: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned"""
 
@@ -409,7 +396,7 @@ class IssuesClient:
         repo: str,
         assignee: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned"""
 
@@ -444,11 +431,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Issue]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Issue]]:
         """See also: https://docs.github.com/rest/issues/issues#list-repository-issues"""
-
-        from typing import List
 
         from ..models import Issue, BasicError, ValidationError
 
@@ -475,7 +460,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Issue],
+            response_model=list[Issue],
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -498,11 +483,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Issue]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Issue]]:
         """See also: https://docs.github.com/rest/issues/issues#list-repository-issues"""
-
-        from typing import List
 
         from ..models import Issue, BasicError, ValidationError
 
@@ -529,7 +512,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Issue],
+            response_model=list[Issue],
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -542,7 +525,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesPostBodyType,
     ) -> Response[Issue]: ...
 
@@ -553,15 +536,15 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: Union[str, int],
         body: Missing[str] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
         milestone: Missing[Union[str, int, None]] = UNSET,
         labels: Missing[
-            List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
+            list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
         ] = UNSET,
-        assignees: Missing[List[str]] = UNSET,
+        assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue]: ...
 
     def create(
@@ -569,7 +552,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
@@ -618,7 +601,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesPostBodyType,
     ) -> Response[Issue]: ...
 
@@ -629,15 +612,15 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: Union[str, int],
         body: Missing[str] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
         milestone: Missing[Union[str, int, None]] = UNSET,
         labels: Missing[
-            List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
+            list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1Type]]
         ] = UNSET,
-        assignees: Missing[List[str]] = UNSET,
+        assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue]: ...
 
     async def async_create(
@@ -645,7 +628,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
@@ -698,11 +681,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[IssueComment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[IssueComment]]:
         """See also: https://docs.github.com/rest/issues/comments#list-issue-comments-for-a-repository"""
-
-        from typing import List
 
         from ..models import BasicError, IssueComment, ValidationError
 
@@ -723,7 +704,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[IssueComment],
+            response_model=list[IssueComment],
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -740,11 +721,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[IssueComment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[IssueComment]]:
         """See also: https://docs.github.com/rest/issues/comments#list-issue-comments-for-a-repository"""
-
-        from typing import List
 
         from ..models import BasicError, IssueComment, ValidationError
 
@@ -765,7 +744,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[IssueComment],
+            response_model=list[IssueComment],
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -778,7 +757,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[IssueComment]:
         """See also: https://docs.github.com/rest/issues/comments#get-an-issue-comment"""
 
@@ -804,7 +783,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[IssueComment]:
         """See also: https://docs.github.com/rest/issues/comments#get-an-issue-comment"""
 
@@ -830,7 +809,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/comments#delete-an-issue-comment"""
 
@@ -850,7 +829,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/comments#delete-an-issue-comment"""
 
@@ -871,7 +850,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
     ) -> Response[IssueComment]: ...
 
@@ -883,7 +862,7 @@ class IssuesClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[IssueComment]: ...
 
@@ -893,7 +872,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment]:
@@ -938,7 +917,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType,
     ) -> Response[IssueComment]: ...
 
@@ -950,7 +929,7 @@ class IssuesClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[IssueComment]: ...
 
@@ -960,7 +939,7 @@ class IssuesClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment]:
@@ -1005,11 +984,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[IssueEvent]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[IssueEvent]]:
         """See also: https://docs.github.com/rest/issues/events#list-issue-events-for-a-repository"""
-
-        from typing import List
 
         from ..models import IssueEvent, ValidationError
 
@@ -1027,7 +1004,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[IssueEvent],
+            response_model=list[IssueEvent],
             error_models={
                 "422": ValidationError,
             },
@@ -1040,11 +1017,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[IssueEvent]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[IssueEvent]]:
         """See also: https://docs.github.com/rest/issues/events#list-issue-events-for-a-repository"""
-
-        from typing import List
 
         from ..models import IssueEvent, ValidationError
 
@@ -1062,7 +1037,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[IssueEvent],
+            response_model=list[IssueEvent],
             error_models={
                 "422": ValidationError,
             },
@@ -1074,7 +1049,7 @@ class IssuesClient:
         repo: str,
         event_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[IssueEvent]:
         """See also: https://docs.github.com/rest/issues/events#get-an-issue-event"""
 
@@ -1102,7 +1077,7 @@ class IssuesClient:
         repo: str,
         event_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[IssueEvent]:
         """See also: https://docs.github.com/rest/issues/events#get-an-issue-event"""
 
@@ -1130,7 +1105,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Issue]:
         """See also: https://docs.github.com/rest/issues/issues#get-an-issue"""
 
@@ -1157,7 +1132,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Issue]:
         """See also: https://docs.github.com/rest/issues/issues#get-an-issue"""
 
@@ -1185,7 +1160,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
     ) -> Response[Issue]: ...
 
@@ -1197,7 +1172,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: Missing[Union[str, int, None]] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
@@ -1207,14 +1182,14 @@ class IssuesClient:
         ] = UNSET,
         milestone: Missing[Union[str, int, None]] = UNSET,
         labels: Missing[
-            List[
+            list[
                 Union[
                     str,
                     ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type,
                 ]
             ]
         ] = UNSET,
-        assignees: Missing[List[str]] = UNSET,
+        assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue]: ...
 
     def update(
@@ -1223,7 +1198,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
@@ -1272,7 +1247,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
     ) -> Response[Issue]: ...
 
@@ -1284,7 +1259,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: Missing[Union[str, int, None]] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         assignee: Missing[Union[str, None]] = UNSET,
@@ -1294,14 +1269,14 @@ class IssuesClient:
         ] = UNSET,
         milestone: Missing[Union[str, int, None]] = UNSET,
         labels: Missing[
-            List[
+            list[
                 Union[
                     str,
                     ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type,
                 ]
             ]
         ] = UNSET,
-        assignees: Missing[List[str]] = UNSET,
+        assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue]: ...
 
     async def async_update(
@@ -1310,7 +1285,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
@@ -1359,7 +1334,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
     ) -> Response[Issue]: ...
 
@@ -1371,8 +1346,8 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        assignees: Missing[List[str]] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue]: ...
 
     def add_assignees(
@@ -1381,7 +1356,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
@@ -1419,7 +1394,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
     ) -> Response[Issue]: ...
 
@@ -1431,8 +1406,8 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        assignees: Missing[List[str]] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue]: ...
 
     async def async_add_assignees(
@@ -1441,7 +1416,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
@@ -1479,7 +1454,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
     ) -> Response[Issue]: ...
 
@@ -1491,8 +1466,8 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        assignees: Missing[List[str]] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue]: ...
 
     def remove_assignees(
@@ -1501,7 +1476,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
@@ -1539,7 +1514,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
     ) -> Response[Issue]: ...
 
@@ -1551,8 +1526,8 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        assignees: Missing[List[str]] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        assignees: Missing[list[str]] = UNSET,
     ) -> Response[Issue]: ...
 
     async def async_remove_assignees(
@@ -1561,7 +1536,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberAssigneesDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[Issue]:
@@ -1599,7 +1574,7 @@ class IssuesClient:
         issue_number: int,
         assignee: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue"""
 
@@ -1625,7 +1600,7 @@ class IssuesClient:
         issue_number: int,
         assignee: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue"""
 
@@ -1653,11 +1628,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[IssueComment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[IssueComment]]:
         """See also: https://docs.github.com/rest/issues/comments#list-issue-comments"""
-
-        from typing import List
 
         from ..models import BasicError, IssueComment
 
@@ -1676,7 +1649,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[IssueComment],
+            response_model=list[IssueComment],
             error_models={
                 "404": BasicError,
                 "410": BasicError,
@@ -1692,11 +1665,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[IssueComment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[IssueComment]]:
         """See also: https://docs.github.com/rest/issues/comments#list-issue-comments"""
-
-        from typing import List
 
         from ..models import BasicError, IssueComment
 
@@ -1715,7 +1686,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[IssueComment],
+            response_model=list[IssueComment],
             error_models={
                 "404": BasicError,
                 "410": BasicError,
@@ -1729,7 +1700,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
     ) -> Response[IssueComment]: ...
 
@@ -1741,7 +1712,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[IssueComment]: ...
 
@@ -1751,7 +1722,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment]:
@@ -1800,7 +1771,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType,
     ) -> Response[IssueComment]: ...
 
@@ -1812,7 +1783,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[IssueComment]: ...
 
@@ -1822,7 +1793,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[IssueComment]:
@@ -1872,9 +1843,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        List[
+        list[
             Union[
                 LabeledIssueEvent,
                 UnlabeledIssueEvent,
@@ -1896,7 +1867,7 @@ class IssuesClient:
     ]:
         """See also: https://docs.github.com/rest/issues/events#list-issue-events"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             BasicError,
@@ -1931,7 +1902,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[
+            response_model=list[
                 Union[
                     LabeledIssueEvent,
                     UnlabeledIssueEvent,
@@ -1963,9 +1934,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        List[
+        list[
             Union[
                 LabeledIssueEvent,
                 UnlabeledIssueEvent,
@@ -1987,7 +1958,7 @@ class IssuesClient:
     ]:
         """See also: https://docs.github.com/rest/issues/events#list-issue-events"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             BasicError,
@@ -2022,7 +1993,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[
+            response_model=list[
                 Union[
                     LabeledIssueEvent,
                     UnlabeledIssueEvent,
@@ -2054,11 +2025,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Label]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Label]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-an-issue"""
-
-        from typing import List
 
         from ..models import Label, BasicError
 
@@ -2076,7 +2045,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Label],
+            response_model=list[Label],
             error_models={
                 "404": BasicError,
                 "410": BasicError,
@@ -2091,11 +2060,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Label]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Label]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-an-issue"""
-
-        from typing import List
 
         from ..models import Label, BasicError
 
@@ -2113,7 +2080,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Label],
+            response_model=list[Label],
             error_models={
                 "404": BasicError,
                 "410": BasicError,
@@ -2127,17 +2094,17 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
-                List[str],
+                list[str],
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
-                List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType],
+                list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType],
                 str,
             ]
         ] = UNSET,
-    ) -> Response[List[Label]]: ...
+    ) -> Response[list[Label]]: ...
 
     @overload
     def set_labels(
@@ -2147,9 +2114,9 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        labels: Missing[List[str]] = UNSET,
-    ) -> Response[List[Label]]: ...
+        headers: Optional[dict[str, str]] = None,
+        labels: Missing[list[str]] = UNSET,
+    ) -> Response[list[Label]]: ...
 
     @overload
     def set_labels(
@@ -2159,11 +2126,11 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         labels: Missing[
-            List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
+            list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[List[Label]]: ...
+    ) -> Response[list[Label]]: ...
 
     def set_labels(
         self,
@@ -2171,21 +2138,21 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
-                List[str],
+                list[str],
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
-                List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType],
+                list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType],
                 str,
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Label]]:
+    ) -> Response[list[Label]]:
         """See also: https://docs.github.com/rest/issues/labels#set-labels-for-an-issue"""
 
-        from typing import List, Union
+        from typing import Union
 
         from githubkit.compat import PYDANTIC_V2
 
@@ -2211,10 +2178,10 @@ class IssuesClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0,
-                    Annotated[List[str], Field(min_length=1 if PYDANTIC_V2 else None)],
+                    Annotated[list[str], Field(min_length=1 if PYDANTIC_V2 else None)],
                     ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2,
                     Annotated[
-                        List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items],
+                        list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items],
                         Field(min_length=1 if PYDANTIC_V2 else None),
                     ],
                     str,
@@ -2228,7 +2195,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Label],
+            response_model=list[Label],
             error_models={
                 "404": BasicError,
                 "410": BasicError,
@@ -2243,17 +2210,17 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
-                List[str],
+                list[str],
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
-                List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType],
+                list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType],
                 str,
             ]
         ] = UNSET,
-    ) -> Response[List[Label]]: ...
+    ) -> Response[list[Label]]: ...
 
     @overload
     async def async_set_labels(
@@ -2263,9 +2230,9 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        labels: Missing[List[str]] = UNSET,
-    ) -> Response[List[Label]]: ...
+        headers: Optional[dict[str, str]] = None,
+        labels: Missing[list[str]] = UNSET,
+    ) -> Response[list[Label]]: ...
 
     @overload
     async def async_set_labels(
@@ -2275,11 +2242,11 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         labels: Missing[
-            List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
+            list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[List[Label]]: ...
+    ) -> Response[list[Label]]: ...
 
     async def async_set_labels(
         self,
@@ -2287,21 +2254,21 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0Type,
-                List[str],
+                list[str],
                 ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2Type,
-                List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType],
+                list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3ItemsType],
                 str,
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Label]]:
+    ) -> Response[list[Label]]:
         """See also: https://docs.github.com/rest/issues/labels#set-labels-for-an-issue"""
 
-        from typing import List, Union
+        from typing import Union
 
         from githubkit.compat import PYDANTIC_V2
 
@@ -2327,10 +2294,10 @@ class IssuesClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof0,
-                    Annotated[List[str], Field(min_length=1 if PYDANTIC_V2 else None)],
+                    Annotated[list[str], Field(min_length=1 if PYDANTIC_V2 else None)],
                     ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof2,
                     Annotated[
-                        List[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items],
+                        list[ReposOwnerRepoIssuesIssueNumberLabelsPutBodyOneof3Items],
                         Field(min_length=1 if PYDANTIC_V2 else None),
                     ],
                     str,
@@ -2344,7 +2311,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Label],
+            response_model=list[Label],
             error_models={
                 "404": BasicError,
                 "410": BasicError,
@@ -2359,17 +2326,17 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
-                List[str],
+                list[str],
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
-                List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
+                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
                 str,
             ]
         ] = UNSET,
-    ) -> Response[List[Label]]: ...
+    ) -> Response[list[Label]]: ...
 
     @overload
     def add_labels(
@@ -2379,9 +2346,9 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        labels: Missing[List[str]] = UNSET,
-    ) -> Response[List[Label]]: ...
+        headers: Optional[dict[str, str]] = None,
+        labels: Missing[list[str]] = UNSET,
+    ) -> Response[list[Label]]: ...
 
     @overload
     def add_labels(
@@ -2391,11 +2358,11 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         labels: Missing[
-            List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
+            list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[List[Label]]: ...
+    ) -> Response[list[Label]]: ...
 
     def add_labels(
         self,
@@ -2403,21 +2370,21 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
-                List[str],
+                list[str],
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
-                List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
+                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
                 str,
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Label]]:
+    ) -> Response[list[Label]]:
         """See also: https://docs.github.com/rest/issues/labels#add-labels-to-an-issue"""
 
-        from typing import List, Union
+        from typing import Union
 
         from githubkit.compat import PYDANTIC_V2
 
@@ -2443,10 +2410,10 @@ class IssuesClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
-                    Annotated[List[str], Field(min_length=1 if PYDANTIC_V2 else None)],
+                    Annotated[list[str], Field(min_length=1 if PYDANTIC_V2 else None)],
                     ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
                     Annotated[
-                        List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items],
+                        list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items],
                         Field(min_length=1 if PYDANTIC_V2 else None),
                     ],
                     str,
@@ -2460,7 +2427,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Label],
+            response_model=list[Label],
             error_models={
                 "404": BasicError,
                 "410": BasicError,
@@ -2475,17 +2442,17 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
-                List[str],
+                list[str],
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
-                List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
+                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
                 str,
             ]
         ] = UNSET,
-    ) -> Response[List[Label]]: ...
+    ) -> Response[list[Label]]: ...
 
     @overload
     async def async_add_labels(
@@ -2495,9 +2462,9 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        labels: Missing[List[str]] = UNSET,
-    ) -> Response[List[Label]]: ...
+        headers: Optional[dict[str, str]] = None,
+        labels: Missing[list[str]] = UNSET,
+    ) -> Response[list[Label]]: ...
 
     @overload
     async def async_add_labels(
@@ -2507,11 +2474,11 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         labels: Missing[
-            List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
+            list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItemsType]
         ] = UNSET,
-    ) -> Response[List[Label]]: ...
+    ) -> Response[list[Label]]: ...
 
     async def async_add_labels(
         self,
@@ -2519,21 +2486,21 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0Type,
-                List[str],
+                list[str],
                 ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2Type,
-                List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
+                list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3ItemsType],
                 str,
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Label]]:
+    ) -> Response[list[Label]]:
         """See also: https://docs.github.com/rest/issues/labels#add-labels-to-an-issue"""
 
-        from typing import List, Union
+        from typing import Union
 
         from githubkit.compat import PYDANTIC_V2
 
@@ -2559,10 +2526,10 @@ class IssuesClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof0,
-                    Annotated[List[str], Field(min_length=1 if PYDANTIC_V2 else None)],
+                    Annotated[list[str], Field(min_length=1 if PYDANTIC_V2 else None)],
                     ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2,
                     Annotated[
-                        List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items],
+                        list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof3Items],
                         Field(min_length=1 if PYDANTIC_V2 else None),
                     ],
                     str,
@@ -2576,7 +2543,7 @@ class IssuesClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Label],
+            response_model=list[Label],
             error_models={
                 "404": BasicError,
                 "410": BasicError,
@@ -2590,7 +2557,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/labels#remove-all-labels-from-an-issue"""
 
@@ -2616,7 +2583,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/labels#remove-all-labels-from-an-issue"""
 
@@ -2643,11 +2610,9 @@ class IssuesClient:
         issue_number: int,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Label]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Label]]:
         """See also: https://docs.github.com/rest/issues/labels#remove-a-label-from-an-issue"""
-
-        from typing import List
 
         from ..models import Label, BasicError
 
@@ -2659,7 +2624,7 @@ class IssuesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
-            response_model=List[Label],
+            response_model=list[Label],
             error_models={
                 "404": BasicError,
                 "410": BasicError,
@@ -2673,11 +2638,9 @@ class IssuesClient:
         issue_number: int,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Label]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Label]]:
         """See also: https://docs.github.com/rest/issues/labels#remove-a-label-from-an-issue"""
-
-        from typing import List
 
         from ..models import Label, BasicError
 
@@ -2689,7 +2652,7 @@ class IssuesClient:
             "DELETE",
             url,
             headers=exclude_unset(headers),
-            response_model=List[Label],
+            response_model=list[Label],
             error_models={
                 "404": BasicError,
                 "410": BasicError,
@@ -2703,7 +2666,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
@@ -2717,7 +2680,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         lock_reason: Missing[
             Literal["off-topic", "too heated", "resolved", "spam"]
         ] = UNSET,
@@ -2729,7 +2692,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
@@ -2780,7 +2743,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
@@ -2794,7 +2757,7 @@ class IssuesClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         lock_reason: Missing[
             Literal["off-topic", "too heated", "resolved", "spam"]
         ] = UNSET,
@@ -2806,7 +2769,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoIssuesIssueNumberLockPutBodyType, None]
         ] = UNSET,
@@ -2856,7 +2819,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/issues#unlock-an-issue"""
 
@@ -2882,7 +2845,7 @@ class IssuesClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/issues#unlock-an-issue"""
 
@@ -2910,9 +2873,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        List[
+        list[
             Union[
                 LabeledIssueEvent,
                 UnlabeledIssueEvent,
@@ -2941,7 +2904,7 @@ class IssuesClient:
     ]:
         """See also: https://docs.github.com/rest/issues/timeline#list-timeline-events-for-an-issue"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             BasicError,
@@ -2983,7 +2946,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[
+            response_model=list[
                 Union[
                     LabeledIssueEvent,
                     UnlabeledIssueEvent,
@@ -3023,9 +2986,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        List[
+        list[
             Union[
                 LabeledIssueEvent,
                 UnlabeledIssueEvent,
@@ -3054,7 +3017,7 @@ class IssuesClient:
     ]:
         """See also: https://docs.github.com/rest/issues/timeline#list-timeline-events-for-an-issue"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             BasicError,
@@ -3096,7 +3059,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[
+            response_model=list[
                 Union[
                     LabeledIssueEvent,
                     UnlabeledIssueEvent,
@@ -3135,11 +3098,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Label]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Label]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-a-repository"""
-
-        from typing import List
 
         from ..models import Label, BasicError
 
@@ -3157,7 +3118,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Label],
+            response_model=list[Label],
             error_models={
                 "404": BasicError,
             },
@@ -3170,11 +3131,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Label]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Label]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-a-repository"""
-
-        from typing import List
 
         from ..models import Label, BasicError
 
@@ -3192,7 +3151,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Label],
+            response_model=list[Label],
             error_models={
                 "404": BasicError,
             },
@@ -3204,7 +3163,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoLabelsPostBodyType,
     ) -> Response[Label]: ...
 
@@ -3215,7 +3174,7 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -3226,7 +3185,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label]:
@@ -3270,7 +3229,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoLabelsPostBodyType,
     ) -> Response[Label]: ...
 
@@ -3281,7 +3240,7 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -3292,7 +3251,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label]:
@@ -3336,7 +3295,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Label]:
         """See also: https://docs.github.com/rest/issues/labels#get-a-label"""
 
@@ -3362,7 +3321,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Label]:
         """See also: https://docs.github.com/rest/issues/labels#get-a-label"""
 
@@ -3388,7 +3347,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/labels#delete-a-label"""
 
@@ -3408,7 +3367,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/labels#delete-a-label"""
 
@@ -3429,7 +3388,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
     ) -> Response[Label]: ...
 
@@ -3441,7 +3400,7 @@ class IssuesClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -3453,7 +3412,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label]:
@@ -3489,7 +3448,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
     ) -> Response[Label]: ...
 
@@ -3501,7 +3460,7 @@ class IssuesClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         new_name: Missing[str] = UNSET,
         color: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
@@ -3513,7 +3472,7 @@ class IssuesClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoLabelsNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Label]:
@@ -3552,11 +3511,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Milestone]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Milestone]]:
         """See also: https://docs.github.com/rest/issues/milestones#list-milestones"""
-
-        from typing import List
 
         from ..models import Milestone, BasicError
 
@@ -3577,7 +3534,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Milestone],
+            response_model=list[Milestone],
             error_models={
                 "404": BasicError,
             },
@@ -3593,11 +3550,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Milestone]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Milestone]]:
         """See also: https://docs.github.com/rest/issues/milestones#list-milestones"""
-
-        from typing import List
 
         from ..models import Milestone, BasicError
 
@@ -3618,7 +3573,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Milestone],
+            response_model=list[Milestone],
             error_models={
                 "404": BasicError,
             },
@@ -3630,7 +3585,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoMilestonesPostBodyType,
     ) -> Response[Milestone]: ...
 
@@ -3641,7 +3596,7 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: str,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
@@ -3653,7 +3608,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone]:
@@ -3697,7 +3652,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoMilestonesPostBodyType,
     ) -> Response[Milestone]: ...
 
@@ -3708,7 +3663,7 @@ class IssuesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: str,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
@@ -3720,7 +3675,7 @@ class IssuesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone]:
@@ -3764,7 +3719,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Milestone]:
         """See also: https://docs.github.com/rest/issues/milestones#get-a-milestone"""
 
@@ -3790,7 +3745,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Milestone]:
         """See also: https://docs.github.com/rest/issues/milestones#get-a-milestone"""
 
@@ -3816,7 +3771,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/milestones#delete-a-milestone"""
 
@@ -3841,7 +3796,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/issues/milestones#delete-a-milestone"""
 
@@ -3867,7 +3822,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
     ) -> Response[Milestone]: ...
 
@@ -3879,7 +3834,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
@@ -3892,7 +3847,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone]:
@@ -3930,7 +3885,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
     ) -> Response[Milestone]: ...
 
@@ -3942,7 +3897,7 @@ class IssuesClient:
         milestone_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: Missing[str] = UNSET,
         state: Missing[Literal["open", "closed"]] = UNSET,
         description: Missing[str] = UNSET,
@@ -3955,7 +3910,7 @@ class IssuesClient:
         repo: str,
         milestone_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMilestonesMilestoneNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Milestone]:
@@ -3994,11 +3949,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Label]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Label]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-issues-in-a-milestone"""
-
-        from typing import List
 
         from ..models import Label
 
@@ -4016,7 +3969,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Label],
+            response_model=list[Label],
         )
 
     async def async_list_labels_for_milestone(
@@ -4027,11 +3980,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Label]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Label]]:
         """See also: https://docs.github.com/rest/issues/labels#list-labels-for-issues-in-a-milestone"""
-
-        from typing import List
 
         from ..models import Label
 
@@ -4049,7 +4000,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Label],
+            response_model=list[Label],
         )
 
     def list_for_authenticated_user(
@@ -4065,11 +4016,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Issue]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Issue]]:
         """See also: https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import Issue, BasicError
 
@@ -4093,7 +4042,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Issue],
+            response_model=list[Issue],
             error_models={
                 "404": BasicError,
             },
@@ -4112,11 +4061,9 @@ class IssuesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Issue]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Issue]]:
         """See also: https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import Issue, BasicError
 
@@ -4140,7 +4087,7 @@ class IssuesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Issue],
+            response_model=list[Issue],
             error_models={
                 "404": BasicError,
             },

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -29,7 +29,7 @@ class ScimError(GitHubModel):
     detail: Missing[Union[str, None]] = Field(default=UNSET)
     status: Missing[int] = Field(default=UNSET)
     scim_type: Missing[Union[str, None]] = Field(default=UNSET, alias="scimType")
-    schemas: Missing[List[str]] = Field(default=UNSET)
+    schemas: Missing[list[str]] = Field(default=UNSET)
 
 
 model_rebuild(ScimError)

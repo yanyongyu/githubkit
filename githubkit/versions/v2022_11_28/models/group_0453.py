@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -127,7 +127,7 @@ class WebhookCodeScanningAlertFixedPropAlertPropMostRecentInstance(GitHubModel):
         default=UNSET,
         description="Identifies the configuration under which the analysis was executed.",
     )
-    classifications: Missing[List[str]] = Field(default=UNSET)
+    classifications: Missing[list[str]] = Field(default=UNSET)
     commit_sha: Missing[str] = Field(default=UNSET)
     environment: str = Field(
         description="Identifies the variable values associated with the environment in which the analysis that generated this alert instance was performed, such as the language that was analyzed."
@@ -185,7 +185,7 @@ class WebhookCodeScanningAlertFixedPropAlertPropRule(GitHubModel):
     severity: Union[None, Literal["none", "note", "warning", "error"]] = Field(
         description="The severity of the alert."
     )
-    tags: Missing[Union[List[str], None]] = Field(default=UNSET)
+    tags: Missing[Union[list[str], None]] = Field(default=UNSET)
 
 
 class WebhookCodeScanningAlertFixedPropAlertPropTool(GitHubModel):

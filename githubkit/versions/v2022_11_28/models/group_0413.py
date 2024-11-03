@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -45,7 +45,7 @@ class PersonalAccessTokenRequest(GitHubModel):
     repository_count: Union[int, None] = Field(
         description="The number of repositories the token is requesting access to. This field is only populated when `repository_selection` is `subset`."
     )
-    repositories: Union[List[PersonalAccessTokenRequestPropRepositoriesItems], None] = (
+    repositories: Union[list[PersonalAccessTokenRequestPropRepositoriesItems], None] = (
         Field(
             description="An array of repository objects the token is requesting access to. This field is only populated when `repository_selection` is `subset`."
         )

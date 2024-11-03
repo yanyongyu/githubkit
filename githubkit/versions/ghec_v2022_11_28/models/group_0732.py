@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -64,7 +64,7 @@ class WebhookReleasePrereleasedPropRelease(GitHubModel):
     cloud@latest//rest/releases/releases/#get-a-release) object.
     """
 
-    assets: List[Union[WebhookReleasePrereleasedPropReleasePropAssetsItems, None]] = (
+    assets: list[Union[WebhookReleasePrereleasedPropReleasePropAssetsItems, None]] = (
         Field()
     )
     assets_url: str = Field()

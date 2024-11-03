@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 
 from pydantic import Field
 
@@ -52,7 +52,7 @@ class Release(GitHubModel):
     created_at: datetime = Field()
     published_at: Union[datetime, None] = Field()
     author: SimpleUser = Field(title="Simple User", description="A GitHub user.")
-    assets: List[ReleaseAsset] = Field()
+    assets: list[ReleaseAsset] = Field()
     body_html: Missing[Union[str, None]] = Field(default=UNSET)
     body_text: Missing[Union[str, None]] = Field(default=UNSET)
     mentions_count: Missing[int] = Field(default=UNSET)

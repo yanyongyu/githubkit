@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -43,7 +43,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestType(TypedDict):
     assignee: Union[
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneeType, None
     ]
-    assignees: List[
+    assignees: list[
         Union[
             WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropAssigneesItemsType,
             None,
@@ -74,7 +74,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestType(TypedDict):
     html_url: str
     id: int
     issue_url: str
-    labels: List[
+    labels: list[
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropLabelsItemsType
     ]
     locked: bool
@@ -86,14 +86,14 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestType(TypedDict):
     node_id: str
     number: int
     patch_url: str
-    requested_reviewers: List[
+    requested_reviewers: list[
         Union[
             WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof0Type,
             None,
             WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedReviewersItemsOneof1Type,
         ]
     ]
-    requested_teams: List[
+    requested_teams: list[
         WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsItemsType
     ]
     review_comment_url: str
@@ -563,7 +563,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropBasePropRepoTyp
     svn_url: str
     tags_url: str
     teams_url: str
-    topics: List[str]
+    topics: list[str]
     trees_url: str
     updated_at: datetime
     url: str
@@ -769,7 +769,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropHeadPropRepoTyp
     svn_url: str
     tags_url: str
     teams_url: str
-    topics: List[str]
+    topics: list[str]
     trees_url: str
     updated_at: datetime
     url: str
@@ -933,7 +933,7 @@ class WebhookPullRequestReviewThreadUnresolvedPropPullRequestPropRequestedTeamsI
 class WebhookPullRequestReviewThreadUnresolvedPropThreadType(TypedDict):
     """WebhookPullRequestReviewThreadUnresolvedPropThread"""
 
-    comments: List[
+    comments: list[
         WebhookPullRequestReviewThreadUnresolvedPropThreadPropCommentsItemsType
     ]
     node_id: str

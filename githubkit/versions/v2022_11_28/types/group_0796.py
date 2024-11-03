@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -17,7 +16,7 @@ class OrgsOrgActionsRunnerGroupsGetResponse200Type(TypedDict):
     """OrgsOrgActionsRunnerGroupsGetResponse200"""
 
     total_count: float
-    runner_groups: List[RunnerGroupsOrgType]
+    runner_groups: list[RunnerGroupsOrgType]
 
 
 class RunnerGroupsOrgType(TypedDict):
@@ -35,7 +34,7 @@ class RunnerGroupsOrgType(TypedDict):
     allows_public_repositories: bool
     workflow_restrictions_read_only: NotRequired[bool]
     restricted_to_workflows: NotRequired[bool]
-    selected_workflows: NotRequired[List[str]]
+    selected_workflows: NotRequired[list[str]]
 
 
 __all__ = (

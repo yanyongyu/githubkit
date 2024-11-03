@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -51,7 +51,7 @@ class DiscussionType(TypedDict):
     title: str
     updated_at: datetime
     user: Union[DiscussionPropUserType, None]
-    labels: NotRequired[List[LabelType]]
+    labels: NotRequired[list[LabelType]]
 
 
 class LabelType(TypedDict):

@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
@@ -17,7 +16,7 @@ class OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type(TypedDict):
     """OrgsOrgActionsCacheUsageByRepositoryGetResponse200"""
 
     total_count: int
-    repository_cache_usages: List[ActionsCacheUsageByRepositoryType]
+    repository_cache_usages: list[ActionsCacheUsageByRepositoryType]
 
 
 class ActionsCacheUsageByRepositoryType(TypedDict):

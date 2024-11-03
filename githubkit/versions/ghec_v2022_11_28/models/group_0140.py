@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -21,7 +19,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 class RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId(GitHubModel):
     """RepositoryRulesetConditionsRepositoryIdTargetPropRepositoryId"""
 
-    repository_ids: Missing[List[int]] = Field(
+    repository_ids: Missing[list[int]] = Field(
         default=UNSET,
         description="The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass.",
     )

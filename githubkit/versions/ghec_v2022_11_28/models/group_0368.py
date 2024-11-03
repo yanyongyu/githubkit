@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -31,13 +31,13 @@ class RepositoryAdvisoryCreate(GitHubModel):
     cve_id: Missing[Union[str, None]] = Field(
         default=UNSET, description="The Common Vulnerabilities and Exposures (CVE) ID."
     )
-    vulnerabilities: List[RepositoryAdvisoryCreatePropVulnerabilitiesItems] = Field(
+    vulnerabilities: list[RepositoryAdvisoryCreatePropVulnerabilitiesItems] = Field(
         description="A product affected by the vulnerability detailed in a repository security advisory."
     )
-    cwe_ids: Missing[Union[List[str], None]] = Field(
+    cwe_ids: Missing[Union[list[str], None]] = Field(
         default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
     )
-    credits_: Missing[Union[List[RepositoryAdvisoryCreatePropCreditsItems], None]] = (
+    credits_: Missing[Union[list[RepositoryAdvisoryCreatePropCreditsItems], None]] = (
         Field(
             default=UNSET,
             alias="credits",
@@ -92,7 +92,7 @@ class RepositoryAdvisoryCreatePropVulnerabilitiesItems(GitHubModel):
         default=UNSET,
         description="The package version(s) that resolve the vulnerability.",
     )
-    vulnerable_functions: Missing[Union[List[str], None]] = Field(
+    vulnerable_functions: Missing[Union[list[str], None]] = Field(
         default=UNSET, description="The functions in the package that are affected."
     )
 

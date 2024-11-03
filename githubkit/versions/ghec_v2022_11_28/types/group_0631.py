@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -42,7 +42,7 @@ class WebhookMetaDeletedPropHookType(TypedDict):
     active: bool
     config: WebhookMetaDeletedPropHookPropConfigType
     created_at: str
-    events: List[str]
+    events: list[str]
     id: int
     name: str
     type: str

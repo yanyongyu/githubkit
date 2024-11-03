@@ -1,6 +1,6 @@
 from typing_extensions import Self
+from typing import Any, Union, Optional
 from dataclasses import asdict, dataclass
-from typing import Any, Dict, List, Union, Optional
 
 import httpx
 
@@ -19,7 +19,7 @@ class Config:
     auto_retry: Optional[RetryDecisionFunc]
     rest_api_validate_body: bool
 
-    def dict(self) -> Dict[str, Any]:
+    def dict(self) -> dict[str, Any]:
         return asdict(self)
 
     def copy(self) -> Self:
@@ -36,7 +36,7 @@ def build_base_url(base_url: Optional[Union[str, httpx.URL]]) -> httpx.URL:
 
 
 def build_accept(
-    accept_format: Optional[str] = None, previews: Optional[List[str]] = None
+    accept_format: Optional[str] = None, previews: Optional[list[str]] = None
 ) -> str:
     if accept_format:
         accept_format = (
@@ -78,7 +78,7 @@ def build_auto_retry(
 def get_config(
     base_url: Optional[Union[str, httpx.URL]] = None,
     accept_format: Optional[str] = None,
-    previews: Optional[List[str]] = None,
+    previews: Optional[list[str]] = None,
     user_agent: Optional[str] = None,
     follow_redirects: bool = True,
     timeout: Optional[Union[float, httpx.Timeout]] = None,

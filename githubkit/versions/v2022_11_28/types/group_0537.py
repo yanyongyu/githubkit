@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0540 import WebhookIssueCommentEditedPropIssueAllof0PropMilestoneType
@@ -36,7 +36,7 @@ class WebhookIssueCommentEditedPropIssueAllof0Type(TypedDict):
     assignee: NotRequired[
         Union[WebhookIssueCommentEditedPropIssueAllof0PropAssigneeType, None]
     ]
-    assignees: List[
+    assignees: list[
         Union[WebhookIssueCommentEditedPropIssueAllof0PropAssigneesItemsType, None]
     ]
     author_association: Literal[
@@ -59,7 +59,7 @@ class WebhookIssueCommentEditedPropIssueAllof0Type(TypedDict):
     html_url: str
     id: int
     labels: NotRequired[
-        List[WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsType]
+        list[WebhookIssueCommentEditedPropIssueAllof0PropLabelsItemsType]
     ]
     labels_url: str
     locked: NotRequired[bool]

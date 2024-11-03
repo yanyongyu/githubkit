@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
@@ -20,7 +19,7 @@ class UserEmailsPostBodyOneof0Type(TypedDict):
         {'emails': ['octocat@github.com', 'mona@github.com']}
     """
 
-    emails: List[str]
+    emails: list[str]
 
 
 __all__ = ("UserEmailsPostBodyOneof0Type",)

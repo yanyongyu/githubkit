@@ -8,7 +8,7 @@ See https://github.com/github/rest-api-description for more information.
 """
 
 import importlib
-from typing import TYPE_CHECKING, Any, Dict, Literal, ClassVar, overload
+from typing import TYPE_CHECKING, Any, Literal, ClassVar, overload
 
 from . import VERSIONS, VERSION_TYPE, LATEST_VERSION
 
@@ -27,7 +27,7 @@ else:
 
 
 class WebhooksVersionSwitcher(_VersionProxy):
-    _cached_namespaces: ClassVar[Dict[VERSION_TYPE, Any]] = {}
+    _cached_namespaces: ClassVar[dict[VERSION_TYPE, Any]] = {}
 
     if not TYPE_CHECKING:
 

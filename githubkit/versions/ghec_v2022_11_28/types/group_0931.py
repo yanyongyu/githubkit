@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 from .group_0130 import CustomPropertyValueType
@@ -18,8 +17,8 @@ from .group_0130 import CustomPropertyValueType
 class OrgsOrgPropertiesValuesPatchBodyType(TypedDict):
     """OrgsOrgPropertiesValuesPatchBody"""
 
-    repository_names: List[str]
-    properties: List[CustomPropertyValueType]
+    repository_names: list[str]
+    properties: list[CustomPropertyValueType]
 
 
 __all__ = ("OrgsOrgPropertiesValuesPatchBodyType",)

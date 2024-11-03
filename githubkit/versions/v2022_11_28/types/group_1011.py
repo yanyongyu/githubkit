@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -25,13 +25,13 @@ class ReposOwnerRepoIssuesIssueNumberPatchBodyType(TypedDict):
     ]
     milestone: NotRequired[Union[str, int, None]]
     labels: NotRequired[
-        List[
+        list[
             Union[
                 str, ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type
             ]
         ]
     ]
-    assignees: NotRequired[List[str]]
+    assignees: NotRequired[list[str]]
 
 
 class ReposOwnerRepoIssuesIssueNumberPatchBodyPropLabelsItemsOneof1Type(TypedDict):

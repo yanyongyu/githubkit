@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -31,7 +29,7 @@ class EnvironmentPropProtectionRulesItemsAnyof1(GitHubModel):
     )
     type: str = Field()
     reviewers: Missing[
-        List[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItems]
     ] = Field(
         default=UNSET,
         description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.",

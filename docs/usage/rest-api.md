@@ -210,11 +210,11 @@ You can make multiple requests with the same client instance in one context:
 As shown above, the response data is parsed and validated by accessing the `response.parsed_data` property. This ensures that the data type returned by the API is as expected and your code is safe to use it (with static type checking). But sometimes you may want to get the raw data returned by the API, such as when the schema is not correct. You can use the `response.text` property or `response.json()` method to get the raw data:
 
 ```python hl_lines="5"
-from typing import Any, Dict
+from typing import Any
 from githubkit import Response
 
 resp: Response[FullRepository] = github.rest.repos.get("owner", "repo")
-repo: Dict[str, Any] = resp.json()
+repo: dict[str, Any] = resp.json()
 ```
 
 ## REST API Versioning

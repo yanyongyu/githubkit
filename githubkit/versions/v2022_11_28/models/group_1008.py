@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -29,12 +29,12 @@ class ReposOwnerRepoIssuesPostBody(GitHubModel):
     )
     milestone: Missing[Union[str, int, None]] = Field(default=UNSET)
     labels: Missing[
-        List[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1]]
+        list[Union[str, ReposOwnerRepoIssuesPostBodyPropLabelsItemsOneof1]]
     ] = Field(
         default=UNSET,
         description="Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._",
     )
-    assignees: Missing[List[str]] = Field(
+    assignees: Missing[list[str]] = Field(
         default=UNSET,
         description="Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._",
     )

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0008 import IntegrationType
@@ -53,7 +53,7 @@ class CheckRunWithSimpleCheckSuiteType(TypedDict):
     name: str
     node_id: str
     output: CheckRunWithSimpleCheckSuitePropOutputType
-    pull_requests: List[PullRequestMinimalType]
+    pull_requests: list[PullRequestMinimalType]
     started_at: datetime
     status: Literal["queued", "in_progress", "completed", "pending"]
     url: str

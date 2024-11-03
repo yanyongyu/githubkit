@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -71,12 +71,12 @@ class WebhookWorkflowRunCompletedPropWorkflowRunType(TypedDict):
     node_id: str
     path: str
     previous_attempt_url: Union[str, None]
-    pull_requests: List[
+    pull_requests: list[
         Union[WebhookWorkflowRunCompletedPropWorkflowRunPropPullRequestsItemsType, None]
     ]
     referenced_workflows: NotRequired[
         Union[
-            List[
+            list[
                 WebhookWorkflowRunCompletedPropWorkflowRunPropReferencedWorkflowsItemsType
             ],
             None,

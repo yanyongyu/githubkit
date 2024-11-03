@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -31,12 +29,12 @@ class ScimV2OrganizationsOrgUsersPostBody(GitHubModel):
         description="The name of the user, suitable for display to end-users",
     )
     name: ScimV2OrganizationsOrgUsersPostBodyPropName = Field()
-    emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems] = Field(
+    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItems] = Field(
         min_length=1 if PYDANTIC_V2 else None, description="user emails"
     )
-    schemas: Missing[List[str]] = Field(default=UNSET)
+    schemas: Missing[list[str]] = Field(default=UNSET)
     external_id: Missing[str] = Field(default=UNSET, alias="externalId")
-    groups: Missing[List[str]] = Field(default=UNSET)
+    groups: Missing[list[str]] = Field(default=UNSET)
     active: Missing[bool] = Field(default=UNSET)
 
 

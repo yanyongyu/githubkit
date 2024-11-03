@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0644 import WebhookRubygemsMetadataType
@@ -26,7 +26,7 @@ class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType(Typ
     created_at: str
     description: str
     docker_metadata: NotRequired[
-        List[
+        list[
             Union[
                 WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsType,
                 None,
@@ -38,11 +38,11 @@ class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType(Typ
     id: int
     installation_command: str
     manifest: NotRequired[str]
-    metadata: List[
+    metadata: list[
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType
     ]
     name: str
-    package_files: List[
+    package_files: list[
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItemsType
     ]
     package_url: str
@@ -50,7 +50,7 @@ class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionType(Typ
     release: NotRequired[
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropReleaseType
     ]
-    rubygems_metadata: NotRequired[List[WebhookRubygemsMetadataType]]
+    rubygems_metadata: NotRequired[list[WebhookRubygemsMetadataType]]
     summary: str
     tag_name: NotRequired[str]
     target_commitish: str
@@ -92,7 +92,7 @@ class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDock
     dataItems
     """
 
-    tags: NotRequired[List[str]]
+    tags: NotRequired[list[str]]
 
 
 class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItemsType(

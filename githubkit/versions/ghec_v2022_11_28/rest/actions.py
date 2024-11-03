@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, Optional, overload
 
 from pydantic import BaseModel
 
@@ -19,7 +19,7 @@ from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
-    from typing import List, Union, Literal
+    from typing import Union, Literal
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
@@ -144,7 +144,7 @@ class ActionsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsCacheUsageOrgEnterprise]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-an-enterprise"""
 
@@ -165,7 +165,7 @@ class ActionsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsCacheUsageOrgEnterprise]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-an-enterprise"""
 
@@ -187,7 +187,7 @@ class ActionsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ActionsOidcCustomIssuerPolicyForEnterpriseType,
     ) -> Response: ...
 
@@ -197,7 +197,7 @@ class ActionsClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         include_enterprise_slug: Missing[bool] = UNSET,
     ) -> Response: ...
 
@@ -205,7 +205,7 @@ class ActionsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ActionsOidcCustomIssuerPolicyForEnterpriseType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -240,7 +240,7 @@ class ActionsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ActionsOidcCustomIssuerPolicyForEnterpriseType,
     ) -> Response: ...
 
@@ -250,7 +250,7 @@ class ActionsClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         include_enterprise_slug: Missing[bool] = UNSET,
     ) -> Response: ...
 
@@ -258,7 +258,7 @@ class ActionsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ActionsOidcCustomIssuerPolicyForEnterpriseType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -292,7 +292,7 @@ class ActionsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsGetDefaultWorkflowPermissions]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-an-enterprise"""
 
@@ -313,7 +313,7 @@ class ActionsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsGetDefaultWorkflowPermissions]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-an-enterprise"""
 
@@ -335,7 +335,7 @@ class ActionsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ActionsSetDefaultWorkflowPermissionsType,
     ) -> Response: ...
 
@@ -345,7 +345,7 @@ class ActionsClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
     ) -> Response: ...
@@ -354,7 +354,7 @@ class ActionsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -387,7 +387,7 @@ class ActionsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ActionsSetDefaultWorkflowPermissionsType,
     ) -> Response: ...
 
@@ -397,7 +397,7 @@ class ActionsClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
     ) -> Response: ...
@@ -406,7 +406,7 @@ class ActionsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -439,7 +439,7 @@ class ActionsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
@@ -451,10 +451,10 @@ class ActionsClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         runner_group_id: int,
-        labels: List[str],
+        labels: list[str],
         work_folder: Missing[str] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
@@ -464,7 +464,7 @@ class ActionsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType
         ] = UNSET,
@@ -511,7 +511,7 @@ class ActionsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
@@ -523,10 +523,10 @@ class ActionsClient:
         enterprise: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         runner_group_id: int,
-        labels: List[str],
+        labels: list[str],
         work_folder: Missing[str] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
@@ -536,7 +536,7 @@ class ActionsClient:
         self,
         enterprise: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType
         ] = UNSET,
@@ -582,7 +582,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsCacheUsageOrgEnterprise]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-an-organization"""
 
@@ -603,7 +603,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsCacheUsageOrgEnterprise]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-an-organization"""
 
@@ -626,7 +626,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsCacheUsageByRepositoryGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#list-repositories-with-github-actions-cache-usage-for-an-organization"""
 
@@ -655,7 +655,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsCacheUsageByRepositoryGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#list-repositories-with-github-actions-cache-usage-for-an-organization"""
 
@@ -682,7 +682,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsOrganizationPermissions]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-an-organization"""
 
@@ -703,7 +703,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsOrganizationPermissions]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-an-organization"""
 
@@ -725,7 +725,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsPermissionsPutBodyType,
     ) -> Response: ...
 
@@ -735,7 +735,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         enabled_repositories: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
     ) -> Response: ...
@@ -744,7 +744,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -777,7 +777,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsPermissionsPutBodyType,
     ) -> Response: ...
 
@@ -787,7 +787,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         enabled_repositories: Literal["all", "none", "selected"],
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
     ) -> Response: ...
@@ -796,7 +796,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -830,7 +830,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsPermissionsRepositoriesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#list-selected-repositories-enabled-for-github-actions-in-an-organization"""
 
@@ -859,7 +859,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsPermissionsRepositoriesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#list-selected-repositories-enabled-for-github-actions-in-an-organization"""
 
@@ -887,7 +887,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsPermissionsRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -897,15 +897,15 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        selected_repository_ids: List[int],
+        headers: Optional[dict[str, str]] = None,
+        selected_repository_ids: list[int],
     ) -> Response: ...
 
     def set_selected_repositories_enabled_github_actions_organization(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsPermissionsRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -940,7 +940,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsPermissionsRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -950,15 +950,15 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        selected_repository_ids: List[int],
+        headers: Optional[dict[str, str]] = None,
+        selected_repository_ids: list[int],
     ) -> Response: ...
 
     async def async_set_selected_repositories_enabled_github_actions_organization(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsPermissionsRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -993,7 +993,7 @@ class ActionsClient:
         org: str,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#enable-a-selected-repository-for-github-actions-in-an-organization"""
 
@@ -1012,7 +1012,7 @@ class ActionsClient:
         org: str,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#enable-a-selected-repository-for-github-actions-in-an-organization"""
 
@@ -1031,7 +1031,7 @@ class ActionsClient:
         org: str,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#disable-a-selected-repository-for-github-actions-in-an-organization"""
 
@@ -1050,7 +1050,7 @@ class ActionsClient:
         org: str,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#disable-a-selected-repository-for-github-actions-in-an-organization"""
 
@@ -1068,7 +1068,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SelectedActions]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization"""
 
@@ -1089,7 +1089,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SelectedActions]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization"""
 
@@ -1111,7 +1111,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
     ) -> Response: ...
 
@@ -1121,17 +1121,17 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
-        patterns_allowed: Missing[List[str]] = UNSET,
+        patterns_allowed: Missing[list[str]] = UNSET,
     ) -> Response: ...
 
     def set_allowed_actions_organization(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1164,7 +1164,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
     ) -> Response: ...
 
@@ -1174,17 +1174,17 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
-        patterns_allowed: Missing[List[str]] = UNSET,
+        patterns_allowed: Missing[list[str]] = UNSET,
     ) -> Response: ...
 
     async def async_set_allowed_actions_organization(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1216,7 +1216,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsGetDefaultWorkflowPermissions]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-an-organization"""
 
@@ -1237,7 +1237,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsGetDefaultWorkflowPermissions]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-an-organization"""
 
@@ -1259,7 +1259,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
     ) -> Response: ...
 
@@ -1269,7 +1269,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
     ) -> Response: ...
@@ -1278,7 +1278,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1312,7 +1312,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
     ) -> Response: ...
 
@@ -1322,7 +1322,7 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
     ) -> Response: ...
@@ -1331,7 +1331,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1367,7 +1367,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         visible_to_repository: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnerGroupsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-organization"""
 
@@ -1398,7 +1398,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         visible_to_repository: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnerGroupsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-organization"""
 
@@ -1427,7 +1427,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsPostBodyType,
     ) -> Response[RunnerGroupsOrg]: ...
 
@@ -1437,21 +1437,21 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         visibility: Missing[Literal["selected", "all", "private"]] = UNSET,
-        selected_repository_ids: Missing[List[int]] = UNSET,
-        runners: Missing[List[int]] = UNSET,
+        selected_repository_ids: Missing[list[int]] = UNSET,
+        runners: Missing[list[int]] = UNSET,
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
-        selected_workflows: Missing[List[str]] = UNSET,
+        selected_workflows: Missing[list[str]] = UNSET,
     ) -> Response[RunnerGroupsOrg]: ...
 
     def create_self_hosted_runner_group_for_org(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsOrg]:
@@ -1485,7 +1485,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsPostBodyType,
     ) -> Response[RunnerGroupsOrg]: ...
 
@@ -1495,21 +1495,21 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         visibility: Missing[Literal["selected", "all", "private"]] = UNSET,
-        selected_repository_ids: Missing[List[int]] = UNSET,
-        runners: Missing[List[int]] = UNSET,
+        selected_repository_ids: Missing[list[int]] = UNSET,
+        runners: Missing[list[int]] = UNSET,
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
-        selected_workflows: Missing[List[str]] = UNSET,
+        selected_workflows: Missing[list[str]] = UNSET,
     ) -> Response[RunnerGroupsOrg]: ...
 
     async def async_create_self_hosted_runner_group_for_org(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsOrg]:
@@ -1543,7 +1543,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[RunnerGroupsOrg]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-organization"""
 
@@ -1565,7 +1565,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[RunnerGroupsOrg]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-organization"""
 
@@ -1587,7 +1587,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-organization"""
 
@@ -1606,7 +1606,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#delete-a-self-hosted-runner-group-from-an-organization"""
 
@@ -1626,7 +1626,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
     ) -> Response[RunnerGroupsOrg]: ...
 
@@ -1637,12 +1637,12 @@ class ActionsClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         visibility: Missing[Literal["selected", "all", "private"]] = UNSET,
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
-        selected_workflows: Missing[List[str]] = UNSET,
+        selected_workflows: Missing[list[str]] = UNSET,
     ) -> Response[RunnerGroupsOrg]: ...
 
     def update_self_hosted_runner_group_for_org(
@@ -1650,7 +1650,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsOrg]:
@@ -1690,7 +1690,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
     ) -> Response[RunnerGroupsOrg]: ...
 
@@ -1701,12 +1701,12 @@ class ActionsClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         visibility: Missing[Literal["selected", "all", "private"]] = UNSET,
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
-        selected_workflows: Missing[List[str]] = UNSET,
+        selected_workflows: Missing[list[str]] = UNSET,
     ) -> Response[RunnerGroupsOrg]: ...
 
     async def async_update_self_hosted_runner_group_for_org(
@@ -1714,7 +1714,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[RunnerGroupsOrg]:
@@ -1755,7 +1755,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
 
@@ -1787,7 +1787,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
 
@@ -1818,7 +1818,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -1829,8 +1829,8 @@ class ActionsClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        selected_repository_ids: List[int],
+        headers: Optional[dict[str, str]] = None,
+        selected_repository_ids: list[int],
     ) -> Response: ...
 
     def set_repo_access_to_self_hosted_runner_group_in_org(
@@ -1838,7 +1838,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType
         ] = UNSET,
@@ -1876,7 +1876,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -1887,8 +1887,8 @@ class ActionsClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        selected_repository_ids: List[int],
+        headers: Optional[dict[str, str]] = None,
+        selected_repository_ids: list[int],
     ) -> Response: ...
 
     async def async_set_repo_access_to_self_hosted_runner_group_in_org(
@@ -1896,7 +1896,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType
         ] = UNSET,
@@ -1934,7 +1934,7 @@ class ActionsClient:
         runner_group_id: int,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
 
@@ -1954,7 +1954,7 @@ class ActionsClient:
         runner_group_id: int,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
 
@@ -1974,7 +1974,7 @@ class ActionsClient:
         runner_group_id: int,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
 
@@ -1994,7 +1994,7 @@ class ActionsClient:
         runner_group_id: int,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
 
@@ -2015,7 +2015,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-organization"""
 
@@ -2047,7 +2047,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-organization"""
 
@@ -2078,7 +2078,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
     ) -> Response: ...
 
@@ -2089,8 +2089,8 @@ class ActionsClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        runners: List[int],
+        headers: Optional[dict[str, str]] = None,
+        runners: list[int],
     ) -> Response: ...
 
     def set_self_hosted_runners_in_group_for_org(
@@ -2098,7 +2098,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType
         ] = UNSET,
@@ -2136,7 +2136,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
     ) -> Response: ...
 
@@ -2147,8 +2147,8 @@ class ActionsClient:
         runner_group_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        runners: List[int],
+        headers: Optional[dict[str, str]] = None,
+        runners: list[int],
     ) -> Response: ...
 
     async def async_set_self_hosted_runners_in_group_for_org(
@@ -2156,7 +2156,7 @@ class ActionsClient:
         org: str,
         runner_group_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType
         ] = UNSET,
@@ -2194,7 +2194,7 @@ class ActionsClient:
         runner_group_id: int,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-organization"""
 
@@ -2214,7 +2214,7 @@ class ActionsClient:
         runner_group_id: int,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#add-a-self-hosted-runner-to-a-group-for-an-organization"""
 
@@ -2234,7 +2234,7 @@ class ActionsClient:
         runner_group_id: int,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-organization"""
 
@@ -2254,7 +2254,7 @@ class ActionsClient:
         runner_group_id: int,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#remove-a-self-hosted-runner-from-a-group-for-an-organization"""
 
@@ -2275,7 +2275,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnersGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-organization"""
 
@@ -2306,7 +2306,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsRunnersGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-organization"""
 
@@ -2334,11 +2334,9 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RunnerApplication]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RunnerApplication]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-an-organization"""
-
-        from typing import List
 
         from ..models import RunnerApplication
 
@@ -2350,18 +2348,16 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[RunnerApplication],
+            response_model=list[RunnerApplication],
         )
 
     async def async_list_runner_applications_for_org(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RunnerApplication]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RunnerApplication]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-an-organization"""
-
-        from typing import List
 
         from ..models import RunnerApplication
 
@@ -2373,7 +2369,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[RunnerApplication],
+            response_model=list[RunnerApplication],
         )
 
     @overload
@@ -2381,7 +2377,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
@@ -2393,10 +2389,10 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         runner_group_id: int,
-        labels: List[str],
+        labels: list[str],
         work_folder: Missing[str] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
@@ -2406,7 +2402,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersGenerateJitconfigPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
@@ -2451,7 +2447,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
@@ -2463,10 +2459,10 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         runner_group_id: int,
-        labels: List[str],
+        labels: list[str],
         work_folder: Missing[str] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
@@ -2476,7 +2472,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersGenerateJitconfigPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
@@ -2520,7 +2516,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AuthenticationToken]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization"""
 
@@ -2541,7 +2537,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AuthenticationToken]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization"""
 
@@ -2562,7 +2558,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AuthenticationToken]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization"""
 
@@ -2583,7 +2579,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AuthenticationToken]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization"""
 
@@ -2605,7 +2601,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Runner]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization"""
 
@@ -2627,7 +2623,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Runner]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization"""
 
@@ -2649,7 +2645,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization"""
 
@@ -2668,7 +2664,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-an-organization"""
 
@@ -2687,7 +2683,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-organization"""
 
@@ -2715,7 +2711,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-organization"""
 
@@ -2744,7 +2740,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
@@ -2755,8 +2751,8 @@ class ActionsClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        labels: List[str],
+        headers: Optional[dict[str, str]] = None,
+        labels: list[str],
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     def set_custom_labels_for_self_hosted_runner_for_org(
@@ -2764,7 +2760,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
@@ -2810,7 +2806,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
@@ -2821,8 +2817,8 @@ class ActionsClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        labels: List[str],
+        headers: Optional[dict[str, str]] = None,
+        labels: list[str],
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     async def async_set_custom_labels_for_self_hosted_runner_for_org(
@@ -2830,7 +2826,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
@@ -2876,7 +2872,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
@@ -2887,8 +2883,8 @@ class ActionsClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        labels: List[str],
+        headers: Optional[dict[str, str]] = None,
+        labels: list[str],
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     def add_custom_labels_to_self_hosted_runner_for_org(
@@ -2896,7 +2892,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
@@ -2942,7 +2938,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
@@ -2953,8 +2949,8 @@ class ActionsClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        labels: List[str],
+        headers: Optional[dict[str, str]] = None,
+        labels: list[str],
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     async def async_add_custom_labels_to_self_hosted_runner_for_org(
@@ -2962,7 +2958,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
@@ -3007,7 +3003,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-organization"""
 
@@ -3035,7 +3031,7 @@ class ActionsClient:
         org: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-organization"""
 
@@ -3064,7 +3060,7 @@ class ActionsClient:
         runner_id: int,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-organization"""
 
@@ -3095,7 +3091,7 @@ class ActionsClient:
         runner_id: int,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-organization"""
 
@@ -3126,7 +3122,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsSecretsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-organization-secrets"""
 
@@ -3155,7 +3151,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsSecretsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-organization-secrets"""
 
@@ -3182,7 +3178,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsPublicKey]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-organization-public-key"""
 
@@ -3203,7 +3199,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsPublicKey]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-organization-public-key"""
 
@@ -3225,7 +3221,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrganizationActionsSecret]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-organization-secret"""
 
@@ -3247,7 +3243,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrganizationActionsSecret]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-organization-secret"""
 
@@ -3270,7 +3266,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject]: ...
 
@@ -3281,11 +3277,11 @@ class ActionsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
-        selected_repository_ids: Missing[List[int]] = UNSET,
+        selected_repository_ids: Missing[list[int]] = UNSET,
     ) -> Response[EmptyObject]: ...
 
     def create_or_update_org_secret(
@@ -3293,7 +3289,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
@@ -3328,7 +3324,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject]: ...
 
@@ -3339,11 +3335,11 @@ class ActionsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
-        selected_repository_ids: Missing[List[int]] = UNSET,
+        selected_repository_ids: Missing[list[int]] = UNSET,
     ) -> Response[EmptyObject]: ...
 
     async def async_create_or_update_org_secret(
@@ -3351,7 +3347,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
@@ -3385,7 +3381,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#delete-an-organization-secret"""
 
@@ -3404,7 +3400,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#delete-an-organization-secret"""
 
@@ -3425,7 +3421,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-selected-repositories-for-an-organization-secret"""
 
@@ -3455,7 +3451,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-selected-repositories-for-an-organization-secret"""
 
@@ -3484,7 +3480,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -3495,8 +3491,8 @@ class ActionsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        selected_repository_ids: List[int],
+        headers: Optional[dict[str, str]] = None,
+        selected_repository_ids: list[int],
     ) -> Response: ...
 
     def set_selected_repos_for_org_secret(
@@ -3504,7 +3500,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -3540,7 +3536,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -3551,8 +3547,8 @@ class ActionsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        selected_repository_ids: List[int],
+        headers: Optional[dict[str, str]] = None,
+        selected_repository_ids: list[int],
     ) -> Response: ...
 
     async def async_set_selected_repos_for_org_secret(
@@ -3560,7 +3556,7 @@ class ActionsClient:
         org: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -3596,7 +3592,7 @@ class ActionsClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#add-selected-repository-to-an-organization-secret"""
 
@@ -3617,7 +3613,7 @@ class ActionsClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#add-selected-repository-to-an-organization-secret"""
 
@@ -3638,7 +3634,7 @@ class ActionsClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#remove-selected-repository-from-an-organization-secret"""
 
@@ -3659,7 +3655,7 @@ class ActionsClient:
         secret_name: str,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#remove-selected-repository-from-an-organization-secret"""
 
@@ -3680,7 +3676,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsVariablesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-organization-variables"""
 
@@ -3709,7 +3705,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsVariablesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-organization-variables"""
 
@@ -3737,7 +3733,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsVariablesPostBodyType,
     ) -> Response[EmptyObject]: ...
 
@@ -3747,18 +3743,18 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         value: str,
         visibility: Literal["all", "private", "selected"],
-        selected_repository_ids: Missing[List[int]] = UNSET,
+        selected_repository_ids: Missing[list[int]] = UNSET,
     ) -> Response[EmptyObject]: ...
 
     def create_org_variable(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
@@ -3792,7 +3788,7 @@ class ActionsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsVariablesPostBodyType,
     ) -> Response[EmptyObject]: ...
 
@@ -3802,18 +3798,18 @@ class ActionsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         value: str,
         visibility: Literal["all", "private", "selected"],
-        selected_repository_ids: Missing[List[int]] = UNSET,
+        selected_repository_ids: Missing[list[int]] = UNSET,
     ) -> Response[EmptyObject]: ...
 
     async def async_create_org_variable(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
@@ -3847,7 +3843,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrganizationActionsVariable]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-an-organization-variable"""
 
@@ -3869,7 +3865,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrganizationActionsVariable]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-an-organization-variable"""
 
@@ -3891,7 +3887,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#delete-an-organization-variable"""
 
@@ -3910,7 +3906,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#delete-an-organization-variable"""
 
@@ -3930,7 +3926,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -3941,10 +3937,10 @@ class ActionsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         value: Missing[str] = UNSET,
         visibility: Missing[Literal["all", "private", "selected"]] = UNSET,
-        selected_repository_ids: Missing[List[int]] = UNSET,
+        selected_repository_ids: Missing[list[int]] = UNSET,
     ) -> Response: ...
 
     def update_org_variable(
@@ -3952,7 +3948,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -3986,7 +3982,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -3997,10 +3993,10 @@ class ActionsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         value: Missing[str] = UNSET,
         visibility: Missing[Literal["all", "private", "selected"]] = UNSET,
-        selected_repository_ids: Missing[List[int]] = UNSET,
+        selected_repository_ids: Missing[list[int]] = UNSET,
     ) -> Response: ...
 
     async def async_update_org_variable(
@@ -4008,7 +4004,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -4043,7 +4039,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsVariablesNameRepositoriesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-selected-repositories-for-an-organization-variable"""
 
@@ -4074,7 +4070,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgActionsVariablesNameRepositoriesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-selected-repositories-for-an-organization-variable"""
 
@@ -4104,7 +4100,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsVariablesNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -4115,8 +4111,8 @@ class ActionsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        selected_repository_ids: List[int],
+        headers: Optional[dict[str, str]] = None,
+        selected_repository_ids: list[int],
     ) -> Response: ...
 
     def set_selected_repos_for_org_variable(
@@ -4124,7 +4120,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsVariablesNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -4161,7 +4157,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsVariablesNameRepositoriesPutBodyType,
     ) -> Response: ...
 
@@ -4172,8 +4168,8 @@ class ActionsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        selected_repository_ids: List[int],
+        headers: Optional[dict[str, str]] = None,
+        selected_repository_ids: list[int],
     ) -> Response: ...
 
     async def async_set_selected_repos_for_org_variable(
@@ -4181,7 +4177,7 @@ class ActionsClient:
         org: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsVariablesNameRepositoriesPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -4218,7 +4214,7 @@ class ActionsClient:
         name: str,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#add-selected-repository-to-an-organization-variable"""
 
@@ -4239,7 +4235,7 @@ class ActionsClient:
         name: str,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#add-selected-repository-to-an-organization-variable"""
 
@@ -4260,7 +4256,7 @@ class ActionsClient:
         name: str,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#remove-selected-repository-from-an-organization-variable"""
 
@@ -4281,7 +4277,7 @@ class ActionsClient:
         name: str,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#remove-selected-repository-from-an-organization-variable"""
 
@@ -4304,7 +4300,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsArtifactsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#list-artifacts-for-a-repository"""
 
@@ -4336,7 +4332,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsArtifactsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#list-artifacts-for-a-repository"""
 
@@ -4366,7 +4362,7 @@ class ActionsClient:
         repo: str,
         artifact_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Artifact]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#get-an-artifact"""
 
@@ -4389,7 +4385,7 @@ class ActionsClient:
         repo: str,
         artifact_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Artifact]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#get-an-artifact"""
 
@@ -4412,7 +4408,7 @@ class ActionsClient:
         repo: str,
         artifact_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#delete-an-artifact"""
 
@@ -4432,7 +4428,7 @@ class ActionsClient:
         repo: str,
         artifact_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#delete-an-artifact"""
 
@@ -4453,7 +4449,7 @@ class ActionsClient:
         artifact_id: int,
         archive_format: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#download-an-artifact"""
 
@@ -4479,7 +4475,7 @@ class ActionsClient:
         artifact_id: int,
         archive_format: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#download-an-artifact"""
 
@@ -4503,7 +4499,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsCacheUsageByRepository]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-a-repository"""
 
@@ -4525,7 +4521,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsCacheUsageByRepository]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-a-repository"""
 
@@ -4555,7 +4551,7 @@ class ActionsClient:
         ] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsCacheList]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#list-github-actions-caches-for-a-repository"""
 
@@ -4595,7 +4591,7 @@ class ActionsClient:
         ] = UNSET,
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsCacheList]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#list-github-actions-caches-for-a-repository"""
 
@@ -4629,7 +4625,7 @@ class ActionsClient:
         key: str,
         ref: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsCacheList]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key"""
 
@@ -4659,7 +4655,7 @@ class ActionsClient:
         key: str,
         ref: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsCacheList]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key"""
 
@@ -4688,7 +4684,7 @@ class ActionsClient:
         repo: str,
         cache_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#delete-a-github-actions-cache-for-a-repository-using-a-cache-id"""
 
@@ -4708,7 +4704,7 @@ class ActionsClient:
         repo: str,
         cache_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#delete-a-github-actions-cache-for-a-repository-using-a-cache-id"""
 
@@ -4728,7 +4724,7 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Job]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#get-a-job-for-a-workflow-run"""
 
@@ -4751,7 +4747,7 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Job]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#get-a-job-for-a-workflow-run"""
 
@@ -4774,7 +4770,7 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run"""
 
@@ -4794,7 +4790,7 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#download-job-logs-for-a-workflow-run"""
 
@@ -4815,7 +4811,7 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
@@ -4829,7 +4825,7 @@ class ActionsClient:
         job_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject]: ...
 
@@ -4839,7 +4835,7 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
@@ -4888,7 +4884,7 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
@@ -4902,7 +4898,7 @@ class ActionsClient:
         job_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject]: ...
 
@@ -4912,7 +4908,7 @@ class ActionsClient:
         repo: str,
         job_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
@@ -4959,7 +4955,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OidcCustomSubRepo]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository"""
 
@@ -4985,7 +4981,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OidcCustomSubRepo]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository"""
 
@@ -5012,7 +5008,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
     ) -> Response[EmptyObject]: ...
 
@@ -5023,9 +5019,9 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         use_default: bool,
-        include_claim_keys: Missing[List[str]] = UNSET,
+        include_claim_keys: Missing[list[str]] = UNSET,
     ) -> Response[EmptyObject]: ...
 
     def set_custom_oidc_sub_claim_for_repo(
@@ -5033,7 +5029,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
@@ -5080,7 +5076,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
     ) -> Response[EmptyObject]: ...
 
@@ -5091,9 +5087,9 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         use_default: bool,
-        include_claim_keys: Missing[List[str]] = UNSET,
+        include_claim_keys: Missing[list[str]] = UNSET,
     ) -> Response[EmptyObject]: ...
 
     async def async_set_custom_oidc_sub_claim_for_repo(
@@ -5101,7 +5097,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
@@ -5149,7 +5145,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsOrganizationSecretsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-repository-organization-secrets"""
 
@@ -5179,7 +5175,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsOrganizationSecretsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-repository-organization-secrets"""
 
@@ -5209,7 +5205,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsOrganizationVariablesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-repository-organization-variables"""
 
@@ -5239,7 +5235,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsOrganizationVariablesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-repository-organization-variables"""
 
@@ -5267,7 +5263,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsRepositoryPermissions]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-a-repository"""
 
@@ -5289,7 +5285,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsRepositoryPermissions]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-a-repository"""
 
@@ -5312,7 +5308,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsPermissionsPutBodyType,
     ) -> Response: ...
 
@@ -5323,7 +5319,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         enabled: bool,
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
     ) -> Response: ...
@@ -5333,7 +5329,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5367,7 +5363,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsPermissionsPutBodyType,
     ) -> Response: ...
 
@@ -5378,7 +5374,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         enabled: bool,
         allowed_actions: Missing[Literal["all", "local_only", "selected"]] = UNSET,
     ) -> Response: ...
@@ -5388,7 +5384,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsPermissionsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5421,7 +5417,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsWorkflowAccessToRepository]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-the-level-of-access-for-workflows-outside-of-the-repository"""
 
@@ -5443,7 +5439,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsWorkflowAccessToRepository]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-the-level-of-access-for-workflows-outside-of-the-repository"""
 
@@ -5466,7 +5462,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ActionsWorkflowAccessToRepositoryType,
     ) -> Response: ...
 
@@ -5477,7 +5473,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         access_level: Literal["none", "user", "organization", "enterprise"],
     ) -> Response: ...
 
@@ -5486,7 +5482,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ActionsWorkflowAccessToRepositoryType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5520,7 +5516,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ActionsWorkflowAccessToRepositoryType,
     ) -> Response: ...
 
@@ -5531,7 +5527,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         access_level: Literal["none", "user", "organization", "enterprise"],
     ) -> Response: ...
 
@@ -5540,7 +5536,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ActionsWorkflowAccessToRepositoryType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5573,7 +5569,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SelectedActions]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository"""
 
@@ -5595,7 +5591,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SelectedActions]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository"""
 
@@ -5618,7 +5614,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
     ) -> Response: ...
 
@@ -5629,10 +5625,10 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
-        patterns_allowed: Missing[List[str]] = UNSET,
+        patterns_allowed: Missing[list[str]] = UNSET,
     ) -> Response: ...
 
     def set_allowed_actions_repository(
@@ -5640,7 +5636,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5674,7 +5670,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
     ) -> Response: ...
 
@@ -5685,10 +5681,10 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         github_owned_allowed: Missing[bool] = UNSET,
         verified_allowed: Missing[bool] = UNSET,
-        patterns_allowed: Missing[List[str]] = UNSET,
+        patterns_allowed: Missing[list[str]] = UNSET,
     ) -> Response: ...
 
     async def async_set_allowed_actions_repository(
@@ -5696,7 +5692,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[SelectedActionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5729,7 +5725,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsGetDefaultWorkflowPermissions]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-a-repository"""
 
@@ -5751,7 +5747,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsGetDefaultWorkflowPermissions]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-a-repository"""
 
@@ -5774,7 +5770,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ActionsSetDefaultWorkflowPermissionsType,
     ) -> Response: ...
 
@@ -5785,7 +5781,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
     ) -> Response: ...
@@ -5795,7 +5791,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5830,7 +5826,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ActionsSetDefaultWorkflowPermissionsType,
     ) -> Response: ...
 
@@ -5841,7 +5837,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         default_workflow_permissions: Missing[Literal["read", "write"]] = UNSET,
         can_approve_pull_request_reviews: Missing[bool] = UNSET,
     ) -> Response: ...
@@ -5851,7 +5847,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ActionsSetDefaultWorkflowPermissionsType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -5888,7 +5884,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsRunnersGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-a-repository"""
 
@@ -5920,7 +5916,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsRunnersGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-a-repository"""
 
@@ -5949,11 +5945,9 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RunnerApplication]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RunnerApplication]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-a-repository"""
-
-        from typing import List
 
         from ..models import RunnerApplication
 
@@ -5965,7 +5959,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[RunnerApplication],
+            response_model=list[RunnerApplication],
         )
 
     async def async_list_runner_applications_for_repo(
@@ -5973,11 +5967,9 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RunnerApplication]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RunnerApplication]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-a-repository"""
-
-        from typing import List
 
         from ..models import RunnerApplication
 
@@ -5989,7 +5981,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[RunnerApplication],
+            response_model=list[RunnerApplication],
         )
 
     @overload
@@ -5998,7 +5990,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
@@ -6011,10 +6003,10 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         runner_group_id: int,
-        labels: List[str],
+        labels: list[str],
         work_folder: Missing[str] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
@@ -6025,7 +6017,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType
         ] = UNSET,
@@ -6073,7 +6065,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
@@ -6086,10 +6078,10 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         runner_group_id: int,
-        labels: List[str],
+        labels: list[str],
         work_folder: Missing[str] = UNSET,
     ) -> Response[
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
@@ -6100,7 +6092,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType
         ] = UNSET,
@@ -6147,7 +6139,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AuthenticationToken]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository"""
 
@@ -6169,7 +6161,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AuthenticationToken]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository"""
 
@@ -6191,7 +6183,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AuthenticationToken]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository"""
 
@@ -6213,7 +6205,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AuthenticationToken]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository"""
 
@@ -6236,7 +6228,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Runner]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository"""
 
@@ -6259,7 +6251,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Runner]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository"""
 
@@ -6282,7 +6274,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository"""
 
@@ -6302,7 +6294,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#delete-a-self-hosted-runner-from-a-repository"""
 
@@ -6322,7 +6314,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-a-repository"""
 
@@ -6351,7 +6343,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-a-repository"""
 
@@ -6381,7 +6373,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
@@ -6393,8 +6385,8 @@ class ActionsClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        labels: List[str],
+        headers: Optional[dict[str, str]] = None,
+        labels: list[str],
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     def set_custom_labels_for_self_hosted_runner_for_repo(
@@ -6403,7 +6395,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
@@ -6450,7 +6442,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
@@ -6462,8 +6454,8 @@ class ActionsClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        labels: List[str],
+        headers: Optional[dict[str, str]] = None,
+        labels: list[str],
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     async def async_set_custom_labels_for_self_hosted_runner_for_repo(
@@ -6472,7 +6464,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
@@ -6519,7 +6511,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
@@ -6531,8 +6523,8 @@ class ActionsClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        labels: List[str],
+        headers: Optional[dict[str, str]] = None,
+        labels: list[str],
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     def add_custom_labels_to_self_hosted_runner_for_repo(
@@ -6541,7 +6533,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
@@ -6588,7 +6580,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
@@ -6600,8 +6592,8 @@ class ActionsClient:
         runner_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        labels: List[str],
+        headers: Optional[dict[str, str]] = None,
+        labels: list[str],
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
 
     async def async_add_custom_labels_to_self_hosted_runner_for_repo(
@@ -6610,7 +6602,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
@@ -6656,7 +6648,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-a-repository"""
 
@@ -6685,7 +6677,7 @@ class ActionsClient:
         repo: str,
         runner_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-a-repository"""
 
@@ -6715,7 +6707,7 @@ class ActionsClient:
         runner_id: int,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-a-repository"""
 
@@ -6747,7 +6739,7 @@ class ActionsClient:
         runner_id: int,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-a-repository"""
 
@@ -6804,7 +6796,7 @@ class ActionsClient:
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsRunsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#list-workflow-runs-for-a-repository"""
 
@@ -6867,7 +6859,7 @@ class ActionsClient:
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsRunsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#list-workflow-runs-for-a-repository"""
 
@@ -6905,7 +6897,7 @@ class ActionsClient:
         run_id: int,
         exclude_pull_requests: Missing[bool] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[WorkflowRun]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-a-workflow-run"""
 
@@ -6934,7 +6926,7 @@ class ActionsClient:
         run_id: int,
         exclude_pull_requests: Missing[bool] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[WorkflowRun]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-a-workflow-run"""
 
@@ -6962,7 +6954,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#delete-a-workflow-run"""
 
@@ -6982,7 +6974,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#delete-a-workflow-run"""
 
@@ -7002,11 +6994,9 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[EnvironmentApprovals]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[EnvironmentApprovals]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run"""
-
-        from typing import List
 
         from ..models import EnvironmentApprovals
 
@@ -7018,7 +7008,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[EnvironmentApprovals],
+            response_model=list[EnvironmentApprovals],
         )
 
     async def async_get_reviews_for_run(
@@ -7027,11 +7017,9 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[EnvironmentApprovals]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[EnvironmentApprovals]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run"""
-
-        from typing import List
 
         from ..models import EnvironmentApprovals
 
@@ -7043,7 +7031,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[EnvironmentApprovals],
+            response_model=list[EnvironmentApprovals],
         )
 
     def approve_workflow_run(
@@ -7052,7 +7040,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EmptyObject]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request"""
 
@@ -7079,7 +7067,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EmptyObject]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request"""
 
@@ -7109,7 +7097,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#list-workflow-run-artifacts"""
 
@@ -7142,7 +7130,7 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         name: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#list-workflow-run-artifacts"""
 
@@ -7174,7 +7162,7 @@ class ActionsClient:
         attempt_number: int,
         exclude_pull_requests: Missing[bool] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[WorkflowRun]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-a-workflow-run-attempt"""
 
@@ -7204,7 +7192,7 @@ class ActionsClient:
         attempt_number: int,
         exclude_pull_requests: Missing[bool] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[WorkflowRun]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-a-workflow-run-attempt"""
 
@@ -7235,7 +7223,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200
     ]:
@@ -7275,7 +7263,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200
     ]:
@@ -7313,7 +7301,7 @@ class ActionsClient:
         run_id: int,
         attempt_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#download-workflow-run-attempt-logs"""
 
@@ -7334,7 +7322,7 @@ class ActionsClient:
         run_id: int,
         attempt_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#download-workflow-run-attempt-logs"""
 
@@ -7354,7 +7342,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EmptyObject]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#cancel-a-workflow-run"""
 
@@ -7380,7 +7368,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EmptyObject]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#cancel-a-workflow-run"""
 
@@ -7407,7 +7395,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Union[
             ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
         ],
@@ -7421,7 +7409,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         environment_name: str,
         comment: str,
     ) -> Response: ...
@@ -7434,7 +7422,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         environment_name: str,
         state: Literal["approved", "rejected"],
         comment: Missing[str] = UNSET,
@@ -7446,7 +7434,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
@@ -7493,7 +7481,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Union[
             ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
         ],
@@ -7507,7 +7495,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         environment_name: str,
         comment: str,
     ) -> Response: ...
@@ -7520,7 +7508,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         environment_name: str,
         state: Literal["approved", "rejected"],
         comment: Missing[str] = UNSET,
@@ -7532,7 +7520,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReviewCustomGatesCommentRequiredType, ReviewCustomGatesStateRequiredType
@@ -7578,7 +7566,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EmptyObject]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#force-cancel-a-workflow-run"""
 
@@ -7604,7 +7592,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EmptyObject]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#force-cancel-a-workflow-run"""
 
@@ -7633,7 +7621,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsRunsRunIdJobsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#list-jobs-for-a-workflow-run"""
 
@@ -7666,7 +7654,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsRunsRunIdJobsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#list-jobs-for-a-workflow-run"""
 
@@ -7696,7 +7684,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#download-workflow-run-logs"""
 
@@ -7716,7 +7704,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#download-workflow-run-logs"""
 
@@ -7736,7 +7724,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#delete-workflow-run-logs"""
 
@@ -7762,7 +7750,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#delete-workflow-run-logs"""
 
@@ -7788,11 +7776,9 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[PendingDeployment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PendingDeployment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run"""
-
-        from typing import List
 
         from ..models import PendingDeployment
 
@@ -7804,7 +7790,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[PendingDeployment],
+            response_model=list[PendingDeployment],
         )
 
     async def async_get_pending_deployments_for_run(
@@ -7813,11 +7799,9 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[PendingDeployment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PendingDeployment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run"""
-
-        from typing import List
 
         from ..models import PendingDeployment
 
@@ -7829,7 +7813,7 @@ class ActionsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[PendingDeployment],
+            response_model=list[PendingDeployment],
         )
 
     @overload
@@ -7839,9 +7823,9 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
-    ) -> Response[List[Deployment]]: ...
+    ) -> Response[list[Deployment]]: ...
 
     @overload
     def review_pending_deployments_for_run(
@@ -7851,11 +7835,11 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        environment_ids: List[int],
+        headers: Optional[dict[str, str]] = None,
+        environment_ids: list[int],
         state: Literal["approved", "rejected"],
         comment: str,
-    ) -> Response[List[Deployment]]: ...
+    ) -> Response[list[Deployment]]: ...
 
     def review_pending_deployments_for_run(
         self,
@@ -7863,15 +7847,13 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Deployment]]:
+    ) -> Response[list[Deployment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run"""
-
-        from typing import List
 
         from ..models import (
             Deployment,
@@ -7898,7 +7880,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Deployment],
+            response_model=list[Deployment],
         )
 
     @overload
@@ -7908,9 +7890,9 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
-    ) -> Response[List[Deployment]]: ...
+    ) -> Response[list[Deployment]]: ...
 
     @overload
     async def async_review_pending_deployments_for_run(
@@ -7920,11 +7902,11 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        environment_ids: List[int],
+        headers: Optional[dict[str, str]] = None,
+        environment_ids: list[int],
         state: Literal["approved", "rejected"],
         comment: str,
-    ) -> Response[List[Deployment]]: ...
+    ) -> Response[list[Deployment]]: ...
 
     async def async_review_pending_deployments_for_run(
         self,
@@ -7932,15 +7914,13 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Deployment]]:
+    ) -> Response[list[Deployment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run"""
-
-        from typing import List
 
         from ..models import (
             Deployment,
@@ -7967,7 +7947,7 @@ class ActionsClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Deployment],
+            response_model=list[Deployment],
         )
 
     @overload
@@ -7977,7 +7957,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
@@ -7991,7 +7971,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject]: ...
 
@@ -8001,7 +7981,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
@@ -8043,7 +8023,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
@@ -8057,7 +8037,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject]: ...
 
@@ -8067,7 +8047,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
@@ -8109,7 +8089,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
@@ -8123,7 +8103,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject]: ...
 
@@ -8133,7 +8113,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
@@ -8178,7 +8158,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
@@ -8192,7 +8172,7 @@ class ActionsClient:
         run_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
     ) -> Response[EmptyObject]: ...
 
@@ -8202,7 +8182,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
@@ -8246,7 +8226,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[WorkflowRunUsage]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-workflow-run-usage"""
 
@@ -8269,7 +8249,7 @@ class ActionsClient:
         repo: str,
         run_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[WorkflowRunUsage]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-workflow-run-usage"""
 
@@ -8293,7 +8273,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsSecretsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-repository-secrets"""
 
@@ -8323,7 +8303,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsSecretsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-repository-secrets"""
 
@@ -8351,7 +8331,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsPublicKey]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-a-repository-public-key"""
 
@@ -8373,7 +8353,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsPublicKey]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-a-repository-public-key"""
 
@@ -8396,7 +8376,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsSecret]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-a-repository-secret"""
 
@@ -8419,7 +8399,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsSecret]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-a-repository-secret"""
 
@@ -8443,7 +8423,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject]: ...
 
@@ -8455,7 +8435,7 @@ class ActionsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
     ) -> Response[EmptyObject]: ...
@@ -8466,7 +8446,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
@@ -8504,7 +8484,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject]: ...
 
@@ -8516,7 +8496,7 @@ class ActionsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
     ) -> Response[EmptyObject]: ...
@@ -8527,7 +8507,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
@@ -8564,7 +8544,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#delete-a-repository-secret"""
 
@@ -8584,7 +8564,7 @@ class ActionsClient:
         repo: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#delete-a-repository-secret"""
 
@@ -8605,7 +8585,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsVariablesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-repository-variables"""
 
@@ -8635,7 +8615,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsVariablesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-repository-variables"""
 
@@ -8664,7 +8644,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsVariablesPostBodyType,
     ) -> Response[EmptyObject]: ...
 
@@ -8675,7 +8655,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         value: str,
     ) -> Response[EmptyObject]: ...
@@ -8685,7 +8665,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
@@ -8720,7 +8700,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsVariablesPostBodyType,
     ) -> Response[EmptyObject]: ...
 
@@ -8731,7 +8711,7 @@ class ActionsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         value: str,
     ) -> Response[EmptyObject]: ...
@@ -8741,7 +8721,7 @@ class ActionsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
@@ -8776,7 +8756,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsVariable]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-a-repository-variable"""
 
@@ -8799,7 +8779,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsVariable]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-a-repository-variable"""
 
@@ -8822,7 +8802,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#delete-a-repository-variable"""
 
@@ -8842,7 +8822,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#delete-a-repository-variable"""
 
@@ -8863,7 +8843,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -8875,7 +8855,7 @@ class ActionsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         value: Missing[str] = UNSET,
     ) -> Response: ...
 
@@ -8885,7 +8865,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -8922,7 +8902,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -8934,7 +8914,7 @@ class ActionsClient:
         name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         value: Missing[str] = UNSET,
     ) -> Response: ...
 
@@ -8944,7 +8924,7 @@ class ActionsClient:
         repo: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsVariablesNamePatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -8981,7 +8961,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsWorkflowsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#list-repository-workflows"""
 
@@ -9011,7 +8991,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsWorkflowsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#list-repository-workflows"""
 
@@ -9040,7 +9020,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Workflow]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#get-a-workflow"""
 
@@ -9063,7 +9043,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Workflow]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#get-a-workflow"""
 
@@ -9086,7 +9066,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#disable-a-workflow"""
 
@@ -9106,7 +9086,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#disable-a-workflow"""
 
@@ -9127,7 +9107,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
     ) -> Response: ...
 
@@ -9139,7 +9119,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         ref: str,
         inputs: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
@@ -9152,7 +9132,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType
         ] = UNSET,
@@ -9191,7 +9171,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
     ) -> Response: ...
 
@@ -9203,7 +9183,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         ref: str,
         inputs: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType
@@ -9216,7 +9196,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType
         ] = UNSET,
@@ -9254,7 +9234,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#enable-a-workflow"""
 
@@ -9274,7 +9254,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#enable-a-workflow"""
 
@@ -9321,7 +9301,7 @@ class ActionsClient:
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#list-workflow-runs-for-a-workflow"""
 
@@ -9385,7 +9365,7 @@ class ActionsClient:
         check_suite_id: Missing[int] = UNSET,
         head_sha: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#list-workflow-runs-for-a-workflow"""
 
@@ -9422,7 +9402,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[WorkflowUsage]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#get-workflow-usage"""
 
@@ -9445,7 +9425,7 @@ class ActionsClient:
         repo: str,
         workflow_id: Union[int, str],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[WorkflowUsage]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#get-workflow-usage"""
 
@@ -9470,7 +9450,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-environment-secrets"""
 
@@ -9503,7 +9483,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-environment-secrets"""
 
@@ -9534,7 +9514,7 @@ class ActionsClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsPublicKey]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-environment-public-key"""
 
@@ -9559,7 +9539,7 @@ class ActionsClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsPublicKey]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-environment-public-key"""
 
@@ -9585,7 +9565,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsSecret]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-environment-secret"""
 
@@ -9609,7 +9589,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsSecret]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-environment-secret"""
 
@@ -9634,7 +9614,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject]: ...
 
@@ -9647,7 +9627,7 @@ class ActionsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         encrypted_value: str,
         key_id: str,
     ) -> Response[EmptyObject]: ...
@@ -9659,7 +9639,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType
         ] = UNSET,
@@ -9703,7 +9683,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
     ) -> Response[EmptyObject]: ...
 
@@ -9716,7 +9696,7 @@ class ActionsClient:
         secret_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         encrypted_value: str,
         key_id: str,
     ) -> Response[EmptyObject]: ...
@@ -9728,7 +9708,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType
         ] = UNSET,
@@ -9771,7 +9751,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#delete-an-environment-secret"""
 
@@ -9792,7 +9772,7 @@ class ActionsClient:
         environment_name: str,
         secret_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#delete-an-environment-secret"""
 
@@ -9814,7 +9794,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-environment-variables"""
 
@@ -9847,7 +9827,7 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-environment-variables"""
 
@@ -9879,7 +9859,7 @@ class ActionsClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
     ) -> Response[EmptyObject]: ...
 
@@ -9891,7 +9871,7 @@ class ActionsClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         value: str,
     ) -> Response[EmptyObject]: ...
@@ -9902,7 +9882,7 @@ class ActionsClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType
         ] = UNSET,
@@ -9945,7 +9925,7 @@ class ActionsClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
     ) -> Response[EmptyObject]: ...
 
@@ -9957,7 +9937,7 @@ class ActionsClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         value: str,
     ) -> Response[EmptyObject]: ...
@@ -9968,7 +9948,7 @@ class ActionsClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType
         ] = UNSET,
@@ -10011,7 +9991,7 @@ class ActionsClient:
         environment_name: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsVariable]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-an-environment-variable"""
 
@@ -10035,7 +10015,7 @@ class ActionsClient:
         environment_name: str,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsVariable]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-an-environment-variable"""
 
@@ -10059,7 +10039,7 @@ class ActionsClient:
         name: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#delete-an-environment-variable"""
 
@@ -10080,7 +10060,7 @@ class ActionsClient:
         name: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#delete-an-environment-variable"""
 
@@ -10102,7 +10082,7 @@ class ActionsClient:
         name: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -10115,7 +10095,7 @@ class ActionsClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         value: Missing[str] = UNSET,
     ) -> Response: ...
 
@@ -10126,7 +10106,7 @@ class ActionsClient:
         name: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType
         ] = UNSET,
@@ -10168,7 +10148,7 @@ class ActionsClient:
         name: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
     ) -> Response: ...
 
@@ -10181,7 +10161,7 @@ class ActionsClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         value: Missing[str] = UNSET,
     ) -> Response: ...
 
@@ -10192,7 +10172,7 @@ class ActionsClient:
         name: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType
         ] = UNSET,

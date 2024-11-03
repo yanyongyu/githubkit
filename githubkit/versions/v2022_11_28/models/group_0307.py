@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union, Literal
 from datetime import date, datetime
-from typing import List, Union, Literal
 
 from pydantic import Field
 
@@ -83,7 +83,7 @@ class PagesHttpsCertificate(GitHubModel):
         "dns_changed",
     ] = Field()
     description: str = Field()
-    domains: List[str] = Field(
+    domains: list[str] = Field(
         description="Array of the domain set and its alternate name (if it is configured)"
     )
     expires_at: Missing[date] = Field(default=UNSET)

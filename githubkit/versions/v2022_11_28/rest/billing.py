@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Optional
+from typing import TYPE_CHECKING, Optional
 
 from githubkit.utils import exclude_unset
 
@@ -40,7 +40,7 @@ class BillingClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsBillingUsage]:
         """See also: https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-an-organization"""
 
@@ -61,7 +61,7 @@ class BillingClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsBillingUsage]:
         """See also: https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-an-organization"""
 
@@ -82,7 +82,7 @@ class BillingClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PackagesBillingUsage]:
         """See also: https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-an-organization"""
 
@@ -103,7 +103,7 @@ class BillingClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PackagesBillingUsage]:
         """See also: https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-an-organization"""
 
@@ -124,7 +124,7 @@ class BillingClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CombinedBillingUsage]:
         """See also: https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-an-organization"""
 
@@ -145,7 +145,7 @@ class BillingClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CombinedBillingUsage]:
         """See also: https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-an-organization"""
 
@@ -166,7 +166,7 @@ class BillingClient:
         self,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsBillingUsage]:
         """See also: https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-a-user"""
 
@@ -187,7 +187,7 @@ class BillingClient:
         self,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ActionsBillingUsage]:
         """See also: https://docs.github.com/rest/billing/billing#get-github-actions-billing-for-a-user"""
 
@@ -208,7 +208,7 @@ class BillingClient:
         self,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PackagesBillingUsage]:
         """See also: https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-a-user"""
 
@@ -229,7 +229,7 @@ class BillingClient:
         self,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PackagesBillingUsage]:
         """See also: https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-a-user"""
 
@@ -250,7 +250,7 @@ class BillingClient:
         self,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CombinedBillingUsage]:
         """See also: https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-a-user"""
 
@@ -271,7 +271,7 @@ class BillingClient:
         self,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CombinedBillingUsage]:
         """See also: https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-a-user"""
 

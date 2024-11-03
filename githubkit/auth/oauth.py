@@ -2,20 +2,8 @@ from time import sleep
 from typing_extensions import Self
 from dataclasses import field, dataclass
 from datetime import datetime, timezone, timedelta
-from typing import (
-    TYPE_CHECKING,
-    Any,
-    Dict,
-    List,
-    Callable,
-    ClassVar,
-    Optional,
-    Coroutine,
-    Generator,
-    TypedDict,
-    AsyncGenerator,
-    cast,
-)
+from collections.abc import Coroutine, Generator, AsyncGenerator
+from typing import TYPE_CHECKING, Any, Callable, ClassVar, Optional, TypedDict, cast
 
 import httpx
 
@@ -41,8 +29,8 @@ if TYPE_CHECKING:
 
 
 def create_device_code(
-    github: "GitHubCore", client_id: str, scopes: Optional[List[str]] = None
-) -> Generator[httpx.Request, httpx.Response, Dict[str, Any]]:
+    github: "GitHubCore", client_id: str, scopes: Optional[list[str]] = None
+) -> Generator[httpx.Request, httpx.Response, dict[str, Any]]:
     """Create a device code for OAuth."""
     base_url = get_oauth_base_url(github.config.base_url)
     url = base_url.copy_with(raw_path=base_url.raw_path + b"login/device/code")
@@ -68,7 +56,7 @@ def exchange_web_flow_code(
     client_secret: str,
     code: str,
     redirect_uri: Optional[str] = None,
-) -> Generator[httpx.Request, httpx.Response, Dict[str, Any]]:
+) -> Generator[httpx.Request, httpx.Response, dict[str, Any]]:
     """Exchange web flow code for token."""
     base_url = get_oauth_base_url(github.config.base_url)
     url = base_url.copy_with(raw_path=base_url.raw_path + b"login/oauth/access_token")
@@ -94,7 +82,7 @@ def exchange_web_flow_code(
 
 def exchange_device_code(
     github: "GitHubCore", client_id: str, device_code: str
-) -> Generator[httpx.Request, httpx.Response, Dict[str, Any]]:
+) -> Generator[httpx.Request, httpx.Response, dict[str, Any]]:
     """Exchange device code for token."""
     base_url = get_oauth_base_url(github.config.base_url)
     url = base_url.copy_with(raw_path=base_url.raw_path + b"login/oauth/access_token")
@@ -120,7 +108,7 @@ def refresh_token(
     client_id: str,
     client_secret: Optional[str],  # client secret is optional in device flow
     refresh_token: str,
-) -> Generator[httpx.Request, httpx.Response, Dict[str, Any]]:
+) -> Generator[httpx.Request, httpx.Response, dict[str, Any]]:
     """Refresh token."""
     base_url = get_oauth_base_url(github.config.base_url)
     url = base_url.copy_with(raw_path=base_url.raw_path + b"login/oauth/access_token")
@@ -146,7 +134,7 @@ class TokenExchangeResult(TypedDict):
     refresh_token_expire_time: Optional[datetime]
 
 
-def _parse_token_exchange_response(data: Dict[str, Any]) -> TokenExchangeResult:
+def _parse_token_exchange_response(data: dict[str, Any]) -> TokenExchangeResult:
     if "access_token" not in data:
         raise AuthExpiredError(
             "Refresh access token error! Check your credentials.", data
@@ -177,7 +165,7 @@ class CreateDeviceCodeResult(TypedDict):
     interval: int
 
 
-def _parse_create_device_code_response(data: Dict[str, Any]) -> CreateDeviceCodeResult:
+def _parse_create_device_code_response(data: dict[str, Any]) -> CreateDeviceCodeResult:
     return {
         "device_code": data["device_code"],
         "expire_time": (
@@ -187,14 +175,14 @@ def _parse_create_device_code_response(data: Dict[str, Any]) -> CreateDeviceCode
     }
 
 
-def _call_handler(handler: Callable, data: Dict[str, Any]) -> None:
+def _call_handler(handler: Callable, data: dict[str, Any]) -> None:
     if is_async(handler):
         if anyio is None or threadlocals is None or run_async is None:
             raise RuntimeError(
                 "AnyIO support for OAuth Device Callback should be installed "
                 "with `pip install githubkit[auth-oauth-device]`"
             )
-        handler = cast(Callable[[Dict[str, Any]], Coroutine[None, None, None]], handler)
+        handler = cast(Callable[[dict[str, Any]], Coroutine[None, None, None]], handler)
         if getattr(threadlocals, "current_async_module", None):
             # in anyio thread worker
             run_async(handler, data)
@@ -202,13 +190,13 @@ def _call_handler(handler: Callable, data: Dict[str, Any]) -> None:
             # create and start a new event loop
             anyio.run(handler, data)
     else:
-        handler = cast(Callable[[Dict[str, Any]], None], handler)
+        handler = cast(Callable[[dict[str, Any]], None], handler)
         handler(data)
 
 
-async def _async_call_handler(handler: Callable, data: Dict[str, Any]) -> None:
+async def _async_call_handler(handler: Callable, data: dict[str, Any]) -> None:
     if is_async(handler):
-        handler = cast(Callable[[Dict[str, Any]], Coroutine[None, None, None]], handler)
+        handler = cast(Callable[[dict[str, Any]], Coroutine[None, None, None]], handler)
         await handler(data)
     else:
         if run_sync is None:
@@ -216,7 +204,7 @@ async def _async_call_handler(handler: Callable, data: Dict[str, Any]) -> None:
                 "AnyIO support for OAuth Device Callback should be installed "
                 "with `pip install githubkit[auth-oauth-device]`"
             )
-        handler = cast(Callable[[Dict[str, Any]], None], handler)
+        handler = cast(Callable[[dict[str, Any]], None], handler)
         await run_sync(handler, data)
 
 
@@ -433,7 +421,7 @@ class OAuthDeviceAuth(httpx.Auth):
         return self.auth_strategy.on_verification
 
     @property
-    def scopes(self) -> Optional[List[str]]:
+    def scopes(self) -> Optional[list[str]]:
         return self.auth_strategy.scopes
 
     @property
@@ -786,7 +774,7 @@ class OAuthDeviceAuthStrategy(BaseAuthStrategy):
 
     client_id: str
     on_verification: Callable[[Any], Any]
-    scopes: Optional[List[str]] = None
+    scopes: Optional[list[str]] = None
 
     _token_auth: Optional[OAuthTokenAuthStrategy] = field(
         default=None, init=False, repr=False

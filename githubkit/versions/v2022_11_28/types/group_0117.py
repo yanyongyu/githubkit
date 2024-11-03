@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -18,8 +18,8 @@ class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryPropertyT
 ):
     """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
 
-    include: NotRequired[List[RepositoryRulesetConditionsRepositoryPropertySpecType]]
-    exclude: NotRequired[List[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+    include: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
+    exclude: NotRequired[list[RepositoryRulesetConditionsRepositoryPropertySpecType]]
 
 
 class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
@@ -29,7 +29,7 @@ class RepositoryRulesetConditionsRepositoryPropertySpecType(TypedDict):
     """
 
     name: str
-    property_values: List[str]
+    property_values: list[str]
     source: NotRequired[Literal["custom", "system"]]
 
 

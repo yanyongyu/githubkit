@@ -10,13 +10,11 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Optional
+from typing import TYPE_CHECKING, Optional
 
 from githubkit.utils import exclude_unset
 
 if TYPE_CHECKING:
-    from typing import List
-
     from githubkit import GitHubCore
     from githubkit.response import Response
 
@@ -41,11 +39,9 @@ class CodesOfConductClient:
     def get_all_codes_of_conduct(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CodeOfConduct]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CodeOfConduct]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct"""
-
-        from typing import List
 
         from ..models import CodeOfConduct
 
@@ -57,17 +53,15 @@ class CodesOfConductClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[CodeOfConduct],
+            response_model=list[CodeOfConduct],
         )
 
     async def async_get_all_codes_of_conduct(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CodeOfConduct]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CodeOfConduct]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct"""
-
-        from typing import List
 
         from ..models import CodeOfConduct
 
@@ -79,14 +73,14 @@ class CodesOfConductClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[CodeOfConduct],
+            response_model=list[CodeOfConduct],
         )
 
     def get_conduct_code(
         self,
         key: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeOfConduct]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codes-of-conduct/codes-of-conduct#get-a-code-of-conduct"""
 
@@ -110,7 +104,7 @@ class CodesOfConductClient:
         self,
         key: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeOfConduct]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/codes-of-conduct/codes-of-conduct#get-a-code-of-conduct"""
 

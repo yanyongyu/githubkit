@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, Optional, overload
 
 from pydantic import BaseModel
 
@@ -20,7 +20,7 @@ from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
     from datetime import datetime
-    from typing import List, Union, Literal
+    from typing import Union, Literal
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
@@ -59,11 +59,9 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[BaseGist]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[BaseGist]]:
         """See also: https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BaseGist, BasicError
 
@@ -82,7 +80,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[BaseGist],
+            response_model=list[BaseGist],
             error_models={
                 "403": BasicError,
             },
@@ -94,11 +92,9 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[BaseGist]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[BaseGist]]:
         """See also: https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BaseGist, BasicError
 
@@ -117,7 +113,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[BaseGist],
+            response_model=list[BaseGist],
             error_models={
                 "403": BasicError,
             },
@@ -125,7 +121,7 @@ class GistsClient:
 
     @overload
     def create(
-        self, *, headers: Optional[Dict[str, str]] = None, data: GistsPostBodyType
+        self, *, headers: Optional[dict[str, str]] = None, data: GistsPostBodyType
     ) -> Response[GistSimple]: ...
 
     @overload
@@ -133,7 +129,7 @@ class GistsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
         public: Missing[Union[bool, Literal["true", "false"]]] = UNSET,
@@ -142,7 +138,7 @@ class GistsClient:
     def create(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[GistsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistSimple]:
@@ -178,7 +174,7 @@ class GistsClient:
 
     @overload
     async def async_create(
-        self, *, headers: Optional[Dict[str, str]] = None, data: GistsPostBodyType
+        self, *, headers: Optional[dict[str, str]] = None, data: GistsPostBodyType
     ) -> Response[GistSimple]: ...
 
     @overload
@@ -186,7 +182,7 @@ class GistsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
         public: Missing[Union[bool, Literal["true", "false"]]] = UNSET,
@@ -195,7 +191,7 @@ class GistsClient:
     async def async_create(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[GistsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistSimple]:
@@ -235,11 +231,9 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[BaseGist]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[BaseGist]]:
         """See also: https://docs.github.com/rest/gists/gists#list-public-gists"""
-
-        from typing import List
 
         from ..models import BaseGist, BasicError, ValidationError
 
@@ -258,7 +252,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[BaseGist],
+            response_model=list[BaseGist],
             error_models={
                 "422": ValidationError,
                 "403": BasicError,
@@ -271,11 +265,9 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[BaseGist]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[BaseGist]]:
         """See also: https://docs.github.com/rest/gists/gists#list-public-gists"""
-
-        from typing import List
 
         from ..models import BaseGist, BasicError, ValidationError
 
@@ -294,7 +286,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[BaseGist],
+            response_model=list[BaseGist],
             error_models={
                 "422": ValidationError,
                 "403": BasicError,
@@ -307,11 +299,9 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[BaseGist]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[BaseGist]]:
         """See also: https://docs.github.com/rest/gists/gists#list-starred-gists"""
-
-        from typing import List
 
         from ..models import BaseGist, BasicError
 
@@ -330,7 +320,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[BaseGist],
+            response_model=list[BaseGist],
             error_models={
                 "401": BasicError,
                 "403": BasicError,
@@ -343,11 +333,9 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[BaseGist]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[BaseGist]]:
         """See also: https://docs.github.com/rest/gists/gists#list-starred-gists"""
-
-        from typing import List
 
         from ..models import BaseGist, BasicError
 
@@ -366,7 +354,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[BaseGist],
+            response_model=list[BaseGist],
             error_models={
                 "401": BasicError,
                 "403": BasicError,
@@ -377,7 +365,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[GistSimple]:
         """See also: https://docs.github.com/rest/gists/gists#get-a-gist"""
 
@@ -402,7 +390,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[GistSimple]:
         """See also: https://docs.github.com/rest/gists/gists#get-a-gist"""
 
@@ -427,7 +415,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/gists/gists#delete-a-gist"""
 
@@ -451,7 +439,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/gists/gists#delete-a-gist"""
 
@@ -476,7 +464,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Union[GistsGistIdPatchBodyType, None],
     ) -> Response[GistSimple]: ...
 
@@ -486,7 +474,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         description: Missing[str] = UNSET,
         files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
     ) -> Response[GistSimple]: ...
@@ -495,7 +483,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[Union[GistsGistIdPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[GistSimple]:
@@ -540,7 +528,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Union[GistsGistIdPatchBodyType, None],
     ) -> Response[GistSimple]: ...
 
@@ -550,7 +538,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         description: Missing[str] = UNSET,
         files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
     ) -> Response[GistSimple]: ...
@@ -559,7 +547,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[Union[GistsGistIdPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[GistSimple]:
@@ -605,11 +593,9 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[GistComment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[GistComment]]:
         """See also: https://docs.github.com/rest/gists/comments#list-gist-comments"""
-
-        from typing import List
 
         from ..models import BasicError, GistComment
 
@@ -627,7 +613,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[GistComment],
+            response_model=list[GistComment],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -640,11 +626,9 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[GistComment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[GistComment]]:
         """See also: https://docs.github.com/rest/gists/comments#list-gist-comments"""
-
-        from typing import List
 
         from ..models import BasicError, GistComment
 
@@ -662,7 +646,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[GistComment],
+            response_model=list[GistComment],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -674,7 +658,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: GistsGistIdCommentsPostBodyType,
     ) -> Response[GistComment]: ...
 
@@ -684,7 +668,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[GistComment]: ...
 
@@ -692,7 +676,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment]:
@@ -730,7 +714,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: GistsGistIdCommentsPostBodyType,
     ) -> Response[GistComment]: ...
 
@@ -740,7 +724,7 @@ class GistsClient:
         gist_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[GistComment]: ...
 
@@ -748,7 +732,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment]:
@@ -786,7 +770,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[GistComment]:
         """See also: https://docs.github.com/rest/gists/comments#get-a-gist-comment"""
 
@@ -812,7 +796,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[GistComment]:
         """See also: https://docs.github.com/rest/gists/comments#get-a-gist-comment"""
 
@@ -838,7 +822,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/gists/comments#delete-a-gist-comment"""
 
@@ -863,7 +847,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/gists/comments#delete-a-gist-comment"""
 
@@ -889,7 +873,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: GistsGistIdCommentsCommentIdPatchBodyType,
     ) -> Response[GistComment]: ...
 
@@ -900,7 +884,7 @@ class GistsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[GistComment]: ...
 
@@ -909,7 +893,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment]:
@@ -951,7 +935,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: GistsGistIdCommentsCommentIdPatchBodyType,
     ) -> Response[GistComment]: ...
 
@@ -962,7 +946,7 @@ class GistsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[GistComment]: ...
 
@@ -971,7 +955,7 @@ class GistsClient:
         gist_id: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[GistComment]:
@@ -1013,11 +997,9 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[GistCommit]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[GistCommit]]:
         """See also: https://docs.github.com/rest/gists/gists#list-gist-commits"""
-
-        from typing import List
 
         from ..models import BasicError, GistCommit
 
@@ -1035,7 +1017,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[GistCommit],
+            response_model=list[GistCommit],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1048,11 +1030,9 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[GistCommit]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[GistCommit]]:
         """See also: https://docs.github.com/rest/gists/gists#list-gist-commits"""
-
-        from typing import List
 
         from ..models import BasicError, GistCommit
 
@@ -1070,7 +1050,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[GistCommit],
+            response_model=list[GistCommit],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1083,11 +1063,9 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[GistSimple]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[GistSimple]]:
         """See also: https://docs.github.com/rest/gists/gists#list-gist-forks"""
-
-        from typing import List
 
         from ..models import BasicError, GistSimple
 
@@ -1105,7 +1083,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[GistSimple],
+            response_model=list[GistSimple],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1118,11 +1096,9 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[GistSimple]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[GistSimple]]:
         """See also: https://docs.github.com/rest/gists/gists#list-gist-forks"""
-
-        from typing import List
 
         from ..models import BasicError, GistSimple
 
@@ -1140,7 +1116,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[GistSimple],
+            response_model=list[GistSimple],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1151,7 +1127,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[BaseGist]:
         """See also: https://docs.github.com/rest/gists/gists#fork-a-gist"""
 
@@ -1177,7 +1153,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[BaseGist]:
         """See also: https://docs.github.com/rest/gists/gists#fork-a-gist"""
 
@@ -1203,7 +1179,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/gists/gists#check-if-a-gist-is-starred"""
 
@@ -1227,7 +1203,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/gists/gists#check-if-a-gist-is-starred"""
 
@@ -1251,7 +1227,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/gists/gists#star-a-gist"""
 
@@ -1275,7 +1251,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/gists/gists#star-a-gist"""
 
@@ -1299,7 +1275,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/gists/gists#unstar-a-gist"""
 
@@ -1323,7 +1299,7 @@ class GistsClient:
         self,
         gist_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/gists/gists#unstar-a-gist"""
 
@@ -1348,7 +1324,7 @@ class GistsClient:
         gist_id: str,
         sha: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[GistSimple]:
         """See also: https://docs.github.com/rest/gists/gists#get-a-gist-revision"""
 
@@ -1375,7 +1351,7 @@ class GistsClient:
         gist_id: str,
         sha: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[GistSimple]:
         """See also: https://docs.github.com/rest/gists/gists#get-a-gist-revision"""
 
@@ -1404,11 +1380,9 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[BaseGist]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[BaseGist]]:
         """See also: https://docs.github.com/rest/gists/gists#list-gists-for-a-user"""
-
-        from typing import List
 
         from ..models import BaseGist, ValidationError
 
@@ -1427,7 +1401,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[BaseGist],
+            response_model=list[BaseGist],
             error_models={
                 "422": ValidationError,
             },
@@ -1440,11 +1414,9 @@ class GistsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[BaseGist]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[BaseGist]]:
         """See also: https://docs.github.com/rest/gists/gists#list-gists-for-a-user"""
-
-        from typing import List
 
         from ..models import BaseGist, ValidationError
 
@@ -1463,7 +1435,7 @@ class GistsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[BaseGist],
+            response_model=list[BaseGist],
             error_models={
                 "422": ValidationError,
             },

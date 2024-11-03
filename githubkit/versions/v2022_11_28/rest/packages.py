@@ -10,13 +10,13 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Literal, Optional
+from typing import TYPE_CHECKING, Literal, Optional
 
 from githubkit.typing import Missing
 from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import List, Literal
+    from typing import Literal
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
@@ -45,11 +45,9 @@ class PackagesClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Package]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Package]]:
         """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization"""
-
-        from typing import List
 
         from ..models import Package, BasicError
 
@@ -61,7 +59,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[Package],
+            response_model=list[Package],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -72,11 +70,9 @@ class PackagesClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Package]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Package]]:
         """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization"""
-
-        from typing import List
 
         from ..models import Package, BasicError
 
@@ -88,7 +84,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[Package],
+            response_model=list[Package],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -105,11 +101,9 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Package]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Package]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-an-organization"""
-
-        from typing import List
 
         from ..models import Package, BasicError
 
@@ -129,7 +123,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Package],
+            response_model=list[Package],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -146,11 +140,9 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Package]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Package]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-an-organization"""
-
-        from typing import List
 
         from ..models import Package, BasicError
 
@@ -170,7 +162,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Package],
+            response_model=list[Package],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -185,7 +177,7 @@ class PackagesClient:
         package_name: str,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Package]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-an-organization"""
 
@@ -210,7 +202,7 @@ class PackagesClient:
         package_name: str,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Package]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-an-organization"""
 
@@ -235,7 +227,7 @@ class PackagesClient:
         package_name: str,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-an-organization"""
 
@@ -264,7 +256,7 @@ class PackagesClient:
         package_name: str,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-an-organization"""
 
@@ -294,7 +286,7 @@ class PackagesClient:
         org: str,
         token: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-an-organization"""
 
@@ -329,7 +321,7 @@ class PackagesClient:
         org: str,
         token: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-an-organization"""
 
@@ -366,11 +358,9 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[PackageVersion]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PackageVersion]]:
         """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization"""
-
-        from typing import List
 
         from ..models import BasicError, PackageVersion
 
@@ -389,7 +379,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[PackageVersion],
+            response_model=list[PackageVersion],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -408,11 +398,9 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[PackageVersion]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PackageVersion]]:
         """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization"""
-
-        from typing import List
 
         from ..models import BasicError, PackageVersion
 
@@ -431,7 +419,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[PackageVersion],
+            response_model=list[PackageVersion],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -448,7 +436,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PackageVersion]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-an-organization"""
 
@@ -474,7 +462,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PackageVersion]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-an-organization"""
 
@@ -500,7 +488,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#delete-package-version-for-an-organization"""
 
@@ -530,7 +518,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#delete-package-version-for-an-organization"""
 
@@ -560,7 +548,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-package-version-for-an-organization"""
 
@@ -590,7 +578,7 @@ class PackagesClient:
         org: str,
         package_version_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-package-version-for-an-organization"""
 
@@ -614,11 +602,9 @@ class PackagesClient:
     def list_docker_migration_conflicting_packages_for_authenticated_user(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Package]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Package]]:
         """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user"""
-
-        from typing import List
 
         from ..models import Package
 
@@ -630,17 +616,15 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[Package],
+            response_model=list[Package],
         )
 
     async def async_list_docker_migration_conflicting_packages_for_authenticated_user(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Package]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Package]]:
         """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user"""
-
-        from typing import List
 
         from ..models import Package
 
@@ -652,7 +636,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[Package],
+            response_model=list[Package],
         )
 
     def list_packages_for_authenticated_user(
@@ -664,11 +648,9 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Package]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Package]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-the-authenticated-users-namespace"""
-
-        from typing import List
 
         from ..models import Package
 
@@ -688,7 +670,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Package],
+            response_model=list[Package],
             error_models={},
         )
 
@@ -701,11 +683,9 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Package]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Package]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-the-authenticated-users-namespace"""
-
-        from typing import List
 
         from ..models import Package
 
@@ -725,7 +705,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Package],
+            response_model=list[Package],
             error_models={},
         )
 
@@ -736,7 +716,7 @@ class PackagesClient:
         ],
         package_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Package]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-the-authenticated-user"""
 
@@ -760,7 +740,7 @@ class PackagesClient:
         ],
         package_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Package]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-the-authenticated-user"""
 
@@ -784,7 +764,7 @@ class PackagesClient:
         ],
         package_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-the-authenticated-user"""
 
@@ -812,7 +792,7 @@ class PackagesClient:
         ],
         package_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-the-authenticated-user"""
 
@@ -841,7 +821,7 @@ class PackagesClient:
         package_name: str,
         token: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-the-authenticated-user"""
 
@@ -875,7 +855,7 @@ class PackagesClient:
         package_name: str,
         token: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-the-authenticated-user"""
 
@@ -911,11 +891,9 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[PackageVersion]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PackageVersion]]:
         """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BasicError, PackageVersion
 
@@ -934,7 +912,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[PackageVersion],
+            response_model=list[PackageVersion],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -952,11 +930,9 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["active", "deleted"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[PackageVersion]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PackageVersion]]:
         """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BasicError, PackageVersion
 
@@ -975,7 +951,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[PackageVersion],
+            response_model=list[PackageVersion],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -991,7 +967,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PackageVersion]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-the-authenticated-user"""
 
@@ -1016,7 +992,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PackageVersion]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-the-authenticated-user"""
 
@@ -1041,7 +1017,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#delete-a-package-version-for-the-authenticated-user"""
 
@@ -1070,7 +1046,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#delete-a-package-version-for-the-authenticated-user"""
 
@@ -1099,7 +1075,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-a-package-version-for-the-authenticated-user"""
 
@@ -1128,7 +1104,7 @@ class PackagesClient:
         package_name: str,
         package_version_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-a-package-version-for-the-authenticated-user"""
 
@@ -1153,11 +1129,9 @@ class PackagesClient:
         self,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Package]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Package]]:
         """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user"""
-
-        from typing import List
 
         from ..models import Package, BasicError
 
@@ -1169,7 +1143,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[Package],
+            response_model=list[Package],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -1180,11 +1154,9 @@ class PackagesClient:
         self,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Package]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Package]]:
         """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user"""
-
-        from typing import List
 
         from ..models import Package, BasicError
 
@@ -1196,7 +1168,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[Package],
+            response_model=list[Package],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -1213,11 +1185,9 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Package]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Package]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-a-user"""
-
-        from typing import List
 
         from ..models import Package, BasicError
 
@@ -1237,7 +1207,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Package],
+            response_model=list[Package],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -1254,11 +1224,9 @@ class PackagesClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Package]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Package]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-a-user"""
-
-        from typing import List
 
         from ..models import Package, BasicError
 
@@ -1278,7 +1246,7 @@ class PackagesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Package],
+            response_model=list[Package],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -1293,7 +1261,7 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Package]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-a-user"""
 
@@ -1318,7 +1286,7 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Package]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-a-user"""
 
@@ -1343,7 +1311,7 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-a-user"""
 
@@ -1372,7 +1340,7 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#delete-a-package-for-a-user"""
 
@@ -1402,7 +1370,7 @@ class PackagesClient:
         username: str,
         token: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-a-user"""
 
@@ -1437,7 +1405,7 @@ class PackagesClient:
         username: str,
         token: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-a-package-for-a-user"""
 
@@ -1471,11 +1439,9 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[PackageVersion]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PackageVersion]]:
         """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user"""
-
-        from typing import List
 
         from ..models import BasicError, PackageVersion
 
@@ -1487,7 +1453,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[PackageVersion],
+            response_model=list[PackageVersion],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1503,11 +1469,9 @@ class PackagesClient:
         package_name: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[PackageVersion]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PackageVersion]]:
         """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user"""
-
-        from typing import List
 
         from ..models import BasicError, PackageVersion
 
@@ -1519,7 +1483,7 @@ class PackagesClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[PackageVersion],
+            response_model=list[PackageVersion],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -1536,7 +1500,7 @@ class PackagesClient:
         package_version_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PackageVersion]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-a-user"""
 
@@ -1562,7 +1526,7 @@ class PackagesClient:
         package_version_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PackageVersion]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-a-user"""
 
@@ -1588,7 +1552,7 @@ class PackagesClient:
         username: str,
         package_version_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#delete-package-version-for-a-user"""
 
@@ -1618,7 +1582,7 @@ class PackagesClient:
         username: str,
         package_version_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#delete-package-version-for-a-user"""
 
@@ -1648,7 +1612,7 @@ class PackagesClient:
         username: str,
         package_version_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-package-version-for-a-user"""
 
@@ -1678,7 +1642,7 @@ class PackagesClient:
         username: str,
         package_version_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/packages/packages#restore-package-version-for-a-user"""
 

@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -23,8 +23,8 @@ class GistSimpleType(TypedDict):
     Gist Simple
     """
 
-    forks: NotRequired[Union[List[GistSimplePropForksItemsType], None]]
-    history: NotRequired[Union[List[GistHistoryType], None]]
+    forks: NotRequired[Union[list[GistSimplePropForksItemsType], None]]
+    history: NotRequired[Union[list[GistHistoryType], None]]
     fork_of: NotRequired[Union[GistSimplePropForkOfType, None]]
     url: NotRequired[str]
     forks_url: NotRequired[str]

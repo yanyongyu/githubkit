@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0277 import MetadataType
@@ -22,7 +22,7 @@ class DependencyType(TypedDict):
     metadata: NotRequired[MetadataType]
     relationship: NotRequired[Literal["direct", "indirect"]]
     scope: NotRequired[Literal["runtime", "development"]]
-    dependencies: NotRequired[List[str]]
+    dependencies: NotRequired[list[str]]
 
 
 __all__ = ("DependencyType",)

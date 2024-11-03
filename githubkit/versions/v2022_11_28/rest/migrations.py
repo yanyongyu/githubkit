@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, Optional, overload
 
 from pydantic import BaseModel
 
@@ -19,7 +19,7 @@ from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
-    from typing import List, Union, Literal
+    from typing import Union, Literal
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
@@ -63,13 +63,11 @@ class MigrationsClient:
         org: str,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        exclude: Missing[List[Literal["repositories"]]] = UNSET,
+        exclude: Missing[list[Literal["repositories"]]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Migration]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Migration]]:
         """See also: https://docs.github.com/rest/migrations/orgs#list-organization-migrations"""
-
-        from typing import List
 
         from ..models import Migration
 
@@ -88,7 +86,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Migration],
+            response_model=list[Migration],
         )
 
     async def async_list_for_org(
@@ -96,13 +94,11 @@ class MigrationsClient:
         org: str,
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
-        exclude: Missing[List[Literal["repositories"]]] = UNSET,
+        exclude: Missing[list[Literal["repositories"]]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Migration]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Migration]]:
         """See also: https://docs.github.com/rest/migrations/orgs#list-organization-migrations"""
-
-        from typing import List
 
         from ..models import Migration
 
@@ -121,7 +117,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Migration],
+            response_model=list[Migration],
         )
 
     @overload
@@ -129,7 +125,7 @@ class MigrationsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgMigrationsPostBodyType,
     ) -> Response[Migration]: ...
 
@@ -139,8 +135,8 @@ class MigrationsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        repositories: List[str],
+        headers: Optional[dict[str, str]] = None,
+        repositories: list[str],
         lock_repositories: Missing[bool] = UNSET,
         exclude_metadata: Missing[bool] = UNSET,
         exclude_git_data: Missing[bool] = UNSET,
@@ -148,14 +144,14 @@ class MigrationsClient:
         exclude_releases: Missing[bool] = UNSET,
         exclude_owner_projects: Missing[bool] = UNSET,
         org_metadata_only: Missing[bool] = UNSET,
-        exclude: Missing[List[Literal["repositories"]]] = UNSET,
+        exclude: Missing[list[Literal["repositories"]]] = UNSET,
     ) -> Response[Migration]: ...
 
     def start_for_org(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Migration]:
@@ -198,7 +194,7 @@ class MigrationsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgMigrationsPostBodyType,
     ) -> Response[Migration]: ...
 
@@ -208,8 +204,8 @@ class MigrationsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        repositories: List[str],
+        headers: Optional[dict[str, str]] = None,
+        repositories: list[str],
         lock_repositories: Missing[bool] = UNSET,
         exclude_metadata: Missing[bool] = UNSET,
         exclude_git_data: Missing[bool] = UNSET,
@@ -217,14 +213,14 @@ class MigrationsClient:
         exclude_releases: Missing[bool] = UNSET,
         exclude_owner_projects: Missing[bool] = UNSET,
         org_metadata_only: Missing[bool] = UNSET,
-        exclude: Missing[List[Literal["repositories"]]] = UNSET,
+        exclude: Missing[list[Literal["repositories"]]] = UNSET,
     ) -> Response[Migration]: ...
 
     async def async_start_for_org(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Migration]:
@@ -266,9 +262,9 @@ class MigrationsClient:
         self,
         org: str,
         migration_id: int,
-        exclude: Missing[List[Literal["repositories"]]] = UNSET,
+        exclude: Missing[list[Literal["repositories"]]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Migration]:
         """See also: https://docs.github.com/rest/migrations/orgs#get-an-organization-migration-status"""
 
@@ -297,9 +293,9 @@ class MigrationsClient:
         self,
         org: str,
         migration_id: int,
-        exclude: Missing[List[Literal["repositories"]]] = UNSET,
+        exclude: Missing[list[Literal["repositories"]]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Migration]:
         """See also: https://docs.github.com/rest/migrations/orgs#get-an-organization-migration-status"""
 
@@ -329,7 +325,7 @@ class MigrationsClient:
         org: str,
         migration_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/migrations/orgs#download-an-organization-migration-archive"""
 
@@ -353,7 +349,7 @@ class MigrationsClient:
         org: str,
         migration_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/migrations/orgs#download-an-organization-migration-archive"""
 
@@ -377,7 +373,7 @@ class MigrationsClient:
         org: str,
         migration_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/migrations/orgs#delete-an-organization-migration-archive"""
 
@@ -401,7 +397,7 @@ class MigrationsClient:
         org: str,
         migration_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/migrations/orgs#delete-an-organization-migration-archive"""
 
@@ -426,7 +422,7 @@ class MigrationsClient:
         migration_id: int,
         repo_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/migrations/orgs#unlock-an-organization-repository"""
 
@@ -451,7 +447,7 @@ class MigrationsClient:
         migration_id: int,
         repo_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/migrations/orgs#unlock-an-organization-repository"""
 
@@ -477,11 +473,9 @@ class MigrationsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/rest/migrations/orgs#list-repositories-in-an-organization-migration"""
-
-        from typing import List
 
         from ..models import BasicError, MinimalRepository
 
@@ -499,7 +493,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
             error_models={
                 "404": BasicError,
             },
@@ -512,11 +506,9 @@ class MigrationsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/rest/migrations/orgs#list-repositories-in-an-organization-migration"""
-
-        from typing import List
 
         from ..models import BasicError, MinimalRepository
 
@@ -534,7 +526,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
             error_models={
                 "404": BasicError,
             },
@@ -545,7 +537,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Import]:
         """See also: https://docs.github.com/rest/migrations/source-imports#get-an-import-status"""
 
@@ -571,7 +563,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Import]:
         """See also: https://docs.github.com/rest/migrations/source-imports#get-an-import-status"""
 
@@ -598,7 +590,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoImportPutBodyType,
     ) -> Response[Import]: ...
 
@@ -609,7 +601,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         vcs_url: str,
         vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = UNSET,
         vcs_username: Missing[str] = UNSET,
@@ -622,7 +614,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[Import]:
@@ -667,7 +659,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoImportPutBodyType,
     ) -> Response[Import]: ...
 
@@ -678,7 +670,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         vcs_url: str,
         vcs: Missing[Literal["subversion", "git", "mercurial", "tfvc"]] = UNSET,
         vcs_username: Missing[str] = UNSET,
@@ -691,7 +683,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[Import]:
@@ -735,7 +727,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/migrations/source-imports#cancel-an-import"""
 
@@ -759,7 +751,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/migrations/source-imports#cancel-an-import"""
 
@@ -784,7 +776,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
     ) -> Response[Import]: ...
 
@@ -795,7 +787,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
         vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
@@ -807,7 +799,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Import]:
@@ -849,7 +841,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
     ) -> Response[Import]: ...
 
@@ -860,7 +852,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
         vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
@@ -872,7 +864,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Import]:
@@ -914,11 +906,9 @@ class MigrationsClient:
         repo: str,
         since: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[PorterAuthor]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PorterAuthor]]:
         """See also: https://docs.github.com/rest/migrations/source-imports#get-commit-authors"""
-
-        from typing import List
 
         from ..models import BasicError, PorterAuthor
 
@@ -935,7 +925,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[PorterAuthor],
+            response_model=list[PorterAuthor],
             error_models={
                 "404": BasicError,
                 "503": BasicError,
@@ -948,11 +938,9 @@ class MigrationsClient:
         repo: str,
         since: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[PorterAuthor]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PorterAuthor]]:
         """See also: https://docs.github.com/rest/migrations/source-imports#get-commit-authors"""
-
-        from typing import List
 
         from ..models import BasicError, PorterAuthor
 
@@ -969,7 +957,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[PorterAuthor],
+            response_model=list[PorterAuthor],
             error_models={
                 "404": BasicError,
                 "503": BasicError,
@@ -983,7 +971,7 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
     ) -> Response[PorterAuthor]: ...
 
@@ -995,7 +983,7 @@ class MigrationsClient:
         author_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
     ) -> Response[PorterAuthor]: ...
@@ -1006,7 +994,7 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PorterAuthor]:
@@ -1054,7 +1042,7 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
     ) -> Response[PorterAuthor]: ...
 
@@ -1066,7 +1054,7 @@ class MigrationsClient:
         author_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
     ) -> Response[PorterAuthor]: ...
@@ -1077,7 +1065,7 @@ class MigrationsClient:
         repo: str,
         author_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[PorterAuthor]:
@@ -1123,11 +1111,9 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[PorterLargeFile]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PorterLargeFile]]:
         """See also: https://docs.github.com/rest/migrations/source-imports#get-large-files"""
-
-        from typing import List
 
         from ..models import BasicError, PorterLargeFile
 
@@ -1139,7 +1125,7 @@ class MigrationsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[PorterLargeFile],
+            response_model=list[PorterLargeFile],
             error_models={
                 "503": BasicError,
             },
@@ -1150,11 +1136,9 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[PorterLargeFile]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PorterLargeFile]]:
         """See also: https://docs.github.com/rest/migrations/source-imports#get-large-files"""
-
-        from typing import List
 
         from ..models import BasicError, PorterLargeFile
 
@@ -1166,7 +1150,7 @@ class MigrationsClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[PorterLargeFile],
+            response_model=list[PorterLargeFile],
             error_models={
                 "503": BasicError,
             },
@@ -1178,7 +1162,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoImportLfsPatchBodyType,
     ) -> Response[Import]: ...
 
@@ -1189,7 +1173,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         use_lfs: Literal["opt_in", "opt_out"],
     ) -> Response[Import]: ...
 
@@ -1198,7 +1182,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Import]:
@@ -1242,7 +1226,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoImportLfsPatchBodyType,
     ) -> Response[Import]: ...
 
@@ -1253,7 +1237,7 @@ class MigrationsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         use_lfs: Literal["opt_in", "opt_out"],
     ) -> Response[Import]: ...
 
@@ -1262,7 +1246,7 @@ class MigrationsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Import]:
@@ -1305,11 +1289,9 @@ class MigrationsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Migration]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Migration]]:
         """See also: https://docs.github.com/rest/migrations/users#list-user-migrations"""
-
-        from typing import List
 
         from ..models import Migration, BasicError
 
@@ -1327,7 +1309,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Migration],
+            response_model=list[Migration],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -1339,11 +1321,9 @@ class MigrationsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Migration]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Migration]]:
         """See also: https://docs.github.com/rest/migrations/users#list-user-migrations"""
-
-        from typing import List
 
         from ..models import Migration, BasicError
 
@@ -1361,7 +1341,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Migration],
+            response_model=list[Migration],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -1372,7 +1352,7 @@ class MigrationsClient:
     def start_for_authenticated_user(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: UserMigrationsPostBodyType,
     ) -> Response[Migration]: ...
 
@@ -1381,7 +1361,7 @@ class MigrationsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         lock_repositories: Missing[bool] = UNSET,
         exclude_metadata: Missing[bool] = UNSET,
         exclude_git_data: Missing[bool] = UNSET,
@@ -1389,14 +1369,14 @@ class MigrationsClient:
         exclude_releases: Missing[bool] = UNSET,
         exclude_owner_projects: Missing[bool] = UNSET,
         org_metadata_only: Missing[bool] = UNSET,
-        exclude: Missing[List[Literal["repositories"]]] = UNSET,
-        repositories: List[str],
+        exclude: Missing[list[Literal["repositories"]]] = UNSET,
+        repositories: list[str],
     ) -> Response[Migration]: ...
 
     def start_for_authenticated_user(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[UserMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Migration]:
@@ -1439,7 +1419,7 @@ class MigrationsClient:
     async def async_start_for_authenticated_user(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: UserMigrationsPostBodyType,
     ) -> Response[Migration]: ...
 
@@ -1448,7 +1428,7 @@ class MigrationsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         lock_repositories: Missing[bool] = UNSET,
         exclude_metadata: Missing[bool] = UNSET,
         exclude_git_data: Missing[bool] = UNSET,
@@ -1456,14 +1436,14 @@ class MigrationsClient:
         exclude_releases: Missing[bool] = UNSET,
         exclude_owner_projects: Missing[bool] = UNSET,
         org_metadata_only: Missing[bool] = UNSET,
-        exclude: Missing[List[Literal["repositories"]]] = UNSET,
-        repositories: List[str],
+        exclude: Missing[list[Literal["repositories"]]] = UNSET,
+        repositories: list[str],
     ) -> Response[Migration]: ...
 
     async def async_start_for_authenticated_user(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[UserMigrationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Migration]:
@@ -1505,9 +1485,9 @@ class MigrationsClient:
     def get_status_for_authenticated_user(
         self,
         migration_id: int,
-        exclude: Missing[List[str]] = UNSET,
+        exclude: Missing[list[str]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Migration]:
         """See also: https://docs.github.com/rest/migrations/users#get-a-user-migration-status"""
 
@@ -1537,9 +1517,9 @@ class MigrationsClient:
     async def async_get_status_for_authenticated_user(
         self,
         migration_id: int,
-        exclude: Missing[List[str]] = UNSET,
+        exclude: Missing[list[str]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Migration]:
         """See also: https://docs.github.com/rest/migrations/users#get-a-user-migration-status"""
 
@@ -1570,7 +1550,7 @@ class MigrationsClient:
         self,
         migration_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/migrations/users#download-a-user-migration-archive"""
 
@@ -1594,7 +1574,7 @@ class MigrationsClient:
         self,
         migration_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/migrations/users#download-a-user-migration-archive"""
 
@@ -1618,7 +1598,7 @@ class MigrationsClient:
         self,
         migration_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/migrations/users#delete-a-user-migration-archive"""
 
@@ -1643,7 +1623,7 @@ class MigrationsClient:
         self,
         migration_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/migrations/users#delete-a-user-migration-archive"""
 
@@ -1669,7 +1649,7 @@ class MigrationsClient:
         migration_id: int,
         repo_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/migrations/users#unlock-a-user-repository"""
 
@@ -1695,7 +1675,7 @@ class MigrationsClient:
         migration_id: int,
         repo_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/migrations/users#unlock-a-user-repository"""
 
@@ -1722,11 +1702,9 @@ class MigrationsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/rest/migrations/users#list-repositories-for-a-user-migration"""
-
-        from typing import List
 
         from ..models import BasicError, MinimalRepository
 
@@ -1744,7 +1722,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
             error_models={
                 "404": BasicError,
             },
@@ -1756,11 +1734,9 @@ class MigrationsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/rest/migrations/users#list-repositories-for-a-user-migration"""
-
-        from typing import List
 
         from ..models import BasicError, MinimalRepository
 
@@ -1778,7 +1754,7 @@ class MigrationsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
             error_models={
                 "404": BasicError,
             },

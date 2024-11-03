@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -19,7 +19,7 @@ class CodeownersErrorsType(TypedDict):
     A list of errors found in a repo's CODEOWNERS file
     """
 
-    errors: List[CodeownersErrorsPropErrorsItemsType]
+    errors: list[CodeownersErrorsPropErrorsItemsType]
 
 
 class CodeownersErrorsPropErrorsItemsType(TypedDict):

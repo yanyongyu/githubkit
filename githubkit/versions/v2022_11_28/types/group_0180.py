@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -35,14 +35,14 @@ class WorkflowRunType(TypedDict):
     path: str
     run_number: int
     run_attempt: NotRequired[int]
-    referenced_workflows: NotRequired[Union[List[ReferencedWorkflowType], None]]
+    referenced_workflows: NotRequired[Union[list[ReferencedWorkflowType], None]]
     event: str
     status: Union[str, None]
     conclusion: Union[str, None]
     workflow_id: int
     url: str
     html_url: str
-    pull_requests: Union[List[PullRequestMinimalType], None]
+    pull_requests: Union[list[PullRequestMinimalType], None]
     created_at: datetime
     updated_at: datetime
     actor: NotRequired[SimpleUserType]

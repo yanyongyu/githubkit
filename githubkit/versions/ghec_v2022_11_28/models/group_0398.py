@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -25,7 +25,7 @@ class SearchResultTextMatchesItems(GitHubModel):
     object_type: Missing[Union[str, None]] = Field(default=UNSET)
     property_: Missing[str] = Field(default=UNSET, alias="property")
     fragment: Missing[str] = Field(default=UNSET)
-    matches: Missing[List[SearchResultTextMatchesItemsPropMatchesItems]] = Field(
+    matches: Missing[list[SearchResultTextMatchesItemsPropMatchesItems]] = Field(
         default=UNSET
     )
 
@@ -34,7 +34,7 @@ class SearchResultTextMatchesItemsPropMatchesItems(GitHubModel):
     """SearchResultTextMatchesItemsPropMatchesItems"""
 
     text: Missing[str] = Field(default=UNSET)
-    indices: Missing[List[int]] = Field(default=UNSET)
+    indices: Missing[list[int]] = Field(default=UNSET)
 
 
 model_rebuild(SearchResultTextMatchesItems)

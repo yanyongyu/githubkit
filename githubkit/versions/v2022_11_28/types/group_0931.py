@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -45,9 +45,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType(
     """
 
     strict: bool
-    contexts: List[str]
+    contexts: list[str]
     checks: NotRequired[
-        List[
+        list[
             ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksPropChecksItemsType
         ]
     ]
@@ -97,9 +97,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReview
     Omit this parameter for personal repositories.
     """
 
-    users: NotRequired[List[str]]
-    teams: NotRequired[List[str]]
-    apps: NotRequired[List[str]]
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
 
 
 class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
@@ -111,9 +111,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReview
     Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    users: NotRequired[List[str]]
-    teams: NotRequired[List[str]]
-    apps: NotRequired[List[str]]
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
 
 
 class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType(TypedDict):
@@ -124,9 +124,9 @@ class ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType(TypedDic
     `null` to disable.
     """
 
-    users: List[str]
-    teams: List[str]
-    apps: NotRequired[List[str]]
+    users: list[str]
+    teams: list[str]
+    apps: NotRequired[list[str]]
 
 
 __all__ = (

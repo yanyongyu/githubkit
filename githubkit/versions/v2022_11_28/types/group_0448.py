@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -62,7 +62,7 @@ class WebhookCheckSuiteRequestedPropCheckSuiteType(TypedDict):
     id: int
     latest_check_runs_count: int
     node_id: str
-    pull_requests: List[
+    pull_requests: list[
         WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItemsType
     ]
     rerequestable: NotRequired[bool]
@@ -83,7 +83,7 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropAppType(TypedDict):
 
     created_at: Union[datetime, None]
     description: Union[str, None]
-    events: NotRequired[List[str]]
+    events: NotRequired[list[str]]
     external_url: Union[str, None]
     html_url: str
     id: Union[int, None]

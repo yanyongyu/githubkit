@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -95,7 +95,7 @@ class WebhookCheckSuiteRequestedPropCheckSuite(GitHubModel):
     id: int = Field()
     latest_check_runs_count: int = Field()
     node_id: str = Field()
-    pull_requests: List[
+    pull_requests: list[
         WebhookCheckSuiteRequestedPropCheckSuitePropPullRequestsItems
     ] = Field(
         description="An array of pull requests that match this check suite. A pull request matches a check suite if they have the same `head_sha` and `head_branch`. When the check suite's `head_branch` is in a forked repository it will be `null` and the `pull_requests` array will be empty."
@@ -122,7 +122,7 @@ class WebhookCheckSuiteRequestedPropCheckSuitePropApp(GitHubModel):
 
     created_at: Union[datetime, None] = Field()
     description: Union[str, None] = Field()
-    events: Missing[List[str]] = Field(
+    events: Missing[list[str]] = Field(
         default=UNSET, description="The list of events for the GitHub app"
     )
     external_url: Union[str, None] = Field()

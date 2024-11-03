@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -39,7 +39,7 @@ class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion(GitHu
     created_at: Missing[str] = Field(default=UNSET)
     description: str = Field()
     docker_metadata: Missing[
-        List[
+        list[
             WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropDockerMetadataItems
         ]
     ] = Field(default=UNSET)
@@ -48,7 +48,7 @@ class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion(GitHu
     id: int = Field()
     installation_command: str = Field()
     manifest: Missing[str] = Field(default=UNSET)
-    metadata: List[
+    metadata: list[
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropMetadataItems
     ] = Field()
     name: str = Field()
@@ -60,13 +60,13 @@ class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion(GitHu
     ] = Field(default=UNSET)
     nuget_metadata: Missing[
         Union[
-            List[
+            list[
                 WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItems
             ],
             None,
         ]
     ] = Field(default=UNSET)
-    package_files: List[
+    package_files: list[
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropPackageFilesItems
     ] = Field()
     package_url: str = Field()
@@ -74,7 +74,7 @@ class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersion(GitHu
     release: Missing[
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropRelease
     ] = Field(default=UNSET)
-    rubygems_metadata: Missing[List[WebhookRubygemsMetadata]] = Field(default=UNSET)
+    rubygems_metadata: Missing[list[WebhookRubygemsMetadata]] = Field(default=UNSET)
     summary: str = Field()
     tag_name: Missing[str] = Field(default=UNSET)
     target_commitish: Missing[str] = Field(default=UNSET)
@@ -124,7 +124,7 @@ class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropDo
     tadataItems
     """
 
-    tags: Missing[List[str]] = Field(default=UNSET)
+    tags: Missing[list[str]] = Field(default=UNSET)
 
 
 class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropMetadataItems(
@@ -197,13 +197,13 @@ class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNp
     node_version: Missing[str] = Field(default=UNSET)
     npm_version: Missing[str] = Field(default=UNSET)
     has_shrinkwrap: Missing[bool] = Field(default=UNSET)
-    maintainers: Missing[List[str]] = Field(default=UNSET)
-    contributors: Missing[List[str]] = Field(default=UNSET)
+    maintainers: Missing[list[str]] = Field(default=UNSET)
+    contributors: Missing[list[str]] = Field(default=UNSET)
     engines: Missing[
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropEngines
     ] = Field(default=UNSET)
-    keywords: Missing[List[str]] = Field(default=UNSET)
-    files: Missing[List[str]] = Field(default=UNSET)
+    keywords: Missing[list[str]] = Field(default=UNSET)
+    files: Missing[list[str]] = Field(default=UNSET)
     bin_: Missing[
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBin
     ] = Field(default=UNSET, alias="bin")
@@ -217,8 +217,8 @@ class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNp
             None,
         ]
     ] = Field(default=UNSET)
-    os: Missing[List[str]] = Field(default=UNSET)
-    cpu: Missing[List[str]] = Field(default=UNSET)
+    os: Missing[list[str]] = Field(default=UNSET)
+    cpu: Missing[list[str]] = Field(default=UNSET)
     readme: Missing[str] = Field(default=UNSET)
     installation_command: Missing[str] = Field(default=UNSET)
     release_id: Missing[int] = Field(default=UNSET)

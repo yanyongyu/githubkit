@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0199 import CommitType
@@ -33,8 +33,8 @@ class CommitComparisonType(TypedDict):
     ahead_by: int
     behind_by: int
     total_commits: int
-    commits: List[CommitType]
-    files: NotRequired[List[DiffEntryType]]
+    commits: list[CommitType]
+    files: NotRequired[list[DiffEntryType]]
 
 
 __all__ = ("CommitComparisonType",)

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -100,7 +100,7 @@ class WebhookPullRequestReviewRequestedOneof0PropPullRequest(GitHubModel):
     assignee: Union[
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAssignee, None
     ] = Field(title="User")
-    assignees: List[
+    assignees: list[
         Union[
             WebhookPullRequestReviewRequestedOneof0PropPullRequestPropAssigneesItems,
             None,
@@ -143,7 +143,7 @@ class WebhookPullRequestReviewRequestedOneof0PropPullRequest(GitHubModel):
     html_url: str = Field()
     id: int = Field()
     issue_url: str = Field()
-    labels: List[
+    labels: list[
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropLabelsItems
     ] = Field()
     locked: bool = Field()
@@ -171,14 +171,14 @@ class WebhookPullRequestReviewRequestedOneof0PropPullRequest(GitHubModel):
     )
     patch_url: str = Field()
     rebaseable: Missing[Union[bool, None]] = Field(default=UNSET)
-    requested_reviewers: List[
+    requested_reviewers: list[
         Union[
             WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedReviewersItemsOneof0,
             None,
             WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedReviewersItemsOneof1,
         ]
     ] = Field()
-    requested_teams: List[
+    requested_teams: list[
         WebhookPullRequestReviewRequestedOneof0PropPullRequestPropRequestedTeamsItems
     ] = Field()
     review_comment_url: str = Field()
@@ -743,7 +743,7 @@ class WebhookPullRequestReviewRequestedOneof0PropPullRequestPropBasePropRepo(
     svn_url: str = Field()
     tags_url: str = Field()
     teams_url: str = Field()
-    topics: List[str] = Field()
+    topics: list[str] = Field()
     trees_url: str = Field()
     updated_at: datetime = Field()
     url: str = Field()
@@ -1000,7 +1000,7 @@ class WebhookPullRequestReviewRequestedOneof0PropPullRequestPropHeadPropRepo(
     svn_url: str = Field()
     tags_url: str = Field()
     teams_url: str = Field()
-    topics: List[str] = Field()
+    topics: list[str] = Field()
     trees_url: str = Field()
     updated_at: datetime = Field()
     url: str = Field()

@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0282 import DeploymentBranchPolicySettingsType
@@ -31,7 +31,7 @@ class EnvironmentType(TypedDict):
     created_at: datetime
     updated_at: datetime
     protection_rules: NotRequired[
-        List[
+        list[
             Union[
                 EnvironmentPropProtectionRulesItemsAnyof0Type,
                 EnvironmentPropProtectionRulesItemsAnyof1Type,
@@ -65,7 +65,7 @@ class ReposOwnerRepoEnvironmentsGetResponse200Type(TypedDict):
     """ReposOwnerRepoEnvironmentsGetResponse200"""
 
     total_count: NotRequired[int]
-    environments: NotRequired[List[EnvironmentType]]
+    environments: NotRequired[list[EnvironmentType]]
 
 
 __all__ = (

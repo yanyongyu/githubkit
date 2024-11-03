@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -19,7 +18,7 @@ class ExternalGroupsType(TypedDict):
     A list of external groups available to be connected to a team
     """
 
-    groups: NotRequired[List[ExternalGroupsPropGroupsItemsType]]
+    groups: NotRequired[list[ExternalGroupsPropGroupsItemsType]]
 
 
 class ExternalGroupsPropGroupsItemsType(TypedDict):

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0029 import TeamType
@@ -45,7 +45,7 @@ class PullRequestSimpleType(TypedDict):
     title: str
     user: Union[None, SimpleUserType]
     body: Union[str, None]
-    labels: List[PullRequestSimplePropLabelsItemsType]
+    labels: list[PullRequestSimplePropLabelsItemsType]
     milestone: Union[None, MilestoneType]
     active_lock_reason: NotRequired[Union[str, None]]
     created_at: datetime
@@ -54,9 +54,9 @@ class PullRequestSimpleType(TypedDict):
     merged_at: Union[datetime, None]
     merge_commit_sha: Union[str, None]
     assignee: Union[None, SimpleUserType]
-    assignees: NotRequired[Union[List[SimpleUserType], None]]
-    requested_reviewers: NotRequired[Union[List[SimpleUserType], None]]
-    requested_teams: NotRequired[Union[List[TeamType], None]]
+    assignees: NotRequired[Union[list[SimpleUserType], None]]
+    requested_reviewers: NotRequired[Union[list[SimpleUserType], None]]
+    requested_teams: NotRequired[Union[list[TeamType], None]]
     head: PullRequestSimplePropHeadType
     base: PullRequestSimplePropBaseType
     links: PullRequestSimplePropLinksType

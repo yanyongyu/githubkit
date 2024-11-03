@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import Any, Type, Union, TypeVar
+from typing import Any, Union, TypeVar
 
 import httpx
 import pytest
@@ -28,7 +28,7 @@ def mock_request(
     method: str,
     url: URLTypes,
     *,
-    response_model: Union[Type[T], UnsetType] = UNSET,
+    response_model: Union[type[T], UnsetType] = UNSET,
     **kwargs: Any,
 ) -> Response[Any]:
     if method == "GET" and url == "/repos/owner/repo":
@@ -58,7 +58,7 @@ async def mock_arequest(
     method: str,
     url: URLTypes,
     *,
-    response_model: Union[Type[T], UnsetType] = UNSET,
+    response_model: Union[type[T], UnsetType] = UNSET,
     **kwargs: Any,
 ) -> Response[Any]:
     if method == "GET" and url == "/repos/owner/repo":

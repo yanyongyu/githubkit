@@ -3,7 +3,7 @@
 """{{ header() }}"""
 
 import importlib
-from typing import TYPE_CHECKING, Any, Dict, Literal, ClassVar, overload
+from typing import TYPE_CHECKING, Any, Literal, ClassVar, overload
 
 from . import VERSIONS, LATEST_VERSION, VERSION_TYPE
 
@@ -21,7 +21,7 @@ else:
     _VersionProxy = object
 
 class WebhooksVersionSwitcher(_VersionProxy):
-    _cached_namespaces: ClassVar[Dict[VERSION_TYPE, Any]] = {}
+    _cached_namespaces: ClassVar[dict[VERSION_TYPE, Any]] = {}
 
     if not TYPE_CHECKING:
         def __getattr__(self, name: str) -> Any:

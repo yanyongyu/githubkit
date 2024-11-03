@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0030 import CopilotSeatDetailsType
@@ -19,7 +18,7 @@ class EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type(TypedDict):
     """EnterprisesEnterpriseCopilotBillingSeatsGetResponse200"""
 
     total_seats: NotRequired[int]
-    seats: NotRequired[List[CopilotSeatDetailsType]]
+    seats: NotRequired[list[CopilotSeatDetailsType]]
 
 
 __all__ = ("EnterprisesEnterpriseCopilotBillingSeatsGetResponse200Type",)

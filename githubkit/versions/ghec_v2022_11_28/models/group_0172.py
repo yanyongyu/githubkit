@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,7 +19,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 class RepositoryRuleCodeScanningPropParameters(GitHubModel):
     """RepositoryRuleCodeScanningPropParameters"""
 
-    code_scanning_tools: List[RepositoryRuleParamsCodeScanningTool] = Field(
+    code_scanning_tools: list[RepositoryRuleParamsCodeScanningTool] = Field(
         description="Tools that must provide code scanning results for this rule to pass."
     )
 

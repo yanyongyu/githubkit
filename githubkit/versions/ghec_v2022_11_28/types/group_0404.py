@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -90,7 +90,7 @@ class RepoSearchResultItemType(TypedDict):
     forks: int
     open_issues: int
     watchers: int
-    topics: NotRequired[List[str]]
+    topics: NotRequired[list[str]]
     mirror_url: Union[str, None]
     has_issues: bool
     has_projects: bool
@@ -103,7 +103,7 @@ class RepoSearchResultItemType(TypedDict):
     visibility: NotRequired[str]
     license_: Union[None, LicenseSimpleType]
     permissions: NotRequired[RepoSearchResultItemPropPermissionsType]
-    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
     temp_clone_token: NotRequired[Union[str, None]]
     allow_merge_commit: NotRequired[bool]
     allow_squash_merge: NotRequired[bool]
@@ -130,7 +130,7 @@ class SearchRepositoriesGetResponse200Type(TypedDict):
 
     total_count: int
     incomplete_results: bool
-    items: List[RepoSearchResultItemType]
+    items: list[RepoSearchResultItemType]
 
 
 __all__ = (

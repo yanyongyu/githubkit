@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -25,7 +25,7 @@ class CredentialAuthorizationType(TypedDict):
     credential_type: str
     token_last_eight: NotRequired[str]
     credential_authorized_at: datetime
-    scopes: NotRequired[List[str]]
+    scopes: NotRequired[list[str]]
     fingerprint: NotRequired[str]
     credential_accessed_at: Union[datetime, None]
     authorized_credential_id: Union[int, None]

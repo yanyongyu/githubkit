@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Optional, overload
+from typing import TYPE_CHECKING, Optional, overload
 
 from pydantic import BaseModel
 
@@ -19,8 +19,6 @@ from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
-    from typing import List
-
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
     from githubkit.typing import Missing
@@ -67,7 +65,7 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EnterprisesEnterpriseCopilotBillingSeatsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-enterprise"""
 
@@ -105,7 +103,7 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EnterprisesEnterpriseCopilotBillingSeatsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-enterprise"""
 
@@ -145,11 +143,9 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CopilotUsageMetricsDay]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CopilotUsageMetricsDay]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise"""
-
-        from typing import List
 
         from ..models import BasicError, CopilotUsageMetricsDay
 
@@ -169,7 +165,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CopilotUsageMetricsDay],
+            response_model=list[CopilotUsageMetricsDay],
             error_models={
                 "500": BasicError,
                 "403": BasicError,
@@ -186,11 +182,9 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CopilotUsageMetricsDay]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CopilotUsageMetricsDay]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise"""
-
-        from typing import List
 
         from ..models import BasicError, CopilotUsageMetricsDay
 
@@ -210,7 +204,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CopilotUsageMetricsDay],
+            response_model=list[CopilotUsageMetricsDay],
             error_models={
                 "500": BasicError,
                 "403": BasicError,
@@ -227,11 +221,9 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CopilotUsageMetrics]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CopilotUsageMetrics]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-enterprise-members"""
-
-        from typing import List
 
         from ..models import BasicError, CopilotUsageMetrics
 
@@ -251,7 +243,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CopilotUsageMetrics],
+            response_model=list[CopilotUsageMetrics],
             error_models={
                 "500": BasicError,
                 "401": BasicError,
@@ -268,11 +260,9 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CopilotUsageMetrics]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CopilotUsageMetrics]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-enterprise-members"""
-
-        from typing import List
 
         from ..models import BasicError, CopilotUsageMetrics
 
@@ -292,7 +282,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CopilotUsageMetrics],
+            response_model=list[CopilotUsageMetrics],
             error_models={
                 "500": BasicError,
                 "401": BasicError,
@@ -310,11 +300,9 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CopilotUsageMetricsDay]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CopilotUsageMetricsDay]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise-team"""
-
-        from typing import List
 
         from ..models import BasicError, CopilotUsageMetricsDay
 
@@ -334,7 +322,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CopilotUsageMetricsDay],
+            response_model=list[CopilotUsageMetricsDay],
             error_models={
                 "500": BasicError,
                 "403": BasicError,
@@ -352,11 +340,9 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CopilotUsageMetricsDay]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CopilotUsageMetricsDay]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-enterprise-team"""
-
-        from typing import List
 
         from ..models import BasicError, CopilotUsageMetricsDay
 
@@ -376,7 +362,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CopilotUsageMetricsDay],
+            response_model=list[CopilotUsageMetricsDay],
             error_models={
                 "500": BasicError,
                 "403": BasicError,
@@ -394,11 +380,9 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CopilotUsageMetrics]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CopilotUsageMetrics]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-an-enterprise-team"""
-
-        from typing import List
 
         from ..models import BasicError, CopilotUsageMetrics
 
@@ -418,7 +402,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CopilotUsageMetrics],
+            response_model=list[CopilotUsageMetrics],
             error_models={
                 "500": BasicError,
                 "401": BasicError,
@@ -436,11 +420,9 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CopilotUsageMetrics]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CopilotUsageMetrics]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-an-enterprise-team"""
-
-        from typing import List
 
         from ..models import BasicError, CopilotUsageMetrics
 
@@ -460,7 +442,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CopilotUsageMetrics],
+            response_model=list[CopilotUsageMetrics],
             error_models={
                 "500": BasicError,
                 "401": BasicError,
@@ -473,7 +455,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CopilotOrganizationDetails]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization"""
 
@@ -500,7 +482,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CopilotOrganizationDetails]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization"""
 
@@ -529,7 +511,7 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgCopilotBillingSeatsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-organization"""
 
@@ -564,7 +546,7 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OrgsOrgCopilotBillingSeatsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#list-all-copilot-seat-assignments-for-an-organization"""
 
@@ -598,7 +580,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]: ...
 
@@ -608,15 +590,15 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        selected_teams: List[str],
+        headers: Optional[dict[str, str]] = None,
+        selected_teams: list[str],
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]: ...
 
     def add_copilot_seats_for_teams(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]:
@@ -662,7 +644,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedTeamsPostBodyType,
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]: ...
 
@@ -672,15 +654,15 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        selected_teams: List[str],
+        headers: Optional[dict[str, str]] = None,
+        selected_teams: list[str],
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]: ...
 
     async def async_add_copilot_seats_for_teams(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsPostResponse201]:
@@ -726,7 +708,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]: ...
 
@@ -736,15 +718,15 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        selected_teams: List[str],
+        headers: Optional[dict[str, str]] = None,
+        selected_teams: list[str],
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]: ...
 
     def cancel_copilot_seat_assignment_for_teams(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]:
@@ -790,7 +772,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType,
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]: ...
 
@@ -800,15 +782,15 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        selected_teams: List[str],
+        headers: Optional[dict[str, str]] = None,
+        selected_teams: list[str],
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]: ...
 
     async def async_cancel_copilot_seat_assignment_for_teams(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgCopilotBillingSelectedTeamsDeleteResponse200]:
@@ -854,7 +836,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedUsersPostBodyType,
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]: ...
 
@@ -864,15 +846,15 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        selected_usernames: List[str],
+        headers: Optional[dict[str, str]] = None,
+        selected_usernames: list[str],
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]: ...
 
     def add_copilot_seats_for_users(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]:
@@ -918,7 +900,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedUsersPostBodyType,
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]: ...
 
@@ -928,15 +910,15 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        selected_usernames: List[str],
+        headers: Optional[dict[str, str]] = None,
+        selected_usernames: list[str],
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]: ...
 
     async def async_add_copilot_seats_for_users(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersPostResponse201]:
@@ -982,7 +964,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]: ...
 
@@ -992,15 +974,15 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        selected_usernames: List[str],
+        headers: Optional[dict[str, str]] = None,
+        selected_usernames: list[str],
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]: ...
 
     def cancel_copilot_seat_assignment_for_users(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]:
@@ -1046,7 +1028,7 @@ class CopilotClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgCopilotBillingSelectedUsersDeleteBodyType,
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]: ...
 
@@ -1056,15 +1038,15 @@ class CopilotClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        selected_usernames: List[str],
+        headers: Optional[dict[str, str]] = None,
+        selected_usernames: list[str],
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]: ...
 
     async def async_cancel_copilot_seat_assignment_for_users(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgCopilotBillingSelectedUsersDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[OrgsOrgCopilotBillingSelectedUsersDeleteResponse200]:
@@ -1113,11 +1095,9 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CopilotUsageMetricsDay]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CopilotUsageMetricsDay]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-organization"""
-
-        from typing import List
 
         from ..models import BasicError, CopilotUsageMetricsDay
 
@@ -1137,7 +1117,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CopilotUsageMetricsDay],
+            response_model=list[CopilotUsageMetricsDay],
             error_models={
                 "500": BasicError,
                 "403": BasicError,
@@ -1154,11 +1134,9 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CopilotUsageMetricsDay]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CopilotUsageMetricsDay]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-an-organization"""
-
-        from typing import List
 
         from ..models import BasicError, CopilotUsageMetricsDay
 
@@ -1178,7 +1156,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CopilotUsageMetricsDay],
+            response_model=list[CopilotUsageMetricsDay],
             error_models={
                 "500": BasicError,
                 "403": BasicError,
@@ -1195,11 +1173,9 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CopilotUsageMetrics]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CopilotUsageMetrics]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-organization-members"""
-
-        from typing import List
 
         from ..models import BasicError, CopilotUsageMetrics
 
@@ -1219,7 +1195,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CopilotUsageMetrics],
+            response_model=list[CopilotUsageMetrics],
             error_models={
                 "500": BasicError,
                 "401": BasicError,
@@ -1236,11 +1212,9 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CopilotUsageMetrics]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CopilotUsageMetrics]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-organization-members"""
-
-        from typing import List
 
         from ..models import BasicError, CopilotUsageMetrics
 
@@ -1260,7 +1234,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CopilotUsageMetrics],
+            response_model=list[CopilotUsageMetrics],
             error_models={
                 "500": BasicError,
                 "401": BasicError,
@@ -1274,7 +1248,7 @@ class CopilotClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CopilotSeatDetails]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user"""
 
@@ -1302,7 +1276,7 @@ class CopilotClient:
         org: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CopilotSeatDetails]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user"""
 
@@ -1334,11 +1308,9 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CopilotUsageMetricsDay]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CopilotUsageMetricsDay]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-a-team"""
-
-        from typing import List
 
         from ..models import BasicError, CopilotUsageMetricsDay
 
@@ -1358,7 +1330,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CopilotUsageMetricsDay],
+            response_model=list[CopilotUsageMetricsDay],
             error_models={
                 "500": BasicError,
                 "403": BasicError,
@@ -1376,11 +1348,9 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CopilotUsageMetricsDay]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CopilotUsageMetricsDay]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-metrics#get-copilot-metrics-for-a-team"""
-
-        from typing import List
 
         from ..models import BasicError, CopilotUsageMetricsDay
 
@@ -1400,7 +1370,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CopilotUsageMetricsDay],
+            response_model=list[CopilotUsageMetricsDay],
             error_models={
                 "500": BasicError,
                 "403": BasicError,
@@ -1418,11 +1388,9 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CopilotUsageMetrics]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CopilotUsageMetrics]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-a-team"""
-
-        from typing import List
 
         from ..models import BasicError, CopilotUsageMetrics
 
@@ -1442,7 +1410,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CopilotUsageMetrics],
+            response_model=list[CopilotUsageMetrics],
             error_models={
                 "500": BasicError,
                 "401": BasicError,
@@ -1460,11 +1428,9 @@ class CopilotClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CopilotUsageMetrics]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CopilotUsageMetrics]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/copilot/copilot-usage#get-a-summary-of-copilot-usage-for-a-team"""
-
-        from typing import List
 
         from ..models import BasicError, CopilotUsageMetrics
 
@@ -1484,7 +1450,7 @@ class CopilotClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CopilotUsageMetrics],
+            response_model=list[CopilotUsageMetrics],
             error_models={
                 "500": BasicError,
                 "401": BasicError,

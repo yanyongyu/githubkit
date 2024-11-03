@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0016 import AppPermissionsType
@@ -21,8 +20,8 @@ class ApplicationsClientIdTokenScopedPostBodyType(TypedDict):
     access_token: str
     target: NotRequired[str]
     target_id: NotRequired[int]
-    repositories: NotRequired[List[str]]
-    repository_ids: NotRequired[List[int]]
+    repositories: NotRequired[list[str]]
+    repository_ids: NotRequired[list[int]]
     permissions: NotRequired[AppPermissionsType]
 
 

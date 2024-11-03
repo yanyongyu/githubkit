@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -28,9 +28,9 @@ class BranchRestrictionPolicy(GitHubModel):
     users_url: str = Field()
     teams_url: str = Field()
     apps_url: str = Field()
-    users: List[BranchRestrictionPolicyPropUsersItems] = Field()
-    teams: List[BranchRestrictionPolicyPropTeamsItems] = Field()
-    apps: List[BranchRestrictionPolicyPropAppsItems] = Field()
+    users: list[BranchRestrictionPolicyPropUsersItems] = Field()
+    teams: list[BranchRestrictionPolicyPropTeamsItems] = Field()
+    apps: list[BranchRestrictionPolicyPropAppsItems] = Field()
 
 
 class BranchRestrictionPolicyPropUsersItems(GitHubModel):
@@ -92,7 +92,7 @@ class BranchRestrictionPolicyPropAppsItems(GitHubModel):
     permissions: Missing[BranchRestrictionPolicyPropAppsItemsPropPermissions] = Field(
         default=UNSET
     )
-    events: Missing[List[str]] = Field(default=UNSET)
+    events: Missing[list[str]] = Field(default=UNSET)
 
 
 class BranchRestrictionPolicyPropAppsItemsPropOwner(GitHubModel):

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -54,7 +54,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssueType(TypedDict):
     assignee: NotRequired[
         Union[WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneeType, None]
     ]
-    assignees: List[
+    assignees: list[
         Union[
             WebhookIssuesTransferredPropChangesPropNewIssuePropAssigneesItemsType, None
         ]
@@ -79,7 +79,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssueType(TypedDict):
     html_url: str
     id: int
     labels: NotRequired[
-        List[WebhookIssuesTransferredPropChangesPropNewIssuePropLabelsItemsType]
+        list[WebhookIssuesTransferredPropChangesPropNewIssuePropLabelsItemsType]
     ]
     labels_url: str
     locked: NotRequired[bool]
@@ -243,7 +243,7 @@ class WebhookIssuesTransferredPropChangesPropNewIssuePropPerformedViaGithubAppTy
 
     created_at: Union[datetime, None]
     description: Union[str, None]
-    events: NotRequired[List[str]]
+    events: NotRequired[list[str]]
     external_url: Union[str, None]
     html_url: str
     id: Union[int, None]
@@ -485,7 +485,7 @@ class WebhookIssuesTransferredPropChangesPropNewRepositoryType(TypedDict):
     svn_url: str
     tags_url: str
     teams_url: str
-    topics: List[str]
+    topics: list[str]
     trees_url: str
     updated_at: datetime
     url: str

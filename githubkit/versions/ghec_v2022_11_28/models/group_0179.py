@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -24,7 +24,7 @@ class GroupMapping(GitHubModel):
     External Groups to be mapped to a team for membership
     """
 
-    groups: Missing[List[GroupMappingPropGroupsItems]] = Field(
+    groups: Missing[list[GroupMappingPropGroupsItems]] = Field(
         default=UNSET, description="Array of groups to be mapped to this team"
     )
 

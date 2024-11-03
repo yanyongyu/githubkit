@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -31,18 +31,18 @@ class WebhookPackageUpdatedPropPackagePropPackageVersion(GitHubModel):
     created_at: str = Field()
     description: str = Field()
     docker_metadata: Missing[
-        List[WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems]
+        list[WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems]
     ] = Field(default=UNSET)
     draft: Missing[bool] = Field(default=UNSET)
     html_url: str = Field()
     id: int = Field()
     installation_command: str = Field()
     manifest: Missing[str] = Field(default=UNSET)
-    metadata: List[
+    metadata: list[
         WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems
     ] = Field()
     name: str = Field()
-    package_files: List[
+    package_files: list[
         WebhookPackageUpdatedPropPackagePropPackageVersionPropPackageFilesItems
     ] = Field()
     package_url: Missing[str] = Field(default=UNSET)
@@ -50,7 +50,7 @@ class WebhookPackageUpdatedPropPackagePropPackageVersion(GitHubModel):
     release: Missing[WebhookPackageUpdatedPropPackagePropPackageVersionPropRelease] = (
         Field(default=UNSET)
     )
-    rubygems_metadata: Missing[List[WebhookRubygemsMetadata]] = Field(default=UNSET)
+    rubygems_metadata: Missing[list[WebhookRubygemsMetadata]] = Field(default=UNSET)
     source_url: Missing[str] = Field(default=UNSET)
     summary: str = Field()
     tag_name: Missing[str] = Field(default=UNSET)
@@ -92,7 +92,7 @@ class WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems(
 ):
     """WebhookPackageUpdatedPropPackagePropPackageVersionPropDockerMetadataItems"""
 
-    tags: Missing[List[str]] = Field(default=UNSET)
+    tags: Missing[list[str]] = Field(default=UNSET)
 
 
 class WebhookPackageUpdatedPropPackagePropPackageVersionPropMetadataItems(

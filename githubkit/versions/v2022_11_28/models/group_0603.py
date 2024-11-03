@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -39,7 +39,7 @@ class WebhookPackagePublishedPropPackagePropPackageVersion(GitHubModel):
     created_at: Missing[str] = Field(default=UNSET)
     description: str = Field()
     docker_metadata: Missing[
-        List[
+        list[
             WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItems
         ]
     ] = Field(default=UNSET)
@@ -48,7 +48,7 @@ class WebhookPackagePublishedPropPackagePropPackageVersion(GitHubModel):
     id: int = Field()
     installation_command: str = Field()
     manifest: Missing[str] = Field(default=UNSET)
-    metadata: List[
+    metadata: list[
         WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItems
     ] = Field()
     name: str = Field()
@@ -57,13 +57,13 @@ class WebhookPackagePublishedPropPackagePropPackageVersion(GitHubModel):
     ] = Field(default=UNSET)
     nuget_metadata: Missing[
         Union[
-            List[
+            list[
                 WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItems
             ],
             None,
         ]
     ] = Field(default=UNSET)
-    package_files: List[
+    package_files: list[
         WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItems
     ] = Field()
     package_url: Missing[str] = Field(default=UNSET)
@@ -71,7 +71,7 @@ class WebhookPackagePublishedPropPackagePropPackageVersion(GitHubModel):
     release: Missing[
         WebhookPackagePublishedPropPackagePropPackageVersionPropRelease
     ] = Field(default=UNSET)
-    rubygems_metadata: Missing[List[WebhookRubygemsMetadata]] = Field(default=UNSET)
+    rubygems_metadata: Missing[list[WebhookRubygemsMetadata]] = Field(default=UNSET)
     source_url: Missing[str] = Field(default=UNSET)
     summary: str = Field()
     tag_name: Missing[str] = Field(default=UNSET)
@@ -164,7 +164,7 @@ class WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItem
 ):
     """WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItems"""
 
-    tags: Missing[List[str]] = Field(default=UNSET)
+    tags: Missing[list[str]] = Field(default=UNSET)
 
 
 class WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItems(
@@ -228,20 +228,20 @@ class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadata(GitHub
     npm_version: Missing[str] = Field(default=UNSET)
     has_shrinkwrap: Missing[bool] = Field(default=UNSET)
     maintainers: Missing[
-        List[
+        list[
             WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItems
         ]
     ] = Field(default=UNSET)
     contributors: Missing[
-        List[
+        list[
             WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItems
         ]
     ] = Field(default=UNSET)
     engines: Missing[
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEngines
     ] = Field(default=UNSET)
-    keywords: Missing[List[str]] = Field(default=UNSET)
-    files: Missing[List[str]] = Field(default=UNSET)
+    keywords: Missing[list[str]] = Field(default=UNSET)
+    files: Missing[list[str]] = Field(default=UNSET)
     bin_: Missing[
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBin
     ] = Field(default=UNSET, alias="bin")
@@ -254,8 +254,8 @@ class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadata(GitHub
             None,
         ]
     ] = Field(default=UNSET)
-    os: Missing[List[str]] = Field(default=UNSET)
-    cpu: Missing[List[str]] = Field(default=UNSET)
+    os: Missing[list[str]] = Field(default=UNSET)
+    cpu: Missing[list[str]] = Field(default=UNSET)
     readme: Missing[str] = Field(default=UNSET)
     installation_command: Missing[str] = Field(default=UNSET)
     release_id: Missing[int] = Field(default=UNSET)

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Optional, overload
+from typing import TYPE_CHECKING, Optional, overload
 
 from pydantic import BaseModel
 
@@ -19,7 +19,6 @@ from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
-    from typing import List
     from datetime import datetime
 
     from githubkit import GitHubCore
@@ -63,11 +62,9 @@ class DependencyGraphClient:
         basehead: str,
         name: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[DependencyGraphDiffItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[DependencyGraphDiffItems]]:
         """See also: https://docs.github.com/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits"""
-
-        from typing import List
 
         from ..models import BasicError, DependencyGraphDiffItems
 
@@ -84,7 +81,7 @@ class DependencyGraphClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[DependencyGraphDiffItems],
+            response_model=list[DependencyGraphDiffItems],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -98,11 +95,9 @@ class DependencyGraphClient:
         basehead: str,
         name: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[DependencyGraphDiffItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[DependencyGraphDiffItems]]:
         """See also: https://docs.github.com/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits"""
-
-        from typing import List
 
         from ..models import BasicError, DependencyGraphDiffItems
 
@@ -119,7 +114,7 @@ class DependencyGraphClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[DependencyGraphDiffItems],
+            response_model=list[DependencyGraphDiffItems],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -131,7 +126,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[DependencyGraphSpdxSbom]:
         """See also: https://docs.github.com/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository"""
 
@@ -157,7 +152,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[DependencyGraphSpdxSbom]:
         """See also: https://docs.github.com/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository"""
 
@@ -184,7 +179,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: SnapshotType,
     ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]: ...
 
@@ -195,7 +190,7 @@ class DependencyGraphClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         version: int,
         job: SnapshotPropJobType,
         sha: str,
@@ -211,7 +206,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[SnapshotType] = UNSET,
         **kwargs,
     ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]:
@@ -249,7 +244,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: SnapshotType,
     ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]: ...
 
@@ -260,7 +255,7 @@ class DependencyGraphClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         version: int,
         job: SnapshotPropJobType,
         sha: str,
@@ -276,7 +271,7 @@ class DependencyGraphClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[SnapshotType] = UNSET,
         **kwargs,
     ) -> Response[ReposOwnerRepoDependencyGraphSnapshotsPostResponse201]:

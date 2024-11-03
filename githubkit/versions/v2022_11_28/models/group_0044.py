@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 
 from pydantic import Field
 
@@ -36,7 +36,7 @@ class EventPropPayload(GitHubModel):
         title="Issue Comment",
         description="Comments provide a way for people to collaborate on an issue.",
     )
-    pages: Missing[List[EventPropPayloadPropPagesItems]] = Field(default=UNSET)
+    pages: Missing[list[EventPropPayloadPropPagesItems]] = Field(default=UNSET)
 
 
 class EventPropPayloadPropPagesItems(GitHubModel):

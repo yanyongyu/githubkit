@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -34,7 +34,7 @@ class EnterprisesEnterpriseActionsRunnerGroupsRunnerGroupIdPatchBody(GitHubModel
         default=UNSET,
         description="If `true`, the runner group will be restricted to running only the workflows specified in the `selected_workflows` array.",
     )
-    selected_workflows: Missing[List[str]] = Field(
+    selected_workflows: Missing[list[str]] = Field(
         default=UNSET,
         description="List of workflows the runner group should be allowed to run. This setting will be ignored unless `restricted_to_workflows` is set to `true`.",
     )

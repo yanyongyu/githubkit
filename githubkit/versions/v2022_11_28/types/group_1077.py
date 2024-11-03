@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -18,7 +17,7 @@ class ReposOwnerRepoTransferPostBodyType(TypedDict):
 
     new_owner: str
     new_name: NotRequired[str]
-    team_ids: NotRequired[List[int]]
+    team_ids: NotRequired[list[int]]
 
 
 __all__ = ("ReposOwnerRepoTransferPostBodyType",)

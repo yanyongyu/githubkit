@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -22,7 +22,7 @@ class CodeScanningDefaultSetupUpdateType(TypedDict):
     state: NotRequired[Literal["configured", "not-configured"]]
     query_suite: NotRequired[Literal["default", "extended"]]
     languages: NotRequired[
-        List[
+        list[
             Literal[
                 "c-cpp",
                 "csharp",

@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -24,7 +23,7 @@ class WebhookRubygemsMetadataType(TypedDict):
     platform: NotRequired[str]
     metadata: NotRequired[WebhookRubygemsMetadataPropMetadataType]
     repo: NotRequired[str]
-    dependencies: NotRequired[List[WebhookRubygemsMetadataPropDependenciesItemsType]]
+    dependencies: NotRequired[list[WebhookRubygemsMetadataPropDependenciesItemsType]]
     commit_oid: NotRequired[str]
 
 

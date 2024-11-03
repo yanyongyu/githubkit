@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -26,7 +26,7 @@ class WebhookIssueCommentEditedPropIssueAllof1(GitHubModel):
         title="User"
     )
     assignees: Missing[
-        List[Union[WebhookIssueCommentEditedPropIssueAllof1PropAssigneesItems, None]]
+        list[Union[WebhookIssueCommentEditedPropIssueAllof1PropAssigneesItems, None]]
     ] = Field(default=UNSET)
     author_association: Missing[str] = Field(default=UNSET)
     body: Missing[Union[str, None]] = Field(default=UNSET)
@@ -37,7 +37,7 @@ class WebhookIssueCommentEditedPropIssueAllof1(GitHubModel):
     events_url: Missing[str] = Field(default=UNSET)
     html_url: Missing[str] = Field(default=UNSET)
     id: Missing[int] = Field(default=UNSET)
-    labels: List[WebhookIssueCommentEditedPropIssueAllof1PropLabelsItems] = Field()
+    labels: list[WebhookIssueCommentEditedPropIssueAllof1PropLabelsItems] = Field()
     labels_url: Missing[str] = Field(default=UNSET)
     locked: bool = Field()
     milestone: Missing[

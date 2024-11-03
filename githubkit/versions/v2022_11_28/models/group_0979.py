@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -32,7 +32,7 @@ class ReposOwnerRepoDeploymentsPostBody(GitHubModel):
         default=UNSET,
         description="Attempts to automatically merge the default branch into the requested ref, if it's behind the default branch.",
     )
-    required_contexts: Missing[List[str]] = Field(
+    required_contexts: Missing[list[str]] = Field(
         default=UNSET,
         description="The [status](https://docs.github.com/rest/commits/statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.",
     )

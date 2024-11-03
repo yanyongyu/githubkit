@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -66,7 +66,7 @@ class CodespaceType(TypedDict):
     stop_url: str
     publish_url: NotRequired[Union[str, None]]
     pulls_url: Union[str, None]
-    recent_folders: List[str]
+    recent_folders: list[str]
     runtime_constraints: NotRequired[CodespacePropRuntimeConstraintsType]
     pending_operation: NotRequired[Union[bool, None]]
     pending_operation_disabled_reason: NotRequired[Union[str, None]]
@@ -92,7 +92,7 @@ class CodespacePropGitStatusType(TypedDict):
 class CodespacePropRuntimeConstraintsType(TypedDict):
     """CodespacePropRuntimeConstraints"""
 
-    allowed_port_privacy_settings: NotRequired[Union[List[str], None]]
+    allowed_port_privacy_settings: NotRequired[Union[list[str], None]]
 
 
 __all__ = (

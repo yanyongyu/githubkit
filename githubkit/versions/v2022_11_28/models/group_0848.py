@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -25,7 +25,7 @@ class OrgsOrgHooksHookIdPatchBody(GitHubModel):
         default=UNSET,
         description="Key/value pairs to provide settings for this webhook.",
     )
-    events: Missing[List[str]] = Field(
+    events: Missing[list[str]] = Field(
         default=UNSET,
         description="Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for.",
     )

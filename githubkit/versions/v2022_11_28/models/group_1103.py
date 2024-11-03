@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
@@ -28,7 +26,7 @@ class UserEmailsDeleteBodyOneof0(GitHubModel):
         {'emails': ['octocat@github.com', 'mona@github.com']}
     """
 
-    emails: List[str] = Field(
+    emails: list[str] = Field(
         min_length=1 if PYDANTIC_V2 else None,
         description="Email addresses associated with the GitHub user account.",
     )

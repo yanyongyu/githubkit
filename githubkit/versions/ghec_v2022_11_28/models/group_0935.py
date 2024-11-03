@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -25,11 +25,11 @@ class OrgsOrgTeamsPostBody(GitHubModel):
     description: Missing[str] = Field(
         default=UNSET, description="The description of the team."
     )
-    maintainers: Missing[List[str]] = Field(
+    maintainers: Missing[list[str]] = Field(
         default=UNSET,
         description="List GitHub IDs for organization members who will become team maintainers.",
     )
-    repo_names: Missing[List[str]] = Field(
+    repo_names: Missing[list[str]] = Field(
         default=UNSET,
         description='The full name (e.g., "organization-name/repository-name") of repositories to add the team to.',
     )

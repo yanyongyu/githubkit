@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict
 
 
@@ -24,7 +24,7 @@ class DependencyGraphDiffItemsType(TypedDict):
     package_url: Union[str, None]
     license_: Union[str, None]
     source_repository_url: Union[str, None]
-    vulnerabilities: List[DependencyGraphDiffItemsPropVulnerabilitiesItemsType]
+    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItemsType]
     scope: Literal["unknown", "runtime", "development"]
 
 

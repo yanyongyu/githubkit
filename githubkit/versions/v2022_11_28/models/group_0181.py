@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from datetime import datetime
-from typing import List, Literal
 
 from pydantic import Field
 
@@ -27,7 +27,7 @@ class EnvironmentApprovals(GitHubModel):
     An entry in the reviews log for environment deployments
     """
 
-    environments: List[EnvironmentApprovalsPropEnvironmentsItems] = Field(
+    environments: list[EnvironmentApprovalsPropEnvironmentsItems] = Field(
         description="The list of environments that were approved or rejected"
     )
     state: Literal["approved", "rejected", "pending"] = Field(

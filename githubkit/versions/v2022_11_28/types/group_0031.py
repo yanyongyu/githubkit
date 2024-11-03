@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import date
-from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -40,7 +40,7 @@ class CopilotDotcomChatType(TypedDict):
     """
 
     total_engaged_users: NotRequired[int]
-    models: NotRequired[List[CopilotDotcomChatPropModelsItemsType]]
+    models: NotRequired[list[CopilotDotcomChatPropModelsItemsType]]
 
 
 class CopilotDotcomChatPropModelsItemsType(TypedDict):
@@ -60,7 +60,7 @@ class CopilotIdeChatType(TypedDict):
     """
 
     total_engaged_users: NotRequired[int]
-    editors: NotRequired[List[CopilotIdeChatPropEditorsItemsType]]
+    editors: NotRequired[list[CopilotIdeChatPropEditorsItemsType]]
 
 
 class CopilotIdeChatPropEditorsItemsType(TypedDict):
@@ -71,7 +71,7 @@ class CopilotIdeChatPropEditorsItemsType(TypedDict):
 
     name: NotRequired[str]
     total_engaged_users: NotRequired[int]
-    models: NotRequired[List[CopilotIdeChatPropEditorsItemsPropModelsItemsType]]
+    models: NotRequired[list[CopilotIdeChatPropEditorsItemsPropModelsItemsType]]
 
 
 class CopilotIdeChatPropEditorsItemsPropModelsItemsType(TypedDict):
@@ -93,7 +93,7 @@ class CopilotDotcomPullRequestsType(TypedDict):
     """
 
     total_engaged_users: NotRequired[int]
-    repositories: NotRequired[List[CopilotDotcomPullRequestsPropRepositoriesItemsType]]
+    repositories: NotRequired[list[CopilotDotcomPullRequestsPropRepositoriesItemsType]]
 
 
 class CopilotDotcomPullRequestsPropRepositoriesItemsType(TypedDict):
@@ -102,7 +102,7 @@ class CopilotDotcomPullRequestsPropRepositoriesItemsType(TypedDict):
     name: NotRequired[str]
     total_engaged_users: NotRequired[int]
     models: NotRequired[
-        List[CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType]
+        list[CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItemsType]
     ]
 
 
@@ -123,8 +123,8 @@ class CopilotIdeCodeCompletionsType(TypedDict):
     """
 
     total_engaged_users: NotRequired[int]
-    languages: NotRequired[List[CopilotIdeCodeCompletionsPropLanguagesItemsType]]
-    editors: NotRequired[List[CopilotIdeCodeCompletionsPropEditorsItemsType]]
+    languages: NotRequired[list[CopilotIdeCodeCompletionsPropLanguagesItemsType]]
+    editors: NotRequired[list[CopilotIdeCodeCompletionsPropEditorsItemsType]]
 
 
 class CopilotIdeCodeCompletionsPropLanguagesItemsType(TypedDict):
@@ -147,7 +147,7 @@ class CopilotIdeCodeCompletionsPropEditorsItemsType(TypedDict):
     name: NotRequired[str]
     total_engaged_users: NotRequired[int]
     models: NotRequired[
-        List[CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType]
+        list[CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType]
     ]
 
 
@@ -159,7 +159,7 @@ class CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsType(TypedDict):
     custom_model_training_date: NotRequired[Union[str, None]]
     total_engaged_users: NotRequired[int]
     languages: NotRequired[
-        List[
+        list[
             CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItemsType
         ]
     ]

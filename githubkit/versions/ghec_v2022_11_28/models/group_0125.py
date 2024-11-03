@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from datetime import datetime
-from typing import List, Literal
 
 from pydantic import Field
 
@@ -57,13 +57,13 @@ class PackageVersionPropMetadata(GitHubModel):
 class PackageVersionPropMetadataPropContainer(GitHubModel):
     """Container Metadata"""
 
-    tags: List[str] = Field()
+    tags: list[str] = Field()
 
 
 class PackageVersionPropMetadataPropDocker(GitHubModel):
     """Docker Metadata"""
 
-    tag: Missing[List[str]] = Field(default=UNSET)
+    tag: Missing[list[str]] = Field(default=UNSET)
 
 
 model_rebuild(PackageVersion)

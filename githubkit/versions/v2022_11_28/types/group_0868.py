@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0122 import RepositoryRuleUpdateType
@@ -49,7 +49,7 @@ class OrgsOrgRulesetsPostBodyType(TypedDict):
     name: str
     target: NotRequired[Literal["branch", "tag", "push"]]
     enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
     conditions: NotRequired[
         Union[
             OrgRulesetConditionsOneof0Type,
@@ -58,7 +58,7 @@ class OrgsOrgRulesetsPostBodyType(TypedDict):
         ]
     ]
     rules: NotRequired[
-        List[
+        list[
             Union[
                 RepositoryRuleCreationType,
                 RepositoryRuleUpdateType,

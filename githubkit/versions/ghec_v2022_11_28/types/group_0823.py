@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 from .group_0031 import OrganizationSimpleType
@@ -19,7 +18,7 @@ class EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type(Typ
     """EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200"""
 
     total_count: float
-    organizations: List[OrganizationSimpleType]
+    organizations: list[OrganizationSimpleType]
 
 
 __all__ = ("EnterprisesEnterpriseActionsPermissionsOrganizationsGetResponse200Type",)

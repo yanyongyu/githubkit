@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -21,7 +19,7 @@ class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBod
 ):
     """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourcePostBody"""
 
-    users: List[str] = Field(
+    users: list[str] = Field(
         description="The usernames of the users to add to the cost center."
     )
 

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -18,7 +18,7 @@ class OrgsOrgHooksPostBodyType(TypedDict):
 
     name: str
     config: OrgsOrgHooksPostBodyPropConfigType
-    events: NotRequired[List[str]]
+    events: NotRequired[list[str]]
     active: NotRequired[bool]
 
 

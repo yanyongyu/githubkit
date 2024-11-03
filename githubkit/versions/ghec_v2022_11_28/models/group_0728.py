@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -29,7 +29,7 @@ class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion(GitHubM
     created_at: str = Field()
     description: str = Field()
     docker_metadata: Missing[
-        List[
+        list[
             Union[
                 WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDockerMetadataItems,
                 None,
@@ -41,11 +41,11 @@ class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion(GitHubM
     id: int = Field()
     installation_command: str = Field()
     manifest: Missing[str] = Field(default=UNSET)
-    metadata: List[
+    metadata: list[
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItems
     ] = Field()
     name: str = Field()
-    package_files: List[
+    package_files: list[
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropPackageFilesItems
     ] = Field()
     package_url: str = Field()
@@ -53,7 +53,7 @@ class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersion(GitHubM
     release: Missing[
         WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropRelease
     ] = Field(default=UNSET)
-    rubygems_metadata: Missing[List[WebhookRubygemsMetadata]] = Field(default=UNSET)
+    rubygems_metadata: Missing[list[WebhookRubygemsMetadata]] = Field(default=UNSET)
     summary: str = Field()
     tag_name: Missing[str] = Field(default=UNSET)
     target_commitish: str = Field()
@@ -95,7 +95,7 @@ class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropDock
     dataItems
     """
 
-    tags: Missing[List[str]] = Field(default=UNSET)
+    tags: Missing[list[str]] = Field(default=UNSET)
 
 
 class WebhookRegistryPackageUpdatedPropRegistryPackagePropPackageVersionPropMetadataItems(

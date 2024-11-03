@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -26,7 +24,7 @@ class CloneTraffic(GitHubModel):
 
     count: int = Field()
     uniques: int = Field()
-    clones: List[Traffic] = Field()
+    clones: list[Traffic] = Field()
 
 
 model_rebuild(CloneTraffic)

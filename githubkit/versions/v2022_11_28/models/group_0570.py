@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -67,7 +67,7 @@ class WebhookIssuesUnlockedPropIssue(GitHubModel):
     assignee: Missing[Union[WebhookIssuesUnlockedPropIssuePropAssignee, None]] = Field(
         default=UNSET, title="User"
     )
-    assignees: List[Union[WebhookIssuesUnlockedPropIssuePropAssigneesItems, None]] = (
+    assignees: list[Union[WebhookIssuesUnlockedPropIssuePropAssigneesItems, None]] = (
         Field()
     )
     author_association: Literal[
@@ -93,7 +93,7 @@ class WebhookIssuesUnlockedPropIssue(GitHubModel):
     html_url: str = Field()
     id: int = Field()
     labels: Missing[
-        List[Union[WebhookIssuesUnlockedPropIssuePropLabelsItems, None]]
+        list[Union[WebhookIssuesUnlockedPropIssuePropLabelsItems, None]]
     ] = Field(default=UNSET)
     labels_url: str = Field()
     locked: Literal[False] = Field()
@@ -258,7 +258,7 @@ class WebhookIssuesUnlockedPropIssuePropPerformedViaGithubApp(GitHubModel):
 
     created_at: Union[datetime, None] = Field()
     description: Union[str, None] = Field()
-    events: Missing[List[str]] = Field(
+    events: Missing[list[str]] = Field(
         default=UNSET, description="The list of events for the GitHub app"
     )
     external_url: Union[str, None] = Field()

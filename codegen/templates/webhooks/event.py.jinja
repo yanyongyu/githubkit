@@ -2,8 +2,8 @@
 
 """{{ header() }}"""
 
-from typing import Dict, Type, Union
-from typing_extensions import TypeAlias, Annotated
+from typing import Union, Annotated
+from typing_extensions import TypeAlias
 
 from pydantic import Field
 
@@ -40,7 +40,7 @@ Event: TypeAlias = {{ (webhooks | first).event_schema.get_type_string() }}
 {{ pascal_case(name) }}Event: TypeAlias = Event
 
 {% if webhooks | length > 1 %}
-action_types: Dict[str, Type[GitHubModel]] = {
+action_types: dict[str, type[GitHubModel]] = {
     {% for webhook in webhooks %}
     "{{ webhook.action }}": {{ webhook.event_schema.get_type_string() }},
     {% endfor %}

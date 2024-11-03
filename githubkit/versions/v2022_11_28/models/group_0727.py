@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -29,22 +29,22 @@ class WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisory(GitHubModel):
 
     cvss: WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCvss = Field()
     cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
-    cwes: List[WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems] = (
+    cwes: list[WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropCwesItems] = (
         Field()
     )
     description: str = Field()
     ghsa_id: str = Field()
-    identifiers: List[
+    identifiers: list[
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropIdentifiersItems
     ] = Field()
     published_at: str = Field()
-    references: List[
+    references: list[
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropReferencesItems
     ] = Field()
     severity: str = Field()
     summary: str = Field()
     updated_at: str = Field()
-    vulnerabilities: List[
+    vulnerabilities: list[
         WebhookSecurityAdvisoryWithdrawnPropSecurityAdvisoryPropVulnerabilitiesItems
     ] = Field()
     withdrawn_at: str = Field()

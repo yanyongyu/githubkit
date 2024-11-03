@@ -9,15 +9,15 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
 class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType(TypedDict):
     """ScimV2OrganizationsOrgUsersScimUserIdPatchBody"""
 
-    schemas: NotRequired[List[str]]
-    operations: List[
+    schemas: NotRequired[list[str]]
+    operations: list[
         ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
     ]
 
@@ -30,7 +30,7 @@ class ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType(Type
     value: NotRequired[
         Union[
             ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof0Type,
-            List[
+            list[
                 ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsPropValueOneof1ItemsType
             ],
             str,

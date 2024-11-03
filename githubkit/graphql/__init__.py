@@ -1,6 +1,6 @@
 import re
 from weakref import ref
-from typing import TYPE_CHECKING, Any, Dict, Optional, cast
+from typing import TYPE_CHECKING, Any, Optional, cast
 
 from githubkit.exception import GraphQLFailed, PrimaryRateLimitExceeded
 
@@ -29,9 +29,9 @@ class GraphQLNamespace:
 
     @staticmethod
     def build_graphql_request(
-        query: str, variables: Optional[Dict[str, Any]] = None
-    ) -> Dict[str, Any]:
-        json: Dict[str, Any] = {"query": query}
+        query: str, variables: Optional[dict[str, Any]] = None
+    ) -> dict[str, Any]:
+        json: dict[str, Any] = {"query": query}
         if variables:
             json["variables"] = variables
         return json
@@ -50,7 +50,7 @@ class GraphQLNamespace:
 
     def parse_graphql_response(
         self, response: "Response[GraphQLResponse]"
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         response_data = response.parsed_data
         if response_data.errors:
             # check rate limit exceeded
@@ -62,10 +62,10 @@ class GraphQLNamespace:
                     response, self._github._extract_retry_after(response)
                 )
             raise GraphQLFailed(response_data)
-        return cast(Dict[str, Any], response_data.data)
+        return cast(dict[str, Any], response_data.data)
 
     def _request(
-        self, query: str, variables: Optional[Dict[str, Any]] = None
+        self, query: str, variables: Optional[dict[str, Any]] = None
     ) -> "Response[GraphQLResponse]":
         json = self.build_graphql_request(query, variables)
 
@@ -77,12 +77,12 @@ class GraphQLNamespace:
         )
 
     def request(
-        self, query: str, variables: Optional[Dict[str, Any]] = None
-    ) -> Dict[str, Any]:
+        self, query: str, variables: Optional[dict[str, Any]] = None
+    ) -> dict[str, Any]:
         return self.parse_graphql_response(self._request(query, variables))
 
     async def _arequest(
-        self, query: str, variables: Optional[Dict[str, Any]] = None
+        self, query: str, variables: Optional[dict[str, Any]] = None
     ) -> "Response[GraphQLResponse]":
         json = self.build_graphql_request(query, variables)
 
@@ -94,17 +94,17 @@ class GraphQLNamespace:
         )
 
     async def arequest(
-        self, query: str, variables: Optional[Dict[str, Any]] = None
-    ) -> Dict[str, Any]:
+        self, query: str, variables: Optional[dict[str, Any]] = None
+    ) -> dict[str, Any]:
         return self.parse_graphql_response(await self._arequest(query, variables))
 
     # backport for calling graphql directly
     def __call__(
-        self, query: str, variables: Optional[Dict[str, Any]] = None
-    ) -> Dict[str, Any]:
+        self, query: str, variables: Optional[dict[str, Any]] = None
+    ) -> dict[str, Any]:
         return self.request(query, variables)
 
     def paginate(
-        self, query: str, variables: Optional[Dict[str, Any]] = None
+        self, query: str, variables: Optional[dict[str, Any]] = None
     ) -> Paginator:
         return Paginator(self, query, variables)

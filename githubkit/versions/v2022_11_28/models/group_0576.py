@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -90,7 +90,7 @@ class WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan(
 ):
     """WebhookMarketplacePurchaseChangedPropPreviousMarketplacePurchasePropPlan"""
 
-    bullets: List[str] = Field()
+    bullets: list[str] = Field()
     description: str = Field()
     has_free_trial: bool = Field()
     id: int = Field()

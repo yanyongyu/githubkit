@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Optional, overload
+from typing import TYPE_CHECKING, Optional, overload
 
 from pydantic import BaseModel
 
@@ -19,8 +19,6 @@ from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
-    from typing import List
-
     from githubkit import GitHubCore
     from githubkit.response import Response
 
@@ -47,7 +45,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OidcCustomSub]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
 
@@ -68,7 +66,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[OidcCustomSub]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
 
@@ -90,7 +88,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OidcCustomSubType,
     ) -> Response[EmptyObject]: ...
 
@@ -100,15 +98,15 @@ class OidcClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        include_claim_keys: List[str],
+        headers: Optional[dict[str, str]] = None,
+        include_claim_keys: list[str],
     ) -> Response[EmptyObject]: ...
 
     def update_oidc_custom_sub_template_for_org(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OidcCustomSubType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
@@ -146,7 +144,7 @@ class OidcClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OidcCustomSubType,
     ) -> Response[EmptyObject]: ...
 
@@ -156,15 +154,15 @@ class OidcClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        include_claim_keys: List[str],
+        headers: Optional[dict[str, str]] = None,
+        include_claim_keys: list[str],
     ) -> Response[EmptyObject]: ...
 
     async def async_update_oidc_custom_sub_template_for_org(
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OidcCustomSubType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:

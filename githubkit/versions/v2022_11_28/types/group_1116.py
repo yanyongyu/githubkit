@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -17,7 +17,7 @@ class UsersUsernameAttestationsSubjectDigestGetResponse200Type(TypedDict):
     """UsersUsernameAttestationsSubjectDigestGetResponse200"""
 
     attestations: NotRequired[
-        List[
+        list[
             UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItemsType
         ]
     ]
@@ -49,7 +49,7 @@ class SigstoreBundle0PropDsseEnvelopeType(TypedDict):
     payload: NotRequired[str]
     payload_type: NotRequired[str]
     signatures: NotRequired[
-        List[SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType]
+        list[SigstoreBundle0PropDsseEnvelopePropSignaturesItemsType]
     ]
 
 
@@ -67,7 +67,7 @@ class SigstoreBundle0PropVerificationMaterialType(TypedDict):
         SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType
     ]
     tlog_entries: NotRequired[
-        List[SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType]
+        list[SigstoreBundle0PropVerificationMaterialPropTlogEntriesItemsType]
     ]
     timestamp_verification_data: NotRequired[Union[str, None]]
 
@@ -76,7 +76,7 @@ class SigstoreBundle0PropVerificationMaterialPropX509CertificateChainType(TypedD
     """SigstoreBundle0PropVerificationMaterialPropX509CertificateChain"""
 
     certificates: NotRequired[
-        List[
+        list[
             SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItemsType
         ]
     ]

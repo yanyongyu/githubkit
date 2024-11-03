@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
-from typing_extensions import Annotated
+from typing import Union, Literal, Annotated
 
 from pydantic import Field
 
@@ -22,7 +21,7 @@ from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 class OrgsOrgPersonalAccessTokenRequestsPostBody(GitHubModel):
     """OrgsOrgPersonalAccessTokenRequestsPostBody"""
 
-    pat_request_ids: Missing[List[int]] = Field(
+    pat_request_ids: Missing[list[int]] = Field(
         max_length=100 if PYDANTIC_V2 else None,
         min_length=1 if PYDANTIC_V2 else None,
         default=UNSET,

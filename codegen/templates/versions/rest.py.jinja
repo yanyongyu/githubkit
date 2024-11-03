@@ -4,7 +4,7 @@
 
 import importlib
 from weakref import WeakKeyDictionary, ref
-from typing import TYPE_CHECKING, Any, Dict, Literal, overload
+from typing import TYPE_CHECKING, Any, Literal, overload
 
 from . import VERSIONS, LATEST_VERSION, VERSION_TYPE
 
@@ -23,7 +23,7 @@ else:
     _VersionProxy = object
 
 class RestVersionSwitcher(_VersionProxy):
-    _cached_namespaces: "WeakKeyDictionary[GitHubCore, Dict[VERSION_TYPE, Any]]" = WeakKeyDictionary()
+    _cached_namespaces: "WeakKeyDictionary[GitHubCore, dict[VERSION_TYPE, Any]]" = WeakKeyDictionary()
 
     if not TYPE_CHECKING:
         def __getattr__(self, name: str) -> Any:

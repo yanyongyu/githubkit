@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -51,12 +51,12 @@ class WebhookDeploymentReviewApproved(GitHubModel):
         title="Repository",
         description="The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property\nwhen the event occurs from activity in a repository.",
     )
-    reviewers: Missing[List[WebhooksReviewersItems]] = Field(default=UNSET)
+    reviewers: Missing[list[WebhooksReviewersItems]] = Field(default=UNSET)
     sender: SimpleUser = Field(title="Simple User", description="A GitHub user.")
     since: str = Field()
     workflow_job_run: Missing[WebhooksWorkflowJobRun] = Field(default=UNSET)
     workflow_job_runs: Missing[
-        List[WebhookDeploymentReviewApprovedPropWorkflowJobRunsItems]
+        list[WebhookDeploymentReviewApprovedPropWorkflowJobRunsItems]
     ] = Field(default=UNSET)
     workflow_run: Union[WebhookDeploymentReviewApprovedPropWorkflowRun, None] = Field(
         title="Deployment Workflow Run"
@@ -118,12 +118,12 @@ class WebhookDeploymentReviewApprovedPropWorkflowRun(GitHubModel):
     node_id: str = Field()
     path: str = Field()
     previous_attempt_url: Missing[Union[str, None]] = Field(default=UNSET)
-    pull_requests: List[
+    pull_requests: list[
         WebhookDeploymentReviewApprovedPropWorkflowRunPropPullRequestsItems
     ] = Field()
     referenced_workflows: Missing[
         Union[
-            List[
+            list[
                 WebhookDeploymentReviewApprovedPropWorkflowRunPropReferencedWorkflowsItems
             ],
             None,

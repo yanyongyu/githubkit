@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -42,9 +41,9 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyP
     Omit this parameter for personal repositories.
     """
 
-    users: NotRequired[List[str]]
-    teams: NotRequired[List[str]]
-    apps: NotRequired[List[str]]
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
 
 
 class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType(
@@ -56,9 +55,9 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyP
     Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    users: NotRequired[List[str]]
-    teams: NotRequired[List[str]]
-    apps: NotRequired[List[str]]
+    users: NotRequired[list[str]]
+    teams: NotRequired[list[str]]
+    apps: NotRequired[list[str]]
 
 
 __all__ = (

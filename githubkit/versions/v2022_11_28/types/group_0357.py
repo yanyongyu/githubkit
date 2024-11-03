@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 from .group_0356 import TrafficType
@@ -23,7 +22,7 @@ class CloneTrafficType(TypedDict):
 
     count: int
     uniques: int
-    clones: List[TrafficType]
+    clones: list[TrafficType]
 
 
 __all__ = ("CloneTrafficType",)

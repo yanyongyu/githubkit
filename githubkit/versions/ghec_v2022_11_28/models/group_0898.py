@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -27,7 +25,7 @@ class OrgsOrgCopilotBillingSeatsGetResponse200(GitHubModel):
         default=UNSET,
         description="Total number of Copilot seats for the organization currently being billed.",
     )
-    seats: Missing[List[CopilotSeatDetails]] = Field(default=UNSET)
+    seats: Missing[list[CopilotSeatDetails]] = Field(default=UNSET)
 
 
 model_rebuild(OrgsOrgCopilotBillingSeatsGetResponse200)

@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
@@ -18,7 +17,7 @@ class EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteB
 ):
     """EnterprisesEnterpriseSettingsBillingCostCentersCostCenterIdResourceDeleteBody"""
 
-    users: List[str]
+    users: list[str]
 
 
 __all__ = (

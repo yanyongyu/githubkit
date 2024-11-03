@@ -1,6 +1,6 @@
 import inspect
 from enum import Enum
-from typing import Any, Dict, Type, Generic, Literal, TypeVar, final
+from typing import Any, Generic, Literal, TypeVar, final
 
 from pydantic import BaseModel
 
@@ -30,7 +30,7 @@ class Unset(Enum):
     def __copy__(self):
         return self._UNSET
 
-    def __deepcopy__(self, memo: Dict[int, Any]):
+    def __deepcopy__(self, memo: dict[int, Any]):
         return self._UNSET
 
     @classmethod
@@ -71,7 +71,7 @@ def is_async(obj: Any) -> bool:
 class TaggedUnion(Generic[T]):
     __slots__ = ("type_", "discriminator", "tag")
 
-    def __init__(self, type_: Type[T], discriminator: str, tag: str) -> None:
+    def __init__(self, type_: type[T], discriminator: str, tag: str) -> None:
         self.type_ = type_
         self.discriminator = discriminator
         self.tag = tag

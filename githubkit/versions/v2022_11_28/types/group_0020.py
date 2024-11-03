@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0019 import RepositoryType
@@ -26,10 +26,10 @@ class InstallationTokenType(TypedDict):
     expires_at: str
     permissions: NotRequired[AppPermissionsType]
     repository_selection: NotRequired[Literal["all", "selected"]]
-    repositories: NotRequired[List[RepositoryType]]
+    repositories: NotRequired[list[RepositoryType]]
     single_file: NotRequired[str]
     has_multiple_single_files: NotRequired[bool]
-    single_file_paths: NotRequired[List[str]]
+    single_file_paths: NotRequired[list[str]]
 
 
 __all__ = ("InstallationTokenType",)

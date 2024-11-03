@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -28,7 +28,7 @@ class TimelineCommittedEventType(TypedDict):
     committer: TimelineCommittedEventPropCommitterType
     message: str
     tree: TimelineCommittedEventPropTreeType
-    parents: List[TimelineCommittedEventPropParentsItemsType]
+    parents: list[TimelineCommittedEventPropParentsItemsType]
     verification: TimelineCommittedEventPropVerificationType
     html_url: str
 

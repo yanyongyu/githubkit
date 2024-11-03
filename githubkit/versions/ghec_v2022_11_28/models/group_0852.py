@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -24,7 +22,7 @@ class InstallationRepositoriesGetResponse200(GitHubModel):
     """InstallationRepositoriesGetResponse200"""
 
     total_count: int = Field()
-    repositories: List[Repository] = Field()
+    repositories: list[Repository] = Field()
     repository_selection: Missing[str] = Field(default=UNSET)
 
 

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -27,7 +25,7 @@ class ReposOwnerRepoTransferPostBody(GitHubModel):
     new_name: Missing[str] = Field(
         default=UNSET, description="The new name to be given to the repository."
     )
-    team_ids: Missing[List[int]] = Field(
+    team_ids: Missing[list[int]] = Field(
         default=UNSET,
         description="ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.",
     )

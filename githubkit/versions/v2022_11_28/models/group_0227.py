@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -24,7 +24,7 @@ class CodeownersErrors(GitHubModel):
     A list of errors found in a repo's CODEOWNERS file
     """
 
-    errors: List[CodeownersErrorsPropErrorsItems] = Field()
+    errors: list[CodeownersErrorsPropErrorsItems] = Field()
 
 
 class CodeownersErrorsPropErrorsItems(GitHubModel):

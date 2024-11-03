@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0398 import SearchResultTextMatchesItemsType
@@ -29,7 +29,7 @@ class LabelSearchResultItemType(TypedDict):
     default: bool
     description: Union[str, None]
     score: float
-    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
 class SearchLabelsGetResponse200Type(TypedDict):
@@ -37,7 +37,7 @@ class SearchLabelsGetResponse200Type(TypedDict):
 
     total_count: int
     incomplete_results: bool
-    items: List[LabelSearchResultItemType]
+    items: list[LabelSearchResultItemType]
 
 
 __all__ = (

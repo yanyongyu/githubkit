@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from datetime import datetime
-from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -18,7 +18,7 @@ class OrgsOrgActionsSecretsGetResponse200Type(TypedDict):
     """OrgsOrgActionsSecretsGetResponse200"""
 
     total_count: int
-    secrets: List[OrganizationActionsSecretType]
+    secrets: list[OrganizationActionsSecretType]
 
 
 class OrganizationActionsSecretType(TypedDict):

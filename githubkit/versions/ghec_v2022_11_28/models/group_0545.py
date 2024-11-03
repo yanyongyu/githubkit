@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -94,7 +94,7 @@ class WebhookForkPropForkeeAllof1(GitHubModel):
     svn_url: Missing[str] = Field(default=UNSET)
     tags_url: Missing[str] = Field(default=UNSET)
     teams_url: Missing[str] = Field(default=UNSET)
-    topics: Missing[List[Union[str, None]]] = Field(default=UNSET)
+    topics: Missing[list[Union[str, None]]] = Field(default=UNSET)
     trees_url: Missing[str] = Field(default=UNSET)
     updated_at: Missing[str] = Field(default=UNSET)
     url: Missing[str] = Field(default=UNSET)

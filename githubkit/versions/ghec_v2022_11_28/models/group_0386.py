@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -23,7 +23,7 @@ from .group_0385 import Meta
 class ScimEnterpriseGroupResponse(GitHubModel):
     """ScimEnterpriseGroupResponse"""
 
-    schemas: List[
+    schemas: list[
         Literal[
             "urn:ietf:params:scim:schemas:core:2.0:Group",
             "urn:ietf:params:scim:api:messages:2.0:ListResponse",
@@ -41,7 +41,7 @@ class ScimEnterpriseGroupResponse(GitHubModel):
         alias="displayName",
         description="A human-readable name for a security group.",
     )
-    members: Missing[List[ScimEnterpriseGroupResponseMergedMembers]] = Field(
+    members: Missing[list[ScimEnterpriseGroupResponseMergedMembers]] = Field(
         default=UNSET, description="The group members."
     )
     id: Missing[str] = Field(
@@ -66,7 +66,7 @@ class ScimEnterpriseGroupResponseMergedMembers(GitHubModel):
 class ScimEnterpriseGroupList(GitHubModel):
     """ScimEnterpriseGroupList"""
 
-    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]] = (
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]] = (
         Field(
             description="The URIs that are used to indicate the namespaces of the list SCIM schemas."
         )
@@ -74,7 +74,7 @@ class ScimEnterpriseGroupList(GitHubModel):
     total_results: int = Field(
         alias="totalResults", description="Number of results found"
     )
-    resources: List[ScimEnterpriseGroupResponse] = Field(
+    resources: list[ScimEnterpriseGroupResponse] = Field(
         alias="Resources", description="Information about each provisioned group."
     )
     start_index: int = Field(

@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 
 from pydantic import Field
 
@@ -40,7 +40,7 @@ class Environment(GitHubModel):
         description="The time that the environment was last updated, in ISO 8601 format."
     )
     protection_rules: Missing[
-        List[
+        list[
             Union[
                 EnvironmentPropProtectionRulesItemsAnyof0,
                 EnvironmentPropProtectionRulesItemsAnyof1,
@@ -85,7 +85,7 @@ class ReposOwnerRepoEnvironmentsGetResponse200(GitHubModel):
     total_count: Missing[int] = Field(
         default=UNSET, description="The number of environments in this repository"
     )
-    environments: Missing[List[Environment]] = Field(default=UNSET)
+    environments: Missing[list[Environment]] = Field(default=UNSET)
 
 
 model_rebuild(Environment)

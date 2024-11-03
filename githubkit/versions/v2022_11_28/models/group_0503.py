@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -42,7 +42,7 @@ class WebhookGollum(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    pages: List[WebhookGollumPropPagesItems] = Field(
+    pages: list[WebhookGollumPropPagesItems] = Field(
         description="The pages that were updated."
     )
     repository: RepositoryWebhooks = Field(

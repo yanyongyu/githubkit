@@ -27,7 +27,7 @@ class SchemaData:
         if self._get_field_args():
             return {
                 "from pydantic import Field",
-                "from typing_extensions import Annotated",
+                "from typing import Annotated",
             }
         return set()
 
@@ -353,23 +353,22 @@ class ListSchema(SchemaData):
     min_length: int | None = None
     max_length: int | None = None
 
-    _type_string: ClassVar[str] = "List"
+    _type_string: ClassVar[str] = "list"
 
     @override
     def get_type_string(self, include_constraints: bool = True) -> str:
-        type_string = f"List[{self.item_schema.get_type_string()}]"
+        type_string = f"list[{self.item_schema.get_type_string()}]"
         if include_constraints and (args := self._get_field_args()):
             return f"Annotated[{type_string}, {self._get_field_string(args)}]"
         return type_string
 
     @override
     def get_param_type_string(self) -> str:
-        return f"List[{self.item_schema.get_param_type_string()}]"
+        return f"list[{self.item_schema.get_param_type_string()}]"
 
     @override
     def get_model_imports(self) -> set[str]:
         imports = super().get_model_imports()
-        imports.add("from typing import List")
         imports.add("from githubkit.compat import PYDANTIC_V2")
         imports.update(self.item_schema.get_model_imports())
         return imports
@@ -377,21 +376,18 @@ class ListSchema(SchemaData):
     @override
     def get_type_imports(self) -> set[str]:
         imports = super().get_type_imports()
-        imports.add("from typing import List")
         imports.update(self.item_schema.get_type_imports())
         return imports
 
     @override
     def get_param_imports(self) -> set[str]:
         imports = super().get_param_imports()
-        imports.add("from typing import List")
         imports.update(self.item_schema.get_param_imports())
         return imports
 
     @override
     def get_using_imports(self) -> set[str]:
         imports = super().get_using_imports()
-        imports.add("from typing import List")
         imports.add("from githubkit.compat import PYDANTIC_V2")
         imports.update(self.item_schema.get_using_imports())
         return imports

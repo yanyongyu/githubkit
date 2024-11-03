@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0198 import DiffEntryType
@@ -31,9 +31,9 @@ class CommitType(TypedDict):
     commit: CommitPropCommitType
     author: Union[SimpleUserType, EmptyObjectType, None]
     committer: Union[SimpleUserType, EmptyObjectType, None]
-    parents: List[CommitPropParentsItemsType]
+    parents: list[CommitPropParentsItemsType]
     stats: NotRequired[CommitPropStatsType]
-    files: NotRequired[List[DiffEntryType]]
+    files: NotRequired[list[DiffEntryType]]
 
 
 class EmptyObjectType(TypedDict):

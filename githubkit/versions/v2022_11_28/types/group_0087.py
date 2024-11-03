@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
@@ -25,7 +24,7 @@ class OrgHookType(TypedDict):
     ping_url: str
     deliveries_url: NotRequired[str]
     name: str
-    events: List[str]
+    events: list[str]
     active: bool
     config: OrgHookPropConfigType
     updated_at: datetime

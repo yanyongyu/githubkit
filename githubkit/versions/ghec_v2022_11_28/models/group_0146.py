@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -68,7 +68,7 @@ class RepositoryRuleOneof15(GitHubModel):
 class RepositoryRuleOneof15PropParameters(GitHubModel):
     """RepositoryRuleOneof15PropParameters"""
 
-    restricted_file_paths: List[str] = Field(
+    restricted_file_paths: list[str] = Field(
         description="The file paths that are restricted from being pushed to the commit graph."
     )
 
@@ -87,7 +87,7 @@ class RepositoryRuleOneof17(GitHubModel):
 class RepositoryRuleOneof17PropParameters(GitHubModel):
     """RepositoryRuleOneof17PropParameters"""
 
-    restricted_file_extensions: List[str] = Field(
+    restricted_file_extensions: list[str] = Field(
         description="The file extensions that are restricted from being pushed to the commit graph."
     )
 

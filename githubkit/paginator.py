@@ -1,16 +1,6 @@
+from collections.abc import Awaitable
 from typing_extensions import Self, ParamSpec
-from typing import (
-    Any,
-    List,
-    Union,
-    Generic,
-    TypeVar,
-    Callable,
-    Optional,
-    Awaitable,
-    cast,
-    overload,
-)
+from typing import Any, Union, Generic, TypeVar, Callable, Optional, cast, overload
 
 from .utils import is_async
 from .response import Response
@@ -30,7 +20,7 @@ class Paginator(Generic[RT]):
     @overload
     def __init__(
         self: "Paginator[RTS]",
-        request: R[CP, List[RTS]],
+        request: R[CP, list[RTS]],
         page: int = 1,
         per_page: int = 100,
         map_func: None = None,
@@ -44,7 +34,7 @@ class Paginator(Generic[RT]):
         request: R[CP, CT],
         page: int = 1,
         per_page: int = 100,
-        map_func: Callable[[Response[CT]], List[RTS]] = ...,
+        map_func: Callable[[Response[CT]], list[RTS]] = ...,
         *args: CP.args,
         **kwargs: CP.kwargs,
     ): ...
@@ -54,7 +44,7 @@ class Paginator(Generic[RT]):
         request: R[CP, CT],
         page: int = 1,
         per_page: int = 100,
-        map_func: Optional[Callable[[Response[CT]], List[RT]]] = None,
+        map_func: Optional[Callable[[Response[CT]], list[RT]]] = None,
         *args: CP.args,
         **kwargs: CP.kwargs,
     ):
@@ -68,7 +58,7 @@ class Paginator(Generic[RT]):
         self._per_page: int = per_page
 
         self._index: int = 0
-        self._cached_data: List[RT] = []
+        self._cached_data: list[RT] = []
 
     def __next__(self) -> RT:
         if self._index >= len(self._cached_data):
@@ -100,7 +90,7 @@ class Paginator(Generic[RT]):
             raise TypeError(f"Request method {self.request} is not an async function")
         return self
 
-    def _get_next_page(self) -> List[RT]:
+    def _get_next_page(self) -> list[RT]:
         response = cast(
             Response[Any],
             self.request(
@@ -111,7 +101,7 @@ class Paginator(Generic[RT]):
             ),
         )
         self._cached_data = (
-            cast(Response[List[RT]], response).parsed_data
+            cast(Response[list[RT]], response).parsed_data
             if self.map_func is None
             else self.map_func(response)
         )
@@ -119,7 +109,7 @@ class Paginator(Generic[RT]):
         self._current_page += 1
         return self._cached_data
 
-    async def _aget_next_page(self) -> List[RT]:
+    async def _aget_next_page(self) -> list[RT]:
         response = cast(
             Response[Any],
             await self.request(
@@ -130,7 +120,7 @@ class Paginator(Generic[RT]):
             ),
         )
         self._cached_data = (
-            cast(Response[List[RT]], response).parsed_data
+            cast(Response[list[RT]], response).parsed_data
             if self.map_func is None
             else self.map_func(response)
         )

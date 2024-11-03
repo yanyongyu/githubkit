@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0058 import MinimalRepositoryType
@@ -34,8 +34,8 @@ class CodeSearchResultItemType(TypedDict):
     file_size: NotRequired[int]
     language: NotRequired[Union[str, None]]
     last_modified_at: NotRequired[datetime]
-    line_numbers: NotRequired[List[str]]
-    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
+    line_numbers: NotRequired[list[str]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
 
 
 class SearchCodeGetResponse200Type(TypedDict):
@@ -43,7 +43,7 @@ class SearchCodeGetResponse200Type(TypedDict):
 
     total_count: int
     incomplete_results: bool
-    items: List[CodeSearchResultItemType]
+    items: list[CodeSearchResultItemType]
 
 
 __all__ = (

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0600 import WebhookRubygemsMetadataType
@@ -36,7 +36,7 @@ class WebhookPackagePublishedPropPackagePropPackageVersionType(TypedDict):
     created_at: NotRequired[str]
     description: str
     docker_metadata: NotRequired[
-        List[
+        list[
             WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItemsType
         ]
     ]
@@ -45,7 +45,7 @@ class WebhookPackagePublishedPropPackagePropPackageVersionType(TypedDict):
     id: int
     installation_command: str
     manifest: NotRequired[str]
-    metadata: List[
+    metadata: list[
         WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItemsType
     ]
     name: str
@@ -57,13 +57,13 @@ class WebhookPackagePublishedPropPackagePropPackageVersionType(TypedDict):
     ]
     nuget_metadata: NotRequired[
         Union[
-            List[
+            list[
                 WebhookPackagePublishedPropPackagePropPackageVersionPropNugetMetadataItemsType
             ],
             None,
         ]
     ]
-    package_files: List[
+    package_files: list[
         WebhookPackagePublishedPropPackagePropPackageVersionPropPackageFilesItemsType
     ]
     package_url: NotRequired[str]
@@ -71,7 +71,7 @@ class WebhookPackagePublishedPropPackagePropPackageVersionType(TypedDict):
     release: NotRequired[
         WebhookPackagePublishedPropPackagePropPackageVersionPropReleaseType
     ]
-    rubygems_metadata: NotRequired[List[WebhookRubygemsMetadataType]]
+    rubygems_metadata: NotRequired[list[WebhookRubygemsMetadataType]]
     source_url: NotRequired[str]
     summary: str
     tag_name: NotRequired[str]
@@ -164,7 +164,7 @@ class WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItem
 ):
     """WebhookPackagePublishedPropPackagePropPackageVersionPropDockerMetadataItems"""
 
-    tags: NotRequired[List[str]]
+    tags: NotRequired[list[str]]
 
 
 class WebhookPackagePublishedPropPackagePropPackageVersionPropMetadataItemsType(
@@ -230,20 +230,20 @@ class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataType(
     npm_version: NotRequired[str]
     has_shrinkwrap: NotRequired[bool]
     maintainers: NotRequired[
-        List[
+        list[
             WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropMaintainersItemsType
         ]
     ]
     contributors: NotRequired[
-        List[
+        list[
             WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropContributorsItemsType
         ]
     ]
     engines: NotRequired[
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropEnginesType
     ]
-    keywords: NotRequired[List[str]]
-    files: NotRequired[List[str]]
+    keywords: NotRequired[list[str]]
+    files: NotRequired[list[str]]
     bin_: NotRequired[
         WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataPropBinType
     ]
@@ -256,8 +256,8 @@ class WebhookPackagePublishedPropPackagePropPackageVersionPropNpmMetadataType(
             None,
         ]
     ]
-    os: NotRequired[List[str]]
-    cpu: NotRequired[List[str]]
+    os: NotRequired[list[str]]
+    cpu: NotRequired[list[str]]
     readme: NotRequired[str]
     installation_command: NotRequired[str]
     release_id: NotRequired[int]

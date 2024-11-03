@@ -10,8 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import Annotated
+from typing import Union, Literal, Annotated
 
 from pydantic import Field
 
@@ -90,7 +89,7 @@ class CodeScanningAlertRule(GitHubModel):
     full_description: Missing[str] = Field(
         default=UNSET, description="A description of the rule used to detect the alert."
     )
-    tags: Missing[Union[List[str], None]] = Field(
+    tags: Missing[Union[list[str], None]] = Field(
         default=UNSET, description="A set of tags applicable for the rule."
     )
     help_: Missing[Union[str, None]] = Field(

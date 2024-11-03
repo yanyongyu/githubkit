@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from datetime import datetime
-from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -44,13 +44,13 @@ class PackageVersionPropMetadataType(TypedDict):
 class PackageVersionPropMetadataPropContainerType(TypedDict):
     """Container Metadata"""
 
-    tags: List[str]
+    tags: list[str]
 
 
 class PackageVersionPropMetadataPropDockerType(TypedDict):
     """Docker Metadata"""
 
-    tag: NotRequired[List[str]]
+    tag: NotRequired[list[str]]
 
 
 __all__ = (

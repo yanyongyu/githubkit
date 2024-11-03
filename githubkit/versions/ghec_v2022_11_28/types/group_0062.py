@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -20,7 +19,7 @@ class AdvancedSecurityActiveCommittersType(TypedDict):
     total_count: NotRequired[int]
     maximum_advanced_security_committers: NotRequired[int]
     purchased_advanced_security_committers: NotRequired[int]
-    repositories: List[AdvancedSecurityActiveCommittersRepositoryType]
+    repositories: list[AdvancedSecurityActiveCommittersRepositoryType]
 
 
 class AdvancedSecurityActiveCommittersRepositoryType(TypedDict):
@@ -28,7 +27,7 @@ class AdvancedSecurityActiveCommittersRepositoryType(TypedDict):
 
     name: str
     advanced_security_committers: int
-    advanced_security_committers_breakdown: List[
+    advanced_security_committers_breakdown: list[
         AdvancedSecurityActiveCommittersUserType
     ]
 

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -37,13 +37,13 @@ class CommitSearchResultItem(GitHubModel):
     commit: CommitSearchResultItemPropCommit = Field()
     author: Union[None, SimpleUser] = Field()
     committer: Union[None, GitUser] = Field()
-    parents: List[CommitSearchResultItemPropParentsItems] = Field()
+    parents: list[CommitSearchResultItemPropParentsItems] = Field()
     repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository"
     )
     score: float = Field()
     node_id: str = Field()
-    text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
         default=UNSET, title="Search Result Text Matches"
     )
 
@@ -61,7 +61,7 @@ class SearchCommitsGetResponse200(GitHubModel):
 
     total_count: int = Field()
     incomplete_results: bool = Field()
-    items: List[CommitSearchResultItem] = Field()
+    items: list[CommitSearchResultItem] = Field()
 
 
 model_rebuild(CommitSearchResultItem)

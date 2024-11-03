@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -45,21 +43,21 @@ class DependencyGraphSpdxSbomPropSbom(GitHubModel):
         alias="dataLicense",
         description="The license under which the SPDX document is licensed.",
     )
-    document_describes: List[str] = Field(
+    document_describes: list[str] = Field(
         alias="documentDescribes",
         description="The name of the repository that the SPDX document describes.",
     )
     document_namespace: str = Field(
         alias="documentNamespace", description="The namespace for the SPDX document."
     )
-    packages: List[DependencyGraphSpdxSbomPropSbomPropPackagesItems] = Field()
+    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItems] = Field()
 
 
 class DependencyGraphSpdxSbomPropSbomPropCreationInfo(GitHubModel):
     """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
 
     created: str = Field(description="The date and time the SPDX document was created.")
-    creators: List[str] = Field(
+    creators: list[str] = Field(
         description="The tools that were used to generate the SPDX document."
     )
 
@@ -108,7 +106,7 @@ class DependencyGraphSpdxSbomPropSbomPropPackagesItems(GitHubModel):
         description="The copyright holders of the package, and any dates present with those notices, if available.",
     )
     external_refs: Missing[
-        List[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems]
+        list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItems]
     ] = Field(default=UNSET, alias="externalRefs")
 
 

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -21,7 +21,7 @@ class WebhooksRelease1Type(TypedDict):
     cloud@latest//rest/releases/releases/#get-a-release) object.
     """
 
-    assets: List[Union[WebhooksRelease1PropAssetsItemsType, None]]
+    assets: list[Union[WebhooksRelease1PropAssetsItemsType, None]]
     assets_url: str
     author: Union[WebhooksRelease1PropAuthorType, None]
     body: Union[str, None]

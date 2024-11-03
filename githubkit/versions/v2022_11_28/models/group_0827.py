@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -29,7 +29,7 @@ class OrgsOrgCodespacesAccessPutBody(GitHubModel):
     ] = Field(
         description="Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization."
     )
-    selected_usernames: Missing[List[str]] = Field(
+    selected_usernames: Missing[list[str]] = Field(
         max_length=100 if PYDANTIC_V2 else None,
         default=UNSET,
         description="The usernames of the organization members who should have access to codespaces in the organization. Required when `visibility` is `selected_members`. The provided list of usernames will replace any existing value.",

@@ -7,8 +7,8 @@ bash ./scripts/run-codegen.sh
 See https://github.com/github/rest-api-description for more information.
 """
 
-from typing import Dict, Type, Union
-from typing_extensions import Annotated, TypeAlias
+from typing import Union, Annotated
+from typing_extensions import TypeAlias
 
 from pydantic import Field
 
@@ -33,7 +33,7 @@ Event: TypeAlias = Annotated[
 
 SubIssuesEvent: TypeAlias = Event
 
-action_types: Dict[str, Type[GitHubModel]] = {
+action_types: dict[str, type[GitHubModel]] = {
     "parent_issue_added": WebhookSubIssuesParentIssueAdded,
     "parent_issue_removed": WebhookSubIssuesParentIssueRemoved,
     "sub_issue_added": WebhookSubIssuesSubIssueAdded,

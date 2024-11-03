@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict
 
 
@@ -38,7 +38,7 @@ class WebhookWorkflowJobCompletedPropWorkflowJobAllof0Type(TypedDict):
     head_sha: str
     html_url: str
     id: int
-    labels: List[str]
+    labels: list[str]
     name: str
     node_id: str
     run_attempt: int
@@ -52,7 +52,7 @@ class WebhookWorkflowJobCompletedPropWorkflowJobAllof0Type(TypedDict):
     status: Literal["queued", "in_progress", "completed", "waiting"]
     head_branch: Union[str, None]
     workflow_name: Union[str, None]
-    steps: List[WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType]
+    steps: list[WebhookWorkflowJobCompletedPropWorkflowJobAllof0PropStepsItemsType]
     url: str
 
 

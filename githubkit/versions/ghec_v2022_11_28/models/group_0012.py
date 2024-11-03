@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -26,7 +26,7 @@ class ValidationError(GitHubModel):
 
     message: str = Field()
     documentation_url: str = Field()
-    errors: Missing[List[ValidationErrorPropErrorsItems]] = Field(default=UNSET)
+    errors: Missing[list[ValidationErrorPropErrorsItems]] = Field(default=UNSET)
 
 
 class ValidationErrorPropErrorsItems(GitHubModel):
@@ -37,7 +37,7 @@ class ValidationErrorPropErrorsItems(GitHubModel):
     message: Missing[str] = Field(default=UNSET)
     code: str = Field()
     index: Missing[int] = Field(default=UNSET)
-    value: Missing[Union[str, None, int, None, List[str], None]] = Field(default=UNSET)
+    value: Missing[Union[str, None, int, None, list[str], None]] = Field(default=UNSET)
 
 
 model_rebuild(ValidationError)

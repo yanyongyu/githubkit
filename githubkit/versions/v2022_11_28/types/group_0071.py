@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0019 import RepositoryType
@@ -25,7 +25,7 @@ class AuthenticationTokenType(TypedDict):
     token: str
     expires_at: datetime
     permissions: NotRequired[AuthenticationTokenPropPermissionsType]
-    repositories: NotRequired[List[RepositoryType]]
+    repositories: NotRequired[list[RepositoryType]]
     single_file: NotRequired[Union[str, None]]
     repository_selection: NotRequired[Literal["all", "selected"]]
 

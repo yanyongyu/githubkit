@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -44,7 +44,7 @@ class WebhookPullRequestReviewSubmittedPropPullRequestType(TypedDict):
     assignee: Union[
         WebhookPullRequestReviewSubmittedPropPullRequestPropAssigneeType, None
     ]
-    assignees: List[
+    assignees: list[
         Union[
             WebhookPullRequestReviewSubmittedPropPullRequestPropAssigneesItemsType, None
         ]
@@ -74,7 +74,7 @@ class WebhookPullRequestReviewSubmittedPropPullRequestType(TypedDict):
     html_url: str
     id: int
     issue_url: str
-    labels: List[WebhookPullRequestReviewSubmittedPropPullRequestPropLabelsItemsType]
+    labels: list[WebhookPullRequestReviewSubmittedPropPullRequestPropLabelsItemsType]
     locked: bool
     merge_commit_sha: Union[str, None]
     merged_at: Union[str, None]
@@ -84,14 +84,14 @@ class WebhookPullRequestReviewSubmittedPropPullRequestType(TypedDict):
     node_id: str
     number: int
     patch_url: str
-    requested_reviewers: List[
+    requested_reviewers: list[
         Union[
             WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof0Type,
             None,
             WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedReviewersItemsOneof1Type,
         ]
     ]
-    requested_teams: List[
+    requested_teams: list[
         WebhookPullRequestReviewSubmittedPropPullRequestPropRequestedTeamsItemsType
     ]
     review_comment_url: str
@@ -542,7 +542,7 @@ class WebhookPullRequestReviewSubmittedPropPullRequestPropBasePropRepoType(Typed
     svn_url: str
     tags_url: str
     teams_url: str
-    topics: List[str]
+    topics: list[str]
     trees_url: str
     updated_at: datetime
     url: str
@@ -723,7 +723,7 @@ class WebhookPullRequestReviewSubmittedPropPullRequestPropHeadPropRepoType(Typed
     svn_url: str
     tags_url: str
     teams_url: str
-    topics: List[str]
+    topics: list[str]
     trees_url: str
     updated_at: datetime
     url: str

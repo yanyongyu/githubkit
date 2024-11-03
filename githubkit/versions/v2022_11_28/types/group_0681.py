@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0600 import WebhookRubygemsMetadataType
@@ -36,7 +36,7 @@ class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType(
     created_at: NotRequired[str]
     description: str
     docker_metadata: NotRequired[
-        List[
+        list[
             WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropDockerMetadataItemsType
         ]
     ]
@@ -45,7 +45,7 @@ class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType(
     id: int
     installation_command: str
     manifest: NotRequired[str]
-    metadata: List[
+    metadata: list[
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropMetadataItemsType
     ]
     name: str
@@ -57,13 +57,13 @@ class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType(
     ]
     nuget_metadata: NotRequired[
         Union[
-            List[
+            list[
                 WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNugetMetadataItemsType
             ],
             None,
         ]
     ]
-    package_files: List[
+    package_files: list[
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropPackageFilesItemsType
     ]
     package_url: str
@@ -71,7 +71,7 @@ class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionType(
     release: NotRequired[
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropReleaseType
     ]
-    rubygems_metadata: NotRequired[List[WebhookRubygemsMetadataType]]
+    rubygems_metadata: NotRequired[list[WebhookRubygemsMetadataType]]
     summary: str
     tag_name: NotRequired[str]
     target_commitish: NotRequired[str]
@@ -121,7 +121,7 @@ class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropDo
     tadataItems
     """
 
-    tags: NotRequired[List[str]]
+    tags: NotRequired[list[str]]
 
 
 class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropMetadataItemsType(
@@ -194,13 +194,13 @@ class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNp
     node_version: NotRequired[str]
     npm_version: NotRequired[str]
     has_shrinkwrap: NotRequired[bool]
-    maintainers: NotRequired[List[str]]
-    contributors: NotRequired[List[str]]
+    maintainers: NotRequired[list[str]]
+    contributors: NotRequired[list[str]]
     engines: NotRequired[
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropEnginesType
     ]
-    keywords: NotRequired[List[str]]
-    files: NotRequired[List[str]]
+    keywords: NotRequired[list[str]]
+    files: NotRequired[list[str]]
     bin_: NotRequired[
         WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNpmMetadataPropBinType
     ]
@@ -214,8 +214,8 @@ class WebhookRegistryPackagePublishedPropRegistryPackagePropPackageVersionPropNp
             None,
         ]
     ]
-    os: NotRequired[List[str]]
-    cpu: NotRequired[List[str]]
+    os: NotRequired[list[str]]
+    cpu: NotRequired[list[str]]
     readme: NotRequired[str]
     installation_command: NotRequired[str]
     release_id: NotRequired[int]

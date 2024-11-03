@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, Optional, overload
 
 from pydantic import BaseModel
 
@@ -20,7 +20,7 @@ from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
     from datetime import datetime
-    from typing import List, Union, Literal
+    from typing import Union, Literal
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
@@ -265,11 +265,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-organization-repositories"""
-
-        from typing import List
 
         from ..models import MinimalRepository
 
@@ -290,7 +288,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
         )
 
     async def async_list_for_org(
@@ -304,11 +302,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-organization-repositories"""
-
-        from typing import List
 
         from ..models import MinimalRepository
 
@@ -329,7 +325,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
         )
 
     @overload
@@ -337,7 +333,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgReposPostBodyType,
     ) -> Response[FullRepository]: ...
 
@@ -347,7 +343,7 @@ class ReposClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -385,7 +381,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgReposPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
@@ -428,7 +424,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgReposPostBodyType,
     ) -> Response[FullRepository]: ...
 
@@ -438,7 +434,7 @@ class ReposClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -476,7 +472,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgReposPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
@@ -521,11 +517,9 @@ class ReposClient:
         page: Missing[int] = UNSET,
         targets: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RepositoryRuleset]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RepositoryRuleset]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-all-organization-repository-rulesets"""
-
-        from typing import List
 
         from ..models import BasicError, RepositoryRuleset
 
@@ -544,7 +538,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[RepositoryRuleset],
+            response_model=list[RepositoryRuleset],
             error_models={
                 "404": BasicError,
                 "500": BasicError,
@@ -558,11 +552,9 @@ class ReposClient:
         page: Missing[int] = UNSET,
         targets: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RepositoryRuleset]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RepositoryRuleset]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-all-organization-repository-rulesets"""
-
-        from typing import List
 
         from ..models import BasicError, RepositoryRuleset
 
@@ -581,7 +573,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[RepositoryRuleset],
+            response_model=list[RepositoryRuleset],
             error_models={
                 "404": BasicError,
                 "500": BasicError,
@@ -593,7 +585,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset]: ...
 
@@ -603,11 +595,11 @@ class ReposClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
-        bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
+        bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
             Union[
                 OrgRulesetConditionsOneof0Type,
@@ -616,7 +608,7 @@ class ReposClient:
             ]
         ] = UNSET,
         rules: Missing[
-            List[
+            list[
                 Union[
                     RepositoryRuleCreationType,
                     RepositoryRuleUpdateType,
@@ -648,7 +640,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset]:
@@ -686,7 +678,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset]: ...
 
@@ -696,11 +688,11 @@ class ReposClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
-        bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
+        bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
             Union[
                 OrgRulesetConditionsOneof0Type,
@@ -709,7 +701,7 @@ class ReposClient:
             ]
         ] = UNSET,
         rules: Missing[
-            List[
+            list[
                 Union[
                     RepositoryRuleCreationType,
                     RepositoryRuleUpdateType,
@@ -741,7 +733,7 @@ class ReposClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset]:
@@ -785,11 +777,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RuleSuitesItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RuleSuitesItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rule-suites#list-organization-rule-suites"""
-
-        from typing import List
 
         from ..models import BasicError, RuleSuitesItems
 
@@ -812,7 +802,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[RuleSuitesItems],
+            response_model=list[RuleSuitesItems],
             error_models={
                 "404": BasicError,
                 "500": BasicError,
@@ -830,11 +820,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RuleSuitesItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RuleSuitesItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rule-suites#list-organization-rule-suites"""
-
-        from typing import List
 
         from ..models import BasicError, RuleSuitesItems
 
@@ -857,7 +845,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[RuleSuitesItems],
+            response_model=list[RuleSuitesItems],
             error_models={
                 "404": BasicError,
                 "500": BasicError,
@@ -869,7 +857,7 @@ class ReposClient:
         org: str,
         rule_suite_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[RuleSuite]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rule-suites#get-an-organization-rule-suite"""
 
@@ -895,7 +883,7 @@ class ReposClient:
         org: str,
         rule_suite_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[RuleSuite]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rule-suites#get-an-organization-rule-suite"""
 
@@ -921,7 +909,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[RepositoryRuleset]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-an-organization-repository-ruleset"""
 
@@ -947,7 +935,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[RepositoryRuleset]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#get-an-organization-repository-ruleset"""
 
@@ -974,7 +962,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset]: ...
 
@@ -985,11 +973,11 @@ class ReposClient:
         ruleset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
-        bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
+        bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
             Union[
                 OrgRulesetConditionsOneof0Type,
@@ -998,7 +986,7 @@ class ReposClient:
             ]
         ] = UNSET,
         rules: Missing[
-            List[
+            list[
                 Union[
                     RepositoryRuleCreationType,
                     RepositoryRuleUpdateType,
@@ -1031,7 +1019,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset]:
@@ -1074,7 +1062,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset]: ...
 
@@ -1085,11 +1073,11 @@ class ReposClient:
         ruleset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
-        bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
+        bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[
             Union[
                 OrgRulesetConditionsOneof0Type,
@@ -1098,7 +1086,7 @@ class ReposClient:
             ]
         ] = UNSET,
         rules: Missing[
-            List[
+            list[
                 Union[
                     RepositoryRuleCreationType,
                     RepositoryRuleUpdateType,
@@ -1131,7 +1119,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset]:
@@ -1173,7 +1161,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#delete-an-organization-repository-ruleset"""
 
@@ -1198,7 +1186,7 @@ class ReposClient:
         org: str,
         ruleset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/orgs/rules#delete-an-organization-repository-ruleset"""
 
@@ -1223,7 +1211,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[FullRepository]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#get-a-repository"""
 
@@ -1249,7 +1237,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[FullRepository]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#get-a-repository"""
 
@@ -1275,7 +1263,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#delete-a-repository"""
 
@@ -1300,7 +1288,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#delete-a-repository"""
 
@@ -1326,7 +1314,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
     ) -> Response[FullRepository]: ...
 
@@ -1337,7 +1325,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -1376,7 +1364,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
@@ -1421,7 +1409,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
     ) -> Response[FullRepository]: ...
 
@@ -1432,7 +1420,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -1471,7 +1459,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
@@ -1534,11 +1522,9 @@ class ReposClient:
             ]
         ] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Activity]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Activity]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-activities"""
-
-        from typing import List
 
         from ..models import Activity, ValidationErrorSimple
 
@@ -1562,7 +1548,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Activity],
+            response_model=list[Activity],
             error_models={
                 "422": ValidationErrorSimple,
             },
@@ -1592,11 +1578,9 @@ class ReposClient:
             ]
         ] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Activity]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Activity]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-activities"""
-
-        from typing import List
 
         from ..models import Activity, ValidationErrorSimple
 
@@ -1620,7 +1604,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Activity],
+            response_model=list[Activity],
             error_models={
                 "422": ValidationErrorSimple,
             },
@@ -1632,7 +1616,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoAttestationsPostBodyType,
     ) -> Response[ReposOwnerRepoAttestationsPostResponse201]: ...
 
@@ -1643,7 +1627,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType,
     ) -> Response[ReposOwnerRepoAttestationsPostResponse201]: ...
 
@@ -1652,7 +1636,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoAttestationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReposOwnerRepoAttestationsPostResponse201]:
@@ -1696,7 +1680,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoAttestationsPostBodyType,
     ) -> Response[ReposOwnerRepoAttestationsPostResponse201]: ...
 
@@ -1707,7 +1691,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType,
     ) -> Response[ReposOwnerRepoAttestationsPostResponse201]: ...
 
@@ -1716,7 +1700,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoAttestationsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReposOwnerRepoAttestationsPostResponse201]:
@@ -1763,7 +1747,7 @@ class ReposClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoAttestationsSubjectDigestGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-attestations"""
 
@@ -1796,7 +1780,7 @@ class ReposClient:
         before: Missing[str] = UNSET,
         after: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoAttestationsSubjectDigestGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-attestations"""
 
@@ -1825,11 +1809,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Autolink]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Autolink]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/autolinks#get-all-autolinks-of-a-repository"""
-
-        from typing import List
 
         from ..models import Autolink
 
@@ -1841,7 +1823,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[Autolink],
+            response_model=list[Autolink],
         )
 
     async def async_list_autolinks(
@@ -1849,11 +1831,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Autolink]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Autolink]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/autolinks#get-all-autolinks-of-a-repository"""
-
-        from typing import List
 
         from ..models import Autolink
 
@@ -1865,7 +1845,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[Autolink],
+            response_model=list[Autolink],
         )
 
     @overload
@@ -1874,7 +1854,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoAutolinksPostBodyType,
     ) -> Response[Autolink]: ...
 
@@ -1885,7 +1865,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         key_prefix: str,
         url_template: str,
         is_alphanumeric: Missing[bool] = UNSET,
@@ -1896,7 +1876,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Autolink]:
@@ -1934,7 +1914,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoAutolinksPostBodyType,
     ) -> Response[Autolink]: ...
 
@@ -1945,7 +1925,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         key_prefix: str,
         url_template: str,
         is_alphanumeric: Missing[bool] = UNSET,
@@ -1956,7 +1936,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Autolink]:
@@ -1994,7 +1974,7 @@ class ReposClient:
         repo: str,
         autolink_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Autolink]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/autolinks#get-an-autolink-reference-of-a-repository"""
 
@@ -2020,7 +2000,7 @@ class ReposClient:
         repo: str,
         autolink_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Autolink]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/autolinks#get-an-autolink-reference-of-a-repository"""
 
@@ -2046,7 +2026,7 @@ class ReposClient:
         repo: str,
         autolink_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/autolinks#delete-an-autolink-reference-from-a-repository"""
 
@@ -2071,7 +2051,7 @@ class ReposClient:
         repo: str,
         autolink_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/autolinks#delete-an-autolink-reference-from-a-repository"""
 
@@ -2095,7 +2075,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CheckAutomatedSecurityFixes]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-automated-security-fixes-are-enabled-for-a-repository"""
 
@@ -2118,7 +2098,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CheckAutomatedSecurityFixes]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-automated-security-fixes-are-enabled-for-a-repository"""
 
@@ -2141,7 +2121,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-automated-security-fixes"""
 
@@ -2160,7 +2140,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-automated-security-fixes"""
 
@@ -2179,7 +2159,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-automated-security-fixes"""
 
@@ -2198,7 +2178,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-automated-security-fixes"""
 
@@ -2220,11 +2200,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ShortBranch]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ShortBranch]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branches#list-branches"""
-
-        from typing import List
 
         from ..models import BasicError, ShortBranch
 
@@ -2243,7 +2221,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ShortBranch],
+            response_model=list[ShortBranch],
             error_models={
                 "404": BasicError,
             },
@@ -2257,11 +2235,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ShortBranch]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ShortBranch]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branches#list-branches"""
-
-        from typing import List
 
         from ..models import BasicError, ShortBranch
 
@@ -2280,7 +2256,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ShortBranch],
+            response_model=list[ShortBranch],
             error_models={
                 "404": BasicError,
             },
@@ -2292,7 +2268,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[BranchWithProtection]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branches#get-a-branch"""
 
@@ -2318,7 +2294,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[BranchWithProtection]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branches#get-a-branch"""
 
@@ -2344,7 +2320,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[BranchProtection]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-branch-protection"""
 
@@ -2370,7 +2346,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[BranchProtection]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-branch-protection"""
 
@@ -2397,7 +2373,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionPutBodyType,
     ) -> Response[ProtectedBranch]: ...
 
@@ -2409,7 +2385,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         required_status_checks: Union[
             ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
             None,
@@ -2437,7 +2413,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProtectedBranch]:
@@ -2485,7 +2461,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionPutBodyType,
     ) -> Response[ProtectedBranch]: ...
 
@@ -2497,7 +2473,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         required_status_checks: Union[
             ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredStatusChecksType,
             None,
@@ -2525,7 +2501,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProtectedBranch]:
@@ -2572,7 +2548,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-branch-protection"""
 
@@ -2597,7 +2573,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-branch-protection"""
 
@@ -2622,7 +2598,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-admin-branch-protection"""
 
@@ -2645,7 +2621,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-admin-branch-protection"""
 
@@ -2668,7 +2644,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-admin-branch-protection"""
 
@@ -2691,7 +2667,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-admin-branch-protection"""
 
@@ -2714,7 +2690,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-admin-branch-protection"""
 
@@ -2739,7 +2715,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-admin-branch-protection"""
 
@@ -2764,7 +2740,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ProtectedBranchPullRequestReview]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-pull-request-review-protection"""
 
@@ -2787,7 +2763,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ProtectedBranchPullRequestReview]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-pull-request-review-protection"""
 
@@ -2810,7 +2786,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-pull-request-review-protection"""
 
@@ -2835,7 +2811,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-pull-request-review-protection"""
 
@@ -2861,7 +2837,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
@@ -2875,7 +2851,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         dismissal_restrictions: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType
         ] = UNSET,
@@ -2894,7 +2870,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
@@ -2942,7 +2918,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
@@ -2956,7 +2932,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         dismissal_restrictions: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType
         ] = UNSET,
@@ -2975,7 +2951,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
@@ -3022,7 +2998,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-commit-signature-protection"""
 
@@ -3048,7 +3024,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-commit-signature-protection"""
 
@@ -3074,7 +3050,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#create-commit-signature-protection"""
 
@@ -3100,7 +3076,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ProtectedBranchAdminEnforced]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#create-commit-signature-protection"""
 
@@ -3126,7 +3102,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-commit-signature-protection"""
 
@@ -3151,7 +3127,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-commit-signature-protection"""
 
@@ -3176,7 +3152,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[StatusCheckPolicy]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-status-checks-protection"""
 
@@ -3204,7 +3180,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[StatusCheckPolicy]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-status-checks-protection"""
 
@@ -3232,7 +3208,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-status-check-protection"""
 
@@ -3254,7 +3230,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-status-check-protection"""
 
@@ -3277,7 +3253,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
@@ -3291,11 +3267,11 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         strict: Missing[bool] = UNSET,
-        contexts: Missing[List[str]] = UNSET,
+        contexts: Missing[list[str]] = UNSET,
         checks: Missing[
-            List[
+            list[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
             ]
         ] = UNSET,
@@ -3307,7 +3283,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
@@ -3359,7 +3335,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
@@ -3373,11 +3349,11 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         strict: Missing[bool] = UNSET,
-        contexts: Missing[List[str]] = UNSET,
+        contexts: Missing[list[str]] = UNSET,
         checks: Missing[
-            List[
+            list[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
             ]
         ] = UNSET,
@@ -3389,7 +3365,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
@@ -3440,11 +3416,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[str]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[str]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-all-status-check-contexts"""
-
-        from typing import List
 
         from ..models import BasicError
 
@@ -3456,7 +3430,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[str],
+            response_model=list[str],
             error_models={
                 "404": BasicError,
             },
@@ -3468,11 +3442,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[str]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[str]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-all-status-check-contexts"""
-
-        from typing import List
 
         from ..models import BasicError
 
@@ -3484,7 +3456,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[str],
+            response_model=list[str],
             error_models={
                 "404": BasicError,
             },
@@ -3497,14 +3469,14 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
-    ) -> Response[List[str]]: ...
+    ) -> Response[list[str]]: ...
 
     @overload
     def set_status_check_contexts(
@@ -3514,9 +3486,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        contexts: List[str],
-    ) -> Response[List[str]]: ...
+        headers: Optional[dict[str, str]] = None,
+        contexts: list[str],
+    ) -> Response[list[str]]: ...
 
     def set_status_check_contexts(
         self,
@@ -3524,18 +3496,18 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[str]]:
+    ) -> Response[list[str]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-status-check-contexts"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             BasicError,
@@ -3556,7 +3528,7 @@ class ReposClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
-                    List[str],
+                    list[str],
                 ],
                 json,
             )
@@ -3567,7 +3539,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[str],
+            response_model=list[str],
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -3581,14 +3553,14 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
-    ) -> Response[List[str]]: ...
+    ) -> Response[list[str]]: ...
 
     @overload
     async def async_set_status_check_contexts(
@@ -3598,9 +3570,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        contexts: List[str],
-    ) -> Response[List[str]]: ...
+        headers: Optional[dict[str, str]] = None,
+        contexts: list[str],
+    ) -> Response[list[str]]: ...
 
     async def async_set_status_check_contexts(
         self,
@@ -3608,18 +3580,18 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[str]]:
+    ) -> Response[list[str]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-status-check-contexts"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             BasicError,
@@ -3640,7 +3612,7 @@ class ReposClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0,
-                    List[str],
+                    list[str],
                 ],
                 json,
             )
@@ -3651,7 +3623,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[str],
+            response_model=list[str],
             error_models={
                 "422": ValidationError,
                 "404": BasicError,
@@ -3665,14 +3637,14 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
-    ) -> Response[List[str]]: ...
+    ) -> Response[list[str]]: ...
 
     @overload
     def add_status_check_contexts(
@@ -3682,9 +3654,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        contexts: List[str],
-    ) -> Response[List[str]]: ...
+        headers: Optional[dict[str, str]] = None,
+        contexts: list[str],
+    ) -> Response[list[str]]: ...
 
     def add_status_check_contexts(
         self,
@@ -3692,18 +3664,18 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[str]]:
+    ) -> Response[list[str]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#add-status-check-contexts"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             BasicError,
@@ -3724,7 +3696,7 @@ class ReposClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
-                    List[str],
+                    list[str],
                 ],
                 json,
             )
@@ -3735,7 +3707,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[str],
+            response_model=list[str],
             error_models={
                 "422": ValidationError,
                 "403": BasicError,
@@ -3750,14 +3722,14 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
-    ) -> Response[List[str]]: ...
+    ) -> Response[list[str]]: ...
 
     @overload
     async def async_add_status_check_contexts(
@@ -3767,9 +3739,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        contexts: List[str],
-    ) -> Response[List[str]]: ...
+        headers: Optional[dict[str, str]] = None,
+        contexts: list[str],
+    ) -> Response[list[str]]: ...
 
     async def async_add_status_check_contexts(
         self,
@@ -3777,18 +3749,18 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[str]]:
+    ) -> Response[list[str]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#add-status-check-contexts"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             BasicError,
@@ -3809,7 +3781,7 @@ class ReposClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0,
-                    List[str],
+                    list[str],
                 ],
                 json,
             )
@@ -3820,7 +3792,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[str],
+            response_model=list[str],
             error_models={
                 "422": ValidationError,
                 "403": BasicError,
@@ -3835,14 +3807,14 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
-    ) -> Response[List[str]]: ...
+    ) -> Response[list[str]]: ...
 
     @overload
     def remove_status_check_contexts(
@@ -3852,9 +3824,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        contexts: List[str],
-    ) -> Response[List[str]]: ...
+        headers: Optional[dict[str, str]] = None,
+        contexts: list[str],
+    ) -> Response[list[str]]: ...
 
     def remove_status_check_contexts(
         self,
@@ -3862,18 +3834,18 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[str]]:
+    ) -> Response[list[str]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-status-check-contexts"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             BasicError,
@@ -3894,7 +3866,7 @@ class ReposClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
-                    List[str],
+                    list[str],
                 ],
                 json,
             )
@@ -3905,7 +3877,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[str],
+            response_model=list[str],
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -3919,14 +3891,14 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
-    ) -> Response[List[str]]: ...
+    ) -> Response[list[str]]: ...
 
     @overload
     async def async_remove_status_check_contexts(
@@ -3936,9 +3908,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        contexts: List[str],
-    ) -> Response[List[str]]: ...
+        headers: Optional[dict[str, str]] = None,
+        contexts: list[str],
+    ) -> Response[list[str]]: ...
 
     async def async_remove_status_check_contexts(
         self,
@@ -3946,18 +3918,18 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[str]]:
+    ) -> Response[list[str]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-status-check-contexts"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             BasicError,
@@ -3978,7 +3950,7 @@ class ReposClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0,
-                    List[str],
+                    list[str],
                 ],
                 json,
             )
@@ -3989,7 +3961,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[str],
+            response_model=list[str],
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -4002,7 +3974,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[BranchRestrictionPolicy]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-access-restrictions"""
 
@@ -4028,7 +4000,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[BranchRestrictionPolicy]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-access-restrictions"""
 
@@ -4054,7 +4026,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-access-restrictions"""
 
@@ -4074,7 +4046,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#delete-access-restrictions"""
 
@@ -4094,11 +4066,11 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Union[Integration, None]]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Union[Integration, None]]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import BasicError, Integration
 
@@ -4110,7 +4082,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[Union[Integration, None]],
+            response_model=list[Union[Integration, None]],
             error_models={
                 "404": BasicError,
             },
@@ -4122,11 +4094,11 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Union[Integration, None]]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Union[Integration, None]]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import BasicError, Integration
 
@@ -4138,7 +4110,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[Union[Integration, None]],
+            response_model=list[Union[Integration, None]],
             error_models={
                 "404": BasicError,
             },
@@ -4151,9 +4123,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
-    ) -> Response[List[Union[Integration, None]]]: ...
+    ) -> Response[list[Union[Integration, None]]]: ...
 
     @overload
     def set_app_access_restrictions(
@@ -4163,9 +4135,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        apps: List[str],
-    ) -> Response[List[Union[Integration, None]]]: ...
+        headers: Optional[dict[str, str]] = None,
+        apps: list[str],
+    ) -> Response[list[Union[Integration, None]]]: ...
 
     def set_app_access_restrictions(
         self,
@@ -4173,15 +4145,15 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Union[Integration, None]]]:
+    ) -> Response[list[Union[Integration, None]]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-app-access-restrictions"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             Integration,
@@ -4209,7 +4181,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Union[Integration, None]],
+            response_model=list[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
             },
@@ -4222,9 +4194,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
-    ) -> Response[List[Union[Integration, None]]]: ...
+    ) -> Response[list[Union[Integration, None]]]: ...
 
     @overload
     async def async_set_app_access_restrictions(
@@ -4234,9 +4206,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        apps: List[str],
-    ) -> Response[List[Union[Integration, None]]]: ...
+        headers: Optional[dict[str, str]] = None,
+        apps: list[str],
+    ) -> Response[list[Union[Integration, None]]]: ...
 
     async def async_set_app_access_restrictions(
         self,
@@ -4244,15 +4216,15 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Union[Integration, None]]]:
+    ) -> Response[list[Union[Integration, None]]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-app-access-restrictions"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             Integration,
@@ -4280,7 +4252,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Union[Integration, None]],
+            response_model=list[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
             },
@@ -4293,9 +4265,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
-    ) -> Response[List[Union[Integration, None]]]: ...
+    ) -> Response[list[Union[Integration, None]]]: ...
 
     @overload
     def add_app_access_restrictions(
@@ -4305,9 +4277,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        apps: List[str],
-    ) -> Response[List[Union[Integration, None]]]: ...
+        headers: Optional[dict[str, str]] = None,
+        apps: list[str],
+    ) -> Response[list[Union[Integration, None]]]: ...
 
     def add_app_access_restrictions(
         self,
@@ -4315,15 +4287,15 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Union[Integration, None]]]:
+    ) -> Response[list[Union[Integration, None]]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#add-app-access-restrictions"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             Integration,
@@ -4351,7 +4323,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Union[Integration, None]],
+            response_model=list[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
             },
@@ -4364,9 +4336,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
-    ) -> Response[List[Union[Integration, None]]]: ...
+    ) -> Response[list[Union[Integration, None]]]: ...
 
     @overload
     async def async_add_app_access_restrictions(
@@ -4376,9 +4348,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        apps: List[str],
-    ) -> Response[List[Union[Integration, None]]]: ...
+        headers: Optional[dict[str, str]] = None,
+        apps: list[str],
+    ) -> Response[list[Union[Integration, None]]]: ...
 
     async def async_add_app_access_restrictions(
         self,
@@ -4386,15 +4358,15 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Union[Integration, None]]]:
+    ) -> Response[list[Union[Integration, None]]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#add-app-access-restrictions"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             Integration,
@@ -4422,7 +4394,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Union[Integration, None]],
+            response_model=list[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
             },
@@ -4435,9 +4407,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
-    ) -> Response[List[Union[Integration, None]]]: ...
+    ) -> Response[list[Union[Integration, None]]]: ...
 
     @overload
     def remove_app_access_restrictions(
@@ -4447,9 +4419,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        apps: List[str],
-    ) -> Response[List[Union[Integration, None]]]: ...
+        headers: Optional[dict[str, str]] = None,
+        apps: list[str],
+    ) -> Response[list[Union[Integration, None]]]: ...
 
     def remove_app_access_restrictions(
         self,
@@ -4457,15 +4429,15 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Union[Integration, None]]]:
+    ) -> Response[list[Union[Integration, None]]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-app-access-restrictions"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             Integration,
@@ -4493,7 +4465,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Union[Integration, None]],
+            response_model=list[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
             },
@@ -4506,9 +4478,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
-    ) -> Response[List[Union[Integration, None]]]: ...
+    ) -> Response[list[Union[Integration, None]]]: ...
 
     @overload
     async def async_remove_app_access_restrictions(
@@ -4518,9 +4490,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        apps: List[str],
-    ) -> Response[List[Union[Integration, None]]]: ...
+        headers: Optional[dict[str, str]] = None,
+        apps: list[str],
+    ) -> Response[list[Union[Integration, None]]]: ...
 
     async def async_remove_app_access_restrictions(
         self,
@@ -4528,15 +4500,15 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Union[Integration, None]]]:
+    ) -> Response[list[Union[Integration, None]]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-app-access-restrictions"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             Integration,
@@ -4564,7 +4536,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Union[Integration, None]],
+            response_model=list[Union[Integration, None]],
             error_models={
                 "422": ValidationError,
             },
@@ -4576,11 +4548,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Team]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch"""
-
-        from typing import List
 
         from ..models import Team, BasicError
 
@@ -4592,7 +4562,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
             error_models={
                 "404": BasicError,
             },
@@ -4604,11 +4574,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Team]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch"""
-
-        from typing import List
 
         from ..models import Team, BasicError
 
@@ -4620,7 +4588,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
             error_models={
                 "404": BasicError,
             },
@@ -4633,14 +4601,14 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Team]]: ...
+    ) -> Response[list[Team]]: ...
 
     @overload
     def set_team_access_restrictions(
@@ -4650,9 +4618,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        teams: List[str],
-    ) -> Response[List[Team]]: ...
+        headers: Optional[dict[str, str]] = None,
+        teams: list[str],
+    ) -> Response[list[Team]]: ...
 
     def set_team_access_restrictions(
         self,
@@ -4660,18 +4628,18 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Team]]:
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-team-access-restrictions"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             Team,
@@ -4692,7 +4660,7 @@ class ReposClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
-                    List[str],
+                    list[str],
                 ],
                 json,
             )
@@ -4703,7 +4671,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
             error_models={
                 "422": ValidationError,
             },
@@ -4716,14 +4684,14 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Team]]: ...
+    ) -> Response[list[Team]]: ...
 
     @overload
     async def async_set_team_access_restrictions(
@@ -4733,9 +4701,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        teams: List[str],
-    ) -> Response[List[Team]]: ...
+        headers: Optional[dict[str, str]] = None,
+        teams: list[str],
+    ) -> Response[list[Team]]: ...
 
     async def async_set_team_access_restrictions(
         self,
@@ -4743,18 +4711,18 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Team]]:
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-team-access-restrictions"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             Team,
@@ -4775,7 +4743,7 @@ class ReposClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPutBodyOneof0,
-                    List[str],
+                    list[str],
                 ],
                 json,
             )
@@ -4786,7 +4754,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
             error_models={
                 "422": ValidationError,
             },
@@ -4799,14 +4767,14 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Team]]: ...
+    ) -> Response[list[Team]]: ...
 
     @overload
     def add_team_access_restrictions(
@@ -4816,9 +4784,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        teams: List[str],
-    ) -> Response[List[Team]]: ...
+        headers: Optional[dict[str, str]] = None,
+        teams: list[str],
+    ) -> Response[list[Team]]: ...
 
     def add_team_access_restrictions(
         self,
@@ -4826,18 +4794,18 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Team]]:
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#add-team-access-restrictions"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             Team,
@@ -4858,7 +4826,7 @@ class ReposClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
-                    List[str],
+                    list[str],
                 ],
                 json,
             )
@@ -4869,7 +4837,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
             error_models={
                 "422": ValidationError,
             },
@@ -4882,14 +4850,14 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Team]]: ...
+    ) -> Response[list[Team]]: ...
 
     @overload
     async def async_add_team_access_restrictions(
@@ -4899,9 +4867,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        teams: List[str],
-    ) -> Response[List[Team]]: ...
+        headers: Optional[dict[str, str]] = None,
+        teams: list[str],
+    ) -> Response[list[Team]]: ...
 
     async def async_add_team_access_restrictions(
         self,
@@ -4909,18 +4877,18 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Team]]:
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#add-team-access-restrictions"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             Team,
@@ -4941,7 +4909,7 @@ class ReposClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0,
-                    List[str],
+                    list[str],
                 ],
                 json,
             )
@@ -4952,7 +4920,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
             error_models={
                 "422": ValidationError,
             },
@@ -4965,14 +4933,14 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Team]]: ...
+    ) -> Response[list[Team]]: ...
 
     @overload
     def remove_team_access_restrictions(
@@ -4982,9 +4950,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        teams: List[str],
-    ) -> Response[List[Team]]: ...
+        headers: Optional[dict[str, str]] = None,
+        teams: list[str],
+    ) -> Response[list[Team]]: ...
 
     def remove_team_access_restrictions(
         self,
@@ -4992,18 +4960,18 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Team]]:
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-team-access-restrictions"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             Team,
@@ -5024,7 +4992,7 @@ class ReposClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
-                    List[str],
+                    list[str],
                 ],
                 json,
             )
@@ -5035,7 +5003,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
             error_models={
                 "422": ValidationError,
             },
@@ -5048,14 +5016,14 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
-    ) -> Response[List[Team]]: ...
+    ) -> Response[list[Team]]: ...
 
     @overload
     async def async_remove_team_access_restrictions(
@@ -5065,9 +5033,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        teams: List[str],
-    ) -> Response[List[Team]]: ...
+        headers: Optional[dict[str, str]] = None,
+        teams: list[str],
+    ) -> Response[list[Team]]: ...
 
     async def async_remove_team_access_restrictions(
         self,
@@ -5075,18 +5043,18 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Type,
-                List[str],
+                list[str],
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[Team]]:
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-team-access-restrictions"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             Team,
@@ -5107,7 +5075,7 @@ class ReposClient:
             json = type_validate_python(
                 Union[
                     ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0,
-                    List[str],
+                    list[str],
                 ],
                 json,
             )
@@ -5118,7 +5086,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
             error_models={
                 "422": ValidationError,
             },
@@ -5130,11 +5098,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-users-with-access-to-the-protected-branch"""
-
-        from typing import List
 
         from ..models import BasicError, SimpleUser
 
@@ -5146,7 +5112,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
             error_models={
                 "404": BasicError,
             },
@@ -5158,11 +5124,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#get-users-with-access-to-the-protected-branch"""
-
-        from typing import List
 
         from ..models import BasicError, SimpleUser
 
@@ -5174,7 +5138,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
             error_models={
                 "404": BasicError,
             },
@@ -5187,9 +5151,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
-    ) -> Response[List[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser]]: ...
 
     @overload
     def set_user_access_restrictions(
@@ -5199,9 +5163,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        users: List[str],
-    ) -> Response[List[SimpleUser]]: ...
+        headers: Optional[dict[str, str]] = None,
+        users: list[str],
+    ) -> Response[list[SimpleUser]]: ...
 
     def set_user_access_restrictions(
         self,
@@ -5209,15 +5173,13 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[SimpleUser]]:
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-user-access-restrictions"""
-
-        from typing import List
 
         from ..models import (
             SimpleUser,
@@ -5245,7 +5207,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
             error_models={
                 "422": ValidationError,
             },
@@ -5258,9 +5220,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
-    ) -> Response[List[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser]]: ...
 
     @overload
     async def async_set_user_access_restrictions(
@@ -5270,9 +5232,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        users: List[str],
-    ) -> Response[List[SimpleUser]]: ...
+        headers: Optional[dict[str, str]] = None,
+        users: list[str],
+    ) -> Response[list[SimpleUser]]: ...
 
     async def async_set_user_access_restrictions(
         self,
@@ -5280,15 +5242,13 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[SimpleUser]]:
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#set-user-access-restrictions"""
-
-        from typing import List
 
         from ..models import (
             SimpleUser,
@@ -5316,7 +5276,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
             error_models={
                 "422": ValidationError,
             },
@@ -5329,9 +5289,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
-    ) -> Response[List[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser]]: ...
 
     @overload
     def add_user_access_restrictions(
@@ -5341,9 +5301,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        users: List[str],
-    ) -> Response[List[SimpleUser]]: ...
+        headers: Optional[dict[str, str]] = None,
+        users: list[str],
+    ) -> Response[list[SimpleUser]]: ...
 
     def add_user_access_restrictions(
         self,
@@ -5351,15 +5311,13 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[SimpleUser]]:
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#add-user-access-restrictions"""
-
-        from typing import List
 
         from ..models import (
             SimpleUser,
@@ -5387,7 +5345,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
             error_models={
                 "422": ValidationError,
             },
@@ -5400,9 +5358,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
-    ) -> Response[List[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser]]: ...
 
     @overload
     async def async_add_user_access_restrictions(
@@ -5412,9 +5370,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        users: List[str],
-    ) -> Response[List[SimpleUser]]: ...
+        headers: Optional[dict[str, str]] = None,
+        users: list[str],
+    ) -> Response[list[SimpleUser]]: ...
 
     async def async_add_user_access_restrictions(
         self,
@@ -5422,15 +5380,13 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[SimpleUser]]:
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#add-user-access-restrictions"""
-
-        from typing import List
 
         from ..models import (
             SimpleUser,
@@ -5458,7 +5414,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
             error_models={
                 "422": ValidationError,
             },
@@ -5471,9 +5427,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
-    ) -> Response[List[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser]]: ...
 
     @overload
     def remove_user_access_restrictions(
@@ -5483,9 +5439,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        users: List[str],
-    ) -> Response[List[SimpleUser]]: ...
+        headers: Optional[dict[str, str]] = None,
+        users: list[str],
+    ) -> Response[list[SimpleUser]]: ...
 
     def remove_user_access_restrictions(
         self,
@@ -5493,15 +5449,13 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[SimpleUser]]:
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-user-access-restrictions"""
-
-        from typing import List
 
         from ..models import (
             SimpleUser,
@@ -5529,7 +5483,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
             error_models={
                 "422": ValidationError,
             },
@@ -5542,9 +5496,9 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
-    ) -> Response[List[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser]]: ...
 
     @overload
     async def async_remove_user_access_restrictions(
@@ -5554,9 +5508,9 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        users: List[str],
-    ) -> Response[List[SimpleUser]]: ...
+        headers: Optional[dict[str, str]] = None,
+        users: list[str],
+    ) -> Response[list[SimpleUser]]: ...
 
     async def async_remove_user_access_restrictions(
         self,
@@ -5564,15 +5518,13 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[List[SimpleUser]]:
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/branches/branch-protection#remove-user-access-restrictions"""
-
-        from typing import List
 
         from ..models import (
             SimpleUser,
@@ -5600,7 +5552,7 @@ class ReposClient:
             url,
             json=exclude_unset(json),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
             error_models={
                 "422": ValidationError,
             },
@@ -5613,7 +5565,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchRenamePostBodyType,
     ) -> Response[BranchWithProtection]: ...
 
@@ -5625,7 +5577,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         new_name: str,
     ) -> Response[BranchWithProtection]: ...
 
@@ -5635,7 +5587,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[BranchWithProtection]:
@@ -5683,7 +5635,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchRenamePostBodyType,
     ) -> Response[BranchWithProtection]: ...
 
@@ -5695,7 +5647,7 @@ class ReposClient:
         branch: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         new_name: str,
     ) -> Response[BranchWithProtection]: ...
 
@@ -5705,7 +5657,7 @@ class ReposClient:
         repo: str,
         branch: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[BranchWithProtection]:
@@ -5752,7 +5704,7 @@ class ReposClient:
         repo: str,
         ref: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeownersErrors]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-codeowners-errors"""
 
@@ -5781,7 +5733,7 @@ class ReposClient:
         repo: str,
         ref: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeownersErrors]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-codeowners-errors"""
 
@@ -5815,11 +5767,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Collaborator]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Collaborator]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#list-repository-collaborators"""
-
-        from typing import List
 
         from ..models import BasicError, Collaborator
 
@@ -5839,7 +5789,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Collaborator],
+            response_model=list[Collaborator],
             error_models={
                 "404": BasicError,
             },
@@ -5856,11 +5806,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Collaborator]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Collaborator]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#list-repository-collaborators"""
-
-        from typing import List
 
         from ..models import BasicError, Collaborator
 
@@ -5880,7 +5828,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Collaborator],
+            response_model=list[Collaborator],
             error_models={
                 "404": BasicError,
             },
@@ -5892,7 +5840,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#check-if-a-user-is-a-repository-collaborator"""
 
@@ -5913,7 +5861,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#check-if-a-user-is-a-repository-collaborator"""
 
@@ -5935,7 +5883,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[RepositoryInvitation]: ...
 
@@ -5947,7 +5895,7 @@ class ReposClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         permission: Missing[str] = UNSET,
     ) -> Response[RepositoryInvitation]: ...
 
@@ -5957,7 +5905,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryInvitation]:
@@ -6004,7 +5952,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
     ) -> Response[RepositoryInvitation]: ...
 
@@ -6016,7 +5964,7 @@ class ReposClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         permission: Missing[str] = UNSET,
     ) -> Response[RepositoryInvitation]: ...
 
@@ -6026,7 +5974,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryInvitation]:
@@ -6072,7 +6020,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#remove-a-repository-collaborator"""
 
@@ -6098,7 +6046,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#remove-a-repository-collaborator"""
 
@@ -6124,7 +6072,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[RepositoryCollaboratorPermission]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#get-repository-permissions-for-a-user"""
 
@@ -6150,7 +6098,7 @@ class ReposClient:
         repo: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[RepositoryCollaboratorPermission]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/collaborators#get-repository-permissions-for-a-user"""
 
@@ -6177,11 +6125,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CommitComment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CommitComment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#list-commit-comments-for-a-repository"""
-
-        from typing import List
 
         from ..models import CommitComment
 
@@ -6199,7 +6145,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CommitComment],
+            response_model=list[CommitComment],
         )
 
     async def async_list_commit_comments_for_repo(
@@ -6209,11 +6155,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CommitComment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CommitComment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#list-commit-comments-for-a-repository"""
-
-        from typing import List
 
         from ..models import CommitComment
 
@@ -6231,7 +6175,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CommitComment],
+            response_model=list[CommitComment],
         )
 
     def get_commit_comment(
@@ -6240,7 +6184,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CommitComment]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#get-a-commit-comment"""
 
@@ -6266,7 +6210,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CommitComment]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#get-a-commit-comment"""
 
@@ -6292,7 +6236,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#delete-a-commit-comment"""
 
@@ -6317,7 +6261,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#delete-a-commit-comment"""
 
@@ -6343,7 +6287,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdPatchBodyType,
     ) -> Response[CommitComment]: ...
 
@@ -6355,7 +6299,7 @@ class ReposClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[CommitComment]: ...
 
@@ -6365,7 +6309,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CommitComment]:
@@ -6408,7 +6352,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdPatchBodyType,
     ) -> Response[CommitComment]: ...
 
@@ -6420,7 +6364,7 @@ class ReposClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[CommitComment]: ...
 
@@ -6430,7 +6374,7 @@ class ReposClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CommitComment]:
@@ -6479,11 +6423,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Commit]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Commit]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-commits"""
-
-        from typing import List
 
         from ..models import Commit, BasicError
 
@@ -6507,7 +6449,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Commit],
+            response_model=list[Commit],
             error_models={
                 "500": BasicError,
                 "400": BasicError,
@@ -6529,11 +6471,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Commit]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Commit]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-commits"""
-
-        from typing import List
 
         from ..models import Commit, BasicError
 
@@ -6557,7 +6497,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Commit],
+            response_model=list[Commit],
             error_models={
                 "500": BasicError,
                 "400": BasicError,
@@ -6572,11 +6512,9 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[BranchShort]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[BranchShort]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-branches-for-head-commit"""
-
-        from typing import List
 
         from ..models import BasicError, BranchShort, ValidationError
 
@@ -6588,7 +6526,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[BranchShort],
+            response_model=list[BranchShort],
             error_models={
                 "422": ValidationError,
                 "409": BasicError,
@@ -6601,11 +6539,9 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[BranchShort]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[BranchShort]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-branches-for-head-commit"""
-
-        from typing import List
 
         from ..models import BasicError, BranchShort, ValidationError
 
@@ -6617,7 +6553,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[BranchShort],
+            response_model=list[BranchShort],
             error_models={
                 "422": ValidationError,
                 "409": BasicError,
@@ -6632,11 +6568,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CommitComment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CommitComment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#list-commit-comments"""
-
-        from typing import List
 
         from ..models import CommitComment
 
@@ -6654,7 +6588,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CommitComment],
+            response_model=list[CommitComment],
         )
 
     async def async_list_comments_for_commit(
@@ -6665,11 +6599,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CommitComment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CommitComment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/comments#list-commit-comments"""
-
-        from typing import List
 
         from ..models import CommitComment
 
@@ -6687,7 +6619,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CommitComment],
+            response_model=list[CommitComment],
         )
 
     @overload
@@ -6697,7 +6629,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
     ) -> Response[CommitComment]: ...
 
@@ -6709,7 +6641,7 @@ class ReposClient:
         commit_sha: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
         path: Missing[str] = UNSET,
         position: Missing[int] = UNSET,
@@ -6722,7 +6654,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CommitComment]:
@@ -6769,7 +6701,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
     ) -> Response[CommitComment]: ...
 
@@ -6781,7 +6713,7 @@ class ReposClient:
         commit_sha: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
         path: Missing[str] = UNSET,
         position: Missing[int] = UNSET,
@@ -6794,7 +6726,7 @@ class ReposClient:
         repo: str,
         commit_sha: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CommitComment]:
@@ -6842,11 +6774,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[PullRequestSimple]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PullRequestSimple]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-pull-requests-associated-with-a-commit"""
-
-        from typing import List
 
         from ..models import BasicError, PullRequestSimple
 
@@ -6864,7 +6794,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[PullRequestSimple],
+            response_model=list[PullRequestSimple],
             error_models={
                 "409": BasicError,
             },
@@ -6878,11 +6808,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[PullRequestSimple]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PullRequestSimple]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#list-pull-requests-associated-with-a-commit"""
-
-        from typing import List
 
         from ..models import BasicError, PullRequestSimple
 
@@ -6900,7 +6828,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[PullRequestSimple],
+            response_model=list[PullRequestSimple],
             error_models={
                 "409": BasicError,
             },
@@ -6914,7 +6842,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Commit]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#get-a-commit"""
 
@@ -6957,7 +6885,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Commit]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#get-a-commit"""
 
@@ -7000,7 +6928,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CombinedCommitStatus]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses#get-the-combined-status-for-a-specific-reference"""
 
@@ -7034,7 +6962,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CombinedCommitStatus]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses#get-the-combined-status-for-a-specific-reference"""
 
@@ -7068,11 +6996,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Status]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Status]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses#list-commit-statuses-for-a-reference"""
-
-        from typing import List
 
         from ..models import Status
 
@@ -7090,7 +7016,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Status],
+            response_model=list[Status],
         )
 
     async def async_list_commit_statuses_for_ref(
@@ -7101,11 +7027,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Status]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Status]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/statuses#list-commit-statuses-for-a-reference"""
-
-        from typing import List
 
         from ..models import Status
 
@@ -7123,7 +7047,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Status],
+            response_model=list[Status],
         )
 
     def get_community_profile_metrics(
@@ -7131,7 +7055,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CommunityProfile]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/community#get-community-profile-metrics"""
 
@@ -7153,7 +7077,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CommunityProfile]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/community#get-community-profile-metrics"""
 
@@ -7178,7 +7102,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CommitComparison]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#compare-two-commits"""
 
@@ -7218,7 +7142,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CommitComparison]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/commits/commits#compare-two-commits"""
 
@@ -7257,15 +7181,15 @@ class ReposClient:
         path: str,
         ref: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[
         Union[
-            List[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
+            list[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
         ]
     ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#get-repository-content"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             BasicError,
@@ -7289,7 +7213,7 @@ class ReposClient:
             params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=Union[
-                List[ContentDirectoryItems],
+                list[ContentDirectoryItems],
                 ContentFile,
                 ContentSymlink,
                 ContentSubmodule,
@@ -7307,15 +7231,15 @@ class ReposClient:
         path: str,
         ref: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[
         Union[
-            List[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
+            list[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
         ]
     ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#get-repository-content"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             BasicError,
@@ -7339,7 +7263,7 @@ class ReposClient:
             params=exclude_unset(params),
             headers=exclude_unset(headers),
             response_model=Union[
-                List[ContentDirectoryItems],
+                list[ContentDirectoryItems],
                 ContentFile,
                 ContentSymlink,
                 ContentSubmodule,
@@ -7357,7 +7281,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoContentsPathPutBodyType,
     ) -> Response[FileCommit]: ...
 
@@ -7369,7 +7293,7 @@ class ReposClient:
         path: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         message: str,
         content: str,
         sha: Missing[str] = UNSET,
@@ -7384,7 +7308,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[FileCommit]:
@@ -7433,7 +7357,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoContentsPathPutBodyType,
     ) -> Response[FileCommit]: ...
 
@@ -7445,7 +7369,7 @@ class ReposClient:
         path: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         message: str,
         content: str,
         sha: Missing[str] = UNSET,
@@ -7460,7 +7384,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[FileCommit]:
@@ -7509,7 +7433,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoContentsPathDeleteBodyType,
     ) -> Response[FileCommit]: ...
 
@@ -7521,7 +7445,7 @@ class ReposClient:
         path: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         message: str,
         sha: str,
         branch: Missing[str] = UNSET,
@@ -7537,7 +7461,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[FileCommit]:
@@ -7585,7 +7509,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoContentsPathDeleteBodyType,
     ) -> Response[FileCommit]: ...
 
@@ -7597,7 +7521,7 @@ class ReposClient:
         path: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         message: str,
         sha: str,
         branch: Missing[str] = UNSET,
@@ -7613,7 +7537,7 @@ class ReposClient:
         repo: str,
         path: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response[FileCommit]:
@@ -7662,11 +7586,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Contributor]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Contributor]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-contributors"""
-
-        from typing import List
 
         from ..models import BasicError, Contributor
 
@@ -7685,7 +7607,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Contributor],
+            response_model=list[Contributor],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -7700,11 +7622,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Contributor]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Contributor]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-contributors"""
-
-        from typing import List
 
         from ..models import BasicError, Contributor
 
@@ -7723,7 +7643,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Contributor],
+            response_model=list[Contributor],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -7741,11 +7661,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Deployment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Deployment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#list-deployments"""
-
-        from typing import List
 
         from ..models import Deployment
 
@@ -7767,7 +7685,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Deployment],
+            response_model=list[Deployment],
         )
 
     async def async_list_deployments(
@@ -7781,11 +7699,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Deployment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Deployment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#list-deployments"""
-
-        from typing import List
 
         from ..models import Deployment
 
@@ -7807,7 +7723,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Deployment],
+            response_model=list[Deployment],
         )
 
     @overload
@@ -7816,7 +7732,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoDeploymentsPostBodyType,
     ) -> Response[Deployment]: ...
 
@@ -7827,11 +7743,11 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         ref: str,
         task: Missing[str] = UNSET,
         auto_merge: Missing[bool] = UNSET,
-        required_contexts: Missing[List[str]] = UNSET,
+        required_contexts: Missing[list[str]] = UNSET,
         payload: Missing[
             Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
         ] = UNSET,
@@ -7846,7 +7762,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Deployment]:
@@ -7888,7 +7804,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoDeploymentsPostBodyType,
     ) -> Response[Deployment]: ...
 
@@ -7899,11 +7815,11 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         ref: str,
         task: Missing[str] = UNSET,
         auto_merge: Missing[bool] = UNSET,
-        required_contexts: Missing[List[str]] = UNSET,
+        required_contexts: Missing[list[str]] = UNSET,
         payload: Missing[
             Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
         ] = UNSET,
@@ -7918,7 +7834,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Deployment]:
@@ -7960,7 +7876,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Deployment]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#get-a-deployment"""
 
@@ -7986,7 +7902,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Deployment]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#get-a-deployment"""
 
@@ -8012,7 +7928,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#delete-a-deployment"""
 
@@ -8038,7 +7954,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/deployments#delete-a-deployment"""
 
@@ -8066,11 +7982,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[DeploymentStatus]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[DeploymentStatus]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/statuses#list-deployment-statuses"""
-
-        from typing import List
 
         from ..models import BasicError, DeploymentStatus
 
@@ -8088,7 +8002,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[DeploymentStatus],
+            response_model=list[DeploymentStatus],
             error_models={
                 "404": BasicError,
             },
@@ -8102,11 +8016,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[DeploymentStatus]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[DeploymentStatus]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/statuses#list-deployment-statuses"""
-
-        from typing import List
 
         from ..models import BasicError, DeploymentStatus
 
@@ -8124,7 +8036,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[DeploymentStatus],
+            response_model=list[DeploymentStatus],
             error_models={
                 "404": BasicError,
             },
@@ -8137,7 +8049,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
     ) -> Response[DeploymentStatus]: ...
 
@@ -8149,7 +8061,7 @@ class ReposClient:
         deployment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         state: Literal[
             "error",
             "failure",
@@ -8173,7 +8085,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType
         ] = UNSET,
@@ -8220,7 +8132,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
     ) -> Response[DeploymentStatus]: ...
 
@@ -8232,7 +8144,7 @@ class ReposClient:
         deployment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         state: Literal[
             "error",
             "failure",
@@ -8256,7 +8168,7 @@ class ReposClient:
         repo: str,
         deployment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType
         ] = UNSET,
@@ -8303,7 +8215,7 @@ class ReposClient:
         deployment_id: int,
         status_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[DeploymentStatus]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/statuses#get-a-deployment-status"""
 
@@ -8330,7 +8242,7 @@ class ReposClient:
         deployment_id: int,
         status_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[DeploymentStatus]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/statuses#get-a-deployment-status"""
 
@@ -8356,7 +8268,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoDispatchesPostBodyType,
     ) -> Response: ...
 
@@ -8367,7 +8279,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         event_type: str,
         client_payload: Missing[
             ReposOwnerRepoDispatchesPostBodyPropClientPayloadType
@@ -8379,7 +8291,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoDispatchesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -8421,7 +8333,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoDispatchesPostBodyType,
     ) -> Response: ...
 
@@ -8432,7 +8344,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         event_type: str,
         client_payload: Missing[
             ReposOwnerRepoDispatchesPostBodyPropClientPayloadType
@@ -8444,7 +8356,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoDispatchesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -8487,7 +8399,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoEnvironmentsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/environments#list-environments"""
 
@@ -8517,7 +8429,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoEnvironmentsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/environments#list-environments"""
 
@@ -8546,7 +8458,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Environment]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/environments#get-an-environment"""
 
@@ -8569,7 +8481,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Environment]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/environments#get-an-environment"""
 
@@ -8593,7 +8505,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
@@ -8607,12 +8519,12 @@ class ReposClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         wait_timer: Missing[int] = UNSET,
         prevent_self_review: Missing[bool] = UNSET,
         reviewers: Missing[
             Union[
-                List[
+                list[
                     ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType
                 ],
                 None,
@@ -8629,7 +8541,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
@@ -8678,7 +8590,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
@@ -8692,12 +8604,12 @@ class ReposClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         wait_timer: Missing[int] = UNSET,
         prevent_self_review: Missing[bool] = UNSET,
         reviewers: Missing[
             Union[
-                List[
+                list[
                     ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyPropReviewersItemsType
                 ],
                 None,
@@ -8714,7 +8626,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
@@ -8762,7 +8674,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/environments#delete-an-environment"""
 
@@ -8782,7 +8694,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/environments#delete-an-environment"""
 
@@ -8804,7 +8716,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
     ]:
@@ -8839,7 +8751,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
     ]:
@@ -8873,7 +8785,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: DeploymentBranchPolicyNamePatternWithTypeType,
     ) -> Response[DeploymentBranchPolicy]: ...
 
@@ -8885,7 +8797,7 @@ class ReposClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         type: Missing[Literal["branch", "tag"]] = UNSET,
     ) -> Response[DeploymentBranchPolicy]: ...
@@ -8896,7 +8808,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[DeploymentBranchPolicyNamePatternWithTypeType] = UNSET,
         **kwargs,
     ) -> Response[DeploymentBranchPolicy]:
@@ -8936,7 +8848,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: DeploymentBranchPolicyNamePatternWithTypeType,
     ) -> Response[DeploymentBranchPolicy]: ...
 
@@ -8948,7 +8860,7 @@ class ReposClient:
         environment_name: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         type: Missing[Literal["branch", "tag"]] = UNSET,
     ) -> Response[DeploymentBranchPolicy]: ...
@@ -8959,7 +8871,7 @@ class ReposClient:
         repo: str,
         environment_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[DeploymentBranchPolicyNamePatternWithTypeType] = UNSET,
         **kwargs,
     ) -> Response[DeploymentBranchPolicy]:
@@ -8999,7 +8911,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[DeploymentBranchPolicy]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/branch-policies#get-a-deployment-branch-policy"""
 
@@ -9023,7 +8935,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[DeploymentBranchPolicy]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/branch-policies#get-a-deployment-branch-policy"""
 
@@ -9048,7 +8960,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: DeploymentBranchPolicyNamePatternType,
     ) -> Response[DeploymentBranchPolicy]: ...
 
@@ -9061,7 +8973,7 @@ class ReposClient:
         branch_policy_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
     ) -> Response[DeploymentBranchPolicy]: ...
 
@@ -9072,7 +8984,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
     ) -> Response[DeploymentBranchPolicy]:
@@ -9109,7 +9021,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: DeploymentBranchPolicyNamePatternType,
     ) -> Response[DeploymentBranchPolicy]: ...
 
@@ -9122,7 +9034,7 @@ class ReposClient:
         branch_policy_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
     ) -> Response[DeploymentBranchPolicy]: ...
 
@@ -9133,7 +9045,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
     ) -> Response[DeploymentBranchPolicy]:
@@ -9169,7 +9081,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/branch-policies#delete-a-deployment-branch-policy"""
 
@@ -9190,7 +9102,7 @@ class ReposClient:
         environment_name: str,
         branch_policy_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/branch-policies#delete-a-deployment-branch-policy"""
 
@@ -9210,7 +9122,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
     ]:
@@ -9237,7 +9149,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
     ]:
@@ -9265,7 +9177,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
     ) -> Response[DeploymentProtectionRule]: ...
 
@@ -9277,7 +9189,7 @@ class ReposClient:
         owner: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         integration_id: Missing[int] = UNSET,
     ) -> Response[DeploymentProtectionRule]: ...
 
@@ -9287,7 +9199,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType
         ] = UNSET,
@@ -9331,7 +9243,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
     ) -> Response[DeploymentProtectionRule]: ...
 
@@ -9343,7 +9255,7 @@ class ReposClient:
         owner: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         integration_id: Missing[int] = UNSET,
     ) -> Response[DeploymentProtectionRule]: ...
 
@@ -9353,7 +9265,7 @@ class ReposClient:
         repo: str,
         owner: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType
         ] = UNSET,
@@ -9398,7 +9310,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200
     ]:
@@ -9433,7 +9345,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200
     ]:
@@ -9467,7 +9379,7 @@ class ReposClient:
         environment_name: str,
         protection_rule_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[DeploymentProtectionRule]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/protection-rules#get-a-custom-deployment-protection-rule"""
 
@@ -9491,7 +9403,7 @@ class ReposClient:
         environment_name: str,
         protection_rule_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[DeploymentProtectionRule]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/protection-rules#get-a-custom-deployment-protection-rule"""
 
@@ -9515,7 +9427,7 @@ class ReposClient:
         owner: str,
         protection_rule_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment"""
 
@@ -9536,7 +9448,7 @@ class ReposClient:
         owner: str,
         protection_rule_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment"""
 
@@ -9558,11 +9470,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/forks#list-forks"""
-
-        from typing import List
 
         from ..models import BasicError, MinimalRepository
 
@@ -9581,7 +9491,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
             error_models={
                 "400": BasicError,
             },
@@ -9595,11 +9505,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/forks#list-forks"""
-
-        from typing import List
 
         from ..models import BasicError, MinimalRepository
 
@@ -9618,7 +9526,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
             error_models={
                 "400": BasicError,
             },
@@ -9630,7 +9538,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
     ) -> Response[FullRepository]: ...
 
@@ -9641,7 +9549,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         organization: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
         default_branch_only: Missing[bool] = UNSET,
@@ -9652,7 +9560,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
@@ -9700,7 +9608,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
     ) -> Response[FullRepository]: ...
 
@@ -9711,7 +9619,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         organization: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
         default_branch_only: Missing[bool] = UNSET,
@@ -9722,7 +9630,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
@@ -9771,11 +9679,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Hook]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Hook]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#list-repository-webhooks"""
-
-        from typing import List
 
         from ..models import Hook, BasicError
 
@@ -9793,7 +9699,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Hook],
+            response_model=list[Hook],
             error_models={
                 "404": BasicError,
             },
@@ -9806,11 +9712,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Hook]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Hook]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#list-repository-webhooks"""
-
-        from typing import List
 
         from ..models import Hook, BasicError
 
@@ -9828,7 +9732,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Hook],
+            response_model=list[Hook],
             error_models={
                 "404": BasicError,
             },
@@ -9840,7 +9744,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
     ) -> Response[Hook]: ...
 
@@ -9851,10 +9755,10 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         config: Missing[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
-        events: Missing[List[str]] = UNSET,
+        events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
     ) -> Response[Hook]: ...
 
@@ -9863,7 +9767,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Hook]:
@@ -9910,7 +9814,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
     ) -> Response[Hook]: ...
 
@@ -9921,10 +9825,10 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         config: Missing[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
-        events: Missing[List[str]] = UNSET,
+        events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
     ) -> Response[Hook]: ...
 
@@ -9933,7 +9837,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
         **kwargs,
     ) -> Response[Hook]:
@@ -9980,7 +9884,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Hook]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#get-a-repository-webhook"""
 
@@ -10006,7 +9910,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Hook]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#get-a-repository-webhook"""
 
@@ -10032,7 +9936,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#delete-a-repository-webhook"""
 
@@ -10057,7 +9961,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#delete-a-repository-webhook"""
 
@@ -10083,7 +9987,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoHooksHookIdPatchBodyType,
     ) -> Response[Hook]: ...
 
@@ -10095,11 +9999,11 @@ class ReposClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         config: Missing[WebhookConfigType] = UNSET,
-        events: Missing[List[str]] = UNSET,
-        add_events: Missing[List[str]] = UNSET,
-        remove_events: Missing[List[str]] = UNSET,
+        events: Missing[list[str]] = UNSET,
+        add_events: Missing[list[str]] = UNSET,
+        remove_events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
     ) -> Response[Hook]: ...
 
@@ -10109,7 +10013,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Hook]:
@@ -10154,7 +10058,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoHooksHookIdPatchBodyType,
     ) -> Response[Hook]: ...
 
@@ -10166,11 +10070,11 @@ class ReposClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         config: Missing[WebhookConfigType] = UNSET,
-        events: Missing[List[str]] = UNSET,
-        add_events: Missing[List[str]] = UNSET,
-        remove_events: Missing[List[str]] = UNSET,
+        events: Missing[list[str]] = UNSET,
+        add_events: Missing[list[str]] = UNSET,
+        remove_events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
     ) -> Response[Hook]: ...
 
@@ -10180,7 +10084,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Hook]:
@@ -10224,7 +10128,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[WebhookConfig]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#get-a-webhook-configuration-for-a-repository"""
 
@@ -10247,7 +10151,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[WebhookConfig]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#get-a-webhook-configuration-for-a-repository"""
 
@@ -10271,7 +10175,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> Response[WebhookConfig]: ...
 
@@ -10283,7 +10187,7 @@ class ReposClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -10296,7 +10200,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig]:
@@ -10332,7 +10236,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
     ) -> Response[WebhookConfig]: ...
 
@@ -10344,7 +10248,7 @@ class ReposClient:
         hook_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -10357,7 +10261,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig]:
@@ -10394,11 +10298,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[HookDeliveryItem]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[HookDeliveryItem]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#list-deliveries-for-a-repository-webhook"""
-
-        from typing import List
 
         from ..models import BasicError, ValidationError, HookDeliveryItem
 
@@ -10416,7 +10318,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[HookDeliveryItem],
+            response_model=list[HookDeliveryItem],
             error_models={
                 "400": BasicError,
                 "422": ValidationError,
@@ -10431,11 +10333,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[HookDeliveryItem]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[HookDeliveryItem]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#list-deliveries-for-a-repository-webhook"""
-
-        from typing import List
 
         from ..models import BasicError, ValidationError, HookDeliveryItem
 
@@ -10453,7 +10353,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[HookDeliveryItem],
+            response_model=list[HookDeliveryItem],
             error_models={
                 "400": BasicError,
                 "422": ValidationError,
@@ -10467,7 +10367,7 @@ class ReposClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[HookDelivery]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#get-a-delivery-for-a-repository-webhook"""
 
@@ -10495,7 +10395,7 @@ class ReposClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[HookDelivery]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#get-a-delivery-for-a-repository-webhook"""
 
@@ -10523,7 +10423,7 @@ class ReposClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook"""
 
@@ -10555,7 +10455,7 @@ class ReposClient:
         hook_id: int,
         delivery_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook"""
 
@@ -10586,7 +10486,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#ping-a-repository-webhook"""
 
@@ -10611,7 +10511,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#ping-a-repository-webhook"""
 
@@ -10636,7 +10536,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#test-the-push-repository-webhook"""
 
@@ -10661,7 +10561,7 @@ class ReposClient:
         repo: str,
         hook_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/webhooks#test-the-push-repository-webhook"""
 
@@ -10687,11 +10587,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RepositoryInvitation]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RepositoryInvitation]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#list-repository-invitations"""
-
-        from typing import List
 
         from ..models import RepositoryInvitation
 
@@ -10709,7 +10607,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[RepositoryInvitation],
+            response_model=list[RepositoryInvitation],
         )
 
     async def async_list_invitations(
@@ -10719,11 +10617,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RepositoryInvitation]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RepositoryInvitation]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#list-repository-invitations"""
-
-        from typing import List
 
         from ..models import RepositoryInvitation
 
@@ -10741,7 +10637,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[RepositoryInvitation],
+            response_model=list[RepositoryInvitation],
         )
 
     def delete_invitation(
@@ -10750,7 +10646,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#delete-a-repository-invitation"""
 
@@ -10770,7 +10666,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#delete-a-repository-invitation"""
 
@@ -10791,7 +10687,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
     ) -> Response[RepositoryInvitation]: ...
 
@@ -10803,7 +10699,7 @@ class ReposClient:
         invitation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         permissions: Missing[
             Literal["read", "write", "maintain", "triage", "admin"]
         ] = UNSET,
@@ -10815,7 +10711,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryInvitation]:
@@ -10856,7 +10752,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
     ) -> Response[RepositoryInvitation]: ...
 
@@ -10868,7 +10764,7 @@ class ReposClient:
         invitation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         permissions: Missing[
             Literal["read", "write", "maintain", "triage", "admin"]
         ] = UNSET,
@@ -10880,7 +10776,7 @@ class ReposClient:
         repo: str,
         invitation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryInvitation]:
@@ -10921,11 +10817,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[DeployKey]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[DeployKey]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#list-deploy-keys"""
-
-        from typing import List
 
         from ..models import DeployKey
 
@@ -10943,7 +10837,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[DeployKey],
+            response_model=list[DeployKey],
         )
 
     async def async_list_deploy_keys(
@@ -10953,11 +10847,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[DeployKey]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[DeployKey]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#list-deploy-keys"""
-
-        from typing import List
 
         from ..models import DeployKey
 
@@ -10975,7 +10867,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[DeployKey],
+            response_model=list[DeployKey],
         )
 
     @overload
@@ -10984,7 +10876,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoKeysPostBodyType,
     ) -> Response[DeployKey]: ...
 
@@ -10995,7 +10887,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
         read_only: Missing[bool] = UNSET,
@@ -11006,7 +10898,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[DeployKey]:
@@ -11044,7 +10936,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoKeysPostBodyType,
     ) -> Response[DeployKey]: ...
 
@@ -11055,7 +10947,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: Missing[str] = UNSET,
         key: str,
         read_only: Missing[bool] = UNSET,
@@ -11066,7 +10958,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoKeysPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[DeployKey]:
@@ -11104,7 +10996,7 @@ class ReposClient:
         repo: str,
         key_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[DeployKey]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#get-a-deploy-key"""
 
@@ -11130,7 +11022,7 @@ class ReposClient:
         repo: str,
         key_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[DeployKey]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#get-a-deploy-key"""
 
@@ -11156,7 +11048,7 @@ class ReposClient:
         repo: str,
         key_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#delete-a-deploy-key"""
 
@@ -11176,7 +11068,7 @@ class ReposClient:
         repo: str,
         key_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/deploy-keys/deploy-keys#delete-a-deploy-key"""
 
@@ -11195,7 +11087,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Language]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-languages"""
 
@@ -11217,7 +11109,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Language]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-languages"""
 
@@ -11239,7 +11131,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/lfs#enable-git-lfs-for-a-repository"""
 
@@ -11262,7 +11154,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/lfs#enable-git-lfs-for-a-repository"""
 
@@ -11285,7 +11177,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/lfs#disable-git-lfs-for-a-repository"""
 
@@ -11304,7 +11196,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/lfs#disable-git-lfs-for-a-repository"""
 
@@ -11324,7 +11216,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoMergeUpstreamPostBodyType,
     ) -> Response[MergedUpstream]: ...
 
@@ -11335,7 +11227,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         branch: str,
     ) -> Response[MergedUpstream]: ...
 
@@ -11344,7 +11236,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[MergedUpstream]:
@@ -11380,7 +11272,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoMergeUpstreamPostBodyType,
     ) -> Response[MergedUpstream]: ...
 
@@ -11391,7 +11283,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         branch: str,
     ) -> Response[MergedUpstream]: ...
 
@@ -11400,7 +11292,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[MergedUpstream]:
@@ -11436,7 +11328,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoMergesPostBodyType,
     ) -> Response[Commit]: ...
 
@@ -11447,7 +11339,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         base: str,
         head: str,
         commit_message: Missing[str] = UNSET,
@@ -11458,7 +11350,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMergesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Commit]:
@@ -11502,7 +11394,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoMergesPostBodyType,
     ) -> Response[Commit]: ...
 
@@ -11513,7 +11405,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         base: str,
         head: str,
         commit_message: Missing[str] = UNSET,
@@ -11524,7 +11416,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMergesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Commit]:
@@ -11567,7 +11459,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Page]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-a-apiname-pages-site"""
 
@@ -11592,7 +11484,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Page]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-a-apiname-pages-site"""
 
@@ -11618,7 +11510,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Union[
             ReposOwnerRepoPagesPutBodyAnyof0Type,
             ReposOwnerRepoPagesPutBodyAnyof1Type,
@@ -11635,7 +11527,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Literal["legacy", "workflow"],
@@ -11655,7 +11547,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -11673,7 +11565,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         cname: Union[str, None],
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -11693,7 +11585,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -11713,7 +11605,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: bool,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -11731,7 +11623,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoPagesPutBodyAnyof0Type,
@@ -11797,7 +11689,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Union[
             ReposOwnerRepoPagesPutBodyAnyof0Type,
             ReposOwnerRepoPagesPutBodyAnyof1Type,
@@ -11814,7 +11706,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Literal["legacy", "workflow"],
@@ -11834,7 +11726,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -11852,7 +11744,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         cname: Union[str, None],
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -11872,7 +11764,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: Missing[bool] = UNSET,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -11892,7 +11784,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         cname: Missing[Union[str, None]] = UNSET,
         https_enforced: bool,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
@@ -11910,7 +11802,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoPagesPutBodyAnyof0Type,
@@ -11976,7 +11868,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Union[
             ReposOwnerRepoPagesPostBodyAnyof0Type,
             None,
@@ -11992,7 +11884,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: ReposOwnerRepoPagesPostBodyPropSourceType,
     ) -> Response[Page]: ...
@@ -12004,7 +11896,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         build_type: Literal["legacy", "workflow"],
         source: Missing[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
     ) -> Response[Page]: ...
@@ -12014,7 +11906,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoPagesPostBodyAnyof0Type,
@@ -12076,7 +11968,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Union[
             ReposOwnerRepoPagesPostBodyAnyof0Type,
             None,
@@ -12092,7 +11984,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: ReposOwnerRepoPagesPostBodyPropSourceType,
     ) -> Response[Page]: ...
@@ -12104,7 +11996,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         build_type: Literal["legacy", "workflow"],
         source: Missing[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
     ) -> Response[Page]: ...
@@ -12114,7 +12006,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoPagesPostBodyAnyof0Type,
@@ -12175,7 +12067,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#delete-a-apiname-pages-site"""
 
@@ -12201,7 +12093,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#delete-a-apiname-pages-site"""
 
@@ -12229,11 +12121,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[PageBuild]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PageBuild]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#list-apiname-pages-builds"""
-
-        from typing import List
 
         from ..models import PageBuild
 
@@ -12251,7 +12141,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[PageBuild],
+            response_model=list[PageBuild],
         )
 
     async def async_list_pages_builds(
@@ -12261,11 +12151,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[PageBuild]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[PageBuild]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#list-apiname-pages-builds"""
-
-        from typing import List
 
         from ..models import PageBuild
 
@@ -12283,7 +12171,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[PageBuild],
+            response_model=list[PageBuild],
         )
 
     def request_pages_build(
@@ -12291,7 +12179,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PageBuildStatus]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#request-a-apiname-pages-build"""
 
@@ -12313,7 +12201,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PageBuildStatus]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#request-a-apiname-pages-build"""
 
@@ -12335,7 +12223,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PageBuild]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-latest-pages-build"""
 
@@ -12357,7 +12245,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PageBuild]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-latest-pages-build"""
 
@@ -12380,7 +12268,7 @@ class ReposClient:
         repo: str,
         build_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PageBuild]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-apiname-pages-build"""
 
@@ -12403,7 +12291,7 @@ class ReposClient:
         repo: str,
         build_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PageBuild]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-apiname-pages-build"""
 
@@ -12426,7 +12314,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPagesDeploymentsPostBodyType,
     ) -> Response[PageDeployment]: ...
 
@@ -12437,7 +12325,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         artifact_id: Missing[float] = UNSET,
         artifact_url: Missing[str] = UNSET,
         environment: Missing[str] = UNSET,
@@ -12450,7 +12338,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPagesDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PageDeployment]:
@@ -12495,7 +12383,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPagesDeploymentsPostBodyType,
     ) -> Response[PageDeployment]: ...
 
@@ -12506,7 +12394,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         artifact_id: Missing[float] = UNSET,
         artifact_url: Missing[str] = UNSET,
         environment: Missing[str] = UNSET,
@@ -12519,7 +12407,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPagesDeploymentsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[PageDeployment]:
@@ -12564,7 +12452,7 @@ class ReposClient:
         repo: str,
         pages_deployment_id: Union[int, str],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PagesDeploymentStatus]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-the-status-of-a-github-pages-deployment"""
 
@@ -12590,7 +12478,7 @@ class ReposClient:
         repo: str,
         pages_deployment_id: Union[int, str],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PagesDeploymentStatus]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-the-status-of-a-github-pages-deployment"""
 
@@ -12616,7 +12504,7 @@ class ReposClient:
         repo: str,
         pages_deployment_id: Union[int, str],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#cancel-a-github-pages-deployment"""
 
@@ -12641,7 +12529,7 @@ class ReposClient:
         repo: str,
         pages_deployment_id: Union[int, str],
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#cancel-a-github-pages-deployment"""
 
@@ -12665,7 +12553,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PagesHealthCheck]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-a-dns-health-check-for-github-pages"""
 
@@ -12690,7 +12578,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[PagesHealthCheck]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/pages/pages#get-a-dns-health-check-for-github-pages"""
 
@@ -12715,7 +12603,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-private-vulnerability-reporting-is-enabled-for-a-repository"""
 
@@ -12743,7 +12631,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-private-vulnerability-reporting-is-enabled-for-a-repository"""
 
@@ -12771,7 +12659,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-private-vulnerability-reporting-for-a-repository"""
 
@@ -12795,7 +12683,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-private-vulnerability-reporting-for-a-repository"""
 
@@ -12819,7 +12707,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-private-vulnerability-reporting-for-a-repository"""
 
@@ -12843,7 +12731,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-private-vulnerability-reporting-for-a-repository"""
 
@@ -12867,11 +12755,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CustomPropertyValue]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CustomPropertyValue]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/custom-properties#get-all-custom-property-values-for-a-repository"""
-
-        from typing import List
 
         from ..models import BasicError, CustomPropertyValue
 
@@ -12883,7 +12769,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[CustomPropertyValue],
+            response_model=list[CustomPropertyValue],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -12895,11 +12781,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CustomPropertyValue]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CustomPropertyValue]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/custom-properties#get-all-custom-property-values-for-a-repository"""
-
-        from typing import List
 
         from ..models import BasicError, CustomPropertyValue
 
@@ -12911,7 +12795,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[CustomPropertyValue],
+            response_model=list[CustomPropertyValue],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -12924,7 +12808,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPropertiesValuesPatchBodyType,
     ) -> Response: ...
 
@@ -12935,8 +12819,8 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        properties: List[CustomPropertyValueType],
+        headers: Optional[dict[str, str]] = None,
+        properties: list[CustomPropertyValueType],
     ) -> Response: ...
 
     def create_or_update_custom_properties_values(
@@ -12944,7 +12828,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -12987,7 +12871,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPropertiesValuesPatchBodyType,
     ) -> Response: ...
 
@@ -12998,8 +12882,8 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        properties: List[CustomPropertyValueType],
+        headers: Optional[dict[str, str]] = None,
+        properties: list[CustomPropertyValueType],
     ) -> Response: ...
 
     async def async_create_or_update_custom_properties_values(
@@ -13007,7 +12891,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPropertiesValuesPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -13050,7 +12934,7 @@ class ReposClient:
         repo: str,
         ref: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ContentFile]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#get-a-repository-readme"""
 
@@ -13082,7 +12966,7 @@ class ReposClient:
         repo: str,
         ref: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ContentFile]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#get-a-repository-readme"""
 
@@ -13115,7 +12999,7 @@ class ReposClient:
         dir_: str,
         ref: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ContentFile]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#get-a-repository-readme-for-a-directory"""
 
@@ -13148,7 +13032,7 @@ class ReposClient:
         dir_: str,
         ref: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ContentFile]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#get-a-repository-readme-for-a-directory"""
 
@@ -13181,11 +13065,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Release]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Release]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#list-releases"""
-
-        from typing import List
 
         from ..models import Release, BasicError
 
@@ -13203,7 +13085,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Release],
+            response_model=list[Release],
             error_models={
                 "404": BasicError,
             },
@@ -13216,11 +13098,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Release]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Release]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#list-releases"""
-
-        from typing import List
 
         from ..models import Release, BasicError
 
@@ -13238,7 +13118,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Release],
+            response_model=list[Release],
             error_models={
                 "404": BasicError,
             },
@@ -13250,7 +13130,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoReleasesPostBodyType,
     ) -> Response[Release]: ...
 
@@ -13261,7 +13141,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         tag_name: str,
         target_commitish: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
@@ -13278,7 +13158,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Release]:
@@ -13322,7 +13202,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoReleasesPostBodyType,
     ) -> Response[Release]: ...
 
@@ -13333,7 +13213,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         tag_name: str,
         target_commitish: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
@@ -13350,7 +13230,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Release]:
@@ -13394,7 +13274,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReleaseAsset]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#get-a-release-asset"""
 
@@ -13420,7 +13300,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ReleaseAsset]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#get-a-release-asset"""
 
@@ -13446,7 +13326,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#delete-a-release-asset"""
 
@@ -13466,7 +13346,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#delete-a-release-asset"""
 
@@ -13487,7 +13367,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
     ) -> Response[ReleaseAsset]: ...
 
@@ -13499,7 +13379,7 @@ class ReposClient:
         asset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         label: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
@@ -13511,7 +13391,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReleaseAsset]:
@@ -13549,7 +13429,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
     ) -> Response[ReleaseAsset]: ...
 
@@ -13561,7 +13441,7 @@ class ReposClient:
         asset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         label: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
@@ -13573,7 +13453,7 @@ class ReposClient:
         repo: str,
         asset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReleaseAsset]:
@@ -13610,7 +13490,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoReleasesGenerateNotesPostBodyType,
     ) -> Response[ReleaseNotesContent]: ...
 
@@ -13621,7 +13501,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         tag_name: str,
         target_commitish: Missing[str] = UNSET,
         previous_tag_name: Missing[str] = UNSET,
@@ -13633,7 +13513,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReleaseNotesContent]:
@@ -13677,7 +13557,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoReleasesGenerateNotesPostBodyType,
     ) -> Response[ReleaseNotesContent]: ...
 
@@ -13688,7 +13568,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         tag_name: str,
         target_commitish: Missing[str] = UNSET,
         previous_tag_name: Missing[str] = UNSET,
@@ -13700,7 +13580,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ReleaseNotesContent]:
@@ -13743,7 +13623,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Release]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-the-latest-release"""
 
@@ -13765,7 +13645,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Release]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-the-latest-release"""
 
@@ -13788,7 +13668,7 @@ class ReposClient:
         repo: str,
         tag: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Release]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-a-release-by-tag-name"""
 
@@ -13814,7 +13694,7 @@ class ReposClient:
         repo: str,
         tag: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Release]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-a-release-by-tag-name"""
 
@@ -13840,7 +13720,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Release]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-a-release"""
 
@@ -13864,7 +13744,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Release]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#get-a-release"""
 
@@ -13888,7 +13768,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#delete-a-release"""
 
@@ -13908,7 +13788,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/releases#delete-a-release"""
 
@@ -13929,7 +13809,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
     ) -> Response[Release]: ...
 
@@ -13941,7 +13821,7 @@ class ReposClient:
         release_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         tag_name: Missing[str] = UNSET,
         target_commitish: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
@@ -13958,7 +13838,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Release]:
@@ -14001,7 +13881,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
     ) -> Response[Release]: ...
 
@@ -14013,7 +13893,7 @@ class ReposClient:
         release_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         tag_name: Missing[str] = UNSET,
         target_commitish: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
@@ -14030,7 +13910,7 @@ class ReposClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Release]:
@@ -14074,11 +13954,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ReleaseAsset]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ReleaseAsset]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#list-release-assets"""
-
-        from typing import List
 
         from ..models import ReleaseAsset
 
@@ -14096,7 +13974,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ReleaseAsset],
+            response_model=list[ReleaseAsset],
         )
 
     async def async_list_release_assets(
@@ -14107,11 +13985,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ReleaseAsset]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ReleaseAsset]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#list-release-assets"""
-
-        from typing import List
 
         from ..models import ReleaseAsset
 
@@ -14129,7 +14005,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ReleaseAsset],
+            response_model=list[ReleaseAsset],
         )
 
     def upload_release_asset(
@@ -14140,7 +14016,7 @@ class ReposClient:
         name: str,
         label: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: FileTypes,
     ) -> Response[ReleaseAsset]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#upload-a-release-asset"""
@@ -14180,7 +14056,7 @@ class ReposClient:
         name: str,
         label: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: FileTypes,
     ) -> Response[ReleaseAsset]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/releases/assets#upload-a-release-asset"""
@@ -14220,9 +14096,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        List[
+        list[
             Union[
                 RepositoryRuleDetailedOneof0,
                 RepositoryRuleDetailedOneof1,
@@ -14246,7 +14122,7 @@ class ReposClient:
     ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-rules-for-a-branch"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             RepositoryRuleDetailedOneof0,
@@ -14282,7 +14158,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[
+            response_model=list[
                 Union[
                     RepositoryRuleDetailedOneof0,
                     RepositoryRuleDetailedOneof1,
@@ -14313,9 +14189,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        List[
+        list[
             Union[
                 RepositoryRuleDetailedOneof0,
                 RepositoryRuleDetailedOneof1,
@@ -14339,7 +14215,7 @@ class ReposClient:
     ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-rules-for-a-branch"""
 
-        from typing import List, Union
+        from typing import Union
 
         from ..models import (
             RepositoryRuleDetailedOneof0,
@@ -14375,7 +14251,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[
+            response_model=list[
                 Union[
                     RepositoryRuleDetailedOneof0,
                     RepositoryRuleDetailedOneof1,
@@ -14407,11 +14283,9 @@ class ReposClient:
         includes_parents: Missing[bool] = UNSET,
         targets: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RepositoryRuleset]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RepositoryRuleset]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-all-repository-rulesets"""
-
-        from typing import List
 
         from ..models import BasicError, RepositoryRuleset
 
@@ -14431,7 +14305,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[RepositoryRuleset],
+            response_model=list[RepositoryRuleset],
             error_models={
                 "404": BasicError,
                 "500": BasicError,
@@ -14447,11 +14321,9 @@ class ReposClient:
         includes_parents: Missing[bool] = UNSET,
         targets: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RepositoryRuleset]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RepositoryRuleset]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-all-repository-rulesets"""
-
-        from typing import List
 
         from ..models import BasicError, RepositoryRuleset
 
@@ -14471,7 +14343,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[RepositoryRuleset],
+            response_model=list[RepositoryRuleset],
             error_models={
                 "404": BasicError,
                 "500": BasicError,
@@ -14484,7 +14356,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset]: ...
 
@@ -14495,14 +14367,14 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
-        bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
+        bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[RepositoryRulesetConditionsType] = UNSET,
         rules: Missing[
-            List[
+            list[
                 Union[
                     RepositoryRuleCreationType,
                     RepositoryRuleUpdateType,
@@ -14535,7 +14407,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset]:
@@ -14578,7 +14450,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoRulesetsPostBodyType,
     ) -> Response[RepositoryRuleset]: ...
 
@@ -14589,14 +14461,14 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Literal["disabled", "active", "evaluate"],
-        bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
+        bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[RepositoryRulesetConditionsType] = UNSET,
         rules: Missing[
-            List[
+            list[
                 Union[
                     RepositoryRuleCreationType,
                     RepositoryRuleUpdateType,
@@ -14629,7 +14501,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset]:
@@ -14677,11 +14549,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RuleSuitesItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RuleSuitesItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rule-suites#list-repository-rule-suites"""
-
-        from typing import List
 
         from ..models import BasicError, RuleSuitesItems
 
@@ -14703,7 +14573,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[RuleSuitesItems],
+            response_model=list[RuleSuitesItems],
             error_models={
                 "404": BasicError,
                 "500": BasicError,
@@ -14721,11 +14591,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RuleSuitesItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RuleSuitesItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rule-suites#list-repository-rule-suites"""
-
-        from typing import List
 
         from ..models import BasicError, RuleSuitesItems
 
@@ -14747,7 +14615,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[RuleSuitesItems],
+            response_model=list[RuleSuitesItems],
             error_models={
                 "404": BasicError,
                 "500": BasicError,
@@ -14760,7 +14628,7 @@ class ReposClient:
         repo: str,
         rule_suite_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[RuleSuite]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rule-suites#get-a-repository-rule-suite"""
 
@@ -14787,7 +14655,7 @@ class ReposClient:
         repo: str,
         rule_suite_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[RuleSuite]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rule-suites#get-a-repository-rule-suite"""
 
@@ -14815,7 +14683,7 @@ class ReposClient:
         ruleset_id: int,
         includes_parents: Missing[bool] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[RepositoryRuleset]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-a-repository-ruleset"""
 
@@ -14848,7 +14716,7 @@ class ReposClient:
         ruleset_id: int,
         includes_parents: Missing[bool] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[RepositoryRuleset]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#get-a-repository-ruleset"""
 
@@ -14881,7 +14749,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset]: ...
 
@@ -14893,14 +14761,14 @@ class ReposClient:
         ruleset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
-        bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
+        bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[RepositoryRulesetConditionsType] = UNSET,
         rules: Missing[
-            List[
+            list[
                 Union[
                     RepositoryRuleCreationType,
                     RepositoryRuleUpdateType,
@@ -14934,7 +14802,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset]:
@@ -14978,7 +14846,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
     ) -> Response[RepositoryRuleset]: ...
 
@@ -14990,14 +14858,14 @@ class ReposClient:
         ruleset_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         target: Missing[Literal["branch", "tag", "push"]] = UNSET,
         enforcement: Missing[Literal["disabled", "active", "evaluate"]] = UNSET,
-        bypass_actors: Missing[List[RepositoryRulesetBypassActorType]] = UNSET,
+        bypass_actors: Missing[list[RepositoryRulesetBypassActorType]] = UNSET,
         conditions: Missing[RepositoryRulesetConditionsType] = UNSET,
         rules: Missing[
-            List[
+            list[
                 Union[
                     RepositoryRuleCreationType,
                     RepositoryRuleUpdateType,
@@ -15031,7 +14899,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryRuleset]:
@@ -15074,7 +14942,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#delete-a-repository-ruleset"""
 
@@ -15100,7 +14968,7 @@ class ReposClient:
         repo: str,
         ruleset_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/rules#delete-a-repository-ruleset"""
 
@@ -15125,11 +14993,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[List[int]]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[list[int]]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-the-weekly-commit-activity"""
-
-        from typing import List
 
         url = f"/repos/{owner}/{repo}/stats/code_frequency"
 
@@ -15139,7 +15005,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[List[int]],
+            response_model=list[list[int]],
             error_models={},
         )
 
@@ -15148,11 +15014,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[List[int]]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[list[int]]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-the-weekly-commit-activity"""
-
-        from typing import List
 
         url = f"/repos/{owner}/{repo}/stats/code_frequency"
 
@@ -15162,7 +15026,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[List[int]],
+            response_model=list[list[int]],
             error_models={},
         )
 
@@ -15171,11 +15035,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CommitActivity]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CommitActivity]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-the-last-year-of-commit-activity"""
-
-        from typing import List
 
         from ..models import CommitActivity
 
@@ -15187,7 +15049,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[CommitActivity],
+            response_model=list[CommitActivity],
         )
 
     async def async_get_commit_activity_stats(
@@ -15195,11 +15057,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CommitActivity]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CommitActivity]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-the-last-year-of-commit-activity"""
-
-        from typing import List
 
         from ..models import CommitActivity
 
@@ -15211,7 +15071,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[CommitActivity],
+            response_model=list[CommitActivity],
         )
 
     def get_contributors_stats(
@@ -15219,11 +15079,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ContributorActivity]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ContributorActivity]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-all-contributor-commit-activity"""
-
-        from typing import List
 
         from ..models import ContributorActivity
 
@@ -15235,7 +15093,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[ContributorActivity],
+            response_model=list[ContributorActivity],
         )
 
     async def async_get_contributors_stats(
@@ -15243,11 +15101,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ContributorActivity]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ContributorActivity]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-all-contributor-commit-activity"""
-
-        from typing import List
 
         from ..models import ContributorActivity
 
@@ -15259,7 +15115,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[ContributorActivity],
+            response_model=list[ContributorActivity],
         )
 
     def get_participation_stats(
@@ -15267,7 +15123,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ParticipationStats]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-the-weekly-commit-count"""
 
@@ -15292,7 +15148,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ParticipationStats]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-the-weekly-commit-count"""
 
@@ -15317,11 +15173,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[List[int]]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[list[int]]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-the-hourly-commit-count-for-each-day"""
-
-        from typing import List
 
         url = f"/repos/{owner}/{repo}/stats/punch_card"
 
@@ -15331,7 +15185,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[List[int]],
+            response_model=list[list[int]],
         )
 
     async def async_get_punch_card_stats(
@@ -15339,11 +15193,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[List[int]]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[list[int]]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/statistics#get-the-hourly-commit-count-for-each-day"""
-
-        from typing import List
 
         url = f"/repos/{owner}/{repo}/stats/punch_card"
 
@@ -15353,7 +15205,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[List[int]],
+            response_model=list[list[int]],
         )
 
     @overload
@@ -15363,7 +15215,7 @@ class ReposClient:
         repo: str,
         sha: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoStatusesShaPostBodyType,
     ) -> Response[Status]: ...
 
@@ -15375,7 +15227,7 @@ class ReposClient:
         sha: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         state: Literal["error", "failure", "pending", "success"],
         target_url: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -15388,7 +15240,7 @@ class ReposClient:
         repo: str,
         sha: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Status]:
@@ -15424,7 +15276,7 @@ class ReposClient:
         repo: str,
         sha: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoStatusesShaPostBodyType,
     ) -> Response[Status]: ...
 
@@ -15436,7 +15288,7 @@ class ReposClient:
         sha: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         state: Literal["error", "failure", "pending", "success"],
         target_url: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
@@ -15449,7 +15301,7 @@ class ReposClient:
         repo: str,
         sha: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Status]:
@@ -15485,11 +15337,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Tag]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Tag]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-tags"""
-
-        from typing import List
 
         from ..models import Tag
 
@@ -15507,7 +15357,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Tag],
+            response_model=list[Tag],
         )
 
     async def async_list_tags(
@@ -15517,11 +15367,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Tag]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Tag]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-tags"""
-
-        from typing import List
 
         from ..models import Tag
 
@@ -15539,7 +15387,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Tag],
+            response_model=list[Tag],
         )
 
     def list_tag_protection(
@@ -15547,11 +15395,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TagProtection]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TagProtection]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#closing-down---list-tag-protection-states-for-a-repository"""
-
-        from typing import List
 
         from ..models import BasicError, TagProtection
 
@@ -15563,7 +15409,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[TagProtection],
+            response_model=list[TagProtection],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -15575,11 +15421,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TagProtection]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TagProtection]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#closing-down---list-tag-protection-states-for-a-repository"""
-
-        from typing import List
 
         from ..models import BasicError, TagProtection
 
@@ -15591,7 +15435,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[TagProtection],
+            response_model=list[TagProtection],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -15604,7 +15448,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoTagsProtectionPostBodyType,
     ) -> Response[TagProtection]: ...
 
@@ -15615,7 +15459,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         pattern: str,
     ) -> Response[TagProtection]: ...
 
@@ -15624,7 +15468,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TagProtection]:
@@ -15667,7 +15511,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoTagsProtectionPostBodyType,
     ) -> Response[TagProtection]: ...
 
@@ -15678,7 +15522,7 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         pattern: str,
     ) -> Response[TagProtection]: ...
 
@@ -15687,7 +15531,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TagProtection]:
@@ -15730,7 +15574,7 @@ class ReposClient:
         repo: str,
         tag_protection_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#closing-down---delete-a-tag-protection-state-for-a-repository"""
 
@@ -15756,7 +15600,7 @@ class ReposClient:
         repo: str,
         tag_protection_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/tags#closing-down---delete-a-tag-protection-state-for-a-repository"""
 
@@ -15782,7 +15626,7 @@ class ReposClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#download-a-repository-archive-tar"""
 
@@ -15802,7 +15646,7 @@ class ReposClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#download-a-repository-archive-tar"""
 
@@ -15823,11 +15667,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Team]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-teams"""
-
-        from typing import List
 
         from ..models import Team, BasicError
 
@@ -15845,7 +15687,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
             error_models={
                 "404": BasicError,
             },
@@ -15858,11 +15700,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Team]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repository-teams"""
-
-        from typing import List
 
         from ..models import Team, BasicError
 
@@ -15880,7 +15720,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
             error_models={
                 "404": BasicError,
             },
@@ -15893,7 +15733,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Topic]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#get-all-repository-topics"""
 
@@ -15926,7 +15766,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Topic]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#get-all-repository-topics"""
 
@@ -15958,7 +15798,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoTopicsPutBodyType,
     ) -> Response[Topic]: ...
 
@@ -15969,8 +15809,8 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        names: List[str],
+        headers: Optional[dict[str, str]] = None,
+        names: list[str],
     ) -> Response[Topic]: ...
 
     def replace_all_topics(
@@ -15978,7 +15818,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoTopicsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[Topic]:
@@ -16022,7 +15862,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoTopicsPutBodyType,
     ) -> Response[Topic]: ...
 
@@ -16033,8 +15873,8 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        names: List[str],
+        headers: Optional[dict[str, str]] = None,
+        names: list[str],
     ) -> Response[Topic]: ...
 
     async def async_replace_all_topics(
@@ -16042,7 +15882,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoTopicsPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[Topic]:
@@ -16086,7 +15926,7 @@ class ReposClient:
         repo: str,
         per: Missing[Literal["day", "week"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CloneTraffic]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-repository-clones"""
 
@@ -16117,7 +15957,7 @@ class ReposClient:
         repo: str,
         per: Missing[Literal["day", "week"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CloneTraffic]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-repository-clones"""
 
@@ -16147,11 +15987,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ContentTraffic]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ContentTraffic]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-top-referral-paths"""
-
-        from typing import List
 
         from ..models import BasicError, ContentTraffic
 
@@ -16163,7 +16001,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[ContentTraffic],
+            response_model=list[ContentTraffic],
             error_models={
                 "403": BasicError,
             },
@@ -16174,11 +16012,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ContentTraffic]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ContentTraffic]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-top-referral-paths"""
-
-        from typing import List
 
         from ..models import BasicError, ContentTraffic
 
@@ -16190,7 +16026,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[ContentTraffic],
+            response_model=list[ContentTraffic],
             error_models={
                 "403": BasicError,
             },
@@ -16201,11 +16037,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ReferrerTraffic]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ReferrerTraffic]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-top-referral-sources"""
-
-        from typing import List
 
         from ..models import BasicError, ReferrerTraffic
 
@@ -16217,7 +16051,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[ReferrerTraffic],
+            response_model=list[ReferrerTraffic],
             error_models={
                 "403": BasicError,
             },
@@ -16228,11 +16062,9 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ReferrerTraffic]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ReferrerTraffic]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-top-referral-sources"""
-
-        from typing import List
 
         from ..models import BasicError, ReferrerTraffic
 
@@ -16244,7 +16076,7 @@ class ReposClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[ReferrerTraffic],
+            response_model=list[ReferrerTraffic],
             error_models={
                 "403": BasicError,
             },
@@ -16256,7 +16088,7 @@ class ReposClient:
         repo: str,
         per: Missing[Literal["day", "week"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ViewTraffic]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-page-views"""
 
@@ -16287,7 +16119,7 @@ class ReposClient:
         repo: str,
         per: Missing[Literal["day", "week"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ViewTraffic]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/metrics/traffic#get-page-views"""
 
@@ -16318,7 +16150,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoTransferPostBodyType,
     ) -> Response[MinimalRepository]: ...
 
@@ -16329,10 +16161,10 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         new_owner: str,
         new_name: Missing[str] = UNSET,
-        team_ids: Missing[List[int]] = UNSET,
+        team_ids: Missing[list[int]] = UNSET,
     ) -> Response[MinimalRepository]: ...
 
     def transfer(
@@ -16340,7 +16172,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoTransferPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[MinimalRepository]:
@@ -16375,7 +16207,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoTransferPostBodyType,
     ) -> Response[MinimalRepository]: ...
 
@@ -16386,10 +16218,10 @@ class ReposClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         new_owner: str,
         new_name: Missing[str] = UNSET,
-        team_ids: Missing[List[int]] = UNSET,
+        team_ids: Missing[list[int]] = UNSET,
     ) -> Response[MinimalRepository]: ...
 
     async def async_transfer(
@@ -16397,7 +16229,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoTransferPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[MinimalRepository]:
@@ -16431,7 +16263,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository"""
 
@@ -16451,7 +16283,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository"""
 
@@ -16471,7 +16303,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-vulnerability-alerts"""
 
@@ -16490,7 +16322,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#enable-vulnerability-alerts"""
 
@@ -16509,7 +16341,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-vulnerability-alerts"""
 
@@ -16528,7 +16360,7 @@ class ReposClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#disable-vulnerability-alerts"""
 
@@ -16548,7 +16380,7 @@ class ReposClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#download-a-repository-archive-zip"""
 
@@ -16568,7 +16400,7 @@ class ReposClient:
         repo: str,
         ref: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/contents#download-a-repository-archive-zip"""
 
@@ -16588,7 +16420,7 @@ class ReposClient:
         template_owner: str,
         template_repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
     ) -> Response[FullRepository]: ...
 
@@ -16599,7 +16431,7 @@ class ReposClient:
         template_repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         owner: Missing[str] = UNSET,
         name: str,
         description: Missing[str] = UNSET,
@@ -16612,7 +16444,7 @@ class ReposClient:
         template_owner: str,
         template_repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
@@ -16652,7 +16484,7 @@ class ReposClient:
         template_owner: str,
         template_repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
     ) -> Response[FullRepository]: ...
 
@@ -16663,7 +16495,7 @@ class ReposClient:
         template_repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         owner: Missing[str] = UNSET,
         name: str,
         description: Missing[str] = UNSET,
@@ -16676,7 +16508,7 @@ class ReposClient:
         template_owner: str,
         template_repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
@@ -16714,11 +16546,9 @@ class ReposClient:
         self,
         since: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-public-repositories"""
-
-        from typing import List
 
         from ..models import ValidationError, MinimalRepository
 
@@ -16735,7 +16565,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
             error_models={
                 "422": ValidationError,
             },
@@ -16745,11 +16575,9 @@ class ReposClient:
         self,
         since: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-public-repositories"""
-
-        from typing import List
 
         from ..models import ValidationError, MinimalRepository
 
@@ -16766,7 +16594,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
             error_models={
                 "422": ValidationError,
             },
@@ -16784,11 +16612,9 @@ class ReposClient:
         since: Missing[datetime] = UNSET,
         before: Missing[datetime] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Repository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Repository]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repositories-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BasicError, Repository, ValidationError
 
@@ -16813,7 +16639,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Repository],
+            response_model=list[Repository],
             error_models={
                 "422": ValidationError,
                 "403": BasicError,
@@ -16833,11 +16659,9 @@ class ReposClient:
         since: Missing[datetime] = UNSET,
         before: Missing[datetime] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Repository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Repository]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repositories-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BasicError, Repository, ValidationError
 
@@ -16862,7 +16686,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Repository],
+            response_model=list[Repository],
             error_models={
                 "422": ValidationError,
                 "403": BasicError,
@@ -16872,7 +16696,7 @@ class ReposClient:
 
     @overload
     def create_for_authenticated_user(
-        self, *, headers: Optional[Dict[str, str]] = None, data: UserReposPostBodyType
+        self, *, headers: Optional[dict[str, str]] = None, data: UserReposPostBodyType
     ) -> Response[FullRepository]: ...
 
     @overload
@@ -16880,7 +16704,7 @@ class ReposClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -16913,7 +16737,7 @@ class ReposClient:
     def create_for_authenticated_user(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[UserReposPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
@@ -16956,7 +16780,7 @@ class ReposClient:
 
     @overload
     async def async_create_for_authenticated_user(
-        self, *, headers: Optional[Dict[str, str]] = None, data: UserReposPostBodyType
+        self, *, headers: Optional[dict[str, str]] = None, data: UserReposPostBodyType
     ) -> Response[FullRepository]: ...
 
     @overload
@@ -16964,7 +16788,7 @@ class ReposClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
         homepage: Missing[str] = UNSET,
@@ -16997,7 +16821,7 @@ class ReposClient:
     async def async_create_for_authenticated_user(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[UserReposPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[FullRepository]:
@@ -17043,11 +16867,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RepositoryInvitation]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RepositoryInvitation]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BasicError, RepositoryInvitation
 
@@ -17065,7 +16887,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[RepositoryInvitation],
+            response_model=list[RepositoryInvitation],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -17078,11 +16900,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RepositoryInvitation]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RepositoryInvitation]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BasicError, RepositoryInvitation
 
@@ -17100,7 +16920,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[RepositoryInvitation],
+            response_model=list[RepositoryInvitation],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -17112,7 +16932,7 @@ class ReposClient:
         self,
         invitation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#decline-a-repository-invitation"""
 
@@ -17137,7 +16957,7 @@ class ReposClient:
         self,
         invitation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#decline-a-repository-invitation"""
 
@@ -17162,7 +16982,7 @@ class ReposClient:
         self,
         invitation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#accept-a-repository-invitation"""
 
@@ -17187,7 +17007,7 @@ class ReposClient:
         self,
         invitation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/collaborators/invitations#accept-a-repository-invitation"""
 
@@ -17217,11 +17037,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repositories-for-a-user"""
-
-        from typing import List
 
         from ..models import MinimalRepository
 
@@ -17242,7 +17060,7 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
         )
 
     async def async_list_for_user(
@@ -17254,11 +17072,9 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/repos/repos#list-repositories-for-a-user"""
-
-        from typing import List
 
         from ..models import MinimalRepository
 
@@ -17279,5 +17095,5 @@ class ReposClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
         )

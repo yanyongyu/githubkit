@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -59,7 +59,7 @@ class SimpleCheckSuite(GitHubModel):
     )
     id: Missing[int] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
-    pull_requests: Missing[List[PullRequestMinimal]] = Field(default=UNSET)
+    pull_requests: Missing[list[PullRequestMinimal]] = Field(default=UNSET)
     repository: Missing[MinimalRepository] = Field(
         default=UNSET, title="Minimal Repository", description="Minimal Repository"
     )

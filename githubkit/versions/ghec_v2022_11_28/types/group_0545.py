@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -87,7 +87,7 @@ class WebhookForkPropForkeeAllof1Type(TypedDict):
     svn_url: NotRequired[str]
     tags_url: NotRequired[str]
     teams_url: NotRequired[str]
-    topics: NotRequired[List[Union[str, None]]]
+    topics: NotRequired[list[Union[str, None]]]
     trees_url: NotRequired[str]
     updated_at: NotRequired[str]
     url: NotRequired[str]

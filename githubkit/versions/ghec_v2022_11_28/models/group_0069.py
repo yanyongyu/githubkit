@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -52,11 +52,11 @@ class Issue(GitHubModel):
         default=UNSET, description="Contents of the issue"
     )
     user: Union[None, SimpleUser] = Field()
-    labels: List[Union[str, IssuePropLabelsItemsOneof1]] = Field(
+    labels: list[Union[str, IssuePropLabelsItemsOneof1]] = Field(
         description="Labels to associate with this issue; pass one or more label names to replace the set of labels on this issue; send an empty array to clear all labels from the issue; note that the labels are silently dropped for users without push access to the repository"
     )
     assignee: Union[None, SimpleUser] = Field()
-    assignees: Missing[Union[List[SimpleUser], None]] = Field(default=UNSET)
+    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
     milestone: Union[None, Milestone] = Field()
     locked: bool = Field()
     active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)

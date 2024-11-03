@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -22,7 +20,7 @@ class ReposOwnerRepoAttestationsSubjectDigestGetResponse200(GitHubModel):
     """ReposOwnerRepoAttestationsSubjectDigestGetResponse200"""
 
     attestations: Missing[
-        List[ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+        list[ReposOwnerRepoAttestationsSubjectDigestGetResponse200PropAttestationsItems]
     ] = Field(default=UNSET)
 
 

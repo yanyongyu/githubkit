@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -20,9 +20,9 @@ class ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type(TypedDic
         "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
     ]
     query_pack: str
-    repositories: List[str]
-    repository_lists: NotRequired[List[str]]
-    repository_owners: NotRequired[List[str]]
+    repositories: list[str]
+    repository_lists: NotRequired[list[str]]
+    repository_owners: NotRequired[list[str]]
 
 
 __all__ = ("ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type",)

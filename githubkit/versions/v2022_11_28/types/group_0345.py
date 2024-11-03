@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -19,10 +19,10 @@ class RepositoryAdvisoryCreateType(TypedDict):
     summary: str
     description: str
     cve_id: NotRequired[Union[str, None]]
-    vulnerabilities: List[RepositoryAdvisoryCreatePropVulnerabilitiesItemsType]
-    cwe_ids: NotRequired[Union[List[str], None]]
+    vulnerabilities: list[RepositoryAdvisoryCreatePropVulnerabilitiesItemsType]
+    cwe_ids: NotRequired[Union[list[str], None]]
     credits_: NotRequired[
-        Union[List[RepositoryAdvisoryCreatePropCreditsItemsType], None]
+        Union[list[RepositoryAdvisoryCreatePropCreditsItemsType], None]
     ]
     severity: NotRequired[Union[None, Literal["critical", "high", "medium", "low"]]]
     cvss_vector_string: NotRequired[Union[str, None]]
@@ -53,7 +53,7 @@ class RepositoryAdvisoryCreatePropVulnerabilitiesItemsType(TypedDict):
     package: RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType
     vulnerable_version_range: NotRequired[Union[str, None]]
     patched_versions: NotRequired[Union[str, None]]
-    vulnerable_functions: NotRequired[Union[List[str], None]]
+    vulnerable_functions: NotRequired[Union[list[str], None]]
 
 
 class RepositoryAdvisoryCreatePropVulnerabilitiesItemsPropPackageType(TypedDict):

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -28,7 +28,7 @@ class ContributorActivity(GitHubModel):
 
     author: Union[None, SimpleUser] = Field()
     total: int = Field()
-    weeks: List[ContributorActivityPropWeeksItems] = Field()
+    weeks: list[ContributorActivityPropWeeksItems] = Field()
 
 
 class ContributorActivityPropWeeksItems(GitHubModel):

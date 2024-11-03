@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import date
-from typing import List, Union
 
 from pydantic import Field
 
@@ -63,7 +63,7 @@ class CopilotDotcomChat(ExtraGitHubModel):
         default=UNSET,
         description="Total number of users who prompted Copilot Chat on github.com at least once.",
     )
-    models: Missing[List[CopilotDotcomChatPropModelsItems]] = Field(
+    models: Missing[list[CopilotDotcomChatPropModelsItems]] = Field(
         default=UNSET,
         description="List of model metrics for a custom models and the default model.",
     )
@@ -103,7 +103,7 @@ class CopilotIdeChat(ExtraGitHubModel):
         default=UNSET,
         description="Total number of users who prompted Copilot Chat in the IDE.",
     )
-    editors: Missing[List[CopilotIdeChatPropEditorsItems]] = Field(default=UNSET)
+    editors: Missing[list[CopilotIdeChatPropEditorsItems]] = Field(default=UNSET)
 
 
 class CopilotIdeChatPropEditorsItems(GitHubModel):
@@ -117,7 +117,7 @@ class CopilotIdeChatPropEditorsItems(GitHubModel):
         default=UNSET,
         description="The number of users who prompted Copilot Chat in the specified editor.",
     )
-    models: Missing[List[CopilotIdeChatPropEditorsItemsPropModelsItems]] = Field(
+    models: Missing[list[CopilotIdeChatPropEditorsItemsPropModelsItems]] = Field(
         default=UNSET,
         description="List of model metrics for custom models and the default model.",
     )
@@ -164,7 +164,7 @@ class CopilotDotcomPullRequests(ExtraGitHubModel):
         default=UNSET,
         description="The number of users who used Copilot for Pull Requests on github.com to generate a pull request summary at least once.",
     )
-    repositories: Missing[List[CopilotDotcomPullRequestsPropRepositoriesItems]] = Field(
+    repositories: Missing[list[CopilotDotcomPullRequestsPropRepositoriesItems]] = Field(
         default=UNSET,
         description="Repositories in which users used Copilot for Pull Requests to generate pull request summaries",
     )
@@ -179,7 +179,7 @@ class CopilotDotcomPullRequestsPropRepositoriesItems(GitHubModel):
         description="The number of users who generated pull request summaries using Copilot for Pull Requests in the given repository.",
     )
     models: Missing[
-        List[CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems]
+        list[CopilotDotcomPullRequestsPropRepositoriesItemsPropModelsItems]
     ] = Field(
         default=UNSET,
         description="List of model metrics for custom models and the default model.",
@@ -219,10 +219,10 @@ class CopilotIdeCodeCompletions(ExtraGitHubModel):
         default=UNSET,
         description="Number of users who accepted at least one Copilot code suggestion, across all active editors. Includes both full and partial acceptances.",
     )
-    languages: Missing[List[CopilotIdeCodeCompletionsPropLanguagesItems]] = Field(
+    languages: Missing[list[CopilotIdeCodeCompletionsPropLanguagesItems]] = Field(
         default=UNSET, description="Code completion metrics for active languages."
     )
-    editors: Missing[List[CopilotIdeCodeCompletionsPropEditorsItems]] = Field(
+    editors: Missing[list[CopilotIdeCodeCompletionsPropEditorsItems]] = Field(
         default=UNSET
     )
 
@@ -255,7 +255,7 @@ class CopilotIdeCodeCompletionsPropEditorsItems(ExtraGitHubModel):
         default=UNSET,
         description="Number of users who accepted at least one Copilot code completion suggestion for the given editor. Includes both full and partial acceptances.",
     )
-    models: Missing[List[CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems]] = (
+    models: Missing[list[CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems]] = (
         Field(
             default=UNSET,
             description="List of model metrics for custom models and the default model.",
@@ -281,7 +281,7 @@ class CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItems(GitHubModel):
         description="Number of users who accepted at least one Copilot code completion suggestion for the given editor, for the given language and model. Includes both full and partial acceptances.",
     )
     languages: Missing[
-        List[CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems]
+        list[CopilotIdeCodeCompletionsPropEditorsItemsPropModelsItemsPropLanguagesItems]
     ] = Field(
         default=UNSET,
         description="Code completion metrics for active languages, for the given editor.",

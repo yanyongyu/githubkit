@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -19,7 +19,7 @@ class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetRespon
     """ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200"""
 
     total_count: int
-    branch_policies: List[DeploymentBranchPolicyType]
+    branch_policies: list[DeploymentBranchPolicyType]
 
 
 class DeploymentBranchPolicyType(TypedDict):

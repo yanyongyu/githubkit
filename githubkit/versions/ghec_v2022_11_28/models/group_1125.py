@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -34,7 +34,7 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBody(GitHubModel):
         description="The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/enterprise-cloud@latest//rest/pulls/reviews#submit-a-review-for-a-pull-request) when you are ready.",
     )
     comments: Missing[
-        List[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems]
+        list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItems]
     ] = Field(
         default=UNSET,
         description="Use the following table to specify the location, destination, and contents of the draft review comment.",

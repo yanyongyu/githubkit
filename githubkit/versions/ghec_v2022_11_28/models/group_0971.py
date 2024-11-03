@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -27,7 +25,7 @@ class ReposOwnerRepoActionsOidcCustomizationSubPutBody(GitHubModel):
     use_default: bool = Field(
         description="Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored."
     )
-    include_claim_keys: Missing[List[str]] = Field(
+    include_claim_keys: Missing[list[str]] = Field(
         default=UNSET,
         description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.",
     )

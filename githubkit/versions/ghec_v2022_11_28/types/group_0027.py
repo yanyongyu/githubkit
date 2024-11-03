@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -42,7 +42,7 @@ class ServerStatisticsActionsType(TypedDict):
 class ServerStatisticsItemsPropGithubConnectType(TypedDict):
     """ServerStatisticsItemsPropGithubConnect"""
 
-    features_enabled: NotRequired[List[str]]
+    features_enabled: NotRequired[list[str]]
 
 
 class ServerStatisticsItemsPropDormantUsersType(TypedDict):
@@ -61,7 +61,7 @@ class ServerStatisticsPackagesType(TypedDict):
 
     registry_enabled: NotRequired[bool]
     registry_v2_enabled: NotRequired[bool]
-    ecosystems: NotRequired[List[ServerStatisticsPackagesPropEcosystemsItemsType]]
+    ecosystems: NotRequired[list[ServerStatisticsPackagesPropEcosystemsItemsType]]
 
 
 class ServerStatisticsPackagesPropEcosystemsItemsType(TypedDict):
