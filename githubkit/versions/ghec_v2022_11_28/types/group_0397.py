@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, List, Union, Literal
+from typing import Any, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -20,11 +20,11 @@ class ScimUserListType(TypedDict):
     SCIM User List
     """
 
-    schemas: List[str]
+    schemas: list[str]
     total_results: int
     items_per_page: int
     start_index: int
-    resources: List[ScimUserType]
+    resources: list[ScimUserType]
 
 
 class ScimUserType(TypedDict):
@@ -33,19 +33,19 @@ class ScimUserType(TypedDict):
     SCIM /Users provisioning endpoints
     """
 
-    schemas: List[str]
+    schemas: list[str]
     id: str
     external_id: NotRequired[Union[str, None]]
     user_name: NotRequired[Union[str, None]]
     display_name: NotRequired[Union[str, None]]
     name: NotRequired[ScimUserPropNameType]
-    emails: List[ScimUserPropEmailsItemsType]
+    emails: list[ScimUserPropEmailsItemsType]
     active: bool
     meta: ScimUserPropMetaType
     organization_id: NotRequired[int]
-    operations: NotRequired[List[ScimUserPropOperationsItemsType]]
-    groups: NotRequired[List[ScimUserPropGroupsItemsType]]
-    roles: NotRequired[List[ScimUserPropRolesItemsType]]
+    operations: NotRequired[list[ScimUserPropOperationsItemsType]]
+    groups: NotRequired[list[ScimUserPropGroupsItemsType]]
+    roles: NotRequired[list[ScimUserPropRolesItemsType]]
 
 
 class ScimUserPropNameType(TypedDict):
@@ -99,7 +99,7 @@ class ScimUserPropOperationsItemsType(TypedDict):
     op: Literal["add", "remove", "replace"]
     path: NotRequired[str]
     value: NotRequired[
-        Union[str, ScimUserPropOperationsItemsPropValueOneof1Type, List[Any]]
+        Union[str, ScimUserPropOperationsItemsPropValueOneof1Type, list[Any]]
     ]
 
 

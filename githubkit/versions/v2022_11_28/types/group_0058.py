@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -83,7 +83,7 @@ class MinimalRepositoryType(TypedDict):
     default_branch: NotRequired[str]
     open_issues_count: NotRequired[int]
     is_template: NotRequired[bool]
-    topics: NotRequired[List[str]]
+    topics: NotRequired[list[str]]
     has_issues: NotRequired[bool]
     has_projects: NotRequired[bool]
     has_wiki: NotRequired[bool]

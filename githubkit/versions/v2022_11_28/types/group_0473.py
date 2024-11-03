@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -28,7 +28,7 @@ class WebhookDeploymentProtectionRuleRequestedType(TypedDict):
     event: NotRequired[str]
     deployment_callback_url: NotRequired[str]
     deployment: NotRequired[DeploymentType]
-    pull_requests: NotRequired[List[PullRequestType]]
+    pull_requests: NotRequired[list[PullRequestType]]
     repository: NotRequired[RepositoryWebhooksType]
     organization: NotRequired[OrganizationSimpleWebhooksType]
     installation: NotRequired[SimpleInstallationType]

@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0110 import RepositoryRulesetConditionsType
@@ -74,7 +73,7 @@ class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPro
     esPropInclude
     """
 
-    from_: NotRequired[List[str]]
+    from_: NotRequired[list[str]]
 
 
 class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExcludeType(
@@ -84,7 +83,7 @@ class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPro
     esPropExclude
     """
 
-    from_: NotRequired[List[str]]
+    from_: NotRequired[list[str]]
 
 
 __all__ = (

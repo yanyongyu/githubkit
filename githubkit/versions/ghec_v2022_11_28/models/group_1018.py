@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from datetime import datetime
-from typing import List, Literal
 
 from pydantic import Field
 
@@ -64,7 +64,7 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyAnyof0(ExtraGitHubModel):
         description="Check runs can accept a variety of data in the `output` object, including a `title` and `summary` and can optionally provide descriptive details about the run.",
     )
     actions: Missing[
-        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems]
+        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropActionsItems]
     ] = Field(
         max_length=3 if PYDANTIC_V2 else None,
         default=UNSET,

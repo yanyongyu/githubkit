@@ -21,14 +21,14 @@ Then, you can call the GraphQL API with the query:
 === "Sync"
 
     ```python
-    data: Dict[str, Any] = github.graphql(query)
+    data: dict[str, Any] = github.graphql(query)
     user_login: str = data["viewer"]["login"]
     ```
 
 === "Async"
 
     ```python
-    data: Dict[str, Any] = await github.async_graphql(query)
+    data: dict[str, Any] = await github.async_graphql(query)
     user_login: str = data["viewer"]["login"]
     ```
 
@@ -45,7 +45,7 @@ Calling GraphQL API with variables:
     }
     """
 
-    data: Dict[str, Any] = github.graphql(query, variables={"owner": "owner", "repo": "repo"})
+    data: dict[str, Any] = github.graphql(query, variables={"owner": "owner", "repo": "repo"})
     repo_name: str = data["repository"]["name"]
     ```
 
@@ -60,7 +60,7 @@ Calling GraphQL API with variables:
     }
     """
 
-    data: Dict[str, Any] = await github.async_graphql(query, variables={"owner": "owner", "repo": "repo"})
+    data: dict[str, Any] = await github.async_graphql(query, variables={"owner": "owner", "repo": "repo"})
     repo_name: str = data["repository"]["name"]
     ```
 

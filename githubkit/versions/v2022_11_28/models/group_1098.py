@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -27,7 +25,7 @@ class UserCodespacesCodespaceNamePatchBody(GitHubModel):
     display_name: Missing[str] = Field(
         default=UNSET, description="Display name for this codespace"
     )
-    recent_folders: Missing[List[str]] = Field(
+    recent_folders: Missing[list[str]] = Field(
         default=UNSET,
         description="Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in.",
     )

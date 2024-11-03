@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -19,7 +17,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 class OrgsOrgActionsPermissionsRepositoriesPutBody(GitHubModel):
     """OrgsOrgActionsPermissionsRepositoriesPutBody"""
 
-    selected_repository_ids: List[int] = Field(
+    selected_repository_ids: list[int] = Field(
         description="List of repository IDs to enable for GitHub Actions."
     )
 

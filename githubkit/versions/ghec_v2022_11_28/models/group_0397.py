@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, List, Union, Literal
+from typing import Any, Union, Literal
 
 from pydantic import Field
 
@@ -25,13 +25,13 @@ class ScimUserList(GitHubModel):
     SCIM User List
     """
 
-    schemas: List[str] = Field(
+    schemas: list[str] = Field(
         min_length=1 if PYDANTIC_V2 else None, description="SCIM schema used."
     )
     total_results: int = Field(alias="totalResults")
     items_per_page: int = Field(alias="itemsPerPage")
     start_index: int = Field(alias="startIndex")
-    resources: List[ScimUser] = Field(alias="Resources")
+    resources: list[ScimUser] = Field(alias="Resources")
 
 
 class ScimUser(GitHubModel):
@@ -40,7 +40,7 @@ class ScimUser(GitHubModel):
     SCIM /Users provisioning endpoints
     """
 
-    schemas: List[str] = Field(
+    schemas: list[str] = Field(
         min_length=1 if PYDANTIC_V2 else None, description="SCIM schema used."
     )
     id: str = Field(description="Unique identifier of an external identity")
@@ -58,21 +58,21 @@ class ScimUser(GitHubModel):
         description="The name of the user, suitable for display to end-users",
     )
     name: Missing[ScimUserPropName] = Field(default=UNSET)
-    emails: List[ScimUserPropEmailsItems] = Field(description="user emails")
+    emails: list[ScimUserPropEmailsItems] = Field(description="user emails")
     active: bool = Field(description="The active status of the User.")
     meta: ScimUserPropMeta = Field()
     organization_id: Missing[int] = Field(
         default=UNSET, description="The ID of the organization."
     )
-    operations: Missing[List[ScimUserPropOperationsItems]] = Field(
+    operations: Missing[list[ScimUserPropOperationsItems]] = Field(
         min_length=1 if PYDANTIC_V2 else None,
         default=UNSET,
         description="Set of operations to be performed",
     )
-    groups: Missing[List[ScimUserPropGroupsItems]] = Field(
+    groups: Missing[list[ScimUserPropGroupsItems]] = Field(
         default=UNSET, description="associated groups"
     )
-    roles: Missing[List[ScimUserPropRolesItems]] = Field(default=UNSET)
+    roles: Missing[list[ScimUserPropRolesItems]] = Field(default=UNSET)
 
 
 class ScimUserPropName(GitHubModel):
@@ -126,7 +126,7 @@ class ScimUserPropOperationsItems(GitHubModel):
     op: Literal["add", "remove", "replace"] = Field()
     path: Missing[str] = Field(default=UNSET)
     value: Missing[
-        Union[str, ScimUserPropOperationsItemsPropValueOneof1, List[Any]]
+        Union[str, ScimUserPropOperationsItemsPropValueOneof1, list[Any]]
     ] = Field(default=UNSET)
 
 

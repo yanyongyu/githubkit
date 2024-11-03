@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -29,16 +28,16 @@ class AuditLogEventType(TypedDict):
     business_id: NotRequired[int]
     blocked_user: NotRequired[str]
     business: NotRequired[str]
-    config: NotRequired[List[AuditLogEventPropConfigItemsType]]
-    config_was: NotRequired[List[AuditLogEventPropConfigWasItemsType]]
+    config: NotRequired[list[AuditLogEventPropConfigItemsType]]
+    config_was: NotRequired[list[AuditLogEventPropConfigWasItemsType]]
     content_type: NotRequired[str]
     operation_type: NotRequired[str]
     created_at: NotRequired[int]
     deploy_key_fingerprint: NotRequired[str]
     document_id: NotRequired[str]
     emoji: NotRequired[str]
-    events: NotRequired[List[AuditLogEventPropEventsItemsType]]
-    events_were: NotRequired[List[AuditLogEventPropEventsWereItemsType]]
+    events: NotRequired[list[AuditLogEventPropEventsItemsType]]
+    events_were: NotRequired[list[AuditLogEventPropEventsWereItemsType]]
     explanation: NotRequired[str]
     fingerprint: NotRequired[str]
     hook_id: NotRequired[int]

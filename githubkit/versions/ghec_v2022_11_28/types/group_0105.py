@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -22,8 +21,8 @@ class ExternalGroupType(TypedDict):
     group_id: int
     group_name: str
     updated_at: NotRequired[str]
-    teams: List[ExternalGroupPropTeamsItemsType]
-    members: List[ExternalGroupPropMembersItemsType]
+    teams: list[ExternalGroupPropTeamsItemsType]
+    members: list[ExternalGroupPropMembersItemsType]
 
 
 class ExternalGroupPropTeamsItemsType(TypedDict):

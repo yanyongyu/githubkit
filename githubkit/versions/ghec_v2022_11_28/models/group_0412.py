@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, List, Union
+from typing import Any, Union
 
 from pydantic import Field
 
@@ -30,8 +30,8 @@ class GpgKey(GitHubModel):
     primary_key_id: Union[int, None] = Field()
     key_id: str = Field()
     public_key: str = Field()
-    emails: List[GpgKeyPropEmailsItems] = Field()
-    subkeys: List[GpgKeyPropSubkeysItems] = Field()
+    emails: list[GpgKeyPropEmailsItems] = Field()
+    subkeys: list[GpgKeyPropSubkeysItems] = Field()
     can_sign: bool = Field()
     can_encrypt_comms: bool = Field()
     can_encrypt_storage: bool = Field()
@@ -56,8 +56,8 @@ class GpgKeyPropSubkeysItems(GitHubModel):
     primary_key_id: Missing[int] = Field(default=UNSET)
     key_id: Missing[str] = Field(default=UNSET)
     public_key: Missing[str] = Field(default=UNSET)
-    emails: Missing[List[GpgKeyPropSubkeysItemsPropEmailsItems]] = Field(default=UNSET)
-    subkeys: Missing[List[Any]] = Field(default=UNSET)
+    emails: Missing[list[GpgKeyPropSubkeysItemsPropEmailsItems]] = Field(default=UNSET)
+    subkeys: Missing[list[Any]] = Field(default=UNSET)
     can_sign: Missing[bool] = Field(default=UNSET)
     can_encrypt_comms: Missing[bool] = Field(default=UNSET)
     can_encrypt_storage: Missing[bool] = Field(default=UNSET)

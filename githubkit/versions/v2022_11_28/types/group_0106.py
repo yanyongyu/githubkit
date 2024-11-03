@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 from .group_0105 import CustomPropertyValueType
@@ -24,7 +23,7 @@ class OrgRepoCustomPropertyValuesType(TypedDict):
     repository_id: int
     repository_name: str
     repository_full_name: str
-    properties: List[CustomPropertyValueType]
+    properties: list[CustomPropertyValueType]
 
 
 __all__ = ("OrgRepoCustomPropertyValuesType",)

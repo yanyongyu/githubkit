@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from datetime import datetime
 from typing_extensions import TypedDict
 
@@ -18,7 +17,7 @@ class ReposOwnerRepoDependabotSecretsGetResponse200Type(TypedDict):
     """ReposOwnerRepoDependabotSecretsGetResponse200"""
 
     total_count: int
-    secrets: List[DependabotSecretType]
+    secrets: list[DependabotSecretType]
 
 
 class DependabotSecretType(TypedDict):

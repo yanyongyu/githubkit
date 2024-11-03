@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
-from typing_extensions import Annotated
+from typing import Union, Literal, Annotated
 
 from pydantic import Field
 
@@ -36,7 +35,7 @@ class CustomProperty(GitHubModel):
     required: Missing[bool] = Field(
         default=UNSET, description="Whether the property is required."
     )
-    default_value: Missing[Union[str, List[str], None]] = Field(
+    default_value: Missing[Union[str, list[str], None]] = Field(
         default=UNSET, description="Default value of the property"
     )
     description: Missing[Union[str, None]] = Field(
@@ -45,7 +44,7 @@ class CustomProperty(GitHubModel):
     allowed_values: Missing[
         Union[
             Annotated[
-                List[Annotated[str, Field(max_length=75)]],
+                list[Annotated[str, Field(max_length=75)]],
                 Field(max_length=200 if PYDANTIC_V2 else None),
             ],
             None,

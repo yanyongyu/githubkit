@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -22,7 +20,7 @@ class ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2(GitHubModel):
     """ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2"""
 
     labels: Missing[
-        List[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems]
+        list[ReposOwnerRepoIssuesIssueNumberLabelsPostBodyOneof2PropLabelsItems]
     ] = Field(min_length=1 if PYDANTIC_V2 else None, default=UNSET)
 
 

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -21,7 +19,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 class GetAllCostCenters(GitHubModel):
     """GetAllCostCenters"""
 
-    cost_centers: Missing[List[GetAllCostCentersPropCostCentersItems]] = Field(
+    cost_centers: Missing[list[GetAllCostCentersPropCostCentersItems]] = Field(
         default=UNSET, alias="costCenters"
     )
 
@@ -31,7 +29,7 @@ class GetAllCostCentersPropCostCentersItems(GitHubModel):
 
     id: str = Field(description="ID of the cost center.")
     name: str = Field(description="Name of the cost center.")
-    resources: List[GetAllCostCentersPropCostCentersItemsPropResourcesItems] = Field()
+    resources: list[GetAllCostCentersPropCostCentersItemsPropResourcesItems] = Field()
 
 
 class GetAllCostCentersPropCostCentersItemsPropResourcesItems(GitHubModel):

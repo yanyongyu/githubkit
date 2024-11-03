@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0288 import CustomDeploymentRuleAppType
@@ -24,7 +23,7 @@ class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetR
 
     total_count: NotRequired[int]
     available_custom_deployment_protection_rule_integrations: NotRequired[
-        List[CustomDeploymentRuleAppType]
+        list[CustomDeploymentRuleAppType]
     ]
 
 

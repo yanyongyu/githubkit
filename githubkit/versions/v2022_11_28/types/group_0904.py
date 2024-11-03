@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -20,7 +19,7 @@ class ReposOwnerRepoActionsOidcCustomizationSubPutBodyType(TypedDict):
     """
 
     use_default: bool
-    include_claim_keys: NotRequired[List[str]]
+    include_claim_keys: NotRequired[list[str]]
 
 
 __all__ = ("ReposOwnerRepoActionsOidcCustomizationSubPutBodyType",)

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0001 import CvssSeveritiesType
@@ -27,13 +27,13 @@ class DependabotAlertSecurityAdvisoryType(TypedDict):
     cve_id: Union[str, None]
     summary: str
     description: str
-    vulnerabilities: List[DependabotAlertSecurityVulnerabilityType]
+    vulnerabilities: list[DependabotAlertSecurityVulnerabilityType]
     severity: Literal["low", "medium", "high", "critical"]
     cvss: DependabotAlertSecurityAdvisoryPropCvssType
     cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    cwes: List[DependabotAlertSecurityAdvisoryPropCwesItemsType]
-    identifiers: List[DependabotAlertSecurityAdvisoryPropIdentifiersItemsType]
-    references: List[DependabotAlertSecurityAdvisoryPropReferencesItemsType]
+    cwes: list[DependabotAlertSecurityAdvisoryPropCwesItemsType]
+    identifiers: list[DependabotAlertSecurityAdvisoryPropIdentifiersItemsType]
+    references: list[DependabotAlertSecurityAdvisoryPropReferencesItemsType]
     published_at: datetime
     updated_at: datetime
     withdrawn_at: Union[datetime, None]

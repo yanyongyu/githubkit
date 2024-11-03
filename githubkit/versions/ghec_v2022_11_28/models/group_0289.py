@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -52,7 +50,7 @@ class ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetRespo
         default=UNSET,
         description="The number of enabled custom deployment protection rules for this environment",
     )
-    custom_deployment_protection_rules: Missing[List[DeploymentProtectionRule]] = Field(
+    custom_deployment_protection_rules: Missing[list[DeploymentProtectionRule]] = Field(
         default=UNSET
     )
 

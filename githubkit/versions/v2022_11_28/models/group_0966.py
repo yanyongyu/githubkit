@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from datetime import datetime
 
 from pydantic import Field
@@ -21,7 +20,7 @@ class ReposOwnerRepoCodespacesSecretsGetResponse200(GitHubModel):
     """ReposOwnerRepoCodespacesSecretsGetResponse200"""
 
     total_count: int = Field()
-    secrets: List[RepoCodespacesSecret] = Field()
+    secrets: list[RepoCodespacesSecret] = Field()
 
 
 class RepoCodespacesSecret(GitHubModel):

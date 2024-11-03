@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union, Literal
 from datetime import date, datetime
-from typing import List, Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -61,7 +61,7 @@ class PagesHttpsCertificateType(TypedDict):
         "dns_changed",
     ]
     description: str
-    domains: List[str]
+    domains: list[str]
     expires_at: NotRequired[date]
 
 

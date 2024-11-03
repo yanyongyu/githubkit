@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -36,7 +36,7 @@ class OrganizationCustomRepositoryRole(GitHubModel):
     base_role: Literal["read", "triage", "write", "maintain"] = Field(
         description="The system role from which this role inherits permissions."
     )
-    permissions: List[str] = Field(
+    permissions: list[str] = Field(
         description="A list of additional permissions included in this role."
     )
     organization: SimpleUser = Field(title="Simple User", description="A GitHub user.")

@@ -1,6 +1,7 @@
 from dataclasses import dataclass
+from typing import TYPE_CHECKING, Union, Optional
 from datetime import datetime, timezone, timedelta
-from typing import TYPE_CHECKING, List, Union, Optional, Generator, AsyncGenerator
+from collections.abc import Generator, AsyncGenerator
 
 import httpx
 
@@ -34,8 +35,8 @@ class AppAuth(httpx.Auth):
     client_id: Optional[str] = None
     client_secret: Optional[str] = None
     installation_id: Union[Unset, int] = UNSET
-    repositories: Union[Unset, List[str]] = UNSET
-    repository_ids: Union[Unset, List[int]] = UNSET
+    repositories: Union[Unset, list[str]] = UNSET
+    repository_ids: Union[Unset, list[int]] = UNSET
     permissions: Union[Unset, "AppPermissionsType"] = UNSET
     cache: "BaseCache" = DEFAULT_CACHE
 
@@ -274,8 +275,8 @@ class AppAuthStrategy(BaseAuthStrategy):
     def as_installation(
         self,
         installation_id: int,
-        repositories: Union[Unset, List[str]] = UNSET,
-        repository_ids: Union[Unset, List[int]] = UNSET,
+        repositories: Union[Unset, list[str]] = UNSET,
+        repository_ids: Union[Unset, list[int]] = UNSET,
         permissions: Union[Unset, "AppPermissionsType"] = UNSET,
     ) -> "AppInstallationAuthStrategy":
         return AppInstallationAuthStrategy(
@@ -317,8 +318,8 @@ class AppInstallationAuthStrategy(BaseAuthStrategy):
     installation_id: int
     client_id: Optional[str] = None
     client_secret: Optional[str] = None
-    repositories: Union[Unset, List[str]] = UNSET
-    repository_ids: Union[Unset, List[int]] = UNSET
+    repositories: Union[Unset, list[str]] = UNSET
+    repository_ids: Union[Unset, list[int]] = UNSET
     permissions: Union[Unset, "AppPermissionsType"] = UNSET
     cache: "BaseCache" = DEFAULT_CACHE
 

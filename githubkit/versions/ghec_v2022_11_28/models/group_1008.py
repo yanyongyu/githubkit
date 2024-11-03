@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -25,7 +23,7 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0(
         {'teams': ['my-team']}
     """
 
-    teams: List[str] = Field(description="The slug values for teams")
+    teams: list[str] = Field(description="The slug values for teams")
 
 
 model_rebuild(ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsPostBodyOneof0)

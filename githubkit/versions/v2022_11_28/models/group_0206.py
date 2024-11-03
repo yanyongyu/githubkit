@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -59,7 +59,7 @@ class CheckRun(GitHubModel):
     name: str = Field(description="The name of the check.")
     check_suite: Union[CheckRunPropCheckSuite, None] = Field()
     app: Union[None, Integration, None] = Field()
-    pull_requests: List[PullRequestMinimal] = Field(
+    pull_requests: list[PullRequestMinimal] = Field(
         description="Pull requests that are open with a `head_sha` or `head_branch` that matches the check. The returned pull requests do not necessarily indicate pull requests that triggered the check."
     )
     deployment: Missing[DeploymentSimple] = Field(

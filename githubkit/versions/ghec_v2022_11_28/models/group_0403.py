@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -34,7 +34,7 @@ class LabelSearchResultItem(GitHubModel):
     default: bool = Field()
     description: Union[str, None] = Field()
     score: float = Field()
-    text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
         default=UNSET, title="Search Result Text Matches"
     )
 
@@ -44,7 +44,7 @@ class SearchLabelsGetResponse200(GitHubModel):
 
     total_count: int = Field()
     incomplete_results: bool = Field()
-    items: List[LabelSearchResultItem] = Field()
+    items: list[LabelSearchResultItem] = Field()
 
 
 model_rebuild(LabelSearchResultItem)

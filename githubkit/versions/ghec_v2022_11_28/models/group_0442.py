@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -32,7 +32,7 @@ class WebhooksIssue(GitHubModel):
     assignee: Missing[Union[WebhooksIssuePropAssignee, None]] = Field(
         default=UNSET, title="User"
     )
-    assignees: List[Union[WebhooksIssuePropAssigneesItems, None]] = Field()
+    assignees: list[Union[WebhooksIssuePropAssigneesItems, None]] = Field()
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -55,7 +55,7 @@ class WebhooksIssue(GitHubModel):
     events_url: str = Field()
     html_url: str = Field()
     id: int = Field()
-    labels: Missing[List[WebhooksIssuePropLabelsItems]] = Field(default=UNSET)
+    labels: Missing[list[WebhooksIssuePropLabelsItems]] = Field(default=UNSET)
     labels_url: str = Field()
     locked: Missing[bool] = Field(default=UNSET)
     milestone: Union[WebhooksIssuePropMilestone, None] = Field(
@@ -221,7 +221,7 @@ class WebhooksIssuePropPerformedViaGithubApp(GitHubModel):
 
     created_at: Union[datetime, None] = Field()
     description: Union[str, None] = Field()
-    events: Missing[List[str]] = Field(
+    events: Missing[list[str]] = Field(
         default=UNSET, description="The list of events for the GitHub app"
     )
     external_url: Union[str, None] = Field()

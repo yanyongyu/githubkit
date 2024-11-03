@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -61,7 +61,7 @@ class CheckSuite(GitHubModel):
     url: Union[str, None] = Field()
     before: Union[str, None] = Field()
     after: Union[str, None] = Field()
-    pull_requests: Union[List[PullRequestMinimal], None] = Field()
+    pull_requests: Union[list[PullRequestMinimal], None] = Field()
     app: Union[None, Integration, None] = Field()
     repository: MinimalRepository = Field(
         title="Minimal Repository", description="Minimal Repository"
@@ -79,7 +79,7 @@ class ReposOwnerRepoCommitsRefCheckSuitesGetResponse200(GitHubModel):
     """ReposOwnerRepoCommitsRefCheckSuitesGetResponse200"""
 
     total_count: int = Field()
-    check_suites: List[CheckSuite] = Field()
+    check_suites: list[CheckSuite] = Field()
 
 
 model_rebuild(CheckSuite)

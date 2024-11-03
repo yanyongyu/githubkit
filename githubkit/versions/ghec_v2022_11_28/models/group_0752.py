@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -83,7 +81,7 @@ class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPro
     esPropInclude
     """
 
-    from_: Missing[List[str]] = Field(default=UNSET, alias="from")
+    from_: Missing[list[str]] = Field(default=UNSET, alias="from")
 
 
 class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPropChangesPropExclude(
@@ -93,7 +91,7 @@ class WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsPro
     esPropExclude
     """
 
-    from_: Missing[List[str]] = Field(default=UNSET, alias="from")
+    from_: Missing[list[str]] = Field(default=UNSET, alias="from")
 
 
 model_rebuild(WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems)

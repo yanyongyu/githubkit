@@ -9,21 +9,20 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
 class ScimV2OrganizationsOrgUsersScimUserIdPutBodyType(TypedDict):
     """ScimV2OrganizationsOrgUsersScimUserIdPutBody"""
 
-    schemas: NotRequired[List[str]]
+    schemas: NotRequired[list[str]]
     display_name: NotRequired[str]
     external_id: NotRequired[str]
-    groups: NotRequired[List[str]]
+    groups: NotRequired[list[str]]
     active: NotRequired[bool]
     user_name: str
     name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType
-    emails: List[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType]
+    emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType]
 
 
 class ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType(TypedDict):

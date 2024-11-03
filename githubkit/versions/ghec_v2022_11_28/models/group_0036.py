@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -34,7 +32,7 @@ class Runner(GitHubModel):
     os: str = Field(description="The Operating System of the runner.")
     status: str = Field(description="The status of the runner.")
     busy: bool = Field()
-    labels: List[RunnerLabel] = Field()
+    labels: list[RunnerLabel] = Field()
 
 
 model_rebuild(Runner)

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -22,7 +20,7 @@ class UserCodespacesGetResponse200(GitHubModel):
     """UserCodespacesGetResponse200"""
 
     total_count: int = Field()
-    codespaces: List[Codespace] = Field()
+    codespaces: list[Codespace] = Field()
 
 
 model_rebuild(UserCodespacesGetResponse200)

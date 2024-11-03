@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0040 import MilestoneType
@@ -39,9 +39,9 @@ class IssueSearchResultItemType(TypedDict):
     title: str
     locked: bool
     active_lock_reason: NotRequired[Union[str, None]]
-    assignees: NotRequired[Union[List[SimpleUserType], None]]
+    assignees: NotRequired[Union[list[SimpleUserType], None]]
     user: Union[None, SimpleUserType]
-    labels: List[IssueSearchResultItemPropLabelsItemsType]
+    labels: list[IssueSearchResultItemPropLabelsItemsType]
     state: str
     state_reason: NotRequired[Union[str, None]]
     assignee: Union[None, SimpleUserType]
@@ -50,7 +50,7 @@ class IssueSearchResultItemType(TypedDict):
     created_at: datetime
     updated_at: datetime
     closed_at: Union[datetime, None]
-    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
     pull_request: NotRequired[IssueSearchResultItemPropPullRequestType]
     body: NotRequired[str]
     score: float
@@ -100,7 +100,7 @@ class SearchIssuesGetResponse200Type(TypedDict):
 
     total_count: int
     incomplete_results: bool
-    items: List[IssueSearchResultItemType]
+    items: list[IssueSearchResultItemType]
 
 
 __all__ = (

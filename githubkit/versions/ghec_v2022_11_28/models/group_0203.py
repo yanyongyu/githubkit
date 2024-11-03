@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 
 from pydantic import Field
 
@@ -53,7 +53,7 @@ class WorkflowRun(GitHubModel):
         default=UNSET,
         description="Attempt number of the run, 1 for first attempt and higher if the workflow was re-run.",
     )
-    referenced_workflows: Missing[Union[List[ReferencedWorkflow], None]] = Field(
+    referenced_workflows: Missing[Union[list[ReferencedWorkflow], None]] = Field(
         default=UNSET
     )
     event: str = Field()
@@ -62,7 +62,7 @@ class WorkflowRun(GitHubModel):
     workflow_id: int = Field(description="The ID of the parent workflow.")
     url: str = Field(description="The URL to the workflow run.")
     html_url: str = Field()
-    pull_requests: Union[List[PullRequestMinimal], None] = Field(
+    pull_requests: Union[list[PullRequestMinimal], None] = Field(
         description="Pull requests that are open with a `head_sha` or `head_branch` that matches the workflow run. The returned pull requests do not necessarily indicate pull requests that triggered the run."
     )
     created_at: datetime = Field()

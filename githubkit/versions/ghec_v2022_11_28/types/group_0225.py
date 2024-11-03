@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0216 import BranchRestrictionPolicyType
@@ -113,8 +113,8 @@ class StatusCheckPolicyType(TypedDict):
 
     url: str
     strict: bool
-    contexts: List[str]
-    checks: List[StatusCheckPolicyPropChecksItemsType]
+    contexts: list[str]
+    checks: list[StatusCheckPolicyPropChecksItemsType]
     contexts_url: str
 
 

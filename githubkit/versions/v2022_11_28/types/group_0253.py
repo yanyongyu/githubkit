@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -30,16 +29,16 @@ class DependencyGraphSpdxSbomPropSbomType(TypedDict):
     creation_info: DependencyGraphSpdxSbomPropSbomPropCreationInfoType
     name: str
     data_license: str
-    document_describes: List[str]
+    document_describes: list[str]
     document_namespace: str
-    packages: List[DependencyGraphSpdxSbomPropSbomPropPackagesItemsType]
+    packages: list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsType]
 
 
 class DependencyGraphSpdxSbomPropSbomPropCreationInfoType(TypedDict):
     """DependencyGraphSpdxSbomPropSbomPropCreationInfo"""
 
     created: str
-    creators: List[str]
+    creators: list[str]
 
 
 class DependencyGraphSpdxSbomPropSbomPropPackagesItemsType(TypedDict):
@@ -55,7 +54,7 @@ class DependencyGraphSpdxSbomPropSbomPropPackagesItemsType(TypedDict):
     supplier: NotRequired[str]
     copyright_text: NotRequired[str]
     external_refs: NotRequired[
-        List[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType]
+        list[DependencyGraphSpdxSbomPropSbomPropPackagesItemsPropExternalRefsItemsType]
     ]
 
 

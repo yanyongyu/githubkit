@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -42,7 +42,7 @@ class WebhookIssuesUnlockedPropIssueType(TypedDict):
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ]
     assignee: NotRequired[Union[WebhookIssuesUnlockedPropIssuePropAssigneeType, None]]
-    assignees: List[Union[WebhookIssuesUnlockedPropIssuePropAssigneesItemsType, None]]
+    assignees: list[Union[WebhookIssuesUnlockedPropIssuePropAssigneesItemsType, None]]
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -63,7 +63,7 @@ class WebhookIssuesUnlockedPropIssueType(TypedDict):
     html_url: str
     id: int
     labels: NotRequired[
-        List[Union[WebhookIssuesUnlockedPropIssuePropLabelsItemsType, None]]
+        list[Union[WebhookIssuesUnlockedPropIssuePropLabelsItemsType, None]]
     ]
     labels_url: str
     locked: Literal[False]
@@ -213,7 +213,7 @@ class WebhookIssuesUnlockedPropIssuePropPerformedViaGithubAppType(TypedDict):
 
     created_at: Union[datetime, None]
     description: Union[str, None]
-    events: NotRequired[List[str]]
+    events: NotRequired[list[str]]
     external_url: Union[str, None]
     html_url: str
     id: Union[int, None]

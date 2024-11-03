@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from datetime import datetime
-from typing import List, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -28,7 +28,7 @@ class WebhooksRuleType(TypedDict):
     admin_enforced: bool
     allow_deletions_enforcement_level: Literal["off", "non_admins", "everyone"]
     allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"]
-    authorized_actor_names: List[str]
+    authorized_actor_names: list[str]
     authorized_actors_only: bool
     authorized_dismissal_actors_only: bool
     create_protected: NotRequired[bool]
@@ -50,7 +50,7 @@ class WebhooksRuleType(TypedDict):
     required_approving_review_count: int
     required_conversation_resolution_level: Literal["off", "non_admins", "everyone"]
     required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"]
-    required_status_checks: List[str]
+    required_status_checks: list[str]
     required_status_checks_enforcement_level: Literal["off", "non_admins", "everyone"]
     signature_requirement_enforcement_level: Literal["off", "non_admins", "everyone"]
     strict_required_status_checks_policy: bool

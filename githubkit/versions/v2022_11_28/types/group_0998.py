@@ -9,14 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
 class ReposOwnerRepoGitTreesPostBodyType(TypedDict):
     """ReposOwnerRepoGitTreesPostBody"""
 
-    tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType]
+    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType]
     base_tree: NotRequired[str]
 
 

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -40,7 +40,7 @@ class WebhookIssueCommentCreatedPropIssue(GitHubModel):
     assignee: Union[
         Union[WebhookIssueCommentCreatedPropIssueAllof0PropAssignee, None], None
     ] = Field(title="User")
-    assignees: List[WebhookIssueCommentCreatedPropIssueMergedAssignees] = Field()
+    assignees: list[WebhookIssueCommentCreatedPropIssueMergedAssignees] = Field()
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -63,7 +63,7 @@ class WebhookIssueCommentCreatedPropIssue(GitHubModel):
     events_url: str = Field()
     html_url: str = Field()
     id: int = Field()
-    labels: List[WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems] = Field()
+    labels: list[WebhookIssueCommentCreatedPropIssueAllof0PropLabelsItems] = Field()
     labels_url: str = Field()
     locked: bool = Field()
     milestone: Union[WebhookIssueCommentCreatedPropIssueMergedMilestone, None] = Field()

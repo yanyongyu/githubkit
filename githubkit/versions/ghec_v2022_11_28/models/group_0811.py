@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 
 from pydantic import Field
 
@@ -41,7 +41,7 @@ class AppManifestsCodeConversionsPostResponse201(GitHubModel):
     permissions: IntegrationPropPermissions = Field(
         description="The set of permissions for the GitHub app"
     )
-    events: List[str] = Field(description="The list of events for the GitHub app")
+    events: list[str] = Field(description="The list of events for the GitHub app")
     installations_count: Missing[int] = Field(
         default=UNSET,
         description="The number of installations associated with the GitHub app",

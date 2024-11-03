@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -26,7 +26,7 @@ from .group_0395 import ScimEnterpriseUserResponseAllof1PropGroupsItems
 class ScimEnterpriseUserResponse(GitHubModel):
     """ScimEnterpriseUserResponse"""
 
-    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:User"]] = Field(
         description="The URIs that are used to indicate the namespaces of the SCIM schemas."
     )
     external_id: Missing[Union[str, None]] = Field(
@@ -44,14 +44,14 @@ class ScimEnterpriseUserResponse(GitHubModel):
         alias="displayName",
         description="A human-readable name for the user.",
     )
-    emails: List[UserEmailsResponseItems] = Field(
+    emails: list[UserEmailsResponseItems] = Field(
         description="The emails for the user."
     )
-    roles: Missing[List[UserRoleItems]] = Field(
+    roles: Missing[list[UserRoleItems]] = Field(
         default=UNSET, description="The roles assigned to the user."
     )
     id: str = Field(description="The internally generated id for the user object.")
-    groups: Missing[List[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
+    groups: Missing[list[ScimEnterpriseUserResponseAllof1PropGroupsItems]] = Field(
         default=UNSET,
         description="Provisioned SCIM groups that the user is a member of.",
     )
@@ -63,7 +63,7 @@ class ScimEnterpriseUserResponse(GitHubModel):
 class ScimEnterpriseUserList(GitHubModel):
     """ScimEnterpriseUserList"""
 
-    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]] = (
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:ListResponse"]] = (
         Field(
             description="The URIs that are used to indicate the namespaces of the list SCIM schemas."
         )
@@ -71,7 +71,7 @@ class ScimEnterpriseUserList(GitHubModel):
     total_results: int = Field(
         alias="totalResults", description="Number of results found"
     )
-    resources: List[ScimEnterpriseUserResponse] = Field(
+    resources: list[ScimEnterpriseUserResponse] = Field(
         alias="Resources", description="Information about each provisioned account."
     )
     start_index: int = Field(

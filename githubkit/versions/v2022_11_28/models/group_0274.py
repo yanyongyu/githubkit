@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from datetime import datetime
 
 from pydantic import Field
@@ -36,7 +35,7 @@ class Hook(GitHubModel):
     active: bool = Field(
         description="Determines whether the hook is actually triggered on pushes."
     )
-    events: List[str] = Field(
+    events: list[str] = Field(
         description="Determines what events the hook is triggered for. Default: ['push']."
     )
     config: WebhookConfig = Field(

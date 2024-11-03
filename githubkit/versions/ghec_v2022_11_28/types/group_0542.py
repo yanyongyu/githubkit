@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0544 import WebhookForkPropForkeeAllof0PropPermissionsType
@@ -105,7 +105,7 @@ class WebhookForkPropForkeeType(TypedDict):
     svn_url: str
     tags_url: str
     teams_url: str
-    topics: List[str]
+    topics: list[str]
     trees_url: str
     updated_at: datetime
     url: str

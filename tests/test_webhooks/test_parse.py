@@ -1,6 +1,6 @@
 import json
+from typing import Any
 from pathlib import Path
-from typing import Any, Dict, List, Type, Tuple
 
 import pytest
 
@@ -15,7 +15,7 @@ from githubkit.webhooks import (
     parse_obj_without_name,
 )
 
-TEST_CASES: List[Tuple[EventNameType, str, Type[GitHubModel]]] = [
+TEST_CASES: list[tuple[EventNameType, str, type[GitHubModel]]] = [
     (
         "push",
         (Path(__file__).parent / "assets/push.json").read_text(encoding="utf-8"),
@@ -38,7 +38,7 @@ TEST_CASES: List[Tuple[EventNameType, str, Type[GitHubModel]]] = [
         for event_name, payload, event_class in TEST_CASES
     ),
 )
-def test_parse(event_name: EventNameType, payload: str, event_class: Type[GitHubModel]):
+def test_parse(event_name: EventNameType, payload: str, event_class: type[GitHubModel]):
     event = parse(event_name, payload)
     assert isinstance(event, event_class), f"event type {type(event)} != {event_class}"
 
@@ -64,7 +64,7 @@ def test_parse_without_name(payload: str):
     ),
 )
 def test_parse_obj(
-    event_name: EventNameType, payload: Dict[str, Any], event_class: Type[GitHubModel]
+    event_name: EventNameType, payload: dict[str, Any], event_class: type[GitHubModel]
 ):
     event = parse_obj(event_name, payload)
     assert isinstance(event, event_class), f"event type {type(event)} != {event_class}"
@@ -77,7 +77,7 @@ def test_parse_obj(
         for event_name, payload, event_class in TEST_CASES
     ),
 )
-def test_parse_obj_without_name(payload: Dict[str, Any]):
+def test_parse_obj_without_name(payload: dict[str, Any]):
     parse_obj_without_name(payload)
 
 
@@ -89,7 +89,7 @@ def test_parse_obj_without_name(payload: Dict[str, Any]):
     ),
 )
 def test_namespace_parse(
-    event_name: EventNameType, payload: str, event_class: Type[GitHubModel]
+    event_name: EventNameType, payload: str, event_class: type[GitHubModel]
 ):
     event = GitHub.webhooks.parse(event_name, payload)
     assert isinstance(event, event_class), f"event type {type(event)} != {event_class}"
@@ -116,7 +116,7 @@ def test_namespace_parse_without_name(payload: str):
     ),
 )
 def test_namespace_parse_obj(
-    event_name: EventNameType, payload: Dict[str, Any], event_class: Type[GitHubModel]
+    event_name: EventNameType, payload: dict[str, Any], event_class: type[GitHubModel]
 ):
     event = GitHub.webhooks.parse_obj(event_name, payload)
     assert isinstance(event, event_class), f"event type {type(event)} != {event_class}"
@@ -129,7 +129,7 @@ def test_namespace_parse_obj(
         for event_name, payload, event_class in TEST_CASES
     ),
 )
-def test_namespace_parse_obj_without_name(payload: Dict[str, Any]):
+def test_namespace_parse_obj_without_name(payload: dict[str, Any]):
     GitHub.webhooks.parse_obj_without_name(payload)
 
 
@@ -141,7 +141,7 @@ def test_namespace_parse_obj_without_name(payload: Dict[str, Any]):
     ),
 )
 def test_versioned_parse(
-    event_name: EventNameType, payload: str, event_class: Type[GitHubModel]
+    event_name: EventNameType, payload: str, event_class: type[GitHubModel]
 ):
     event = GitHub.webhooks(LATEST_VERSION).parse(event_name, payload)
     assert isinstance(event, event_class), f"event type {type(event)} != {event_class}"
@@ -168,7 +168,7 @@ def test_versioned_parse_without_name(payload: str):
     ),
 )
 def test_versioned_parse_obj(
-    event_name: EventNameType, payload: Dict[str, Any], event_class: Type[GitHubModel]
+    event_name: EventNameType, payload: dict[str, Any], event_class: type[GitHubModel]
 ):
     event = GitHub.webhooks(LATEST_VERSION).parse_obj(event_name, payload)
     assert isinstance(event, event_class), f"event type {type(event)} != {event_class}"
@@ -181,5 +181,5 @@ def test_versioned_parse_obj(
         for event_name, payload, event_class in TEST_CASES
     ),
 )
-def test_versioned_parse_obj_without_name(payload: Dict[str, Any]):
+def test_versioned_parse_obj_without_name(payload: dict[str, Any]):
     GitHub.webhooks(LATEST_VERSION).parse_obj_without_name(payload)

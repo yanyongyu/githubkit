@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -19,10 +18,10 @@ class ScimV2OrganizationsOrgUsersPostBodyType(TypedDict):
     user_name: str
     display_name: NotRequired[str]
     name: ScimV2OrganizationsOrgUsersPostBodyPropNameType
-    emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType]
-    schemas: NotRequired[List[str]]
+    emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType]
+    schemas: NotRequired[list[str]]
     external_id: NotRequired[str]
-    groups: NotRequired[List[str]]
+    groups: NotRequired[list[str]]
     active: NotRequired[bool]
 
 

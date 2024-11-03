@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -25,13 +25,13 @@ from .group_0008 import Integration
 class ProtectedBranchPullRequestReviewPropDismissalRestrictions(GitHubModel):
     """ProtectedBranchPullRequestReviewPropDismissalRestrictions"""
 
-    users: Missing[List[SimpleUser]] = Field(
+    users: Missing[list[SimpleUser]] = Field(
         default=UNSET, description="The list of users with review dismissal access."
     )
-    teams: Missing[List[Team]] = Field(
+    teams: Missing[list[Team]] = Field(
         default=UNSET, description="The list of teams with review dismissal access."
     )
-    apps: Missing[List[Union[Integration, None]]] = Field(
+    apps: Missing[list[Union[Integration, None]]] = Field(
         default=UNSET, description="The list of apps with review dismissal access."
     )
     url: Missing[str] = Field(default=UNSET)
@@ -45,15 +45,15 @@ class ProtectedBranchPullRequestReviewPropBypassPullRequestAllowances(GitHubMode
     Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    users: Missing[List[SimpleUser]] = Field(
+    users: Missing[list[SimpleUser]] = Field(
         default=UNSET,
         description="The list of users allowed to bypass pull request requirements.",
     )
-    teams: Missing[List[Team]] = Field(
+    teams: Missing[list[Team]] = Field(
         default=UNSET,
         description="The list of teams allowed to bypass pull request requirements.",
     )
-    apps: Missing[List[Union[Integration, None]]] = Field(
+    apps: Missing[list[Union[Integration, None]]] = Field(
         default=UNSET,
         description="The list of apps allowed to bypass pull request requirements.",
     )

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -52,7 +52,7 @@ class PullRequestWebhook(GitHubModel):
     title: str = Field(description="The title of the pull request.")
     user: SimpleUser = Field(title="Simple User", description="A GitHub user.")
     body: Union[str, None] = Field()
-    labels: List[PullRequestPropLabelsItems] = Field()
+    labels: list[PullRequestPropLabelsItems] = Field()
     milestone: Union[None, Milestone] = Field()
     active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
     created_at: datetime = Field()
@@ -61,9 +61,9 @@ class PullRequestWebhook(GitHubModel):
     merged_at: Union[datetime, None] = Field()
     merge_commit_sha: Union[str, None] = Field()
     assignee: Union[None, SimpleUser] = Field()
-    assignees: Missing[Union[List[SimpleUser], None]] = Field(default=UNSET)
-    requested_reviewers: Missing[Union[List[SimpleUser], None]] = Field(default=UNSET)
-    requested_teams: Missing[Union[List[TeamSimple], None]] = Field(default=UNSET)
+    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    requested_reviewers: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    requested_teams: Missing[Union[list[TeamSimple], None]] = Field(default=UNSET)
     head: PullRequestPropHead = Field()
     base: PullRequestPropBase = Field()
     links: PullRequestPropLinks = Field(alias="_links")

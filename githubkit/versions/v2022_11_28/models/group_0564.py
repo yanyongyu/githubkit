@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -68,7 +68,7 @@ class WebhookIssuesOpenedPropIssue(GitHubModel):
     assignee: Missing[Union[WebhookIssuesOpenedPropIssuePropAssignee, None]] = Field(
         default=UNSET, title="User"
     )
-    assignees: List[Union[WebhookIssuesOpenedPropIssuePropAssigneesItems, None]] = (
+    assignees: list[Union[WebhookIssuesOpenedPropIssuePropAssigneesItems, None]] = (
         Field()
     )
     author_association: Literal[
@@ -93,7 +93,7 @@ class WebhookIssuesOpenedPropIssue(GitHubModel):
     events_url: str = Field()
     html_url: str = Field()
     id: int = Field()
-    labels: Missing[List[WebhookIssuesOpenedPropIssuePropLabelsItems]] = Field(
+    labels: Missing[list[WebhookIssuesOpenedPropIssuePropLabelsItems]] = Field(
         default=UNSET
     )
     labels_url: str = Field()
@@ -261,7 +261,7 @@ class WebhookIssuesOpenedPropIssuePropPerformedViaGithubApp(GitHubModel):
 
     created_at: Union[datetime, None] = Field()
     description: Union[str, None] = Field()
-    events: Missing[List[str]] = Field(
+    events: Missing[list[str]] = Field(
         default=UNSET, description="The list of events for the GitHub app"
     )
     external_url: Union[str, None] = Field()
@@ -433,7 +433,7 @@ class WebhookIssuesOpenedPropChangesPropOldIssue(GitHubModel):
     assignee: Missing[
         Union[WebhookIssuesOpenedPropChangesPropOldIssuePropAssignee, None]
     ] = Field(default=UNSET, title="User")
-    assignees: List[
+    assignees: list[
         Union[WebhookIssuesOpenedPropChangesPropOldIssuePropAssigneesItems, None]
     ] = Field()
     author_association: Literal[
@@ -458,7 +458,7 @@ class WebhookIssuesOpenedPropChangesPropOldIssue(GitHubModel):
     events_url: str = Field()
     html_url: str = Field()
     id: int = Field()
-    labels: Missing[List[WebhookIssuesOpenedPropChangesPropOldIssuePropLabelsItems]] = (
+    labels: Missing[list[WebhookIssuesOpenedPropChangesPropOldIssuePropLabelsItems]] = (
         Field(default=UNSET)
     )
     labels_url: str = Field()
@@ -630,7 +630,7 @@ class WebhookIssuesOpenedPropChangesPropOldIssuePropPerformedViaGithubApp(GitHub
 
     created_at: Union[datetime, None] = Field()
     description: Union[str, None] = Field()
-    events: Missing[List[str]] = Field(
+    events: Missing[list[str]] = Field(
         default=UNSET, description="The list of events for the GitHub app"
     )
     external_url: Union[str, None] = Field()
@@ -906,7 +906,7 @@ class WebhookIssuesOpenedPropChangesPropOldRepository(GitHubModel):
     svn_url: str = Field()
     tags_url: str = Field()
     teams_url: str = Field()
-    topics: List[str] = Field()
+    topics: list[str] = Field()
     trees_url: str = Field()
     updated_at: datetime = Field()
     url: str = Field()

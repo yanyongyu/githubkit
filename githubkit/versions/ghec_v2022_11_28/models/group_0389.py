@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -21,10 +21,10 @@ from githubkit.compat import GitHubModel, model_rebuild
 class PatchSchema(GitHubModel):
     """PatchSchema"""
 
-    operations: List[PatchSchemaPropOperationsItems] = Field(
+    operations: list[PatchSchemaPropOperationsItems] = Field(
         alias="Operations", description="patch operations list"
     )
-    schemas: List[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]] = Field()
+    schemas: list[Literal["urn:ietf:params:scim:api:messages:2.0:PatchOp"]] = Field()
 
 
 class PatchSchemaPropOperationsItems(GitHubModel):

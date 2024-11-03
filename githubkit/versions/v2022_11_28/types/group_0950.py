@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -25,12 +25,12 @@ class ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputType(TypedDict):
     summary: str
     text: NotRequired[str]
     annotations: NotRequired[
-        List[
+        list[
             ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropAnnotationsItemsType
         ]
     ]
     images: NotRequired[
-        List[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType]
+        list[ReposOwnerRepoCheckRunsCheckRunIdPatchBodyPropOutputPropImagesItemsType]
     ]
 
 

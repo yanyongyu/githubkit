@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Literal, Optional
+from typing import TYPE_CHECKING, Literal, Optional
 
 from githubkit.typing import Missing
 from githubkit.utils import UNSET, exclude_unset
@@ -57,7 +57,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchCodeGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-code"""
 
@@ -101,7 +101,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchCodeGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-code"""
 
@@ -145,7 +145,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchCommitsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-commits"""
 
@@ -179,7 +179,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchCommitsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-commits"""
 
@@ -227,7 +227,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchIssuesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-issues-and-pull-requests"""
 
@@ -285,7 +285,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchIssuesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-issues-and-pull-requests"""
 
@@ -330,7 +330,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchLabelsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-labels"""
 
@@ -371,7 +371,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchLabelsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-labels"""
 
@@ -413,7 +413,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchRepositoriesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-repositories"""
 
@@ -457,7 +457,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchRepositoriesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-repositories"""
 
@@ -497,7 +497,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchTopicsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-topics"""
 
@@ -527,7 +527,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchTopicsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-topics"""
 
@@ -559,7 +559,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchUsersGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-users"""
 
@@ -601,7 +601,7 @@ class SearchClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SearchUsersGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/search/search#search-users"""
 

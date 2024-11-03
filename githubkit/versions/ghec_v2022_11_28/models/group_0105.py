@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -29,10 +27,10 @@ class ExternalGroup(GitHubModel):
     updated_at: Missing[str] = Field(
         default=UNSET, description="The date when the group was last updated_at"
     )
-    teams: List[ExternalGroupPropTeamsItems] = Field(
+    teams: list[ExternalGroupPropTeamsItems] = Field(
         description="An array of teams linked to this group"
     )
-    members: List[ExternalGroupPropMembersItems] = Field(
+    members: list[ExternalGroupPropMembersItems] = Field(
         description="An array of external members linked to this group"
     )
 

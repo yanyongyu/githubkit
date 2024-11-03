@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from datetime import datetime
 
 from pydantic import Field
@@ -30,7 +29,7 @@ class OrgHook(GitHubModel):
     ping_url: str = Field()
     deliveries_url: Missing[str] = Field(default=UNSET)
     name: str = Field()
-    events: List[str] = Field()
+    events: list[str] = Field()
     active: bool = Field()
     config: OrgHookPropConfig = Field()
     updated_at: datetime = Field()

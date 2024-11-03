@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -45,7 +45,7 @@ class WebhookDeploymentProtectionRuleRequested(GitHubModel):
         title="Deployment",
         description="A request for a specific ref(branch,sha,tag) to be deployed",
     )
-    pull_requests: Missing[List[PullRequest]] = Field(default=UNSET)
+    pull_requests: Missing[list[PullRequest]] = Field(default=UNSET)
     repository: Missing[RepositoryWebhooks] = Field(
         default=UNSET,
         title="Repository",

@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0262 import EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType
@@ -23,7 +22,7 @@ class EnvironmentPropProtectionRulesItemsAnyof1Type(TypedDict):
     prevent_self_review: NotRequired[bool]
     type: str
     reviewers: NotRequired[
-        List[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
+        list[EnvironmentPropProtectionRulesItemsAnyof1PropReviewersItemsType]
     ]
 
 

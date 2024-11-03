@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -19,7 +18,7 @@ class ProjectsColumnsCardsCardIdMovesPostResponse403Type(TypedDict):
     message: NotRequired[str]
     documentation_url: NotRequired[str]
     errors: NotRequired[
-        List[ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType]
+        list[ProjectsColumnsCardsCardIdMovesPostResponse403PropErrorsItemsType]
     ]
 
 

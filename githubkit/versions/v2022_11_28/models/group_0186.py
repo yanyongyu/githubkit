@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -47,7 +45,7 @@ class WorkflowRunUsagePropBillablePropUbuntu(GitHubModel):
 
     total_ms: int = Field()
     jobs: int = Field()
-    job_runs: Missing[List[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems]] = (
+    job_runs: Missing[list[WorkflowRunUsagePropBillablePropUbuntuPropJobRunsItems]] = (
         Field(default=UNSET)
     )
 
@@ -64,7 +62,7 @@ class WorkflowRunUsagePropBillablePropMacos(GitHubModel):
 
     total_ms: int = Field()
     jobs: int = Field()
-    job_runs: Missing[List[WorkflowRunUsagePropBillablePropMacosPropJobRunsItems]] = (
+    job_runs: Missing[list[WorkflowRunUsagePropBillablePropMacosPropJobRunsItems]] = (
         Field(default=UNSET)
     )
 
@@ -81,7 +79,7 @@ class WorkflowRunUsagePropBillablePropWindows(GitHubModel):
 
     total_ms: int = Field()
     jobs: int = Field()
-    job_runs: Missing[List[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems]] = (
+    job_runs: Missing[list[WorkflowRunUsagePropBillablePropWindowsPropJobRunsItems]] = (
         Field(default=UNSET)
     )
 

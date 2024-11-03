@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0110 import RepositoryRulesetConditionsType
@@ -21,10 +20,10 @@ from .group_0708 import (
 class WebhookRepositoryRulesetEditedPropChangesPropConditionsType(TypedDict):
     """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
 
-    added: NotRequired[List[RepositoryRulesetConditionsType]]
-    deleted: NotRequired[List[RepositoryRulesetConditionsType]]
+    added: NotRequired[list[RepositoryRulesetConditionsType]]
+    deleted: NotRequired[list[RepositoryRulesetConditionsType]]
     updated: NotRequired[
-        List[
+        list[
             WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItemsType
         ]
     ]

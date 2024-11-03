@@ -1,6 +1,6 @@
 from weakref import ref
 from typing_extensions import Self
-from typing import TYPE_CHECKING, Any, Dict, Optional, TypedDict
+from typing import TYPE_CHECKING, Any, Optional, TypedDict
 
 from githubkit.exception import GraphQLMissingPageInfo, GraphQLMissingCursorChange
 
@@ -30,7 +30,7 @@ class Paginator:
         self,
         graphql: "GraphQLNamespace",
         query: str,
-        variables: Optional[Dict[str, Any]] = None,
+        variables: Optional[dict[str, Any]] = None,
     ) -> None:
         self._graphql_ref = ref(graphql)
         self.query = query
@@ -47,7 +47,7 @@ class Paginator:
             "Do not use the paginator after the client has been collected."
         )
 
-    def __next__(self) -> Dict[str, Any]:
+    def __next__(self) -> dict[str, Any]:
         if not self._has_next_page:
             raise StopIteration
 
@@ -56,7 +56,7 @@ class Paginator:
     def __iter__(self: Self) -> Self:
         return self
 
-    async def __anext__(self) -> Dict[str, Any]:
+    async def __anext__(self) -> dict[str, Any]:
         if not self._has_next_page:
             raise StopAsyncIteration
 
@@ -65,7 +65,7 @@ class Paginator:
     def __aiter__(self: Self) -> Self:
         return self
 
-    def _extract_page_info(self, data: Dict[str, Any]) -> Optional[PageInfo]:
+    def _extract_page_info(self, data: dict[str, Any]) -> Optional[PageInfo]:
         if "pageInfo" in data:
             return data["pageInfo"]
 
@@ -90,7 +90,7 @@ class Paginator:
             else page_info["startCursor"]  # type: ignore
         )
 
-    def _do_update(self, response: "Response[GraphQLResponse]") -> Dict[str, Any]:
+    def _do_update(self, response: "Response[GraphQLResponse]") -> dict[str, Any]:
         result = self._graphql.parse_graphql_response(response)
 
         page_info = self._extract_page_info(result)
@@ -111,10 +111,10 @@ class Paginator:
         self._current_variables[CURSOR_VARNAME] = next_cursor
         return result
 
-    def _get_next_page(self) -> Dict[str, Any]:
+    def _get_next_page(self) -> dict[str, Any]:
         response = self._graphql._request(self.query, self._current_variables)
         return self._do_update(response)
 
-    async def _aget_next_page(self) -> Dict[str, Any]:
+    async def _aget_next_page(self) -> dict[str, Any]:
         response = await self._graphql._arequest(self.query, self._current_variables)
         return self._do_update(response)

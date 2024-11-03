@@ -9,15 +9,14 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
 class ParticipationStatsType(TypedDict):
     """Participation Stats"""
 
-    all_: List[int]
-    owner: List[int]
+    all_: list[int]
+    owner: list[int]
 
 
 __all__ = ("ParticipationStatsType",)

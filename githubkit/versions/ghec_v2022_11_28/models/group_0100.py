@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 
 from pydantic import Field
 
@@ -39,7 +39,7 @@ class CredentialAuthorization(GitHubModel):
     credential_authorized_at: datetime = Field(
         description="Date when the credential was authorized for use."
     )
-    scopes: Missing[List[str]] = Field(
+    scopes: Missing[list[str]] = Field(
         default=UNSET, description="List of oauth scopes the token has been granted."
     )
     fingerprint: Missing[str] = Field(

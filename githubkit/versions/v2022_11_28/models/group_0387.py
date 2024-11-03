@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from datetime import datetime
-from typing import List, Literal
 
 from pydantic import Field
 
@@ -37,7 +37,7 @@ class WebhooksRule(GitHubModel):
     allow_force_pushes_enforcement_level: Literal["off", "non_admins", "everyone"] = (
         Field()
     )
-    authorized_actor_names: List[str] = Field()
+    authorized_actor_names: list[str] = Field()
     authorized_actors_only: bool = Field()
     authorized_dismissal_actors_only: bool = Field()
     create_protected: Missing[bool] = Field(default=UNSET)
@@ -73,7 +73,7 @@ class WebhooksRule(GitHubModel):
     required_deployments_enforcement_level: Literal["off", "non_admins", "everyone"] = (
         Field()
     )
-    required_status_checks: List[str] = Field()
+    required_status_checks: list[str] = Field()
     required_status_checks_enforcement_level: Literal[
         "off", "non_admins", "everyone"
     ] = Field()

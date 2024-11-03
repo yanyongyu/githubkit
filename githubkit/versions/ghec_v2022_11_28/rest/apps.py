@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, Optional, overload
 
 from pydantic import BaseModel
 
@@ -20,7 +20,7 @@ from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
     from datetime import datetime
-    from typing import List, Union, Literal
+    from typing import Union, Literal
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
@@ -75,7 +75,7 @@ class AppsClient:
     def get_authenticated(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Union[Integration, None]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-the-authenticated-app"""
 
@@ -97,7 +97,7 @@ class AppsClient:
     async def async_get_authenticated(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Union[Integration, None]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-the-authenticated-app"""
 
@@ -120,7 +120,7 @@ class AppsClient:
         self,
         code: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AppManifestsCodeConversionsPostResponse201]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#create-a-github-app-from-a-manifest"""
 
@@ -149,7 +149,7 @@ class AppsClient:
         self,
         code: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AppManifestsCodeConversionsPostResponse201]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#create-a-github-app-from-a-manifest"""
 
@@ -177,7 +177,7 @@ class AppsClient:
     def get_webhook_config_for_app(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[WebhookConfig]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#get-a-webhook-configuration-for-an-app"""
 
@@ -197,7 +197,7 @@ class AppsClient:
     async def async_get_webhook_config_for_app(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[WebhookConfig]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#get-a-webhook-configuration-for-an-app"""
 
@@ -218,7 +218,7 @@ class AppsClient:
     def update_webhook_config_for_app(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: AppHookConfigPatchBodyType,
     ) -> Response[WebhookConfig]: ...
 
@@ -227,7 +227,7 @@ class AppsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -237,7 +237,7 @@ class AppsClient:
     def update_webhook_config_for_app(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig]:
@@ -270,7 +270,7 @@ class AppsClient:
     async def async_update_webhook_config_for_app(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: AppHookConfigPatchBodyType,
     ) -> Response[WebhookConfig]: ...
 
@@ -279,7 +279,7 @@ class AppsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         url: Missing[str] = UNSET,
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
@@ -289,7 +289,7 @@ class AppsClient:
     async def async_update_webhook_config_for_app(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[AppHookConfigPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[WebhookConfig]:
@@ -323,11 +323,9 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[HookDeliveryItem]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[HookDeliveryItem]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#list-deliveries-for-an-app-webhook"""
-
-        from typing import List
 
         from ..models import BasicError, ValidationError, HookDeliveryItem
 
@@ -345,7 +343,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[HookDeliveryItem],
+            response_model=list[HookDeliveryItem],
             error_models={
                 "400": BasicError,
                 "422": ValidationError,
@@ -357,11 +355,9 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         cursor: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[HookDeliveryItem]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[HookDeliveryItem]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#list-deliveries-for-an-app-webhook"""
-
-        from typing import List
 
         from ..models import BasicError, ValidationError, HookDeliveryItem
 
@@ -379,7 +375,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[HookDeliveryItem],
+            response_model=list[HookDeliveryItem],
             error_models={
                 "400": BasicError,
                 "422": ValidationError,
@@ -390,7 +386,7 @@ class AppsClient:
         self,
         delivery_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[HookDelivery]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#get-a-delivery-for-an-app-webhook"""
 
@@ -415,7 +411,7 @@ class AppsClient:
         self,
         delivery_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[HookDelivery]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#get-a-delivery-for-an-app-webhook"""
 
@@ -440,7 +436,7 @@ class AppsClient:
         self,
         delivery_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook"""
 
@@ -469,7 +465,7 @@ class AppsClient:
         self,
         delivery_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook"""
 
@@ -499,11 +495,9 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[IntegrationInstallationRequest]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[IntegrationInstallationRequest]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#list-installation-requests-for-the-authenticated-app"""
-
-        from typing import List
 
         from ..models import BasicError, IntegrationInstallationRequest
 
@@ -521,7 +515,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[IntegrationInstallationRequest],
+            response_model=list[IntegrationInstallationRequest],
             error_models={
                 "401": BasicError,
             },
@@ -532,11 +526,9 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[IntegrationInstallationRequest]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[IntegrationInstallationRequest]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#list-installation-requests-for-the-authenticated-app"""
-
-        from typing import List
 
         from ..models import BasicError, IntegrationInstallationRequest
 
@@ -554,7 +546,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[IntegrationInstallationRequest],
+            response_model=list[IntegrationInstallationRequest],
             error_models={
                 "401": BasicError,
             },
@@ -567,11 +559,9 @@ class AppsClient:
         since: Missing[datetime] = UNSET,
         outdated: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Installation]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Installation]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#list-installations-for-the-authenticated-app"""
-
-        from typing import List
 
         from ..models import Installation
 
@@ -591,7 +581,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Installation],
+            response_model=list[Installation],
         )
 
     async def async_list_installations(
@@ -601,11 +591,9 @@ class AppsClient:
         since: Missing[datetime] = UNSET,
         outdated: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Installation]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Installation]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#list-installations-for-the-authenticated-app"""
-
-        from typing import List
 
         from ..models import Installation
 
@@ -625,14 +613,14 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Installation],
+            response_model=list[Installation],
         )
 
     def get_installation(
         self,
         installation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Installation]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-installation-for-the-authenticated-app"""
 
@@ -656,7 +644,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Installation]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-installation-for-the-authenticated-app"""
 
@@ -680,7 +668,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#delete-an-installation-for-the-authenticated-app"""
 
@@ -703,7 +691,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#delete-an-installation-for-the-authenticated-app"""
 
@@ -727,7 +715,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
     ) -> Response[InstallationToken]: ...
 
@@ -737,9 +725,9 @@ class AppsClient:
         installation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        repositories: Missing[List[str]] = UNSET,
-        repository_ids: Missing[List[int]] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        repositories: Missing[list[str]] = UNSET,
+        repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
     ) -> Response[InstallationToken]: ...
 
@@ -747,7 +735,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[InstallationToken]:
@@ -794,7 +782,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
     ) -> Response[InstallationToken]: ...
 
@@ -804,9 +792,9 @@ class AppsClient:
         installation_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        repositories: Missing[List[str]] = UNSET,
-        repository_ids: Missing[List[int]] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        repositories: Missing[list[str]] = UNSET,
+        repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
     ) -> Response[InstallationToken]: ...
 
@@ -814,7 +802,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[AppInstallationsInstallationIdAccessTokensPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[InstallationToken]:
@@ -860,7 +848,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#suspend-an-app-installation"""
 
@@ -883,7 +871,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#suspend-an-app-installation"""
 
@@ -906,7 +894,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#unsuspend-an-app-installation"""
 
@@ -929,7 +917,7 @@ class AppsClient:
         self,
         installation_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#unsuspend-an-app-installation"""
 
@@ -953,7 +941,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ApplicationsClientIdGrantDeleteBodyType,
     ) -> Response: ...
 
@@ -963,7 +951,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         access_token: str,
     ) -> Response: ...
 
@@ -971,7 +959,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ApplicationsClientIdGrantDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1007,7 +995,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ApplicationsClientIdGrantDeleteBodyType,
     ) -> Response: ...
 
@@ -1017,7 +1005,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         access_token: str,
     ) -> Response: ...
 
@@ -1025,7 +1013,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ApplicationsClientIdGrantDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1061,7 +1049,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ApplicationsClientIdTokenPostBodyType,
     ) -> Response[Authorization]: ...
 
@@ -1071,7 +1059,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         access_token: str,
     ) -> Response[Authorization]: ...
 
@@ -1079,7 +1067,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization]:
@@ -1122,7 +1110,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ApplicationsClientIdTokenPostBodyType,
     ) -> Response[Authorization]: ...
 
@@ -1132,7 +1120,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         access_token: str,
     ) -> Response[Authorization]: ...
 
@@ -1140,7 +1128,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization]:
@@ -1183,7 +1171,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ApplicationsClientIdTokenDeleteBodyType,
     ) -> Response: ...
 
@@ -1193,7 +1181,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         access_token: str,
     ) -> Response: ...
 
@@ -1201,7 +1189,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1237,7 +1225,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ApplicationsClientIdTokenDeleteBodyType,
     ) -> Response: ...
 
@@ -1247,7 +1235,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         access_token: str,
     ) -> Response: ...
 
@@ -1255,7 +1243,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenDeleteBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -1291,7 +1279,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ApplicationsClientIdTokenPatchBodyType,
     ) -> Response[Authorization]: ...
 
@@ -1301,7 +1289,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         access_token: str,
     ) -> Response[Authorization]: ...
 
@@ -1309,7 +1297,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization]:
@@ -1350,7 +1338,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ApplicationsClientIdTokenPatchBodyType,
     ) -> Response[Authorization]: ...
 
@@ -1360,7 +1348,7 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         access_token: str,
     ) -> Response[Authorization]: ...
 
@@ -1368,7 +1356,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization]:
@@ -1409,7 +1397,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ApplicationsClientIdTokenScopedPostBodyType,
     ) -> Response[Authorization]: ...
 
@@ -1419,12 +1407,12 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         access_token: str,
         target: Missing[str] = UNSET,
         target_id: Missing[int] = UNSET,
-        repositories: Missing[List[str]] = UNSET,
-        repository_ids: Missing[List[int]] = UNSET,
+        repositories: Missing[list[str]] = UNSET,
+        repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
     ) -> Response[Authorization]: ...
 
@@ -1432,7 +1420,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization]:
@@ -1477,7 +1465,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ApplicationsClientIdTokenScopedPostBodyType,
     ) -> Response[Authorization]: ...
 
@@ -1487,12 +1475,12 @@ class AppsClient:
         client_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         access_token: str,
         target: Missing[str] = UNSET,
         target_id: Missing[int] = UNSET,
-        repositories: Missing[List[str]] = UNSET,
-        repository_ids: Missing[List[int]] = UNSET,
+        repositories: Missing[list[str]] = UNSET,
+        repository_ids: Missing[list[int]] = UNSET,
         permissions: Missing[AppPermissionsType] = UNSET,
     ) -> Response[Authorization]: ...
 
@@ -1500,7 +1488,7 @@ class AppsClient:
         self,
         client_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ApplicationsClientIdTokenScopedPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Authorization]:
@@ -1544,7 +1532,7 @@ class AppsClient:
         self,
         app_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Union[Integration, None]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-app"""
 
@@ -1571,7 +1559,7 @@ class AppsClient:
         self,
         app_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Union[Integration, None]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-app"""
 
@@ -1599,7 +1587,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[InstallationRepositoriesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#list-repositories-accessible-to-the-app-installation"""
 
@@ -1631,7 +1619,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[InstallationRepositoriesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#list-repositories-accessible-to-the-app-installation"""
 
@@ -1661,7 +1649,7 @@ class AppsClient:
     def revoke_installation_access_token(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#revoke-an-installation-access-token"""
 
@@ -1678,7 +1666,7 @@ class AppsClient:
     async def async_revoke_installation_access_token(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#revoke-an-installation-access-token"""
 
@@ -1696,7 +1684,7 @@ class AppsClient:
         self,
         account_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[MarketplacePurchase]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#get-a-subscription-plan-for-an-account"""
 
@@ -1721,7 +1709,7 @@ class AppsClient:
         self,
         account_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[MarketplacePurchase]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#get-a-subscription-plan-for-an-account"""
 
@@ -1747,11 +1735,9 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MarketplaceListingPlan]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MarketplaceListingPlan]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-plans"""
-
-        from typing import List
 
         from ..models import BasicError, MarketplaceListingPlan
 
@@ -1769,7 +1755,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MarketplaceListingPlan],
+            response_model=list[MarketplaceListingPlan],
             error_models={
                 "404": BasicError,
                 "401": BasicError,
@@ -1781,11 +1767,9 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MarketplaceListingPlan]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MarketplaceListingPlan]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-plans"""
-
-        from typing import List
 
         from ..models import BasicError, MarketplaceListingPlan
 
@@ -1803,7 +1787,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MarketplaceListingPlan],
+            response_model=list[MarketplaceListingPlan],
             error_models={
                 "404": BasicError,
                 "401": BasicError,
@@ -1818,11 +1802,9 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MarketplacePurchase]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MarketplacePurchase]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-accounts-for-a-plan"""
-
-        from typing import List
 
         from ..models import BasicError, ValidationError, MarketplacePurchase
 
@@ -1842,7 +1824,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MarketplacePurchase],
+            response_model=list[MarketplacePurchase],
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -1858,11 +1840,9 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MarketplacePurchase]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MarketplacePurchase]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-accounts-for-a-plan"""
-
-        from typing import List
 
         from ..models import BasicError, ValidationError, MarketplacePurchase
 
@@ -1882,7 +1862,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MarketplacePurchase],
+            response_model=list[MarketplacePurchase],
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -1894,7 +1874,7 @@ class AppsClient:
         self,
         account_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[MarketplacePurchase]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed"""
 
@@ -1918,7 +1898,7 @@ class AppsClient:
         self,
         account_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[MarketplacePurchase]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed"""
 
@@ -1943,11 +1923,9 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MarketplaceListingPlan]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MarketplaceListingPlan]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-plans-stubbed"""
-
-        from typing import List
 
         from ..models import BasicError, MarketplaceListingPlan
 
@@ -1965,7 +1943,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MarketplaceListingPlan],
+            response_model=list[MarketplaceListingPlan],
             error_models={
                 "401": BasicError,
             },
@@ -1976,11 +1954,9 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MarketplaceListingPlan]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MarketplaceListingPlan]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-plans-stubbed"""
-
-        from typing import List
 
         from ..models import BasicError, MarketplaceListingPlan
 
@@ -1998,7 +1974,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MarketplaceListingPlan],
+            response_model=list[MarketplaceListingPlan],
             error_models={
                 "401": BasicError,
             },
@@ -2012,11 +1988,9 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MarketplacePurchase]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MarketplacePurchase]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-accounts-for-a-plan-stubbed"""
-
-        from typing import List
 
         from ..models import BasicError, MarketplacePurchase
 
@@ -2036,7 +2010,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MarketplacePurchase],
+            response_model=list[MarketplacePurchase],
             error_models={
                 "401": BasicError,
             },
@@ -2050,11 +2024,9 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MarketplacePurchase]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MarketplacePurchase]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-accounts-for-a-plan-stubbed"""
-
-        from typing import List
 
         from ..models import BasicError, MarketplacePurchase
 
@@ -2074,7 +2046,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MarketplacePurchase],
+            response_model=list[MarketplacePurchase],
             error_models={
                 "401": BasicError,
             },
@@ -2084,7 +2056,7 @@ class AppsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Installation]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-organization-installation-for-the-authenticated-app"""
 
@@ -2105,7 +2077,7 @@ class AppsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Installation]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-an-organization-installation-for-the-authenticated-app"""
 
@@ -2127,7 +2099,7 @@ class AppsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Installation]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-a-repository-installation-for-the-authenticated-app"""
 
@@ -2152,7 +2124,7 @@ class AppsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Installation]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-a-repository-installation-for-the-authenticated-app"""
 
@@ -2177,7 +2149,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[UserInstallationsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#list-app-installations-accessible-to-the-user-access-token"""
 
@@ -2209,7 +2181,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[UserInstallationsGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#list-app-installations-accessible-to-the-user-access-token"""
 
@@ -2242,7 +2214,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[UserInstallationsInstallationIdRepositoriesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#list-repositories-accessible-to-the-user-access-token"""
 
@@ -2278,7 +2250,7 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[UserInstallationsInstallationIdRepositoriesGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#list-repositories-accessible-to-the-user-access-token"""
 
@@ -2313,7 +2285,7 @@ class AppsClient:
         installation_id: int,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#add-a-repository-to-an-app-installation"""
 
@@ -2338,7 +2310,7 @@ class AppsClient:
         installation_id: int,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#add-a-repository-to-an-app-installation"""
 
@@ -2363,7 +2335,7 @@ class AppsClient:
         installation_id: int,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#remove-a-repository-from-an-app-installation"""
 
@@ -2388,7 +2360,7 @@ class AppsClient:
         installation_id: int,
         repository_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/installations#remove-a-repository-from-an-app-installation"""
 
@@ -2413,11 +2385,9 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[UserMarketplacePurchase]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[UserMarketplacePurchase]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-subscriptions-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BasicError, UserMarketplacePurchase
 
@@ -2435,7 +2405,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[UserMarketplacePurchase],
+            response_model=list[UserMarketplacePurchase],
             error_models={
                 "401": BasicError,
                 "404": BasicError,
@@ -2447,11 +2417,9 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[UserMarketplacePurchase]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[UserMarketplacePurchase]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-subscriptions-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import BasicError, UserMarketplacePurchase
 
@@ -2469,7 +2437,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[UserMarketplacePurchase],
+            response_model=list[UserMarketplacePurchase],
             error_models={
                 "401": BasicError,
                 "404": BasicError,
@@ -2481,11 +2449,9 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[UserMarketplacePurchase]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[UserMarketplacePurchase]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed"""
-
-        from typing import List
 
         from ..models import BasicError, UserMarketplacePurchase
 
@@ -2503,7 +2469,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[UserMarketplacePurchase],
+            response_model=list[UserMarketplacePurchase],
             error_models={
                 "401": BasicError,
             },
@@ -2514,11 +2480,9 @@ class AppsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[UserMarketplacePurchase]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[UserMarketplacePurchase]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed"""
-
-        from typing import List
 
         from ..models import BasicError, UserMarketplacePurchase
 
@@ -2536,7 +2500,7 @@ class AppsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[UserMarketplacePurchase],
+            response_model=list[UserMarketplacePurchase],
             error_models={
                 "401": BasicError,
             },
@@ -2546,7 +2510,7 @@ class AppsClient:
         self,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Installation]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-a-user-installation-for-the-authenticated-app"""
 
@@ -2567,7 +2531,7 @@ class AppsClient:
         self,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Installation]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/apps/apps#get-a-user-installation-for-the-authenticated-app"""
 

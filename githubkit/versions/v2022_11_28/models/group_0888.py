@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -25,7 +23,7 @@ class ProjectsColumnsCardsCardIdMovesPostResponse503(GitHubModel):
     message: Missing[str] = Field(default=UNSET)
     documentation_url: Missing[str] = Field(default=UNSET)
     errors: Missing[
-        List[ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems]
+        list[ProjectsColumnsCardsCardIdMovesPostResponse503PropErrorsItems]
     ] = Field(default=UNSET)
 
 

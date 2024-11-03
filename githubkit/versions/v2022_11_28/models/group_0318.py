@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -25,8 +23,8 @@ class PullRequestReviewRequest(GitHubModel):
     Pull Request Review Request
     """
 
-    users: List[SimpleUser] = Field()
-    teams: List[Team] = Field()
+    users: list[SimpleUser] = Field()
+    teams: list[Team] = Field()
 
 
 model_rebuild(PullRequestReviewRequest)

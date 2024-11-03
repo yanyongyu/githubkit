@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -75,7 +75,7 @@ class WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestType(TypedDict)
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAssigneeType,
         None,
     ]
-    assignees: List[
+    assignees: list[
         Union[
             WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropAssigneesItemsType,
             None,
@@ -111,7 +111,7 @@ class WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestType(TypedDict)
     html_url: str
     id: int
     issue_url: str
-    labels: List[
+    labels: list[
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropLabelsItemsType
     ]
     locked: bool
@@ -135,14 +135,14 @@ class WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestType(TypedDict)
     number: int
     patch_url: str
     rebaseable: NotRequired[Union[bool, None]]
-    requested_reviewers: List[
+    requested_reviewers: list[
         Union[
             WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof0Type,
             None,
             WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedReviewersItemsOneof1Type,
         ]
     ]
-    requested_teams: List[
+    requested_teams: list[
         WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropRequestedTeamsItemsType
     ]
     review_comment_url: str
@@ -655,7 +655,7 @@ class WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropBasePropRep
     svn_url: str
     tags_url: str
     teams_url: str
-    topics: List[str]
+    topics: list[str]
     trees_url: str
     updated_at: datetime
     url: str
@@ -872,7 +872,7 @@ class WebhookPullRequestReviewRequestRemovedOneof0PropPullRequestPropHeadPropRep
     svn_url: str
     tags_url: str
     teams_url: str
-    topics: List[str]
+    topics: list[str]
     trees_url: str
     updated_at: datetime
     url: str

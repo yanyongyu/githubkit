@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
@@ -21,7 +20,7 @@ class UserSocialAccountsPostBodyType(TypedDict):
     'https://twitter.com/github']}
     """
 
-    account_urls: List[str]
+    account_urls: list[str]
 
 
 __all__ = ("UserSocialAccountsPostBodyType",)

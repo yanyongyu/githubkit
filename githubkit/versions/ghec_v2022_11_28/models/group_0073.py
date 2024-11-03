@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, List, Union
+from typing import Any, Union
 
 from pydantic import Field
 
@@ -47,8 +47,8 @@ class BaseGist(GitHubModel):
         default=UNSET, title="Simple User", description="A GitHub user."
     )
     truncated: Missing[bool] = Field(default=UNSET)
-    forks: Missing[List[Any]] = Field(default=UNSET)
-    history: Missing[List[Any]] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
 
 
 class BaseGistPropFiles(ExtraGitHubModel):

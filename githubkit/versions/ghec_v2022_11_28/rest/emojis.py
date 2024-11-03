@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Optional
+from typing import TYPE_CHECKING, Optional
 
 from githubkit.utils import exclude_unset
 
@@ -39,7 +39,7 @@ class EmojisClient:
     def get(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EmojisGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/emojis/emojis#get-emojis"""
 
@@ -59,7 +59,7 @@ class EmojisClient:
     async def async_get(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[EmojisGetResponse200]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/emojis/emojis#get-emojis"""
 

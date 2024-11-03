@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -26,7 +26,7 @@ class OrgsOrgCodeSecurityConfigurationsConfigurationIdAttachPostBody(GitHubModel
     ] = Field(
         description="The type of repositories to attach the configuration to. `selected` means the configuration will be attached to only the repositories specified by `selected_repository_ids`"
     )
-    selected_repository_ids: Missing[List[int]] = Field(
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
         description="An array of repository IDs to attach the configuration to. You can only provide a list of repository ids when the `scope` is set to `selected`.",
     )

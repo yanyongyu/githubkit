@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -20,7 +20,7 @@ class ReposOwnerRepoPullsPullNumberReviewsPostBodyType(TypedDict):
     body: NotRequired[str]
     event: NotRequired[Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"]]
     comments: NotRequired[
-        List[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
+        list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
     ]
 
 

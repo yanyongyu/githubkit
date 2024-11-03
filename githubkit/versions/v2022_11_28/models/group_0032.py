@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import date
-from typing import List, Union
 
 from pydantic import Field
 
@@ -60,7 +60,7 @@ class CopilotUsageMetrics(GitHubModel):
         default=UNSET,
         description="The total number of users who interacted with Copilot Chat in the IDE during the day specified.",
     )
-    breakdown: Union[List[CopilotUsageMetricsPropBreakdownItems], None] = Field(
+    breakdown: Union[list[CopilotUsageMetricsPropBreakdownItems], None] = Field(
         description="Breakdown of Copilot code completions usage by language and editor"
     )
 

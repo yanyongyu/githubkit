@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -64,7 +64,7 @@ class CheckRunWithSimpleCheckSuite(GitHubModel):
     name: str = Field(description="The name of the check.")
     node_id: str = Field()
     output: CheckRunWithSimpleCheckSuitePropOutput = Field()
-    pull_requests: List[PullRequestMinimal] = Field()
+    pull_requests: list[PullRequestMinimal] = Field()
     started_at: datetime = Field()
     status: Literal["queued", "in_progress", "completed", "pending"] = Field(
         description="The phase of the lifecycle that the check is currently in."

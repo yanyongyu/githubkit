@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 
 from pydantic import Field
 
@@ -33,7 +33,7 @@ class OrganizationRole(GitHubModel):
         default=UNSET,
         description="A short description about who this role is for or what permissions it grants.",
     )
-    permissions: List[str] = Field(
+    permissions: list[str] = Field(
         description="A list of permissions included in this role."
     )
     organization: Union[None, SimpleUser] = Field()
@@ -50,7 +50,7 @@ class OrgsOrgOrganizationRolesGetResponse200(GitHubModel):
         default=UNSET,
         description="The total number of organization roles available to the organization.",
     )
-    roles: Missing[List[OrganizationRole]] = Field(
+    roles: Missing[list[OrganizationRole]] = Field(
         default=UNSET,
         description="The list of organization roles available to the organization.",
     )

@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 from .group_0356 import TrafficType
@@ -23,7 +22,7 @@ class ViewTrafficType(TypedDict):
 
     count: int
     uniques: int
-    views: List[TrafficType]
+    views: list[TrafficType]
 
 
 __all__ = ("ViewTrafficType",)

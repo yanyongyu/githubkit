@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -24,7 +24,7 @@ class ScimErrorType(TypedDict):
     detail: NotRequired[Union[str, None]]
     status: NotRequired[int]
     scim_type: NotRequired[Union[str, None]]
-    schemas: NotRequired[List[str]]
+    schemas: NotRequired[list[str]]
 
 
 __all__ = ("ScimErrorType",)

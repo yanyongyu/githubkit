@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -47,8 +45,8 @@ class AuditLogEvent(GitHubModel):
         default=UNSET, description="The username of the account being blocked."
     )
     business: Missing[str] = Field(default=UNSET)
-    config: Missing[List[AuditLogEventPropConfigItems]] = Field(default=UNSET)
-    config_was: Missing[List[AuditLogEventPropConfigWasItems]] = Field(default=UNSET)
+    config: Missing[list[AuditLogEventPropConfigItems]] = Field(default=UNSET)
+    config_was: Missing[list[AuditLogEventPropConfigWasItems]] = Field(default=UNSET)
     content_type: Missing[str] = Field(default=UNSET)
     operation_type: Missing[str] = Field(default=UNSET)
     created_at: Missing[int] = Field(
@@ -62,8 +60,8 @@ class AuditLogEvent(GitHubModel):
         description="A unique identifier for an audit event.",
     )
     emoji: Missing[str] = Field(default=UNSET)
-    events: Missing[List[AuditLogEventPropEventsItems]] = Field(default=UNSET)
-    events_were: Missing[List[AuditLogEventPropEventsWereItems]] = Field(default=UNSET)
+    events: Missing[list[AuditLogEventPropEventsItems]] = Field(default=UNSET)
+    events_were: Missing[list[AuditLogEventPropEventsWereItems]] = Field(default=UNSET)
     explanation: Missing[str] = Field(default=UNSET)
     fingerprint: Missing[str] = Field(default=UNSET)
     hook_id: Missing[int] = Field(default=UNSET)

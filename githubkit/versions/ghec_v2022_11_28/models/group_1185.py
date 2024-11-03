@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -24,7 +22,7 @@ class UserSocialAccountsDeleteBody(GitHubModel):
     'https://twitter.com/github']}
     """
 
-    account_urls: List[str] = Field(
+    account_urls: list[str] = Field(
         description="Full URLs for the social media profiles to delete."
     )
 

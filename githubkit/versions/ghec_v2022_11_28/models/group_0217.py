@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -150,8 +150,8 @@ class ProtectedBranchRequiredStatusCheck(GitHubModel):
 
     url: Missing[str] = Field(default=UNSET)
     enforcement_level: Missing[str] = Field(default=UNSET)
-    contexts: List[str] = Field()
-    checks: List[ProtectedBranchRequiredStatusCheckPropChecksItems] = Field()
+    contexts: list[str] = Field()
+    checks: list[ProtectedBranchRequiredStatusCheckPropChecksItems] = Field()
     contexts_url: Missing[str] = Field(default=UNSET)
     strict: Missing[bool] = Field(default=UNSET)
 

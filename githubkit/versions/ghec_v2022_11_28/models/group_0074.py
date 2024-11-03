@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, List, Union
+from typing import Any, Union
 
 from pydantic import Field
 
@@ -66,8 +66,8 @@ class GistSimplePropForkOf(GitHubModel):
     comments_url: str = Field()
     owner: Missing[Union[None, SimpleUser]] = Field(default=UNSET)
     truncated: Missing[bool] = Field(default=UNSET)
-    forks: Missing[List[Any]] = Field(default=UNSET)
-    history: Missing[List[Any]] = Field(default=UNSET)
+    forks: Missing[list[Any]] = Field(default=UNSET)
+    history: Missing[list[Any]] = Field(default=UNSET)
 
 
 class GistSimplePropForkOfPropFiles(ExtraGitHubModel):

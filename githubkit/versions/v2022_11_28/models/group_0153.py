@@ -10,8 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
-from typing_extensions import Annotated
+from typing import Union, Literal, Annotated
 
 from pydantic import Field
 
@@ -48,7 +47,7 @@ class RepositoryAdvisory(GitHubModel):
     )
     author: None = Field(description="The author of the advisory.")
     publisher: None = Field(description="The publisher of the advisory.")
-    identifiers: List[RepositoryAdvisoryPropIdentifiersItems] = Field()
+    identifiers: list[RepositoryAdvisoryPropIdentifiersItems] = Field()
     state: Literal["published", "closed", "withdrawn", "draft", "triage"] = Field(
         description="The state of the advisory."
     )
@@ -68,19 +67,19 @@ class RepositoryAdvisory(GitHubModel):
         description="The date and time of when the advisory was withdrawn, in ISO 8601 format."
     )
     submission: Union[RepositoryAdvisoryPropSubmission, None] = Field()
-    vulnerabilities: Union[List[RepositoryAdvisoryVulnerability], None] = Field()
+    vulnerabilities: Union[list[RepositoryAdvisoryVulnerability], None] = Field()
     cvss: Union[RepositoryAdvisoryPropCvss, None] = Field()
     cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
-    cwes: Union[List[RepositoryAdvisoryPropCwesItems], None] = Field()
-    cwe_ids: Union[List[str], None] = Field(description="A list of only the CWE IDs.")
-    credits_: Union[List[RepositoryAdvisoryPropCreditsItems], None] = Field(
+    cwes: Union[list[RepositoryAdvisoryPropCwesItems], None] = Field()
+    cwe_ids: Union[list[str], None] = Field(description="A list of only the CWE IDs.")
+    credits_: Union[list[RepositoryAdvisoryPropCreditsItems], None] = Field(
         alias="credits"
     )
-    credits_detailed: Union[List[RepositoryAdvisoryCredit], None] = Field()
-    collaborating_users: Union[List[SimpleUser], None] = Field(
+    credits_detailed: Union[list[RepositoryAdvisoryCredit], None] = Field()
+    collaborating_users: Union[list[SimpleUser], None] = Field(
         description="A list of users that collaborate on the advisory."
     )
-    collaborating_teams: Union[List[Team], None] = Field(
+    collaborating_teams: Union[list[Team], None] = Field(
         description="A list of teams that collaborate on the advisory."
     )
     private_fork: None = Field(
@@ -157,7 +156,7 @@ class RepositoryAdvisoryVulnerability(GitHubModel):
     patched_versions: Union[str, None] = Field(
         description="The package version(s) that resolve the vulnerability."
     )
-    vulnerable_functions: Union[List[str], None] = Field(
+    vulnerable_functions: Union[list[str], None] = Field(
         description="The functions in the package that are affected."
     )
 

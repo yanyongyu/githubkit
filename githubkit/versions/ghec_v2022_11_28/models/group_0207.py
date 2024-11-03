@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -45,7 +45,7 @@ class PendingDeployment(GitHubModel):
     current_user_can_approve: bool = Field(
         description="Whether the currently authenticated user can approve the deployment"
     )
-    reviewers: List[PendingDeploymentPropReviewersItems] = Field(
+    reviewers: list[PendingDeploymentPropReviewersItems] = Field(
         description="The people or teams that may approve jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed."
     )
 

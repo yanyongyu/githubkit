@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -136,8 +136,8 @@ class StatusCheckPolicy(GitHubModel):
 
     url: str = Field()
     strict: bool = Field()
-    contexts: List[str] = Field()
-    checks: List[StatusCheckPolicyPropChecksItems] = Field()
+    contexts: list[str] = Field()
+    checks: list[StatusCheckPolicyPropChecksItems] = Field()
     contexts_url: str = Field()
 
 

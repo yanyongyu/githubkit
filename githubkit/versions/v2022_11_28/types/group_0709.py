@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0122 import RepositoryRuleUpdateType
@@ -46,7 +46,7 @@ class WebhookRepositoryRulesetEditedPropChangesPropRulesType(TypedDict):
     """WebhookRepositoryRulesetEditedPropChangesPropRules"""
 
     added: NotRequired[
-        List[
+        list[
             Union[
                 RepositoryRuleCreationType,
                 RepositoryRuleUpdateType,
@@ -73,7 +73,7 @@ class WebhookRepositoryRulesetEditedPropChangesPropRulesType(TypedDict):
         ]
     ]
     deleted: NotRequired[
-        List[
+        list[
             Union[
                 RepositoryRuleCreationType,
                 RepositoryRuleUpdateType,
@@ -100,7 +100,7 @@ class WebhookRepositoryRulesetEditedPropChangesPropRulesType(TypedDict):
         ]
     ]
     updated: NotRequired[
-        List[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType]
+        list[WebhookRepositoryRulesetEditedPropChangesPropRulesPropUpdatedItemsType]
     ]
 
 

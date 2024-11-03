@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -30,7 +30,7 @@ class CodeScanningDefaultSetup(GitHubModel):
         description="Code scanning default setup has been configured or not.",
     )
     languages: Missing[
-        List[
+        list[
             Literal[
                 "c-cpp",
                 "csharp",

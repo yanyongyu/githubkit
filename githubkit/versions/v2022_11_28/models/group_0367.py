@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 
 from pydantic import Field
 
@@ -95,7 +95,7 @@ class RepoSearchResultItem(GitHubModel):
     forks: int = Field()
     open_issues: int = Field()
     watchers: int = Field()
-    topics: Missing[List[str]] = Field(default=UNSET)
+    topics: Missing[list[str]] = Field(default=UNSET)
     mirror_url: Union[str, None] = Field()
     has_issues: bool = Field()
     has_projects: bool = Field()
@@ -113,7 +113,7 @@ class RepoSearchResultItem(GitHubModel):
     )
     license_: Union[None, LicenseSimple] = Field(alias="license")
     permissions: Missing[RepoSearchResultItemPropPermissions] = Field(default=UNSET)
-    text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
         default=UNSET, title="Search Result Text Matches"
     )
     temp_clone_token: Missing[Union[str, None]] = Field(default=UNSET)
@@ -142,7 +142,7 @@ class SearchRepositoriesGetResponse200(GitHubModel):
 
     total_count: int = Field()
     incomplete_results: bool = Field()
-    items: List[RepoSearchResultItem] = Field()
+    items: list[RepoSearchResultItem] = Field()
 
 
 model_rebuild(RepoSearchResultItem)

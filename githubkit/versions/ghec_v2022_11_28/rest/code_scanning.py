@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, Optional, overload
 
 from pydantic import BaseModel
 
@@ -20,7 +20,7 @@ from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
     from datetime import datetime
-    from typing import List, Union, Literal
+    from typing import Union, Literal
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
@@ -80,11 +80,9 @@ class CodeScanningClient:
         state: Missing[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CodeScanningOrganizationAlertItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CodeScanningOrganizationAlertItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-enterprise"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -113,7 +111,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CodeScanningOrganizationAlertItems],
+            response_model=list[CodeScanningOrganizationAlertItems],
             error_models={
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -133,11 +131,9 @@ class CodeScanningClient:
         state: Missing[Literal["open", "closed", "dismissed", "fixed"]] = UNSET,
         sort: Missing[Literal["created", "updated"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CodeScanningOrganizationAlertItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CodeScanningOrganizationAlertItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-enterprise"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -166,7 +162,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CodeScanningOrganizationAlertItems],
+            response_model=list[CodeScanningOrganizationAlertItems],
             error_models={
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -189,11 +185,9 @@ class CodeScanningClient:
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CodeScanningOrganizationAlertItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CodeScanningOrganizationAlertItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-organization"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -223,7 +217,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CodeScanningOrganizationAlertItems],
+            response_model=list[CodeScanningOrganizationAlertItems],
             error_models={
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -246,11 +240,9 @@ class CodeScanningClient:
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CodeScanningOrganizationAlertItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CodeScanningOrganizationAlertItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-organization"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -280,7 +272,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CodeScanningOrganizationAlertItems],
+            response_model=list[CodeScanningOrganizationAlertItems],
             error_models={
                 "404": BasicError,
                 "503": EnterprisesEnterpriseCodeScanningAlertsGetResponse503,
@@ -306,11 +298,9 @@ class CodeScanningClient:
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CodeScanningAlertItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CodeScanningAlertItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -342,7 +332,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CodeScanningAlertItems],
+            response_model=list[CodeScanningAlertItems],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -369,11 +359,9 @@ class CodeScanningClient:
             Literal["critical", "high", "medium", "low", "warning", "note", "error"]
         ] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CodeScanningAlertItems]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CodeScanningAlertItems]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -405,7 +393,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CodeScanningAlertItems],
+            response_model=list[CodeScanningAlertItems],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -419,7 +407,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningAlert]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-alert"""
 
@@ -451,7 +439,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningAlert]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-alert"""
 
@@ -484,7 +472,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
     ) -> Response[CodeScanningAlert]: ...
 
@@ -496,7 +484,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         state: Literal["open", "dismissed"],
         dismissed_reason: Missing[
             Union[None, Literal["false positive", "won't fix", "used in tests"]]
@@ -510,7 +498,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningAlert]:
@@ -558,7 +546,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
     ) -> Response[CodeScanningAlert]: ...
 
@@ -570,7 +558,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         state: Literal["open", "dismissed"],
         dismissed_reason: Missing[
             Union[None, Literal["false positive", "won't fix", "used in tests"]]
@@ -584,7 +572,7 @@ class CodeScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningAlert]:
@@ -635,11 +623,9 @@ class CodeScanningClient:
         ref: Missing[str] = UNSET,
         pr: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CodeScanningAlertInstance]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CodeScanningAlertInstance]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-instances-of-a-code-scanning-alert"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -663,7 +649,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CodeScanningAlertInstance],
+            response_model=list[CodeScanningAlertInstance],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -681,11 +667,9 @@ class CodeScanningClient:
         ref: Missing[str] = UNSET,
         pr: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CodeScanningAlertInstance]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CodeScanningAlertInstance]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-instances-of-a-code-scanning-alert"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -709,7 +693,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CodeScanningAlertInstance],
+            response_model=list[CodeScanningAlertInstance],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -731,11 +715,9 @@ class CodeScanningClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[Literal["created"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CodeScanningAnalysis]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CodeScanningAnalysis]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -764,7 +746,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CodeScanningAnalysis],
+            response_model=list[CodeScanningAnalysis],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -786,11 +768,9 @@ class CodeScanningClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         sort: Missing[Literal["created"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CodeScanningAnalysis]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CodeScanningAnalysis]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -819,7 +799,7 @@ class CodeScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[CodeScanningAnalysis],
+            response_model=list[CodeScanningAnalysis],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -833,7 +813,7 @@ class CodeScanningClient:
         repo: str,
         analysis_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningAnalysis]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository"""
 
@@ -865,7 +845,7 @@ class CodeScanningClient:
         repo: str,
         analysis_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningAnalysis]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository"""
 
@@ -898,7 +878,7 @@ class CodeScanningClient:
         analysis_id: int,
         confirm_delete: Missing[Union[str, None]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningAnalysisDeletion]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#delete-a-code-scanning-analysis-from-a-repository"""
 
@@ -937,7 +917,7 @@ class CodeScanningClient:
         analysis_id: int,
         confirm_delete: Missing[Union[str, None]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningAnalysisDeletion]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#delete-a-code-scanning-analysis-from-a-repository"""
 
@@ -974,11 +954,9 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CodeScanningCodeqlDatabase]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CodeScanningCodeqlDatabase]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-codeql-databases-for-a-repository"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -994,7 +972,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[CodeScanningCodeqlDatabase],
+            response_model=list[CodeScanningCodeqlDatabase],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -1007,11 +985,9 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[CodeScanningCodeqlDatabase]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[CodeScanningCodeqlDatabase]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-codeql-databases-for-a-repository"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -1027,7 +1003,7 @@ class CodeScanningClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[CodeScanningCodeqlDatabase],
+            response_model=list[CodeScanningCodeqlDatabase],
             error_models={
                 "403": BasicError,
                 "404": BasicError,
@@ -1041,7 +1017,7 @@ class CodeScanningClient:
         repo: str,
         language: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningCodeqlDatabase]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-codeql-database-for-a-repository"""
 
@@ -1073,7 +1049,7 @@ class CodeScanningClient:
         repo: str,
         language: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningCodeqlDatabase]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-codeql-database-for-a-repository"""
 
@@ -1105,7 +1081,7 @@ class CodeScanningClient:
         repo: str,
         language: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#delete-a-codeql-database"""
 
@@ -1135,7 +1111,7 @@ class CodeScanningClient:
         repo: str,
         language: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#delete-a-codeql-database"""
 
@@ -1165,7 +1141,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Union[
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
@@ -1180,14 +1156,14 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
         ],
         query_pack: str,
-        repositories: List[str],
-        repository_lists: Missing[List[str]] = UNSET,
-        repository_owners: Missing[List[str]] = UNSET,
+        repositories: list[str],
+        repository_lists: Missing[list[str]] = UNSET,
+        repository_owners: Missing[list[str]] = UNSET,
     ) -> Response[CodeScanningVariantAnalysis]: ...
 
     @overload
@@ -1197,14 +1173,14 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
         ],
         query_pack: str,
-        repositories: Missing[List[str]] = UNSET,
-        repository_lists: List[str],
-        repository_owners: Missing[List[str]] = UNSET,
+        repositories: Missing[list[str]] = UNSET,
+        repository_lists: list[str],
+        repository_owners: Missing[list[str]] = UNSET,
     ) -> Response[CodeScanningVariantAnalysis]: ...
 
     @overload
@@ -1214,14 +1190,14 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
         ],
         query_pack: str,
-        repositories: Missing[List[str]] = UNSET,
-        repository_lists: Missing[List[str]] = UNSET,
-        repository_owners: List[str],
+        repositories: Missing[list[str]] = UNSET,
+        repository_lists: Missing[list[str]] = UNSET,
+        repository_owners: list[str],
     ) -> Response[CodeScanningVariantAnalysis]: ...
 
     def create_variant_analysis(
@@ -1229,7 +1205,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
@@ -1291,7 +1267,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Union[
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
@@ -1306,14 +1282,14 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
         ],
         query_pack: str,
-        repositories: List[str],
-        repository_lists: Missing[List[str]] = UNSET,
-        repository_owners: Missing[List[str]] = UNSET,
+        repositories: list[str],
+        repository_lists: Missing[list[str]] = UNSET,
+        repository_owners: Missing[list[str]] = UNSET,
     ) -> Response[CodeScanningVariantAnalysis]: ...
 
     @overload
@@ -1323,14 +1299,14 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
         ],
         query_pack: str,
-        repositories: Missing[List[str]] = UNSET,
-        repository_lists: List[str],
-        repository_owners: Missing[List[str]] = UNSET,
+        repositories: Missing[list[str]] = UNSET,
+        repository_lists: list[str],
+        repository_owners: Missing[list[str]] = UNSET,
     ) -> Response[CodeScanningVariantAnalysis]: ...
 
     @overload
@@ -1340,14 +1316,14 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         language: Literal[
             "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "swift"
         ],
         query_pack: str,
-        repositories: Missing[List[str]] = UNSET,
-        repository_lists: Missing[List[str]] = UNSET,
-        repository_owners: List[str],
+        repositories: Missing[list[str]] = UNSET,
+        repository_lists: Missing[list[str]] = UNSET,
+        repository_owners: list[str],
     ) -> Response[CodeScanningVariantAnalysis]: ...
 
     async def async_create_variant_analysis(
@@ -1355,7 +1331,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
@@ -1417,7 +1393,7 @@ class CodeScanningClient:
         repo: str,
         codeql_variant_analysis_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningVariantAnalysis]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-the-summary-of-a-codeql-variant-analysis"""
 
@@ -1448,7 +1424,7 @@ class CodeScanningClient:
         repo: str,
         codeql_variant_analysis_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningVariantAnalysis]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-the-summary-of-a-codeql-variant-analysis"""
 
@@ -1481,7 +1457,7 @@ class CodeScanningClient:
         repo_owner: str,
         repo_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningVariantAnalysisRepoTask]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-the-analysis-status-of-a-repository-in-a-codeql-variant-analysis"""
 
@@ -1514,7 +1490,7 @@ class CodeScanningClient:
         repo_owner: str,
         repo_name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningVariantAnalysisRepoTask]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-the-analysis-status-of-a-repository-in-a-codeql-variant-analysis"""
 
@@ -1544,7 +1520,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningDefaultSetup]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-default-setup-configuration"""
 
@@ -1575,7 +1551,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningDefaultSetup]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-default-setup-configuration"""
 
@@ -1607,7 +1583,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: CodeScanningDefaultSetupUpdateType,
     ) -> Response[EmptyObject]: ...
 
@@ -1618,11 +1594,11 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         state: Missing[Literal["configured", "not-configured"]] = UNSET,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
         languages: Missing[
-            List[
+            list[
                 Literal[
                     "c-cpp",
                     "csharp",
@@ -1642,7 +1618,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
@@ -1688,7 +1664,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: CodeScanningDefaultSetupUpdateType,
     ) -> Response[EmptyObject]: ...
 
@@ -1699,11 +1675,11 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         state: Missing[Literal["configured", "not-configured"]] = UNSET,
         query_suite: Missing[Literal["default", "extended"]] = UNSET,
         languages: Missing[
-            List[
+            list[
                 Literal[
                     "c-cpp",
                     "csharp",
@@ -1723,7 +1699,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
     ) -> Response[EmptyObject]:
@@ -1769,7 +1745,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
     ) -> Response[CodeScanningSarifsReceipt]: ...
 
@@ -1780,7 +1756,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         commit_sha: str,
         ref: str,
         sarif: str,
@@ -1795,7 +1771,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningSarifsReceipt]:
@@ -1840,7 +1816,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
     ) -> Response[CodeScanningSarifsReceipt]: ...
 
@@ -1851,7 +1827,7 @@ class CodeScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         commit_sha: str,
         ref: str,
         sarif: str,
@@ -1866,7 +1842,7 @@ class CodeScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[CodeScanningSarifsReceipt]:
@@ -1911,7 +1887,7 @@ class CodeScanningClient:
         repo: str,
         sarif_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningSarifsStatus]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-information-about-a-sarif-upload"""
 
@@ -1942,7 +1918,7 @@ class CodeScanningClient:
         repo: str,
         sarif_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[CodeScanningSarifsStatus]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-information-about-a-sarif-upload"""
 

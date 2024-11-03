@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, Optional, overload
 
 from pydantic import BaseModel
 
@@ -19,7 +19,7 @@ from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
-    from typing import List, Union, Literal
+    from typing import Union, Literal
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
@@ -73,11 +73,9 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Project]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Project]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-organization-projects"""
-
-        from typing import List
 
         from ..models import Project, ValidationErrorSimple
 
@@ -96,7 +94,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Project],
+            response_model=list[Project],
             error_models={
                 "422": ValidationErrorSimple,
             },
@@ -109,11 +107,9 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Project]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Project]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-organization-projects"""
-
-        from typing import List
 
         from ..models import Project, ValidationErrorSimple
 
@@ -132,7 +128,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Project],
+            response_model=list[Project],
             error_models={
                 "422": ValidationErrorSimple,
             },
@@ -143,7 +139,7 @@ class ProjectsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgProjectsPostBodyType,
     ) -> Response[Project]: ...
 
@@ -153,7 +149,7 @@ class ProjectsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
     ) -> Response[Project]: ...
@@ -162,7 +158,7 @@ class ProjectsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project]:
@@ -208,7 +204,7 @@ class ProjectsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgProjectsPostBodyType,
     ) -> Response[Project]: ...
 
@@ -218,7 +214,7 @@ class ProjectsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
     ) -> Response[Project]: ...
@@ -227,7 +223,7 @@ class ProjectsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project]:
@@ -272,7 +268,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ProjectCard]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#get-a-project-card"""
 
@@ -298,7 +294,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ProjectCard]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#get-a-project-card"""
 
@@ -324,7 +320,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#delete-a-project-card"""
 
@@ -349,7 +345,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#delete-a-project-card"""
 
@@ -375,7 +371,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
     ) -> Response[ProjectCard]: ...
 
@@ -385,7 +381,7 @@ class ProjectsClient:
         card_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         note: Missing[Union[str, None]] = UNSET,
         archived: Missing[bool] = UNSET,
     ) -> Response[ProjectCard]: ...
@@ -394,7 +390,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectCard]:
@@ -439,7 +435,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
     ) -> Response[ProjectCard]: ...
 
@@ -449,7 +445,7 @@ class ProjectsClient:
         card_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         note: Missing[Union[str, None]] = UNSET,
         archived: Missing[bool] = UNSET,
     ) -> Response[ProjectCard]: ...
@@ -458,7 +454,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectCard]:
@@ -503,7 +499,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ProjectsColumnsCardsCardIdMovesPostBodyType,
     ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]: ...
 
@@ -513,7 +509,7 @@ class ProjectsClient:
         card_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         position: str,
         column_id: Missing[int] = UNSET,
     ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]: ...
@@ -522,7 +518,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]:
@@ -569,7 +565,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ProjectsColumnsCardsCardIdMovesPostBodyType,
     ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]: ...
 
@@ -579,7 +575,7 @@ class ProjectsClient:
         card_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         position: str,
         column_id: Missing[int] = UNSET,
     ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]: ...
@@ -588,7 +584,7 @@ class ProjectsClient:
         self,
         card_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsCardsCardIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectsColumnsCardsCardIdMovesPostResponse201]:
@@ -634,7 +630,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ProjectColumn]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#get-a-project-column"""
 
@@ -660,7 +656,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ProjectColumn]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#get-a-project-column"""
 
@@ -686,7 +682,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#delete-a-project-column"""
 
@@ -710,7 +706,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#delete-a-project-column"""
 
@@ -735,7 +731,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ProjectsColumnsColumnIdPatchBodyType,
     ) -> Response[ProjectColumn]: ...
 
@@ -745,7 +741,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
     ) -> Response[ProjectColumn]: ...
 
@@ -753,7 +749,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn]:
@@ -791,7 +787,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ProjectsColumnsColumnIdPatchBodyType,
     ) -> Response[ProjectColumn]: ...
 
@@ -801,7 +797,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
     ) -> Response[ProjectColumn]: ...
 
@@ -809,7 +805,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsColumnIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn]:
@@ -849,11 +845,9 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ProjectCard]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ProjectCard]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#list-project-cards"""
-
-        from typing import List
 
         from ..models import BasicError, ProjectCard
 
@@ -872,7 +866,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ProjectCard],
+            response_model=list[ProjectCard],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -886,11 +880,9 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ProjectCard]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ProjectCard]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/cards#list-project-cards"""
-
-        from typing import List
 
         from ..models import BasicError, ProjectCard
 
@@ -909,7 +901,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ProjectCard],
+            response_model=list[ProjectCard],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -921,7 +913,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Union[
             ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
             ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
@@ -934,7 +926,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         note: Union[str, None],
     ) -> Response[ProjectCard]: ...
 
@@ -944,7 +936,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content_id: int,
         content_type: str,
     ) -> Response[ProjectCard]: ...
@@ -953,7 +945,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
@@ -1014,7 +1006,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Union[
             ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
             ProjectsColumnsColumnIdCardsPostBodyOneof1Type,
@@ -1027,7 +1019,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         note: Union[str, None],
     ) -> Response[ProjectCard]: ...
 
@@ -1037,7 +1029,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content_id: int,
         content_type: str,
     ) -> Response[ProjectCard]: ...
@@ -1046,7 +1038,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[
                 ProjectsColumnsColumnIdCardsPostBodyOneof0Type,
@@ -1107,7 +1099,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ProjectsColumnsColumnIdMovesPostBodyType,
     ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]: ...
 
@@ -1117,7 +1109,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         position: str,
     ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]: ...
 
@@ -1125,7 +1117,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]:
@@ -1169,7 +1161,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ProjectsColumnsColumnIdMovesPostBodyType,
     ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]: ...
 
@@ -1179,7 +1171,7 @@ class ProjectsClient:
         column_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         position: str,
     ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]: ...
 
@@ -1187,7 +1179,7 @@ class ProjectsClient:
         self,
         column_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsColumnsColumnIdMovesPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectsColumnsColumnIdMovesPostResponse201]:
@@ -1230,7 +1222,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Project]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#get-a-project"""
 
@@ -1255,7 +1247,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Project]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#get-a-project"""
 
@@ -1280,7 +1272,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#delete-a-project"""
 
@@ -1306,7 +1298,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#delete-a-project"""
 
@@ -1333,7 +1325,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
     ) -> Response[Project]: ...
 
@@ -1343,7 +1335,7 @@ class ProjectsClient:
         project_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         state: Missing[str] = UNSET,
@@ -1357,7 +1349,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project]:
@@ -1403,7 +1395,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
     ) -> Response[Project]: ...
 
@@ -1413,7 +1405,7 @@ class ProjectsClient:
         project_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         body: Missing[Union[str, None]] = UNSET,
         state: Missing[str] = UNSET,
@@ -1427,7 +1419,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsProjectIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project]:
@@ -1475,11 +1467,9 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#list-project-collaborators"""
-
-        from typing import List
 
         from ..models import BasicError, SimpleUser, ValidationError
 
@@ -1498,7 +1488,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -1514,11 +1504,9 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#list-project-collaborators"""
-
-        from typing import List
 
         from ..models import BasicError, SimpleUser, ValidationError
 
@@ -1537,7 +1525,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
             error_models={
                 "404": BasicError,
                 "422": ValidationError,
@@ -1552,7 +1540,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
@@ -1565,7 +1553,7 @@ class ProjectsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
 
@@ -1574,7 +1562,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
@@ -1624,7 +1612,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
@@ -1637,7 +1625,7 @@ class ProjectsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
 
@@ -1646,7 +1634,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[ProjectsProjectIdCollaboratorsUsernamePutBodyType, None]
         ] = UNSET,
@@ -1695,7 +1683,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#remove-user-as-a-collaborator"""
 
@@ -1722,7 +1710,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#remove-user-as-a-collaborator"""
 
@@ -1749,7 +1737,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ProjectCollaboratorPermission]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#get-project-permission-for-a-user"""
 
@@ -1777,7 +1765,7 @@ class ProjectsClient:
         project_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ProjectCollaboratorPermission]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/collaborators#get-project-permission-for-a-user"""
 
@@ -1806,11 +1794,9 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ProjectColumn]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ProjectColumn]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#list-project-columns"""
-
-        from typing import List
 
         from ..models import BasicError, ProjectColumn
 
@@ -1828,7 +1814,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ProjectColumn],
+            response_model=list[ProjectColumn],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -1841,11 +1827,9 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ProjectColumn]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ProjectColumn]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/columns#list-project-columns"""
-
-        from typing import List
 
         from ..models import BasicError, ProjectColumn
 
@@ -1863,7 +1847,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ProjectColumn],
+            response_model=list[ProjectColumn],
             error_models={
                 "403": BasicError,
                 "401": BasicError,
@@ -1875,7 +1859,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ProjectsProjectIdColumnsPostBodyType,
     ) -> Response[ProjectColumn]: ...
 
@@ -1885,7 +1869,7 @@ class ProjectsClient:
         project_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
     ) -> Response[ProjectColumn]: ...
 
@@ -1893,7 +1877,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsProjectIdColumnsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn]:
@@ -1937,7 +1921,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ProjectsProjectIdColumnsPostBodyType,
     ) -> Response[ProjectColumn]: ...
 
@@ -1947,7 +1931,7 @@ class ProjectsClient:
         project_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
     ) -> Response[ProjectColumn]: ...
 
@@ -1955,7 +1939,7 @@ class ProjectsClient:
         self,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ProjectsProjectIdColumnsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ProjectColumn]:
@@ -2002,11 +1986,9 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Project]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Project]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-repository-projects"""
-
-        from typing import List
 
         from ..models import Project, BasicError, ValidationErrorSimple
 
@@ -2025,7 +2007,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Project],
+            response_model=list[Project],
             error_models={
                 "401": BasicError,
                 "403": BasicError,
@@ -2043,11 +2025,9 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Project]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Project]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-repository-projects"""
-
-        from typing import List
 
         from ..models import Project, BasicError, ValidationErrorSimple
 
@@ -2066,7 +2046,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Project],
+            response_model=list[Project],
             error_models={
                 "401": BasicError,
                 "403": BasicError,
@@ -2082,7 +2062,7 @@ class ProjectsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoProjectsPostBodyType,
     ) -> Response[Project]: ...
 
@@ -2093,7 +2073,7 @@ class ProjectsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
     ) -> Response[Project]: ...
@@ -2103,7 +2083,7 @@ class ProjectsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project]:
@@ -2150,7 +2130,7 @@ class ProjectsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoProjectsPostBodyType,
     ) -> Response[Project]: ...
 
@@ -2161,7 +2141,7 @@ class ProjectsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         body: Missing[str] = UNSET,
     ) -> Response[Project]: ...
@@ -2171,7 +2151,7 @@ class ProjectsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project]:
@@ -2216,7 +2196,7 @@ class ProjectsClient:
     def create_for_authenticated_user(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: UserProjectsPostBodyType,
     ) -> Response[Project]: ...
 
@@ -2225,7 +2205,7 @@ class ProjectsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         body: Missing[Union[str, None]] = UNSET,
     ) -> Response[Project]: ...
@@ -2233,7 +2213,7 @@ class ProjectsClient:
     def create_for_authenticated_user(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[UserProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project]:
@@ -2276,7 +2256,7 @@ class ProjectsClient:
     async def async_create_for_authenticated_user(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: UserProjectsPostBodyType,
     ) -> Response[Project]: ...
 
@@ -2285,7 +2265,7 @@ class ProjectsClient:
         self,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         body: Missing[Union[str, None]] = UNSET,
     ) -> Response[Project]: ...
@@ -2293,7 +2273,7 @@ class ProjectsClient:
     async def async_create_for_authenticated_user(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[UserProjectsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Project]:
@@ -2339,11 +2319,9 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Project]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Project]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-user-projects"""
-
-        from typing import List
 
         from ..models import Project, ValidationError
 
@@ -2362,7 +2340,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Project],
+            response_model=list[Project],
             error_models={
                 "422": ValidationError,
             },
@@ -2375,11 +2353,9 @@ class ProjectsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Project]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Project]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/projects/projects#list-user-projects"""
-
-        from typing import List
 
         from ..models import Project, ValidationError
 
@@ -2398,7 +2374,7 @@ class ProjectsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Project],
+            response_model=list[Project],
             error_models={
                 "422": ValidationError,
             },

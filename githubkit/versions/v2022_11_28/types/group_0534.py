@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0530 import (
@@ -24,7 +24,7 @@ class WebhookIssueCommentDeletedPropIssueMergedPerformedViaGithubAppType(TypedDi
 
     created_at: Union[datetime, None]
     description: Union[str, None]
-    events: NotRequired[List[str]]
+    events: NotRequired[list[str]]
     external_url: Union[str, None]
     html_url: str
     id: Union[int, None]

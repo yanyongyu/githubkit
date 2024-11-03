@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -61,11 +61,11 @@ class Job(GitHubModel):
         description="The time that the job finished, in ISO 8601 format."
     )
     name: str = Field(description="The name of the job.")
-    steps: Missing[List[JobPropStepsItems]] = Field(
+    steps: Missing[list[JobPropStepsItems]] = Field(
         default=UNSET, description="Steps in this job."
     )
     check_run_url: str = Field()
-    labels: List[str] = Field(
+    labels: list[str] = Field(
         description='Labels for the workflow job. Specified by the "runs_on" attribute in the action\'s workflow file.'
     )
     runner_id: Union[int, None] = Field(

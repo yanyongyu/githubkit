@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -18,8 +18,8 @@ class OrgsOrgTeamsPostBodyType(TypedDict):
 
     name: str
     description: NotRequired[str]
-    maintainers: NotRequired[List[str]]
-    repo_names: NotRequired[List[str]]
+    maintainers: NotRequired[list[str]]
+    repo_names: NotRequired[list[str]]
     privacy: NotRequired[Literal["secret", "closed"]]
     notification_setting: NotRequired[
         Literal["notifications_enabled", "notifications_disabled"]

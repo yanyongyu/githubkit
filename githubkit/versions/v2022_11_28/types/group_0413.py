@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -28,7 +28,7 @@ class PersonalAccessTokenRequestType(TypedDict):
     permissions_result: PersonalAccessTokenRequestPropPermissionsResultType
     repository_selection: Literal["none", "all", "subset"]
     repository_count: Union[int, None]
-    repositories: Union[List[PersonalAccessTokenRequestPropRepositoriesItemsType], None]
+    repositories: Union[list[PersonalAccessTokenRequestPropRepositoriesItemsType], None]
     created_at: str
     token_id: int
     token_expired: bool

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -72,7 +72,7 @@ class ExemptionRequest(GitHubModel):
         default=UNSET,
         description="The date and time the exemption request was created.",
     )
-    responses: Missing[Union[List[ExemptionResponse], None]] = Field(
+    responses: Missing[Union[list[ExemptionResponse], None]] = Field(
         default=UNSET, description="The responses to the exemption request."
     )
     html_url: Missing[str] = Field(
@@ -103,7 +103,7 @@ class ExemptionRequestPushRulesetBypass(GitHubModel):
     type: Missing[Literal["push_ruleset_bypass"]] = Field(
         default=UNSET, description="The type of request"
     )
-    data: Missing[List[ExemptionRequestPushRulesetBypassPropDataItems]] = Field(
+    data: Missing[list[ExemptionRequestPushRulesetBypassPropDataItems]] = Field(
         default=UNSET,
         description="The data pertaining to the push rules that are being requested to be bypassed.",
     )
@@ -137,7 +137,7 @@ class ExemptionRequestSecretScanning(GitHubModel):
     type: Missing[Literal["secret_scanning"]] = Field(
         default=UNSET, description="The type of request"
     )
-    data: Missing[List[ExemptionRequestSecretScanningPropDataItems]] = Field(
+    data: Missing[list[ExemptionRequestSecretScanningPropDataItems]] = Field(
         default=UNSET,
         description="The data pertaining to the secret scanning push protections that are being requested to be bypassed.",
     )
@@ -149,7 +149,7 @@ class ExemptionRequestSecretScanningPropDataItems(GitHubModel):
     secret_type: Missing[str] = Field(
         default=UNSET, description="The type of secret that was detected"
     )
-    commits: Missing[List[str]] = Field(
+    commits: Missing[list[str]] = Field(
         default=UNSET, description="The commits that introduced the secret"
     )
 

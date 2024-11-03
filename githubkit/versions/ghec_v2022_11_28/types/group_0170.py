@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -17,7 +16,7 @@ class RepositoryRuleWorkflowsPropParametersType(TypedDict):
     """RepositoryRuleWorkflowsPropParameters"""
 
     do_not_enforce_on_create: NotRequired[bool]
-    workflows: List[RepositoryRuleParamsWorkflowFileReferenceType]
+    workflows: list[RepositoryRuleParamsWorkflowFileReferenceType]
 
 
 class RepositoryRuleParamsWorkflowFileReferenceType(TypedDict):

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -26,10 +24,10 @@ from .group_0752 import (
 class WebhookRepositoryRulesetEditedPropChangesPropConditions(GitHubModel):
     """WebhookRepositoryRulesetEditedPropChangesPropConditions"""
 
-    added: Missing[List[RepositoryRulesetConditions]] = Field(default=UNSET)
-    deleted: Missing[List[RepositoryRulesetConditions]] = Field(default=UNSET)
+    added: Missing[list[RepositoryRulesetConditions]] = Field(default=UNSET)
+    deleted: Missing[list[RepositoryRulesetConditions]] = Field(default=UNSET)
     updated: Missing[
-        List[WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems]
+        list[WebhookRepositoryRulesetEditedPropChangesPropConditionsPropUpdatedItems]
     ] = Field(default=UNSET)
 
 

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -29,7 +29,7 @@ class CodeScanningSarifsStatus(GitHubModel):
         default=UNSET,
         description="The REST API URL for getting the analyses associated with the upload.",
     )
-    errors: Missing[Union[List[str], None]] = Field(
+    errors: Missing[Union[list[str], None]] = Field(
         default=UNSET,
         description="Any errors that ocurred during processing of the delivery.",
     )

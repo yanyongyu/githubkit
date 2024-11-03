@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -27,7 +27,7 @@ class UserCodespacesSecretsSecretNamePutBody(GitHubModel):
         description="Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get the public key for the authenticated user](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#get-public-key-for-the-authenticated-user) endpoint.",
     )
     key_id: str = Field(description="ID of the key you used to encrypt the secret.")
-    selected_repository_ids: Missing[List[Union[int, str]]] = Field(
+    selected_repository_ids: Missing[list[Union[int, str]]] = Field(
         default=UNSET,
         description="An array of repository ids that can access the user secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Set selected repositories for a user secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#set-selected-repositories-for-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/enterprise-cloud@latest//rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints.",
     )

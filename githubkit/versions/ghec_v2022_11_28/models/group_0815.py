@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -23,11 +21,11 @@ from .group_0016 import AppPermissions
 class AppInstallationsInstallationIdAccessTokensPostBody(GitHubModel):
     """AppInstallationsInstallationIdAccessTokensPostBody"""
 
-    repositories: Missing[List[str]] = Field(
+    repositories: Missing[list[str]] = Field(
         default=UNSET,
         description="List of repository names that the token should have access to",
     )
-    repository_ids: Missing[List[int]] = Field(
+    repository_ids: Missing[list[int]] = Field(
         default=UNSET,
         description="List of repository IDs that the token should have access to",
     )

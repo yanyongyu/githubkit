@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -19,7 +19,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 class Group(GitHubModel):
     """Group"""
 
-    schemas: List[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]] = Field(
+    schemas: list[Literal["urn:ietf:params:scim:schemas:core:2.0:Group"]] = Field(
         description="The URIs that are used to indicate the namespaces of the SCIM schemas."
     )
     external_id: str = Field(
@@ -29,7 +29,7 @@ class Group(GitHubModel):
     display_name: str = Field(
         alias="displayName", description="A human-readable name for a security group."
     )
-    members: List[GroupPropMembersItems] = Field(description="The group members.")
+    members: list[GroupPropMembersItems] = Field(description="The group members.")
 
 
 class GroupPropMembersItems(GitHubModel):

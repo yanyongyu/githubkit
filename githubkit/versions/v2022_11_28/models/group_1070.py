@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -54,7 +54,7 @@ class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
         default=UNSET,
         description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).",
     )
-    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
         description="The actors that can bypass the rules in this ruleset",
     )
@@ -64,7 +64,7 @@ class ReposOwnerRepoRulesetsRulesetIdPutBody(GitHubModel):
         description="Parameters for a repository ruleset ref name condition",
     )
     rules: Missing[
-        List[
+        list[
             Union[
                 RepositoryRuleCreation,
                 RepositoryRuleUpdate,

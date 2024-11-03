@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 
 from pydantic import Field
 
@@ -91,7 +91,7 @@ class MinimalRepository(GitHubModel):
     default_branch: Missing[str] = Field(default=UNSET)
     open_issues_count: Missing[int] = Field(default=UNSET)
     is_template: Missing[bool] = Field(default=UNSET)
-    topics: Missing[List[str]] = Field(default=UNSET)
+    topics: Missing[list[str]] = Field(default=UNSET)
     has_issues: Missing[bool] = Field(default=UNSET)
     has_projects: Missing[bool] = Field(default=UNSET)
     has_wiki: Missing[bool] = Field(default=UNSET)

@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -19,9 +18,9 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType(
     """ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBody"""
 
     strict: NotRequired[bool]
-    contexts: NotRequired[List[str]]
+    contexts: NotRequired[list[str]]
     checks: NotRequired[
-        List[
+        list[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
         ]
     ]

@@ -9,14 +9,13 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
 class OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType(TypedDict):
     """OrgsOrgCopilotBillingSelectedTeamsDeleteBody"""
 
-    selected_teams: List[str]
+    selected_teams: list[str]
 
 
 __all__ = ("OrgsOrgCopilotBillingSelectedTeamsDeleteBodyType",)

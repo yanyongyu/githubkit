@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0425 import ExemptionResponseType
@@ -37,7 +37,7 @@ class ExemptionRequestType(TypedDict):
     metadata: NotRequired[Union[ExemptionRequestSecretScanningMetadataType, None]]
     expires_at: NotRequired[datetime]
     created_at: NotRequired[datetime]
-    responses: NotRequired[Union[List[ExemptionResponseType], None]]
+    responses: NotRequired[Union[list[ExemptionResponseType], None]]
     html_url: NotRequired[str]
 
 
@@ -58,7 +58,7 @@ class ExemptionRequestPushRulesetBypassType(TypedDict):
     """
 
     type: NotRequired[Literal["push_ruleset_bypass"]]
-    data: NotRequired[List[ExemptionRequestPushRulesetBypassPropDataItemsType]]
+    data: NotRequired[list[ExemptionRequestPushRulesetBypassPropDataItemsType]]
 
 
 class ExemptionRequestPushRulesetBypassPropDataItemsType(TypedDict):
@@ -77,14 +77,14 @@ class ExemptionRequestSecretScanningType(TypedDict):
     """
 
     type: NotRequired[Literal["secret_scanning"]]
-    data: NotRequired[List[ExemptionRequestSecretScanningPropDataItemsType]]
+    data: NotRequired[list[ExemptionRequestSecretScanningPropDataItemsType]]
 
 
 class ExemptionRequestSecretScanningPropDataItemsType(TypedDict):
     """ExemptionRequestSecretScanningPropDataItems"""
 
     secret_type: NotRequired[str]
-    commits: NotRequired[List[str]]
+    commits: NotRequired[list[str]]
 
 
 __all__ = (

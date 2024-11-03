@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from datetime import datetime
-from typing import List, Literal
 
 from pydantic import Field
 
@@ -23,7 +23,7 @@ class ReposOwnerRepoActionsWorkflowsGetResponse200(GitHubModel):
     """ReposOwnerRepoActionsWorkflowsGetResponse200"""
 
     total_count: int = Field()
-    workflows: List[Workflow] = Field()
+    workflows: list[Workflow] = Field()
 
 
 class Workflow(GitHubModel):

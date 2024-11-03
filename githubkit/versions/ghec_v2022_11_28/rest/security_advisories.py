@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, Optional, overload
 
 from pydantic import BaseModel
 
@@ -19,7 +19,7 @@ from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
-    from typing import List, Union, Literal
+    from typing import Union, Literal
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
@@ -84,9 +84,9 @@ class SecurityAdvisoriesClient:
         severity: Missing[
             Literal["unknown", "low", "medium", "high", "critical"]
         ] = UNSET,
-        cwes: Missing[Union[str, List[str]]] = UNSET,
+        cwes: Missing[Union[str, list[str]]] = UNSET,
         is_withdrawn: Missing[bool] = UNSET,
-        affects: Missing[Union[str, List[str]]] = UNSET,
+        affects: Missing[Union[str, list[str]]] = UNSET,
         published: Missing[str] = UNSET,
         updated: Missing[str] = UNSET,
         modified: Missing[str] = UNSET,
@@ -100,11 +100,9 @@ class SecurityAdvisoriesClient:
             Literal["updated", "published", "epss_percentage", "epss_percentile"]
         ] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[GlobalAdvisory]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[GlobalAdvisory]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories#list-global-security-advisories"""
-
-        from typing import List
 
         from ..models import BasicError, GlobalAdvisory, ValidationErrorSimple
 
@@ -138,7 +136,7 @@ class SecurityAdvisoriesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[GlobalAdvisory],
+            response_model=list[GlobalAdvisory],
             error_models={
                 "429": BasicError,
                 "422": ValidationErrorSimple,
@@ -170,9 +168,9 @@ class SecurityAdvisoriesClient:
         severity: Missing[
             Literal["unknown", "low", "medium", "high", "critical"]
         ] = UNSET,
-        cwes: Missing[Union[str, List[str]]] = UNSET,
+        cwes: Missing[Union[str, list[str]]] = UNSET,
         is_withdrawn: Missing[bool] = UNSET,
-        affects: Missing[Union[str, List[str]]] = UNSET,
+        affects: Missing[Union[str, list[str]]] = UNSET,
         published: Missing[str] = UNSET,
         updated: Missing[str] = UNSET,
         modified: Missing[str] = UNSET,
@@ -186,11 +184,9 @@ class SecurityAdvisoriesClient:
             Literal["updated", "published", "epss_percentage", "epss_percentile"]
         ] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[GlobalAdvisory]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[GlobalAdvisory]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories#list-global-security-advisories"""
-
-        from typing import List
 
         from ..models import BasicError, GlobalAdvisory, ValidationErrorSimple
 
@@ -224,7 +220,7 @@ class SecurityAdvisoriesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[GlobalAdvisory],
+            response_model=list[GlobalAdvisory],
             error_models={
                 "429": BasicError,
                 "422": ValidationErrorSimple,
@@ -235,7 +231,7 @@ class SecurityAdvisoriesClient:
         self,
         ghsa_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[GlobalAdvisory]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories#get-a-global-security-advisory"""
 
@@ -259,7 +255,7 @@ class SecurityAdvisoriesClient:
         self,
         ghsa_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[GlobalAdvisory]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/global-advisories#get-a-global-security-advisory"""
 
@@ -289,11 +285,9 @@ class SecurityAdvisoriesClient:
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RepositoryAdvisory]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RepositoryAdvisory]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization"""
-
-        from typing import List
 
         from ..models import BasicError, RepositoryAdvisory
 
@@ -315,7 +309,7 @@ class SecurityAdvisoriesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[RepositoryAdvisory],
+            response_model=list[RepositoryAdvisory],
             error_models={
                 "400": BasicError,
                 "404": BasicError,
@@ -332,11 +326,9 @@ class SecurityAdvisoriesClient:
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RepositoryAdvisory]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RepositoryAdvisory]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#list-repository-security-advisories-for-an-organization"""
-
-        from typing import List
 
         from ..models import BasicError, RepositoryAdvisory
 
@@ -358,7 +350,7 @@ class SecurityAdvisoriesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[RepositoryAdvisory],
+            response_model=list[RepositoryAdvisory],
             error_models={
                 "400": BasicError,
                 "404": BasicError,
@@ -376,11 +368,9 @@ class SecurityAdvisoriesClient:
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RepositoryAdvisory]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RepositoryAdvisory]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#list-repository-security-advisories"""
-
-        from typing import List
 
         from ..models import BasicError, RepositoryAdvisory
 
@@ -402,7 +392,7 @@ class SecurityAdvisoriesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[RepositoryAdvisory],
+            response_model=list[RepositoryAdvisory],
             error_models={
                 "400": BasicError,
                 "404": BasicError,
@@ -420,11 +410,9 @@ class SecurityAdvisoriesClient:
         per_page: Missing[int] = UNSET,
         state: Missing[Literal["triage", "draft", "published", "closed"]] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[RepositoryAdvisory]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[RepositoryAdvisory]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#list-repository-security-advisories"""
-
-        from typing import List
 
         from ..models import BasicError, RepositoryAdvisory
 
@@ -446,7 +434,7 @@ class SecurityAdvisoriesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[RepositoryAdvisory],
+            response_model=list[RepositoryAdvisory],
             error_models={
                 "400": BasicError,
                 "404": BasicError,
@@ -459,7 +447,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: RepositoryAdvisoryCreateType,
     ) -> Response[RepositoryAdvisory]: ...
 
@@ -470,14 +458,14 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         summary: str,
         description: str,
         cve_id: Missing[Union[str, None]] = UNSET,
-        vulnerabilities: List[RepositoryAdvisoryCreatePropVulnerabilitiesItemsType],
-        cwe_ids: Missing[Union[List[str], None]] = UNSET,
+        vulnerabilities: list[RepositoryAdvisoryCreatePropVulnerabilitiesItemsType],
+        cwe_ids: Missing[Union[list[str], None]] = UNSET,
         credits_: Missing[
-            Union[List[RepositoryAdvisoryCreatePropCreditsItemsType], None]
+            Union[list[RepositoryAdvisoryCreatePropCreditsItemsType], None]
         ] = UNSET,
         severity: Missing[
             Union[None, Literal["critical", "high", "medium", "low"]]
@@ -491,7 +479,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory]:
@@ -536,7 +524,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: RepositoryAdvisoryCreateType,
     ) -> Response[RepositoryAdvisory]: ...
 
@@ -547,14 +535,14 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         summary: str,
         description: str,
         cve_id: Missing[Union[str, None]] = UNSET,
-        vulnerabilities: List[RepositoryAdvisoryCreatePropVulnerabilitiesItemsType],
-        cwe_ids: Missing[Union[List[str], None]] = UNSET,
+        vulnerabilities: list[RepositoryAdvisoryCreatePropVulnerabilitiesItemsType],
+        cwe_ids: Missing[Union[list[str], None]] = UNSET,
         credits_: Missing[
-            Union[List[RepositoryAdvisoryCreatePropCreditsItemsType], None]
+            Union[list[RepositoryAdvisoryCreatePropCreditsItemsType], None]
         ] = UNSET,
         severity: Missing[
             Union[None, Literal["critical", "high", "medium", "low"]]
@@ -568,7 +556,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[RepositoryAdvisoryCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory]:
@@ -613,7 +601,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: PrivateVulnerabilityReportCreateType,
     ) -> Response[RepositoryAdvisory]: ...
 
@@ -624,15 +612,15 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         summary: str,
         description: str,
         vulnerabilities: Missing[
             Union[
-                List[PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType], None
+                list[PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType], None
             ]
         ] = UNSET,
-        cwe_ids: Missing[Union[List[str], None]] = UNSET,
+        cwe_ids: Missing[Union[list[str], None]] = UNSET,
         severity: Missing[
             Union[None, Literal["critical", "high", "medium", "low"]]
         ] = UNSET,
@@ -645,7 +633,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory]:
@@ -690,7 +678,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: PrivateVulnerabilityReportCreateType,
     ) -> Response[RepositoryAdvisory]: ...
 
@@ -701,15 +689,15 @@ class SecurityAdvisoriesClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         summary: str,
         description: str,
         vulnerabilities: Missing[
             Union[
-                List[PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType], None
+                list[PrivateVulnerabilityReportCreatePropVulnerabilitiesItemsType], None
             ]
         ] = UNSET,
-        cwe_ids: Missing[Union[List[str], None]] = UNSET,
+        cwe_ids: Missing[Union[list[str], None]] = UNSET,
         severity: Missing[
             Union[None, Literal["critical", "high", "medium", "low"]]
         ] = UNSET,
@@ -722,7 +710,7 @@ class SecurityAdvisoriesClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[PrivateVulnerabilityReportCreateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory]:
@@ -767,7 +755,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[RepositoryAdvisory]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#get-a-repository-security-advisory"""
 
@@ -794,7 +782,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[RepositoryAdvisory]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#get-a-repository-security-advisory"""
 
@@ -822,7 +810,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: RepositoryAdvisoryUpdateType,
     ) -> Response[RepositoryAdvisory]: ...
 
@@ -834,24 +822,24 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         summary: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         cve_id: Missing[Union[str, None]] = UNSET,
         vulnerabilities: Missing[
-            List[RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType]
+            list[RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType]
         ] = UNSET,
-        cwe_ids: Missing[Union[List[str], None]] = UNSET,
+        cwe_ids: Missing[Union[list[str], None]] = UNSET,
         credits_: Missing[
-            Union[List[RepositoryAdvisoryUpdatePropCreditsItemsType], None]
+            Union[list[RepositoryAdvisoryUpdatePropCreditsItemsType], None]
         ] = UNSET,
         severity: Missing[
             Union[None, Literal["critical", "high", "medium", "low"]]
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         state: Missing[Literal["published", "closed", "draft"]] = UNSET,
-        collaborating_users: Missing[Union[List[str], None]] = UNSET,
-        collaborating_teams: Missing[Union[List[str], None]] = UNSET,
+        collaborating_users: Missing[Union[list[str], None]] = UNSET,
+        collaborating_teams: Missing[Union[list[str], None]] = UNSET,
     ) -> Response[RepositoryAdvisory]: ...
 
     def update_repository_advisory(
@@ -860,7 +848,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory]:
@@ -906,7 +894,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: RepositoryAdvisoryUpdateType,
     ) -> Response[RepositoryAdvisory]: ...
 
@@ -918,24 +906,24 @@ class SecurityAdvisoriesClient:
         ghsa_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         summary: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         cve_id: Missing[Union[str, None]] = UNSET,
         vulnerabilities: Missing[
-            List[RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType]
+            list[RepositoryAdvisoryUpdatePropVulnerabilitiesItemsType]
         ] = UNSET,
-        cwe_ids: Missing[Union[List[str], None]] = UNSET,
+        cwe_ids: Missing[Union[list[str], None]] = UNSET,
         credits_: Missing[
-            Union[List[RepositoryAdvisoryUpdatePropCreditsItemsType], None]
+            Union[list[RepositoryAdvisoryUpdatePropCreditsItemsType], None]
         ] = UNSET,
         severity: Missing[
             Union[None, Literal["critical", "high", "medium", "low"]]
         ] = UNSET,
         cvss_vector_string: Missing[Union[str, None]] = UNSET,
         state: Missing[Literal["published", "closed", "draft"]] = UNSET,
-        collaborating_users: Missing[Union[List[str], None]] = UNSET,
-        collaborating_teams: Missing[Union[List[str], None]] = UNSET,
+        collaborating_users: Missing[Union[list[str], None]] = UNSET,
+        collaborating_teams: Missing[Union[list[str], None]] = UNSET,
     ) -> Response[RepositoryAdvisory]: ...
 
     async def async_update_repository_advisory(
@@ -944,7 +932,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[RepositoryAdvisoryUpdateType] = UNSET,
         **kwargs,
     ) -> Response[RepositoryAdvisory]:
@@ -989,7 +977,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#request-a-cve-for-a-repository-security-advisory"""
 
@@ -1022,7 +1010,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#request-a-cve-for-a-repository-security-advisory"""
 
@@ -1055,7 +1043,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[FullRepository]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#create-a-temporary-private-fork"""
 
@@ -1084,7 +1072,7 @@ class SecurityAdvisoriesClient:
         repo: str,
         ghsa_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[FullRepository]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/security-advisories/repository-advisories#create-a-temporary-private-fork"""
 

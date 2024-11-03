@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -21,7 +19,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 class ReposOwnerRepoIssuesIssueNumberAssigneesPostBody(GitHubModel):
     """ReposOwnerRepoIssuesIssueNumberAssigneesPostBody"""
 
-    assignees: Missing[List[str]] = Field(
+    assignees: Missing[list[str]] = Field(
         default=UNSET,
         description="Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._",
     )

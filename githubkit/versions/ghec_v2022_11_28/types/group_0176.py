@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -31,7 +31,7 @@ class RuleSuiteType(TypedDict):
     pushed_at: NotRequired[datetime]
     result: NotRequired[Literal["pass", "fail", "bypass"]]
     evaluation_result: NotRequired[Union[None, Literal["pass", "fail", "bypass"]]]
-    rule_evaluations: NotRequired[List[RuleSuitePropRuleEvaluationsItemsType]]
+    rule_evaluations: NotRequired[list[RuleSuitePropRuleEvaluationsItemsType]]
 
 
 class RuleSuitePropRuleEvaluationsItemsType(TypedDict):

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -65,7 +65,7 @@ class TimelineCommitCommentedEvent(GitHubModel):
     event: Missing[Literal["commit_commented"]] = Field(default=UNSET)
     node_id: Missing[str] = Field(default=UNSET)
     commit_id: Missing[str] = Field(default=UNSET)
-    comments: Missing[List[CommitComment]] = Field(default=UNSET)
+    comments: Missing[list[CommitComment]] = Field(default=UNSET)
 
 
 model_rebuild(CommitComment)

@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -34,7 +34,7 @@ class MarketplaceListingPlan(GitHubModel):
     has_free_trial: bool = Field()
     unit_name: Union[str, None] = Field()
     state: str = Field()
-    bullets: List[str] = Field()
+    bullets: list[str] = Field()
 
 
 model_rebuild(MarketplaceListingPlan)

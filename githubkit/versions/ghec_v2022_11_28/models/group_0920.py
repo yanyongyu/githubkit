@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -21,7 +21,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 class OrgsOrgMigrationsPostBody(GitHubModel):
     """OrgsOrgMigrationsPostBody"""
 
-    repositories: List[str] = Field(
+    repositories: list[str] = Field(
         description="A list of arrays indicating which repositories should be migrated."
     )
     lock_repositories: Missing[bool] = Field(
@@ -52,7 +52,7 @@ class OrgsOrgMigrationsPostBody(GitHubModel):
         default=UNSET,
         description="Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).",
     )
-    exclude: Missing[List[Literal["repositories"]]] = Field(
+    exclude: Missing[list[Literal["repositories"]]] = Field(
         default=UNSET,
         description="Exclude related items from being returned in the response in order to improve performance of the request.",
     )

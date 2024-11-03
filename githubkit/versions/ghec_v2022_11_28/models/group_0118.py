@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 
 from pydantic import Field
 
@@ -39,7 +39,7 @@ class Migration(GitHubModel):
     exclude_releases: bool = Field()
     exclude_owner_projects: bool = Field()
     org_metadata_only: bool = Field()
-    repositories: List[Repository] = Field(
+    repositories: list[Repository] = Field(
         description="The repositories included in the migration. Only returned for export migrations."
     )
     url: str = Field()
@@ -47,7 +47,7 @@ class Migration(GitHubModel):
     updated_at: datetime = Field()
     node_id: str = Field()
     archive_url: Missing[str] = Field(default=UNSET)
-    exclude: Missing[List[str]] = Field(
+    exclude: Missing[list[str]] = Field(
         default=UNSET,
         description='Exclude related items from being returned in the response in order to improve performance of the request. The array can include any of: `"repositories"`.',
     )

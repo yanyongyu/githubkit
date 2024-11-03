@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -24,7 +22,7 @@ class CodeScanningVariantAnalysisSkippedRepoGroup(GitHubModel):
     repository_count: int = Field(
         description="The total number of repositories that were skipped for this reason."
     )
-    repositories: List[CodeScanningVariantAnalysisRepository] = Field(
+    repositories: list[CodeScanningVariantAnalysisRepository] = Field(
         description="A list of repositories that were skipped. This list may not include all repositories that were skipped. This is only available when the repository was found and the user has access to it."
     )
 

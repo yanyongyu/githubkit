@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from datetime import datetime
 from typing_extensions import TypedDict, NotRequired
 
@@ -27,7 +26,7 @@ class HookType(TypedDict):
     id: int
     name: str
     active: bool
-    events: List[str]
+    events: list[str]
     config: WebhookConfigType
     updated_at: datetime
     created_at: datetime

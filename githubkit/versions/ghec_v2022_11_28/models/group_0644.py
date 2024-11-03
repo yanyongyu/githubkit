@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -29,7 +27,7 @@ class WebhookRubygemsMetadata(GitHubModel):
     platform: Missing[str] = Field(default=UNSET)
     metadata: Missing[WebhookRubygemsMetadataPropMetadata] = Field(default=UNSET)
     repo: Missing[str] = Field(default=UNSET)
-    dependencies: Missing[List[WebhookRubygemsMetadataPropDependenciesItems]] = Field(
+    dependencies: Missing[list[WebhookRubygemsMetadataPropDependenciesItems]] = Field(
         default=UNSET
     )
     commit_oid: Missing[str] = Field(default=UNSET)

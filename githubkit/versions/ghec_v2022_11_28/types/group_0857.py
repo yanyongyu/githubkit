@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0088 import OrganizationCustomRepositoryRoleType
@@ -19,7 +18,7 @@ class OrganizationsOrganizationIdCustomRolesGetResponse200Type(TypedDict):
     """OrganizationsOrganizationIdCustomRolesGetResponse200"""
 
     total_count: NotRequired[int]
-    custom_roles: NotRequired[List[OrganizationCustomRepositoryRoleType]]
+    custom_roles: NotRequired[list[OrganizationCustomRepositoryRoleType]]
 
 
 __all__ = ("OrganizationsOrganizationIdCustomRolesGetResponse200Type",)

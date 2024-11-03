@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -42,7 +42,7 @@ class WebhookPullRequestUnlockedPropPullRequestType(TypedDict):
     ]
     additions: NotRequired[int]
     assignee: Union[WebhookPullRequestUnlockedPropPullRequestPropAssigneeType, None]
-    assignees: List[
+    assignees: list[
         Union[WebhookPullRequestUnlockedPropPullRequestPropAssigneesItemsType, None]
     ]
     author_association: Literal[
@@ -72,7 +72,7 @@ class WebhookPullRequestUnlockedPropPullRequestType(TypedDict):
     html_url: str
     id: int
     issue_url: str
-    labels: List[WebhookPullRequestUnlockedPropPullRequestPropLabelsItemsType]
+    labels: list[WebhookPullRequestUnlockedPropPullRequestPropLabelsItemsType]
     locked: bool
     maintainer_can_modify: NotRequired[bool]
     merge_commit_sha: Union[str, None]
@@ -88,14 +88,14 @@ class WebhookPullRequestUnlockedPropPullRequestType(TypedDict):
     number: int
     patch_url: str
     rebaseable: NotRequired[Union[bool, None]]
-    requested_reviewers: List[
+    requested_reviewers: list[
         Union[
             WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof0Type,
             None,
             WebhookPullRequestUnlockedPropPullRequestPropRequestedReviewersItemsOneof1Type,
         ]
     ]
-    requested_teams: List[
+    requested_teams: list[
         WebhookPullRequestUnlockedPropPullRequestPropRequestedTeamsItemsType
     ]
     review_comment_url: str
@@ -560,7 +560,7 @@ class WebhookPullRequestUnlockedPropPullRequestPropBasePropRepoType(TypedDict):
     svn_url: str
     tags_url: str
     teams_url: str
-    topics: List[str]
+    topics: list[str]
     trees_url: str
     updated_at: datetime
     url: str
@@ -733,7 +733,7 @@ class WebhookPullRequestUnlockedPropPullRequestPropHeadPropRepoType(TypedDict):
     svn_url: str
     tags_url: str
     teams_url: str
-    topics: List[str]
+    topics: list[str]
     trees_url: str
     updated_at: datetime
     url: str

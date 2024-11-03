@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Literal
 from datetime import datetime
-from typing import List, Literal
 
 from pydantic import Field
 
@@ -23,7 +23,7 @@ class OrgsOrgCodespacesSecretsGetResponse200(GitHubModel):
     """OrgsOrgCodespacesSecretsGetResponse200"""
 
     total_count: int = Field()
-    secrets: List[CodespacesOrgSecret] = Field()
+    secrets: list[CodespacesOrgSecret] = Field()
 
 
 class CodespacesOrgSecret(GitHubModel):

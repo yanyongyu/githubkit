@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -24,7 +22,7 @@ class GetLicenseSyncStatus(GitHubModel):
     Information about the status of a license sync job for an enterprise.
     """
 
-    server_instances: Missing[List[GetLicenseSyncStatusPropServerInstancesItems]] = (
+    server_instances: Missing[list[GetLicenseSyncStatusPropServerInstancesItems]] = (
         Field(default=UNSET)
     )
 

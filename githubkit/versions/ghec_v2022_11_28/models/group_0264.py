@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -38,8 +38,8 @@ class CommitComparison(GitHubModel):
     ahead_by: int = Field()
     behind_by: int = Field()
     total_commits: int = Field()
-    commits: List[Commit] = Field()
-    files: Missing[List[DiffEntry]] = Field(default=UNSET)
+    commits: list[Commit] = Field()
+    files: Missing[list[DiffEntry]] = Field(default=UNSET)
 
 
 model_rebuild(CommitComparison)

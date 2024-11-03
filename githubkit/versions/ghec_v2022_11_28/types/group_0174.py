@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0147 import RepositoryRuleUpdateType
@@ -57,7 +57,7 @@ class RepositoryRulesetType(TypedDict):
     source_type: NotRequired[Literal["Repository", "Organization"]]
     source: str
     enforcement: Literal["disabled", "active", "evaluate"]
-    bypass_actors: NotRequired[List[RepositoryRulesetBypassActorType]]
+    bypass_actors: NotRequired[list[RepositoryRulesetBypassActorType]]
     current_user_can_bypass: NotRequired[
         Literal["always", "pull_requests_only", "never"]
     ]
@@ -73,7 +73,7 @@ class RepositoryRulesetType(TypedDict):
         ]
     ]
     rules: NotRequired[
-        List[
+        list[
             Union[
                 RepositoryRuleCreationType,
                 RepositoryRuleUpdateType,

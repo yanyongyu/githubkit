@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -67,7 +67,7 @@ class WebhookIssuesEditedPropIssueType(TypedDict):
         None, Literal["resolved", "off-topic", "too heated", "spam"]
     ]
     assignee: NotRequired[Union[WebhookIssuesEditedPropIssuePropAssigneeType, None]]
-    assignees: List[Union[WebhookIssuesEditedPropIssuePropAssigneesItemsType, None]]
+    assignees: list[Union[WebhookIssuesEditedPropIssuePropAssigneesItemsType, None]]
     author_association: Literal[
         "COLLABORATOR",
         "CONTRIBUTOR",
@@ -87,7 +87,7 @@ class WebhookIssuesEditedPropIssueType(TypedDict):
     events_url: str
     html_url: str
     id: int
-    labels: NotRequired[List[WebhookIssuesEditedPropIssuePropLabelsItemsType]]
+    labels: NotRequired[list[WebhookIssuesEditedPropIssuePropLabelsItemsType]]
     labels_url: str
     locked: NotRequired[bool]
     milestone: Union[WebhookIssuesEditedPropIssuePropMilestoneType, None]
@@ -235,7 +235,7 @@ class WebhookIssuesEditedPropIssuePropPerformedViaGithubAppType(TypedDict):
 
     created_at: Union[datetime, None]
     description: Union[str, None]
-    events: NotRequired[List[str]]
+    events: NotRequired[list[str]]
     external_url: Union[str, None]
     html_url: str
     id: Union[int, None]

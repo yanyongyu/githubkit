@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -56,7 +56,7 @@ class Import(GitHubModel):
     has_large_files: Missing[bool] = Field(default=UNSET)
     large_files_size: Missing[int] = Field(default=UNSET)
     large_files_count: Missing[int] = Field(default=UNSET)
-    project_choices: Missing[List[ImportPropProjectChoicesItems]] = Field(default=UNSET)
+    project_choices: Missing[list[ImportPropProjectChoicesItems]] = Field(default=UNSET)
     message: Missing[str] = Field(default=UNSET)
     authors_count: Missing[Union[int, None]] = Field(default=UNSET)
     url: str = Field()

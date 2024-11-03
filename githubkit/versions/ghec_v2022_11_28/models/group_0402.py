@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -44,9 +44,9 @@ class IssueSearchResultItem(GitHubModel):
     title: str = Field()
     locked: bool = Field()
     active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
-    assignees: Missing[Union[List[SimpleUser], None]] = Field(default=UNSET)
+    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
     user: Union[None, SimpleUser] = Field()
-    labels: List[IssueSearchResultItemPropLabelsItems] = Field()
+    labels: list[IssueSearchResultItemPropLabelsItems] = Field()
     state: str = Field()
     state_reason: Missing[Union[str, None]] = Field(default=UNSET)
     assignee: Union[None, SimpleUser] = Field()
@@ -55,7 +55,7 @@ class IssueSearchResultItem(GitHubModel):
     created_at: datetime = Field()
     updated_at: datetime = Field()
     closed_at: Union[datetime, None] = Field()
-    text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
         default=UNSET, title="Search Result Text Matches"
     )
     pull_request: Missing[IssueSearchResultItemPropPullRequest] = Field(default=UNSET)
@@ -114,7 +114,7 @@ class SearchIssuesGetResponse200(GitHubModel):
 
     total_count: int = Field()
     incomplete_results: bool = Field()
-    items: List[IssueSearchResultItem] = Field()
+    items: list[IssueSearchResultItem] = Field()
 
 
 model_rebuild(IssueSearchResultItem)

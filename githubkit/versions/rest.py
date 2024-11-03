@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 import importlib
 from weakref import WeakKeyDictionary, ref
-from typing import TYPE_CHECKING, Any, Dict, Literal, overload
+from typing import TYPE_CHECKING, Any, Literal, overload
 
 from . import VERSIONS, VERSION_TYPE, LATEST_VERSION
 
@@ -28,7 +28,7 @@ else:
 
 
 class RestVersionSwitcher(_VersionProxy):
-    _cached_namespaces: "WeakKeyDictionary[GitHubCore, Dict[VERSION_TYPE, Any]]" = (
+    _cached_namespaces: "WeakKeyDictionary[GitHubCore, dict[VERSION_TYPE, Any]]" = (
         WeakKeyDictionary()
     )
 

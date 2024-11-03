@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -20,14 +20,14 @@ class SearchResultTextMatchesItemsType(TypedDict):
     object_type: NotRequired[Union[str, None]]
     property_: NotRequired[str]
     fragment: NotRequired[str]
-    matches: NotRequired[List[SearchResultTextMatchesItemsPropMatchesItemsType]]
+    matches: NotRequired[list[SearchResultTextMatchesItemsPropMatchesItemsType]]
 
 
 class SearchResultTextMatchesItemsPropMatchesItemsType(TypedDict):
     """SearchResultTextMatchesItemsPropMatchesItems"""
 
     text: NotRequired[str]
-    indices: NotRequired[List[int]]
+    indices: NotRequired[list[int]]
 
 
 __all__ = (

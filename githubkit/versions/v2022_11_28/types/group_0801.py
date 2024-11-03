@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 from .group_0069 import RunnerType
@@ -19,7 +18,7 @@ class OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type(TypedDict
     """OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200"""
 
     total_count: float
-    runners: List[RunnerType]
+    runners: list[RunnerType]
 
 
 __all__ = ("OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type",)

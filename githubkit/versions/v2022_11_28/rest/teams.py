@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, Optional, overload
 
 from pydantic import BaseModel
 
@@ -19,7 +19,7 @@ from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
-    from typing import List, Union, Literal
+    from typing import Union, Literal
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
@@ -80,11 +80,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Team]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/rest/teams/teams#list-teams"""
-
-        from typing import List
 
         from ..models import Team, BasicError
 
@@ -102,7 +100,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
             error_models={
                 "403": BasicError,
             },
@@ -114,11 +112,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Team]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/rest/teams/teams#list-teams"""
-
-        from typing import List
 
         from ..models import Team, BasicError
 
@@ -136,7 +132,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
             error_models={
                 "403": BasicError,
             },
@@ -147,7 +143,7 @@ class TeamsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgTeamsPostBodyType,
     ) -> Response[TeamFull]: ...
 
@@ -157,11 +153,11 @@ class TeamsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
-        maintainers: Missing[List[str]] = UNSET,
-        repo_names: Missing[List[str]] = UNSET,
+        maintainers: Missing[list[str]] = UNSET,
+        repo_names: Missing[list[str]] = UNSET,
         privacy: Missing[Literal["secret", "closed"]] = UNSET,
         notification_setting: Missing[
             Literal["notifications_enabled", "notifications_disabled"]
@@ -174,7 +170,7 @@ class TeamsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull]:
@@ -212,7 +208,7 @@ class TeamsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgTeamsPostBodyType,
     ) -> Response[TeamFull]: ...
 
@@ -222,11 +218,11 @@ class TeamsClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
-        maintainers: Missing[List[str]] = UNSET,
-        repo_names: Missing[List[str]] = UNSET,
+        maintainers: Missing[list[str]] = UNSET,
+        repo_names: Missing[list[str]] = UNSET,
         privacy: Missing[Literal["secret", "closed"]] = UNSET,
         notification_setting: Missing[
             Literal["notifications_enabled", "notifications_disabled"]
@@ -239,7 +235,7 @@ class TeamsClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull]:
@@ -277,7 +273,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamFull]:
         """See also: https://docs.github.com/rest/teams/teams#get-a-team-by-name"""
 
@@ -302,7 +298,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamFull]:
         """See also: https://docs.github.com/rest/teams/teams#get-a-team-by-name"""
 
@@ -327,7 +323,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/teams#delete-a-team"""
 
@@ -346,7 +342,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/teams#delete-a-team"""
 
@@ -366,7 +362,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
     ) -> Response[TeamFull]: ...
 
@@ -377,7 +373,7 @@ class TeamsClient:
         team_slug: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         privacy: Missing[Literal["secret", "closed"]] = UNSET,
@@ -393,7 +389,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull]:
@@ -438,7 +434,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
     ) -> Response[TeamFull]: ...
 
@@ -449,7 +445,7 @@ class TeamsClient:
         team_slug: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: Missing[str] = UNSET,
         description: Missing[str] = UNSET,
         privacy: Missing[Literal["secret", "closed"]] = UNSET,
@@ -465,7 +461,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull]:
@@ -513,11 +509,9 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         pinned: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamDiscussion]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamDiscussion]]:
         """See also: https://docs.github.com/rest/teams/discussions#list-discussions"""
-
-        from typing import List
 
         from ..models import TeamDiscussion
 
@@ -537,7 +531,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[TeamDiscussion],
+            response_model=list[TeamDiscussion],
         )
 
     async def async_list_discussions_in_org(
@@ -549,11 +543,9 @@ class TeamsClient:
         page: Missing[int] = UNSET,
         pinned: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamDiscussion]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamDiscussion]]:
         """See also: https://docs.github.com/rest/teams/discussions#list-discussions"""
-
-        from typing import List
 
         from ..models import TeamDiscussion
 
@@ -573,7 +565,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[TeamDiscussion],
+            response_model=list[TeamDiscussion],
         )
 
     @overload
@@ -582,7 +574,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
     ) -> Response[TeamDiscussion]: ...
 
@@ -593,7 +585,7 @@ class TeamsClient:
         team_slug: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: str,
         body: str,
         private: Missing[bool] = UNSET,
@@ -604,7 +596,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion]:
@@ -639,7 +631,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsPostBodyType,
     ) -> Response[TeamDiscussion]: ...
 
@@ -650,7 +642,7 @@ class TeamsClient:
         team_slug: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: str,
         body: str,
         private: Missing[bool] = UNSET,
@@ -661,7 +653,7 @@ class TeamsClient:
         org: str,
         team_slug: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion]:
@@ -696,7 +688,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamDiscussion]:
         """See also: https://docs.github.com/rest/teams/discussions#get-a-discussion"""
 
@@ -719,7 +711,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamDiscussion]:
         """See also: https://docs.github.com/rest/teams/discussions#get-a-discussion"""
 
@@ -742,7 +734,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/discussions#delete-a-discussion"""
 
@@ -762,7 +754,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/discussions#delete-a-discussion"""
 
@@ -783,7 +775,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
@@ -797,7 +789,7 @@ class TeamsClient:
         discussion_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
     ) -> Response[TeamDiscussion]: ...
@@ -808,7 +800,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
@@ -851,7 +843,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
@@ -865,7 +857,7 @@ class TeamsClient:
         discussion_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
     ) -> Response[TeamDiscussion]: ...
@@ -876,7 +868,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberPatchBodyType
         ] = UNSET,
@@ -921,11 +913,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamDiscussionComment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamDiscussionComment]]:
         """See also: https://docs.github.com/rest/teams/discussion-comments#list-discussion-comments"""
-
-        from typing import List
 
         from ..models import TeamDiscussionComment
 
@@ -944,7 +934,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[TeamDiscussionComment],
+            response_model=list[TeamDiscussionComment],
         )
 
     async def async_list_discussion_comments_in_org(
@@ -956,11 +946,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamDiscussionComment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamDiscussionComment]]:
         """See also: https://docs.github.com/rest/teams/discussion-comments#list-discussion-comments"""
-
-        from typing import List
 
         from ..models import TeamDiscussionComment
 
@@ -979,7 +967,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[TeamDiscussionComment],
+            response_model=list[TeamDiscussionComment],
         )
 
     @overload
@@ -989,7 +977,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
     ) -> Response[TeamDiscussionComment]: ...
 
@@ -1001,7 +989,7 @@ class TeamsClient:
         discussion_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[TeamDiscussionComment]: ...
 
@@ -1011,7 +999,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType
         ] = UNSET,
@@ -1054,7 +1042,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType,
     ) -> Response[TeamDiscussionComment]: ...
 
@@ -1066,7 +1054,7 @@ class TeamsClient:
         discussion_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[TeamDiscussionComment]: ...
 
@@ -1076,7 +1064,7 @@ class TeamsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsPostBodyType
         ] = UNSET,
@@ -1119,7 +1107,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamDiscussionComment]:
         """See also: https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment"""
 
@@ -1143,7 +1131,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamDiscussionComment]:
         """See also: https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment"""
 
@@ -1167,7 +1155,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/discussion-comments#delete-a-discussion-comment"""
 
@@ -1188,7 +1176,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/discussion-comments#delete-a-discussion-comment"""
 
@@ -1210,7 +1198,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
     ) -> Response[TeamDiscussionComment]: ...
 
@@ -1223,7 +1211,7 @@ class TeamsClient:
         comment_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[TeamDiscussionComment]: ...
 
@@ -1234,7 +1222,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
         ] = UNSET,
@@ -1279,7 +1267,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
     ) -> Response[TeamDiscussionComment]: ...
 
@@ -1292,7 +1280,7 @@ class TeamsClient:
         comment_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[TeamDiscussionComment]: ...
 
@@ -1303,7 +1291,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
         ] = UNSET,
@@ -1347,11 +1335,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationInvitation]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationInvitation]]:
         """See also: https://docs.github.com/rest/teams/members#list-pending-team-invitations"""
-
-        from typing import List
 
         from ..models import OrganizationInvitation
 
@@ -1369,7 +1355,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationInvitation],
+            response_model=list[OrganizationInvitation],
         )
 
     async def async_list_pending_invitations_in_org(
@@ -1379,11 +1365,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationInvitation]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationInvitation]]:
         """See also: https://docs.github.com/rest/teams/members#list-pending-team-invitations"""
-
-        from typing import List
 
         from ..models import OrganizationInvitation
 
@@ -1401,7 +1385,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationInvitation],
+            response_model=list[OrganizationInvitation],
         )
 
     def list_members_in_org(
@@ -1412,11 +1396,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/rest/teams/members#list-team-members"""
-
-        from typing import List
 
         from ..models import SimpleUser
 
@@ -1435,7 +1417,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
         )
 
     async def async_list_members_in_org(
@@ -1446,11 +1428,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/rest/teams/members#list-team-members"""
-
-        from typing import List
 
         from ..models import SimpleUser
 
@@ -1469,7 +1449,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
         )
 
     def get_membership_for_user_in_org(
@@ -1478,7 +1458,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamMembership]:
         """See also: https://docs.github.com/rest/teams/members#get-team-membership-for-a-user"""
 
@@ -1502,7 +1482,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamMembership]:
         """See also: https://docs.github.com/rest/teams/members#get-team-membership-for-a-user"""
 
@@ -1527,7 +1507,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
     ) -> Response[TeamMembership]: ...
 
@@ -1539,7 +1519,7 @@ class TeamsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
     ) -> Response[TeamMembership]: ...
 
@@ -1549,7 +1529,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamMembership]:
@@ -1591,7 +1571,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
     ) -> Response[TeamMembership]: ...
 
@@ -1603,7 +1583,7 @@ class TeamsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
     ) -> Response[TeamMembership]: ...
 
@@ -1613,7 +1593,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamMembership]:
@@ -1654,7 +1634,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/members#remove-team-membership-for-a-user"""
 
@@ -1675,7 +1655,7 @@ class TeamsClient:
         team_slug: str,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/members#remove-team-membership-for-a-user"""
 
@@ -1697,11 +1677,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamProject]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamProject]]:
         """See also: https://docs.github.com/rest/teams/teams#list-team-projects"""
-
-        from typing import List
 
         from ..models import TeamProject
 
@@ -1719,7 +1697,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[TeamProject],
+            response_model=list[TeamProject],
         )
 
     async def async_list_projects_in_org(
@@ -1729,11 +1707,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamProject]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamProject]]:
         """See also: https://docs.github.com/rest/teams/teams#list-team-projects"""
-
-        from typing import List
 
         from ..models import TeamProject
 
@@ -1751,7 +1727,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[TeamProject],
+            response_model=list[TeamProject],
         )
 
     def check_permissions_for_project_in_org(
@@ -1760,7 +1736,7 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamProject]:
         """See also: https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-project"""
 
@@ -1784,7 +1760,7 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamProject]:
         """See also: https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-project"""
 
@@ -1809,7 +1785,7 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
@@ -1823,7 +1799,7 @@ class TeamsClient:
         project_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
 
@@ -1833,7 +1809,7 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
@@ -1880,7 +1856,7 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
@@ -1894,7 +1870,7 @@ class TeamsClient:
         project_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
 
@@ -1904,7 +1880,7 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             Union[OrgsOrgTeamsTeamSlugProjectsProjectIdPutBodyType, None]
         ] = UNSET,
@@ -1950,7 +1926,7 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/teams#remove-a-project-from-a-team"""
 
@@ -1970,7 +1946,7 @@ class TeamsClient:
         team_slug: str,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/teams#remove-a-project-from-a-team"""
 
@@ -1991,11 +1967,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/rest/teams/teams#list-team-repositories"""
-
-        from typing import List
 
         from ..models import MinimalRepository
 
@@ -2013,7 +1987,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
         )
 
     async def async_list_repos_in_org(
@@ -2023,11 +1997,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/rest/teams/teams#list-team-repositories"""
-
-        from typing import List
 
         from ..models import MinimalRepository
 
@@ -2045,7 +2017,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
         )
 
     def check_permissions_for_repo_in_org(
@@ -2055,7 +2027,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamRepository]:
         """See also: https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-repository"""
 
@@ -2080,7 +2052,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamRepository]:
         """See also: https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-repository"""
 
@@ -2106,7 +2078,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
     ) -> Response: ...
 
@@ -2119,7 +2091,7 @@ class TeamsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         permission: Missing[str] = UNSET,
     ) -> Response: ...
 
@@ -2130,7 +2102,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -2166,7 +2138,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
     ) -> Response: ...
 
@@ -2179,7 +2151,7 @@ class TeamsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         permission: Missing[str] = UNSET,
     ) -> Response: ...
 
@@ -2190,7 +2162,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgTeamsTeamSlugReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -2225,7 +2197,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/teams#remove-a-repository-from-a-team"""
 
@@ -2246,7 +2218,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/teams#remove-a-repository-from-a-team"""
 
@@ -2267,11 +2239,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Team]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/rest/teams/teams#list-child-teams"""
-
-        from typing import List
 
         from ..models import Team
 
@@ -2289,7 +2259,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
         )
 
     async def async_list_child_in_org(
@@ -2299,11 +2269,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Team]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/rest/teams/teams#list-child-teams"""
-
-        from typing import List
 
         from ..models import Team
 
@@ -2321,14 +2289,14 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
         )
 
     def get_legacy(
         self,
         team_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamFull]:
         """See also: https://docs.github.com/rest/teams/teams#get-a-team-legacy"""
 
@@ -2352,7 +2320,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamFull]:
         """See also: https://docs.github.com/rest/teams/teams#get-a-team-legacy"""
 
@@ -2376,7 +2344,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/teams#delete-a-team-legacy"""
 
@@ -2400,7 +2368,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/teams#delete-a-team-legacy"""
 
@@ -2425,7 +2393,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: TeamsTeamIdPatchBodyType,
     ) -> Response[TeamFull]: ...
 
@@ -2435,7 +2403,7 @@ class TeamsClient:
         team_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
         privacy: Missing[Literal["secret", "closed"]] = UNSET,
@@ -2450,7 +2418,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull]:
@@ -2489,7 +2457,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: TeamsTeamIdPatchBodyType,
     ) -> Response[TeamFull]: ...
 
@@ -2499,7 +2467,7 @@ class TeamsClient:
         team_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         name: str,
         description: Missing[str] = UNSET,
         privacy: Missing[Literal["secret", "closed"]] = UNSET,
@@ -2514,7 +2482,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamFull]:
@@ -2555,11 +2523,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamDiscussion]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamDiscussion]]:
         """See also: https://docs.github.com/rest/teams/discussions#list-discussions-legacy"""
-
-        from typing import List
 
         from ..models import TeamDiscussion
 
@@ -2578,7 +2544,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[TeamDiscussion],
+            response_model=list[TeamDiscussion],
         )
 
     async def async_list_discussions_legacy(
@@ -2588,11 +2554,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamDiscussion]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamDiscussion]]:
         """See also: https://docs.github.com/rest/teams/discussions#list-discussions-legacy"""
-
-        from typing import List
 
         from ..models import TeamDiscussion
 
@@ -2611,7 +2575,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[TeamDiscussion],
+            response_model=list[TeamDiscussion],
         )
 
     @overload
@@ -2619,7 +2583,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsPostBodyType,
     ) -> Response[TeamDiscussion]: ...
 
@@ -2629,7 +2593,7 @@ class TeamsClient:
         team_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: str,
         body: str,
         private: Missing[bool] = UNSET,
@@ -2639,7 +2603,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion]:
@@ -2673,7 +2637,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsPostBodyType,
     ) -> Response[TeamDiscussion]: ...
 
@@ -2683,7 +2647,7 @@ class TeamsClient:
         team_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: str,
         body: str,
         private: Missing[bool] = UNSET,
@@ -2693,7 +2657,7 @@ class TeamsClient:
         self,
         team_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdDiscussionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion]:
@@ -2727,7 +2691,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamDiscussion]:
         """See also: https://docs.github.com/rest/teams/discussions#get-a-discussion-legacy"""
 
@@ -2749,7 +2713,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamDiscussion]:
         """See also: https://docs.github.com/rest/teams/discussions#get-a-discussion-legacy"""
 
@@ -2771,7 +2735,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/discussions#delete-a-discussion-legacy"""
 
@@ -2790,7 +2754,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/discussions#delete-a-discussion-legacy"""
 
@@ -2810,7 +2774,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
     ) -> Response[TeamDiscussion]: ...
 
@@ -2821,7 +2785,7 @@ class TeamsClient:
         discussion_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
     ) -> Response[TeamDiscussion]: ...
@@ -2831,7 +2795,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion]:
@@ -2871,7 +2835,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
     ) -> Response[TeamDiscussion]: ...
 
@@ -2882,7 +2846,7 @@ class TeamsClient:
         discussion_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         title: Missing[str] = UNSET,
         body: Missing[str] = UNSET,
     ) -> Response[TeamDiscussion]: ...
@@ -2892,7 +2856,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdDiscussionsDiscussionNumberPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamDiscussion]:
@@ -2934,11 +2898,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamDiscussionComment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamDiscussionComment]]:
         """See also: https://docs.github.com/rest/teams/discussion-comments#list-discussion-comments-legacy"""
-
-        from typing import List
 
         from ..models import TeamDiscussionComment
 
@@ -2957,7 +2919,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[TeamDiscussionComment],
+            response_model=list[TeamDiscussionComment],
         )
 
     async def async_list_discussion_comments_legacy(
@@ -2968,11 +2930,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamDiscussionComment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamDiscussionComment]]:
         """See also: https://docs.github.com/rest/teams/discussion-comments#list-discussion-comments-legacy"""
-
-        from typing import List
 
         from ..models import TeamDiscussionComment
 
@@ -2991,7 +2951,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[TeamDiscussionComment],
+            response_model=list[TeamDiscussionComment],
         )
 
     @overload
@@ -3000,7 +2960,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
     ) -> Response[TeamDiscussionComment]: ...
 
@@ -3011,7 +2971,7 @@ class TeamsClient:
         discussion_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[TeamDiscussionComment]: ...
 
@@ -3020,7 +2980,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType
         ] = UNSET,
@@ -3062,7 +3022,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType,
     ) -> Response[TeamDiscussionComment]: ...
 
@@ -3073,7 +3033,7 @@ class TeamsClient:
         discussion_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[TeamDiscussionComment]: ...
 
@@ -3082,7 +3042,7 @@ class TeamsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsPostBodyType
         ] = UNSET,
@@ -3124,7 +3084,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamDiscussionComment]:
         """See also: https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment-legacy"""
 
@@ -3147,7 +3107,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamDiscussionComment]:
         """See also: https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment-legacy"""
 
@@ -3170,7 +3130,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/discussion-comments#delete-a-discussion-comment-legacy"""
 
@@ -3190,7 +3150,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/discussion-comments#delete-a-discussion-comment-legacy"""
 
@@ -3211,7 +3171,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
     ) -> Response[TeamDiscussionComment]: ...
 
@@ -3223,7 +3183,7 @@ class TeamsClient:
         comment_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[TeamDiscussionComment]: ...
 
@@ -3233,7 +3193,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
         ] = UNSET,
@@ -3277,7 +3237,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType,
     ) -> Response[TeamDiscussionComment]: ...
 
@@ -3289,7 +3249,7 @@ class TeamsClient:
         comment_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         body: str,
     ) -> Response[TeamDiscussionComment]: ...
 
@@ -3299,7 +3259,7 @@ class TeamsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberPatchBodyType
         ] = UNSET,
@@ -3342,11 +3302,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationInvitation]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationInvitation]]:
         """See also: https://docs.github.com/rest/teams/members#list-pending-team-invitations-legacy"""
-
-        from typing import List
 
         from ..models import OrganizationInvitation
 
@@ -3364,7 +3322,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationInvitation],
+            response_model=list[OrganizationInvitation],
         )
 
     async def async_list_pending_invitations_legacy(
@@ -3373,11 +3331,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationInvitation]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationInvitation]]:
         """See also: https://docs.github.com/rest/teams/members#list-pending-team-invitations-legacy"""
-
-        from typing import List
 
         from ..models import OrganizationInvitation
 
@@ -3395,7 +3351,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationInvitation],
+            response_model=list[OrganizationInvitation],
         )
 
     def list_members_legacy(
@@ -3405,11 +3361,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/rest/teams/members#list-team-members-legacy"""
-
-        from typing import List
 
         from ..models import BasicError, SimpleUser
 
@@ -3428,7 +3382,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
             error_models={
                 "404": BasicError,
             },
@@ -3441,11 +3395,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleUser]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleUser]]:
         """See also: https://docs.github.com/rest/teams/members#list-team-members-legacy"""
-
-        from typing import List
 
         from ..models import BasicError, SimpleUser
 
@@ -3464,7 +3416,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleUser],
+            response_model=list[SimpleUser],
             error_models={
                 "404": BasicError,
             },
@@ -3475,7 +3427,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/members#get-team-member-legacy"""
 
@@ -3495,7 +3447,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/members#get-team-member-legacy"""
 
@@ -3515,7 +3467,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/members#add-team-member-legacy"""
 
@@ -3539,7 +3491,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/members#add-team-member-legacy"""
 
@@ -3563,7 +3515,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/members#remove-team-member-legacy"""
 
@@ -3583,7 +3535,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/members#remove-team-member-legacy"""
 
@@ -3603,7 +3555,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamMembership]:
         """See also: https://docs.github.com/rest/teams/members#get-team-membership-for-a-user-legacy"""
 
@@ -3628,7 +3580,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamMembership]:
         """See also: https://docs.github.com/rest/teams/members#get-team-membership-for-a-user-legacy"""
 
@@ -3654,7 +3606,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
     ) -> Response[TeamMembership]: ...
 
@@ -3665,7 +3617,7 @@ class TeamsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
     ) -> Response[TeamMembership]: ...
 
@@ -3674,7 +3626,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamMembership]:
@@ -3716,7 +3668,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
     ) -> Response[TeamMembership]: ...
 
@@ -3727,7 +3679,7 @@ class TeamsClient:
         username: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         role: Missing[Literal["member", "maintainer"]] = UNSET,
     ) -> Response[TeamMembership]: ...
 
@@ -3736,7 +3688,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdMembershipsUsernamePutBodyType] = UNSET,
         **kwargs,
     ) -> Response[TeamMembership]:
@@ -3777,7 +3729,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/members#remove-team-membership-for-a-user-legacy"""
 
@@ -3797,7 +3749,7 @@ class TeamsClient:
         team_id: int,
         username: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/members#remove-team-membership-for-a-user-legacy"""
 
@@ -3818,11 +3770,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamProject]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamProject]]:
         """See also: https://docs.github.com/rest/teams/teams#list-team-projects-legacy"""
-
-        from typing import List
 
         from ..models import BasicError, TeamProject
 
@@ -3840,7 +3790,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[TeamProject],
+            response_model=list[TeamProject],
             error_models={
                 "404": BasicError,
             },
@@ -3852,11 +3802,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamProject]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamProject]]:
         """See also: https://docs.github.com/rest/teams/teams#list-team-projects-legacy"""
-
-        from typing import List
 
         from ..models import BasicError, TeamProject
 
@@ -3874,7 +3822,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[TeamProject],
+            response_model=list[TeamProject],
             error_models={
                 "404": BasicError,
             },
@@ -3885,7 +3833,7 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamProject]:
         """See also: https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-project-legacy"""
 
@@ -3908,7 +3856,7 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamProject]:
         """See also: https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-project-legacy"""
 
@@ -3932,7 +3880,7 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
     ) -> Response: ...
 
@@ -3943,7 +3891,7 @@ class TeamsClient:
         project_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
 
@@ -3952,7 +3900,7 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -3996,7 +3944,7 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
     ) -> Response: ...
 
@@ -4007,7 +3955,7 @@ class TeamsClient:
         project_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         permission: Missing[Literal["read", "write", "admin"]] = UNSET,
     ) -> Response: ...
 
@@ -4016,7 +3964,7 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdProjectsProjectIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -4059,7 +4007,7 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/teams#remove-a-project-from-a-team-legacy"""
 
@@ -4084,7 +4032,7 @@ class TeamsClient:
         team_id: int,
         project_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/teams#remove-a-project-from-a-team-legacy"""
 
@@ -4110,11 +4058,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/rest/teams/teams#list-team-repositories-legacy"""
-
-        from typing import List
 
         from ..models import BasicError, MinimalRepository
 
@@ -4132,7 +4078,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
             error_models={
                 "404": BasicError,
             },
@@ -4144,11 +4090,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[MinimalRepository]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[MinimalRepository]]:
         """See also: https://docs.github.com/rest/teams/teams#list-team-repositories-legacy"""
-
-        from typing import List
 
         from ..models import BasicError, MinimalRepository
 
@@ -4166,7 +4110,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[MinimalRepository],
+            response_model=list[MinimalRepository],
             error_models={
                 "404": BasicError,
             },
@@ -4178,7 +4122,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamRepository]:
         """See also: https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-repository-legacy"""
 
@@ -4202,7 +4146,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[TeamRepository]:
         """See also: https://docs.github.com/rest/teams/teams#check-team-permissions-for-a-repository-legacy"""
 
@@ -4227,7 +4171,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
     ) -> Response: ...
 
@@ -4239,7 +4183,7 @@ class TeamsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
     ) -> Response: ...
 
@@ -4249,7 +4193,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -4292,7 +4236,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
     ) -> Response: ...
 
@@ -4304,7 +4248,7 @@ class TeamsClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         permission: Missing[Literal["pull", "push", "admin"]] = UNSET,
     ) -> Response: ...
 
@@ -4314,7 +4258,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[TeamsTeamIdReposOwnerRepoPutBodyType] = UNSET,
         **kwargs,
     ) -> Response:
@@ -4356,7 +4300,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/teams#remove-a-repository-from-a-team-legacy"""
 
@@ -4376,7 +4320,7 @@ class TeamsClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/teams/teams#remove-a-repository-from-a-team-legacy"""
 
@@ -4396,11 +4340,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Team]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/rest/teams/teams#list-child-teams-legacy"""
-
-        from typing import List
 
         from ..models import Team, BasicError, ValidationError
 
@@ -4418,7 +4360,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -4432,11 +4374,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Team]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Team]]:
         """See also: https://docs.github.com/rest/teams/teams#list-child-teams-legacy"""
-
-        from typing import List
 
         from ..models import Team, BasicError, ValidationError
 
@@ -4454,7 +4394,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Team],
+            response_model=list[Team],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -4467,11 +4407,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamFull]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamFull]]:
         """See also: https://docs.github.com/rest/teams/teams#list-teams-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import TeamFull, BasicError
 
@@ -4489,7 +4427,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[TeamFull],
+            response_model=list[TeamFull],
             error_models={
                 "404": BasicError,
                 "403": BasicError,
@@ -4501,11 +4439,9 @@ class TeamsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[TeamFull]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[TeamFull]]:
         """See also: https://docs.github.com/rest/teams/teams#list-teams-for-the-authenticated-user"""
-
-        from typing import List
 
         from ..models import TeamFull, BasicError
 
@@ -4523,7 +4459,7 @@ class TeamsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[TeamFull],
+            response_model=list[TeamFull],
             error_models={
                 "404": BasicError,
                 "403": BasicError,

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -98,7 +98,7 @@ class Repository(GitHubModel):
         default=UNSET,
         description="Whether this repository acts as a template that can be used to generate new repositories.",
     )
-    topics: Missing[List[str]] = Field(default=UNSET)
+    topics: Missing[list[str]] = Field(default=UNSET)
     has_issues: bool = Field(default=True, description="Whether issues are enabled.")
     has_projects: bool = Field(
         default=True, description="Whether projects are enabled."

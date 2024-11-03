@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -23,11 +23,11 @@ class RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty(
 ):
     """RepositoryRulesetConditionsRepositoryPropertyTargetPropRepositoryProperty"""
 
-    include: Missing[List[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+    include: Missing[list[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
         default=UNSET,
         description="The repository properties and values to include. All of these properties must match for the condition to pass.",
     )
-    exclude: Missing[List[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
+    exclude: Missing[list[RepositoryRulesetConditionsRepositoryPropertySpec]] = Field(
         default=UNSET,
         description="The repository properties and values to exclude. The condition will not pass if any of these properties match.",
     )
@@ -40,7 +40,7 @@ class RepositoryRulesetConditionsRepositoryPropertySpec(GitHubModel):
     """
 
     name: str = Field(description="The name of the repository property to target")
-    property_values: List[str] = Field(
+    property_values: list[str] = Field(
         description="The values to match for the repository property"
     )
     source: Missing[Literal["custom", "system"]] = Field(

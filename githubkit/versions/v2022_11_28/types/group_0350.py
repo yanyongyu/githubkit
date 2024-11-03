@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -23,7 +23,7 @@ class ContributorActivityType(TypedDict):
 
     author: Union[None, SimpleUserType]
     total: int
-    weeks: List[ContributorActivityPropWeeksItemsType]
+    weeks: list[ContributorActivityPropWeeksItemsType]
 
 
 class ContributorActivityPropWeeksItemsType(TypedDict):

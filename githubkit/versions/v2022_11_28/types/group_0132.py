@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -17,7 +16,7 @@ class RepositoryRuleRequiredStatusChecksPropParametersType(TypedDict):
     """RepositoryRuleRequiredStatusChecksPropParameters"""
 
     do_not_enforce_on_create: NotRequired[bool]
-    required_status_checks: List[RepositoryRuleParamsStatusCheckConfigurationType]
+    required_status_checks: list[RepositoryRuleParamsStatusCheckConfigurationType]
     strict_required_status_checks_policy: bool
 
 

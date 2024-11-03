@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -28,20 +26,20 @@ class ApiOverview(GitHubModel):
     ssh_key_fingerprints: Missing[ApiOverviewPropSshKeyFingerprints] = Field(
         default=UNSET
     )
-    ssh_keys: Missing[List[str]] = Field(default=UNSET)
-    hooks: Missing[List[str]] = Field(default=UNSET)
-    github_enterprise_importer: Missing[List[str]] = Field(default=UNSET)
-    web: Missing[List[str]] = Field(default=UNSET)
-    api: Missing[List[str]] = Field(default=UNSET)
-    git: Missing[List[str]] = Field(default=UNSET)
-    packages: Missing[List[str]] = Field(default=UNSET)
-    pages: Missing[List[str]] = Field(default=UNSET)
-    importer: Missing[List[str]] = Field(default=UNSET)
-    actions: Missing[List[str]] = Field(default=UNSET)
-    actions_macos: Missing[List[str]] = Field(default=UNSET)
-    codespaces: Missing[List[str]] = Field(default=UNSET)
-    dependabot: Missing[List[str]] = Field(default=UNSET)
-    copilot: Missing[List[str]] = Field(default=UNSET)
+    ssh_keys: Missing[list[str]] = Field(default=UNSET)
+    hooks: Missing[list[str]] = Field(default=UNSET)
+    github_enterprise_importer: Missing[list[str]] = Field(default=UNSET)
+    web: Missing[list[str]] = Field(default=UNSET)
+    api: Missing[list[str]] = Field(default=UNSET)
+    git: Missing[list[str]] = Field(default=UNSET)
+    packages: Missing[list[str]] = Field(default=UNSET)
+    pages: Missing[list[str]] = Field(default=UNSET)
+    importer: Missing[list[str]] = Field(default=UNSET)
+    actions: Missing[list[str]] = Field(default=UNSET)
+    actions_macos: Missing[list[str]] = Field(default=UNSET)
+    codespaces: Missing[list[str]] = Field(default=UNSET)
+    dependabot: Missing[list[str]] = Field(default=UNSET)
+    copilot: Missing[list[str]] = Field(default=UNSET)
     domains: Missing[ApiOverviewPropDomains] = Field(default=UNSET)
 
 
@@ -57,11 +55,11 @@ class ApiOverviewPropSshKeyFingerprints(GitHubModel):
 class ApiOverviewPropDomains(GitHubModel):
     """ApiOverviewPropDomains"""
 
-    website: Missing[List[str]] = Field(default=UNSET)
-    codespaces: Missing[List[str]] = Field(default=UNSET)
-    copilot: Missing[List[str]] = Field(default=UNSET)
-    packages: Missing[List[str]] = Field(default=UNSET)
-    actions: Missing[List[str]] = Field(default=UNSET)
+    website: Missing[list[str]] = Field(default=UNSET)
+    codespaces: Missing[list[str]] = Field(default=UNSET)
+    copilot: Missing[list[str]] = Field(default=UNSET)
+    packages: Missing[list[str]] = Field(default=UNSET)
+    actions: Missing[list[str]] = Field(default=UNSET)
     artifact_attestations: Missing[ApiOverviewPropDomainsPropArtifactAttestations] = (
         Field(default=UNSET)
     )
@@ -71,7 +69,7 @@ class ApiOverviewPropDomainsPropArtifactAttestations(GitHubModel):
     """ApiOverviewPropDomainsPropArtifactAttestations"""
 
     trust_domain: Missing[str] = Field(default=UNSET)
-    services: Missing[List[str]] = Field(default=UNSET)
+    services: Missing[list[str]] = Field(default=UNSET)
 
 
 model_rebuild(ApiOverview)

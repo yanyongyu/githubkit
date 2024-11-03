@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -25,7 +25,7 @@ class WebhookPushType(TypedDict):
     after: str
     base_ref: Union[str, None]
     before: str
-    commits: List[WebhookPushPropCommitsItemsType]
+    commits: list[WebhookPushPropCommitsItemsType]
     compare: str
     created: bool
     deleted: bool
@@ -43,14 +43,14 @@ class WebhookPushType(TypedDict):
 class WebhookPushPropHeadCommitType(TypedDict):
     """Commit"""
 
-    added: NotRequired[List[str]]
+    added: NotRequired[list[str]]
     author: WebhookPushPropHeadCommitPropAuthorType
     committer: WebhookPushPropHeadCommitPropCommitterType
     distinct: bool
     id: str
     message: str
-    modified: NotRequired[List[str]]
-    removed: NotRequired[List[str]]
+    modified: NotRequired[list[str]]
+    removed: NotRequired[list[str]]
     timestamp: datetime
     tree_id: str
     url: str
@@ -95,14 +95,14 @@ class WebhookPushPropPusherType(TypedDict):
 class WebhookPushPropCommitsItemsType(TypedDict):
     """Commit"""
 
-    added: NotRequired[List[str]]
+    added: NotRequired[list[str]]
     author: WebhookPushPropCommitsItemsPropAuthorType
     committer: WebhookPushPropCommitsItemsPropCommitterType
     distinct: bool
     id: str
     message: str
-    modified: NotRequired[List[str]]
-    removed: NotRequired[List[str]]
+    modified: NotRequired[list[str]]
+    removed: NotRequired[list[str]]
     timestamp: datetime
     tree_id: str
     url: str
@@ -222,7 +222,7 @@ class WebhookPushPropRepositoryType(TypedDict):
     svn_url: str
     tags_url: str
     teams_url: str
-    topics: List[str]
+    topics: list[str]
     trees_url: str
     updated_at: datetime
     url: str

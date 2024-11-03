@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, Optional, overload
 
 from pydantic import BaseModel
 
@@ -19,7 +19,7 @@ from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
-    from typing import List, Literal
+    from typing import Literal
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
@@ -69,11 +69,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment"""
-
-        from typing import List
 
         from ..models import Reaction
 
@@ -92,7 +90,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
         )
 
     async def async_list_for_team_discussion_comment_in_org(
@@ -109,11 +107,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment"""
-
-        from typing import List
 
         from ..models import Reaction
 
@@ -132,7 +128,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
         )
 
     @overload
@@ -143,7 +139,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -156,7 +152,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -169,7 +165,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
@@ -214,7 +210,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -227,7 +223,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -240,7 +236,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
@@ -285,7 +281,7 @@ class ReactionsClient:
         comment_number: int,
         reaction_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/reactions/reactions#delete-team-discussion-comment-reaction"""
 
@@ -307,7 +303,7 @@ class ReactionsClient:
         comment_number: int,
         reaction_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/reactions/reactions#delete-team-discussion-comment-reaction"""
 
@@ -334,11 +330,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion"""
-
-        from typing import List
 
         from ..models import Reaction
 
@@ -357,7 +351,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
         )
 
     async def async_list_for_team_discussion_in_org(
@@ -373,11 +367,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion"""
-
-        from typing import List
 
         from ..models import Reaction
 
@@ -396,7 +388,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
         )
 
     @overload
@@ -406,7 +398,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -418,7 +410,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -430,7 +422,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
@@ -473,7 +465,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -485,7 +477,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -497,7 +489,7 @@ class ReactionsClient:
         team_slug: str,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             OrgsOrgTeamsTeamSlugDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
@@ -540,7 +532,7 @@ class ReactionsClient:
         discussion_number: int,
         reaction_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/reactions/reactions#delete-team-discussion-reaction"""
 
@@ -561,7 +553,7 @@ class ReactionsClient:
         discussion_number: int,
         reaction_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/reactions/reactions#delete-team-discussion-reaction"""
 
@@ -588,11 +580,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-commit-comment"""
-
-        from typing import List
 
         from ..models import Reaction, BasicError
 
@@ -611,7 +601,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
             error_models={
                 "404": BasicError,
             },
@@ -630,11 +620,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-commit-comment"""
-
-        from typing import List
 
         from ..models import Reaction, BasicError
 
@@ -653,7 +641,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
             error_models={
                 "404": BasicError,
             },
@@ -666,7 +654,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -678,7 +666,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -690,7 +678,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
@@ -735,7 +723,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -747,7 +735,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -759,7 +747,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCommentsCommentIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
@@ -804,7 +792,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/reactions/reactions#delete-a-commit-comment-reaction"""
 
@@ -825,7 +813,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/reactions/reactions#delete-a-commit-comment-reaction"""
 
@@ -852,11 +840,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue-comment"""
-
-        from typing import List
 
         from ..models import Reaction, BasicError
 
@@ -875,7 +861,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
             error_models={
                 "404": BasicError,
             },
@@ -894,11 +880,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue-comment"""
-
-        from typing import List
 
         from ..models import Reaction, BasicError
 
@@ -917,7 +901,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
             error_models={
                 "404": BasicError,
             },
@@ -930,7 +914,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -942,7 +926,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -954,7 +938,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
@@ -1001,7 +985,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -1013,7 +997,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1025,7 +1009,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoIssuesCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
@@ -1072,7 +1056,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/reactions/reactions#delete-an-issue-comment-reaction"""
 
@@ -1093,7 +1077,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/reactions/reactions#delete-an-issue-comment-reaction"""
 
@@ -1120,11 +1104,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue"""
-
-        from typing import List
 
         from ..models import Reaction, BasicError
 
@@ -1143,7 +1125,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
             error_models={
                 "404": BasicError,
                 "410": BasicError,
@@ -1163,11 +1145,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue"""
-
-        from typing import List
 
         from ..models import Reaction, BasicError
 
@@ -1186,7 +1166,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
             error_models={
                 "404": BasicError,
                 "410": BasicError,
@@ -1200,7 +1180,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -1212,7 +1192,7 @@ class ReactionsClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1224,7 +1204,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
@@ -1269,7 +1249,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -1281,7 +1261,7 @@ class ReactionsClient:
         issue_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1293,7 +1273,7 @@ class ReactionsClient:
         repo: str,
         issue_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoIssuesIssueNumberReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
@@ -1338,7 +1318,7 @@ class ReactionsClient:
         issue_number: int,
         reaction_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/reactions/reactions#delete-an-issue-reaction"""
 
@@ -1359,7 +1339,7 @@ class ReactionsClient:
         issue_number: int,
         reaction_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/reactions/reactions#delete-an-issue-reaction"""
 
@@ -1386,11 +1366,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment"""
-
-        from typing import List
 
         from ..models import Reaction, BasicError
 
@@ -1409,7 +1387,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
             error_models={
                 "404": BasicError,
             },
@@ -1428,11 +1406,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment"""
-
-        from typing import List
 
         from ..models import Reaction, BasicError
 
@@ -1451,7 +1427,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
             error_models={
                 "404": BasicError,
             },
@@ -1464,7 +1440,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -1476,7 +1452,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1488,7 +1464,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
@@ -1535,7 +1511,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -1547,7 +1523,7 @@ class ReactionsClient:
         comment_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -1559,7 +1535,7 @@ class ReactionsClient:
         repo: str,
         comment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoPullsCommentsCommentIdReactionsPostBodyType
         ] = UNSET,
@@ -1606,7 +1582,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/reactions/reactions#delete-a-pull-request-comment-reaction"""
 
@@ -1629,7 +1605,7 @@ class ReactionsClient:
         comment_id: int,
         reaction_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/reactions/reactions#delete-a-pull-request-comment-reaction"""
 
@@ -1656,11 +1632,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-release"""
-
-        from typing import List
 
         from ..models import Reaction, BasicError
 
@@ -1679,7 +1653,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
             error_models={
                 "404": BasicError,
             },
@@ -1696,11 +1670,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-release"""
-
-        from typing import List
 
         from ..models import Reaction, BasicError
 
@@ -1719,7 +1691,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
             error_models={
                 "404": BasicError,
             },
@@ -1732,7 +1704,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -1744,7 +1716,7 @@ class ReactionsClient:
         release_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
     ) -> Response[Reaction]: ...
 
@@ -1754,7 +1726,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
@@ -1799,7 +1771,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -1811,7 +1783,7 @@ class ReactionsClient:
         release_id: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal["+1", "laugh", "heart", "hooray", "rocket", "eyes"],
     ) -> Response[Reaction]: ...
 
@@ -1821,7 +1793,7 @@ class ReactionsClient:
         repo: str,
         release_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdReactionsPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[Reaction]:
@@ -1866,7 +1838,7 @@ class ReactionsClient:
         release_id: int,
         reaction_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/reactions/reactions#delete-a-release-reaction"""
 
@@ -1887,7 +1859,7 @@ class ReactionsClient:
         release_id: int,
         reaction_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/rest/reactions/reactions#delete-a-release-reaction"""
 
@@ -1914,11 +1886,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy"""
-
-        from typing import List
 
         from ..models import Reaction
 
@@ -1937,7 +1907,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
         )
 
     async def async_list_for_team_discussion_comment_legacy(
@@ -1953,11 +1923,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy"""
-
-        from typing import List
 
         from ..models import Reaction
 
@@ -1976,7 +1944,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
         )
 
     @overload
@@ -1986,7 +1954,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -1998,7 +1966,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -2010,7 +1978,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
@@ -2054,7 +2022,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -2066,7 +2034,7 @@ class ReactionsClient:
         comment_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -2078,7 +2046,7 @@ class ReactionsClient:
         discussion_number: int,
         comment_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberCommentsCommentNumberReactionsPostBodyType
         ] = UNSET,
@@ -2127,11 +2095,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy"""
-
-        from typing import List
 
         from ..models import Reaction
 
@@ -2150,7 +2116,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
         )
 
     async def async_list_for_team_discussion_legacy(
@@ -2165,11 +2131,9 @@ class ReactionsClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[Reaction]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[Reaction]]:
         """See also: https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy"""
-
-        from typing import List
 
         from ..models import Reaction
 
@@ -2188,7 +2152,7 @@ class ReactionsClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[Reaction],
+            response_model=list[Reaction],
         )
 
     @overload
@@ -2197,7 +2161,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -2208,7 +2172,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -2219,7 +2183,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,
@@ -2261,7 +2225,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType,
     ) -> Response[Reaction]: ...
 
@@ -2272,7 +2236,7 @@ class ReactionsClient:
         discussion_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         content: Literal[
             "+1", "-1", "laugh", "confused", "heart", "hooray", "rocket", "eyes"
         ],
@@ -2283,7 +2247,7 @@ class ReactionsClient:
         team_id: int,
         discussion_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             TeamsTeamIdDiscussionsDiscussionNumberReactionsPostBodyType
         ] = UNSET,

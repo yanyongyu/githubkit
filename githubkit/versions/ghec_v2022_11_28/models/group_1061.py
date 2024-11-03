@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from datetime import datetime
 
 from pydantic import Field
@@ -24,7 +23,7 @@ class ReposOwnerRepoGitCommitsPostBody(GitHubModel):
 
     message: str = Field(description="The commit message")
     tree: str = Field(description="The SHA of the tree object this commit points to")
-    parents: Missing[List[str]] = Field(
+    parents: Missing[list[str]] = Field(
         default=UNSET,
         description="The full SHAs of the commits that were the parents of this commit. If omitted or empty, the commit will be written as a root commit. For a single parent, an array of one SHA should be provided; for a merge commit, an array of more than one should be provided.",
     )

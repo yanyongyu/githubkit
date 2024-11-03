@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -27,7 +27,7 @@ class DependencyGraphDiffItems(GitHubModel):
     package_url: Union[str, None] = Field()
     license_: Union[str, None] = Field(alias="license")
     source_repository_url: Union[str, None] = Field()
-    vulnerabilities: List[DependencyGraphDiffItemsPropVulnerabilitiesItems] = Field()
+    vulnerabilities: list[DependencyGraphDiffItemsPropVulnerabilitiesItems] = Field()
     scope: Literal["unknown", "runtime", "development"] = Field(
         description="Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment."
     )

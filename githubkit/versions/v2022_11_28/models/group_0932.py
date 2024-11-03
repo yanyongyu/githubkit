@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -65,13 +63,13 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyP
     Omit this parameter for personal repositories.
     """
 
-    users: Missing[List[str]] = Field(
+    users: Missing[list[str]] = Field(
         default=UNSET, description="The list of user `login`s with dismissal access"
     )
-    teams: Missing[List[str]] = Field(
+    teams: Missing[list[str]] = Field(
         default=UNSET, description="The list of team `slug`s with dismissal access"
     )
-    apps: Missing[List[str]] = Field(
+    apps: Missing[list[str]] = Field(
         default=UNSET, description="The list of app `slug`s with dismissal access"
     )
 
@@ -85,15 +83,15 @@ class ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyP
     Allow specific users, teams, or apps to bypass pull request requirements.
     """
 
-    users: Missing[List[str]] = Field(
+    users: Missing[list[str]] = Field(
         default=UNSET,
         description="The list of user `login`s allowed to bypass pull request requirements.",
     )
-    teams: Missing[List[str]] = Field(
+    teams: Missing[list[str]] = Field(
         default=UNSET,
         description="The list of team `slug`s allowed to bypass pull request requirements.",
     )
-    apps: Missing[List[str]] = Field(
+    apps: Missing[list[str]] = Field(
         default=UNSET,
         description="The list of app `slug`s allowed to bypass pull request requirements.",
     )

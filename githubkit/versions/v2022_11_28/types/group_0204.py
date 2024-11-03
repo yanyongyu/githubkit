@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0029 import TeamType
@@ -25,9 +25,9 @@ class ProtectedBranchPropRequiredPullRequestReviewsPropDismissalRestrictionsType
     url: str
     users_url: str
     teams_url: str
-    users: List[SimpleUserType]
-    teams: List[TeamType]
-    apps: NotRequired[List[Union[IntegrationType, None]]]
+    users: list[SimpleUserType]
+    teams: list[TeamType]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
 
 
 class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowancesType(
@@ -35,9 +35,9 @@ class ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowanc
 ):
     """ProtectedBranchPropRequiredPullRequestReviewsPropBypassPullRequestAllowances"""
 
-    users: List[SimpleUserType]
-    teams: List[TeamType]
-    apps: NotRequired[List[Union[IntegrationType, None]]]
+    users: list[SimpleUserType]
+    teams: list[TeamType]
+    apps: NotRequired[list[Union[IntegrationType, None]]]
 
 
 __all__ = (

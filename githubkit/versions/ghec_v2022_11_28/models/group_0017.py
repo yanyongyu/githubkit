@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -46,12 +46,12 @@ class Installation(GitHubModel):
         title="App Permissions",
         description="The permissions granted to the user access token.",
     )
-    events: List[str] = Field()
+    events: list[str] = Field()
     created_at: datetime = Field()
     updated_at: datetime = Field()
     single_file_name: Union[str, None] = Field()
     has_multiple_single_files: Missing[bool] = Field(default=UNSET)
-    single_file_paths: Missing[List[str]] = Field(default=UNSET)
+    single_file_paths: Missing[list[str]] = Field(default=UNSET)
     app_slug: str = Field()
     suspended_by: Union[None, SimpleUser] = Field()
     suspended_at: Union[datetime, None] = Field()

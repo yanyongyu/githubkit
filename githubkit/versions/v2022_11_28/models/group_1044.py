@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -21,7 +19,7 @@ from .group_0105 import CustomPropertyValue
 class ReposOwnerRepoPropertiesValuesPatchBody(GitHubModel):
     """ReposOwnerRepoPropertiesValuesPatchBody"""
 
-    properties: List[CustomPropertyValue] = Field(
+    properties: list[CustomPropertyValue] = Field(
         description="A list of custom property names and associated values to apply to the repositories."
     )
 

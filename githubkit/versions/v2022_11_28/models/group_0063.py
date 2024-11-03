@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -22,7 +20,7 @@ class OidcCustomSub(GitHubModel):
     Actions OIDC Subject customization
     """
 
-    include_claim_keys: List[str] = Field(
+    include_claim_keys: list[str] = Field(
         description="Array of unique strings. Each claim key can only contain alphanumeric characters and underscores."
     )
 

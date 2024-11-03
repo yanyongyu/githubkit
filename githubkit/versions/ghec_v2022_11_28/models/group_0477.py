@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -109,7 +109,7 @@ class WebhookBranchProtectionRuleEditedPropChangesPropAdminEnforced(GitHubModel)
 class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames(GitHubModel):
     """WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorNames"""
 
-    from_: List[str] = Field(alias="from")
+    from_: list[str] = Field(alias="from")
 
 
 class WebhookBranchProtectionRuleEditedPropChangesPropAuthorizedActorsOnly(GitHubModel):
@@ -171,7 +171,7 @@ class WebhookBranchProtectionRuleEditedPropChangesPropRequireLastPushApproval(
 class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks(GitHubModel):
     """WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecks"""
 
-    from_: List[str] = Field(alias="from")
+    from_: list[str] = Field(alias="from")
 
 
 class WebhookBranchProtectionRuleEditedPropChangesPropRequiredStatusChecksEnforcementLevel(

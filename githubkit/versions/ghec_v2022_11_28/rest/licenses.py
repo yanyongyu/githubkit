@@ -10,14 +10,12 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Optional
+from typing import TYPE_CHECKING, Optional
 
 from githubkit.typing import Missing
 from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import List
-
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
     from githubkit.typing import Missing
@@ -47,11 +45,9 @@ class LicensesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[LicenseSimple]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[LicenseSimple]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-all-commonly-used-licenses"""
-
-        from typing import List
 
         from ..models import LicenseSimple
 
@@ -70,7 +66,7 @@ class LicensesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[LicenseSimple],
+            response_model=list[LicenseSimple],
         )
 
     async def async_get_all_commonly_used(
@@ -79,11 +75,9 @@ class LicensesClient:
         per_page: Missing[int] = UNSET,
         page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[LicenseSimple]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[LicenseSimple]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-all-commonly-used-licenses"""
-
-        from typing import List
 
         from ..models import LicenseSimple
 
@@ -102,14 +96,14 @@ class LicensesClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[LicenseSimple],
+            response_model=list[LicenseSimple],
         )
 
     def get(
         self,
         license_: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[License]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-a-license"""
 
@@ -134,7 +128,7 @@ class LicensesClient:
         self,
         license_: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[License]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-a-license"""
 
@@ -161,7 +155,7 @@ class LicensesClient:
         repo: str,
         ref: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[LicenseContent]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-the-license-for-a-repository"""
 
@@ -192,7 +186,7 @@ class LicensesClient:
         repo: str,
         ref: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[LicenseContent]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-the-license-for-a-repository"""
 

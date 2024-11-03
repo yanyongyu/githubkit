@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -25,7 +23,7 @@ class EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBody(GitHubModel):
     runner_group_id: int = Field(
         description="The ID of the runner group to register the runner to."
     )
-    labels: List[str] = Field(
+    labels: list[str] = Field(
         max_length=100 if PYDANTIC_V2 else None,
         min_length=1 if PYDANTIC_V2 else None,
         description="The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.",

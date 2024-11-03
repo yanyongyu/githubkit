@@ -1,5 +1,6 @@
+from typing import TYPE_CHECKING
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Generator
+from collections.abc import Generator
 
 import httpx
 

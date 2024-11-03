@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
@@ -19,7 +17,7 @@ from githubkit.compat import PYDANTIC_V2, GitHubModel, model_rebuild
 class OrgsOrgCopilotBillingSelectedUsersPostBody(GitHubModel):
     """OrgsOrgCopilotBillingSelectedUsersPostBody"""
 
-    selected_usernames: List[str] = Field(
+    selected_usernames: list[str] = Field(
         min_length=1 if PYDANTIC_V2 else None,
         description="The usernames of the organization members to be granted access to GitHub Copilot.",
     )

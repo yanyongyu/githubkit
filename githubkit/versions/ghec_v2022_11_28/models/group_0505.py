@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -50,10 +50,10 @@ class WebhookCustomPropertyValuesUpdated(GitHubModel):
     sender: Missing[SimpleUser] = Field(
         default=UNSET, title="Simple User", description="A GitHub user."
     )
-    new_property_values: List[CustomPropertyValue] = Field(
+    new_property_values: list[CustomPropertyValue] = Field(
         description="The new custom property values for the repository."
     )
-    old_property_values: List[CustomPropertyValue] = Field(
+    old_property_values: list[CustomPropertyValue] = Field(
         description="The old custom property values for the repository."
     )
 

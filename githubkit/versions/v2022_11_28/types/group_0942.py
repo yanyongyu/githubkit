@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 
@@ -22,7 +21,7 @@ class ReposOwnerRepoBranchesBranchProtectionRestrictionsTeamsDeleteBodyOneof0Typ
         {'teams': ['my-team']}
     """
 
-    teams: List[str]
+    teams: list[str]
 
 
 __all__ = (

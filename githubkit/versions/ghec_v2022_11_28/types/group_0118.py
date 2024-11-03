@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -34,13 +34,13 @@ class MigrationType(TypedDict):
     exclude_releases: bool
     exclude_owner_projects: bool
     org_metadata_only: bool
-    repositories: List[RepositoryType]
+    repositories: list[RepositoryType]
     url: str
     created_at: datetime
     updated_at: datetime
     node_id: str
     archive_url: NotRequired[str]
-    exclude: NotRequired[List[str]]
+    exclude: NotRequired[list[str]]
 
 
 __all__ = ("MigrationType",)

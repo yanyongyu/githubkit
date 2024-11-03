@@ -10,14 +10,12 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Optional
+from typing import TYPE_CHECKING, Optional
 
 from githubkit.typing import Missing
 from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import List
-
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
     from githubkit.typing import Missing
@@ -52,7 +50,7 @@ class ClassroomClient:
         self,
         assignment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ClassroomAssignment]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-an-assignment"""
 
@@ -76,7 +74,7 @@ class ClassroomClient:
         self,
         assignment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ClassroomAssignment]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-an-assignment"""
 
@@ -102,11 +100,9 @@ class ClassroomClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ClassroomAcceptedAssignment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ClassroomAcceptedAssignment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-accepted-assignments-for-an-assignment"""
-
-        from typing import List
 
         from ..models import ClassroomAcceptedAssignment
 
@@ -124,7 +120,7 @@ class ClassroomClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ClassroomAcceptedAssignment],
+            response_model=list[ClassroomAcceptedAssignment],
         )
 
     async def async_list_accepted_assignments_for_an_assignment(
@@ -133,11 +129,9 @@ class ClassroomClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ClassroomAcceptedAssignment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ClassroomAcceptedAssignment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-accepted-assignments-for-an-assignment"""
-
-        from typing import List
 
         from ..models import ClassroomAcceptedAssignment
 
@@ -155,18 +149,16 @@ class ClassroomClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[ClassroomAcceptedAssignment],
+            response_model=list[ClassroomAcceptedAssignment],
         )
 
     def get_assignment_grades(
         self,
         assignment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ClassroomAssignmentGrade]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ClassroomAssignmentGrade]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-assignment-grades"""
-
-        from typing import List
 
         from ..models import BasicError, ClassroomAssignmentGrade
 
@@ -178,7 +170,7 @@ class ClassroomClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[ClassroomAssignmentGrade],
+            response_model=list[ClassroomAssignmentGrade],
             error_models={
                 "404": BasicError,
             },
@@ -188,11 +180,9 @@ class ClassroomClient:
         self,
         assignment_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[ClassroomAssignmentGrade]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[ClassroomAssignmentGrade]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-assignment-grades"""
-
-        from typing import List
 
         from ..models import BasicError, ClassroomAssignmentGrade
 
@@ -204,7 +194,7 @@ class ClassroomClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[ClassroomAssignmentGrade],
+            response_model=list[ClassroomAssignmentGrade],
             error_models={
                 "404": BasicError,
             },
@@ -215,11 +205,9 @@ class ClassroomClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleClassroom]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleClassroom]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-classrooms"""
-
-        from typing import List
 
         from ..models import SimpleClassroom
 
@@ -237,7 +225,7 @@ class ClassroomClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleClassroom],
+            response_model=list[SimpleClassroom],
         )
 
     async def async_list_classrooms(
@@ -245,11 +233,9 @@ class ClassroomClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleClassroom]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleClassroom]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-classrooms"""
-
-        from typing import List
 
         from ..models import SimpleClassroom
 
@@ -267,14 +253,14 @@ class ClassroomClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleClassroom],
+            response_model=list[SimpleClassroom],
         )
 
     def get_a_classroom(
         self,
         classroom_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Classroom]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-a-classroom"""
 
@@ -298,7 +284,7 @@ class ClassroomClient:
         self,
         classroom_id: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Classroom]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#get-a-classroom"""
 
@@ -324,11 +310,9 @@ class ClassroomClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleClassroomAssignment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleClassroomAssignment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-assignments-for-a-classroom"""
-
-        from typing import List
 
         from ..models import SimpleClassroomAssignment
 
@@ -346,7 +330,7 @@ class ClassroomClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleClassroomAssignment],
+            response_model=list[SimpleClassroomAssignment],
         )
 
     async def async_list_assignments_for_a_classroom(
@@ -355,11 +339,9 @@ class ClassroomClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SimpleClassroomAssignment]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SimpleClassroomAssignment]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/classroom/classroom#list-assignments-for-a-classroom"""
-
-        from typing import List
 
         from ..models import SimpleClassroomAssignment
 
@@ -377,5 +359,5 @@ class ClassroomClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SimpleClassroomAssignment],
+            response_model=list[SimpleClassroomAssignment],
         )

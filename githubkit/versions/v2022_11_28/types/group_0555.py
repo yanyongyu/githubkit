@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -21,7 +21,7 @@ class WebhookIssuesClosedPropIssueAllof1Type(TypedDict):
         Union[WebhookIssuesClosedPropIssueAllof1PropAssigneeType, None]
     ]
     assignees: NotRequired[
-        List[Union[WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsType, None]]
+        list[Union[WebhookIssuesClosedPropIssueAllof1PropAssigneesItemsType, None]]
     ]
     author_association: NotRequired[str]
     body: NotRequired[Union[str, None]]
@@ -33,7 +33,7 @@ class WebhookIssuesClosedPropIssueAllof1Type(TypedDict):
     html_url: NotRequired[str]
     id: NotRequired[int]
     labels: NotRequired[
-        List[Union[WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType, None]]
+        list[Union[WebhookIssuesClosedPropIssueAllof1PropLabelsItemsType, None]]
     ]
     labels_url: NotRequired[str]
     locked: NotRequired[bool]

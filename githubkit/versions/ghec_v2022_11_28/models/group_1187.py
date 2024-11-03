@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 
 from pydantic import Field
 
@@ -22,7 +22,7 @@ class UsersUsernameAttestationsSubjectDigestGetResponse200(GitHubModel):
     """UsersUsernameAttestationsSubjectDigestGetResponse200"""
 
     attestations: Missing[
-        List[UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems]
+        list[UsersUsernameAttestationsSubjectDigestGetResponse200PropAttestationsItems]
     ] = Field(default=UNSET)
 
 
@@ -57,7 +57,7 @@ class SigstoreBundle0PropDsseEnvelope(GitHubModel):
 
     payload: Missing[str] = Field(default=UNSET)
     payload_type: Missing[str] = Field(default=UNSET, alias="payloadType")
-    signatures: Missing[List[SigstoreBundle0PropDsseEnvelopePropSignaturesItems]] = (
+    signatures: Missing[list[SigstoreBundle0PropDsseEnvelopePropSignaturesItems]] = (
         Field(default=UNSET)
     )
 
@@ -76,7 +76,7 @@ class SigstoreBundle0PropVerificationMaterial(GitHubModel):
         SigstoreBundle0PropVerificationMaterialPropX509CertificateChain
     ] = Field(default=UNSET, alias="x509CertificateChain")
     tlog_entries: Missing[
-        List[SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems]
+        list[SigstoreBundle0PropVerificationMaterialPropTlogEntriesItems]
     ] = Field(default=UNSET, alias="tlogEntries")
     timestamp_verification_data: Missing[Union[str, None]] = Field(
         default=UNSET, alias="timestampVerificationData"
@@ -87,7 +87,7 @@ class SigstoreBundle0PropVerificationMaterialPropX509CertificateChain(GitHubMode
     """SigstoreBundle0PropVerificationMaterialPropX509CertificateChain"""
 
     certificates: Missing[
-        List[
+        list[
             SigstoreBundle0PropVerificationMaterialPropX509CertificateChainPropCertificatesItems
         ]
     ] = Field(default=UNSET)

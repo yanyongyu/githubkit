@@ -10,13 +10,11 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Optional
+from typing import TYPE_CHECKING, Optional
 
 from githubkit.utils import exclude_unset
 
 if TYPE_CHECKING:
-    from typing import List
-
     from githubkit import GitHubCore
     from githubkit.response import Response
 
@@ -41,11 +39,9 @@ class GitignoreClient:
     def get_all_templates(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[str]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[str]]:
         """See also: https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates"""
-
-        from typing import List
 
         url = "/gitignore/templates"
 
@@ -55,17 +51,15 @@ class GitignoreClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[str],
+            response_model=list[str],
         )
 
     async def async_get_all_templates(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[str]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[str]]:
         """See also: https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates"""
-
-        from typing import List
 
         url = "/gitignore/templates"
 
@@ -75,14 +69,14 @@ class GitignoreClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[str],
+            response_model=list[str],
         )
 
     def get_template(
         self,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[GitignoreTemplate]:
         """See also: https://docs.github.com/rest/gitignore/gitignore#get-a-gitignore-template"""
 
@@ -103,7 +97,7 @@ class GitignoreClient:
         self,
         name: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[GitignoreTemplate]:
         """See also: https://docs.github.com/rest/gitignore/gitignore#get-a-gitignore-template"""
 

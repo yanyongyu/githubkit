@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -55,7 +55,7 @@ class OrgsOrgRulesetsPostBody(GitHubModel):
     enforcement: Literal["disabled", "active", "evaluate"] = Field(
         description="The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page."
     )
-    bypass_actors: Missing[List[RepositoryRulesetBypassActor]] = Field(
+    bypass_actors: Missing[list[RepositoryRulesetBypassActor]] = Field(
         default=UNSET,
         description="The actors that can bypass the rules in this ruleset",
     )
@@ -71,7 +71,7 @@ class OrgsOrgRulesetsPostBody(GitHubModel):
         description="Conditions for an organization ruleset.\nThe branch and tag rulesets conditions object should contain both `repository_name` and `ref_name` properties, or both `repository_id` and `ref_name` properties, or both `repository_property` and `ref_name` properties.\nThe push rulesets conditions object does not require the `ref_name` property.",
     )
     rules: Missing[
-        List[
+        list[
             Union[
                 RepositoryRuleCreation,
                 RepositoryRuleUpdate,

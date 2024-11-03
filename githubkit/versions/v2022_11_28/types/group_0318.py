@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
 from .group_0029 import TeamType
@@ -22,8 +21,8 @@ class PullRequestReviewRequestType(TypedDict):
     Pull Request Review Request
     """
 
-    users: List[SimpleUserType]
-    teams: List[TeamType]
+    users: list[SimpleUserType]
+    teams: list[TeamType]
 
 
 __all__ = ("PullRequestReviewRequestType",)

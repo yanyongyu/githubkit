@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 
 from pydantic import Field
 
@@ -41,8 +41,8 @@ class CodeSearchResultItem(GitHubModel):
     file_size: Missing[int] = Field(default=UNSET)
     language: Missing[Union[str, None]] = Field(default=UNSET)
     last_modified_at: Missing[datetime] = Field(default=UNSET)
-    line_numbers: Missing[List[str]] = Field(default=UNSET)
-    text_matches: Missing[List[SearchResultTextMatchesItems]] = Field(
+    line_numbers: Missing[list[str]] = Field(default=UNSET)
+    text_matches: Missing[list[SearchResultTextMatchesItems]] = Field(
         default=UNSET, title="Search Result Text Matches"
     )
 
@@ -52,7 +52,7 @@ class SearchCodeGetResponse200(GitHubModel):
 
     total_count: int = Field()
     incomplete_results: bool = Field()
-    items: List[CodeSearchResultItem] = Field()
+    items: list[CodeSearchResultItem] = Field()
 
 
 model_rebuild(CodeSearchResultItem)

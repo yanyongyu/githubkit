@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -40,7 +40,7 @@ class DependabotAlertSecurityAdvisory(GitHubModel):
     description: str = Field(
         description="A long-form Markdown-supported description of the advisory."
     )
-    vulnerabilities: List[DependabotAlertSecurityVulnerability] = Field(
+    vulnerabilities: list[DependabotAlertSecurityVulnerability] = Field(
         description="Vulnerable version range information for the advisory."
     )
     severity: Literal["low", "medium", "high", "critical"] = Field(
@@ -50,13 +50,13 @@ class DependabotAlertSecurityAdvisory(GitHubModel):
         description="Details for the advisory pertaining to the Common Vulnerability Scoring System."
     )
     cvss_severities: Missing[Union[CvssSeverities, None]] = Field(default=UNSET)
-    cwes: List[DependabotAlertSecurityAdvisoryPropCwesItems] = Field(
+    cwes: list[DependabotAlertSecurityAdvisoryPropCwesItems] = Field(
         description="Details for the advisory pertaining to Common Weakness Enumeration."
     )
-    identifiers: List[DependabotAlertSecurityAdvisoryPropIdentifiersItems] = Field(
+    identifiers: list[DependabotAlertSecurityAdvisoryPropIdentifiersItems] = Field(
         description="Values that identify this advisory among security information sources."
     )
-    references: List[DependabotAlertSecurityAdvisoryPropReferencesItems] = Field(
+    references: list[DependabotAlertSecurityAdvisoryPropReferencesItems] = Field(
         description="Links to additional advisory information."
     )
     published_at: datetime = Field(

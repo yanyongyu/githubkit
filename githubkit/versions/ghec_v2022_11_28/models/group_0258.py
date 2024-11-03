@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -50,7 +50,7 @@ class PullRequestSimple(GitHubModel):
     title: str = Field()
     user: Union[None, SimpleUser] = Field()
     body: Union[str, None] = Field()
-    labels: List[PullRequestSimplePropLabelsItems] = Field()
+    labels: list[PullRequestSimplePropLabelsItems] = Field()
     milestone: Union[None, Milestone] = Field()
     active_lock_reason: Missing[Union[str, None]] = Field(default=UNSET)
     created_at: datetime = Field()
@@ -59,9 +59,9 @@ class PullRequestSimple(GitHubModel):
     merged_at: Union[datetime, None] = Field()
     merge_commit_sha: Union[str, None] = Field()
     assignee: Union[None, SimpleUser] = Field()
-    assignees: Missing[Union[List[SimpleUser], None]] = Field(default=UNSET)
-    requested_reviewers: Missing[Union[List[SimpleUser], None]] = Field(default=UNSET)
-    requested_teams: Missing[Union[List[Team], None]] = Field(default=UNSET)
+    assignees: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    requested_reviewers: Missing[Union[list[SimpleUser], None]] = Field(default=UNSET)
+    requested_teams: Missing[Union[list[Team], None]] = Field(default=UNSET)
     head: PullRequestSimplePropHead = Field()
     base: PullRequestSimplePropBase = Field()
     links: PullRequestSimplePropLinks = Field(alias="_links")

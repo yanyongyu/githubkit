@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -21,7 +20,7 @@ class ValidationErrorSimpleType(TypedDict):
 
     message: str
     documentation_url: str
-    errors: NotRequired[List[str]]
+    errors: NotRequired[list[str]]
 
 
 __all__ = ("ValidationErrorSimpleType",)

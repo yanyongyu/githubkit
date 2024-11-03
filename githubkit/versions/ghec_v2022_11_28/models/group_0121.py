@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -26,7 +26,7 @@ class OrganizationCustomOrganizationRoleCreateSchema(GitHubModel):
         default=UNSET,
         description="A short description about the intended usage of this role or what permissions it grants.",
     )
-    permissions: List[str] = Field(
+    permissions: list[str] = Field(
         description="A list of additional permissions included in this role."
     )
     base_role: Missing[Literal["read", "triage", "write", "maintain", "admin"]] = Field(

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -24,7 +22,7 @@ class ExternalGroups(GitHubModel):
     A list of external groups available to be connected to a team
     """
 
-    groups: Missing[List[ExternalGroupsPropGroupsItems]] = Field(
+    groups: Missing[list[ExternalGroupsPropGroupsItems]] = Field(
         default=UNSET,
         description="An array of external groups available to be mapped to a team",
     )

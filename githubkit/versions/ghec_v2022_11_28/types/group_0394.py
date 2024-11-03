@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0385 import MetaType
@@ -20,7 +19,7 @@ class ScimEnterpriseUserResponseAllof1Type(TypedDict):
     """ScimEnterpriseUserResponseAllof1"""
 
     id: str
-    groups: NotRequired[List[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
+    groups: NotRequired[list[ScimEnterpriseUserResponseAllof1PropGroupsItemsType]]
     meta: MetaType
 
 

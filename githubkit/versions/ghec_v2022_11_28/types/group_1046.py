@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -19,7 +19,7 @@ class ReposOwnerRepoDeploymentsPostBodyType(TypedDict):
     ref: str
     task: NotRequired[str]
     auto_merge: NotRequired[bool]
-    required_contexts: NotRequired[List[str]]
+    required_contexts: NotRequired[list[str]]
     payload: NotRequired[
         Union[ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type, str]
     ]

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Literal, Optional, overload
+from typing import TYPE_CHECKING, Literal, Optional, overload
 
 from pydantic import BaseModel
 
@@ -19,7 +19,7 @@ from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
-    from typing import List, Union, Literal
+    from typing import Union, Literal
 
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
@@ -68,11 +68,9 @@ class SecretScanningClient:
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationSecretScanningAlert]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationSecretScanningAlert]]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -103,7 +101,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationSecretScanningAlert],
+            response_model=list[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -125,11 +123,9 @@ class SecretScanningClient:
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationSecretScanningAlert]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationSecretScanningAlert]]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -160,7 +156,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationSecretScanningAlert],
+            response_model=list[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -183,11 +179,9 @@ class SecretScanningClient:
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationSecretScanningAlert]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationSecretScanningAlert]]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -219,7 +213,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationSecretScanningAlert],
+            response_model=list[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -242,11 +236,9 @@ class SecretScanningClient:
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[OrganizationSecretScanningAlert]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[OrganizationSecretScanningAlert]]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-organization"""
-
-        from typing import List
 
         from ..models import (
             BasicError,
@@ -278,7 +270,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[OrganizationSecretScanningAlert],
+            response_model=list[OrganizationSecretScanningAlert],
             error_models={
                 "404": BasicError,
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
@@ -302,11 +294,9 @@ class SecretScanningClient:
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SecretScanningAlert]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SecretScanningAlert]]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository"""
-
-        from typing import List
 
         from ..models import (
             SecretScanningAlert,
@@ -337,7 +327,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SecretScanningAlert],
+            response_model=list[SecretScanningAlert],
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
@@ -360,11 +350,9 @@ class SecretScanningClient:
         is_publicly_leaked: Missing[bool] = UNSET,
         is_multi_repo: Missing[bool] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SecretScanningAlert]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SecretScanningAlert]]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-a-repository"""
-
-        from typing import List
 
         from ..models import (
             SecretScanningAlert,
@@ -395,7 +383,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SecretScanningAlert],
+            response_model=list[SecretScanningAlert],
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
@@ -407,7 +395,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SecretScanningAlert]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert"""
 
@@ -436,7 +424,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[SecretScanningAlert]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#get-a-secret-scanning-alert"""
 
@@ -466,7 +454,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
     ) -> Response[SecretScanningAlert]: ...
 
@@ -478,7 +466,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         state: Literal["open", "resolved"],
         resolution: Missing[
             Union[
@@ -494,7 +482,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
         ] = UNSET,
@@ -541,7 +529,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType,
     ) -> Response[SecretScanningAlert]: ...
 
@@ -553,7 +541,7 @@ class SecretScanningClient:
         alert_number: int,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         state: Literal["open", "resolved"],
         resolution: Missing[
             Union[
@@ -569,7 +557,7 @@ class SecretScanningClient:
         repo: str,
         alert_number: int,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoSecretScanningAlertsAlertNumberPatchBodyType
         ] = UNSET,
@@ -617,11 +605,9 @@ class SecretScanningClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SecretScanningLocation]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SecretScanningLocation]]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert"""
-
-        from typing import List
 
         from ..models import (
             SecretScanningLocation,
@@ -642,7 +628,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SecretScanningLocation],
+            response_model=list[SecretScanningLocation],
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
@@ -656,11 +642,9 @@ class SecretScanningClient:
         page: Missing[int] = UNSET,
         per_page: Missing[int] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[SecretScanningLocation]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[SecretScanningLocation]]:
         """See also: https://docs.github.com/rest/secret-scanning/secret-scanning#list-locations-for-a-secret-scanning-alert"""
-
-        from typing import List
 
         from ..models import (
             SecretScanningLocation,
@@ -681,7 +665,7 @@ class SecretScanningClient:
             url,
             params=exclude_unset(params),
             headers=exclude_unset(headers),
-            response_model=List[SecretScanningLocation],
+            response_model=list[SecretScanningLocation],
             error_models={
                 "503": EnterprisesEnterpriseSecretScanningAlertsGetResponse503,
             },
@@ -693,7 +677,7 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
     ) -> Response[SecretScanningPushProtectionBypass]: ...
 
@@ -704,7 +688,7 @@ class SecretScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         reason: Literal["false_positive", "used_in_tests", "will_fix_later"],
         placeholder_id: str,
     ) -> Response[SecretScanningPushProtectionBypass]: ...
@@ -714,7 +698,7 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType
         ] = UNSET,
@@ -760,7 +744,7 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType,
     ) -> Response[SecretScanningPushProtectionBypass]: ...
 
@@ -771,7 +755,7 @@ class SecretScanningClient:
         repo: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         reason: Literal["false_positive", "used_in_tests", "will_fix_later"],
         placeholder_id: str,
     ) -> Response[SecretScanningPushProtectionBypass]: ...
@@ -781,7 +765,7 @@ class SecretScanningClient:
         owner: str,
         repo: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[
             ReposOwnerRepoSecretScanningPushProtectionBypassesPostBodyType
         ] = UNSET,

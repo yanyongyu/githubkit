@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -35,10 +35,10 @@ class InstallationToken(GitHubModel):
         description="The permissions granted to the user access token.",
     )
     repository_selection: Missing[Literal["all", "selected"]] = Field(default=UNSET)
-    repositories: Missing[List[Repository]] = Field(default=UNSET)
+    repositories: Missing[list[Repository]] = Field(default=UNSET)
     single_file: Missing[str] = Field(default=UNSET)
     has_multiple_single_files: Missing[bool] = Field(default=UNSET)
-    single_file_paths: Missing[List[str]] = Field(default=UNSET)
+    single_file_paths: Missing[list[str]] = Field(default=UNSET)
 
 
 model_rebuild(InstallationToken)

@@ -9,8 +9,8 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
+from typing import Union
 from datetime import datetime
-from typing import List, Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0398 import SearchResultTextMatchesItemsType
@@ -52,7 +52,7 @@ class UserSearchResultItemType(TypedDict):
     location: NotRequired[Union[str, None]]
     site_admin: bool
     hireable: NotRequired[Union[bool, None]]
-    text_matches: NotRequired[List[SearchResultTextMatchesItemsType]]
+    text_matches: NotRequired[list[SearchResultTextMatchesItemsType]]
     blog: NotRequired[Union[str, None]]
     company: NotRequired[Union[str, None]]
     suspended_at: NotRequired[Union[datetime, None]]
@@ -64,7 +64,7 @@ class SearchUsersGetResponse200Type(TypedDict):
 
     total_count: int
     incomplete_results: bool
-    items: List[UserSearchResultItemType]
+    items: list[UserSearchResultItemType]
 
 
 __all__ = (

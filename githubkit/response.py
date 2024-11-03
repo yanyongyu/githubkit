@@ -1,4 +1,4 @@
-from typing import Any, Type, Generic, TypeVar
+from typing import Any, Generic, TypeVar
 
 import httpx
 
@@ -8,7 +8,7 @@ RT = TypeVar("RT")
 
 
 class Response(Generic[RT]):
-    def __init__(self, response: httpx.Response, data_model: Type[RT]):
+    def __init__(self, response: httpx.Response, data_model: type[RT]):
         self._response = response
         self._data_model = data_model
 

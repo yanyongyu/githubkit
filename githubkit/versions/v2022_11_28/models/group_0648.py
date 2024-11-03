@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -69,7 +69,7 @@ class WebhookPullRequestAutoMergeDisabledPropPullRequest(GitHubModel):
     assignee: Union[
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssignee, None
     ] = Field(title="User")
-    assignees: List[
+    assignees: list[
         Union[
             WebhookPullRequestAutoMergeDisabledPropPullRequestPropAssigneesItems, None
         ]
@@ -111,7 +111,7 @@ class WebhookPullRequestAutoMergeDisabledPropPullRequest(GitHubModel):
     html_url: str = Field()
     id: int = Field()
     issue_url: str = Field()
-    labels: List[WebhookPullRequestAutoMergeDisabledPropPullRequestPropLabelsItems] = (
+    labels: list[WebhookPullRequestAutoMergeDisabledPropPullRequestPropLabelsItems] = (
         Field()
     )
     locked: bool = Field()
@@ -139,14 +139,14 @@ class WebhookPullRequestAutoMergeDisabledPropPullRequest(GitHubModel):
     )
     patch_url: str = Field()
     rebaseable: Missing[Union[bool, None]] = Field(default=UNSET)
-    requested_reviewers: List[
+    requested_reviewers: list[
         Union[
             WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof0,
             None,
             WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedReviewersItemsOneof1,
         ]
     ] = Field()
-    requested_teams: List[
+    requested_teams: list[
         WebhookPullRequestAutoMergeDisabledPropPullRequestPropRequestedTeamsItems
     ] = Field()
     review_comment_url: str = Field()
@@ -691,7 +691,7 @@ class WebhookPullRequestAutoMergeDisabledPropPullRequestPropBasePropRepo(GitHubM
     svn_url: str = Field()
     tags_url: str = Field()
     teams_url: str = Field()
-    topics: List[str] = Field()
+    topics: list[str] = Field()
     trees_url: str = Field()
     updated_at: datetime = Field()
     url: str = Field()
@@ -944,7 +944,7 @@ class WebhookPullRequestAutoMergeDisabledPropPullRequestPropHeadPropRepo(GitHubM
     svn_url: str = Field()
     tags_url: str = Field()
     teams_url: str = Field()
-    topics: List[str] = Field()
+    topics: list[str] = Field()
     trees_url: str = Field()
     updated_at: datetime = Field()
     url: str = Field()

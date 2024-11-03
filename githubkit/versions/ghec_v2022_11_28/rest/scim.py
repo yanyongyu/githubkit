@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Optional, overload
+from typing import TYPE_CHECKING, Optional, overload
 
 from pydantic import BaseModel
 
@@ -19,8 +19,6 @@ from githubkit.utils import UNSET, exclude_unset
 from githubkit.compat import model_dump, type_validate_python
 
 if TYPE_CHECKING:
-    from typing import List
-
     from githubkit import GitHubCore
     from githubkit.utils import UNSET
     from githubkit.typing import Missing
@@ -61,7 +59,7 @@ class ScimClient:
         count: Missing[int] = UNSET,
         filter_: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ScimUserList]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#list-scim-provisioned-identities"""
 
@@ -98,7 +96,7 @@ class ScimClient:
         count: Missing[int] = UNSET,
         filter_: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ScimUserList]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#list-scim-provisioned-identities"""
 
@@ -133,7 +131,7 @@ class ScimClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersPostBodyType,
     ) -> Response[ScimUser]: ...
 
@@ -143,14 +141,14 @@ class ScimClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         user_name: str,
         display_name: Missing[str] = UNSET,
         name: ScimV2OrganizationsOrgUsersPostBodyPropNameType,
-        emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType],
-        schemas: Missing[List[str]] = UNSET,
+        emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType],
+        schemas: Missing[list[str]] = UNSET,
         external_id: Missing[str] = UNSET,
-        groups: Missing[List[str]] = UNSET,
+        groups: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
     ) -> Response[ScimUser]: ...
 
@@ -158,7 +156,7 @@ class ScimClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ScimV2OrganizationsOrgUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ScimUser]:
@@ -199,7 +197,7 @@ class ScimClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersPostBodyType,
     ) -> Response[ScimUser]: ...
 
@@ -209,14 +207,14 @@ class ScimClient:
         org: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         user_name: str,
         display_name: Missing[str] = UNSET,
         name: ScimV2OrganizationsOrgUsersPostBodyPropNameType,
-        emails: List[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType],
-        schemas: Missing[List[str]] = UNSET,
+        emails: list[ScimV2OrganizationsOrgUsersPostBodyPropEmailsItemsType],
+        schemas: Missing[list[str]] = UNSET,
         external_id: Missing[str] = UNSET,
-        groups: Missing[List[str]] = UNSET,
+        groups: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
     ) -> Response[ScimUser]: ...
 
@@ -224,7 +222,7 @@ class ScimClient:
         self,
         org: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ScimV2OrganizationsOrgUsersPostBodyType] = UNSET,
         **kwargs,
     ) -> Response[ScimUser]:
@@ -265,7 +263,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ScimUser]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#get-scim-provisioning-information-for-a-user"""
 
@@ -291,7 +289,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ScimUser]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#get-scim-provisioning-information-for-a-user"""
 
@@ -318,7 +316,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
     ) -> Response[ScimUser]: ...
 
@@ -329,15 +327,15 @@ class ScimClient:
         scim_user_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        schemas: Missing[List[str]] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        schemas: Missing[list[str]] = UNSET,
         display_name: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
-        groups: Missing[List[str]] = UNSET,
+        groups: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
         user_name: str,
         name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType,
-        emails: List[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType],
+        emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType],
     ) -> Response[ScimUser]: ...
 
     def set_information_for_provisioned_user(
@@ -345,7 +343,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ScimUser]:
@@ -390,7 +388,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersScimUserIdPutBodyType,
     ) -> Response[ScimUser]: ...
 
@@ -401,15 +399,15 @@ class ScimClient:
         scim_user_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        schemas: Missing[List[str]] = UNSET,
+        headers: Optional[dict[str, str]] = None,
+        schemas: Missing[list[str]] = UNSET,
         display_name: Missing[str] = UNSET,
         external_id: Missing[str] = UNSET,
-        groups: Missing[List[str]] = UNSET,
+        groups: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
         user_name: str,
         name: ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropNameType,
-        emails: List[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType],
+        emails: list[ScimV2OrganizationsOrgUsersScimUserIdPutBodyPropEmailsItemsType],
     ) -> Response[ScimUser]: ...
 
     async def async_set_information_for_provisioned_user(
@@ -417,7 +415,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPutBodyType] = UNSET,
         **kwargs,
     ) -> Response[ScimUser]:
@@ -461,7 +459,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#delete-a-scim-user-from-an-organization"""
 
@@ -486,7 +484,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/scim/scim#delete-a-scim-user-from-an-organization"""
 
@@ -512,7 +510,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType,
     ) -> Response[ScimUser]: ...
 
@@ -523,9 +521,9 @@ class ScimClient:
         scim_user_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        schemas: Missing[List[str]] = UNSET,
-        operations: List[
+        headers: Optional[dict[str, str]] = None,
+        schemas: Missing[list[str]] = UNSET,
+        operations: list[
             ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
         ],
     ) -> Response[ScimUser]: ...
@@ -535,7 +533,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ScimUser]:
@@ -583,7 +581,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType,
     ) -> Response[ScimUser]: ...
 
@@ -594,9 +592,9 @@ class ScimClient:
         scim_user_id: str,
         *,
         data: UnsetType = UNSET,
-        headers: Optional[Dict[str, str]] = None,
-        schemas: Missing[List[str]] = UNSET,
-        operations: List[
+        headers: Optional[dict[str, str]] = None,
+        schemas: Missing[list[str]] = UNSET,
+        operations: list[
             ScimV2OrganizationsOrgUsersScimUserIdPatchBodyPropOperationsItemsType
         ],
     ) -> Response[ScimUser]: ...
@@ -606,7 +604,7 @@ class ScimClient:
         org: str,
         scim_user_id: str,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
         data: Missing[ScimV2OrganizationsOrgUsersScimUserIdPatchBodyType] = UNSET,
         **kwargs,
     ) -> Response[ScimUser]:

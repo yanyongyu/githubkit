@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -29,8 +29,8 @@ class WebhookCustomPropertyValuesUpdatedType(TypedDict):
     repository: RepositoryWebhooksType
     organization: OrganizationSimpleWebhooksType
     sender: NotRequired[SimpleUserType]
-    new_property_values: List[CustomPropertyValueType]
-    old_property_values: List[CustomPropertyValueType]
+    new_property_values: list[CustomPropertyValueType]
+    old_property_values: list[CustomPropertyValueType]
 
 
 __all__ = ("WebhookCustomPropertyValuesUpdatedType",)

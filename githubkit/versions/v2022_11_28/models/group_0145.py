@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -25,7 +23,7 @@ class RepositoryRuleWorkflowsPropParameters(GitHubModel):
         default=UNSET,
         description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
     )
-    workflows: List[RepositoryRuleParamsWorkflowFileReference] = Field(
+    workflows: list[RepositoryRuleParamsWorkflowFileReference] = Field(
         description="Workflows that must pass for this rule to pass."
     )
 

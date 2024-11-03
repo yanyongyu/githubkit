@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -32,16 +32,16 @@ class RepositoryAdvisoryUpdate(GitHubModel):
     cve_id: Missing[Union[str, None]] = Field(
         default=UNSET, description="The Common Vulnerabilities and Exposures (CVE) ID."
     )
-    vulnerabilities: Missing[List[RepositoryAdvisoryUpdatePropVulnerabilitiesItems]] = (
+    vulnerabilities: Missing[list[RepositoryAdvisoryUpdatePropVulnerabilitiesItems]] = (
         Field(
             default=UNSET,
             description="A product affected by the vulnerability detailed in a repository security advisory.",
         )
     )
-    cwe_ids: Missing[Union[List[str], None]] = Field(
+    cwe_ids: Missing[Union[list[str], None]] = Field(
         default=UNSET, description="A list of Common Weakness Enumeration (CWE) IDs."
     )
-    credits_: Missing[Union[List[RepositoryAdvisoryUpdatePropCreditsItems], None]] = (
+    credits_: Missing[Union[list[RepositoryAdvisoryUpdatePropCreditsItems], None]] = (
         Field(
             default=UNSET,
             alias="credits",
@@ -61,11 +61,11 @@ class RepositoryAdvisoryUpdate(GitHubModel):
     state: Missing[Literal["published", "closed", "draft"]] = Field(
         default=UNSET, description="The state of the advisory."
     )
-    collaborating_users: Missing[Union[List[str], None]] = Field(
+    collaborating_users: Missing[Union[list[str], None]] = Field(
         default=UNSET,
         description="A list of usernames who have been granted write access to the advisory.",
     )
-    collaborating_teams: Missing[Union[List[str], None]] = Field(
+    collaborating_teams: Missing[Union[list[str], None]] = Field(
         default=UNSET,
         description="A list of team slugs which have been granted write access to the advisory.",
     )
@@ -103,7 +103,7 @@ class RepositoryAdvisoryUpdatePropVulnerabilitiesItems(GitHubModel):
         default=UNSET,
         description="The package version(s) that resolve the vulnerability.",
     )
-    vulnerable_functions: Missing[Union[List[str], None]] = Field(
+    vulnerable_functions: Missing[Union[list[str], None]] = Field(
         default=UNSET, description="The functions in the package that are affected."
     )
 

@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0029 import TeamType
@@ -34,7 +34,7 @@ class RepositoryAdvisoryType(TypedDict):
     severity: Union[None, Literal["critical", "high", "medium", "low"]]
     author: None
     publisher: None
-    identifiers: List[RepositoryAdvisoryPropIdentifiersItemsType]
+    identifiers: list[RepositoryAdvisoryPropIdentifiersItemsType]
     state: Literal["published", "closed", "withdrawn", "draft", "triage"]
     created_at: Union[datetime, None]
     updated_at: Union[datetime, None]
@@ -42,15 +42,15 @@ class RepositoryAdvisoryType(TypedDict):
     closed_at: Union[datetime, None]
     withdrawn_at: Union[datetime, None]
     submission: Union[RepositoryAdvisoryPropSubmissionType, None]
-    vulnerabilities: Union[List[RepositoryAdvisoryVulnerabilityType], None]
+    vulnerabilities: Union[list[RepositoryAdvisoryVulnerabilityType], None]
     cvss: Union[RepositoryAdvisoryPropCvssType, None]
     cvss_severities: NotRequired[Union[CvssSeveritiesType, None]]
-    cwes: Union[List[RepositoryAdvisoryPropCwesItemsType], None]
-    cwe_ids: Union[List[str], None]
-    credits_: Union[List[RepositoryAdvisoryPropCreditsItemsType], None]
-    credits_detailed: Union[List[RepositoryAdvisoryCreditType], None]
-    collaborating_users: Union[List[SimpleUserType], None]
-    collaborating_teams: Union[List[TeamType], None]
+    cwes: Union[list[RepositoryAdvisoryPropCwesItemsType], None]
+    cwe_ids: Union[list[str], None]
+    credits_: Union[list[RepositoryAdvisoryPropCreditsItemsType], None]
+    credits_detailed: Union[list[RepositoryAdvisoryCreditType], None]
+    collaborating_users: Union[list[SimpleUserType], None]
+    collaborating_teams: Union[list[TeamType], None]
     private_fork: None
 
 
@@ -111,7 +111,7 @@ class RepositoryAdvisoryVulnerabilityType(TypedDict):
     package: Union[RepositoryAdvisoryVulnerabilityPropPackageType, None]
     vulnerable_version_range: Union[str, None]
     patched_versions: Union[str, None]
-    vulnerable_functions: Union[List[str], None]
+    vulnerable_functions: Union[list[str], None]
 
 
 class RepositoryAdvisoryVulnerabilityPropPackageType(TypedDict):

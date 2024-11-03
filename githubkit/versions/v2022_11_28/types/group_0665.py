@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -121,7 +121,7 @@ class WebhookPullRequestReviewDismissedPropPullRequestType(TypedDict):
     assignee: Union[
         WebhookPullRequestReviewDismissedPropPullRequestPropAssigneeType, None
     ]
-    assignees: List[
+    assignees: list[
         Union[
             WebhookPullRequestReviewDismissedPropPullRequestPropAssigneesItemsType, None
         ]
@@ -151,7 +151,7 @@ class WebhookPullRequestReviewDismissedPropPullRequestType(TypedDict):
     html_url: str
     id: int
     issue_url: str
-    labels: List[WebhookPullRequestReviewDismissedPropPullRequestPropLabelsItemsType]
+    labels: list[WebhookPullRequestReviewDismissedPropPullRequestPropLabelsItemsType]
     locked: bool
     merge_commit_sha: Union[str, None]
     merged_at: Union[str, None]
@@ -161,14 +161,14 @@ class WebhookPullRequestReviewDismissedPropPullRequestType(TypedDict):
     node_id: str
     number: int
     patch_url: str
-    requested_reviewers: List[
+    requested_reviewers: list[
         Union[
             WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof0Type,
             None,
             WebhookPullRequestReviewDismissedPropPullRequestPropRequestedReviewersItemsOneof1Type,
         ]
     ]
-    requested_teams: List[
+    requested_teams: list[
         WebhookPullRequestReviewDismissedPropPullRequestPropRequestedTeamsItemsType
     ]
     review_comment_url: str
@@ -619,7 +619,7 @@ class WebhookPullRequestReviewDismissedPropPullRequestPropBasePropRepoType(Typed
     svn_url: str
     tags_url: str
     teams_url: str
-    topics: List[str]
+    topics: list[str]
     trees_url: str
     updated_at: datetime
     url: str
@@ -800,7 +800,7 @@ class WebhookPullRequestReviewDismissedPropPullRequestPropHeadPropRepoType(Typed
     svn_url: str
     tags_url: str
     teams_url: str
-    topics: List[str]
+    topics: list[str]
     trees_url: str
     updated_at: datetime
     url: str

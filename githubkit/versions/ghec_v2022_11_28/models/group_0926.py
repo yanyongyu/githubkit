@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -22,7 +22,7 @@ class OrgsOrgPersonalAccessTokensPostBody(GitHubModel):
     action: Literal["revoke"] = Field(
         description="Action to apply to the fine-grained personal access token."
     )
-    pat_ids: List[int] = Field(
+    pat_ids: list[int] = Field(
         max_length=100 if PYDANTIC_V2 else None,
         min_length=1 if PYDANTIC_V2 else None,
         description="The IDs of the fine-grained personal access tokens.",

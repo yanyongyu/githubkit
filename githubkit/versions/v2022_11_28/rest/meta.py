@@ -10,13 +10,12 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from weakref import ref
-from typing import TYPE_CHECKING, Dict, Optional
+from typing import TYPE_CHECKING, Optional
 
 from githubkit.typing import Missing
 from githubkit.utils import UNSET, exclude_unset
 
 if TYPE_CHECKING:
-    from typing import List
     from datetime import date
 
     from githubkit import GitHubCore
@@ -45,7 +44,7 @@ class MetaClient:
     def root(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Root]:
         """See also: https://docs.github.com/rest/meta/meta#github-api-root"""
 
@@ -65,7 +64,7 @@ class MetaClient:
     async def async_root(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[Root]:
         """See also: https://docs.github.com/rest/meta/meta#github-api-root"""
 
@@ -85,7 +84,7 @@ class MetaClient:
     def get(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ApiOverview]:
         """See also: https://docs.github.com/rest/meta/meta#get-apiname-meta-information"""
 
@@ -105,7 +104,7 @@ class MetaClient:
     async def async_get(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[ApiOverview]:
         """See also: https://docs.github.com/rest/meta/meta#get-apiname-meta-information"""
 
@@ -126,7 +125,7 @@ class MetaClient:
         self,
         s: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[str]:
         """See also: https://docs.github.com/rest/meta/meta#get-octocat"""
 
@@ -150,7 +149,7 @@ class MetaClient:
         self,
         s: Missing[str] = UNSET,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[str]:
         """See also: https://docs.github.com/rest/meta/meta#get-octocat"""
 
@@ -173,11 +172,10 @@ class MetaClient:
     def get_all_versions(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[date]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[date]]:
         """See also: https://docs.github.com/rest/meta/meta#get-all-api-versions"""
 
-        from typing import List
         from datetime import date
 
         from ..models import BasicError
@@ -190,7 +188,7 @@ class MetaClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[date],
+            response_model=list[date],
             error_models={
                 "404": BasicError,
             },
@@ -199,11 +197,10 @@ class MetaClient:
     async def async_get_all_versions(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
-    ) -> Response[List[date]]:
+        headers: Optional[dict[str, str]] = None,
+    ) -> Response[list[date]]:
         """See also: https://docs.github.com/rest/meta/meta#get-all-api-versions"""
 
-        from typing import List
         from datetime import date
 
         from ..models import BasicError
@@ -216,7 +213,7 @@ class MetaClient:
             "GET",
             url,
             headers=exclude_unset(headers),
-            response_model=List[date],
+            response_model=list[date],
             error_models={
                 "404": BasicError,
             },
@@ -225,7 +222,7 @@ class MetaClient:
     def get_zen(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[str]:
         """See also: https://docs.github.com/rest/meta/meta#get-the-zen-of-github"""
 
@@ -243,7 +240,7 @@ class MetaClient:
     async def async_get_zen(
         self,
         *,
-        headers: Optional[Dict[str, str]] = None,
+        headers: Optional[dict[str, str]] = None,
     ) -> Response[str]:
         """See also: https://docs.github.com/rest/meta/meta#get-the-zen-of-github"""
 

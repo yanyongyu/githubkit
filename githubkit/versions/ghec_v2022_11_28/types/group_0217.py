@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0216 import BranchRestrictionPolicyType
@@ -117,8 +117,8 @@ class ProtectedBranchRequiredStatusCheckType(TypedDict):
 
     url: NotRequired[str]
     enforcement_level: NotRequired[str]
-    contexts: List[str]
-    checks: List[ProtectedBranchRequiredStatusCheckPropChecksItemsType]
+    contexts: list[str]
+    checks: list[ProtectedBranchRequiredStatusCheckPropChecksItemsType]
     contexts_url: NotRequired[str]
     strict: NotRequired[bool]
 

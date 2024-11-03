@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -31,7 +31,7 @@ class WebhookDeploymentReviewRequestedType(TypedDict):
     organization: OrganizationSimpleWebhooksType
     repository: RepositoryWebhooksType
     requestor: Union[WebhooksUserType, None]
-    reviewers: List[WebhookDeploymentReviewRequestedPropReviewersItemsType]
+    reviewers: list[WebhookDeploymentReviewRequestedPropReviewersItemsType]
     sender: SimpleUserType
     since: str
     workflow_job_run: WebhookDeploymentReviewRequestedPropWorkflowJobRunType
@@ -126,12 +126,12 @@ class WebhookDeploymentReviewRequestedPropWorkflowRunType(TypedDict):
     node_id: str
     path: str
     previous_attempt_url: NotRequired[Union[str, None]]
-    pull_requests: List[
+    pull_requests: list[
         WebhookDeploymentReviewRequestedPropWorkflowRunPropPullRequestsItemsType
     ]
     referenced_workflows: NotRequired[
         Union[
-            List[
+            list[
                 WebhookDeploymentReviewRequestedPropWorkflowRunPropReferencedWorkflowsItemsType
             ],
             None,

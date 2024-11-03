@@ -9,8 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import Union, Literal
-from typing_extensions import Annotated
+from typing import Union, Literal, Annotated
 
 from pydantic import Field
 

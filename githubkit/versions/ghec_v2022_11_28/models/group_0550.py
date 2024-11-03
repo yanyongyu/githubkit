@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -40,7 +40,7 @@ class WebhookInstallationNewPermissionsAccepted(GitHubModel):
         title="Organization Simple",
         description="A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an\norganization, or when the event occurs from activity in a repository owned by an organization.",
     )
-    repositories: Missing[List[WebhooksRepositoriesItems]] = Field(
+    repositories: Missing[list[WebhooksRepositoriesItems]] = Field(
         default=UNSET,
         description="An array of repository objects that the installation can access.",
     )

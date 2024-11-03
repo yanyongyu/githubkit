@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -26,7 +24,7 @@ class ScimEnterpriseGroupResponseAllof1(GitHubModel):
     id: Missing[str] = Field(
         default=UNSET, description="The internally generated id for the group object."
     )
-    members: Missing[List[ScimEnterpriseGroupResponseAllof1PropMembersItems]] = Field(
+    members: Missing[list[ScimEnterpriseGroupResponseAllof1PropMembersItems]] = Field(
         default=UNSET, description="The security group members."
     )
     meta: Missing[Meta] = Field(

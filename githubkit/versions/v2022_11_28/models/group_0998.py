@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -21,7 +21,7 @@ from githubkit.compat import GitHubModel, model_rebuild
 class ReposOwnerRepoGitTreesPostBody(GitHubModel):
     """ReposOwnerRepoGitTreesPostBody"""
 
-    tree: List[ReposOwnerRepoGitTreesPostBodyPropTreeItems] = Field(
+    tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItems] = Field(
         description="Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure."
     )
     base_tree: Missing[str] = Field(

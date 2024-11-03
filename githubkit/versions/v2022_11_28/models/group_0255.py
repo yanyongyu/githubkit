@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -41,7 +41,7 @@ class Dependency(GitHubModel):
         default=UNSET,
         description="A notation of whether the dependency is required for the primary build artifact (runtime) or is only used for development. Future versions of this specification may allow for more granular scopes.",
     )
-    dependencies: Missing[List[str]] = Field(
+    dependencies: Missing[list[str]] = Field(
         default=UNSET,
         description="Array of package-url (PURLs) of direct child dependencies.",
     )

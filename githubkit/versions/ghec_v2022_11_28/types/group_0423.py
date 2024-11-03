@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0002 import SimpleUserType
@@ -89,7 +89,7 @@ class RepositoryWebhooksType(TypedDict):
     default_branch: str
     open_issues_count: int
     is_template: NotRequired[bool]
-    topics: NotRequired[List[str]]
+    topics: NotRequired[list[str]]
     custom_properties: NotRequired[RepositoryWebhooksPropCustomPropertiesType]
     has_issues: bool
     has_projects: bool
@@ -213,7 +213,7 @@ class RepositoryWebhooksPropTemplateRepositoryType(TypedDict):
     default_branch: NotRequired[str]
     open_issues_count: NotRequired[int]
     is_template: NotRequired[bool]
-    topics: NotRequired[List[str]]
+    topics: NotRequired[list[str]]
     has_issues: NotRequired[bool]
     has_projects: NotRequired[bool]
     has_wiki: NotRequired[bool]

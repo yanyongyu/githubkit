@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -99,7 +99,7 @@ class CodespaceWithFullRepository(GitHubModel):
     pulls_url: Union[str, None] = Field(
         description="API URL for the Pull Request associated with this codespace, if any."
     )
-    recent_folders: List[str] = Field()
+    recent_folders: list[str] = Field()
     runtime_constraints: Missing[CodespaceWithFullRepositoryPropRuntimeConstraints] = (
         Field(default=UNSET)
     )
@@ -155,7 +155,7 @@ class CodespaceWithFullRepositoryPropGitStatus(GitHubModel):
 class CodespaceWithFullRepositoryPropRuntimeConstraints(GitHubModel):
     """CodespaceWithFullRepositoryPropRuntimeConstraints"""
 
-    allowed_port_privacy_settings: Missing[Union[List[str], None]] = Field(
+    allowed_port_privacy_settings: Missing[Union[list[str], None]] = Field(
         default=UNSET,
         description="The privacy settings a user can select from when forwarding a port.",
     )

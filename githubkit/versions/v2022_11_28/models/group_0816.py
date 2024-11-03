@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -27,7 +27,7 @@ class OrgsOrgActionsVariablesNamePatchBody(GitHubModel):
         default=UNSET,
         description="The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.",
     )
-    selected_repository_ids: Missing[List[int]] = Field(
+    selected_repository_ids: Missing[list[int]] = Field(
         default=UNSET,
         description="An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.",
     )

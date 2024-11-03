@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.compat import GitHubModel, model_rebuild
@@ -22,7 +20,7 @@ class ReposOwnerRepoActionsRunnersGetResponse200(GitHubModel):
     """ReposOwnerRepoActionsRunnersGetResponse200"""
 
     total_count: int = Field()
-    runners: List[Runner] = Field()
+    runners: list[Runner] = Field()
 
 
 model_rebuild(ReposOwnerRepoActionsRunnersGetResponse200)

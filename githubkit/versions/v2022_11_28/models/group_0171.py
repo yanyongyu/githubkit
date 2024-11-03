@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from datetime import datetime
 
 from pydantic import Field
@@ -26,7 +25,7 @@ class ActionsCacheList(GitHubModel):
     """
 
     total_count: int = Field(description="Total number of caches")
-    actions_caches: List[ActionsCacheListPropActionsCachesItems] = Field(
+    actions_caches: list[ActionsCacheListPropActionsCachesItems] = Field(
         description="Array of caches"
     )
 

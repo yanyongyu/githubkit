@@ -10,7 +10,7 @@ See https://github.com/github/rest-api-description for more information.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import List, Union, Literal
+from typing import Union, Literal
 
 from pydantic import Field
 
@@ -60,7 +60,7 @@ class RuleSuite(GitHubModel):
         default=UNSET,
         description="The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`. Null if no rules with `evaluate` enforcement status were run.",
     )
-    rule_evaluations: Missing[List[RuleSuitePropRuleEvaluationsItems]] = Field(
+    rule_evaluations: Missing[list[RuleSuitePropRuleEvaluationsItems]] = Field(
         default=UNSET, description="Details on the evaluated rules."
     )
 

@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -34,11 +32,11 @@ class ApplicationsClientIdTokenScopedPostBody(GitHubModel):
         default=UNSET,
         description="The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.",
     )
-    repositories: Missing[List[str]] = Field(
+    repositories: Missing[list[str]] = Field(
         default=UNSET,
         description="The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.",
     )
-    repository_ids: Missing[List[int]] = Field(
+    repository_ids: Missing[list[int]] = Field(
         default=UNSET,
         description="The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.",
     )

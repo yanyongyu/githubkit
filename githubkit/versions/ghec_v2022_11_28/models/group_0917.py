@@ -9,7 +9,7 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Literal
 
 from pydantic import Field
 
@@ -35,7 +35,7 @@ class OrgsOrgInvitationsPostBody(GitHubModel):
             description="The role for the new member. \n * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  \n * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  \n * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization. \n * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization.",
         )
     )
-    team_ids: Missing[List[int]] = Field(
+    team_ids: Missing[list[int]] = Field(
         default=UNSET,
         description="Specify IDs for the teams you want to invite new members to.",
     )

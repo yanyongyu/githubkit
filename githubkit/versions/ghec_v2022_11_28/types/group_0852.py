@@ -9,7 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict, NotRequired
 
 from .group_0019 import RepositoryType
@@ -19,7 +18,7 @@ class InstallationRepositoriesGetResponse200Type(TypedDict):
     """InstallationRepositoriesGetResponse200"""
 
     total_count: int
-    repositories: List[RepositoryType]
+    repositories: list[RepositoryType]
     repository_selection: NotRequired[str]
 
 

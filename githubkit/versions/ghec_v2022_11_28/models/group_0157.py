@@ -9,8 +9,6 @@ See https://github.com/github/rest-api-description for more information.
 
 from __future__ import annotations
 
-from typing import List
-
 from pydantic import Field
 
 from githubkit.utils import UNSET
@@ -25,7 +23,7 @@ class RepositoryRuleRequiredStatusChecksPropParameters(GitHubModel):
         default=UNSET,
         description="Allow repositories and branches to be created if a check would otherwise prohibit it.",
     )
-    required_status_checks: List[RepositoryRuleParamsStatusCheckConfiguration] = Field(
+    required_status_checks: list[RepositoryRuleParamsStatusCheckConfiguration] = Field(
         description="Status checks that are required."
     )
     strict_required_status_checks_policy: bool = Field(
