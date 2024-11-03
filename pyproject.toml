@@ -119,6 +119,7 @@ ignore = [
 
 [tool.ruff.lint.isort]
 length-sort = true
+lines-after-imports = 1
 force-sort-within-sections = true
 extra-standard-library = ["typing_extensions"]
 
@@ -384,6 +385,13 @@ source = "https://raw.githubusercontent.com/github/rest-api-description/main/des
 
 # get repo content response discriminator not supported
 "/paths/~1repos~1{owner}~1{repo}~1contents~1{path}/get/responses/200/content/application~1json/schema" = { discriminator = "<unset>" }
+
+# get authenticated user response discriminator not supported
+"/paths/~1user/get/responses/200/content/application~1json/schema" = { discriminator = "<unset>" }
+# get user by account id response discriminator not supported
+"/paths/~1user~1{account_id}/get/responses/200/content/application~1json/schema" = { discriminator = "<unset>" }
+# get user by username response discriminator not supported
+"/paths/~1users~1{username}/get/responses/200/content/application~1json/schema" = { discriminator = "<unset>" }
 
 # Webhook schema overrides
 # webhook check run action is required

@@ -123,11 +123,19 @@ def build_union_schema(
             examples=data.examples or (data.example and [data.example]),
         )
 
+    discriminator = None
+    if data.discriminator and data.discriminator.propertyName:
+        discriminator = data.discriminator.propertyName
+        if data.discriminator.mapping is not None:
+            raise NotImplementedError(
+                f"Discriminator mapping is not supported now: {source.uri}"
+            )
+
     return UnionSchema(
         title=data.title,
         description=data.description,
         default=data.default,
         examples=data.examples or (data.example and [data.example]),
         schemas=schemas,
-        discriminator=(data.discriminator and data.discriminator.propertyName),
+        discriminator=discriminator,
     )
