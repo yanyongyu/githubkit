@@ -125,20 +125,84 @@ if TYPE_CHECKING:
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
     )
     from ..types import (
+        TagType,
+        HookType,
+        PageType,
+        TeamType,
+        TopicType,
+        CommitType,
+        StatusType,
+        ReleaseType,
+        ActivityType,
+        AutolinkType,
+        LanguageType,
+        DeployKeyType,
+        PageBuildType,
+        RuleSuiteType,
+        DeploymentType,
+        FileCommitType,
+        RepositoryType,
+        SimpleUserType,
+        BranchShortType,
+        ContentFileType,
+        ContributorType,
+        EnvironmentType,
+        IntegrationType,
+        ShortBranchType,
+        ViewTrafficType,
+        CloneTrafficType,
+        CollaboratorType,
+        HookDeliveryType,
+        ReleaseAssetType,
+        CommitCommentType,
+        TagProtectionType,
         WebhookConfigType,
+        CommitActivityType,
+        ContentSymlinkType,
+        ContentTrafficType,
+        FullRepositoryType,
+        MergedUpstreamType,
+        PageDeploymentType,
+        PageBuildStatusType,
+        ProtectedBranchType,
+        ReferrerTrafficType,
+        RuleSuitesItemsType,
+        BranchProtectionType,
+        CodeownersErrorsType,
+        CommitComparisonType,
+        CommunityProfileType,
+        ContentSubmoduleType,
+        DeploymentStatusType,
+        HookDeliveryItemType,
+        PagesHealthCheckType,
+        MinimalRepositoryType,
+        PullRequestSimpleType,
+        RepositoryRulesetType,
+        StatusCheckPolicyType,
         UserReposPostBodyType,
+        ParticipationStatsType,
+        ContributorActivityType,
         CustomPropertyValueType,
+        ReleaseNotesContentType,
+        BranchWithProtectionType,
+        CombinedCommitStatusType,
         OrgsOrgReposPostBodyType,
+        RepositoryInvitationType,
         RepositoryRuleUpdateType,
+        ContentDirectoryItemsType,
+        PagesDeploymentStatusType,
         RepositoryRuleOneof15Type,
         RepositoryRuleOneof16Type,
         RepositoryRuleOneof17Type,
         RepositoryRuleOneof18Type,
+        DeploymentBranchPolicyType,
         RepositoryRuleCreationType,
         RepositoryRuleDeletionType,
+        BranchRestrictionPolicyType,
         OrgsOrgRulesetsPostBodyType,
         RepositoryRuleWorkflowsType,
         ReposOwnerRepoPatchBodyType,
+        DeploymentProtectionRuleType,
         RepositoryRuleMergeQueueType,
         RepositoryRulePullRequestType,
         OrgRulesetConditionsOneof0Type,
@@ -146,14 +210,33 @@ if TYPE_CHECKING:
         OrgRulesetConditionsOneof2Type,
         RepositoryRuleCodeScanningType,
         ReposOwnerRepoKeysPostBodyType,
+        CheckAutomatedSecurityFixesType,
         RepositoryRulesetConditionsType,
         ReposOwnerRepoForksPostBodyType,
         ReposOwnerRepoHooksPostBodyType,
         ReposOwnerRepoTopicsPutBodyType,
+        ProtectedBranchAdminEnforcedType,
+        RepositoryRuleDetailedOneof0Type,
+        RepositoryRuleDetailedOneof1Type,
+        RepositoryRuleDetailedOneof2Type,
+        RepositoryRuleDetailedOneof3Type,
+        RepositoryRuleDetailedOneof4Type,
+        RepositoryRuleDetailedOneof5Type,
+        RepositoryRuleDetailedOneof6Type,
+        RepositoryRuleDetailedOneof7Type,
+        RepositoryRuleDetailedOneof8Type,
+        RepositoryRuleDetailedOneof9Type,
         RepositoryRuleNonFastForwardType,
         RepositoryRulesetBypassActorType,
         RepositoryRuleTagNamePatternType,
         ReposOwnerRepoMergesPostBodyType,
+        RepositoryRuleDetailedOneof10Type,
+        RepositoryRuleDetailedOneof11Type,
+        RepositoryRuleDetailedOneof12Type,
+        RepositoryRuleDetailedOneof13Type,
+        RepositoryRuleDetailedOneof14Type,
+        RepositoryRuleDetailedOneof15Type,
+        RepositoryRuleDetailedOneof16Type,
         DeploymentBranchPolicySettingsType,
         ReposOwnerRepoReleasesPostBodyType,
         ReposOwnerRepoRulesetsPostBodyType,
@@ -161,6 +244,8 @@ if TYPE_CHECKING:
         OrgsOrgRulesetsRulesetIdPutBodyType,
         RepositoryRuleBranchNamePatternType,
         ReposOwnerRepoAutolinksPostBodyType,
+        ProtectedBranchPullRequestReviewType,
+        RepositoryCollaboratorPermissionType,
         RepositoryRuleRequiredSignaturesType,
         ReposOwnerRepoDispatchesPostBodyType,
         ReposOwnerRepoPagesPutBodyAnyof0Type,
@@ -192,9 +277,11 @@ if TYPE_CHECKING:
         ReposOwnerRepoPropertiesValuesPatchBodyType,
         OrgsOrgReposPostBodyPropCustomPropertiesType,
         ReposOwnerRepoCommentsCommentIdPatchBodyType,
+        ReposOwnerRepoEnvironmentsGetResponse200Type,
         ReposOwnerRepoHooksHookIdConfigPatchBodyType,
         ReposOwnerRepoReleasesReleaseIdPatchBodyType,
         DeploymentBranchPolicyNamePatternWithTypeType,
+        ReposOwnerRepoAttestationsPostResponse201Type,
         ReposOwnerRepoBranchesBranchRenamePostBodyType,
         ReposOwnerRepoCollaboratorsUsernamePutBodyType,
         ReposOwnerRepoPagesPutBodyPropSourceAnyof1Type,
@@ -212,8 +299,11 @@ if TYPE_CHECKING:
         ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType,
         ReposOwnerRepoContentsPathDeleteBodyPropCommitterType,
         ReposOwnerRepoDispatchesPostBodyPropClientPayloadType,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
         ReposOwnerRepoDeploymentsPostBodyPropPayloadOneof0Type,
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type,
         ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
+        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type,
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRestrictionsType,
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
         ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
@@ -231,9 +321,12 @@ if TYPE_CHECKING:
         ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
         ReposOwnerRepoBranchesBranchProtectionPutBodyPropRequiredPullRequestReviewsType,
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPutBodyOneof0Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type,
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsPostBodyOneof0Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type,
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksContextsDeleteBodyOneof0Type,
         ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type,
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropDismissalRestrictionsType,
         ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType,
     )
@@ -266,7 +359,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-organization-repositories"""
 
         from ..models import MinimalRepository
@@ -303,7 +396,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-organization-repositories"""
 
         from ..models import MinimalRepository
@@ -335,7 +428,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgReposPostBodyType,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     @overload
     def create_in_org(
@@ -375,7 +468,7 @@ class ReposClient:
         custom_properties: Missing[
             OrgsOrgReposPostBodyPropCustomPropertiesType
         ] = UNSET,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     def create_in_org(
         self,
@@ -384,7 +477,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgReposPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository]:
+    ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/rest/repos/repos#create-an-organization-repository"""
 
         from ..models import (
@@ -426,7 +519,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgReposPostBodyType,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     @overload
     async def async_create_in_org(
@@ -466,7 +559,7 @@ class ReposClient:
         custom_properties: Missing[
             OrgsOrgReposPostBodyPropCustomPropertiesType
         ] = UNSET,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     async def async_create_in_org(
         self,
@@ -475,7 +568,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgReposPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository]:
+    ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/rest/repos/repos#create-an-organization-repository"""
 
         from ..models import (
@@ -518,7 +611,7 @@ class ReposClient:
         targets: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RepositoryRuleset]]:
+    ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
         """See also: https://docs.github.com/rest/orgs/rules#get-all-organization-repository-rulesets"""
 
         from ..models import BasicError, RepositoryRuleset
@@ -553,7 +646,7 @@ class ReposClient:
         targets: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RepositoryRuleset]]:
+    ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
         """See also: https://docs.github.com/rest/orgs/rules#get-all-organization-repository-rulesets"""
 
         from ..models import BasicError, RepositoryRuleset
@@ -587,7 +680,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgRulesetsPostBodyType,
-    ) -> Response[RepositoryRuleset]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
     @overload
     def create_org_ruleset(
@@ -634,7 +727,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
     def create_org_ruleset(
         self,
@@ -643,7 +736,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgRulesetsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/orgs/rules#create-an-organization-repository-ruleset"""
 
         from ..models import BasicError, RepositoryRuleset, OrgsOrgRulesetsPostBody
@@ -680,7 +773,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgRulesetsPostBodyType,
-    ) -> Response[RepositoryRuleset]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
     @overload
     async def async_create_org_ruleset(
@@ -727,7 +820,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
     async def async_create_org_ruleset(
         self,
@@ -736,7 +829,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgRulesetsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/orgs/rules#create-an-organization-repository-ruleset"""
 
         from ..models import BasicError, RepositoryRuleset, OrgsOrgRulesetsPostBody
@@ -778,7 +871,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RuleSuitesItems]]:
+    ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
         """See also: https://docs.github.com/rest/orgs/rule-suites#list-organization-rule-suites"""
 
         from ..models import BasicError, RuleSuitesItems
@@ -821,7 +914,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RuleSuitesItems]]:
+    ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
         """See also: https://docs.github.com/rest/orgs/rule-suites#list-organization-rule-suites"""
 
         from ..models import BasicError, RuleSuitesItems
@@ -858,7 +951,7 @@ class ReposClient:
         rule_suite_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RuleSuite]:
+    ) -> Response[RuleSuite, RuleSuiteType]:
         """See also: https://docs.github.com/rest/orgs/rule-suites#get-an-organization-rule-suite"""
 
         from ..models import RuleSuite, BasicError
@@ -884,7 +977,7 @@ class ReposClient:
         rule_suite_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RuleSuite]:
+    ) -> Response[RuleSuite, RuleSuiteType]:
         """See also: https://docs.github.com/rest/orgs/rule-suites#get-an-organization-rule-suite"""
 
         from ..models import RuleSuite, BasicError
@@ -910,7 +1003,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RepositoryRuleset]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/orgs/rules#get-an-organization-repository-ruleset"""
 
         from ..models import BasicError, RepositoryRuleset
@@ -936,7 +1029,7 @@ class ReposClient:
         ruleset_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RepositoryRuleset]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/orgs/rules#get-an-organization-repository-ruleset"""
 
         from ..models import BasicError, RepositoryRuleset
@@ -964,7 +1057,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
-    ) -> Response[RepositoryRuleset]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
     @overload
     def update_org_ruleset(
@@ -1012,7 +1105,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
     def update_org_ruleset(
         self,
@@ -1022,7 +1115,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/orgs/rules#update-an-organization-repository-ruleset"""
 
         from ..models import (
@@ -1064,7 +1157,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
-    ) -> Response[RepositoryRuleset]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
     @overload
     async def async_update_org_ruleset(
@@ -1112,7 +1205,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
     async def async_update_org_ruleset(
         self,
@@ -1122,7 +1215,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/orgs/rules#update-an-organization-repository-ruleset"""
 
         from ..models import (
@@ -1212,7 +1305,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[FullRepository]:
+    ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/rest/repos/repos#get-a-repository"""
 
         from ..models import BasicError, FullRepository
@@ -1238,7 +1331,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[FullRepository]:
+    ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/rest/repos/repos#get-a-repository"""
 
         from ..models import BasicError, FullRepository
@@ -1316,7 +1409,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     @overload
     def update(
@@ -1357,7 +1450,7 @@ class ReposClient:
         archived: Missing[bool] = UNSET,
         allow_forking: Missing[bool] = UNSET,
         web_commit_signoff_required: Missing[bool] = UNSET,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     def update(
         self,
@@ -1367,7 +1460,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository]:
+    ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/rest/repos/repos#update-a-repository"""
 
         from ..models import (
@@ -1411,7 +1504,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     @overload
     async def async_update(
@@ -1452,7 +1545,7 @@ class ReposClient:
         archived: Missing[bool] = UNSET,
         allow_forking: Missing[bool] = UNSET,
         web_commit_signoff_required: Missing[bool] = UNSET,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     async def async_update(
         self,
@@ -1462,7 +1555,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository]:
+    ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/rest/repos/repos#update-a-repository"""
 
         from ..models import (
@@ -1523,7 +1616,7 @@ class ReposClient:
         ] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Activity]]:
+    ) -> Response[list[Activity], list[ActivityType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-activities"""
 
         from ..models import Activity, ValidationErrorSimple
@@ -1579,7 +1672,7 @@ class ReposClient:
         ] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Activity]]:
+    ) -> Response[list[Activity], list[ActivityType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-activities"""
 
         from ..models import Activity, ValidationErrorSimple
@@ -1618,7 +1711,10 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoAttestationsPostBodyType,
-    ) -> Response[ReposOwnerRepoAttestationsPostResponse201]: ...
+    ) -> Response[
+        ReposOwnerRepoAttestationsPostResponse201,
+        ReposOwnerRepoAttestationsPostResponse201Type,
+    ]: ...
 
     @overload
     def create_attestation(
@@ -1629,7 +1725,10 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType,
-    ) -> Response[ReposOwnerRepoAttestationsPostResponse201]: ...
+    ) -> Response[
+        ReposOwnerRepoAttestationsPostResponse201,
+        ReposOwnerRepoAttestationsPostResponse201Type,
+    ]: ...
 
     def create_attestation(
         self,
@@ -1639,7 +1738,10 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoAttestationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ReposOwnerRepoAttestationsPostResponse201]:
+    ) -> Response[
+        ReposOwnerRepoAttestationsPostResponse201,
+        ReposOwnerRepoAttestationsPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/rest/repos/repos#create-an-attestation"""
 
         from ..models import (
@@ -1682,7 +1784,10 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoAttestationsPostBodyType,
-    ) -> Response[ReposOwnerRepoAttestationsPostResponse201]: ...
+    ) -> Response[
+        ReposOwnerRepoAttestationsPostResponse201,
+        ReposOwnerRepoAttestationsPostResponse201Type,
+    ]: ...
 
     @overload
     async def async_create_attestation(
@@ -1693,7 +1798,10 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         bundle: ReposOwnerRepoAttestationsPostBodyPropBundleType,
-    ) -> Response[ReposOwnerRepoAttestationsPostResponse201]: ...
+    ) -> Response[
+        ReposOwnerRepoAttestationsPostResponse201,
+        ReposOwnerRepoAttestationsPostResponse201Type,
+    ]: ...
 
     async def async_create_attestation(
         self,
@@ -1703,7 +1811,10 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoAttestationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ReposOwnerRepoAttestationsPostResponse201]:
+    ) -> Response[
+        ReposOwnerRepoAttestationsPostResponse201,
+        ReposOwnerRepoAttestationsPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/rest/repos/repos#create-an-attestation"""
 
         from ..models import (
@@ -1748,7 +1859,10 @@ class ReposClient:
         after: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoAttestationsSubjectDigestGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/repos/repos#list-attestations"""
 
         from ..models import ReposOwnerRepoAttestationsSubjectDigestGetResponse200
@@ -1781,7 +1895,10 @@ class ReposClient:
         after: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoAttestationsSubjectDigestGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200,
+        ReposOwnerRepoAttestationsSubjectDigestGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/repos/repos#list-attestations"""
 
         from ..models import ReposOwnerRepoAttestationsSubjectDigestGetResponse200
@@ -1810,7 +1927,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Autolink]]:
+    ) -> Response[list[Autolink], list[AutolinkType]]:
         """See also: https://docs.github.com/rest/repos/autolinks#get-all-autolinks-of-a-repository"""
 
         from ..models import Autolink
@@ -1832,7 +1949,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Autolink]]:
+    ) -> Response[list[Autolink], list[AutolinkType]]:
         """See also: https://docs.github.com/rest/repos/autolinks#get-all-autolinks-of-a-repository"""
 
         from ..models import Autolink
@@ -1856,7 +1973,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoAutolinksPostBodyType,
-    ) -> Response[Autolink]: ...
+    ) -> Response[Autolink, AutolinkType]: ...
 
     @overload
     def create_autolink(
@@ -1869,7 +1986,7 @@ class ReposClient:
         key_prefix: str,
         url_template: str,
         is_alphanumeric: Missing[bool] = UNSET,
-    ) -> Response[Autolink]: ...
+    ) -> Response[Autolink, AutolinkType]: ...
 
     def create_autolink(
         self,
@@ -1879,7 +1996,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Autolink]:
+    ) -> Response[Autolink, AutolinkType]:
         """See also: https://docs.github.com/rest/repos/autolinks#create-an-autolink-reference-for-a-repository"""
 
         from ..models import Autolink, ValidationError, ReposOwnerRepoAutolinksPostBody
@@ -1916,7 +2033,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoAutolinksPostBodyType,
-    ) -> Response[Autolink]: ...
+    ) -> Response[Autolink, AutolinkType]: ...
 
     @overload
     async def async_create_autolink(
@@ -1929,7 +2046,7 @@ class ReposClient:
         key_prefix: str,
         url_template: str,
         is_alphanumeric: Missing[bool] = UNSET,
-    ) -> Response[Autolink]: ...
+    ) -> Response[Autolink, AutolinkType]: ...
 
     async def async_create_autolink(
         self,
@@ -1939,7 +2056,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoAutolinksPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Autolink]:
+    ) -> Response[Autolink, AutolinkType]:
         """See also: https://docs.github.com/rest/repos/autolinks#create-an-autolink-reference-for-a-repository"""
 
         from ..models import Autolink, ValidationError, ReposOwnerRepoAutolinksPostBody
@@ -1975,7 +2092,7 @@ class ReposClient:
         autolink_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Autolink]:
+    ) -> Response[Autolink, AutolinkType]:
         """See also: https://docs.github.com/rest/repos/autolinks#get-an-autolink-reference-of-a-repository"""
 
         from ..models import Autolink, BasicError
@@ -2001,7 +2118,7 @@ class ReposClient:
         autolink_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Autolink]:
+    ) -> Response[Autolink, AutolinkType]:
         """See also: https://docs.github.com/rest/repos/autolinks#get-an-autolink-reference-of-a-repository"""
 
         from ..models import Autolink, BasicError
@@ -2076,7 +2193,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CheckAutomatedSecurityFixes]:
+    ) -> Response[CheckAutomatedSecurityFixes, CheckAutomatedSecurityFixesType]:
         """See also: https://docs.github.com/rest/repos/repos#check-if-automated-security-fixes-are-enabled-for-a-repository"""
 
         from ..models import CheckAutomatedSecurityFixes
@@ -2099,7 +2216,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CheckAutomatedSecurityFixes]:
+    ) -> Response[CheckAutomatedSecurityFixes, CheckAutomatedSecurityFixesType]:
         """See also: https://docs.github.com/rest/repos/repos#check-if-automated-security-fixes-are-enabled-for-a-repository"""
 
         from ..models import CheckAutomatedSecurityFixes
@@ -2201,7 +2318,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ShortBranch]]:
+    ) -> Response[list[ShortBranch], list[ShortBranchType]]:
         """See also: https://docs.github.com/rest/branches/branches#list-branches"""
 
         from ..models import BasicError, ShortBranch
@@ -2236,7 +2353,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ShortBranch]]:
+    ) -> Response[list[ShortBranch], list[ShortBranchType]]:
         """See also: https://docs.github.com/rest/branches/branches#list-branches"""
 
         from ..models import BasicError, ShortBranch
@@ -2269,7 +2386,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[BranchWithProtection]:
+    ) -> Response[BranchWithProtection, BranchWithProtectionType]:
         """See also: https://docs.github.com/rest/branches/branches#get-a-branch"""
 
         from ..models import BasicError, BranchWithProtection
@@ -2295,7 +2412,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[BranchWithProtection]:
+    ) -> Response[BranchWithProtection, BranchWithProtectionType]:
         """See also: https://docs.github.com/rest/branches/branches#get-a-branch"""
 
         from ..models import BasicError, BranchWithProtection
@@ -2321,7 +2438,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[BranchProtection]:
+    ) -> Response[BranchProtection, BranchProtectionType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-branch-protection"""
 
         from ..models import BasicError, BranchProtection
@@ -2347,7 +2464,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[BranchProtection]:
+    ) -> Response[BranchProtection, BranchProtectionType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-branch-protection"""
 
         from ..models import BasicError, BranchProtection
@@ -2375,7 +2492,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionPutBodyType,
-    ) -> Response[ProtectedBranch]: ...
+    ) -> Response[ProtectedBranch, ProtectedBranchType]: ...
 
     @overload
     def update_branch_protection(
@@ -2405,7 +2522,7 @@ class ReposClient:
         required_conversation_resolution: Missing[bool] = UNSET,
         lock_branch: Missing[bool] = UNSET,
         allow_fork_syncing: Missing[bool] = UNSET,
-    ) -> Response[ProtectedBranch]: ...
+    ) -> Response[ProtectedBranch, ProtectedBranchType]: ...
 
     def update_branch_protection(
         self,
@@ -2416,7 +2533,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProtectedBranch]:
+    ) -> Response[ProtectedBranch, ProtectedBranchType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#update-branch-protection"""
 
         from ..models import (
@@ -2463,7 +2580,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionPutBodyType,
-    ) -> Response[ProtectedBranch]: ...
+    ) -> Response[ProtectedBranch, ProtectedBranchType]: ...
 
     @overload
     async def async_update_branch_protection(
@@ -2493,7 +2610,7 @@ class ReposClient:
         required_conversation_resolution: Missing[bool] = UNSET,
         lock_branch: Missing[bool] = UNSET,
         allow_fork_syncing: Missing[bool] = UNSET,
-    ) -> Response[ProtectedBranch]: ...
+    ) -> Response[ProtectedBranch, ProtectedBranchType]: ...
 
     async def async_update_branch_protection(
         self,
@@ -2504,7 +2621,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoBranchesBranchProtectionPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ProtectedBranch]:
+    ) -> Response[ProtectedBranch, ProtectedBranchType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#update-branch-protection"""
 
         from ..models import (
@@ -2599,7 +2716,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ProtectedBranchAdminEnforced]:
+    ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-admin-branch-protection"""
 
         from ..models import ProtectedBranchAdminEnforced
@@ -2622,7 +2739,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ProtectedBranchAdminEnforced]:
+    ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-admin-branch-protection"""
 
         from ..models import ProtectedBranchAdminEnforced
@@ -2645,7 +2762,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ProtectedBranchAdminEnforced]:
+    ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-admin-branch-protection"""
 
         from ..models import ProtectedBranchAdminEnforced
@@ -2668,7 +2785,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ProtectedBranchAdminEnforced]:
+    ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-admin-branch-protection"""
 
         from ..models import ProtectedBranchAdminEnforced
@@ -2741,7 +2858,9 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ProtectedBranchPullRequestReview]:
+    ) -> Response[
+        ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
+    ]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-pull-request-review-protection"""
 
         from ..models import ProtectedBranchPullRequestReview
@@ -2764,7 +2883,9 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ProtectedBranchPullRequestReview]:
+    ) -> Response[
+        ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
+    ]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-pull-request-review-protection"""
 
         from ..models import ProtectedBranchPullRequestReview
@@ -2841,7 +2962,9 @@ class ReposClient:
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
-    ) -> Response[ProtectedBranchPullRequestReview]: ...
+    ) -> Response[
+        ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
+    ]: ...
 
     @overload
     def update_pull_request_review_protection(
@@ -2862,7 +2985,9 @@ class ReposClient:
         bypass_pull_request_allowances: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType
         ] = UNSET,
-    ) -> Response[ProtectedBranchPullRequestReview]: ...
+    ) -> Response[
+        ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
+    ]: ...
 
     def update_pull_request_review_protection(
         self,
@@ -2875,7 +3000,9 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[ProtectedBranchPullRequestReview]:
+    ) -> Response[
+        ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
+    ]:
         """See also: https://docs.github.com/rest/branches/branch-protection#update-pull-request-review-protection"""
 
         from ..models import (
@@ -2922,7 +3049,9 @@ class ReposClient:
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
-    ) -> Response[ProtectedBranchPullRequestReview]: ...
+    ) -> Response[
+        ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
+    ]: ...
 
     @overload
     async def async_update_pull_request_review_protection(
@@ -2943,7 +3072,9 @@ class ReposClient:
         bypass_pull_request_allowances: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyPropBypassPullRequestAllowancesType
         ] = UNSET,
-    ) -> Response[ProtectedBranchPullRequestReview]: ...
+    ) -> Response[
+        ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
+    ]: ...
 
     async def async_update_pull_request_review_protection(
         self,
@@ -2956,7 +3087,9 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRequiredPullRequestReviewsPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[ProtectedBranchPullRequestReview]:
+    ) -> Response[
+        ProtectedBranchPullRequestReview, ProtectedBranchPullRequestReviewType
+    ]:
         """See also: https://docs.github.com/rest/branches/branch-protection#update-pull-request-review-protection"""
 
         from ..models import (
@@ -2999,7 +3132,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ProtectedBranchAdminEnforced]:
+    ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-commit-signature-protection"""
 
         from ..models import BasicError, ProtectedBranchAdminEnforced
@@ -3025,7 +3158,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ProtectedBranchAdminEnforced]:
+    ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-commit-signature-protection"""
 
         from ..models import BasicError, ProtectedBranchAdminEnforced
@@ -3051,7 +3184,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ProtectedBranchAdminEnforced]:
+    ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#create-commit-signature-protection"""
 
         from ..models import BasicError, ProtectedBranchAdminEnforced
@@ -3077,7 +3210,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ProtectedBranchAdminEnforced]:
+    ) -> Response[ProtectedBranchAdminEnforced, ProtectedBranchAdminEnforcedType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#create-commit-signature-protection"""
 
         from ..models import BasicError, ProtectedBranchAdminEnforced
@@ -3153,7 +3286,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[StatusCheckPolicy]:
+    ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-status-checks-protection"""
 
         from ..models import BasicError, StatusCheckPolicy
@@ -3181,7 +3314,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[StatusCheckPolicy]:
+    ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-status-checks-protection"""
 
         from ..models import BasicError, StatusCheckPolicy
@@ -3257,7 +3390,7 @@ class ReposClient:
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
-    ) -> Response[StatusCheckPolicy]: ...
+    ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]: ...
 
     @overload
     def update_status_check_protection(
@@ -3275,7 +3408,7 @@ class ReposClient:
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
             ]
         ] = UNSET,
-    ) -> Response[StatusCheckPolicy]: ...
+    ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]: ...
 
     def update_status_check_protection(
         self,
@@ -3288,7 +3421,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[StatusCheckPolicy]:
+    ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#update-status-check-protection"""
 
         from ..models import (
@@ -3339,7 +3472,7 @@ class ReposClient:
         data: Missing[
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
-    ) -> Response[StatusCheckPolicy]: ...
+    ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]: ...
 
     @overload
     async def async_update_status_check_protection(
@@ -3357,7 +3490,7 @@ class ReposClient:
                 ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyPropChecksItemsType
             ]
         ] = UNSET,
-    ) -> Response[StatusCheckPolicy]: ...
+    ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]: ...
 
     async def async_update_status_check_protection(
         self,
@@ -3370,7 +3503,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRequiredStatusChecksPatchBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[StatusCheckPolicy]:
+    ) -> Response[StatusCheckPolicy, StatusCheckPolicyType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#update-status-check-protection"""
 
         from ..models import (
@@ -3417,7 +3550,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[str]]:
+    ) -> Response[list[str], list[str]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-all-status-check-contexts"""
 
         from ..models import BasicError
@@ -3443,7 +3576,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[str]]:
+    ) -> Response[list[str], list[str]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-all-status-check-contexts"""
 
         from ..models import BasicError
@@ -3476,7 +3609,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[str]]: ...
+    ) -> Response[list[str], list[str]]: ...
 
     @overload
     def set_status_check_contexts(
@@ -3488,7 +3621,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         contexts: list[str],
-    ) -> Response[list[str]]: ...
+    ) -> Response[list[str], list[str]]: ...
 
     def set_status_check_contexts(
         self,
@@ -3504,7 +3637,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[str]]:
+    ) -> Response[list[str], list[str]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-status-check-contexts"""
 
         from typing import Union
@@ -3560,7 +3693,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[str]]: ...
+    ) -> Response[list[str], list[str]]: ...
 
     @overload
     async def async_set_status_check_contexts(
@@ -3572,7 +3705,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         contexts: list[str],
-    ) -> Response[list[str]]: ...
+    ) -> Response[list[str], list[str]]: ...
 
     async def async_set_status_check_contexts(
         self,
@@ -3588,7 +3721,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[str]]:
+    ) -> Response[list[str], list[str]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-status-check-contexts"""
 
         from typing import Union
@@ -3644,7 +3777,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[str]]: ...
+    ) -> Response[list[str], list[str]]: ...
 
     @overload
     def add_status_check_contexts(
@@ -3656,7 +3789,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         contexts: list[str],
-    ) -> Response[list[str]]: ...
+    ) -> Response[list[str], list[str]]: ...
 
     def add_status_check_contexts(
         self,
@@ -3672,7 +3805,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[str]]:
+    ) -> Response[list[str], list[str]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#add-status-check-contexts"""
 
         from typing import Union
@@ -3729,7 +3862,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[str]]: ...
+    ) -> Response[list[str], list[str]]: ...
 
     @overload
     async def async_add_status_check_contexts(
@@ -3741,7 +3874,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         contexts: list[str],
-    ) -> Response[list[str]]: ...
+    ) -> Response[list[str], list[str]]: ...
 
     async def async_add_status_check_contexts(
         self,
@@ -3757,7 +3890,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[str]]:
+    ) -> Response[list[str], list[str]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#add-status-check-contexts"""
 
         from typing import Union
@@ -3814,7 +3947,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[str]]: ...
+    ) -> Response[list[str], list[str]]: ...
 
     @overload
     def remove_status_check_contexts(
@@ -3826,7 +3959,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         contexts: list[str],
-    ) -> Response[list[str]]: ...
+    ) -> Response[list[str], list[str]]: ...
 
     def remove_status_check_contexts(
         self,
@@ -3842,7 +3975,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[str]]:
+    ) -> Response[list[str], list[str]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#remove-status-check-contexts"""
 
         from typing import Union
@@ -3898,7 +4031,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[str]]: ...
+    ) -> Response[list[str], list[str]]: ...
 
     @overload
     async def async_remove_status_check_contexts(
@@ -3910,7 +4043,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         contexts: list[str],
-    ) -> Response[list[str]]: ...
+    ) -> Response[list[str], list[str]]: ...
 
     async def async_remove_status_check_contexts(
         self,
@@ -3926,7 +4059,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[str]]:
+    ) -> Response[list[str], list[str]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#remove-status-check-contexts"""
 
         from typing import Union
@@ -3975,7 +4108,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[BranchRestrictionPolicy]:
+    ) -> Response[BranchRestrictionPolicy, BranchRestrictionPolicyType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-access-restrictions"""
 
         from ..models import BasicError, BranchRestrictionPolicy
@@ -4001,7 +4134,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[BranchRestrictionPolicy]:
+    ) -> Response[BranchRestrictionPolicy, BranchRestrictionPolicyType]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-access-restrictions"""
 
         from ..models import BasicError, BranchRestrictionPolicy
@@ -4067,7 +4200,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Union[Integration, None]]]:
+    ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch"""
 
         from typing import Union
@@ -4095,7 +4228,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Union[Integration, None]]]:
+    ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch"""
 
         from typing import Union
@@ -4125,7 +4258,9 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
-    ) -> Response[list[Union[Integration, None]]]: ...
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+    ]: ...
 
     @overload
     def set_app_access_restrictions(
@@ -4137,7 +4272,9 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         apps: list[str],
-    ) -> Response[list[Union[Integration, None]]]: ...
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+    ]: ...
 
     def set_app_access_restrictions(
         self,
@@ -4150,7 +4287,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Union[Integration, None]]]:
+    ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-app-access-restrictions"""
 
         from typing import Union
@@ -4196,7 +4333,9 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType,
-    ) -> Response[list[Union[Integration, None]]]: ...
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+    ]: ...
 
     @overload
     async def async_set_app_access_restrictions(
@@ -4208,7 +4347,9 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         apps: list[str],
-    ) -> Response[list[Union[Integration, None]]]: ...
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+    ]: ...
 
     async def async_set_app_access_restrictions(
         self,
@@ -4221,7 +4362,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Union[Integration, None]]]:
+    ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-app-access-restrictions"""
 
         from typing import Union
@@ -4267,7 +4408,9 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
-    ) -> Response[list[Union[Integration, None]]]: ...
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+    ]: ...
 
     @overload
     def add_app_access_restrictions(
@@ -4279,7 +4422,9 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         apps: list[str],
-    ) -> Response[list[Union[Integration, None]]]: ...
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+    ]: ...
 
     def add_app_access_restrictions(
         self,
@@ -4292,7 +4437,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Union[Integration, None]]]:
+    ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#add-app-access-restrictions"""
 
         from typing import Union
@@ -4338,7 +4483,9 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType,
-    ) -> Response[list[Union[Integration, None]]]: ...
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+    ]: ...
 
     @overload
     async def async_add_app_access_restrictions(
@@ -4350,7 +4497,9 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         apps: list[str],
-    ) -> Response[list[Union[Integration, None]]]: ...
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+    ]: ...
 
     async def async_add_app_access_restrictions(
         self,
@@ -4363,7 +4512,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Union[Integration, None]]]:
+    ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#add-app-access-restrictions"""
 
         from typing import Union
@@ -4409,7 +4558,9 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
-    ) -> Response[list[Union[Integration, None]]]: ...
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+    ]: ...
 
     @overload
     def remove_app_access_restrictions(
@@ -4421,7 +4572,9 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         apps: list[str],
-    ) -> Response[list[Union[Integration, None]]]: ...
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+    ]: ...
 
     def remove_app_access_restrictions(
         self,
@@ -4434,7 +4587,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Union[Integration, None]]]:
+    ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#remove-app-access-restrictions"""
 
         from typing import Union
@@ -4480,7 +4633,9 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType,
-    ) -> Response[list[Union[Integration, None]]]: ...
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+    ]: ...
 
     @overload
     async def async_remove_app_access_restrictions(
@@ -4492,7 +4647,9 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         apps: list[str],
-    ) -> Response[list[Union[Integration, None]]]: ...
+    ) -> Response[
+        list[Union[Integration, None]], list[Union[IntegrationType, None]]
+    ]: ...
 
     async def async_remove_app_access_restrictions(
         self,
@@ -4505,7 +4662,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsAppsDeleteBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Union[Integration, None]]]:
+    ) -> Response[list[Union[Integration, None]], list[Union[IntegrationType, None]]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#remove-app-access-restrictions"""
 
         from typing import Union
@@ -4549,7 +4706,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Team]]:
+    ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch"""
 
         from ..models import Team, BasicError
@@ -4575,7 +4732,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Team]]:
+    ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch"""
 
         from ..models import Team, BasicError
@@ -4608,7 +4765,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[Team]]: ...
+    ) -> Response[list[Team], list[TeamType]]: ...
 
     @overload
     def set_team_access_restrictions(
@@ -4620,7 +4777,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         teams: list[str],
-    ) -> Response[list[Team]]: ...
+    ) -> Response[list[Team], list[TeamType]]: ...
 
     def set_team_access_restrictions(
         self,
@@ -4636,7 +4793,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Team]]:
+    ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-team-access-restrictions"""
 
         from typing import Union
@@ -4691,7 +4848,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[Team]]: ...
+    ) -> Response[list[Team], list[TeamType]]: ...
 
     @overload
     async def async_set_team_access_restrictions(
@@ -4703,7 +4860,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         teams: list[str],
-    ) -> Response[list[Team]]: ...
+    ) -> Response[list[Team], list[TeamType]]: ...
 
     async def async_set_team_access_restrictions(
         self,
@@ -4719,7 +4876,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Team]]:
+    ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-team-access-restrictions"""
 
         from typing import Union
@@ -4774,7 +4931,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[Team]]: ...
+    ) -> Response[list[Team], list[TeamType]]: ...
 
     @overload
     def add_team_access_restrictions(
@@ -4786,7 +4943,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         teams: list[str],
-    ) -> Response[list[Team]]: ...
+    ) -> Response[list[Team], list[TeamType]]: ...
 
     def add_team_access_restrictions(
         self,
@@ -4802,7 +4959,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Team]]:
+    ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#add-team-access-restrictions"""
 
         from typing import Union
@@ -4857,7 +5014,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[Team]]: ...
+    ) -> Response[list[Team], list[TeamType]]: ...
 
     @overload
     async def async_add_team_access_restrictions(
@@ -4869,7 +5026,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         teams: list[str],
-    ) -> Response[list[Team]]: ...
+    ) -> Response[list[Team], list[TeamType]]: ...
 
     async def async_add_team_access_restrictions(
         self,
@@ -4885,7 +5042,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Team]]:
+    ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#add-team-access-restrictions"""
 
         from typing import Union
@@ -4940,7 +5097,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[Team]]: ...
+    ) -> Response[list[Team], list[TeamType]]: ...
 
     @overload
     def remove_team_access_restrictions(
@@ -4952,7 +5109,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         teams: list[str],
-    ) -> Response[list[Team]]: ...
+    ) -> Response[list[Team], list[TeamType]]: ...
 
     def remove_team_access_restrictions(
         self,
@@ -4968,7 +5125,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Team]]:
+    ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#remove-team-access-restrictions"""
 
         from typing import Union
@@ -5023,7 +5180,7 @@ class ReposClient:
                 list[str],
             ]
         ] = UNSET,
-    ) -> Response[list[Team]]: ...
+    ) -> Response[list[Team], list[TeamType]]: ...
 
     @overload
     async def async_remove_team_access_restrictions(
@@ -5035,7 +5192,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         teams: list[str],
-    ) -> Response[list[Team]]: ...
+    ) -> Response[list[Team], list[TeamType]]: ...
 
     async def async_remove_team_access_restrictions(
         self,
@@ -5051,7 +5208,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Team]]:
+    ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#remove-team-access-restrictions"""
 
         from typing import Union
@@ -5099,7 +5256,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-users-with-access-to-the-protected-branch"""
 
         from ..models import BasicError, SimpleUser
@@ -5125,7 +5282,7 @@ class ReposClient:
         branch: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#get-users-with-access-to-the-protected-branch"""
 
         from ..models import BasicError, SimpleUser
@@ -5153,7 +5310,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
-    ) -> Response[list[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
     @overload
     def set_user_access_restrictions(
@@ -5165,7 +5322,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         users: list[str],
-    ) -> Response[list[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
     def set_user_access_restrictions(
         self,
@@ -5178,7 +5335,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-user-access-restrictions"""
 
         from ..models import (
@@ -5222,7 +5379,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType,
-    ) -> Response[list[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
     @overload
     async def async_set_user_access_restrictions(
@@ -5234,7 +5391,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         users: list[str],
-    ) -> Response[list[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
     async def async_set_user_access_restrictions(
         self,
@@ -5247,7 +5404,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#set-user-access-restrictions"""
 
         from ..models import (
@@ -5291,7 +5448,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
-    ) -> Response[list[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
     @overload
     def add_user_access_restrictions(
@@ -5303,7 +5460,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         users: list[str],
-    ) -> Response[list[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
     def add_user_access_restrictions(
         self,
@@ -5316,7 +5473,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#add-user-access-restrictions"""
 
         from ..models import (
@@ -5360,7 +5517,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType,
-    ) -> Response[list[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
     @overload
     async def async_add_user_access_restrictions(
@@ -5372,7 +5529,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         users: list[str],
-    ) -> Response[list[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
     async def async_add_user_access_restrictions(
         self,
@@ -5385,7 +5542,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#add-user-access-restrictions"""
 
         from ..models import (
@@ -5429,7 +5586,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
-    ) -> Response[list[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
     @overload
     def remove_user_access_restrictions(
@@ -5441,7 +5598,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         users: list[str],
-    ) -> Response[list[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
     def remove_user_access_restrictions(
         self,
@@ -5454,7 +5611,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#remove-user-access-restrictions"""
 
         from ..models import (
@@ -5498,7 +5655,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType,
-    ) -> Response[list[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
     @overload
     async def async_remove_user_access_restrictions(
@@ -5510,7 +5667,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         users: list[str],
-    ) -> Response[list[SimpleUser]]: ...
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]: ...
 
     async def async_remove_user_access_restrictions(
         self,
@@ -5523,7 +5680,7 @@ class ReposClient:
             ReposOwnerRepoBranchesBranchProtectionRestrictionsUsersDeleteBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[SimpleUser]]:
+    ) -> Response[list[SimpleUser], list[SimpleUserType]]:
         """See also: https://docs.github.com/rest/branches/branch-protection#remove-user-access-restrictions"""
 
         from ..models import (
@@ -5567,7 +5724,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchRenamePostBodyType,
-    ) -> Response[BranchWithProtection]: ...
+    ) -> Response[BranchWithProtection, BranchWithProtectionType]: ...
 
     @overload
     def rename_branch(
@@ -5579,7 +5736,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         new_name: str,
-    ) -> Response[BranchWithProtection]: ...
+    ) -> Response[BranchWithProtection, BranchWithProtectionType]: ...
 
     def rename_branch(
         self,
@@ -5590,7 +5747,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[BranchWithProtection]:
+    ) -> Response[BranchWithProtection, BranchWithProtectionType]:
         """See also: https://docs.github.com/rest/branches/branches#rename-a-branch"""
 
         from ..models import (
@@ -5637,7 +5794,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoBranchesBranchRenamePostBodyType,
-    ) -> Response[BranchWithProtection]: ...
+    ) -> Response[BranchWithProtection, BranchWithProtectionType]: ...
 
     @overload
     async def async_rename_branch(
@@ -5649,7 +5806,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         new_name: str,
-    ) -> Response[BranchWithProtection]: ...
+    ) -> Response[BranchWithProtection, BranchWithProtectionType]: ...
 
     async def async_rename_branch(
         self,
@@ -5660,7 +5817,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoBranchesBranchRenamePostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[BranchWithProtection]:
+    ) -> Response[BranchWithProtection, BranchWithProtectionType]:
         """See also: https://docs.github.com/rest/branches/branches#rename-a-branch"""
 
         from ..models import (
@@ -5705,7 +5862,7 @@ class ReposClient:
         ref: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeownersErrors]:
+    ) -> Response[CodeownersErrors, CodeownersErrorsType]:
         """See also: https://docs.github.com/rest/repos/repos#list-codeowners-errors"""
 
         from ..models import CodeownersErrors
@@ -5734,7 +5891,7 @@ class ReposClient:
         ref: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeownersErrors]:
+    ) -> Response[CodeownersErrors, CodeownersErrorsType]:
         """See also: https://docs.github.com/rest/repos/repos#list-codeowners-errors"""
 
         from ..models import CodeownersErrors
@@ -5768,7 +5925,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Collaborator]]:
+    ) -> Response[list[Collaborator], list[CollaboratorType]]:
         """See also: https://docs.github.com/rest/collaborators/collaborators#list-repository-collaborators"""
 
         from ..models import BasicError, Collaborator
@@ -5807,7 +5964,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Collaborator]]:
+    ) -> Response[list[Collaborator], list[CollaboratorType]]:
         """See also: https://docs.github.com/rest/collaborators/collaborators#list-repository-collaborators"""
 
         from ..models import BasicError, Collaborator
@@ -5885,7 +6042,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
-    ) -> Response[RepositoryInvitation]: ...
+    ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
     @overload
     def add_collaborator(
@@ -5897,7 +6054,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         permission: Missing[str] = UNSET,
-    ) -> Response[RepositoryInvitation]: ...
+    ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
     def add_collaborator(
         self,
@@ -5908,7 +6065,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryInvitation]:
+    ) -> Response[RepositoryInvitation, RepositoryInvitationType]:
         """See also: https://docs.github.com/rest/collaborators/collaborators#add-a-repository-collaborator"""
 
         from ..models import (
@@ -5954,7 +6111,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
-    ) -> Response[RepositoryInvitation]: ...
+    ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
     @overload
     async def async_add_collaborator(
@@ -5966,7 +6123,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         permission: Missing[str] = UNSET,
-    ) -> Response[RepositoryInvitation]: ...
+    ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
     async def async_add_collaborator(
         self,
@@ -5977,7 +6134,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCollaboratorsUsernamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryInvitation]:
+    ) -> Response[RepositoryInvitation, RepositoryInvitationType]:
         """See also: https://docs.github.com/rest/collaborators/collaborators#add-a-repository-collaborator"""
 
         from ..models import (
@@ -6073,7 +6230,9 @@ class ReposClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RepositoryCollaboratorPermission]:
+    ) -> Response[
+        RepositoryCollaboratorPermission, RepositoryCollaboratorPermissionType
+    ]:
         """See also: https://docs.github.com/rest/collaborators/collaborators#get-repository-permissions-for-a-user"""
 
         from ..models import BasicError, RepositoryCollaboratorPermission
@@ -6099,7 +6258,9 @@ class ReposClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RepositoryCollaboratorPermission]:
+    ) -> Response[
+        RepositoryCollaboratorPermission, RepositoryCollaboratorPermissionType
+    ]:
         """See also: https://docs.github.com/rest/collaborators/collaborators#get-repository-permissions-for-a-user"""
 
         from ..models import BasicError, RepositoryCollaboratorPermission
@@ -6126,7 +6287,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CommitComment]]:
+    ) -> Response[list[CommitComment], list[CommitCommentType]]:
         """See also: https://docs.github.com/rest/commits/comments#list-commit-comments-for-a-repository"""
 
         from ..models import CommitComment
@@ -6156,7 +6317,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CommitComment]]:
+    ) -> Response[list[CommitComment], list[CommitCommentType]]:
         """See also: https://docs.github.com/rest/commits/comments#list-commit-comments-for-a-repository"""
 
         from ..models import CommitComment
@@ -6185,7 +6346,7 @@ class ReposClient:
         comment_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CommitComment]:
+    ) -> Response[CommitComment, CommitCommentType]:
         """See also: https://docs.github.com/rest/commits/comments#get-a-commit-comment"""
 
         from ..models import BasicError, CommitComment
@@ -6211,7 +6372,7 @@ class ReposClient:
         comment_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CommitComment]:
+    ) -> Response[CommitComment, CommitCommentType]:
         """See also: https://docs.github.com/rest/commits/comments#get-a-commit-comment"""
 
         from ..models import BasicError, CommitComment
@@ -6289,7 +6450,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdPatchBodyType,
-    ) -> Response[CommitComment]: ...
+    ) -> Response[CommitComment, CommitCommentType]: ...
 
     @overload
     def update_commit_comment(
@@ -6301,7 +6462,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         body: str,
-    ) -> Response[CommitComment]: ...
+    ) -> Response[CommitComment, CommitCommentType]: ...
 
     def update_commit_comment(
         self,
@@ -6312,7 +6473,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CommitComment]:
+    ) -> Response[CommitComment, CommitCommentType]:
         """See also: https://docs.github.com/rest/commits/comments#update-a-commit-comment"""
 
         from ..models import (
@@ -6354,7 +6515,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCommentsCommentIdPatchBodyType,
-    ) -> Response[CommitComment]: ...
+    ) -> Response[CommitComment, CommitCommentType]: ...
 
     @overload
     async def async_update_commit_comment(
@@ -6366,7 +6527,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         body: str,
-    ) -> Response[CommitComment]: ...
+    ) -> Response[CommitComment, CommitCommentType]: ...
 
     async def async_update_commit_comment(
         self,
@@ -6377,7 +6538,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CommitComment]:
+    ) -> Response[CommitComment, CommitCommentType]:
         """See also: https://docs.github.com/rest/commits/comments#update-a-commit-comment"""
 
         from ..models import (
@@ -6424,7 +6585,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Commit]]:
+    ) -> Response[list[Commit], list[CommitType]]:
         """See also: https://docs.github.com/rest/commits/commits#list-commits"""
 
         from ..models import Commit, BasicError
@@ -6472,7 +6633,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Commit]]:
+    ) -> Response[list[Commit], list[CommitType]]:
         """See also: https://docs.github.com/rest/commits/commits#list-commits"""
 
         from ..models import Commit, BasicError
@@ -6513,7 +6674,7 @@ class ReposClient:
         commit_sha: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[BranchShort]]:
+    ) -> Response[list[BranchShort], list[BranchShortType]]:
         """See also: https://docs.github.com/rest/commits/commits#list-branches-for-head-commit"""
 
         from ..models import BasicError, BranchShort, ValidationError
@@ -6540,7 +6701,7 @@ class ReposClient:
         commit_sha: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[BranchShort]]:
+    ) -> Response[list[BranchShort], list[BranchShortType]]:
         """See also: https://docs.github.com/rest/commits/commits#list-branches-for-head-commit"""
 
         from ..models import BasicError, BranchShort, ValidationError
@@ -6569,7 +6730,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CommitComment]]:
+    ) -> Response[list[CommitComment], list[CommitCommentType]]:
         """See also: https://docs.github.com/rest/commits/comments#list-commit-comments"""
 
         from ..models import CommitComment
@@ -6600,7 +6761,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CommitComment]]:
+    ) -> Response[list[CommitComment], list[CommitCommentType]]:
         """See also: https://docs.github.com/rest/commits/comments#list-commit-comments"""
 
         from ..models import CommitComment
@@ -6631,7 +6792,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
-    ) -> Response[CommitComment]: ...
+    ) -> Response[CommitComment, CommitCommentType]: ...
 
     @overload
     def create_commit_comment(
@@ -6646,7 +6807,7 @@ class ReposClient:
         path: Missing[str] = UNSET,
         position: Missing[int] = UNSET,
         line: Missing[int] = UNSET,
-    ) -> Response[CommitComment]: ...
+    ) -> Response[CommitComment, CommitCommentType]: ...
 
     def create_commit_comment(
         self,
@@ -6657,7 +6818,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CommitComment]:
+    ) -> Response[CommitComment, CommitCommentType]:
         """See also: https://docs.github.com/rest/commits/comments#create-a-commit-comment"""
 
         from ..models import (
@@ -6703,7 +6864,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCommitsCommitShaCommentsPostBodyType,
-    ) -> Response[CommitComment]: ...
+    ) -> Response[CommitComment, CommitCommentType]: ...
 
     @overload
     async def async_create_commit_comment(
@@ -6718,7 +6879,7 @@ class ReposClient:
         path: Missing[str] = UNSET,
         position: Missing[int] = UNSET,
         line: Missing[int] = UNSET,
-    ) -> Response[CommitComment]: ...
+    ) -> Response[CommitComment, CommitCommentType]: ...
 
     async def async_create_commit_comment(
         self,
@@ -6729,7 +6890,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCommitsCommitShaCommentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CommitComment]:
+    ) -> Response[CommitComment, CommitCommentType]:
         """See also: https://docs.github.com/rest/commits/comments#create-a-commit-comment"""
 
         from ..models import (
@@ -6775,7 +6936,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PullRequestSimple]]:
+    ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """See also: https://docs.github.com/rest/commits/commits#list-pull-requests-associated-with-a-commit"""
 
         from ..models import BasicError, PullRequestSimple
@@ -6809,7 +6970,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PullRequestSimple]]:
+    ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """See also: https://docs.github.com/rest/commits/commits#list-pull-requests-associated-with-a-commit"""
 
         from ..models import BasicError, PullRequestSimple
@@ -6843,7 +7004,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Commit]:
+    ) -> Response[Commit, CommitType]:
         """See also: https://docs.github.com/rest/commits/commits#get-a-commit"""
 
         from ..models import (
@@ -6886,7 +7047,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Commit]:
+    ) -> Response[Commit, CommitType]:
         """See also: https://docs.github.com/rest/commits/commits#get-a-commit"""
 
         from ..models import (
@@ -6929,7 +7090,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CombinedCommitStatus]:
+    ) -> Response[CombinedCommitStatus, CombinedCommitStatusType]:
         """See also: https://docs.github.com/rest/commits/statuses#get-the-combined-status-for-a-specific-reference"""
 
         from ..models import BasicError, CombinedCommitStatus
@@ -6963,7 +7124,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CombinedCommitStatus]:
+    ) -> Response[CombinedCommitStatus, CombinedCommitStatusType]:
         """See also: https://docs.github.com/rest/commits/statuses#get-the-combined-status-for-a-specific-reference"""
 
         from ..models import BasicError, CombinedCommitStatus
@@ -6997,7 +7158,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Status]]:
+    ) -> Response[list[Status], list[StatusType]]:
         """See also: https://docs.github.com/rest/commits/statuses#list-commit-statuses-for-a-reference"""
 
         from ..models import Status
@@ -7028,7 +7189,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Status]]:
+    ) -> Response[list[Status], list[StatusType]]:
         """See also: https://docs.github.com/rest/commits/statuses#list-commit-statuses-for-a-reference"""
 
         from ..models import Status
@@ -7056,7 +7217,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CommunityProfile]:
+    ) -> Response[CommunityProfile, CommunityProfileType]:
         """See also: https://docs.github.com/rest/metrics/community#get-community-profile-metrics"""
 
         from ..models import CommunityProfile
@@ -7078,7 +7239,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CommunityProfile]:
+    ) -> Response[CommunityProfile, CommunityProfileType]:
         """See also: https://docs.github.com/rest/metrics/community#get-community-profile-metrics"""
 
         from ..models import CommunityProfile
@@ -7103,7 +7264,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CommitComparison]:
+    ) -> Response[CommitComparison, CommitComparisonType]:
         """See also: https://docs.github.com/rest/commits/commits#compare-two-commits"""
 
         from ..models import (
@@ -7143,7 +7304,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CommitComparison]:
+    ) -> Response[CommitComparison, CommitComparisonType]:
         """See also: https://docs.github.com/rest/commits/commits#compare-two-commits"""
 
         from ..models import (
@@ -7185,7 +7346,13 @@ class ReposClient:
     ) -> Response[
         Union[
             list[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
-        ]
+        ],
+        Union[
+            list[ContentDirectoryItemsType],
+            ContentFileType,
+            ContentSymlinkType,
+            ContentSubmoduleType,
+        ],
     ]:
         """See also: https://docs.github.com/rest/repos/contents#get-repository-content"""
 
@@ -7235,7 +7402,13 @@ class ReposClient:
     ) -> Response[
         Union[
             list[ContentDirectoryItems], ContentFile, ContentSymlink, ContentSubmodule
-        ]
+        ],
+        Union[
+            list[ContentDirectoryItemsType],
+            ContentFileType,
+            ContentSymlinkType,
+            ContentSubmoduleType,
+        ],
     ]:
         """See also: https://docs.github.com/rest/repos/contents#get-repository-content"""
 
@@ -7283,7 +7456,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoContentsPathPutBodyType,
-    ) -> Response[FileCommit]: ...
+    ) -> Response[FileCommit, FileCommitType]: ...
 
     @overload
     def create_or_update_file_contents(
@@ -7300,7 +7473,7 @@ class ReposClient:
         branch: Missing[str] = UNSET,
         committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitterType] = UNSET,
         author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthorType] = UNSET,
-    ) -> Response[FileCommit]: ...
+    ) -> Response[FileCommit, FileCommitType]: ...
 
     def create_or_update_file_contents(
         self,
@@ -7311,7 +7484,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FileCommit]:
+    ) -> Response[FileCommit, FileCommitType]:
         """See also: https://docs.github.com/rest/repos/contents#create-or-update-file-contents"""
 
         from typing import Union
@@ -7359,7 +7532,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoContentsPathPutBodyType,
-    ) -> Response[FileCommit]: ...
+    ) -> Response[FileCommit, FileCommitType]: ...
 
     @overload
     async def async_create_or_update_file_contents(
@@ -7376,7 +7549,7 @@ class ReposClient:
         branch: Missing[str] = UNSET,
         committer: Missing[ReposOwnerRepoContentsPathPutBodyPropCommitterType] = UNSET,
         author: Missing[ReposOwnerRepoContentsPathPutBodyPropAuthorType] = UNSET,
-    ) -> Response[FileCommit]: ...
+    ) -> Response[FileCommit, FileCommitType]: ...
 
     async def async_create_or_update_file_contents(
         self,
@@ -7387,7 +7560,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoContentsPathPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FileCommit]:
+    ) -> Response[FileCommit, FileCommitType]:
         """See also: https://docs.github.com/rest/repos/contents#create-or-update-file-contents"""
 
         from typing import Union
@@ -7435,7 +7608,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoContentsPathDeleteBodyType,
-    ) -> Response[FileCommit]: ...
+    ) -> Response[FileCommit, FileCommitType]: ...
 
     @overload
     def delete_file(
@@ -7453,7 +7626,7 @@ class ReposClient:
             ReposOwnerRepoContentsPathDeleteBodyPropCommitterType
         ] = UNSET,
         author: Missing[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType] = UNSET,
-    ) -> Response[FileCommit]: ...
+    ) -> Response[FileCommit, FileCommitType]: ...
 
     def delete_file(
         self,
@@ -7464,7 +7637,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FileCommit]:
+    ) -> Response[FileCommit, FileCommitType]:
         """See also: https://docs.github.com/rest/repos/contents#delete-a-file"""
 
         from ..models import (
@@ -7511,7 +7684,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoContentsPathDeleteBodyType,
-    ) -> Response[FileCommit]: ...
+    ) -> Response[FileCommit, FileCommitType]: ...
 
     @overload
     async def async_delete_file(
@@ -7529,7 +7702,7 @@ class ReposClient:
             ReposOwnerRepoContentsPathDeleteBodyPropCommitterType
         ] = UNSET,
         author: Missing[ReposOwnerRepoContentsPathDeleteBodyPropAuthorType] = UNSET,
-    ) -> Response[FileCommit]: ...
+    ) -> Response[FileCommit, FileCommitType]: ...
 
     async def async_delete_file(
         self,
@@ -7540,7 +7713,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoContentsPathDeleteBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FileCommit]:
+    ) -> Response[FileCommit, FileCommitType]:
         """See also: https://docs.github.com/rest/repos/contents#delete-a-file"""
 
         from ..models import (
@@ -7587,7 +7760,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Contributor]]:
+    ) -> Response[list[Contributor], list[ContributorType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-contributors"""
 
         from ..models import BasicError, Contributor
@@ -7623,7 +7796,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Contributor]]:
+    ) -> Response[list[Contributor], list[ContributorType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-contributors"""
 
         from ..models import BasicError, Contributor
@@ -7662,7 +7835,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Deployment]]:
+    ) -> Response[list[Deployment], list[DeploymentType]]:
         """See also: https://docs.github.com/rest/deployments/deployments#list-deployments"""
 
         from ..models import Deployment
@@ -7700,7 +7873,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Deployment]]:
+    ) -> Response[list[Deployment], list[DeploymentType]]:
         """See also: https://docs.github.com/rest/deployments/deployments#list-deployments"""
 
         from ..models import Deployment
@@ -7734,7 +7907,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoDeploymentsPostBodyType,
-    ) -> Response[Deployment]: ...
+    ) -> Response[Deployment, DeploymentType]: ...
 
     @overload
     def create_deployment(
@@ -7755,7 +7928,7 @@ class ReposClient:
         description: Missing[Union[str, None]] = UNSET,
         transient_environment: Missing[bool] = UNSET,
         production_environment: Missing[bool] = UNSET,
-    ) -> Response[Deployment]: ...
+    ) -> Response[Deployment, DeploymentType]: ...
 
     def create_deployment(
         self,
@@ -7765,7 +7938,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Deployment]:
+    ) -> Response[Deployment, DeploymentType]:
         """See also: https://docs.github.com/rest/deployments/deployments#create-a-deployment"""
 
         from ..models import (
@@ -7806,7 +7979,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoDeploymentsPostBodyType,
-    ) -> Response[Deployment]: ...
+    ) -> Response[Deployment, DeploymentType]: ...
 
     @overload
     async def async_create_deployment(
@@ -7827,7 +8000,7 @@ class ReposClient:
         description: Missing[Union[str, None]] = UNSET,
         transient_environment: Missing[bool] = UNSET,
         production_environment: Missing[bool] = UNSET,
-    ) -> Response[Deployment]: ...
+    ) -> Response[Deployment, DeploymentType]: ...
 
     async def async_create_deployment(
         self,
@@ -7837,7 +8010,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoDeploymentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Deployment]:
+    ) -> Response[Deployment, DeploymentType]:
         """See also: https://docs.github.com/rest/deployments/deployments#create-a-deployment"""
 
         from ..models import (
@@ -7877,7 +8050,7 @@ class ReposClient:
         deployment_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Deployment]:
+    ) -> Response[Deployment, DeploymentType]:
         """See also: https://docs.github.com/rest/deployments/deployments#get-a-deployment"""
 
         from ..models import BasicError, Deployment
@@ -7903,7 +8076,7 @@ class ReposClient:
         deployment_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Deployment]:
+    ) -> Response[Deployment, DeploymentType]:
         """See also: https://docs.github.com/rest/deployments/deployments#get-a-deployment"""
 
         from ..models import BasicError, Deployment
@@ -7983,7 +8156,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[DeploymentStatus]]:
+    ) -> Response[list[DeploymentStatus], list[DeploymentStatusType]]:
         """See also: https://docs.github.com/rest/deployments/statuses#list-deployment-statuses"""
 
         from ..models import BasicError, DeploymentStatus
@@ -8017,7 +8190,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[DeploymentStatus]]:
+    ) -> Response[list[DeploymentStatus], list[DeploymentStatusType]]:
         """See also: https://docs.github.com/rest/deployments/statuses#list-deployment-statuses"""
 
         from ..models import BasicError, DeploymentStatus
@@ -8051,7 +8224,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
-    ) -> Response[DeploymentStatus]: ...
+    ) -> Response[DeploymentStatus, DeploymentStatusType]: ...
 
     @overload
     def create_deployment_status(
@@ -8077,7 +8250,7 @@ class ReposClient:
         environment: Missing[str] = UNSET,
         environment_url: Missing[str] = UNSET,
         auto_inactive: Missing[bool] = UNSET,
-    ) -> Response[DeploymentStatus]: ...
+    ) -> Response[DeploymentStatus, DeploymentStatusType]: ...
 
     def create_deployment_status(
         self,
@@ -8090,7 +8263,7 @@ class ReposClient:
             ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[DeploymentStatus]:
+    ) -> Response[DeploymentStatus, DeploymentStatusType]:
         """See also: https://docs.github.com/rest/deployments/statuses#create-a-deployment-status"""
 
         from ..models import (
@@ -8134,7 +8307,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType,
-    ) -> Response[DeploymentStatus]: ...
+    ) -> Response[DeploymentStatus, DeploymentStatusType]: ...
 
     @overload
     async def async_create_deployment_status(
@@ -8160,7 +8333,7 @@ class ReposClient:
         environment: Missing[str] = UNSET,
         environment_url: Missing[str] = UNSET,
         auto_inactive: Missing[bool] = UNSET,
-    ) -> Response[DeploymentStatus]: ...
+    ) -> Response[DeploymentStatus, DeploymentStatusType]: ...
 
     async def async_create_deployment_status(
         self,
@@ -8173,7 +8346,7 @@ class ReposClient:
             ReposOwnerRepoDeploymentsDeploymentIdStatusesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[DeploymentStatus]:
+    ) -> Response[DeploymentStatus, DeploymentStatusType]:
         """See also: https://docs.github.com/rest/deployments/statuses#create-a-deployment-status"""
 
         from ..models import (
@@ -8216,7 +8389,7 @@ class ReposClient:
         status_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DeploymentStatus]:
+    ) -> Response[DeploymentStatus, DeploymentStatusType]:
         """See also: https://docs.github.com/rest/deployments/statuses#get-a-deployment-status"""
 
         from ..models import BasicError, DeploymentStatus
@@ -8243,7 +8416,7 @@ class ReposClient:
         status_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DeploymentStatus]:
+    ) -> Response[DeploymentStatus, DeploymentStatusType]:
         """See also: https://docs.github.com/rest/deployments/statuses#get-a-deployment-status"""
 
         from ..models import BasicError, DeploymentStatus
@@ -8400,7 +8573,10 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoEnvironmentsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoEnvironmentsGetResponse200,
+        ReposOwnerRepoEnvironmentsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/deployments/environments#list-environments"""
 
         from ..models import ReposOwnerRepoEnvironmentsGetResponse200
@@ -8430,7 +8606,10 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoEnvironmentsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoEnvironmentsGetResponse200,
+        ReposOwnerRepoEnvironmentsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/deployments/environments#list-environments"""
 
         from ..models import ReposOwnerRepoEnvironmentsGetResponse200
@@ -8459,7 +8638,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Environment]:
+    ) -> Response[Environment, EnvironmentType]:
         """See also: https://docs.github.com/rest/deployments/environments#get-an-environment"""
 
         from ..models import Environment
@@ -8482,7 +8661,7 @@ class ReposClient:
         environment_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Environment]:
+    ) -> Response[Environment, EnvironmentType]:
         """See also: https://docs.github.com/rest/deployments/environments#get-an-environment"""
 
         from ..models import Environment
@@ -8509,7 +8688,7 @@ class ReposClient:
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
-    ) -> Response[Environment]: ...
+    ) -> Response[Environment, EnvironmentType]: ...
 
     @overload
     def create_or_update_environment(
@@ -8533,7 +8712,7 @@ class ReposClient:
         deployment_branch_policy: Missing[
             Union[DeploymentBranchPolicySettingsType, None]
         ] = UNSET,
-    ) -> Response[Environment]: ...
+    ) -> Response[Environment, EnvironmentType]: ...
 
     def create_or_update_environment(
         self,
@@ -8546,7 +8725,7 @@ class ReposClient:
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[Environment]:
+    ) -> Response[Environment, EnvironmentType]:
         """See also: https://docs.github.com/rest/deployments/environments#create-or-update-an-environment"""
 
         from typing import Union
@@ -8594,7 +8773,7 @@ class ReposClient:
         data: Missing[
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
-    ) -> Response[Environment]: ...
+    ) -> Response[Environment, EnvironmentType]: ...
 
     @overload
     async def async_create_or_update_environment(
@@ -8618,7 +8797,7 @@ class ReposClient:
         deployment_branch_policy: Missing[
             Union[DeploymentBranchPolicySettingsType, None]
         ] = UNSET,
-    ) -> Response[Environment]: ...
+    ) -> Response[Environment, EnvironmentType]: ...
 
     async def async_create_or_update_environment(
         self,
@@ -8631,7 +8810,7 @@ class ReposClient:
             Union[ReposOwnerRepoEnvironmentsEnvironmentNamePutBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[Environment]:
+    ) -> Response[Environment, EnvironmentType]:
         """See also: https://docs.github.com/rest/deployments/environments#create-or-update-an-environment"""
 
         from typing import Union
@@ -8718,7 +8897,8 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type,
     ]:
         """See also: https://docs.github.com/rest/deployments/branch-policies#list-deployment-branch-policies"""
 
@@ -8753,7 +8933,8 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentBranchPoliciesGetResponse200Type,
     ]:
         """See also: https://docs.github.com/rest/deployments/branch-policies#list-deployment-branch-policies"""
 
@@ -8787,7 +8968,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: DeploymentBranchPolicyNamePatternWithTypeType,
-    ) -> Response[DeploymentBranchPolicy]: ...
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
     @overload
     def create_deployment_branch_policy(
@@ -8800,7 +8981,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         name: str,
         type: Missing[Literal["branch", "tag"]] = UNSET,
-    ) -> Response[DeploymentBranchPolicy]: ...
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
     def create_deployment_branch_policy(
         self,
@@ -8811,7 +8992,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[DeploymentBranchPolicyNamePatternWithTypeType] = UNSET,
         **kwargs,
-    ) -> Response[DeploymentBranchPolicy]:
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
         """See also: https://docs.github.com/rest/deployments/branch-policies#create-a-deployment-branch-policy"""
 
         from ..models import (
@@ -8850,7 +9031,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: DeploymentBranchPolicyNamePatternWithTypeType,
-    ) -> Response[DeploymentBranchPolicy]: ...
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
     @overload
     async def async_create_deployment_branch_policy(
@@ -8863,7 +9044,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         name: str,
         type: Missing[Literal["branch", "tag"]] = UNSET,
-    ) -> Response[DeploymentBranchPolicy]: ...
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
     async def async_create_deployment_branch_policy(
         self,
@@ -8874,7 +9055,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[DeploymentBranchPolicyNamePatternWithTypeType] = UNSET,
         **kwargs,
-    ) -> Response[DeploymentBranchPolicy]:
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
         """See also: https://docs.github.com/rest/deployments/branch-policies#create-a-deployment-branch-policy"""
 
         from ..models import (
@@ -8912,7 +9093,7 @@ class ReposClient:
         branch_policy_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DeploymentBranchPolicy]:
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
         """See also: https://docs.github.com/rest/deployments/branch-policies#get-a-deployment-branch-policy"""
 
         from ..models import DeploymentBranchPolicy
@@ -8936,7 +9117,7 @@ class ReposClient:
         branch_policy_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DeploymentBranchPolicy]:
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
         """See also: https://docs.github.com/rest/deployments/branch-policies#get-a-deployment-branch-policy"""
 
         from ..models import DeploymentBranchPolicy
@@ -8962,7 +9143,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: DeploymentBranchPolicyNamePatternType,
-    ) -> Response[DeploymentBranchPolicy]: ...
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
     @overload
     def update_deployment_branch_policy(
@@ -8975,7 +9156,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         name: str,
-    ) -> Response[DeploymentBranchPolicy]: ...
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
     def update_deployment_branch_policy(
         self,
@@ -8987,7 +9168,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
-    ) -> Response[DeploymentBranchPolicy]:
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
         """See also: https://docs.github.com/rest/deployments/branch-policies#update-a-deployment-branch-policy"""
 
         from ..models import DeploymentBranchPolicy, DeploymentBranchPolicyNamePattern
@@ -9023,7 +9204,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: DeploymentBranchPolicyNamePatternType,
-    ) -> Response[DeploymentBranchPolicy]: ...
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
     @overload
     async def async_update_deployment_branch_policy(
@@ -9036,7 +9217,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         name: str,
-    ) -> Response[DeploymentBranchPolicy]: ...
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]: ...
 
     async def async_update_deployment_branch_policy(
         self,
@@ -9048,7 +9229,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[DeploymentBranchPolicyNamePatternType] = UNSET,
         **kwargs,
-    ) -> Response[DeploymentBranchPolicy]:
+    ) -> Response[DeploymentBranchPolicy, DeploymentBranchPolicyType]:
         """See also: https://docs.github.com/rest/deployments/branch-policies#update-a-deployment-branch-policy"""
 
         from ..models import DeploymentBranchPolicy, DeploymentBranchPolicyNamePattern
@@ -9124,7 +9305,8 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type,
     ]:
         """See also: https://docs.github.com/rest/deployments/protection-rules#get-all-deployment-protection-rules-for-an-environment"""
 
@@ -9151,7 +9333,8 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesGetResponse200Type,
     ]:
         """See also: https://docs.github.com/rest/deployments/protection-rules#get-all-deployment-protection-rules-for-an-environment"""
 
@@ -9179,7 +9362,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
-    ) -> Response[DeploymentProtectionRule]: ...
+    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]: ...
 
     @overload
     def create_deployment_protection_rule(
@@ -9191,7 +9374,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         integration_id: Missing[int] = UNSET,
-    ) -> Response[DeploymentProtectionRule]: ...
+    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]: ...
 
     def create_deployment_protection_rule(
         self,
@@ -9204,7 +9387,7 @@ class ReposClient:
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[DeploymentProtectionRule]:
+    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]:
         """See also: https://docs.github.com/rest/deployments/protection-rules#create-a-custom-deployment-protection-rule-on-an-environment"""
 
         from ..models import (
@@ -9245,7 +9428,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType,
-    ) -> Response[DeploymentProtectionRule]: ...
+    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]: ...
 
     @overload
     async def async_create_deployment_protection_rule(
@@ -9257,7 +9440,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         integration_id: Missing[int] = UNSET,
-    ) -> Response[DeploymentProtectionRule]: ...
+    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]: ...
 
     async def async_create_deployment_protection_rule(
         self,
@@ -9270,7 +9453,7 @@ class ReposClient:
             ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[DeploymentProtectionRule]:
+    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]:
         """See also: https://docs.github.com/rest/deployments/protection-rules#create-a-custom-deployment-protection-rule-on-an-environment"""
 
         from ..models import (
@@ -9312,7 +9495,8 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type,
     ]:
         """See also: https://docs.github.com/rest/deployments/protection-rules#list-custom-deployment-rule-integrations-available-for-an-environment"""
 
@@ -9347,7 +9531,8 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200,
+        ReposOwnerRepoEnvironmentsEnvironmentNameDeploymentProtectionRulesAppsGetResponse200Type,
     ]:
         """See also: https://docs.github.com/rest/deployments/protection-rules#list-custom-deployment-rule-integrations-available-for-an-environment"""
 
@@ -9380,7 +9565,7 @@ class ReposClient:
         protection_rule_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DeploymentProtectionRule]:
+    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]:
         """See also: https://docs.github.com/rest/deployments/protection-rules#get-a-custom-deployment-protection-rule"""
 
         from ..models import DeploymentProtectionRule
@@ -9404,7 +9589,7 @@ class ReposClient:
         protection_rule_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DeploymentProtectionRule]:
+    ) -> Response[DeploymentProtectionRule, DeploymentProtectionRuleType]:
         """See also: https://docs.github.com/rest/deployments/protection-rules#get-a-custom-deployment-protection-rule"""
 
         from ..models import DeploymentProtectionRule
@@ -9471,7 +9656,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/forks#list-forks"""
 
         from ..models import BasicError, MinimalRepository
@@ -9506,7 +9691,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/forks#list-forks"""
 
         from ..models import BasicError, MinimalRepository
@@ -9540,7 +9725,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     @overload
     def create_fork(
@@ -9553,7 +9738,7 @@ class ReposClient:
         organization: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
         default_branch_only: Missing[bool] = UNSET,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     def create_fork(
         self,
@@ -9563,7 +9748,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository]:
+    ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/rest/repos/forks#create-a-fork"""
 
         from typing import Union
@@ -9610,7 +9795,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     @overload
     async def async_create_fork(
@@ -9623,7 +9808,7 @@ class ReposClient:
         organization: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
         default_branch_only: Missing[bool] = UNSET,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     async def async_create_fork(
         self,
@@ -9633,7 +9818,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoForksPostBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository]:
+    ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/rest/repos/forks#create-a-fork"""
 
         from typing import Union
@@ -9680,7 +9865,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Hook]]:
+    ) -> Response[list[Hook], list[HookType]]:
         """See also: https://docs.github.com/rest/repos/webhooks#list-repository-webhooks"""
 
         from ..models import Hook, BasicError
@@ -9713,7 +9898,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Hook]]:
+    ) -> Response[list[Hook], list[HookType]]:
         """See also: https://docs.github.com/rest/repos/webhooks#list-repository-webhooks"""
 
         from ..models import Hook, BasicError
@@ -9746,7 +9931,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
-    ) -> Response[Hook]: ...
+    ) -> Response[Hook, HookType]: ...
 
     @overload
     def create_webhook(
@@ -9760,7 +9945,7 @@ class ReposClient:
         config: Missing[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[Hook]: ...
+    ) -> Response[Hook, HookType]: ...
 
     def create_webhook(
         self,
@@ -9770,7 +9955,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[Hook]:
+    ) -> Response[Hook, HookType]:
         """See also: https://docs.github.com/rest/repos/webhooks#create-a-repository-webhook"""
 
         from typing import Union
@@ -9816,7 +10001,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
-    ) -> Response[Hook]: ...
+    ) -> Response[Hook, HookType]: ...
 
     @overload
     async def async_create_webhook(
@@ -9830,7 +10015,7 @@ class ReposClient:
         config: Missing[ReposOwnerRepoHooksPostBodyPropConfigType] = UNSET,
         events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[Hook]: ...
+    ) -> Response[Hook, HookType]: ...
 
     async def async_create_webhook(
         self,
@@ -9840,7 +10025,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoHooksPostBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[Hook]:
+    ) -> Response[Hook, HookType]:
         """See also: https://docs.github.com/rest/repos/webhooks#create-a-repository-webhook"""
 
         from typing import Union
@@ -9885,7 +10070,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Hook]:
+    ) -> Response[Hook, HookType]:
         """See also: https://docs.github.com/rest/repos/webhooks#get-a-repository-webhook"""
 
         from ..models import Hook, BasicError
@@ -9911,7 +10096,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Hook]:
+    ) -> Response[Hook, HookType]:
         """See also: https://docs.github.com/rest/repos/webhooks#get-a-repository-webhook"""
 
         from ..models import Hook, BasicError
@@ -9989,7 +10174,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoHooksHookIdPatchBodyType,
-    ) -> Response[Hook]: ...
+    ) -> Response[Hook, HookType]: ...
 
     @overload
     def update_webhook(
@@ -10005,7 +10190,7 @@ class ReposClient:
         add_events: Missing[list[str]] = UNSET,
         remove_events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[Hook]: ...
+    ) -> Response[Hook, HookType]: ...
 
     def update_webhook(
         self,
@@ -10016,7 +10201,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Hook]:
+    ) -> Response[Hook, HookType]:
         """See also: https://docs.github.com/rest/repos/webhooks#update-a-repository-webhook"""
 
         from ..models import (
@@ -10060,7 +10245,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoHooksHookIdPatchBodyType,
-    ) -> Response[Hook]: ...
+    ) -> Response[Hook, HookType]: ...
 
     @overload
     async def async_update_webhook(
@@ -10076,7 +10261,7 @@ class ReposClient:
         add_events: Missing[list[str]] = UNSET,
         remove_events: Missing[list[str]] = UNSET,
         active: Missing[bool] = UNSET,
-    ) -> Response[Hook]: ...
+    ) -> Response[Hook, HookType]: ...
 
     async def async_update_webhook(
         self,
@@ -10087,7 +10272,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Hook]:
+    ) -> Response[Hook, HookType]:
         """See also: https://docs.github.com/rest/repos/webhooks#update-a-repository-webhook"""
 
         from ..models import (
@@ -10129,7 +10314,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[WebhookConfig]:
+    ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/repos/webhooks#get-a-webhook-configuration-for-a-repository"""
 
         from ..models import WebhookConfig
@@ -10152,7 +10337,7 @@ class ReposClient:
         hook_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[WebhookConfig]:
+    ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/repos/webhooks#get-a-webhook-configuration-for-a-repository"""
 
         from ..models import WebhookConfig
@@ -10177,7 +10362,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
-    ) -> Response[WebhookConfig]: ...
+    ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
     @overload
     def update_webhook_config_for_repo(
@@ -10192,7 +10377,7 @@ class ReposClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig]: ...
+    ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
     def update_webhook_config_for_repo(
         self,
@@ -10203,7 +10388,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[WebhookConfig]:
+    ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/repos/webhooks#update-a-webhook-configuration-for-a-repository"""
 
         from ..models import WebhookConfig, ReposOwnerRepoHooksHookIdConfigPatchBody
@@ -10238,7 +10423,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
-    ) -> Response[WebhookConfig]: ...
+    ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
     @overload
     async def async_update_webhook_config_for_repo(
@@ -10253,7 +10438,7 @@ class ReposClient:
         content_type: Missing[str] = UNSET,
         secret: Missing[str] = UNSET,
         insecure_ssl: Missing[Union[str, float]] = UNSET,
-    ) -> Response[WebhookConfig]: ...
+    ) -> Response[WebhookConfig, WebhookConfigType]: ...
 
     async def async_update_webhook_config_for_repo(
         self,
@@ -10264,7 +10449,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoHooksHookIdConfigPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[WebhookConfig]:
+    ) -> Response[WebhookConfig, WebhookConfigType]:
         """See also: https://docs.github.com/rest/repos/webhooks#update-a-webhook-configuration-for-a-repository"""
 
         from ..models import WebhookConfig, ReposOwnerRepoHooksHookIdConfigPatchBody
@@ -10299,7 +10484,7 @@ class ReposClient:
         cursor: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[HookDeliveryItem]]:
+    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/rest/repos/webhooks#list-deliveries-for-a-repository-webhook"""
 
         from ..models import BasicError, ValidationError, HookDeliveryItem
@@ -10334,7 +10519,7 @@ class ReposClient:
         cursor: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[HookDeliveryItem]]:
+    ) -> Response[list[HookDeliveryItem], list[HookDeliveryItemType]]:
         """See also: https://docs.github.com/rest/repos/webhooks#list-deliveries-for-a-repository-webhook"""
 
         from ..models import BasicError, ValidationError, HookDeliveryItem
@@ -10368,7 +10553,7 @@ class ReposClient:
         delivery_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[HookDelivery]:
+    ) -> Response[HookDelivery, HookDeliveryType]:
         """See also: https://docs.github.com/rest/repos/webhooks#get-a-delivery-for-a-repository-webhook"""
 
         from ..models import BasicError, HookDelivery, ValidationError
@@ -10396,7 +10581,7 @@ class ReposClient:
         delivery_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[HookDelivery]:
+    ) -> Response[HookDelivery, HookDeliveryType]:
         """See also: https://docs.github.com/rest/repos/webhooks#get-a-delivery-for-a-repository-webhook"""
 
         from ..models import BasicError, HookDelivery, ValidationError
@@ -10424,7 +10609,10 @@ class ReposClient:
         delivery_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook"""
 
         from ..models import (
@@ -10456,7 +10644,10 @@ class ReposClient:
         delivery_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AppHookDeliveriesDeliveryIdAttemptsPostResponse202]:
+    ) -> Response[
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202,
+        AppHookDeliveriesDeliveryIdAttemptsPostResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook"""
 
         from ..models import (
@@ -10588,7 +10779,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RepositoryInvitation]]:
+    ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
         """See also: https://docs.github.com/rest/collaborators/invitations#list-repository-invitations"""
 
         from ..models import RepositoryInvitation
@@ -10618,7 +10809,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RepositoryInvitation]]:
+    ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
         """See also: https://docs.github.com/rest/collaborators/invitations#list-repository-invitations"""
 
         from ..models import RepositoryInvitation
@@ -10689,7 +10880,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
-    ) -> Response[RepositoryInvitation]: ...
+    ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
     @overload
     def update_invitation(
@@ -10703,7 +10894,7 @@ class ReposClient:
         permissions: Missing[
             Literal["read", "write", "maintain", "triage", "admin"]
         ] = UNSET,
-    ) -> Response[RepositoryInvitation]: ...
+    ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
     def update_invitation(
         self,
@@ -10714,7 +10905,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryInvitation]:
+    ) -> Response[RepositoryInvitation, RepositoryInvitationType]:
         """See also: https://docs.github.com/rest/collaborators/invitations#update-a-repository-invitation"""
 
         from ..models import (
@@ -10754,7 +10945,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
-    ) -> Response[RepositoryInvitation]: ...
+    ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
     @overload
     async def async_update_invitation(
@@ -10768,7 +10959,7 @@ class ReposClient:
         permissions: Missing[
             Literal["read", "write", "maintain", "triage", "admin"]
         ] = UNSET,
-    ) -> Response[RepositoryInvitation]: ...
+    ) -> Response[RepositoryInvitation, RepositoryInvitationType]: ...
 
     async def async_update_invitation(
         self,
@@ -10779,7 +10970,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoInvitationsInvitationIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryInvitation]:
+    ) -> Response[RepositoryInvitation, RepositoryInvitationType]:
         """See also: https://docs.github.com/rest/collaborators/invitations#update-a-repository-invitation"""
 
         from ..models import (
@@ -10818,7 +11009,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[DeployKey]]:
+    ) -> Response[list[DeployKey], list[DeployKeyType]]:
         """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#list-deploy-keys"""
 
         from ..models import DeployKey
@@ -10848,7 +11039,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[DeployKey]]:
+    ) -> Response[list[DeployKey], list[DeployKeyType]]:
         """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#list-deploy-keys"""
 
         from ..models import DeployKey
@@ -10878,7 +11069,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoKeysPostBodyType,
-    ) -> Response[DeployKey]: ...
+    ) -> Response[DeployKey, DeployKeyType]: ...
 
     @overload
     def create_deploy_key(
@@ -10891,7 +11082,7 @@ class ReposClient:
         title: Missing[str] = UNSET,
         key: str,
         read_only: Missing[bool] = UNSET,
-    ) -> Response[DeployKey]: ...
+    ) -> Response[DeployKey, DeployKeyType]: ...
 
     def create_deploy_key(
         self,
@@ -10901,7 +11092,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoKeysPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[DeployKey]:
+    ) -> Response[DeployKey, DeployKeyType]:
         """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#create-a-deploy-key"""
 
         from ..models import DeployKey, ValidationError, ReposOwnerRepoKeysPostBody
@@ -10938,7 +11129,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoKeysPostBodyType,
-    ) -> Response[DeployKey]: ...
+    ) -> Response[DeployKey, DeployKeyType]: ...
 
     @overload
     async def async_create_deploy_key(
@@ -10951,7 +11142,7 @@ class ReposClient:
         title: Missing[str] = UNSET,
         key: str,
         read_only: Missing[bool] = UNSET,
-    ) -> Response[DeployKey]: ...
+    ) -> Response[DeployKey, DeployKeyType]: ...
 
     async def async_create_deploy_key(
         self,
@@ -10961,7 +11152,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoKeysPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[DeployKey]:
+    ) -> Response[DeployKey, DeployKeyType]:
         """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#create-a-deploy-key"""
 
         from ..models import DeployKey, ValidationError, ReposOwnerRepoKeysPostBody
@@ -10997,7 +11188,7 @@ class ReposClient:
         key_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DeployKey]:
+    ) -> Response[DeployKey, DeployKeyType]:
         """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key"""
 
         from ..models import DeployKey, BasicError
@@ -11023,7 +11214,7 @@ class ReposClient:
         key_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[DeployKey]:
+    ) -> Response[DeployKey, DeployKeyType]:
         """See also: https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key"""
 
         from ..models import DeployKey, BasicError
@@ -11088,7 +11279,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Language]:
+    ) -> Response[Language, LanguageType]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-languages"""
 
         from ..models import Language
@@ -11110,7 +11301,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Language]:
+    ) -> Response[Language, LanguageType]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-languages"""
 
         from ..models import Language
@@ -11134,7 +11325,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoMergeUpstreamPostBodyType,
-    ) -> Response[MergedUpstream]: ...
+    ) -> Response[MergedUpstream, MergedUpstreamType]: ...
 
     @overload
     def merge_upstream(
@@ -11145,7 +11336,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         branch: str,
-    ) -> Response[MergedUpstream]: ...
+    ) -> Response[MergedUpstream, MergedUpstreamType]: ...
 
     def merge_upstream(
         self,
@@ -11155,7 +11346,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[MergedUpstream]:
+    ) -> Response[MergedUpstream, MergedUpstreamType]:
         """See also: https://docs.github.com/rest/branches/branches#sync-a-fork-branch-with-the-upstream-repository"""
 
         from ..models import MergedUpstream, ReposOwnerRepoMergeUpstreamPostBody
@@ -11190,7 +11381,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoMergeUpstreamPostBodyType,
-    ) -> Response[MergedUpstream]: ...
+    ) -> Response[MergedUpstream, MergedUpstreamType]: ...
 
     @overload
     async def async_merge_upstream(
@@ -11201,7 +11392,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         branch: str,
-    ) -> Response[MergedUpstream]: ...
+    ) -> Response[MergedUpstream, MergedUpstreamType]: ...
 
     async def async_merge_upstream(
         self,
@@ -11211,7 +11402,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMergeUpstreamPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[MergedUpstream]:
+    ) -> Response[MergedUpstream, MergedUpstreamType]:
         """See also: https://docs.github.com/rest/branches/branches#sync-a-fork-branch-with-the-upstream-repository"""
 
         from ..models import MergedUpstream, ReposOwnerRepoMergeUpstreamPostBody
@@ -11246,7 +11437,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoMergesPostBodyType,
-    ) -> Response[Commit]: ...
+    ) -> Response[Commit, CommitType]: ...
 
     @overload
     def merge(
@@ -11259,7 +11450,7 @@ class ReposClient:
         base: str,
         head: str,
         commit_message: Missing[str] = UNSET,
-    ) -> Response[Commit]: ...
+    ) -> Response[Commit, CommitType]: ...
 
     def merge(
         self,
@@ -11269,7 +11460,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMergesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Commit]:
+    ) -> Response[Commit, CommitType]:
         """See also: https://docs.github.com/rest/branches/branches#merge-a-branch"""
 
         from ..models import (
@@ -11312,7 +11503,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoMergesPostBodyType,
-    ) -> Response[Commit]: ...
+    ) -> Response[Commit, CommitType]: ...
 
     @overload
     async def async_merge(
@@ -11325,7 +11516,7 @@ class ReposClient:
         base: str,
         head: str,
         commit_message: Missing[str] = UNSET,
-    ) -> Response[Commit]: ...
+    ) -> Response[Commit, CommitType]: ...
 
     async def async_merge(
         self,
@@ -11335,7 +11526,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoMergesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Commit]:
+    ) -> Response[Commit, CommitType]:
         """See also: https://docs.github.com/rest/branches/branches#merge-a-branch"""
 
         from ..models import (
@@ -11376,7 +11567,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Page]:
+    ) -> Response[Page, PageType]:
         """See also: https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site"""
 
         from ..models import Page, BasicError
@@ -11401,7 +11592,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Page]:
+    ) -> Response[Page, PageType]:
         """See also: https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site"""
 
         from ..models import Page, BasicError
@@ -11781,7 +11972,7 @@ class ReposClient:
             ReposOwnerRepoPagesPostBodyAnyof1Type,
             None,
         ],
-    ) -> Response[Page]: ...
+    ) -> Response[Page, PageType]: ...
 
     @overload
     def create_pages_site(
@@ -11793,7 +11984,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: ReposOwnerRepoPagesPostBodyPropSourceType,
-    ) -> Response[Page]: ...
+    ) -> Response[Page, PageType]: ...
 
     @overload
     def create_pages_site(
@@ -11805,7 +11996,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         build_type: Literal["legacy", "workflow"],
         source: Missing[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
-    ) -> Response[Page]: ...
+    ) -> Response[Page, PageType]: ...
 
     def create_pages_site(
         self,
@@ -11822,7 +12013,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[Page]:
+    ) -> Response[Page, PageType]:
         """See also: https://docs.github.com/rest/pages/pages#create-a-apiname-pages-site"""
 
         from typing import Union
@@ -11881,7 +12072,7 @@ class ReposClient:
             ReposOwnerRepoPagesPostBodyAnyof1Type,
             None,
         ],
-    ) -> Response[Page]: ...
+    ) -> Response[Page, PageType]: ...
 
     @overload
     async def async_create_pages_site(
@@ -11893,7 +12084,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         build_type: Missing[Literal["legacy", "workflow"]] = UNSET,
         source: ReposOwnerRepoPagesPostBodyPropSourceType,
-    ) -> Response[Page]: ...
+    ) -> Response[Page, PageType]: ...
 
     @overload
     async def async_create_pages_site(
@@ -11905,7 +12096,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         build_type: Literal["legacy", "workflow"],
         source: Missing[ReposOwnerRepoPagesPostBodyPropSourceType] = UNSET,
-    ) -> Response[Page]: ...
+    ) -> Response[Page, PageType]: ...
 
     async def async_create_pages_site(
         self,
@@ -11922,7 +12113,7 @@ class ReposClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[Page]:
+    ) -> Response[Page, PageType]:
         """See also: https://docs.github.com/rest/pages/pages#create-a-apiname-pages-site"""
 
         from typing import Union
@@ -12028,7 +12219,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PageBuild]]:
+    ) -> Response[list[PageBuild], list[PageBuildType]]:
         """See also: https://docs.github.com/rest/pages/pages#list-apiname-pages-builds"""
 
         from ..models import PageBuild
@@ -12058,7 +12249,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PageBuild]]:
+    ) -> Response[list[PageBuild], list[PageBuildType]]:
         """See also: https://docs.github.com/rest/pages/pages#list-apiname-pages-builds"""
 
         from ..models import PageBuild
@@ -12086,7 +12277,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PageBuildStatus]:
+    ) -> Response[PageBuildStatus, PageBuildStatusType]:
         """See also: https://docs.github.com/rest/pages/pages#request-a-apiname-pages-build"""
 
         from ..models import PageBuildStatus
@@ -12108,7 +12299,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PageBuildStatus]:
+    ) -> Response[PageBuildStatus, PageBuildStatusType]:
         """See also: https://docs.github.com/rest/pages/pages#request-a-apiname-pages-build"""
 
         from ..models import PageBuildStatus
@@ -12130,7 +12321,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PageBuild]:
+    ) -> Response[PageBuild, PageBuildType]:
         """See also: https://docs.github.com/rest/pages/pages#get-latest-pages-build"""
 
         from ..models import PageBuild
@@ -12152,7 +12343,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PageBuild]:
+    ) -> Response[PageBuild, PageBuildType]:
         """See also: https://docs.github.com/rest/pages/pages#get-latest-pages-build"""
 
         from ..models import PageBuild
@@ -12175,7 +12366,7 @@ class ReposClient:
         build_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PageBuild]:
+    ) -> Response[PageBuild, PageBuildType]:
         """See also: https://docs.github.com/rest/pages/pages#get-apiname-pages-build"""
 
         from ..models import PageBuild
@@ -12198,7 +12389,7 @@ class ReposClient:
         build_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PageBuild]:
+    ) -> Response[PageBuild, PageBuildType]:
         """See also: https://docs.github.com/rest/pages/pages#get-apiname-pages-build"""
 
         from ..models import PageBuild
@@ -12222,7 +12413,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPagesDeploymentsPostBodyType,
-    ) -> Response[PageDeployment]: ...
+    ) -> Response[PageDeployment, PageDeploymentType]: ...
 
     @overload
     def create_pages_deployment(
@@ -12237,7 +12428,7 @@ class ReposClient:
         environment: Missing[str] = UNSET,
         pages_build_version: str = "GITHUB_SHA",
         oidc_token: str,
-    ) -> Response[PageDeployment]: ...
+    ) -> Response[PageDeployment, PageDeploymentType]: ...
 
     def create_pages_deployment(
         self,
@@ -12247,7 +12438,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPagesDeploymentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PageDeployment]:
+    ) -> Response[PageDeployment, PageDeploymentType]:
         """See also: https://docs.github.com/rest/pages/pages#create-a-github-pages-deployment"""
 
         from ..models import (
@@ -12291,7 +12482,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPagesDeploymentsPostBodyType,
-    ) -> Response[PageDeployment]: ...
+    ) -> Response[PageDeployment, PageDeploymentType]: ...
 
     @overload
     async def async_create_pages_deployment(
@@ -12306,7 +12497,7 @@ class ReposClient:
         environment: Missing[str] = UNSET,
         pages_build_version: str = "GITHUB_SHA",
         oidc_token: str,
-    ) -> Response[PageDeployment]: ...
+    ) -> Response[PageDeployment, PageDeploymentType]: ...
 
     async def async_create_pages_deployment(
         self,
@@ -12316,7 +12507,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPagesDeploymentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PageDeployment]:
+    ) -> Response[PageDeployment, PageDeploymentType]:
         """See also: https://docs.github.com/rest/pages/pages#create-a-github-pages-deployment"""
 
         from ..models import (
@@ -12359,7 +12550,7 @@ class ReposClient:
         pages_deployment_id: Union[int, str],
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PagesDeploymentStatus]:
+    ) -> Response[PagesDeploymentStatus, PagesDeploymentStatusType]:
         """See also: https://docs.github.com/rest/pages/pages#get-the-status-of-a-github-pages-deployment"""
 
         from ..models import BasicError, PagesDeploymentStatus
@@ -12385,7 +12576,7 @@ class ReposClient:
         pages_deployment_id: Union[int, str],
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PagesDeploymentStatus]:
+    ) -> Response[PagesDeploymentStatus, PagesDeploymentStatusType]:
         """See also: https://docs.github.com/rest/pages/pages#get-the-status-of-a-github-pages-deployment"""
 
         from ..models import BasicError, PagesDeploymentStatus
@@ -12460,7 +12651,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PagesHealthCheck]:
+    ) -> Response[PagesHealthCheck, PagesHealthCheckType]:
         """See also: https://docs.github.com/rest/pages/pages#get-a-dns-health-check-for-github-pages"""
 
         from ..models import BasicError, PagesHealthCheck
@@ -12485,7 +12676,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PagesHealthCheck]:
+    ) -> Response[PagesHealthCheck, PagesHealthCheckType]:
         """See also: https://docs.github.com/rest/pages/pages#get-a-dns-health-check-for-github-pages"""
 
         from ..models import BasicError, PagesHealthCheck
@@ -12510,7 +12701,10 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
+        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/repos/repos#check-if-private-vulnerability-reporting-is-enabled-for-a-repository"""
 
         from ..models import (
@@ -12538,7 +12732,10 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200,
+        ReposOwnerRepoPrivateVulnerabilityReportingGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/rest/repos/repos#check-if-private-vulnerability-reporting-is-enabled-for-a-repository"""
 
         from ..models import (
@@ -12662,7 +12859,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CustomPropertyValue]]:
+    ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueType]]:
         """See also: https://docs.github.com/rest/repos/custom-properties#get-all-custom-property-values-for-a-repository"""
 
         from ..models import BasicError, CustomPropertyValue
@@ -12688,7 +12885,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CustomPropertyValue]]:
+    ) -> Response[list[CustomPropertyValue], list[CustomPropertyValueType]]:
         """See also: https://docs.github.com/rest/repos/custom-properties#get-all-custom-property-values-for-a-repository"""
 
         from ..models import BasicError, CustomPropertyValue
@@ -12841,7 +13038,7 @@ class ReposClient:
         ref: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ContentFile]:
+    ) -> Response[ContentFile, ContentFileType]:
         """See also: https://docs.github.com/rest/repos/contents#get-a-repository-readme"""
 
         from ..models import BasicError, ContentFile, ValidationError
@@ -12873,7 +13070,7 @@ class ReposClient:
         ref: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ContentFile]:
+    ) -> Response[ContentFile, ContentFileType]:
         """See also: https://docs.github.com/rest/repos/contents#get-a-repository-readme"""
 
         from ..models import BasicError, ContentFile, ValidationError
@@ -12906,7 +13103,7 @@ class ReposClient:
         ref: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ContentFile]:
+    ) -> Response[ContentFile, ContentFileType]:
         """See also: https://docs.github.com/rest/repos/contents#get-a-repository-readme-for-a-directory"""
 
         from ..models import BasicError, ContentFile, ValidationError
@@ -12939,7 +13136,7 @@ class ReposClient:
         ref: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ContentFile]:
+    ) -> Response[ContentFile, ContentFileType]:
         """See also: https://docs.github.com/rest/repos/contents#get-a-repository-readme-for-a-directory"""
 
         from ..models import BasicError, ContentFile, ValidationError
@@ -12972,7 +13169,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Release]]:
+    ) -> Response[list[Release], list[ReleaseType]]:
         """See also: https://docs.github.com/rest/releases/releases#list-releases"""
 
         from ..models import Release, BasicError
@@ -13005,7 +13202,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Release]]:
+    ) -> Response[list[Release], list[ReleaseType]]:
         """See also: https://docs.github.com/rest/releases/releases#list-releases"""
 
         from ..models import Release, BasicError
@@ -13038,7 +13235,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoReleasesPostBodyType,
-    ) -> Response[Release]: ...
+    ) -> Response[Release, ReleaseType]: ...
 
     @overload
     def create_release(
@@ -13057,7 +13254,7 @@ class ReposClient:
         discussion_category_name: Missing[str] = UNSET,
         generate_release_notes: Missing[bool] = UNSET,
         make_latest: Missing[Literal["true", "false", "legacy"]] = UNSET,
-    ) -> Response[Release]: ...
+    ) -> Response[Release, ReleaseType]: ...
 
     def create_release(
         self,
@@ -13067,7 +13264,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Release]:
+    ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#create-a-release"""
 
         from ..models import (
@@ -13110,7 +13307,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoReleasesPostBodyType,
-    ) -> Response[Release]: ...
+    ) -> Response[Release, ReleaseType]: ...
 
     @overload
     async def async_create_release(
@@ -13129,7 +13326,7 @@ class ReposClient:
         discussion_category_name: Missing[str] = UNSET,
         generate_release_notes: Missing[bool] = UNSET,
         make_latest: Missing[Literal["true", "false", "legacy"]] = UNSET,
-    ) -> Response[Release]: ...
+    ) -> Response[Release, ReleaseType]: ...
 
     async def async_create_release(
         self,
@@ -13139,7 +13336,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Release]:
+    ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#create-a-release"""
 
         from ..models import (
@@ -13181,7 +13378,7 @@ class ReposClient:
         asset_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReleaseAsset]:
+    ) -> Response[ReleaseAsset, ReleaseAssetType]:
         """See also: https://docs.github.com/rest/releases/assets#get-a-release-asset"""
 
         from ..models import BasicError, ReleaseAsset
@@ -13207,7 +13404,7 @@ class ReposClient:
         asset_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReleaseAsset]:
+    ) -> Response[ReleaseAsset, ReleaseAssetType]:
         """See also: https://docs.github.com/rest/releases/assets#get-a-release-asset"""
 
         from ..models import BasicError, ReleaseAsset
@@ -13275,7 +13472,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
-    ) -> Response[ReleaseAsset]: ...
+    ) -> Response[ReleaseAsset, ReleaseAssetType]: ...
 
     @overload
     def update_release_asset(
@@ -13289,7 +13486,7 @@ class ReposClient:
         name: Missing[str] = UNSET,
         label: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
-    ) -> Response[ReleaseAsset]: ...
+    ) -> Response[ReleaseAsset, ReleaseAssetType]: ...
 
     def update_release_asset(
         self,
@@ -13300,7 +13497,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ReleaseAsset]:
+    ) -> Response[ReleaseAsset, ReleaseAssetType]:
         """See also: https://docs.github.com/rest/releases/assets#update-a-release-asset"""
 
         from ..models import ReleaseAsset, ReposOwnerRepoReleasesAssetsAssetIdPatchBody
@@ -13337,7 +13534,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
-    ) -> Response[ReleaseAsset]: ...
+    ) -> Response[ReleaseAsset, ReleaseAssetType]: ...
 
     @overload
     async def async_update_release_asset(
@@ -13351,7 +13548,7 @@ class ReposClient:
         name: Missing[str] = UNSET,
         label: Missing[str] = UNSET,
         state: Missing[str] = UNSET,
-    ) -> Response[ReleaseAsset]: ...
+    ) -> Response[ReleaseAsset, ReleaseAssetType]: ...
 
     async def async_update_release_asset(
         self,
@@ -13362,7 +13559,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesAssetsAssetIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ReleaseAsset]:
+    ) -> Response[ReleaseAsset, ReleaseAssetType]:
         """See also: https://docs.github.com/rest/releases/assets#update-a-release-asset"""
 
         from ..models import ReleaseAsset, ReposOwnerRepoReleasesAssetsAssetIdPatchBody
@@ -13398,7 +13595,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoReleasesGenerateNotesPostBodyType,
-    ) -> Response[ReleaseNotesContent]: ...
+    ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]: ...
 
     @overload
     def generate_release_notes(
@@ -13412,7 +13609,7 @@ class ReposClient:
         target_commitish: Missing[str] = UNSET,
         previous_tag_name: Missing[str] = UNSET,
         configuration_file_path: Missing[str] = UNSET,
-    ) -> Response[ReleaseNotesContent]: ...
+    ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]: ...
 
     def generate_release_notes(
         self,
@@ -13422,7 +13619,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ReleaseNotesContent]:
+    ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]:
         """See also: https://docs.github.com/rest/releases/releases#generate-release-notes-content-for-a-release"""
 
         from ..models import (
@@ -13465,7 +13662,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoReleasesGenerateNotesPostBodyType,
-    ) -> Response[ReleaseNotesContent]: ...
+    ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]: ...
 
     @overload
     async def async_generate_release_notes(
@@ -13479,7 +13676,7 @@ class ReposClient:
         target_commitish: Missing[str] = UNSET,
         previous_tag_name: Missing[str] = UNSET,
         configuration_file_path: Missing[str] = UNSET,
-    ) -> Response[ReleaseNotesContent]: ...
+    ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]: ...
 
     async def async_generate_release_notes(
         self,
@@ -13489,7 +13686,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesGenerateNotesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ReleaseNotesContent]:
+    ) -> Response[ReleaseNotesContent, ReleaseNotesContentType]:
         """See also: https://docs.github.com/rest/releases/releases#generate-release-notes-content-for-a-release"""
 
         from ..models import (
@@ -13530,7 +13727,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Release]:
+    ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#get-the-latest-release"""
 
         from ..models import Release
@@ -13552,7 +13749,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Release]:
+    ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#get-the-latest-release"""
 
         from ..models import Release
@@ -13575,7 +13772,7 @@ class ReposClient:
         tag: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Release]:
+    ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name"""
 
         from ..models import Release, BasicError
@@ -13601,7 +13798,7 @@ class ReposClient:
         tag: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Release]:
+    ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name"""
 
         from ..models import Release, BasicError
@@ -13627,7 +13824,7 @@ class ReposClient:
         release_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Release]:
+    ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#get-a-release"""
 
         from ..models import Release
@@ -13651,7 +13848,7 @@ class ReposClient:
         release_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Release]:
+    ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#get-a-release"""
 
         from ..models import Release
@@ -13717,7 +13914,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
-    ) -> Response[Release]: ...
+    ) -> Response[Release, ReleaseType]: ...
 
     @overload
     def update_release(
@@ -13736,7 +13933,7 @@ class ReposClient:
         prerelease: Missing[bool] = UNSET,
         make_latest: Missing[Literal["true", "false", "legacy"]] = UNSET,
         discussion_category_name: Missing[str] = UNSET,
-    ) -> Response[Release]: ...
+    ) -> Response[Release, ReleaseType]: ...
 
     def update_release(
         self,
@@ -13747,7 +13944,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Release]:
+    ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#update-a-release"""
 
         from ..models import (
@@ -13789,7 +13986,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
-    ) -> Response[Release]: ...
+    ) -> Response[Release, ReleaseType]: ...
 
     @overload
     async def async_update_release(
@@ -13808,7 +14005,7 @@ class ReposClient:
         prerelease: Missing[bool] = UNSET,
         make_latest: Missing[Literal["true", "false", "legacy"]] = UNSET,
         discussion_category_name: Missing[str] = UNSET,
-    ) -> Response[Release]: ...
+    ) -> Response[Release, ReleaseType]: ...
 
     async def async_update_release(
         self,
@@ -13819,7 +14016,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoReleasesReleaseIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Release]:
+    ) -> Response[Release, ReleaseType]:
         """See also: https://docs.github.com/rest/releases/releases#update-a-release"""
 
         from ..models import (
@@ -13861,7 +14058,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ReleaseAsset]]:
+    ) -> Response[list[ReleaseAsset], list[ReleaseAssetType]]:
         """See also: https://docs.github.com/rest/releases/assets#list-release-assets"""
 
         from ..models import ReleaseAsset
@@ -13892,7 +14089,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ReleaseAsset]]:
+    ) -> Response[list[ReleaseAsset], list[ReleaseAssetType]]:
         """See also: https://docs.github.com/rest/releases/assets#list-release-assets"""
 
         from ..models import ReleaseAsset
@@ -13924,7 +14121,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: FileTypes,
-    ) -> Response[ReleaseAsset]:
+    ) -> Response[ReleaseAsset, ReleaseAssetType]:
         """See also: https://docs.github.com/rest/releases/assets#upload-a-release-asset"""
 
         from ..models import ReleaseAsset
@@ -13964,7 +14161,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: FileTypes,
-    ) -> Response[ReleaseAsset]:
+    ) -> Response[ReleaseAsset, ReleaseAssetType]:
         """See also: https://docs.github.com/rest/releases/assets#upload-a-release-asset"""
 
         from ..models import ReleaseAsset
@@ -14024,7 +14221,28 @@ class ReposClient:
                 RepositoryRuleDetailedOneof15,
                 RepositoryRuleDetailedOneof16,
             ]
-        ]
+        ],
+        list[
+            Union[
+                RepositoryRuleDetailedOneof0Type,
+                RepositoryRuleDetailedOneof1Type,
+                RepositoryRuleDetailedOneof2Type,
+                RepositoryRuleDetailedOneof3Type,
+                RepositoryRuleDetailedOneof4Type,
+                RepositoryRuleDetailedOneof5Type,
+                RepositoryRuleDetailedOneof6Type,
+                RepositoryRuleDetailedOneof7Type,
+                RepositoryRuleDetailedOneof8Type,
+                RepositoryRuleDetailedOneof9Type,
+                RepositoryRuleDetailedOneof10Type,
+                RepositoryRuleDetailedOneof11Type,
+                RepositoryRuleDetailedOneof12Type,
+                RepositoryRuleDetailedOneof13Type,
+                RepositoryRuleDetailedOneof14Type,
+                RepositoryRuleDetailedOneof15Type,
+                RepositoryRuleDetailedOneof16Type,
+            ]
+        ],
     ]:
         """See also: https://docs.github.com/rest/repos/rules#get-rules-for-a-branch"""
 
@@ -14117,7 +14335,28 @@ class ReposClient:
                 RepositoryRuleDetailedOneof15,
                 RepositoryRuleDetailedOneof16,
             ]
-        ]
+        ],
+        list[
+            Union[
+                RepositoryRuleDetailedOneof0Type,
+                RepositoryRuleDetailedOneof1Type,
+                RepositoryRuleDetailedOneof2Type,
+                RepositoryRuleDetailedOneof3Type,
+                RepositoryRuleDetailedOneof4Type,
+                RepositoryRuleDetailedOneof5Type,
+                RepositoryRuleDetailedOneof6Type,
+                RepositoryRuleDetailedOneof7Type,
+                RepositoryRuleDetailedOneof8Type,
+                RepositoryRuleDetailedOneof9Type,
+                RepositoryRuleDetailedOneof10Type,
+                RepositoryRuleDetailedOneof11Type,
+                RepositoryRuleDetailedOneof12Type,
+                RepositoryRuleDetailedOneof13Type,
+                RepositoryRuleDetailedOneof14Type,
+                RepositoryRuleDetailedOneof15Type,
+                RepositoryRuleDetailedOneof16Type,
+            ]
+        ],
     ]:
         """See also: https://docs.github.com/rest/repos/rules#get-rules-for-a-branch"""
 
@@ -14190,7 +14429,7 @@ class ReposClient:
         targets: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RepositoryRuleset]]:
+    ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
         """See also: https://docs.github.com/rest/repos/rules#get-all-repository-rulesets"""
 
         from ..models import BasicError, RepositoryRuleset
@@ -14228,7 +14467,7 @@ class ReposClient:
         targets: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RepositoryRuleset]]:
+    ) -> Response[list[RepositoryRuleset], list[RepositoryRulesetType]]:
         """See also: https://docs.github.com/rest/repos/rules#get-all-repository-rulesets"""
 
         from ..models import BasicError, RepositoryRuleset
@@ -14264,7 +14503,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoRulesetsPostBodyType,
-    ) -> Response[RepositoryRuleset]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
     @overload
     def create_repo_ruleset(
@@ -14306,7 +14545,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
     def create_repo_ruleset(
         self,
@@ -14316,7 +14555,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/repos/rules#create-a-repository-ruleset"""
 
         from ..models import (
@@ -14358,7 +14597,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoRulesetsPostBodyType,
-    ) -> Response[RepositoryRuleset]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
     @overload
     async def async_create_repo_ruleset(
@@ -14400,7 +14639,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
     async def async_create_repo_ruleset(
         self,
@@ -14410,7 +14649,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/repos/rules#create-a-repository-ruleset"""
 
         from ..models import (
@@ -14456,7 +14695,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RuleSuitesItems]]:
+    ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
         """See also: https://docs.github.com/rest/repos/rule-suites#list-repository-rule-suites"""
 
         from ..models import BasicError, RuleSuitesItems
@@ -14498,7 +14737,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RuleSuitesItems]]:
+    ) -> Response[list[RuleSuitesItems], list[RuleSuitesItemsType]]:
         """See also: https://docs.github.com/rest/repos/rule-suites#list-repository-rule-suites"""
 
         from ..models import BasicError, RuleSuitesItems
@@ -14535,7 +14774,7 @@ class ReposClient:
         rule_suite_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RuleSuite]:
+    ) -> Response[RuleSuite, RuleSuiteType]:
         """See also: https://docs.github.com/rest/repos/rule-suites#get-a-repository-rule-suite"""
 
         from ..models import RuleSuite, BasicError
@@ -14562,7 +14801,7 @@ class ReposClient:
         rule_suite_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RuleSuite]:
+    ) -> Response[RuleSuite, RuleSuiteType]:
         """See also: https://docs.github.com/rest/repos/rule-suites#get-a-repository-rule-suite"""
 
         from ..models import RuleSuite, BasicError
@@ -14590,7 +14829,7 @@ class ReposClient:
         includes_parents: Missing[bool] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RepositoryRuleset]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/repos/rules#get-a-repository-ruleset"""
 
         from ..models import BasicError, RepositoryRuleset
@@ -14623,7 +14862,7 @@ class ReposClient:
         includes_parents: Missing[bool] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RepositoryRuleset]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/repos/rules#get-a-repository-ruleset"""
 
         from ..models import BasicError, RepositoryRuleset
@@ -14657,7 +14896,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
-    ) -> Response[RepositoryRuleset]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
     @overload
     def update_repo_ruleset(
@@ -14700,7 +14939,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
     def update_repo_ruleset(
         self,
@@ -14711,7 +14950,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/repos/rules#update-a-repository-ruleset"""
 
         from ..models import (
@@ -14754,7 +14993,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
-    ) -> Response[RepositoryRuleset]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
     @overload
     async def async_update_repo_ruleset(
@@ -14797,7 +15036,7 @@ class ReposClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[RepositoryRuleset]: ...
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]: ...
 
     async def async_update_repo_ruleset(
         self,
@@ -14808,7 +15047,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoRulesetsRulesetIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RepositoryRuleset]:
+    ) -> Response[RepositoryRuleset, RepositoryRulesetType]:
         """See also: https://docs.github.com/rest/repos/rules#update-a-repository-ruleset"""
 
         from ..models import (
@@ -14900,7 +15139,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[list[int]]]:
+    ) -> Response[list[list[int]], list[list[int]]]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-activity"""
 
         url = f"/repos/{owner}/{repo}/stats/code_frequency"
@@ -14921,7 +15160,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[list[int]]]:
+    ) -> Response[list[list[int]], list[list[int]]]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-activity"""
 
         url = f"/repos/{owner}/{repo}/stats/code_frequency"
@@ -14942,7 +15181,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CommitActivity]]:
+    ) -> Response[list[CommitActivity], list[CommitActivityType]]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-the-last-year-of-commit-activity"""
 
         from ..models import CommitActivity
@@ -14964,7 +15203,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CommitActivity]]:
+    ) -> Response[list[CommitActivity], list[CommitActivityType]]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-the-last-year-of-commit-activity"""
 
         from ..models import CommitActivity
@@ -14986,7 +15225,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ContributorActivity]]:
+    ) -> Response[list[ContributorActivity], list[ContributorActivityType]]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-all-contributor-commit-activity"""
 
         from ..models import ContributorActivity
@@ -15008,7 +15247,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ContributorActivity]]:
+    ) -> Response[list[ContributorActivity], list[ContributorActivityType]]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-all-contributor-commit-activity"""
 
         from ..models import ContributorActivity
@@ -15030,7 +15269,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ParticipationStats]:
+    ) -> Response[ParticipationStats, ParticipationStatsType]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-count"""
 
         from ..models import BasicError, ParticipationStats
@@ -15055,7 +15294,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ParticipationStats]:
+    ) -> Response[ParticipationStats, ParticipationStatsType]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-count"""
 
         from ..models import BasicError, ParticipationStats
@@ -15080,7 +15319,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[list[int]]]:
+    ) -> Response[list[list[int]], list[list[int]]]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-the-hourly-commit-count-for-each-day"""
 
         url = f"/repos/{owner}/{repo}/stats/punch_card"
@@ -15100,7 +15339,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[list[int]]]:
+    ) -> Response[list[list[int]], list[list[int]]]:
         """See also: https://docs.github.com/rest/metrics/statistics#get-the-hourly-commit-count-for-each-day"""
 
         url = f"/repos/{owner}/{repo}/stats/punch_card"
@@ -15123,7 +15362,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoStatusesShaPostBodyType,
-    ) -> Response[Status]: ...
+    ) -> Response[Status, StatusType]: ...
 
     @overload
     def create_commit_status(
@@ -15138,7 +15377,7 @@ class ReposClient:
         target_url: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         context: Missing[str] = UNSET,
-    ) -> Response[Status]: ...
+    ) -> Response[Status, StatusType]: ...
 
     def create_commit_status(
         self,
@@ -15149,7 +15388,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Status]:
+    ) -> Response[Status, StatusType]:
         """See also: https://docs.github.com/rest/commits/statuses#create-a-commit-status"""
 
         from ..models import Status, ReposOwnerRepoStatusesShaPostBody
@@ -15184,7 +15423,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoStatusesShaPostBodyType,
-    ) -> Response[Status]: ...
+    ) -> Response[Status, StatusType]: ...
 
     @overload
     async def async_create_commit_status(
@@ -15199,7 +15438,7 @@ class ReposClient:
         target_url: Missing[Union[str, None]] = UNSET,
         description: Missing[Union[str, None]] = UNSET,
         context: Missing[str] = UNSET,
-    ) -> Response[Status]: ...
+    ) -> Response[Status, StatusType]: ...
 
     async def async_create_commit_status(
         self,
@@ -15210,7 +15449,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoStatusesShaPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Status]:
+    ) -> Response[Status, StatusType]:
         """See also: https://docs.github.com/rest/commits/statuses#create-a-commit-status"""
 
         from ..models import Status, ReposOwnerRepoStatusesShaPostBody
@@ -15244,7 +15483,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Tag]]:
+    ) -> Response[list[Tag], list[TagType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-tags"""
 
         from ..models import Tag
@@ -15274,7 +15513,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Tag]]:
+    ) -> Response[list[Tag], list[TagType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-tags"""
 
         from ..models import Tag
@@ -15302,7 +15541,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[TagProtection]]:
+    ) -> Response[list[TagProtection], list[TagProtectionType]]:
         """See also: https://docs.github.com/rest/repos/tags#closing-down---list-tag-protection-states-for-a-repository"""
 
         from ..models import BasicError, TagProtection
@@ -15328,7 +15567,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[TagProtection]]:
+    ) -> Response[list[TagProtection], list[TagProtectionType]]:
         """See also: https://docs.github.com/rest/repos/tags#closing-down---list-tag-protection-states-for-a-repository"""
 
         from ..models import BasicError, TagProtection
@@ -15356,7 +15595,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoTagsProtectionPostBodyType,
-    ) -> Response[TagProtection]: ...
+    ) -> Response[TagProtection, TagProtectionType]: ...
 
     @overload
     def create_tag_protection(
@@ -15367,7 +15606,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         pattern: str,
-    ) -> Response[TagProtection]: ...
+    ) -> Response[TagProtection, TagProtectionType]: ...
 
     def create_tag_protection(
         self,
@@ -15377,7 +15616,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TagProtection]:
+    ) -> Response[TagProtection, TagProtectionType]:
         """See also: https://docs.github.com/rest/repos/tags#closing-down---create-a-tag-protection-state-for-a-repository"""
 
         from ..models import (
@@ -15419,7 +15658,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoTagsProtectionPostBodyType,
-    ) -> Response[TagProtection]: ...
+    ) -> Response[TagProtection, TagProtectionType]: ...
 
     @overload
     async def async_create_tag_protection(
@@ -15430,7 +15669,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         pattern: str,
-    ) -> Response[TagProtection]: ...
+    ) -> Response[TagProtection, TagProtectionType]: ...
 
     async def async_create_tag_protection(
         self,
@@ -15440,7 +15679,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoTagsProtectionPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[TagProtection]:
+    ) -> Response[TagProtection, TagProtectionType]:
         """See also: https://docs.github.com/rest/repos/tags#closing-down---create-a-tag-protection-state-for-a-repository"""
 
         from ..models import (
@@ -15574,7 +15813,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Team]]:
+    ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-teams"""
 
         from ..models import Team, BasicError
@@ -15607,7 +15846,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Team]]:
+    ) -> Response[list[Team], list[TeamType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repository-teams"""
 
         from ..models import Team, BasicError
@@ -15640,7 +15879,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Topic]:
+    ) -> Response[Topic, TopicType]:
         """See also: https://docs.github.com/rest/repos/repos#get-all-repository-topics"""
 
         from ..models import Topic, BasicError
@@ -15673,7 +15912,7 @@ class ReposClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Topic]:
+    ) -> Response[Topic, TopicType]:
         """See also: https://docs.github.com/rest/repos/repos#get-all-repository-topics"""
 
         from ..models import Topic, BasicError
@@ -15706,7 +15945,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoTopicsPutBodyType,
-    ) -> Response[Topic]: ...
+    ) -> Response[Topic, TopicType]: ...
 
     @overload
     def replace_all_topics(
@@ -15717,7 +15956,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         names: list[str],
-    ) -> Response[Topic]: ...
+    ) -> Response[Topic, TopicType]: ...
 
     def replace_all_topics(
         self,
@@ -15727,7 +15966,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoTopicsPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Topic]:
+    ) -> Response[Topic, TopicType]:
         """See also: https://docs.github.com/rest/repos/repos#replace-all-repository-topics"""
 
         from ..models import (
@@ -15770,7 +16009,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoTopicsPutBodyType,
-    ) -> Response[Topic]: ...
+    ) -> Response[Topic, TopicType]: ...
 
     @overload
     async def async_replace_all_topics(
@@ -15781,7 +16020,7 @@ class ReposClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         names: list[str],
-    ) -> Response[Topic]: ...
+    ) -> Response[Topic, TopicType]: ...
 
     async def async_replace_all_topics(
         self,
@@ -15791,7 +16030,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoTopicsPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Topic]:
+    ) -> Response[Topic, TopicType]:
         """See also: https://docs.github.com/rest/repos/repos#replace-all-repository-topics"""
 
         from ..models import (
@@ -15833,7 +16072,7 @@ class ReposClient:
         per: Missing[Literal["day", "week"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CloneTraffic]:
+    ) -> Response[CloneTraffic, CloneTrafficType]:
         """See also: https://docs.github.com/rest/metrics/traffic#get-repository-clones"""
 
         from ..models import BasicError, CloneTraffic
@@ -15864,7 +16103,7 @@ class ReposClient:
         per: Missing[Literal["day", "week"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CloneTraffic]:
+    ) -> Response[CloneTraffic, CloneTrafficType]:
         """See also: https://docs.github.com/rest/metrics/traffic#get-repository-clones"""
 
         from ..models import BasicError, CloneTraffic
@@ -15894,7 +16133,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ContentTraffic]]:
+    ) -> Response[list[ContentTraffic], list[ContentTrafficType]]:
         """See also: https://docs.github.com/rest/metrics/traffic#get-top-referral-paths"""
 
         from ..models import BasicError, ContentTraffic
@@ -15919,7 +16158,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ContentTraffic]]:
+    ) -> Response[list[ContentTraffic], list[ContentTrafficType]]:
         """See also: https://docs.github.com/rest/metrics/traffic#get-top-referral-paths"""
 
         from ..models import BasicError, ContentTraffic
@@ -15944,7 +16183,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ReferrerTraffic]]:
+    ) -> Response[list[ReferrerTraffic], list[ReferrerTrafficType]]:
         """See also: https://docs.github.com/rest/metrics/traffic#get-top-referral-sources"""
 
         from ..models import BasicError, ReferrerTraffic
@@ -15969,7 +16208,7 @@ class ReposClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ReferrerTraffic]]:
+    ) -> Response[list[ReferrerTraffic], list[ReferrerTrafficType]]:
         """See also: https://docs.github.com/rest/metrics/traffic#get-top-referral-sources"""
 
         from ..models import BasicError, ReferrerTraffic
@@ -15995,7 +16234,7 @@ class ReposClient:
         per: Missing[Literal["day", "week"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ViewTraffic]:
+    ) -> Response[ViewTraffic, ViewTrafficType]:
         """See also: https://docs.github.com/rest/metrics/traffic#get-page-views"""
 
         from ..models import BasicError, ViewTraffic
@@ -16026,7 +16265,7 @@ class ReposClient:
         per: Missing[Literal["day", "week"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ViewTraffic]:
+    ) -> Response[ViewTraffic, ViewTrafficType]:
         """See also: https://docs.github.com/rest/metrics/traffic#get-page-views"""
 
         from ..models import BasicError, ViewTraffic
@@ -16058,7 +16297,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoTransferPostBodyType,
-    ) -> Response[MinimalRepository]: ...
+    ) -> Response[MinimalRepository, MinimalRepositoryType]: ...
 
     @overload
     def transfer(
@@ -16071,7 +16310,7 @@ class ReposClient:
         new_owner: str,
         new_name: Missing[str] = UNSET,
         team_ids: Missing[list[int]] = UNSET,
-    ) -> Response[MinimalRepository]: ...
+    ) -> Response[MinimalRepository, MinimalRepositoryType]: ...
 
     def transfer(
         self,
@@ -16081,7 +16320,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoTransferPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[MinimalRepository]:
+    ) -> Response[MinimalRepository, MinimalRepositoryType]:
         """See also: https://docs.github.com/rest/repos/repos#transfer-a-repository"""
 
         from ..models import MinimalRepository, ReposOwnerRepoTransferPostBody
@@ -16115,7 +16354,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoTransferPostBodyType,
-    ) -> Response[MinimalRepository]: ...
+    ) -> Response[MinimalRepository, MinimalRepositoryType]: ...
 
     @overload
     async def async_transfer(
@@ -16128,7 +16367,7 @@ class ReposClient:
         new_owner: str,
         new_name: Missing[str] = UNSET,
         team_ids: Missing[list[int]] = UNSET,
-    ) -> Response[MinimalRepository]: ...
+    ) -> Response[MinimalRepository, MinimalRepositoryType]: ...
 
     async def async_transfer(
         self,
@@ -16138,7 +16377,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoTransferPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[MinimalRepository]:
+    ) -> Response[MinimalRepository, MinimalRepositoryType]:
         """See also: https://docs.github.com/rest/repos/repos#transfer-a-repository"""
 
         from ..models import MinimalRepository, ReposOwnerRepoTransferPostBody
@@ -16328,7 +16567,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     @overload
     def create_using_template(
@@ -16343,7 +16582,7 @@ class ReposClient:
         description: Missing[str] = UNSET,
         include_all_branches: Missing[bool] = UNSET,
         private: Missing[bool] = UNSET,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     def create_using_template(
         self,
@@ -16353,7 +16592,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository]:
+    ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/rest/repos/repos#create-a-repository-using-a-template"""
 
         from ..models import (
@@ -16392,7 +16631,7 @@ class ReposClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposTemplateOwnerTemplateRepoGeneratePostBodyType,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     @overload
     async def async_create_using_template(
@@ -16407,7 +16646,7 @@ class ReposClient:
         description: Missing[str] = UNSET,
         include_all_branches: Missing[bool] = UNSET,
         private: Missing[bool] = UNSET,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     async def async_create_using_template(
         self,
@@ -16417,7 +16656,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposTemplateOwnerTemplateRepoGeneratePostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository]:
+    ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/rest/repos/repos#create-a-repository-using-a-template"""
 
         from ..models import (
@@ -16453,7 +16692,7 @@ class ReposClient:
         since: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-public-repositories"""
 
         from ..models import ValidationError, MinimalRepository
@@ -16482,7 +16721,7 @@ class ReposClient:
         since: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-public-repositories"""
 
         from ..models import ValidationError, MinimalRepository
@@ -16519,7 +16758,7 @@ class ReposClient:
         before: Missing[datetime] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Repository]]:
+    ) -> Response[list[Repository], list[RepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user"""
 
         from ..models import BasicError, Repository, ValidationError
@@ -16566,7 +16805,7 @@ class ReposClient:
         before: Missing[datetime] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Repository]]:
+    ) -> Response[list[Repository], list[RepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user"""
 
         from ..models import BasicError, Repository, ValidationError
@@ -16603,7 +16842,7 @@ class ReposClient:
     @overload
     def create_for_authenticated_user(
         self, *, headers: Optional[dict[str, str]] = None, data: UserReposPostBodyType
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     @overload
     def create_for_authenticated_user(
@@ -16638,7 +16877,7 @@ class ReposClient:
         merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
         has_downloads: Missing[bool] = UNSET,
         is_template: Missing[bool] = UNSET,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     def create_for_authenticated_user(
         self,
@@ -16646,7 +16885,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserReposPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository]:
+    ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user"""
 
         from ..models import (
@@ -16687,7 +16926,7 @@ class ReposClient:
     @overload
     async def async_create_for_authenticated_user(
         self, *, headers: Optional[dict[str, str]] = None, data: UserReposPostBodyType
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     @overload
     async def async_create_for_authenticated_user(
@@ -16722,7 +16961,7 @@ class ReposClient:
         merge_commit_message: Missing[Literal["PR_BODY", "PR_TITLE", "BLANK"]] = UNSET,
         has_downloads: Missing[bool] = UNSET,
         is_template: Missing[bool] = UNSET,
-    ) -> Response[FullRepository]: ...
+    ) -> Response[FullRepository, FullRepositoryType]: ...
 
     async def async_create_for_authenticated_user(
         self,
@@ -16730,7 +16969,7 @@ class ReposClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserReposPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[FullRepository]:
+    ) -> Response[FullRepository, FullRepositoryType]:
         """See also: https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user"""
 
         from ..models import (
@@ -16774,7 +17013,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RepositoryInvitation]]:
+    ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
         """See also: https://docs.github.com/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user"""
 
         from ..models import BasicError, RepositoryInvitation
@@ -16807,7 +17046,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RepositoryInvitation]]:
+    ) -> Response[list[RepositoryInvitation], list[RepositoryInvitationType]]:
         """See also: https://docs.github.com/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user"""
 
         from ..models import BasicError, RepositoryInvitation
@@ -16944,7 +17183,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repositories-for-a-user"""
 
         from ..models import MinimalRepository
@@ -16979,7 +17218,7 @@ class ReposClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/rest/repos/repos#list-repositories-for-a-user"""
 
         from ..models import MinimalRepository

@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from githubkit.response import Response
 
     from ..models import EmojisGetResponse200
+    from ..types import EmojisGetResponse200Type
 
 
 class EmojisClient:
@@ -40,7 +41,7 @@ class EmojisClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EmojisGetResponse200]:
+    ) -> Response[EmojisGetResponse200, EmojisGetResponse200Type]:
         """See also: https://docs.github.com/rest/emojis/emojis#get-emojis"""
 
         from ..models import EmojisGetResponse200
@@ -60,7 +61,7 @@ class EmojisClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EmojisGetResponse200]:
+    ) -> Response[EmojisGetResponse200, EmojisGetResponse200Type]:
         """See also: https://docs.github.com/rest/emojis/emojis#get-emojis"""
 
         from ..models import EmojisGetResponse200

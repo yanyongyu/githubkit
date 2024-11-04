@@ -28,6 +28,12 @@ if TYPE_CHECKING:
 
     from ..models import Blob, GitRef, GitTag, GitTree, GitCommit, ShortBlob
     from ..types import (
+        BlobType,
+        GitRefType,
+        GitTagType,
+        GitTreeType,
+        GitCommitType,
+        ShortBlobType,
         ReposOwnerRepoGitRefsPostBodyType,
         ReposOwnerRepoGitTagsPostBodyType,
         ReposOwnerRepoGitBlobsPostBodyType,
@@ -64,7 +70,7 @@ class GitClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoGitBlobsPostBodyType,
-    ) -> Response[ShortBlob]: ...
+    ) -> Response[ShortBlob, ShortBlobType]: ...
 
     @overload
     def create_blob(
@@ -76,7 +82,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         content: str,
         encoding: Missing[str] = UNSET,
-    ) -> Response[ShortBlob]: ...
+    ) -> Response[ShortBlob, ShortBlobType]: ...
 
     def create_blob(
         self,
@@ -86,7 +92,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ShortBlob]:
+    ) -> Response[ShortBlob, ShortBlobType]:
         """See also: https://docs.github.com/rest/git/blobs#create-a-blob"""
 
         from typing import Union
@@ -134,7 +140,7 @@ class GitClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoGitBlobsPostBodyType,
-    ) -> Response[ShortBlob]: ...
+    ) -> Response[ShortBlob, ShortBlobType]: ...
 
     @overload
     async def async_create_blob(
@@ -146,7 +152,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         content: str,
         encoding: Missing[str] = UNSET,
-    ) -> Response[ShortBlob]: ...
+    ) -> Response[ShortBlob, ShortBlobType]: ...
 
     async def async_create_blob(
         self,
@@ -156,7 +162,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitBlobsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[ShortBlob]:
+    ) -> Response[ShortBlob, ShortBlobType]:
         """See also: https://docs.github.com/rest/git/blobs#create-a-blob"""
 
         from typing import Union
@@ -203,7 +209,7 @@ class GitClient:
         file_sha: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Blob]:
+    ) -> Response[Blob, BlobType]:
         """See also: https://docs.github.com/rest/git/blobs#get-a-blob"""
 
         from ..models import Blob, BasicError, ValidationError
@@ -232,7 +238,7 @@ class GitClient:
         file_sha: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Blob]:
+    ) -> Response[Blob, BlobType]:
         """See also: https://docs.github.com/rest/git/blobs#get-a-blob"""
 
         from ..models import Blob, BasicError, ValidationError
@@ -262,7 +268,7 @@ class GitClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoGitCommitsPostBodyType,
-    ) -> Response[GitCommit]: ...
+    ) -> Response[GitCommit, GitCommitType]: ...
 
     @overload
     def create_commit(
@@ -278,7 +284,7 @@ class GitClient:
         author: Missing[ReposOwnerRepoGitCommitsPostBodyPropAuthorType] = UNSET,
         committer: Missing[ReposOwnerRepoGitCommitsPostBodyPropCommitterType] = UNSET,
         signature: Missing[str] = UNSET,
-    ) -> Response[GitCommit]: ...
+    ) -> Response[GitCommit, GitCommitType]: ...
 
     def create_commit(
         self,
@@ -288,7 +294,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitCommit]:
+    ) -> Response[GitCommit, GitCommitType]:
         """See also: https://docs.github.com/rest/git/commits#create-a-commit"""
 
         from ..models import (
@@ -332,7 +338,7 @@ class GitClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoGitCommitsPostBodyType,
-    ) -> Response[GitCommit]: ...
+    ) -> Response[GitCommit, GitCommitType]: ...
 
     @overload
     async def async_create_commit(
@@ -348,7 +354,7 @@ class GitClient:
         author: Missing[ReposOwnerRepoGitCommitsPostBodyPropAuthorType] = UNSET,
         committer: Missing[ReposOwnerRepoGitCommitsPostBodyPropCommitterType] = UNSET,
         signature: Missing[str] = UNSET,
-    ) -> Response[GitCommit]: ...
+    ) -> Response[GitCommit, GitCommitType]: ...
 
     async def async_create_commit(
         self,
@@ -358,7 +364,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitCommitsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitCommit]:
+    ) -> Response[GitCommit, GitCommitType]:
         """See also: https://docs.github.com/rest/git/commits#create-a-commit"""
 
         from ..models import (
@@ -401,7 +407,7 @@ class GitClient:
         commit_sha: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GitCommit]:
+    ) -> Response[GitCommit, GitCommitType]:
         """See also: https://docs.github.com/rest/git/commits#get-a-commit-object"""
 
         from ..models import GitCommit, BasicError
@@ -428,7 +434,7 @@ class GitClient:
         commit_sha: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GitCommit]:
+    ) -> Response[GitCommit, GitCommitType]:
         """See also: https://docs.github.com/rest/git/commits#get-a-commit-object"""
 
         from ..models import GitCommit, BasicError
@@ -455,7 +461,7 @@ class GitClient:
         ref: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[GitRef]]:
+    ) -> Response[list[GitRef], list[GitRefType]]:
         """See also: https://docs.github.com/rest/git/refs#list-matching-references"""
 
         from ..models import GitRef, BasicError
@@ -481,7 +487,7 @@ class GitClient:
         ref: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[GitRef]]:
+    ) -> Response[list[GitRef], list[GitRefType]]:
         """See also: https://docs.github.com/rest/git/refs#list-matching-references"""
 
         from ..models import GitRef, BasicError
@@ -507,7 +513,7 @@ class GitClient:
         ref: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GitRef]:
+    ) -> Response[GitRef, GitRefType]:
         """See also: https://docs.github.com/rest/git/refs#get-a-reference"""
 
         from ..models import GitRef, BasicError
@@ -534,7 +540,7 @@ class GitClient:
         ref: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GitRef]:
+    ) -> Response[GitRef, GitRefType]:
         """See also: https://docs.github.com/rest/git/refs#get-a-reference"""
 
         from ..models import GitRef, BasicError
@@ -562,7 +568,7 @@ class GitClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoGitRefsPostBodyType,
-    ) -> Response[GitRef]: ...
+    ) -> Response[GitRef, GitRefType]: ...
 
     @overload
     def create_ref(
@@ -574,7 +580,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         ref: str,
         sha: str,
-    ) -> Response[GitRef]: ...
+    ) -> Response[GitRef, GitRefType]: ...
 
     def create_ref(
         self,
@@ -584,7 +590,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitRef]:
+    ) -> Response[GitRef, GitRefType]:
         """See also: https://docs.github.com/rest/git/refs#create-a-reference"""
 
         from ..models import (
@@ -627,7 +633,7 @@ class GitClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoGitRefsPostBodyType,
-    ) -> Response[GitRef]: ...
+    ) -> Response[GitRef, GitRefType]: ...
 
     @overload
     async def async_create_ref(
@@ -639,7 +645,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         ref: str,
         sha: str,
-    ) -> Response[GitRef]: ...
+    ) -> Response[GitRef, GitRefType]: ...
 
     async def async_create_ref(
         self,
@@ -649,7 +655,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitRefsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitRef]:
+    ) -> Response[GitRef, GitRefType]:
         """See also: https://docs.github.com/rest/git/refs#create-a-reference"""
 
         from ..models import (
@@ -745,7 +751,7 @@ class GitClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoGitRefsRefPatchBodyType,
-    ) -> Response[GitRef]: ...
+    ) -> Response[GitRef, GitRefType]: ...
 
     @overload
     def update_ref(
@@ -758,7 +764,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         sha: str,
         force: Missing[bool] = UNSET,
-    ) -> Response[GitRef]: ...
+    ) -> Response[GitRef, GitRefType]: ...
 
     def update_ref(
         self,
@@ -769,7 +775,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitRef]:
+    ) -> Response[GitRef, GitRefType]:
         """See also: https://docs.github.com/rest/git/refs#update-a-reference"""
 
         from ..models import (
@@ -813,7 +819,7 @@ class GitClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoGitRefsRefPatchBodyType,
-    ) -> Response[GitRef]: ...
+    ) -> Response[GitRef, GitRefType]: ...
 
     @overload
     async def async_update_ref(
@@ -826,7 +832,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         sha: str,
         force: Missing[bool] = UNSET,
-    ) -> Response[GitRef]: ...
+    ) -> Response[GitRef, GitRefType]: ...
 
     async def async_update_ref(
         self,
@@ -837,7 +843,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitRefsRefPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitRef]:
+    ) -> Response[GitRef, GitRefType]:
         """See also: https://docs.github.com/rest/git/refs#update-a-reference"""
 
         from ..models import (
@@ -880,7 +886,7 @@ class GitClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoGitTagsPostBodyType,
-    ) -> Response[GitTag]: ...
+    ) -> Response[GitTag, GitTagType]: ...
 
     @overload
     def create_tag(
@@ -895,7 +901,7 @@ class GitClient:
         object_: str,
         type: Literal["commit", "tree", "blob"],
         tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTaggerType] = UNSET,
-    ) -> Response[GitTag]: ...
+    ) -> Response[GitTag, GitTagType]: ...
 
     def create_tag(
         self,
@@ -905,7 +911,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitTag]:
+    ) -> Response[GitTag, GitTagType]:
         """See also: https://docs.github.com/rest/git/tags#create-a-tag-object"""
 
         from ..models import (
@@ -948,7 +954,7 @@ class GitClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoGitTagsPostBodyType,
-    ) -> Response[GitTag]: ...
+    ) -> Response[GitTag, GitTagType]: ...
 
     @overload
     async def async_create_tag(
@@ -963,7 +969,7 @@ class GitClient:
         object_: str,
         type: Literal["commit", "tree", "blob"],
         tagger: Missing[ReposOwnerRepoGitTagsPostBodyPropTaggerType] = UNSET,
-    ) -> Response[GitTag]: ...
+    ) -> Response[GitTag, GitTagType]: ...
 
     async def async_create_tag(
         self,
@@ -973,7 +979,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitTagsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitTag]:
+    ) -> Response[GitTag, GitTagType]:
         """See also: https://docs.github.com/rest/git/tags#create-a-tag-object"""
 
         from ..models import (
@@ -1015,7 +1021,7 @@ class GitClient:
         tag_sha: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GitTag]:
+    ) -> Response[GitTag, GitTagType]:
         """See also: https://docs.github.com/rest/git/tags#get-a-tag"""
 
         from ..models import GitTag, BasicError
@@ -1042,7 +1048,7 @@ class GitClient:
         tag_sha: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GitTag]:
+    ) -> Response[GitTag, GitTagType]:
         """See also: https://docs.github.com/rest/git/tags#get-a-tag"""
 
         from ..models import GitTag, BasicError
@@ -1070,7 +1076,7 @@ class GitClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoGitTreesPostBodyType,
-    ) -> Response[GitTree]: ...
+    ) -> Response[GitTree, GitTreeType]: ...
 
     @overload
     def create_tree(
@@ -1082,7 +1088,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Missing[str] = UNSET,
-    ) -> Response[GitTree]: ...
+    ) -> Response[GitTree, GitTreeType]: ...
 
     def create_tree(
         self,
@@ -1092,7 +1098,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitTree]:
+    ) -> Response[GitTree, GitTreeType]:
         """See also: https://docs.github.com/rest/git/trees#create-a-tree"""
 
         from ..models import (
@@ -1137,7 +1143,7 @@ class GitClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoGitTreesPostBodyType,
-    ) -> Response[GitTree]: ...
+    ) -> Response[GitTree, GitTreeType]: ...
 
     @overload
     async def async_create_tree(
@@ -1149,7 +1155,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         tree: list[ReposOwnerRepoGitTreesPostBodyPropTreeItemsType],
         base_tree: Missing[str] = UNSET,
-    ) -> Response[GitTree]: ...
+    ) -> Response[GitTree, GitTreeType]: ...
 
     async def async_create_tree(
         self,
@@ -1159,7 +1165,7 @@ class GitClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoGitTreesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GitTree]:
+    ) -> Response[GitTree, GitTreeType]:
         """See also: https://docs.github.com/rest/git/trees#create-a-tree"""
 
         from ..models import (
@@ -1204,7 +1210,7 @@ class GitClient:
         recursive: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GitTree]:
+    ) -> Response[GitTree, GitTreeType]:
         """See also: https://docs.github.com/rest/git/trees#get-a-tree"""
 
         from ..models import GitTree, BasicError, ValidationError
@@ -1238,7 +1244,7 @@ class GitClient:
         recursive: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GitTree]:
+    ) -> Response[GitTree, GitTreeType]:
         """See also: https://docs.github.com/rest/git/trees#get-a-tree"""
 
         from ..models import GitTree, BasicError, ValidationError

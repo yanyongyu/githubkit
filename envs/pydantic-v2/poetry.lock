@@ -319,7 +319,7 @@ hishel = ">=0.0.21, <=0.2.0"
 httpx = ">=0.23.0, <1.0.0"
 pydantic = ">=1.9.1, <3.0.0, !=2.5.0, !=2.5.1"
 PyJWT = {version = "^2.4.0", extras = ["crypto"], optional = true}
-typing-extensions = "^4.3.0"
+typing-extensions = "^4.6.0"
 
 [package.extras]
 all = ["PyJWT[crypto] (>=2.4.0,<3.0.0)", "anyio (>=3.6.1,<5.0.0)"]

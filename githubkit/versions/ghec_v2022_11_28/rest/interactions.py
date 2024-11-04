@@ -26,12 +26,18 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..types import InteractionLimitType
     from ..models import (
         InteractionLimitResponse,
         UserInteractionLimitsGetResponse200Anyof1,
         OrgsOrgInteractionLimitsGetResponse200Anyof1,
         ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
+    )
+    from ..types import (
+        InteractionLimitType,
+        InteractionLimitResponseType,
+        UserInteractionLimitsGetResponse200Anyof1Type,
+        OrgsOrgInteractionLimitsGetResponse200Anyof1Type,
+        ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type,
     )
 
 
@@ -56,7 +62,11 @@ class InteractionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1]
+        Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1],
+        Union[
+            InteractionLimitResponseType,
+            OrgsOrgInteractionLimitsGetResponse200Anyof1Type,
+        ],
     ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/orgs#get-interaction-restrictions-for-an-organization"""
 
@@ -86,7 +96,11 @@ class InteractionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1]
+        Union[InteractionLimitResponse, OrgsOrgInteractionLimitsGetResponse200Anyof1],
+        Union[
+            InteractionLimitResponseType,
+            OrgsOrgInteractionLimitsGetResponse200Anyof1Type,
+        ],
     ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/orgs#get-interaction-restrictions-for-an-organization"""
 
@@ -117,7 +131,7 @@ class InteractionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: InteractionLimitType,
-    ) -> Response[InteractionLimitResponse]: ...
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
     @overload
     def set_restrictions_for_org(
@@ -130,7 +144,7 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse]: ...
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
     def set_restrictions_for_org(
         self,
@@ -139,7 +153,7 @@ class InteractionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
-    ) -> Response[InteractionLimitResponse]:
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/orgs#set-interaction-restrictions-for-an-organization"""
 
         from ..models import ValidationError, InteractionLimit, InteractionLimitResponse
@@ -175,7 +189,7 @@ class InteractionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: InteractionLimitType,
-    ) -> Response[InteractionLimitResponse]: ...
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
     @overload
     async def async_set_restrictions_for_org(
@@ -188,7 +202,7 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse]: ...
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
     async def async_set_restrictions_for_org(
         self,
@@ -197,7 +211,7 @@ class InteractionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
-    ) -> Response[InteractionLimitResponse]:
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/orgs#set-interaction-restrictions-for-an-organization"""
 
         from ..models import ValidationError, InteractionLimit, InteractionLimitResponse
@@ -272,7 +286,11 @@ class InteractionsClient:
         Union[
             InteractionLimitResponse,
             ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
-        ]
+        ],
+        Union[
+            InteractionLimitResponseType,
+            ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type,
+        ],
     ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/repos#get-interaction-restrictions-for-a-repository"""
 
@@ -307,7 +325,11 @@ class InteractionsClient:
         Union[
             InteractionLimitResponse,
             ReposOwnerRepoInteractionLimitsGetResponse200Anyof1,
-        ]
+        ],
+        Union[
+            InteractionLimitResponseType,
+            ReposOwnerRepoInteractionLimitsGetResponse200Anyof1Type,
+        ],
     ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/repos#get-interaction-restrictions-for-a-repository"""
 
@@ -340,7 +362,7 @@ class InteractionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: InteractionLimitType,
-    ) -> Response[InteractionLimitResponse]: ...
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
     @overload
     def set_restrictions_for_repo(
@@ -354,7 +376,7 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse]: ...
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
     def set_restrictions_for_repo(
         self,
@@ -364,7 +386,7 @@ class InteractionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
-    ) -> Response[InteractionLimitResponse]:
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/repos#set-interaction-restrictions-for-a-repository"""
 
         from ..models import InteractionLimit, InteractionLimitResponse
@@ -399,7 +421,7 @@ class InteractionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: InteractionLimitType,
-    ) -> Response[InteractionLimitResponse]: ...
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
     @overload
     async def async_set_restrictions_for_repo(
@@ -413,7 +435,7 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse]: ...
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
     async def async_set_restrictions_for_repo(
         self,
@@ -423,7 +445,7 @@ class InteractionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
-    ) -> Response[InteractionLimitResponse]:
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/repos#set-interaction-restrictions-for-a-repository"""
 
         from ..models import InteractionLimit, InteractionLimitResponse
@@ -495,7 +517,10 @@ class InteractionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1]
+        Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1],
+        Union[
+            InteractionLimitResponseType, UserInteractionLimitsGetResponse200Anyof1Type
+        ],
     ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/user#get-interaction-restrictions-for-your-public-repositories"""
 
@@ -524,7 +549,10 @@ class InteractionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1]
+        Union[InteractionLimitResponse, UserInteractionLimitsGetResponse200Anyof1],
+        Union[
+            InteractionLimitResponseType, UserInteractionLimitsGetResponse200Anyof1Type
+        ],
     ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/user#get-interaction-restrictions-for-your-public-repositories"""
 
@@ -551,7 +579,7 @@ class InteractionsClient:
     @overload
     def set_restrictions_for_authenticated_user(
         self, *, headers: Optional[dict[str, str]] = None, data: InteractionLimitType
-    ) -> Response[InteractionLimitResponse]: ...
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
     @overload
     def set_restrictions_for_authenticated_user(
@@ -563,7 +591,7 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse]: ...
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
     def set_restrictions_for_authenticated_user(
         self,
@@ -571,7 +599,7 @@ class InteractionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
-    ) -> Response[InteractionLimitResponse]:
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/user#set-interaction-restrictions-for-your-public-repositories"""
 
         from ..models import ValidationError, InteractionLimit, InteractionLimitResponse
@@ -603,7 +631,7 @@ class InteractionsClient:
     @overload
     async def async_set_restrictions_for_authenticated_user(
         self, *, headers: Optional[dict[str, str]] = None, data: InteractionLimitType
-    ) -> Response[InteractionLimitResponse]: ...
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
     @overload
     async def async_set_restrictions_for_authenticated_user(
@@ -615,7 +643,7 @@ class InteractionsClient:
         expiry: Missing[
             Literal["one_day", "three_days", "one_week", "one_month", "six_months"]
         ] = UNSET,
-    ) -> Response[InteractionLimitResponse]: ...
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]: ...
 
     async def async_set_restrictions_for_authenticated_user(
         self,
@@ -623,7 +651,7 @@ class InteractionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[InteractionLimitType] = UNSET,
         **kwargs,
-    ) -> Response[InteractionLimitResponse]:
+    ) -> Response[InteractionLimitResponse, InteractionLimitResponseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/interactions/user#set-interaction-restrictions-for-your-public-repositories"""
 
         from ..models import ValidationError, InteractionLimit, InteractionLimitResponse

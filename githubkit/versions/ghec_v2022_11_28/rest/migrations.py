@@ -34,6 +34,11 @@ if TYPE_CHECKING:
         MinimalRepository,
     )
     from ..types import (
+        ImportType,
+        MigrationType,
+        PorterAuthorType,
+        PorterLargeFileType,
+        MinimalRepositoryType,
         UserMigrationsPostBodyType,
         OrgsOrgMigrationsPostBodyType,
         ReposOwnerRepoImportPutBodyType,
@@ -66,7 +71,7 @@ class MigrationsClient:
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Migration]]:
+    ) -> Response[list[Migration], list[MigrationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#list-organization-migrations"""
 
         from ..models import Migration
@@ -97,7 +102,7 @@ class MigrationsClient:
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Migration]]:
+    ) -> Response[list[Migration], list[MigrationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#list-organization-migrations"""
 
         from ..models import Migration
@@ -127,7 +132,7 @@ class MigrationsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgMigrationsPostBodyType,
-    ) -> Response[Migration]: ...
+    ) -> Response[Migration, MigrationType]: ...
 
     @overload
     def start_for_org(
@@ -145,7 +150,7 @@ class MigrationsClient:
         exclude_owner_projects: Missing[bool] = UNSET,
         org_metadata_only: Missing[bool] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
-    ) -> Response[Migration]: ...
+    ) -> Response[Migration, MigrationType]: ...
 
     def start_for_org(
         self,
@@ -154,7 +159,7 @@ class MigrationsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Migration]:
+    ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#start-an-organization-migration"""
 
         from ..models import (
@@ -196,7 +201,7 @@ class MigrationsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgMigrationsPostBodyType,
-    ) -> Response[Migration]: ...
+    ) -> Response[Migration, MigrationType]: ...
 
     @overload
     async def async_start_for_org(
@@ -214,7 +219,7 @@ class MigrationsClient:
         exclude_owner_projects: Missing[bool] = UNSET,
         org_metadata_only: Missing[bool] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
-    ) -> Response[Migration]: ...
+    ) -> Response[Migration, MigrationType]: ...
 
     async def async_start_for_org(
         self,
@@ -223,7 +228,7 @@ class MigrationsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgMigrationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Migration]:
+    ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#start-an-organization-migration"""
 
         from ..models import (
@@ -265,7 +270,7 @@ class MigrationsClient:
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Migration]:
+    ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#get-an-organization-migration-status"""
 
         from ..models import Migration, BasicError
@@ -296,7 +301,7 @@ class MigrationsClient:
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Migration]:
+    ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#get-an-organization-migration-status"""
 
         from ..models import Migration, BasicError
@@ -474,7 +479,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#list-repositories-in-an-organization-migration"""
 
         from ..models import BasicError, MinimalRepository
@@ -507,7 +512,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/orgs#list-repositories-in-an-organization-migration"""
 
         from ..models import BasicError, MinimalRepository
@@ -538,7 +543,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Import]:
+    ) -> Response[Import, ImportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-an-import-status"""
 
         from ..models import Import, BasicError
@@ -564,7 +569,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Import]:
+    ) -> Response[Import, ImportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-an-import-status"""
 
         from ..models import Import, BasicError
@@ -592,7 +597,7 @@ class MigrationsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoImportPutBodyType,
-    ) -> Response[Import]: ...
+    ) -> Response[Import, ImportType]: ...
 
     @overload
     def start_import(
@@ -607,7 +612,7 @@ class MigrationsClient:
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
         tfvc_project: Missing[str] = UNSET,
-    ) -> Response[Import]: ...
+    ) -> Response[Import, ImportType]: ...
 
     def start_import(
         self,
@@ -617,7 +622,7 @@ class MigrationsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Import]:
+    ) -> Response[Import, ImportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#start-an-import"""
 
         from ..models import (
@@ -661,7 +666,7 @@ class MigrationsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoImportPutBodyType,
-    ) -> Response[Import]: ...
+    ) -> Response[Import, ImportType]: ...
 
     @overload
     async def async_start_import(
@@ -676,7 +681,7 @@ class MigrationsClient:
         vcs_username: Missing[str] = UNSET,
         vcs_password: Missing[str] = UNSET,
         tfvc_project: Missing[str] = UNSET,
-    ) -> Response[Import]: ...
+    ) -> Response[Import, ImportType]: ...
 
     async def async_start_import(
         self,
@@ -686,7 +691,7 @@ class MigrationsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Import]:
+    ) -> Response[Import, ImportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#start-an-import"""
 
         from ..models import (
@@ -778,7 +783,7 @@ class MigrationsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
-    ) -> Response[Import]: ...
+    ) -> Response[Import, ImportType]: ...
 
     @overload
     def update_import(
@@ -792,7 +797,7 @@ class MigrationsClient:
         vcs_password: Missing[str] = UNSET,
         vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
         tfvc_project: Missing[str] = UNSET,
-    ) -> Response[Import]: ...
+    ) -> Response[Import, ImportType]: ...
 
     def update_import(
         self,
@@ -802,7 +807,7 @@ class MigrationsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[Import]:
+    ) -> Response[Import, ImportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#update-an-import"""
 
         from typing import Union
@@ -843,7 +848,7 @@ class MigrationsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
-    ) -> Response[Import]: ...
+    ) -> Response[Import, ImportType]: ...
 
     @overload
     async def async_update_import(
@@ -857,7 +862,7 @@ class MigrationsClient:
         vcs_password: Missing[str] = UNSET,
         vcs: Missing[Literal["subversion", "tfvc", "git", "mercurial"]] = UNSET,
         tfvc_project: Missing[str] = UNSET,
-    ) -> Response[Import]: ...
+    ) -> Response[Import, ImportType]: ...
 
     async def async_update_import(
         self,
@@ -867,7 +872,7 @@ class MigrationsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[ReposOwnerRepoImportPatchBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[Import]:
+    ) -> Response[Import, ImportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#update-an-import"""
 
         from typing import Union
@@ -907,7 +912,7 @@ class MigrationsClient:
         since: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PorterAuthor]]:
+    ) -> Response[list[PorterAuthor], list[PorterAuthorType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-commit-authors"""
 
         from ..models import BasicError, PorterAuthor
@@ -939,7 +944,7 @@ class MigrationsClient:
         since: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PorterAuthor]]:
+    ) -> Response[list[PorterAuthor], list[PorterAuthorType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-commit-authors"""
 
         from ..models import BasicError, PorterAuthor
@@ -973,7 +978,7 @@ class MigrationsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
-    ) -> Response[PorterAuthor]: ...
+    ) -> Response[PorterAuthor, PorterAuthorType]: ...
 
     @overload
     def map_commit_author(
@@ -986,7 +991,7 @@ class MigrationsClient:
         headers: Optional[dict[str, str]] = None,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
-    ) -> Response[PorterAuthor]: ...
+    ) -> Response[PorterAuthor, PorterAuthorType]: ...
 
     def map_commit_author(
         self,
@@ -997,7 +1002,7 @@ class MigrationsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PorterAuthor]:
+    ) -> Response[PorterAuthor, PorterAuthorType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#map-a-commit-author"""
 
         from ..models import (
@@ -1044,7 +1049,7 @@ class MigrationsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
-    ) -> Response[PorterAuthor]: ...
+    ) -> Response[PorterAuthor, PorterAuthorType]: ...
 
     @overload
     async def async_map_commit_author(
@@ -1057,7 +1062,7 @@ class MigrationsClient:
         headers: Optional[dict[str, str]] = None,
         email: Missing[str] = UNSET,
         name: Missing[str] = UNSET,
-    ) -> Response[PorterAuthor]: ...
+    ) -> Response[PorterAuthor, PorterAuthorType]: ...
 
     async def async_map_commit_author(
         self,
@@ -1068,7 +1073,7 @@ class MigrationsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportAuthorsAuthorIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PorterAuthor]:
+    ) -> Response[PorterAuthor, PorterAuthorType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#map-a-commit-author"""
 
         from ..models import (
@@ -1112,7 +1117,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PorterLargeFile]]:
+    ) -> Response[list[PorterLargeFile], list[PorterLargeFileType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-large-files"""
 
         from ..models import BasicError, PorterLargeFile
@@ -1137,7 +1142,7 @@ class MigrationsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PorterLargeFile]]:
+    ) -> Response[list[PorterLargeFile], list[PorterLargeFileType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#get-large-files"""
 
         from ..models import BasicError, PorterLargeFile
@@ -1164,7 +1169,7 @@ class MigrationsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoImportLfsPatchBodyType,
-    ) -> Response[Import]: ...
+    ) -> Response[Import, ImportType]: ...
 
     @overload
     def set_lfs_preference(
@@ -1175,7 +1180,7 @@ class MigrationsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         use_lfs: Literal["opt_in", "opt_out"],
-    ) -> Response[Import]: ...
+    ) -> Response[Import, ImportType]: ...
 
     def set_lfs_preference(
         self,
@@ -1185,7 +1190,7 @@ class MigrationsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Import]:
+    ) -> Response[Import, ImportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#update-git-lfs-preference"""
 
         from ..models import (
@@ -1228,7 +1233,7 @@ class MigrationsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoImportLfsPatchBodyType,
-    ) -> Response[Import]: ...
+    ) -> Response[Import, ImportType]: ...
 
     @overload
     async def async_set_lfs_preference(
@@ -1239,7 +1244,7 @@ class MigrationsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         use_lfs: Literal["opt_in", "opt_out"],
-    ) -> Response[Import]: ...
+    ) -> Response[Import, ImportType]: ...
 
     async def async_set_lfs_preference(
         self,
@@ -1249,7 +1254,7 @@ class MigrationsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoImportLfsPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Import]:
+    ) -> Response[Import, ImportType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/source-imports#update-git-lfs-preference"""
 
         from ..models import (
@@ -1290,7 +1295,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Migration]]:
+    ) -> Response[list[Migration], list[MigrationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-user-migrations"""
 
         from ..models import Migration, BasicError
@@ -1322,7 +1327,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Migration]]:
+    ) -> Response[list[Migration], list[MigrationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-user-migrations"""
 
         from ..models import Migration, BasicError
@@ -1354,7 +1359,7 @@ class MigrationsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: UserMigrationsPostBodyType,
-    ) -> Response[Migration]: ...
+    ) -> Response[Migration, MigrationType]: ...
 
     @overload
     def start_for_authenticated_user(
@@ -1371,7 +1376,7 @@ class MigrationsClient:
         org_metadata_only: Missing[bool] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         repositories: list[str],
-    ) -> Response[Migration]: ...
+    ) -> Response[Migration, MigrationType]: ...
 
     def start_for_authenticated_user(
         self,
@@ -1379,7 +1384,7 @@ class MigrationsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserMigrationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Migration]:
+    ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#start-a-user-migration"""
 
         from ..models import (
@@ -1421,7 +1426,7 @@ class MigrationsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: UserMigrationsPostBodyType,
-    ) -> Response[Migration]: ...
+    ) -> Response[Migration, MigrationType]: ...
 
     @overload
     async def async_start_for_authenticated_user(
@@ -1438,7 +1443,7 @@ class MigrationsClient:
         org_metadata_only: Missing[bool] = UNSET,
         exclude: Missing[list[Literal["repositories"]]] = UNSET,
         repositories: list[str],
-    ) -> Response[Migration]: ...
+    ) -> Response[Migration, MigrationType]: ...
 
     async def async_start_for_authenticated_user(
         self,
@@ -1446,7 +1451,7 @@ class MigrationsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[UserMigrationsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[Migration]:
+    ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#start-a-user-migration"""
 
         from ..models import (
@@ -1488,7 +1493,7 @@ class MigrationsClient:
         exclude: Missing[list[str]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Migration]:
+    ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#get-a-user-migration-status"""
 
         from ..models import Migration, BasicError
@@ -1520,7 +1525,7 @@ class MigrationsClient:
         exclude: Missing[list[str]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Migration]:
+    ) -> Response[Migration, MigrationType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#get-a-user-migration-status"""
 
         from ..models import Migration, BasicError
@@ -1703,7 +1708,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-repositories-for-a-user-migration"""
 
         from ..models import BasicError, MinimalRepository
@@ -1735,7 +1740,7 @@ class MigrationsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[MinimalRepository]]:
+    ) -> Response[list[MinimalRepository], list[MinimalRepositoryType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/migrations/users#list-repositories-for-a-user-migration"""
 
         from ..models import BasicError, MinimalRepository

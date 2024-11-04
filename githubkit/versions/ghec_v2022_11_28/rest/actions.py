@@ -26,46 +26,6 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..types import (
-        SelectedActionsType,
-        ReviewCustomGatesStateRequiredType,
-        OrgsOrgActionsVariablesPostBodyType,
-        OrgsOrgActionsPermissionsPutBodyType,
-        ReviewCustomGatesCommentRequiredType,
-        ActionsWorkflowAccessToRepositoryType,
-        OrgsOrgActionsRunnerGroupsPostBodyType,
-        ActionsSetDefaultWorkflowPermissionsType,
-        OrgsOrgActionsVariablesNamePatchBodyType,
-        OrgsOrgActionsSecretsSecretNamePutBodyType,
-        ReposOwnerRepoActionsVariablesPostBodyType,
-        ReposOwnerRepoActionsPermissionsPutBodyType,
-        ActionsOidcCustomIssuerPolicyForEnterpriseType,
-        OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
-        OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
-        ReposOwnerRepoActionsJobsJobIdRerunPostBodyType,
-        ReposOwnerRepoActionsRunsRunIdRerunPostBodyType,
-        ReposOwnerRepoActionsVariablesNamePatchBodyType,
-        OrgsOrgActionsPermissionsRepositoriesPutBodyType,
-        ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
-        OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
-        OrgsOrgActionsVariablesNameRepositoriesPutBodyType,
-        OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
-        ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
-        ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
-        OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
-        ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
-        OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
-        ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
-        ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType,
-        ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
-        OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
-        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType,
-        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
-        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
-        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType,
-    )
     from ..models import (
         Job,
         Runner,
@@ -123,6 +83,99 @@ if TYPE_CHECKING:
         EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
         ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
     )
+    from ..types import (
+        JobType,
+        RunnerType,
+        ArtifactType,
+        WorkflowType,
+        DeploymentType,
+        EmptyObjectType,
+        WorkflowRunType,
+        ActionsSecretType,
+        WorkflowUsageType,
+        ActionsVariableType,
+        RunnerGroupsOrgType,
+        SelectedActionsType,
+        ActionsCacheListType,
+        ActionsPublicKeyType,
+        WorkflowRunUsageType,
+        OidcCustomSubRepoType,
+        PendingDeploymentType,
+        RunnerApplicationType,
+        AuthenticationTokenType,
+        EnvironmentApprovalsType,
+        OrganizationActionsSecretType,
+        OrganizationActionsVariableType,
+        ActionsRepositoryPermissionsType,
+        ActionsCacheUsageByRepositoryType,
+        ActionsCacheUsageOrgEnterpriseType,
+        ActionsOrganizationPermissionsType,
+        ReviewCustomGatesStateRequiredType,
+        OrgsOrgActionsVariablesPostBodyType,
+        OrgsOrgActionsPermissionsPutBodyType,
+        ReviewCustomGatesCommentRequiredType,
+        ActionsWorkflowAccessToRepositoryType,
+        OrgsOrgActionsRunnerGroupsPostBodyType,
+        OrgsOrgActionsRunnersGetResponse200Type,
+        OrgsOrgActionsSecretsGetResponse200Type,
+        ActionsGetDefaultWorkflowPermissionsType,
+        ActionsSetDefaultWorkflowPermissionsType,
+        OrgsOrgActionsVariablesNamePatchBodyType,
+        OrgsOrgActionsVariablesGetResponse200Type,
+        OrgsOrgActionsSecretsSecretNamePutBodyType,
+        ReposOwnerRepoActionsVariablesPostBodyType,
+        ReposOwnerRepoActionsPermissionsPutBodyType,
+        ReposOwnerRepoActionsRunsGetResponse200Type,
+        OrgsOrgActionsRunnerGroupsGetResponse200Type,
+        ActionsOidcCustomIssuerPolicyForEnterpriseType,
+        OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
+        ReposOwnerRepoActionsRunnersGetResponse200Type,
+        ReposOwnerRepoActionsSecretsGetResponse200Type,
+        OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
+        ReposOwnerRepoActionsJobsJobIdRerunPostBodyType,
+        ReposOwnerRepoActionsRunsRunIdRerunPostBodyType,
+        ReposOwnerRepoActionsVariablesNamePatchBodyType,
+        OrgsOrgActionsPermissionsRepositoriesPutBodyType,
+        ReposOwnerRepoActionsArtifactsGetResponse200Type,
+        ReposOwnerRepoActionsVariablesGetResponse200Type,
+        ReposOwnerRepoActionsWorkflowsGetResponse200Type,
+        ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
+        OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
+        OrgsOrgActionsVariablesNameRepositoriesPutBodyType,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
+        ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
+        ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type,
+        ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
+        OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type,
+        OrgsOrgActionsSecretsSecretNameRepositoriesPutBodyType,
+        ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
+        OrgsOrgActionsPermissionsRepositoriesGetResponse200Type,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersPutBodyType,
+        OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type,
+        ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
+        ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type,
+        ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType,
+        ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type,
+        ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type,
+        ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
+        OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesPutBodyType,
+        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyType,
+        ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesNamePatchBodyType,
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type,
+        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+        ReposOwnerRepoActionsWorkflowsWorkflowIdDispatchesPostBodyPropInputsType,
+        ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type,
+    )
 
 
 class ActionsClient:
@@ -145,7 +198,7 @@ class ActionsClient:
         enterprise: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsCacheUsageOrgEnterprise]:
+    ) -> Response[ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-an-enterprise"""
 
         from ..models import ActionsCacheUsageOrgEnterprise
@@ -166,7 +219,7 @@ class ActionsClient:
         enterprise: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsCacheUsageOrgEnterprise]:
+    ) -> Response[ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-an-enterprise"""
 
         from ..models import ActionsCacheUsageOrgEnterprise
@@ -293,7 +346,9 @@ class ActionsClient:
         enterprise: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsGetDefaultWorkflowPermissions]:
+    ) -> Response[
+        ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-an-enterprise"""
 
         from ..models import ActionsGetDefaultWorkflowPermissions
@@ -314,7 +369,9 @@ class ActionsClient:
         enterprise: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsGetDefaultWorkflowPermissions]:
+    ) -> Response[
+        ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-an-enterprise"""
 
         from ..models import ActionsGetDefaultWorkflowPermissions
@@ -442,7 +499,8 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
     ]: ...
 
     @overload
@@ -457,7 +515,8 @@ class ActionsClient:
         labels: list[str],
         work_folder: Missing[str] = UNSET,
     ) -> Response[
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
     ]: ...
 
     def generate_runner_jitconfig_for_enterprise(
@@ -469,7 +528,10 @@ class ActionsClient:
             EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-enterprise"""
 
         from ..models import (
@@ -514,7 +576,8 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
     ]: ...
 
     @overload
@@ -529,7 +592,8 @@ class ActionsClient:
         labels: list[str],
         work_folder: Missing[str] = UNSET,
     ) -> Response[
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
     ]: ...
 
     async def async_generate_runner_jitconfig_for_enterprise(
@@ -541,7 +605,10 @@ class ActionsClient:
             EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-enterprise"""
 
         from ..models import (
@@ -583,7 +650,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsCacheUsageOrgEnterprise]:
+    ) -> Response[ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-an-organization"""
 
         from ..models import ActionsCacheUsageOrgEnterprise
@@ -604,7 +671,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsCacheUsageOrgEnterprise]:
+    ) -> Response[ActionsCacheUsageOrgEnterprise, ActionsCacheUsageOrgEnterpriseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-an-organization"""
 
         from ..models import ActionsCacheUsageOrgEnterprise
@@ -627,7 +694,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsCacheUsageByRepositoryGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
+        OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#list-repositories-with-github-actions-cache-usage-for-an-organization"""
 
         from ..models import OrgsOrgActionsCacheUsageByRepositoryGetResponse200
@@ -656,7 +726,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsCacheUsageByRepositoryGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsCacheUsageByRepositoryGetResponse200,
+        OrgsOrgActionsCacheUsageByRepositoryGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#list-repositories-with-github-actions-cache-usage-for-an-organization"""
 
         from ..models import OrgsOrgActionsCacheUsageByRepositoryGetResponse200
@@ -683,7 +756,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsOrganizationPermissions]:
+    ) -> Response[ActionsOrganizationPermissions, ActionsOrganizationPermissionsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-an-organization"""
 
         from ..models import ActionsOrganizationPermissions
@@ -704,7 +777,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsOrganizationPermissions]:
+    ) -> Response[ActionsOrganizationPermissions, ActionsOrganizationPermissionsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-an-organization"""
 
         from ..models import ActionsOrganizationPermissions
@@ -831,7 +904,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsPermissionsRepositoriesGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsPermissionsRepositoriesGetResponse200,
+        OrgsOrgActionsPermissionsRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#list-selected-repositories-enabled-for-github-actions-in-an-organization"""
 
         from ..models import OrgsOrgActionsPermissionsRepositoriesGetResponse200
@@ -860,7 +936,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsPermissionsRepositoriesGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsPermissionsRepositoriesGetResponse200,
+        OrgsOrgActionsPermissionsRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#list-selected-repositories-enabled-for-github-actions-in-an-organization"""
 
         from ..models import OrgsOrgActionsPermissionsRepositoriesGetResponse200
@@ -1069,7 +1148,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SelectedActions]:
+    ) -> Response[SelectedActions, SelectedActionsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization"""
 
         from ..models import SelectedActions
@@ -1090,7 +1169,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SelectedActions]:
+    ) -> Response[SelectedActions, SelectedActionsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-an-organization"""
 
         from ..models import SelectedActions
@@ -1217,7 +1296,9 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsGetDefaultWorkflowPermissions]:
+    ) -> Response[
+        ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-an-organization"""
 
         from ..models import ActionsGetDefaultWorkflowPermissions
@@ -1238,7 +1319,9 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsGetDefaultWorkflowPermissions]:
+    ) -> Response[
+        ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-an-organization"""
 
         from ..models import ActionsGetDefaultWorkflowPermissions
@@ -1368,7 +1451,10 @@ class ActionsClient:
         visible_to_repository: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsRunnerGroupsGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsRunnerGroupsGetResponse200,
+        OrgsOrgActionsRunnerGroupsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-organization"""
 
         from ..models import OrgsOrgActionsRunnerGroupsGetResponse200
@@ -1399,7 +1485,10 @@ class ActionsClient:
         visible_to_repository: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsRunnerGroupsGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsRunnerGroupsGetResponse200,
+        OrgsOrgActionsRunnerGroupsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runner-groups-for-an-organization"""
 
         from ..models import OrgsOrgActionsRunnerGroupsGetResponse200
@@ -1429,7 +1518,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsPostBodyType,
-    ) -> Response[RunnerGroupsOrg]: ...
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
     @overload
     def create_self_hosted_runner_group_for_org(
@@ -1445,7 +1534,7 @@ class ActionsClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
-    ) -> Response[RunnerGroupsOrg]: ...
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
     def create_self_hosted_runner_group_for_org(
         self,
@@ -1454,7 +1543,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RunnerGroupsOrg]:
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-organization"""
 
         from ..models import RunnerGroupsOrg, OrgsOrgActionsRunnerGroupsPostBody
@@ -1487,7 +1576,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsPostBodyType,
-    ) -> Response[RunnerGroupsOrg]: ...
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
     @overload
     async def async_create_self_hosted_runner_group_for_org(
@@ -1503,7 +1592,7 @@ class ActionsClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
-    ) -> Response[RunnerGroupsOrg]: ...
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
     async def async_create_self_hosted_runner_group_for_org(
         self,
@@ -1512,7 +1601,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnerGroupsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RunnerGroupsOrg]:
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#create-a-self-hosted-runner-group-for-an-organization"""
 
         from ..models import RunnerGroupsOrg, OrgsOrgActionsRunnerGroupsPostBody
@@ -1544,7 +1633,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RunnerGroupsOrg]:
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-organization"""
 
         from ..models import RunnerGroupsOrg
@@ -1566,7 +1655,7 @@ class ActionsClient:
         runner_group_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[RunnerGroupsOrg]:
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#get-a-self-hosted-runner-group-for-an-organization"""
 
         from ..models import RunnerGroupsOrg
@@ -1628,7 +1717,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
-    ) -> Response[RunnerGroupsOrg]: ...
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
     @overload
     def update_self_hosted_runner_group_for_org(
@@ -1643,7 +1732,7 @@ class ActionsClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
-    ) -> Response[RunnerGroupsOrg]: ...
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
     def update_self_hosted_runner_group_for_org(
         self,
@@ -1653,7 +1742,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RunnerGroupsOrg]:
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-organization"""
 
         from ..models import (
@@ -1692,7 +1781,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType,
-    ) -> Response[RunnerGroupsOrg]: ...
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
     @overload
     async def async_update_self_hosted_runner_group_for_org(
@@ -1707,7 +1796,7 @@ class ActionsClient:
         allows_public_repositories: Missing[bool] = UNSET,
         restricted_to_workflows: Missing[bool] = UNSET,
         selected_workflows: Missing[list[str]] = UNSET,
-    ) -> Response[RunnerGroupsOrg]: ...
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]: ...
 
     async def async_update_self_hosted_runner_group_for_org(
         self,
@@ -1717,7 +1806,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnerGroupsRunnerGroupIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[RunnerGroupsOrg]:
+    ) -> Response[RunnerGroupsOrg, RunnerGroupsOrgType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#update-a-self-hosted-runner-group-for-an-organization"""
 
         from ..models import (
@@ -1756,7 +1845,10 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
 
         from ..models import (
@@ -1788,7 +1880,10 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-repository-access-to-a-self-hosted-runner-group-in-an-organization"""
 
         from ..models import (
@@ -2016,7 +2111,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-organization"""
 
         from ..models import (
@@ -2048,7 +2146,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200,
+        OrgsOrgActionsRunnerGroupsRunnerGroupIdRunnersGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runner-groups#list-self-hosted-runners-in-a-group-for-an-organization"""
 
         from ..models import (
@@ -2276,7 +2377,9 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsRunnersGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsRunnersGetResponse200, OrgsOrgActionsRunnersGetResponse200Type
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-organization"""
 
         from ..models import OrgsOrgActionsRunnersGetResponse200
@@ -2307,7 +2410,9 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsRunnersGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsRunnersGetResponse200, OrgsOrgActionsRunnersGetResponse200Type
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-an-organization"""
 
         from ..models import OrgsOrgActionsRunnersGetResponse200
@@ -2335,7 +2440,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RunnerApplication]]:
+    ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-an-organization"""
 
         from ..models import RunnerApplication
@@ -2356,7 +2461,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RunnerApplication]]:
+    ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-an-organization"""
 
         from ..models import RunnerApplication
@@ -2380,7 +2485,8 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
     ]: ...
 
     @overload
@@ -2395,7 +2501,8 @@ class ActionsClient:
         labels: list[str],
         work_folder: Missing[str] = UNSET,
     ) -> Response[
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
     ]: ...
 
     def generate_runner_jitconfig_for_org(
@@ -2405,7 +2512,10 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersGenerateJitconfigPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-organization"""
 
         from ..models import (
@@ -2450,7 +2560,8 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
     ]: ...
 
     @overload
@@ -2465,7 +2576,8 @@ class ActionsClient:
         labels: list[str],
         work_folder: Missing[str] = UNSET,
     ) -> Response[
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
     ]: ...
 
     async def async_generate_runner_jitconfig_for_org(
@@ -2475,7 +2587,10 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersGenerateJitconfigPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-an-organization"""
 
         from ..models import (
@@ -2517,7 +2632,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AuthenticationToken]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization"""
 
         from ..models import AuthenticationToken
@@ -2538,7 +2653,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AuthenticationToken]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-an-organization"""
 
         from ..models import AuthenticationToken
@@ -2559,7 +2674,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AuthenticationToken]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization"""
 
         from ..models import AuthenticationToken
@@ -2580,7 +2695,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AuthenticationToken]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-an-organization"""
 
         from ..models import AuthenticationToken
@@ -2602,7 +2717,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Runner]:
+    ) -> Response[Runner, RunnerType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization"""
 
         from ..models import Runner
@@ -2624,7 +2739,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Runner]:
+    ) -> Response[Runner, RunnerType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-an-organization"""
 
         from ..models import Runner
@@ -2684,7 +2799,10 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
@@ -2712,7 +2830,10 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
@@ -2742,7 +2863,10 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]: ...
 
     @overload
     def set_custom_labels_for_self_hosted_runner_for_org(
@@ -2753,7 +2877,10 @@ class ActionsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         labels: list[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]: ...
 
     def set_custom_labels_for_self_hosted_runner_for_org(
         self,
@@ -2763,7 +2890,10 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
@@ -2808,7 +2938,10 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]: ...
 
     @overload
     async def async_set_custom_labels_for_self_hosted_runner_for_org(
@@ -2819,7 +2952,10 @@ class ActionsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         labels: list[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]: ...
 
     async def async_set_custom_labels_for_self_hosted_runner_for_org(
         self,
@@ -2829,7 +2965,10 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
@@ -2874,7 +3013,10 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]: ...
 
     @overload
     def add_custom_labels_to_self_hosted_runner_for_org(
@@ -2885,7 +3027,10 @@ class ActionsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         labels: list[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]: ...
 
     def add_custom_labels_to_self_hosted_runner_for_org(
         self,
@@ -2895,7 +3040,10 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
@@ -2940,7 +3088,10 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]: ...
 
     @overload
     async def async_add_custom_labels_to_self_hosted_runner_for_org(
@@ -2951,7 +3102,10 @@ class ActionsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         labels: list[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]: ...
 
     async def async_add_custom_labels_to_self_hosted_runner_for_org(
         self,
@@ -2961,7 +3115,10 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
@@ -3004,7 +3161,10 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
@@ -3032,7 +3192,10 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
@@ -3061,7 +3224,10 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
@@ -3092,7 +3258,10 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-an-organization"""
 
         from ..models import (
@@ -3123,7 +3292,9 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsSecretsGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsSecretsGetResponse200, OrgsOrgActionsSecretsGetResponse200Type
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-organization-secrets"""
 
         from ..models import OrgsOrgActionsSecretsGetResponse200
@@ -3152,7 +3323,9 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsSecretsGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsSecretsGetResponse200, OrgsOrgActionsSecretsGetResponse200Type
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-organization-secrets"""
 
         from ..models import OrgsOrgActionsSecretsGetResponse200
@@ -3179,7 +3352,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsPublicKey]:
+    ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-organization-public-key"""
 
         from ..models import ActionsPublicKey
@@ -3200,7 +3373,7 @@ class ActionsClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsPublicKey]:
+    ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-organization-public-key"""
 
         from ..models import ActionsPublicKey
@@ -3222,7 +3395,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrganizationActionsSecret]:
+    ) -> Response[OrganizationActionsSecret, OrganizationActionsSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-organization-secret"""
 
         from ..models import OrganizationActionsSecret
@@ -3244,7 +3417,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrganizationActionsSecret]:
+    ) -> Response[OrganizationActionsSecret, OrganizationActionsSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-organization-secret"""
 
         from ..models import OrganizationActionsSecret
@@ -3268,7 +3441,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     def create_or_update_org_secret(
@@ -3282,7 +3455,7 @@ class ActionsClient:
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def create_or_update_org_secret(
         self,
@@ -3292,7 +3465,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-an-organization-secret"""
 
         from ..models import EmptyObject, OrgsOrgActionsSecretsSecretNamePutBody
@@ -3326,7 +3499,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     async def async_create_or_update_org_secret(
@@ -3340,7 +3513,7 @@ class ActionsClient:
         key_id: Missing[str] = UNSET,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_create_or_update_org_secret(
         self,
@@ -3350,7 +3523,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-an-organization-secret"""
 
         from ..models import EmptyObject, OrgsOrgActionsSecretsSecretNamePutBody
@@ -3422,7 +3595,10 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
+        OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-selected-repositories-for-an-organization-secret"""
 
         from ..models import OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200
@@ -3452,7 +3628,10 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200,
+        OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-selected-repositories-for-an-organization-secret"""
 
         from ..models import OrgsOrgActionsSecretsSecretNameRepositoriesGetResponse200
@@ -3677,7 +3856,9 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsVariablesGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsVariablesGetResponse200, OrgsOrgActionsVariablesGetResponse200Type
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-organization-variables"""
 
         from ..models import OrgsOrgActionsVariablesGetResponse200
@@ -3706,7 +3887,9 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsVariablesGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsVariablesGetResponse200, OrgsOrgActionsVariablesGetResponse200Type
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-organization-variables"""
 
         from ..models import OrgsOrgActionsVariablesGetResponse200
@@ -3735,7 +3918,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsVariablesPostBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     def create_org_variable(
@@ -3748,7 +3931,7 @@ class ActionsClient:
         value: str,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def create_org_variable(
         self,
@@ -3757,7 +3940,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsVariablesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#create-an-organization-variable"""
 
         from ..models import EmptyObject, OrgsOrgActionsVariablesPostBody
@@ -3790,7 +3973,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OrgsOrgActionsVariablesPostBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     async def async_create_org_variable(
@@ -3803,7 +3986,7 @@ class ActionsClient:
         value: str,
         visibility: Literal["all", "private", "selected"],
         selected_repository_ids: Missing[list[int]] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_create_org_variable(
         self,
@@ -3812,7 +3995,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OrgsOrgActionsVariablesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#create-an-organization-variable"""
 
         from ..models import EmptyObject, OrgsOrgActionsVariablesPostBody
@@ -3844,7 +4027,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrganizationActionsVariable]:
+    ) -> Response[OrganizationActionsVariable, OrganizationActionsVariableType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-an-organization-variable"""
 
         from ..models import OrganizationActionsVariable
@@ -3866,7 +4049,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrganizationActionsVariable]:
+    ) -> Response[OrganizationActionsVariable, OrganizationActionsVariableType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-an-organization-variable"""
 
         from ..models import OrganizationActionsVariable
@@ -4040,7 +4223,10 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsVariablesNameRepositoriesGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
+        OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-selected-repositories-for-an-organization-variable"""
 
         from ..models import OrgsOrgActionsVariablesNameRepositoriesGetResponse200
@@ -4071,7 +4257,10 @@ class ActionsClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OrgsOrgActionsVariablesNameRepositoriesGetResponse200]:
+    ) -> Response[
+        OrgsOrgActionsVariablesNameRepositoriesGetResponse200,
+        OrgsOrgActionsVariablesNameRepositoriesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-selected-repositories-for-an-organization-variable"""
 
         from ..models import OrgsOrgActionsVariablesNameRepositoriesGetResponse200
@@ -4301,7 +4490,10 @@ class ActionsClient:
         name: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsArtifactsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsArtifactsGetResponse200,
+        ReposOwnerRepoActionsArtifactsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#list-artifacts-for-a-repository"""
 
         from ..models import ReposOwnerRepoActionsArtifactsGetResponse200
@@ -4333,7 +4525,10 @@ class ActionsClient:
         name: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsArtifactsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsArtifactsGetResponse200,
+        ReposOwnerRepoActionsArtifactsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#list-artifacts-for-a-repository"""
 
         from ..models import ReposOwnerRepoActionsArtifactsGetResponse200
@@ -4363,7 +4558,7 @@ class ActionsClient:
         artifact_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Artifact]:
+    ) -> Response[Artifact, ArtifactType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#get-an-artifact"""
 
         from ..models import Artifact
@@ -4386,7 +4581,7 @@ class ActionsClient:
         artifact_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Artifact]:
+    ) -> Response[Artifact, ArtifactType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#get-an-artifact"""
 
         from ..models import Artifact
@@ -4500,7 +4695,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsCacheUsageByRepository]:
+    ) -> Response[ActionsCacheUsageByRepository, ActionsCacheUsageByRepositoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-a-repository"""
 
         from ..models import ActionsCacheUsageByRepository
@@ -4522,7 +4717,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsCacheUsageByRepository]:
+    ) -> Response[ActionsCacheUsageByRepository, ActionsCacheUsageByRepositoryType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#get-github-actions-cache-usage-for-a-repository"""
 
         from ..models import ActionsCacheUsageByRepository
@@ -4552,7 +4747,7 @@ class ActionsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsCacheList]:
+    ) -> Response[ActionsCacheList, ActionsCacheListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#list-github-actions-caches-for-a-repository"""
 
         from ..models import ActionsCacheList
@@ -4592,7 +4787,7 @@ class ActionsClient:
         direction: Missing[Literal["asc", "desc"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsCacheList]:
+    ) -> Response[ActionsCacheList, ActionsCacheListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#list-github-actions-caches-for-a-repository"""
 
         from ..models import ActionsCacheList
@@ -4626,7 +4821,7 @@ class ActionsClient:
         ref: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsCacheList]:
+    ) -> Response[ActionsCacheList, ActionsCacheListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key"""
 
         from ..models import ActionsCacheList
@@ -4656,7 +4851,7 @@ class ActionsClient:
         ref: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsCacheList]:
+    ) -> Response[ActionsCacheList, ActionsCacheListType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/cache#delete-github-actions-caches-for-a-repository-using-a-cache-key"""
 
         from ..models import ActionsCacheList
@@ -4725,7 +4920,7 @@ class ActionsClient:
         job_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Job]:
+    ) -> Response[Job, JobType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#get-a-job-for-a-workflow-run"""
 
         from ..models import Job
@@ -4748,7 +4943,7 @@ class ActionsClient:
         job_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Job]:
+    ) -> Response[Job, JobType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#get-a-job-for-a-workflow-run"""
 
         from ..models import Job
@@ -4815,7 +5010,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     def re_run_job_for_workflow_run(
@@ -4827,7 +5022,7 @@ class ActionsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def re_run_job_for_workflow_run(
         self,
@@ -4840,7 +5035,7 @@ class ActionsClient:
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run"""
 
         from typing import Union
@@ -4888,7 +5083,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     async def async_re_run_job_for_workflow_run(
@@ -4900,7 +5095,7 @@ class ActionsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_re_run_job_for_workflow_run(
         self,
@@ -4913,7 +5108,7 @@ class ActionsClient:
             Union[ReposOwnerRepoActionsJobsJobIdRerunPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run"""
 
         from typing import Union
@@ -4956,7 +5151,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OidcCustomSubRepo]:
+    ) -> Response[OidcCustomSubRepo, OidcCustomSubRepoType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository"""
 
         from ..models import BasicError, OidcCustomSubRepo
@@ -4982,7 +5177,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OidcCustomSubRepo]:
+    ) -> Response[OidcCustomSubRepo, OidcCustomSubRepoType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-a-repository"""
 
         from ..models import BasicError, OidcCustomSubRepo
@@ -5010,7 +5205,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     def set_custom_oidc_sub_claim_for_repo(
@@ -5022,7 +5217,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         use_default: bool,
         include_claim_keys: Missing[list[str]] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def set_custom_oidc_sub_claim_for_repo(
         self,
@@ -5032,7 +5227,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-a-repository"""
 
         from ..models import (
@@ -5078,7 +5273,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsOidcCustomizationSubPutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     async def async_set_custom_oidc_sub_claim_for_repo(
@@ -5090,7 +5285,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         use_default: bool,
         include_claim_keys: Missing[list[str]] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_set_custom_oidc_sub_claim_for_repo(
         self,
@@ -5100,7 +5295,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsOidcCustomizationSubPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-a-repository"""
 
         from ..models import (
@@ -5146,7 +5341,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsOrganizationSecretsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
+        ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-repository-organization-secrets"""
 
         from ..models import ReposOwnerRepoActionsOrganizationSecretsGetResponse200
@@ -5176,7 +5374,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsOrganizationSecretsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsOrganizationSecretsGetResponse200,
+        ReposOwnerRepoActionsOrganizationSecretsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-repository-organization-secrets"""
 
         from ..models import ReposOwnerRepoActionsOrganizationSecretsGetResponse200
@@ -5206,7 +5407,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsOrganizationVariablesGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
+        ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-repository-organization-variables"""
 
         from ..models import ReposOwnerRepoActionsOrganizationVariablesGetResponse200
@@ -5236,7 +5440,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsOrganizationVariablesGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsOrganizationVariablesGetResponse200,
+        ReposOwnerRepoActionsOrganizationVariablesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-repository-organization-variables"""
 
         from ..models import ReposOwnerRepoActionsOrganizationVariablesGetResponse200
@@ -5264,7 +5471,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsRepositoryPermissions]:
+    ) -> Response[ActionsRepositoryPermissions, ActionsRepositoryPermissionsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-a-repository"""
 
         from ..models import ActionsRepositoryPermissions
@@ -5286,7 +5493,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsRepositoryPermissions]:
+    ) -> Response[ActionsRepositoryPermissions, ActionsRepositoryPermissionsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-github-actions-permissions-for-a-repository"""
 
         from ..models import ActionsRepositoryPermissions
@@ -5418,7 +5625,9 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsWorkflowAccessToRepository]:
+    ) -> Response[
+        ActionsWorkflowAccessToRepository, ActionsWorkflowAccessToRepositoryType
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-the-level-of-access-for-workflows-outside-of-the-repository"""
 
         from ..models import ActionsWorkflowAccessToRepository
@@ -5440,7 +5649,9 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsWorkflowAccessToRepository]:
+    ) -> Response[
+        ActionsWorkflowAccessToRepository, ActionsWorkflowAccessToRepositoryType
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-the-level-of-access-for-workflows-outside-of-the-repository"""
 
         from ..models import ActionsWorkflowAccessToRepository
@@ -5570,7 +5781,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SelectedActions]:
+    ) -> Response[SelectedActions, SelectedActionsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository"""
 
         from ..models import SelectedActions
@@ -5592,7 +5803,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SelectedActions]:
+    ) -> Response[SelectedActions, SelectedActionsType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-allowed-actions-and-reusable-workflows-for-a-repository"""
 
         from ..models import SelectedActions
@@ -5726,7 +5937,9 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsGetDefaultWorkflowPermissions]:
+    ) -> Response[
+        ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-a-repository"""
 
         from ..models import ActionsGetDefaultWorkflowPermissions
@@ -5748,7 +5961,9 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsGetDefaultWorkflowPermissions]:
+    ) -> Response[
+        ActionsGetDefaultWorkflowPermissions, ActionsGetDefaultWorkflowPermissionsType
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/permissions#get-default-workflow-permissions-for-a-repository"""
 
         from ..models import ActionsGetDefaultWorkflowPermissions
@@ -5885,7 +6100,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsRunnersGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsRunnersGetResponse200,
+        ReposOwnerRepoActionsRunnersGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-a-repository"""
 
         from ..models import ReposOwnerRepoActionsRunnersGetResponse200
@@ -5917,7 +6135,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsRunnersGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsRunnersGetResponse200,
+        ReposOwnerRepoActionsRunnersGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-self-hosted-runners-for-a-repository"""
 
         from ..models import ReposOwnerRepoActionsRunnersGetResponse200
@@ -5946,7 +6167,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RunnerApplication]]:
+    ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-a-repository"""
 
         from ..models import RunnerApplication
@@ -5968,7 +6189,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[RunnerApplication]]:
+    ) -> Response[list[RunnerApplication], list[RunnerApplicationType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-runner-applications-for-a-repository"""
 
         from ..models import RunnerApplication
@@ -5993,7 +6214,8 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
     ]: ...
 
     @overload
@@ -6009,7 +6231,8 @@ class ActionsClient:
         labels: list[str],
         work_folder: Missing[str] = UNSET,
     ) -> Response[
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
     ]: ...
 
     def generate_runner_jitconfig_for_repo(
@@ -6022,7 +6245,10 @@ class ActionsClient:
             ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-a-repository"""
 
         from ..models import (
@@ -6068,7 +6294,8 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType,
     ) -> Response[
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
     ]: ...
 
     @overload
@@ -6084,7 +6311,8 @@ class ActionsClient:
         labels: list[str],
         work_folder: Missing[str] = UNSET,
     ) -> Response[
-        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
     ]: ...
 
     async def async_generate_runner_jitconfig_for_repo(
@@ -6097,7 +6325,10 @@ class ActionsClient:
             ReposOwnerRepoActionsRunnersGenerateJitconfigPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201,
+        EnterprisesEnterpriseActionsRunnersGenerateJitconfigPostResponse201Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-configuration-for-a-just-in-time-runner-for-a-repository"""
 
         from ..models import (
@@ -6140,7 +6371,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AuthenticationToken]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository"""
 
         from ..models import AuthenticationToken
@@ -6162,7 +6393,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AuthenticationToken]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-registration-token-for-a-repository"""
 
         from ..models import AuthenticationToken
@@ -6184,7 +6415,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AuthenticationToken]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository"""
 
         from ..models import AuthenticationToken
@@ -6206,7 +6437,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[AuthenticationToken]:
+    ) -> Response[AuthenticationToken, AuthenticationTokenType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#create-a-remove-token-for-a-repository"""
 
         from ..models import AuthenticationToken
@@ -6229,7 +6460,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Runner]:
+    ) -> Response[Runner, RunnerType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository"""
 
         from ..models import Runner
@@ -6252,7 +6483,7 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Runner]:
+    ) -> Response[Runner, RunnerType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#get-a-self-hosted-runner-for-a-repository"""
 
         from ..models import Runner
@@ -6315,7 +6546,10 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
@@ -6344,7 +6578,10 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#list-labels-for-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
@@ -6375,7 +6612,10 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]: ...
 
     @overload
     def set_custom_labels_for_self_hosted_runner_for_repo(
@@ -6387,7 +6627,10 @@ class ActionsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         labels: list[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]: ...
 
     def set_custom_labels_for_self_hosted_runner_for_repo(
         self,
@@ -6398,7 +6641,10 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
@@ -6444,7 +6690,10 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]: ...
 
     @overload
     async def async_set_custom_labels_for_self_hosted_runner_for_repo(
@@ -6456,7 +6705,10 @@ class ActionsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         labels: list[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]: ...
 
     async def async_set_custom_labels_for_self_hosted_runner_for_repo(
         self,
@@ -6467,7 +6719,10 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#set-custom-labels-for-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
@@ -6513,7 +6768,10 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]: ...
 
     @overload
     def add_custom_labels_to_self_hosted_runner_for_repo(
@@ -6525,7 +6783,10 @@ class ActionsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         labels: list[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]: ...
 
     def add_custom_labels_to_self_hosted_runner_for_repo(
         self,
@@ -6536,7 +6797,10 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
@@ -6582,7 +6846,10 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]: ...
 
     @overload
     async def async_add_custom_labels_to_self_hosted_runner_for_repo(
@@ -6594,7 +6861,10 @@ class ActionsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         labels: list[str],
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]: ...
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]: ...
 
     async def async_add_custom_labels_to_self_hosted_runner_for_repo(
         self,
@@ -6605,7 +6875,10 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsRunnersRunnerIdLabelsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#add-custom-labels-to-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
@@ -6649,7 +6922,10 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
@@ -6678,7 +6954,10 @@ class ActionsClient:
         runner_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsDeleteResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-all-custom-labels-from-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
@@ -6708,7 +6987,10 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
@@ -6740,7 +7022,10 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200]:
+    ) -> Response[
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200,
+        EnterprisesEnterpriseActionsRunnersRunnerIdLabelsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/self-hosted-runners#remove-a-custom-label-from-a-self-hosted-runner-for-a-repository"""
 
         from ..models import (
@@ -6797,7 +7082,10 @@ class ActionsClient:
         head_sha: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsRunsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsRunsGetResponse200,
+        ReposOwnerRepoActionsRunsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#list-workflow-runs-for-a-repository"""
 
         from ..models import ReposOwnerRepoActionsRunsGetResponse200
@@ -6860,7 +7148,10 @@ class ActionsClient:
         head_sha: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsRunsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsRunsGetResponse200,
+        ReposOwnerRepoActionsRunsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#list-workflow-runs-for-a-repository"""
 
         from ..models import ReposOwnerRepoActionsRunsGetResponse200
@@ -6898,7 +7189,7 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[WorkflowRun]:
+    ) -> Response[WorkflowRun, WorkflowRunType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-a-workflow-run"""
 
         from ..models import WorkflowRun
@@ -6927,7 +7218,7 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[WorkflowRun]:
+    ) -> Response[WorkflowRun, WorkflowRunType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-a-workflow-run"""
 
         from ..models import WorkflowRun
@@ -6995,7 +7286,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[EnvironmentApprovals]]:
+    ) -> Response[list[EnvironmentApprovals], list[EnvironmentApprovalsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run"""
 
         from ..models import EnvironmentApprovals
@@ -7018,7 +7309,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[EnvironmentApprovals]]:
+    ) -> Response[list[EnvironmentApprovals], list[EnvironmentApprovalsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-the-review-history-for-a-workflow-run"""
 
         from ..models import EnvironmentApprovals
@@ -7041,7 +7332,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request"""
 
         from ..models import BasicError, EmptyObject
@@ -7068,7 +7359,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#approve-a-workflow-run-for-a-fork-pull-request"""
 
         from ..models import BasicError, EmptyObject
@@ -7098,7 +7389,10 @@ class ActionsClient:
         name: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
+        ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#list-workflow-run-artifacts"""
 
         from ..models import ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200
@@ -7131,7 +7425,10 @@ class ActionsClient:
         name: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200,
+        ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/artifacts#list-workflow-run-artifacts"""
 
         from ..models import ReposOwnerRepoActionsRunsRunIdArtifactsGetResponse200
@@ -7163,7 +7460,7 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[WorkflowRun]:
+    ) -> Response[WorkflowRun, WorkflowRunType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-a-workflow-run-attempt"""
 
         from ..models import WorkflowRun
@@ -7193,7 +7490,7 @@ class ActionsClient:
         exclude_pull_requests: Missing[bool] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[WorkflowRun]:
+    ) -> Response[WorkflowRun, WorkflowRunType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-a-workflow-run-attempt"""
 
         from ..models import WorkflowRun
@@ -7225,7 +7522,8 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200
+        ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
+        ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type,
     ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#list-jobs-for-a-workflow-run-attempt"""
 
@@ -7265,7 +7563,8 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
     ) -> Response[
-        ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200
+        ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200,
+        ReposOwnerRepoActionsRunsRunIdAttemptsAttemptNumberJobsGetResponse200Type,
     ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#list-jobs-for-a-workflow-run-attempt"""
 
@@ -7343,7 +7642,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#cancel-a-workflow-run"""
 
         from ..models import BasicError, EmptyObject
@@ -7369,7 +7668,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#cancel-a-workflow-run"""
 
         from ..models import BasicError, EmptyObject
@@ -7567,7 +7866,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#force-cancel-a-workflow-run"""
 
         from ..models import BasicError, EmptyObject
@@ -7593,7 +7892,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#force-cancel-a-workflow-run"""
 
         from ..models import BasicError, EmptyObject
@@ -7622,7 +7921,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsRunsRunIdJobsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
+        ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#list-jobs-for-a-workflow-run"""
 
         from ..models import ReposOwnerRepoActionsRunsRunIdJobsGetResponse200
@@ -7655,7 +7957,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsRunsRunIdJobsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsRunsRunIdJobsGetResponse200,
+        ReposOwnerRepoActionsRunsRunIdJobsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-jobs#list-jobs-for-a-workflow-run"""
 
         from ..models import ReposOwnerRepoActionsRunsRunIdJobsGetResponse200
@@ -7777,7 +8082,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PendingDeployment]]:
+    ) -> Response[list[PendingDeployment], list[PendingDeploymentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run"""
 
         from ..models import PendingDeployment
@@ -7800,7 +8105,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PendingDeployment]]:
+    ) -> Response[list[PendingDeployment], list[PendingDeploymentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-pending-deployments-for-a-workflow-run"""
 
         from ..models import PendingDeployment
@@ -7825,7 +8130,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
-    ) -> Response[list[Deployment]]: ...
+    ) -> Response[list[Deployment], list[DeploymentType]]: ...
 
     @overload
     def review_pending_deployments_for_run(
@@ -7839,7 +8144,7 @@ class ActionsClient:
         environment_ids: list[int],
         state: Literal["approved", "rejected"],
         comment: str,
-    ) -> Response[list[Deployment]]: ...
+    ) -> Response[list[Deployment], list[DeploymentType]]: ...
 
     def review_pending_deployments_for_run(
         self,
@@ -7852,7 +8157,7 @@ class ActionsClient:
             ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Deployment]]:
+    ) -> Response[list[Deployment], list[DeploymentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run"""
 
         from ..models import (
@@ -7892,7 +8197,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType,
-    ) -> Response[list[Deployment]]: ...
+    ) -> Response[list[Deployment], list[DeploymentType]]: ...
 
     @overload
     async def async_review_pending_deployments_for_run(
@@ -7906,7 +8211,7 @@ class ActionsClient:
         environment_ids: list[int],
         state: Literal["approved", "rejected"],
         comment: str,
-    ) -> Response[list[Deployment]]: ...
+    ) -> Response[list[Deployment], list[DeploymentType]]: ...
 
     async def async_review_pending_deployments_for_run(
         self,
@@ -7919,7 +8224,7 @@ class ActionsClient:
             ReposOwnerRepoActionsRunsRunIdPendingDeploymentsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[list[Deployment]]:
+    ) -> Response[list[Deployment], list[DeploymentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#review-pending-deployments-for-a-workflow-run"""
 
         from ..models import (
@@ -7961,7 +8266,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     def re_run_workflow(
@@ -7973,7 +8278,7 @@ class ActionsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def re_run_workflow(
         self,
@@ -7986,7 +8291,7 @@ class ActionsClient:
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#re-run-a-workflow"""
 
         from typing import Union
@@ -8027,7 +8332,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     async def async_re_run_workflow(
@@ -8039,7 +8344,7 @@ class ActionsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_re_run_workflow(
         self,
@@ -8052,7 +8357,7 @@ class ActionsClient:
             Union[ReposOwnerRepoActionsRunsRunIdRerunPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#re-run-a-workflow"""
 
         from typing import Union
@@ -8093,7 +8398,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     def re_run_workflow_failed_jobs(
@@ -8105,7 +8410,7 @@ class ActionsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def re_run_workflow_failed_jobs(
         self,
@@ -8118,7 +8423,7 @@ class ActionsClient:
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#re-run-failed-jobs-from-a-workflow-run"""
 
         from typing import Union
@@ -8162,7 +8467,7 @@ class ActionsClient:
         data: Missing[
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     async def async_re_run_workflow_failed_jobs(
@@ -8174,7 +8479,7 @@ class ActionsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         enable_debug_logging: Missing[bool] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_re_run_workflow_failed_jobs(
         self,
@@ -8187,7 +8492,7 @@ class ActionsClient:
             Union[ReposOwnerRepoActionsRunsRunIdRerunFailedJobsPostBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#re-run-failed-jobs-from-a-workflow-run"""
 
         from typing import Union
@@ -8227,7 +8532,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[WorkflowRunUsage]:
+    ) -> Response[WorkflowRunUsage, WorkflowRunUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-workflow-run-usage"""
 
         from ..models import WorkflowRunUsage
@@ -8250,7 +8555,7 @@ class ActionsClient:
         run_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[WorkflowRunUsage]:
+    ) -> Response[WorkflowRunUsage, WorkflowRunUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#get-workflow-run-usage"""
 
         from ..models import WorkflowRunUsage
@@ -8274,7 +8579,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsSecretsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsSecretsGetResponse200,
+        ReposOwnerRepoActionsSecretsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-repository-secrets"""
 
         from ..models import ReposOwnerRepoActionsSecretsGetResponse200
@@ -8304,7 +8612,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsSecretsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsSecretsGetResponse200,
+        ReposOwnerRepoActionsSecretsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-repository-secrets"""
 
         from ..models import ReposOwnerRepoActionsSecretsGetResponse200
@@ -8332,7 +8643,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsPublicKey]:
+    ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-a-repository-public-key"""
 
         from ..models import ActionsPublicKey
@@ -8354,7 +8665,7 @@ class ActionsClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsPublicKey]:
+    ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-a-repository-public-key"""
 
         from ..models import ActionsPublicKey
@@ -8377,7 +8688,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsSecret]:
+    ) -> Response[ActionsSecret, ActionsSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-a-repository-secret"""
 
         from ..models import ActionsSecret
@@ -8400,7 +8711,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsSecret]:
+    ) -> Response[ActionsSecret, ActionsSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-a-repository-secret"""
 
         from ..models import ActionsSecret
@@ -8425,7 +8736,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     def create_or_update_repo_secret(
@@ -8438,7 +8749,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def create_or_update_repo_secret(
         self,
@@ -8449,7 +8760,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-a-repository-secret"""
 
         from ..models import EmptyObject, ReposOwnerRepoActionsSecretsSecretNamePutBody
@@ -8486,7 +8797,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     async def async_create_or_update_repo_secret(
@@ -8499,7 +8810,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         encrypted_value: Missing[str] = UNSET,
         key_id: Missing[str] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_create_or_update_repo_secret(
         self,
@@ -8510,7 +8821,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsSecretsSecretNamePutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-a-repository-secret"""
 
         from ..models import EmptyObject, ReposOwnerRepoActionsSecretsSecretNamePutBody
@@ -8586,7 +8897,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsVariablesGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsVariablesGetResponse200,
+        ReposOwnerRepoActionsVariablesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-repository-variables"""
 
         from ..models import ReposOwnerRepoActionsVariablesGetResponse200
@@ -8616,7 +8930,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsVariablesGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsVariablesGetResponse200,
+        ReposOwnerRepoActionsVariablesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-repository-variables"""
 
         from ..models import ReposOwnerRepoActionsVariablesGetResponse200
@@ -8646,7 +8963,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsVariablesPostBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     def create_repo_variable(
@@ -8658,7 +8975,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         name: str,
         value: str,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def create_repo_variable(
         self,
@@ -8668,7 +8985,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#create-a-repository-variable"""
 
         from ..models import EmptyObject, ReposOwnerRepoActionsVariablesPostBody
@@ -8702,7 +9019,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoActionsVariablesPostBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     async def async_create_repo_variable(
@@ -8714,7 +9031,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         name: str,
         value: str,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_create_repo_variable(
         self,
@@ -8724,7 +9041,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoActionsVariablesPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#create-a-repository-variable"""
 
         from ..models import EmptyObject, ReposOwnerRepoActionsVariablesPostBody
@@ -8757,7 +9074,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsVariable]:
+    ) -> Response[ActionsVariable, ActionsVariableType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-a-repository-variable"""
 
         from ..models import ActionsVariable
@@ -8780,7 +9097,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsVariable]:
+    ) -> Response[ActionsVariable, ActionsVariableType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-a-repository-variable"""
 
         from ..models import ActionsVariable
@@ -8962,7 +9279,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsWorkflowsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsWorkflowsGetResponse200,
+        ReposOwnerRepoActionsWorkflowsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#list-repository-workflows"""
 
         from ..models import ReposOwnerRepoActionsWorkflowsGetResponse200
@@ -8992,7 +9312,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsWorkflowsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsWorkflowsGetResponse200,
+        ReposOwnerRepoActionsWorkflowsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#list-repository-workflows"""
 
         from ..models import ReposOwnerRepoActionsWorkflowsGetResponse200
@@ -9021,7 +9344,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Workflow]:
+    ) -> Response[Workflow, WorkflowType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#get-a-workflow"""
 
         from ..models import Workflow
@@ -9044,7 +9367,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Workflow]:
+    ) -> Response[Workflow, WorkflowType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#get-a-workflow"""
 
         from ..models import Workflow
@@ -9302,7 +9625,10 @@ class ActionsClient:
         head_sha: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
+        ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#list-workflow-runs-for-a-workflow"""
 
         from ..models import ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200
@@ -9366,7 +9692,10 @@ class ActionsClient:
         head_sha: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200,
+        ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflow-runs#list-workflow-runs-for-a-workflow"""
 
         from ..models import ReposOwnerRepoActionsWorkflowsWorkflowIdRunsGetResponse200
@@ -9403,7 +9732,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[WorkflowUsage]:
+    ) -> Response[WorkflowUsage, WorkflowUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#get-workflow-usage"""
 
         from ..models import WorkflowUsage
@@ -9426,7 +9755,7 @@ class ActionsClient:
         workflow_id: Union[int, str],
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[WorkflowUsage]:
+    ) -> Response[WorkflowUsage, WorkflowUsageType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/workflows#get-workflow-usage"""
 
         from ..models import WorkflowUsage
@@ -9451,7 +9780,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
+        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-environment-secrets"""
 
         from ..models import (
@@ -9484,7 +9816,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200,
+        ReposOwnerRepoEnvironmentsEnvironmentNameSecretsGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#list-environment-secrets"""
 
         from ..models import (
@@ -9515,7 +9850,7 @@ class ActionsClient:
         environment_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsPublicKey]:
+    ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-environment-public-key"""
 
         from ..models import ActionsPublicKey
@@ -9540,7 +9875,7 @@ class ActionsClient:
         environment_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsPublicKey]:
+    ) -> Response[ActionsPublicKey, ActionsPublicKeyType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-environment-public-key"""
 
         from ..models import ActionsPublicKey
@@ -9566,7 +9901,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsSecret]:
+    ) -> Response[ActionsSecret, ActionsSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-environment-secret"""
 
         from ..models import ActionsSecret
@@ -9590,7 +9925,7 @@ class ActionsClient:
         secret_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsSecret]:
+    ) -> Response[ActionsSecret, ActionsSecretType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#get-an-environment-secret"""
 
         from ..models import ActionsSecret
@@ -9616,7 +9951,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     def create_or_update_environment_secret(
@@ -9630,7 +9965,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         encrypted_value: str,
         key_id: str,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def create_or_update_environment_secret(
         self,
@@ -9644,7 +9979,7 @@ class ActionsClient:
             ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-an-environment-secret"""
 
         from ..models import (
@@ -9685,7 +10020,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     async def async_create_or_update_environment_secret(
@@ -9699,7 +10034,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         encrypted_value: str,
         key_id: str,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_create_or_update_environment_secret(
         self,
@@ -9713,7 +10048,7 @@ class ActionsClient:
             ReposOwnerRepoEnvironmentsEnvironmentNameSecretsSecretNamePutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/secrets#create-or-update-an-environment-secret"""
 
         from ..models import (
@@ -9795,7 +10130,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-environment-variables"""
 
         from ..models import (
@@ -9828,7 +10166,10 @@ class ActionsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200]:
+    ) -> Response[
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200,
+        ReposOwnerRepoEnvironmentsEnvironmentNameVariablesGetResponse200Type,
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#list-environment-variables"""
 
         from ..models import (
@@ -9861,7 +10202,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     def create_environment_variable(
@@ -9874,7 +10215,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         name: str,
         value: str,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def create_environment_variable(
         self,
@@ -9887,7 +10228,7 @@ class ActionsClient:
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#create-an-environment-variable"""
 
         from ..models import (
@@ -9927,7 +10268,7 @@ class ActionsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     async def async_create_environment_variable(
@@ -9940,7 +10281,7 @@ class ActionsClient:
         headers: Optional[dict[str, str]] = None,
         name: str,
         value: str,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_create_environment_variable(
         self,
@@ -9953,7 +10294,7 @@ class ActionsClient:
             ReposOwnerRepoEnvironmentsEnvironmentNameVariablesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#create-an-environment-variable"""
 
         from ..models import (
@@ -9992,7 +10333,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsVariable]:
+    ) -> Response[ActionsVariable, ActionsVariableType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-an-environment-variable"""
 
         from ..models import ActionsVariable
@@ -10016,7 +10357,7 @@ class ActionsClient:
         name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ActionsVariable]:
+    ) -> Response[ActionsVariable, ActionsVariableType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/variables#get-an-environment-variable"""
 
         from ..models import ActionsVariable

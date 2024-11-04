@@ -1,14 +1,16 @@
-from typing import Any, Generic, TypeVar
+from typing import Any, Generic
+from typing_extensions import TypeVar
 
 import httpx
 
 from .compat import type_validate_json
 
-RT = TypeVar("RT")
+MT = TypeVar("MT", default=Any)
+JT = TypeVar("JT", default=Any)
 
 
-class Response(Generic[RT]):
-    def __init__(self, response: httpx.Response, data_model: type[RT]):
+class Response(Generic[MT, JT]):
+    def __init__(self, response: httpx.Response, data_model: type[MT]):
         self._response = response
         self._data_model = data_model
 
@@ -55,9 +57,9 @@ class Response(Generic[RT]):
     def text(self) -> str:
         return self._response.text
 
-    def json(self, **kwargs: Any) -> Any:
+    def json(self, **kwargs: Any) -> JT:
         return self._response.json(**kwargs)
 
     @property
-    def parsed_data(self) -> RT:
+    def parsed_data(self) -> MT:
         return type_validate_json(self._data_model, self.content)

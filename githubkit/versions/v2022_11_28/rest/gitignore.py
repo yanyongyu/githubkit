@@ -19,6 +19,7 @@ if TYPE_CHECKING:
     from githubkit.response import Response
 
     from ..models import GitignoreTemplate
+    from ..types import GitignoreTemplateType
 
 
 class GitignoreClient:
@@ -40,7 +41,7 @@ class GitignoreClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[str]]:
+    ) -> Response[list[str], list[str]]:
         """See also: https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates"""
 
         url = "/gitignore/templates"
@@ -58,7 +59,7 @@ class GitignoreClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[str]]:
+    ) -> Response[list[str], list[str]]:
         """See also: https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates"""
 
         url = "/gitignore/templates"
@@ -77,7 +78,7 @@ class GitignoreClient:
         name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GitignoreTemplate]:
+    ) -> Response[GitignoreTemplate, GitignoreTemplateType]:
         """See also: https://docs.github.com/rest/gitignore/gitignore#get-a-gitignore-template"""
 
         from ..models import GitignoreTemplate
@@ -98,7 +99,7 @@ class GitignoreClient:
         name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GitignoreTemplate]:
+    ) -> Response[GitignoreTemplate, GitignoreTemplateType]:
         """See also: https://docs.github.com/rest/gitignore/gitignore#get-a-gitignore-template"""
 
         from ..models import GitignoreTemplate

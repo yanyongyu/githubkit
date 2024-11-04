@@ -24,6 +24,7 @@ if TYPE_CHECKING:
     from githubkit.response import Response
 
     from ..models import Root, ApiOverview
+    from ..types import RootType, ApiOverviewType
 
 
 class MetaClient:
@@ -45,7 +46,7 @@ class MetaClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Root]:
+    ) -> Response[Root, RootType]:
         """See also: https://docs.github.com/rest/meta/meta#github-api-root"""
 
         from ..models import Root
@@ -65,7 +66,7 @@ class MetaClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Root]:
+    ) -> Response[Root, RootType]:
         """See also: https://docs.github.com/rest/meta/meta#github-api-root"""
 
         from ..models import Root
@@ -85,7 +86,7 @@ class MetaClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ApiOverview]:
+    ) -> Response[ApiOverview, ApiOverviewType]:
         """See also: https://docs.github.com/rest/meta/meta#get-apiname-meta-information"""
 
         from ..models import ApiOverview
@@ -105,7 +106,7 @@ class MetaClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[ApiOverview]:
+    ) -> Response[ApiOverview, ApiOverviewType]:
         """See also: https://docs.github.com/rest/meta/meta#get-apiname-meta-information"""
 
         from ..models import ApiOverview
@@ -126,7 +127,7 @@ class MetaClient:
         s: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[str]:
+    ) -> Response[str, str]:
         """See also: https://docs.github.com/rest/meta/meta#get-octocat"""
 
         url = "/octocat"
@@ -150,7 +151,7 @@ class MetaClient:
         s: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[str]:
+    ) -> Response[str, str]:
         """See also: https://docs.github.com/rest/meta/meta#get-octocat"""
 
         url = "/octocat"
@@ -173,7 +174,7 @@ class MetaClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[date]]:
+    ) -> Response[list[date], list[date]]:
         """See also: https://docs.github.com/rest/meta/meta#get-all-api-versions"""
 
         from datetime import date
@@ -198,7 +199,7 @@ class MetaClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[date]]:
+    ) -> Response[list[date], list[date]]:
         """See also: https://docs.github.com/rest/meta/meta#get-all-api-versions"""
 
         from datetime import date
@@ -223,7 +224,7 @@ class MetaClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[str]:
+    ) -> Response[str, str]:
         """See also: https://docs.github.com/rest/meta/meta#get-the-zen-of-github"""
 
         url = "/zen"
@@ -241,7 +242,7 @@ class MetaClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[str]:
+    ) -> Response[str, str]:
         """See also: https://docs.github.com/rest/meta/meta#get-the-zen-of-github"""
 
         url = "/zen"

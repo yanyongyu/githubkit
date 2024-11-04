@@ -32,6 +32,15 @@ if TYPE_CHECKING:
         SearchCommitsGetResponse200,
         SearchRepositoriesGetResponse200,
     )
+    from ..types import (
+        SearchCodeGetResponse200Type,
+        SearchUsersGetResponse200Type,
+        SearchIssuesGetResponse200Type,
+        SearchLabelsGetResponse200Type,
+        SearchTopicsGetResponse200Type,
+        SearchCommitsGetResponse200Type,
+        SearchRepositoriesGetResponse200Type,
+    )
 
 
 class SearchClient:
@@ -58,7 +67,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SearchCodeGetResponse200]:
+    ) -> Response[SearchCodeGetResponse200, SearchCodeGetResponse200Type]:
         """See also: https://docs.github.com/rest/search/search#search-code"""
 
         from ..models import (
@@ -102,7 +111,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SearchCodeGetResponse200]:
+    ) -> Response[SearchCodeGetResponse200, SearchCodeGetResponse200Type]:
         """See also: https://docs.github.com/rest/search/search#search-code"""
 
         from ..models import (
@@ -146,7 +155,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SearchCommitsGetResponse200]:
+    ) -> Response[SearchCommitsGetResponse200, SearchCommitsGetResponse200Type]:
         """See also: https://docs.github.com/rest/search/search#search-commits"""
 
         from ..models import SearchCommitsGetResponse200
@@ -180,7 +189,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SearchCommitsGetResponse200]:
+    ) -> Response[SearchCommitsGetResponse200, SearchCommitsGetResponse200Type]:
         """See also: https://docs.github.com/rest/search/search#search-commits"""
 
         from ..models import SearchCommitsGetResponse200
@@ -228,7 +237,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SearchIssuesGetResponse200]:
+    ) -> Response[SearchIssuesGetResponse200, SearchIssuesGetResponse200Type]:
         """See also: https://docs.github.com/rest/search/search#search-issues-and-pull-requests"""
 
         from ..models import (
@@ -286,7 +295,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SearchIssuesGetResponse200]:
+    ) -> Response[SearchIssuesGetResponse200, SearchIssuesGetResponse200Type]:
         """See also: https://docs.github.com/rest/search/search#search-issues-and-pull-requests"""
 
         from ..models import (
@@ -331,7 +340,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SearchLabelsGetResponse200]:
+    ) -> Response[SearchLabelsGetResponse200, SearchLabelsGetResponse200Type]:
         """See also: https://docs.github.com/rest/search/search#search-labels"""
 
         from ..models import BasicError, ValidationError, SearchLabelsGetResponse200
@@ -372,7 +381,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SearchLabelsGetResponse200]:
+    ) -> Response[SearchLabelsGetResponse200, SearchLabelsGetResponse200Type]:
         """See also: https://docs.github.com/rest/search/search#search-labels"""
 
         from ..models import BasicError, ValidationError, SearchLabelsGetResponse200
@@ -414,7 +423,9 @@ class SearchClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SearchRepositoriesGetResponse200]:
+    ) -> Response[
+        SearchRepositoriesGetResponse200, SearchRepositoriesGetResponse200Type
+    ]:
         """See also: https://docs.github.com/rest/search/search#search-repositories"""
 
         from ..models import (
@@ -458,7 +469,9 @@ class SearchClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SearchRepositoriesGetResponse200]:
+    ) -> Response[
+        SearchRepositoriesGetResponse200, SearchRepositoriesGetResponse200Type
+    ]:
         """See also: https://docs.github.com/rest/search/search#search-repositories"""
 
         from ..models import (
@@ -498,7 +511,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SearchTopicsGetResponse200]:
+    ) -> Response[SearchTopicsGetResponse200, SearchTopicsGetResponse200Type]:
         """See also: https://docs.github.com/rest/search/search#search-topics"""
 
         from ..models import SearchTopicsGetResponse200
@@ -528,7 +541,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SearchTopicsGetResponse200]:
+    ) -> Response[SearchTopicsGetResponse200, SearchTopicsGetResponse200Type]:
         """See also: https://docs.github.com/rest/search/search#search-topics"""
 
         from ..models import SearchTopicsGetResponse200
@@ -560,7 +573,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SearchUsersGetResponse200]:
+    ) -> Response[SearchUsersGetResponse200, SearchUsersGetResponse200Type]:
         """See also: https://docs.github.com/rest/search/search#search-users"""
 
         from ..models import (
@@ -602,7 +615,7 @@ class SearchClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[SearchUsersGetResponse200]:
+    ) -> Response[SearchUsersGetResponse200, SearchUsersGetResponse200Type]:
         """See also: https://docs.github.com/rest/search/search#search-users"""
 
         from ..models import (

@@ -27,14 +27,6 @@ if TYPE_CHECKING:
     from githubkit.typing import Missing
     from githubkit.response import Response
 
-    from ..types import (
-        CodeScanningDefaultSetupUpdateType,
-        ReposOwnerRepoCodeScanningSarifsPostBodyType,
-        ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
-        ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
-        ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
-        ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type,
-    )
     from ..models import (
         EmptyObject,
         CodeScanningAlert,
@@ -49,6 +41,27 @@ if TYPE_CHECKING:
         CodeScanningAnalysisDeletion,
         CodeScanningOrganizationAlertItems,
         CodeScanningVariantAnalysisRepoTask,
+    )
+    from ..types import (
+        EmptyObjectType,
+        CodeScanningAlertType,
+        CodeScanningAnalysisType,
+        CodeScanningAlertItemsType,
+        CodeScanningDefaultSetupType,
+        CodeScanningSarifsStatusType,
+        CodeScanningAlertInstanceType,
+        CodeScanningSarifsReceiptType,
+        CodeScanningCodeqlDatabaseType,
+        CodeScanningVariantAnalysisType,
+        CodeScanningAnalysisDeletionType,
+        CodeScanningDefaultSetupUpdateType,
+        CodeScanningOrganizationAlertItemsType,
+        CodeScanningVariantAnalysisRepoTaskType,
+        ReposOwnerRepoCodeScanningSarifsPostBodyType,
+        ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
+        ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof0Type,
+        ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
+        ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type,
     )
 
 
@@ -81,7 +94,10 @@ class CodeScanningClient:
         sort: Missing[Literal["created", "updated"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeScanningOrganizationAlertItems]]:
+    ) -> Response[
+        list[CodeScanningOrganizationAlertItems],
+        list[CodeScanningOrganizationAlertItemsType],
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-enterprise"""
 
         from ..models import (
@@ -132,7 +148,10 @@ class CodeScanningClient:
         sort: Missing[Literal["created", "updated"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeScanningOrganizationAlertItems]]:
+    ) -> Response[
+        list[CodeScanningOrganizationAlertItems],
+        list[CodeScanningOrganizationAlertItemsType],
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-enterprise"""
 
         from ..models import (
@@ -186,7 +205,10 @@ class CodeScanningClient:
         ] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeScanningOrganizationAlertItems]]:
+    ) -> Response[
+        list[CodeScanningOrganizationAlertItems],
+        list[CodeScanningOrganizationAlertItemsType],
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-organization"""
 
         from ..models import (
@@ -241,7 +263,10 @@ class CodeScanningClient:
         ] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeScanningOrganizationAlertItems]]:
+    ) -> Response[
+        list[CodeScanningOrganizationAlertItems],
+        list[CodeScanningOrganizationAlertItemsType],
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-organization"""
 
         from ..models import (
@@ -299,7 +324,7 @@ class CodeScanningClient:
         ] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeScanningAlertItems]]:
+    ) -> Response[list[CodeScanningAlertItems], list[CodeScanningAlertItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository"""
 
         from ..models import (
@@ -360,7 +385,7 @@ class CodeScanningClient:
         ] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeScanningAlertItems]]:
+    ) -> Response[list[CodeScanningAlertItems], list[CodeScanningAlertItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-alerts-for-a-repository"""
 
         from ..models import (
@@ -408,7 +433,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeScanningAlert]:
+    ) -> Response[CodeScanningAlert, CodeScanningAlertType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-alert"""
 
         from ..models import (
@@ -440,7 +465,7 @@ class CodeScanningClient:
         alert_number: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeScanningAlert]:
+    ) -> Response[CodeScanningAlert, CodeScanningAlertType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-alert"""
 
         from ..models import (
@@ -474,7 +499,7 @@ class CodeScanningClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
-    ) -> Response[CodeScanningAlert]: ...
+    ) -> Response[CodeScanningAlert, CodeScanningAlertType]: ...
 
     @overload
     def update_alert(
@@ -490,7 +515,7 @@ class CodeScanningClient:
             Union[None, Literal["false positive", "won't fix", "used in tests"]]
         ] = UNSET,
         dismissed_comment: Missing[Union[str, None]] = UNSET,
-    ) -> Response[CodeScanningAlert]: ...
+    ) -> Response[CodeScanningAlert, CodeScanningAlertType]: ...
 
     def update_alert(
         self,
@@ -501,7 +526,7 @@ class CodeScanningClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CodeScanningAlert]:
+    ) -> Response[CodeScanningAlert, CodeScanningAlertType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#update-a-code-scanning-alert"""
 
         from ..models import (
@@ -548,7 +573,7 @@ class CodeScanningClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType,
-    ) -> Response[CodeScanningAlert]: ...
+    ) -> Response[CodeScanningAlert, CodeScanningAlertType]: ...
 
     @overload
     async def async_update_alert(
@@ -564,7 +589,7 @@ class CodeScanningClient:
             Union[None, Literal["false positive", "won't fix", "used in tests"]]
         ] = UNSET,
         dismissed_comment: Missing[Union[str, None]] = UNSET,
-    ) -> Response[CodeScanningAlert]: ...
+    ) -> Response[CodeScanningAlert, CodeScanningAlertType]: ...
 
     async def async_update_alert(
         self,
@@ -575,7 +600,7 @@ class CodeScanningClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCodeScanningAlertsAlertNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CodeScanningAlert]:
+    ) -> Response[CodeScanningAlert, CodeScanningAlertType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#update-a-code-scanning-alert"""
 
         from ..models import (
@@ -624,7 +649,7 @@ class CodeScanningClient:
         pr: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeScanningAlertInstance]]:
+    ) -> Response[list[CodeScanningAlertInstance], list[CodeScanningAlertInstanceType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-instances-of-a-code-scanning-alert"""
 
         from ..models import (
@@ -668,7 +693,7 @@ class CodeScanningClient:
         pr: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeScanningAlertInstance]]:
+    ) -> Response[list[CodeScanningAlertInstance], list[CodeScanningAlertInstanceType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-instances-of-a-code-scanning-alert"""
 
         from ..models import (
@@ -716,7 +741,7 @@ class CodeScanningClient:
         sort: Missing[Literal["created"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeScanningAnalysis]]:
+    ) -> Response[list[CodeScanningAnalysis], list[CodeScanningAnalysisType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository"""
 
         from ..models import (
@@ -769,7 +794,7 @@ class CodeScanningClient:
         sort: Missing[Literal["created"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeScanningAnalysis]]:
+    ) -> Response[list[CodeScanningAnalysis], list[CodeScanningAnalysisType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository"""
 
         from ..models import (
@@ -814,7 +839,7 @@ class CodeScanningClient:
         analysis_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeScanningAnalysis]:
+    ) -> Response[CodeScanningAnalysis, CodeScanningAnalysisType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository"""
 
         from ..models import (
@@ -846,7 +871,7 @@ class CodeScanningClient:
         analysis_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeScanningAnalysis]:
+    ) -> Response[CodeScanningAnalysis, CodeScanningAnalysisType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository"""
 
         from ..models import (
@@ -879,7 +904,7 @@ class CodeScanningClient:
         confirm_delete: Missing[Union[str, None]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeScanningAnalysisDeletion]:
+    ) -> Response[CodeScanningAnalysisDeletion, CodeScanningAnalysisDeletionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#delete-a-code-scanning-analysis-from-a-repository"""
 
         from ..models import (
@@ -918,7 +943,7 @@ class CodeScanningClient:
         confirm_delete: Missing[Union[str, None]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeScanningAnalysisDeletion]:
+    ) -> Response[CodeScanningAnalysisDeletion, CodeScanningAnalysisDeletionType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#delete-a-code-scanning-analysis-from-a-repository"""
 
         from ..models import (
@@ -955,7 +980,9 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeScanningCodeqlDatabase]]:
+    ) -> Response[
+        list[CodeScanningCodeqlDatabase], list[CodeScanningCodeqlDatabaseType]
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-codeql-databases-for-a-repository"""
 
         from ..models import (
@@ -986,7 +1013,9 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[CodeScanningCodeqlDatabase]]:
+    ) -> Response[
+        list[CodeScanningCodeqlDatabase], list[CodeScanningCodeqlDatabaseType]
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#list-codeql-databases-for-a-repository"""
 
         from ..models import (
@@ -1018,7 +1047,7 @@ class CodeScanningClient:
         language: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeScanningCodeqlDatabase]:
+    ) -> Response[CodeScanningCodeqlDatabase, CodeScanningCodeqlDatabaseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-codeql-database-for-a-repository"""
 
         from ..models import (
@@ -1050,7 +1079,7 @@ class CodeScanningClient:
         language: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeScanningCodeqlDatabase]:
+    ) -> Response[CodeScanningCodeqlDatabase, CodeScanningCodeqlDatabaseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-codeql-database-for-a-repository"""
 
         from ..models import (
@@ -1147,7 +1176,7 @@ class CodeScanningClient:
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type,
         ],
-    ) -> Response[CodeScanningVariantAnalysis]: ...
+    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]: ...
 
     @overload
     def create_variant_analysis(
@@ -1164,7 +1193,7 @@ class CodeScanningClient:
         repositories: list[str],
         repository_lists: Missing[list[str]] = UNSET,
         repository_owners: Missing[list[str]] = UNSET,
-    ) -> Response[CodeScanningVariantAnalysis]: ...
+    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]: ...
 
     @overload
     def create_variant_analysis(
@@ -1181,7 +1210,7 @@ class CodeScanningClient:
         repositories: Missing[list[str]] = UNSET,
         repository_lists: list[str],
         repository_owners: Missing[list[str]] = UNSET,
-    ) -> Response[CodeScanningVariantAnalysis]: ...
+    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]: ...
 
     @overload
     def create_variant_analysis(
@@ -1198,7 +1227,7 @@ class CodeScanningClient:
         repositories: Missing[list[str]] = UNSET,
         repository_lists: Missing[list[str]] = UNSET,
         repository_owners: list[str],
-    ) -> Response[CodeScanningVariantAnalysis]: ...
+    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]: ...
 
     def create_variant_analysis(
         self,
@@ -1214,7 +1243,7 @@ class CodeScanningClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[CodeScanningVariantAnalysis]:
+    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#create-a-codeql-variant-analysis"""
 
         from typing import Union
@@ -1273,7 +1302,7 @@ class CodeScanningClient:
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof1Type,
             ReposOwnerRepoCodeScanningCodeqlVariantAnalysesPostBodyOneof2Type,
         ],
-    ) -> Response[CodeScanningVariantAnalysis]: ...
+    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]: ...
 
     @overload
     async def async_create_variant_analysis(
@@ -1290,7 +1319,7 @@ class CodeScanningClient:
         repositories: list[str],
         repository_lists: Missing[list[str]] = UNSET,
         repository_owners: Missing[list[str]] = UNSET,
-    ) -> Response[CodeScanningVariantAnalysis]: ...
+    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]: ...
 
     @overload
     async def async_create_variant_analysis(
@@ -1307,7 +1336,7 @@ class CodeScanningClient:
         repositories: Missing[list[str]] = UNSET,
         repository_lists: list[str],
         repository_owners: Missing[list[str]] = UNSET,
-    ) -> Response[CodeScanningVariantAnalysis]: ...
+    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]: ...
 
     @overload
     async def async_create_variant_analysis(
@@ -1324,7 +1353,7 @@ class CodeScanningClient:
         repositories: Missing[list[str]] = UNSET,
         repository_lists: Missing[list[str]] = UNSET,
         repository_owners: list[str],
-    ) -> Response[CodeScanningVariantAnalysis]: ...
+    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]: ...
 
     async def async_create_variant_analysis(
         self,
@@ -1340,7 +1369,7 @@ class CodeScanningClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[CodeScanningVariantAnalysis]:
+    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#create-a-codeql-variant-analysis"""
 
         from typing import Union
@@ -1394,7 +1423,7 @@ class CodeScanningClient:
         codeql_variant_analysis_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeScanningVariantAnalysis]:
+    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-the-summary-of-a-codeql-variant-analysis"""
 
         from ..models import (
@@ -1425,7 +1454,7 @@ class CodeScanningClient:
         codeql_variant_analysis_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeScanningVariantAnalysis]:
+    ) -> Response[CodeScanningVariantAnalysis, CodeScanningVariantAnalysisType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-the-summary-of-a-codeql-variant-analysis"""
 
         from ..models import (
@@ -1458,7 +1487,9 @@ class CodeScanningClient:
         repo_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeScanningVariantAnalysisRepoTask]:
+    ) -> Response[
+        CodeScanningVariantAnalysisRepoTask, CodeScanningVariantAnalysisRepoTaskType
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-the-analysis-status-of-a-repository-in-a-codeql-variant-analysis"""
 
         from ..models import (
@@ -1491,7 +1522,9 @@ class CodeScanningClient:
         repo_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeScanningVariantAnalysisRepoTask]:
+    ) -> Response[
+        CodeScanningVariantAnalysisRepoTask, CodeScanningVariantAnalysisRepoTaskType
+    ]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-the-analysis-status-of-a-repository-in-a-codeql-variant-analysis"""
 
         from ..models import (
@@ -1521,7 +1554,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeScanningDefaultSetup]:
+    ) -> Response[CodeScanningDefaultSetup, CodeScanningDefaultSetupType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-default-setup-configuration"""
 
         from ..models import (
@@ -1552,7 +1585,7 @@ class CodeScanningClient:
         repo: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeScanningDefaultSetup]:
+    ) -> Response[CodeScanningDefaultSetup, CodeScanningDefaultSetupType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-a-code-scanning-default-setup-configuration"""
 
         from ..models import (
@@ -1585,7 +1618,7 @@ class CodeScanningClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: CodeScanningDefaultSetupUpdateType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     def update_default_setup(
@@ -1611,7 +1644,7 @@ class CodeScanningClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def update_default_setup(
         self,
@@ -1621,7 +1654,7 @@ class CodeScanningClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#update-a-code-scanning-default-setup-configuration"""
 
         from ..models import (
@@ -1666,7 +1699,7 @@ class CodeScanningClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: CodeScanningDefaultSetupUpdateType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     async def async_update_default_setup(
@@ -1692,7 +1725,7 @@ class CodeScanningClient:
                 ]
             ]
         ] = UNSET,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_update_default_setup(
         self,
@@ -1702,7 +1735,7 @@ class CodeScanningClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[CodeScanningDefaultSetupUpdateType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#update-a-code-scanning-default-setup-configuration"""
 
         from ..models import (
@@ -1747,7 +1780,7 @@ class CodeScanningClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
-    ) -> Response[CodeScanningSarifsReceipt]: ...
+    ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]: ...
 
     @overload
     def upload_sarif(
@@ -1764,7 +1797,7 @@ class CodeScanningClient:
         started_at: Missing[datetime] = UNSET,
         tool_name: Missing[str] = UNSET,
         validate_: Missing[bool] = UNSET,
-    ) -> Response[CodeScanningSarifsReceipt]: ...
+    ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]: ...
 
     def upload_sarif(
         self,
@@ -1774,7 +1807,7 @@ class CodeScanningClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CodeScanningSarifsReceipt]:
+    ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#upload-an-analysis-as-sarif-data"""
 
         from ..models import (
@@ -1818,7 +1851,7 @@ class CodeScanningClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoCodeScanningSarifsPostBodyType,
-    ) -> Response[CodeScanningSarifsReceipt]: ...
+    ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]: ...
 
     @overload
     async def async_upload_sarif(
@@ -1835,7 +1868,7 @@ class CodeScanningClient:
         started_at: Missing[datetime] = UNSET,
         tool_name: Missing[str] = UNSET,
         validate_: Missing[bool] = UNSET,
-    ) -> Response[CodeScanningSarifsReceipt]: ...
+    ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]: ...
 
     async def async_upload_sarif(
         self,
@@ -1845,7 +1878,7 @@ class CodeScanningClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoCodeScanningSarifsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[CodeScanningSarifsReceipt]:
+    ) -> Response[CodeScanningSarifsReceipt, CodeScanningSarifsReceiptType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#upload-an-analysis-as-sarif-data"""
 
         from ..models import (
@@ -1888,7 +1921,7 @@ class CodeScanningClient:
         sarif_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeScanningSarifsStatus]:
+    ) -> Response[CodeScanningSarifsStatus, CodeScanningSarifsStatusType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-information-about-a-sarif-upload"""
 
         from ..models import (
@@ -1919,7 +1952,7 @@ class CodeScanningClient:
         sarif_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[CodeScanningSarifsStatus]:
+    ) -> Response[CodeScanningSarifsStatus, CodeScanningSarifsStatusType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/code-scanning/code-scanning#get-information-about-a-sarif-upload"""
 
         from ..models import (

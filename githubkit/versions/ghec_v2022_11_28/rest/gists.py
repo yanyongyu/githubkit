@@ -29,6 +29,10 @@ if TYPE_CHECKING:
 
     from ..models import BaseGist, GistCommit, GistSimple, GistComment
     from ..types import (
+        BaseGistType,
+        GistCommitType,
+        GistSimpleType,
+        GistCommentType,
         GistsPostBodyType,
         GistsGistIdPatchBodyType,
         GistsPostBodyPropFilesType,
@@ -60,7 +64,7 @@ class GistsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[BaseGist]]:
+    ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gists-for-the-authenticated-user"""
 
         from ..models import BaseGist, BasicError
@@ -93,7 +97,7 @@ class GistsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[BaseGist]]:
+    ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gists-for-the-authenticated-user"""
 
         from ..models import BaseGist, BasicError
@@ -122,7 +126,7 @@ class GistsClient:
     @overload
     def create(
         self, *, headers: Optional[dict[str, str]] = None, data: GistsPostBodyType
-    ) -> Response[GistSimple]: ...
+    ) -> Response[GistSimple, GistSimpleType]: ...
 
     @overload
     def create(
@@ -133,7 +137,7 @@ class GistsClient:
         description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
         public: Missing[Union[bool, Literal["true", "false"]]] = UNSET,
-    ) -> Response[GistSimple]: ...
+    ) -> Response[GistSimple, GistSimpleType]: ...
 
     def create(
         self,
@@ -141,7 +145,7 @@ class GistsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[GistsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GistSimple]:
+    ) -> Response[GistSimple, GistSimpleType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#create-a-gist"""
 
         from ..models import BasicError, GistSimple, GistsPostBody, ValidationError
@@ -175,7 +179,7 @@ class GistsClient:
     @overload
     async def async_create(
         self, *, headers: Optional[dict[str, str]] = None, data: GistsPostBodyType
-    ) -> Response[GistSimple]: ...
+    ) -> Response[GistSimple, GistSimpleType]: ...
 
     @overload
     async def async_create(
@@ -186,7 +190,7 @@ class GistsClient:
         description: Missing[str] = UNSET,
         files: GistsPostBodyPropFilesType,
         public: Missing[Union[bool, Literal["true", "false"]]] = UNSET,
-    ) -> Response[GistSimple]: ...
+    ) -> Response[GistSimple, GistSimpleType]: ...
 
     async def async_create(
         self,
@@ -194,7 +198,7 @@ class GistsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[GistsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GistSimple]:
+    ) -> Response[GistSimple, GistSimpleType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#create-a-gist"""
 
         from ..models import BasicError, GistSimple, GistsPostBody, ValidationError
@@ -232,7 +236,7 @@ class GistsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[BaseGist]]:
+    ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-public-gists"""
 
         from ..models import BaseGist, BasicError, ValidationError
@@ -266,7 +270,7 @@ class GistsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[BaseGist]]:
+    ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-public-gists"""
 
         from ..models import BaseGist, BasicError, ValidationError
@@ -300,7 +304,7 @@ class GistsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[BaseGist]]:
+    ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-starred-gists"""
 
         from ..models import BaseGist, BasicError
@@ -334,7 +338,7 @@ class GistsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[BaseGist]]:
+    ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-starred-gists"""
 
         from ..models import BaseGist, BasicError
@@ -366,7 +370,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GistSimple]:
+    ) -> Response[GistSimple, GistSimpleType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#get-a-gist"""
 
         from ..models import BasicError, GistSimple, GistsGistIdGetResponse403
@@ -391,7 +395,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GistSimple]:
+    ) -> Response[GistSimple, GistSimpleType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#get-a-gist"""
 
         from ..models import BasicError, GistSimple, GistsGistIdGetResponse403
@@ -466,7 +470,7 @@ class GistsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Union[GistsGistIdPatchBodyType, None],
-    ) -> Response[GistSimple]: ...
+    ) -> Response[GistSimple, GistSimpleType]: ...
 
     @overload
     def update(
@@ -477,7 +481,7 @@ class GistsClient:
         headers: Optional[dict[str, str]] = None,
         description: Missing[str] = UNSET,
         files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
-    ) -> Response[GistSimple]: ...
+    ) -> Response[GistSimple, GistSimpleType]: ...
 
     def update(
         self,
@@ -486,7 +490,7 @@ class GistsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[GistsGistIdPatchBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[GistSimple]:
+    ) -> Response[GistSimple, GistSimpleType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#update-a-gist"""
 
         from typing import Union
@@ -530,7 +534,7 @@ class GistsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Union[GistsGistIdPatchBodyType, None],
-    ) -> Response[GistSimple]: ...
+    ) -> Response[GistSimple, GistSimpleType]: ...
 
     @overload
     async def async_update(
@@ -541,7 +545,7 @@ class GistsClient:
         headers: Optional[dict[str, str]] = None,
         description: Missing[str] = UNSET,
         files: Missing[GistsGistIdPatchBodyPropFilesType] = UNSET,
-    ) -> Response[GistSimple]: ...
+    ) -> Response[GistSimple, GistSimpleType]: ...
 
     async def async_update(
         self,
@@ -550,7 +554,7 @@ class GistsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[Union[GistsGistIdPatchBodyType, None]] = UNSET,
         **kwargs,
-    ) -> Response[GistSimple]:
+    ) -> Response[GistSimple, GistSimpleType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#update-a-gist"""
 
         from typing import Union
@@ -594,7 +598,7 @@ class GistsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[GistComment]]:
+    ) -> Response[list[GistComment], list[GistCommentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#list-gist-comments"""
 
         from ..models import BasicError, GistComment
@@ -627,7 +631,7 @@ class GistsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[GistComment]]:
+    ) -> Response[list[GistComment], list[GistCommentType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#list-gist-comments"""
 
         from ..models import BasicError, GistComment
@@ -660,7 +664,7 @@ class GistsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: GistsGistIdCommentsPostBodyType,
-    ) -> Response[GistComment]: ...
+    ) -> Response[GistComment, GistCommentType]: ...
 
     @overload
     def create_comment(
@@ -670,7 +674,7 @@ class GistsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         body: str,
-    ) -> Response[GistComment]: ...
+    ) -> Response[GistComment, GistCommentType]: ...
 
     def create_comment(
         self,
@@ -679,7 +683,7 @@ class GistsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GistComment]:
+    ) -> Response[GistComment, GistCommentType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#create-a-gist-comment"""
 
         from ..models import BasicError, GistComment, GistsGistIdCommentsPostBody
@@ -716,7 +720,7 @@ class GistsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: GistsGistIdCommentsPostBodyType,
-    ) -> Response[GistComment]: ...
+    ) -> Response[GistComment, GistCommentType]: ...
 
     @overload
     async def async_create_comment(
@@ -726,7 +730,7 @@ class GistsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         body: str,
-    ) -> Response[GistComment]: ...
+    ) -> Response[GistComment, GistCommentType]: ...
 
     async def async_create_comment(
         self,
@@ -735,7 +739,7 @@ class GistsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[GistsGistIdCommentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GistComment]:
+    ) -> Response[GistComment, GistCommentType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#create-a-gist-comment"""
 
         from ..models import BasicError, GistComment, GistsGistIdCommentsPostBody
@@ -771,7 +775,7 @@ class GistsClient:
         comment_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GistComment]:
+    ) -> Response[GistComment, GistCommentType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#get-a-gist-comment"""
 
         from ..models import BasicError, GistComment, GistsGistIdGetResponse403
@@ -797,7 +801,7 @@ class GistsClient:
         comment_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GistComment]:
+    ) -> Response[GistComment, GistCommentType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#get-a-gist-comment"""
 
         from ..models import BasicError, GistComment, GistsGistIdGetResponse403
@@ -875,7 +879,7 @@ class GistsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: GistsGistIdCommentsCommentIdPatchBodyType,
-    ) -> Response[GistComment]: ...
+    ) -> Response[GistComment, GistCommentType]: ...
 
     @overload
     def update_comment(
@@ -886,7 +890,7 @@ class GistsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         body: str,
-    ) -> Response[GistComment]: ...
+    ) -> Response[GistComment, GistCommentType]: ...
 
     def update_comment(
         self,
@@ -896,7 +900,7 @@ class GistsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GistComment]:
+    ) -> Response[GistComment, GistCommentType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#update-a-gist-comment"""
 
         from ..models import (
@@ -937,7 +941,7 @@ class GistsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: GistsGistIdCommentsCommentIdPatchBodyType,
-    ) -> Response[GistComment]: ...
+    ) -> Response[GistComment, GistCommentType]: ...
 
     @overload
     async def async_update_comment(
@@ -948,7 +952,7 @@ class GistsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         body: str,
-    ) -> Response[GistComment]: ...
+    ) -> Response[GistComment, GistCommentType]: ...
 
     async def async_update_comment(
         self,
@@ -958,7 +962,7 @@ class GistsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[GistsGistIdCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[GistComment]:
+    ) -> Response[GistComment, GistCommentType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/comments#update-a-gist-comment"""
 
         from ..models import (
@@ -998,7 +1002,7 @@ class GistsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[GistCommit]]:
+    ) -> Response[list[GistCommit], list[GistCommitType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gist-commits"""
 
         from ..models import BasicError, GistCommit
@@ -1031,7 +1035,7 @@ class GistsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[GistCommit]]:
+    ) -> Response[list[GistCommit], list[GistCommitType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gist-commits"""
 
         from ..models import BasicError, GistCommit
@@ -1064,7 +1068,7 @@ class GistsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[GistSimple]]:
+    ) -> Response[list[GistSimple], list[GistSimpleType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gist-forks"""
 
         from ..models import BasicError, GistSimple
@@ -1097,7 +1101,7 @@ class GistsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[GistSimple]]:
+    ) -> Response[list[GistSimple], list[GistSimpleType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gist-forks"""
 
         from ..models import BasicError, GistSimple
@@ -1128,7 +1132,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[BaseGist]:
+    ) -> Response[BaseGist, BaseGistType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#fork-a-gist"""
 
         from ..models import BaseGist, BasicError, ValidationError
@@ -1154,7 +1158,7 @@ class GistsClient:
         gist_id: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[BaseGist]:
+    ) -> Response[BaseGist, BaseGistType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#fork-a-gist"""
 
         from ..models import BaseGist, BasicError, ValidationError
@@ -1325,7 +1329,7 @@ class GistsClient:
         sha: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GistSimple]:
+    ) -> Response[GistSimple, GistSimpleType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#get-a-gist-revision"""
 
         from ..models import BasicError, GistSimple, ValidationError
@@ -1352,7 +1356,7 @@ class GistsClient:
         sha: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[GistSimple]:
+    ) -> Response[GistSimple, GistSimpleType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#get-a-gist-revision"""
 
         from ..models import BasicError, GistSimple, ValidationError
@@ -1381,7 +1385,7 @@ class GistsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[BaseGist]]:
+    ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gists-for-a-user"""
 
         from ..models import BaseGist, ValidationError
@@ -1415,7 +1419,7 @@ class GistsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[BaseGist]]:
+    ) -> Response[list[BaseGist], list[BaseGistType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/gists/gists#list-gists-for-a-user"""
 
         from ..models import BaseGist, ValidationError

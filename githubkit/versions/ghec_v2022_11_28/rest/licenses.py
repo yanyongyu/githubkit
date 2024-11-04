@@ -22,6 +22,7 @@ if TYPE_CHECKING:
     from githubkit.response import Response
 
     from ..models import License, LicenseSimple, LicenseContent
+    from ..types import LicenseType, LicenseSimpleType, LicenseContentType
 
 
 class LicensesClient:
@@ -46,7 +47,7 @@ class LicensesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[LicenseSimple]]:
+    ) -> Response[list[LicenseSimple], list[LicenseSimpleType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-all-commonly-used-licenses"""
 
         from ..models import LicenseSimple
@@ -76,7 +77,7 @@ class LicensesClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[LicenseSimple]]:
+    ) -> Response[list[LicenseSimple], list[LicenseSimpleType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-all-commonly-used-licenses"""
 
         from ..models import LicenseSimple
@@ -104,7 +105,7 @@ class LicensesClient:
         license_: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[License]:
+    ) -> Response[License, LicenseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-a-license"""
 
         from ..models import License, BasicError
@@ -129,7 +130,7 @@ class LicensesClient:
         license_: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[License]:
+    ) -> Response[License, LicenseType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-a-license"""
 
         from ..models import License, BasicError
@@ -156,7 +157,7 @@ class LicensesClient:
         ref: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[LicenseContent]:
+    ) -> Response[LicenseContent, LicenseContentType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-the-license-for-a-repository"""
 
         from ..models import BasicError, LicenseContent
@@ -187,7 +188,7 @@ class LicensesClient:
         ref: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[LicenseContent]:
+    ) -> Response[LicenseContent, LicenseContentType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/licenses/licenses#get-the-license-for-a-repository"""
 
         from ..models import BasicError, LicenseContent

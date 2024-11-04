@@ -22,6 +22,7 @@ if TYPE_CHECKING:
     from githubkit.response import Response
 
     from ..models import ServerStatisticsItems
+    from ..types import ServerStatisticsItemsType
 
 
 class ServerStatisticsClient:
@@ -46,7 +47,7 @@ class ServerStatisticsClient:
         date_end: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ServerStatisticsItems]]:
+    ) -> Response[list[ServerStatisticsItems], list[ServerStatisticsItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics"""
 
         from ..models import ServerStatisticsItems
@@ -75,7 +76,7 @@ class ServerStatisticsClient:
         date_end: Missing[str] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ServerStatisticsItems]]:
+    ) -> Response[list[ServerStatisticsItems], list[ServerStatisticsItemsType]]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/enterprise-admin/admin-stats#get-github-enterprise-server-statistics"""
 
         from ..models import ServerStatisticsItems

@@ -40,6 +40,15 @@ if TYPE_CHECKING:
         ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
     )
     from ..types import (
+        CommitType,
+        DiffEntryType,
+        PullRequestType,
+        ReviewCommentType,
+        PullRequestReviewType,
+        PullRequestSimpleType,
+        PullRequestMergeResultType,
+        PullRequestReviewCommentType,
+        PullRequestReviewRequestType,
         ReposOwnerRepoPullsPostBodyType,
         ReposOwnerRepoPullsPullNumberPatchBodyType,
         ReposOwnerRepoPullsPullNumberMergePutBodyType,
@@ -48,6 +57,7 @@ if TYPE_CHECKING:
         ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
         ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType,
         ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type,
         ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
         ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
         ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
@@ -88,7 +98,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PullRequestSimple]]:
+    ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-pull-requests"""
 
         from ..models import ValidationError, PullRequestSimple
@@ -133,7 +143,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PullRequestSimple]]:
+    ) -> Response[list[PullRequestSimple], list[PullRequestSimpleType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-pull-requests"""
 
         from ..models import ValidationError, PullRequestSimple
@@ -171,7 +181,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsPostBodyType,
-    ) -> Response[PullRequest]: ...
+    ) -> Response[PullRequest, PullRequestType]: ...
 
     @overload
     def create(
@@ -189,7 +199,7 @@ class PullsClient:
         maintainer_can_modify: Missing[bool] = UNSET,
         draft: Missing[bool] = UNSET,
         issue: Missing[int] = UNSET,
-    ) -> Response[PullRequest]: ...
+    ) -> Response[PullRequest, PullRequestType]: ...
 
     def create(
         self,
@@ -199,7 +209,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequest]:
+    ) -> Response[PullRequest, PullRequestType]:
         """See also: https://docs.github.com/rest/pulls/pulls#create-a-pull-request"""
 
         from ..models import (
@@ -242,7 +252,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsPostBodyType,
-    ) -> Response[PullRequest]: ...
+    ) -> Response[PullRequest, PullRequestType]: ...
 
     @overload
     async def async_create(
@@ -260,7 +270,7 @@ class PullsClient:
         maintainer_can_modify: Missing[bool] = UNSET,
         draft: Missing[bool] = UNSET,
         issue: Missing[int] = UNSET,
-    ) -> Response[PullRequest]: ...
+    ) -> Response[PullRequest, PullRequestType]: ...
 
     async def async_create(
         self,
@@ -270,7 +280,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequest]:
+    ) -> Response[PullRequest, PullRequestType]:
         """See also: https://docs.github.com/rest/pulls/pulls#create-a-pull-request"""
 
         from ..models import (
@@ -316,7 +326,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PullRequestReviewComment]]:
+    ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/comments#list-review-comments-in-a-repository"""
 
         from ..models import PullRequestReviewComment
@@ -352,7 +362,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PullRequestReviewComment]]:
+    ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/comments#list-review-comments-in-a-repository"""
 
         from ..models import PullRequestReviewComment
@@ -384,7 +394,7 @@ class PullsClient:
         comment_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PullRequestReviewComment]:
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
         """See also: https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request"""
 
         from ..models import BasicError, PullRequestReviewComment
@@ -410,7 +420,7 @@ class PullsClient:
         comment_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PullRequestReviewComment]:
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
         """See also: https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request"""
 
         from ..models import BasicError, PullRequestReviewComment
@@ -488,7 +498,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
-    ) -> Response[PullRequestReviewComment]: ...
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
     @overload
     def update_review_comment(
@@ -500,7 +510,7 @@ class PullsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         body: str,
-    ) -> Response[PullRequestReviewComment]: ...
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
     def update_review_comment(
         self,
@@ -511,7 +521,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReviewComment]:
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
         """See also: https://docs.github.com/rest/pulls/comments#update-a-review-comment-for-a-pull-request"""
 
         from ..models import (
@@ -551,7 +561,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsCommentsCommentIdPatchBodyType,
-    ) -> Response[PullRequestReviewComment]: ...
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
     @overload
     async def async_update_review_comment(
@@ -563,7 +573,7 @@ class PullsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         body: str,
-    ) -> Response[PullRequestReviewComment]: ...
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
     async def async_update_review_comment(
         self,
@@ -574,7 +584,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsCommentsCommentIdPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReviewComment]:
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
         """See also: https://docs.github.com/rest/pulls/comments#update-a-review-comment-for-a-pull-request"""
 
         from ..models import (
@@ -612,7 +622,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PullRequest]:
+    ) -> Response[PullRequest, PullRequestType]:
         """See also: https://docs.github.com/rest/pulls/pulls#get-a-pull-request"""
 
         from ..models import (
@@ -645,7 +655,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PullRequest]:
+    ) -> Response[PullRequest, PullRequestType]:
         """See also: https://docs.github.com/rest/pulls/pulls#get-a-pull-request"""
 
         from ..models import (
@@ -680,7 +690,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
-    ) -> Response[PullRequest]: ...
+    ) -> Response[PullRequest, PullRequestType]: ...
 
     @overload
     def update(
@@ -696,7 +706,7 @@ class PullsClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         base: Missing[str] = UNSET,
         maintainer_can_modify: Missing[bool] = UNSET,
-    ) -> Response[PullRequest]: ...
+    ) -> Response[PullRequest, PullRequestType]: ...
 
     def update(
         self,
@@ -707,7 +717,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequest]:
+    ) -> Response[PullRequest, PullRequestType]:
         """See also: https://docs.github.com/rest/pulls/pulls#update-a-pull-request"""
 
         from ..models import (
@@ -751,7 +761,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
-    ) -> Response[PullRequest]: ...
+    ) -> Response[PullRequest, PullRequestType]: ...
 
     @overload
     async def async_update(
@@ -767,7 +777,7 @@ class PullsClient:
         state: Missing[Literal["open", "closed"]] = UNSET,
         base: Missing[str] = UNSET,
         maintainer_can_modify: Missing[bool] = UNSET,
-    ) -> Response[PullRequest]: ...
+    ) -> Response[PullRequest, PullRequestType]: ...
 
     async def async_update(
         self,
@@ -778,7 +788,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberPatchBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequest]:
+    ) -> Response[PullRequest, PullRequestType]:
         """See also: https://docs.github.com/rest/pulls/pulls#update-a-pull-request"""
 
         from ..models import (
@@ -825,7 +835,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PullRequestReviewComment]]:
+    ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/comments#list-review-comments-on-a-pull-request"""
 
         from ..models import PullRequestReviewComment
@@ -862,7 +872,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PullRequestReviewComment]]:
+    ) -> Response[list[PullRequestReviewComment], list[PullRequestReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/comments#list-review-comments-on-a-pull-request"""
 
         from ..models import PullRequestReviewComment
@@ -896,7 +906,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
-    ) -> Response[PullRequestReviewComment]: ...
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
     @overload
     def create_review_comment(
@@ -917,7 +927,7 @@ class PullsClient:
         start_side: Missing[Literal["LEFT", "RIGHT", "side"]] = UNSET,
         in_reply_to: Missing[int] = UNSET,
         subject_type: Missing[Literal["line", "file"]] = UNSET,
-    ) -> Response[PullRequestReviewComment]: ...
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
     def create_review_comment(
         self,
@@ -928,7 +938,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReviewComment]:
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
         """See also: https://docs.github.com/rest/pulls/comments#create-a-review-comment-for-a-pull-request"""
 
         from ..models import (
@@ -974,7 +984,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberCommentsPostBodyType,
-    ) -> Response[PullRequestReviewComment]: ...
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
     @overload
     async def async_create_review_comment(
@@ -995,7 +1005,7 @@ class PullsClient:
         start_side: Missing[Literal["LEFT", "RIGHT", "side"]] = UNSET,
         in_reply_to: Missing[int] = UNSET,
         subject_type: Missing[Literal["line", "file"]] = UNSET,
-    ) -> Response[PullRequestReviewComment]: ...
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
     async def async_create_review_comment(
         self,
@@ -1006,7 +1016,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberCommentsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReviewComment]:
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
         """See also: https://docs.github.com/rest/pulls/comments#create-a-review-comment-for-a-pull-request"""
 
         from ..models import (
@@ -1053,7 +1063,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
-    ) -> Response[PullRequestReviewComment]: ...
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
     @overload
     def create_reply_for_review_comment(
@@ -1066,7 +1076,7 @@ class PullsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         body: str,
-    ) -> Response[PullRequestReviewComment]: ...
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
     def create_reply_for_review_comment(
         self,
@@ -1080,7 +1090,7 @@ class PullsClient:
             ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReviewComment]:
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
         """See also: https://docs.github.com/rest/pulls/comments#create-a-reply-for-a-review-comment"""
 
         from ..models import (
@@ -1125,7 +1135,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType,
-    ) -> Response[PullRequestReviewComment]: ...
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
     @overload
     async def async_create_reply_for_review_comment(
@@ -1138,7 +1148,7 @@ class PullsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         body: str,
-    ) -> Response[PullRequestReviewComment]: ...
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]: ...
 
     async def async_create_reply_for_review_comment(
         self,
@@ -1152,7 +1162,7 @@ class PullsClient:
             ReposOwnerRepoPullsPullNumberCommentsCommentIdRepliesPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReviewComment]:
+    ) -> Response[PullRequestReviewComment, PullRequestReviewCommentType]:
         """See also: https://docs.github.com/rest/pulls/comments#create-a-reply-for-a-review-comment"""
 
         from ..models import (
@@ -1196,7 +1206,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Commit]]:
+    ) -> Response[list[Commit], list[CommitType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-commits-on-a-pull-request"""
 
         from ..models import Commit
@@ -1227,7 +1237,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Commit]]:
+    ) -> Response[list[Commit], list[CommitType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-commits-on-a-pull-request"""
 
         from ..models import Commit
@@ -1258,7 +1268,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[DiffEntry]]:
+    ) -> Response[list[DiffEntry], list[DiffEntryType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-pull-requests-files"""
 
         from ..models import (
@@ -1299,7 +1309,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[DiffEntry]]:
+    ) -> Response[list[DiffEntry], list[DiffEntryType]]:
         """See also: https://docs.github.com/rest/pulls/pulls#list-pull-requests-files"""
 
         from ..models import (
@@ -1384,7 +1394,7 @@ class PullsClient:
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
-    ) -> Response[PullRequestMergeResult]: ...
+    ) -> Response[PullRequestMergeResult, PullRequestMergeResultType]: ...
 
     @overload
     def merge(
@@ -1399,7 +1409,7 @@ class PullsClient:
         commit_message: Missing[str] = UNSET,
         sha: Missing[str] = UNSET,
         merge_method: Missing[Literal["merge", "squash", "rebase"]] = UNSET,
-    ) -> Response[PullRequestMergeResult]: ...
+    ) -> Response[PullRequestMergeResult, PullRequestMergeResultType]: ...
 
     def merge(
         self,
@@ -1412,7 +1422,7 @@ class PullsClient:
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestMergeResult]:
+    ) -> Response[PullRequestMergeResult, PullRequestMergeResultType]:
         """See also: https://docs.github.com/rest/pulls/pulls#merge-a-pull-request"""
 
         from typing import Union
@@ -1467,7 +1477,7 @@ class PullsClient:
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
-    ) -> Response[PullRequestMergeResult]: ...
+    ) -> Response[PullRequestMergeResult, PullRequestMergeResultType]: ...
 
     @overload
     async def async_merge(
@@ -1482,7 +1492,7 @@ class PullsClient:
         commit_message: Missing[str] = UNSET,
         sha: Missing[str] = UNSET,
         merge_method: Missing[Literal["merge", "squash", "rebase"]] = UNSET,
-    ) -> Response[PullRequestMergeResult]: ...
+    ) -> Response[PullRequestMergeResult, PullRequestMergeResultType]: ...
 
     async def async_merge(
         self,
@@ -1495,7 +1505,7 @@ class PullsClient:
             Union[ReposOwnerRepoPullsPullNumberMergePutBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestMergeResult]:
+    ) -> Response[PullRequestMergeResult, PullRequestMergeResultType]:
         """See also: https://docs.github.com/rest/pulls/pulls#merge-a-pull-request"""
 
         from typing import Union
@@ -1546,7 +1556,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PullRequestReviewRequest]:
+    ) -> Response[PullRequestReviewRequest, PullRequestReviewRequestType]:
         """See also: https://docs.github.com/rest/pulls/review-requests#get-all-requested-reviewers-for-a-pull-request"""
 
         from ..models import PullRequestReviewRequest
@@ -1569,7 +1579,7 @@ class PullsClient:
         pull_number: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PullRequestReviewRequest]:
+    ) -> Response[PullRequestReviewRequest, PullRequestReviewRequestType]:
         """See also: https://docs.github.com/rest/pulls/review-requests#get-all-requested-reviewers-for-a-pull-request"""
 
         from ..models import PullRequestReviewRequest
@@ -1599,7 +1609,7 @@ class PullsClient:
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
             ]
         ] = UNSET,
-    ) -> Response[PullRequestSimple]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
 
     @overload
     def request_reviewers(
@@ -1612,7 +1622,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         reviewers: list[str],
         team_reviewers: Missing[list[str]] = UNSET,
-    ) -> Response[PullRequestSimple]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
 
     @overload
     def request_reviewers(
@@ -1625,7 +1635,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         reviewers: Missing[list[str]] = UNSET,
         team_reviewers: list[str],
-    ) -> Response[PullRequestSimple]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
 
     def request_reviewers(
         self,
@@ -1641,7 +1651,7 @@ class PullsClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestSimple]:
+    ) -> Response[PullRequestSimple, PullRequestSimpleType]:
         """See also: https://docs.github.com/rest/pulls/review-requests#request-reviewers-for-a-pull-request"""
 
         from typing import Union
@@ -1697,7 +1707,7 @@ class PullsClient:
                 ReposOwnerRepoPullsPullNumberRequestedReviewersPostBodyAnyof1Type,
             ]
         ] = UNSET,
-    ) -> Response[PullRequestSimple]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
 
     @overload
     async def async_request_reviewers(
@@ -1710,7 +1720,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         reviewers: list[str],
         team_reviewers: Missing[list[str]] = UNSET,
-    ) -> Response[PullRequestSimple]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
 
     @overload
     async def async_request_reviewers(
@@ -1723,7 +1733,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         reviewers: Missing[list[str]] = UNSET,
         team_reviewers: list[str],
-    ) -> Response[PullRequestSimple]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
 
     async def async_request_reviewers(
         self,
@@ -1739,7 +1749,7 @@ class PullsClient:
             ]
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestSimple]:
+    ) -> Response[PullRequestSimple, PullRequestSimpleType]:
         """See also: https://docs.github.com/rest/pulls/review-requests#request-reviewers-for-a-pull-request"""
 
         from typing import Union
@@ -1790,7 +1800,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
-    ) -> Response[PullRequestSimple]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
 
     @overload
     def remove_requested_reviewers(
@@ -1803,7 +1813,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         reviewers: list[str],
         team_reviewers: Missing[list[str]] = UNSET,
-    ) -> Response[PullRequestSimple]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
 
     def remove_requested_reviewers(
         self,
@@ -1816,7 +1826,7 @@ class PullsClient:
             ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestSimple]:
+    ) -> Response[PullRequestSimple, PullRequestSimpleType]:
         """See also: https://docs.github.com/rest/pulls/review-requests#remove-requested-reviewers-from-a-pull-request"""
 
         from ..models import (
@@ -1860,7 +1870,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType,
-    ) -> Response[PullRequestSimple]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
 
     @overload
     async def async_remove_requested_reviewers(
@@ -1873,7 +1883,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         reviewers: list[str],
         team_reviewers: Missing[list[str]] = UNSET,
-    ) -> Response[PullRequestSimple]: ...
+    ) -> Response[PullRequestSimple, PullRequestSimpleType]: ...
 
     async def async_remove_requested_reviewers(
         self,
@@ -1886,7 +1896,7 @@ class PullsClient:
             ReposOwnerRepoPullsPullNumberRequestedReviewersDeleteBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestSimple]:
+    ) -> Response[PullRequestSimple, PullRequestSimpleType]:
         """See also: https://docs.github.com/rest/pulls/review-requests#remove-requested-reviewers-from-a-pull-request"""
 
         from ..models import (
@@ -1930,7 +1940,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PullRequestReview]]:
+    ) -> Response[list[PullRequestReview], list[PullRequestReviewType]]:
         """See also: https://docs.github.com/rest/pulls/reviews#list-reviews-for-a-pull-request"""
 
         from ..models import PullRequestReview
@@ -1961,7 +1971,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PullRequestReview]]:
+    ) -> Response[list[PullRequestReview], list[PullRequestReviewType]]:
         """See also: https://docs.github.com/rest/pulls/reviews#list-reviews-for-a-pull-request"""
 
         from ..models import PullRequestReview
@@ -1992,7 +2002,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
-    ) -> Response[PullRequestReview]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
     @overload
     def create_review(
@@ -2009,7 +2019,7 @@ class PullsClient:
         comments: Missing[
             list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
         ] = UNSET,
-    ) -> Response[PullRequestReview]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
     def create_review(
         self,
@@ -2020,7 +2030,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReview]:
+    ) -> Response[PullRequestReview, PullRequestReviewType]:
         """See also: https://docs.github.com/rest/pulls/reviews#create-a-review-for-a-pull-request"""
 
         from ..models import (
@@ -2066,7 +2076,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
-    ) -> Response[PullRequestReview]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
     @overload
     async def async_create_review(
@@ -2083,7 +2093,7 @@ class PullsClient:
         comments: Missing[
             list[ReposOwnerRepoPullsPullNumberReviewsPostBodyPropCommentsItemsType]
         ] = UNSET,
-    ) -> Response[PullRequestReview]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
     async def async_create_review(
         self,
@@ -2094,7 +2104,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsPostBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReview]:
+    ) -> Response[PullRequestReview, PullRequestReviewType]:
         """See also: https://docs.github.com/rest/pulls/reviews#create-a-review-for-a-pull-request"""
 
         from ..models import (
@@ -2139,7 +2149,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PullRequestReview]:
+    ) -> Response[PullRequestReview, PullRequestReviewType]:
         """See also: https://docs.github.com/rest/pulls/reviews#get-a-review-for-a-pull-request"""
 
         from ..models import BasicError, PullRequestReview
@@ -2166,7 +2176,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PullRequestReview]:
+    ) -> Response[PullRequestReview, PullRequestReviewType]:
         """See also: https://docs.github.com/rest/pulls/reviews#get-a-review-for-a-pull-request"""
 
         from ..models import BasicError, PullRequestReview
@@ -2195,7 +2205,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
-    ) -> Response[PullRequestReview]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
     @overload
     def update_review(
@@ -2208,7 +2218,7 @@ class PullsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         body: str,
-    ) -> Response[PullRequestReview]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
     def update_review(
         self,
@@ -2220,7 +2230,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReview]:
+    ) -> Response[PullRequestReview, PullRequestReviewType]:
         """See also: https://docs.github.com/rest/pulls/reviews#update-a-review-for-a-pull-request"""
 
         from ..models import (
@@ -2265,7 +2275,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType,
-    ) -> Response[PullRequestReview]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
     @overload
     async def async_update_review(
@@ -2278,7 +2288,7 @@ class PullsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         body: str,
-    ) -> Response[PullRequestReview]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
     async def async_update_review(
         self,
@@ -2290,7 +2300,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[ReposOwnerRepoPullsPullNumberReviewsReviewIdPutBodyType] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReview]:
+    ) -> Response[PullRequestReview, PullRequestReviewType]:
         """See also: https://docs.github.com/rest/pulls/reviews#update-a-review-for-a-pull-request"""
 
         from ..models import (
@@ -2333,7 +2343,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PullRequestReview]:
+    ) -> Response[PullRequestReview, PullRequestReviewType]:
         """See also: https://docs.github.com/rest/pulls/reviews#delete-a-pending-review-for-a-pull-request"""
 
         from ..models import BasicError, PullRequestReview, ValidationErrorSimple
@@ -2361,7 +2371,7 @@ class PullsClient:
         review_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PullRequestReview]:
+    ) -> Response[PullRequestReview, PullRequestReviewType]:
         """See also: https://docs.github.com/rest/pulls/reviews#delete-a-pending-review-for-a-pull-request"""
 
         from ..models import BasicError, PullRequestReview, ValidationErrorSimple
@@ -2391,7 +2401,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ReviewComment]]:
+    ) -> Response[list[ReviewComment], list[ReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/reviews#list-comments-for-a-pull-request-review"""
 
         from ..models import BasicError, ReviewComment
@@ -2426,7 +2436,7 @@ class PullsClient:
         page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[ReviewComment]]:
+    ) -> Response[list[ReviewComment], list[ReviewCommentType]]:
         """See also: https://docs.github.com/rest/pulls/reviews#list-comments-for-a-pull-request-review"""
 
         from ..models import BasicError, ReviewComment
@@ -2461,7 +2471,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
-    ) -> Response[PullRequestReview]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
     @overload
     def dismiss_review(
@@ -2475,7 +2485,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         message: str,
         event: Missing[Literal["DISMISS"]] = UNSET,
-    ) -> Response[PullRequestReview]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
     def dismiss_review(
         self,
@@ -2489,7 +2499,7 @@ class PullsClient:
             ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReview]:
+    ) -> Response[PullRequestReview, PullRequestReviewType]:
         """See also: https://docs.github.com/rest/pulls/reviews#dismiss-a-review-for-a-pull-request"""
 
         from ..models import (
@@ -2538,7 +2548,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType,
-    ) -> Response[PullRequestReview]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
     @overload
     async def async_dismiss_review(
@@ -2552,7 +2562,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         message: str,
         event: Missing[Literal["DISMISS"]] = UNSET,
-    ) -> Response[PullRequestReview]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
     async def async_dismiss_review(
         self,
@@ -2566,7 +2576,7 @@ class PullsClient:
             ReposOwnerRepoPullsPullNumberReviewsReviewIdDismissalsPutBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReview]:
+    ) -> Response[PullRequestReview, PullRequestReviewType]:
         """See also: https://docs.github.com/rest/pulls/reviews#dismiss-a-review-for-a-pull-request"""
 
         from ..models import (
@@ -2615,7 +2625,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
-    ) -> Response[PullRequestReview]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
     @overload
     def submit_review(
@@ -2629,7 +2639,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         body: Missing[str] = UNSET,
         event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"],
-    ) -> Response[PullRequestReview]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
     def submit_review(
         self,
@@ -2643,7 +2653,7 @@ class PullsClient:
             ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReview]:
+    ) -> Response[PullRequestReview, PullRequestReviewType]:
         """See also: https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request"""
 
         from ..models import (
@@ -2691,7 +2701,7 @@ class PullsClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType,
-    ) -> Response[PullRequestReview]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
     @overload
     async def async_submit_review(
@@ -2705,7 +2715,7 @@ class PullsClient:
         headers: Optional[dict[str, str]] = None,
         body: Missing[str] = UNSET,
         event: Literal["APPROVE", "REQUEST_CHANGES", "COMMENT"],
-    ) -> Response[PullRequestReview]: ...
+    ) -> Response[PullRequestReview, PullRequestReviewType]: ...
 
     async def async_submit_review(
         self,
@@ -2719,7 +2729,7 @@ class PullsClient:
             ReposOwnerRepoPullsPullNumberReviewsReviewIdEventsPostBodyType
         ] = UNSET,
         **kwargs,
-    ) -> Response[PullRequestReview]:
+    ) -> Response[PullRequestReview, PullRequestReviewType]:
         """See also: https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request"""
 
         from ..models import (
@@ -2768,7 +2778,10 @@ class PullsClient:
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
-    ) -> Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]: ...
+    ) -> Response[
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type,
+    ]: ...
 
     @overload
     def update_branch(
@@ -2780,7 +2793,10 @@ class PullsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         expected_head_sha: Missing[str] = UNSET,
-    ) -> Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]: ...
+    ) -> Response[
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type,
+    ]: ...
 
     def update_branch(
         self,
@@ -2793,7 +2809,10 @@ class PullsClient:
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]:
+    ) -> Response[
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/pulls/pulls#update-a-pull-request-branch"""
 
         from typing import Union
@@ -2843,7 +2862,10 @@ class PullsClient:
         data: Missing[
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
-    ) -> Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]: ...
+    ) -> Response[
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type,
+    ]: ...
 
     @overload
     async def async_update_branch(
@@ -2855,7 +2877,10 @@ class PullsClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         expected_head_sha: Missing[str] = UNSET,
-    ) -> Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]: ...
+    ) -> Response[
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type,
+    ]: ...
 
     async def async_update_branch(
         self,
@@ -2868,7 +2893,10 @@ class PullsClient:
             Union[ReposOwnerRepoPullsPullNumberUpdateBranchPutBodyType, None]
         ] = UNSET,
         **kwargs,
-    ) -> Response[ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202]:
+    ) -> Response[
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202,
+        ReposOwnerRepoPullsPullNumberUpdateBranchPutResponse202Type,
+    ]:
         """See also: https://docs.github.com/rest/pulls/pulls#update-a-pull-request-branch"""
 
         from typing import Union

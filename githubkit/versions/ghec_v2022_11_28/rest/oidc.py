@@ -22,8 +22,8 @@ if TYPE_CHECKING:
     from githubkit import GitHubCore
     from githubkit.response import Response
 
-    from ..types import OidcCustomSubType
     from ..models import EmptyObject, OidcCustomSub
+    from ..types import EmptyObjectType, OidcCustomSubType
 
 
 class OidcClient:
@@ -46,7 +46,7 @@ class OidcClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OidcCustomSub]:
+    ) -> Response[OidcCustomSub, OidcCustomSubType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
 
         from ..models import OidcCustomSub
@@ -67,7 +67,7 @@ class OidcClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[OidcCustomSub]:
+    ) -> Response[OidcCustomSub, OidcCustomSubType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
 
         from ..models import OidcCustomSub
@@ -90,7 +90,7 @@ class OidcClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OidcCustomSubType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     def update_oidc_custom_sub_template_for_org(
@@ -100,7 +100,7 @@ class OidcClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         include_claim_keys: list[str],
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     def update_oidc_custom_sub_template_for_org(
         self,
@@ -109,7 +109,7 @@ class OidcClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OidcCustomSubType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
 
         from ..models import BasicError, EmptyObject, OidcCustomSub
@@ -146,7 +146,7 @@ class OidcClient:
         *,
         headers: Optional[dict[str, str]] = None,
         data: OidcCustomSubType,
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     @overload
     async def async_update_oidc_custom_sub_template_for_org(
@@ -156,7 +156,7 @@ class OidcClient:
         data: UnsetType = UNSET,
         headers: Optional[dict[str, str]] = None,
         include_claim_keys: list[str],
-    ) -> Response[EmptyObject]: ...
+    ) -> Response[EmptyObject, EmptyObjectType]: ...
 
     async def async_update_oidc_custom_sub_template_for_org(
         self,
@@ -165,7 +165,7 @@ class OidcClient:
         headers: Optional[dict[str, str]] = None,
         data: Missing[OidcCustomSubType] = UNSET,
         **kwargs,
-    ) -> Response[EmptyObject]:
+    ) -> Response[EmptyObject, EmptyObjectType]:
         """See also: https://docs.github.com/enterprise-cloud@latest//rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization"""
 
         from ..models import BasicError, EmptyObject, OidcCustomSub

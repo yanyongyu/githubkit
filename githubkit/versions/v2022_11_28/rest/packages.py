@@ -24,6 +24,7 @@ if TYPE_CHECKING:
     from githubkit.response import Response
 
     from ..models import Package, PackageVersion
+    from ..types import PackageType, PackageVersionType
 
 
 class PackagesClient:
@@ -46,7 +47,7 @@ class PackagesClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Package]]:
+    ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization"""
 
         from ..models import Package, BasicError
@@ -71,7 +72,7 @@ class PackagesClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Package]]:
+    ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-organization"""
 
         from ..models import Package, BasicError
@@ -102,7 +103,7 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Package]]:
+    ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-an-organization"""
 
         from ..models import Package, BasicError
@@ -141,7 +142,7 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Package]]:
+    ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-an-organization"""
 
         from ..models import Package, BasicError
@@ -178,7 +179,7 @@ class PackagesClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Package]:
+    ) -> Response[Package, PackageType]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-an-organization"""
 
         from ..models import Package
@@ -203,7 +204,7 @@ class PackagesClient:
         org: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Package]:
+    ) -> Response[Package, PackageType]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-an-organization"""
 
         from ..models import Package
@@ -359,7 +360,7 @@ class PackagesClient:
         state: Missing[Literal["active", "deleted"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PackageVersion]]:
+    ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization"""
 
         from ..models import BasicError, PackageVersion
@@ -399,7 +400,7 @@ class PackagesClient:
         state: Missing[Literal["active", "deleted"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PackageVersion]]:
+    ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization"""
 
         from ..models import BasicError, PackageVersion
@@ -437,7 +438,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PackageVersion]:
+    ) -> Response[PackageVersion, PackageVersionType]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-an-organization"""
 
         from ..models import PackageVersion
@@ -463,7 +464,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PackageVersion]:
+    ) -> Response[PackageVersion, PackageVersionType]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-an-organization"""
 
         from ..models import PackageVersion
@@ -603,7 +604,7 @@ class PackagesClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Package]]:
+    ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user"""
 
         from ..models import Package
@@ -623,7 +624,7 @@ class PackagesClient:
         self,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Package]]:
+    ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user"""
 
         from ..models import Package
@@ -649,7 +650,7 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Package]]:
+    ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-the-authenticated-users-namespace"""
 
         from ..models import Package
@@ -684,7 +685,7 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Package]]:
+    ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-the-authenticated-users-namespace"""
 
         from ..models import Package
@@ -717,7 +718,7 @@ class PackagesClient:
         package_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Package]:
+    ) -> Response[Package, PackageType]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-the-authenticated-user"""
 
         from ..models import Package
@@ -741,7 +742,7 @@ class PackagesClient:
         package_name: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Package]:
+    ) -> Response[Package, PackageType]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-the-authenticated-user"""
 
         from ..models import Package
@@ -892,7 +893,7 @@ class PackagesClient:
         state: Missing[Literal["active", "deleted"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PackageVersion]]:
+    ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user"""
 
         from ..models import BasicError, PackageVersion
@@ -931,7 +932,7 @@ class PackagesClient:
         state: Missing[Literal["active", "deleted"]] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PackageVersion]]:
+    ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user"""
 
         from ..models import BasicError, PackageVersion
@@ -968,7 +969,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PackageVersion]:
+    ) -> Response[PackageVersion, PackageVersionType]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-the-authenticated-user"""
 
         from ..models import PackageVersion
@@ -993,7 +994,7 @@ class PackagesClient:
         package_version_id: int,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PackageVersion]:
+    ) -> Response[PackageVersion, PackageVersionType]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-the-authenticated-user"""
 
         from ..models import PackageVersion
@@ -1130,7 +1131,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Package]]:
+    ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user"""
 
         from ..models import Package, BasicError
@@ -1155,7 +1156,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Package]]:
+    ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-user"""
 
         from ..models import Package, BasicError
@@ -1186,7 +1187,7 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Package]]:
+    ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-a-user"""
 
         from ..models import Package, BasicError
@@ -1225,7 +1226,7 @@ class PackagesClient:
         per_page: Missing[int] = UNSET,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[Package]]:
+    ) -> Response[list[Package], list[PackageType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-packages-for-a-user"""
 
         from ..models import Package, BasicError
@@ -1262,7 +1263,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Package]:
+    ) -> Response[Package, PackageType]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-a-user"""
 
         from ..models import Package
@@ -1287,7 +1288,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[Package]:
+    ) -> Response[Package, PackageType]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-for-a-user"""
 
         from ..models import Package
@@ -1440,7 +1441,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PackageVersion]]:
+    ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user"""
 
         from ..models import BasicError, PackageVersion
@@ -1470,7 +1471,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[list[PackageVersion]]:
+    ) -> Response[list[PackageVersion], list[PackageVersionType]]:
         """See also: https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user"""
 
         from ..models import BasicError, PackageVersion
@@ -1501,7 +1502,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PackageVersion]:
+    ) -> Response[PackageVersion, PackageVersionType]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-a-user"""
 
         from ..models import PackageVersion
@@ -1527,7 +1528,7 @@ class PackagesClient:
         username: str,
         *,
         headers: Optional[dict[str, str]] = None,
-    ) -> Response[PackageVersion]:
+    ) -> Response[PackageVersion, PackageVersionType]:
         """See also: https://docs.github.com/rest/packages/packages#get-a-package-version-for-a-user"""
 
         from ..models import PackageVersion
